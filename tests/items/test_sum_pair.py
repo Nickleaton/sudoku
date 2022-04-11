@@ -17,7 +17,7 @@ class TestSumPair(TestPair):
 
     @property
     def has_rule(self) -> bool:
-        return False
+        return True
 
     @property
     def total(self) -> int:

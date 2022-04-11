@@ -31,13 +31,3 @@ class DifferencePair(Pair):
     def add_constraint(self, solver: PulpSolver) -> None:
         total = solver.values[self.c1.row][self.c1.column] + solver.values[self.c2.row][self.c2.column]
         solver.model += total == self.difference, self.name
-
-    @property
-    def rules(self) -> List[Rule]:
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                f"Cells separated by an XI must have a difference of {self.difference}"
-            )
-        ]
