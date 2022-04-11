@@ -1,0 +1,39 @@
+Board:
+  Title: Magic Square Sudoku
+  Author: Aad van de Wetering
+  Video: https://www.youtube.com/watch?v=hAyZ9K2EBF0&ab_channel=CrackingTheCryptic
+  Reference: https://cracking-the-cryptic.web.app/sudoku/2QM8JHJ4HB
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - TLBR:
+  - BLTR:
+  - AntiKnight:
+  - Knowns:
+      - .........
+      - .........
+      - .........
+      - 384......
+      - .........
+      - .........
+      - .........
+      - .........
+      - ........2
+  - MagicSquare:
+      Center: [ 5,5 ]
+      Corner: [ 1,1 ]
+
+Solution:
+  - 843567219
+  - 275913846
+  - 619428375
+  - 384672951
+  - 726159483
+  - 951834627
+  - 537286194
+  - 462791538
+  - 198345762
+

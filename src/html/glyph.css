@@ -1,0 +1,367 @@
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+.Circle {
+    fill: gainsboro;
+}
+
+.EvenCell {
+    fill: gainsboro;
+}
+
+.OddCell {
+    fill: gainsboro;
+}
+
+.FortressCell {
+    stroke: black;
+    stroke-width: 3;
+}
+
+.BattenburgOdd {
+    stroke: black;
+    stroke-width: 1;
+    fill: yellow;
+}
+
+.BattenburgEven {
+    stroke: black;
+    stroke-width: 1;
+    fill: pink;
+}
+
+.StarGlyphForeground {
+    font-size: 100px;
+    stroke: gainsboro;
+    fill: gainsboro;
+}
+
+.StarGlyphBackground {
+    font-size: 100px;
+    stroke: gainsboro;
+    fill: gainsboro;
+}
+
+.Known {
+    font-size: 70px;
+    fill: black;
+    font-weight: 500;
+    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+}
+
+.Unknown {
+    font-size: 70px;
+    fill: blue;
+    font-weight: 500;
+    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+}
+
+.KnownForeground {
+    font-size: 70px;
+    stroke: black;
+    fill: black
+}
+
+.KnownBackground {
+    font-size: 70px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+}
+
+.UnknownForeground {
+    font-size: 70px;
+    stroke: blue;
+    fill: blue
+}
+
+.UnknownBackground {
+    font-size: 70px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+}
+
+.Circle {
+    fill: red;
+}
+
+.Diagonal {
+    stroke: blue;
+    stroke-width: 3px;
+}
+
+
+.FrameTextForeground {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+}
+
+.EdgeTextGlyphForeground {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+}
+
+.FrameTextBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+}
+
+.EdgeTextGlyphBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+}
+
+.LittleArrow {
+    font-size: 20px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+}
+
+.LittleNumber {
+    font-size: 20px;
+    stroke: black;
+}
+
+.MagicSquare {
+    fill: cyan;
+}
+
+.Box {
+    stroke: black;
+    stroke-width: 3;
+    fill-opacity: 0
+}
+
+.Cell {
+    stroke: black;
+    stroke-width: 1;
+    fill-opacity: 0
+}
+
+.Window {
+    fill: lightcyan;
+}
+
+.ColumnIndexer {
+    fill: pink;
+}
+
+.RowIndexer {
+    fill: pink;
+}
+
+.Consecutive {
+    fill: white;
+    stroke-width: 2;
+    stroke: black;
+}
+
+.Consecutive1 {
+    fill: silver;
+    stroke-width: 2;
+    stroke: black;
+}
+
+
+.Kropki {
+    fill: black;
+    stroke-width: 1;
+    stroke: black;
+    background: transparent;
+
+}
+
+.GermanWhisper {
+    stroke: blue;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+
+.DutchWhisper {
+    stroke: green;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+
+.Palindrome {
+    stroke: silver;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.Renban {
+    stroke: purple;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.DistinctRenban {
+    stroke: purple;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.Arrow {
+    stroke: grey;
+    fill: white;
+    stroke-width: 3;
+}
+
+.ArrowStart {
+}
+
+.ArrowEnd {
+    fill-opacity: 0;
+}
+
+.Between {
+    stroke: grey;
+    fill: white;
+    stroke-width: 3;
+}
+
+.BetweenStart {
+}
+
+.BetweenEnd {
+}
+
+
+.Thermometer {
+    stroke: grey;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.SimpleThermometer {
+    stroke: grey;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.SimpleThermometerStart {
+    stroke: grey;
+    fill: grey;
+    stroke-width: 30;
+}
+
+.FrozenThermometer {
+    stroke: grey;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.FrozenThermometerStart {
+    stroke: grey;
+    fill: grey;
+    stroke-width: 30;
+}
+
+
+.TextGlyphForeground {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+
+}
+
+.TextGlyphBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+
+}
+
+.LittleKiller {
+    font-size: 50px;
+    stroke: black;
+    stroke-width: 2;
+    fill: black;
+}
+
+.Killer {
+    stroke: red;
+    stroke-width: 4;
+}
+
+.QuadrupleCircle {
+    stroke-width: 2;
+    stroke: black;
+    fill: white;
+}
+
+.QuadrupleText {
+    stroke: black;
+    fill: black;
+    font-size: 30px;
+}
+
+.Entropic {
+    stroke: orange;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.EqualSum {
+    stroke: lightskyblue;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
+.Rossini {
+    stroke: black;
+    fill: black;
+    font-size: 30px;
+}
+
+.MagicSquare {
+    fill: mediumpurple;
+}

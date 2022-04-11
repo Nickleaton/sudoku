@@ -1,0 +1,39 @@
+Board:
+  Title: Little Killer Sudoku by Clover
+  Video: https://www.youtube.com/watch?v=EIWX3buriUE&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/RQMpF2m6NN
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - ....3....
+      - .2.....4.
+      - ..8......
+      - ...2.....
+      - 9.......5
+      - .....6...
+      - ......4..
+      - .8.....6.
+      - ....7....
+  - LittleKiller: T0C=41
+  - LittleKiller: L3C=9
+  - LittleKiller: L4C=8
+  - LittleKiller: T6C=9
+  - LittleKiller: T7C=10
+  - LittleKiller: R6C=10
+  - LittleKiller: R7C=11
+  - LittleKiller: B3C=12
+  - LittleKiller: B4C=11
+Solution:
+  - 465839217
+  - 327561849
+  - 198724653
+  - 513247986
+  - 946318725
+  - 872956134
+  - 239685471
+  - 784193562
+  - 651472398

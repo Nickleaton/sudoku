@@ -1,0 +1,35 @@
+Board:
+  Title: She Makes The Numbers Dance!
+  Author: Shye
+  Video: https://www.youtube.com/watch?v=yMkwG_y5gpk&t=1685s&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/TdBgH8fFdF
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - ColumnIndexer: 1
+  - ColumnIndexer: 5
+  - ColumnIndexer: 9
+  - Knowns:
+    - .........
+    - .24...8..
+    - ..6...2..
+    - ..8...3..
+    - .........
+    - ..1...76.
+    - .43...6..
+    - ......4..
+    - .........
+
+Solution:
+  - 789265143
+  - 524319876
+  - 136487259
+  - 978546321
+  - 462173598
+  - 351928764
+  - 843792615
+  - 697851432
+  - 215634987

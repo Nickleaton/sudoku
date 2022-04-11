@@ -1,0 +1,40 @@
+Board:
+  Title: Incomplete Quadruple Sudoku
+  Author: Bastien Vial-Jaime
+  Video: https://www.youtube.com/watch?v=vPviz0qQQfs&ab_channel=CrackingTheCryptic
+  Reference: https://cracking-the-cryptic.web.app/sudoku/bNBd63M6dp
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Quadruple: 16=2
+  - Quadruple: 18=123
+  - Quadruple: 22=1289
+  - Quadruple: 23=34
+  - Quadruple: 24=456
+  - Quadruple: 28=456
+  - Quadruple: 38=678
+  - Quadruple: 43=16
+  - Quadruple: 44=24
+  - Quadruple: 55=37
+  - Quadruple: 56=15
+  - Quadruple: 61=25
+  - Quadruple: 71=468
+  - Quadruple: 75=56
+  - Quadruple: 76=34
+  - Quadruple: 77=89
+  - Quadruple: 81=37
+  - Quadruple: 83=17
+
+Solution:
+  - 564972813
+  - 319468725
+  - 728351964
+  - 143529678
+  - 896147532
+  - 257683149
+  - 485216397
+  - 632795481
+  - 971834256

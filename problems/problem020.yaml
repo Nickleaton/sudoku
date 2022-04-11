@@ -1,0 +1,32 @@
+Board:
+  Title: Odd Even Sudoku
+  Author: Sam Cappleman-Lynes
+  Video: https://www.youtube.com/watch?v=Q7hhVgE8zGM&ab_channel=CrackingTheCryptic
+  Reference: https://cracking-the-cryptic.web.app/sudoku/8bNmDd4J9G
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+    - .....7216
+    - ..o..4975
+    - .o.o.....
+    - .o.o..ee.
+    - .o.o.e...
+    - ..o..eee.
+    - .....e...
+    - 2745..ee.
+    - 9582.....
+
+Solution:
+  - 549837216
+  - 823614975
+  - 716925348
+  - 635149827
+  - 492786153
+  - 187352469
+  - 361478592
+  - 274593681
+  - 958261734

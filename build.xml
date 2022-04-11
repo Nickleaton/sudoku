@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project name="Sudoku" default="info">
+    <target name="info">
+        <echo>Hello World - Sudoku!</echo>
+    </target>
+    <target name="install">
+        <exec excecutable="pip">
+            <arg value="install"/>
+            <arg value="-r"/>
+            <arg value="requirements.txt"/>
+        </exec>
+    </target>
+    <target name="build">
+        <echo>Build</echo>
+    </target>
+    <target name="document">
+        <echo>Document</echo>
+    </target>
+    <target name="test">
+        <exec executable="nose2" failonerror="true" taskname="nose2">
+            <arg value="-s"/>
+            <arg value="tests"/>
+            <arg value="-v"/>
+            <arg value="-C"/>
+            <arg value="--coverage-report"/>
+            <arg value="html"/>
+            <arg value="--pretty-assert"/>
+            <arg value="--html-report"/>
+        </exec>
+    </target>
+    <target name="acceptance">
+        <exec executable="nose2" failonerror="true" taskname="nose2">
+            <arg value="-s"/>
+            <arg value="tests-acceptance"/>
+            <arg value="-v"/>
+            <arg value="-C"/>
+            <arg value="--coverage-report"/>
+            <arg value="html"/>
+            <arg value="--pretty-assert"/>
+            <arg value="--html-report"/>
+        </exec>
+    </target>
+</project>

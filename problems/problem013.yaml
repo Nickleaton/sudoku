@@ -1,0 +1,33 @@
+Board:
+  Title: WPC 2019 2.10 Windoku
+  Reference: https://wspc2019.de/downloads/wsc_2019_instructionbooklet_v1.pdf
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Window: 3,3
+  - Window: 3,7
+  - Window: 7,3
+  - Window: 7,7
+  - Knowns:
+    - .........
+    - ...2..61.
+    - ..94..3..
+    - .81...74.
+    - .........
+    - .46...8..
+    - .27...4..
+    - .3...65..
+    - .....5...
+Solution:
+  - 413657289
+  - 875239614
+  - 269418357
+  - 981362745
+  - 352874961
+  - 746591823
+  - 527183496
+  - 138946572
+  - 694725138

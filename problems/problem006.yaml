@@ -1,0 +1,31 @@
+Board:
+  Title: WPC 2019 8.1 Antiknight
+  Reference: https://wspc2019.de/downloads/wsc_2019_instructionbooklet_v1.pdf
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - AntiKnight:
+  - Knowns:
+    - 3...5...4
+    - ...2.6...
+    - ..6...7..
+    - .8..1..5.
+    - 9..4.2..3
+    - .6..3..7.
+    - ..9...5..
+    - ...8.5...
+    - 4...2...7
+
+Solution:
+  - 392751684
+  - 547286391
+  - 816394725
+  - 283917456
+  - 975462813
+  - 164538279
+  - 629173548
+  - 731845962
+  - 458629137

@@ -1,0 +1,30 @@
+Board:
+  Title: That's 3 in the Corner
+  Author: Epsalon
+  Video: https://www.youtube.com/watch?v=iLMNlaVFQkE&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/27FLhTPrhL
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - ConsecutivePair: [ [ 5,1 ], [ 6,1 ] ]
+  - ConsecutivePair: [ [ 4,3 ], [ 4,4 ] ]
+  - ConsecutivePair: [ [ 5,7 ], [ 5,8 ] ]
+  - SimpleThermometer: [ [ 2,3 ], [ 2,2 ], [ 2,1 ] ]
+  - SimpleThermometer: [ [ 2,3 ], [ 1,3 ], [ 1,2 ], [ 1,1 ] ]
+  - SimpleThermometer: [ [ 2,3 ], [ 3,3 ], [ 3,2 ], [ 3,1 ] ]
+  - SimpleThermometer: [ [ 3,5 ], [ 2,5 ] ]
+  - SimpleThermometer: [ [ 3,5 ], [ 3,4 ] ]
+  - SimpleThermometer: [ [ 3,5 ], [ 3,6 ] ]
+  - SimpleThermometer: [ [ 3,5 ], [ 4,5 ], [ 5,5 ] ]
+  - SimpleThermometer: [ [ 3,7 ], [ 3,8 ], [ 3,9 ], [ 2,9 ], [ 1,9 ], [ 1,8 ], [ 1,7 ] ]
+  - SimpleThermometer: [ [ 3,7 ], [ 3,8 ], [ 3,9 ], [ 2,9 ], [ 2, 8 ] ]
+  - SimpleThermometer: [ [ 7,1 ], [ 7,2 ], [ 7,3 ], [ 8,3 ], [ 9, 3 ], [ 9,2 ], [ 9,1 ] ]
+  - SimpleThermometer: [ [ 7,1 ], [ 7,2 ], [ 7,3 ], [ 8,3 ], [ 8, 2 ] ]
+  - SimpleThermometer: [ [ 8, 8 ], [ 8,9 ], [ 9,9 ], [ 9,8 ], [ 9,7 ] ]
+  - SimpleThermometer: [ [ 8, 8 ], [ 8,9 ], [ 7,9 ], [ 7,8 ], [ 7,7 ] ]
+  - MagicSquare:
+      Center: [ 5,5 ]
+      Corner: [ 1,1 ]

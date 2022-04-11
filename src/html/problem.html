@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> {{ title }} </title>
+		<link rel="stylesheet" href="glyph.css">
+	</head>
+	<body>
+		<h1>Problem</h1>
+		{{ problem_svg | safe }}
+		<table>
+			<thead>
+				<tr>
+					<th>Meta</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for key, value in meta.items() %}
+				<tr>
+					<td> {{ key}}</td>
+					<td> {{ value }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Rule</th>
+					<th>Explanation</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for rule in rules %}
+				<tr>
+					<td> {{rule.name}}</td>
+					<td> {{rule.text}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+Board:
+  Title: Aug 23 2021 Rossini Sudoku
+  Author: Sam Cappleman-Lunes
+  Video: https://www.youtube.com/watch?v=7sWnbrADeWo&ab_channel=CrackingTheCryptic
+  Reference: https://tinyurl.com/yckk6sjs
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Rossinis: [ T1D, T2I, T3I, T5D, T7D ]
+  - Rossinis: [ R2I, R4D ]
+  - Rossinis: [ B6D, B7D, B8D, B9I ]
+  - Rossinis: [ L4D, L5I, L8I, L9D ]
+  - Knowns:
+      - ........2
+      - .......3.
+      - ..3...4..
+      - ...4.....
+      - ....5....
+      - .....6...
+      - ..6...7..
+      - .7.......
+      - 8........
+Solution:
+  - 741583692
+  - 682749531
+  - 593612487
+  - 965431278
+  - 237958146
+  - 418276359
+  - 326894715
+  - 179365824
+  - 854127963

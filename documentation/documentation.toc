@@ -1,0 +1,43 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{}%
+\contentsline {section}{\numberline {2}Sets}{4}{}%
+\contentsline {section}{\numberline {3}Variables}{4}{}%
+\contentsline {section}{\numberline {4}Constraints}{5}{}%
+\contentsline {subsection}{\numberline {4.1}Basic Constraints}{5}{}%
+\contentsline {subsection}{\numberline {4.2}Uniqueness}{5}{}%
+\contentsline {subsection}{\numberline {4.3}Rows}{5}{}%
+\contentsline {subsection}{\numberline {4.4}Columns}{5}{}%
+\contentsline {subsection}{\numberline {4.5}Boxes}{6}{}%
+\contentsline {subsection}{\numberline {4.6}Diagonals}{6}{}%
+\contentsline {subsection}{\numberline {4.7}Known Values}{7}{}%
+\contentsline {section}{\numberline {5}Sudoku Variants}{7}{}%
+\contentsline {subsection}{\numberline {5.1}Odd Even}{7}{}%
+\contentsline {section}{\numberline {6}Lines}{7}{}%
+\contentsline {subsection}{\numberline {6.1}German and Dutch Whispers}{8}{}%
+\contentsline {subsection}{\numberline {6.2}Arrows}{8}{}%
+\contentsline {subsection}{\numberline {6.3}Thermometer}{9}{}%
+\contentsline {subsection}{\numberline {6.4}Palindromes}{9}{}%
+\contentsline {subsection}{\numberline {6.5}Renban}{9}{}%
+\contentsline {subsection}{\numberline {6.6}Between the Ends}{9}{}%
+\contentsline {subsection}{\numberline {6.7}Diagonal}{10}{}%
+\contentsline {subsection}{\numberline {6.8}Argyle}{10}{}%
+\contentsline {section}{\numberline {7}Magic Squares}{10}{}%
+\contentsline {section}{\numberline {8}Pairs}{11}{}%
+\contentsline {subsection}{\numberline {8.1}XV Sudoku}{11}{}%
+\contentsline {subsection}{\numberline {8.2}Greater Than Sudoku}{12}{}%
+\contentsline {subsection}{\numberline {8.3}Consecutive}{12}{}%
+\contentsline {subsection}{\numberline {8.4}Kropki}{12}{}%
+\contentsline {section}{\numberline {9}Chess Move}{13}{}%
+\contentsline {subsection}{\numberline {9.1}Fortress Sudoku}{13}{}%
+\contentsline {subsection}{\numberline {9.2}Anti-king}{14}{}%
+\contentsline {subsection}{\numberline {9.3}Anti-knight}{14}{}%
+\contentsline {subsection}{\numberline {9.4}Donkey Step}{14}{}%
+\contentsline {subsection}{\numberline {9.5}Monkey Step}{15}{}%
+\contentsline {subsection}{\numberline {9.6}Orthogonally Non Consecutive}{15}{}%
+\contentsline {section}{\numberline {10}Regional Sum}{15}{}%
+\contentsline {subsection}{\numberline {10.1}Killer}{15}{}%
+\contentsline {subsection}{\numberline {10.2}Little Killer}{16}{}%
+\contentsline {section}{\numberline {11}Formulations}{17}{}%
+\contentsline {subsection}{\numberline {11.1}Abs}{17}{}%
+\contentsline {subsection}{\numberline {11.2}Not equal}{17}{}%
+\contentsline {subsection}{\numberline {11.3}In Set}{17}{}%
+\contentsline {subsection}{\numberline {11.4}Not In Set}{17}{}%

@@ -1,0 +1,48 @@
+Board:
+  Title: How To Get A Distinction In Sudoku
+  Author: Zetamath
+  Video: https://www.youtube.com/watch?v=YVywJmvmEKY&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/mMPF2P2NqM
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - .8.......
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - ........2
+      - .........
+      - .........
+      - .........
+
+  - DistinctRenban: [ [ 1,4 ],[ 2,5 ] ]
+  - DistinctRenban: [ [ 1,5 ],[ 1,6 ],[ 2,6 ] ]
+  - DistinctRenban: [ [ 2,1 ],[ 3,1 ],[ 3,2 ],[ 4,2 ] ]
+  - DistinctRenban: [ [ 2,4 ],[ 3,4 ],[ 3,3 ] ]
+  - DistinctRenban: [ [ 3,5 ],[ 4,5 ] ]
+
+  - DistinctRenban: [ [ 3,6 ],[ 4,6 ],[ 4,7 ] ]
+  - DistinctRenban: [ [ 3,7 ],[ 3,8 ],[ 2,9 ] ]
+
+  - DistinctRenban: [ [ 5,1 ],[ 5,2 ] ]
+  - DistinctRenban: [ [ 5,3 ],[ 5,4 ] ]
+  - DistinctRenban: [ [ 5,6 ],[ 5,7 ] ]
+  - DistinctRenban: [ [ 5,8 ],[ 5,9 ] ]
+
+
+  - DistinctRenban: [ [ 5,6 ],[ 5,7 ] ]
+  - DistinctRenban: [ [ 6,6 ],[ 6,7 ],[ 6,8 ] ]
+  - DistinctRenban: [ [ 8,2 ],[ 7,2 ],[ 7,3 ],[ 8,3 ] ]
+  - DistinctRenban: [ [ 7,6 ],[ 8,6 ],[ 9,6 ] ]
+
+  - DistinctRenban: [ [ 8,4 ],[ 9,4 ],[ 9,3 ] ]
+  - DistinctRenban: [ [ 8,5 ],[ 9,5 ] ]
+  - DistinctRenban: [ [ 9,7 ],[ 9,8 ],[ 9,9 ],[ 8,9 ] ]
+
+

@@ -1,0 +1,38 @@
+Board:
+  Title: Quadruple the Entropy, Quadruple the Fun
+  Author: twototenth
+  Reference: https://tinyurl.com/y4k48fsk
+  Video: https://www.youtube.com/watch?v=SgD2nN2JebU
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Entropic: [ [ 4,1 ],[ 3,1 ],[ 2,1 ],[ 1,1 ],[ 1,2 ],[ 1,3 ],[ 1,4 ],[ 1,5 ],[ 1,6 ],[ 1,7 ] ]
+  - Entropic: [ [ 4,4 ],[ 3,4 ],[ 3,5 ],[ 3,6 ],[ 4,6 ] ]
+  - Entropic: [ [ 3,7 ],[ 4,7 ],[ 4,8 ],[ 3,8 ] ]
+  - Entropic: [ [ 3,9 ],[ 4,9 ],[ 5,9 ],[ 6,9 ],[ 7,9 ],[ 8,9 ],[ 9,9 ],[ 9,8 ],[ 9,7 ],[ 9,6 ] ]
+  - Entropic: [ [ 5,4 ],[ 4,5 ],[ 5,5 ],[ 5,6 ],[ 6,7 ],[ 5,7 ],[ 5,8 ] ]
+  - Entropic: [ [ 8,2 ],[ 8,1 ],[ 9,2 ],[ 9,3 ] ]
+  - Quadruple: 22=12
+  - Quadruple: 23=8
+  - Quadruple: 32=46
+  - Quadruple: 51=9
+  - Quadruple: 61=78
+  - Quadruple: 64=35
+  - Quadruple: 66=7
+  - Quadruple: 73=4
+  - Quadruple: 75=18
+  - Quadruple: 77=45
+
+Solution:
+  - 358167249
+  - 927854361
+  - 416923875
+  - 743698152
+  - 195742638
+  - 682531794
+  - 279416583
+  - 561389427
+  - 834275916

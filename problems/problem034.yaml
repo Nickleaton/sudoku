@@ -1,0 +1,39 @@
+Board:
+  Title: Between Sudoku
+  Author: Cristoph Seeliger
+  Video: https://www.youtube.com/watch?v=E4yFULT49a4&ab_channel=CrackingTheCryptic
+  Reference: https://cracking-the-cryptic.web.app/sudoku/hP46qg8QMp
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - 1.......8
+      - ....5....
+      - ....3....
+      - .........
+      - .54.9.18.
+      - .........
+      - ....1....
+      - ....6....
+      - 7.......1
+  - Between: [ [ 5,1 ],[ 4,1 ],[ 3,1 ],[ 2,2 ],[ 1,3 ],[ 1,4 ],[ 1,5 ] ]
+  - Between: [ [ 1,5 ],[ 1,6 ],[ 1,7 ],[ 2,8 ],[ 3,9 ],[ 4,9 ],[ 5,9 ] ]
+  - Between: [ [ 2,6 ],[ 3,7 ],[ 4,8 ] ]
+  - Between: [ [ 5,1 ],[ 6,1 ],[ 7,1 ],[ 8,2 ],[ 9,3 ],[ 9,4 ],[ 9,5 ] ]
+  - Between: [ [ 5,9 ],[ 6,9 ],[ 7,9 ],[ 8,8 ],[ 9,7 ],[ 9,6 ],[ 9,5 ] ]
+  - Between: [ [ 6,2 ],[ 7,3 ],[ 8,4 ] ]
+
+
+Solution:
+  - 123476598
+  - 947158362
+  - 586239714
+  - 378521946
+  - 254697183
+  - 619843275
+  - 462915837
+  - 831762459
+  - 795384621

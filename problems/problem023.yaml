@@ -1,0 +1,35 @@
+Board:
+  Title: 159 Sudoku
+  Author: World Sudoku Cup 2
+  Video: https://www.youtube.com/watch?v=J0OVDew3Hg4&ab_channel=CrackingTheCryptic
+  Reference: https://cracking-the-cryptic.web.app/sudoku/8rrr3nrDqF
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - ColumnIndexer: 1
+  - ColumnIndexer: 5
+  - ColumnIndexer: 9
+  - Knowns:
+    - .....3.5.
+    - .497.....
+    - .....512.
+    - .2.6.....
+    - ..7...8..
+    - .....8.6.
+    - .638.....
+    - .....953.
+    - .7.2.....
+
+Solution:
+  - 216483957
+  - 549712683
+  - 738965124
+  - 824697315
+  - 657321849
+  - 391548762
+  - 963854271
+  - 482179536
+  - 175236498

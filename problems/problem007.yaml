@@ -1,0 +1,31 @@
+Board:
+  Reference: https://cracking-the-cryptic.web.app/sudoku/Rn6FtF2n9j
+  Video: https://www.youtube.com/watch?v=h9wQ73F8Cqc
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - AntiKnight:
+  - Knowns:
+    - .........
+    - .6......4
+    - 3514.....
+    - ....86592
+    - 6.....741
+    - ..2...8..
+    - .7.......
+    - 8...2.4.7
+    - .......58
+
+Solution:
+  - 247869135
+  - 968351274
+  - 351472689
+  - 734186592
+  - 689235741
+  - 512947863
+  - 473518926
+  - 895623417
+  - 126794358

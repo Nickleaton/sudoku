@@ -1,0 +1,28 @@
+Board:
+  Title: The Butterfly Effect
+  Author: Abed Hawila and Mr. Menace
+  Video: https://www.youtube.com/watch?v=jewueTNyjJY&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/N73tMp8QM8
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - EqualSum: [ [ 1,4 ], [ 2,4 ], [ 3,4 ],[ 3,5 ],[ 4,5 ],[ 4,6 ],[ 3,6 ],[ 2,6 ],[ 2,5 ] ]
+  - EqualSum: [ [ 1,5 ], [ 1,6 ],[ 1,7 ],[ 2,7 ],[ 3,7 ], [ 2,8 ], [ 2,9 ] ]
+  - EqualSum: [ [ 3,3 ],[ 4,4 ],[ 5,5 ],[ 6,6 ],[ 7,7 ] ]
+  - EqualSum: [ [ 4,1 ],[ 4,2 ],[ 4,3 ],[ 5,3 ],[ 5,4 ], [ 6,4 ], [ 6,3 ],[ 6,2 ],[ 5,2 ] ]
+  - EqualSum: [ [ 5,1 ], [ 6,1 ],[ 7,1 ],[ 7,2 ],[ 7,3 ],[ 8,2 ],[ 9,2 ] ]
+  - EqualSum: [ [ 6,7 ],[ 7,8 ],[ 7,9 ] ]
+  - EqualSum: [ [ 7,5 ], [ 7,6 ], [ 8,7 ] ]
+  - Knowns:
+      - 1........
+      - .........
+      - .........
+      - .........
+      - .........
+      - ........4
+      - .........
+      - .........
+      - .....5..3

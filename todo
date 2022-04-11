@@ -1,0 +1,88 @@
+
+Multiple puzzles
+
+Vertical numbers on top
+    e.g.
+        2
+        1
+Vertical numbers rotated
+Perfect Squares Sudoku
+Killer
+Killer Number
+Thermo
+
+
+
+
+X and O
+Search Lines large arrow
+Circles
+Next to Nine Sudoku
+Black Square Kropki
+
+Sum 100 Sudoku
+Ordering Sudoku
+Stars
+pencil marks
+Small arrow for biggest neighbour
+Frame Sudoku
+
+
+https://wspc2019.de/downloads/wsc_2019_instructionbooklet_v1.pdf
+
+Windoku - extra regions
+
+
+Greater than consecutive
+0-9 Kropki
+Anticlone Sudoku
+Consecutive Sudoku [Grey bar]
+Extra regions where regions are unique
+Neighbours Sudoku
+Odd Even Stars.
+    Add in a odd even flag for each cell like value to make easy
+Scatter sudoku - no boxes other regions
+
+Distance Sudoku
+Biggest Neighbours
+Circles sudoku.
+Double kropki difference of 2, ratio of 4 rhombus to mark
+Greater than kropki a > b either a = b + 1 or a = 2 b
+Hidden skyscrapers
+Unique little killer
+
+Star products
+Sum by X
+Alternating stripes
+Between sudoku
+Cloned strands
+Counting neighbours
+XIVI Sum to 11, sum to 6, all given.
+Pointing evens
+Pointing odds
+Point to next
+Perfect Squares Sudoku
+Battenburg Sudoku
+Small Neighbours Sudoku (Is it Fortress)
+Odd/Even Count Sudoku
+Low Sudoku
+Frame Sudoku
+Edge Product Sudoku
+Outside Parity Sudoku
+Position Sudoku
+X-Sums Sudoku
+    Clues outside the grid indicate the sum of the first X digits placed in the corresponding direction, where X is equal to the first digit placed in that direction
+Numbered Rooms Sudoku
+    Clues outside the grid indicate the digit which has to be placed in the Xth cell in the corresponding direction, where X is the digit placed in the first cell in that direction.
+Toroidal
+Serbian Frame Sudoku
+Mini Diagonals Sudoku
+First Seen Odd/Even Sudoku
+Edge Product Sudoku Apply Classic Sudoku rules. Clues outside the grid indicate the product of the digits placed in the first two cells from that side.
+Chaos Sudoku
+
+The diagonal arrows point from a larger digit to a smaller one.
+Diagonal lines without an arrowhead connect the same digits.
+
+Indexing Puzzles. GAS 04/03/2022
+
