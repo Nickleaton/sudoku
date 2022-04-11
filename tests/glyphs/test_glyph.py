@@ -359,7 +359,7 @@ class TestConsecutiveGlyph(TestCircleGlyph):
 
     @property
     def target(self):
-        return '<circle class="Style" cx="0" cy="0" r="20.0" transform="translate(150.0, 100.0)" />'
+        return '<circle class="Style" cx="0" cy="0" r="15.0" transform="translate(150.0, 100.0)" />'
 
     @property
     def representation(self) -> str:

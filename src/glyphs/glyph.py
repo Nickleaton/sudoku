@@ -360,9 +360,13 @@ class KropkiGlyph(CircleGlyph):
 class ConsecutiveGlyph(CircleGlyph):
 
     def __init__(self, class_name: str, first: Coord, second: Coord):
-        super().__init__(class_name, Coord.middle(first, second), 0.2)
+        super().__init__(class_name, Coord.middle(first, second), 0.15)
         self.first = first
         self.second = second
+
+    @property
+    def priority(self) -> int:
+        return 5
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.class_name}', {repr(self.first)}, {repr(self.second)})"

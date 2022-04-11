@@ -1,0 +1,48 @@
+Board:
+  Title: XV Sudoku
+  Author: Sam Cappleman-Lynes
+  Reference: https://tinyurl.com/2tyztpte
+  Video: https://www.youtube.com/watch?v=XUQkX8NiRXw&ab_channel=CrackingTheCryptic
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - 1.3.5.7..
+      - .........
+      - .....3...
+      - .1.8....7
+      - .........
+      - 5....1.3.
+      - ...2.....
+      - .........
+      - ..8.6.4.2
+  - ConsecutivePair: [ [ 1,1 ],[ 1,2 ] ]
+  - ConsecutivePair: [ [ 1,3 ],[ 1,4 ] ]
+  - ConsecutivePair: [ [ 1,5 ],[ 1,6 ] ]
+  - ConsecutivePair: [ [ 1,7 ],[ 1,8 ] ]
+  - ConsecutivePair: [ [ 2,3 ],[ 3,3 ] ]
+  - ConsecutivePair: [ [ 2,9 ],[ 3,9 ] ]
+  - ConsecutivePair: [ [ 4,1 ],[ 4,2 ] ]
+  - ConsecutivePair: [ [ 4,5 ],[ 4,6 ] ]
+  - ConsecutivePair: [ [ 6,4 ],[ 6,5 ] ]
+  - ConsecutivePair: [ [ 6,8 ],[ 6,9 ] ]
+  - ConsecutivePair: [ [ 7,1 ],[ 8,1 ] ]
+  - ConsecutivePair: [ [ 7,7 ],[ 8,7 ] ]
+  - ConsecutivePair: [ [ 9,2 ],[ 9,3 ] ]
+  - ConsecutivePair: [ [ 9,4 ],[ 9,5 ] ]
+  - ConsecutivePair: [ [ 9,6 ],[ 9,7 ] ]
+  - ConsecutivePair: [ [ 9,8 ],[ 9,9 ] ]
+
+Solution:
+  - 123456789
+  - 964187325
+  - 875923146
+  - 216834957
+  - 437592861
+  - 589671234
+  - 751248693
+  - 642319578
+  - 398765412
