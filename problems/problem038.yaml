@@ -1,0 +1,55 @@
+Board:
+  Title: XV Sudoku
+  Author: Sam Cappleman-Lynes
+  Reference: https://tinyurl.com/2tyztpte
+  Video: https://www.youtube.com/watch?v=XUQkX8NiRXw&ab_channel=CrackingTheCryptic
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - ...1.....
+      - ........7
+      - .........
+      - 15.......
+      - ....7....
+      - .......58
+      - .........
+      - 7........
+      - .....1...
+  - XPair: [ [ 2,2 ],[ 2,3 ] ]
+  - XPair: [ [ 2,6 ],[ 2,7 ] ]
+  - XPair: [ [ 3,3 ],[ 3,4 ] ]
+  - XPair: [ [ 3,7 ],[ 3,8 ] ]
+  - XPair: [ [ 4,4 ],[ 4,5 ] ]
+  - XPair: [ [ 4,8 ],[ 4,9 ] ]
+  - XPair: [ [ 6,4 ],[ 6,5 ] ]
+  - XPair: [ [ 7,1 ],[ 7,2 ] ]
+  - XPair: [ [ 7,5 ],[ 7,6 ] ]
+  - XPair: [ [ 8,2 ],[ 8,3 ] ]
+  - XPair: [ [ 8,6 ],[ 8,7 ] ]
+  - VPair: [ [ 2,3 ],[ 2,4 ] ]
+  - VPair: [ [ 2,7 ],[ 2,8 ] ]
+  - VPair: [ [ 3,4 ],[ 3,5 ] ]
+  - VPair: [ [ 3,8 ],[ 3,9 ] ]
+  - VPair: [ [ 4,5 ],[ 4,6 ] ]
+  - VPair: [ [ 6,1 ],[ 6,2 ] ]
+  - VPair: [ [ 6,5 ],[ 6,6 ] ]
+  - VPair: [ [ 7,2 ],[ 7,3 ] ]
+  - VPair: [ [ 7,6 ],[ 7,7 ] ]
+  - VPair: [ [ 8,3 ],[ 8,4 ] ]
+  - VPair: [ [ 8,7 ],[ 8,8 ] ]
+
+Solution:
+  - 423167589
+  - 691458237
+  - 578239641
+  - 157823964
+  - 849675123
+  - 236914758
+  - 914582376
+  - 782396415
+  - 365741892
+

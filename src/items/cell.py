@@ -20,6 +20,10 @@ class Cell(Item):
         self.row = row
         self.column = column
 
+    @property
+    def name(self) -> str:
+        return f"{self.__class__.__name__}_{self.row}_{self.column})"
+
     def to_yaml(self) -> Dict:
         return {}
 

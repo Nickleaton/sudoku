@@ -29,3 +29,8 @@ import src.items.solution
 import src.items.thermometer
 import src.items.distinct_renban
 import src.items.frame
+import src.items.sum_pair
+import src.items.x_pair
+import src.items.xi_pair
+import src.items.v_pair
+import src.items.vi_pair

@@ -1,16 +1,16 @@
 import unittest
-from typing import Optional, Type
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.difference_pair import DifferencePair
 from src.items.item import Item
 from src.items.pair import Pair
+from src.items.sum_pair import SumPair
 from src.items.x_pair import XPair
-from tests.items.test_difference_pair import TestDifferencePair
+from tests.items.test_sum_pair import TestSumPair
 
 
-class TestXPair(TestDifferencePair):
+class TestXPair(TestSumPair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -21,7 +21,7 @@ class TestXPair(TestDifferencePair):
         return True
 
     @property
-    def difference(self) -> Optional[int]:
+    def total(self) -> int:
         return 10
 
     @property
@@ -37,7 +37,7 @@ class TestXPair(TestDifferencePair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, DifferencePair, Item, Pair, XPair}
+        return {Cell, SumPair, Item, Pair, XPair}
 
 
 if __name__ == '__main__':  # pragma: no cover

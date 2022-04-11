@@ -1,6 +1,7 @@
 import abc
 from typing import Optional, List, Set, Type, Dict
 
+from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
@@ -43,5 +44,13 @@ class Pair(Item):
         return None
 
     @property
+    def label(self) -> str:
+        return "XX"
+
+    @property
     def to_yaml(self):
         return repr([[self.c1.row, self.c1.column], [self.c2.row, self.c2.column]])
+
+    @property
+    def glyphs(self) -> List[Glyph]:
+        return [EdgeTextGlyph(self.__class__.__name__, 0, self.c1.coord.center, self.c2.coord.center, self.label)]

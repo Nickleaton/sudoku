@@ -612,6 +612,10 @@ class EdgeTextGlyph(TextGlyph):
         self.first = first
         self.second = second
 
+    @property
+    def priority(self) -> int:
+        return 5
+
     def __repr__(self) -> str:
         return (
             f"{self.__class__.__name__}"
