@@ -4,7 +4,6 @@ from src.items.board import Board
 from src.items.cell import Even, Odd, Fortress, Known, Cell
 from src.items.composed import Composed
 from src.items.item import Item
-from src.solvers.pulp_solver import Solver
 
 
 class Knowns(Composed):
@@ -49,7 +48,6 @@ class Knowns(Composed):
     def __repr__(self):
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
         for item in self:
-            lines[item.row-1][item.column-1] = item.letter()
+            lines[item.row - 1][item.column - 1] = item.letter()
         line_str = ["".join(line) for line in lines]
         return f"{self.__class__.__name__}({self.board!r}, {line_str})"
-

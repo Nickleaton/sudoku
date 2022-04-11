@@ -68,9 +68,8 @@ class Composed(Item):
             result = self.items[self._n]
             self._n += 1
             return result
-        else:
-            self._n = 0
-            raise StopIteration
+        self._n = 0
+        raise StopIteration
 
     def __len__(self) -> int:
         return len(self.items)

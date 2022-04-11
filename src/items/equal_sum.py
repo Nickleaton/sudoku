@@ -4,7 +4,6 @@ from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.line import Line
-from src.solvers.solver import Solver
 from src.utils.rule import Rule
 
 
@@ -32,4 +31,3 @@ class EqualSum(Line):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'EqualSum', 'Sum'})
-

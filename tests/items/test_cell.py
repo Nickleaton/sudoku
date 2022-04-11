@@ -28,7 +28,7 @@ class TestCell(TestItem):
                "    Column: 2\n"
 
     def test_rc(self):
-        self.assertEqual((1, 2), self.item.rc)
+        self.assertEqual((1, 2), self.item.row_column)
 
     def test_eq(self):
         a = Cell(None, 1, 1)

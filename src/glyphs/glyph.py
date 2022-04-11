@@ -51,7 +51,7 @@ class Glyph(ABC):
 
     @property
     def used_classes(self) -> Set[Type['Glyph']]:
-        return {c for c in self.__class__.__mro__}.difference({abc.ABC, object})
+        return set(self.__class__.__mro__).difference({abc.ABC, object})
 
 
 class ComposedGlyph(Glyph):
@@ -67,16 +67,24 @@ class ComposedGlyph(Glyph):
             self.items = items
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', [{', '.join([str(item) for item in self.items])}])"
+        return (
+            f"{self.__class__.__name__}"
+            f"("
+            f"'{self.class_name}', "
+            f"["
+            f"{', '.join([str(item) for item in self.items])}"
+            f"]"
+            f")"
+        )
 
     def add(self, item: Glyph):
         self.items.append(item)
 
     def draw(self) -> BaseElement:
-        g = Group()
+        group = Group()
         for glyph in sorted(self.items):
-            g.add(glyph.draw())
-        return g
+            group.add(glyph.draw())
+        return group
 
     @property
     def used_classes(self) -> Set[Type[Glyph]]:
@@ -340,24 +348,24 @@ class OddCellGlyph(Glyph):
 
 class KropkiGlyph(CircleGlyph):
 
-    def __init__(self, class_name: str, a: Coord, b: Coord):
-        super().__init__(class_name, Coord.middle(a, b), Config.KROPKI_RADIUS)
-        self.a = a
-        self.b = b
+    def __init__(self, class_name: str, first: Coord, second: Coord):
+        super().__init__(class_name, Coord.middle(first, second), Config.KROPKI_RADIUS)
+        self.first = first
+        self.second = second
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.a)}, {repr(self.b)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.first)}, {repr(self.second)})"
 
 
 class ConsecutiveGlyph(CircleGlyph):
 
-    def __init__(self, class_name: str, a: Coord, b: Coord):
-        super().__init__(class_name, Coord.middle(a, b), 0.2)
-        self.a = a
-        self.b = b
+    def __init__(self, class_name: str, first: Coord, second: Coord):
+        super().__init__(class_name, Coord.middle(first, second), 0.2)
+        self.first = first
+        self.second = second
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.a)}, {repr(self.b)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.first)}, {repr(self.second)})"
 
 
 class RectGlyph(Glyph):
@@ -401,8 +409,8 @@ class EvenCellGlyph(Glyph):
         self.size = Coord(1, 1) * self.percentage
 
     def draw(self) -> BaseElement:
-        tl = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
-        return Rect(transform=tl.transform, size=self.size.point.coordinates, class_=self.class_name)
+        top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
+        return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)})"
@@ -476,15 +484,15 @@ class RectangleGlyph(Glyph):
 
     def __init__(self,
                  class_name: str,
-                 a: Coord,
-                 b: Coord,
+                 first: Coord,
+                 second: Coord,
                  percentage: float,
                  ratio: float,
                  vertical: bool
                  ):
         super().__init__(class_name)
-        self.a = a
-        self.b = b
+        self.first = first
+        self.second = second
         self.percentage = percentage
         self.ratio = ratio
         self.vertical = vertical
@@ -494,7 +502,7 @@ class RectangleGlyph(Glyph):
             size = Point(Config.CELL_SIZE * self.percentage * self.ratio, Config.CELL_SIZE * self.percentage)
         else:
             size = Point(Config.CELL_SIZE * self.percentage, Config.CELL_SIZE * self.percentage * self.ratio)
-        position = Coord.middle(self.a, self.b)
+        position = Coord.middle(self.first, self.second)
         return Rect(transform=position.transform, size=size.coordinates, class_=self.class_name)
 
     def __repr__(self):
@@ -502,8 +510,8 @@ class RectangleGlyph(Glyph):
             f"{self.__class__.__name__}"
             f"("
             f"'{self.class_name}', "
-            f"{repr(self.a)}, "
-            f"{repr(self.b)}, "
+            f"{repr(self.first)}, "
+            f"{repr(self.second)}, "
             f"{repr(self.percentage)}, "
             f"{repr(self.ratio)}, "
             f"{repr(self.vertical)}"
@@ -513,12 +521,12 @@ class RectangleGlyph(Glyph):
 
 class Consecutive1Glyph(RectangleGlyph):
 
-    def __init__(self, class_name: str, a: Coord, b: Coord):
-        vertical = a.column > b.column if a.row == b.row else a.row < b.row
-        super().__init__(class_name, a, b, 0.25, 2.0, vertical)
+    def __init__(self, class_name: str, first: Coord, second: Coord):
+        vertical = first.column > second.column if first.row == second.row else first.row < second.row
+        super().__init__(class_name, first, second, 0.25, 2.0, vertical)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {str(self.a)}, {str(self.b)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {str(self.first)}, {str(self.second)})"
 
 
 class TextGlyph(Glyph):
@@ -530,22 +538,22 @@ class TextGlyph(Glyph):
         self.text = text
 
     def draw(self) -> BaseElement:
-        g = Group()
+        group = Group()
         text = Text("",
                     transform=self.position.transform + " " + self.angle.transform,
                     class_=self.class_name + "Background"
                     )
         span = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
+        group.add(text)
         text = Text("",
                     transform=self.position.transform + " " + self.angle.transform,
                     class_=self.class_name + "Foreground"
                     )
         span = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
-        return g
+        group.add(text)
+        return group
 
     def __repr__(self) -> str:
         return (
@@ -562,7 +570,7 @@ class KillerTextGlyph(Glyph):
         self.text = text
 
     def draw(self) -> BaseElement:
-        g = Group()
+        group = Group()
         position = self.position.top_left + Coord(1, 1) * 0.05
         text = Text("",
                     transform=position.transform + " " + self.angle.transform,
@@ -570,15 +578,15 @@ class KillerTextGlyph(Glyph):
                     )
         span = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
+        group.add(text)
         text = Text("",
                     transform=position.transform + " " + self.angle.transform,
                     class_=self.class_name + "Foreground"
                     )
         span = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
-        return g
+        group.add(text)
+        return group
 
     def __repr__(self) -> str:
         return (
@@ -599,10 +607,10 @@ class SimpleTextGlyph(TextGlyph):
 
 class EdgeTextGlyph(TextGlyph):
 
-    def __init__(self, class_name: str, angle: float, a: Coord, b: Coord, text: str):
-        super().__init__(class_name, angle, Coord.middle(a, b), text)
-        self.a = a
-        self.b = b
+    def __init__(self, class_name: str, angle: float, first: Coord, second: Coord, text: str):
+        super().__init__(class_name, angle, Coord.middle(first, second), text)
+        self.first = first
+        self.second = second
 
     def __repr__(self) -> str:
         return (
@@ -610,8 +618,8 @@ class EdgeTextGlyph(TextGlyph):
             f"("
             f"'{self.class_name}', "
             f"{self.angle.angle}, "
-            f"{repr(self.a)}, "
-            f"{repr(self.b)}, "
+            f"{repr(self.first)}, "
+            f"{repr(self.second)}, "
             f"'{self.text}'"
             f")"
         )
@@ -687,10 +695,10 @@ class LittleArrowGlyph(Glyph):
 
 class LittleNumberGlyph(Glyph):
 
-    def __init__(self, class_name: str, position: Coord, n: int):
+    def __init__(self, class_name: str, position: Coord, number: int):
         super().__init__(class_name)
         self.position = position
-        self.n = n
+        self.number = number
 
     def draw(self) -> BaseElement:
         size = Coord(0.35, 0.35)
@@ -699,12 +707,12 @@ class LittleNumberGlyph(Glyph):
                     transform=position.transform,
                     class_=self.class_name
                     )
-        span = TSpan(str(self.n), alignment_baseline='central', text_anchor='middle')
+        span = TSpan(str(self.number), alignment_baseline='central', text_anchor='middle')
         text.add(span)
         return text
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.n)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.number)})"
 
 
 class LittleKillerGlyph(Glyph):
@@ -717,7 +725,7 @@ class LittleKillerGlyph(Glyph):
         self.value = value
 
     def draw(self) -> BaseElement:
-        g = Group()
+        group = Group()
         position = (self.position + Coord(0.28, 0.28)).center
         text = Text("",
                     transform=position.transform,
@@ -725,7 +733,7 @@ class LittleKillerGlyph(Glyph):
                     )
         span = TSpan(str(self.value), alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
+        group.add(text)
 
         text = Text("",
                     transform=position.transform + " " + self.angle.transform,
@@ -733,8 +741,8 @@ class LittleKillerGlyph(Glyph):
                     )
         span = TSpan(LittleKillerGlyph.arrow, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
-        return g
+        group.add(text)
+        return group
 
     def __repr__(self) -> str:
         return (
@@ -798,16 +806,16 @@ class KillerGlyph(Glyph):
         return results
 
     def draw(self) -> BaseElement:
-        g = Group()
+        group = Group()
         for vector in VectorList.merge_vectors(self.lines()):
-            g.add(
+            group.add(
                 Line(
                     start=vector.start.point.coordinates,
                     end=vector.end.point.coordinates,
                     class_=self.class_name
                 )
             )
-        return g
+        return group
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.class_name}', [{', '.join([repr(cell) for cell in self.cells])}])"
@@ -821,14 +829,14 @@ class QuadrupleGlyph(Glyph):
         self.numbers = numbers
 
     def draw(self) -> BaseElement:
-        g = Group()
+        group = Group()
         circle = Circle(class_=self.class_name + "Circle", center=self.position.bottom_right.point.coordinates, r=35)
-        g.add(circle)
+        group.add(circle)
         text = Text(class_=self.class_name + "Text", text="", transform=self.position.bottom_right.transform)
         span = TSpan(self.numbers, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        g.add(text)
-        return g
+        group.add(text)
+        return group
 
     @property
     def priority(self) -> int:

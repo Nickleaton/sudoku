@@ -4,7 +4,6 @@ from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.line import DifferenceLine
-from src.solvers.solver import Solver
 
 
 class GermanWhisper(DifferenceLine):
@@ -20,4 +19,3 @@ class GermanWhisper(DifferenceLine):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'German Whisper'})
-

@@ -1,0 +1,23 @@
+﻿[MESSAGES CONTROL]
+
+disable=missing-function-docstring,
+    missing-class-docstring,
+    missing-module-docstring
+
+[BASIC]
+
+good-names=i,
+           j,
+           k,
+           r,
+           c,
+           x,
+           y,
+           c1,
+           c2,
+           n,
+           l,
+           M
+
+[FORMAT]
+max-line-length=120

@@ -1,7 +1,5 @@
 from typing import Optional, List
 
-from pulp import LpVariable, LpInteger, lpSum
-
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
@@ -33,8 +31,6 @@ class DistinctRenban(Renban):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'DistinctRenban', 'Renban', 'Adjacent', 'Set'})
-
-
 
     @staticmethod
     def power(digit: int):

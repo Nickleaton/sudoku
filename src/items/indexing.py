@@ -109,4 +109,3 @@ class RowIndexer(Indexer):
                 indexer = solver.choices[digit][cell.row][cell.column]
                 indexed = solver.choices[cell.row][digit][cell.column]
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
-

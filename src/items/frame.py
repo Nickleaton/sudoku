@@ -1,8 +1,10 @@
+""" Frame Sudoku """
+
 from typing import List
 
 from pulp import lpSum
 
-from src.glyphs.glyph import Glyph, ArrowGlyph, TextGlyph
+from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
@@ -14,8 +16,20 @@ from src.utils.side import Side
 
 
 class Frame(Item):
+    """
+    Handle frame sudoku:
+        Numbers outside the frame equal the sum of the first three numbers in the
+        corresponding row or column in the given direction
+    """
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
+        """
+        Construct
+        :param board: board being used
+        :param side: the side where the total is to go
+        :param index: the row or column of the total
+        :param total: the actual total
+        """
         super().__init__(board)
         self.side = side
         self.index = index
@@ -30,9 +44,17 @@ class Frame(Item):
 
     @property
     def name(self) -> str:
+        """
+        Name of the frame
+        :return: string
+        """
         return f"{self.__class__.__name__}_{self.side.name}_{self.index}"
 
     def __repr__(self) -> str:
+        """
+        representation of the frame
+        :return: str
+        """
         return (
             f"{self.__class__.__name__}"
             f"("

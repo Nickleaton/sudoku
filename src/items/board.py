@@ -35,8 +35,8 @@ class Board:
             self.box_count = None
             self.box_range = None
         else:
-            assert (board_rows % box_rows == 0)
-            assert (board_columns % box_columns == 0)
+            assert board_rows % box_rows == 0
+            assert board_columns % box_columns == 0
             self.box_rows = box_rows
             self.box_columns = box_columns
             self.box_count = (board_rows // box_rows) * (board_columns // box_columns)

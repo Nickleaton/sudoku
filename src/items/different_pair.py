@@ -32,4 +32,5 @@ class DifferentPair(Pair):
         for digit in self.digits:
             name = f"{self.__class__.__name__}_{digit}_{self.c1.row}_{self.c1.column}_{self.c2.row}_{self.c2.column}"
             # TODO int should not be needed
-            solver.model += solver.choices[int(digit)][self.c1.row][self.c1.column] + solver.choices[int(digit)][self.c2.row][self.c2.column] <= 1, name
+            solver.model += solver.choices[int(digit)][self.c1.row][self.c1.column] + \
+                            solver.choices[int(digit)][self.c2.row][self.c2.column] <= 1, name

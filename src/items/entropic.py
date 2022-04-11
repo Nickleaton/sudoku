@@ -47,7 +47,7 @@ class Entropic(Line):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         for n in range(1, len(self.cells) - 3):
-            pname = f"{self.cells[n].row}_{self.cells[n].column}_{self.cells[n+3].row}_{self.cells[n+3].column}"
-            solver.model += self.low_total(solver, n) == self.low_total(solver, n+3), f"{self.name}_low_{pname}"
-            solver.model += self.mid_total(solver, n) == self.mid_total(solver, n+3), f"{self.name}_mid_{pname}"
-            solver.model += self.top_total(solver, n) == self.top_total(solver, n+3), f"{self.name}_top_{pname}"
+            pname = f"{self.cells[n].row}_{self.cells[n].column}_{self.cells[n + 3].row}_{self.cells[n + 3].column}"
+            solver.model += self.low_total(solver, n) == self.low_total(solver, n + 3), f"{self.name}_low_{pname}"
+            solver.model += self.mid_total(solver, n) == self.mid_total(solver, n + 3), f"{self.name}_mid_{pname}"
+            solver.model += self.top_total(solver, n) == self.top_total(solver, n + 3), f"{self.name}_top_{pname}"

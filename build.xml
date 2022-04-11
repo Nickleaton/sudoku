@@ -40,4 +40,17 @@
             <arg value="--html-report"/>
         </exec>
     </target>
+    <target name="pylint" depends="pylint.src,pylint.tests"/>
+    <target name="pylint.src">
+        <mkdir dir="output/pylint"/>
+        <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/src.txt">
+            <arg value="src"/>
+        </exec>
+    </target>
+    <target name="pylint.tests">
+        <mkdir dir="output/pylint"/>
+        <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/tests.txt">
+            <arg value="tests"/>
+        </exec>
+    </target>
 </project>

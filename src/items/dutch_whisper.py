@@ -4,7 +4,6 @@ from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.line import DifferenceLine
-from src.solvers.solver import Solver
 
 
 class DutchWhisper(DifferenceLine):
@@ -15,9 +14,8 @@ class DutchWhisper(DifferenceLine):
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [PolyLineGlyph('DutchWhisper', [cell.coord for cell in self.items], False, False)]
+        return [PolyLineGlyph('DutchWhisper', [cell.coord for cell in self.cells], False, False)]
 
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Dutch Whisper'})
-

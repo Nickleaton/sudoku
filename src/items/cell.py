@@ -66,7 +66,7 @@ class Cell(Item):
         return self.board.is_valid(self.row, self.column)
 
     @property
-    def rc(self) -> Tuple[int, int]:
+    def row_column(self) -> Tuple[int, int]:
         return self.row, self.column
 
     def __eq__(self, other: 'Cell') -> bool:

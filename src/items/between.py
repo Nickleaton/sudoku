@@ -9,7 +9,8 @@ from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
-EXCLUDE_VALUES_ON_LINE=False
+EXCLUDE_VALUES_ON_LINE = False
+
 
 class Between(Line):
 
@@ -78,4 +79,3 @@ class Between(Line):
             for cell in self.cells[1:-1]:
                 solver.model += solver.choices[self.board.minimum_digit][cell.row][cell.column] == 0
                 solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0
-
