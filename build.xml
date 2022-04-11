@@ -17,21 +17,12 @@
         <echo>Document</echo>
     </target>
     <target name="test">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
         <exec executable="nose2" failonerror="true" taskname="nose2">
             <arg value="-s"/>
             <arg value="tests"/>
-            <arg value="-v"/>
-            <arg value="-C"/>
-            <arg value="--coverage-report"/>
-            <arg value="html"/>
-            <arg value="--pretty-assert"/>
-            <arg value="--html-report"/>
-        </exec>
-    </target>
-    <target name="acceptance">
-        <exec executable="nose2" failonerror="true" taskname="nose2">
-            <arg value="-s"/>
-            <arg value="tests-acceptance"/>
             <arg value="-v"/>
             <arg value="-C"/>
             <arg value="--coverage-report"/>
