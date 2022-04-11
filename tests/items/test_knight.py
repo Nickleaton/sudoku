@@ -15,6 +15,7 @@ class TestKnight(TestItem):
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Knight(self.board, [2, 4, 6, 8])
 
+    @property
     def has_rule(self) -> bool:
         return True
 
