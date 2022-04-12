@@ -60,7 +60,7 @@ class KropkiPair(Pair):
 
     def possible(self) -> set:
         """
-        Work out which digits are possible
+        Work stubs which digits are possible
         :return: set of digits
         """
         used = set({})

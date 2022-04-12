@@ -503,7 +503,7 @@ class RectangleGlyph(Glyph):
         position = Coord.middle(self.first, self.second)
         return Rect(transform=position.transform, size=size.coordinates, class_=self.class_name)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (
             f"{self.__class__.__name__}"
             f"("
