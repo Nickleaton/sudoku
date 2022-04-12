@@ -108,7 +108,7 @@ class KropkiPair(Pair):
                 continue
             choice1 = solver.choices[x][self.c1.row][self.c1.column]
             choice2 = solver.choices[y][self.c2.row][self.c2.column]
-            solver.model += choice1 + choice2 + (1 - self.sos[count]) == 2, f"{self.name}_Valid_{x}_{y}"
+            solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f"{self.name}_Valid_{x}_{y}"
             count += 1
 
     def add_constraint(self, solver: PulpSolver) -> None:
