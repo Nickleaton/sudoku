@@ -44,4 +44,13 @@
             <arg value="tests"/>
         </exec>
     </target>
+    <target name="mypy">
+        <mkdir dir="output/mypy"/>
+        <exec executable="mypy" failonerror="false" taskname="mypy">
+            <arg value="--namespace-packages"/>
+            <arg value="--html-report"/>
+            <arg value="output/mypy"/>
+            <arg value="src"/>
+        </exec>
+    </target>
 </project>

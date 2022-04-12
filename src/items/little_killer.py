@@ -14,6 +14,7 @@ from src.utils.side import Side
 
 class LittleKiller(Region):
 
+    # pylint: disable=too-many-arguments
     def __init__(self, board: Board, side: Side, cyclic: Cyclic, offset: int, total: int):
         super().__init__(board)
         self.side = side

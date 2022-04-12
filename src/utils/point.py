@@ -76,7 +76,7 @@ class Point:
         """
         return self.x, self.y
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Representation of a point
 

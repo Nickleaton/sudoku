@@ -31,6 +31,6 @@ class DifferentPair(Pair):
     def add_constraint(self, solver: PulpSolver) -> None:
         for digit in self.digits:
             name = f"{self.__class__.__name__}_{digit}_{self.c1.row}_{self.c1.column}_{self.c2.row}_{self.c2.column}"
-            # TODO int should not be needed
-            solver.model += solver.choices[int(digit)][self.c1.row][self.c1.column] + \
-                            solver.choices[int(digit)][self.c2.row][self.c2.column] <= 1, name
+            choice1 = solver.choices[int(digit)][self.c1.row][self.c1.column]
+            choice2 = solver.choices[int(digit)][self.c2.row][self.c2.column]
+            solver.model += choice1 + choice2 <= 1, name

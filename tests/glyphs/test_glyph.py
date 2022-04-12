@@ -92,6 +92,7 @@ class TestGlyph(unittest.TestCase):
         self.assertEqual(self.representation, str(self.glyph))
 
     def test_eval_repr(self):
+        # pylint: disable=eval-used
         self.assertEqual(self.representation, repr(eval(self.representation)))
 
     @property
@@ -346,8 +347,8 @@ class TestOddCellGlyph(TestCircleGlyph):
     @property
     def symbol(self) -> str:
         return (
-                '<symbol class="OddCell" id="OddCell-symbol" viewBox="0 0 100 100">'
-                '<circle cx="50" cy="50" r="35" /></symbol>'
+            '<symbol class="OddCell" id="OddCell-symbol" viewBox="0 0 100 100">'
+            '<circle cx="50" cy="50" r="35" /></symbol>'
         )
 
     @property
@@ -538,16 +539,6 @@ class TestBattenburgGlyph(TestGlyph):
     @property
     def target(self):
         return '<use class="Battenberg" height="100" width="100" x="300" xlink:href="#Battenberg-symbol" y="300" />'
-        return (
-            '<rect class="StylePink" height="30.0" '
-            'transform="translate(370.0, 370.0)" width="30.0" x="0" y="0" /> '
-            '<rect class="StyleYellow" height="30.0" '
-            'transform="translate(400.0, 370.0)" width="30.0" x="0" y="0" /> '
-            '<rect class="StylePink" height="30.0" '
-            'transform="translate(400.0, 400.0)" width="30.0" x="0" y="0" /> '
-            '<rect class="StyleYellow" height="30.0" '
-            'transform="translate(370.0, 400.0)" width="30.0" x="0" y="0" />'
-        )
 
     @property
     def representation(self) -> str:

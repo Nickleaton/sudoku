@@ -6,33 +6,33 @@ from src.utils.rule import Rule
 class TestRule(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.r1 = Rule("one", 1, "Rule One")
-        self.r2 = Rule("two", 2, "Rule Two")
-        self.r3 = Rule("ThisIsThree", 3, None)
+        self.rule1 = Rule("one", 1, "Rule One")
+        self.rule2 = Rule("two", 2, "Rule Two")
+        self.rule3 = Rule("ThisIsThree", 3, None)
 
     def test_creation(self):
-        self.assertEqual("one", self.r1.name)
-        self.assertEqual(1, self.r1.rank)
-        self.assertEqual("Rule One", self.r1.text)
+        self.assertEqual("one", self.rule1.name)
+        self.assertEqual(1, self.rule1.rank)
+        self.assertEqual("Rule One", self.rule1.text)
 
     def test_comparison(self):
-        self.assertLess(self.r1, self.r2)
-        self.assertNotEqual(self.r1, self.r2)
-        self.assertEqual(self.r1, self.r1)
+        self.assertLess(self.rule1, self.rule2)
+        self.assertNotEqual(self.rule1, self.rule2)
+        self.assertEqual(self.rule1, self.rule1)
 
     @property
     def representation(self) -> str:
         return "Rule('one', 1, 'Rule One')"
 
     def test_repr(self):
-        self.assertEqual(self.representation, repr(self.r1))
+        self.assertEqual(self.representation, repr(self.rule1))
 
     def test_html(self):
-        self.assertEqual("<h2>Rule One</h2>", self.r1.html)
-        self.assertEqual("", self.r3.html)
+        self.assertEqual("<h2>Rule One</h2>", self.rule1.html)
+        self.assertEqual("", self.rule3.html)
 
     def test_human_name(self):
-        self.assertEqual("This Is Three", self.r3.human_name)
+        self.assertEqual("This Is Three", self.rule3.human_name)
 
 
 if __name__ == '__main__':  # pragma: no cover

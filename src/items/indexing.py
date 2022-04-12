@@ -29,7 +29,7 @@ class Indexer(StandardRegion):
     def other_variant() -> str:
         return ""
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
 
     @property

@@ -44,7 +44,7 @@ class Knowns(Composed):
     def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
         return Knowns(board, [list(y) for y in yaml])
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
         for item in self:
             lines[item.row - 1][item.column - 1] = item.letter()

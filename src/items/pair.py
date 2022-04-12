@@ -52,9 +52,5 @@ class Pair(Item):
         return "XX"
 
     @property
-    def to_yaml(self):
-        return repr([[self.c1.row, self.c1.column], [self.c2.row, self.c2.column]])
-
-    @property
     def glyphs(self) -> List[Glyph]:
         return [EdgeTextGlyph(self.__class__.__name__, 0, self.c1.coord.center, self.c2.coord.center, self.label)]

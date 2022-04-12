@@ -1,7 +1,5 @@
 from typing import List
 
-from src.items.board import Board
-from src.items.cell import Cell
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule

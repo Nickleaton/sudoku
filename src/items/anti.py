@@ -38,7 +38,7 @@ class Anti(Composed):
     def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
         return Anti(board, yaml)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name}({self.board!r}, {self.digits!r})"
 
 
@@ -74,7 +74,7 @@ class AntiKnight(Anti):
             Rule("AntiKnight", 1, "Identical digits cannot be separated by a knight's move")
         ]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name}({self.board!r})"
 
 
@@ -110,7 +110,7 @@ class AntiMonkey(Anti):
             Rule("AntiMonkey", 1, "Identical digits cannot be separated by a Monkey move [3 forward, 1 to the side]")
         ]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name}({self.board!r})"
 
 
@@ -136,7 +136,7 @@ class AntiKing(Anti):
             Rule("AntiKing", 1, "Identical digits cannot be separated by a King's move")
         ]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name}({self.board!r})"
 
 
@@ -170,5 +170,5 @@ class AntiQueen(Anti):
             Rule("AntiQueen", 1, f"Digits [{digit_str}] cannot be separated by a Queen's move")
         ]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name}({self.board!r}, {self.digits!r})"

@@ -123,7 +123,7 @@ class Row(StandardRegion):
             result.extend(item.glyphs)
         return result
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
 
     @property
@@ -164,7 +164,7 @@ class Box(StandardRegion):
     def create(cls, name: str, board: Board, yaml: Dict) -> Item:
         return cls(board, yaml)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
 
     @property

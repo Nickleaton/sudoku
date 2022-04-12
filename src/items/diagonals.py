@@ -12,9 +12,6 @@ from src.utils.rule import Rule
 
 class Diagonal(Region):
 
-    def to_yaml(self) -> Dict:
-        return {}
-
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict) -> Item:
         return cls(board)

@@ -7,6 +7,7 @@ from src.utils.coord import Coord
 
 class Board:
 
+    # pylint: disable=too-many-arguments
     def __init__(self,
                  board_rows: int,
                  board_columns: int,
@@ -93,7 +94,7 @@ class Board:
     def to_yaml(self) -> str:
         return yaml.dump(self.to_dict())
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (
             f"{self.__class__.__name__}"
             f"("

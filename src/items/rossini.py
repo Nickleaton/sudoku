@@ -19,7 +19,7 @@ class Rossini(Item):
         self.index = index
         self.order = order
         self.direction = self.side.order_direction(self.order)
-        self.offset = self.side.order_offset(self.order)
+        self.offset = self.side.order_offset()
         self.coords = []
         self.coords.append(self.side.start_cell(self.board, self.index))
         self.coords.append(self.coords[0] + self.offset)

@@ -47,7 +47,7 @@ class Side(Enum):
         if self == Side.LEFT:
             return Direction.RIGHT if order == Order.INCREASING else Direction.LEFT
 
-    def order_offset(self, order: Order) -> Coord:
+    def order_offset(self) -> Coord:
         if self == Side.TOP:
             return Direction.DOWN.offset
         if self == Side.RIGHT:
@@ -97,5 +97,5 @@ class Side(Enum):
             if self == Side.LEFT:
                 return Coord(n + 1, 1)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Side.{self.name}"

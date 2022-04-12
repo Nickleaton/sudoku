@@ -4,7 +4,7 @@ from typing import Type
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
-from src.items.kropki import KropkiPair
+from src.items.kropki_pair import KropkiPair
 from src.items.pair import Pair
 from tests.items.test_pair import TestPair
 

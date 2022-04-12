@@ -107,26 +107,27 @@ class TestLine(unittest.TestCase):
             _ = self.line_one.merge(self.line_four)
 
     def test_add(self):
-        v1 = Vector(Coord(1, 1), Coord(2, 1))
-        v2 = Vector(Coord(2, 2), Coord(2, 0))
-        self.assertEqual(Vector(Coord(3, 3), Coord(4, 1)), v1 + v2)
-        c = Coord(2, 2)
-        self.assertEqual(Vector(Coord(3, 3), Coord(4, 3)), v1 + c)
+        vector1 = Vector(Coord(1, 1), Coord(2, 1))
+        vector2 = Vector(Coord(2, 2), Coord(2, 0))
+        self.assertEqual(Vector(Coord(3, 3), Coord(4, 1)), vector1 + vector2)
+        coord = Coord(2, 2)
+        self.assertEqual(Vector(Coord(3, 3), Coord(4, 3)), vector1 + coord)
         with self.assertRaises(Exception):
-            _ = v1 + "x"
+            _ = vector1 + "x"
 
     def test_comparison(self):
-        v1 = Vector(Coord(1, 1), Coord(2, 1))
-        v2 = Vector(Coord(2, 2), Coord(2, 0))
-        v3 = Vector(Coord(1, 1), Coord(2, 0))
-        self.assertTrue(v1 < v2)
-        self.assertFalse(v2 < v1)
-        self.assertTrue(v1 < v2)
-        self.assertTrue(v2 > v1)
-        self.assertTrue(v1 <= v1)
-        self.assertTrue(v1 <= v2)
-        self.assertFalse(v2 <= v1)
-        self.assertFalse(v2 <= v1)
+        vector1 = Vector(Coord(1, 1), Coord(2, 1))
+        vector2 = Vector(Coord(2, 2), Coord(2, 0))
+        vector3 = Vector(Coord(1, 1), Coord(2, 0))
+        self.assertTrue(vector1 < vector2)
+        self.assertFalse(vector2 < vector1)
+        self.assertTrue(vector1 < vector2)
+        self.assertTrue(vector2 > vector1)
+        self.assertTrue(vector1 <= vector1)
+        self.assertTrue(vector1 <= vector2)
+        self.assertFalse(vector2 <= vector1)
+        self.assertFalse(vector2 <= vector1)
+        self.assertFalse(vector1 < vector3)
 
 
 if __name__ == '__main__':  # pragma: no cover

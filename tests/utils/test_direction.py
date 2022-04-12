@@ -21,12 +21,12 @@ class TestDirection(unittest.TestCase):
         self.assertEqual(Coord(0, 0), offset)
 
     def test_pairs(self):
-        for d1, d2 in product(Direction, Direction):
-            if d1.angle - d2.angle != Angle(180.0):
+        for direction1, direction2 in product(Direction, Direction):
+            if direction1.angle - direction2.angle != Angle(180.0):
                 continue
-            if (d1 == Direction.CENTER) or (d2 == Direction.CENTER):
+            if (direction1 == Direction.CENTER) or (direction2 == Direction.CENTER):
                 continue
-            self.assertEqual(Coord(0, 0), d1.offset + d2.offset)
+            self.assertEqual(Coord(0, 0), direction1.offset + direction2.offset)
 
     def test_sum_of_directions_by_location(self):
         theta = Angle(0.0)
@@ -54,13 +54,13 @@ class TestDirection(unittest.TestCase):
         self.assertEqual(Direction.UPLEFT, - Direction.DOWNRIGHT)
 
     def test_parallel(self):
-        for d1, d2 in product(Direction, Direction):
-            if d1 == d2:
-                self.assertTrue(d1.parallel(d2))
-            elif d1 == -d2:
-                self.assertTrue(d1.parallel(d2))
+        for direction1, direction2 in product(Direction, Direction):
+            if direction1 == direction2:
+                self.assertTrue(direction1.parallel(direction2))
+            elif direction1 == -direction2:
+                self.assertTrue(direction1.parallel(direction2))
             else:
-                self.assertFalse(d1.parallel(d2))
+                self.assertFalse(direction1.parallel(direction2))
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -16,7 +16,7 @@ import src.items.indexing
 import src.items.item
 import src.items.knight
 import src.items.knowns
-import src.items.kropki
+import src.items.kropki_pair
 import src.items.line
 import src.items.little_killer
 import src.items.lock_out

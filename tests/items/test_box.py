@@ -9,12 +9,12 @@ class TestBox(unittest.TestCase):
 
     def check(self, n: int, width: int, height: int, expected: List) -> None:
         problem = Board(n, n, width, height)
-        for i, r, c in expected:
+        for i, row, column in expected:
             box = Box(problem, i)
-            rs = box.start().row
-            cs = box.start().column
-            self.assertEqual(r, rs)
-            self.assertEqual(c, cs)
+            row_start = box.start().row
+            column_start = box.start().column
+            self.assertEqual(row, row_start)
+            self.assertEqual(column, column_start)
 
     def test_9_9_3_3(self):
         expected = [

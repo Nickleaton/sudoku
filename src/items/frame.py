@@ -35,7 +35,7 @@ class Frame(Item):
         self.index = index
         self.total = total
         self.direction = self.side.order_direction(Order.INCREASING)
-        self.offset = self.side.order_offset(Order.INCREASING)
+        self.offset = self.side.order_offset()
         self.coords = []
         self.coords.append(self.side.start_cell(self.board, self.index))
         self.coords.append(self.coords[0] + self.offset)

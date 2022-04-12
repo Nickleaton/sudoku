@@ -21,10 +21,6 @@ class Item(ABC):
         super().__init_subclass__(**kwargs)
         Item.classes[cls.__name__] = cls
 
-    @property
-    def to_yaml(self) -> str:
-        return f"{self.__class__.__name__}:"
-
     def svg(self) -> Optional[Glyph]:
         return None
 
@@ -54,7 +50,7 @@ class Item(ABC):
 
     @property
     def used_classes(self) -> Set[Type['Item']]:
-        return {c for c in self.__class__.__mro__}.difference({abc.ABC, object})
+        return set(self.__class__.__mro__).difference({abc.ABC, object})
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: List) -> 'Item':
@@ -67,4 +63,4 @@ class Item(ABC):
         pass
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        print(f"Add constraint {self.__class__.__name__} - nowt")
+        print(f"Add Constraint {solver.__class__.__name__}")

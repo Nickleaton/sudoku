@@ -78,7 +78,7 @@ class Composed(Item):
     def create(cls, name: str, board: Board, yaml: Dict) -> Item:
         return cls(board, [])
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.items!r})"
 
 

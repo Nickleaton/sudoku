@@ -17,7 +17,8 @@ good-names=i,
            c2,
            n,
            l,
-           M
+           M,
+           maxDiff
 
 [FORMAT]
 max-line-length=120

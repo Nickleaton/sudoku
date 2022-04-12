@@ -24,9 +24,6 @@ class Cell(Item):
     def name(self) -> str:
         return f"{self.__class__.__name__}_{self.row}_{self.column})"
 
-    def to_yaml(self) -> Dict:
-        return {}
-
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
 
@@ -230,9 +227,6 @@ class Known(CellReference):
     def __init__(self, board: Board, row: int, column: int, digit: int):
         super().__init__(board, row, column)
         self.digit = int(digit)
-
-    def to_yaml(self) -> Dict:
-        return {}
 
     def add_constraint(self, solver: PulpSolver) -> None:
         solver.model += solver.choices[self.digit][self.row][self.column] == 1, \

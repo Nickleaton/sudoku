@@ -22,14 +22,9 @@ class Line(Region):
         cells = [Cell.make(board, r, c) for r, c in yaml]
         return cls(board, cells)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         item_str = ", ".join(repr(item) for item in self.items)
         return f"{self.__class__.__name__}({self.board!r}, [{item_str}])"
-
-    @property
-    def to_yaml(self) -> str:
-        l = [[cell.row, cell.column] for cell in self.cells]
-        return f'{self.__class__.__name__}: {l!r}'
 
     @property
     def rules(self) -> List[Rule]:

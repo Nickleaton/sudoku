@@ -19,7 +19,8 @@ class Knight(Composed):
         self.add_items(self.cells)
         self.digits = digits
 
-    def offsets(self) -> List[Tuple[int, int]]:
+    @staticmethod
+    def offsets() -> List[Tuple[int, int]]:
         return \
             [
                 Coord(-1, -2),
@@ -51,7 +52,7 @@ class Knight(Composed):
                  f"Every digit in {self.digits!r} must see at least one identical digit via a knights move")
         ]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name}({self.board!r}, {self.digits!r})"
 
     def add_constraint(self, solver: PulpSolver) -> None:

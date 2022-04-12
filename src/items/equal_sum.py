@@ -21,7 +21,7 @@ class EqualSum(Line):
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [PolyLineGlyph('EqualSum', [cell.coord for cell in self.items], False, False)]
+        return [PolyLineGlyph('EqualSum', [cell.coord for cell in self.cells], False, False)]
 
     @property
     def tags(self) -> set[str]:

@@ -23,7 +23,7 @@ class Columns(StandardRegionSet):
     def create(cls, name: str, board: Board, yaml) -> Item:
         return Columns(board)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
 
 
@@ -36,7 +36,7 @@ class Rows(StandardRegionSet):
     def create(cls, name: str, board: Board, yaml) -> Item:
         return Rows(board)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
 
 
@@ -49,7 +49,7 @@ class Boxes(StandardRegionSet):
     def create(cls, name: str, board: Board, yaml) -> Item:
         return Boxes(board)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
 
 
@@ -62,5 +62,5 @@ class DisjointGroups(StandardRegionSet):
     def create(cls, name: str, board: Board, yaml) -> Item:
         return DisjointGroups(board)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
