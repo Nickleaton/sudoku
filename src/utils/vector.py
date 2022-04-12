@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import Union
 
 from src.utils.coord import Coord
 from src.utils.direction import Direction
@@ -83,8 +83,6 @@ class Vector:
             return Vector(self.start, other.start)
         else:
             raise Exception("Non mergeable lines")  # pragma: no cover
-
-
 
     def __repr__(self):
         return f"{self.__class__.__name__}({repr(self.start)}, {repr(self.end)})"

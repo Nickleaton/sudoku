@@ -39,7 +39,7 @@ class TestItem(unittest.TestCase):
         unittest.TestCase.maxDiff = None
         self.assertEqual(self.representation, repr(self.item))
 
-    def xxx_test_as_yaml(self): # TODO
+    def xxx_test_as_yaml(self):  # TODO
         print('-' * 80)
         print(self.config)
         print(self.item.to_yaml)

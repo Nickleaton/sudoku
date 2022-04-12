@@ -9,7 +9,7 @@ class Solution:
     def __init__(self, board: Board, data: Optional[List[str]] = None):
         self.board = board
         if data is None:
-            self.data = [[None for column in board.column_range] for row in board.row_range]
+            self.data = [[None for _ in board.column_range] for _ in board.row_range]
         else:
             self.data = [[int(data[row - 1][column - 1]) for column in board.column_range] for row in board.row_range]
 

@@ -1,8 +1,6 @@
-from typing import Optional, List
+from typing import List
 
 from src.glyphs.glyph import Glyph, ThermometerGlyph, SimpleThermometerGlyph
-from src.items.board import Board
-from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule

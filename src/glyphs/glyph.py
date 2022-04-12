@@ -592,8 +592,8 @@ class KillerTextGlyph(Glyph):
 
 
 class SimpleTextGlyph(TextGlyph):
-
     pass
+
 
 class EdgeTextGlyph(TextGlyph):
 

@@ -48,7 +48,7 @@ class Quadruple(Item):
         for digit in self.digits:
             digit_sum = lpSum(
                 [
-                    solver.choices[int(digit)][(self.position+offset).row][(self.position+offset).column]
+                    solver.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
                     for offset in offsets
                 ]
             )

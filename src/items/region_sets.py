@@ -1,9 +1,7 @@
-from typing import List
-
 from src.items.board import Board
 from src.items.composed import Composed
 from src.items.item import Item
-from src.items.region import Region, Column, Row, Box, DisjointGroup
+from src.items.region import Column, Row, Box, DisjointGroup
 
 
 class RegionSet(Composed):
@@ -13,7 +11,6 @@ class RegionSet(Composed):
 
 
 class StandardRegionSet(RegionSet):
-
     pass
 
 

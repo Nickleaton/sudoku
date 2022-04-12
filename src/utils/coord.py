@@ -28,7 +28,7 @@ class Coord:
             return Coord(self.row * other.row, self.column * other.column)
         if isinstance(other, float) or isinstance(other, int):
             return Coord(self.row * other, self.column * other)
-        raise CoordException(f"Mulitply not supported for Coord and {type(other)}")
+        raise CoordException(f"Multiply not supported for Coord and {type(other)}")
 
     def __truediv__(self, other: float | int) -> 'Coord':
         return Coord(self.row / other, self.column / other)

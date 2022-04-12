@@ -1,6 +1,6 @@
 import abc
 from abc import ABC
-from typing import Optional, Dict, List, Set, Type
+from typing import Optional, List, Set, Type
 
 from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board

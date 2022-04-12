@@ -1,37 +1,35 @@
 from pulp import LpProblem, LpMinimize, LpVariable, LpInteger, lpSum, LpStatus, LpStatusOptimal
 
-from src.items.item import Item
 from src.items.anti import AntiKnight, AntiKing, Anti
-from src.items.region_sets import Columns, Rows, Boxes, DisjointGroups
-from src.items.knowns import Knowns
-from src.items.board import Board
-from src.items.little_killer import LittleKiller
-from src.items.line import Line
-from src.items.palindrome import Palindrome
-from src.items.thermometer import Thermometer, SimpleThermometer, FrozenThermometer
 from src.items.arrow import Arrow
-from src.items.renban import Renban
-from src.items.region import Region, StandardRegion, Column, Row, Box, DisjointGroup, Window
-from src.items.diagonals import TLBR, BLTR
-from src.items.solution import Solution
-from src.items.pair import Pair
-from src.items.greater_than_pair import GreaterThanPair
-from src.items.different_pair import DifferentPair
-from src.items.xi_pair import XIPair
-from src.items.vi_pair import VIPair
-from src.items.consecutive_pair import ConsecutivePair
-from src.items.v_pair import VPair
-from src.items.x_pair import XPair
-from src.items.difference_pair import DifferencePair
-from src.items.kropki import KropkiPair
-from src.items.composed import Composed
+from src.items.board import Board
 from src.items.cell import Cell, Even, Odd, Fortress, Known
+from src.items.composed import Composed
+from src.items.consecutive_pair import ConsecutivePair
+from src.items.diagonals import TLBR, BLTR
+from src.items.difference_pair import DifferencePair
+from src.items.different_pair import DifferentPair
+from src.items.greater_than_pair import GreaterThanPair
+from src.items.item import Item
+from src.items.knowns import Knowns
+from src.items.kropki import KropkiPair
+from src.items.line import Line
+from src.items.little_killer import LittleKiller
+from src.items.pair import Pair
+from src.items.palindrome import Palindrome
+from src.items.region import Region, StandardRegion, Column, Row, Box, DisjointGroup, Window
+from src.items.region_sets import Columns, Rows, Boxes, DisjointGroups
+from src.items.renban import Renban
+from src.items.solution import Solution
+from src.items.thermometer import Thermometer, SimpleThermometer, FrozenThermometer
+from src.items.v_pair import VPair
+from src.items.vi_pair import VIPair
+from src.items.x_pair import XPair
+from src.items.xi_pair import XIPair
 from src.visitors.visitor import Visitor
 
 
 class PULPVisitor(Visitor):
-
-
 
     def __init__(self):
         self.objective = 0, "Objective"

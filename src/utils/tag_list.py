@@ -1,6 +1,5 @@
 from typing import List
 
-from src.utils.coord import Coord
 from src.utils.tag import Tag
 
 

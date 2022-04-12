@@ -128,5 +128,6 @@ class TestLine(unittest.TestCase):
         self.assertFalse(v2 <= v1)
         self.assertFalse(v2 <= v1)
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

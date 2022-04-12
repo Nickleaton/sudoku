@@ -26,7 +26,7 @@ class Board:
         # Digits
         self.minimum_digit = 1
         self.maximum_digit = max(self.board_rows, self.board_columns)
-        self.digit_range = list(range(self.minimum_digit, self.maximum_digit+1))
+        self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
         # Boxes
         if box_rows is None:

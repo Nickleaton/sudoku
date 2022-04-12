@@ -1,10 +1,9 @@
-from typing import Optional, List
+from typing import List
 
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.bound import Bounds
