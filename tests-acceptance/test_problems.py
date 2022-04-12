@@ -3,7 +3,7 @@ import os
 import shutil
 import unittest
 import xml.dom.minidom
-from typing import Dict, List
+from typing import Dict, List, Any
 
 import oyaml as yaml
 from jinja2 import Environment, select_autoescape, FileSystemLoader
@@ -21,7 +21,7 @@ env = Environment(
 )
 
 
-def custom_name_func(testcase_func, param_num, param):
+def custom_name_func(testcase_func, _, param) -> str:
     return "%s_%s" % (
         testcase_func.__name__,
         parameterized.to_safe_name("_".join(str(x) for x in param.args)),
@@ -33,7 +33,7 @@ class TestFiles(unittest.TestCase):
     # filenames = ['problem041']
 
     @staticmethod
-    def config(filename: str) -> Dict:
+    def config(filename: str) -> Any:
         fname = os.path.join("problems", filename + ".yaml")
         with open(fname, 'r') as f:
             config = yaml.load(f, yaml.SafeLoader)
@@ -63,7 +63,7 @@ class TestFiles(unittest.TestCase):
         canvas.add(glyph.draw())
         canvas.add_stylesheet(href="glyph.css", title="glyphs")
         elements = xml.dom.minidom.parseString(canvas.tostring())
-        return elements.toprettyxml()
+        return str(elements.toprettyxml())
 
     @staticmethod
     def html(problem: Item) -> str:
