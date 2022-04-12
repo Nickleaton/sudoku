@@ -12,9 +12,6 @@ from src.utils.rule import Rule
 
 class Indexer(StandardRegion):
 
-    def __init__(self, board: Board, index: int):
-        super().__init__(board, index)
-
     @property
     def name(self) -> str:
         return f"{self.__class__.__name__}_{self.index}"

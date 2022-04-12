@@ -171,8 +171,6 @@ class ThermometerGlyph(PolyLineGlyph):
 
 
 class SimpleThermometerGlyph(ThermometerGlyph):
-    def __init__(self, class_name: str, coords: List[Coord]):
-        super().__init__(class_name, coords)
 
     @classmethod
     def start_marker(cls) -> Optional[Marker]:
@@ -196,8 +194,6 @@ class SimpleThermometerGlyph(ThermometerGlyph):
 
 
 class FrozenThermometerGlyph(ThermometerGlyph):
-    def __init__(self, class_name: str, coords: List[Coord]):
-        super().__init__(class_name, coords)
 
     @classmethod
     def start_marker(cls) -> Optional[Marker]:
@@ -349,7 +345,7 @@ class OddCellGlyph(Glyph):
 class KropkiGlyph(CircleGlyph):
 
     def __init__(self, class_name: str, first: Coord, second: Coord):
-        super().__init__(class_name, Coord.middle(first, second), Config.KROPKI_RADIUS)
+        super().__init__(class_name, Coord.middle(first, second), 0.15)
         self.first = first
         self.second = second
 
@@ -396,9 +392,6 @@ class SquareGlyph(RectGlyph):
 
 
 class BoxGlyph(RectGlyph):
-
-    def __init__(self, class_name: str, position: Coord, size: Coord):
-        super().__init__(class_name, position, size)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.size)})"
@@ -600,14 +593,7 @@ class KillerTextGlyph(Glyph):
 
 class SimpleTextGlyph(TextGlyph):
 
-    def __init__(self, class_name: str, angle: float, position: Coord, text: str):
-        super().__init__(class_name, angle, position, text)
-
-    def __repr__(self) -> str:
-        return (
-            f"{self.__class__.__name__}('{self.class_name}', {self.angle.angle}, {repr(self.position)}, '{self.text}')"
-        )
-
+    pass
 
 class EdgeTextGlyph(TextGlyph):
 

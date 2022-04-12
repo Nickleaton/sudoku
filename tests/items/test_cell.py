@@ -61,7 +61,16 @@ class TestCellReference(TestItem):
 
     @property
     def representation(self) -> str:
-        return "CellReference(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+        return (
+            "CellReference"
+            "("
+            "Board(9, 9, 3, 3, None, None, None, None), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), "
+            "1, "
+            "2"
+            ")"
+            ")"
+        )
 
     @property
     def config(self):
@@ -152,7 +161,15 @@ class TestFortress(TestCellReference):
 
     @property
     def representation(self) -> str:
-        return "Fortress(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+        return (
+            "Fortress("
+            "Board(9, 9, 3, 3, None, None, None, None), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), "
+            "1, "
+            "2"
+            ")"
+            ")"
+        )
 
     @property
     def config(self):
@@ -177,7 +194,12 @@ class TestKnown(TestCellReference):
 
     @property
     def representation(self) -> str:
-        return "Known(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), 9)"
+        return ("Known("
+                "Board(9, 9, 3, 3, None, None, None, None), "
+                "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
+                "9"
+                ")"
+                )
 
     @property
     def config(self):

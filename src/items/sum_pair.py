@@ -21,10 +21,6 @@ class SumPair(Pair):
         return 0
 
     @property
-    def rules(self) -> List[Rule]:
-        return []
-
-    @property
     def tags(self) -> set[str]:
         return super().tags.union({'Sum'})
 

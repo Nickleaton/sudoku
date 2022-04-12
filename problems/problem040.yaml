@@ -1,0 +1,26 @@
+Board:
+  Title: Ernst
+  Author: Philip
+  Reference: https://tinyurl.com/bdf4295m
+  Video: https://www.youtube.com/watch?v=g0fQoSHld5Y&ab_channel=CrackingTheCryptic
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - 12.......
+      - ....7....
+      - ......2..
+      - ..1...3..
+      - .........
+      - ..4...6..
+      - ..5......
+      - ....8....
+      - .......56
+  - GermanWhisper: [ [ 1,4 ],[ 1,5 ],[ 1,6 ],[ 1,7 ], [ 2,7 ],[ 2,8 ],[ 3,8 ],[ 4,8 ],[ 4,9 ],
+                     [ 5,9 ],[ 6,9 ],[ 7,9 ],[ 7,8 ],[ 7,7 ],[ 8,7 ],[ 8,6 ],[ 9,6 ],[ 9,5 ],
+                     [ 9,4 ],[ 9,3 ],[ 8,3 ],[ 8,2 ],[ 7,2 ],[ 6,2 ],[ 6,1 ],[ 5,1 ],[ 4,1 ],
+                     [ 3,1 ],[ 3,2 ],[ 3,3 ],[ 2,3 ],[ 2,4 ],[ 1,4 ] ]
+

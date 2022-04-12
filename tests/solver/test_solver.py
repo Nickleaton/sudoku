@@ -19,8 +19,8 @@ class TestSolver(unittest.TestCase):
 
     def test_solve(self) -> None:
         fname = os.path.join("problems", "problem001.yaml")
-        with open(fname, 'r') as f:
-            config = yaml.load(f, yaml.SafeLoader)
+        with open(fname, 'r') as file:
+            config = yaml.load(file, yaml.SafeLoader)
 
         board = Board.create('Board', config)
 

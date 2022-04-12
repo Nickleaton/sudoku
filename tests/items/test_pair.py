@@ -18,11 +18,11 @@ class TestPair(TestItem):
 
     @property
     def representation(self) -> str:
-        return f"Pair(Board(9, 9, 3, 3, None, None, None, None), Cell(None, 1, 2), Cell(None, 1, 3))"
+        return "Pair(Board(9, 9, 3, 3, None, None, None, None), Cell(None, 1, 2), Cell(None, 1, 3))"
 
     @property
     def config(self):
-        return f"[[1, 2], [1, 3]]"
+        return "[[1, 2], [1, 3]]"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

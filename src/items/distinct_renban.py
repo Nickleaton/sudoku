@@ -1,17 +1,13 @@
-from typing import Optional, List
+from typing import List
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.renban import Renban
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
 class DistinctRenban(Renban):
-
-    def __init__(self, board: Board, cells: Optional[List[Cell]]):
-        super().__init__(board, cells)
 
     @property
     def rules(self) -> List[Rule]:

@@ -12,9 +12,6 @@ from src.utils.rule import Rule
 
 class Diagonal(Region):
 
-    def __init__(self, board) -> None:
-        super().__init__(board)
-
     def to_yaml(self) -> Dict:
         return {}
 

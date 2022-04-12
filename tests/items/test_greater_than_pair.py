@@ -20,7 +20,13 @@ class TestGreaterThanPair(TestPair):
 
     @property
     def representation(self) -> str:
-        return f"GreaterThanPair(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3))"
+        return (
+            "GreaterThanPair("
+            "Board(9, 9, 3, 3, None, None, None, None), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            ")"
+        )
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

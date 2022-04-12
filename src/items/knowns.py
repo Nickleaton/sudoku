@@ -37,13 +37,12 @@ class Knowns(Composed):
             result = self.items[self._n]
             self._n += 1
             return result
-        else:
-            self._n = 0
-            raise StopIteration
+        self._n = 0
+        raise StopIteration
 
     @classmethod
-    def create(cls, name: str, problem: Optional[Item], yaml: Optional[Dict]) -> Item:
-        return Knowns(problem, [list(y) for y in yaml])
+    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+        return Knowns(board, [list(y) for y in yaml])
 
     def __repr__(self):
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]

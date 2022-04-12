@@ -88,8 +88,6 @@ class Cell(Item):
         return Coord(self.row, self.column)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        print(self.board)
-        print(self.row, self.column)
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]
@@ -131,9 +129,6 @@ class CellReference(Item):
 
 class Even(CellReference):
 
-    def __init__(self, board: Board, row: int, column: int):
-        super().__init__(board, row, column)
-
     @staticmethod
     def included(digit: int) -> bool:
         return digit % 2 == 0
@@ -168,9 +163,6 @@ class Even(CellReference):
 
 class Odd(CellReference):
 
-    def __init__(self, board: Board, row: int, column: int):
-        super().__init__(board, row, column)
-
     @staticmethod
     def included(digit: int) -> bool:
         return digit % 2 == 1
@@ -204,9 +196,6 @@ class Odd(CellReference):
 
 
 class Fortress(CellReference):
-
-    def __init__(self, board: Board, row: int, column: int):
-        super().__init__(board, row, column)
 
     def svg(self) -> Optional[Glyph]:
         return None

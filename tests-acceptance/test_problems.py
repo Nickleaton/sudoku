@@ -30,7 +30,7 @@ def custom_name_func(testcase_func, param_num, param):
 
 class TestFiles(unittest.TestCase):
     filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
-    filenames = ['problem039']
+    filenames = ['problem041']
 
     @staticmethod
     def config(filename: str) -> Dict:

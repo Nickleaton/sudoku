@@ -9,14 +9,12 @@ from src.items.region import Region, Column, Row, Box, DisjointGroup
 class RegionSet(Composed):
     """ Collection of Regions """
 
-    def __init__(self, board: Board, items: List[Region]):
-        super().__init__(board, items)
+    pass
 
 
 class StandardRegionSet(RegionSet):
 
-    def __init__(self, board: Board, items: List[Region]):
-        super().__init__(board, items)
+    pass
 
 
 class Columns(StandardRegionSet):

@@ -27,12 +27,12 @@ class TestVIPair(TestSumPair):
     @property
     def representation(self) -> str:
         return (
-            f"VIPair"
-            f"("
-            f"Board(9, 9, 3, 3, None, None, None, None), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
-            f")"
+            "VIPair"
+            "("
+            "Board(9, 9, 3, 3, None, None, None, None), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            ")"
         )
 
     @property

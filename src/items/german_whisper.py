@@ -14,7 +14,7 @@ class GermanWhisper(DifferenceLine):
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [PolyLineGlyph('GermanWhisper', [cell.coord for cell in self.items], False, False)]
+        return [PolyLineGlyph('GermanWhisper', [cell.coord for cell in self.cells], False, False)]
 
     @property
     def tags(self) -> set[str]:

@@ -10,9 +10,6 @@ from src.utils.rule import Rule
 
 class Thermometer(Line):
 
-    def __init__(self, board: Board, cells: Optional[List[Cell]]):
-        super().__init__(board, cells)
-
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Thermometer', 'Comparison'})

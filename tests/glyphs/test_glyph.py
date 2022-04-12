@@ -153,11 +153,24 @@ class TestArrowLineGlyph(TestPolyLineGlyph):
 
     @property
     def start_marker(self) -> str:
-        return '<marker class="Arrow ArrowStart" id="Arrow-start" markerHeight="35" markerWidth="35" refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+        return (
+            '<marker class="Arrow ArrowStart" '
+            'id="Arrow-start" '
+            'markerHeight="35" '
+            'markerWidth="35" '
+            'refX="50" '
+            'refY="50" '
+            'viewBox="0 0 100 100">'
+            '<circle cx="50" cy="50" r="35" />'
+            '</marker>'
+        )
 
     @property
     def end_marker(self) -> str:
-        return '<marker class="Arrow ArrowEnd" id="Arrow-end" markerHeight="20" markerWidth="20" orient="auto" refX="20" refY="20" viewBox="0 0 50 50"><polyline points="0,0 20,20 0,40" /></marker>'
+        return (
+            '<marker class="Arrow ArrowEnd" id="Arrow-end" markerHeight="20" markerWidth="20" orient="auto" '
+            'refX="20" refY="20" viewBox="0 0 50 50"><polyline points="0,0 20,20 0,40" /></marker>'
+        )
 
     @property
     def target(self):
@@ -185,7 +198,10 @@ class TestThermometerGlyph(TestPolyLineGlyph):
 
     @property
     def start_marker(self) -> str:
-        return '<marker class="Thermometer ThermometerStart" id="Thermometer-start" refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
+        return (
+            '<marker class="Thermometer ThermometerStart" id="Thermometer-start" refX="50" refY="50" '
+            'viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
+        )
 
     @property
     def target(self):
@@ -212,7 +228,10 @@ class TestSimpleThermometerGlyph(TestThermometerGlyph):
 
     @property
     def start_marker(self) -> str:
-        return '<marker class="SimpleThermometer SimpleThermometerStart" id="SimpleThermometer-start" refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
+        return (
+            '<marker class="SimpleThermometer SimpleThermometerStart" id="SimpleThermometer-start" '
+            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
+        )
 
     @property
     def target(self):
@@ -239,7 +258,10 @@ class TestFrozenThermometerGlyph(TestThermometerGlyph):
 
     @property
     def start_marker(self) -> str:
-        return '<marker class="FrozenThermometer FrozenThermometerStart" id="FrozenThermometer-start" refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
+        return (
+            '<marker class="FrozenThermometer FrozenThermometerStart" id="FrozenThermometer-start" '
+            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
+        )
 
     @property
     def target(self):
@@ -266,11 +288,17 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
 
     @property
     def start_marker(self) -> str:
-        return '<marker class="Between BetweenStart" id="Between-start" markerHeight="35" markerWidth="35" refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+        return (
+            '<marker class="Between BetweenStart" id="Between-start" markerHeight="35" markerWidth="35" '
+            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+        )
 
     @property
     def end_marker(self) -> str:
-        return '<marker class="Between BetweenEnd" id="Between-end" markerHeight="35" markerWidth="35" refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+        return (
+            '<marker class="Between BetweenEnd" id="Between-end" markerHeight="35" markerWidth="35" '
+            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+        )
 
     @property
     def target(self):
@@ -317,7 +345,10 @@ class TestOddCellGlyph(TestCircleGlyph):
 
     @property
     def symbol(self) -> str:
-        return '<symbol class="OddCell" id="OddCell-symbol" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></symbol>'
+        return (
+                '<symbol class="OddCell" id="OddCell-symbol" viewBox="0 0 100 100">'
+                '<circle cx="50" cy="50" r="35" /></symbol>'
+        )
 
     @property
     def target(self):

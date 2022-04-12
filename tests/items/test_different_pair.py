@@ -17,11 +17,11 @@ class TestDifferentPair(TestPair):
 
     @property
     def representation(self) -> str:
-        return f"DifferentPair(Board(9, 9, 3, 3, None, None, None, None), Cell(None, 1, 2), Cell(None, 1, 3))"
+        return "DifferentPair(Board(9, 9, 3, 3, None, None, None, None), Cell(None, 1, 2), Cell(None, 1, 3))"
 
     @property
     def config(self):
-        return f"Cells: [ [1, 2], [1, 3] ]\nDigits: 1,2"
+        return "Cells: [ [1, 2], [1, 3] ]\nDigits: 1,2"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

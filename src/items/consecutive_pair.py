@@ -1,17 +1,12 @@
 from typing import List
 
 from src.glyphs.glyph import Glyph, ConsecutiveGlyph
-from src.items.board import Board
-from src.items.cell import Cell
 from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
 class ConsecutivePair(DifferencePair):
-
-    def __init__(self, board: Board, c1: Cell, c2: Cell):
-        super().__init__(board, c1, c2)
 
     @property
     def difference(self):

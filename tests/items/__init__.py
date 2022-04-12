@@ -9,6 +9,7 @@ import tests.items.test_difference_pair
 import tests.items.test_dutch_whisper
 import tests.items.test_entropic
 import tests.items.test_equal_sum
+import tests.items.test_frame
 import tests.items.test_german_whisper
 import tests.items.test_indexing
 import tests.items.test_item
@@ -30,4 +31,3 @@ import tests.items.test_v_pair
 import tests.items.test_vi_pair
 import tests.items.test_x_pair
 import tests.items.test_xi_pair
-import tests.items.test_frame

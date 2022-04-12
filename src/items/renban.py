@@ -13,9 +13,6 @@ from src.utils.rule import Rule
 
 class Renban(Line):
 
-    def __init__(self, board: Board, cells: Optional[List[Cell]]):
-        super().__init__(board, cells)
-
     @property
     def name(self) -> str:
         if self.identity is None:
