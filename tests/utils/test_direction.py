@@ -63,6 +63,5 @@ class TestDirection(unittest.TestCase):
                 self.assertFalse(d1.parallel(d2))
 
 
-
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
