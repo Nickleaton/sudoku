@@ -479,6 +479,7 @@ class BattenburgGlyph(Glyph):
 
 class RectangleGlyph(Glyph):
 
+    # pylint: disable=too-many-arguments
     def __init__(self,
                  class_name: str,
                  first: Coord,
@@ -597,6 +598,7 @@ class SimpleTextGlyph(TextGlyph):
 
 class EdgeTextGlyph(TextGlyph):
 
+    # pylint: disable=too-many-arguments
     def __init__(self, class_name: str, angle: float, first: Coord, second: Coord, text: str):
         super().__init__(class_name, angle, Coord.middle(first, second), text)
         self.first = first

@@ -92,16 +92,16 @@ class TestCoord(unittest.TestCase):
         self.assertEqual("Coord(1, 2)", str(cell))
 
     def test_compare(self):
-        a = Coord(1, 2)
-        b = Coord(2, 1)
-        c = Coord(1, 3)
-        self.assertEqual(a, a)
-        self.assertNotEqual(a, b)
-        self.assertLess(a, b)
-        self.assertLess(a, c)
-        self.assertLess(c, b)
-        self.assertGreater(b, a)
-        self.assertFalse(b < a)
+        coord1 = Coord(1, 2)
+        coord2 = Coord(2, 1)
+        coord3 = Coord(1, 3)
+        self.assertEqual(coord1, coord1)
+        self.assertNotEqual(coord1, coord2)
+        self.assertLess(coord1, coord2)
+        self.assertLess(coord1, coord3)
+        self.assertLess(coord3, coord2)
+        self.assertGreater(coord2, coord1)
+        self.assertFalse(coord2 < coord1)
 
 
 if __name__ == '__main__':  # pragma: no cover

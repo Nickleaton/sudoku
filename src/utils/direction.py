@@ -21,7 +21,7 @@ class Direction(Enum):
     DOWNRIGHT = 9
 
     @staticmethod
-    def locations():
+    def locations() -> List[int]:
         return [d.value for d in Direction]
 
     def __neg__(self) -> 'Direction':
@@ -43,6 +43,7 @@ class Direction(Enum):
             return Direction.UP
         if self == Direction.DOWNRIGHT:
             return Direction.UPLEFT
+        raise DirectionException('Unknown direction')
 
     @property
     def angle(self) -> Angle:
@@ -64,6 +65,7 @@ class Direction(Enum):
             return Angle(180)
         if self == Direction.DOWNRIGHT:
             return Angle(135)
+        raise DirectionException('Unknown direction')
 
     @property
     def offset(self) -> Coord:
@@ -85,6 +87,7 @@ class Direction(Enum):
             return Coord(1, 0)
         if self == Direction.DOWNRIGHT:
             return Coord(1, 1)
+        raise DirectionException('Unknown direction')
 
     def parallel(self, other: 'Direction') -> bool:
         return (self == other) or (self == -other)

@@ -6,6 +6,8 @@ from src.utils.cyclic import Cyclic
 from src.utils.direction import Direction
 from src.utils.order import Order
 
+class SideException(Exception):
+    pass
 
 class Side(Enum):
     TOP = 'T'
@@ -36,6 +38,7 @@ class Side(Enum):
                 return Direction.UPRIGHT
             if self == Side.LEFT:
                 return Direction.DOWNRIGHT
+        raise SideException("Unknown combination")
 
     def order_direction(self, order: Order) -> Direction:
         if self == Side.TOP:
@@ -46,6 +49,7 @@ class Side(Enum):
             return Direction.UP if order == Order.INCREASING else Direction.DOWN
         if self == Side.LEFT:
             return Direction.RIGHT if order == Order.INCREASING else Direction.LEFT
+        raise SideException("Unknown combination")
 
     def order_offset(self) -> Coord:
         if self == Side.TOP:
@@ -56,6 +60,7 @@ class Side(Enum):
             return Direction.UP.offset
         if self == Side.LEFT:
             return Direction.RIGHT.offset
+        raise SideException("Unknown combination")
 
     def marker(self, board: Board, n: int) -> Coord:
         if self == Side.TOP:
@@ -66,6 +71,7 @@ class Side(Enum):
             return Coord(board.board_columns + 1, n)
         if self == Side.LEFT:
             return Coord(n, 0)
+        raise SideException("Unknown combination")
 
     def start_cell(self, board: Board, n: int) -> Coord:
         if self == Side.TOP:
@@ -76,6 +82,7 @@ class Side(Enum):
             return Coord(board.board_columns, n)
         if self == Side.LEFT:
             return Coord(n, 1)
+        raise SideException("Unknown combination")
 
     def start(self, board: Board, cyclic: Cyclic, n: int) -> Coord:
         if cyclic == Cyclic.CLOCKWISE:
@@ -96,6 +103,7 @@ class Side(Enum):
                 return Coord(board.board_rows, n + 1)
             if self == Side.LEFT:
                 return Coord(n + 1, 1)
+        raise SideException("Unknown combination")
 
     def __repr__(self) -> str:
         return f"Side.{self.name}"

@@ -7,7 +7,7 @@ from src.utils.coord import Coord
 
 class Board:
 
-    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(self,
                  board_rows: int,
                  board_columns: int,

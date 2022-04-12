@@ -36,11 +36,13 @@ class Solution:
             result += f"- {''.join([str(int(d)) for d in row])}\n"
         return result
 
-    def __eq__(self, other: 'Solution') -> bool:
-        for row, column in product(self.board.row_range, self.board.column_range):
-            if self.get_value(row, column) != other.get_value(row, column):
-                return False
-        return True
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Solution):
+            for row, column in product(self.board.row_range, self.board.column_range):
+                if self.get_value(row, column) != other.get_value(row, column):
+                    return False
+            return True
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @staticmethod
     def create(board: Board, yaml: Optional[Dict]) -> 'Solution':

@@ -42,8 +42,8 @@ class TestAnti(TestItem):
 
     def test_pairs(self):
         result = []
-        for p in self.item.pairs(Cell(self.board, 1, 1), self.item.digits):
-            result.append([p.c2.row, p.c2.column])
+        for pair in self.item.pairs(Cell(self.board, 1, 1), self.item.digits):
+            result.append([pair.c2.row, pair.c2.column])
         self.assertListEqual(self.pair_output, result)
 
 

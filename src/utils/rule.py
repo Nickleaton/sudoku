@@ -11,13 +11,15 @@ class Rule:
     def __lt__(self, other: 'Rule') -> bool:
         return self.rank < other.rank
 
-    def __eq__(self, other: 'Rule') -> bool:
-        return self.name == other.name
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Rule):
+            return self.name == other.name
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.name}', {self.rank}, '{self.text}')"
 
-    def __hash__(self) -> str:
+    def __hash__(self) -> int:
         return hash(self.name)
 
     @property

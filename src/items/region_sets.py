@@ -6,7 +6,6 @@ from src.items.region import Column, Row, Box, DisjointGroup
 
 class RegionSet(Composed):
     """ Collection of Regions """
-
     pass
 
 

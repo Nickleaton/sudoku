@@ -31,19 +31,19 @@ class TestCell(TestItem):
         self.assertEqual((1, 2), self.item.row_column)
 
     def test_eq(self):
-        a = Cell(None, 1, 1)
-        b = Cell(None, 2, 1)
-        self.assertEqual(a, a)
-        self.assertNotEqual(a, b)
+        one = Cell(None, 1, 1)
+        two = Cell(None, 2, 1)
+        self.assertEqual(one, one)
+        self.assertNotEqual(one, two)
 
     def test_lt(self):
-        a = Cell(None, 1, 1)
-        b = Cell(None, 2, 1)
-        c = Cell(None, 2, 2)
-        d = Cell(None, 3, 2)
-        self.assertLess(a, b)
-        self.assertLess(b, c)
-        self.assertFalse(d < c)
+        one = Cell(None, 1, 1)
+        two = Cell(None, 2, 1)
+        three = Cell(None, 2, 2)
+        four = Cell(None, 3, 2)
+        self.assertLess(one, two)
+        self.assertLess(two, three)
+        self.assertFalse(four < three)
 
     def test_name(self):
         self.assertIsNotNone(self.item.name)

@@ -17,16 +17,18 @@ class Coord:
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({repr(self.row)}, {repr(self.column)})"
 
-    def __add__(self, other: 'Coord'):
+    def __add__(self, other: 'Coord') -> 'Coord':
         return Coord(self.row + other.row, self.column + other.column)
 
-    def __sub__(self, other: 'Coord'):
+    def __sub__(self, other: 'Coord') -> 'Coord':
         return Coord(self.row - other.row, self.column - other.column)
 
-    def __mul__(self, other: float | int | Any) -> 'Coord':
+    def __mul__(self, other: object) -> 'Coord':
         if isinstance(other, Coord):
             return Coord(self.row * other.row, self.column * other.column)
-        if isinstance(other, float) or isinstance(other, int):
+        if isinstance(other, float):
+            return Coord(self.row * other, self.column * other)
+        if isinstance(other, int):
             return Coord(self.row * other, self.column * other)
         raise CoordException(f"Multiply not supported for Coord and {type(other)}")
 
@@ -36,9 +38,10 @@ class Coord:
     def __neg__(self) -> 'Coord':
         return Coord(-self.row, -self.column)
 
-    def __eq__(self, other: 'Coord') -> bool:
-        result = (self.row == other.row) and (self.column == other.column)
-        return result
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Coord):
+            return (self.row == other.row) and (self.column == other.column)
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __lt__(self, other: 'Coord') -> bool:
         if self.row < other.row:

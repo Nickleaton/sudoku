@@ -34,13 +34,15 @@ class VectorList:
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"
 
-    def __eq__(self, other: 'VectorList') -> bool:
-        if len(self.items) != len(other.items):
-            return False
-        for i, o in zip(self.items, other.items):
-            if i != o:
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, VectorList):
+            if len(self.items) != len(other.items):
                 return False
-        return True
+            for i, o in zip(self.items, other.items):
+                if i != o:
+                    return False
+            return True
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __add__(self, other: 'VectorList') -> 'VectorList':
         assert (isinstance(other, VectorList))
@@ -53,7 +55,7 @@ class VectorList:
         self.items = sorted(self.items)
 
     def merge_vectors(self) -> 'VectorList':
-        items = []
+        items: List[Vector] = []
         for v in self.items:
             merged = False
             for i, r in enumerate(items):

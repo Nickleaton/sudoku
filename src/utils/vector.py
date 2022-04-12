@@ -1,7 +1,9 @@
-from typing import Union
-
 from src.utils.coord import Coord
 from src.utils.direction import Direction
+
+
+class VectorException(Exception):
+    pass
 
 
 class Vector:
@@ -10,12 +12,14 @@ class Vector:
         self.start = start
         self.end = end
 
-    def __eq__(self, other: 'Vector') -> bool:
-        if self.start == other.start:
-            return self.end == other.end
-        if self.start == other.end:
-            return self.end == other.start
-        return False
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Vector):
+            if self.start == other.start:
+                return self.end == other.end
+            if self.start == other.end:
+                return self.end == other.start
+            return False
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __lt__(self, other: 'Vector') -> bool:
         if self.start < other.start:
@@ -32,12 +36,12 @@ class Vector:
     def __neg__(self) -> 'Vector':
         return Vector(self.end, self.start)
 
-    def __add__(self, other: Union[Coord, 'Vector']) -> 'Vector':
+    def __add__(self, other: object) -> 'Vector':
         if isinstance(other, Coord):
             return Vector(self.start + other, self.end + other)
         if isinstance(other, Vector):
             return Vector(self.start + other.start, self.end + other.end)
-        raise Exception(f'Add not supported for Vector and {other.__class__.__name__}')
+        raise VectorException(f'Add not supported for Vector and {other.__class__.__name__}')
 
     @property
     def direction(self) -> Direction:

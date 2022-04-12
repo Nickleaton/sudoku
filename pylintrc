@@ -2,7 +2,8 @@
 
 disable=missing-function-docstring,
     missing-class-docstring,
-    missing-module-docstring
+    missing-module-docstring,
+    duplicate-code
 
 [BASIC]
 
@@ -11,8 +12,10 @@ good-names=i,
            k,
            r,
            c,
+           w,
            x,
            y,
+           z,
            c1,
            c2,
            n,
