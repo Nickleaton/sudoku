@@ -65,7 +65,7 @@ class TestAntiKnight(TestAnti):
         return {Anti, AntiKnight, Cell, Composed, DifferentPair, Item, Pair}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "AntiKnight:"
 
     @property
@@ -96,7 +96,7 @@ class TestAntiMonkey(TestAnti):
         return {Anti, AntiMonkey, Cell, Composed, DifferentPair, Item, Pair}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "AntiMonkey:"
 
     @property
@@ -127,7 +127,7 @@ class TestAntiKing(TestAnti):
         return {Anti, AntiKing, Cell, Composed, DifferentPair, Item, Pair}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "AntiKing:"
 
     @property
@@ -150,7 +150,7 @@ class TestAntiQueen(TestAnti):
         return 36
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "AntiQueen: [8, 9]"
 
     @property

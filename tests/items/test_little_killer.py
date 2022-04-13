@@ -29,7 +29,7 @@ class TestLittleKiller(TestItem):
         return {Cell, Composed, Item, LittleKiller, Region}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "T3C=20"
 
     def test_create(self):

@@ -14,7 +14,12 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = LessThanEqualDifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
+        self.item = LessThanEqualDifferencePair(
+            self.board,
+            Cell.make(self.board, 1, 2),
+            Cell.make(self.board, 1, 3),
+            1
+        )
 
     @property
     def has_rule(self) -> bool:
@@ -22,7 +27,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def difference(self) -> int:
-        return 0
+        return 1
 
     @property
     def representation(self) -> str:
@@ -31,7 +36,8 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
             "("
             "Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
+            "1"
             ")"
         )
 

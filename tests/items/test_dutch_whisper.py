@@ -3,11 +3,15 @@ from typing import Type
 
 from src.items.cell import Cell
 from src.items.composed import Composed
+from src.items.difference_line import DifferenceLine
+from src.items.difference_pair import DifferencePair
 from src.items.dutch_whisper import DutchWhisper
 from src.items.item import Item
-from src.items.line import Line, DifferenceLine
+from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
+from src.items.line import Line
+from src.items.pair import Pair
 from src.items.region import Region
-from tests.items.test_line import TestDifferenceLine
+from tests.items.test_difference_line import TestDifferenceLine
 
 
 class TestDutchWhispers(TestDifferenceLine):
@@ -22,7 +26,8 @@ class TestDutchWhispers(TestDifferenceLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, DifferenceLine, DutchWhisper, Item, Line, Region}
+        return {Cell, Composed, DifferenceLine, DifferencePair, DutchWhisper, Item, LessThanEqualDifferencePair, Line,
+                Pair, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

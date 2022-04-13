@@ -15,4 +15,4 @@ class GreaterThanEqualDifferencePair(DifferencePair):
         b = LpVariable(f"Indicator_{self.name}", 0, 1, LpInteger)
         x = solver.values[self.c1.row][self.c1.column] - solver.values[self.c2.row][self.c2.column]
         solver.model += - big_m * (1 - b) + self.difference * b <= x
-        solver.model += x <= - self.difference * (1 - b) * big_m * b
+        solver.model += x <= - self.difference * (1 - b) + big_m * b

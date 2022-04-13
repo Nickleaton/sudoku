@@ -43,7 +43,7 @@ class TestSolution(unittest.TestCase):
         )
 
     @property
-    def config(self):
+    def config(self) -> str:
         return (
             "Solution:\n"
             "  - '123456789'\n"

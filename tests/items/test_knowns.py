@@ -31,7 +31,7 @@ class TestKnowns(TestComposed):
         self.item = Knowns(self.board, lines)
 
     @property
-    def config(self):
+    def config(self) -> str:
         return (
             "Knowns:\n"
             "  - 8..4.6..3\n"

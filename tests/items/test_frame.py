@@ -22,7 +22,7 @@ class TestFrame(TestItem):
         return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "T1=20"
 
     def test_create(self):

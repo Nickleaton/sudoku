@@ -21,7 +21,7 @@ class TestPair(TestItem):
         return "Pair(Board(9, 9, 3, 3, None, None, None, None), Cell(None, 1, 2), Cell(None, 1, 3))"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "[[1, 2], [1, 3]]"
 
     @property
@@ -33,10 +33,6 @@ class TestPair(TestItem):
         item = Item.create(self.item.__class__.__name__, self.board, data)
         self.assertIsNotNone(item)
         self.assertEqual(self.item.__class__, item.__class__)
-
-    def test_difference(self):
-        self.assertIsNone(self.item.difference)
-
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

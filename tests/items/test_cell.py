@@ -22,7 +22,7 @@ class TestCell(TestItem):
         return {Item, Cell}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Cell:\n" \
                "    Row: 1\n" \
                "    Column: 2\n"
@@ -73,7 +73,7 @@ class TestCellReference(TestItem):
         )
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "CellReference:\n" \
                "    Row: 1\n" \
                "    Column: 2\n"
@@ -100,7 +100,7 @@ class TestEven(TestCellReference):
         return "Even(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Even:\n" \
                "    Row: 1\n" \
                "    Column: 2\n"
@@ -133,7 +133,7 @@ class TestOdd(TestCellReference):
         return "Odd(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Odd:\n" \
                "    Row: 1\n" \
                "    Column: 2\n"
@@ -172,7 +172,7 @@ class TestFortress(TestCellReference):
         )
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Fortress:\n" \
                "    Row: 1\n" \
                "    Column: 2\n"
@@ -202,7 +202,7 @@ class TestKnown(TestCellReference):
                 )
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Known:\n" \
                "    Row: 1\n" \
                "    Column: 2\n" \

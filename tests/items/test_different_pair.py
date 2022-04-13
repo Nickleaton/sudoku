@@ -20,7 +20,7 @@ class TestDifferentPair(TestPair):
         return "DifferentPair(Board(9, 9, 3, 3, None, None, None, None), Cell(None, 1, 2), Cell(None, 1, 3))"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Cells: [ [1, 2], [1, 3] ]\nDigits: 1,2"
 
     @property

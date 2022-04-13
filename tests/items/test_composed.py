@@ -30,7 +30,7 @@ class TestComposed(TestItem):
         self.assertEqual(self.size, count)
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Composed:"
 
     @property
@@ -80,7 +80,7 @@ class TestConstraints(TestComposed):
         )
 
     @property
-    def config(self):
+    def config(self) -> str:
         return (
             "Constraints:\n"
             "  - Columns:\n"

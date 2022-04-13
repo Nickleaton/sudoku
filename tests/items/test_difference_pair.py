@@ -13,7 +13,11 @@ class TestDifferencePair(TestPair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
+        self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 0)
+
+    @property
+    def config(self) -> str:
+        return "Cells: [[1, 2], [1, 3]]\nDifference: 1"
 
     @property
     def has_rule(self) -> bool:
@@ -30,7 +34,8 @@ class TestDifferencePair(TestPair):
             "("
             "Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
+            "0"
             ")"
         )
 

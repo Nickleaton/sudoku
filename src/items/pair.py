@@ -1,5 +1,5 @@
 import abc
-from typing import Optional, List, Set, Type, Dict
+from typing import List, Set, Type, Dict
 
 from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board
@@ -42,10 +42,6 @@ class Pair(Item):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Pair'})
-
-    @property
-    def difference(self) -> Optional[int]:
-        return None
 
     @property
     def label(self) -> str:

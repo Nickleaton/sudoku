@@ -19,7 +19,7 @@ class TestQuadruple(TestItem):
         return "Quadruple(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), '12')"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Quadruple: 22=12"
 
     @property

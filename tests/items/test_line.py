@@ -7,7 +7,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
-from src.items.line import Line, DifferenceLine
+from src.items.line import Line
 from src.items.region import Region
 from tests.items.test_item import TestItem
 
@@ -40,28 +40,13 @@ class TestLine(TestItem):
         return {Cell, Composed, Item, Line, Region}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return f"{self.clazz.__name__}: [[1, 1], [1, 2], [1, 3]]"
 
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.clazz.__name__, self.board, data[self.clazz.__name__])
         self.assertIsInstance(item, self.clazz)
-
-
-class TestDifferenceLine(TestLine):
-
-    @property
-    def clazz(self):
-        return DifferenceLine
-
-    @property
-    def has_rule(self) -> bool:
-        return True
-
-    @property
-    def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, DifferenceLine, Item, Line, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

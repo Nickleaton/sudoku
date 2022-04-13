@@ -24,7 +24,7 @@ class TestMagicSquare(TestComposed):
         return "MagicSquare(Board(9, 9, 3, 3, None, None, None, None), Coord(5, 5), Coord(1, 1))"
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Center: [5, 5]\nCorner: [1, 1]"
 
     def test_create(self):

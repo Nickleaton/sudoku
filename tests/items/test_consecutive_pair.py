@@ -18,6 +18,10 @@ class TestConsecutivePair(TestDifferencePair):
         self.item = ConsecutivePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
+    def config(self) -> str:
+        return "[[1, 2], [1, 3]]"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

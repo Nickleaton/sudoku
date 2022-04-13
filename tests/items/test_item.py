@@ -15,7 +15,7 @@ class TestItem(unittest.TestCase):
         self.item = Item(self.board)
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Item:"
 
     def test_create(self):
@@ -69,12 +69,13 @@ class TestItem(unittest.TestCase):
         return {Item}
 
     def test_used_classes(self):
-        # print(self.__class__.__name__)
-        # expected_names = sorted([cls.__name__ for cls in self.expected_classes])
-        # used_names = sorted([cls.__name__ for cls in self.item.used_classes])
-        # print(f"{{{', '.join(expected_names)}}}")
-        # print(f"{{{', '.join(used_names)}}}")
-        # print()
+        if self.expected_classes != self.item.used_classes:
+            print(self.__class__.__name__)
+            expected_names = sorted([cls.__name__ for cls in self.expected_classes])
+            used_names = sorted([cls.__name__ for cls in self.item.used_classes])
+            print(f"{{{', '.join(expected_names)}}}")
+            print(f"{{{', '.join(used_names)}}}")
+            print()
         self.assertEqual(self.expected_classes, self.item.used_classes)
 
     def test_add_variables(self):

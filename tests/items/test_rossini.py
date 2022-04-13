@@ -28,7 +28,7 @@ class TestRossini(TestItem):
         return {Item, Rossini}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "T1I"
 
     def test_create(self):

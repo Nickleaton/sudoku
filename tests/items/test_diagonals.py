@@ -27,7 +27,7 @@ class TestDiagonal(TestRegion):
         return {Item, Composed, Region, Diagonal}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "Diagonal: 1"
 
     def test_create(self):
@@ -55,7 +55,7 @@ class TestTLBR(TestDiagonal):
         return {Item, Composed, Cell, Region, Diagonal, TLBR}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "TLBR:"
 
     def test_create(self):
@@ -79,7 +79,7 @@ class TestBLTR(TestDiagonal):
         return {Item, Composed, Cell, Region, Diagonal, BLTR}
 
     @property
-    def config(self):
+    def config(self) -> str:
         return "BLTR:"
 
     def test_create(self):
