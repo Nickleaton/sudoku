@@ -3,14 +3,13 @@ from typing import List
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.difference_line import DifferenceLine
+from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
 
 
-class DutchWhisper(DifferenceLine):
+class DutchWhisper(GreaterThanEqualDifferenceLine):
 
     def __init__(self, board: Board, cells: List[Cell]):
-        super().__init__(board, cells)
-        self.difference = 4
+        super().__init__(board, cells, 4)
 
     @property
     def glyphs(self) -> List[Glyph]:

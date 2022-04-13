@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.cell import Cell
 from src.items.composed import Composed
-from src.items.difference_line import DifferenceLine
+from src.items.less_than_equal_difference_line import DifferenceLine
 from src.items.difference_pair import DifferencePair
 from src.items.german_whisper import GermanWhisper
 from src.items.item import Item

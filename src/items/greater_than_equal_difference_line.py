@@ -2,18 +2,18 @@ from typing import List
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
+from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.line import Line
 from src.utils.rule import Rule
 
 
-class DifferenceLine(Line):
+class GreaterThanEqualDifferenceLine(Line):
 
-    def __init__(self, board: Board, cells: List[Cell]):
+    def __init__(self, board: Board, cells: List[Cell], difference: int):
         super().__init__(board, cells)
-        self.difference = board.maximum_digit
+        self.difference = difference
         for i in range(1, len(cells)):
-            self.add(LessThanEqualDifferencePair(self.board, cells[i - 1], cells[i], self.difference))
+            self.add(GreaterThanEqualDifferencePair(self.board, cells[i - 1], cells[i], self.difference))
 
     @property
     def rules(self) -> List[Rule]:
