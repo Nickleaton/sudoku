@@ -11,10 +11,12 @@ import tests.items.test_entropic
 import tests.items.test_equal_sum
 import tests.items.test_frame
 import tests.items.test_german_whisper
+import tests.items.test_greater_than_equal_difference_pair
 import tests.items.test_indexing
 import tests.items.test_item
 import tests.items.test_knowns
 import tests.items.test_kropki_pair
+import tests.items.test_less_than_equal_difference_pair
 import tests.items.test_line
 import tests.items.test_little_killer
 import tests.items.test_lock_out

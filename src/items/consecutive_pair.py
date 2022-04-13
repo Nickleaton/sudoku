@@ -1,12 +1,11 @@
 from typing import List
 
 from src.glyphs.glyph import Glyph, ConsecutiveGlyph
-from src.items.difference_pair import DifferencePair
-from src.solvers.pulp_solver import PulpSolver
+from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.utils.rule import Rule
 
 
-class ConsecutivePair(DifferencePair):
+class ConsecutivePair(LessThanEqualDifferencePair):
 
     @property
     def difference(self):
@@ -23,10 +22,3 @@ class ConsecutivePair(DifferencePair):
     @property
     def glyphs(self) -> List[Glyph]:
         return [ConsecutiveGlyph(self.__class__.__name__, self.c1.coord.center, self.c2.coord.center)]
-
-    def add_constraint(self, solver: PulpSolver) -> None:
-        value1 = solver.values[self.c1.row][self.c1.column]
-        value2 = solver.values[self.c2.row][self.c2.column]
-        diff = value1 - value2
-        solver.model += diff <= self.difference, f"{self.name}_upper"
-        solver.model += -diff <= self.difference, f"{self.name}_lower"
