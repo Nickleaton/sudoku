@@ -25,7 +25,7 @@ class Rossini(Item):
         self.coords.append(self.side.start_cell(self.board, self.index))
         self.coords.append(self.coords[0] + self.offset)
         self.coords.append(self.coords[1] + self.offset)
-        self.cells = [Cell.make(self.board, coord.row, coord.column) for coord in self.coords]
+        self.cells = [Cell.make(self.board, int(coord.row), int(coord.column)) for coord in self.coords]
 
     @property
     def name(self) -> str:
@@ -93,7 +93,7 @@ class Rossini(Item):
 class Rossinis(Composed):
     """ Collection of Rossini """
 
-    def __init__(self, board: Board, items: List[Rossini]):
+    def __init__(self, board: Board, items: List[Item]):
         super().__init__(board, items)
 
     @classmethod
