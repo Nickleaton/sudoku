@@ -4,6 +4,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.difference_line import DifferenceLine
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
+from src.items.item import Item
 from src.utils.rule import Rule
 
 

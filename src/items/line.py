@@ -9,9 +9,9 @@ from src.utils.rule import Rule
 
 class Line(Region):
 
-    def __init__(self, board: Board, cells: List[Cell]):
+    def __init__(self, board: Board, items: List[Item]):
         super().__init__(board)
-        self.add_items(cells)
+        self.add_items(items)
 
     @property
     def name(self) -> str:
