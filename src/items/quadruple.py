@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, QuadrupleGlyph
 from src.items.board import Board
+from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -37,10 +38,12 @@ class Quadruple(Item):
         ]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: str) -> Item:
-        position = Coord(int(yaml.split("=")[0][0]), int(yaml.split("=")[0][1]))
-        numbers = yaml.split("=")[1]
-        return cls(board, position, [int(n) for n in numbers])
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        if not isinstance(yaml, str):
+            raise ConstraintException(f"Expecting str, got {yaml!r}")
+        position_str, numbers = yaml.split("=")
+        position = Coord(int(position_str[0]), int(position_str[1]))
+        return cls(board, position, numbers)
 
     def add_constraint(self, solver: PulpSolver) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]

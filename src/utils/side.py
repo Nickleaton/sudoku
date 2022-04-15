@@ -6,8 +6,10 @@ from src.utils.cyclic import Cyclic
 from src.utils.direction import Direction
 from src.utils.order import Order
 
+
 class SideException(Exception):
     pass
+
 
 class Side(Enum):
     TOP = 'T'

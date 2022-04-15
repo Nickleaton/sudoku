@@ -1,15 +1,16 @@
 import abc
 from abc import ABC
-from typing import Optional, List, Set, Type
+from typing import Optional, List, Set, Type, Dict, Any
 
 from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board
+from src.items.constraint_exception import ConstraintException
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
 class Item(ABC):
-    classes = {}
+    classes: Dict[str, 'Item'] = {}
 
     def __init__(self, board: Board):
         super().__init__()
@@ -52,8 +53,37 @@ class Item(ABC):
     def used_classes(self) -> Set[Type['Item']]:
         return set(self.__class__.__mro__).difference({abc.ABC, object})
 
+    @staticmethod
+    def check_yaml_dict(yaml: Dict | List | str | int | None):
+        if not isinstance(yaml, dict):
+            raise ConstraintException(f"Expecting Dict, got {yaml!r}")
+
+    @staticmethod
+    def check_yaml_list(yaml: Dict | List | str | int | None):
+        if not isinstance(yaml, list):
+            raise ConstraintException(f"Expecting List, got {yaml!r}")
+
+    @staticmethod
+    def check_yaml_str(yaml: Dict | List | str | int | None):
+        if not isinstance(yaml, str):
+            raise ConstraintException(f"Expecting str, got {yaml!r}")
+
+    @staticmethod
+    def check_yaml_int(yaml: Dict | List | str | int | None):
+        if not isinstance(yaml, int):
+            raise ConstraintException(f"Expecting int, got {yaml!r}")
+
+    @staticmethod
+    def check_yaml_none(yaml: Dict | List | str | int | None):
+        if yaml is not None:
+            raise ConstraintException(f"Expecting None, got {yaml!r}")
+
     @classmethod
-    def create(cls, name: str, board: Board, yaml: List) -> 'Item':
+    def validate(cls, yaml: Any) -> bool:
+        pass
+
+    @classmethod
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Item':
         return cls.classes[name].create(name, board, yaml)
 
     def __repr__(self) -> str:

@@ -46,11 +46,11 @@ class TestBoard(unittest.TestCase):
         self.assertEqual("Board(8, 8, 2, 4, 'a', 'b', 'c', 'd')", repr(board))
 
     def test_no_boxes(self):
-        board = Board(9, 9, None, None, 'a', 'b', 'c', 'd')
+        board = Board(9, 9, 0, 0, 'a', 'b', 'c', 'd')
         self.assertEqual(9, board.board_columns)
         self.assertEqual(9, board.board_rows)
-        self.assertIsNone(board.box_columns)
-        self.assertIsNone(board.box_rows)
+        self.assertEqual(0, board.box_columns)
+        self.assertEqual(0, board.box_rows)
         self.assertEqual('a', board.reference)
         self.assertEqual('b', board.video)
         self.assertEqual('c', board.title)

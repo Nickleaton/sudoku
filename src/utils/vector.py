@@ -59,7 +59,9 @@ class Vector:
             elif self.start.row > self.end.row:
                 return Direction.DOWN
             else:
-                return Direction.CENTER  # pragma: no cover
+                return Direction.CENTER
+        # pragma: no cover
+        return Direction.CENTER
 
     def mergeable(self, other: 'Vector') -> bool:
         if self.start == other.start:

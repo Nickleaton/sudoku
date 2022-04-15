@@ -1,10 +1,12 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, ArrowLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
+from src.items.constraint_exception import ConstraintException
+from src.items.item import Item
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -31,7 +33,9 @@ class Arrow(Line):
         return super().tags.union({'Arrow', 'Sum'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml) -> 'Arrow':
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        if not isinstance(yaml, list):
+            raise ConstraintException(f"Expecting list, got {yaml!r}")
         cells = [Cell.make(board, r, c) for r, c in yaml]
         return cls(board, cells)
 

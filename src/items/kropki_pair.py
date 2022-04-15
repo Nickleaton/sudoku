@@ -2,7 +2,7 @@
 Kropki Dots
 """
 from itertools import product
-from typing import List
+from typing import List, Dict
 
 from pulp import LpVariable, LpInteger, lpSum
 
@@ -18,7 +18,7 @@ class KropkiPair(Pair):
 
     def __init__(self, board: Board, c1: Cell, c2: Cell):
         super().__init__(board, c1, c2)
-        self.sos = None
+        self.sos: Dict[int, LpVariable] = {}
 
     @property
     def factor(self) -> int:

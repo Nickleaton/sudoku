@@ -1,10 +1,11 @@
-from typing import List, Tuple, Optional, Dict
+from typing import List, Dict
 
 from pulp import lpSum
 
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
+from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -15,12 +16,11 @@ class Knight(Composed):
 
     def __init__(self, board: Board, digits: List[int]):
         super().__init__(board, [])
-        self.cells = [Cell.make(board, row, column) for row in board.row_range for column in board.column_range]
-        self.add_items(self.cells)
+        self.add_items([Cell.make(board, row, column) for row in board.row_range for column in board.column_range])
         self.digits = digits
 
     @staticmethod
-    def offsets() -> List[Tuple[int, int]]:
+    def offsets() -> List[Coord]:
         return \
             [
                 Coord(-1, -2),
@@ -38,11 +38,13 @@ class Knight(Composed):
         return self.__class__.__name__
 
     @property
-    def tags(self) -> List[str]:
+    def tags(self) -> set[str]:
         return super().tags.union({'Knight'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        if not isinstance(yaml, list):
+            raise ConstraintException(f"Expecting list, got {yaml!r}")
         return Knight(board, yaml)
 
     @property

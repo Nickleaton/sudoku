@@ -10,11 +10,11 @@ class VectorList:
     def __init__(self, items: List[Vector]):
         self.items = items
 
-    def __iter__(self):
+    def __iter__(self) -> 'VectorList':
         self.n = 0
         return self
 
-    def __next__(self):
+    def __next__(self) -> Vector:
         if self.n < len(self):
             result = self.items[self.n]
             self.n += 1

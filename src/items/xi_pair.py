@@ -4,7 +4,7 @@ from src.items.sum_pair import SumPair
 class XIPair(SumPair):
 
     @property
-    def total(self):
+    def total(self) -> int:
         return 11
 
     @property

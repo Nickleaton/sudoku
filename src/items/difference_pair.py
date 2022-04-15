@@ -14,7 +14,8 @@ class DifferencePair(Pair):
         self.difference = difference
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         c1 = Cell(board, yaml['Cells'][0][0], yaml['Cells'][0][1])
         c2 = Cell(board, yaml['Cells'][1][0], yaml['Cells'][1][1])
         difference = yaml['Difference']

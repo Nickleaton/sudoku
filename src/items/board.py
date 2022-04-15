@@ -11,8 +11,8 @@ class Board:
     def __init__(self,
                  board_rows: int,
                  board_columns: int,
-                 box_rows: Optional[int] = None,
-                 box_columns: Optional[int] = None,
+                 box_rows: int = 0,
+                 box_columns: int = 0,
                  reference: Optional[str] = None,
                  video: Optional[str] = None,
                  title: Optional[str] = None,
@@ -30,10 +30,10 @@ class Board:
         self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
         # Boxes
-        if box_rows is None:
-            self.box_rows = None
-            self.box_columns = None
-            self.box_count = None
+        if box_rows == 0:
+            self.box_rows = 0
+            self.box_columns = 0
+            self.box_count = 0
             self.box_range = None
         else:
             assert board_rows % box_rows == 0
@@ -52,15 +52,15 @@ class Board:
         return (row >= 1) and (row <= self.board_rows) and (column >= 1) and (column <= self.board_columns)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
-        return self.is_valid(coord.row, coord.column)
+        return self.is_valid(int(coord.row), int(coord.column))
 
     @classmethod
-    def create(cls, name: str, yaml: Optional[Dict]) -> 'Board':
+    def create(cls, name: str, yaml: Dict) -> 'Board':
         y = yaml[name]
         board_rows = int(y['Board'].split("x")[0])
         board_columns = int(y['Board'].split("x")[1])
-        box_rows = int(y['Boxes'].split("x")[0]) if 'Boxes' in y else None
-        box_columns = int(y['Boxes'].split("x")[1]) if 'Boxes' in y else None
+        box_rows = int(y['Boxes'].split("x")[0]) if 'Boxes' in y else 0
+        box_columns = int(y['Boxes'].split("x")[1]) if 'Boxes' in y else 0
         reference = y['Reference'] if 'Reference' in y else None
         video = y['Video'] if 'Video' in y else None
         title = y['Title'] if 'Title' in y else None
@@ -92,7 +92,7 @@ class Board:
         return result
 
     def to_yaml(self) -> str:
-        return yaml.dump(self.to_dict())
+        return str(yaml.dump(self.to_dict()))
 
     def __repr__(self) -> str:
         return (

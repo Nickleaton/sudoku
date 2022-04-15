@@ -1,4 +1,4 @@
-from typing import List, Optional, Dict
+from typing import List, Dict
 
 from src.items.board import Board
 from src.items.cell import Even, Odd, Fortress, Known, Cell
@@ -41,7 +41,8 @@ class Knowns(Composed):
         raise StopIteration
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_list(yaml)
         return Knowns(board, [list(y) for y in yaml])
 
     def __repr__(self) -> str:

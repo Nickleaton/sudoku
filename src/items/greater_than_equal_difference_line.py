@@ -2,16 +2,15 @@ from typing import List
 
 from src.items.board import Board
 from src.items.cell import Cell
+from src.items.difference_line import DifferenceLine
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
-from src.items.line import Line
 from src.utils.rule import Rule
 
 
-class GreaterThanEqualDifferenceLine(Line):
+class GreaterThanEqualDifferenceLine(DifferenceLine):
 
     def __init__(self, board: Board, cells: List[Cell], difference: int):
-        super().__init__(board, cells)
-        self.difference = difference
+        super().__init__(board, cells, difference)
         for i in range(1, len(cells)):
             self.add(GreaterThanEqualDifferencePair(self.board, cells[i - 1], cells[i], self.difference))
 

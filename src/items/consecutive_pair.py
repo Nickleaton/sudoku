@@ -3,6 +3,7 @@ from typing import List, Dict
 from src.glyphs.glyph import Glyph, ConsecutiveGlyph
 from src.items.board import Board
 from src.items.cell import Cell
+from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.utils.rule import Rule
@@ -14,9 +15,11 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         super().__init__(board, c1, c2, 1)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: List) -> Item:
-        c1 = Cell(board, yaml[0][0], yaml[0][1])
-        c2 = Cell(board, yaml[1][0], yaml[1][1])
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        if not isinstance(yaml, list):
+            raise ConstraintException(f"Expecting list, got {yaml!r}")
+        c1 = Cell.make(board, yaml[0][0], yaml[0][1])
+        c2 = Cell.make(board, yaml[1][0], yaml[1][1])
         return cls(board, c1, c2)
 
     @property

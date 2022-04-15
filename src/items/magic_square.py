@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -25,9 +25,7 @@ class MagicSquare(Composed):
 
     def __init__(self, board: Board, center: Coord, corner: Coord):
         positions = [center + d * corner for d in Direction.all()]
-        cells = [Cell.make(board, p.row, p.column) for p in positions]
-        super().__init__(board, cells)
-        self.cells = cells
+        super().__init__(board, [Cell.make(board, p.row, p.column) for p in positions])
         self.center = center
         self.corner = corner
 
@@ -64,7 +62,8 @@ class MagicSquare(Composed):
         return super().tags.union({'MagicSquare', 'Sum'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: str) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         center = Coord(yaml['Center'][0], yaml['Center'][1])
         corner = Coord(yaml['Corner'][0], yaml['Corner'][1])
         return cls(board, center, corner)

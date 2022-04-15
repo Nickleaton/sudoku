@@ -21,7 +21,7 @@ class Point:
         """
         return f"translate({round(self.x, 1)}, {round(self.y, 1)})"
 
-    def __add__(self, other: 'Point'):
+    def __add__(self, other: 'Point') -> 'Point':
         """
         Add two points
         :param other:
@@ -29,7 +29,7 @@ class Point:
         """
         return Point(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: 'Point'):
+    def __sub__(self, other: 'Point') -> 'Point':
         """
         Difference of two points
         :param other:
@@ -37,7 +37,7 @@ class Point:
         """
         return Point(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: float):
+    def __mul__(self, other: float) -> 'Point':
         """
         Scale a point by a scale factor
         :param other: scale
@@ -45,7 +45,7 @@ class Point:
         """
         return Point(self.x * other, self.y * other)
 
-    def __truediv__(self, other: float):
+    def __truediv__(self, other: float) -> 'Point':
         """
         Scale a point by dividing by a  scale factor
         :param other: scale
@@ -69,7 +69,7 @@ class Point:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     @property
-    def coordinates(self) -> Tuple[int, int]:
+    def coordinates(self) -> Tuple[float, float]:
         """
         Get the coordinates as a tuple
         :return:

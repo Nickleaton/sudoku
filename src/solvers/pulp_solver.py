@@ -37,9 +37,11 @@ class PulpSolver(Solver):
                           self.values[row][column], f"Unique_cell_{row}_{column}"
 
     def save(self, filename: str) -> None:
+        super().save(filename)
         self.model.writeLP(filename)
 
-    def solve(self):
+    def solve(self) -> None:
+        super().solve()
         self.model.solve()
         self.status = LpStatus[self.model.status]
         if self.model.status != LpStatusOptimal:

@@ -13,7 +13,7 @@ class Solution:
         else:
             self.data = [[int(data[row - 1][column - 1]) for column in board.column_range] for row in board.row_range]
 
-    def set_value(self, row: int, column: int, value: int):
+    def set_value(self, row: int, column: int, value: int) -> None:
         self.data[row - 1][column - 1] = int(value)
 
     def get_value(self, row: int, column: int) -> int:

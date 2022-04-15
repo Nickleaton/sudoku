@@ -2,6 +2,7 @@ from typing import List, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
+from src.items.item import Item
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -14,7 +15,8 @@ class DifferentPair(Pair):
         self.digits = digits
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> 'DifferentPair':
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         c1 = Cell(board, yaml['Cells'][0][0], yaml['Cells'][0][1])
         c2 = Cell(board, yaml['Cells'][1][0], yaml['Cells'][1][1])
         digits = yaml['Digits']

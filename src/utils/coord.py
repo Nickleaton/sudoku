@@ -1,5 +1,3 @@
-from typing import Any
-
 from src.utils.config import Config
 from src.utils.point import Point
 

@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
+from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
@@ -67,7 +68,9 @@ class Rossini(Item):
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: str) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        if not isinstance(yaml, str):
+            raise ConstraintException(f"Expecting str, got {yaml!r}")
         side = Side.create(yaml[0])
         index = int(yaml[1])
         order = Order.create(yaml[2])
@@ -94,5 +97,7 @@ class Rossinis(Composed):
         super().__init__(board, items)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: List[str]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        if not isinstance(yaml, list):
+            raise ConstraintException(f"Expecting list, got {yaml!r}")
         return cls(board, [Rossini.create('Rossini', board, y) for y in yaml])

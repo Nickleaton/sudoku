@@ -1,4 +1,4 @@
-from typing import Dict, Optional, List
+from typing import Dict, List
 
 from src.glyphs.glyph import Glyph, RectGlyph
 from src.items.board import Board
@@ -17,7 +17,8 @@ class Indexer(StandardRegion):
         return f"{self.__class__.__name__}_{self.index}"
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_int(yaml)
         index = yaml
         return cls(board, index)
 

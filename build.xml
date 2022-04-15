@@ -13,9 +13,6 @@
     <target name="build">
         <echo>Build</echo>
     </target>
-    <target name="document">
-        <echo>Document</echo>
-    </target>
     <target name="test">
         <mkdir dir="output/tests"/>
         <mkdir dir="output/lp"/>
@@ -51,6 +48,16 @@
             <arg value="--html-report"/>
             <arg value="output/mypy"/>
             <arg value="src"/>
+        </exec>
+    </target>
+    <target name="documentation">
+        <mkdir dir="output/documentation"/>
+        <exec executable="pdoc" failonerror="false" taskname="mypy">
+            <arg value="--html"/>
+            <arg value="--force"/>
+            <arg value="-o"/>
+            <arg value="output/documentation"/>
+            <arg value="src/"/>
         </exec>
     </target>
 </project>

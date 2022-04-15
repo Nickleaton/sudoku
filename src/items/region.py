@@ -21,7 +21,8 @@ class Region(Composed):
         super().__init__(board, [])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_none(yaml)
         return cls(board)
 
     @property
@@ -63,7 +64,8 @@ class StandardRegion(Region):
         return []
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_int(yaml)
         return cls(board, yaml)
 
     def __repr__(self) -> str:
@@ -82,7 +84,8 @@ class Column(StandardRegion):
         self.add_items(cells)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_int(yaml)
         return cls(board, yaml)
 
     @property
@@ -113,7 +116,8 @@ class Row(StandardRegion):
         self.add_items(cells)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_int(yaml)
         return cls(board, yaml)
 
     @property
@@ -161,7 +165,8 @@ class Box(StandardRegion):
         return Coord(self.board.box_rows, self.board.box_columns)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_int(yaml)
         return cls(board, yaml)
 
     def __repr__(self) -> str:
@@ -205,7 +210,8 @@ class DisjointGroup(StandardRegion):
         self.add_items(cells)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_int(yaml)
         return cls(board, yaml)
 
     def __repr__(self) -> str:
@@ -248,7 +254,8 @@ class Window(Region):
         return f"{self.__class__.__name__}_{self.center.row}_{self.center.column}"
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_str(yaml)
         row = int(yaml.split(',')[0])
         column = int(yaml.split(',')[1])
         coord = Coord(row, column)

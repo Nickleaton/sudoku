@@ -487,8 +487,8 @@ class TestFortressCellGlyph(TestSquareGlyph):
     @property
     def target(self):
         return (
-            '<rect class="Style" height="100.0" '
-            'transform="translate(100, 100)" width="100.0" x="0" y="0" />'
+            '<rect class="Style" height="100" '
+            'transform="translate(100, 100)" width="100" x="0" y="0" />'
         )
 
     @property

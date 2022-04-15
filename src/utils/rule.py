@@ -27,7 +27,7 @@ class Rule:
         return " ".join(re.findall('[A-Z][^A-Z]*', self.name))
 
     @property
-    def html(self):
+    def html(self) -> str:
         if self.text is None:
             return ""
         else:

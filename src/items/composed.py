@@ -2,6 +2,7 @@ from typing import List, Dict, Set, Type
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
+from src.items.cell import Cell
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -21,6 +22,10 @@ class Composed(Item):
     def add_items(self, items: List[Item]):
         for item in items:
             self.add(item)
+
+    @property
+    def cells(self) -> List[Cell]:
+        return [item for item in self.items if isinstance(item, Cell)]
 
     @property
     def rules(self) -> List[Rule]:
@@ -75,7 +80,8 @@ class Composed(Item):
         return len(self.items)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_none(yaml)
         return cls(board, [])
 
     def __repr__(self) -> str:
@@ -95,8 +101,9 @@ class Constraints(Composed):
         return result
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
         result = cls(board)
+        Item.check_yaml_list(yaml)
         for constraint in yaml:
             if isinstance(constraint, str):
                 result.add(Item.create(constraint, board, constraint))

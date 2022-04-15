@@ -57,7 +57,8 @@ class Cell(Item):
             Cell.make(board, row, column)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         row = yaml['Row']
         column = yaml['Column']
         return cls(board, row, column)
@@ -102,7 +103,8 @@ class CellReference(Item):
         self.column = column
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         row = yaml['Row']
         column = yaml['Column']
         return cls(board, row, column)
@@ -233,7 +235,8 @@ class Known(CellReference):
                         f"Known_{self.row}_{self.column}_eq_{self.digit}"
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Optional[Dict]) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         row = yaml['Row']
         column = yaml['Column']
         digit = yaml['Digit']

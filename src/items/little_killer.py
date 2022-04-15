@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import lpSum
 
@@ -41,7 +41,8 @@ class LittleKiller(Region):
         )
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: str) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_str(yaml)
         parts = yaml.split("=")
         total = int(parts[1])
         offset = int(parts[0][1])

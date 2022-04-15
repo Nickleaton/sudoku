@@ -13,7 +13,8 @@ from src.utils.rule import Rule
 class Diagonal(Region):
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         return cls(board)
 
     def __repr__(self) -> str:
@@ -36,7 +37,8 @@ class TLBR(Diagonal):
         self.add_items(cells)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         return cls(board)
 
     @property
@@ -59,7 +61,8 @@ class BLTR(Diagonal):
         self.add_items(cells)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_dict(yaml)
         return cls(board)
 
     @property

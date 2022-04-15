@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -18,7 +18,8 @@ class Line(Region):
         return f"{self.__class__.__name__}_{self.cells[0].row}_{self.cells[0].column}"
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        Item.check_yaml_list(yaml)
         cells = [Cell.make(board, r, c) for r, c in yaml]
         return cls(board, cells)
 

@@ -30,7 +30,7 @@ class Pair(Item):
         return result
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict) -> 'Item':
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
         c1 = Cell(board, yaml[0][0], yaml[0][1])
         c2 = Cell(board, yaml[1][0], yaml[1][1])
         return cls(board, c1, c2)
