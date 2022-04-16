@@ -1,5 +1,5 @@
 from itertools import product
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Any
 
 from src.items.board import Board
 
@@ -55,7 +55,7 @@ class Solution:
             if len(row) != max(board.column_range):
                 result.append(f"Expecting {max(board.column_range)} items on row {i}, got {len(row)} '{row}'")
             for d in row:
-                if not d in board.digit_range:
+                if d not in board.digit_range:
                     result.append(f"Not a valid digit {d} in row {i}, '{row}'")
         return result
 
