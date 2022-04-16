@@ -1,8 +1,12 @@
 from itertools import product
+from typing import List, Dict
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum
 
+from src.items.between import Between
 from src.items.board import Board
+from src.items.distinct_renban import DistinctRenban
+from src.items.renban import Renban
 from src.items.solution import Solution
 from src.solvers.solver import Solver
 
@@ -28,9 +32,9 @@ class PulpSolver(Solver):
                                        board.maximum_digit,
                                        LpInteger
                                        )
-        self.renbans = {}
-        self.distinct_renbans = []
-        self.betweens = {}
+        self.renbans: Dict[str, Dict] = {}
+        self.distinct_renbans: Dict[str, Dict] = {}
+        self.betweens: Dict[str, Dict] = {}
 
         for row, column in product(board.row_range, board.column_range):
             self.model += lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range) == \

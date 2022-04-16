@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Sequence
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
@@ -8,7 +8,7 @@ from src.items.greater_than_equal_difference_line import GreaterThanEqualDiffere
 
 class GermanWhisper(GreaterThanEqualDifferenceLine):
 
-    def __init__(self, board: Board, cells: List[Cell]):
+    def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board, cells, 5)
 
     @property

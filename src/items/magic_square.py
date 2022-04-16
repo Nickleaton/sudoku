@@ -1,9 +1,10 @@
-from typing import List, Dict
+from typing import List, Dict, Any, Tuple
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
+from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -25,7 +26,7 @@ class MagicSquare(Composed):
 
     def __init__(self, board: Board, center: Coord, corner: Coord):
         positions = [center + d * corner for d in Direction.all()]
-        super().__init__(board, [Cell.make(board, p.row, p.column) for p in positions])
+        super().__init__(board, [Cell.make(board, int(p.row), int(p.column)) for p in positions])
         self.center = center
         self.corner = corner
 
@@ -61,11 +62,31 @@ class MagicSquare(Composed):
     def tags(self) -> set[str]:
         return super().tags.union({'MagicSquare', 'Sum'})
 
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_dict(yaml)
+    @staticmethod
+    def validate(yaml: Any) -> List[str]:
+        result = []
+        if not isinstance(yaml, dict):
+            result.append(f"Expecting dict, got {yaml:r}")
+            return result
+        if 'Center' not in yaml:
+            result.append(f"Expecting 'Center")
+        else:
+            result.extend(Coord.validate(yaml['Center']))
+        if 'Corner' not in yaml:
+            result.append(f"Expecting 'Center")
+        else:
+            result.extend(Coord.validate(yaml['Corner']))
+        return result
+
+    @staticmethod
+    def extract(yaml: Any) -> Tuple[Coord, Coord]:
         center = Coord(yaml['Center'][0], yaml['Center'][1])
         corner = Coord(yaml['Corner'][0], yaml['Corner'][1])
+        return center, corner
+
+    @classmethod
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        center, corner = MagicSquare.extract(yaml)
         return cls(board, center, corner)
 
     def add_constraint(self, solver: PulpSolver) -> None:

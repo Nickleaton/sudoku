@@ -1,7 +1,12 @@
 from typing import List, Dict
 
 from src.items.board import Board
-from src.items.cell import Even, Odd, Fortress, Known, Cell
+from src.items.cell import Cell
+from src.items.cell_reference import CellReference
+from src.items.constraint_exception import ConstraintException
+from src.items.known_cell import KnownCell
+from src.items.fortress_cell import FortressCell
+from src.items.even_cell import Odd, Even
 from src.items.composed import Composed
 from src.items.item import Item
 
@@ -11,7 +16,7 @@ class Knowns(Composed):
     def __init__(self, board: Board, rows: List[str]):
         super().__init__(board, [])
         self.rows = rows
-        parts = []
+        parts: List[CellReference] = []
         for y, data in enumerate(self.rows):
             row = y + 1
             for x, digit in enumerate(data):
@@ -23,26 +28,15 @@ class Knowns(Composed):
                 elif digit == 'o':
                     parts.append(Odd(board, row, column))
                 elif digit == 'f':
-                    parts.append(Fortress(board, row, column))
+                    parts.append(FortressCell(board, row, column))
                 else:
-                    parts.append(Known(self, row, column, digit))
+                    parts.append(KnownCell(board, row, column, int(digit)))
         self.add_items(parts)
-
-    def __iter__(self):
-        self._n = 0
-        return self
-
-    def __next__(self) -> Cell:
-        if self._n < len(self.items):
-            result = self.items[self._n]
-            self._n += 1
-            return result
-        self._n = 0
-        raise StopIteration
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_list(yaml)
+        if not isinstance(yaml, str):
+            raise ConstraintException(f"Expecting str, got {yaml:r}")
         return Knowns(board, [list(y) for y in yaml])
 
     def __repr__(self) -> str:

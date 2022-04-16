@@ -55,8 +55,7 @@ class ColumnIndexer(Indexer):
 
     def __init__(self, board: Board, index: int):
         super().__init__(board, index)
-        cells = [Cell.make(board, row, index) for row in board.row_range]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, row, index) for row in board.row_range])
 
     @staticmethod
     def variant() -> str:
@@ -82,8 +81,7 @@ class RowIndexer(Indexer):
 
     def __init__(self, board: Board, index: int):
         super().__init__(board, index)
-        cells = [Cell.make(board, column, index) for column in board.column_range]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, column, index) for column in board.column_range])
 
     @staticmethod
     def variant() -> str:

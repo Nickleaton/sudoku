@@ -33,8 +33,7 @@ class TLBR(Diagonal):
 
     def __init__(self, board: Board):
         super().__init__(board)
-        cells = [Cell.make(self, i, i) for i in board.row_range]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, i, i) for i in board.row_range])
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
@@ -57,8 +56,7 @@ class BLTR(Diagonal):
 
     def __init__(self, board: Board):
         super().__init__(board)
-        cells = [Cell.make(self, board.maximum_digit - i + 1, i) for i in board.row_range]
-        self.add_items(cells)
+        self.add_items([Cell.make(self, board.maximum_digit - i + 1, i) for i in board.row_range])
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:

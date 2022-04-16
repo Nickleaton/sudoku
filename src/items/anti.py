@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -20,7 +20,7 @@ class Anti(Composed):
     def offsets(self) -> List[Coord]:
         return []
 
-    def pairs(self, c1: Cell, digits: List[int]) -> List[DifferentPair]:
+    def pairs(self, c1: Cell, digits: List[int]) -> Sequence[DifferentPair]:
         result = []
         for offset in self.offsets():
             if not self.board.is_valid(c1.row + offset.row, c1.column + offset.column):

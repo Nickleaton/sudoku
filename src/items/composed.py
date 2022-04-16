@@ -1,4 +1,4 @@
-from typing import List, Dict, Set, Type
+from typing import List, Dict, Set, Type, Sequence
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -10,7 +10,7 @@ from src.utils.rule import Rule
 
 class Composed(Item):
 
-    def __init__(self, board: Board, items: List[Item]):
+    def __init__(self, board: Board, items: Sequence[Item]):
         super().__init__(board)
         self.items = items
         self._n = 0
@@ -19,7 +19,7 @@ class Composed(Item):
         self.items.append(item)
         item.parent = self
 
-    def add_items(self, items: List[Item]):
+    def add_items(self, items: Sequence[Item]):
         for item in items:
             self.add(item)
 
@@ -72,9 +72,10 @@ class Composed(Item):
         if self._n < len(self.items):
             result = self.items[self._n]
             self._n += 1
-            return result
-        self._n = 0
-        raise StopIteration
+        else:
+            self._n = 0
+            raise StopIteration
+        return result
 
     def __len__(self) -> int:
         return len(self.items)

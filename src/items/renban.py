@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Sequence, Optional
 
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
+from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.bound import Bounds
@@ -11,6 +12,10 @@ from src.utils.rule import Rule
 
 
 class Renban(Line):
+
+    def __init__(self, board: Board, cells: Sequence[Cell]):
+        super().__init__(board, cells)
+        self.identity: Optional[int] = None
 
     @property
     def name(self) -> str:

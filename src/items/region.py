@@ -80,8 +80,7 @@ class Column(StandardRegion):
 
     def __init__(self, board: Board, index: int):
         super().__init__(board, index)
-        cells = [Cell.make(board, row, index) for row in board.column_range]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, row, index) for row in board.column_range])
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
@@ -112,8 +111,7 @@ class Row(StandardRegion):
 
     def __init__(self, board: Board, index: int):
         super().__init__(board, index)
-        cells = [Cell.make(board, index, row) for row in board.row_range]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, index, row) for row in board.row_range])
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
@@ -148,12 +146,13 @@ class Box(StandardRegion):
     def __init__(self, board: Board, index: int):
         super().__init__(board, index)
         self.position = self.start()
-        cells = [
-            Cell.make(board, self.position.row + ro - 1, self.position.column + co - 1)
-            for ro in range(1, board.box_rows + 1)
-            for co in range(1, board.box_columns + 1)
-        ]
-        self.add_items(cells)
+        self.add_items(
+            [
+                Cell.make(board, self.position.row + ro - 1, self.position.column + co - 1)
+                for ro in range(1, board.box_rows + 1)
+                for co in range(1, board.box_columns + 1)
+            ]
+        )
 
     def start(self) -> Coord:
         r = ((self.index - 1) * self.board.box_rows) % self.board.maximum_digit + 1
@@ -206,8 +205,7 @@ class DisjointGroup(StandardRegion):
         r = (index - 1) // 3 + 1  # TODO
         c = (index - 1) % 3 + 1
         super().__init__(board, index)
-        cells = [Cell.make(board, r + ro, c + co) for ro, co in DisjointGroup.offsets]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, r + ro, c + co) for ro, co in DisjointGroup.offsets])
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
@@ -246,8 +244,7 @@ class Window(Region):
     def __init__(self, board: Board, center: Coord):
         super().__init__(board)
         self.center = center
-        cells = [Cell.make(board, (center + offset).row, (center + offset).column) for offset in Window.offsets]
-        self.add_items(cells)
+        self.add_items([Cell.make(board, (center + offset).row, (center + offset).column) for offset in Window.offsets])
 
     @property
     def name(self) -> str:

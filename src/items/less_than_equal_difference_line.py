@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -9,7 +9,7 @@ from src.utils.rule import Rule
 
 class LessThanEqualDifferenceLine(Line):
 
-    def __init__(self, board: Board, cells: List[Cell]):
+    def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board, cells)
         self.difference = board.maximum_digit
         for i in range(1, len(cells)):

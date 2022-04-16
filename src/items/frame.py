@@ -1,6 +1,6 @@
 """ Frame Sudoku """
 
-from typing import List, Dict
+from typing import List, Dict, Sequence
 
 from pulp import lpSum
 
@@ -112,8 +112,8 @@ class Frame(Item):
 class Frames(Composed):
     """ Collection of Frames """
 
-    def __init__(self, board: Board, items: List[Item]):
-        super().__init__(board, items)
+    def __init__(self, board: Board, frames: Sequence[Frame]):
+        super().__init__(board, frames)
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:

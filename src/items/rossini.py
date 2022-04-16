@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Sequence
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
@@ -68,7 +68,7 @@ class Rossini(Item):
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Rossini':
         if not isinstance(yaml, str):
             raise ConstraintException(f"Expecting str, got {yaml!r}")
         side = Side.create(yaml[0])
@@ -93,8 +93,8 @@ class Rossini(Item):
 class Rossinis(Composed):
     """ Collection of Rossini """
 
-    def __init__(self, board: Board, items: List[Item]):
-        super().__init__(board, items)
+    def __init__(self, board: Board, rossinis: Sequence[Rossini]):
+        super().__init__(board, rossinis)
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:

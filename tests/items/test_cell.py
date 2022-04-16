@@ -2,7 +2,11 @@ import unittest
 from typing import Type
 
 from src.items.board import Board
-from src.items.cell import Cell, Even, Odd, Fortress, Known, CellReference
+from src.items.cell import Cell
+from src.items.known_cell import KnownCell
+from src.items.fortress_cell import FortressCell
+from src.items.even_cell import Odd, Even
+from src.items.cell_reference import CellReference
 from src.items.item import Item
 from tests.items.test_item import TestItem
 
@@ -157,7 +161,7 @@ class TestFortress(TestCellReference):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Fortress(self.board, 1, 2)
+        self.item = FortressCell(self.board, 1, 2)
 
     @property
     def representation(self) -> str:
@@ -183,14 +187,14 @@ class TestFortress(TestCellReference):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, Item, Fortress}
+        return {Cell, CellReference, Item, FortressCell}
 
 
 class TestKnown(TestCellReference):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Known(self.board, 1, 2, 9)
+        self.item = KnownCell(self.board, 1, 2, 9)
 
     @property
     def representation(self) -> str:
@@ -214,7 +218,7 @@ class TestKnown(TestCellReference):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, Item, Known}
+        return {Cell, CellReference, Item, KnownCell}
 
 
 if __name__ == '__main__':  # pragma: no cover

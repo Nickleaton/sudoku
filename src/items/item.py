@@ -14,9 +14,9 @@ class Item(ABC):
 
     def __init__(self, board: Board):
         super().__init__()
-        self.board = board
-        self.parent = None
-        self.identity = None
+        self.board: Board = board
+        self.parent: Optional[Item] = None
+        self.identity: Optional[int] = None
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
@@ -78,9 +78,9 @@ class Item(ABC):
         if yaml is not None:
             raise ConstraintException(f"Expecting None, got {yaml!r}")
 
-    @classmethod
-    def validate(cls, yaml: Any) -> bool:
-        pass
+    @staticmethod
+    def validate(yaml: Any) -> List[str]:
+        return []
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Item':

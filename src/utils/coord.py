@@ -1,3 +1,5 @@
+from typing import List
+
 from src.utils.config import Config
 from src.utils.point import Point
 
@@ -47,6 +49,17 @@ class Coord:
         if self.row == other.row:
             return self.column < other.column
         return False
+
+    @staticmethod
+    def validate(yaml) -> List[str]:
+        result = []
+        if len(yaml) != 2:
+            result.append("expecting row, column")
+        if not isinstance(yaml[0], int):
+            result.append(f"row not int")
+        if not isinstance(yaml[1], int):
+            result.append(f"column not int")
+        return result
 
     @property
     def transform(self) -> str:
