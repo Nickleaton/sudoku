@@ -79,7 +79,7 @@ class Item(ABC):
             raise ConstraintException(f"Expecting None, got {yaml!r}")
 
     @staticmethod
-    def validate(yaml: Any) -> List[str]:
+    def validate(board: Board, yaml: Any) -> List[str]:
         return []
 
     @classmethod

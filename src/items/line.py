@@ -18,7 +18,7 @@ class Line(Region):
         return f"{self.__class__.__name__}_{self.cells[0].row}_{self.cells[0].column}"
 
     @staticmethod
-    def validate(yaml: Any) -> List[str]:
+    def validate(board: Board, yaml: Any) -> List[str]:
         result = []
         if not isinstance(yaml, list):
             result.append(f"Expecting list, got {yaml:r}")
@@ -29,6 +29,8 @@ class Line(Region):
             else:
                 if len(item) != 2:
                     result.append(f"Expecting pair, got {item:r}")
+            if not board.is_valid(item[0], item[1]):
+                result.append(f"Invalid row, column got {item:r}")
         return result
 
     @staticmethod
@@ -37,7 +39,7 @@ class Line(Region):
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Line.validate(yaml)
+        Line.validate(board, yaml)
         cells = Line.extract(board, yaml)
         return cls(board, cells)
 
