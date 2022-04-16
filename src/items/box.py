@@ -17,7 +17,7 @@ class Box(StandardRegion):
         self.position = self.start()
         self.add_items(
             [
-                Cell.make(board, self.position.row + ro - 1, self.position.column + co - 1)
+                Cell.make(board, int(self.position.row + ro - 1), int(self.position.column + co - 1))
                 for ro in range(1, board.box_rows + 1)
                 for co in range(1, board.box_columns + 1)
             ]
@@ -34,8 +34,9 @@ class Box(StandardRegion):
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_int(yaml)
-        return cls(board, yaml)
+        StandardRegion.validate(board, yaml)
+        index = StandardRegion.extract(board, yaml)
+        return cls(board, index)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"

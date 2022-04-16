@@ -36,15 +36,15 @@ class DifferentPair(Pair):
             return result
         result.extend(Coord.validate(yaml['Cells'][0]))
         result.extend(Coord.validate(yaml['Cells'][1]))
-        for d in yaml['Digits']:
-            if d not in board.digit_range:
-                result.extend(f"Invalid digit {d}")
+        for digit in yaml['Digits']:
+            if digit not in board.digit_range:
+                result.extend(f"Invalid digit {digit}")
         return result
 
     @staticmethod
-    def extract(_: Board, yaml: Any) -> Tuple[Coord, Coord, List[int]]:
-        c1 = Coord(yaml['Cells'][0][0], yaml['Cells'][0][1])
-        c2 = Coord(yaml['Cells'][1][0], yaml['Cells'][1][1])
+    def extract(board: Board, yaml: Any) -> Tuple[Cell,Cell, List[int]]:
+        c1 = Cell.make(board, yaml['Cells'][0][0], yaml['Cells'][0][1])
+        c2 = Cell.make(board, yaml['Cells'][1][0], yaml['Cells'][1][1])
         digits = yaml['Digits']
         return c1, c2, digits
 

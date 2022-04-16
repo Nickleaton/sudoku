@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Any, Tuple
 
 from pulp import lpSum
 
@@ -22,11 +22,11 @@ class LittleKiller(Region):
         self.offset = offset
         self.total = total
         coord = side.start(board, cyclic, offset)
-        offset = side.direction(cyclic).offset
+        delta = side.direction(cyclic).offset
         cells = []
         while board.is_valid_coordinate(coord):
-            cells.append(Cell(board, coord.row, coord.column))
-            coord += offset
+            cells.append(Cell.make(board, int(coord.row), int(coord.column)))
+            coord += delta
         self.add_items(cells)
 
     def __repr__(self) -> str:
@@ -40,14 +40,33 @@ class LittleKiller(Region):
             f")"
         )
 
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_str(yaml)
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
+        results = []
+        if not isinstance(yaml, str):
+            results.append(f"Expecting str, got {yaml!r}")
+            return results
+        if "=" not in yaml:
+            results.append(f"Not expected format, got {yaml!r}")
+        parts = yaml.split("=")
+        if len(parts) != 2:
+            results.append(f"Expected two parts, got {yaml!r}")
+        # TODO More
+        return results
+
+    @staticmethod
+    def extract(board: Board, yaml: Any) -> Tuple[int,int,Cyclic,Side]:
         parts = yaml.split("=")
         total = int(parts[1])
         offset = int(parts[0][1])
         cyclic = Cyclic.create(parts[0][-1])
         side = Side.create(parts[0][0])
+        return total, offset, cyclic, side
+
+    @classmethod
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+        LittleKiller.validate(board,yaml)
+        total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 
     @property

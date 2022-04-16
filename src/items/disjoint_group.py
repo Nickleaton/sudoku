@@ -27,14 +27,6 @@ class DisjointGroup(StandardRegion):
         super().__init__(board, index)
         self.add_items([Cell.make(board, r + ro, c + co) for ro, co in DisjointGroup.offsets])
 
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_int(yaml)
-        return cls(board, yaml)
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
-
     @property
     def rules(self) -> List[Rule]:
         return [Rule('DisjointGroup', 1, 'Digits in same place each box must be unique')]

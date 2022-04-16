@@ -40,10 +40,10 @@ class DifferencePair(Pair):
         return result
 
     @staticmethod
-    def extract(board: Board, yaml: Any) -> Tuple[Coord, Coord, int]:
+    def extract(board: Board, yaml: Any) -> Tuple[Cell, Cell, int]:
         c1 = Cell.make(board, yaml['Cells'][0][0], yaml['Cells'][0][1])
         c2 = Cell.make(board, yaml['Cells'][1][0], yaml['Cells'][1][1])
-        difference = yaml['Difference']
+        difference: int = yaml['Difference']
         return c1, c2, difference
 
     @classmethod

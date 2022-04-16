@@ -82,6 +82,10 @@ class Item(ABC):
     def validate(board: Board, yaml: Any) -> List[str]:
         return []
 
+    @staticmethod
+    def extract(board: Board, yaml: Any) -> Any:
+        return None
+
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Item':
         return cls.classes[name].create(name, board, yaml)
