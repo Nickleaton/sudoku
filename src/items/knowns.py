@@ -1,14 +1,13 @@
 from typing import List, Dict
 
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.cell_reference import CellReference
-from src.items.constraint_exception import ConstraintException
-from src.items.known_cell import KnownCell
-from src.items.fortress_cell import FortressCell
-from src.items.even_cell import Odd, Even
 from src.items.composed import Composed
+from src.items.constraint_exception import ConstraintException
+from src.items.even_cell import Odd, Even
+from src.items.fortress_cell import FortressCell
 from src.items.item import Item
+from src.items.known_cell import KnownCell
 
 
 class Knowns(Composed):

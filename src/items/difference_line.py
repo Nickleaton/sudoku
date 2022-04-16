@@ -1,8 +1,7 @@
-from typing import List, Sequence
+from typing import Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
 from src.items.line import Line
 
 

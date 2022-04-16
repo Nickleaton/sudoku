@@ -12,8 +12,8 @@ class Composed(Item):
 
     def __init__(self, board: Board, items: Sequence[Item]):
         super().__init__(board)
-        self.items = items
-        self._n = 0
+        self.items: List[Item] = list(items)
+        self._n: int = 0
 
     def add(self, item: Item):
         self.items.append(item)
@@ -87,29 +87,3 @@ class Composed(Item):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.items!r})"
-
-
-class Constraints(Composed):
-
-    def __init__(self, board: Board):
-        super().__init__(board, [])
-        self._n = 0
-
-    @property
-    def used_classes(self) -> Set[Type['Item']]:
-        result = super().used_classes
-        result = result.union({Constraints})
-        return result
-
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        result = cls(board)
-        Item.check_yaml_list(yaml)
-        for constraint in yaml:
-            if isinstance(constraint, str):
-                result.add(Item.create(constraint, board, constraint))
-            else:
-                for name, sub_constraint in constraint.items():
-                    result.add(Item.create(name, board, sub_constraint))
-
-        return result

@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Any
 
 from pulp import lpSum
 
@@ -12,7 +12,7 @@ from src.utils.rule import Rule
 
 
 class Cell(Item):
-    cache = {}
+    cache: Dict[Tuple[int, int], 'Cell'] = {}
 
     def __init__(self, board: Board, row: int, column: int):
         super().__init__(board)
@@ -35,7 +35,7 @@ class Cell(Item):
 
     @staticmethod
     def cells() -> List['Cell']:
-        return Cell.cache.values()
+        return list(Cell.cache.values())
 
     @property
     def glyphs(self) -> List[Glyph]:
@@ -55,12 +55,39 @@ class Cell(Item):
         for row, column in product(board.row_range, board.column_range):
             Cell.make(board, row, column)
 
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
+        result = []
+        if not isinstance(yaml, dict):
+            result.append(f"Expecting dict, got {yaml:r}")
+            return result
+        if 'Row' not in yaml:
+            result.append(f"Expecting 'Row', got {yaml:r}")
+        if 'Column' not in yaml:
+            result.append(f"Expecting 'Column', got {yaml:r}")
+        if not yaml['Row'].isdigit():
+            result.append(f"Expecting digit for row, got {yaml:r}")
+        if not yaml['Column'].isdigit():
+            result.append(f"Expecting digit for row, got {yaml:r}")
+        if len(result) > 0:
+            return result
+        row = int(yaml['Row'])
+        column = int(yaml['Column'])
+        if row not in board.row_range:
+            result.append(f'Invalid row {row}')
+        if column not in board.column_range:
+            result.append(f'Invalid column {row}')
+        return result
+
+    @staticmethod
+    def extract(_: Board, yaml: Any) -> Coord:
+        return Coord(yaml['Row'], yaml['Column'])
+
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_dict(yaml)
-        row = yaml['Row']
-        column = yaml['Column']
-        return cls(board, row, column)
+        Cell.validate(board, yaml)
+        coord: Coord = Cell.extract(board, yaml)
+        return cls(board, int(coord.row), int(coord.column))
 
     @property
     def valid(self) -> bool:
@@ -70,15 +97,19 @@ class Cell(Item):
     def row_column(self) -> Tuple[int, int]:
         return self.row, self.column
 
-    def __eq__(self, other: 'Cell') -> bool:
-        return self.row == other.row and self.column == other.column
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Cell):
+            return self.row == other.row and self.column == other.column
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
-    def __lt__(self, other: 'Cell') -> bool:
-        if self.row < other.row:
-            return True
-        if self.row == other.row:
-            return self.column < other.column
-        return False
+    def __lt__(self, other: object) -> bool:
+        if isinstance(other, Cell):
+            if self.row < other.row:
+                return True
+            if self.row == other.row:
+                return self.column < other.column
+            return False
+        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @property
     def coord(self) -> Coord:
@@ -91,5 +122,3 @@ class Cell(Item):
                 for digit in self.board.digit_range
             ]
         ) == 1
-
-

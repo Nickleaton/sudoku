@@ -2,7 +2,7 @@ import unittest
 from typing import List
 
 from src.items.board import Board
-from src.items.region import Box
+from src.items.box import Box
 
 
 class TestBox(unittest.TestCase):

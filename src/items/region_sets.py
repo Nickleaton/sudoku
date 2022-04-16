@@ -1,9 +1,12 @@
 from typing import Dict, List
 
 from src.items.board import Board
+from src.items.box import Box
+from src.items.column import Column
 from src.items.composed import Composed
+from src.items.disjoint_group import DisjointGroup
 from src.items.item import Item
-from src.items.region import Column, Row, Box, DisjointGroup
+from src.items.row import Row
 
 
 class RegionSet(Composed):

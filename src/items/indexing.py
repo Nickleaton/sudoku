@@ -4,7 +4,7 @@ from src.glyphs.glyph import Glyph, RectGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
-from src.items.region import StandardRegion
+from src.items.standard_region import StandardRegion
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule

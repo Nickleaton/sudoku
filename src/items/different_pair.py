@@ -1,10 +1,11 @@
-from typing import List, Dict
+from typing import List, Dict, Any, Tuple
 
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
@@ -14,12 +15,43 @@ class DifferentPair(Pair):
         super().__init__(board, c1, c2)
         self.digits = digits
 
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
+        result: List[str] = []
+        if not isinstance(yaml, dict):
+            result.append(f"Expecting dict, got {yaml!r}")
+            return result
+        if len(yaml) != 3:
+            result.append(f"Expecting two cells, plus digits got {yaml!r}")
+            return result
+        if 'Digits' not in yaml:
+            result.append(f"Expecting Digits:, got {yaml!r}")
+        if 'Cells' not in yaml:
+            result.append(f"Expecting Cells:, got {yaml!r}")
+        if len(result) > 0:
+            return result
+        if len(yaml['Cells']) != 2:
+            result.append(f"Expecting two Cells:, got {yaml!r}")
+        if len(result) > 0:
+            return result
+        result.extend(Coord.validate(yaml['Cells'][0]))
+        result.extend(Coord.validate(yaml['Cells'][1]))
+        for d in yaml['Digits']:
+            if d not in board.digit_range:
+                result.extend(f"Invalid digit {d}")
+        return result
+
+    @staticmethod
+    def extract(_: Board, yaml: Any) -> Tuple[Coord, Coord, List[int]]:
+        c1 = Coord(yaml['Cells'][0][0], yaml['Cells'][0][1])
+        c2 = Coord(yaml['Cells'][1][0], yaml['Cells'][1][1])
+        digits = yaml['Digits']
+        return c1, c2, digits
+
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_dict(yaml)
-        c1 = Cell(board, yaml['Cells'][0][0], yaml['Cells'][0][1])
-        c2 = Cell(board, yaml['Cells'][1][0], yaml['Cells'][1][1])
-        digits = yaml['Digits']
+        DifferentPair.validate(board, yaml)
+        c1, c2, digits = DifferentPair.extract(board, yaml)
         return cls(board, c1, c2, digits)
 
     @property

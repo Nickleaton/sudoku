@@ -8,7 +8,8 @@ from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.indexing import ColumnIndexer, Indexer
 from src.items.item import Item
-from src.items.region import Region, StandardRegion
+from src.items.region import Region
+from src.items.standard_region import StandardRegion
 from tests.items.test_indexing import TestIndexer
 
 

@@ -1,4 +1,4 @@
-from typing import Dict, List, Set, Type
+from typing import Dict, List, Set, Type, Any, Tuple
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -14,11 +14,30 @@ class CellReference(Item):
         self.row = row
         self.column = column
 
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
+        result: List[str] = []
+        if not isinstance(yaml, dict):
+            result.append(f"Expecting dict, got {yaml!r}")
+            return result
+        if 'Row' not in yaml:
+            result.append(f"Row:, got {yaml!r}")
+            return result
+        if 'Column' not in yaml:
+            result.append(f"Column:, got {yaml!r}")
+            return result
+        if yaml['Row'] not in board.digit_range or yaml['Column'] not in board.digit_range:
+            result.append(f"Expecting digit,digit, got {yaml!r}")
+        return result
+
+    @staticmethod
+    def extract(_: Board, yaml: Any) -> Tuple[int, int]:
+        return int(yaml['Row']), int(yaml['Column'])
+
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_dict(yaml)
-        row = yaml['Row']
-        column = yaml['Column']
+        CellReference.validate(board, yaml)
+        row, column = CellReference.extract(board, yaml)
         return cls(board, row, column)
 
     def letter(self) -> str:

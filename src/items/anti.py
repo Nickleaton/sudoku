@@ -23,9 +23,9 @@ class Anti(Composed):
     def pairs(self, c1: Cell, digits: List[int]) -> Sequence[DifferentPair]:
         result = []
         for offset in self.offsets():
-            if not self.board.is_valid(c1.row + offset.row, c1.column + offset.column):
+            if not self.board.is_valid(int(c1.row + offset.row), int(c1.column + offset.column)):
                 continue
-            c2 = Cell.make(self.board, c1.row + offset.row, c1.column + offset.column)
+            c2 = Cell.make(self.board, int(c1.row + offset.row), int(c1.column + offset.column))
             result.append(DifferentPair(self.board, c1, c2, digits))
         return result
 

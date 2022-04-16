@@ -41,7 +41,7 @@ class Frame(Item):
         self.coords.append(self.side.start_cell(self.board, self.index))
         self.coords.append(self.coords[0] + self.offset)
         self.coords.append(self.coords[1] + self.offset)
-        self.cells = [Cell.make(self.board, coord.row, coord.column) for coord in self.coords]
+        self.cells = [Cell.make(self.board, int(coord.row), int(coord.column)) for coord in self.coords]
 
     @property
     def name(self) -> str:
@@ -92,7 +92,7 @@ class Frame(Item):
         return super().tags.union({'Comparison', 'Frame'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Frame':
         if not isinstance(yaml, str):
             raise ConstraintException(f"Expecting str, got {yaml!r}")
         side = Side.create(yaml[0])

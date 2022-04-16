@@ -54,9 +54,9 @@ class Solution:
         for i, row in enumerate(yaml):
             if len(row) != max(board.column_range):
                 result.append(f"Expecting {max(board.column_range)} items on row {i}, got {len(row)} '{row}'")
-            for d in row:
-                if d not in board.digit_range:
-                    result.append(f"Not a valid digit {d} in row {i}, '{row}'")
+            for digit in row:
+                if digit not in board.digit_range:
+                    result.append(f"Not a valid digit {digit} in row {i}, '{row}'")
         return result
 
     @staticmethod

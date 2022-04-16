@@ -5,7 +5,8 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
-from src.items.region import Window, Region
+from src.items.region import Region
+from src.items.window import Window
 from src.utils.coord import Coord
 from tests.items.test_region import TestRegion
 

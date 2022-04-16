@@ -1,18 +1,11 @@
 import os
-import xml
 
-import oyaml as yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from svgwrite import Drawing
-
-from src.items.board import Board
-from src.items.item import Item
 
 env = Environment(
     loader=FileSystemLoader(os.path.join('src', 'html')),
     autoescape=select_autoescape()
 )
-
 
 # class Runner:
 #

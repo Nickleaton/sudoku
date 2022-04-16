@@ -35,18 +35,9 @@ class TLBR(Diagonal):
         super().__init__(board)
         self.add_items([Cell.make(board, i, i) for i in board.row_range])
 
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_dict(yaml)
-        return cls(board)
-
     @property
     def glyphs(self) -> List[Glyph]:
         return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
-
-    @property
-    def rules(self) -> List[Rule]:
-        return [Rule('TLBR', 1, "Digits along a blue diagonal cannot repeat")]
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver, "TLBR")
@@ -56,20 +47,11 @@ class BLTR(Diagonal):
 
     def __init__(self, board: Board):
         super().__init__(board)
-        self.add_items([Cell.make(self, board.maximum_digit - i + 1, i) for i in board.row_range])
-
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_dict(yaml)
-        return cls(board)
+        self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
     @property
     def glyphs(self) -> List[Glyph]:
         return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]
-
-    @property
-    def rules(self) -> List[Rule]:
-        return [Rule('BLTR', 1, "Digits along a blue diagonal cannot repeat")]
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver, "BLTR")
