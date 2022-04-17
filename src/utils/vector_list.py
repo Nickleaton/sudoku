@@ -1,3 +1,4 @@
+"""List of Vectors"""
 from typing import List, Optional
 
 from src.utils.coord import Coord
@@ -5,7 +6,12 @@ from src.utils.coord_list import CoordList
 from src.utils.vector import Vector
 
 
+class VectorListException(Exception):
+    pass
+
+
 class VectorList:
+    """List of Vectors"""
 
     def __init__(self, items: List[Vector]):
         self.items = items
@@ -42,7 +48,7 @@ class VectorList:
                 if i != o:
                     return False
             return True
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise VectorListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __add__(self, other: 'VectorList') -> 'VectorList':
         assert (isinstance(other, VectorList))
