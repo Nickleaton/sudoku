@@ -12,6 +12,7 @@ class CoordList:
     def __init__(self, items: List[Coord]):
         self.items = items
         self.sort()
+        self.n = 0
 
     def __iter__(self) -> 'CoordList':
         self.n = 0
@@ -21,9 +22,9 @@ class CoordList:
         if self.n < len(self):
             result = self.items[self.n]
             self.n += 1
-            return result
         else:
             raise StopIteration
+        return result
 
     def __contains__(self, other: Coord) -> bool:
         for item in self.items:

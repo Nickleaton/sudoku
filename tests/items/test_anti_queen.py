@@ -1,5 +1,5 @@
 import unittest
-from typing import Optional, Type, List
+from typing import Type, List
 
 from src.items.anti import Anti
 from src.items.anti_queen import AntiQueen
@@ -19,8 +19,8 @@ class TestAntiQueen(TestAnti):
         Cell.make_board(self.board)
         self.item = AntiQueen(self.board, [8, 9])
 
-    def offset_length(self) -> Optional[int]:
-        return 36
+    def test_offsets(self):
+        self.assertEqual(36, len(self.item.offsets()))
 
     @property
     def config(self) -> str:

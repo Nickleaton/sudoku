@@ -47,7 +47,6 @@ class Quadruple(Item):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
-        # TODO int should not be needed
         for digit in self.digits:
             digit_sum = lpSum(
                 [

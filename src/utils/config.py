@@ -1,3 +1,5 @@
+# pylint: disable=too-few-public-methods
+
 class Config:
     CELL_SIZE = 100
     KILLER_OFFSET = 5

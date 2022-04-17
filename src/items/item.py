@@ -22,7 +22,7 @@ class Item(ABC):
         super().__init_subclass__(**kwargs)
         Item.classes[cls.__name__] = cls
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Optional[Glyph]:  # pylint: disable=no-self-use
         return None
 
     @property
@@ -79,11 +79,11 @@ class Item(ABC):
             raise ConstraintException(f"Expecting None, got {yaml!r}")
 
     @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
+    def validate(board: Board, yaml: Any) -> List[str]:  # pylint: disable=unused-argument
         return []
 
     @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
+    def extract(board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument
         return None
 
     @classmethod
@@ -93,8 +93,8 @@ class Item(ABC):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(({self.board!r})"
 
-    def add_variables(self, board: Board, solver: PulpSolver) -> None:
+    def add_variables(self, board: Board, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
         pass
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        print(f"Add Constraint {solver.__class__.__name__}")
+    def add_constraint(self, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
+        pass

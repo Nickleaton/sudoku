@@ -1,6 +1,5 @@
 from typing import List
 
-from src.utils.config import Config
 from src.utils.point import Point
 
 
@@ -61,9 +60,9 @@ class Coord:
         if len(yaml) != 2:
             result.append("expecting row, column")
         if not isinstance(yaml[0], int):
-            result.append(f"row not int")
+            result.append("row not int")
         if not isinstance(yaml[1], int):
-            result.append(f"column not int")
+            result.append("column not int")
         return result
 
     @property
@@ -79,7 +78,7 @@ class Coord:
 
     @property
     def point(self) -> Point:
-        return Point(self.column * Config.CELL_SIZE, self.row * Config.CELL_SIZE)
+        return Point(self.column * 100, self.row * 100)
 
     @property
     def top_left(self) -> 'Coord':

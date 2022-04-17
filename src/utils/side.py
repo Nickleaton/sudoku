@@ -21,7 +21,7 @@ class Side(Enum):
     def create(letter: str) -> 'Side':
         return Side(letter)
 
-    def direction(self, cyclic: Cyclic) -> Direction:
+    def direction(self, cyclic: Cyclic) -> Direction:  # pylint: disable=too-many-return-statements
         if cyclic == Cyclic.CLOCKWISE:
             if self == Side.TOP:
                 return Direction.DOWN_RIGHT
@@ -40,9 +40,9 @@ class Side(Enum):
                 return Direction.UP_RIGHT
             if self == Side.LEFT:
                 return Direction.DOWN_RIGHT
-        raise SideException("Unknown combination") # pragma: no cover
+        raise SideException("Unknown combination")  # pragma: no cover
 
-    def order_direction(self, order: Order) -> Direction:
+    def order_direction(self, order: Order) -> Direction:  # pylint: disable=too-many-return-statements
         if self == Side.TOP:
             return Direction.DOWN if order == Order.INCREASING else Direction.UP
         if self == Side.RIGHT:
@@ -51,9 +51,9 @@ class Side(Enum):
             return Direction.UP if order == Order.INCREASING else Direction.DOWN
         if self == Side.LEFT:
             return Direction.RIGHT if order == Order.INCREASING else Direction.LEFT
-        raise SideException("Unknown combination") # pragma: no cover
+        raise SideException("Unknown combination")  # pragma: no cover
 
-    def order_offset(self) -> Coord:
+    def order_offset(self) -> Coord:  # pylint: disable=too-many-return-statements
         if self == Side.TOP:
             return Direction.DOWN.offset
         if self == Side.RIGHT:
@@ -62,9 +62,9 @@ class Side(Enum):
             return Direction.UP.offset
         if self == Side.LEFT:
             return Direction.RIGHT.offset
-        raise SideException("Unknown combination") # pragma: no cover
+        raise SideException("Unknown combination")  # pragma: no cover
 
-    def marker(self, board: Board, n: int) -> Coord:
+    def marker(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         if self == Side.TOP:
             return Coord(0, n)
         if self == Side.RIGHT:
@@ -73,9 +73,9 @@ class Side(Enum):
             return Coord(board.board_columns + 1, n)
         if self == Side.LEFT:
             return Coord(n, 0)
-        raise SideException("Unknown combination") # pragma: no cover
+        raise SideException("Unknown combination")  # pragma: no cover
 
-    def start_cell(self, board: Board, n: int) -> Coord:
+    def start_cell(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         if self == Side.TOP:
             return Coord(1, n)
         if self == Side.RIGHT:
@@ -84,9 +84,9 @@ class Side(Enum):
             return Coord(board.board_columns, n)
         if self == Side.LEFT:
             return Coord(n, 1)
-        raise SideException("Unknown combination") # pragma: no cover
+        raise SideException("Unknown combination")  # pragma: no cover
 
-    def start(self, board: Board, cyclic: Cyclic, n: int) -> Coord:
+    def start(self, board: Board, cyclic: Cyclic, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         if cyclic == Cyclic.CLOCKWISE:
             if self == Side.TOP:
                 return Coord(1, n + 1)
@@ -105,7 +105,7 @@ class Side(Enum):
                 return Coord(board.board_rows, n + 1)
             if self == Side.LEFT:
                 return Coord(n + 1, 1)
-        raise SideException("Unknown combination") # pragma: no cover
+        raise SideException("Unknown combination")  # pragma: no cover
 
     def __repr__(self) -> str:
         return f"Side.{self.name}"

@@ -26,7 +26,8 @@ class Cell(Item):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
 
-    def letter(self) -> str:
+    @staticmethod
+    def letter() -> str:
         return '.'
 
     @property

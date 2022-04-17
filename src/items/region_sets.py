@@ -10,7 +10,6 @@ from src.items.row import Row
 
 
 class RegionSet(Composed):
-    """ Collection of Regions """
     pass
 
 

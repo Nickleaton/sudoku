@@ -24,6 +24,7 @@ class Direction(Enum):
     def locations() -> List[int]:
         return [d.value for d in Direction]
 
+    # pylint: disable=too-many-return-statements
     def __neg__(self) -> 'Direction':
         if self == Direction.UP_LEFT:
             return Direction.DOWN_RIGHT
@@ -43,7 +44,7 @@ class Direction(Enum):
             return Direction.UP
         if self == Direction.DOWN_RIGHT:
             return Direction.UP_LEFT
-        raise DirectionException('Unknown direction') # pragma: no cover
+        raise DirectionException('Unknown direction')  # pragma: no cover
 
     @property
     def angle(self) -> Angle:
@@ -65,7 +66,7 @@ class Direction(Enum):
             return Angle(180)
         if self == Direction.DOWN_RIGHT:
             return Angle(135)
-        raise DirectionException('Unknown direction') # pragma: no cover
+        raise DirectionException('Unknown direction')  # pragma: no cover
 
     @property
     def offset(self) -> Coord:
@@ -90,7 +91,7 @@ class Direction(Enum):
         raise DirectionException('Unknown direction')  # pragma: no cover
 
     def parallel(self, other: 'Direction') -> bool:
-        return (self == other) or (self == -other)
+        return self in [other, -other]
 
     @staticmethod
     def direction(location: int) -> 'Direction':

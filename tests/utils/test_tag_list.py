@@ -14,7 +14,7 @@ class TestTagList(unittest.TestCase):
 
     def test_iteration(self):
         i = 0
-        for coord in self.tags1:
+        for _ in self.tags1:
             i += 1
         self.assertEqual(i, len(self.tags1))
 

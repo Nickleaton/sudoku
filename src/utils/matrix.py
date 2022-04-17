@@ -7,7 +7,7 @@ class MatrixException(Exception):
 
 class Matrix:
 
-    def __init__(self, name: str, a: int, b: int, c: int, d: int):
+    def __init__(self, name: str, a: int, b: int, c: int, d: int):  # pylint: disable=too-many-arguments
         self.name = name
         self.a = a
         self.b = b

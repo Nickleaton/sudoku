@@ -49,14 +49,14 @@ class Board:
         self.author = author
 
     def is_valid(self, row: int, column: int) -> bool:
-        return (row >= 1) and (row <= self.board_rows) and (column >= 1) and (column <= self.board_columns)
+        return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
         return self.is_valid(int(coord.row), int(coord.column))
 
     @classmethod
-    def create(cls, name: str, yaml: Dict) -> 'Board':
-        y = yaml[name]
+    def create(cls, name: str, yaml_data: Dict) -> 'Board':
+        y = yaml_data[name]
         board_rows = int(y['Board'].split("x")[0])
         board_columns = int(y['Board'].split("x")[1])
         box_rows = int(y['Boxes'].split("x")[0]) if 'Boxes' in y else 0

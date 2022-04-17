@@ -31,14 +31,8 @@
     <target name="pylint" depends="pylint.src,pylint.tests"/>
     <target name="pylint.src">
         <mkdir dir="output/pylint"/>
-        <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/src.json">
+        <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/src.txt">
             <arg value="src"/>
-        </exec>
-        <exec executable="python.exe" failonerror="false" taskname="pylint" output="output/pylint/src.html">
-            <arg value="scripts/pylint-report.py"/>
-            <arg value="output/pylint/src.json"/>
-            <arg value="--html-file"/>
-            <arg value="output/pylint/src.html"/>
         </exec>
     </target>
     <target name="pylint.tests">

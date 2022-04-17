@@ -41,11 +41,9 @@ class SimpleThermometer(Thermometer):
 
             name = f"{self.__class__.__name__}_lbound_{c2.row}_{c2.column}"
             solver.model += c2_value >= i + 1, name
-            # TODO Digit excludes
 
             name = f"{self.__class__.__name__}_ubound_{c2.row}_{c2.column}"
             solver.model += c2_value <= self.board.maximum_digit - len(self) + i + 1, name
-            # TODO Digit excludes
 
         c2 = self.cells[0]
         c2_value = solver.values[c2.row][c2.column]
@@ -54,7 +52,6 @@ class SimpleThermometer(Thermometer):
 
         name = f"{self.__class__.__name__}_ubound_{c2.row}_{c2.column}"
         solver.model += c2_value <= self.board.maximum_digit - len(self) + 0 + 1, name
-        # TODO Digit excludes
 
 
 class FrozenThermometer(Thermometer):

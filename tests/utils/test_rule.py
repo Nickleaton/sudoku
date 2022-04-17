@@ -35,9 +35,6 @@ class TestRule(unittest.TestCase):
         self.assertEqual("<h2>Rule One</h2>", self.rule1.html)
         self.assertEqual("", self.rule3.html)
 
-    def test_human_name(self):
-        self.assertEqual("This Is Three", self.rule3.human_name)
-
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

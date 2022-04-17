@@ -15,6 +15,7 @@ class VectorList:
 
     def __init__(self, items: List[Vector]):
         self.items = items
+        self.n = 0
 
     def __iter__(self) -> 'VectorList':
         self.n = 0
@@ -24,9 +25,9 @@ class VectorList:
         if self.n < len(self):
             result = self.items[self.n]
             self.n += 1
-            return result
         else:
             raise StopIteration
+        return result
 
     def __contains__(self, other: Vector) -> bool:
         for item in self:
@@ -50,12 +51,13 @@ class VectorList:
             return True
         raise VectorListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
-    def __add__(self, other: 'VectorList') -> 'VectorList':
-        assert (isinstance(other, VectorList))
-        result = VectorList([])
-        result.items.extend(self.items)
-        result.items.extend(other.items)
-        return result
+    def __add__(self, other: object) -> 'VectorList':
+        if isinstance(other, VectorList):
+            result = VectorList([])
+            result.items.extend(self.items)
+            result.items.extend(other.items)
+            return result
+        raise VectorListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def sort(self) -> None:
         self.items = sorted(self.items)

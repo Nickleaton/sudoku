@@ -1,10 +1,8 @@
 """Class for Rules"""
-import re
 from typing import Optional
 
 
 class RuleException(Exception):
-    """ Handle exceptions with Rules """
     pass
 
 
@@ -61,10 +59,6 @@ class Rule:
         return hash(self.name)
 
     @property
-    def human_name(self) -> str:  # TODO
-        return " ".join(re.findall('[A-Z][^A-Z]*', self.name))
-
-    @property
     def html(self) -> str:
         """
         Html for the rule
@@ -73,5 +67,4 @@ class Rule:
         """
         if self.text is None:
             return ""
-        else:
-            return f"<h2>{self.text}</h2>"
+        return f"<h2>{self.text}</h2>"

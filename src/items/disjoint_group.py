@@ -1,8 +1,7 @@
-from typing import Dict, List
+from typing import List
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -22,7 +21,7 @@ class DisjointGroup(StandardRegion):
     ]
 
     def __init__(self, board: Board, index: int):
-        r = (index - 1) // 3 + 1  # TODO
+        r = (index - 1) // 3 + 1
         c = (index - 1) % 3 + 1
         super().__init__(board, index)
         self.add_items([Cell.make(board, r + ro, c + co) for ro, co in DisjointGroup.offsets])

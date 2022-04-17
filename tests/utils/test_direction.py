@@ -24,7 +24,7 @@ class TestDirection(unittest.TestCase):
         for direction1, direction2 in product(Direction, Direction):
             if direction1.angle - direction2.angle != Angle(180.0):
                 continue
-            if (direction1 == Direction.CENTER) or (direction2 == Direction.CENTER):
+            if Direction.CENTER in [direction1, direction2]:
                 continue
             self.assertEqual(Coord(0, 0), direction1.offset + direction2.offset)
 

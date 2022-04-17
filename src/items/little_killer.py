@@ -51,11 +51,10 @@ class LittleKiller(Region):
         parts = yaml.split("=")
         if len(parts) != 2:
             results.append(f"Expected two parts, got {yaml!r}")
-        # TODO More
         return results
 
     @staticmethod
-    def extract(board: Board, yaml: Any) -> Tuple[int,int,Cyclic,Side]:
+    def extract(board: Board, yaml: Any) -> Tuple[int, int, Cyclic, Side]:
         parts = yaml.split("=")
         total = int(parts[1])
         offset = int(parts[0][1])
@@ -65,7 +64,7 @@ class LittleKiller(Region):
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        LittleKiller.validate(board,yaml)
+        LittleKiller.validate(board, yaml)
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 

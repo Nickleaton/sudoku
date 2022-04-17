@@ -2,14 +2,17 @@ from typing import List
 
 from src.utils.tag import Tag
 
+
 class TagListException(Exception):
     pass
+
 
 class TagList:
 
     def __init__(self, items: List[Tag]):
         self.items = items
         self.sort()
+        self.n = 0
 
     def __iter__(self) -> 'TagList':
         self.n = 0
@@ -19,9 +22,9 @@ class TagList:
         if self.n < len(self):
             result = self.items[self.n]
             self.n += 1
-            return result
         else:
             raise StopIteration
+        return result
 
     def __contains__(self, other: Tag) -> bool:
         for item in self.items:

@@ -3,10 +3,11 @@ from typing import List, Dict, Any
 from src.items.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed import Composed
-from src.items.even_cell import Odd, EvenCell
+from src.items.even_cell import EvenCell
 from src.items.fortress_cell import FortressCell
 from src.items.item import Item
 from src.items.known_cell import KnownCell
+from src.items.odd_cell import Odd
 
 
 class Knowns(Composed):

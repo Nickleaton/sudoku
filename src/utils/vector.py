@@ -44,50 +44,46 @@ class Vector:
         raise VectorException(f'Add not supported for Vector and {other.__class__.__name__}')
 
     @property
-    def direction(self) -> Direction:
+    def direction(self) -> Direction:  # pylint: disable=too-many-return-statements
         # Only for orthogonal
         if self.start.row == self.end.row:
             if self.start.column < self.end.column:
                 return Direction.LEFT
-            elif self.start.column > self.end.column:
+            if self.start.column > self.end.column:
                 return Direction.RIGHT
-            else:
-                return Direction.CENTER
-        elif self.start.column == self.end.column:
+            return Direction.CENTER
+        if self.start.column == self.end.column:
             if self.start.row < self.end.row:
                 return Direction.UP
-            elif self.start.row > self.end.row:
+            if self.start.row > self.end.row:
                 return Direction.DOWN
-            else:  # pragma: no cover
-                return Direction.CENTER
-        return Direction.CENTER # pragma: no cover
+            return Direction.CENTER
+        return Direction.CENTER  # pragma: no cover
 
     def mergeable(self, other: 'Vector') -> bool:
         if self.start == other.start:
             return self.direction.parallel(other.direction)
-        elif self.start == other.end:
+        if self.start == other.end:
             return self.direction.parallel(other.direction)
-        elif self.end == other.start:
+        if self.end == other.start:
             return self.direction.parallel(other.direction)
-        elif self.end == other.end:
+        if self.end == other.end:
             return self.direction.parallel(other.direction)
-        else:
-            return False
+        return False
 
     def merge(self, other: 'Vector') -> 'Vector':
-        assert (self.mergeable(other))
+        assert self.mergeable(other)
         if self == other:
             return self
         if self.start == other.start:
             return Vector(self.end, other.end)
-        elif self.start == other.end:
+        if self.start == other.end:
             return Vector(self.end, other.start)
-        elif self.end == other.start:
+        if self.end == other.start:
             return Vector(self.start, other.end)
-        elif self.end == other.end:
+        if self.end == other.end:
             return Vector(self.start, other.start)
-        else:
-            raise Exception("Non mergeable lines")  # pragma: no cover
+        raise Exception("Non mergeable lines")  # pragma: no cover
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({repr(self.start)}, {repr(self.end)})"

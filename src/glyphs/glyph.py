@@ -37,7 +37,7 @@ class Glyph(ABC):
         return None
 
     def draw(self) -> BaseElement:
-        return None
+        raise NotImplementedError
 
     @property
     def priority(self) -> int:
@@ -496,7 +496,7 @@ class RectangleGlyph(Glyph):
         self.vertical = vertical
 
     def draw(self) -> BaseElement:
-        if self.vertical:  # TODO change to angle
+        if self.vertical:
             size = Point(Config.CELL_SIZE * self.percentage * self.ratio, Config.CELL_SIZE * self.percentage)
         else:
             size = Point(Config.CELL_SIZE * self.percentage, Config.CELL_SIZE * self.percentage * self.ratio)

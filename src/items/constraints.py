@@ -21,11 +21,13 @@ class Constraints(Composed):
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
         result = cls(board)
         Item.check_yaml_list(yaml)
-        for constraint in yaml:
-            if isinstance(constraint, str):
-                result.add(Item.create(constraint, board, constraint))
-            else:
-                for name, sub_constraint in constraint.items():
-                    result.add(Item.create(name, board, sub_constraint))
-
+        if isinstance(yaml, list):
+            for constraint in yaml:
+                if isinstance(constraint, str):
+                    result.add(Item.create(constraint, board, constraint))
+                else:
+                    for sub_name, sub_constraint in constraint.items():
+                        result.add(Item.create(sub_name, board, sub_constraint))
+        else:
+            raise Exception("Expecting a list")
         return result

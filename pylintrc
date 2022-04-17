@@ -7,11 +7,16 @@ disable=missing-function-docstring,
 
 [BASIC]
 
-good-names=i,
+good-names=a,
+           b,
+           c,
+           d,
+           i,
            j,
            k,
            r,
-           c,
+           o,
+           v,
            w,
            x,
            y,
@@ -26,8 +31,3 @@ good-names=i,
 [FORMAT]
 max-line-length=120
 
-[MASTER]
-load-plugins=pylint_report
-
-[REPORTS]
-output-format=pylint_report.CustomJsonReporter

@@ -1,5 +1,6 @@
-from typing import Dict, List, Set, Type, Any, Tuple
+from typing import Dict, List, Set, Type, Any, Tuple, Optional
 
+from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
@@ -40,8 +41,11 @@ class CellReference(Item):
         row, column = CellReference.extract(board, yaml)
         return cls(board, row, column)
 
-    def letter(self) -> str:
-        return '.'  # pragma: no cover
+    def svg(self) -> Optional[Glyph]:
+        return None
+
+    def letter(self) -> str:  # pylint: disable=no-self-use
+        return '.'
 
     @property
     def rules(self) -> List[Rule]:

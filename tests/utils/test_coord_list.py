@@ -30,7 +30,7 @@ class TestCoordList(unittest.TestCase):
 
     def test_iteration(self):
         i = 0
-        for coord in self.coords1:
+        for _ in self.coords1:
             i += 1
         self.assertEqual(i, len(self.coords1))
 

@@ -19,7 +19,10 @@ class TestEvenCell(TestCellReference):
 
     @property
     def representation(self) -> str:
-        return "EvenCell(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+        return (
+            "EvenCell(Board(9, 9, 3, 3, None, None, None, None), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+        )
 
     @property
     def config(self) -> str:

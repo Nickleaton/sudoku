@@ -1,5 +1,4 @@
 import unittest
-from typing import Tuple
 
 from src.utils.coord import Coord
 from src.utils.matrix import R000, R090, R180, R270, FHOR, FVER, MatrixException
@@ -47,7 +46,7 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(Coord(-1, 1), FHOR.transform(x))
 
     @staticmethod
-    def alpha(w: int, x: int, y: int, z: int) ->int:
+    def alpha(w: int, x: int, y: int, z: int) -> int:
         if w == 1 and x == 1 and y == 1 and z == 1:
             return 0
         return x
@@ -80,7 +79,7 @@ class TestMatrix(unittest.TestCase):
 
     def test_eq(self):
         self.assertEqual(R000, R000)
-        self.assertNotEqual(R000,R090)
+        self.assertNotEqual(R000, R090)
         with self.assertRaises(MatrixException):
             _ = R000 == 'xxxx'
 

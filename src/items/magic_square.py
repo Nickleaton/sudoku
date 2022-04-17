@@ -68,7 +68,7 @@ class MagicSquare(Composed):
             result.append(f"Expecting dict, got {yaml:r}")
             return result
         if 'Center' not in yaml:
-            result.append(f"Expecting 'Center")
+            result.append("Expecting 'Center")
         else:
             result.extend(Coord.validate(yaml['Center']))
         if 'Corner' not in yaml:
