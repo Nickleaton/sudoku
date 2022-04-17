@@ -3,6 +3,10 @@ from typing import List
 from src.utils.coord import Coord
 
 
+class CoordListException(Exception):
+    pass
+
+
 class CoordList:
 
     def __init__(self, items: List[Coord]):
@@ -38,7 +42,7 @@ class CoordList:
                 if i != o:
                     return False
             return True
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CoordListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"
