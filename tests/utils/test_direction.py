@@ -45,13 +45,13 @@ class TestDirection(unittest.TestCase):
 
     def test_negative(self):
         self.assertEqual(Direction.UP, - Direction.DOWN)
-        self.assertEqual(Direction.UPRIGHT, - Direction.DOWNLEFT)
+        self.assertEqual(Direction.UP_RIGHT, - Direction.DOWN_LEFT)
         self.assertEqual(Direction.RIGHT, - Direction.LEFT)
-        self.assertEqual(Direction.DOWNRIGHT, - Direction.UPLEFT)
+        self.assertEqual(Direction.DOWN_RIGHT, - Direction.UP_LEFT)
         self.assertEqual(Direction.DOWN, - Direction.UP)
-        self.assertEqual(Direction.DOWNLEFT, - Direction.UPRIGHT)
+        self.assertEqual(Direction.DOWN_LEFT, - Direction.UP_RIGHT)
         self.assertEqual(Direction.LEFT, - Direction.RIGHT)
-        self.assertEqual(Direction.UPLEFT, - Direction.DOWNRIGHT)
+        self.assertEqual(Direction.UP_LEFT, - Direction.DOWN_RIGHT)
 
     def test_parallel(self):
         for direction1, direction2 in product(Direction, Direction):

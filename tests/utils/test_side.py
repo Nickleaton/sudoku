@@ -17,14 +17,14 @@ class TestSide(unittest.TestCase):
         self.assertEqual(Side.LEFT, Side.create("L"))
 
     def test_direction(self):
-        self.assertEqual(Direction.DOWNRIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.DOWNLEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.UPLEFT, Side.BOTTOM.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.UPRIGHT, Side.LEFT.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.DOWNLEFT, Side.TOP.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Direction.UPLEFT, Side.RIGHT.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Direction.UPRIGHT, Side.BOTTOM.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Direction.DOWNRIGHT, Side.LEFT.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Direction.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Direction.DOWN_LEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Direction.UP_LEFT, Side.BOTTOM.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Direction.UP_RIGHT, Side.LEFT.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Direction.DOWN_LEFT, Side.TOP.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Direction.UP_LEFT, Side.RIGHT.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Direction.UP_RIGHT, Side.BOTTOM.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Direction.DOWN_RIGHT, Side.LEFT.direction(Cyclic.ANTICLOCKWISE))
 
     def test_order_direction(self):
         self.assertEqual(Direction.DOWN, Side.TOP.order_direction(Order.INCREASING))

@@ -24,23 +24,23 @@ class Side(Enum):
     def direction(self, cyclic: Cyclic) -> Direction:
         if cyclic == Cyclic.CLOCKWISE:
             if self == Side.TOP:
-                return Direction.DOWNRIGHT
+                return Direction.DOWN_RIGHT
             if self == Side.RIGHT:
-                return Direction.DOWNLEFT
+                return Direction.DOWN_LEFT
             if self == Side.BOTTOM:
-                return Direction.UPLEFT
+                return Direction.UP_LEFT
             if self == Side.LEFT:
-                return Direction.UPRIGHT
+                return Direction.UP_RIGHT
         if cyclic == Cyclic.ANTICLOCKWISE:
             if self == Side.TOP:
-                return Direction.DOWNLEFT
+                return Direction.DOWN_LEFT
             if self == Side.RIGHT:
-                return Direction.UPLEFT
+                return Direction.UP_LEFT
             if self == Side.BOTTOM:
-                return Direction.UPRIGHT
+                return Direction.UP_RIGHT
             if self == Side.LEFT:
-                return Direction.DOWNRIGHT
-        raise SideException("Unknown combination")
+                return Direction.DOWN_RIGHT
+        raise SideException("Unknown combination") # pragma: no cover
 
     def order_direction(self, order: Order) -> Direction:
         if self == Side.TOP:
@@ -51,7 +51,7 @@ class Side(Enum):
             return Direction.UP if order == Order.INCREASING else Direction.DOWN
         if self == Side.LEFT:
             return Direction.RIGHT if order == Order.INCREASING else Direction.LEFT
-        raise SideException("Unknown combination")
+        raise SideException("Unknown combination") # pragma: no cover
 
     def order_offset(self) -> Coord:
         if self == Side.TOP:
@@ -62,7 +62,7 @@ class Side(Enum):
             return Direction.UP.offset
         if self == Side.LEFT:
             return Direction.RIGHT.offset
-        raise SideException("Unknown combination")
+        raise SideException("Unknown combination") # pragma: no cover
 
     def marker(self, board: Board, n: int) -> Coord:
         if self == Side.TOP:
@@ -73,7 +73,7 @@ class Side(Enum):
             return Coord(board.board_columns + 1, n)
         if self == Side.LEFT:
             return Coord(n, 0)
-        raise SideException("Unknown combination")
+        raise SideException("Unknown combination") # pragma: no cover
 
     def start_cell(self, board: Board, n: int) -> Coord:
         if self == Side.TOP:
@@ -84,7 +84,7 @@ class Side(Enum):
             return Coord(board.board_columns, n)
         if self == Side.LEFT:
             return Coord(n, 1)
-        raise SideException("Unknown combination")
+        raise SideException("Unknown combination") # pragma: no cover
 
     def start(self, board: Board, cyclic: Cyclic, n: int) -> Coord:
         if cyclic == Cyclic.CLOCKWISE:
@@ -105,7 +105,7 @@ class Side(Enum):
                 return Coord(board.board_rows, n + 1)
             if self == Side.LEFT:
                 return Coord(n + 1, 1)
-        raise SideException("Unknown combination")
+        raise SideException("Unknown combination") # pragma: no cover
 
     def __repr__(self) -> str:
         return f"Side.{self.name}"

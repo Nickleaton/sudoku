@@ -14,7 +14,7 @@ class Order(Enum):
             return Order.DECREASING
         if self == Order.DECREASING:
             return Order.INCREASING
-        raise OrderException('Unknown Order')
+        raise OrderException('Unknown Order')  # pragma: no cover
 
     @staticmethod
     def create(letter: str) -> 'Order':

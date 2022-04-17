@@ -41,18 +41,23 @@ class Coord:
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Coord):
             return (self.row == other.row) and (self.column == other.column)
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CoordException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
-    def __lt__(self, other: 'Coord') -> bool:
-        if self.row < other.row:
-            return True
-        if self.row == other.row:
-            return self.column < other.column
-        return False
+    def __lt__(self, other: object) -> bool:
+        if isinstance(other, Coord):
+            if self.row < other.row:
+                return True
+            if self.row == other.row:
+                return self.column < other.column
+            return False
+        raise CoordException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @staticmethod
     def validate(yaml) -> List[str]:
         result = []
+        if not isinstance(yaml, list):
+            result.append(f"Expecting list, got {yaml!r}")
+            return result
         if len(yaml) != 2:
             result.append("expecting row, column")
         if not isinstance(yaml[0], int):

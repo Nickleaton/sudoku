@@ -1,6 +1,10 @@
 """ Utility class to manage angles """
 
 
+class AngleException(Exception):
+    pass
+
+
 class Angle:
     """
     Manage angles
@@ -59,23 +63,27 @@ class Angle:
         """
         if isinstance(other, Angle):
             return self.angle == other.angle
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise AngleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
-    def __lt__(self, other: 'Angle') -> bool:
+    def __lt__(self, other: object) -> bool:
         """
         Compare two angles for less than
         :param other: Angle
         :return: bool
         """
-        return self.angle < other.angle
+        if isinstance(other, Angle):
+            return self.angle < other.angle
+        raise AngleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
-    def __le__(self, other: 'Angle') -> bool:
+    def __le__(self, other: object) -> bool:
         """
         Compare two angles for less than or equal
         :param other: Angle
         :return: bool
         """
-        return self.angle <= other.angle
+        if isinstance(other, Angle):
+            return self.angle <= other.angle
+        raise AngleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
         """

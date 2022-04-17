@@ -10,48 +10,48 @@ class DirectionException(Exception):
 
 
 class Direction(Enum):
-    UPLEFT = 1
+    UP_LEFT = 1
     UP = 2
-    UPRIGHT = 3
+    UP_RIGHT = 3
     LEFT = 4
     CENTER = 5
     RIGHT = 6
-    DOWNLEFT = 7
+    DOWN_LEFT = 7
     DOWN = 8
-    DOWNRIGHT = 9
+    DOWN_RIGHT = 9
 
     @staticmethod
     def locations() -> List[int]:
         return [d.value for d in Direction]
 
     def __neg__(self) -> 'Direction':
-        if self == Direction.UPLEFT:
-            return Direction.DOWNRIGHT
+        if self == Direction.UP_LEFT:
+            return Direction.DOWN_RIGHT
         if self == Direction.UP:
             return Direction.DOWN
-        if self == Direction.UPRIGHT:
-            return Direction.DOWNLEFT
+        if self == Direction.UP_RIGHT:
+            return Direction.DOWN_LEFT
         if self == Direction.LEFT:
             return Direction.RIGHT
         if self == Direction.CENTER:
             return Direction.CENTER
         if self == Direction.RIGHT:
             return Direction.LEFT
-        if self == Direction.DOWNLEFT:
-            return Direction.UPRIGHT
+        if self == Direction.DOWN_LEFT:
+            return Direction.UP_RIGHT
         if self == Direction.DOWN:
             return Direction.UP
-        if self == Direction.DOWNRIGHT:
-            return Direction.UPLEFT
-        raise DirectionException('Unknown direction')
+        if self == Direction.DOWN_RIGHT:
+            return Direction.UP_LEFT
+        raise DirectionException('Unknown direction') # pragma: no cover
 
     @property
     def angle(self) -> Angle:
-        if self == Direction.UPLEFT:
+        if self == Direction.UP_LEFT:
             return Angle(315)
         if self == Direction.UP:
             return Angle(0)
-        if self == Direction.UPRIGHT:
+        if self == Direction.UP_RIGHT:
             return Angle(45)
         if self == Direction.LEFT:
             return Angle(270)
@@ -59,21 +59,21 @@ class Direction(Enum):
             return Angle(0)
         if self == Direction.RIGHT:
             return Angle(90)
-        if self == Direction.DOWNLEFT:
+        if self == Direction.DOWN_LEFT:
             return Angle(225)
         if self == Direction.DOWN:
             return Angle(180)
-        if self == Direction.DOWNRIGHT:
+        if self == Direction.DOWN_RIGHT:
             return Angle(135)
-        raise DirectionException('Unknown direction')
+        raise DirectionException('Unknown direction') # pragma: no cover
 
     @property
     def offset(self) -> Coord:
-        if self == Direction.UPLEFT:
+        if self == Direction.UP_LEFT:
             return Coord(-1, -1)
         if self == Direction.UP:
             return Coord(-1, 0)
-        if self == Direction.UPRIGHT:
+        if self == Direction.UP_RIGHT:
             return Coord(-1, 1)
         if self == Direction.LEFT:
             return Coord(0, -1)
@@ -81,13 +81,13 @@ class Direction(Enum):
             return Coord(0, 0)
         if self == Direction.RIGHT:
             return Coord(0, 1)
-        if self == Direction.DOWNLEFT:
+        if self == Direction.DOWN_LEFT:
             return Coord(1, -1)
         if self == Direction.DOWN:
             return Coord(1, 0)
-        if self == Direction.DOWNRIGHT:
+        if self == Direction.DOWN_RIGHT:
             return Coord(1, 1)
-        raise DirectionException('Unknown direction')
+        raise DirectionException('Unknown direction')  # pragma: no cover
 
     def parallel(self, other: 'Direction') -> bool:
         return (self == other) or (self == -other)
@@ -109,7 +109,7 @@ class Direction(Enum):
     @staticmethod
     def diagonals() -> List[Coord]:
         return [
-            d.offset for d in [Direction.UPLEFT, Direction.UPRIGHT, Direction.DOWNRIGHT, Direction.DOWNLEFT]
+            d.offset for d in [Direction.UP_LEFT, Direction.UP_RIGHT, Direction.DOWN_RIGHT, Direction.DOWN_LEFT]
         ]
 
     @staticmethod
@@ -117,10 +117,10 @@ class Direction(Enum):
         return [
             d.offset
             for d in [
-                Direction.UPLEFT,
-                Direction.UPRIGHT,
-                Direction.DOWNRIGHT,
-                Direction.DOWNLEFT,
+                Direction.UP_LEFT,
+                Direction.UP_RIGHT,
+                Direction.DOWN_RIGHT,
+                Direction.DOWN_LEFT,
                 Direction.UP,
                 Direction.RIGHT,
                 Direction.DOWN,
@@ -133,14 +133,14 @@ class Direction(Enum):
         return [
             d.offset
             for d in [
-                Direction.UPLEFT,
+                Direction.UP_LEFT,
                 Direction.UP,
-                Direction.UPRIGHT,
+                Direction.UP_RIGHT,
                 Direction.LEFT,
                 Direction.CENTER,
                 Direction.RIGHT,
-                Direction.DOWNLEFT,
+                Direction.DOWN_LEFT,
                 Direction.DOWN,
-                Direction.DOWNRIGHT
+                Direction.DOWN_RIGHT
             ]
         ]

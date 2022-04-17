@@ -1,4 +1,5 @@
 import unittest
+from typing import Any
 
 from src.utils.coord import Coord, CoordException
 
@@ -102,6 +103,24 @@ class TestCoord(unittest.TestCase):
         self.assertLess(coord3, coord2)
         self.assertGreater(coord2, coord1)
         self.assertFalse(coord2 < coord1)
+        with self.assertRaises(CoordException):
+            _ = coord1 == 'xxx'
+        with self.assertRaises(CoordException):
+            _ = coord1 < 'xxx'
+
+    @staticmethod
+    def check_yaml(yaml: Any) -> int:
+        errors = Coord.validate(yaml)
+        # print(repr(yaml))
+        # print("\n    ".join(errors))
+        return len(errors)
+
+    def test_validate(self):
+        self.assertEqual(0, TestCoord.check_yaml([1, 1]))
+        self.assertEqual(1, TestCoord.check_yaml([1, 2, 3]))
+        self.assertEqual(1, TestCoord.check_yaml("xxx"))
+        self.assertEqual(1, TestCoord.check_yaml(['x', 1]))
+        self.assertEqual(1, TestCoord.check_yaml([1, 'y']))
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -1,6 +1,6 @@
 import unittest
 
-from src.utils.angle import Angle
+from src.utils.angle import Angle, AngleException
 
 
 class TestAngle(unittest.TestCase):
@@ -49,6 +49,12 @@ class TestAngle(unittest.TestCase):
         self.assertLess(theta, beta)
         self.assertLessEqual(theta, theta)
         self.assertGreater(beta, theta)
+        with self.assertRaises(AngleException):
+            _ = theta == "xxx"
+        with self.assertRaises(AngleException):
+            _ = theta < "xxx"
+        with self.assertRaises(AngleException):
+            _ = theta <= "xxx"
 
 
 if __name__ == '__main__':  # pragma: no cover

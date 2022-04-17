@@ -45,7 +45,7 @@ class TestGlyph(unittest.TestCase):
 
     @property
     def target(self) -> str:
-        return ""
+        return ""  # pragma: no cover
 
     @property
     def start_marker(self) -> str:
@@ -845,7 +845,7 @@ class TestLittleKillerGlyph(TestGlyph):
 
     def setUp(self) -> None:
         super().setUp()
-        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Direction.DOWNRIGHT.angle, 20)
+        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Direction.DOWN_RIGHT.angle, 20)
 
     @property
     def target(self):

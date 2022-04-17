@@ -1,6 +1,6 @@
 import unittest
 
-from src.utils.tag import Tag
+from src.utils.tag import Tag, TagException
 
 
 class TestTag(unittest.TestCase):
@@ -17,10 +17,16 @@ class TestTag(unittest.TestCase):
     def test_eq(self):
         self.assertEqual(Tag('one'), Tag('one'))
         self.assertNotEqual(Tag('one'), Tag('two'))
+        with self.assertRaises(TagException):
+            _ = self.tag == "xxx"
 
     def test_comparison(self):
         self.assertLess(Tag('alpha'), Tag('beta'))
         self.assertLessEqual(Tag('alpha'), Tag('beta'))
+        with self.assertRaises(TagException):
+            _ = self.tag < "xxx"
+        with self.assertRaises(TagException):
+            _ = self.tag <= "xxx"
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -1,5 +1,6 @@
 """Class for Rules"""
 import re
+from typing import Optional
 
 
 class RuleException(Exception):
@@ -10,7 +11,7 @@ class RuleException(Exception):
 class Rule:
     """Rule class. Manage the human-readable rules for a sudoku"""
 
-    def __init__(self, name: str, rank: int, text: str):
+    def __init__(self, name: str, rank: int, text: Optional[str] = None):
         """
         Construct a rule.
 
@@ -60,7 +61,7 @@ class Rule:
         return hash(self.name)
 
     @property
-    def human_name(self) -> str: # TODO
+    def human_name(self) -> str:  # TODO
         return " ".join(re.findall('[A-Z][^A-Z]*', self.name))
 
     @property

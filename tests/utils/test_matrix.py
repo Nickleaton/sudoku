@@ -2,7 +2,7 @@ import unittest
 from typing import Tuple
 
 from src.utils.coord import Coord
-from src.utils.transform import R000, R090, R180, R270, FHOR, FVER
+from src.utils.matrix import R000, R090, R180, R270, FHOR, FVER, MatrixException
 
 
 class TestMatrix(unittest.TestCase):
@@ -47,13 +47,13 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(Coord(-1, 1), FHOR.transform(x))
 
     @staticmethod
-    def alpha(w: int, x: int, y: int, z: int) -> Tuple[int, int]:
+    def alpha(w: int, x: int, y: int, z: int) ->int:
         if w == 1 and x == 1 and y == 1 and z == 1:
             return 0
         return x
 
     @staticmethod
-    def beta(beta: int, x: int, y: int, z: int) -> Tuple[int, int]:
+    def beta(beta: int, x: int, y: int, z: int) -> int:
         if beta == 1 and x == 1 and y == 1 and z == 1:
             return 0
         return y
@@ -77,6 +77,12 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(1, TestMatrix.beta(1, 0, 1, 1), 'b6')
         self.assertEqual(0, TestMatrix.beta(1, 1, 0, 1), 'b7')
         self.assertEqual(0, TestMatrix.beta(1, 1, 1, 1), 'b8')
+
+    def test_eq(self):
+        self.assertEqual(R000, R000)
+        self.assertNotEqual(R000,R090)
+        with self.assertRaises(MatrixException):
+            _ = R000 == 'xxxx'
 
     def test_repr(self):
         self.assertEqual("Matrix('R000', 1, 0, 0, 1)", repr(R000))

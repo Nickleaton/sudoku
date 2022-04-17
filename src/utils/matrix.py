@@ -1,6 +1,10 @@
 from src.utils.coord import Coord
 
 
+class MatrixException(Exception):
+    pass
+
+
 class Matrix:
 
     def __init__(self, name: str, a: int, b: int, c: int, d: int):
@@ -28,7 +32,7 @@ class Matrix:
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Matrix):
             return (self.a == other.a) and (self.b == other.b) and (self.c == other.c) and (self.d == other.d)
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise MatrixException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.name}', {self.a}, {self.b}, {self.c}, {self.d})"
