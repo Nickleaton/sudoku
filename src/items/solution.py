@@ -8,8 +8,8 @@ class Solution:
 
     def __init__(self, board: Board, data: Optional[List[str]] = None):
         self.board = board
-        self.data: List[List[int | None]] = [
-            [None for _ in board.column_range]
+        self.data: List[List[int]] = [
+            [0 for _ in board.column_range]
             for _ in board.row_range
         ]
         if data is not None:
@@ -20,7 +20,7 @@ class Solution:
     def set_value(self, row: int, column: int, value: int) -> None:
         self.data[row - 1][column - 1] = value
 
-    def get_value(self, row: int, column: int) -> Optional[int]:
+    def get_value(self, row: int, column: int) -> int:
         return self.data[row - 1][column - 1]
 
     def __repr__(self) -> str:
@@ -33,6 +33,12 @@ class Solution:
                 f"{lines!r}"
                 ")"
                 )
+
+    def __str__(self) -> str:
+        result = "Solution:\n"
+        for row in self.data:
+            result += f"- {''.join([str(int(d)) for d in row])}\n"
+        return result
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Solution):
@@ -52,17 +58,20 @@ class Solution:
             result.append(f"Expecting {max(board.row_range)} rows, got {len(yaml)}")
             return result
         for i, row in enumerate(yaml):
-            if len(row) != max(board.column_range):
+            if isinstance(row, int):
+                row = str(row)
+            if len(row) != len(board.column_range):
                 result.append(f"Expecting {max(board.column_range)} items on row {i}, got {len(row)} '{row}'")
             for digit in row:
-                if digit not in board.digit_range:
+                if int(digit) not in board.digit_range:
                     result.append(f"Not a valid digit {digit} in row {i}, '{row}'")
         return result
 
     @staticmethod
     def extract(_: Board, yaml: List[str]) -> List[str]:
-        return yaml
+        return [str(line) for line in yaml]
 
     @staticmethod
     def create(board: Board, yaml: Any) -> 'Solution':
+        Solution.validate(board, yaml)
         return Solution(board, Solution.extract(board, yaml))

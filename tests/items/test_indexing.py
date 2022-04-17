@@ -9,7 +9,7 @@ from src.items.indexing import Indexer
 from src.items.item import Item
 from src.items.region import Region
 from src.items.standard_region import StandardRegion
-from tests.items.test_region import TestStandardRegion
+from tests.items.test_standard_region import TestStandardRegion
 
 
 class TestIndexer(TestStandardRegion):

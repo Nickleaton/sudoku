@@ -45,8 +45,8 @@ class Pair(Item):
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Tuple[Cell, Cell]:
-        c1 = Cell.make(board, yaml['Cells'][0][0], yaml['Cells'][0][1])
-        c2 = Cell.make(board, yaml['Cells'][1][0], yaml['Cells'][1][1])
+        c1 = Cell.make(board, int(yaml[0][0]), int(yaml[0][1]))
+        c2 = Cell.make(board, int(yaml[1][0]), int(yaml[1][1]))
         return c1, c2
 
     @classmethod

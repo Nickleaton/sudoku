@@ -7,31 +7,32 @@ from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
 from src.items.region import Region
+from src.items.region_sets import Boxes, RegionSet, StandardRegionSet
 from src.items.standard_region import StandardRegion
-from tests.items.test_standard_region import TestStandardRegion
+from tests.items.test_standard_region_sets import TestStandardRegionSet
 
 
-class TestBox(TestStandardRegion):
+class TestBoxes(TestStandardRegionSet):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Box(self.board, 1)
+        self.item = Boxes(self.board)
 
     @property
     def config(self) -> str:
-        return "Box: 1"
+        return "Boxes:"
 
     @property
     def representation(self) -> str:
-        return "Box(Board(9, 9, 3, 3, None, None, None, None), 1)"
+        return "Boxes(Board(9, 9, 3, 3, None, None, None, None))"
+
+    @property
+    def expected_classes(self) -> set[Type[Item]]:
+        return {Item, Composed, Cell, StandardRegion, Region, Box, Boxes, StandardRegion, RegionSet, StandardRegionSet}
 
     @property
     def has_rule(self) -> bool:
         return True
-
-    @property
-    def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, StandardRegion, Box}
 
 
 if __name__ == '__main__':  # pragma: no cover

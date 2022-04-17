@@ -6,7 +6,6 @@ from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
 from src.items.region import Region
-from src.items.standard_region import StandardRegion
 from tests.items.test_item import TestItem
 
 
@@ -29,25 +28,6 @@ class TestRegion(TestItem):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Item, Composed, Cell, Region}
-
-
-class TestStandardRegion(TestRegion):
-
-    def setUp(self) -> None:
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = StandardRegion(self.board, 1)
-
-    @property
-    def config(self) -> str:
-        return "StandardRegion: 1"
-
-    @property
-    def representation(self) -> str:
-        return "StandardRegion(Board(9, 9, 3, 3, None, None, None, None), 1, [])"
-
-    @property
-    def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Region, StandardRegion}
 
 
 if __name__ == '__main__':  # pragma: no cover

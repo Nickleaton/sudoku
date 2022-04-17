@@ -9,12 +9,14 @@ import src.items.board
 import src.items.cell
 import src.items.composed
 import src.items.consecutive_pair
+import src.items.constraints
 import src.items.diagonals
 import src.items.difference_line
 import src.items.distinct_renban
 import src.items.dutch_whisper
 import src.items.entropic
 import src.items.equal_sum
+import src.items.fortress_cell
 import src.items.frame
 import src.items.german_whisper
 import src.items.greater_than_equal_difference_line
@@ -22,6 +24,9 @@ import src.items.greater_than_equal_difference_pair
 import src.items.indexing
 import src.items.item
 import src.items.knight
+import src.items.known_cell
+import src.items.known_cell
+import src.items.known_cell
 import src.items.knowns
 import src.items.kropki_pair
 import src.items.less_than_equal_difference_line

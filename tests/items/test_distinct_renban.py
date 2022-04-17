@@ -55,7 +55,7 @@ class TestDistinctRenban(TestRenban):
         self.assertEqual('2', DistinctRenban.power_str(2))
         self.assertEqual('9', DistinctRenban.power_str(256))
         self.assertEqual('9', DistinctRenban.power_str(256))
-        self.assertEqual('123', DistinctRenban.power_str(1+2+4))
+        self.assertEqual('123', DistinctRenban.power_str(1 + 2 + 4))
         self.assertEqual('789', DistinctRenban.power_str(64 + 128 + 256))
 
 

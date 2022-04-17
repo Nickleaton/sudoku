@@ -65,10 +65,6 @@ class Cell(Item):
             result.append(f"Expecting 'Row', got {yaml:r}")
         if 'Column' not in yaml:
             result.append(f"Expecting 'Column', got {yaml:r}")
-        if not yaml['Row'].isdigit():
-            result.append(f"Expecting digit for row, got {yaml:r}")
-        if not yaml['Column'].isdigit():
-            result.append(f"Expecting digit for row, got {yaml:r}")
         if len(result) > 0:
             return result
         row = int(yaml['Row'])

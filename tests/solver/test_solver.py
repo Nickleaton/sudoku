@@ -18,8 +18,8 @@ class TestSolver(unittest.TestCase):
         self.assertIsNotNone(self.board)
 
     def test_solve(self) -> None:
-        fname = os.path.join("problems", "problem001.yaml")
-        with open(fname, 'r', encoding="utf-8") as file:
+        filename = os.path.join("problems", "problem001.yaml")
+        with open(filename, 'r', encoding="utf-8") as file:
             config = yaml.load(file, yaml.SafeLoader)
 
         board = Board.create('Board', config)

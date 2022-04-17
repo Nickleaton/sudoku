@@ -43,7 +43,7 @@ class Odd(CellReference):
         ) == 0, f"{self.__class__.__name__}_{self.row}_{self.column}"
 
 
-class Even(CellReference):
+class EvenCell(CellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
@@ -72,6 +72,6 @@ class Even(CellReference):
             [
                 solver.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
-                if not Even.included(digit)
+                if not EvenCell.included(digit)
             ]
         ) == 0, f"{self.__class__.__name__}_{self.row}_{self.column}"

@@ -25,3 +25,9 @@ good-names=i,
 
 [FORMAT]
 max-line-length=120
+
+[MASTER]
+load-plugins=pylint_report
+
+[REPORTS]
+output-format=pylint_report.CustomJsonReporter

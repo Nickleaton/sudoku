@@ -4,17 +4,17 @@ from typing import Type
 import oyaml as yaml
 
 from src.items.board import Board
+from src.items.box import Box
 from src.items.cell import Cell
+from src.items.column import Column
 from src.items.composed import Composed
 from src.items.constraints import Constraints
 from src.items.indexing import ColumnIndexer, Indexer
 from src.items.item import Item
 from src.items.region import Region
-from src.items.box import Box
-from src.items.row import Row
-from src.items.column import Column
-from src.items.standard_region import StandardRegion
 from src.items.region_sets import Boxes, Columns, Rows, RegionSet, StandardRegionSet
+from src.items.row import Row
+from src.items.standard_region import StandardRegion
 from tests.items.test_item import TestItem
 
 

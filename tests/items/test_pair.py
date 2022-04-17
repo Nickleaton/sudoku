@@ -34,5 +34,6 @@ class TestPair(TestItem):
         self.assertIsNotNone(item)
         self.assertEqual(self.item.__class__, item.__class__)
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
