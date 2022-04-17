@@ -2,6 +2,8 @@ from typing import List
 
 from src.utils.tag import Tag
 
+class TagListException(Exception):
+    pass
 
 class TagList:
 
@@ -38,7 +40,7 @@ class TagList:
                 if i != o:
                     return False
             return True
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise TagListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"

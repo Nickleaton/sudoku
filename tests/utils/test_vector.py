@@ -2,7 +2,7 @@ import unittest
 
 from src.utils.coord import Coord
 from src.utils.direction import Direction
-from src.utils.vector import Vector
+from src.utils.vector import Vector, VectorException
 
 
 class TestLine(unittest.TestCase):
@@ -39,6 +39,9 @@ class TestLine(unittest.TestCase):
         self.assertNotEqual(self.line_four, self.line_two)
         self.assertNotEqual(self.line_four, self.line_three)
         self.assertEqual(self.line_four, self.line_four)
+
+        with self.assertRaises(VectorException):
+            _ = self.zero == "xxxx"
 
     def test_mergeable(self):
         self.assertTrue(self.line_one.mergeable(self.line_one))

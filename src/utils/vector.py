@@ -19,7 +19,7 @@ class Vector:
             if self.start == other.end:
                 return self.end == other.start
             return False
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise VectorException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __lt__(self, other: 'Vector') -> bool:
         if self.start < other.start:
@@ -58,10 +58,9 @@ class Vector:
                 return Direction.UP
             elif self.start.row > self.end.row:
                 return Direction.DOWN
-            else:
+            else:  # pragma: no cover
                 return Direction.CENTER
-        # pragma: no cover
-        return Direction.CENTER
+        return Direction.CENTER # pragma: no cover
 
     def mergeable(self, other: 'Vector') -> bool:
         if self.start == other.start:
