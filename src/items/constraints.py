@@ -20,7 +20,7 @@ class Constraints(Composed):
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
         result = cls(board)
-        Item.check_yaml_list(yaml)
+        cls.validate(board, yaml)
         if isinstance(yaml, list):
             for constraint in yaml:
                 if isinstance(constraint, str):

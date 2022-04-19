@@ -60,8 +60,6 @@ class TestGlyph(unittest.TestCase):
         return ""
 
     def test_draw(self):
-        if isinstance(self.glyph, Glyph):
-            return
         element = self.glyph.draw()
         if element is None:
             return
@@ -102,7 +100,7 @@ class TestGlyph(unittest.TestCase):
     def expected_classes(self) -> set[Type[Glyph]]:
         return {Glyph}
 
-    def test_used_classes(self):
+    def test_used_classes(self) -> None:
         # expected_names = sorted([cls.__name__ for cls in self.expected_classes])
         # used_names = sorted([cls.__name__ for cls in self.glyph.used_classes])
         # print(f"{{{', '.join(expected_names)}}}")
@@ -118,7 +116,7 @@ class TestLineGlyph(TestGlyph):
         self.glyph = LineGlyph("Style", Coord(0, 0), Coord(1, 2))
 
     @property
-    def target(self):
+    def target(self) -> str:
         return '<line class="Style" x1="0" x2="200" y1="0" y2="100" />'
 
     @property

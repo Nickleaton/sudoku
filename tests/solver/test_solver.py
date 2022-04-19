@@ -31,11 +31,12 @@ class TestSolver(unittest.TestCase):
         problem.add_constraint(solver)
 
         solver.solve()
-        print(str(solver.solution))
+        # print(str(solver.solution))
 
         expected = Solution.create(problem.board, config['Solution'])
 
         self.assertEqual(expected, solver.solution)
+
 
 
 if __name__ == '__main__':  # pragma: no cover

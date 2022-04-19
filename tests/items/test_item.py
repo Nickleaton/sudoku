@@ -83,7 +83,7 @@ class TestItem(unittest.TestCase):
         return {Item}
 
     def test_used_classes(self) -> None:
-        if self.expected_classes != self.item.used_classes:
+        if self.expected_classes != self.item.used_classes:  # pragma: no cover
             print(self.__class__.__name__)
             expected_names = sorted([cls.__name__ for cls in self.expected_classes])
             used_names = sorted([cls.__name__ for cls in self.item.used_classes])

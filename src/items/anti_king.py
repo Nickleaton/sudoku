@@ -18,7 +18,7 @@ class AntiKing(Anti):
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_none(yaml)
+        cls.validate(board, yaml)
         return AntiKing(board)
 
     @property

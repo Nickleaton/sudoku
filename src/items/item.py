@@ -54,31 +54,6 @@ class Item(ABC):
         return set(self.__class__.__mro__).difference({abc.ABC, object})
 
     @staticmethod
-    def check_yaml_dict(yaml: Dict | List | str | int | None):
-        if not isinstance(yaml, dict):
-            raise ConstraintException(f"Expecting Dict, got {yaml!r}")
-
-    @staticmethod
-    def check_yaml_list(yaml: Dict | List | str | int | None):
-        if not isinstance(yaml, list):
-            raise ConstraintException(f"Expecting List, got {yaml!r}")
-
-    @staticmethod
-    def check_yaml_str(yaml: Dict | List | str | int | None):
-        if not isinstance(yaml, str):
-            raise ConstraintException(f"Expecting str, got {yaml!r}")
-
-    @staticmethod
-    def check_yaml_int(yaml: Dict | List | str | int | None):
-        if not isinstance(yaml, int):
-            raise ConstraintException(f"Expecting int, got {yaml!r}")
-
-    @staticmethod
-    def check_yaml_none(yaml: Dict | List | str | int | None):
-        if yaml is not None:
-            raise ConstraintException(f"Expecting None, got {yaml!r}")
-
-    @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:  # pylint: disable=unused-argument
         return []
 
@@ -88,6 +63,7 @@ class Item(ABC):
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Item':
+        Item.validate(board, yaml)
         return cls.classes[name].create(name, board, yaml)
 
     def __repr__(self) -> str:

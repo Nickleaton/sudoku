@@ -36,8 +36,8 @@ class Glyph(ABC):
     def symbol(cls) -> Optional[Marker]:
         return None
 
-    def draw(self) -> BaseElement:
-        raise NotImplementedError
+    def draw(self) -> Optional[BaseElement]:
+        return None
 
     @property
     def priority(self) -> int:
@@ -80,7 +80,7 @@ class ComposedGlyph(Glyph):
     def add(self, item: Glyph):
         self.items.append(item)
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         group = Group()
         for glyph in sorted(self.items):
             group.add(glyph.draw())
@@ -105,7 +105,7 @@ class LineGlyph(Glyph):
         self.start = start
         self.end = end
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         return Line(start=self.start.point.coordinates, end=self.end.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
@@ -123,7 +123,7 @@ class PolyLineGlyph(Glyph):
         self.start = start
         self.end = end
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         parameters = {
             'class_': self.class_name
         }
@@ -311,7 +311,7 @@ class CircleGlyph(Glyph):
         self.center = center
         self.percentage = percentage
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         return Circle(transform=self.center.point.transform, r=self.percentage * Config.CELL_SIZE,
                       class_=self.class_name)
 
@@ -335,7 +335,7 @@ class OddCellGlyph(Glyph):
         result.add(Circle(center=(50, 50), r=35))
         return result
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         return Use(href="#OddCell-symbol", insert=self.coord.point.coordinates, class_="OddCell", height=100, width=100)
 
     def __repr__(self) -> str:
@@ -375,7 +375,7 @@ class RectGlyph(Glyph):
         self.position = position
         self.size = size
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         return Rect(transform=self.position.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
@@ -405,7 +405,7 @@ class EvenCellGlyph(Glyph):
         self.percentage = 0.7
         self.size = Coord(1, 1) * self.percentage
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
@@ -464,7 +464,7 @@ class BattenburgGlyph(Glyph):
             )
         return result
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         return Use(
             href="#Battenberg-symbol",
             insert=self.coord.point.coordinates,
@@ -495,7 +495,7 @@ class RectangleGlyph(Glyph):
         self.ratio = ratio
         self.vertical = vertical
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         if self.vertical:
             size = Point(Config.CELL_SIZE * self.percentage * self.ratio, Config.CELL_SIZE * self.percentage)
         else:
@@ -535,7 +535,7 @@ class TextGlyph(Glyph):
         self.position = position
         self.text = text
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         group = Group()
         text = Text("",
                     transform=self.position.transform + " " + self.angle.transform,
@@ -567,7 +567,7 @@ class KillerTextGlyph(Glyph):
         self.position = position
         self.text = text
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         group = Group()
         position = self.position.top_left + Coord(1, 1) * 0.05
         text = Text("",
@@ -653,7 +653,7 @@ class ArrowGlyph(Glyph):
         self.angle = Angle(float(angle))
         self.position = position
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         text = Text("",
                     transform=self.position.center.transform + " " + self.angle.transform,
                     class_=self.class_name)
@@ -673,7 +673,7 @@ class LittleArrowGlyph(Glyph):
         self.position = position
         self.location = location
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         direction = Direction.direction(self.location)
         size = Coord(0.4, 0.4)
         position = self.position + size
@@ -696,7 +696,7 @@ class LittleNumberGlyph(Glyph):
         self.position = position
         self.number = number
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         size = Coord(0.35, 0.35)
         position = self.position + size
         text = Text("",
@@ -720,7 +720,7 @@ class LittleKillerGlyph(Glyph):
         self.angle = angle
         self.value = value
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         group = Group()
         position = (self.position + Coord(0.28, 0.28)).center
         text = Text("",
@@ -801,7 +801,7 @@ class KillerGlyph(Glyph):
         results.sort()
         return results
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         group = Group()
         for vector in VectorList.merge_vectors(self.lines()):
             group.add(
@@ -824,7 +824,7 @@ class QuadrupleGlyph(Glyph):
         self.position = position
         self.numbers = numbers
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> Optional[BaseElement]:
         group = Group()
         circle = Circle(class_=self.class_name + "Circle", center=self.position.bottom_right.point.coordinates, r=35)
         group.add(circle)

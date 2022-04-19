@@ -11,6 +11,10 @@ from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
+class CellException(Exception):
+    pass
+
+
 class Cell(Item):
     cache: Dict[Tuple[int, int], 'Cell'] = {}
 
@@ -60,12 +64,15 @@ class Cell(Item):
     def validate(board: Board, yaml: Any) -> List[str]:
         result = []
         if not isinstance(yaml, dict):
-            result.append(f"Expecting dict, got {yaml:r}")
+            result.append(f"Expecting dict, got {yaml!r}")
             return result
+        if len(yaml) != 2:
+            result.append(f"Expecting Row and Column only, got {yaml!r}")
+
         if 'Row' not in yaml:
-            result.append(f"Expecting 'Row', got {yaml:r}")
+            result.append(f"Expecting 'Row', got {yaml!r}")
         if 'Column' not in yaml:
-            result.append(f"Expecting 'Column', got {yaml:r}")
+            result.append(f"Expecting 'Column', got {yaml!r}")
         if len(result) > 0:
             return result
         row = int(yaml['Row'])
@@ -73,7 +80,7 @@ class Cell(Item):
         if row not in board.row_range:
             result.append(f'Invalid row {row}')
         if column not in board.column_range:
-            result.append(f'Invalid column {row}')
+            result.append(f'Invalid column {column}')
         return result
 
     @staticmethod
@@ -97,7 +104,7 @@ class Cell(Item):
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Cell):
             return self.row == other.row and self.column == other.column
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CellException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __lt__(self, other: object) -> bool:
         if isinstance(other, Cell):
@@ -106,7 +113,7 @@ class Cell(Item):
             if self.row == other.row:
                 return self.column < other.column
             return False
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CellException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @property
     def coord(self) -> Coord:

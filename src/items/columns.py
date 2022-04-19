@@ -13,7 +13,7 @@ class Columns(StandardRegionSet):
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        Item.check_yaml_none(yaml)
+        cls.validate(board, yaml)
         return Columns(board)
 
     def __repr__(self) -> str:
