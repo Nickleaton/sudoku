@@ -1,7 +1,5 @@
 import unittest
-from typing import Type
-
-import oyaml as yaml
+from typing import Type, Sequence, Any, Tuple
 
 from src.items.board import Board
 from src.items.frame import Frame
@@ -22,14 +20,20 @@ class TestFrame(TestItem):
         return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
 
     @property
-    def config(self) -> str:
-        return "T1=20"
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ("T1=20", []),
+            ([], ['Expected str, got []']),
+            ("T1", ["Expected side|index|total, got 'T1'"]),
+            ("X1=20", ['Side not valid X']),
+            ("T0=20", ['Index outside range 0']),
+            ("TX=20", ['Index not valid X']),
+            ("T1=xx", ['Invalid total xx'])
+        ]
 
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
-        self.assertEqual(self.item.__class__, item.__class__)
+    @property
+    def config(self) -> str:
+        return "Frame: T1=20"
 
     @property
     def has_rule(self) -> bool:

@@ -20,8 +20,8 @@ class DifferencePair(Pair):
         if not isinstance(yaml, dict):
             result.append(f"Expecting dict, got {yaml!r}")
             return result
-        if len(yaml) != 3:
-            result.append(f"Expecting two cells, plus diffrence {yaml!r}")
+        if len(yaml) != 2:
+            result.append(f"Expecting two cells, plus difference {yaml!r}")
             return result
         if 'Cells' not in yaml:
             result.append(f"Expecting Cells:, got {yaml!r}")
@@ -36,7 +36,7 @@ class DifferencePair(Pair):
         result.extend(Coord.validate(yaml['Cells'][0]))
         result.extend(Coord.validate(yaml['Cells'][1]))
         if yaml['Difference'] not in board.digit_range:
-            result.extend(f"Invalid digit {yaml['Difference']}")
+            result.append(f"Invalid digit {yaml['Difference']}")
         return result
 
     @staticmethod

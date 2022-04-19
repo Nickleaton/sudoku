@@ -69,7 +69,7 @@ class Between(Line):
             label = f"{self.name}_before_descending_{cell.row}_{cell.column}"
             solver.model += value + big_m * (1 - flag) >= end + 1, label
 
-        if EXCLUDE_VALUES_ON_LINE:
+        if EXCLUDE_VALUES_ON_LINE:  # pragma: no cover
             # min and max digit cannot be in the middle of a between line
             for cell in self.cells[1:-1]:
                 solver.model += solver.choices[self.board.minimum_digit][cell.row][cell.column] == 0

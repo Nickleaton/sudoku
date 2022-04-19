@@ -1,5 +1,5 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Tuple, Any
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -25,6 +25,21 @@ class TestKnownCell(TestCellReference):
                 )
 
     @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ({'Row': 1, 'Column': 2, 'Digit': 9}, []),
+            ('xxx', ["Expecting dict, got 'xxx'"]),
+            ({'Row': 1, 'Column': 2}, ["Row, Column and digit {'Row': 1, 'Column': 2}",
+                                       "Digit:, got {'Row': 1, 'Column': 2}"]),
+            ({'xxx': 1, 'Column': 2, 'Digit': 9}, ["Row:, got {'xxx': 1, 'Column': 2, 'Digit': 9}"]),
+            ({'Row': 1, 'sevens': 2, 'Digit': 9}, ["Column:, got {'Row': 1, 'sevens': 2, 'Digit': 9}"]),
+            ({'Row': 1, 'Column': 2, 'fives': 9}, ["Digit:, got {'Row': 1, 'Column': 2, 'fives': 9}"]),
+            ({'Row': 0, 'Column': 2, 'Digit': 9}, ["Invalid row:, got {'Row': 0, 'Column': 2, 'Digit': 9}"]),
+            ({'Row': 1, 'Column': 0, 'Digit': 9}, ["Invalid column:, got {'Row': 1, 'Column': 0, 'Digit': 9}"]),
+            ({'Row': 1, 'Column': 2, 'Digit': 0}, ["Invalid digit:, got {'Row': 1, 'Column': 2, 'Digit': 0}"]),
+        ]
+
+    @property
     def config(self) -> str:
         return "KnownCell:\n" \
                "    Row: 1\n" \
@@ -38,6 +53,9 @@ class TestKnownCell(TestCellReference):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, CellReference, Item, KnownCell}
+
+    def test_letter(self):
+        self.assertEqual("9", self.item.letter())
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -7,7 +7,7 @@ from src.items.even_cell import EvenCell
 from src.items.fortress_cell import FortressCell
 from src.items.item import Item
 from src.items.known_cell import KnownCell
-from src.items.odd_cell import Odd
+from src.items.odd_cell import OddCell
 
 
 class Knowns(Composed):
@@ -25,7 +25,7 @@ class Knowns(Composed):
                 elif digit == 'e':
                     parts.append(EvenCell(board, row, column))
                 elif digit == 'o':
-                    parts.append(Odd(board, row, column))
+                    parts.append(OddCell(board, row, column))
                 elif digit == 'f':
                     parts.append(FortressCell(board, row, column))
                 else:

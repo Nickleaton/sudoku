@@ -65,14 +65,17 @@ class MagicSquare(Composed):
     def validate(_: Board, yaml: Any) -> List[str]:
         result = []
         if not isinstance(yaml, dict):
-            result.append(f"Expecting dict, got {yaml:r}")
+            result.append(f"Expecting dict, got {yaml!r}")
+            return result
+        if len(yaml) != 2:
+            result.append("Expecting Center and Corner")
             return result
         if 'Center' not in yaml:
-            result.append("Expecting 'Center")
+            result.append(f"Expecting 'Center, got {yaml!r}")
         else:
             result.extend(Coord.validate(yaml['Center']))
         if 'Corner' not in yaml:
-            result.append("Expecting 'Corner")
+            result.append(f"Expecting 'Corner, got {yaml!r}")
         else:
             result.extend(Coord.validate(yaml['Corner']))
         return result

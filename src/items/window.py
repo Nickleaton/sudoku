@@ -40,16 +40,13 @@ class Window(Region):
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
         result: List[str] = []
-        if not isinstance(yaml, str):
-            result.append(f"Expecting str, got {yaml!r}")
+        if not isinstance(yaml, list):
+            result.append(f"Expecting list, got {yaml!r}")
             return result
-        if len(yaml) != 3:
-            result.append(f"Expecting string digit,digit, got {yaml!r}")
+        if len(yaml) != 2:
+            result.append(f"Expecting digit,digit, got {yaml!r}")
             return result
-        if yaml[1] != ',':
-            result.append(f"Expecting string digit,digit, got {yaml!r}")
-            return result
-        if yaml[0] not in board.digit_range or yaml[2] not in board.digit_range:
+        if yaml[0] not in board.digit_range or yaml[1] not in board.digit_range:
             result.append(f"Expecting string digit,digit, got {yaml!r}")
         return result
 

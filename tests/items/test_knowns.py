@@ -12,7 +12,7 @@ from src.items.fortress_cell import FortressCell
 from src.items.item import Item
 from src.items.known_cell import KnownCell
 from src.items.knowns import Knowns
-from src.items.odd_cell import Odd
+from src.items.odd_cell import OddCell
 from tests.items.test_composed import TestComposed
 
 
@@ -79,7 +79,7 @@ class TestKnowns(TestComposed):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, Composed, EvenCell, FortressCell, Item, KnownCell, Knowns, Odd}
+        return {Cell, CellReference, Composed, EvenCell, FortressCell, Item, KnownCell, Knowns, OddCell}
 
 
 if __name__ == '__main__':  # pragma: no cover

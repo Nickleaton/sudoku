@@ -1,5 +1,5 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Any, Tuple
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -21,6 +21,15 @@ class TestKnight(TestItem):
 
     def test_offsets(self):
         self.assertEqual(8, len(self.item.offsets()))
+
+    @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ([2, 4, 6, 8], []),
+            (1, ['Expecting list, got 1']),
+            ('xxx', ["Expecting list, got 'xxx'"]),
+            ([0, 4, 6, 8], ['0 is not a valid digit'] ),
+        ]
 
     @property
     def config(self) -> str:

@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, List
+from typing import Type, List, Sequence, Tuple, Any
 
 from src.items.anti import Anti
 from src.items.board import Board
@@ -18,6 +18,15 @@ class TestAnti(TestItem):
 
     def test_offsets(self):
         self.assertEqual(0, len(self.item.offsets()))
+
+    @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ([1, 2, 3, 4, 5, 6, 7, 8, 9], []),
+            (1, ['Expecting a list, got 1']),
+            (['a'], ["Expecting int, got 'a'"]),
+            ([0], ["Expecting digit, got 0"]),
+        ]
 
     @property
     def config(self) -> str:

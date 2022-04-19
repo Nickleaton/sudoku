@@ -1,5 +1,5 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Tuple, Any
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -16,6 +16,15 @@ class TestWindow(TestRegion):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Window(self.board, Coord(2, 2))
+
+    @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ([2, 2], []),
+            (1, ['Expecting list, got 1']),
+            ([2, 2, 2], ['Expecting digit,digit, got [2, 2, 2]']),
+            ([2, 0], ['Expecting string digit,digit, got [2, 0]']),
+        ]
 
     @property
     def config(self) -> str:

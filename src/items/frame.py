@@ -1,14 +1,12 @@
 """ Frame Sudoku """
 
-from typing import List, Dict, Sequence
+from typing import List, Dict, Any
 
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
-from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
@@ -91,13 +89,36 @@ class Frame(Item):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison', 'Frame'})
 
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Frame':
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
         if not isinstance(yaml, str):
-            raise ConstraintException(f"Expecting str, got {yaml!r}")
+            return [f"Expected str, got {yaml!r}"]
+        if len(yaml) <= 4:
+            return [f"Expected side|index|total, got {yaml!r}"]
+        result = []
+        if not Side.valid(yaml[0]):
+            result.append(f"Side not valid {yaml[0]}")
+        if not yaml[1].isdigit():
+            result.append(f"Index not valid {yaml[1]}")
+            return result
+        index = int(yaml[1])
+        if index not in board.row_range or index not in board.row_range:
+            result.append(f"Index outside range {index}")
+        if not yaml[3:].isnumeric():
+            result.append(f"Invalid total {yaml[3:]}")
+        return result
+
+    @staticmethod
+    def extract(board: Board, yaml: Any) -> Any:
         side = Side.create(yaml[0])
         index = int(yaml[1])
-        total = int(yaml.split('=')[1])
+        total = int(yaml[3:])
+        return side, index, total
+
+    @classmethod
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Frame':
+        Frame.validate(board, yaml)
+        side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -107,16 +128,3 @@ class Frame(Item):
             solver.values[self.cells[2].row][self.cells[2].column]
         ]
         solver.model += lpSum(values) == self.total, f"{self.name}"
-
-
-class Frames(Composed):
-    """ Collection of Frames """
-
-    def __init__(self, board: Board, frames: Sequence[Frame]):
-        super().__init__(board, frames)
-
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        if not isinstance(yaml, list):
-            raise ConstraintException(f"Expecting list, got {yaml!r}")
-        return cls(board, [Frame.create('Frame', board, y) for y in yaml])

@@ -5,7 +5,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
-from src.items.odd_cell import Odd
+from src.items.odd_cell import OddCell
 from tests.items.test_cell_reference import TestCellReference
 
 
@@ -13,17 +13,23 @@ class TestOdd(TestCellReference):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Odd(self.board, 1, 2)
+        self.item = OddCell(self.board, 1, 2)
         self.good = [1, 3, 5, 7, 9]
         self.bad = [2, 4, 6, 8]
 
     @property
     def representation(self) -> str:
-        return "Odd(Board(9, 9, 3, 3, None, None, None, None), Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+        return (
+            "OddCell"
+            "("
+            "Board(9, 9, 3, 3, None, None, None, None), "
+            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2)"
+            ")"
+        )
 
     @property
     def config(self) -> str:
-        return "Odd:\n" \
+        return "OddCell:\n" \
                "    Row: 1\n" \
                "    Column: 2\n"
 
@@ -39,7 +45,10 @@ class TestOdd(TestCellReference):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, Item, Odd}
+        return {Cell, CellReference, Item, OddCell}
+
+    def test_letter(self):
+        self.assertEqual("o", self.item.letter())
 
 
 if __name__ == '__main__':  # pragma: no cover

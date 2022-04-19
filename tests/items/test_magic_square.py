@@ -1,5 +1,5 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Tuple, Any
 
 import oyaml as yaml
 
@@ -22,6 +22,16 @@ class TestMagicSquare(TestComposed):
     @property
     def representation(self) -> str:
         return "MagicSquare(Board(9, 9, 3, 3, None, None, None, None), Coord(5, 5), Coord(1, 1))"
+
+    @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ({'Center': [5, 5], 'Corner': [1, 1]}, []),
+            ('xxx', ["Expecting dict, got 'xxx'"]),
+            ({'xxx': [5, 5], 'Corner': [1, 1]}, ["Expecting 'Center, got {'xxx': [5, 5], 'Corner': [1, 1]}"]),
+            ({'Center': [5, 5], 'xxx': [1, 1]}, ["Expecting 'Corner, got {'Center': [5, 5], 'xxx': [1, 1]}"]),
+            ({'Center': [5, 5], 'Corner': [1, 1], 'yyy': 2}, ['Expecting Center and Corner']),
+        ]
 
     @property
     def config(self) -> str:

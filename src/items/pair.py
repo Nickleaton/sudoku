@@ -34,7 +34,7 @@ class Pair(Item):
     def validate(board: Board, yaml: Any) -> List[str]:
         result: List[str] = []
         if not isinstance(yaml, list):
-            result.append(f"Expecting ;ist, got {yaml!r}")
+            result.append(f"Expecting list, got {yaml!r}")
             return result
         if len(yaml) != 2:
             result.append(f"Expecting two cells, got {yaml!r}")

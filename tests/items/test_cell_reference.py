@@ -1,5 +1,5 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Any, Tuple
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -28,6 +28,16 @@ class TestCellReference(TestItem):
         )
 
     @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ({'Row': 1, 'Column': 1}, []),
+            ('xxx', ["Expecting dict, got 'xxx'"]),
+            ({'xxx': 1, 'Column': 1},["Row:, got {'xxx': 1, 'Column': 1}"]),
+            ({'Row': 1, 'xxxxxx': 1}, ["Column:, got {'Row': 1, 'xxxxxx': 1}"]),
+            ({'Row': 0, 'Column': 1}, ["Expecting digit,digit, got {'Row': 0, 'Column': 1}"]),
+        ]
+
+    @property
     def config(self) -> str:
         return "CellReference:\n" \
                "    Row: 1\n" \
@@ -40,6 +50,9 @@ class TestCellReference(TestItem):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, CellReference, Item}
+
+    def test_letter(self):
+        self.assertEqual('.', self.item.letter())
 
 
 if __name__ == '__main__':  # pragma: no cover

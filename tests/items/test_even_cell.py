@@ -44,6 +44,9 @@ class TestEvenCell(TestCellReference):
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, CellReference, Item, EvenCell}
 
+    def test_letter(self):
+        self.assertEqual("e", self.item.letter())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

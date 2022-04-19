@@ -9,7 +9,7 @@ from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class Odd(CellReference):
+class OddCell(CellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
@@ -38,6 +38,6 @@ class Odd(CellReference):
             [
                 solver.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
-                if not Odd.included(digit)
+                if not OddCell.included(digit)
             ]
         ) == 0, f"{self.__class__.__name__}_{self.row}_{self.column}"

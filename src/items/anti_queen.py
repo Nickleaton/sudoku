@@ -1,9 +1,7 @@
-from typing import List, Dict
+from typing import List
 
 from src.items.anti import Anti
 from src.items.board import Board
-from src.items.constraint_exception import ConstraintException
-from src.items.item import Item
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -26,12 +24,6 @@ class AntiQueen(Anti):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Queen'})
-
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        if not isinstance(yaml, list):
-            raise ConstraintException(f"Expecting list, got {yaml!r}")
-        return AntiQueen(board, yaml)
 
     @property
     def rules(self) -> List[Rule]:

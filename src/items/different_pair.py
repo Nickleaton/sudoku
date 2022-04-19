@@ -15,13 +15,17 @@ class DifferentPair(Pair):
         super().__init__(board, c1, c2)
         self.digits = digits
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r}, {self.digits!r})"
+
+
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
         result: List[str] = []
         if not isinstance(yaml, dict):
             result.append(f"Expecting dict, got {yaml!r}")
             return result
-        if len(yaml) != 3:
+        if len(yaml) != 2:
             result.append(f"Expecting two cells, plus digits got {yaml!r}")
             return result
         if 'Digits' not in yaml:
@@ -38,7 +42,7 @@ class DifferentPair(Pair):
         result.extend(Coord.validate(yaml['Cells'][1]))
         for digit in yaml['Digits']:
             if digit not in board.digit_range:
-                result.extend(f"Invalid digit {digit}")
+                result.append(f"Invalid digit {digit}")
         return result
 
     @staticmethod

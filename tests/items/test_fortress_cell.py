@@ -41,6 +41,9 @@ class TestFortressCell(TestCellReference):
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, CellReference, Item, FortressCell}
 
+    def test_letter(self):
+        self.assertEqual("f", self.item.letter())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
