@@ -21,16 +21,23 @@ class Line(Region):
     def validate(board: Board, yaml: Any) -> List[str]:
         result = []
         if not isinstance(yaml, list):
-            result.append(f"Expecting list, got {yaml:r}")
+            result.append(f"Expecting list, got {yaml!r}")
             return result
         for item in yaml:
             if not isinstance(item, list):
-                result.append(f"Expecting list pair, got {item:r}")
-            else:
-                if len(item) != 2:
-                    result.append(f"Expecting pair, got {item:r}")
+                result.append(f"Expecting list pair, got {item!r}")
+                return result
+            if len(item) != 2:
+                result.append(f"Expecting pair, got {item!r}")
+            if not isinstance(item[0], int):
+                result.append(f"Expecting int, got {item[0]!r}")
+            if not isinstance(item[1], int):
+                result.append(f"Expecting int, got {item[1]!r}")
+        if len(result) > 0:
+            return result
+        for item in yaml:
             if not board.is_valid(item[0], item[1]):
-                result.append(f"Invalid row, column got {item:r}")
+                result.append(f"Invalid row, column got {item!r}")
         return result
 
     @staticmethod

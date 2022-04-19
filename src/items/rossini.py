@@ -1,10 +1,8 @@
-from typing import List, Dict, Sequence
+from typing import List, Dict, Any
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
-from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
@@ -67,13 +65,36 @@ class Rossini(Item):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison', 'Rossini'})
 
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Rossini':
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
         if not isinstance(yaml, str):
-            raise ConstraintException(f"Expecting str, got {yaml!r}")
+            return [f"Expected str, got {yaml!r}"]
+        if len(yaml) != 3:
+            return [f"Expected side|index|order, got {yaml!r}"]
+        result = []
+        if not Side.valid(yaml[0]):
+            result.append(f"Side not valid {yaml[0]}")
+        if not yaml[1].isdigit():
+            result.append(f"Index not valid {yaml[1]}")
+            return result
+        index = int(yaml[1])
+        if index not in board.row_range or index not in board.row_range:
+            result.append(f"Index outside range {index}")
+        if not Order.valid(yaml[2]):
+            result.append(f"Invalid Order {yaml[2]}")
+        return result
+
+    @staticmethod
+    def extract(board: Board, yaml: Any) -> Any:
         side = Side.create(yaml[0])
         index = int(yaml[1])
         order = Order.create(yaml[2])
+        return side, index, order
+
+    @classmethod
+    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Rossini':
+        Rossini.validate(board, yaml)
+        side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -88,16 +109,3 @@ class Rossini(Item):
         else:
             solver.model += values[0] >= values[1] + 1, f"{self.name}_1"
             solver.model += values[1] >= values[2] + 1, f"{self.name}_2"
-
-
-class Rossinis(Composed):
-    """ Collection of Rossini """
-
-    def __init__(self, board: Board, rossinis: Sequence[Rossini]):
-        super().__init__(board, rossinis)
-
-    @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        if not isinstance(yaml, list):
-            raise ConstraintException(f"Expecting list, got {yaml!r}")
-        return cls(board, [Rossini.create('Rossini', board, y) for y in yaml])

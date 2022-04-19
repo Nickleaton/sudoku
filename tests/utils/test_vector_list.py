@@ -29,6 +29,13 @@ class TestVectorList(unittest.TestCase):
                 Vector(Coord(4, 4), Coord(5, 5))
             ]
         )
+        self.vectors4 = VectorList(
+            [
+                Vector(Coord(2, 3), Coord(4, 4)),
+                Vector(Coord(1, 2), Coord(2, 3)),
+                Vector(Coord(4, 4), Coord(5, 5))
+            ]
+        )
         self.coords = CoordList(
             [
                 Coord(1, 2),
@@ -112,6 +119,23 @@ class TestVectorList(unittest.TestCase):
         )
         result = VectorList.merge_vectors(vectors)
         self.assertEqual(expected, result)
+
+    def test_add(self):
+        self.assertEqual(VectorList(
+            [
+                Vector(Coord(1, 2), Coord(2, 3)),
+                Vector(Coord(2, 3), Coord(4, 4)),
+                Vector(Coord(4, 4), Coord(1, 2)),
+                Vector(Coord(1, 2), Coord(2, 3)),
+                Vector(Coord(4, 4), Coord(1, 2))
+            ]),
+            self.vectors1 + self.vectors2)
+        with self.assertRaises(VectorListException):
+            _ = self.vectors1 + "xxxx"
+
+    def test_sort(self):
+        self.vectors4.sort()
+        self.assertEqual(self.vectors3, self.vectors4)
 
 
 if __name__ == '__main__':  # pragma: no cover

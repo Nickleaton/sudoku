@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict
+from typing import Dict, Optional
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum
 
@@ -16,7 +16,7 @@ class PulpSolver(Solver):
         self.model = LpProblem("Sudoku", LpMinimize)
         self.model += self.objective
         self.status = 'Pending'
-        self.solution = None
+        self.solution: Optional[Solution] = None
         self.choices = LpVariable.dicts("Choice",
                                         (board.digit_range, board.row_range, board.column_range),
                                         0,
@@ -31,7 +31,7 @@ class PulpSolver(Solver):
                                        )
         self.renbans: Dict[str, Dict] = {}
         self.distinct_renbans: Dict[str, Dict] = {}
-        self.betweens: Dict[str, Dict] = {}
+        self.betweens: Dict[str, LpVariable] = {}
 
         for row, column in product(board.row_range, board.column_range):
             self.model += lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range) == \

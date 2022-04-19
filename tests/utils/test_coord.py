@@ -6,6 +6,10 @@ from src.utils.coord import Coord, CoordException
 
 class TestCoord(unittest.TestCase):
 
+    def test_transform(self):
+        cell = Coord(1, 2)
+        self.assertEqual("translate(200, 100)", cell.transform)
+
     def test_cell(self):
         cell = Coord(1, 2)
         self.assertEqual(1, cell.row)
@@ -68,23 +72,14 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(1.5, cell.center.row)
         self.assertEqual(1.5, cell.center.column)
 
-    def test_top_right(self):
+    def test_corners(self):
         cell = Coord(1, 1)
         self.assertEqual(1, cell.top_right.row)
         self.assertEqual(2, cell.top_right.column)
-
-    def test_top_left(self):
-        cell = Coord(1, 1)
         self.assertEqual(1, cell.top_left.row)
         self.assertEqual(1, cell.top_left.column)
-
-    def test_bottom_right(self):
-        cell = Coord(1, 1)
         self.assertEqual(2, cell.bottom_right.row)
         self.assertEqual(2, cell.bottom_right.column)
-
-    def test_bottom_left(self):
-        cell = Coord(1, 1)
         self.assertEqual(2, cell.bottom_left.row)
         self.assertEqual(1, cell.bottom_left.column)
 

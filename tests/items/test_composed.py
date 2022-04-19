@@ -9,10 +9,14 @@ from src.items.cell import Cell
 from src.items.column import Column
 from src.items.composed import Composed
 from src.items.constraints import Constraints
-from src.items.indexing import ColumnIndexer, Indexer
+from src.items.indexing import Indexer
+from src.items.column_indexer import ColumnIndexer
 from src.items.item import Item
 from src.items.region import Region
-from src.items.region_sets import Boxes, Columns, Rows, RegionSet, StandardRegionSet
+from src.items.region_sets import RegionSet, StandardRegionSet
+from src.items.columns import Columns
+from src.items.rows import Rows
+from src.items.boxes import Boxes
 from src.items.row import Row
 from src.items.standard_region import StandardRegion
 from tests.items.test_item import TestItem

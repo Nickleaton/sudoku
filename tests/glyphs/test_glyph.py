@@ -60,9 +60,12 @@ class TestGlyph(unittest.TestCase):
         return ""
 
     def test_draw(self):
+        if isinstance(self.glyph, Glyph):
+            return
         element = self.glyph.draw()
-        if element is not None:
-            self.assertEqual(self.target, element.tostring())
+        if element is None:
+            return
+        self.assertEqual(self.target, element.tostring())
 
     def test_start_marker(self):
         marker = self.glyph.__class__.start_marker()

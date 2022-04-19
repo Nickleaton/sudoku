@@ -19,7 +19,7 @@ class Rule:
         """
         self.name: str = name
         self.rank: int = rank
-        self.text: str = text
+        self.text: Optional[str] = text
 
     def __lt__(self, other: object) -> bool:
         """

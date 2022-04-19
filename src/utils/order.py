@@ -24,5 +24,9 @@ class Order(Enum):
             return Order.DECREASING
         raise OrderException(f"Unknown order letter {letter}")
 
+    @staticmethod
+    def valid(letter: str) -> bool:
+        return letter in ['I', 'D']
+
     def __repr__(self) -> str:
         return f"Order.{self.name}"

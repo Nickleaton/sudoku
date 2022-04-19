@@ -21,6 +21,13 @@ class Side(Enum):
     def create(letter: str) -> 'Side':
         return Side(letter)
 
+    @staticmethod
+    def valid(letter: str) -> bool:
+        for side in Side:
+            if letter == side.value:
+                return True
+        return False
+
     def direction(self, cyclic: Cyclic) -> Direction:  # pylint: disable=too-many-return-statements
         if cyclic == Cyclic.CLOCKWISE:
             if self == Side.TOP:

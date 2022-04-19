@@ -17,8 +17,8 @@ class Anti(Composed):
         for cell in Cell.cells():
             self.add_items(self.pairs(cell, digits))
 
-    def offsets(self) -> List[Coord]:
-        raise NotImplementedError
+    def offsets(self) -> List[Coord]:  # pylint: disable=no-self-use
+        return []
 
     def pairs(self, c1: Cell, digits: List[int]) -> Sequence[DifferentPair]:
         result = []

@@ -11,6 +11,11 @@ class TestOrder(unittest.TestCase):
         with self.assertRaises(OrderException):
             Order.create('X')
 
+    def test_valid(self):
+        self.assertTrue(Order.valid('I'))
+        self.assertTrue(Order.valid('D'))
+        self.assertFalse(Order.valid('X'))
+
     def test_repr(self):
         self.assertEqual('Order.INCREASING', repr(Order.INCREASING))
         self.assertEqual('Order.DECREASING', repr(Order.DECREASING))

@@ -30,12 +30,12 @@ def custom_name_func(testcase_func, _, param) -> str:
 
 class TestFiles(unittest.TestCase):
     filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
-    filenames = ['problem042']
+    # filenames = ['problem042']
 
     @staticmethod
     def config(filename: str) -> Any:
-        fname = os.path.join("problems", filename + ".yaml")
-        with open(fname, 'r') as f:
+        full_filename = os.path.join("problems", filename + ".yaml")
+        with open(full_filename, 'r') as f:
             config = yaml.load(f, yaml.SafeLoader)
         return config
 
@@ -47,6 +47,7 @@ class TestFiles(unittest.TestCase):
     def problem(filename: str) -> Item:
         config = TestFiles.config(filename)
         board = TestFiles.board(config)
+        print(config)
         return Item.create('Constraints', board, config['Constraints'])
 
     @staticmethod
@@ -77,15 +78,15 @@ class TestFiles(unittest.TestCase):
     def test_svg(self, filename: str) -> None:
         problem = TestFiles.problem(filename)
         svg = TestFiles.svg(problem)
-        fname = os.path.join("output", "svg", filename + ".svg")
-        with open(fname, 'w', encoding="utf-8") as f:
+        full_filename = os.path.join("output", "svg", filename + ".svg")
+        with open(full_filename, 'w', encoding="utf-8") as f:
             f.write(svg)
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_html(self, filename: str) -> None:
         problem = TestFiles.problem(filename)
-        fname = os.path.join("output", "html", filename + ".html")
-        with open(fname, 'w', encoding="utf-8") as f:
+        full_filename = os.path.join("output", "html", filename + ".html")
+        with open(full_filename, 'w', encoding="utf-8") as f:
             f.write(TestFiles.html(problem))
 
     @parameterized.expand(filenames, name_func=custom_name_func)

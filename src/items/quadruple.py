@@ -1,10 +1,9 @@
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, QuadrupleGlyph
 from src.items.board import Board
-from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -37,12 +36,50 @@ class Quadruple(Item):
             QuadrupleGlyph(class_name="Quadruple", position=self.position, numbers=self.numbers)
         ]
 
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
+        if not isinstance(yaml, str):
+            return [f"Expecting str, got {yaml!r}"]
+        results: List[str] = []
+        if "=" not in yaml:
+            return [f"Expecting position=digits, got {yaml}"]
+        position_str: str = yaml.split("=")[0]
+        digits: str = yaml.split("=")[1]
+        if len(position_str) != 2:
+            results.append(f"Expecting rc for position got {position_str}")
+            return results
+        if not position_str.isnumeric():
+            results.append(f"Expecting rc for position got {position_str}")
+            return results
+        row = int(position_str[0])
+        if not row in board.row_range:
+            results.append(f"Expected valid row, got {row} ")
+        column = int(position_str[1])
+        if not column in board.column_range:
+            results.append(f"Expected valid column, got {column} ")
+        if len(digits) > 4:
+            results.append(f"Too many digits, got {digits}")
+        if len(digits) == 0:
+            results.append(f"Too few digits, got '{digits}'")
+        if not digits.isnumeric():
+            results.append(f"Expecting numbers, got '{digits}'")
+        if len(results) > 0:
+            return results
+        for d in digits:
+            if int(d) not in board.digit_range:
+                results.append(f"Invalid digit {d}")
+        return results
+
+    @staticmethod
+    def extract(board: Board, yaml: Any) -> Any:
+        position_str, digits = yaml.split("=")
+        position = Coord(int(position_str[0]), int(position_str[1]))
+        return position, digits
+
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        if not isinstance(yaml, str):
-            raise ConstraintException(f"Expecting str, got {yaml!r}")
-        position_str, numbers = yaml.split("=")
-        position = Coord(int(position_str[0]), int(position_str[1]))
+        Quadruple.validate(board, yaml)
+        position, numbers = Quadruple.extract(board, yaml)
         return cls(board, position, numbers)
 
     def add_constraint(self, solver: PulpSolver) -> None:

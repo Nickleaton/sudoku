@@ -43,8 +43,7 @@ class Between(Line):
         solver.betweens[self.name] = LpVariable(f"{self.name}_increasing", 0, 1, LpInteger)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        # noinspection PyPep8Naming
-        M = solver.board.maximum_digit + 1
+        big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]
         start = solver.values[start_cell.row][start_cell.column]
@@ -58,17 +57,17 @@ class Between(Line):
 
             # Ascending
             label = f"{self.name}_after_ascending_{cell.row}_{cell.column}"
-            solver.model += start + 1 <= M * flag + value, label
+            solver.model += start + 1 <= big_m * flag + value, label
 
             label = f"{self.name}_before_ascending_{cell.row}_{cell.column}"
-            solver.model += value + 1 <= M * flag + end, label
+            solver.model += value + 1 <= big_m * flag + end, label
 
             # Descending
             label = f"{self.name}_after_descending_{cell.row}_{cell.column}"
-            solver.model += start + M * (1 - flag) >= value + 1, label
+            solver.model += start + big_m * (1 - flag) >= value + 1, label
 
             label = f"{self.name}_before_descending_{cell.row}_{cell.column}"
-            solver.model += value + M * (1 - flag) >= end + 1, label
+            solver.model += value + big_m * (1 - flag) >= end + 1, label
 
         if EXCLUDE_VALUES_ON_LINE:
             # min and max digit cannot be in the middle of a between line

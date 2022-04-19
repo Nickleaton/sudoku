@@ -16,6 +16,13 @@ class TestSide(unittest.TestCase):
         self.assertEqual(Side.BOTTOM, Side.create("B"))
         self.assertEqual(Side.LEFT, Side.create("L"))
 
+    def test_valid(self):
+        self.assertTrue(Side.valid('T'))
+        self.assertTrue(Side.valid('R'))
+        self.assertTrue(Side.valid('B'))
+        self.assertTrue(Side.valid('L'))
+        self.assertFalse(Side.valid('X'))
+
     def test_direction(self):
         self.assertEqual(Direction.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
         self.assertEqual(Direction.DOWN_LEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))

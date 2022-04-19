@@ -32,7 +32,7 @@ class CellReference(Item):
         return result
 
     @staticmethod
-    def extract(_: Board, yaml: Any) -> Tuple[int, int]:
+    def extract(_: Board, yaml: Any) -> Tuple:
         return int(yaml['Row']), int(yaml['Column'])
 
     @classmethod

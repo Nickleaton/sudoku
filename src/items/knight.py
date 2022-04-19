@@ -1,11 +1,10 @@
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from pulp import lpSum
 
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
-from src.items.constraint_exception import ConstraintException
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -41,11 +40,26 @@ class Knight(Composed):
     def tags(self) -> set[str]:
         return super().tags.union({'Knight'})
 
+    @staticmethod
+    def validate(board: Board, yaml: Any) -> List[str]:
+        result = []
+        if not isinstance(yaml, list):
+            result.append(f"Expecting list, got {yaml!r}")
+            return result
+        for digit in yaml:
+            if digit not in board.digit_range:
+                result.append(f"{digit} is not a valid digit")
+        return result
+
+    @staticmethod
+    def extract(board: Board, yaml: Any) -> Any:
+        return yaml
+
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
-        if not isinstance(yaml, list):
-            raise ConstraintException(f"Expecting list, got {yaml!r}")
-        return Knight(board, yaml)
+        Knight.validate(board, yaml)
+        digits = Knight.extract(board, yaml)
+        return Knight(board, digits)
 
     @property
     def rules(self) -> List[Rule]:

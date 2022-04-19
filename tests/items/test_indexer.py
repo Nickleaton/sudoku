@@ -1,5 +1,5 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Tuple, Any
 
 import oyaml as yaml
 
@@ -29,6 +29,18 @@ class TestIndexer(TestStandardRegion):
     @property
     def config(self) -> str:
         return "Indexer: 1"
+
+    @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ({'Indexer': 1}, []),
+            ({'Indexer': 99}, ["Expecting Indexer: index, got {'Indexer': 99}"]),
+            ({'Indexer': None}, ["Expecting Indexer: index, got {'Indexer': None}"]),
+            ('xxx', ["Expecting Indexer: index, got 'xxx'"]),
+            ({'XXXX': 1}, ["Expecting Indexer: index, got {'XXXX': 1}"]),
+            ({'Indexer': 1, 'Other': None},
+             ["Expecting Indexer: index, got {'Indexer': 1, 'Other': None}"])
+        ]
 
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)

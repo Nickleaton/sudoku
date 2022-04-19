@@ -1,16 +1,17 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Tuple, Any
 
 import oyaml as yaml
 
 from src.items.board import Board
 from src.items.cell import Cell
+from src.items.column_indexer import ColumnIndexer
 from src.items.composed import Composed
-from src.items.indexing import ColumnIndexer, Indexer
+from src.items.indexing import Indexer
 from src.items.item import Item
 from src.items.region import Region
 from src.items.standard_region import StandardRegion
-from tests.items.test_indexing import TestIndexer
+from tests.items.test_indexer import TestIndexer
 
 
 class TestColumnIndexer(TestIndexer):
@@ -30,6 +31,18 @@ class TestColumnIndexer(TestIndexer):
     @property
     def config(self) -> str:
         return "ColumnIndexer: 1"
+
+    @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            ({'ColumnIndexer': 1}, []),
+            ({'ColumnIndexer': 99}, ["Expecting ColumnIndexer: index, got {'ColumnIndexer': 99}"]),
+            ({'ColumnIndexer': None}, ["Expecting ColumnIndexer: index, got {'ColumnIndexer': None}"]),
+            ('xxx', ["Expecting ColumnIndexer: index, got 'xxx'"]),
+            ({'XXXX': 1}, ["Expecting ColumnIndexer: index, got {'XXXX': 1}"]),
+            ({'ColumnIndexer': 1, 'Other': None},
+             ["Expecting ColumnIndexer: index, got {'ColumnIndexer': 1, 'Other': None}"])
+        ]
 
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)

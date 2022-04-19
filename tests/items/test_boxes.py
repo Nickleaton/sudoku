@@ -7,7 +7,8 @@ from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
 from src.items.region import Region
-from src.items.region_sets import Boxes, RegionSet, StandardRegionSet
+from src.items.region_sets import RegionSet, StandardRegionSet
+from src.items.boxes import Boxes
 from src.items.standard_region import StandardRegion
 from tests.items.test_standard_region_sets import TestStandardRegionSet
 
