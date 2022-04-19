@@ -26,9 +26,6 @@ class Region(Composed):
     def cells(self) -> List[Cell]:
         return [item for item in self.items if isinstance(item, Cell)]
 
-    def __in__(self, cell: Cell) -> bool:
-        return cell in self.cells
-
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
 
