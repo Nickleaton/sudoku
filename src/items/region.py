@@ -41,6 +41,6 @@ class Region(Composed):
                 solver.model += total == 1, f"Unique_{name}_{digit}"
 
     def add_total_constraint(self, solver: PulpSolver, total: int, name: str) -> None:
-        if REGION_TOTALS:
+        if REGION_TOTALS:  # pragma no cover
             value = lpSum([solver.values[cell.row][cell.column] for cell in self.cells])
             solver.model += value == total, f"Total_{name}"

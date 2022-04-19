@@ -50,6 +50,10 @@ class TestTLBR(TestDiagonal):
         item = Item.create(self.item.__class__.__name__, self.board, data)
         self.assertIsNotNone(item)
 
+    def test_in(self):
+        self.assertIn(Cell.make(self.board, 5, 5), self.item)
+        self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

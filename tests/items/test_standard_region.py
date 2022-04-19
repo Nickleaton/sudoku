@@ -1,7 +1,8 @@
 import unittest
-from typing import Type
+from typing import Type, Sequence, Tuple, Any
 
 from src.items.board import Board
+from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
 from src.items.region import Region
@@ -16,6 +17,14 @@ class TestStandardRegion(TestRegion):
         self.item = StandardRegion(self.board, 1)
 
     @property
+    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
+        return [
+            (1, []),
+            ('x', ["Expecting int, got 'x'"])
+
+        ]
+
+    @property
     def config(self) -> str:
         return "StandardRegion: 1"
 
@@ -26,6 +35,9 @@ class TestStandardRegion(TestRegion):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Item, Composed, Region, StandardRegion}
+
+    def test_in(self):
+        self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 
 
 if __name__ == '__main__':  # pragma: no cover

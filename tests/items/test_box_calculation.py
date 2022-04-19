@@ -5,7 +5,7 @@ from src.items.board import Board
 from src.items.box import Box
 
 
-class TestBox(unittest.TestCase):
+class TestBoxCalculation(unittest.TestCase):
 
     def check(self, n: int, width: int, height: int, expected: List) -> None:
         problem = Board(n, n, width, height)
@@ -86,6 +86,7 @@ class TestBox(unittest.TestCase):
             [4, 3, 3]
         ]
         self.check(4, 2, 2, expected)
+
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -13,7 +13,7 @@ class TestRegion(TestItem):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        cells = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
+        cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = Region(self.board)
         self.item.add_items(cells)
 
@@ -28,6 +28,10 @@ class TestRegion(TestItem):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Item, Composed, Cell, Region}
+
+    def test_in(self):
+        self.assertIn(Cell.make(self.board, 1, 1), self.item)
+        self.assertNotIn(Cell.make(self.board, 9, 9), self.item)
 
 
 if __name__ == '__main__':  # pragma: no cover

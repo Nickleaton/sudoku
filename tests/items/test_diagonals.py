@@ -4,6 +4,7 @@ from typing import Type, Sequence, Tuple, Any
 import oyaml as yaml
 
 from src.items.board import Board
+from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.diagonals import Diagonal
 from src.items.item import Item
@@ -51,6 +52,9 @@ class TestDiagonal(TestRegion):
     @property
     def has_rule(self) -> bool:
         return True
+
+    def test_in(self):
+        self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 
 
 if __name__ == '__main__':  # pragma: no cover
