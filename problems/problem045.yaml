@@ -1,0 +1,36 @@
+Board:
+  Title: Z is for Zebra'
+  Author: Josh Johnson
+  Video: https://www.youtube.com/watch?v=QLKkBRglAXk&ab_channel=zetamathdoespuzzles
+  Reference: https://tinyurl.com/5d2w79vj
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Arrow: [ [ 1,5 ],[ 1,4 ],[ 1,3 ] ]
+  - Arrow: [ [ 4,7 ],[ 3,8 ],[ 2,9 ] ]
+  - Arrow: [ [ 5,4 ],[ 5,3 ],[ 5,2 ] ]
+  - Arrow: [ [ 5,4 ],[ 6,4 ],[ 6,5 ] ]
+  - Arrow: [ [ 5,6 ],[ 4,6 ],[ 4,5 ] ]
+  - Arrow: [ [ 5,6 ],[ 5,7 ],[ 5,8 ] ]
+  - Arrow: [ [ 9,5 ],[ 9,6 ],[ 9,7 ] ]
+  - Arrow: [ [ 6,3 ],[ 7,2 ],[ 8,1 ] ]
+  - KropkiPair: [ [ 1,5 ],[ 1,6 ] ]
+  - KropkiPair: [ [ 3,5 ],[ 4,5 ] ]
+  - KropkiPair: [ [ 3,7 ],[ 4,7 ] ]
+  - KropkiPair: [ [ 6,1 ],[ 6,2 ] ]
+  - KropkiPair: [ [ 6,5 ],[ 7,5 ] ]
+  - KropkiPair: [ [ 8,2 ],[ 9,2 ] ]
+  - KropkiPair: [ [ 9,4 ],[ 9,5 ] ]
+  - ConsecutivePair: [ [ 1,2 ],[ 1,3 ] ]
+  - ConsecutivePair: [ [ 1,8 ],[ 2,8 ] ]
+  - ConsecutivePair: [ [ 4,8 ],[ 4,9 ] ]
+  - ConsecutivePair: [ [ 5,4 ],[ 5,5 ] ]
+  - ConsecutivePair: [ [ 5,5 ],[ 5,6 ] ]
+  - ConsecutivePair: [ [ 6,3 ],[ 7,3 ] ]
+  - ConsecutivePair: [ [ 9,7 ],[ 9,8 ] ]
+
+Solution:
+  - 621348597

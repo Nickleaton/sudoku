@@ -15,7 +15,7 @@ class Line(Region):
 
     @property
     def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.cells[0].row}_{self.cells[0].column}"
+        return f"{self.__class__.__name__}_{self.identity}"
 
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:

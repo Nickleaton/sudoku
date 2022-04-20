@@ -29,6 +29,5 @@ class Arrow(Line):
         return super().tags.union({'Arrow', 'Sum'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        name = f"{self.__class__.__name__}_ {self.cells[0].row}_{self.cells[0].column}"
         total = lpSum([solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self))])
-        solver.model += total == solver.values[self.cells[0].row][self.cells[0].column], name
+        solver.model += total == solver.values[self.cells[0].row][self.cells[0].column], self.name

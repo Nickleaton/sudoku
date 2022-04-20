@@ -10,12 +10,14 @@ from src.utils.rule import Rule
 
 class Item(ABC):
     classes: Dict[str, 'Item'] = {}
+    counter = 0
 
     def __init__(self, board: Board):
         super().__init__()
         self.board: Board = board
         self.parent: Optional[Item] = None
-        self.identity: Optional[int] = None
+        self.identity: int = Item.counter
+        Item.counter += 1
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)

@@ -29,8 +29,9 @@ def custom_name_func(testcase_func, _, param) -> str:
 
 
 class TestFiles(unittest.TestCase):
-    # filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
-    filenames = ['problem043']
+    filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
+
+    # filenames = ['problem042']
 
     @staticmethod
     def config(filename: str) -> Any:
@@ -47,7 +48,6 @@ class TestFiles(unittest.TestCase):
     def problem(filename: str) -> Item:
         config = TestFiles.config(filename)
         board = TestFiles.board(config)
-        print(config)
         return Item.create('Constraints', board, config['Constraints'])
 
     @staticmethod
@@ -104,14 +104,20 @@ class TestFiles(unittest.TestCase):
         solver = PulpSolver(problem.board)
         problem.add_variables(problem.board, solver)
         problem.add_constraint(solver)
-        solver.save(os.path.join("output", 'lp', filename + ".lp"))
+        directory = os.path.join("output", "lp")
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        solver.save(os.path.join(directory, filename + ".lp"))
         solver.solve()
         print(str(solver.solution))
         expected = Solution.create(problem.board, config['Solution'])
         self.assertEqual(expected, solver.solution)
 
     def test_css(self):
-        shutil.copy(os.path.join("src", "html", "glyph.css"), os.path.join("output", "html"))
+        directory = os.path.join("output", "html")
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        shutil.copy(os.path.join("src", "html", "glyph.css"), directory)
 
 
 class TestIndex(unittest.TestCase):

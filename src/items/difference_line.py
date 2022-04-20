@@ -18,9 +18,9 @@ class DifferenceLine(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Difference', 'Comparison'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        # Other rules handled in the pair
-        # exclude excluded
-        for cell, digit in product(self.cells, self.excluded):
-            name = f"Excluded_{cell.name}_{digit}"
-            solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
+    # def add_constraint(self, solver: PulpSolver) -> None:
+    #     # Other rules handled in the pair
+    #     # exclude excluded
+    #     for cell, digit in product(self.cells, self.excluded):
+    #         name = f"Excluded_{cell.name}_{digit}"
+    #         solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
