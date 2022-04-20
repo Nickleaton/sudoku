@@ -10,7 +10,7 @@
             <arg value="requirements.txt"/>
         </exec>
     </target>
-    <target name="build" depends="pylint,mypy,flake8,test,pydocstyle,documentation">
+    <target name="build" depends="pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
         <echo>Build</echo>
     </target>
     <target name="test">
@@ -50,12 +50,21 @@
             <arg value="src"/>
         </exec>
     </target>
-    <target name="documentation">
-        <mkdir dir="output/documentation"/>
+    <target name="documentation1">
+        <mkdir dir="output/documentation1"/>
         <exec executable="pdoc" failonerror="false" taskname="pdoc">
             <arg value="-o"/>
-            <arg value="output/documentation"/>
+            <arg value="output/documentation1"/>
             <arg value="src/"/>
+        </exec>
+    </target>
+    <target name="documentation2">
+        <mkdir dir="output/documentation2"/>
+        <exec executable="sphinx-build" failonerror="false" taskname="sphinx-build">
+            <arg value="source"/>
+            <arg value="output/documentation2"/>
+            <arg value="-b"/>
+            <arg value="html"/>
         </exec>
     </target>
     <target name="flake8" depends="flake8.src,flake8.tests"/>

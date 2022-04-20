@@ -38,6 +38,5 @@ class TestSolver(unittest.TestCase):
         self.assertEqual(expected, solver.solution)
 
 
-
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

@@ -59,24 +59,29 @@ class TestGlyph(unittest.TestCase):
     def symbol(self) -> str:
         return ""
 
-    def test_draw(self):
-        if element := self.glyph.draw() is not None:
-            self.assertEqual(self.target, element.tostring())
+    def test_draw(self) -> None:
+        if not isinstance(self.glyph, Glyph):
+            element = self.glyph.draw()
+            if element is not None:
+                self.assertEqual(self.target, element.tostring())
 
     def test_start_marker(self):
-        if marker := self.glyph.__class__.start_marker() is None:
+        marker = self.glyph.__class__.start_marker()
+        if marker is None:
             self.assertEqual(self.start_marker, "", )
         else:
             self.assertEqual(self.start_marker, marker.tostring())
 
     def test_end_marker(self):
-        if marker := self.glyph.__class__.end_marker() is None:
+        marker = self.glyph.__class__.end_marker()
+        if marker is None:
             self.assertEqual(self.end_marker, "")
         else:
             self.assertEqual(self.end_marker, marker.tostring())
 
     def test_symbol(self):
-        if symbol := self.glyph.__class__.symbol() is None:
+        symbol = self.glyph.__class__.symbol()
+        if symbol is None:
             self.assertEqual(self.symbol, "")
         else:
             self.assertEqual(self.symbol, symbol.tostring())

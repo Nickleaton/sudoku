@@ -88,6 +88,5 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(4, 2, 2, expected)
 
 
-
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

@@ -10,10 +10,12 @@ import src.items.between
 import src.items.bltr
 import src.items.board
 import src.items.box
+import src.items.boxes
 import src.items.cell
 import src.items.cell_reference
 import src.items.column
 import src.items.column_indexer
+import src.items.columns
 import src.items.composed
 import src.items.consecutive_pair
 import src.items.constraint_exception
@@ -23,6 +25,7 @@ import src.items.difference_line
 import src.items.difference_pair
 import src.items.different_pair
 import src.items.disjoint_group
+import src.items.disjoint_groups
 import src.items.distinct_renban
 import src.items.dutch_whisper
 import src.items.entropic
@@ -30,6 +33,8 @@ import src.items.equal_sum
 import src.items.even_cell
 import src.items.fortress_cell
 import src.items.frame
+import src.items.frames
+import src.items.frozen_thermometer
 import src.items.german_whisper
 import src.items.greater_than_equal_difference_line
 import src.items.greater_than_equal_difference_pair
@@ -54,8 +59,11 @@ import src.items.region
 import src.items.region_sets
 import src.items.renban
 import src.items.rossini
+import src.items.rossinis
 import src.items.row
 import src.items.row_indexer
+import src.items.rows
+import src.items.simple_thermometer
 import src.items.solution
 import src.items.standard_region
 import src.items.sum_pair

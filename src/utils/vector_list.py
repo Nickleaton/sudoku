@@ -9,8 +9,6 @@ from src.utils.vector import Vector
 class VectorListException(Exception):
     """Exception when handling VectorList."""
 
-    pass
-
 
 class VectorList:
     """List of Vectors."""

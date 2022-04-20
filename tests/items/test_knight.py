@@ -28,7 +28,7 @@ class TestKnight(TestItem):
             ([2, 4, 6, 8], []),
             (1, ['Expecting list, got 1']),
             ('xxx', ["Expecting list, got 'xxx'"]),
-            ([0, 4, 6, 8], ['0 is not a valid digit'] ),
+            ([0, 4, 6, 8], ['0 is not a valid digit']),
         ]
 
     @property

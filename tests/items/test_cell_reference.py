@@ -32,7 +32,7 @@ class TestCellReference(TestItem):
         return [
             ({'Row': 1, 'Column': 1}, []),
             ('xxx', ["Expecting dict, got 'xxx'"]),
-            ({'xxx': 1, 'Column': 1},["Row:, got {'xxx': 1, 'Column': 1}"]),
+            ({'xxx': 1, 'Column': 1}, ["Row:, got {'xxx': 1, 'Column': 1}"]),
             ({'Row': 1, 'xxxxxx': 1}, ["Column:, got {'Row': 1, 'xxxxxx': 1}"]),
             ({'Row': 0, 'Column': 1}, ["Expecting digit,digit, got {'Row': 0, 'Column': 1}"]),
         ]

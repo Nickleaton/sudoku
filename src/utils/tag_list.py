@@ -6,11 +6,11 @@ from src.utils.tag import Tag
 
 class TagListException(Exception):
     """ Exception when using TagList """
-    pass
 
 
 class TagList:
     """ List of Tags """
+
     def __init__(self, items: List[Tag]):
         """
         Construct a tag list

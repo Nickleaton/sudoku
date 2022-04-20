@@ -10,6 +10,7 @@ class GermanWhisper(GreaterThanEqualDifferenceLine):
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board, cells, 5)
+        self.excluded = [5]
 
     @property
     def glyphs(self) -> List[Glyph]:

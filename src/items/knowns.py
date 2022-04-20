@@ -39,7 +39,7 @@ class Knowns(Composed):
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:
-        return [list(y) for y in yaml]
+        return [list(str(y)) for y in yaml]
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:

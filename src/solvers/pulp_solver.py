@@ -8,7 +8,7 @@ from src.items.solution import Solution
 from src.solvers.solver import Solver
 
 
-class PulpSolver(Solver):
+class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
     def __init__(self, board: Board):
         super().__init__(board)
@@ -50,4 +50,4 @@ class PulpSolver(Solver):
         self.solution = Solution(self.board)
         for row in self.board.row_range:
             for column in self.board.column_range:
-                self.solution.set_value(row, column, self.values[row][column].varValue)
+                self.solution.set_value(row, column, int(self.values[row][column].varValue))

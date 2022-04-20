@@ -29,8 +29,8 @@ def custom_name_func(testcase_func, _, param) -> str:
 
 
 class TestFiles(unittest.TestCase):
-    filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
-    # filenames = ['problem042']
+    # filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
+    filenames = ['problem043']
 
     @staticmethod
     def config(filename: str) -> Any:
