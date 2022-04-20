@@ -52,10 +52,10 @@ class Quadruple(Item):
             results.append(f"Expecting rc for position got {position_str}")
             return results
         row = int(position_str[0])
-        if not row in board.row_range:
+        if row not in board.row_range:
             results.append(f"Expected valid row, got {row} ")
         column = int(position_str[1])
-        if not column in board.column_range:
+        if column not in board.column_range:
             results.append(f"Expected valid column, got {column} ")
         if len(digits) > 4:
             results.append(f"Too many digits, got {digits}")

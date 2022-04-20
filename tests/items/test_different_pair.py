@@ -13,7 +13,7 @@ class TestDifferentPair(TestPair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = DifferentPair(self.board, Cell(self.board, 1, 2), Cell(self.board, 1, 3), [1, 2])
+        self.item = DifferentPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), [1, 2])
 
     @property
     def representation(self) -> str:

@@ -10,7 +10,7 @@
             <arg value="requirements.txt"/>
         </exec>
     </target>
-    <target name="build">
+    <target name="build" depends="pylint,mypy,flake8,test,pydocstyle,documentation">
         <echo>Build</echo>
     </target>
     <target name="test">
@@ -56,6 +56,40 @@
             <arg value="-o"/>
             <arg value="output/documentation"/>
             <arg value="src/"/>
+        </exec>
+    </target>
+    <target name="flake8" depends="flake8.src,flake8.tests"/>
+    <target name="flake8.src">
+        <mkdir dir="output/flake8"/>
+        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/src.txt">
+            <arg value="--max-line-length"/>
+            <arg value="120"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+    <target name="flake8.tests">
+        <mkdir dir="output/flake8"/>
+        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/tests.txt">
+            <arg value="--max-line-length"/>
+            <arg value="120"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+    <target name="pydocstyle" depends="pydocstyle.src,pydocstyle.tests"/>
+    <target name="pydocstyle.src">
+        <mkdir dir="output/pydocstyle"/>
+        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/src.txt">
+            <arg value="--ignore"/>
+            <arg value="D100,D101,D102,D105,D107"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+    <target name="pydocstyle.tests">
+        <mkdir dir="output/pydocstyle"/>
+        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/tests.txt">
+            <arg value="--ignore"/>
+            <arg value="D100,D101,D102,D105,D107"/>
+            <arg value="tests/"/>
         </exec>
     </target>
 </project>

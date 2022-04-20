@@ -4,7 +4,6 @@ from typing import Optional, List, Set, Type, Dict, Any
 
 from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board
-from src.items.constraint_exception import ConstraintException
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
@@ -59,12 +58,13 @@ class Item(ABC):
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument
-        return None
+        return yaml
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Item':
         Item.validate(board, yaml)
-        return cls.classes[name].create(name, board, yaml)
+        data = Item.extract(board, yaml)
+        return cls.classes[name].create(name, board, data)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(({self.board!r})"

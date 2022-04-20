@@ -20,7 +20,7 @@ class TestGermanWhisper(TestGreaterThanEqualDifferenceLine):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        cells = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
+        cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = GermanWhisper(self.board, cells)
 
     @property

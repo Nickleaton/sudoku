@@ -18,7 +18,6 @@ class DifferentPair(Pair):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r}, {self.digits!r})"
 
-
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
         result: List[str] = []

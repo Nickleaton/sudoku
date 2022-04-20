@@ -1,4 +1,4 @@
-"""List of Vectors"""
+"""List of Vectors."""
 from typing import List, Optional
 
 from src.utils.coord import Coord
@@ -7,11 +7,13 @@ from src.utils.vector import Vector
 
 
 class VectorListException(Exception):
+    """Exception when handling VectorList."""
+
     pass
 
 
 class VectorList:
-    """List of Vectors"""
+    """List of Vectors."""
 
     def __init__(self, items: List[Vector]):
         self.items = items
@@ -52,6 +54,12 @@ class VectorList:
         raise VectorListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __add__(self, other: object) -> 'VectorList':
+        """
+        Merge two vector lists.
+
+        :param other: VectorList
+        :return: merged VectorList
+        """
         if isinstance(other, VectorList):
             result = VectorList([])
             result.items.extend(self.items)
@@ -60,9 +68,18 @@ class VectorList:
         raise VectorListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def sort(self) -> None:
+        """Sort the items on the basis of vector comparison."""
         self.items = sorted(self.items)
 
     def merge_vectors(self) -> 'VectorList':
+        """
+        Merge vectors.
+
+        If a vector is parallel to another vector in the list, and shares an end point or a start point,
+        it is mergeable.
+
+        :return: Vector list
+        """
         items: List[Vector] = []
         for v in self.items:
             merged = False
@@ -76,6 +93,15 @@ class VectorList:
         return VectorList(sorted(items))
 
     def find(self, coord: Coord) -> Optional[Coord]:
+        """
+        Find coord in VectorList.
+
+        Find the end coord of a vector if the start is 'coord'.
+        Find the start coord of a vector if the end is 'coord'.
+
+        :param coord:
+        :return: coord
+        """
         for item in self.items:
             if item.start == coord:
                 return item.end
@@ -85,6 +111,11 @@ class VectorList:
 
     @property
     def coords(self) -> CoordList:
+        """
+        Return a list of all coordinates in the list of vectors.
+
+        :return: CoordList
+        """
         coords = CoordList([])
         for item in self.items:
             coords.add(item.start)

@@ -1,15 +1,21 @@
+"""Tag List"""
 from typing import List
 
 from src.utils.tag import Tag
 
 
 class TagListException(Exception):
+    """ Exception when using TagList """
     pass
 
 
 class TagList:
-
+    """ List of Tags """
     def __init__(self, items: List[Tag]):
+        """
+        Construct a tag list
+        :param items: List of tags
+        """
         self.items = items
         self.sort()
         self.n = 0
@@ -49,9 +55,16 @@ class TagList:
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"
 
     def sort(self) -> None:
+        """"
+        Sort the list of tags by tag priority
+        """
         self.items = sorted(self.items)
 
     def add(self, item: Tag) -> None:
+        """
+        Add a tag to the list if it is not already there
+        :param item: Item to add
+        """
         if item not in self:
             self.items.append(item)
         self.sort()

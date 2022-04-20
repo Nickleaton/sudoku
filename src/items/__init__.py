@@ -1,3 +1,5 @@
+"""Module that handles constraints."""
+
 import src.items.anti
 import src.items.anti_king
 import src.items.anti_knight

@@ -16,12 +16,12 @@ class TestEntropic(TestLine):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [
-            Cell(self.board, 1, 1),
-            Cell(self.board, 1, 2),
-            Cell(self.board, 1, 3),
-            Cell(self.board, 1, 4),
-            Cell(self.board, 1, 5),
-            Cell(self.board, 1, 6)
+            Cell.make(self.board, 1, 1),
+            Cell.make(self.board, 1, 2),
+            Cell.make(self.board, 1, 3),
+            Cell.make(self.board, 1, 4),
+            Cell.make(self.board, 1, 5),
+            Cell.make(self.board, 1, 6)
         ]
         self.item = Entropic(self.board, cells)
 

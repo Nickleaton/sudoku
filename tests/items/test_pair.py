@@ -14,7 +14,7 @@ class TestPair(TestItem):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Pair(self.board, Cell(None, 1, 2), Cell(None, 1, 3))
+        self.item = Pair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
     def representation(self) -> str:
