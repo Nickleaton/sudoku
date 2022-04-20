@@ -29,9 +29,9 @@ def custom_name_func(testcase_func, _, param) -> str:
 
 
 class TestFiles(unittest.TestCase):
-    filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
+    # filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
 
-    # filenames = ['problem042']
+    filenames = ['problem046']
 
     @staticmethod
     def config(filename: str) -> Any:
@@ -78,7 +78,10 @@ class TestFiles(unittest.TestCase):
     def test_svg(self, filename: str) -> None:
         problem = TestFiles.problem(filename)
         svg = TestFiles.svg(problem)
-        full_filename = os.path.join("output", "svg", filename + ".svg")
+        directory = os.path.join("output", "svg")
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        full_filename = os.path.join(directory, filename + ".svg")
         with open(full_filename, 'w', encoding="utf-8") as f:
             f.write(svg)
 

@@ -396,3 +396,20 @@ th, td {
     fill: white;
     font-weight: bolder
 }
+
+.OutsideForeground {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+
+}
+
+.OutsideBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+
+}

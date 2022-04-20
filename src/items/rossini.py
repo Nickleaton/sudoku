@@ -25,10 +25,6 @@ class Rossini(Item):
         self.coords.append(self.coords[1] + self.offset)
         self.cells = [Cell.make(self.board, int(coord.row), int(coord.column)) for coord in self.coords]
 
-    @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.side.name}_{self.index}_{self.order.name}"
-
     def __repr__(self) -> str:
         return (
             f"{self.__class__.__name__}"

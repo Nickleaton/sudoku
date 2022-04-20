@@ -74,3 +74,5 @@ import src.items.vi_pair
 import src.items.window
 import src.items.x_pair
 import src.items.xi_pair
+import src.items.outside
+import src.items.outsides

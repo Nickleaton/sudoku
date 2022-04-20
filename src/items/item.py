@@ -44,7 +44,7 @@ class Item(ABC):
 
     @property
     def name(self) -> str:
-        return self.__class__.__name__
+        return f"{self.__class__.__name__}_{self.identity}"
 
     @property
     def tags(self) -> set[str]:

@@ -1,0 +1,35 @@
+Board:
+  Title: March 28, 2022, Outside
+  Author: Clover
+  Reference: https://tinyurl.com/y79xndab
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - ....9....
+      - .........
+      - .........
+      - .........
+      - 8.......3
+      - .........
+      - .........
+      - .........
+      - ....4....
+  - Outsides: [ L1=12,L3=56,L6=45,L8=67 ]
+  - Outsides: [ T2=34,T4=13,T7=67,T9=12 ]
+  - Outsides: [ R2=45,R4=17,R7=78,R9=12 ]
+  - Outsides: [ B1=12,B3=45,B6=23,B8=56 ]
+
+Solution:
+  - 712495638
+  - 938167542
+  - 546328791
+  - 629834175
+  - 871659423
+  - 453271986
+  - 294513867
+  - 167982354
+  - 385746219
