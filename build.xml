@@ -10,6 +10,9 @@
             <arg value="requirements.txt"/>
         </exec>
     </target>
+    <target name="echo">
+        <echo>Echo Echo</echo>
+    </target>
     <target name="build" depends="pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
         <echo>Build</echo>
     </target>
