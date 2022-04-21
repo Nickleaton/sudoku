@@ -1,11 +1,10 @@
 from typing import List, Dict, Any
 
-from pulp import lpSum
-
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.first_n import FirstN
+from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.order import Order
@@ -13,21 +12,11 @@ from src.utils.rule import Rule
 from src.utils.side import Side
 
 
-class Outside(Item):
+class Outside(FirstN):
 
     def __init__(self, board: Board, side: Side, index: int, digits: List[int]):
-        super().__init__(board)
-        self.side = side
-        self.index = index
+        super().__init__(board, side, index)
         self.digits = digits
-        self.direction = self.side.order_direction(Order.INCREASING)
-        self.offset = self.side.order_offset()
-        self.reference = self.side.start_cell(self.board, self.index) - self.offset
-        self.coords = []
-        self.coords.append(self.side.start_cell(self.board, self.index))
-        self.coords.append(self.coords[0] + self.offset)
-        self.coords.append(self.coords[1] + self.offset)
-        self.cells = [Cell.make(self.board, int(coord.row), int(coord.column)) for coord in self.coords]
 
     def __repr__(self) -> str:
         return (
@@ -95,6 +84,4 @@ class Outside(Item):
         return cls(board, side, index, digits)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        for digit in self.digits:
-            choice_total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
-            solver.model += choice_total == 1, f"{self.name}_{digit}"
+        self.add_contains_constraint(solver, self.digits)

@@ -50,7 +50,7 @@ class Renban(Line):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         # unique on lines
-        self.add_unique_constraint(solver, self.name, True)
+        self.add_unique_constraint(solver, True)
 
         # lower and upper bounds for the line.
         # Upper is greater than or equal to all values on the line

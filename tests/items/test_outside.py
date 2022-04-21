@@ -4,13 +4,17 @@ from typing import Type, Sequence, Tuple, Any
 import oyaml as yaml
 
 from src.items.board import Board
+from src.items.cell import Cell
+from src.items.composed import Composed
+from src.items.first_n import FirstN
 from src.items.item import Item
 from src.items.outside import Outside
+from src.items.region import Region
 from src.utils.side import Side
-from tests.items.test_item import TestItem
+from tests.items.test_first_n import TestFirstN
 
 
-class TestOutside(TestItem):
+class TestOutside(TestFirstN):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -22,7 +26,7 @@ class TestOutside(TestItem):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Outside}
+        return {Cell, Composed, FirstN, Item, Outside, Region}
 
     @property
     def config(self) -> str:

@@ -1,0 +1,25 @@
+Board:
+  Title: Frame Sudoku
+  Video: https://www.youtube.com/watch?v=V0xdmvr6fFU&ab_channel=CrackingTheCryptic
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Frames: [ T1=17,T2=14,T3=14,T4=15,T5=14,T6=16,T7=10,T8=21,T9=14 ]
+  - Frames: [ R1=18,R2=12,R3=15,R4=19,R5=12,R6=14,R7=19,R8=13,R9=13 ]
+  - Frames: [ B1=22,B2=13,B3=10,B4=16,B5=15,B6=14,B7=22,B8=16,B9=7 ]
+  - Frames: [ L1=20,L2=12,L3=13,L4=18,L5=11,L6=16,L7=18,L8=12,L9=15 ]
+
+
+Solution:
+  - 596421783
+  - 831597246
+  - 427638195
+  - 279314658
+  - 164985327
+  - 358276419
+  - 783152964
+  - 615749832
+  - 942863571

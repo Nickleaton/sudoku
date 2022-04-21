@@ -27,5 +27,5 @@ class Column(StandardRegion):
         return super().tags.union({'Column'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        self.add_total_constraint(solver, solver.board.digit_sum, self.name)
+        self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver, f"Column_{self.index!r}")

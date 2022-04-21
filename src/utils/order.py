@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class OrderException(Exception):
-    pass
+    """Exceptions generated during Order Handling"""
 
 
 class Order(Enum):

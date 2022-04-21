@@ -2,13 +2,17 @@ import unittest
 from typing import Type, Sequence, Any, Tuple
 
 from src.items.board import Board
+from src.items.cell import Cell
+from src.items.composed import Composed
+from src.items.first_n import FirstN
 from src.items.frame import Frame
 from src.items.item import Item
+from src.items.region import Region
 from src.utils.side import Side
-from tests.items.test_item import TestItem
+from tests.items.test_first_n import TestFirstN
 
 
-class TestFrame(TestItem):
+class TestFrame(TestFirstN):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -24,7 +28,7 @@ class TestFrame(TestItem):
         return [
             ("T1=20", []),
             ([], ['Expected str, got []']),
-            ("T1", ["Expected side|index|total, got 'T1'"]),
+            ("T1", ["Expecting {sidr}{index}={order}, got 'T1'"]),
             ("X1=20", ['Side not valid X']),
             ("T0=20", ['Index outside range 0']),
             ("TX=20", ['Index not valid X']),
@@ -41,7 +45,7 @@ class TestFrame(TestItem):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Frame, Item}
+        return {Cell, Composed, FirstN, Frame, Item, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -77,5 +77,5 @@ class Window(Region):
         return super().tags.union({'Window'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        self.add_total_constraint(solver, solver.board.digit_sum, self.name)
-        self.add_unique_constraint(solver, f"Window_{self.center.row}_{self.center.column}")
+        self.add_total_constraint(solver, solver.board.digit_sum)
+        self.add_unique_constraint(solver)

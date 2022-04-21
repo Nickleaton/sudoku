@@ -55,4 +55,4 @@ class Anti(Composed):
         return cls(board, lst)
 
     def __repr__(self) -> str:
-        return f"{self.name}({self.board!r}, {self.digits!r})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"

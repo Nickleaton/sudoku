@@ -9,10 +9,10 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - Rossinis: [ T1D, T2I, T3I, T5D, T7D ]
-  - Rossinis: [ R2I, R4D ]
-  - Rossinis: [ B6D, B7D, B8D, B9I ]
-  - Rossinis: [ L4D, L5I, L8I, L9D ]
+  - Rossinis: [ T1=D, T2=I, T3=I, T5=D, T7=D ]
+  - Rossinis: [ R2=I, R4=D ]
+  - Rossinis: [ B6=D, B7=D, B8=D, B9=I ]
+  - Rossinis: [ L4=D, L5=I, L8=I, L9=D ]
   - Knowns:
       - ........2
       - .......3.

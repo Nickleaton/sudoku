@@ -1,0 +1,30 @@
+Board:
+  Title: AI Escargot
+  Video: https://www.youtube.com/watch?v=V0xdmvr6fFU&ab_channel=CrackingTheCryptic
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - 1....7.9.
+      - .3..2...8
+      - ..96..5..
+      - ..53..9..
+      - .1..8...2
+      - 6....4...
+      - 3......1.
+      - .41.....7
+      - ..7...3..
+
+Solution:
+  - 162857493
+  - 534129678
+  - 789643521
+  - 475312986
+  - 913586742
+  - 628794135
+  - 356478219
+  - 241935867
+  - 897261354

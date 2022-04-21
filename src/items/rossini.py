@@ -2,28 +2,21 @@ from typing import List, Dict, Any
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
-from src.items.cell import Cell
-from src.items.item import Item
+from src.items.first_n import FirstN
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
 from src.utils.rule import Rule
 from src.utils.side import Side
 
 
-class Rossini(Item):
+class Rossini(FirstN):
 
     def __init__(self, board: Board, side: Side, index: int, order: Order):
-        super().__init__(board)
-        self.side = side
-        self.index = index
+        super().__init__(board, side, index)
+        # Increasing or decreasing
         self.order = order
+        # Which direction for the arrow
         self.direction = self.side.order_direction(self.order)
-        self.offset = self.side.order_offset()
-        self.coords = []
-        self.coords.append(self.side.start_cell(self.board, self.index))
-        self.coords.append(self.coords[0] + self.offset)
-        self.coords.append(self.coords[1] + self.offset)
-        self.cells = [Cell.make(self.board, int(coord.row), int(coord.column)) for coord in self.coords]
 
     def __repr__(self) -> str:
         return (
@@ -65,26 +58,21 @@ class Rossini(Item):
     def validate(board: Board, yaml: Any) -> List[str]:
         if not isinstance(yaml, str):
             return [f"Expected str, got {yaml!r}"]
-        if len(yaml) != 3:
-            return [f"Expected side|index|order, got {yaml!r}"]
-        result = []
-        if not Side.valid(yaml[0]):
-            result.append(f"Side not valid {yaml[0]}")
-        if not yaml[1].isdigit():
-            result.append(f"Index not valid {yaml[1]}")
+        if "=" not in yaml:
+            return [f"Expecting {{sidr}}{{index}}={{order}}, got {yaml!r}"]
+        ref_str, order_str = yaml.split("=")
+        result = FirstN.validate(board, ref_str)
+        if len(result) > 0:
             return result
-        index = int(yaml[1])
-        if index not in board.row_range or index not in board.row_range:
-            result.append(f"Index outside range {index}")
-        if not Order.valid(yaml[2]):
-            result.append(f"Invalid Order {yaml[2]}")
+        if not Order.valid(order_str):
+            result.append(f"Invalid Order {order_str}")
         return result
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:
-        side = Side.create(yaml[0])
-        index = int(yaml[1])
-        order = Order.create(yaml[2])
+        ref_str, order_str = yaml.split("=")
+        side, index = FirstN.extract(board, ref_str)
+        order = Order.create(order_str)
         return side, index, order
 
     @classmethod
@@ -94,14 +82,4 @@ class Rossini(Item):
         return cls(board, side, index, order)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        values = [
-            solver.values[self.cells[0].row][self.cells[0].column],
-            solver.values[self.cells[1].row][self.cells[1].column],
-            solver.values[self.cells[2].row][self.cells[2].column]
-        ]
-        if self.order == Order.INCREASING:
-            solver.model += values[0] + 1 <= values[1], f"{self.name}_1"
-            solver.model += values[1] + 1 <= values[2], f"{self.name}_2"
-        else:
-            solver.model += values[0] >= values[1] + 1, f"{self.name}_1"
-            solver.model += values[1] >= values[2] + 1, f"{self.name}_2"
+        self.add_sequence_constraint(solver, self.order)

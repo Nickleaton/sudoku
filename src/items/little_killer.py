@@ -2,11 +2,13 @@ from typing import List, Dict, Any, Tuple
 
 from pulp import lpSum
 
+from src.glyphs.glyph import TextGlyph, Glyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.rule import Rule
 from src.utils.side import Side
@@ -67,6 +69,12 @@ class LittleKiller(Region):
         LittleKiller.validate(board, yaml)
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
+
+    # @property
+    # def glyphs(self) -> List[Glyph]:
+    #     return [
+    #         TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), str(self.total))
+    #     ]
 
     @property
     def rules(self) -> List[Rule]:

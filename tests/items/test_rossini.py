@@ -4,14 +4,18 @@ from typing import Type, Sequence, Tuple, Any
 import oyaml as yaml
 
 from src.items.board import Board
+from src.items.cell import Cell
+from src.items.composed import Composed
+from src.items.first_n import FirstN
 from src.items.item import Item
+from src.items.region import Region
 from src.items.rossini import Rossini
 from src.utils.order import Order
 from src.utils.side import Side
-from tests.items.test_item import TestItem
+from tests.items.test_region import TestRegion
 
 
-class TestRossini(TestItem):
+class TestRossini(TestRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -23,22 +27,22 @@ class TestRossini(TestItem):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Rossini}
+        return {Cell, Composed, FirstN, Item, Region, Rossini}
 
     @property
     def config(self) -> str:
-        return "T1I"
+        return "T1=I"
 
     @property
     def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
         return [
-            ("T2I", []),
+            ("T2=I", []),
             (999, ['Expected str, got 999']),
-            ('abcd', ["Expected side|index|order, got 'abcd'"]),
-            ('X1I', ['Side not valid X']),
-            ('TXI', ['Index not valid X']),
-            ('T0I', ['Index outside range 0']),
-            ('T1X', ['Invalid Order X'])
+            ('abcd', ["Expecting {sidr}{index}={order}, got 'abcd'"]),
+            ('X1=I', ['Side not valid X']),
+            ('TX=I', ['Index not valid X']),
+            ('T0=I', ['Index outside range 0']),
+            ('T1=X', ['Invalid Order X'])
         ]
 
     def test_create(self):

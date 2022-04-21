@@ -54,5 +54,5 @@ class Box(StandardRegion):
         return super().tags.union({'Box'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        self.add_total_constraint(solver, solver.board.digit_sum, self.name)
+        self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver, f"Box_{self.index!r}")

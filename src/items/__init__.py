@@ -31,6 +31,7 @@ import src.items.dutch_whisper
 import src.items.entropic
 import src.items.equal_sum
 import src.items.even_cell
+import src.items.first_n
 import src.items.fortress_cell
 import src.items.frame
 import src.items.frames
@@ -52,6 +53,8 @@ import src.items.little_killer
 import src.items.lock_out
 import src.items.magic_square
 import src.items.odd_cell
+import src.items.outside
+import src.items.outsides
 import src.items.pair
 import src.items.palindrome
 import src.items.quadruple
@@ -74,5 +77,3 @@ import src.items.vi_pair
 import src.items.window
 import src.items.x_pair
 import src.items.xi_pair
-import src.items.outside
-import src.items.outsides
