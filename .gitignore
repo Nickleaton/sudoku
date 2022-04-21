@@ -1,3 +1,4 @@
 /htmlcov/
 /output/
 /.coverage
+/poetry.lock
