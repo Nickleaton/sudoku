@@ -10,6 +10,7 @@
         <echo>Build</echo>
     </target>
     <target name="install">
+        <echo>Path = ${env.PATH}</echo>
         <exec executable="poetry" failonerror="true" taskname="poetry">
             <arg value="install"/>
         </exec>

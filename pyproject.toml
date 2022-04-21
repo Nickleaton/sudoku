@@ -7,14 +7,11 @@ authors = ["Nickleaton <nickle@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 PuLP = "2.6.0"
-
 parameterized = "^0.8.1"
 svgwrite = "^1.4.2"
 jinja2 = "^3.1.1"
 oyaml = "^1.0"
 nose2-html-report = "^0.6.0"
-
-
 
 [tool.poetry.dev-dependencies]
 nose2 = "^0.11.0"
@@ -26,6 +23,7 @@ flake8 = "^4.0.1"
 pydocstyle = "^6.1.1"
 Sphinx = "^4.5.0"
 pandas = "^1.4.2"
+tox = "^3.25.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
