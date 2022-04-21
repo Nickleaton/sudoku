@@ -3,13 +3,6 @@
     <target name="info">
         <echo>Hello World - Sudoku!</echo>
     </target>
-    <target name="install">
-        <exec excecutable="pip">
-            <arg value="install"/>
-            <arg value="-r"/>
-            <arg value="requirements.txt"/>
-        </exec>
-    </target>
     <target name="echo">
         <echo>Echo Echo</echo>
     </target>
