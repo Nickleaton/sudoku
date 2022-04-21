@@ -13,8 +13,13 @@
     <target name="echo">
         <echo>Echo Echo</echo>
     </target>
-    <target name="build" depends="pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
+    <target name="build" depends="install,pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
         <echo>Build</echo>
+    </target>
+    <target name="install">
+        <exec executable="poetry" failonerror="true" taskname="poetry">
+            <arg value="install"/>
+        </exec>
     </target>
     <target name="test">
         <mkdir dir="output/tests"/>
