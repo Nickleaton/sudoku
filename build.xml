@@ -10,7 +10,6 @@
         <echo>Build</echo>
     </target>
     <target name="install">
-        <exec executable="env" failonerror="true" taskname="poetry"/>
         <exec executable="poetry" failonerror="true" taskname="poetry">
             <arg value="install"/>
         </exec>
