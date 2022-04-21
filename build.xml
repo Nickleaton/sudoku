@@ -10,7 +10,7 @@
         <echo>Build</echo>
     </target>
     <target name="install">
-        <exec executable="poetry" failonerror="true" taskname="poetry">
+        <exec executable="C:\Users\nickl\AppData\Local\Programs\Python\Python310\Scripts\poetry" failonerror="true" taskname="poetry">
             <arg value="install"/>
         </exec>
     </target>
