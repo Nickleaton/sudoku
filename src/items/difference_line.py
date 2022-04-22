@@ -1,10 +1,8 @@
-from itertools import product
-from typing import Sequence
+from typing import Sequence, List
 
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.line import Line
-from src.solvers.pulp_solver import PulpSolver
 
 
 class DifferenceLine(Line):
@@ -12,7 +10,7 @@ class DifferenceLine(Line):
     def __init__(self, board: Board, cells: Sequence[Cell], difference: int):
         super().__init__(board, cells)
         self.difference = difference
-        self.excluded = []
+        self.excluded: List[int] = []
 
     @property
     def tags(self) -> set[str]:

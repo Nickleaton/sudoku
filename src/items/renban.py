@@ -15,7 +15,6 @@ class Renban(Line):
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board, cells)
-        self.identity: Optional[int] = None
 
     @property
     def name(self) -> str:
@@ -50,7 +49,7 @@ class Renban(Line):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         # unique on lines
-        self.add_unique_constraint(solver, True)
+        self.add_unique_constraint(solver)
 
         # lower and upper bounds for the line.
         # Upper is greater than or equal to all values on the line

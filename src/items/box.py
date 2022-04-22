@@ -1,9 +1,9 @@
-from typing import Dict, List
+from typing import List
 
 from src.glyphs.glyph import Glyph, BoxGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.standard_region import StandardRegion
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -33,7 +33,7 @@ class Box(StandardRegion):
         return Coord(self.board.box_rows, self.board.box_columns)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         StandardRegion.validate(board, yaml)
         index = StandardRegion.extract(board, yaml)
         return cls(board, index)
@@ -55,4 +55,4 @@ class Box(StandardRegion):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
-        self.add_unique_constraint(solver, f"Box_{self.index!r}")
+        self.add_unique_constraint(solver)

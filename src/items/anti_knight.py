@@ -1,8 +1,8 @@
-from typing import List, Dict
+from typing import List
 
 from src.items.anti import Anti
 from src.items.board import Board
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -30,7 +30,7 @@ class AntiKnight(Anti):
         return super().tags.union({'Knight'})
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         cls.validate(board, yaml)
         return AntiKnight(board)
 

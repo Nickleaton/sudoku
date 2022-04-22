@@ -34,4 +34,4 @@ class TLBR(Diagonal):
         return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        self.add_unique_constraint(solver, "TLBR")
+        self.add_unique_constraint(solver)

@@ -1,8 +1,8 @@
-from typing import List, Dict, Any, Tuple
+from typing import List, Any, Tuple
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.pair import Pair
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -47,7 +47,7 @@ class DifferencePair(Pair):
         return c1, c2, difference
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         DifferencePair.validate(board, yaml)
         c1, c2, difference = DifferencePair.extract(board, yaml)
         return cls(board, c1, c2, difference)

@@ -1,9 +1,9 @@
-from typing import Dict, List, Set, Type, Any, Tuple, Optional
+from typing import List, Set, Type, Any, Tuple, Optional
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.utils.rule import Rule
 
 
@@ -36,7 +36,7 @@ class CellReference(Item):
         return int(yaml['Row']), int(yaml['Column'])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         CellReference.validate(board, yaml)
         row, column = CellReference.extract(board, yaml)
         return cls(board, row, column)

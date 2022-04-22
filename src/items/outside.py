@@ -1,13 +1,11 @@
-from typing import List, Dict, Any
+from typing import List, Any
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.first_n import FirstN
-from src.items.region import Region
+from src.items.item import YAML, Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
-from src.utils.order import Order
 from src.utils.rule import Rule
 from src.utils.side import Side
 
@@ -78,7 +76,7 @@ class Outside(FirstN):
         return side, index, digits
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Outside':
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         Outside.validate(board, yaml)
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)

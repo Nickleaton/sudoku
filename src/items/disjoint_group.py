@@ -36,4 +36,4 @@ class DisjointGroup(StandardRegion):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
-        self.add_unique_constraint(solver, f"DisjointGroup_{self.index}")
+        self.add_unique_constraint(solver)

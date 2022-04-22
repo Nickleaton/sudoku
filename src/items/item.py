@@ -58,7 +58,7 @@ class Item(ABC):
 
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:  # pylint: disable=unused-argument
-        return None
+        return []
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument

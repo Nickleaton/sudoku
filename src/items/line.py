@@ -1,8 +1,8 @@
-from typing import List, Dict, Sequence, Any
+from typing import List, Sequence, Any
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.region import Region
 from src.utils.rule import Rule
 
@@ -45,7 +45,7 @@ class Line(Region):
         return [Cell.make(board, r, c) for r, c in yaml]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         Line.validate(board, yaml)
         cells = Line.extract(board, yaml)
         return cls(board, cells)

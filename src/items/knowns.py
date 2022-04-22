@@ -1,11 +1,11 @@
-from typing import List, Dict, Any
+from typing import List, Any
 
 from src.items.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed import Composed
 from src.items.even_cell import EvenCell
 from src.items.fortress_cell import FortressCell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.known_cell import KnownCell
 from src.items.odd_cell import OddCell
 
@@ -42,7 +42,7 @@ class Knowns(Composed):
         return [list(str(y)) for y in yaml]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         Knowns.validate(board, yaml)
         items = Knowns.extract(board, yaml)
         return Knowns(board, items)

@@ -1,10 +1,10 @@
-from typing import List, Dict, Any, Tuple
+from typing import List, Any, Tuple
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.direction import Direction
@@ -87,7 +87,7 @@ class MagicSquare(Composed):
         return center, corner
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
 

@@ -1,9 +1,9 @@
-from typing import List, Dict, Tuple, Any
+from typing import List, Tuple, Any
 
 from src.glyphs.glyph import Glyph, ConsecutiveGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.utils.rule import Rule
 
@@ -51,7 +51,7 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         return c1, c2
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         ConsecutivePair.validate(board, yaml)
         c1, c2 = ConsecutivePair.extract(board, yaml)
         return cls(board, c1, c2)

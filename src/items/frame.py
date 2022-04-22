@@ -1,10 +1,11 @@
 """ Frame Sudoku """
 
-from typing import List, Dict, Any
+from typing import List, Any
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
+from src.items.item import YAML, Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.side import Side
@@ -92,7 +93,7 @@ class Frame(FirstN):
         return side, index, total
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Frame':
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         Frame.validate(board, yaml)
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)

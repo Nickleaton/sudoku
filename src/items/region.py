@@ -1,11 +1,11 @@
-from typing import Dict, List
+from typing import List
 
 from pulp import lpSum
 
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
 
@@ -19,7 +19,7 @@ class Region(Composed):
         super().__init__(board, [])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         cls.validate(board, yaml)
         return cls(board)
 

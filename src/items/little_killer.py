@@ -1,14 +1,12 @@
-from typing import List, Dict, Any, Tuple
+from typing import List, Any, Tuple
 
 from pulp import lpSum
 
-from src.glyphs.glyph import TextGlyph, Glyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
-from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.rule import Rule
 from src.utils.side import Side
@@ -65,7 +63,7 @@ class LittleKiller(Region):
         return total, offset, cyclic, side
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         LittleKiller.validate(board, yaml)
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)

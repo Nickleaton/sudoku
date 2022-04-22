@@ -1,8 +1,9 @@
-from typing import List, Dict, Any
+from typing import List, Any
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
+from src.items.item import YAML, Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
 from src.utils.rule import Rule
@@ -76,7 +77,7 @@ class Rossini(FirstN):
         return side, index, order
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> 'Rossini':
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         Rossini.validate(board, yaml)
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)

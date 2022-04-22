@@ -1,9 +1,9 @@
-from typing import Dict, List, Any
+from typing import List, Any
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -56,7 +56,7 @@ class Window(Region):
         return Coord(int(parts[0]), int(parts[1]))
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         Window.validate(board, yaml)
         coord: Coord = Window.extract(board, yaml)
         return cls(board, coord)

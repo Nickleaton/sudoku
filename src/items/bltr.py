@@ -34,4 +34,4 @@ class BLTR(Diagonal):
         return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        self.add_unique_constraint(solver, "BLTR")
+        self.add_unique_constraint(solver)

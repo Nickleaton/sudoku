@@ -28,4 +28,4 @@ class Column(StandardRegion):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
-        self.add_unique_constraint(solver, f"Column_{self.index!r}")
+        self.add_unique_constraint(solver)

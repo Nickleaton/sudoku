@@ -1,9 +1,9 @@
-from typing import List, Dict, Set, Type, Sequence
+from typing import List, Set, Type, Sequence
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
+from src.items.item import Item, YAML
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
@@ -81,7 +81,7 @@ class Composed(Item):
         return len(self.items)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: Dict | List | str | int | None) -> Item:
+    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
         cls.validate(board, yaml)
         return cls(board, [])
 
