@@ -33,10 +33,6 @@ class Window(Region):
             ]
         )
 
-    @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.center.row}_{self.center.column}"
-
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
         result: List[str] = []

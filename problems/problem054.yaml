@@ -1,0 +1,20 @@
+Board:
+  Title: Asterix Sudoku
+  Reference: https://tinyurl.com/vxc7rn5f
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Asterix
+  - Knowns:
+      - ...4.....
+      - ......935
+      - ..3.9..7.
+      - 83.9..7..
+      - ...6.8...
+      - ..4..1.58
+      - .1..8.6..
+      - 629......
+      - .....2...

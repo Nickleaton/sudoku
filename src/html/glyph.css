@@ -413,3 +413,8 @@ th, td {
     font-weight: bolder
 
 }
+
+.Asterix {
+    stroke: orange;
+    fill: orange;
+}

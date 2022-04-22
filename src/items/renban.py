@@ -1,4 +1,4 @@
-from typing import List, Sequence, Optional
+from typing import List, Sequence
 
 from pulp import LpVariable, LpInteger
 
