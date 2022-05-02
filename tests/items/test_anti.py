@@ -21,7 +21,7 @@ class TestAnti(TestItem):
 
     @property
     def config(self) -> str:
-        return "Anti: [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+        return "Anti: 1, 2, 3, 4, 5, 6, 7, 8, 9"
 
     @property
     def representation(self) -> str:
