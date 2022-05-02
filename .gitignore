@@ -2,3 +2,4 @@
 /output/
 /.coverage
 /poetry.lock
+/build/
