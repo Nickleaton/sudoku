@@ -29,7 +29,7 @@ class TestPair(TestItem):
 
     @property
     def config(self) -> str:
-        return "[[1, 2], [1, 3]]"
+        return "Pair: 12-13"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

@@ -32,21 +32,13 @@ class Pair(Item):
 
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        if not isinstance(yaml, list):
-            result.append(f"Expecting list, got {yaml!r}")
-            return result
-        if len(yaml) != 2:
-            result.append(f"Expecting two cells, got {yaml!r}")
-            return result
-        result.extend(Coord.validate(yaml[0]))
-        result.extend(Coord.validate(yaml[1]))
-        return result
+        return []
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Tuple:
-        c1 = Cell.make(board, int(yaml[0][0]), int(yaml[0][1]))
-        c2 = Cell.make(board, int(yaml[1][0]), int(yaml[1][1]))
+        c1_str, c2_str = yaml['Pair'].split('-')
+        c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
+        c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))
         return c1, c2
 
     @classmethod
