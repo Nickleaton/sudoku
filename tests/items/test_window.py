@@ -19,7 +19,7 @@ class TestWindow(TestRegion):
 
     @property
     def config(self) -> str:
-        return "Window: 2,2"
+        return "Window: 22"
 
     @property
     def representation(self) -> str:

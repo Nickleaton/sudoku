@@ -7,10 +7,10 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - Window: 3,3
-  - Window: 3,7
-  - Window: 7,3
-  - Window: 7,7
+  - Window: 33
+  - Window: 37
+  - Window: 73
+  - Window: 77
   - Knowns:
     - .........
     - ...2..61.

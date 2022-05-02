@@ -36,7 +36,7 @@ class Window(Region):
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
         result: List[str] = []
-        if not isinstance(yaml, list):
+        if not isinstance(yaml, str):
             result.append(f"Expecting list, got {yaml!r}")
             return result
         if len(yaml) != 2:
@@ -47,9 +47,9 @@ class Window(Region):
         return result
 
     @staticmethod
-    def extract(_: Board, yaml: Any) -> Coord:
-        parts = yaml.split(",")
-        return Coord(int(parts[0]), int(parts[1]))
+    def extract(board: Board, yaml: Any) -> Coord:
+        data = str(yaml)
+        return Coord(int(data[0]), int(data[1]))
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: YAML) -> Item:
