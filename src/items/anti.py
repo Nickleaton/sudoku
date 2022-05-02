@@ -34,19 +34,11 @@ class Anti(Composed):
 
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
-        if not isinstance(yaml, list):
-            return [f"Expecting a list, got {yaml!r}"]
-        result = []
-        for i in yaml:
-            if not isinstance(i, int):
-                result.append(f"Expecting int, got {i!r}")
-            elif int(i) not in board.digit_range:
-                result.append(f"Expecting digit, got {i!r}")
-        return result
+        return []
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:
-        return list(yaml)
+        return [int(part) for part in yaml.split(', ')]
 
     @classmethod
     def create(cls, name: str, board: Board, yaml: YAML) -> Item:

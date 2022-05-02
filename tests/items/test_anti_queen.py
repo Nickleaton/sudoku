@@ -24,7 +24,7 @@ class TestAntiQueen(TestAnti):
 
     @property
     def config(self) -> str:
-        return "AntiQueen: [8, 9]"
+        return "AntiQueen: 8, 9"
 
     @property
     def representation(self) -> str:
