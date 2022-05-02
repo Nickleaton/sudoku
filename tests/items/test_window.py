@@ -18,15 +18,6 @@ class TestWindow(TestRegion):
         self.item = Window(self.board, Coord(2, 2))
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ([2, 2], []),
-            (1, ['Expecting list, got 1']),
-            ([2, 2, 2], ['Expecting digit,digit, got [2, 2, 2]']),
-            ([2, 0], ['Expecting string digit,digit, got [2, 0]']),
-        ]
-
-    @property
     def config(self) -> str:
         return "Window: 2,2"
 

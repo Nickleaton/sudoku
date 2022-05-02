@@ -23,15 +23,6 @@ class TestKnight(TestItem):
         self.assertEqual(8, len(self.item.offsets()))
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ([2, 4, 6, 8], []),
-            (1, ['Expecting list, got 1']),
-            ('xxx', ["Expecting list, got 'xxx'"]),
-            ([0, 4, 6, 8], ['0 is not a valid digit']),
-        ]
-
-    @property
     def config(self) -> str:
         return "Knight: [2, 4, 6, 8]"
 

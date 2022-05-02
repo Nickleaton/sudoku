@@ -17,14 +17,6 @@ class TestStandardRegion(TestRegion):
         self.item = StandardRegion(self.board, 1)
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            (1, []),
-            ('x', ["Expecting int, got 'x'"])
-
-        ]
-
-    @property
     def config(self) -> str:
         return "StandardRegion: 1"
 

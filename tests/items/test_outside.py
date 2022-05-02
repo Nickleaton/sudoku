@@ -32,18 +32,6 @@ class TestOutside(TestFirstN):
     def config(self) -> str:
         return "T1=123"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ("T2=123", []),
-            ('T0=123', ['Index outside range 0']),
-            ('T1=0', ['Not a valid digit 0']),
-            (999, ['Expected str, got 999']),
-            ('abcd', ['Side not valid a', 'Index not valid b']),
-            ('X1=123', ['Side not valid X']),
-            ('TX=123', ['Index not valid X']),
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data)

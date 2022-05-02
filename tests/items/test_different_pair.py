@@ -28,21 +28,6 @@ class TestDifferentPair(TestPair):
         )
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'Cells': [[1, 2], [1, 3]], 'Digits': [1, 2]}, []),
-            ('xxx', ["Expecting dict, got 'xxx'"]),
-            ({'Cells': [[1, 2], [1, 3]]}, ["Expecting two cells, plus digits got {'Cells': [[1, 2], [1, 3]]}"]),
-            ({'Digits': [1, 2], 'xxx': 1}, ["Expecting Cells:, got {'Digits': [1, 2], 'xxx': 1}"]),
-            ({'Cells': [[1, 2], [1, 3]], 'xxx': 1}, ["Expecting Digits:, got {'Cells': [[1, 2], [1, 3]], 'xxx': 1}"]),
-            (
-                {'Cells': [[1, 2]], 'Digits': [1, 2]},
-                ["Expecting two Cells:, got {'Cells': [[1, 2]], 'Digits': [1, 2]}"]),
-            ({'Cells': [[1, 2], [1, 3]], 'Digits': [2, 0]}, ['Invalid digit 0']),
-
-        ]
-
-    @property
     def config(self) -> str:
         return "Cells: [ [1, 2], [1, 3] ]\nDigits: 1,2"
 

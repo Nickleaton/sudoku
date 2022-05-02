@@ -28,19 +28,6 @@ class TestPair(TestItem):
         )
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ([[1, 2], [1, 3]], []),
-            (1, ['Expecting list, got 1']),
-            ([[1, 2]], ['Expecting two cells, got [[1, 2]]']),
-            ([[1, 2], ['a', 1]], ['row not int']),
-            ([[1, 2], [1, 'b']], ['column not int']),
-            ([[1, 2], [1, 'b']], ['column not int']),
-            ([[1, 2, 3], [1, 2]], ['expecting row, column']),
-            ([[1, 2], [1, 2, 3]], ['expecting row, column']),
-        ]
-
-    @property
     def config(self) -> str:
         return "[[1, 2], [1, 3]]"
 

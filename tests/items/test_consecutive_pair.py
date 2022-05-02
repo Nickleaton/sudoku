@@ -18,24 +18,6 @@ class TestConsecutivePair(TestDifferencePair):
         self.item = ConsecutivePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ([[1, 2], [1, 3]], []),
-            ([[1, 2, 3], [1, 3]], ['Expecting two coords, got [[1, 2, 3], [1, 3]]']),
-            ([[1, 2], [1, 2, 3]], ['Expecting two coords, got [[1, 2], [1, 2, 3]]']),
-            ('xxx', ["Expecting list, got 'xxx'"]),
-            ([[1, 2]], ['Expecting two coords, got [[1, 2]]']),
-            ([['a', 'b'], ['c', 'd']], ["Expecting digit, got 'a'",
-                                        "Expecting digit, got 'b'",
-                                        "Expecting digit, got 'c'",
-                                        "Expecting digit, got 'd'"]),
-            ([[0, 0], [0, 0]], ['Expecting row, got 0',
-                                'Expecting column, got 0',
-                                'Expecting row, got 0',
-                                'Expecting column, got 0'])
-        ]
-
-    @property
     def config(self) -> str:
         return "[[1, 2], [1, 3]]"
 

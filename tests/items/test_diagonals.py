@@ -30,20 +30,6 @@ class TestDiagonal(TestRegion):
     def config(self) -> str:
         return "Diagonal: 1"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'Diagonal': None}, []),
-            ({'Diagonal': 1}, ["Expecting Diagonal with no values, got {'Diagonal': 1}"]),
-            ('xxx', ["Expecting a dict got, 'xxx'"]),
-            ({'Diagonal': None, 'Other': None},
-             [
-                 "Expecting one item got, {'Diagonal': None, 'Other': None}",
-                 "Expecting Diagonal, got {'Diagonal': None, 'Other': None}"
-             ]
-             )
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data)

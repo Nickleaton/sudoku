@@ -24,18 +24,6 @@ class TestFrame(TestFirstN):
         return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ("T1=20", []),
-            ([], ['Expected str, got []']),
-            ("T1", ["Expecting {sidr}{index}={order}, got 'T1'"]),
-            ("X1=20", ['Side not valid X']),
-            ("T0=20", ['Index outside range 0']),
-            ("TX=20", ['Index not valid X']),
-            ("T1=xx", ['Invalid total xx'])
-        ]
-
-    @property
     def config(self) -> str:
         return "Frame: T1=20"
 

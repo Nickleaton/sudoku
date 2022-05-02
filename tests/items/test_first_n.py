@@ -29,17 +29,5 @@ class TestFirstN(TestRegion):
     def config(self) -> str:
         return "FirstN: T1"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ("T2", []),
-            ('T0', ['Index outside range 0']),
-            (999, ['Expected str, got 999']),
-            ('abcd', ["Expected side|index, got 'abcd'"]),
-            ('X1', ['Side not valid X']),
-            ('TX', ['Index not valid X']),
-        ]
-
-
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

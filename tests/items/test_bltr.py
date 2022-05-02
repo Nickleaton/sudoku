@@ -31,20 +31,6 @@ class TestBLTR(TestDiagonal):
     def config(self) -> str:
         return "BLTR:"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'BLTR': None}, []),
-            ({'BLTR': 1}, ["Expecting BLTR with no values, got {'BLTR': 1}"]),
-            ('xxx', ["Expecting a dict got, 'xxx'"]),
-            ({'BLTR': None, 'Other': None},
-             [
-                 "Expecting one item got, {'BLTR': None, 'Other': None}",
-                 "Expecting BLTR, got {'BLTR': None, 'Other': None}"
-             ]
-             )
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data)

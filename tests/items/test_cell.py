@@ -22,20 +22,6 @@ class TestCell(TestItem):
         return {Item, Cell}
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'Row': 1, 'Column': 2}, []),
-            ('xxx', ["Expecting dict, got 'xxx'"]),
-            ({'xxx': 1, 'Column': 2}, ["Expecting 'Row', got {'xxx': 1, 'Column': 2}"]),
-            ({'Row': 1, 'xxxx': 2}, ["Expecting 'Column', got {'Row': 1, 'xxxx': 2}"]),
-            ({'Row': 1, 'Column': 2, 'xxx': 1},
-             ["Expecting Row and Column only, got {'Row': 1, 'Column': 2, 'xxx': 1}"]),
-            ({'Row': 0, 'Column': 2}, ['Invalid row 0']),
-            ({'Row': 1, 'Column': 0}, ['Invalid column 0']),
-
-        ]
-
-    @property
     def config(self) -> str:
         return "Cell:\n" \
                "    Row: 1\n" \

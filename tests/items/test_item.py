@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, List, Any, Sequence, Tuple
+from typing import Type
 
 import oyaml as yaml
 
@@ -27,20 +27,6 @@ class TestItem(unittest.TestCase):
         self.assertIsNotNone(item)
         self.assertIsInstance(item, self.item.__class__)
         self.assertEqual(self.representation, repr(item))
-
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return []
-
-    def check_validate_case(self, yaml_data: Any, expected: List[str]):
-        actual = self.item.validate(self.board, yaml_data)
-        self.assertEqual(expected, actual)
-
-    def test_validate(self) -> None:
-        yaml_data: Any
-        expected: Sequence[str]
-        for yaml_data, expected in self.valid_test_cases:
-            self.check_validate_case(yaml_data, list(expected))
 
     def test_name(self) -> None:
         self.assertIsNotNone(self.item.name)

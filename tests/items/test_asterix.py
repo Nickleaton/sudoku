@@ -17,13 +17,6 @@ class TestAsterix(TestRegion):
         self.item = Asterix(self.board)
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({}, []),
-            (1, ['Expecting dict, got 1']),
-        ]
-
-    @property
     def config(self) -> str:
         return "Asterix:"
 

@@ -33,18 +33,6 @@ class TestRossini(TestRegion):
     def config(self) -> str:
         return "T1=I"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ("T2=I", []),
-            (999, ['Expected str, got 999']),
-            ('abcd', ["Expecting {sidr}{index}={order}, got 'abcd'"]),
-            ('X1=I', ['Side not valid X']),
-            ('TX=I', ['Index not valid X']),
-            ('T0=I', ['Index outside range 0']),
-            ('T1=X', ['Invalid Order X'])
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data)

@@ -32,17 +32,6 @@ class TestRowIndexer(TestIndexer):
     def config(self) -> str:
         return "RowIndexer: 1"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'RowIndexer': 1}, []),
-            ({'RowIndexer': 99}, ["Expecting RowIndexer: index, got {'RowIndexer': 99}"]),
-            ({'RowIndexer': None}, ["Expecting RowIndexer: index, got {'RowIndexer': None}"]),
-            ({'XXXX': 1}, ["Expecting RowIndexer: index, got {'XXXX': 1}"]),
-            ('xxx', ["Expecting RowIndexer: index, got 'xxx'"]),
-            ({'RowIndexer': 1, 'Other': None}, ["Expecting RowIndexer: index, got {'RowIndexer': 1, 'Other': None}"])
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data['RowIndexer'])

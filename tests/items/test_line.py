@@ -40,18 +40,6 @@ class TestLine(TestItem):
         return {Cell, Composed, Item, Line, Region}
 
     @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ([[1, 1], [1, 2], [1, 3]], []),
-            ('xxxx', ["Expecting list, got 'xxxx'"]),
-            ([[1, 1, 3], [1, 2], [1, 3]], ['Expecting pair, got [1, 1, 3]']),
-            ([1, [1, 2], [1, 3]], ['Expecting list pair, got 1']),
-            ([[1, 'a'], [1, 2], [1, 3]], ["Expecting int, got 'a'"]),
-            ([['a', 1], [1, 2], [1, 3]], ["Expecting int, got 'a'"]),
-            ([[1, 0], [1, 2], [1, 3]], ['Invalid row, column got [1, 0]']),
-        ]
-
-    @property
     def config(self) -> str:
         return f"{self.clazz.__name__}: [[1, 1], [1, 2], [1, 3]]"
 

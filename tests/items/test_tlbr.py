@@ -31,20 +31,6 @@ class TestTLBR(TestDiagonal):
     def config(self) -> str:
         return "TLBR:"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'TLBR': None}, []),
-            ({'TLBR': 1}, ["Expecting TLBR with no values, got {'TLBR': 1}"]),
-            ('xxx', ["Expecting a dict got, 'xxx'"]),
-            ({'TLBR': None, 'Other': None},
-             [
-                 "Expecting one item got, {'TLBR': None, 'Other': None}",
-                 "Expecting TLBR, got {'TLBR': None, 'Other': None}"
-             ]
-             )
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data)

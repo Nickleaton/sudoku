@@ -32,18 +32,6 @@ class TestColumnIndexer(TestIndexer):
     def config(self) -> str:
         return "ColumnIndexer: 1"
 
-    @property
-    def valid_test_cases(self) -> Sequence[Tuple[Any, Sequence[str]]]:
-        return [
-            ({'ColumnIndexer': 1}, []),
-            ({'ColumnIndexer': 99}, ["Expecting ColumnIndexer: index, got {'ColumnIndexer': 99}"]),
-            ({'ColumnIndexer': None}, ["Expecting ColumnIndexer: index, got {'ColumnIndexer': None}"]),
-            ('xxx', ["Expecting ColumnIndexer: index, got 'xxx'"]),
-            ({'XXXX': 1}, ["Expecting ColumnIndexer: index, got {'XXXX': 1}"]),
-            ({'ColumnIndexer': 1, 'Other': None},
-             ["Expecting ColumnIndexer: index, got {'ColumnIndexer': 1, 'Other': None}"])
-        ]
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.item.__class__.__name__, self.board, data['ColumnIndexer'])
