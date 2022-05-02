@@ -41,7 +41,7 @@ class TestLine(TestItem):
 
     @property
     def config(self) -> str:
-        return f"{self.clazz.__name__}: [[1, 1], [1, 2], [1, 3]]"
+        return f"{self.clazz.__name__}: 11, 12, 13"
 
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)

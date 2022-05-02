@@ -36,10 +36,6 @@ class TestDifferenceLine(TestLine):
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, Composed, DifferenceLine, Item, Line, Region}
 
-    @property
-    def config(self) -> str:
-        return f"{self.clazz.__name__}: [[1, 1], [1, 2], [1, 3]]"
-
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
         item = Item.create(self.clazz.__name__, self.board, data[self.clazz.__name__])
