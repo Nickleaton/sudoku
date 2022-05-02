@@ -22,9 +22,7 @@ Constraints:
       - .........
       - .........
       - ........2
-  - MagicSquare:
-      Center: [ 5,5 ]
-      Corner: [ 1,1 ]
+  - MagicSquare: 55, 11
 
 Solution:
   - 843567219

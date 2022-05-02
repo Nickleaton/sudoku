@@ -25,7 +25,7 @@ class TestMagicSquare(TestComposed):
 
     @property
     def config(self) -> str:
-        return "Center: [5, 5]\nCorner: [1, 1]"
+        return "MagicSquare: 55, 11"
 
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)
