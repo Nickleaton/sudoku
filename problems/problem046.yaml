@@ -18,10 +18,22 @@ Constraints:
       - .........
       - .........
       - ....4....
-  - Outsides: [ L1=12,L3=56,L6=45,L8=67 ]
-  - Outsides: [ T2=34,T4=13,T7=67,T9=12 ]
-  - Outsides: [ R2=45,R4=17,R7=78,R9=12 ]
-  - Outsides: [ B1=12,B3=45,B6=23,B8=56 ]
+  - Outside: L1=12
+  - Outside: L3=56
+  - Outside: L6=45
+  - Outside: L8=67
+  - Outside: T2=34
+  - Outside: T4=13
+  - Outside: T7=67
+  - Outside: T9=12
+  - Outside: R2=45
+  - Outside: R4=17
+  - Outside: R7=78
+  - Outside: R9=12
+  - Outside: B1=12
+  - Outside: B3=45
+  - Outside: B6=23
+  - Outside: B8=56
 
 Solution:
   - 712495638

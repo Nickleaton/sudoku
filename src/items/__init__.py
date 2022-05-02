@@ -54,7 +54,6 @@ import src.items.lock_out
 import src.items.magic_square
 import src.items.odd_cell
 import src.items.outside
-import src.items.outsides
 import src.items.pair
 import src.items.palindrome
 import src.items.quadruple

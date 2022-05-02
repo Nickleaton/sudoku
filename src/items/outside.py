@@ -50,29 +50,14 @@ class Outside(FirstN):
 
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
-        if not isinstance(yaml, str):
-            return [f"Expected str, got {yaml!r}"]
-        if len(yaml) < 4:
-            return [f"Expected side|index|digits, got {yaml!r}"]
-        result = []
-        if not Side.valid(yaml[0]):
-            result.append(f"Side not valid {yaml[0]}")
-        if not yaml[1].isdigit():
-            result.append(f"Index not valid {yaml[1]}")
-            return result
-        if int(yaml[1]) not in board.digit_range:
-            result.append(f"Index outside range {yaml[1]}")
-        digits = yaml[3:]
-        for digit in digits:
-            if int(digit) not in board.digit_range:
-                result.append(f"Not a valid digit {digit}")
-        return result
+        return []
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:
-        side = Side.create(yaml[0])
-        index = int(yaml[1])
-        digits = [int(digit) for digit in yaml[3:]]
+        data = yaml['Outsides']
+        side = Side.create(data[0])
+        index = int(data[1])
+        digits = [int(digit) for digit in data[3:]]
         return side, index, digits
 
     @classmethod

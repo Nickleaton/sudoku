@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 import oyaml as yaml
 
@@ -30,7 +30,7 @@ class TestOutside(TestFirstN):
 
     @property
     def config(self) -> str:
-        return "T1=123"
+        return "Outsides: T1=123"
 
     def test_create(self):
         data = yaml.load(self.config, yaml.SafeLoader)

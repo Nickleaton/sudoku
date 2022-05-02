@@ -13,10 +13,6 @@ class Line(Region):
         super().__init__(board)
         self.add_items(cells)
 
-    @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.identity}"
-
     @staticmethod
     def validate(board: Board, yaml: Any) -> List[str]:
         result = []

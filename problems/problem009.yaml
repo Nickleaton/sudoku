@@ -7,7 +7,7 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - AntiQueen: [ 9 ]
+  - AntiQueen: 9
   - Knowns:
     - .........
     - .6......4

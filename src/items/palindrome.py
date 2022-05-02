@@ -24,5 +24,5 @@ class Palindrome(Line):
         for i in range(0, len(self) // 2):
             c1 = self.cells[i]
             c2 = self.cells[len(self) - i - 1]
-            name = f"{self.__class__.__name__}_{c1.row}_{c1.column}_{c2.row}_{c2.column}"
+            name = f"{self.name}_{i}"
             solver.model += solver.values[c1.row][c1.column] == solver.values[c2.row][c2.column], name

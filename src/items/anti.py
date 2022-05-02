@@ -38,6 +38,8 @@ class Anti(Composed):
 
     @staticmethod
     def extract(board: Board, yaml: Any) -> Any:
+        if isinstance(yaml, int):
+            return [yaml]
         return [int(part) for part in yaml.split(', ')]
 
     @classmethod
