@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 import oyaml as yaml
 
@@ -19,6 +19,10 @@ class TestRowIndexer(TestIndexer):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
         self.item = RowIndexer(self.board, 1)
+
+    @property
+    def clazz(self):
+        return RowIndexer
 
     @property
     def representation(self) -> str:

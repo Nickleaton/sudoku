@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -18,6 +18,10 @@ class TestFirstN(TestRegion):
         self.item = FirstN(self.board, Side.TOP, 1)
 
     @property
+    def clazz(self):
+        return FirstN
+
+    @property
     def representation(self) -> str:
         return "FirstN(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1)"
 
@@ -28,6 +32,7 @@ class TestFirstN(TestRegion):
     @property
     def config(self) -> str:
         return "FirstN: T1"
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

@@ -20,6 +20,10 @@ class TestBLTR(TestDiagonal):
         self.item = BLTR(self.board)
 
     @property
+    def clazz(self):
+        return BLTR
+
+    @property
     def representation(self) -> str:
         return "BLTR(Board(9, 9, 3, 3, None, None, None, None))"
 

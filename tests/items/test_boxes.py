@@ -20,6 +20,10 @@ class TestBoxes(TestStandardRegionSet):
         self.item = Boxes(self.board)
 
     @property
+    def clazz(self):
+        return Boxes
+
+    @property
     def config(self) -> str:
         return "Boxes:"
 

@@ -29,6 +29,10 @@ class TestFrames(TestComposed):
         self.size = 4
 
     @property
+    def clazz(self):
+        return Frames
+
+    @property
     def config(self) -> str:
         return "Frames: [ T1=10, L1=11, B1=12, R1=13 ]"
 

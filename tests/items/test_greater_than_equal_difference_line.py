@@ -23,6 +23,10 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
         self.item = GreaterThanEqualDifferenceLine(self.board, cells, 9)
 
     @property
+    def clazz(self):
+        return GreaterThanEqualDifferenceLine
+
+    @property
     def has_rule(self) -> bool:
         return True
 

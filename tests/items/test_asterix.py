@@ -17,6 +17,10 @@ class TestAsterix(TestRegion):
         self.item = Asterix(self.board)
 
     @property
+    def clazz(self):
+        return Asterix
+
+    @property
     def config(self) -> str:
         return "Asterix:"
 

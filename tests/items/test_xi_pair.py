@@ -17,6 +17,10 @@ class TestXIPair(TestSumPair):
         self.item = XIPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
+    def clazz(self):
+        return XIPair
+
+    @property
     def has_rule(self) -> bool:
         return True
 

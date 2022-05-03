@@ -21,6 +21,10 @@ class TestDifferenceLine(TestLine):
         self.item = DifferenceLine(self.board, cells, 1)
 
     @property
+    def clazz(self):
+        return DifferenceLine
+
+    @property
     def representation(self) -> str:
         return (
             "DifferenceLine(Board(9, 9, 3, 3, None, None, None, None), "

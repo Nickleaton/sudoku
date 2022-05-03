@@ -16,6 +16,10 @@ class TestDifferencePair(TestPair):
         self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 0)
 
     @property
+    def clazz(self):
+        return DifferencePair
+
+    @property
     def config(self) -> str:
         return "Cells: [[1, 2], [1, 3]]\nDifference: 1"
 

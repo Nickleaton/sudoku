@@ -18,6 +18,10 @@ class TestBox(TestStandardRegion):
         self.item = Box(self.board, 1)
 
     @property
+    def clazz(self):
+        return Box
+
+    @property
     def config(self) -> str:
         return "Box: 1"
 

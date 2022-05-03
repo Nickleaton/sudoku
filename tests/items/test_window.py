@@ -18,6 +18,10 @@ class TestWindow(TestRegion):
         self.item = Window(self.board, Coord(2, 2))
 
     @property
+    def clazz(self):
+        return Window
+
+    @property
     def config(self) -> str:
         return "Window: 22"
 

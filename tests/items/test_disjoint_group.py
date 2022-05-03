@@ -18,6 +18,10 @@ class TestDisjointGroup(TestStandardRegion):
         self.item = DisjointGroup(self.board, 1)
 
     @property
+    def clazz(self):
+        return DisjointGroup
+
+    @property
     def config(self) -> str:
         return "DisjointGroup: 1"
 

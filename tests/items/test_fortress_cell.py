@@ -16,6 +16,10 @@ class TestFortressCell(TestCellReference):
         self.item = FortressCell(self.board, 1, 2)
 
     @property
+    def clazz(self):
+        return FortressCell
+
+    @property
     def representation(self) -> str:
         return (
             "FortressCell("

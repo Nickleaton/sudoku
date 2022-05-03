@@ -15,6 +15,10 @@ class TestRegionSet(TestItem):
         self.item = RegionSet(self.board, [])
 
     @property
+    def clazz(self):
+        return RegionSet
+
+    @property
     def config(self) -> str:
         return "RegionSet:"
 

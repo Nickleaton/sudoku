@@ -19,6 +19,10 @@ class TestAntiQueen(TestAnti):
         Cell.make_board(self.board)
         self.item = AntiQueen(self.board, [8, 9])
 
+    @property
+    def clazz(self):
+        return AntiQueen
+
     def test_offsets(self):
         self.assertEqual(36, len(self.item.offsets()))
 

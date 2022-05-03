@@ -9,7 +9,7 @@ from src.utils.rule import Rule
 
 class GreaterThanEqualDifferenceLine(DifferenceLine):
 
-    def __init__(self, board: Board, cells: Sequence[Cell], difference: int):
+    def __init__(self, board: Board, cells: Sequence[Cell], difference: int=0):
         super().__init__(board, cells, difference)
         for i in range(1, len(cells)):
             self.add(GreaterThanEqualDifferencePair(self.board, cells[i - 1], cells[i], self.difference))

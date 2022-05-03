@@ -18,6 +18,10 @@ class TestOdd(TestCellReference):
         self.bad = [2, 4, 6, 8]
 
     @property
+    def clazz(self):
+        return OddCell
+
+    @property
     def representation(self) -> str:
         return (
             "OddCell"

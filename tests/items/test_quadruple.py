@@ -15,6 +15,10 @@ class TestQuadruple(TestItem):
         self.item = Quadruple(self.board, Coord(2, 2), "12")
 
     @property
+    def clazz(self):
+        return Quadruple
+
+    @property
     def representation(self) -> str:
         return "Quadruple(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), '12')"
 

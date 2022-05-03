@@ -21,6 +21,10 @@ class TestLittleKiller(TestItem):
         self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 10)
 
     @property
+    def clazz(self):
+        return LittleKiller
+
+    @property
     def representation(self) -> str:
         return "LittleKiller(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, Cyclic.CLOCKWISE, 3, 10)"
 

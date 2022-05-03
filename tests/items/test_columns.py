@@ -20,6 +20,10 @@ class TestColumns(TestStandardRegionSet):
         self.item = Columns(self.board)
 
     @property
+    def clazz(self):
+        return Columns
+
+    @property
     def config(self) -> str:
         return "Columns:"
 

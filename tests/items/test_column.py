@@ -18,6 +18,10 @@ class TestColumn(TestStandardRegion):
         self.item = Column(self.board, 1)
 
     @property
+    def clazz(self):
+        return Column
+
+    @property
     def config(self) -> str:
         return "Column: 1"
 

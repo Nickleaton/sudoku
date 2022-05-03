@@ -24,6 +24,10 @@ class TestGermanWhisper(TestGreaterThanEqualDifferenceLine):
         self.item = GermanWhisper(self.board, cells)
 
     @property
+    def clazz(self):
+        return GermanWhisper
+
+    @property
     def representation(self) -> str:
         return (
             "GermanWhisper"

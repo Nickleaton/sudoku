@@ -15,6 +15,13 @@ class TestItem(unittest.TestCase):
         self.item = Item(self.board)
 
     @property
+    def clazz(self):
+        return Item
+
+    def test_clazz(self):
+        self.assertEqual(self.item.__class__, self.clazz)
+
+    @property
     def config(self) -> str:
         return "Item:"
 

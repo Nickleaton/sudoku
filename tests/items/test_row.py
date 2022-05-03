@@ -18,6 +18,10 @@ class TestRow(TestStandardRegion):
         self.item = Row(self.board, 1)
 
     @property
+    def clazz(self):
+        return Row
+
+    @property
     def config(self) -> str:
         return "Row: 1"
 

@@ -18,6 +18,10 @@ class TestAntiKnight(TestAnti):
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = AntiKnight(self.board)
 
+    @property
+    def clazz(self):
+        return AntiKnight
+
     def test_offsets(self):
         self.assertEqual(8, len(self.item.offsets()))
 

@@ -19,6 +19,10 @@ class TestIndexer(TestStandardRegion):
         self.item = Indexer(self.board, 1)
 
     @property
+    def clazz(self):
+        return Indexer
+
+    @property
     def representation(self) -> str:
         return "Indexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
 

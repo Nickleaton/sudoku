@@ -18,6 +18,10 @@ class TestRegion(TestItem):
         self.item.add_items(cells)
 
     @property
+    def clazz(self):
+        return Region
+
+    @property
     def config(self) -> str:
         return "Region:"
 

@@ -22,6 +22,10 @@ class TestRossini(TestRegion):
         self.item = Rossini(self.board, Side.TOP, 1, Order.INCREASING)
 
     @property
+    def clazz(self):
+        return Rossini
+
+    @property
     def representation(self) -> str:
         return "Rossini(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, Order.INCREASING)"
 

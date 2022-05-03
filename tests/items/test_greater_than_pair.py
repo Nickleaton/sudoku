@@ -15,6 +15,10 @@ class TestGreaterThanPair(TestPair):
         self.item = GreaterThanPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
+    def clazz(self):
+        return GreaterThanPair
+
+    @property
     def has_rule(self) -> bool:
         return True
 

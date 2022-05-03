@@ -16,6 +16,10 @@ class TestDifferentPair(TestPair):
         self.item = DifferentPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), [1, 2])
 
     @property
+    def clazz(self):
+        return DifferentPair
+
+    @property
     def representation(self) -> str:
         return (
             "DifferentPair"

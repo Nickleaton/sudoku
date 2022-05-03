@@ -17,6 +17,10 @@ class TestPair(TestItem):
         self.item = Pair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
+    def clazz(self):
+        return Pair
+
+    @property
     def representation(self) -> str:
         return (
             "Pair"

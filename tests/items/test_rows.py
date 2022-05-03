@@ -20,6 +20,10 @@ class TestRows(TestStandardRegionSet):
         self.item = Rows(self.board)
 
     @property
+    def clazz(self):
+        return Rows
+
+    @property
     def config(self) -> str:
         return "Rows:"
 

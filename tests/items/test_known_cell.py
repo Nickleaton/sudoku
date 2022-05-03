@@ -16,6 +16,10 @@ class TestKnownCell(TestCellReference):
         self.item = KnownCell(self.board, 1, 2, 9)
 
     @property
+    def clazz(self):
+        return KnownCell
+
+    @property
     def representation(self) -> str:
         return ("KnownCell("
                 "Board(9, 9, 3, 3, None, None, None, None), "

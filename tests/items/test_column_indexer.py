@@ -21,6 +21,10 @@ class TestColumnIndexer(TestIndexer):
         self.item = ColumnIndexer(self.board, 1)
 
     @property
+    def clazz(self):
+        return ColumnIndexer
+
+    @property
     def representation(self) -> str:
         return "ColumnIndexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
 

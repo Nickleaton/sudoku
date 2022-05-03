@@ -16,6 +16,10 @@ class TestKnight(TestItem):
         self.item = Knight(self.board, [2, 4, 6, 8])
 
     @property
+    def clazz(self):
+        return Knight
+
+    @property
     def has_rule(self) -> bool:
         return True
 

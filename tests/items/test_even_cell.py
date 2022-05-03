@@ -18,6 +18,10 @@ class TestEvenCell(TestCellReference):
         self.bad = [1, 3, 5, 7, 9]
 
     @property
+    def clazz(self):
+        return EvenCell
+
+    @property
     def representation(self) -> str:
         return (
             "EvenCell(Board(9, 9, 3, 3, None, None, None, None), "

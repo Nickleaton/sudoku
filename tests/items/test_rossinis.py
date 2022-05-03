@@ -30,6 +30,10 @@ class TestRossinis(TestComposed):
         self.size = 4
 
     @property
+    def clazz(self):
+        return Rossinis
+
+    @property
     def config(self) -> str:
         return "Rossinis: [ T1=I, L1=I, B1=D, R1=D ]"
 

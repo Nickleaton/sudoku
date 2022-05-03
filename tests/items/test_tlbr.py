@@ -20,6 +20,10 @@ class TestTLBR(TestDiagonal):
         self.item = TLBR(self.board)
 
     @property
+    def clazz(self):
+        return TLBR
+
+    @property
     def representation(self) -> str:
         return "TLBR(Board(9, 9, 3, 3, None, None, None, None))"
 

@@ -16,6 +16,10 @@ class TestSumPair(TestPair):
         self.item = SumPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
 
     @property
+    def clazz(self):
+        return SumPair
+
+    @property
     def has_rule(self) -> bool:
         return True
 

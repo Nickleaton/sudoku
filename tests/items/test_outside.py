@@ -21,6 +21,10 @@ class TestOutside(TestFirstN):
         self.item = Outside(self.board, Side.TOP, 1, [1, 2, 3])
 
     @property
+    def clazz(self):
+        return Outside
+
+    @property
     def representation(self) -> str:
         return "Outside(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, [1, 2, 3])"
 

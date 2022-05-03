@@ -7,7 +7,7 @@ from src.items.line import Line
 
 class DifferenceLine(Line):
 
-    def __init__(self, board: Board, cells: Sequence[Cell], difference: int):
+    def __init__(self, board: Board, cells: Sequence[Cell], difference: int = 0):
         super().__init__(board, cells)
         self.difference = difference
         self.excluded: List[int] = []

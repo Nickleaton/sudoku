@@ -36,6 +36,10 @@ class TestKnowns(TestComposed):
         self.item = Knowns(self.board, lines)
 
     @property
+    def clazz(self):
+        return Knowns
+
+    @property
     def config(self) -> str:
         return (
             "Knowns:\n"

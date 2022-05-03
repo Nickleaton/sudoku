@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Any, Tuple
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -15,6 +15,10 @@ class TestCellReference(TestItem):
         self.item = CellReference(self.board, 1, 2)
 
     @property
+    def clazz(self):
+        return CellReference
+
+    @property
     def representation(self) -> str:
         return (
             "CellReference"
@@ -26,6 +30,10 @@ class TestCellReference(TestItem):
             ")"
             ")"
         )
+
+    @property
+    def clazz(self):
+        return CellReference
 
     @property
     def config(self) -> str:

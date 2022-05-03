@@ -15,6 +15,10 @@ class TestStandardRegionSet(TestRegionSet):
         self.item = StandardRegionSet(self.board, [])
 
     @property
+    def clazz(self):
+        return StandardRegionSet
+
+    @property
     def config(self) -> str:
         return "StandardRegionSet:"
 

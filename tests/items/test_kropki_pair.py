@@ -9,11 +9,15 @@ from src.items.pair import Pair
 from tests.items.test_pair import TestPair
 
 
-class TestKropki(TestPair):
+class TestKropkiPair(TestPair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = KropkiPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
+
+    @property
+    def clazz(self):
+        return KropkiPair
 
     @property
     def has_rule(self) -> bool:

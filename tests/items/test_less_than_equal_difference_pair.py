@@ -22,6 +22,10 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
         )
 
     @property
+    def clazz(self):
+        return LessThanEqualDifferencePair
+
+    @property
     def has_rule(self) -> bool:
         return False
 

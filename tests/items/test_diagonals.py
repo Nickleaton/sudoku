@@ -19,6 +19,10 @@ class TestDiagonal(TestRegion):
         self.item = Diagonal(self.board)
 
     @property
+    def clazz(self):
+        return Diagonal
+
+    @property
     def representation(self) -> str:
         return "Diagonal(Board(9, 9, 3, 3, None, None, None, None))"
 

@@ -32,6 +32,10 @@ class TestConstraints(TestComposed):
         self.item.add(ColumnIndexer(self.board, 1))
         self.size = 4
 
+    @property
+    def clazz(self):
+        return Constraints
+
     def test_construction(self):
         self.assertEqual(self.size, len(self.item.items))
 
@@ -77,3 +81,7 @@ class TestConstraints(TestComposed):
     def expected_classes(self) -> set[Type[Item]]:
         return {Box, Boxes, Cell, Column, ColumnIndexer, Columns, Composed, Constraints, Indexer, Item, Region,
                 RegionSet, Row, Rows, StandardRegion, StandardRegionSet}
+
+
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()

@@ -14,6 +14,10 @@ class TestCell(TestItem):
         self.item = Cell.make(self.board, 1, 2)
 
     @property
+    def clazz(self):
+        return Cell
+
+    @property
     def representation(self) -> str:
         return "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2)"
 

@@ -20,6 +20,10 @@ class TestFrame(TestFirstN):
         self.size = 9
 
     @property
+    def clazz(self):
+        return Frame
+
+    @property
     def representation(self) -> str:
         return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
 
