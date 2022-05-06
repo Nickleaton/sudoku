@@ -19,22 +19,22 @@ Constraints:
       - ...2.....
       - .........
       - ..8.6.4.2
-  - ConsecutivePair: 11, 12
-  - ConsecutivePair: 13, 14
-  - ConsecutivePair: 15, 16
-  - ConsecutivePair: 17, 18
-  - ConsecutivePair: 23, 33
-  - ConsecutivePair: 29, 39
-  - ConsecutivePair: 41, 42
-  - ConsecutivePair: 45, 46
-  - ConsecutivePair: 64, 65
-  - ConsecutivePair: 68, 69
-  - ConsecutivePair: 71, 81
-  - ConsecutivePair: 77, 87
-  - ConsecutivePair: 92, 93
-  - ConsecutivePair: 94, 95
-  - ConsecutivePair: 96, 97
-  - ConsecutivePair: 98, 99
+  - ConsecutivePair: 11-12
+  - ConsecutivePair: 13-14
+  - ConsecutivePair: 15-16
+  - ConsecutivePair: 17-18
+  - ConsecutivePair: 23-33
+  - ConsecutivePair: 29-39
+  - ConsecutivePair: 41-42
+  - ConsecutivePair: 45-46
+  - ConsecutivePair: 64-65
+  - ConsecutivePair: 68-69
+  - ConsecutivePair: 71-81
+  - ConsecutivePair: 77-87
+  - ConsecutivePair: 92-93
+  - ConsecutivePair: 94-95
+  - ConsecutivePair: 96-97
+  - ConsecutivePair: 98-99
 
 Solution:
   - 123456789

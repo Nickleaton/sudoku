@@ -9,9 +9,9 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - ConsecutivePair: 51, 61
-  - ConsecutivePair: 43, 44
-  - ConsecutivePair: 57, 58
+  - ConsecutivePair: 51-61
+  - ConsecutivePair: 43-44
+  - ConsecutivePair: 57-58
   - SimpleThermometer: 23, 22, 21
   - SimpleThermometer: 23, 13, 12, 11
   - SimpleThermometer: 23, 33, 32, 31

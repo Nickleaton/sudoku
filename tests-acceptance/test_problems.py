@@ -31,7 +31,7 @@ def custom_name_func(testcase_func, _, param) -> str:
 class TestFiles(unittest.TestCase):
     filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
 
-    filenames = ['problem046']
+    filenames = ['problem054']
 
     @staticmethod
     def config(filename: str) -> Any:
@@ -48,7 +48,7 @@ class TestFiles(unittest.TestCase):
     def problem(filename: str) -> Item:
         config = TestFiles.config(filename)
         board = TestFiles.board(config)
-        return Item.create('Constraints', board, config['Constraints'])
+        return Item.create(board, {'Constraints': config['Constraints']})
 
     @staticmethod
     def svg(problem: Item) -> str:
@@ -133,7 +133,7 @@ class TestIndex(unittest.TestCase):
     def tags(filename: str) -> List[str]:
         config = TestFiles.config(filename)
         board = TestFiles.board(config)
-        return sorted(list(Item.create('Constraints', board, config['Constraints']).tags))
+        return sorted(list(Item.create(board, {'Constraints': config['Constraints']}).tags))
 
     def test_index(self):
         template = env.get_template("index.html")

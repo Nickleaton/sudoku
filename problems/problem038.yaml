@@ -19,28 +19,28 @@ Constraints:
       - .........
       - 7........
       - .....1...
-  - XPair: 22, 23
-  - XPair: 26, 27
-  - XPair: 33, 34
-  - XPair: 37, 38
-  - XPair: 44, 45
-  - XPair: 48, 49
-  - XPair: 64, 65
-  - XPair: 71, 72
-  - XPair: 75, 76
-  - XPair: 82, 83
-  - XPair: 86, 87
-  - VPair: 23, 24
-  - VPair: 27, 28
-  - VPair: 34, 35
-  - VPair: 38, 39
-  - VPair: 45, 46
-  - VPair: 61, 62
-  - VPair: 65, 66
-  - VPair: 72, 73
-  - VPair: 76, 77
-  - VPair: 83, 84
-  - VPair: 87, 88
+  - XPair: 22-23
+  - XPair: 26-27
+  - XPair: 33-34
+  - XPair: 37-38
+  - XPair: 44-45
+  - XPair: 48-49
+  - XPair: 64-65
+  - XPair: 71-72
+  - XPair: 75-76
+  - XPair: 82-83
+  - XPair: 86-87
+  - VPair: 23-24
+  - VPair: 27-28
+  - VPair: 34-35
+  - VPair: 38-39
+  - VPair: 45-46
+  - VPair: 61-62
+  - VPair: 65-66
+  - VPair: 72-73
+  - VPair: 76-77
+  - VPair: 83-84
+  - VPair: 87-88
 
 Solution:
   - 423167589
