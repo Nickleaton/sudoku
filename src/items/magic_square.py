@@ -62,7 +62,7 @@ class MagicSquare(Composed):
         return super().tags.union({'MagicSquare', 'Sum'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: str) -> Tuple[Coord, Coord]:
+    def extract(cls, board: Board, yaml: Any) -> Tuple[Coord, Coord]:
         center, corner = yaml['MagicSquare'].split(', ')
         center = Coord(int(center[0]), int(center[1]))
         corner = Coord(int(corner[0]), int(corner[1]))
