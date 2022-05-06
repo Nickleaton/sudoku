@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 
 from src.items.board import Board
 from src.items.column import Column
@@ -17,3 +17,4 @@ class Columns(StandardRegionSet):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
+

@@ -1,4 +1,4 @@
-from typing import List, Any, Tuple
+from typing import List, Any, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -83,3 +83,8 @@ class MagicSquare(Composed):
             value2 = solver.values[cell2.row][cell2.column]
             value3 = solver.values[cell3.row][cell3.column]
             solver.model += value1 + value2 + value3 == 15, f"{self.__class__.__name__}_{i}"
+
+    def to_dict(self) -> Dict:
+        return {
+            self.__class__.__name__: f"{self.center.row}{self.center.column}, {self.corner.row}{self.corner.column}"
+        }

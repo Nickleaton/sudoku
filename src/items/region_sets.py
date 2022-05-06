@@ -1,3 +1,5 @@
+from typing import Dict
+
 from src.items.composed import Composed
 
 
@@ -6,4 +8,7 @@ class RegionSet(Composed):
 
 
 class StandardRegionSet(RegionSet):
-    pass
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: None}
+

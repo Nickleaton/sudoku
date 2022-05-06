@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.items.anti import Anti
 from src.items.board import Board
@@ -32,3 +32,9 @@ class AntiKing(Anti):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: None}
+
+
+

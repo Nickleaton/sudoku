@@ -1,4 +1,4 @@
-from typing import List, Sequence, Any
+from typing import List, Sequence, Any, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -33,3 +33,6 @@ class Line(Region):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Line'})
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: ", ".join([cell.rc for cell in self.cells])}

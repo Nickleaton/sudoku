@@ -91,6 +91,10 @@ class Cell(Item):
     def coord(self) -> Coord:
         return Coord(self.row, self.column)
 
+    @property
+    def rc(self) -> str:
+        return f"{self.row}{self.column}"
+
     def add_constraint(self, solver: PulpSolver) -> None:
         solver.model += lpSum(
             [
@@ -98,3 +102,6 @@ class Cell(Item):
                 for digit in self.board.digit_range
             ]
         ) == 1
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: int(self.rc)}

@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.items.board import Board
 from src.items.cell_reference import CellReference
@@ -41,9 +41,15 @@ class Knowns(Composed):
         items = Knowns.extract(board, yaml)
         return Knowns(board, items)
 
-    def __repr__(self) -> str:
+    def line_str(self) -> str:
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
+
         for item in self:
             lines[item.row - 1][item.column - 1] = item.letter()
-        line_str = ["".join(line) for line in lines]
-        return f"{self.__class__.__name__}({self.board!r}, {line_str})"
+        return ["".join(line) for line in lines]
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: self.line_str()}

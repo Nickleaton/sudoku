@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -63,3 +63,6 @@ class Outside(FirstN):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_contains_constraint(solver, self.digits)
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.side.value}{self.index}={''.join([str(d) for d in self.digits])}"}

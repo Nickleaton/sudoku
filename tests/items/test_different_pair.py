@@ -33,7 +33,7 @@ class TestDifferentPair(TestPair):
 
     @property
     def config(self) -> str:
-        return "DifferentPair: 12,13=1,2"
+        return "DifferentPair: 12-13=1,2"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

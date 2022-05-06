@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -53,3 +53,6 @@ class Asterix(Region):
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: None}

@@ -1,4 +1,4 @@
-from typing import List, Any, Tuple
+from typing import List, Any, Tuple, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -20,7 +20,7 @@ class DifferentPair(Pair):
     @classmethod
     def extract(cls, board: Board, yaml: Any) -> Tuple:
         cs, ds = yaml[cls.__name__].split("=")
-        c1s, c2s = cs.split(",")
+        c1s, c2s = cs.split("-")
         c1 = Cell.make(board, int(c1s[0]), int(c1s[1]))
         c2 = Cell.make(board, int(c2s[0]), int(c2s[1]))
         digits = [int(d) for d in ds.split(",")]
@@ -45,3 +45,6 @@ class DifferentPair(Pair):
             choice1 = solver.choices[int(digit)][self.c1.row][self.c1.column]
             choice2 = solver.choices[int(digit)][self.c2.row][self.c2.column]
             solver.model += choice1 + choice2 <= 1, name
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.c1.rc}-{self.c2.rc}={','.join([str(d) for d in self.digits])}"}

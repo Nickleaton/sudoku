@@ -1,4 +1,4 @@
-from typing import List, Any, Tuple
+from typing import List, Any, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, KnownGlyph
 from src.items.board import Board
@@ -37,3 +37,6 @@ class KnownCell(CellReference):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}

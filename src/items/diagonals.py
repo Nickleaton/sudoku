@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.items.board import Board
 from src.items.item import Item
@@ -22,3 +22,6 @@ class Diagonal(Region):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Diagonal', 'Uniqueness'})
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: None}

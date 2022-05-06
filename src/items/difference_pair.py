@@ -1,4 +1,4 @@
-from typing import List, Any, Tuple
+from typing import List, Any, Tuple, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -36,3 +36,6 @@ class DifferencePair(Pair):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r}, {self.difference!r})"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.c1.rc}-{self.c2.rc}={self.difference}"}

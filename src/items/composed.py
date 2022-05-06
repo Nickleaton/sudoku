@@ -1,4 +1,4 @@
-from typing import List, Set, Type, Sequence, Any
+from typing import List, Set, Type, Sequence, Any, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -86,3 +86,8 @@ class Composed(Item):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.items!r})"
+
+    def to_dict(self) -> Dict:
+        if len(self.items) == 0:
+            return {self.__class__.__name__: None}
+        return {self.__class__.__name__: [item.to_dict() for item in self.items]}

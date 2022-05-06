@@ -27,10 +27,9 @@ class TestItem(unittest.TestCase):
 
     def test_create(self) -> None:
         if self.item.__class__.__name__ == 'Item':
-            return
+            return Item(self.board)
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
-        board = Board(9, 9, 3, 3, None, None, None, None)
-        item = Item.create(board, config)
+        item = Item.create(self.board, config)
         self.assertIsNotNone(item)
         self.assertIsInstance(item, self.clazz)
         self.assertIsInstance(self.item, self.clazz)
@@ -94,6 +93,13 @@ class TestItem(unittest.TestCase):
         solver = PulpSolver(self.board)
         self.item.add_variables(self.board, solver)
         self.item.add_constraint(solver)
+
+    def test_to_dict(self) -> None:
+        config = yaml.load(self.config, Loader=yaml.SafeLoader)
+        if "Item" in config:
+            return
+        item = Item.create(self.board, config)
+        self.assertDictEqual(item.to_dict(), config)
 
 
 if __name__ == '__main__':  # pragma: no cover

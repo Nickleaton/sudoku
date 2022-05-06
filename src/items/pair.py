@@ -1,5 +1,5 @@
 import abc
-from typing import List, Set, Type, Any, Tuple
+from typing import List, Set, Type, Any, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board
@@ -56,3 +56,6 @@ class Pair(Item):
     @property
     def glyphs(self) -> List[Glyph]:
         return [EdgeTextGlyph(self.__class__.__name__, 0, self.c1.coord.center, self.c2.coord.center, self.label)]
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.c1.rc}-{self.c2.rc}"}

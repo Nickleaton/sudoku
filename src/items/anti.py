@@ -1,4 +1,4 @@
-from typing import List, Sequence, Any
+from typing import List, Sequence, Any, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -45,3 +45,6 @@ class Anti(Composed):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}

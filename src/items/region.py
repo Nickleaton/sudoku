@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from pulp import lpSum
 
@@ -55,3 +55,6 @@ class Region(Composed):
                 solver.model += value1 + 1 <= value2, name
             else:
                 solver.model += value1 >= value2 + 1, name
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: None}

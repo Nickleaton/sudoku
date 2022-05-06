@@ -77,3 +77,6 @@ class Item(ABC):
 
     def add_constraint(self, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
         pass
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: None}

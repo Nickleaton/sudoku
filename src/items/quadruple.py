@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from pulp import lpSum
 
@@ -53,3 +53,6 @@ class Quadruple(Item):
                 ]
             )
             solver.model += digit_sum >= 1, f"{self.name}_{digit}"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}

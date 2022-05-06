@@ -30,7 +30,7 @@ class TestDiagonal(TestRegion):
 
     @property
     def config(self) -> str:
-        return "Diagonal: 1"
+        return "Diagonal: "
 
     @property
     def has_rule(self) -> bool:

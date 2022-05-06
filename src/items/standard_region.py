@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -35,3 +35,6 @@ class StandardRegion(Region):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Uniqueness', 'Standard Set'})
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: self.index}

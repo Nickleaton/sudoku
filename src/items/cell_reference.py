@@ -1,4 +1,4 @@
-from typing import List, Set, Type, Any, Tuple, Optional
+from typing import List, Set, Type, Any, Tuple, Optional, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -44,3 +44,6 @@ class CellReference(Item):
         result = super().used_classes
         result = result.union(self.cell.used_classes)
         return result
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: int(self.cell.rc)}

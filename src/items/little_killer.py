@@ -1,4 +1,4 @@
-from typing import List, Any, Tuple
+from typing import List, Any, Tuple, Dict
 
 from pulp import lpSum
 
@@ -77,3 +77,6 @@ class LittleKiller(Region):
     def add_constraint(self, solver: PulpSolver) -> None:
         solver.model += lpSum(solver.values[cell.row][cell.column] for cell in self.cells) == self.total, \
                         f"{self.__class__.__name__}_{self.side.value}{self.cyclic.value}{self.offset}"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}

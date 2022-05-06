@@ -1,5 +1,5 @@
 """First N cells from a given side and index."""
-from typing import Any
+from typing import Any, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -71,3 +71,6 @@ class FirstN(Region):
     def create(cls, board: Board, yaml: Any) -> Item:
         side, index = FirstN.extract(board, yaml)
         return cls(board, side, index)
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.side.value}{self.index}"}

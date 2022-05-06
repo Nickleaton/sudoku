@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from pulp import lpSum
 
@@ -69,3 +69,6 @@ class Knight(Composed):
                 start = solver.choices[digit][cell.row][cell.column]
                 possibles = lpSum([solver.choices[digit][i.row][i.column] for i in include])
                 solver.model += start <= possibles, f"{self.name}_{cell.row}_{cell.column}_{digit}"
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}

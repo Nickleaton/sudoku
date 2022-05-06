@@ -1,6 +1,6 @@
 """ Frame Sudoku """
 
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -86,3 +86,6 @@ class Frame(FirstN):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, self.total)
+
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
