@@ -14,13 +14,6 @@ EXCLUDE_VALUES_ON_LINE = False
 class Between(Line):
 
     @property
-    def name(self) -> str:
-        if self.identity is None:
-            cell_str = "".join([f"{cell.row}{cell.column}" for cell in self.cells])
-            return f"{self.__class__.__name__}_{cell_str}"
-        return f"{self.__class__.__name__}_{self.identity}"
-
-    @property
     def rules(self) -> List[Rule]:
         return [
             Rule(

@@ -13,10 +13,6 @@ class StandardRegion(Region):
         self.index = index
 
     @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.index}"
-
-    @property
     def glyphs(self) -> List[Glyph]:
         return []
 

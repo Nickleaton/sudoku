@@ -20,6 +20,18 @@ class TestSolution(unittest.TestCase):
             "123456789"
         ]
         self.item = Solution(self.board, data)
+        data = [
+            "123456789",
+            "123456789",
+            "123456789",
+            "123456789",
+            "123456789",
+            "123456789",
+            "123456789",
+            "123456789",
+            "123456781"
+        ]
+        self.other = Solution(self.board, data)
 
     @property
     def representation(self) -> str:
@@ -40,21 +52,6 @@ class TestSolution(unittest.TestCase):
             ")"
         )
 
-    @property
-    def config(self) -> str:
-        return (
-            "Solution:\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'\n"
-            "  - '123456789'"
-        )
-
     def test_repr(self):
         unittest.TestCase.maxDiff = None
         self.assertEqual(self.representation, repr(self.item))
@@ -66,6 +63,27 @@ class TestSolution(unittest.TestCase):
         self.item.set_value(9, 9, 8)
         self.assertEqual(8, self.item.get_value(1, 1))
         self.assertEqual(8, self.item.get_value(9, 9))
+
+    def test_equality(self):
+        self.assertEqual(self.item, self.item)
+        self.assertNotEqual(self.item, self.other)
+        with self.assertRaises(Exception):
+            _ = self.item == '123'
+
+    def test_string(self):
+        text = ("Solution:\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                "- 123456789\n"
+                )
+
+        self.assertEqual(text, str(self.item))
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -8,10 +8,6 @@ from src.utils.rule import Rule
 class SumPair(Pair):
 
     @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.c1.name}_{self.c2.name}"
-
-    @property
     def total(self) -> int:
         return 0
 

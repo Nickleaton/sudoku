@@ -15,10 +15,6 @@ class Pair(Item):
         self.c1 = c1
         self.c2 = c2
 
-    @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.c1.row}_{self.c1.column}_{self.c2.row}_{self.c2.column}"
-
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r})"
 

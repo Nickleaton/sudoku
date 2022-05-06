@@ -17,12 +17,6 @@ class Renban(Line):
         super().__init__(board, cells)
 
     @property
-    def name(self) -> str:
-        if self.identity is None:
-            return super().name
-        return f"{self.__class__.__name__}_{self.identity}"
-
-    @property
     def rules(self) -> List[Rule]:
         return [
             Rule(

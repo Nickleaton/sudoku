@@ -33,10 +33,6 @@ class Knight(Composed):
             ]
 
     @property
-    def name(self) -> str:
-        return self.__class__.__name__
-
-    @property
     def tags(self) -> set[str]:
         return super().tags.union({'Knight'})
 
