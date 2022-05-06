@@ -14,9 +14,6 @@ class KnownCell(CellReference):
         super().__init__(board, row, column)
         self.digit = int(digit)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        solver.model += solver.choices[self.digit][self.row][self.column] == 1, \
-                        f"Known_{self.row}_{self.column}_eq_{self.digit}"
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
@@ -40,3 +37,9 @@ class KnownCell(CellReference):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
+
+    def add_constraint(self, solver: PulpSolver) -> None:
+        for digit in self.board.digit_range:
+            target = 1 if digit == self.digit else 0
+            solver.model += solver.choices[digit][self.row][self.column] == target, \
+                            f"Known_{self.row}_{self.column}_eq_{digit}"

@@ -1,7 +1,10 @@
 from typing import List
 
+from pulp import lpSum
+
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.line import Line
+from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
@@ -26,3 +29,30 @@ class EqualSum(Line):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'EqualSum', 'Sum'})
+
+    def add_constraint(self, solver: PulpSolver) -> None:
+        # Build areas
+        areas = []
+        current = 0
+        for cell in self.cells:
+            box = self.board.box_index(cell.row, cell.column)
+            if box != current:
+                areas.append([])
+                current = box
+            areas[-1].append(cell)
+
+        # Cannot exceed the digit sum.
+        # total = LpVariable(f"{self.name}_total", cat='Integer', lowBound=1, upBound=self.board.digit_sum)
+        # for i, region in enumerate(areas):
+        #     cell_sum = lpSum([solver.values[cell.row][cell.column] for cell in region])
+        #     solver.model += total == cell_sum, f"{self.name}_{i}"
+
+        # create a sum for each area
+        sums = []
+        for region in areas:
+            sums.append(lpSum([solver.values[cell.row][cell.column] for cell in region]))
+
+        # set total[i] = total[i+1]
+        for i in range(0, len(areas)):
+            j = 0 if i == len(areas) - 1 else i + 1
+            solver.model += sums[i] == sums[j], f"{self.name}_{i}"

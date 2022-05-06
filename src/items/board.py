@@ -108,3 +108,12 @@ class Board:
             f"{self.author!r}"
             f")"
         )
+
+    def box_index(self, row: int, column: int) -> int:
+        """
+        For a cell specified by row and column, return the box in which it lies
+        :param row: Row Coordinate
+        :param column: Column Coordinate
+        :return: Box number
+        """
+        return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1

@@ -78,5 +78,17 @@ class TestBoard(unittest.TestCase):
         self.assertFalse(board.is_valid_coordinate(Coord(9, 1)))
         self.assertFalse(board.is_valid_coordinate(Coord(1, 9)))
 
-        if __name__ == '__main__':  # pragma: no cover
-            unittest.main()
+    def test_box_index(self):
+        board = Board(9, 9, 3, 3)
+        self.assertEqual(1, board.box_index(1, 1))
+        self.assertEqual(1, board.box_index(2, 2))
+        self.assertEqual(1, board.box_index(3, 3))
+        self.assertEqual(2, board.box_index(2, 5))
+        self.assertEqual(3, board.box_index(2, 8))
+        self.assertEqual(5, board.box_index(5, 5))
+        self.assertEqual(6, board.box_index(5, 9))
+        self.assertEqual(9, board.box_index(9, 9))
+
+
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()

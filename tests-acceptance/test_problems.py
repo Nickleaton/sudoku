@@ -31,7 +31,7 @@ def custom_name_func(testcase_func, _, param) -> str:
 class TestFiles(unittest.TestCase):
     filenames = [(os.path.basename(filename)[:-5]) for filename in glob.glob((os.path.join('problems', '*.yaml')))]
 
-    filenames = ['problem054']
+    filenames = ['problem028']
 
     @staticmethod
     def config(filename: str) -> Any:
@@ -104,7 +104,7 @@ class TestFiles(unittest.TestCase):
     def test_solve(self, filename: str) -> None:
         config = TestFiles.config(filename)
         problem = TestFiles.problem(filename)
-        solver = PulpSolver(problem.board)
+        solver = PulpSolver(problem.board, 'PULP_CBC_CMD')
         problem.add_variables(problem.board, solver)
         problem.add_constraint(solver)
         directory = os.path.join("output", "lp")

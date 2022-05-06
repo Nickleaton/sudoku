@@ -40,6 +40,8 @@ class Solution:
             result += f"- {''.join([str(int(d)) for d in row])}\n"
         return result
 
+    def standard_string(self) -> str
+        return
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Solution):
             for row, column in product(self.board.row_range, self.board.column_range):

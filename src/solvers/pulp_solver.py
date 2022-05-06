@@ -1,7 +1,7 @@
 from itertools import product
 from typing import Dict, Optional
 
-from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum
+from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum, getSolver
 
 from src.items.board import Board
 from src.items.solution import Solution
@@ -10,8 +10,11 @@ from src.solvers.solver import Solver
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, board: Board):
+    def __init__(self, board: Board, solver_name: str):
         super().__init__(board)
+        self.solver_name = solver_name
+        self.application = getSolver(solver_name)
+
         self.objective = 0, "Objective"
         self.model = LpProblem("Sudoku", LpMinimize)
         self.model += self.objective
@@ -43,7 +46,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
     def solve(self) -> None:
         super().solve()
-        self.model.solve()
+        self.model.solve(self.application)
         self.status = LpStatus[self.model.status]
         if self.model.status != LpStatusOptimal:
             return
