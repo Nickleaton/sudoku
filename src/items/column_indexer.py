@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List
 
 from src.glyphs.glyph import Glyph, RectGlyph
 from src.items.board import Board

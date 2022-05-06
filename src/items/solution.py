@@ -1,5 +1,5 @@
 from itertools import product
-from typing import List, Optional, Any, Dict
+from typing import List, Optional, Dict
 
 from src.items.board import Board
 
@@ -49,7 +49,7 @@ class Solution:
         raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @classmethod
-    def extract(cls, board: Board, yaml: List[str]) -> List[str]:
+    def extract(cls, board: Board, yaml: Dict) -> List[str]:
         return [str(line) for line in yaml]
 
     @classmethod

@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict, Tuple, List, Any
+from typing import Dict, Tuple, List
 
 from pulp import lpSum
 

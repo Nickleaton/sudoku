@@ -41,9 +41,8 @@ class Knowns(Composed):
         items = Knowns.extract(board, yaml)
         return Knowns(board, items)
 
-    def line_str(self) -> str:
+    def line_str(self) -> List[str]:
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
-
         for item in self:
             lines[item.row - 1][item.column - 1] = item.letter()
         return ["".join(line) for line in lines]

@@ -11,4 +11,3 @@ class StandardRegionSet(RegionSet):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
-

@@ -1,5 +1,5 @@
 import abc
-from typing import List, Set, Type, Any, Tuple, Dict
+from typing import List, Set, Type, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board

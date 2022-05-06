@@ -1,4 +1,4 @@
-from typing import List, Sequence, Any, Dict
+from typing import List, Sequence, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell

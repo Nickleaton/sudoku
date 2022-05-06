@@ -1,4 +1,4 @@
-from typing import List, Set, Type, Sequence, Any, Dict
+from typing import List, Set, Type, Sequence, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board

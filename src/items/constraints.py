@@ -1,4 +1,4 @@
-from typing import Set, Type, Any, Dict
+from typing import Set, Type, Dict
 
 from src.items.board import Board
 from src.items.composed import Composed

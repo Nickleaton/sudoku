@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Dict
 
 from src.items.board import Board
 from src.items.item import Item
