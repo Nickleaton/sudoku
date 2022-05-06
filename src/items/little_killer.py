@@ -4,7 +4,7 @@ from pulp import lpSum
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.cyclic import Cyclic
@@ -40,22 +40,9 @@ class LittleKiller(Region):
             f")"
         )
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        results = []
-        if not isinstance(yaml, str):
-            results.append(f"Expecting str, got {yaml!r}")
-            return results
-        if "=" not in yaml:
-            results.append(f"Not expected format, got {yaml!r}")
-        parts = yaml.split("=")
-        if len(parts) != 2:
-            results.append(f"Expected two parts, got {yaml!r}")
-        return results
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Tuple[int, int, Cyclic, Side]:
-        parts = yaml.split("=")
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Tuple[int, int, Cyclic, Side]:
+        parts = yaml[cls.__name__].split("=")
         total = int(parts[1])
         offset = int(parts[0][1])
         cyclic = Cyclic.create(parts[0][-1])
@@ -63,8 +50,7 @@ class LittleKiller(Region):
         return total, offset, cyclic, side
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        LittleKiller.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 

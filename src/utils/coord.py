@@ -99,3 +99,8 @@ class Coord:
     @property
     def top_right(self) -> 'Coord':
         return self.top_left + Coord(0, 1)
+
+    @staticmethod
+    def create_from_int(rc: int) -> 'Coord':
+        r, c = divmod(rc, 10)
+        return Coord(r, c)

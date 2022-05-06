@@ -33,9 +33,7 @@ class TestFortressCell(TestCellReference):
 
     @property
     def config(self) -> str:
-        return "FortressCell:\n" \
-               "    Row: 1\n" \
-               "    Column: 2\n"
+        return "FortressCell: 12"
 
     @property
     def has_rule(self) -> bool:

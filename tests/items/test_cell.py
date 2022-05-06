@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell, CellException
@@ -27,9 +27,7 @@ class TestCell(TestItem):
 
     @property
     def config(self) -> str:
-        return "Cell:\n" \
-               "    Row: 1\n" \
-               "    Column: 2\n"
+        return "Cell: 12"
 
     def test_rc(self):
         self.assertEqual((1, 2), self.item.row_column)

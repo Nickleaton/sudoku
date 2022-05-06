@@ -5,7 +5,7 @@ from pulp import lpSum
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -40,24 +40,12 @@ class Knight(Composed):
     def tags(self) -> set[str]:
         return super().tags.union({'Knight'})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result = []
-        if not isinstance(yaml, list):
-            result.append(f"Expecting list, got {yaml!r}")
-            return result
-        for digit in yaml:
-            if digit not in board.digit_range:
-                result.append(f"{digit} is not a valid digit")
-        return result
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        return yaml
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        return [int(d) for d in yaml[cls.__name__].split(", ")]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Knight.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         digits = Knight.extract(board, yaml)
         return Knight(board, digits)
 

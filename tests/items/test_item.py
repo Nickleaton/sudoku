@@ -30,9 +30,10 @@ class TestItem(unittest.TestCase):
             return
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         board = Board(9, 9, 3, 3, None, None, None, None)
-        item = Item.create(self.item.__class__.__name__, board, config[self.item.__class__.__name__])
+        item = Item.create(board, config)
         self.assertIsNotNone(item)
-        self.assertIsInstance(item, self.item.__class__)
+        self.assertIsInstance(item, self.clazz)
+        self.assertIsInstance(self.item, self.clazz)
         self.assertEqual(self.representation, repr(item))
 
     def test_name(self) -> None:

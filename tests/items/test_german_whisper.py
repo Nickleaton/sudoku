@@ -28,6 +28,10 @@ class TestGermanWhisper(TestGreaterThanEqualDifferenceLine):
         return GermanWhisper
 
     @property
+    def config(self) -> str:
+        return f"GermanWhisper: 11, 12, 13"
+
+    @property
     def representation(self) -> str:
         return (
             "GermanWhisper"

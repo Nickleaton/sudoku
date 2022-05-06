@@ -1,8 +1,6 @@
 import unittest
 from typing import Type
 
-import oyaml as yaml
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
@@ -25,6 +23,10 @@ class TestDifferenceLine(TestLine):
         return DifferenceLine
 
     @property
+    def config(self) -> str:
+        return f"DifferenceLine: 11, 12, 13"
+
+    @property
     def representation(self) -> str:
         return (
             "DifferenceLine(Board(9, 9, 3, 3, None, None, None, None), "
@@ -39,11 +41,6 @@ class TestDifferenceLine(TestLine):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, Composed, DifferenceLine, Item, Line, Region}
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.clazz.__name__, self.board, data[self.clazz.__name__])
-        self.assertIsInstance(item, self.clazz)
 
 
 if __name__ == '__main__':  # pragma: no cover

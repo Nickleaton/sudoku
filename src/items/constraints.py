@@ -1,8 +1,8 @@
-from typing import Set, Type
+from typing import Set, Type, Any
 
 from src.items.board import Board
 from src.items.composed import Composed
-from src.items.item import Item, YAML
+from src.items.item import Item
 
 
 class Constraints(Composed):
@@ -18,16 +18,8 @@ class Constraints(Composed):
         return result
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         result = cls(board)
-        cls.validate(board, yaml)
-        if isinstance(yaml, list):
-            for constraint in yaml:
-                if isinstance(constraint, str):
-                    result.add(Item.create(constraint, board, constraint))
-                else:
-                    for sub_name, sub_constraint in constraint.items():
-                        result.add(Item.create(sub_name, board, sub_constraint))
-        else:
-            raise Exception("Expecting a list")
+        for constraint in yaml[cls.__name__]:
+            result.add(Item.create(board, constraint))
         return result

@@ -17,6 +17,10 @@ class TestThermometer(TestLine):
         return Thermometer
 
     @property
+    def config(self) -> str:
+        return f"Thermometer: 11, 12, 13"
+
+    @property
     def has_rule(self) -> bool:
         return False
 

@@ -4,7 +4,7 @@ from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.direction import Direction
@@ -65,15 +65,15 @@ class MagicSquare(Composed):
     def validate(_: Board, yaml: Any) -> List[str]:
         return []
 
-    @staticmethod
-    def extract(_: Board, yaml: str) -> Tuple[Coord, Coord]:
+    @classmethod
+    def extract(cls, board: Board, yaml: str) -> Tuple[Coord, Coord]:
         center, corner = yaml['MagicSquare'].split(', ')
         center = Coord(int(center[0]), int(center[1]))
         corner = Coord(int(corner[0]), int(corner[1]))
         return center, corner
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
 

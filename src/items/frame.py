@@ -5,7 +5,7 @@ from typing import List, Any
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
-from src.items.item import YAML, Item
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.side import Side
@@ -69,31 +69,18 @@ class Frame(FirstN):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison', 'Frame'})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        if not isinstance(yaml, str):
-            return [f"Expected str, got {yaml!r}"]
-        if "=" not in yaml:
-            return [f"Expecting {{sidr}}{{index}}={{order}}, got {yaml!r}"]
-        ref_str: str = yaml.split("=")[0]
-        total_str: str = yaml.split("=")[1]
-        result = FirstN.validate(board, ref_str)
-        if len(result) > 0:
-            return result
-        if not total_str.isnumeric():
-            result.append(f"Invalid total {total_str}")
-        return result
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        ref_str: str = yaml.split("=")[0]
-        total_str: str = yaml.split("=")[1]
-        side, index = FirstN.extract(board, ref_str)
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        data = yaml[cls.__name__]
+        ref_str: str = data.split("=")[0]
+        total_str: str = data.split("=")[1]
+        side = Side.create(ref_str[0])
+        index = int(ref_str[1])
         total = int(total_str)
         return side, index, total
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         Frame.validate(board, yaml)
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)

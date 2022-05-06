@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -22,7 +22,7 @@ class TestStandardRegion(TestRegion):
 
     @property
     def config(self) -> str:
-        return "StandardRegion: 1"
+        return f"{self.clazz.__name__}: 1"
 
     @property
     def representation(self) -> str:

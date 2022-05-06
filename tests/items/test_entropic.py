@@ -26,6 +26,10 @@ class TestEntropic(TestLine):
         self.item = Entropic(self.board, cells)
 
     @property
+    def config(self) -> str:
+        return f"Entropic: 11, 12, 13, 14, 15, 16"
+
+    @property
     def clazz(self):
         return Entropic
 

@@ -5,7 +5,7 @@ from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, CellGlyph
 from src.items.board import Board
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -22,10 +22,6 @@ class Cell(Item):
         super().__init__(board)
         self.row = row
         self.column = column
-
-    @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.row}_{self.column})"
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
@@ -60,35 +56,12 @@ class Cell(Item):
         for row, column in product(board.row_range, board.column_range):
             Cell.make(board, row, column)
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result = []
-        if not isinstance(yaml, dict):
-            result.append(f"Expecting dict, got {yaml!r}")
-            return result
-        if len(yaml) != 2:
-            result.append(f"Expecting Row and Column only, got {yaml!r}")
-
-        if 'Row' not in yaml:
-            result.append(f"Expecting 'Row', got {yaml!r}")
-        if 'Column' not in yaml:
-            result.append(f"Expecting 'Column', got {yaml!r}")
-        if len(result) > 0:
-            return result
-        row = int(yaml['Row'])
-        column = int(yaml['Column'])
-        if row not in board.row_range:
-            result.append(f'Invalid row {row}')
-        if column not in board.column_range:
-            result.append(f'Invalid column {column}')
-        return result
-
-    @staticmethod
-    def extract(_: Board, yaml: Any) -> Coord:
-        return Coord(yaml['Row'], yaml['Column'])
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Coord:
+        return Coord.create_from_int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         Cell.validate(board, yaml)
         coord: Coord = Cell.extract(board, yaml)
         return cls(board, int(coord.row), int(coord.column))

@@ -1,7 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
-
-import oyaml as yaml
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -33,11 +31,6 @@ class TestDiagonal(TestRegion):
     @property
     def config(self) -> str:
         return "Diagonal: 1"
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
 
     @property
     def has_rule(self) -> bool:

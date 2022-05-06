@@ -101,11 +101,6 @@ class TestGlyph(unittest.TestCase):
         return {Glyph}
 
     def test_used_classes(self) -> None:
-        # expected_names = sorted([cls.__name__ for cls in self.expected_classes])
-        # used_names = sorted([cls.__name__ for cls in self.glyph.used_classes])
-        # print(f"{{{', '.join(expected_names)}}}")
-        # print(f"{{{', '.join(used_names)}}}")
-        # print()
         self.assertEqual(self.expected_classes, self.glyph.used_classes)
 
 

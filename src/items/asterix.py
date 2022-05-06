@@ -3,10 +3,9 @@ from typing import List, Any
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
-from src.utils.config import Config
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -28,25 +27,12 @@ class Asterix(Region):
         super().__init__(board)
         self.add_items([Cell.make(board, coord.row, coord.column) for coord in Asterix.coords])
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        if not isinstance(yaml, dict):
-            result.append(f"Expecting dict, got {yaml!r}")
-            return result
-        if len(yaml) != 0:
-            result.append(f"Expecting empty dict, got {yaml!r}")
-            return result
-        return result
-
-    @staticmethod
-    def extract(_: Board, yaml: Any) -> Any:
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
         return yaml
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Asterix.validate(board, yaml)
-        _ = Asterix.extract(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         return cls(board)
 
     def __repr__(self) -> str:

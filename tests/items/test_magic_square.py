@@ -1,7 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
-
-import oyaml as yaml
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -30,12 +28,6 @@ class TestMagicSquare(TestComposed):
     @property
     def config(self) -> str:
         return "MagicSquare: 55, 11"
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
-        self.assertEqual(self.item.__class__, item.__class__)
 
     @property
     def has_rule(self) -> bool:

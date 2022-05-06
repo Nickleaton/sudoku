@@ -21,6 +21,10 @@ class TestVIPair(TestSumPair):
         return VIPair
 
     @property
+    def config(self):
+        return "VIPair: 12-13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

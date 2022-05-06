@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, List, Sequence, Tuple, Any
+from typing import Type, List
 
 from src.items.anti import Anti
 from src.items.board import Board

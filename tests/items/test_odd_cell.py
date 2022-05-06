@@ -33,9 +33,7 @@ class TestOdd(TestCellReference):
 
     @property
     def config(self) -> str:
-        return "OddCell:\n" \
-               "    Row: 1\n" \
-               "    Column: 2\n"
+        return "OddCell: 12"
 
     def test_included(self):
         for x in self.good:

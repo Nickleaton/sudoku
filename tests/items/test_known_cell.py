@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -30,10 +30,7 @@ class TestKnownCell(TestCellReference):
 
     @property
     def config(self) -> str:
-        return "KnownCell:\n" \
-               "    Row: 1\n" \
-               "    Column: 2\n" \
-               "    Digit: 9\n"
+        return "KnownCell: 12=9"
 
     @property
     def has_rule(self) -> bool:

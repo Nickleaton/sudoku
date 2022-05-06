@@ -1,39 +1,19 @@
 from typing import List, Any
 
 from src.items.board import Board
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.utils.rule import Rule
 
 
 class Indexer(StandardRegion):
 
-    @property
-    def name(self) -> str:
-        return f"{self.__class__.__name__}_{self.index}"
-
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        error = f"Expecting Indexer: index, got {yaml!r}"
-        if not isinstance(yaml, dict):
-            return [error]
-        if len(yaml) != 1:
-            return [error]
-        for k, v in yaml.items():
-            if k != 'Indexer':
-                return [error]
-            if not isinstance(v, int):
-                return [error]
-            if v not in board.row_range:
-                return [error]
-        return []
-
-    @staticmethod
-    def extract(_: Board, yaml: Any) -> int:
-        return int(yaml)
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> int:
+        return int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         cls.validate(board, yaml)
         index = cls.extract(board, yaml)
         return cls(board, index)

@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Any, Tuple
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -28,7 +28,7 @@ class TestKnight(TestItem):
 
     @property
     def config(self) -> str:
-        return "Knight: [2, 4, 6, 8]"
+        return "Knight: 2, 4, 6, 8"
 
     @property
     def representation(self) -> str:

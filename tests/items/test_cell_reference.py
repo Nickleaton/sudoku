@@ -32,14 +32,8 @@ class TestCellReference(TestItem):
         )
 
     @property
-    def clazz(self):
-        return CellReference
-
-    @property
     def config(self) -> str:
-        return "CellReference:\n" \
-               "    Row: 1\n" \
-               "    Column: 2\n"
+        return "CellReference: 12"
 
     @property
     def has_rule(self) -> bool:

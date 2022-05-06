@@ -3,7 +3,7 @@ from typing import List, Any
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
-from src.items.item import YAML, Item
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
 from src.utils.rule import Rule
@@ -55,30 +55,16 @@ class Rossini(FirstN):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison', 'Rossini'})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        if not isinstance(yaml, str):
-            return [f"Expected str, got {yaml!r}"]
-        if "=" not in yaml:
-            return [f"Expecting {{sidr}}{{index}}={{order}}, got {yaml!r}"]
-        ref_str, order_str = yaml.split("=")
-        result = FirstN.validate(board, ref_str)
-        if len(result) > 0:
-            return result
-        if not Order.valid(order_str):
-            result.append(f"Invalid Order {order_str}")
-        return result
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        ref_str, order_str = yaml.split("=")
-        side, index = FirstN.extract(board, ref_str)
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        ref_str, order_str = yaml[cls.__name__].split("=")
+        side = Side.create(ref_str[0])
+        index = int(ref_str[1])
         order = Order.create(order_str)
         return side, index, order
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Rossini.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 

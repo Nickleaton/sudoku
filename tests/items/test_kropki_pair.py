@@ -20,6 +20,10 @@ class TestKropkiPair(TestPair):
         return KropkiPair
 
     @property
+    def config(self):
+        return "KropkiPair: 12-13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

@@ -1,6 +1,8 @@
+from typing import Any
+
 from src.items.board import Board
 from src.items.box import Box
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region_sets import StandardRegionSet
 
 
@@ -11,7 +13,7 @@ class Boxes(StandardRegionSet):
         super().__init__(board, [Box(board, i) for i in board.box_range])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         cls.validate(board, yaml)
         return Boxes(board)
 

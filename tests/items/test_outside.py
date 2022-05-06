@@ -1,8 +1,6 @@
 import unittest
 from typing import Type
 
-import oyaml as yaml
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
@@ -34,13 +32,7 @@ class TestOutside(TestFirstN):
 
     @property
     def config(self) -> str:
-        return "Outsides: T1=123"
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
-        self.assertEqual(self.item.__class__, item.__class__)
+        return "Outside: T1=123"
 
     @property
     def has_rule(self) -> bool:

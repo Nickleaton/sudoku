@@ -21,6 +21,10 @@ class TestVPair(TestSumPair):
         return VPair
 
     @property
+    def config(self):
+        return "VPair: 12-13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

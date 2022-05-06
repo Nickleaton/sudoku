@@ -18,6 +18,10 @@ class TestSimpleThermometer(TestThermometer):
         return SimpleThermometer
 
     @property
+    def config(self) -> str:
+        return f"SimpleThermometer: 11, 12, 13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

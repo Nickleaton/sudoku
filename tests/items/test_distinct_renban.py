@@ -18,6 +18,10 @@ class TestDistinctRenban(TestRenban):
         return DistinctRenban
 
     @property
+    def config(self) -> str:
+        return f"DistinctRenban: 11, 12, 13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

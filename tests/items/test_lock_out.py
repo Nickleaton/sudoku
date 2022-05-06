@@ -16,6 +16,10 @@ class TestLockOut(TestLine):
         return LockOut
 
     @property
+    def config(self) -> str:
+        return f"LockOut: 11, 12, 13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -33,7 +33,7 @@ class TestDifferentPair(TestPair):
 
     @property
     def config(self) -> str:
-        return "Cells: [ [1, 2], [1, 3] ]\nDigits: 1,2"
+        return "DifferentPair: 12,13=1,2"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

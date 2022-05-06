@@ -3,7 +3,7 @@ from typing import List, Set, Type, Any, Tuple, Optional
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.utils.rule import Rule
 
 
@@ -15,30 +15,15 @@ class CellReference(Item):
         self.row = row
         self.column = column
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        if not isinstance(yaml, dict):
-            result.append(f"Expecting dict, got {yaml!r}")
-            return result
-        if 'Row' not in yaml:
-            result.append(f"Row:, got {yaml!r}")
-            return result
-        if 'Column' not in yaml:
-            result.append(f"Column:, got {yaml!r}")
-            return result
-        if yaml['Row'] not in board.digit_range or yaml['Column'] not in board.digit_range:
-            result.append(f"Expecting digit,digit, got {yaml!r}")
-        return result
-
-    @staticmethod
-    def extract(_: Board, yaml: Any) -> Tuple:
-        return int(yaml['Row']), int(yaml['Column'])
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Tuple:
+        data = yaml[cls.__name__]
+        data = str(data)
+        return int(data[0]), int(data[1])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        CellReference.validate(board, yaml)
-        row, column = CellReference.extract(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
+        row, column = cls.extract(board, yaml)
         return cls(board, row, column)
 
     def svg(self) -> Optional[Glyph]:

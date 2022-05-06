@@ -3,7 +3,7 @@ from typing import List, Any, Tuple
 from src.glyphs.glyph import Glyph, KnownGlyph
 from src.items.board import Board
 from src.items.cell_reference import CellReference
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 
@@ -18,37 +18,13 @@ class KnownCell(CellReference):
         solver.model += solver.choices[self.digit][self.row][self.column] == 1, \
                         f"Known_{self.row}_{self.column}_eq_{self.digit}"
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        if not isinstance(yaml, dict):
-            result.append(f"Expecting dict, got {yaml!r}")
-            return result
-        if len(yaml) != 3:
-            result.append(f"Row, Column and digit {yaml!r}")
-        if 'Row' not in yaml:
-            result.append(f"Row:, got {yaml!r}")
-        if 'Column' not in yaml:
-            result.append(f"Column:, got {yaml!r}")
-        if 'Digit' not in yaml:
-            result.append(f"Digit:, got {yaml!r}")
-        if len(result) > 0:
-            return result
-        if yaml['Row'] not in board.row_range:
-            result.append(f"Invalid row:, got {yaml!r}")
-        if yaml['Column'] not in board.column_range:
-            result.append(f"Invalid column:, got {yaml!r}")
-        if yaml['Digit'] not in board.digit_range:
-            result.append(f"Invalid digit:, got {yaml!r}")
-        return result
-
-    @staticmethod
-    def extract(_: Board, yaml: Any) -> Tuple:
-        return int(yaml['Row']), int(yaml['Column']), int(yaml['Digit'])
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Tuple:
+        rc, d = yaml[cls.__name__].split("=")
+        return int(rc[0]), int(rc[1]), int(d)
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        KnownCell.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         row, column, digit = KnownCell.extract(board, yaml)
         return cls(board, row, column, digit)
 

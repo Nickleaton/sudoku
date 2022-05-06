@@ -1,5 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -13,7 +13,7 @@ class TestDifferencePair(TestPair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 0)
+        self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 1)
 
     @property
     def clazz(self):
@@ -21,7 +21,7 @@ class TestDifferencePair(TestPair):
 
     @property
     def config(self) -> str:
-        return "Cells: [[1, 2], [1, 3]]\nDifference: 1"
+        return "DifferencePair: 12-13=1"
 
     @property
     def has_rule(self) -> bool:
@@ -29,7 +29,7 @@ class TestDifferencePair(TestPair):
 
     @property
     def difference(self) -> int:
-        return 0
+        return 1
 
     @property
     def representation(self) -> str:
@@ -39,7 +39,7 @@ class TestDifferencePair(TestPair):
             "Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
-            "0"
+            "1"
             ")"
         )
 

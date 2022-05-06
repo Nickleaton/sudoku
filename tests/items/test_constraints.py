@@ -1,6 +1,5 @@
+import unittest
 from typing import Type
-
-import oyaml as yaml
 
 from src.items.board import Board
 from src.items.box import Box
@@ -67,11 +66,6 @@ class TestConstraints(TestComposed):
             "  - Boxes:\n"
             "  - ColumnIndexer: 1\n"
         )
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data['Constraints'])
-        self.assertIsNotNone(item)
 
     @property
     def has_rule(self) -> bool:

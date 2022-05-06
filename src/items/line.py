@@ -2,7 +2,7 @@ from typing import List, Sequence, Any
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region import Region
 from src.utils.rule import Rule
 
@@ -18,14 +18,14 @@ class Line(Region):
         result = []
         return result
 
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> List[Cell]:
-        return [Cell.make(board, int(part.strip()[0]), int(part.strip()[0])) for part in yaml.split(',')]
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> List[Cell]:
+        return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Line.validate(board, yaml)
-        cells = Line.extract(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
+        cls.validate(board, yaml)
+        cells = cls.extract(board, yaml)
         return cls(board, cells)
 
     def __repr__(self) -> str:

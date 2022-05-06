@@ -6,6 +6,7 @@ import src.items.anti_knight
 import src.items.anti_monkey
 import src.items.anti_queen
 import src.items.arrow
+import src.items.asterix
 import src.items.between
 import src.items.bltr
 import src.items.board
@@ -34,7 +35,6 @@ import src.items.even_cell
 import src.items.first_n
 import src.items.fortress_cell
 import src.items.frame
-import src.items.frames
 import src.items.frozen_thermometer
 import src.items.german_whisper
 import src.items.greater_than_equal_difference_line
@@ -61,7 +61,6 @@ import src.items.region
 import src.items.region_sets
 import src.items.renban
 import src.items.rossini
-import src.items.rossinis
 import src.items.row
 import src.items.row_indexer
 import src.items.rows
@@ -76,5 +75,5 @@ import src.items.vi_pair
 import src.items.window
 import src.items.x_pair
 import src.items.xi_pair
-import src.items.asterix
+
 pass

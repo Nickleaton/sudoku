@@ -1,7 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
-
-import oyaml as yaml
+from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -33,17 +31,11 @@ class TestPair(TestItem):
 
     @property
     def config(self) -> str:
-        return "Pair: 12-13"
+        return f"Pair: 12-13"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, Item, Pair}
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
-        self.assertEqual(self.item.__class__, item.__class__)
 
 
 if __name__ == '__main__':  # pragma: no cover

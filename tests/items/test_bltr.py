@@ -1,7 +1,5 @@
 import unittest
-from typing import Type, Sequence, Tuple, Any
-
-import oyaml as yaml
+from typing import Type
 
 from src.items.bltr import BLTR
 from src.items.board import Board
@@ -34,11 +32,6 @@ class TestBLTR(TestDiagonal):
     @property
     def config(self) -> str:
         return "BLTR:"
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
 
     def test_in(self):
         self.assertIn(Cell.make(self.board, 5, 5), self.item)

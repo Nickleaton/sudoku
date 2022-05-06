@@ -26,6 +26,10 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
         return GreaterThanEqualDifferencePair
 
     @property
+    def config(self) -> str:
+        return "GreaterThanEqualDifferencePair: 12-13=1"
+
+    @property
     def has_rule(self) -> bool:
         return False
 

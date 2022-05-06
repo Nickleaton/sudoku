@@ -1,8 +1,6 @@
 import unittest
 from typing import Type
 
-import oyaml as yaml
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
@@ -18,7 +16,7 @@ class TestLittleKiller(TestItem):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 10)
+        self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 20)
 
     @property
     def clazz(self):
@@ -26,7 +24,7 @@ class TestLittleKiller(TestItem):
 
     @property
     def representation(self) -> str:
-        return "LittleKiller(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, Cyclic.CLOCKWISE, 3, 10)"
+        return "LittleKiller(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, Cyclic.CLOCKWISE, 3, 20)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -34,13 +32,7 @@ class TestLittleKiller(TestItem):
 
     @property
     def config(self) -> str:
-        return "T3C=20"
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data)
-        self.assertIsNotNone(item)
-        self.assertEqual(self.item.__class__, item.__class__)
+        return "LittleKiller: T3C=20"
 
     @property
     def has_rule(self) -> bool:

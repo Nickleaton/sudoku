@@ -21,6 +21,10 @@ class TestXIPair(TestSumPair):
         return XIPair
 
     @property
+    def config(self):
+        return "XIPair: 12-13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

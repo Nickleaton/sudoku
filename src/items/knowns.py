@@ -5,7 +5,7 @@ from src.items.cell_reference import CellReference
 from src.items.composed import Composed
 from src.items.even_cell import EvenCell
 from src.items.fortress_cell import FortressCell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.known_cell import KnownCell
 from src.items.odd_cell import OddCell
 
@@ -32,18 +32,12 @@ class Knowns(Composed):
                     parts.append(KnownCell(board, row, column, int(digit)))
         self.add_items(parts)
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        return result
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        return [list(str(y)) for y in yaml]
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        return [list(str(y)) for y in yaml[cls.__name__]]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Knowns.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         items = Knowns.extract(board, yaml)
         return Knowns(board, items)
 

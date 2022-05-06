@@ -19,6 +19,10 @@ class TestGreaterThanPair(TestPair):
         return GreaterThanPair
 
     @property
+    def config(self):
+        return "GreaterThanPair: 12-13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

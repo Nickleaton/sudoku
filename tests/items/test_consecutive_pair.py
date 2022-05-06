@@ -1,5 +1,5 @@
 import unittest
-from typing import Optional, Type, Sequence, Tuple, Any
+from typing import Optional, Type
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -23,7 +23,7 @@ class TestConsecutivePair(TestDifferencePair):
 
     @property
     def config(self) -> str:
-        return "[[1, 2], [1, 3]]"
+        return "ConsecutivePair: 12-13"
 
     @property
     def has_rule(self) -> bool:

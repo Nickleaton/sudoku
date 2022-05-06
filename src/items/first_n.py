@@ -1,9 +1,9 @@
 """First N cells from a given side and index."""
-from typing import List, Any
+from typing import Any
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region import Region
 from src.utils.side import Side
 
@@ -60,36 +60,15 @@ class FirstN(Region):
     def tags(self) -> set[str]:
         return super().tags.union({'FirstN'})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        if not isinstance(yaml, str):
-            return [f"Expected str, got {yaml!r}"]
-        if len(yaml) != 2:
-            return [f"Expected side|index, got {yaml!r}"]
-        result = []
-        if not Side.valid(yaml[0]):
-            result.append(f"Side not valid {yaml[0]}")
-        if not yaml[1].isdigit():
-            result.append(f"Index not valid {yaml[1]}")
-            return result
-        if len(result) > 0:
-            return result
-        if Side(yaml[0]) in [Side.LEFT, Side.RIGHT]:
-            if int(yaml[1]) not in board.column_range:
-                result.append(f'Index outside range {yaml[1]}')
-        else:
-            if int(yaml[1]) not in board.row_range:
-                result.append(f'Index outside range {yaml[1]}')
-        return result
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        side = Side.create(yaml[0])
-        index = int(yaml[1])
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        data = yaml[cls.__name__]
+        side = Side.create(data[0])
+        index = int(data[1])
         return side, index
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         FirstN.validate(board, yaml)
         side, index = FirstN.extract(board, yaml)
         return cls(board, side, index)

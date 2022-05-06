@@ -1,8 +1,6 @@
 import unittest
 from typing import Type
 
-import oyaml as yaml
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
@@ -35,11 +33,6 @@ class TestRowIndexer(TestIndexer):
     @property
     def config(self) -> str:
         return "RowIndexer: 1"
-
-    def test_create(self):
-        data = yaml.load(self.config, yaml.SafeLoader)
-        item = Item.create(self.item.__class__.__name__, self.board, data['RowIndexer'])
-        self.assertIsNotNone(item)
 
     @property
     def has_rule(self) -> bool:

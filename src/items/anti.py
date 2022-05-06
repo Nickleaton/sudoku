@@ -4,7 +4,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.different_pair import DifferentPair
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.utils.coord import Coord
 
 
@@ -32,20 +32,13 @@ class Anti(Composed):
     def tags(self) -> set[str]:
         return super().tags.union({'Chess', 'Anti'})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        return []
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        if isinstance(yaml, int):
-            return [yaml]
-        return [int(part) for part in yaml.split(', ')]
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        return [int(part) for part in yaml[cls.__name__].split(', ')]
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Anti.validate(board, yaml)
-        lst = Anti.extract(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
+        lst = cls.extract(board, yaml)
         return cls(board, lst)
 
     def __repr__(self) -> str:

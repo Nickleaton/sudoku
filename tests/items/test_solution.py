@@ -1,7 +1,5 @@
 import unittest
 
-import oyaml as yaml
-
 from src.items.board import Board
 from src.items.solution import Solution
 
@@ -56,14 +54,6 @@ class TestSolution(unittest.TestCase):
             "  - '123456789'\n"
             "  - '123456789'"
         )
-
-    def test_create(self):
-        config = yaml.load(self.config, Loader=yaml.SafeLoader)
-        board = Board(9, 9, 3, 3, None, None, None, None)
-        item = Solution(board, config['Solution'])
-        self.assertIsNotNone(item)
-        self.assertIsInstance(item, Solution)
-        self.assertEqual(self.representation, repr(item))
 
     def test_repr(self):
         unittest.TestCase.maxDiff = None

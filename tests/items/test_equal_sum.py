@@ -17,6 +17,10 @@ class TestEqualSum(TestLine):
         return EqualSum
 
     @property
+    def config(self) -> str:
+        return f"EqualSum: 11, 12, 13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

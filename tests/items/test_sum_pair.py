@@ -20,6 +20,10 @@ class TestSumPair(TestPair):
         return SumPair
 
     @property
+    def config(self):
+        return "SumPair: 12-13"
+
+    @property
     def has_rule(self) -> bool:
         return True
 

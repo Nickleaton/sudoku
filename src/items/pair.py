@@ -4,8 +4,7 @@ from typing import List, Set, Type, Any, Tuple
 from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
-from src.utils.coord import Coord
+from src.items.item import Item
 from src.utils.rule import Rule
 
 
@@ -34,17 +33,17 @@ class Pair(Item):
     def validate(board: Board, yaml: Any) -> List[str]:
         return []
 
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Tuple:
-        c1_str, c2_str = yaml['Pair'].split('-')
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Tuple:
+        c1_str, c2_str = yaml[cls.__name__].split('-')
         c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
         c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))
         return c1, c2
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
+    def create(cls, board: Board, yaml: Any) -> Item:
         Pair.validate(board, yaml)
-        c1, c2 = Pair.extract(board, yaml)
+        c1, c2 = cls.extract(board, yaml)
         return cls(board, c1, c2)
 
     @property

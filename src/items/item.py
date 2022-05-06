@@ -1,13 +1,14 @@
 import abc
 from abc import ABC
-from typing import Optional, List, Set, Type, Dict, Any, TypeVar
+from typing import Optional, List, Set, Type, Dict, Any
 
 from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
-YAML = TypeVar("YAML", Dict, List, str, int, None)
+
+# YAML = TypeVar("YAML", Dict, List, str, int, None)
 
 
 class Item(ABC):
@@ -60,15 +61,17 @@ class Item(ABC):
     def validate(board: Board, yaml: Any) -> List[str]:  # pylint: disable=unused-argument
         return []
 
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument
         return yaml
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> 'Item':
-        Item.validate(board, yaml)
-        data = Item.extract(board, yaml)
-        return cls.classes[name].create(name, board, data)
+    def create(cls, board: Board, yaml: Any) -> 'Item':
+        if len(yaml) != 1:
+            raise Exception
+        name = list(yaml.keys())[0]
+        clazz = cls.classes[name]
+        return clazz.create(board, yaml)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(({self.board!r})"

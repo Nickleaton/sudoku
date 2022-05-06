@@ -2,7 +2,7 @@ from typing import List, Any
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region import Region
 
 
@@ -20,22 +20,13 @@ class StandardRegion(Region):
     def glyphs(self) -> List[Glyph]:
         return []
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        results = []
-        if not isinstance(yaml, int):
-            results.append(f"Expecting int, got {yaml!r}")
-            return results
-        return results
-
-    @staticmethod
-    def extract(_: Board, yaml: Any) -> int:
-        return int(yaml)
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> int:
+        return int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        StandardRegion.validate(board, yaml)
-        index = StandardRegion.extract(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
+        index = cls.extract(board, yaml)
         return cls(board, index)
 
     def __repr__(self) -> str:

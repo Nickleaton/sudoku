@@ -24,7 +24,7 @@ class TestSolver(unittest.TestCase):
 
         board = Board.create('Board', config)
 
-        problem = Item.create('Constraints', board, config['Constraints'])
+        problem = Item.create(board, {'Constraints': config['Constraints']})
         solver = PulpSolver(board)
 
         problem.add_variables(board, solver)

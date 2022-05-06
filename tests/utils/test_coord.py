@@ -106,8 +106,6 @@ class TestCoord(unittest.TestCase):
     @staticmethod
     def check_yaml(yaml: Any) -> int:
         errors = Coord.validate(yaml)
-        # print(repr(yaml))
-        # print("\n    ".join(errors))
         return len(errors)
 
     def test_validate(self):

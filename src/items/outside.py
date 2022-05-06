@@ -3,7 +3,7 @@ from typing import List, Any
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
-from src.items.item import YAML, Item
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -48,21 +48,16 @@ class Outside(FirstN):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison', 'Order'})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        return []
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Any:
-        data = yaml['Outsides']
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Any:
+        data = yaml['Outside']
         side = Side.create(data[0])
         index = int(data[1])
         digits = [int(digit) for digit in data[3:]]
         return side, index, digits
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Outside.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)
 

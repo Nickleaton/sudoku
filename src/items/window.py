@@ -3,7 +3,7 @@ from typing import List, Any
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item, YAML
+from src.items.item import Item
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -33,27 +33,13 @@ class Window(Region):
             ]
         )
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        if not isinstance(yaml, str):
-            result.append(f"Expecting list, got {yaml!r}")
-            return result
-        if len(yaml) != 2:
-            result.append(f"Expecting digit,digit, got {yaml!r}")
-            return result
-        if yaml[0] not in board.digit_range or yaml[1] not in board.digit_range:
-            result.append(f"Expecting string digit,digit, got {yaml!r}")
-        return result
-
-    @staticmethod
-    def extract(board: Board, yaml: Any) -> Coord:
-        data = str(yaml)
+    @classmethod
+    def extract(cls, board: Board, yaml: Any) -> Coord:
+        data = str(yaml[cls.__name__])
         return Coord(int(data[0]), int(data[1]))
 
     @classmethod
-    def create(cls, name: str, board: Board, yaml: YAML) -> Item:
-        Window.validate(board, yaml)
+    def create(cls, board: Board, yaml: Any) -> Item:
         coord: Coord = Window.extract(board, yaml)
         return cls(board, coord)
 
