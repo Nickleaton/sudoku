@@ -81,7 +81,6 @@ class Frame(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        Frame.validate(board, yaml)
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 

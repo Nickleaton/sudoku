@@ -61,10 +61,6 @@ class MagicSquare(Composed):
     def tags(self) -> set[str]:
         return super().tags.union({'MagicSquare', 'Sum'})
 
-    @staticmethod
-    def validate(_: Board, yaml: Any) -> List[str]:
-        return []
-
     @classmethod
     def extract(cls, board: Board, yaml: str) -> Tuple[Coord, Coord]:
         center, corner = yaml['MagicSquare'].split(', ')

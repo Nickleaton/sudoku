@@ -69,6 +69,5 @@ class FirstN(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        FirstN.validate(board, yaml)
         side, index = FirstN.extract(board, yaml)
         return cls(board, side, index)

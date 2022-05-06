@@ -31,7 +31,6 @@ class AntiMonkey(Anti):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return AntiMonkey(board)
 
     @property

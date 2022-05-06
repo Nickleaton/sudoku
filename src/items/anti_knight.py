@@ -31,7 +31,6 @@ class AntiKnight(Anti):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return AntiKnight(board)
 
     @property

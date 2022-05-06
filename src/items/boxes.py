@@ -14,7 +14,6 @@ class Boxes(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return Boxes(board)
 
     def __repr__(self) -> str:

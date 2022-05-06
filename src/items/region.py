@@ -20,7 +20,6 @@ class Region(Composed):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return cls(board)
 
     @property

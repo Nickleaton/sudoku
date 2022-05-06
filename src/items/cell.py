@@ -62,7 +62,6 @@ class Cell(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        Cell.validate(board, yaml)
         coord: Coord = Cell.extract(board, yaml)
         return cls(board, int(coord.row), int(coord.column))
 

@@ -82,7 +82,6 @@ class Composed(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return cls(board, [])
 
     def __repr__(self) -> str:

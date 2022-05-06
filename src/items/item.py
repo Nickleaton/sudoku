@@ -57,10 +57,6 @@ class Item(ABC):
     def used_classes(self) -> Set[Type['Item']]:
         return set(self.__class__.__mro__).difference({abc.ABC, object})
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:  # pylint: disable=unused-argument
-        return []
-
     @classmethod
     def extract(cls, board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument
         return yaml

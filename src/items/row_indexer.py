@@ -15,22 +15,6 @@ class RowIndexer(Indexer):
         self.add_items([Cell.make(board, column, index) for column in board.column_range])
 
     @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        error = f"Expecting RowIndexer: index, got {yaml!r}"
-        if not isinstance(yaml, dict):
-            return [error]
-        if len(yaml) != 1:
-            return [error]
-        for k, v in yaml.items():
-            if k != 'RowIndexer':
-                return [error]
-            if not isinstance(v, int):
-                return [error]
-            if v not in board.row_range:
-                return [error]
-        return []
-
-    @staticmethod
     def variant() -> str:
         return "row"
 

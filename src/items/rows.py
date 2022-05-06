@@ -13,7 +13,6 @@ class Rows(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return Rows(board)
 
     def __repr__(self) -> str:

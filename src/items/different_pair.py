@@ -28,7 +28,6 @@ class DifferentPair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        DifferentPair.validate(board, yaml)
         c1, c2, digits = DifferentPair.extract(board, yaml)
         return cls(board, c1, c2, digits)
 

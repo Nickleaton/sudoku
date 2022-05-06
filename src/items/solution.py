@@ -48,30 +48,10 @@ class Solution:
             return True
         raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result: List[str] = []
-        if not isinstance(yaml, list):
-            result.append(f"Expecting list, got {yaml!r}")
-            return result
-        if len(yaml) != max(board.row_range):
-            result.append(f"Expecting {max(board.row_range)} rows, got {len(yaml)}")
-            return result
-        for i, row in enumerate(yaml):
-            if isinstance(row, int):
-                row = str(row)
-            if len(row) != len(board.column_range):
-                result.append(f"Expecting {max(board.column_range)} items on row {i}, got {len(row)} '{row}'")
-            for digit in row:
-                if int(digit) not in board.digit_range:
-                    result.append(f"Not a valid digit {digit} in row {i}, '{row}'")
-        return result
-
-    @staticmethod
-    def extract(_: Board, yaml: List[str]) -> List[str]:
+    @classmethod
+    def extract(cls, board: Board, yaml: List[str]) -> List[str]:
         return [str(line) for line in yaml]
 
-    @staticmethod
-    def create(board: Board, yaml: Any) -> 'Solution':
-        Solution.validate(board, yaml)
+    @classmethod
+    def create(cls, board: Board, yaml: Any) -> 'Solution':
         return Solution(board, Solution.extract(board, yaml))

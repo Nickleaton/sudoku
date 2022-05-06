@@ -14,7 +14,6 @@ class Indexer(StandardRegion):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         index = cls.extract(board, yaml)
         return cls(board, index)
 

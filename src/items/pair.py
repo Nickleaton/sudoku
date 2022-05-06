@@ -29,10 +29,6 @@ class Pair(Item):
         result = result.union(self.c2.used_classes)
         return result
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        return []
-
     @classmethod
     def extract(cls, board: Board, yaml: Any) -> Tuple:
         c1_str, c2_str = yaml[cls.__name__].split('-')
@@ -42,7 +38,6 @@ class Pair(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        Pair.validate(board, yaml)
         c1, c2 = cls.extract(board, yaml)
         return cls(board, c1, c2)
 

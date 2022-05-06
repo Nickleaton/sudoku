@@ -13,18 +13,12 @@ class Line(Region):
         super().__init__(board)
         self.add_items(cells)
 
-    @staticmethod
-    def validate(board: Board, yaml: Any) -> List[str]:
-        result = []
-        return result
-
     @classmethod
     def extract(cls, board: Board, yaml: Any) -> List[Cell]:
         return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         cells = cls.extract(board, yaml)
         return cls(board, cells)
 

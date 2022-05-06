@@ -25,7 +25,7 @@ class Asterix(Region):
 
     def __init__(self, board: Board):
         super().__init__(board)
-        self.add_items([Cell.make(board, coord.row, coord.column) for coord in Asterix.coords])
+        self.add_items([Cell.make(board, int(coord.row), int(coord.column)) for coord in Asterix.coords])
 
     @classmethod
     def extract(cls, board: Board, yaml: Any) -> Any:

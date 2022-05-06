@@ -18,7 +18,6 @@ class AntiKing(Anti):
 
     @classmethod
     def create(cls, board: Board, yaml: Any) -> Item:
-        cls.validate(board, yaml)
         return AntiKing(board)
 
     @property
