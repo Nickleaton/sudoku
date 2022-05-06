@@ -17,7 +17,7 @@ class AntiKing(Anti):
         return Direction.kings()
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return AntiKing(board)
 
     @property

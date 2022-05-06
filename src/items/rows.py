@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 
 from src.items.board import Board
 from src.items.item import Item
@@ -12,7 +12,7 @@ class Rows(StandardRegionSet):
         super().__init__(board, [Row(board, i) for i in board.row_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return Rows(board)
 
     def __repr__(self) -> str:

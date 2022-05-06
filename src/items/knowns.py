@@ -33,11 +33,11 @@ class Knowns(Composed):
         self.add_items(parts)
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         return [list(str(y)) for y in yaml[cls.__name__]]
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         items = Knowns.extract(board, yaml)
         return Knowns(board, items)
 

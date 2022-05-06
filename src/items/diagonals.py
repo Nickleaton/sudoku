@@ -9,7 +9,7 @@ from src.utils.rule import Rule
 class Diagonal(Region):
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return cls(board)
 
     def __repr__(self) -> str:

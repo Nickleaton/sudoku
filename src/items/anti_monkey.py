@@ -30,7 +30,7 @@ class AntiMonkey(Anti):
         return super().tags.union({'Monkey'})
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return AntiMonkey(board)
 
     @property

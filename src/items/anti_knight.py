@@ -30,7 +30,7 @@ class AntiKnight(Anti):
         return super().tags.union({'Knight'})
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return AntiKnight(board)
 
     @property

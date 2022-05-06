@@ -70,7 +70,7 @@ class Frame(FirstN):
         return super().tags.union({'Comparison', 'Frame'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         data = yaml[cls.__name__]
         ref_str: str = data.split("=")[0]
         total_str: str = data.split("=")[1]
@@ -80,7 +80,7 @@ class Frame(FirstN):
         return side, index, total
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 

@@ -12,7 +12,7 @@ class Columns(StandardRegionSet):
         super().__init__(board, [Column(board, i) for i in board.column_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return Columns(board)
 
     def __repr__(self) -> str:

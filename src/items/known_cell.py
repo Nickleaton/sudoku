@@ -19,12 +19,12 @@ class KnownCell(CellReference):
                         f"Known_{self.row}_{self.column}_eq_{self.digit}"
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple:
         rc, d = yaml[cls.__name__].split("=")
         return int(rc[0]), int(rc[1]), int(d)
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         row, column, digit = KnownCell.extract(board, yaml)
         return cls(board, row, column, digit)
 

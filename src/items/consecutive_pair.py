@@ -14,7 +14,7 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         super().__init__(board, c1, c2, 1)
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple:
         cs = yaml[cls.__name__]
         c1s, c2s = cs.split("-")
         c1 = Cell.make(board, int(c1s[0]), int(c1s[1]))
@@ -22,7 +22,7 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         return c1, c2
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         c1, c2 = cls.extract(board, yaml)
         return cls(board, c1, c2)
 

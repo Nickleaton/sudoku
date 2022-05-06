@@ -33,13 +33,13 @@ class Anti(Composed):
         return super().tags.union({'Chess', 'Anti'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         if isinstance(yaml[cls.__name__], int):
             return [yaml[cls.__name__]]
         return [int(part) for part in yaml[cls.__name__].split(', ')]
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         lst = cls.extract(board, yaml)
         return cls(board, lst)
 

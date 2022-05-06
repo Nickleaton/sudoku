@@ -61,14 +61,14 @@ class FirstN(Region):
         return super().tags.union({'FirstN'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         data = yaml[cls.__name__]
         side = Side.create(data[0])
         index = int(data[1])
         return side, index
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         side, index = FirstN.extract(board, yaml)
         return cls(board, side, index)
 

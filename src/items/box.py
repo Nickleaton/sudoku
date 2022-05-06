@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, BoxGlyph
 from src.items.board import Board
@@ -33,7 +33,7 @@ class Box(StandardRegion):
         return Coord(self.board.box_rows, self.board.box_columns)
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         index = cls.extract(board, yaml)
         return cls(board, index)
 

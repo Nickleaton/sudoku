@@ -30,14 +30,14 @@ class Pair(Item):
         return result
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple:
         c1_str, c2_str = yaml[cls.__name__].split('-')
         c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
         c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))
         return c1, c2
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         c1, c2 = cls.extract(board, yaml)
         return cls(board, c1, c2)
 

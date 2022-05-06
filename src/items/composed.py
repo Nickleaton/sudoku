@@ -81,7 +81,7 @@ class Composed(Item):
         return len(self.items)
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return cls(board, [])
 
     def __repr__(self) -> str:

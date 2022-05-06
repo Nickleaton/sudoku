@@ -34,12 +34,12 @@ class Window(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Coord:
+    def extract(cls, board: Board, yaml: Dict) -> Coord:
         data = str(yaml[cls.__name__])
         return Coord(int(data[0]), int(data[1]))
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         coord: Coord = Window.extract(board, yaml)
         return cls(board, coord)
 

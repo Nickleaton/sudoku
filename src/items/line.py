@@ -14,11 +14,11 @@ class Line(Region):
         self.add_items(cells)
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> List[Cell]:
+    def extract(cls, board: Board, yaml: Dict) -> List[Cell]:
         return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         cells = cls.extract(board, yaml)
         return cls(board, cells)
 

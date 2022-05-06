@@ -18,7 +18,7 @@ class DifferentPair(Pair):
         return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r}, {self.digits!r})"
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple:
         cs, ds = yaml[cls.__name__].split("=")
         c1s, c2s = cs.split("-")
         c1 = Cell.make(board, int(c1s[0]), int(c1s[1]))
@@ -27,7 +27,7 @@ class DifferentPair(Pair):
         return c1, c2, digits
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         c1, c2, digits = DifferentPair.extract(board, yaml)
         return cls(board, c1, c2, digits)
 

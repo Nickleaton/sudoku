@@ -49,7 +49,7 @@ class Outside(FirstN):
         return super().tags.union({'Comparison', 'Order'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         data = yaml['Outside']
         side = Side.create(data[0])
         index = int(data[1])
@@ -57,7 +57,7 @@ class Outside(FirstN):
         return side, index, digits
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)
 

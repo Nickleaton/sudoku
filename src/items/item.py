@@ -58,11 +58,11 @@ class Item(ABC):
         return set(self.__class__.__mro__).difference({abc.ABC, object})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:  # pylint: disable=unused-argument
+    def extract(cls, board: Board, yaml: Dict) -> Any:  # pylint: disable=unused-argument
         return yaml
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> 'Item':
+    def create(cls, board: Board, yaml: Dict) -> 'Item':
         if len(yaml) != 1:
             raise Exception
         name = list(yaml.keys())[0]

@@ -41,7 +41,7 @@ class LittleKiller(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple[int, int, Cyclic, Side]:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, Cyclic, Side]:
         parts = yaml[cls.__name__].split("=")
         total = int(parts[1])
         offset = int(parts[0][1])
@@ -50,7 +50,7 @@ class LittleKiller(Region):
         return total, offset, cyclic, side
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 

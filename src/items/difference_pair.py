@@ -14,7 +14,7 @@ class DifferencePair(Pair):
         self.difference = difference
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple:
         cs, ds = yaml[cls.__name__].split('=')
         c1s, c2s = cs.split("-")
         c1 = Cell.make(board, int(c1s[0]), int(c1s[1]))
@@ -22,7 +22,7 @@ class DifferencePair(Pair):
         return c1, c2, int(ds)
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         c1, c2, difference = cls.extract(board, yaml)
         return cls(board, c1, c2, difference)
 

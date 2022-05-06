@@ -19,7 +19,7 @@ class Region(Composed):
         super().__init__(board, [])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return cls(board)
 
     @property

@@ -33,13 +33,13 @@ class Quadruple(Item):
         ]
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         position_str, digits = yaml[cls.__name__].split("=")
         position = Coord(int(position_str[0]), int(position_str[1]))
         return position, digits
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         position, numbers = Quadruple.extract(board, yaml)
         return cls(board, position, numbers)
 

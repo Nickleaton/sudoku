@@ -57,11 +57,11 @@ class Cell(Item):
             Cell.make(board, row, column)
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Coord:
+    def extract(cls, board: Board, yaml: Dict) -> Coord:
         return Coord.create_from_int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         coord: Coord = Cell.extract(board, yaml)
         return cls(board, int(coord.row), int(coord.column))
 

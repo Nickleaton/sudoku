@@ -56,7 +56,7 @@ class Rossini(FirstN):
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         ref_str, order_str = yaml[cls.__name__].split("=")
         side = Side.create(ref_str[0])
         index = int(ref_str[1])
@@ -64,7 +64,7 @@ class Rossini(FirstN):
         return side, index, order
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 

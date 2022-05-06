@@ -1,5 +1,5 @@
 from itertools import product
-from typing import List, Optional, Any
+from typing import List, Optional, Any, Dict
 
 from src.items.board import Board
 
@@ -53,5 +53,5 @@ class Solution:
         return [str(line) for line in yaml]
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> 'Solution':
+    def create(cls, board: Board, yaml: Dict) -> 'Solution':
         return Solution(board, Solution.extract(board, yaml))

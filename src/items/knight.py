@@ -41,11 +41,11 @@ class Knight(Composed):
         return super().tags.union({'Knight'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         return [int(d) for d in yaml[cls.__name__].split(", ")]
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         digits = Knight.extract(board, yaml)
         return Knight(board, digits)
 

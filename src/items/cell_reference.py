@@ -16,13 +16,13 @@ class CellReference(Item):
         self.column = column
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple:
         data = yaml[cls.__name__]
         data = str(data)
         return int(data[0]), int(data[1])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         row, column = cls.extract(board, yaml)
         return cls(board, row, column)
 

@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 
 from src.items.board import Board
 from src.items.box import Box
@@ -13,7 +13,7 @@ class Boxes(StandardRegionSet):
         super().__init__(board, [Box(board, i) for i in board.box_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return Boxes(board)
 
     def __repr__(self) -> str:

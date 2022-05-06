@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import List, Any, Dict
 
 from src.items.board import Board
 from src.items.item import Item
@@ -9,11 +9,11 @@ from src.utils.rule import Rule
 class Indexer(StandardRegion):
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> int:
+    def extract(cls, board: Board, yaml: Dict) -> int:
         return int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         index = cls.extract(board, yaml)
         return cls(board, index)
 

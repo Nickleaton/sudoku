@@ -21,11 +21,11 @@ class StandardRegion(Region):
         return []
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> int:
+    def extract(cls, board: Board, yaml: Dict) -> int:
         return int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         index = cls.extract(board, yaml)
         return cls(board, index)
 

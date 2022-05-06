@@ -1,4 +1,4 @@
-from typing import Set, Type, Any
+from typing import Set, Type, Any, Dict
 
 from src.items.board import Board
 from src.items.composed import Composed
@@ -18,7 +18,7 @@ class Constraints(Composed):
         return result
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         result = cls(board)
         for constraint in yaml[cls.__name__]:
             result.add(Item.create(board, constraint))

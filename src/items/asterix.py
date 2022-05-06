@@ -28,11 +28,11 @@ class Asterix(Region):
         self.add_items([Cell.make(board, int(coord.row), int(coord.column)) for coord in Asterix.coords])
 
     @classmethod
-    def extract(cls, board: Board, yaml: Any) -> Any:
+    def extract(cls, board: Board, yaml: Dict) -> Any:
         return yaml
 
     @classmethod
-    def create(cls, board: Board, yaml: Any) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> Item:
         return cls(board)
 
     def __repr__(self) -> str:
