@@ -9,33 +9,33 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - ConsecutivePair: [ [ 1,1 ], [ 1,2 ] ]
-  - ConsecutivePair: [ [ 1,1 ], [ 2,1 ] ]
-  - ConsecutivePair: [ [ 1,2 ], [ 1,3 ] ]
-  - ConsecutivePair: [ [ 1,3 ], [ 2,3 ] ]
-  - ConsecutivePair: [ [ 3,2 ], [ 3,3 ] ]
-  - ConsecutivePair: [ [ 1,5 ], [ 2,5 ] ]
-  - ConsecutivePair: [ [ 5,1 ], [ 6,1 ] ]
-  - ConsecutivePair: [ [ 6,1 ], [ 7,1 ] ]
-  - ConsecutivePair: [ [ 4,6 ], [ 5,6 ] ]
-  - ConsecutivePair: [ [ 5,6 ], [ 6,6 ] ]
-  - ConsecutivePair: [ [ 4,7 ], [ 4,8 ] ]
-  - ConsecutivePair: [ [ 4,8 ], [ 4,9 ] ]
-  - ConsecutivePair: [ [ 7,4 ], [ 8,4 ] ]
-  - ConsecutivePair: [ [ 8,4 ], [ 9,4 ] ]
-  - ConsecutivePair: [ [ 8,6 ], [ 9,6 ] ]
-  - ConsecutivePair: [ [ 8,7 ], [ 8,8 ] ]
-  - ConsecutivePair: [ [ 9,7 ], [ 9,8 ] ]
-  - ConsecutivePair: [ [ 9,8 ], [ 9,9 ] ]
-  - KropkiPair: [ [ 3,5 ],[ 3,6 ] ]
-  - KropkiPair: [ [ 2,7 ],[ 3,7 ] ]
-  - KropkiPair: [ [ 3,8 ],[ 3,9 ] ]
-  - KropkiPair: [ [ 4,8 ],[ 5,8 ] ]
-  - KropkiPair: [ [ 5,5 ],[ 5,6 ] ]
-  - KropkiPair: [ [ 5,5 ],[ 6,5 ] ]
-  - KropkiPair: [ [ 6,2 ],[ 7,2 ] ]
-  - KropkiPair: [ [ 8,3 ],[ 8,4 ] ]
-  - KropkiPair: [ [ 8,4 ],[ 8,5 ] ]
+  - ConsecutivePair: 11-12
+  - ConsecutivePair: 11-21
+  - ConsecutivePair: 12-13
+  - ConsecutivePair: 13-23
+  - ConsecutivePair: 32-33
+  - ConsecutivePair: 15-25
+  - ConsecutivePair: 51-61
+  - ConsecutivePair: 61-71
+  - ConsecutivePair: 46-56
+  - ConsecutivePair: 56-66
+  - ConsecutivePair: 47-48
+  - ConsecutivePair: 48-49
+  - ConsecutivePair: 74-84
+  - ConsecutivePair: 84-94
+  - ConsecutivePair: 86-96
+  - ConsecutivePair: 87-88
+  - ConsecutivePair: 97-98
+  - ConsecutivePair: 98-99
+  - KropkiPair: 35-36
+  - KropkiPair: 27-37
+  - KropkiPair: 38-39
+  - KropkiPair: 48-58
+  - KropkiPair: 55-56
+  - KropkiPair: 55-65
+  - KropkiPair: 62-72
+  - KropkiPair: 83-84
+  - KropkiPair: 84-85
 
 Solution:
   - 234981756

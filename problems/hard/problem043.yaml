@@ -18,19 +18,19 @@ Constraints:
       - .........
       - .........
       - 3........
-  - Renban: [ [ 1,1 ],[ 2,1 ],[ 3,1 ] ]
-  - Renban: [ [ 1,5 ],[ 2,5 ],[ 3,5 ] , [ 4,4 ] ]
-  - Renban: [ [ 1,7 ],[ 1,8 ],[ 1,9 ] ]
-  - Renban: [ [ 5,1 ],[ 5,2 ],[ 5,3 ], [ 6,4 ] ]
-  - Renban: [ [ 4,6 ],[ 5,7 ],[ 5,8 ], [ 5,9 ] ]
-  - Renban: [ [ 6,6 ],[ 7,5 ],[ 8,5 ], [ 9,5 ] ]
-  - Renban: [ [ 7,9 ],[ 8,9 ],[ 9,9 ] ]
-  - GermanWhisper: [ [ 1,3 ],[ 2,3 ],[ 3,3 ],[ 4,3 ], [ 5,4 ] ]
-  - GermanWhisper: [ [ 4,5 ],[ 3,6 ],[ 3,7 ],[ 3,8 ], [ 3,9 ] ]
-  - GermanWhisper: [ [ 5,6 ],[ 6,7 ],[ 7,7 ],[ 8,7 ], [ 9,7 ] ]
-  - GermanWhisper: [ [ 7,1 ],[ 7,2 ],[ 7,3 ],[ 7,4 ], [ 6,5 ] ]
-  - GermanWhisper: [ [ 8,2 ],[ 9,2 ] ]
-  - GermanWhisper: [ [ 8,3 ],[ 8,4 ] ]
+  - Renban: 11, 21, 31
+  - Renban: 15, 25, 35,44
+  - Renban: 17, 18, 19
+  - Renban: 51, 52, 53, 64
+  - Renban: 46, 57, 58, 59
+  - Renban: 66, 75, 85, 95
+  - Renban: 79, 89, 99
+  - GermanWhisper: 13, 23, 33, 43, 54
+  - GermanWhisper: 45, 36, 37, 38, 39
+  - GermanWhisper: 56, 67, 77, 87, 97
+  - GermanWhisper: 71, 72, 73, 74, 65
+  - GermanWhisper: 82, 92
+  - GermanWhisper: 83, 84
 
 Solution:
   - 687291453

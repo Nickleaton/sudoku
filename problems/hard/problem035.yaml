@@ -21,19 +21,19 @@ Constraints:
       - .........
       - .........
 
-  - DistinctRenban: [ [ 1,4 ],[ 2,5 ] ]
-  - DistinctRenban: [ [ 1,5 ],[ 1,6 ],[ 2,6 ] ]
-  - DistinctRenban: [ [ 2,1 ],[ 3,1 ],[ 3,2 ],[ 4,2 ] ]
-  - DistinctRenban: [ [ 2,4 ],[ 3,4 ],[ 3,3 ] ]
-  - DistinctRenban: [ [ 3,5 ],[ 4,5 ] ]
+  - DistinctRenban:  14, 25
+  - DistinctRenban:  15, 16, 26
+  - DistinctRenban:  21, 31, 32, 42
+  - DistinctRenban:  24, 34, 33
+  - DistinctRenban:  35, 45
 
-  - DistinctRenban: [ [ 3,6 ],[ 4,6 ],[ 4,7 ] ]
-  - DistinctRenban: [ [ 3,7 ],[ 3,8 ],[ 2,9 ] ]
+  - DistinctRenban:  36, 46, 47
+  - DistinctRenban:  37, 38, 29
 
-  - DistinctRenban: [ [ 5,1 ],[ 5,2 ] ]
-  - DistinctRenban: [ [ 5,3 ],[ 5,4 ] ]
-  - DistinctRenban: [ [ 5,6 ],[ 5,7 ] ]
-  - DistinctRenban: [ [ 5,8 ],[ 5,9 ] ]
+  - DistinctRenban:  51, 52
+  - DistinctRenban:  53, 54
+  - DistinctRenban:  56, 57
+  - DistinctRenban:  58, 59
 
 
   - DistinctRenban: [ [ 5,6 ],[ 5,7 ] ]

@@ -9,28 +9,27 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - Arrow: [ [ 1,5 ],[ 1,4 ],[ 1,3 ] ]
-  - Arrow: [ [ 4,7 ],[ 3,8 ],[ 2,9 ] ]
-  - Arrow: [ [ 5,4 ],[ 5,3 ],[ 5,2 ] ]
-  - Arrow: [ [ 5,4 ],[ 6,4 ],[ 6,5 ] ]
-  - Arrow: [ [ 5,6 ],[ 4,6 ],[ 4,5 ] ]
-  - Arrow: [ [ 5,6 ],[ 5,7 ],[ 5,8 ] ]
-  - Arrow: [ [ 9,5 ],[ 9,6 ],[ 9,7 ] ]
-  - Arrow: [ [ 6,3 ],[ 7,2 ],[ 8,1 ] ]
-  - KropkiPair: [ [ 1,5 ],[ 1,6 ] ]
-  - KropkiPair: [ [ 3,5 ],[ 4,5 ] ]
-  - KropkiPair: [ [ 3,7 ],[ 4,7 ] ]
-  - KropkiPair: [ [ 6,1 ],[ 6,2 ] ]
-  - KropkiPair: [ [ 6,5 ],[ 7,5 ] ]
-  - KropkiPair: [ [ 8,2 ],[ 9,2 ] ]
-  - KropkiPair: [ [ 9,4 ],[ 9,5 ] ]
-  - ConsecutivePair: [ [ 1,2 ],[ 1,3 ] ]
-  - ConsecutivePair: [ [ 1,8 ],[ 2,8 ] ]
-  - ConsecutivePair: [ [ 4,8 ],[ 4,9 ] ]
-  - ConsecutivePair: [ [ 5,4 ],[ 5,5 ] ]
-  - ConsecutivePair: [ [ 5,5 ],[ 5,6 ] ]
-  - ConsecutivePair: [ [ 6,3 ],[ 7,3 ] ]
-  - ConsecutivePair: [ [ 9,7 ],[ 9,8 ] ]
+  - Arrow: 15, 14, 13
+  - Arrow: 47, 38, 29
+  - Arrow: 54, 53, 52
+  - Arrow: 54, 64, 65
+  - Arrow: 56, 46, 45
+  - Arrow: 56, 57, 58
+  - Arrow: 95, 96, 97
+  - Arrow: 63, 72, 81
+  - KropkiPair: 15, 16
+  - KropkiPair: 35, 45
+  - KropkiPair: 37, 47
+  - KropkiPair: 61, 62
+  - KropkiPair: 65, 75
+  - KropkiPair: 82, 92
+  - KropkiPair: 94, 95
+  - ConsecutivePair: 12, 13
+  - ConsecutivePair: 18, 28
+  - ConsecutivePair: 48, 49
+  - ConsecutivePair: 54, 55
+  - ConsecutivePair: 55, 56
+  - ConsecutivePair: 63, 73
+  - ConsecutivePair: 97, 98
 
-Solution:
-  - 621348597
+

@@ -19,20 +19,20 @@ Constraints:
     - .........
     - .........
     - .........
-  - SimpleThermometer: [ [ 4,1 ],[ 3,1 ],[ 2,1 ],[ 1,1 ] ]
-  - SimpleThermometer: [ [ 4,2 ],[ 3,2 ],[ 2,2 ],[ 1,2 ] ]
-  - SimpleThermometer: [ [ 1,4 ],[ 2,4 ],[ 2,3 ] ]
-  - SimpleThermometer: [ [ 4,5 ],[ 3,5 ],[ 2,5 ],[ 1,5 ] ]
-  - SimpleThermometer: [ [ 3,8 ],[ 2,8 ],[ 1,8 ] ]
-  - SimpleThermometer: [ [ 4,7 ],[ 4,6 ] ]
-  - SimpleThermometer: [ [ 2,9 ],[ 3,9 ],[ 4,9 ],[ 5,9 ] ]
-  - SimpleThermometer: [ [ 8,1 ],[ 7,1 ],[ 6,1 ],[ 5,1 ] ]
-  - SimpleThermometer: [ [ 7,2 ],[ 8,2 ],[ 9,2 ] ]
-  - SimpleThermometer: [ [ 7,3 ],[ 7,4 ] ]
-  - SimpleThermometer: [ [ 6,5 ],[ 7,5 ],[ 8,5 ],[ 9,5 ] ]
-  - SimpleThermometer: [ [ 7,6 ],[ 8,6 ], [ 8,7 ] ]
-  - SimpleThermometer: [ [ 6,8 ],[ 7,8 ],[ 8,8 ], [ 9,8 ] ]
-  - SimpleThermometer: [ [ 6,9 ],[ 7,9 ],[ 8,9 ], [ 9,9 ] ]
+  - SimpleThermometer:   41, 31, 21, 11
+  - SimpleThermometer:   42, 32, 22, 12
+  - SimpleThermometer:   14, 24, 23
+  - SimpleThermometer:   45, 35, 25, 15
+  - SimpleThermometer:   38, 28, 18
+  - SimpleThermometer:   47, 46
+  - SimpleThermometer:   29, 39, 49, 59
+  - SimpleThermometer:   81, 71, 61, 51
+  - SimpleThermometer:   72, 82, 92
+  - SimpleThermometer:   73, 74
+  - SimpleThermometer:   65, 75, 85, 95
+  - SimpleThermometer:   76, 86, 87
+  - SimpleThermometer:   68, 78, 88, 98
+  - SimpleThermometer:   69, 79, 89, 99
 
 Solution:
   - 947156382
