@@ -1,0 +1,47 @@
+Board:
+  Title: Numbered Rooms
+  Author: Lizzy01
+  Video: https://www.youtube.com/watch?v=6hEUMb7DKB4&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/tMHDPtqHgG
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - NumberedRoom: T1=3
+  - NumberedRoom: T2=5
+  - NumberedRoom: T3=9
+  - NumberedRoom: T4=5
+  - NumberedRoom: T5=9
+  - NumberedRoom: T6=5
+  - NumberedRoom: T8=5
+
+
+  - NumberedRoom: R1=7
+  - NumberedRoom: R2=5
+  - NumberedRoom: R3=1
+
+  - NumberedRoom: L1=7
+  - NumberedRoom: L4=4
+  - NumberedRoom: L7=3
+  - NumberedRoom: L9=9
+
+  - NumberedRoom: B2=8
+  - NumberedRoom: B4=8
+  - NumberedRoom: B5=3
+  - NumberedRoom: B6=8
+  - NumberedRoom: B7=9
+  - NumberedRoom: B8=8
+
+Solution:
+  - 495723186
+  - 278196543
+  - 631485927
+  - 324851679
+  - 189267435
+  - 567934812
+  - 742519368
+  - 916378254
+  - 853642791

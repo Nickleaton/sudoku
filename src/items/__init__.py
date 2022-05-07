@@ -54,6 +54,7 @@ import src.items.little_killer
 import src.items.lock_out
 import src.items.magic_square
 import src.items.mountain
+import src.items.numbered_room
 import src.items.odd_cell
 import src.items.outside
 import src.items.pair

@@ -91,6 +91,17 @@ class TestSide(unittest.TestCase):
         self.assertEqual('Side.BOTTOM', repr(Side.BOTTOM))
         self.assertEqual('Side.LEFT', repr(Side.LEFT))
 
+    def test_vertical(self):
+        self.assertTrue(Side.TOP.vertical)
+        self.assertTrue(Side.BOTTOM.vertical)
+        self.assertFalse(Side.LEFT.vertical)
+        self.assertFalse(Side.RIGHT.vertical)
+
+    def test_horizontal(self):
+        self.assertFalse(Side.TOP.horizontal)
+        self.assertFalse(Side.BOTTOM.horizontal)
+        self.assertTrue(Side.LEFT.horizontal)
+        self.assertTrue(Side.RIGHT.horizontal)
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

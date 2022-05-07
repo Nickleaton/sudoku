@@ -71,6 +71,15 @@ class Side(Enum):
             return Direction.RIGHT.offset
         raise SideException("Unknown combination")  # pragma: no cover
 
+    @property
+    def horizontal(self) -> bool:
+        return self in [Side.LEFT, Side.RIGHT]
+
+    @property
+    def vertical(self) -> bool:
+        return self in [Side.TOP, Side.BOTTOM]
+
+
     def marker(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         if self == Side.TOP:
             return Coord(0, n)
