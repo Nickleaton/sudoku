@@ -40,8 +40,6 @@ class Solution:
             result += f"- {''.join([str(int(d)) for d in row])}\n"
         return result
 
-    def standard_string(self) -> str
-        return
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Solution):
             for row, column in product(self.board.row_range, self.board.column_range):
@@ -51,7 +49,7 @@ class Solution:
         raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> List[str]:
+    def extract(cls, _: Board, yaml: Dict) -> List[str]:
         return [str(line) for line in yaml]
 
     @classmethod

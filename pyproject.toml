@@ -17,7 +17,7 @@ strictyaml = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 nose2 = "^0.11.0"
-mypy = "^0.942"
+mypy = "^0.950"
 pylint = "^2.13.7"
 lxml = "^4.8.0"
 pdoc = "^11.0.0"

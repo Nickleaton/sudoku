@@ -3,6 +3,7 @@ from typing import List
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
+from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -32,7 +33,7 @@ class EqualSum(Line):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         # Build areas
-        areas = []
+        areas: List[List[Cell]] = []
         current = 0
         for cell in self.cells:
             box = self.board.box_index(cell.row, cell.column)

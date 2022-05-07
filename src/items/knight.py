@@ -53,7 +53,7 @@ class Knight(Composed):
         ]
 
     def __repr__(self) -> str:
-        return f"{self.name}({self.board!r}, {self.digits!r})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
     def add_constraint(self, solver: PulpSolver) -> None:
         for digit in self.digits:

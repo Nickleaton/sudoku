@@ -10,7 +10,7 @@ from src.solvers.solver import Solver
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, board: Board, solver_name: str):
+    def __init__(self, board: Board, solver_name: str = 'PULP_CBC_CMD'):
         super().__init__(board)
         self.solver_name = solver_name
         self.application = getSolver(solver_name)

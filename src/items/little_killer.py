@@ -2,11 +2,13 @@ from typing import List, Tuple, Dict
 
 from pulp import lpSum
 
+from src.glyphs.glyph import Glyph, TextGlyph, ArrowGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.rule import Rule
 from src.utils.side import Side
@@ -22,12 +24,14 @@ class LittleKiller(Region):
         self.offset = offset
         self.total = total
         coord = side.start(board, cyclic, offset)
-        delta = side.direction(cyclic).offset
+        self.direction = side.direction(cyclic)
+        self.delta = self.direction.offset
         cells = []
         while board.is_valid_coordinate(coord):
             cells.append(Cell.make(board, int(coord.row), int(coord.column)))
-            coord += delta
+            coord += self.delta
         self.add_items(cells)
+        self.reference = side.start(board, cyclic, offset) - self.delta
 
     def __repr__(self) -> str:
         return (
@@ -54,11 +58,18 @@ class LittleKiller(Region):
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 
-    # @property
-    # def glyphs(self) -> List[Glyph]:
-    #     return [
-    #         TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), str(self.total))
-    #     ]
+    @property
+    def glyphs(self) -> List[Glyph]:
+        delta2 = Coord(0, 0)
+        if self.side == Side.TOP:
+            delta2 = Coord(0, 1)
+        if self.side == Side.RIGHT:
+            delta2 = Coord(0, 1)
+        # print(self.reference, self.delta, self.reference + self.delta, self.direction, self.to_dict(), delta2)
+        return [
+            TextGlyph('LittleKiller', 0, self.reference + Coord(0.5, 0.5), str(self.total)),
+            ArrowGlyph('LittleKiller', self.direction.angle.angle, self.reference + (self.delta * 0.90) + delta2)
+        ]
 
     @property
     def rules(self) -> List[Rule]:
@@ -76,7 +87,7 @@ class LittleKiller(Region):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         solver.model += lpSum(solver.values[cell.row][cell.column] for cell in self.cells) == self.total, \
-                        f"{self.__class__.__name__}_{self.side.value}{self.cyclic.value}{self.offset}"
+                        f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}

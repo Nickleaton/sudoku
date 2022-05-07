@@ -655,7 +655,7 @@ class ArrowGlyph(Glyph):
 
     def draw(self) -> Optional[BaseElement]:
         text = Text("",
-                    transform=self.position.center.transform + " " + self.angle.transform,
+                    transform=self.position.transform + " " + self.angle.transform,
                     class_=self.class_name)
         span = TSpan(ArrowGlyph.arrow, alignment_baseline='central', text_anchor='middle')
         text.add(span)

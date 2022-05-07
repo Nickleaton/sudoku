@@ -316,13 +316,6 @@ th, td {
 
 }
 
-.LittleKiller {
-    font-size: 50px;
-    stroke: black;
-    stroke-width: 2;
-    fill: black;
-}
-
 .Killer {
     stroke: red;
     stroke-width: 4;
@@ -417,4 +410,27 @@ th, td {
 .Asterix {
     stroke: orange;
     fill: orange;
+}
+
+.LittleKiller {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 2;
+    fill: black
+}
+
+.LittleKillerForeground {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+}
+
+.LittleKillerBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+
 }

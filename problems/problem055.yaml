@@ -1,0 +1,49 @@
+Board:
+  Title: Little Killer Sudoku
+  Author: Marvin Kannhauser
+  Video: https://www.youtube.com/watch?v=y4eKdI3ZJ78&t=1s&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/nQHjr7Ggpg
+  Board: 9x9
+  Boxes: 3x3
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - .........
+      - .........
+      - .5....2..
+      - .........
+      - ...37....
+      - .........
+      - .........
+      - .........
+      - .........
+  - LittleKiller: L0A=22
+  - LittleKiller: L1A=28
+  - LittleKiller: L2A=26
+  - LittleKiller: T6A=23
+  - LittleKiller: T8A=34
+  - LittleKiller: T9A=40
+  - LittleKiller: R0C=42
+#  - Knowns:
+#    - 198235764
+#    - 427968531
+#    - 653714289
+#    - 732186945
+#    - 541379826
+#    - 986542173
+#    - 865421397
+#    - 279653418
+#    - 314897652
+
+Solution:
+  - 198235764
+  - 427968531
+  - 653714289
+  - 732186945
+  - 541379826
+  - 986542173
+  - 865421397
+  - 279653418
+  - 314897652
