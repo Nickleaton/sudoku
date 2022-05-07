@@ -20,7 +20,6 @@ class NumberedRoom(Item):
         self.direction = side.direction(Cyclic.CLOCKWISE)
         self.start_cell = side.start_cell(board, self.index)
         self.reference = self.start_cell - self.direction.offset + Coord(0.5, 0.5)
-        print(self.start_cell, self.to_dict())
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:

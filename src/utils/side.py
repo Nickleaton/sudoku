@@ -79,7 +79,6 @@ class Side(Enum):
     def vertical(self) -> bool:
         return self in [Side.TOP, Side.BOTTOM]
 
-
     def marker(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         if self == Side.TOP:
             return Coord(0, n)

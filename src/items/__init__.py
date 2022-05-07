@@ -67,6 +67,7 @@ import src.items.rossini
 import src.items.row
 import src.items.row_indexer
 import src.items.rows
+import src.items.sandwich
 import src.items.simple_thermometer
 import src.items.solution
 import src.items.standard_region

@@ -1,0 +1,30 @@
+Board:
+  Title: Sandwich Sudoku
+  Video: https://www.youtube.com/watch?v=0YqUTVZ4Qqo&ab_channel=StevenScott
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - Sandwich: T1=35
+  - Sandwich: T2=5
+  - Sandwich: T3=15
+  - Sandwich: T4=27
+  - Sandwich: T5=4
+  - Sandwich: T6=17
+  - Sandwich: T7=7
+  - Sandwich: T8=8
+  - Sandwich: T9=7
+
+  - Sandwich: L1=8
+  - Sandwich: L2=10
+  - Sandwich: L3=15
+  - Sandwich: L4=0
+  - Sandwich: L5=0
+  - Sandwich: L6=0
+  - Sandwich: L7=22
+  - Sandwich: L8=10
+  - Sandwich: L9=35

@@ -461,3 +461,18 @@ th, td {
     stroke-width: 1;
     fill: black
 }
+
+.SandwichBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+}
+
+.SandwichForeground {
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+    fill: black
+}
