@@ -37,7 +37,7 @@ class Solution:
     def __str__(self) -> str:
         result = "Solution:\n"
         for row in self.data:
-            result += f"- {''.join([str(int(d)) for d in row])}\n"
+            result += f"  - {''.join([str(int(d)) for d in row])}\n"
         return result
 
     def __eq__(self, other: object) -> bool:

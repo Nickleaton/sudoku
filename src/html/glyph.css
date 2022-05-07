@@ -420,6 +420,11 @@ th, td {
     fill: orange;
 }
 
+.Girandola  {
+    stroke: lightgreen;
+    fill: lightgreen;
+}
+
 .LittleKiller {
     font-size: 30px;
     stroke: black;

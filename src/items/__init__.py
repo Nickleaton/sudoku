@@ -37,6 +37,7 @@ import src.items.fortress_cell
 import src.items.frame
 import src.items.frozen_thermometer
 import src.items.german_whisper
+import src.items.girandola
 import src.items.greater_than_equal_difference_line
 import src.items.greater_than_equal_difference_pair
 import src.items.greater_than_pair

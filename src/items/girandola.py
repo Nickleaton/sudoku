@@ -4,20 +4,20 @@ from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord
 
 
-class Asterix(SpecialRegion):
+class Girandola(SpecialRegion):
+
+    def region_name(self) -> str:
+        return "Girandola"
 
     def coords(self) -> List[Coord]:
         return [
+            Coord(1, 1),
+            Coord(1, 9),
             Coord(2, 5),
-            Coord(3, 3),
-            Coord(3, 7),
             Coord(5, 2),
             Coord(5, 5),
             Coord(5, 8),
-            Coord(7, 3),
-            Coord(7, 7),
-            Coord(8, 5)
+            Coord(8, 5),
+            Coord(9, 1),
+            Coord(9, 9)
         ]
-
-    def region_name(self) -> str:
-        return 'Asterix'

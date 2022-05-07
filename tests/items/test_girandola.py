@@ -1,33 +1,33 @@
 import unittest
 from typing import Type
 
-from src.items.asterix import Asterix
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
+from src.items.girandola import Girandola
 from src.items.item import Item
 from src.items.region import Region
 from src.items.special_region import SpecialRegion
 from tests.items.test_special_region import TestSpecialRegion
 
 
-class TestAsterix(TestSpecialRegion):
+class TestGirandola(TestSpecialRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Asterix(self.board)
+        self.item = Girandola(self.board)
 
     @property
     def clazz(self):
-        return Asterix
+        return Girandola
 
     @property
     def config(self) -> str:
-        return "Asterix:"
+        return "Girandola:"
 
     @property
     def representation(self) -> str:
-        return "Asterix(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Girandola(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def has_rule(self) -> bool:
@@ -35,11 +35,11 @@ class TestAsterix(TestSpecialRegion):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, Asterix, SpecialRegion}
+        return {Item, Composed, Cell, Region, Girandola, SpecialRegion}
 
     def test_in(self):
-        self.assertIn(Cell.make(self.board, 5, 5), self.item)
-        self.assertNotIn(Cell.make(self.board, 9, 9), self.item)
+        self.assertIn(Cell.make(self.board, 1, 1), self.item)
+        self.assertNotIn(Cell.make(self.board, 8, 8), self.item)
 
 
 if __name__ == '__main__':  # pragma: no cover
