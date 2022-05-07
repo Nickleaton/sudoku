@@ -228,6 +228,14 @@ th, td {
     fill-opacity: 0
 }
 
+.Mountain {
+    stroke: lightblue;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
 .DistinctRenban {
     stroke: purple;
     stroke-width: 20;
@@ -432,5 +440,4 @@ th, td {
     stroke-width: 8;
     fill: white;
     font-weight: bolder
-
 }
