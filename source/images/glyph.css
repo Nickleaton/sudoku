@@ -110,14 +110,6 @@ th, td {
     fill: black
 }
 
-.FrameTextBackground {
-    font-size: 30px;
-    stroke: white;
-    stroke-width: 8;
-    fill: white;
-    font-weight: bolder
-}
-
 .EdgeTextGlyphForeground {
     font-size: 30px;
     stroke: black;
@@ -125,7 +117,13 @@ th, td {
     fill: black
 }
 
-
+.FrameTextBackground {
+    font-size: 30px;
+    stroke: white;
+    stroke-width: 8;
+    fill: white;
+    font-weight: bolder
+}
 
 .EdgeTextGlyphBackground {
     font-size: 30px;
@@ -477,34 +475,4 @@ th, td {
     stroke: black;
     stroke-width: 1;
     fill: black
-}
-
-.OrthogonalProductForeground {
-    font-size: 18px;
-    stroke: black;
-    stroke-width: 1;
-    fill: black
-}
-
-.OrthogonalProductBackground {
-    font-size: 18px;
-    stroke: white;
-    stroke-width: 8;
-    fill: white;
-    font-weight: bolder
-}
-
-.CenterProductForeground {
-    font-size: 30px;
-    stroke: black;
-    stroke-width: 1;
-    fill: black
-}
-
-.CenterProductBackground {
-    font-size: 30px;
-    stroke: white;
-    stroke-width: 8;
-    fill: white;
-    font-weight: bolder
 }

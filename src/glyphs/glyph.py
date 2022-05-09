@@ -529,7 +529,7 @@ class Consecutive1Glyph(RectangleGlyph):
 
 class TextGlyph(Glyph):
 
-    def __init__(self, class_name: str, angle: float, position: Coord, text: str):
+    def __init__(self, class_name: str, angle: float, position: Coord, text: str) -> object:
         super().__init__(class_name)
         self.angle = Angle(angle)
         self.position = position

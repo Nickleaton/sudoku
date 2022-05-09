@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "sudoku"
 version = "0.1.0"
-description = "Sudoku Solver"
+description = "Variant Sudoku Solver"
 authors = ["Nickleaton <nickle@gmail.com>"]
 
 [tool.poetry.dependencies]

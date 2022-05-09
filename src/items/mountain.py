@@ -19,7 +19,7 @@ class Mountain(Line):
             Rule(
                 'Mountain',
                 1,
-                "Lines sybolise mountaints. The higher to the top of the mountain, the higher the value"
+                "Lines smbolise mountaints. The closer to the top of the mountain, the higher the value in the cell."
             )
         ]
 

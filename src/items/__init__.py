@@ -14,6 +14,7 @@ import src.items.box
 import src.items.boxes
 import src.items.cell
 import src.items.cell_reference
+import src.items.center_product
 import src.items.column
 import src.items.column_indexer
 import src.items.columns
@@ -35,6 +36,7 @@ import src.items.even_cell
 import src.items.first_n
 import src.items.fortress_cell
 import src.items.frame
+import src.items.frame_product
 import src.items.frozen_thermometer
 import src.items.german_whisper
 import src.items.girandola
@@ -56,9 +58,11 @@ import src.items.magic_square
 import src.items.mountain
 import src.items.numbered_room
 import src.items.odd_cell
+import src.items.orthogonal_product
 import src.items.outside
 import src.items.pair
 import src.items.palindrome
+import src.items.product
 import src.items.quadruple
 import src.items.region
 import src.items.region_sets

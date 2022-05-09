@@ -7,40 +7,42 @@ Variant Sudoku Solver
 =====================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :numbered:
+    :titlesonly:
+    :glob:
+    :hidden:
+
+    standard.rst
+    implementation.rst
+    formulations.rst
+    anti.rst
+    arrow.rst
+    asterix.rst
+    between.rst
+    consecutive.rst
+    diagonal.rst
+    disjoint_groups.rst
+    fortress.rst
+    frame.rst
+    girandola.rst
+    indexing.rst
+    killer.rst
+    kropki.rst
+    magic_square.rst
+    mountain.rst
+    numbered_room.rst
+    out
+    outside.rst
+    parity.rst
+    quadruple.rst
+    renban.rst
+    rossini.rst
+    sandwich.rst
+    sum_pair.rst
+    thermometer.rst
+    whispers.rst
+    window.rst
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-
-
-===============
-Outside  Sudoku
-===============
-
-***************
-Rules
-***************
-
-In this variant you are given some digits outside the grid. Those digits must appear in the first three cells
-from that side.
-
-***************
-Example
-***************
-
-.. image:: problem046.svg
-   :width: 600
-
-***************
-Constraints
-***************
-
-.. math::
-    \sum_{d \in digits} C_{d}_{r}_{c} for (r,c) in Cells

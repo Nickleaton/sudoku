@@ -1,0 +1,73 @@
+Board:
+  Title: Product Frame Sudoku
+  Reference: http://rohanrao.blogspot.com/2009/01/rules-of-product-frame-sudoku.html
+  Author: Rohan Rao
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - Knowns:
+      - .........
+      - .........
+      - ..1...4..
+      - ...5.3...
+      - ....6....
+      - ...1.7...
+      - ..8...3..
+      - .........
+      - .........
+
+  - FrameProduct: T1=30
+  - FrameProduct: T2=336
+  - FrameProduct: T3=36
+  - FrameProduct: T4=224
+  - FrameProduct: T5=15
+  - FrameProduct: T6=108
+  - FrameProduct: T7=252
+  - FrameProduct: T8=6
+  - FrameProduct: T9=240
+
+  - FrameProduct: R1=72
+  - FrameProduct: R2=70
+  - FrameProduct: R3=72
+  - FrameProduct: R4=63
+  - FrameProduct: R5=120
+  - FrameProduct: R6=48
+  - FrameProduct: R7=135
+  - FrameProduct: R8=24
+  - FrameProduct: R9=112
+
+  - FrameProduct: B1=252
+  - FrameProduct: B2=10
+  - FrameProduct: B3=144
+  - FrameProduct: B4=162
+  - FrameProduct: B5=56
+  - FrameProduct: B6=40
+  - FrameProduct: B7=144
+  - FrameProduct: B8=140
+  - FrameProduct: B9=18
+
+  - FrameProduct: L1=120
+  - FrameProduct: L2=216
+  - FrameProduct: L3=14
+  - FrameProduct: L4=48
+  - FrameProduct: L5=63
+  - FrameProduct: L6=120
+  - FrameProduct: L7=64
+  - FrameProduct: L8=105
+  - FrameProduct: L9=54
+
+Solution:
+  - 564732918
+  - 389416725
+  - 271859436
+  - 642583197
+  - 197264583
+  - 835197264
+  - 428671359
+  - 753928641
+  - 916345872
