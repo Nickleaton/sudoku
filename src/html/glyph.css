@@ -246,6 +246,14 @@ th, td {
     fill-opacity: 0
 }
 
+.Sequence {
+    stroke: grey;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0
+}
+
 .Arrow {
     stroke: grey;
     fill: white;

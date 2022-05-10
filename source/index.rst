@@ -39,6 +39,7 @@ Variant Sudoku Solver
     renban.rst
     rossini.rst
     sandwich.rst
+    sequence.rst
     sum_pair.rst
     thermometer.rst
     whispers.rst
