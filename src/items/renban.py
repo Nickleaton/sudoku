@@ -34,13 +34,6 @@ class Renban(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Renban', 'Adjacent', 'Set'})
 
-    def add_variables(self, board: Board, solver: PulpSolver) -> None:
-        self.identity = len(solver.renbans) + 1
-        solver.renbans[self.name] = {}
-        for bound in Bounds:
-            var = LpVariable(f"{self.name}_{bound.name}", 1, board.maximum_digit, LpInteger)
-            solver.renbans[self.name][bound.name] = var
-
     def add_constraint(self, solver: PulpSolver) -> None:
         # unique on lines
         self.add_unique_constraint(solver)
@@ -53,8 +46,8 @@ class Renban(Line):
         # eg. 4 6 5 on the line. We have to force upper - lower = 3 - 1
         # 6 - 4 = 2 = length - 1 = 3 - 1 = 2
 
-        lower = solver.renbans[self.name][Bounds.LOWER.name]
-        upper = solver.renbans[self.name][Bounds.UPPER.name]
+        lower = LpVariable(f"{self.name}_lower", 1, self.board.maximum_digit, LpInteger)
+        upper = LpVariable(f"{self.name}_upper", 1, self.board.maximum_digit, LpInteger)
 
         # handle upper and lower
         for cell in self.cells:

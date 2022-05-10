@@ -2,9 +2,12 @@ import unittest
 from typing import Type
 
 from src.items.board import Board
-from src.items.center_product import OrthogonalProduct
+from src.items.cell import Cell
+from src.items.composed import Composed
 from src.items.item import Item
+from src.items.orthogonal_product import OrthogonalProduct
 from src.items.product import Product
+from src.items.region import Region
 from src.utils.coord import Coord
 from tests.items.test_product import TestProduct
 
@@ -29,11 +32,11 @@ class TestOrthogonalProduct(TestProduct):
 
     @property
     def has_rule(self) -> bool:
-        return False
+        return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Product}
+        return {Cell, Composed, Item, OrthogonalProduct, Product, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

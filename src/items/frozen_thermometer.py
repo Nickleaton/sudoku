@@ -1,6 +1,6 @@
 from typing import List
 
-from src.glyphs.glyph import Glyph, ThermometerGlyph
+from src.glyphs.glyph import Glyph, ThermometerGlyph, FrozenThermometerGlyph
 from src.items.thermometer import Thermometer
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -15,7 +15,7 @@ class FrozenThermometer(Thermometer):
     @property
     def glyphs(self) -> List[Glyph]:
         return [
-            ThermometerGlyph('FrozenThermometer', [cell.coord for cell in self.cells])
+            FrozenThermometerGlyph('FrozenThermometer', [cell.coord for cell in self.cells])
         ]
 
     @property

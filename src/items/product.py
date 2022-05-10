@@ -21,7 +21,7 @@ class Product(Region):
         return []
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, '{self.product}')"
+        return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, {self.product})"
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
@@ -38,4 +38,4 @@ class Product(Region):
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
     def to_dict(self) -> Dict:
-        return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.product)}"}
+        return {self.__class__.__name__: f"{self.position.row}{self.position.column}={self.product}"}
