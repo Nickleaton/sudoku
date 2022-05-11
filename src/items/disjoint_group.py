@@ -26,6 +26,8 @@ class DisjointGroup(StandardRegion):
         c = (index - 1) % 3 + 1
         super().__init__(board, index)
         self.add_items([Cell.make(board, r + ro, c + co) for ro, co in DisjointGroup.offsets])
+        self.strict = True
+        self.unique = True
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> int:

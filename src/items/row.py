@@ -13,6 +13,8 @@ class Row(StandardRegion):
     def __init__(self, board: Board, index: int):
         super().__init__(board, index)
         self.add_items([Cell.make(board, index, row) for row in board.row_range])
+        self.strict = True
+        self.unique = True
 
     @property
     def glyphs(self) -> List[Glyph]:

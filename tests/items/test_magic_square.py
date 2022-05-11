@@ -6,6 +6,7 @@ from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
 from src.items.magic_square import MagicSquare
+from src.items.region import Region
 from src.utils.coord import Coord
 from tests.items.test_composed import TestComposed
 
@@ -35,7 +36,7 @@ class TestMagicSquare(TestComposed):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Cell, Composed, MagicSquare}
+        return {Item, Cell, Composed, Region, MagicSquare}
 
 
 if __name__ == '__main__':  # pragma: no cover
