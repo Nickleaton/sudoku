@@ -13,23 +13,19 @@ class Multiplication:
 
     @staticmethod
     def get_set(board: Board, n: int, c: int) -> Set[int]:
-
-        def multiply(x: Tuple[int]) -> int:
-            result = 1
-            for a in x:
-                result *= a
-            return result
-
         used = set({})
-        for x in product(board.digit_range,
-                         board.digit_range,
-                         board.digit_range,
-                         board.digit_range):
-            if multiply(x) == n:
-                used.add(x[0])
-                used.add(x[1])
-                used.add(x[2])
-                used.add(x[3])
+        for a in board.digit_range:
+            for b in board.digit_range:
+                for c in board.digit_range:
+                    for d in board.digit_range:
+                        m = a * b * c * d
+                        if m == n:
+                            used.add(a)
+                            used.add(b)
+                            used.add(c)
+                            used.add(d)
+                        if m > n:
+                            break
         return used
 
     @staticmethod

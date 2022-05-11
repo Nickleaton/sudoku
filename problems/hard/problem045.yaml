@@ -17,19 +17,19 @@ Constraints:
   - Arrow: 56, 57, 58
   - Arrow: 95, 96, 97
   - Arrow: 63, 72, 81
-  - KropkiPair: 15, 16
-  - KropkiPair: 35, 45
-  - KropkiPair: 37, 47
-  - KropkiPair: 61, 62
-  - KropkiPair: 65, 75
-  - KropkiPair: 82, 92
-  - KropkiPair: 94, 95
-  - ConsecutivePair: 12, 13
-  - ConsecutivePair: 18, 28
-  - ConsecutivePair: 48, 49
-  - ConsecutivePair: 54, 55
-  - ConsecutivePair: 55, 56
-  - ConsecutivePair: 63, 73
-  - ConsecutivePair: 97, 98
+  - KropkiPair: 15-16
+  - KropkiPair: 35-45
+  - KropkiPair: 37-47
+  - KropkiPair: 61-62
+  - KropkiPair: 65-75
+  - KropkiPair: 82-92
+  - KropkiPair: 94-95
+  - ConsecutivePair: 12-13
+  - ConsecutivePair: 18-28
+  - ConsecutivePair: 48-49
+  - ConsecutivePair: 54-55
+  - ConsecutivePair: 55-56
+  - ConsecutivePair: 63-73
+  - ConsecutivePair: 97-98
 
 

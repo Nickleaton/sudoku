@@ -60,7 +60,7 @@ class NumberedRoom(Item):
     @property
     def used_classes(self) -> Set[Type['Item']]:
         result = super().used_classes
-        result = result.union(self.__class__)
+        result = result.union([self.__class__])
         return result
 
     def to_dict(self) -> Dict:

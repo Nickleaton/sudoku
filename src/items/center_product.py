@@ -15,7 +15,7 @@ class CenterProduct(Product):
         for offset in offsets:
             location = self.position + offset
             if self.board.is_valid_coordinate(location):
-                cells.append(Cell.make(self.board, location.row, location.column))
+                cells.append(Cell.make(self.board, int(location.row), int(location.column)))
         return cells
 
     @property
