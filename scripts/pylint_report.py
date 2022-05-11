@@ -1,16 +1,17 @@
 #!c:\users\nickl\pycharmprojects\edf\venv\scripts\python.exe
 """Custom json reporter for pylint and json to html export utility."""
+import argparse
+import html
+import json
+import logging
 import os
 import sys
-import json
-import html
-import argparse
-import logging
+from collections import OrderedDict
 from datetime import datetime
 from glob import glob
-from collections import OrderedDict
-from pylint.reporters.base_reporter import BaseReporter
+
 import pandas as pd
+from pylint.reporters.base_reporter import BaseReporter
 
 # pylint: disable=invalid-name
 
@@ -57,6 +58,7 @@ code {
 </head>
 """
 
+
 def get_score(stats):
     """Compute score."""
     if 'statement' not in stats or stats['statement'] == 0:
@@ -69,7 +71,8 @@ def get_score(stats):
     c = stats.get('convention', 0)
 
     # https://docs.pylint.org/en/1.6.0/faq.html
-    return 10 - 10*(5 * e + w + r + c) / s
+    return 10 - 10 * (5 * e + w + r + c) / s
+
 
 def get_score_history(score_dir):
     """Return a ordered dict of score history as sha:score pairs.
@@ -95,6 +98,7 @@ def get_score_history(score_dir):
             out[f.split('.')[-2]] = float(s)
     return out
 
+
 def json2html(data):
     """Generate an html file (based on :obj:`data`)."""
     out = HTML_HEAD
@@ -103,8 +107,8 @@ def json2html(data):
     now = datetime.now()
     out += ('<small>Report generated on {} at {} by '
             '<a href="https://github.com/drdv/pylint-report">pytest-report</a>'
-            '</small>\n'). format(now.strftime('%Y-%d-%m'),
-                                  now.strftime('%H:%M:%S'))
+            '</small>\n').format(now.strftime('%Y-%d-%m'),
+                                 now.strftime('%H:%M:%S'))
 
     s = get_score(data['stats'])
 
@@ -141,10 +145,10 @@ def json2html(data):
         out += section.format(module=module, count=len(value))
         out += '<hr><table><tr>'
 
-        s1 = value.groupby('symbol')['module'].count().to_frame().reset_index().\
+        s1 = value.groupby('symbol')['module'].count().to_frame().reset_index(). \
             rename(columns={'module': '# msg'}).to_html(index=False, justify='center')
 
-        s2 = value.groupby('type')['module'].count().to_frame().reset_index().\
+        s2 = value.groupby('type')['module'].count().to_frame().reset_index(). \
             rename(columns={'module': '# msg'}).to_html(index=False, justify='center')
 
         out += ''.join(['\n<td valign="top">\n' + s1 + '\n</td>\n',
@@ -158,6 +162,7 @@ def json2html(data):
     out += '</body>\n</html>'
     return out
 
+
 class _SetEncoder(json.JSONEncoder):
     """Handle sets when dumping to json.
 
@@ -165,11 +170,13 @@ class _SetEncoder(json.JSONEncoder):
     -----
     See https://stackoverflow.com/a/8230505
     """
+
     # pylint: disable=method-hidden
     def default(self, o):
         if isinstance(o, set):
             return list(o)
         return json.JSONEncoder.default(self, o)
+
 
 class CustomJsonReporter(BaseReporter):
     """Customize the default json reporter.
@@ -220,9 +227,11 @@ class CustomJsonReporter(BaseReporter):
                          cls=_SetEncoder, indent=2),
               file=self.out)
 
+
 def register(linter):
     """Register a reporter (required by :mod:`pylint`)."""
     linter.register_reporter(CustomJsonReporter)
+
 
 def get_parser():
     """Define command-line argument parser."""
@@ -245,6 +254,7 @@ def get_parser():
         help='Output only the score.')
 
     return parser
+
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
