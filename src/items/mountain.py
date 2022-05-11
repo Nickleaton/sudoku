@@ -1,8 +1,6 @@
-from typing import List, Sequence
+from typing import List
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
-from src.items.board import Board
-from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -10,16 +8,13 @@ from src.utils.rule import Rule
 
 class Mountain(Line):
 
-    def __init__(self, board: Board, cells: Sequence[Cell]):
-        super().__init__(board, cells)
-
     @property
     def rules(self) -> List[Rule]:
         return [
             Rule(
                 'Mountain',
                 1,
-                "Lines smbolise mountaints. The closer to the top of the mountain, the higher the value in the cell."
+                "Lines symbolise mountains. The closer to the top of the mountain, the higher the value in the cell."
             )
         ]
 

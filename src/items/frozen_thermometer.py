@@ -1,6 +1,6 @@
 from typing import List
 
-from src.glyphs.glyph import Glyph, ThermometerGlyph, FrozenThermometerGlyph
+from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
 from src.items.thermometer import Thermometer
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule

@@ -8,23 +8,42 @@ from src.solvers.pulp_solver import PulpSolver
 class Formulations:
 
     @staticmethod
-    def disjunction(solver: PulpSolver, var: LpElement, l1: int, u1: int, l2: int, u2: int) -> None:
+    def disjunction(  # pylint: disable=too-many-return-statements
+            solver: PulpSolver,
+            var: LpElement,
+            lower_1: int,
+            upper_1: int,
+            lower_2: int,
+            upper_2: int
+    ) -> None:
         isupper = LpVariable(f"Disjunction_{var.name}_isupper", lowBound=0, upBound=1, cat=LpInteger)
-        solver.model += var <= u1 + (u2 - u1) * isupper, f"Disjunction_{var.name}_a"
-        solver.model += var <= l1 + (l2 - l1) * isupper, f"Disjunction_{var.name}_b"
+        solver.model += var <= upper_1 + (upper_2 - upper_1) * isupper, f"Disjunction_{var.name}_a"
+        solver.model += var <= lower_1 + (lower_2 - lower_1) * isupper, f"Disjunction_{var.name}_b"
 
     @staticmethod
-    def product_binary_binary(solver: PulpSolver, d1: LpElement, d2: LpElement, d3: LpVariable) -> None:
-        solver.model += d3 <= d1, f"Binary_Binary_{d3.name}_a"
-        solver.model += d3 <= d2, f"Binary_Binary_{d3.name}_b"
-        solver.model += d3 >= d1 + d2 - 1, f"Binary_Binary_{d3.name}_c"
+    def product_binary_binary(
+            solver: PulpSolver,
+            decision_1: LpElement,
+            decision_2: LpElement,
+            decision_3: LpVariable
+    ) -> None:
+        solver.model += decision_3 <= decision_1, f"Binary_Binary_{decision_3.name}_a"
+        solver.model += decision_3 <= decision_2, f"Binary_Binary_{decision_3.name}_b"
+        solver.model += decision_3 >= decision_1 + decision_2 - 1, f"Binary_Binary_{decision_3.name}_c"
 
     @staticmethod
-    def product_binary_var(solver: PulpSolver, var: LpElement, x: LpElement, target: LpVariable, l: int, u: int) -> None:
-        solver.model += l * var <= target, f"Product_Binary_{target.name}_a"
-        solver.model += target <= u * var, f"Product_Binary_{target.name}_b"
-        solver.model += l * (1 - var) <= x - target, f"Product_Binary_{target.name}_c"
-        solver.model += x - target <= u * (1 - var), f"Product_Binary_{target.name}_d"
+    def product_binary_var(  # pylint: disable=too-many-return-statements
+            solver: PulpSolver,
+            variable: LpElement,
+            x: LpElement,
+            target: LpVariable,
+            lower: int,
+            upper: int
+    ) -> None:
+        solver.model += lower * variable <= target, f"Product_Binary_{target.name}_a"
+        solver.model += target <= upper * variable, f"Product_Binary_{target.name}_b"
+        solver.model += lower * (1 - variable) <= x - target, f"Product_Binary_{target.name}_c"
+        solver.model += x - target <= upper * (1 - variable), f"Product_Binary_{target.name}_d"
 
     @staticmethod
     def logical_and(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]):
@@ -36,4 +55,3 @@ class Formulations:
     @staticmethod
     def logical_or(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]):
         pass  # TODO
-

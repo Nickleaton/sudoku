@@ -16,8 +16,8 @@ class KnownCell(CellReference):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        rc, d = yaml[cls.__name__].split("=")
-        return int(rc[0]), int(rc[1]), int(d)
+        row_column, digit = yaml[cls.__name__].split("=")
+        return int(row_column[0]), int(row_column[1]), int(digit)
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:

@@ -103,5 +103,19 @@ class TestSide(unittest.TestCase):
         self.assertTrue(Side.LEFT.horizontal)
         self.assertTrue(Side.RIGHT.horizontal)
 
+    def test_order_offset(self):
+        self.assertEqual(Coord(1, 0), Side.TOP.order_offset())
+        self.assertEqual(Coord(0, -1), Side.RIGHT.order_offset())
+        self.assertEqual(Coord(-1, 0), Side.BOTTOM.order_offset())
+        self.assertEqual(Coord(0, 1), Side.LEFT.order_offset())
+
+    def test_start_cell(self):
+        board = Board(9, 9)
+        self.assertEqual(Coord(1, 1), Side.TOP.start_cell(board, 1))
+        self.assertEqual(Coord(9, 9), Side.RIGHT.start_cell(board, 9))
+        self.assertEqual(Coord(9, 9), Side.BOTTOM.start_cell(board, 9))
+        self.assertEqual(Coord(1, 1), Side.LEFT.start_cell(board, 1))
+
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

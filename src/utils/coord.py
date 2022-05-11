@@ -101,6 +101,6 @@ class Coord:
         return self.top_left + Coord(0, 1)
 
     @staticmethod
-    def create_from_int(rc: int) -> 'Coord':
-        r, c = divmod(rc, 10)
+    def create_from_int(row_column: int) -> 'Coord':
+        r, c = divmod(row_column, 10)
         return Coord(r, c)

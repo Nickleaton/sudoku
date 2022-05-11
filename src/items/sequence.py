@@ -34,6 +34,8 @@ class Sequence(Line):
 
     @staticmethod
     def max_diffence(length: int) -> int:
+        if length == 1:
+            return 9
         if length == 2:
             return 8
         if length == 3:

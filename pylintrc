@@ -1,4 +1,7 @@
-﻿[MESSAGES CONTROL]
+﻿[MAIN]
+load-plugins=perflint
+
+[MESSAGES CONTROL]
 
 disable=missing-function-docstring,
     missing-class-docstring,

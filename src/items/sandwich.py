@@ -4,7 +4,6 @@ from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.item import Item
 from src.utils.coord import Coord
-from src.utils.cyclic import Cyclic
 from src.utils.rule import Rule
 from src.utils.side import Side
 

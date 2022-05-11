@@ -97,8 +97,9 @@ class TestItem(unittest.TestCase):
     def test_to_dict(self) -> None:
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         if "Item" in config:
-            return
-        item = Item.create(self.board, config)
+            item = self.item
+        else:
+            item = Item.create(self.board, config)
         self.assertDictEqual(item.to_dict(), config)
 
 
