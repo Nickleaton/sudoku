@@ -26,6 +26,9 @@ class Cell(Item):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
 
+    def __hash__(self):
+        return self.row * self.board.maximum_digit + self.column
+
     @staticmethod
     def letter() -> str:
         return '.'

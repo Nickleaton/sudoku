@@ -1,0 +1,64 @@
+Board:
+  Title: Zeta 1000
+  Author: Jay Dyer
+  Video: https://www.youtube.com/watch?v=PUdHz1eYeCM&ab_channel=zetamathdoespuzzles
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+#  - Knowns:
+#    - 963457128
+#    - 752186439
+#    - 418932576
+#    - 687549312
+#    - 125378694
+#    - 394261857
+#    - 871695243
+#    - 549823761
+#    - 236714985
+
+  # Ones
+
+  - Renban: 12, 22
+  - Renban: 82, 92
+
+  # Zetas
+
+  - Renban: 33, 34, 43, 53, 63, 74
+  - Renban: 35, 36, 45, 55, 65, 76
+  - Renban: 37, 38, 47, 57, 67, 78
+
+  # Zeros
+
+  - Renban: 83, 84, 94, 93, 83
+  - Renban: 85, 86, 96, 95, 85
+  - Renban: 87, 88, 98, 97, 87
+  - Renban: 13, 14, 24, 23, 13
+  - Renban: 15, 16, 26, 25, 15
+  - Renban: 17, 18, 28, 27, 17
+
+  - XPair: 31-41
+  - XPair: 24-34
+  - XPair: 18-19
+  - XPair: 54-55
+  - XPair: 69-79
+  - XPair: 84-85
+  - XPair: 86-87
+
+  - VPair: 63-73
+  - VPair: 91-92
+
+Solution:
+  - 963457128
+  - 752186439
+  - 418932576
+  - 687549312
+  - 125378694
+  - 394261857
+  - 871695243
+  - 549823761
+  - 236714985

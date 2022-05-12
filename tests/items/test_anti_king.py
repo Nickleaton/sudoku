@@ -9,6 +9,7 @@ from src.items.composed import Composed
 from src.items.different_pair import DifferentPair
 from src.items.item import Item
 from src.items.pair import Pair
+from src.items.region import Region
 from tests.items.test_anti import TestAnti
 
 
@@ -32,7 +33,7 @@ class TestAntiKing(TestAnti):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Anti, AntiKing, Cell, Composed, DifferentPair, Item, Pair}
+        return {Anti, AntiKing, Cell, Composed, DifferentPair, Item, Pair, Region}
 
     @property
     def config(self) -> str:

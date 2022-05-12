@@ -5,15 +5,18 @@ from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
+from src.items.region import Region
 from src.utils.rule import Rule
 
 
-class Pair(Item):
+class Pair(Region):
 
     def __init__(self, board: Board, c1: Cell, c2: Cell):
         super().__init__(board)
         self.c1 = c1
         self.c2 = c2
+        self.add(c1)
+        self.add(c2)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r})"

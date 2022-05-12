@@ -38,12 +38,13 @@ class Region(Composed):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def add_unique_constraint(self, solver: PulpSolver, optional: bool = False):
+        # Use set of cells to cope with loops
         for digit in self.board.digit_range:
-            total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
+            total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in set(self.cells)])
             if optional:
-                solver.model += total <= 1, f"Unique_{self.name}_{digit}"
+                solver.model += total <= 1, f"{self.name}_Unique_{digit}"
             else:
-                solver.model += total == 1, f"Unique_{self.name}_{digit}"
+                solver.model += total == 1, f"{self.name}_Unique_{digit}"
 
     def add_total_constraint(self, solver: PulpSolver, total: int) -> None:
         value = lpSum([solver.values[cell.row][cell.column] for cell in self.cells])
@@ -52,7 +53,7 @@ class Region(Composed):
     def add_contains_constraint(self, solver: PulpSolver, digits: List[int]):
         for digit in digits:
             choice_total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
-            solver.model += choice_total == 1, f"{self.name}_{digit}"
+            solver.model += choice_total == 1, f"{self.name}_Contains_{digit}"
 
     def add_sequence_constraint(self, solver: PulpSolver, order: Order):
         for i in range(1, len(self)):
@@ -66,10 +67,10 @@ class Region(Composed):
 
     def add_allowed_constraint(self, solver: PulpSolver, cells: List[Cell], allowed: List[int]):
         for cell in cells:
-            # for digit in self.board.digit_range:
-            #     if digit not in allowed:
-            #         name = f"Allowed_not_{cell.name}_{digit}"
-            #         solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
+            for digit in self.board.digit_range:
+                if digit not in allowed:
+                    name = f"Allowed_not_{cell.name}_{digit}"
+                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
             if len(allowed) == 1:
                 name = f"Allowed_{cell.name}_{allowed[0]}"
                 solver.model += solver.choices[allowed[0]][cell.row][cell.column] == 1, name
