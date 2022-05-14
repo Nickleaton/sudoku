@@ -1,0 +1,51 @@
+Board:
+  Title: Four flashes of Enlightenment
+  Authour: Mile Lemaic
+  Video : https://www.youtube.com/watch?v=bSFzEh0V_m8&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/rJqFpfNPFq
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - Arrow: 24, 23, 22, 12
+  - Arrow: 24, 25, 15
+  - Arrow: 28, 37, 46, 55
+  - Arrow: 68, 58, 48
+  - Arrow: 68, 78, 88, 89
+  - Arrow: 73, 64, 55
+  - Arrow: 82, 72, 62
+  - Arrow: 82, 83, 84
+
+  - Renban: 11, 22, 33
+  - Renban: 27, 18, 29, 38
+  - Renban: 52, 53
+  - Renban: 75, 85
+  - Renban: 77, 88, 99
+
+  - TLBRReflecting:
+
+  - Knowns:
+    - .........
+    - .........
+    - .........
+    - .........
+    - .........
+    - .........
+    - .........
+    - .........
+    - .........
+
+Solution:
+  - 719348562
+  - 362951748
+  - 548267193
+  - 194582637
+  - 876413259
+  - 235679481
+  - 957824316
+  - 481736925
+  - 623195874

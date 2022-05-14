@@ -8,6 +8,17 @@ from src.solvers.pulp_solver import PulpSolver
 class Formulations:
 
     @staticmethod
+    def parity(solver: PulpSolver, row: int, column: int) -> lpSum:
+        return lpSum(
+            [
+                solver.choices[2][row][column],
+                solver.choices[4][row][column],
+                solver.choices[6][row][column],
+                solver.choices[8][row][column]
+            ]
+        )
+
+    @staticmethod
     def disjunction(  # pylint: disable=too-many-return-statements
             solver: PulpSolver,
             var: LpElement,

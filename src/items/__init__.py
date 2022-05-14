@@ -1,5 +1,6 @@
 """Module that handles constraints."""
 
+import src.items.tlbr_refecting_diagonal
 import src.items.sequence
 import src.items.anti
 import src.items.anti_king
