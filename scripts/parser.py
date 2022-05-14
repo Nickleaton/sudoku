@@ -23,7 +23,6 @@ def parser() -> ArgumentParser:
         help="Where to write the log file",
         required=False
     )
-
     result.add_argument(
         '--html',
         nargs='?',
