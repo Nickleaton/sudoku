@@ -35,7 +35,7 @@ class TestFiles(unittest.TestCase):
         ]
     )
 
-    # filenames = ['problem043']
+    filenames = ['problem065']
 
     @staticmethod
     def config(filename: str) -> Any:

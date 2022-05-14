@@ -1,0 +1,44 @@
+Board:
+  Title: Boundaries
+  Authour: Josh Johnson
+  Video : https://www.youtube.com/watch?v=U2ER6QCYn1E&ab_channel=zetamathdoespuzzles
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+
+  - Renban: 31, 41, 51, 52, 42, 32
+  - Renban: 16, 25, 34, 44, 54, 64
+  - Renban: 39, 38, 37, 47, 48, 49
+  - Renban: 61, 62, 63, 73, 72, 71
+  - Renban: 46, 56, 66, 76, 85, 94
+  - Renban: 78, 68, 58, 59, 69, 79
+
+  - KropkiPair: 18-19
+  - KropkiPair: 27-37
+  - KropkiPair: 52-53
+  - KropkiPair: 77-87
+  - KropkiPair: 88-89
+  - KropkiPair: 89-99
+
+  - ConsecutivePair: 11-21
+  - ConsecutivePair: 21-22
+  - ConsecutivePair: 23-33
+  - ConsecutivePair: 73-83
+  - ConsecutivePair: 91-92
+  - ConsecutivePair: 57-58
+
+Solution:
+  - 894376521
+  - 762145893
+  - 351829476
+  - 619784235
+  - 248513769
+  - 573962148
+  - 486291357
+  - 937458612
+  - 125637984
