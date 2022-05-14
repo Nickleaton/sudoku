@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph, FortressCellGlyph
 from src.items.cell_reference import CellReference
@@ -36,3 +36,19 @@ class FortressCell(CellReference):
                 continue
             solver.model += solver.values[self.row][self.column] >= solver.values[other.row][
                 other.column] + 1, f"Fortress_{self.row}_{self.column}_{other.row}_{other.column}"
+
+    def css(self) -> str:
+        return (
+            ".FortressCell {\n"
+            "    stroke: black;\n"
+            "    stroke-width: 3;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".FortressCell": {
+                "stroke": "black",
+                "stroke-width": 3
+            }
+        }

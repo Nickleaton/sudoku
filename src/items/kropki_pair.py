@@ -116,3 +116,24 @@ class KropkiPair(Pair):
         self.add_implausible_constraint(solver)
         self.create_sos(solver)
         self.add_unique_constraints(solver)
+
+    def css(self) -> str:
+        return (
+            ".KropkiPair {\n"
+            "    fill: black;\n"
+            "    stroke-width: 1;\n"
+            "    stroke: black;\n"
+            "    background: transparent;\n"
+            "\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.KropkiPair': {
+                'fill': 'black',
+                'stroke-width': 1,
+                'stroke': 'black',
+                'background': 'transparent'
+            }
+        }

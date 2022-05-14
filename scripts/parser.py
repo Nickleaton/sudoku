@@ -52,6 +52,15 @@ def parser() -> ArgumentParser:
         required=False
     )
     result.add_argument(
+        '--png',
+        nargs='?',
+        const="",
+        default=None,
+        help='Produce png output',
+        type=str,
+        required=False
+    )
+    result.add_argument(
         '--rst',
         nargs='?',
         const="",

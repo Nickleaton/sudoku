@@ -1,3 +1,50 @@
+.Box {
+    fill-opacity: 0;
+    stroke: black;
+    stroke-width: 3;
+}
+
+.Cell {
+    fill-opacity: 0;
+    stroke: black;
+    stroke-width: 1;
+}
+
+.Known {
+    fill: black;
+    font-size: 70px;
+    font-weight: 500;
+    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+}
+
+.KnownBackground {
+    fill: white;
+    font-size: 70px;
+    font-weight: bolder;
+    stroke: white;
+    stroke-width: 8;
+}
+
+.KnownForeground {
+    fill: black;
+    font-size: 70px;
+    stroke: black;
+}
+
+.TextGlyphBackground {
+    fill: white;
+    font-size: 30px;
+    font-weight: bolder;
+    stroke: white;
+    stroke-width: 8;
+}
+
+.TextGlyphForeground {
+    fill: black;
+    font-size: 30px;
+    stroke: black;
+    stroke-width: 1;
+}
 
 table {
     border-collapse: collapse;
@@ -28,69 +75,50 @@ th, td {
 }
 
 .BattenburgOdd {
+    fill: yellow;
     stroke: black;
     stroke-width: 1;
-    fill: yellow;
 }
 
 .BattenburgEven {
+    fill: pink;
     stroke: black;
     stroke-width: 1;
-    fill: pink;
 }
 
 .StarGlyphForeground {
+    fill: gainsboro;
     font-size: 100px;
     stroke: gainsboro;
-    fill: gainsboro;
 }
 
 .StarGlyphBackground {
+    fill: gainsboro;
     font-size: 100px;
     stroke: gainsboro;
-    fill: gainsboro;
 }
 
-.Known {
-    font-size: 70px;
-    fill: black;
-    font-weight: 500;
-    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
-}
 
 .Unknown {
-    font-size: 70px;
     fill: blue;
+    font-size: 70px;
     font-weight: 500;
     text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
 }
 
-.KnownForeground {
-    font-size: 70px;
-    stroke: black;
-    fill: black
-}
-
-.KnownBackground {
-    font-size: 70px;
-    stroke: white;
-    stroke-width: 8;
-    fill: white;
-    font-weight: bolder
-}
 
 .UnknownForeground {
+    fill: blue;
     font-size: 70px;
     stroke: blue;
-    fill: blue
 }
 
 .UnknownBackground {
+    fill: white;
     font-size: 70px;
+    font-weight: bolder;
     stroke: white;
     stroke-width: 8;
-    fill: white;
-    font-weight: bolder
 }
 
 .Circle {
@@ -104,42 +132,41 @@ th, td {
 
 
 .FrameTextForeground {
+    fill: black;
     font-size: 30px;
     stroke: black;
     stroke-width: 1;
-    fill: black
 }
 
 .FrameTextBackground {
+    fill: white;
     font-size: 30px;
+    font-weight: bolder;
     stroke: white;
     stroke-width: 8;
-    fill: white;
-    font-weight: bolder
 }
 
 .EdgeTextGlyphForeground {
+    fill: black;
     font-size: 30px;
     stroke: black;
     stroke-width: 1;
-    fill: black
 }
-
 
 
 .EdgeTextGlyphBackground {
+    fill: white;
     font-size: 30px;
+    font-weight: bolder;
     stroke: white;
     stroke-width: 8;
-    fill: white;
-    font-weight: bolder
 }
 
 .LittleArrow {
+    fill: black;
     font-size: 20px;
     stroke: black;
     stroke-width: 1;
-    fill: black
 }
 
 .LittleNumber {
@@ -151,17 +178,6 @@ th, td {
     fill: cyan;
 }
 
-.Box {
-    stroke: black;
-    stroke-width: 3;
-    fill-opacity: 0
-}
-
-.Cell {
-    stroke: black;
-    stroke-width: 1;
-    fill-opacity: 0
-}
 
 .Window {
     fill: lightcyan;
@@ -177,86 +193,85 @@ th, td {
 
 .ConsecutivePair {
     fill: white;
-    stroke-width: 2;
     stroke: black;
+    stroke-width: 2;
 }
 
 .Consecutive1 {
     fill: silver;
-    stroke-width: 2;
     stroke: black;
+    stroke-width: 2;
 }
 
 
 .KropkiPair {
-    fill: black;
-    stroke-width: 1;
-    stroke: black;
     background: transparent;
-
+    fill: black;
+    stroke: black;
+    stroke-width: 1;
 }
 
 .GermanWhisper {
+    fill-opacity: 0;
     stroke: blue;
-    stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
+    stroke-width: 20;
 }
 
 
 .DutchWhisper {
+    fill-opacity: 0;
     stroke: green;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 
 .Palindrome {
+    fill-opacity: 0;
     stroke: silver;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 .Renban {
+    fill-opacity: 0;
     stroke: purple;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 .Mountain {
+    fill-opacity: 0;
     stroke: lightblue;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 .DistinctRenban {
+    fill-opacity: 0;
     stroke: purple;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 .Sequence {
+    fill-opacity: 0;
     stroke: grey;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 .Arrow {
-    stroke: grey;
     fill: white;
+    stroke: grey;
     stroke-width: 3;
 }
 
@@ -268,8 +283,8 @@ th, td {
 }
 
 .Between {
-    stroke: grey;
     fill: white;
+    stroke: grey;
     stroke-width: 3;
 }
 
@@ -281,11 +296,11 @@ th, td {
 
 
 .Thermometer {
+    fill-opacity: 0;
     stroke: grey;
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill-opacity: 0
 }
 
 .SimpleThermometer {
@@ -316,23 +331,6 @@ th, td {
     stroke-width: 30;
 }
 
-
-.TextGlyphForeground {
-    font-size: 30px;
-    stroke: black;
-    stroke-width: 1;
-    fill: black
-
-}
-
-.TextGlyphBackground {
-    font-size: 30px;
-    stroke: white;
-    stroke-width: 8;
-    fill: white;
-    font-weight: bolder
-
-}
 
 .Killer {
     stroke: red;
@@ -430,7 +428,7 @@ th, td {
     fill: orange;
 }
 
-.Girandola  {
+.Girandola {
     stroke: lightgreen;
     fill: lightgreen;
 }

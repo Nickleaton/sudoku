@@ -102,6 +102,16 @@ class TestItem(unittest.TestCase):
             item = Item.create(self.board, config)
         self.assertDictEqual(item.to_dict(), config)
 
+    def test_css(self) -> None:
+        self.assertIsNotNone(self.item.css())
+        print(self.item.css())
+
+    def test_css2(self) -> None:
+        self.assertIsNotNone(self.item.css2())
+        print("=" * 80)
+        print(Item.css2_text(self.item.css2()))
+        print("=" * 80)
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

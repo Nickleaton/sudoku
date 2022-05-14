@@ -67,3 +67,31 @@ class Between(Line):
             for cell in self.cells[1:-1]:
                 solver.model += solver.choices[self.board.minimum_digit][cell.row][cell.column] == 0
                 solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0
+
+    def css(self) -> str:
+        return (
+            ".Between {\n"
+            "    stroke: grey;\n"
+            "    fill: white;\n"
+            "    stroke-width: 3;\n"
+            "}\n"
+            "\n"
+            ".BetweenStart {\n"
+            "}\n"
+            "\n"
+            ".BetweenEnd {\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.Between': {
+                'stroke': 'grey',
+                'fill': 'white',
+                'stroke-width': 3
+            },
+            '.BetweenStart': {
+            },
+            '.BetweenEnd': {
+            }
+        }

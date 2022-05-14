@@ -64,3 +64,17 @@ class Window(Region):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: self.center.row * 10 + self.center.column}
+
+    def css(self) -> str:
+        return (
+            ".Window {\n"
+            "    fill: lightcyan;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.Window': {
+                'fill': 'lightcyan'
+            }
+        }

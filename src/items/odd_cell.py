@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 from pulp import lpSum
 
@@ -41,3 +41,17 @@ class OddCell(CellReference):
                 if not OddCell.included(digit)
             ]
         ) == 0, f"{self.__class__.__name__}_{self.row}_{self.column}"
+
+    def css(self) -> str:
+        return (
+            ".OddCell {\n"
+            "    fill: gainsboro;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".OddCell": {
+                "fill": "gainsboro"
+            }
+        }

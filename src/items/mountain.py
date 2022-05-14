@@ -35,3 +35,14 @@ class Mountain(Line):
                 solver.model += solver.values[c1.row][c1.column] >= solver.values[c2.row][c2.column] + 1, name
             else:
                 solver.model += solver.values[c1.row][c1.column] <= solver.values[c2.row][c2.column] - 1, name
+
+    def css(self) -> str:
+        return (
+            ".Mountain {\n"
+            "    stroke: lightblue;\n"
+            "    stroke-width: 20;\n"
+            "    stroke-linecap: round;\n"
+            "    stroke-linejoin: round;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+        )

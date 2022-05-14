@@ -21,3 +21,20 @@ class Girandola(SpecialRegion):
             Coord(9, 1),
             Coord(9, 9)
         ]
+
+    def css(self) -> str:
+        return (
+            ".Girandola  {\n"
+            "    stroke: lightgreen;\n"
+            "    fill: lightgreen;\n"
+            "}\n"
+            "\n"
+        )
+
+    def css2(self):
+        return {
+            ".Girandola": {
+                "stroke": "lightgreen",
+                "fill": "lightgreen"
+            }
+        }

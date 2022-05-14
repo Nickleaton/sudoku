@@ -55,3 +55,21 @@ class Box(StandardRegion):
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
+
+    def css(self) -> str:
+        return (
+            ".Box {\n"
+            "    stroke: black;\n"
+            "    stroke-width: 3;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".Box": {
+                'stroke': 'black',
+                'stroke-width': 3,
+                'fill-opacity': 0
+            }
+        }

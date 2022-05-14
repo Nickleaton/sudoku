@@ -43,3 +43,21 @@ class ConsecutivePair(LessThanEqualDifferencePair):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.c1.rc}-{self.c2.rc}"}
+
+    def css(self) -> str:
+        return (
+            ".ConsecutivePair {\n"
+            "    fill: white;\n"
+            "    stroke-width: 2;\n"
+            "    stroke: black;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.ConsecutivePair': {
+                'fill': 'white',
+                'stroke-width': 2,
+                'stroke': 'black'
+            }
+        }

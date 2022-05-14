@@ -103,3 +103,17 @@ class MagicSquare(Region):
         return {
             self.__class__.__name__: f"{self.center.row}{self.center.column}, {self.corner.row}{self.corner.column}"
         }
+
+    def css(self) -> str:
+        return (
+            ".MagicSquare {\n"
+            "    fill: mediumpurple;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.MagicSquare': {
+                'fill': 'mediumpurple'
+            }
+        }

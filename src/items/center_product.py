@@ -29,3 +29,38 @@ class CenterProduct(Product):
         return [
             TextGlyph('CenterProduct', 0, self.position + Coord(1, 1), str(self.product))
         ]
+
+    def css(self):
+        return (
+            ".CenterProductForeground {\n"
+            "    font-size: 30px;\n"
+            "    stroke: black;\n"
+            "    stroke-width: 1;\n"
+            "    fill: black\n"
+            "}\n"
+            "\n"
+            ".CenterProductBackground {\n"
+            "    font-size: 30px;\n"
+            "    stroke: white;\n"
+            "    stroke-width: 8;\n"
+            "    fill: white;\n"
+            "    font-weight: bolder\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.CenterProductForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 1,
+                'fill': 'black'
+            },
+            '.CenterProductBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': 8,
+                'fill': 'white',
+                'font-weight': 'bolder'
+            }
+        }

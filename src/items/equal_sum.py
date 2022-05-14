@@ -57,3 +57,26 @@ class EqualSum(Line):
         for i in range(0, len(areas)):
             j = 0 if i == len(areas) - 1 else i + 1
             solver.model += sums[i] == sums[j], f"{self.name}_{i}"
+
+    def css(self) -> str:
+        return (
+            ".EqualSum {\n"
+            "    stroke: lightskyblue;\n"
+            "    stroke-width: 10;\n"
+            "    stroke-linecap: round;\n"
+            "    stroke-linejoin: round;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+            "\n"
+        )
+
+    def css2(self):
+        return {
+            '.EqualSum': {
+                'stroke': 'lightskyblue',
+                'stroke-width': 10,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'fill-opacity': 0
+            }
+        }

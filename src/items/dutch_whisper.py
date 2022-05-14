@@ -18,3 +18,25 @@ class DutchWhisper(GreaterThanEqualDifferenceLine):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Dutch Whisper'})
+
+    def css(self) -> str:
+        return (
+            ".DutchWhisper {\n"
+            "    stroke: green;\n"
+            "    stroke-width: 20;\n"
+            "    stroke-linecap: round;\n"
+            "    stroke-linejoin: round;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.DutchWisper': {
+                'stroke': 'green',
+                'stroke-width': 20,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'fill-opacity': 0
+            }
+        }

@@ -1,3 +1,4 @@
+import logging
 import os
 
 from jinja2 import Environment, select_autoescape, FileSystemLoader
@@ -13,16 +14,14 @@ env = Environment(
 
 class HTML(Command):
 
-    def __init__(self, filename: str):
-        super().__init__(filename)
-
     @property
     def extension(self) -> str:
         return "html"
 
     def process(self) -> None:
+        logging.info(f"Producing html  file of type")
         super().process()
-        svg_command = SVG(self.filename)
+        svg_command = SVG(self.config_filename, "")
         template = env.get_template("problem.html")
         rules = [{'name': rule.name, 'text': rule.text} for rule in self.problem.sorted_unique_rules]
         self.output = template.render(

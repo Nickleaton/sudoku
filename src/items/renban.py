@@ -76,3 +76,25 @@ class Renban(Line):
 
         # add the mandatory digits
         self.add_contains_constraint(solver, self.mandatory_digits(length))
+
+    def css(self) -> str:
+        return (
+            ".Renban {\n"
+            "    stroke: purple;\n"
+            "    stroke-width: 20;\n"
+            "    stroke-linecap: round;\n"
+            "    stroke-linejoin: round;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".Renban": {
+                "stroke": "purple",
+                "stroke-width": 20,
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round",
+                "fill-opacity": 0
+            }
+        }

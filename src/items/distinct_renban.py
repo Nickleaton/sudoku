@@ -57,3 +57,25 @@ class DistinctRenban(Renban):
         # solver.model += solver.distinct_renbans[self.name] == total, self.name
         # for dr in solver.distinct_renbans:
         #     solver.model + not_equal(dr, solver.renbans[self.name])
+
+    def css(self) -> str:
+        return (
+            ".DistinctRenban {\n"
+            "    stroke: purple;\n"
+            "    stroke-width: 20;\n"
+            "    stroke-linecap: round;\n"
+            "    stroke-linejoin: round;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.DistinctRenban': {
+                'stroke': 'purple',
+                'stroke-width': 20,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'fill-opacity': 0
+            }
+        }

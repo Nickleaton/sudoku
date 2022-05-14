@@ -56,3 +56,31 @@ class Quadruple(Item):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
+
+    def css(self) -> str:
+        return (
+            ".QuadrupleCircle {\n"
+            "    stroke-width: 2;\n"
+            "    stroke: black;\n"
+            "    fill: white;\n"
+            "}\n"
+            ".QuadrupleText {\n"
+            "    stroke: black;\n"
+            "    fill: black;\n"
+            "    font-size: 30px;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".QuadrupleCircle": {
+                "stroke-width": 2,
+                "stroke": "black",
+                "fill": "white"
+            },
+            ".QuadrupleText": {
+                "stroke": "black",
+                "fill": "black",
+                "font-size": "30px"
+            }
+        }

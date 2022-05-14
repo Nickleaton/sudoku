@@ -26,3 +26,25 @@ class Palindrome(Line):
             c2 = self.cells[len(self) - i - 1]
             name = f"{self.name}_{i}"
             solver.model += solver.values[c1.row][c1.column] == solver.values[c2.row][c2.column], name
+
+    def css(self) -> str:
+        return (
+            ".Palindrome {\n"
+            "    stroke: silver;\n"
+            "    stroke-width: 20;\n"
+            "    stroke-linecap: round;\n"
+            "    stroke-linejoin: round;\n"
+            "    fill-opacity: 0\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".Palindrome": {
+                "stroke": "silver",
+                "stroke-width": 20,
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round",
+                "fill-opacity": 0
+            }
+        }

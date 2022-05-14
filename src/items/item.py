@@ -80,3 +80,60 @@ class Item(ABC):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
+
+    def css(self) -> str:
+        return (
+            ".TextGlyphForeground {\n"
+            "    font-size: 30px;\n"
+            "    stroke: black;\n"
+            "    stroke-width: 1;\n"
+            "    fill: black\n"
+            "}\n"
+            ".TextGlyphBackground {\n"
+            "    font-size: 30px;\n"
+            "    stroke: white;\n"
+            "    stroke-width: 8;\n"
+            "    fill: white;\n"
+            "    font-weight: bolder\n"
+            "}\n"
+            ".LittleNumber {\n"
+            "    font-size: 20px;\n"
+            "    stroke: black;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.TextGlyphForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 8,
+                'fill': 'black',
+                'font-weight': 'bolder'
+            },
+            '.TextGlyphBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': 8,
+                'fill': 'white',
+                'font-weight': 'bolder'
+            },
+            'LittleNumber': {
+                'font-size': '20px',
+                'stroke': 'black',
+            }
+        }
+
+    @staticmethod
+    def css2_text(data: Dict, indent: int = 0) -> str:
+        tab = '    '
+        result = ""
+        for k in sorted(data.keys()):
+            v = data[k]
+            if isinstance(v, dict):
+                result += f"{tab * indent}{k} {{\n"
+                result += Item.css2_text(v, indent + 1)
+                result += f"{tab * indent}}}\n\n"
+            else:
+                result += f"{tab * indent}{k}: {v};\n"
+        return result

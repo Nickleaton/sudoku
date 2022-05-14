@@ -1,23 +1,21 @@
+import logging
 import xml.dom.minidom
 
 from svgwrite import Drawing
+from svgwrite.container import Style
 
 from src.commands.command import Command
+from src.items.item import Item
 
 
 class SVG(Command):
 
-    def __init__(self, filename: str):
-        super().__init__(filename)
-
-    @property
-    def extension(self) -> str:
-        return "svg"
-
     def process(self) -> None:
         super().process()
+        logging.info(f"Producing svg")
         glyph = self.problem.sorted_glyphs
-        canvas = Drawing(filename="test.svg", size=("35cm", "35cm"))
+        canvas = Drawing(filename="test.svg", size=("35cm", "35cm"), viewBox="0 0 1100 1100")
+        canvas.add(Style(content="\n" + Item.css2_text(self.problem.css2(), 0)))
         for clz in glyph.used_classes:
             if (element := clz.start_marker()) is not None:
                 canvas.defs.add(element)
@@ -26,6 +24,5 @@ class SVG(Command):
             if (element := clz.symbol()) is not None:
                 canvas.add(element)
         canvas.add(glyph.draw())
-        canvas.add_stylesheet(href="glyph.css", title="glyphs")
         elements = xml.dom.minidom.parseString(canvas.tostring())
         self.output = str(elements.toprettyxml())

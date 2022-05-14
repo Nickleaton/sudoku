@@ -70,12 +70,12 @@ class NumberedRoom(Item):
         if self.side == Side.LEFT:
             for d in self.board.digit_range:
                 solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                            solver.choices[self.digit][self.start_cell.row][d], \
-                            f"{self.name}_{d}"
+                                solver.choices[self.digit][self.start_cell.row][d], \
+                                f"{self.name}_{d}"
         elif self.side == Side.RIGHT:
             for d in self.board.digit_range:
                 solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                                solver.choices[self.digit][self.start_cell.row][self.board.board_columns-d+1], \
+                                solver.choices[self.digit][self.start_cell.row][self.board.board_columns - d + 1], \
                                 f"{self.name}_{d}"
         elif self.side == Side.TOP:
             for d in self.board.digit_range:
@@ -85,7 +85,41 @@ class NumberedRoom(Item):
         elif self.side == Side.BOTTOM:
             for d in self.board.digit_range:
                 solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                                solver.choices[self.digit][self.board.board_rows-d+1][self.start_cell.column], \
+                                solver.choices[self.digit][self.board.board_rows - d + 1][self.start_cell.column], \
                                 f"{self.name}_{d}"
         else:  # pragma: no cover
             raise Exception(f"Unexpected Side {self.side.name}")
+
+    def css(self) -> str:
+        return (
+            ".NumberedRoomForeground {\n"
+            "    font-size: 30px;\n"
+            "    stroke: black;\n"
+            "    stroke-width: 1;\n"
+            "    fill: black\n"
+            "}\n"
+            "\n"".NumberedRoomBackground {\n"
+            "    font-size: 30px;\n"
+            "    stroke: white;\n"
+            "    stroke-width: 8;\n"
+            "    fill: white;\n"
+            "    font-weight: bolder\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.NumberedRoomForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 1,
+                'fill': 'black'
+            },
+            '.NumberedRoomBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': 8,
+                'fill': 'white',
+                'font-weight': 'bolder'
+            }
+        }

@@ -21,3 +21,20 @@ class Asterix(SpecialRegion):
 
     def region_name(self) -> str:
         return 'Asterix'
+
+    def css(self) -> str:
+        return (
+            ".Asterix {\n"
+            "    stroke: orange;\n"
+            "    fill: orange;\n"
+            "}\n"
+            "\n"
+        )
+
+    def css2(self):
+        return {
+            '.Asterix': {
+                'stroke': 'orange',
+                'fill': 'orange'
+            }
+        }

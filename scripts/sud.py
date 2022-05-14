@@ -4,6 +4,8 @@ import sys
 
 from scripts.parser import parser
 from src.commands.html import HTML
+from src.commands.img import IMG
+from src.commands.svg import SVG
 
 # def produce_jpg(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
@@ -51,12 +53,15 @@ if __name__ == "__main__":
     command = None
     output = None
     if args.html is not None:
-        command = HTML(args.config)
+        command = HTML(args.config, args.html)
         output = args.html
-
-    command.load_config()
-    command.create_board()
-    command.create_problem()
+    if args.svg is not None:
+        command = SVG(args.config, args.svg)
+        output = args.svg
+    if args.png is not None:
+        command = IMG(args.config, args.png, 'PNG')
+    if args.jpg is not None:
+        command = IMG(args.config,  args.jpg, 'JPG')
     command.process()
-    command.write(output)
+    command.write()
     sys.exit(0)

@@ -32,3 +32,17 @@ class ColumnIndexer(Indexer):
                 indexer = solver.choices[digit][cell.row][cell.column]
                 indexed = solver.choices[cell.column][cell.row][digit]
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
+
+    def css(self) -> str:
+        return (
+            ".ColumnIndexer {\n"
+            "    fill: pink;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.ColumnIndexer': {
+                'fill': 'pink'
+            }
+        }

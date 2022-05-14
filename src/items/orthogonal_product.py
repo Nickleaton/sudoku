@@ -30,3 +30,38 @@ class OrthogonalProduct(Product):
         return [
             TextGlyph('Product', 0, self.position + Coord(0.15, 0.15), str(self.product))
         ]
+
+    def css(self) -> str:
+        return (
+            ".OrthogonalProductForeground {\n"
+            "    font-size: 18px;\n"
+            "    stroke: black;\n"
+            "    stroke-width: 1;\n"
+            "    fill: black\n"
+            "}\n"
+            "\n"
+            ".OrthogonalProductBackground {\n"
+            "    font-size: 18px;\n"
+            "    stroke: white;\n"
+            "    stroke-width: 8;\n"
+            "    fill: white;\n"
+            "    font-weight: bolder\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            '.OrthogonalProductForeground': {
+                'font-size': '18px',
+                'stroke': 'black',
+                'stroke-width': 1,
+                'fill': 'black'
+            },
+            '.OrthogonalProductBackground': {
+                'font-size': '18px',
+                'stroke': 'white',
+                'stroke-width': 8,
+                'fill': 'white',
+                'font-weight': 'bolder'
+            }
+        }

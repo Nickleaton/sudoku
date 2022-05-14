@@ -25,3 +25,19 @@ class Diagonal(Region):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
+
+    def css(self) -> str:
+        return (
+            ".Diagonal {\n"
+            "    stroke: blue;\n"
+            "    stroke-width: 3px;\n"
+            "}\n"
+        )
+
+    def css2(self):
+        return {
+            ".Diagonal": {
+                "stroke": "blue",
+                "stroke-width": "3px"
+            }
+        }
