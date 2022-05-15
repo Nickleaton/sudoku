@@ -6,8 +6,8 @@ from jinja2 import Environment, select_autoescape, FileSystemLoader
 from parameterized import parameterized
 
 from src.commands.lp import LP
-from src.commands.svg import SVG
 from src.commands.solve import Solve
+from src.commands.svg import SVG
 from src.items.solution import Solution
 
 env = Environment(
@@ -30,7 +30,7 @@ class TestFiles(unittest.TestCase):
         ]
     )
 
-    # filenames = ['problem068']
+    filenames = ['problem069']
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_svg(self, filename: str) -> None:
@@ -58,6 +58,7 @@ class TestFiles(unittest.TestCase):
                         os.path.join("output", "verify", filename + ".txt"))
         command.process()
         command.write()
+        print(command.output)
         expected = Solution.create(command.board, command.config['Solution'])
         self.assertEqual(expected, command.solution)
 

@@ -9,7 +9,7 @@ class CoordException(Exception):
 
 class Coord:
 
-    def __init__(self, row: float, column: float) -> object:
+    def __init__(self, row: float, column: float):
         self.row = row
         self.column = column
 

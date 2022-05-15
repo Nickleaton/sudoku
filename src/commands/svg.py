@@ -11,6 +11,7 @@ from src.items.item import Item
 class SVG(Command):
 
     def process(self) -> None:
+        assert self.problem is not None
         super().process()
         logging.info(f"Producing svg")
         glyph = self.problem.sorted_glyphs

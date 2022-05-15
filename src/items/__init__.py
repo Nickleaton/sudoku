@@ -64,6 +64,7 @@ import src.items.outside
 import src.items.pair
 import src.items.palindrome
 import src.items.product
+import src.items.quadro
 import src.items.quadruple
 import src.items.region
 import src.items.region_sets

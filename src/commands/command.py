@@ -1,6 +1,6 @@
 import logging
 import os.path
-from typing import Dict, Optional
+from typing import Dict, Optional, AnyStr, Any
 
 import oyaml as yaml
 
@@ -13,12 +13,12 @@ class Command:
 
     def __init__(self, config_filename: str, output_filename: Optional[str] = None):
         self.config_filename: str = config_filename
-        self.config: Dict = None
-        self.board: Board = None
-        self.problem: Item = None
-        self.solution: Solution = None
-        self.output_filename = output_filename
-        self.output: str = None
+        self.config: Optional[Dict] = None
+        self.board: Optional[Board] = None
+        self.problem: Optional[Item] = None
+        self.solution: Optional[Solution] = None
+        self.output_filename: Optional[str] = output_filename
+        self.output: Optional[str] = None
 
     def load_config(self) -> None:
         logging.info(f"Loading config from {self.config_filename}")
@@ -40,14 +40,15 @@ class Command:
         self.output = ""
 
     def check_directory(self) -> None:
-        directory = os.path.dirname(self.output_filename)
+        assert self.output_filename is not None
+        directory: str = os.path.dirname(self.output_filename)
         if not os.path.exists(directory):
             logging.info(f"Creating directory {directory}")
             os.makedirs(directory)
 
     def write(self) -> None:
-        if self.output_filename is None:
-            return
+        assert self.output_filename is not None
+        assert self.output is not None
         self.check_directory()
         logging.info(f"Writing output to {self.output_filename}")
         with open(self.output_filename, 'w', encoding="utf-8") as f:

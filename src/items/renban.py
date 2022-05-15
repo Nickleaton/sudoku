@@ -75,7 +75,7 @@ class Renban(Line):
         solver.model += upper - lower == length - 1, f"{self.name}_range_{length - 1}"
 
         # add the mandatory digits
-        self.add_contains_constraint(solver, self.mandatory_digits(length))
+        self.add_contains_constraint(solver, list(self.mandatory_digits(length)))
 
     def css(self) -> Dict:
         return {

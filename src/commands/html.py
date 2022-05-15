@@ -15,13 +15,17 @@ env = Environment(
 class HTML(Command):
 
     def process(self) -> None:
+        assert self.problem is not None
         logging.info(f"Producing html  file of type")
         super().process()
         svg_command = SVG(self.config_filename, "")
         template = env.get_template("problem.html")
-        rules = [{'name': rule.name, 'text': rule.text} for rule in self.problem.sorted_unique_rules]
-        self.output = template.render(
-            rules=rules,
-            problem_svg=svg_command.output,
-            meta=self.problem.board.to_dict()['Board']
-        )
+        if self.problem.sorted_unique_rules is None:
+            logging.error("Sorted unique rules is None")
+        else:
+            rules = [{'name': rule.name, 'text': rule.text} for rule in self.problem.sorted_unique_rules]
+            self.output = template.render(
+                rules=rules,
+                problem_svg=svg_command.output,
+                meta=self.problem.board.to_dict()['Board']
+            )
