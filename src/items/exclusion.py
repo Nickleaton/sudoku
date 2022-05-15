@@ -10,7 +10,7 @@ from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class Quadruple(Item):
+class Exclusion(Item):
 
     def __init__(self, board: Board, position: Coord, digits: str):
         super().__init__(board)
@@ -24,12 +24,12 @@ class Quadruple(Item):
 
     @property
     def rules(self) -> List[Rule]:
-        return [Rule('Quadruple', 3, 'Digits appearing in at last one of the cells adjacent to the circle')]
+        return [Rule('Exclusion', 3, 'Digit(s) cannot appear in the cells adjacent to the circle')]
 
     @property
     def glyphs(self) -> List[Glyph]:
         return [
-            QuadrupleGlyph(class_name="Quadruple", position=self.position, numbers=self.numbers)
+            QuadrupleGlyph(class_name="Exclusion", position=self.position, numbers=self.numbers)
         ]
 
     @classmethod
@@ -40,7 +40,7 @@ class Quadruple(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        position, numbers = Quadruple.extract(board, yaml)
+        position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -52,19 +52,19 @@ class Quadruple(Item):
                     for offset in offsets
                 ]
             )
-            solver.model += digit_sum >= 1, f"{self.name}_{digit}"
+            solver.model += digit_sum == 0, f"{self.name}_{digit}"
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
 
     def css(self) -> Dict:
         return {
-            ".QuadrupleCircle": {
+            ".ExclusionCircle": {
                 "stroke-width": 2,
                 "stroke": "black",
                 "fill": "white"
             },
-            ".QuadrupleText": {
+            ".ExclusionText": {
                 "stroke": "black",
                 "fill": "black",
                 "font-size": "30px"

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import lpSum
 
@@ -58,19 +58,7 @@ class EqualSum(Line):
             j = 0 if i == len(areas) - 1 else i + 1
             solver.model += sums[i] == sums[j], f"{self.name}_{i}"
 
-    def css(self) -> str:
-        return (
-            ".EqualSum {\n"
-            "    stroke: lightskyblue;\n"
-            "    stroke-width: 10;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.EqualSum': {
                 'stroke': 'lightskyblue',

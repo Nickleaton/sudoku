@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord
@@ -22,16 +22,7 @@ class Asterix(SpecialRegion):
     def region_name(self) -> str:
         return 'Asterix'
 
-    def css(self) -> str:
-        return (
-            ".Asterix {\n"
-            "    stroke: orange;\n"
-            "    fill: orange;\n"
-            "}\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.Asterix': {
                 'stroke': 'orange',

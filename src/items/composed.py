@@ -92,11 +92,8 @@ class Composed(Item):
             return {self.__class__.__name__: None}
         return {self.__class__.__name__: [item.to_dict() for item in self.items]}
 
-    def css(self) -> str:
-        return "\n".join([item.css() for item in self.items])
-
-    def css2(self):
-        result = super().css2()
+    def css(self) -> Dict:
+        result = super().css()
         for item in self.items:
-            result |= item.css2()
+            result |= item.css()
         return result

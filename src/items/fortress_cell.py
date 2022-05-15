@@ -37,15 +37,7 @@ class FortressCell(CellReference):
             solver.model += solver.values[self.row][self.column] >= solver.values[other.row][
                 other.column] + 1, f"Fortress_{self.row}_{self.column}_{other.row}_{other.column}"
 
-    def css(self) -> str:
-        return (
-            ".FortressCell {\n"
-            "    stroke: black;\n"
-            "    stroke-width: 3;\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".FortressCell": {
                 "stroke": "black",

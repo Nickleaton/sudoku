@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
@@ -58,18 +58,7 @@ class DistinctRenban(Renban):
         # for dr in solver.distinct_renbans:
         #     solver.model + not_equal(dr, solver.renbans[self.name])
 
-    def css(self) -> str:
-        return (
-            ".DistinctRenban {\n"
-            "    stroke: purple;\n"
-            "    stroke-width: 20;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.DistinctRenban': {
                 'stroke': 'purple',

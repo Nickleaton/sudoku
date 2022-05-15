@@ -43,66 +43,26 @@ class KnownCell(CellReference):
             name = f"Known_{self.row}_{self.column}_eq_{digit}"
             solver.model += solver.choices[digit][self.row][self.column] == target, name
 
-    def css(self) -> str:
-        return (
-            ".Known {\n"
-            "    font-size: 70px;\n"
-            "    fill: black;\n"
-            "    font-weight: 500;\n"
-            "    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;\n"
-            "}\n"
-            ".Unknown {\n"
-            "    font-size: 70px;\n"
-            "    fill: blue;\n"
-            "    font-weight: 500;\n"
-            "    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;\n"
-            "}\n"
-            ".KnownForeground {\n"
-            "    font-size: 70px;\n"
-            "    stroke: black;\n"
-            "    fill: black\n"
-            "}\n"
-            ".KnownBackground {\n"
-            "    font-size: 70px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-            ".UnknownForeground {\n"
-            "    font-size: 70px;\n"
-            "    stroke: blue;\n"
-            "    fill: blue\n"
-            "}\n"
-            ".UnknownBackground {\n"
-            "    font-size: 70px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-        )
-    
-    def css2(self):
+    def css(self) -> Dict:
         return {
-            ".Known" :{
+            ".Known": {
                 'font-size': '70px',
                 'fill': 'black',
-                'font-weight':'500',
+                'font-weight': '500',
                 'text-shadow': '-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white'
             },
-            ".Unknown":{
+            ".Unknown": {
                 'font-size': '70px',
                 'fill': 'blue',
                 'font-weight': '500',
                 'text-shadow': '-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white'
             },
-            ".KnownForeground" :{
+            ".KnownForeground": {
                 'font-size': '70px',
                 'stroke': 'black',
                 'fill': 'black'
             },
-            ".KnownBackground" :{
+            ".KnownBackground": {
                 'font-size': '70px',
                 'stroke': 'white',
                 'stroke-width': 8,

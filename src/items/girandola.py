@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord
@@ -22,16 +22,7 @@ class Girandola(SpecialRegion):
             Coord(9, 9)
         ]
 
-    def css(self) -> str:
-        return (
-            ".Girandola  {\n"
-            "    stroke: lightgreen;\n"
-            "    fill: lightgreen;\n"
-            "}\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".Girandola": {
                 "stroke": "lightgreen",

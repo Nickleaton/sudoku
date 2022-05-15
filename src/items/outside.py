@@ -67,26 +67,7 @@ class Outside(FirstN):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={''.join([str(d) for d in self.digits])}"}
 
-    def css(self) -> str:
-        return (
-            ".OutsideForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "\n"
-            "}\n"
-            "\n"
-            ".OutsideBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".OutsideForeground": {
                 "font-size": "30px",

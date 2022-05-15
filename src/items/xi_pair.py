@@ -1,3 +1,5 @@
+from typing import Dict
+
 from src.items.sum_pair import SumPair
 
 
@@ -15,26 +17,7 @@ class XIPair(SumPair):
     def label(self) -> str:
         return "XI"
 
-    def css(self) -> str:
-        return (
-            ".XIPairForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            "\n"
-            ".XIPairBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".XIPairForeground": {
                 "font-size": "30px",

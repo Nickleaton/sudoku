@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import lpSum
 
@@ -32,23 +32,7 @@ class Arrow(Line):
         total = lpSum([solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self))])
         solver.model += total == solver.values[self.cells[0].row][self.cells[0].column], self.name
 
-    def css(self) -> str:
-        return (
-            ".Arrow {\n"
-            "    stroke: grey;\n"
-            "    fill: white;\n"
-            "    stroke-width: 3;\n"
-            "}\n"
-            "\n"
-            ".ArrowStart {\n"
-            "}\n"
-            "\n"
-            ".ArrowEnd {\n"
-            "    fill-opacity: 0;\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.Arrow': {
                 'stroke': 'grey',

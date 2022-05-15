@@ -90,24 +90,7 @@ class Frame(FirstN):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
-    def css(self) -> str:
-        return (
-            ".FrameTextForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            ".FrameTextBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".FrameTextForeground":
                 {

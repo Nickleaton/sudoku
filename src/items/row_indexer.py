@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, RectGlyph
 from src.items.board import Board
@@ -37,14 +37,7 @@ class RowIndexer(Indexer):
                 indexed = solver.choices[cell.row][digit][cell.column]
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
-    def css(self) -> str:
-        return (
-            ".RowIndexer {\n"
-            "    fill: pink;\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.RowIndexer': {
                 'fill': 'pink'

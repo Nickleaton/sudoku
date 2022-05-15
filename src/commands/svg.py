@@ -15,7 +15,7 @@ class SVG(Command):
         logging.info(f"Producing svg")
         glyph = self.problem.sorted_glyphs
         canvas = Drawing(filename="test.svg", size=("35cm", "35cm"), viewBox="0 0 1100 1100")
-        canvas.add(Style(content="\n" + Item.css2_text(self.problem.css2(), 0)))
+        canvas.add(Style(content="\n" + Item.css_text(self.problem.css(), 0)))
         for clz in glyph.used_classes:
             if (element := clz.start_marker()) is not None:
                 canvas.defs.add(element)

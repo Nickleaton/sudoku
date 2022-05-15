@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.cell import Cell
@@ -30,25 +30,7 @@ class CenterProduct(Product):
             TextGlyph('CenterProduct', 0, self.position + Coord(1, 1), str(self.product))
         ]
 
-    def css(self):
-        return (
-            ".CenterProductForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            "\n"
-            ".CenterProductBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.CenterProductForeground': {
                 'font-size': '30px',

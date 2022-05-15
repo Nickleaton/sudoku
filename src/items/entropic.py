@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import LpAffineExpression, lpSum
 
@@ -54,19 +54,7 @@ class Entropic(Line):
             solver.model += self.mid_total(solver, i) == self.mid_total(solver, i + 3), f"{self.name}_j_mid_{pname}"
             solver.model += self.top_total(solver, i) == self.top_total(solver, i + 3), f"{self.name}_j_top_{pname}"
 
-    def css(self) -> str:
-        return (
-            ".Entropic {\n"
-            "    stroke: orange;\n"
-            "    stroke-width: 10;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.Entropic': {
                 'stroke': 'orange',

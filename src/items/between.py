@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from pulp import LpVariable, LpInteger
 
@@ -68,22 +68,7 @@ class Between(Line):
                 solver.model += solver.choices[self.board.minimum_digit][cell.row][cell.column] == 0
                 solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0
 
-    def css(self) -> str:
-        return (
-            ".Between {\n"
-            "    stroke: grey;\n"
-            "    fill: white;\n"
-            "    stroke-width: 3;\n"
-            "}\n"
-            "\n"
-            ".BetweenStart {\n"
-            "}\n"
-            "\n"
-            ".BetweenEnd {\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.Between': {
                 'stroke': 'grey',

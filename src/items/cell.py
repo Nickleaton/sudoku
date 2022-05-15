@@ -109,16 +109,7 @@ class Cell(Item):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: int(self.rc)}
 
-    def css(self) -> str:
-        return (
-            ".Cell {\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.Cell': {
                 'stroke': 'black',

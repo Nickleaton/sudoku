@@ -74,17 +74,7 @@ class Rossini(FirstN):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
 
-    def css(self) -> str:
-        return (
-            ".Rossini {\n"
-            "    stroke: black;\n"
-            "    fill: black;\n"
-            "    font-size: 30px;\n"
-            "}\n"
-            "\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".Rossini": {
                 "stroke": "black",

@@ -92,36 +92,7 @@ class LittleKiller(Region):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}
 
-    def css(self) -> str:
-        return (
-            ".LittleKiller {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 2;\n"
-            "    fill: black\n"
-            "}\n"
-            ".LittleKillerForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            ".LittleKillerBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-            ".LittleArrow {\n"
-            "    font-size: 20px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.LittleKiller': {
                 'font-size': '30px',

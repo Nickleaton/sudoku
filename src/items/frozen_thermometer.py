@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
 from src.items.thermometer import Thermometer
@@ -30,24 +30,7 @@ class FrozenThermometer(Thermometer):
             name = f"{self.__class__.__name__}_rank_{c1.row}_{c1.column}_{c2.row}_{c2.column}"
             solver.model += solver.values[c1.row][c1.column] <= solver.values[c2.row][c2.column], name
 
-    def css(self) -> str:
-        return (
-            ".FrozenThermometer {\n"
-            "    stroke: grey;\n"
-            "    stroke-width: 20;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-            "\n"
-            ".FrozenThermometerStart {\n"
-            "    stroke: grey;\n"
-            "    fill: grey;\n"
-            "    stroke-width: 30;\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.FrozenThermometer': {
                 'stroke': 'grey',

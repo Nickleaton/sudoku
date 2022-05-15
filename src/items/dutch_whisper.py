@@ -1,4 +1,4 @@
-from typing import List, Sequence
+from typing import List, Sequence, Dict
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
@@ -19,18 +19,7 @@ class DutchWhisper(GreaterThanEqualDifferenceLine):
     def tags(self) -> set[str]:
         return super().tags.union({'Dutch Whisper'})
 
-    def css(self) -> str:
-        return (
-            ".DutchWhisper {\n"
-            "    stroke: green;\n"
-            "    stroke-width: 20;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.DutchWisper': {
                 'stroke': 'green',

@@ -1,4 +1,4 @@
-from typing import List, Set
+from typing import List, Set, Dict
 
 from pulp import LpVariable, LpInteger
 
@@ -81,18 +81,7 @@ class Sequence(Line):
                     name = f"{self.name}_impossible_{i}_{d}"
                     solver.model += solver.choices[d][cell.row][cell.column] == 0, name
 
-    def css(self) -> str:
-        return (
-            ".Sequence {\n"
-            "    stroke: grey;\n"
-            "    stroke-width: 20;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".Renban": {
                 "stroke": "grey",

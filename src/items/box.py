@@ -56,16 +56,7 @@ class Box(StandardRegion):
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
-    def css(self) -> str:
-        return (
-            ".Box {\n"
-            "    stroke: black;\n"
-            "    stroke-width: 3;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".Box": {
                 'stroke': 'black',

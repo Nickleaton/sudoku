@@ -1,4 +1,4 @@
-from typing import List, Set
+from typing import List, Set, Dict
 
 from pulp import LpVariable, LpInteger
 
@@ -77,18 +77,7 @@ class Renban(Line):
         # add the mandatory digits
         self.add_contains_constraint(solver, self.mandatory_digits(length))
 
-    def css(self) -> str:
-        return (
-            ".Renban {\n"
-            "    stroke: purple;\n"
-            "    stroke-width: 20;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".Renban": {
                 "stroke": "purple",

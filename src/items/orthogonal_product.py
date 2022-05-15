@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.cell import Cell
@@ -31,25 +31,7 @@ class OrthogonalProduct(Product):
             TextGlyph('Product', 0, self.position + Coord(0.15, 0.15), str(self.product))
         ]
 
-    def css(self) -> str:
-        return (
-            ".OrthogonalProductForeground {\n"
-            "    font-size: 18px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            "\n"
-            ".OrthogonalProductBackground {\n"
-            "    font-size: 18px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.OrthogonalProductForeground': {
                 'font-size': '18px',

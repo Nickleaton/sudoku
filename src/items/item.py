@@ -81,28 +81,7 @@ class Item(ABC):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
 
-    def css(self) -> str:
-        return (
-            ".TextGlyphForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            ".TextGlyphBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-            ".LittleNumber {\n"
-            "    font-size: 20px;\n"
-            "    stroke: black;\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.TextGlyphForeground': {
                 'font-size': '30px',
@@ -125,14 +104,14 @@ class Item(ABC):
         }
 
     @staticmethod
-    def css2_text(data: Dict, indent: int = 0) -> str:
+    def css_text(data: Dict, indent: int = 0) -> str:
         tab = '    '
         result = ""
         for k in sorted(data.keys()):
             v = data[k]
             if isinstance(v, dict):
                 result += f"{tab * indent}{k} {{\n"
-                result += Item.css2_text(v, indent + 1)
+                result += Item.css_text(v, indent + 1)
                 result += f"{tab * indent}}}\n\n"
             else:
                 result += f"{tab * indent}{k}: {v};\n"

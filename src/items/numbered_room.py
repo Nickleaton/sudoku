@@ -90,24 +90,7 @@ class NumberedRoom(Item):
         else:  # pragma: no cover
             raise Exception(f"Unexpected Side {self.side.name}")
 
-    def css(self) -> str:
-        return (
-            ".NumberedRoomForeground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: black;\n"
-            "    stroke-width: 1;\n"
-            "    fill: black\n"
-            "}\n"
-            "\n"".NumberedRoomBackground {\n"
-            "    font-size: 30px;\n"
-            "    stroke: white;\n"
-            "    stroke-width: 8;\n"
-            "    fill: white;\n"
-            "    font-weight: bolder\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             '.NumberedRoomForeground': {
                 'font-size': '30px',

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.line import Line
@@ -27,18 +27,7 @@ class Palindrome(Line):
             name = f"{self.name}_{i}"
             solver.model += solver.values[c1.row][c1.column] == solver.values[c2.row][c2.column], name
 
-    def css(self) -> str:
-        return (
-            ".Palindrome {\n"
-            "    stroke: silver;\n"
-            "    stroke-width: 20;\n"
-            "    stroke-linecap: round;\n"
-            "    stroke-linejoin: round;\n"
-            "    fill-opacity: 0\n"
-            "}\n"
-        )
-
-    def css2(self):
+    def css(self) -> Dict:
         return {
             ".Palindrome": {
                 "stroke": "silver",

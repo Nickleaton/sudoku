@@ -1,7 +1,5 @@
 """Module that handles constraints."""
 
-import src.items.tlbr_refecting_diagonal
-import src.items.sequence
 import src.items.anti
 import src.items.anti_king
 import src.items.anti_knight
@@ -35,6 +33,7 @@ import src.items.dutch_whisper
 import src.items.entropic
 import src.items.equal_sum
 import src.items.even_cell
+import src.items.exclusion
 import src.items.first_n
 import src.items.fortress_cell
 import src.items.frame
@@ -74,12 +73,14 @@ import src.items.row
 import src.items.row_indexer
 import src.items.rows
 import src.items.sandwich
+import src.items.sequence
 import src.items.simple_thermometer
 import src.items.solution
 import src.items.standard_region
 import src.items.sum_pair
 import src.items.thermometer
 import src.items.tlbr
+import src.items.tlbr_refecting_diagonal
 import src.items.v_pair
 import src.items.vi_pair
 import src.items.window
