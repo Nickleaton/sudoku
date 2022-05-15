@@ -47,6 +47,8 @@ class Command:
             os.makedirs(directory)
 
     def write(self) -> None:
+        if self.output_filename is None:
+            return
         assert self.output_filename is not None
         assert self.output is not None
         self.check_directory()

@@ -15,9 +15,9 @@ env = Environment(
 class HTML(Command):
 
     def process(self) -> None:
-        assert self.problem is not None
         logging.info(f"Producing html  file of type")
         super().process()
+        assert self.problem is not None
         svg_command = SVG(self.config_filename, "")
         template = env.get_template("problem.html")
         if self.problem.sorted_unique_rules is None:

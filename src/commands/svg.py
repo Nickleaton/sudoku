@@ -11,11 +11,16 @@ from src.items.item import Item
 class SVG(Command):
 
     def process(self) -> None:
-        assert self.problem is not None
         super().process()
+        assert self.problem is not None
+        assert self.board is not None
         logging.info(f"Producing svg")
         glyph = self.problem.sorted_glyphs
-        canvas = Drawing(filename="test.svg", size=("35cm", "35cm"), viewBox="0 0 1100 1100")
+        canvas = Drawing(
+            filename="test.svg",
+            size=("35cm", "35cm"),
+            viewBox=f"0 0 {100 * (self.board.board_rows + 2)} {100 * (self.board.board_columns + 2)}"
+        )
         canvas.add(Style(content="\n" + Item.css_text(self.problem.css(), 0)))
         for clz in glyph.used_classes:
             if (element := clz.start_marker()) is not None:

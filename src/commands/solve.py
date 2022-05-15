@@ -15,10 +15,11 @@ class Solve(Command):
         self.output: Optional[str] = None
 
     def process(self) -> None:
+
+        logging.info(f"Solving File {self.config_filename}")
+        super().process()
         assert self.board is not None
         assert self.problem is not None
-        logging.info(f"Produce LP File {self.config_filename}")
-        super().process()
         self.solver = PulpSolver(self.board)
         self.problem.add_variables(self.board, self.solver)
         self.problem.add_constraint(self.solver)
