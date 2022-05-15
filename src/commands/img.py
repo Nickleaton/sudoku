@@ -33,5 +33,6 @@ class IMG(Command):
         os.unlink(fname)
 
     def write(self) -> None:
+        self.check_directory()
         logging.info(f"Writing output to {self.output_filename}")
         renderPM.drawToFile(self.drawing, self.output_filename, fmt=self.file_format)

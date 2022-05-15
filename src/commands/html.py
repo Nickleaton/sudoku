@@ -14,10 +14,6 @@ env = Environment(
 
 class HTML(Command):
 
-    @property
-    def extension(self) -> str:
-        return "html"
-
     def process(self) -> None:
         logging.info(f"Producing html  file of type")
         super().process()

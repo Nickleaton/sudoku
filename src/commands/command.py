@@ -1,4 +1,5 @@
 import logging
+import os.path
 from typing import Dict
 
 import oyaml as yaml
@@ -37,7 +38,14 @@ class Command:
         self.create_board()
         self.create_problem()
 
+    def check_directory(self) -> None:
+        directory = os.path.dirname(self.output_filename)
+        if not os.path.exists(directory):
+            logging.info(f"Creating directory {directory}")
+            os.makedirs(directory)
+
     def write(self) -> None:
+        self.check_directory()
         logging.info(f"Writing output to {self.output_filename}")
         with open(self.output_filename, 'w', encoding="utf-8") as f:
             f.write(self.output)
