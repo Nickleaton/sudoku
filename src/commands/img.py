@@ -11,7 +11,7 @@ from src.commands.svg import SVG
 
 class IMG(Command):
 
-    def __init__(self, config_filename: str, output_filename: str, file_format: str):
+    def __init__(self, config_filename: str, output_filename: str, file_format: str = "jpg"):
         super().__init__(config_filename, output_filename)
         self.file_format = file_format
         self.drawing = None
