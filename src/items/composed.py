@@ -15,6 +15,12 @@ class Composed(Item):
         self.items: List[Item] = list(items)
         self._n: int = 0
 
+    def regions(self) -> Set['Item']:
+        result = set({})
+        for item in self.items:
+            result |= item.regions()
+        return result
+
     def add(self, item: Item):
         self.items.append(item)
         item.parent = self

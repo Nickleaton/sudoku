@@ -15,6 +15,10 @@ class Item(ABC):
     classes: Dict[str, 'Item'] = {}
     counter = 0
 
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        Item.classes[cls.__name__] = cls
+
     def __init__(self, board: Board):
         super().__init__()
         self.board: Board = board
@@ -22,11 +26,16 @@ class Item(ABC):
         self.identity: int = Item.counter
         Item.counter += 1
 
-    def __init_subclass__(cls, **kwargs):
-        super().__init_subclass__(**kwargs)
-        Item.classes[cls.__name__] = cls
+    @property
+    def top(self) -> 'Item':
+        if self.parent is None:
+            return self
+        return self.parent.top
 
-    def svg(self) -> Optional[Glyph]:  # pylint: disable=no-self-use
+    def regions(self) -> Set['Item']:
+        return set({})
+
+    def svg(self) -> Optional[Glyph]:
         return None
 
     @property

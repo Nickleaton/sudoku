@@ -43,6 +43,13 @@ class TestComposed(TestItem):
     def expected_classes(self) -> set[Type[Item]]:
         return {Item, Composed}
 
+    def test_top(self):
+        child = Item(self.board)
+        self.item.add (child)
+        self.assertEqual(self.item, self.item.top)
+        self.assertEqual(self.item, child.top)
+
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

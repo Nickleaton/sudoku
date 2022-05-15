@@ -18,6 +18,10 @@ class CellException(Exception):
 class Cell(Item):
     cache: Dict[Tuple[int, int], 'Cell'] = {}
 
+    @classmethod
+    def clear(cls):
+        cls.cache.clear()
+
     def __init__(self, board: Board, row: int, column: int):
         super().__init__(board)
         self.row = row

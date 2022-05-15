@@ -10,6 +10,8 @@ from tests.items.test_item import TestItem
 class TestCell(TestItem):
 
     def setUp(self) -> None:
+        # Need to clear cache otherwise you can get side effects from old cells.
+        Cell.clear()
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Cell.make(self.board, 1, 2)
 

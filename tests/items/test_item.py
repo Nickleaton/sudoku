@@ -21,6 +21,9 @@ class TestItem(unittest.TestCase):
     def test_clazz(self):
         self.assertEqual(self.item.__class__, self.clazz)
 
+    def test_top(self):
+        self.assertEqual(self.item.top, self.item)
+
     @property
     def config(self) -> str:
         return "Item:"
