@@ -40,13 +40,10 @@ class DistinctRenban(Renban):
     def digits_to_str(digits: List[int]):
         return sum([DistinctRenban.power(digit) for digit in digits])
 
-    def add_variables(self, board: Board, solver: PulpSolver) -> None:  # TODO
-        super().add_variables(board, solver)
+    # def add_constraint(self, solver: PulpSolver) -> None: 
+    #     super().add_constraint(solver)
         # solver.renbans[self.name] = LpVariable(f"{self.name}", 1, int(10 ** self.board.maximum_digit), LpInteger)
         # solver.distinct_renbans.append(solver.renbans[self.name])
-
-    def add_constraint(self, solver: PulpSolver) -> None:  # TODO
-        super().add_constraint(solver)
         # total = lpSum(
         #     [
         #         DistinctRenban.power(digit) * solver.choices[digit][cell.row][cell.column]

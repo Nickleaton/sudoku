@@ -31,11 +31,8 @@ class Between(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Between', 'Comparison'})
 
-    def add_variables(self, board: Board, solver: PulpSolver) -> None:
-        self.identity = len(solver.betweens) + 1
-        solver.betweens[self.name] = LpVariable(f"{self.name}_increasing", 0, 1, LpInteger)
-
     def add_constraint(self, solver: PulpSolver) -> None:
+
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]
@@ -44,9 +41,10 @@ class Between(Line):
         end_cell = self.cells[-1]
         end = solver.values[end_cell.row][end_cell.column]
 
+        flag = LpVariable(f"{self.name}_increasing", 0, 1, LpInteger)
+
         for cell in self.cells[1:-1]:
             value = solver.values[cell.row][cell.column]
-            flag = solver.betweens[self.name]
 
             # Ascending
             label = f"{self.name}_after_ascending_{cell.row}_{cell.column}"
@@ -61,12 +59,6 @@ class Between(Line):
 
             label = f"{self.name}_before_descending_{cell.row}_{cell.column}"
             solver.model += value + big_m * (1 - flag) >= end + 1, label
-
-        if EXCLUDE_VALUES_ON_LINE:  # pragma: no cover
-            # min and max digit cannot be in the middle of a between line
-            for cell in self.cells[1:-1]:
-                solver.model += solver.choices[self.board.minimum_digit][cell.row][cell.column] == 0
-                solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0
 
     def css(self) -> Dict:
         return {

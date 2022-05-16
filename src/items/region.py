@@ -30,6 +30,9 @@ class Region(Composed):
     def strictly_unique(self) -> bool:
         return self.unique and self.strict
 
+    def bookkeeping(self, cell: Cell) -> None:
+        pass
+
     @property
     def cells(self) -> List[Cell]:
         return [item for item in self.items if isinstance(item, Cell)]

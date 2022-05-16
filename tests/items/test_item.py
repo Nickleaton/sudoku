@@ -88,13 +88,8 @@ class TestItem(unittest.TestCase):
             print()
         self.assertEqual(self.expected_classes, self.item.used_classes)
 
-    def test_add_variables(self) -> None:
-        solver = PulpSolver(self.board)
-        self.item.add_variables(self.board, solver)
-
     def test_add_constraint(self) -> None:
         solver = PulpSolver(self.board)
-        self.item.add_variables(self.board, solver)
         self.item.add_constraint(solver)
 
     def test_to_dict(self) -> None:

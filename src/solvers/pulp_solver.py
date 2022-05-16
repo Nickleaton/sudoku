@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict, Optional
+from typing import Optional, Dict
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum, getSolver
 

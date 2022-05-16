@@ -12,11 +12,12 @@ class Composed(Item):
 
     def __init__(self, board: Board, items: Sequence[Item]):
         super().__init__(board)
-        self.items: List[Item] = list(items)
+        self.items = []
+        self.add_items(items)
         self._n: int = 0
 
     def regions(self) -> Set['Item']:
-        result = set({})
+        result = {self}
         for item in self.items:
             result |= item.regions()
         return result
@@ -61,10 +62,6 @@ class Composed(Item):
         for item in self.items:
             result = result.union(item.used_classes)
         return result
-
-    def add_variables(self, board: Board, solver: PulpSolver) -> None:
-        for item in self.items:
-            item.add_variables(board, solver)
 
     def add_constraint(self, solver: PulpSolver) -> None:
         for item in self.items:

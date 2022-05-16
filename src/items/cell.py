@@ -26,12 +26,50 @@ class Cell(Item):
         super().__init__(board)
         self.row = row
         self.column = column
+        self.possibles = [True] * self.board.maximum_digit
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
 
     def __hash__(self):
         return self.row * self.board.maximum_digit + self.column
+
+    def set_possible(self, digits: List[int]) -> None:
+        for digit in self.board.digit_range:
+            if digit not in digits:
+                self.possibles[digit] = False
+
+    def set_impossible(self, digits: List[int]) -> None:
+        for digit in self.board.digit_range:
+            if digit in digits:
+                self.possibles[digit] = False
+
+    def set_odd(self) -> None:
+        for digit in self.board.digit_range:
+            if digit % 2 != 1:
+                self.possibles[digit] = False
+
+    def set_even(self) -> None:
+        for digit in self.board.digit_range:
+            if digit % 2 != 0:
+                self.possibles[digit] = False
+
+    def set_minimum(self, lower: int) -> None:
+        for digit in self.board.digit_range:
+            if digit < lower:
+                self.possibles[digit] = False
+
+    def set_maximum(self, upper: int) -> None:
+        for digit in self.board.digit_range:
+            if digit > upper:
+                self.possibles[digit] = False
+
+    def set_range(self, lower: int, upper: int) -> None:
+        self.set_minimum(lower)
+        self.set_maximum(upper)
+
+    def fixed(self) -> bool:
+        return sum(self.possibles) == 1
 
     @staticmethod
     def letter() -> str:

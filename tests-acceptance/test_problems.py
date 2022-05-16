@@ -30,7 +30,7 @@ class TestFiles(unittest.TestCase):
         ]
     )
 
-    filenames = ['problem069']
+    filenames = ['problem001']
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_svg(self, filename: str) -> None:

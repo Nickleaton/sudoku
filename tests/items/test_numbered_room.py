@@ -44,7 +44,6 @@ class TestNumberedRoom(TestItem):
         ]
         for room in numbered_rooms:
             solver = PulpSolver(self.board)
-            room.add_variables(self.board, solver)
             room.add_constraint(solver)
 
 

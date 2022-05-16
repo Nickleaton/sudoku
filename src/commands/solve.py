@@ -21,7 +21,6 @@ class Solve(Command):
         assert self.board is not None
         assert self.problem is not None
         self.solver = PulpSolver(self.board)
-        self.problem.add_variables(self.board, self.solver)
         self.problem.add_constraint(self.solver)
         self.solver.solve()
         self.solution = self.solver.solution

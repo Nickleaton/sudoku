@@ -33,7 +33,7 @@ class Item(ABC):
         return self.parent.top
 
     def regions(self) -> Set['Item']:
-        return set({})
+        return {self}
 
     def svg(self) -> Optional[Glyph]:
         return None
@@ -81,10 +81,10 @@ class Item(ABC):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(({self.board!r})"
 
-    def add_variables(self, board: Board, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
+    def add_constraint(self, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
         pass
 
-    def add_constraint(self, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
+    def bookkeeping(self) -> None:
         pass
 
     def to_dict(self) -> Dict:

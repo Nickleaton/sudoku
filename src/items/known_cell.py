@@ -37,12 +37,6 @@ class KnownCell(CellReference):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        for digit in self.board.digit_range:
-            target = 1 if digit == self.digit else 0
-            name = f"Known_{self.row}_{self.column}_eq_{digit}"
-            solver.model += solver.choices[digit][self.row][self.column] == target, name
-
     def css(self) -> Dict:
         return {
             ".Known": {
@@ -82,3 +76,21 @@ class KnownCell(CellReference):
                 'font-weight': 'bolder'
             }
         }
+
+    def bookkeeping(self) -> None:
+        self.cell.set_possible([self.digit])
+
+    def add_constraint(self, solver: PulpSolver) -> None:
+        for digit in self.board.digit_range:
+            target = 1 if digit == self.digit else 0
+            name = f"Known_{self.row}_{self.column}_eq_{digit}"
+            solver.model += solver.choices[digit][self.row][self.column] == target, name
+
+        # raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]
+        # filtered_regions = [region for region in raw_regions if self.cell in region]
+        # for region in filtered_regions:
+        #     for cell in region.cells:
+        #         if cell == self.cell:
+        #             continue
+        #         name = f"Exclude_{self.name}_{region.name}_{cell.name}_{self.digit}"
+        #         solver.model += solver.choices[self.digit][cell.row][cell.column] == 0, name
