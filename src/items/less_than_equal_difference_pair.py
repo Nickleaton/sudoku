@@ -9,8 +9,8 @@ class LessThanEqualDifferencePair(DifferencePair):
         return super().tags.union({'LessThanEqualDifference'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        value1 = solver.values[self.c1.row][self.c1.column]
-        value2 = solver.values[self.c2.row][self.c2.column]
+        value1 = solver.values[self.cell_1.row][self.cell_1.column]
+        value2 = solver.values[self.cell_2.row][self.cell_2.column]
         difference = value1 - value2
         solver.model += difference <= self.difference, f"{self.name}_upper"
         solver.model += -difference <= self.difference, f"{self.name}_lower"

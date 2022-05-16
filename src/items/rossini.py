@@ -79,6 +79,6 @@ class Rossini(FirstN):
             ".Rossini": {
                 "stroke": "black",
                 "fill": "black",
-                f"ont-size": "30px"
+                "font-size": "30px"
             }
         }

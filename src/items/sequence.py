@@ -47,13 +47,13 @@ class Sequence(Line):
         return 1
 
     def possible_digits(self) -> List[Set[int]]:
-        l = len(self.cells)
-        m = self.board.maximum_digit
+        length = len(self.cells)
+        big_m = self.board.maximum_digit
 
         possible = []
-        for i in range(1, l + 1):
-            a = set([x for x in range(i, i + m - l + 1)])
-            d = set([m - x + 1 for x in range(i, i + m - l + 1)])
+        for i in range(1, length + 1):
+            a = set(range(i, i + big_m - length + 1))
+            d = {big_m - x + 1 for x in range(i, i + big_m - length + 1)}
             possible.append(a.union(d))
         return possible
 
@@ -68,9 +68,9 @@ class Sequence(Line):
 
         # for each pair set enforce that the delta is the difference
         for i in range(0, len(self.cells) - 1):
-            v1 = solver.values[self.cells[i].row][self.cells[i].column]
-            v2 = solver.values[self.cells[i + 1].row][self.cells[i + 1].column]
-            solver.model += v1 - v2 == difference, f"{self.name}_{i}"
+            value1 = solver.values[self.cells[i].row][self.cells[i].column]
+            value2 = solver.values[self.cells[i + 1].row][self.cells[i + 1].column]
+            solver.model += value1 - value2 == difference, f"{self.name}_{i}"
 
         # speeds up the solve by restricting the possible digits along the line
         # works like a double ended thermometer

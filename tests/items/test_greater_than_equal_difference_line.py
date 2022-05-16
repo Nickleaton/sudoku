@@ -28,7 +28,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
 
     @property
     def config(self) -> str:
-        return f"GreaterThanEqualDifferenceLine: 11, 12, 13"
+        return "GreaterThanEqualDifferenceLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:

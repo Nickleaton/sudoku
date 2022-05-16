@@ -1,6 +1,6 @@
 import logging
 import os.path
-from typing import Dict, Optional, AnyStr, Any
+from typing import Dict, Optional
 
 import oyaml as yaml
 
@@ -22,15 +22,15 @@ class Command:
 
     def load_config(self) -> None:
         logging.info(f"Loading config from {self.config_filename}")
-        with open(self.config_filename, 'r') as f:
-            self.config = yaml.load(f, yaml.SafeLoader)
+        with open(self.config_filename, 'r', encoding='utf-8') as file:
+            self.config = yaml.load(file, yaml.SafeLoader)
 
     def create_board(self):
-        logging.info(f"Creating board")
+        logging.info("Creating board")
         self.board = Board.create('Board', self.config)
 
     def create_problem(self):
-        logging.info(f"Creating problem")
+        logging.info("Creating problem")
         self.problem = Item.create(self.board, {'Constraints': self.config['Constraints']})
 
     def process(self) -> None:
@@ -53,5 +53,5 @@ class Command:
         assert self.output is not None
         self.check_directory()
         logging.info(f"Writing output to {self.output_filename}")
-        with open(self.output_filename, 'w', encoding="utf-8") as f:
-            f.write(self.output)
+        with open(self.output_filename, 'w', encoding="utf-8") as file:
+            file.write(self.output)

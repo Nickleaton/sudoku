@@ -92,18 +92,17 @@ class Frame(FirstN):
 
     def css(self) -> Dict:
         return {
-            ".FrameTextForeground":
-                {
-                    "font-size": "30px",
-                    "stroke": "black",
-                    "stroke-width": 1,
-                    "fill": "black"
-                },
-            ".FrameTextBackground": {
+            ".FrameTextForeground": {
+                "fill": "black",
                 "font-size": "30px",
-                "stroke": "white",
-                "stroke-width": 8,
+                "stroke": "black",
+                "stroke-width": 1
+            },
+            ".FrameTextBackground": {
                 "fill": "white",
-                "font-weight": "bolder"
+                "font-size": "30px",
+                "font-weight": "bolder",
+                "stroke": "white",
+                "stroke-width": 8
             }
         }

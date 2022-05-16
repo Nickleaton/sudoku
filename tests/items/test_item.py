@@ -30,7 +30,7 @@ class TestItem(unittest.TestCase):
 
     def test_create(self) -> None:
         if self.item.__class__.__name__ == 'Item':
-            return Item(self.board)
+            return
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         item = Item.create(self.board, config)
         self.assertIsNotNone(item)

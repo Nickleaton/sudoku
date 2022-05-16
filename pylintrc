@@ -6,7 +6,8 @@ load-plugins=perflint
 disable=missing-function-docstring,
     missing-class-docstring,
     missing-module-docstring,
-    duplicate-code
+    duplicate-code,
+    logging-fstring-interpolation
 
 [BASIC]
 

@@ -18,7 +18,7 @@ class TestPalindrome(TestLine):
 
     @property
     def config(self) -> str:
-        return f"Palindrome: 11, 12, 13"
+        return "Palindrome: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:

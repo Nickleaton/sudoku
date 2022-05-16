@@ -24,7 +24,7 @@ class TestDifferenceLine(TestLine):
 
     @property
     def config(self) -> str:
-        return f"DifferenceLine: 11, 12, 13"
+        return "DifferenceLine: 11, 12, 13"
 
     @property
     def representation(self) -> str:

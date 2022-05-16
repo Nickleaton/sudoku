@@ -13,6 +13,8 @@ class GreaterThanEqualDifferencePair(DifferencePair):
     def add_constraint(self, solver: PulpSolver) -> None:
         big_m = self.board.maximum_digit + 1
         indicator = LpVariable(f"Indicator_{self.name}", 0, 1, LpInteger)
-        difference = solver.values[self.c1.row][self.c1.column] - solver.values[self.c2.row][self.c2.column]
+        value_1 = solver.values[self.cell_1.row][self.cell_1.column]
+        value_2 = solver.values[self.cell_2.row][self.cell_2.column]
+        difference = value_1 - value_2
         solver.model += - big_m * (1 - indicator) + self.difference * indicator <= difference, f"{self.name}_upper"
         solver.model += difference <= - self.difference * (1 - indicator) + big_m * indicator, f"{self.name}_lower"

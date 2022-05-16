@@ -21,7 +21,7 @@ class TestLessThanEqualDifferenceLine(TestLine):
 
     @property
     def config(self) -> str:
-        return f"LessThanEqualDifferenceLine: 11, 12, 13"
+        return "LessThanEqualDifferenceLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:

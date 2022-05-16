@@ -69,24 +69,24 @@ class NumberedRoom(Item):
     def add_constraint(self, solver: PulpSolver) -> None:
         if self.side == Side.LEFT:
             for d in self.board.digit_range:
-                solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                                solver.choices[self.digit][self.start_cell.row][d], \
-                                f"{self.name}_{d}"
+                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
+                xth = solver.choices[self.digit][self.start_cell.row][d]
+                solver.model += first == xth, f"{self.name}_{d}"
         elif self.side == Side.RIGHT:
             for d in self.board.digit_range:
-                solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                                solver.choices[self.digit][self.start_cell.row][self.board.board_columns - d + 1], \
-                                f"{self.name}_{d}"
+                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
+                xth = solver.choices[self.digit][self.start_cell.row][self.board.board_columns - d + 1]
+                solver.model += first == xth, f"{self.name}_{d}"
         elif self.side == Side.TOP:
             for d in self.board.digit_range:
-                solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                                solver.choices[self.digit][d][self.start_cell.column], \
-                                f"{self.name}_{d}"
+                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
+                xth = solver.choices[self.digit][d][self.start_cell.column]
+                solver.model += first == xth, f"{self.name}_{d}"
         elif self.side == Side.BOTTOM:
             for d in self.board.digit_range:
-                solver.model += solver.choices[d][self.start_cell.row][self.start_cell.column] == \
-                                solver.choices[self.digit][self.board.board_rows - d + 1][self.start_cell.column], \
-                                f"{self.name}_{d}"
+                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
+                xth = solver.choices[self.digit][self.board.board_rows - d + 1][self.start_cell.column]
+                solver.model += first == xth, f"{self.name}_{d}"
         else:  # pragma: no cover
             raise Exception(f"Unexpected Side {self.side.name}")
 

@@ -16,8 +16,8 @@ from src.utils.rule import Rule
 
 class KropkiPair(Pair):
 
-    def __init__(self, board: Board, c1: Cell, c2: Cell):
-        super().__init__(board, c1, c2)
+    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
+        super().__init__(board, cell_1, cell_2)
         self.sos: Dict[int, LpVariable] = {}
 
     @property
@@ -43,7 +43,7 @@ class KropkiPair(Pair):
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [KropkiGlyph(self.__class__.__name__, self.c1.coord.center, self.c2.coord.center)]
+        return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
     @property
     def tags(self) -> set[str]:
@@ -76,15 +76,15 @@ class KropkiPair(Pair):
         :param solver: solver
         """
         for digit in set(self.board.digit_range) - self.possible():
-            name = f"{self.name}_Impossible_{digit}_{self.c1.row}_{self.c1.column}"
-            solver.model += solver.choices[digit][self.c1.row][self.c1.column] == 0, name
-            name = f"{self.name}_Impossible_{digit}_{self.c2.row}_{self.c2.column}"
-            solver.model += solver.choices[digit][self.c2.row][self.c2.column] == 0, name
+            name = f"{self.name}_Impossible_{digit}_{self.cell_1.row}_{self.cell_1.column}"
+            solver.model += solver.choices[digit][self.cell_1.row][self.cell_1.column] == 0, name
+            name = f"{self.name}_Impossible_{digit}_{self.cell_2.row}_{self.cell_2.column}"
+            solver.model += solver.choices[digit][self.cell_2.row][self.cell_2.column] == 0, name
 
     def add_implausible_constraint(self, solver: PulpSolver) -> None:
         for x, y in product(self.board.digit_range, self.board.digit_range):
-            choice1 = solver.choices[x][self.c1.row][self.c1.column]
-            choice2 = solver.choices[y][self.c2.row][self.c2.column]
+            choice1 = solver.choices[x][self.cell_1.row][self.cell_1.column]
+            choice2 = solver.choices[y][self.cell_2.row][self.cell_2.column]
             if not self.valid(x, y):
                 solver.model += choice1 + choice2 <= 1, f"{self.name}_Implausible_{x}_{y}"
 
@@ -106,8 +106,8 @@ class KropkiPair(Pair):
         for x, y in product(self.board.digit_range, self.board.digit_range):
             if not self.valid(x, y):
                 continue
-            choice1 = solver.choices[x][self.c1.row][self.c1.column]
-            choice2 = solver.choices[y][self.c2.row][self.c2.column]
+            choice1 = solver.choices[x][self.cell_1.row][self.cell_1.column]
+            choice2 = solver.choices[y][self.cell_2.row][self.cell_2.column]
             solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f"{self.name}_Valid_{x}_{y}"
             count += 1
 

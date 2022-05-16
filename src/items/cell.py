@@ -15,6 +15,7 @@ class CellException(Exception):
     pass
 
 
+# pylint: disable=too-many-public-methods
 class Cell(Item):
     cache: Dict[Tuple[int, int], 'Cell'] = {}
 
@@ -137,7 +138,7 @@ class Cell(Item):
         return Coord(self.row, self.column)
 
     @property
-    def rc(self) -> str:
+    def row_column_string(self) -> str:
         return f"{self.row}{self.column}"
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -149,7 +150,7 @@ class Cell(Item):
         ) == 1
 
     def to_dict(self) -> Dict:
-        return {self.__class__.__name__: int(self.rc)}
+        return {self.__class__.__name__: int(self.row_column_string)}
 
     def css(self) -> Dict:
         return {

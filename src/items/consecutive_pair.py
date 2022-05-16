@@ -10,15 +10,16 @@ from src.utils.rule import Rule
 
 class ConsecutivePair(LessThanEqualDifferencePair):
 
-    def __init__(self, board: Board, c1: Cell, c2: Cell):
-        super().__init__(board, c1, c2, 1)
+    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
+        super().__init__(board, cell_1, cell_2, 1)
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        cs = yaml[cls.__name__]
-        c1s, c2s = cs.split("-")
-        c1 = Cell.make(board, int(c1s[0]), int(c1s[1]))
-        c2 = Cell.make(board, int(c2s[0]), int(c2s[1]))
+        defintion = yaml[cls.__name__]
+        definition_string_1, definition_string_2 = defintion.split("-")
+
+        c1 = Cell.make(board, int(definition_string_1[0]), int(definition_string_1[1]))
+        c2 = Cell.make(board, int(definition_string_2[0]), int(definition_string_2[1]))
         return c1, c2
 
     @classmethod
@@ -36,13 +37,13 @@ class ConsecutivePair(LessThanEqualDifferencePair):
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [ConsecutiveGlyph(self.__class__.__name__, self.c1.coord.center, self.c2.coord.center)]
+        return [ConsecutiveGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
 
     def to_dict(self) -> Dict:
-        return {self.__class__.__name__: f"{self.c1.rc}-{self.c2.rc}"}
+        return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}
 
     def css(self) -> Dict:
         return {

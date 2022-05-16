@@ -35,8 +35,8 @@ a = Angle(0)  # Force imports for eval to work
 class TestGlyph(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.canvas = Drawing(filename="test.svg", size=("100%", "100%"))
-        self.glyph = Glyph('Style')
+        self.canvas: Drawing = Drawing(filename="test.svg", size=("100%", "100%"))
+        self.glyph: Glyph = Glyph('Style')
         self.maxDiff = None
 
     @property
@@ -60,10 +60,10 @@ class TestGlyph(unittest.TestCase):
         return ""
 
     def test_draw(self) -> None:
-        if not isinstance(self.glyph, Glyph):
-            element = self.glyph.draw()
-            if element is not None:
-                self.assertEqual(self.target, element.tostring())
+        # pylint: disable=assignment-from-none
+        element = self.glyph.draw()
+        if element is not None:
+            self.assertEqual(self.target, element.tostring())
 
     def test_start_marker(self):
         marker = self.glyph.__class__.start_marker()

@@ -46,4 +46,4 @@ class CellReference(Item):
         return result
 
     def to_dict(self) -> Dict:
-        return {self.__class__.__name__: int(self.cell.rc)}
+        return {self.__class__.__name__: int(self.cell.row_column_string)}

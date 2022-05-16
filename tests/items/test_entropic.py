@@ -27,7 +27,7 @@ class TestEntropic(TestLine):
 
     @property
     def config(self) -> str:
-        return f"Entropic: 11, 12, 13, 14, 15, 16"
+        return "Entropic: 11, 12, 13, 14, 15, 16"
 
     @property
     def clazz(self):

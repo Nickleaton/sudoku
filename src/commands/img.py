@@ -21,14 +21,14 @@ class IMG(Command):
         super().process()
         svg_command = SVG(self.config_filename, "")
         svg_command.process()
+        with NamedTemporaryFile() as ntf:
+            fname = ntf.name
+            ntf.close()
 
-        ntf = NamedTemporaryFile()
-        fname = ntf.name
-        ntf.close()
         logging.debug(f"Writing to temp file name {fname}")
         if svg_command.output is not None:
-            with open(fname, 'w', encoding='utf-8') as f:
-                f.write(svg_command.output)
+            with open(fname, 'w', encoding='utf-8') as file:
+                file.write(svg_command.output)
         else:
             logging.error("Expecting output but it is empty")
         self.drawing = svg2rlg(fname)

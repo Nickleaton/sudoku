@@ -86,8 +86,9 @@ class LittleKiller(Region):
         return super().tags.union({'LittleKiller', 'Killer'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        solver.model += lpSum(solver.values[cell.row][cell.column] for cell in self.cells) == self.total, \
-                        f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
+        total = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
+        name = f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
+        solver.model += total == self.total, name
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}

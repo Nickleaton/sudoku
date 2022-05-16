@@ -26,5 +26,5 @@ class SumPair(Pair):
         ]
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        total = solver.values[self.c1.row][self.c1.column] + solver.values[self.c2.row][self.c2.column]
+        total = solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
         solver.model += total == self.total, self.name

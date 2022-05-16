@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Set
 
 from src.glyphs.glyph import Glyph, SimpleThermometerGlyph
 from src.items.thermometer import Thermometer
@@ -36,9 +36,11 @@ class SimpleThermometer(Thermometer):
 
         for i, cell in enumerate(self.cells):
             # Bounds
-            lower = i + 1
-            upper = self.board.maximum_digit - len(self) + i + 1
-            possible = set(range[lower, upper + 1])
+            lower: int = i + 1
+            upper: int = self.board.maximum_digit - len(self) + i + 1
+
+            # pylint: disable=unnecessary-comprehension
+            possible: Set[int] = {i for i in range(lower, upper + 1)}
             for digit in self.board.digit_range:
                 if digit not in possible:
                     solver.model += solver.choices[digit][cell.row][cell.column], f"{self.name}_{cell.name}_{digit}"

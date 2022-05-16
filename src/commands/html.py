@@ -15,7 +15,7 @@ env = Environment(
 class HTML(Command):
 
     def process(self) -> None:
-        logging.info(f"Producing html  file of type")
+        logging.info("Producing html  file of type")
         super().process()
         assert self.problem is not None
         svg_command = SVG(self.config_filename, "")

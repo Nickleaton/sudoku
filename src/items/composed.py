@@ -12,12 +12,12 @@ class Composed(Item):
 
     def __init__(self, board: Board, items: Sequence[Item]):
         super().__init__(board)
-        self.items = []
+        self.items: List[Item] = []
         self.add_items(items)
         self._n: int = 0
 
     def regions(self) -> Set['Item']:
-        result = {self}
+        result: Set[Item] = {self}
         for item in self.items:
             result |= item.regions()
         return result

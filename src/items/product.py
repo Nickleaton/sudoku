@@ -17,6 +17,7 @@ class Product(Region):
         self.product = product
         self.add_items(self.get_cells())
 
+    # pylint: disable=no-self-use
     def get_cells(self) -> List[Cell]:
         return []
 

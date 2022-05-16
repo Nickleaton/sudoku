@@ -11,21 +11,21 @@ from src.utils.rule import Rule
 
 class Pair(Region):
 
-    def __init__(self, board: Board, c1: Cell, c2: Cell):
+    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
         super().__init__(board)
-        self.c1 = c1
-        self.c2 = c2
-        self.add(c1)
-        self.add(c2)
+        self.cell_1 = cell_1
+        self.cell_2 = cell_2
+        self.add(cell_1)
+        self.add(cell_2)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.c1!r}, {self.c2!r})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
 
     @property
     def used_classes(self) -> Set[Type[Item]]:
         result = set(self.__class__.__mro__).difference({abc.ABC, object})
-        result = result.union(self.c1.used_classes)
-        result = result.union(self.c2.used_classes)
+        result = result.union(self.cell_1.used_classes)
+        result = result.union(self.cell_2.used_classes)
         return result
 
     @classmethod
@@ -54,7 +54,9 @@ class Pair(Region):
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [EdgeTextGlyph(self.__class__.__name__, 0, self.c1.coord.center, self.c2.coord.center, self.label)]
+        return [
+            EdgeTextGlyph(self.__class__.__name__, 0, self.cell_1.coord.center, self.cell_2.coord.center, self.label)
+        ]
 
     def to_dict(self) -> Dict:
-        return {self.__class__.__name__: f"{self.c1.rc}-{self.c2.rc}"}
+        return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}

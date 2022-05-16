@@ -18,8 +18,9 @@ class Formulations:
             ]
         )
 
+    # pylint: disable=too-many-arguments
     @staticmethod
-    def disjunction(  # pylint: disable=too-many-return-statements
+    def disjunction(
             solver: PulpSolver,
             var: LpElement,
             lower_1: int,
@@ -42,8 +43,9 @@ class Formulations:
         solver.model += decision_3 <= decision_2, f"Binary_Binary_{decision_3.name}_b"
         solver.model += decision_3 >= decision_1 + decision_2 - 1, f"Binary_Binary_{decision_3.name}_c"
 
+    # pylint: disable=too-many-arguments
     @staticmethod
-    def product_binary_var(  # pylint: disable=too-many-return-statements
+    def product_binary_var(
             solver: PulpSolver,
             variable: LpElement,
             x: LpElement,
@@ -65,4 +67,4 @@ class Formulations:
 
     @staticmethod
     def logical_or(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]):
-        pass  # TODO
+        pass

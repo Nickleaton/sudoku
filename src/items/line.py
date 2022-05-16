@@ -35,4 +35,4 @@ class Line(Region):
         return super().tags.union({'Line'})
 
     def to_dict(self) -> Dict:
-        return {self.__class__.__name__: ", ".join([cell.rc for cell in self.cells])}
+        return {self.__class__.__name__: ", ".join([cell.row_column_string for cell in self.cells])}

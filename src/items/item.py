@@ -35,6 +35,7 @@ class Item(ABC):
     def regions(self) -> Set['Item']:
         return {self}
 
+    # pylint: disable=no-self-use
     def svg(self) -> Optional[Glyph]:
         return None
 
@@ -90,6 +91,7 @@ class Item(ABC):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
 
+    # pylint: disable=no-self-use
     def css(self) -> Dict:
         return {
             '.TextGlyphForeground': {

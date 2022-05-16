@@ -18,7 +18,7 @@ class TestBetween(TestLine):
 
     @property
     def config(self) -> str:
-        return f"Between: 11, 12, 13"
+        return "Between: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:

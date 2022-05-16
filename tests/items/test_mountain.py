@@ -24,7 +24,7 @@ class TestMountain(TestLine):
 
     @property
     def config(self) -> str:
-        return f"Mountain: 21, 12, 23"
+        return "Mountain: 21, 12, 23"
 
     @property
     def representation(self) -> str:

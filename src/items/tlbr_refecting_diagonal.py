@@ -27,6 +27,7 @@ class TLBRReflecting(Diagonal):
                 if row == column:
                     continue
                 name = f"{self.name}_{row}_{column}"
+                # pylint: disable=arguments-out-of-order
                 start = Formulations.parity(solver, row, column)
                 other = Formulations.parity(solver, column, row)
                 solver.model += start == other, name

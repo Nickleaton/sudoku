@@ -3,7 +3,6 @@ from typing import List, Dict
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph, BetweenGlyph
-from src.items.board import Board
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -32,7 +31,6 @@ class Between(Line):
         return super().tags.union({'Between', 'Comparison'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]

@@ -1,9 +1,7 @@
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
-from src.items.board import Board
 from src.items.renban import Renban
-from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
@@ -40,20 +38,20 @@ class DistinctRenban(Renban):
     def digits_to_str(digits: List[int]):
         return sum([DistinctRenban.power(digit) for digit in digits])
 
-    # def add_constraint(self, solver: PulpSolver) -> None: 
+    # def add_constraint(self, solver: PulpSolver) -> None:
     #     super().add_constraint(solver)
-        # solver.renbans[self.name] = LpVariable(f"{self.name}", 1, int(10 ** self.board.maximum_digit), LpInteger)
-        # solver.distinct_renbans.append(solver.renbans[self.name])
-        # total = lpSum(
-        #     [
-        #         DistinctRenban.power(digit) * solver.choices[digit][cell.row][cell.column]
-        #         for digit in self.board.digit_range
-        #         for cell in self.cells
-        #     ]
-        # )
-        # solver.model += solver.distinct_renbans[self.name] == total, self.name
-        # for dr in solver.distinct_renbans:
-        #     solver.model + not_equal(dr, solver.renbans[self.name])
+    # solver.renbans[self.name] = LpVariable(f"{self.name}", 1, int(10 ** self.board.maximum_digit), LpInteger)
+    # solver.distinct_renbans.append(solver.renbans[self.name])
+    # total = lpSum(
+    #     [
+    #         DistinctRenban.power(digit) * solver.choices[digit][cell.row][cell.column]
+    #         for digit in self.board.digit_range
+    #         for cell in self.cells
+    #     ]
+    # )
+    # solver.model += solver.distinct_renbans[self.name] == total, self.name
+    # for dr in solver.distinct_renbans:
+    #     solver.model + not_equal(dr, solver.renbans[self.name])
 
     def css(self) -> Dict:
         return {

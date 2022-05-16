@@ -36,6 +36,7 @@ class Glyph(ABC):
     def symbol(cls) -> Optional[Marker]:
         return None
 
+    # pylint: disable=no-self-use
     def draw(self) -> Optional[BaseElement]:
         return None
 

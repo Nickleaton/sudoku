@@ -88,4 +88,5 @@ import src.items.window
 import src.items.x_pair
 import src.items.xi_pair
 
+# pylint: disable=W0107
 pass

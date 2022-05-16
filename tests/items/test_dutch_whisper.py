@@ -29,7 +29,7 @@ class TestDutchWhispers(TestGreaterThanEqualDifferenceLine):
 
     @property
     def config(self) -> str:
-        return f"DutchWhisper: 11, 12, 13"
+        return "DutchWhisper: 11, 12, 13"
 
     @property
     def representation(self) -> str:

@@ -18,7 +18,7 @@ class TestRenban(TestLine):
 
     @property
     def config(self) -> str:
-        return f"Renban: 11, 12, 13"
+        return "Renban: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:

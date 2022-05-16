@@ -14,7 +14,7 @@ class SVG(Command):
         super().process()
         assert self.problem is not None
         assert self.board is not None
-        logging.info(f"Producing svg")
+        logging.info("Producing svg")
         glyph = self.problem.sorted_glyphs
         canvas = Drawing(
             filename="test.svg",

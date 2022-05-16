@@ -2,7 +2,6 @@ import unittest
 from typing import Type
 
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.item import Item
 from src.items.product import Product

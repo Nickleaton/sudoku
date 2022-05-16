@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Optional, Dict
+from typing import Optional
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum, getSolver
 
@@ -32,13 +32,10 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
                                        board.maximum_digit,
                                        LpInteger
                                        )
-        self.renbans: Dict[str, Dict] = {}
-        self.distinct_renbans: Dict[str, Dict] = {}
-        self.betweens: Dict[str, LpVariable] = {}
 
         for row, column in product(board.row_range, board.column_range):
-            self.model += lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range) == \
-                          self.values[row][column], f"Unique_cell_{row}_{column}"
+            total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
+            self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
 
     def save(self, filename: str) -> None:
         super().save(filename)

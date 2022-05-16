@@ -18,7 +18,7 @@ class TestSequence(TestLine):
 
     @property
     def config(self) -> str:
-        return f"Sequence: 11, 12, 13"
+        return "Sequence: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
