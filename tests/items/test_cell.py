@@ -63,6 +63,56 @@ class TestCell(TestItem):
     def test_letter(self):
         self.assertEqual(".", self.item.letter())
 
+    def test_set_possible(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_possible([2, 4, 5])
+        self.assertTrue(cell.is_possible(2))
+        self.assertFalse(cell.is_possible(9))
+
+    def test_set_impossible(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_impossible([2, 4, 5])
+        self.assertTrue(cell.is_possible(3))
+        self.assertFalse(cell.is_possible(2))
+
+    def test_set_odd(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_odd()
+        self.assertTrue(cell.is_possible(1))
+        self.assertFalse(cell.is_possible(2))
+
+    def test_set_even(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_even()
+        self.assertFalse(cell.is_possible(1))
+        self.assertTrue(cell.is_possible(2))
+
+    def test_set_minimum(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_minimum(5)
+        self.assertFalse(cell.is_possible(1))
+        self.assertTrue(cell.is_possible(5))
+        self.assertTrue(cell.is_possible(9))
+
+    def test_set_maximum(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_maximum(5)
+        self.assertTrue(cell.is_possible(5))
+        self.assertFalse(cell.is_possible(9))
+
+    def test_set_range(self):
+        cell = Cell.make(self.board, 1, 2)
+        cell.set_range(3, 6)
+        self.assertFalse(cell.is_possible(1))
+        self.assertTrue(cell.is_possible(5))
+        self.assertFalse(cell.is_possible(9))
+
+    def test_fixed(self):
+        cell = Cell.make(self.board, 1, 2)
+        self.assertFalse(cell.fixed())
+        cell.set_possible([1])
+        self.assertTrue(cell.fixed())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

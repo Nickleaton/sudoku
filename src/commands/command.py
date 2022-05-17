@@ -42,7 +42,7 @@ class Command:
     def check_directory(self) -> None:
         assert self.output_filename is not None
         directory: str = os.path.dirname(self.output_filename)
-        if not os.path.exists(directory):
+        if not os.path.exists(directory):  # pragma: no cover
             logging.info(f"Creating directory {directory}")
             os.makedirs(directory)
 

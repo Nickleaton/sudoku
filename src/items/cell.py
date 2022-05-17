@@ -38,32 +38,32 @@ class Cell(Item):
     def set_possible(self, digits: List[int]) -> None:
         for digit in self.board.digit_range:
             if digit not in digits:
-                self.possibles[digit] = False
+                self.possibles[digit - 1] = False
 
     def set_impossible(self, digits: List[int]) -> None:
         for digit in self.board.digit_range:
             if digit in digits:
-                self.possibles[digit] = False
+                self.possibles[digit - 1] = False
 
     def set_odd(self) -> None:
         for digit in self.board.digit_range:
             if digit % 2 != 1:
-                self.possibles[digit] = False
+                self.possibles[digit - 1] = False
 
     def set_even(self) -> None:
         for digit in self.board.digit_range:
             if digit % 2 != 0:
-                self.possibles[digit] = False
+                self.possibles[digit - 1] = False
 
     def set_minimum(self, lower: int) -> None:
         for digit in self.board.digit_range:
             if digit < lower:
-                self.possibles[digit] = False
+                self.possibles[digit - 1] = False
 
     def set_maximum(self, upper: int) -> None:
         for digit in self.board.digit_range:
             if digit > upper:
-                self.possibles[digit] = False
+                self.possibles[digit - 1] = False
 
     def set_range(self, lower: int, upper: int) -> None:
         self.set_minimum(lower)
@@ -71,6 +71,9 @@ class Cell(Item):
 
     def fixed(self) -> bool:
         return sum(self.possibles) == 1
+
+    def is_possible(self, digit: int) -> bool:
+        return self.possibles[digit - 1]
 
     @staticmethod
     def letter() -> str:

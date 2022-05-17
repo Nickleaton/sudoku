@@ -55,3 +55,26 @@ class Solution:
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Solution':
         return Solution(board, Solution.extract(board, yaml))
+
+    def standard_string(self) -> str:
+
+        def separator(self) -> str:
+            result = ""
+            for column in self.board.column_range:
+                if (column - 1) % self.board.box_columns == 0:
+                    result += "+-"
+                result += "--"
+            return result + "+\n"
+
+        assert self.board.box_rows is not None
+        result = ""
+        for row in self.board.row_range:
+            if (row - 1) % self.board.box_rows == 0:
+                result += separator(self)
+            for column in self.board.column_range:
+                if (column - 1) % self.board.box_columns == 0:
+                    result += "| "
+                result += f"{self.data[row - 1][column - 1]} "
+            result += "|\n"
+        result += separator(self)
+        return result

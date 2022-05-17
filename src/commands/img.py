@@ -30,7 +30,7 @@ class IMG(Command):
             with open(fname, 'w', encoding='utf-8') as file:
                 file.write(svg_command.output)
         else:
-            logging.error("Expecting output but it is empty")
+            logging.error("Expecting output but it is empty")  # pragma: no cover
         self.drawing = svg2rlg(fname)
         logging.debug(f"Removing temp file name  {fname}")
         os.unlink(fname)

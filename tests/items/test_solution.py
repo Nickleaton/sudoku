@@ -85,6 +85,9 @@ class TestSolution(unittest.TestCase):
 
         self.assertEqual(text, str(self.item))
 
+    def test_standard_output(self):
+        print(self.item.standard_string())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

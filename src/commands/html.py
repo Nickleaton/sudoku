@@ -21,7 +21,7 @@ class HTML(Command):
         svg_command = SVG(self.config_filename, "")
         template = env.get_template("problem.html")
         if self.problem.sorted_unique_rules is None:
-            logging.error("Sorted unique rules is None")
+            logging.error("Sorted unique rules is None") # pragma: no cover
         else:
             rules = [{'name': rule.name, 'text': rule.text} for rule in self.problem.sorted_unique_rules]
             self.output = template.render(

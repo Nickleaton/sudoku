@@ -61,7 +61,7 @@ class TestGlyph(unittest.TestCase):
 
     # pylint: disable=assignment-from-none
     def test_draw(self) -> None:
-        if not isinstance(self.glyph, Glyph):
+        if isinstance(self.glyph, Glyph):
             element = self.glyph.draw()
             if element is not None:
                 self.assertEqual(self.target, element.tostring())
@@ -679,7 +679,7 @@ class TestArrowGlyph(TestGlyph):
     @property
     def target(self):
         return (
-            '<text class="Style" transform="translate(50.0, 50.0) rotate(90.0)">'
+            '<text class="Style" transform="translate(0, 0) rotate(90.0)">'
             '<tspan alignment-baseline="central" text-anchor="middle">↑</tspan></text>'
         )
 
