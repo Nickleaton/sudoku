@@ -7,11 +7,12 @@ from src.items.composed import Composed
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
+from src.items.standard_diagonal import StandardDiagonal
 from src.items.tlbr import TLBR
-from tests.items.test_diagonals import TestDiagonal
+from tests.items.test_standard_diagonal import TestStandardDiagonal
 
 
-class TestTLBR(TestDiagonal):
+class TestTLBR(TestStandardDiagonal):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
@@ -27,7 +28,7 @@ class TestTLBR(TestDiagonal):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, Diagonal, TLBR}
+        return {Item, Composed, Cell, Region, Diagonal, StandardDiagonal, TLBR}
 
     @property
     def config(self) -> str:

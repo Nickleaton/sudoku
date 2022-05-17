@@ -35,18 +35,18 @@ class TestCell(TestItem):
         self.assertEqual((1, 2), self.item.row_column)
 
     def test_eq(self):
-        one = Cell.make(None, 1, 1)
-        two = Cell.make(None, 2, 1)
+        one = Cell.make(self.board, 1, 1)
+        two = Cell.make(self.board, 2, 1)
         self.assertEqual(one, one)
         self.assertNotEqual(one, two)
         with self.assertRaises(CellException):
             _ = one == "xxx"
 
     def test_lt(self):
-        one = Cell.make(None, 1, 1)
-        two = Cell.make(None, 2, 1)
-        three = Cell.make(None, 2, 2)
-        four = Cell.make(None, 3, 2)
+        one = Cell.make(self.board, 1, 1)
+        two = Cell.make(self.board, 2, 1)
+        three = Cell.make(self.board, 2, 2)
+        four = Cell.make(self.board, 3, 2)
         self.assertLess(one, two)
         self.assertLess(two, three)
         self.assertFalse(four < three)

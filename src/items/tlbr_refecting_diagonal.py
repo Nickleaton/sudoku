@@ -7,6 +7,7 @@ from src.items.diagonals import Diagonal
 from src.solvers.formulations import Formulations
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+from src.utils.rule import Rule
 
 
 class TLBRReflecting(Diagonal):
@@ -14,6 +15,10 @@ class TLBRReflecting(Diagonal):
     def __init__(self, board: Board):
         super().__init__(board)
         self.add_items([Cell.make(board, i, i) for i in board.row_range])
+
+    @property
+    def rules(self) -> List[Rule]:
+        return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
 
     @property
     def glyphs(self) -> List[Glyph]:

@@ -59,11 +59,12 @@ class TestGlyph(unittest.TestCase):
     def symbol(self) -> str:
         return ""
 
+    # pylint: disable=assignment-from-none
     def test_draw(self) -> None:
-        # pylint: disable=assignment-from-none
-        element = self.glyph.draw()
-        if element is not None:
-            self.assertEqual(self.target, element.tostring())
+        if not isinstance(self.glyph, Glyph):
+            element = self.glyph.draw()
+            if element is not None:
+                self.assertEqual(self.target, element.tostring())
 
     def test_start_marker(self):
         marker = self.glyph.__class__.start_marker()

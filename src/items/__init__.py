@@ -1,10 +1,13 @@
 """Module that handles constraints."""
 
 import src.items.anti
+import src.items.anti_bltr
+import src.items.anti_diagonal
 import src.items.anti_king
 import src.items.anti_knight
 import src.items.anti_monkey
 import src.items.anti_queen
+import src.items.anti_tlbr
 import src.items.arrow
 import src.items.asterix
 import src.items.between
@@ -77,6 +80,7 @@ import src.items.sandwich
 import src.items.sequence
 import src.items.simple_thermometer
 import src.items.solution
+import src.items.standard_diagonal
 import src.items.standard_region
 import src.items.sum_pair
 import src.items.thermometer

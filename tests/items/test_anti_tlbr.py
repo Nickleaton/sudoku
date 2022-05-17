@@ -1,42 +1,41 @@
 import unittest
 from typing import Type
 
+from src.items.anti_diagonal import AntiDiagonal
+from src.items.anti_tlbr import AntiTLBR
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
-from tests.items.test_region import TestRegion
+from tests.items.test_anti_diagonal import TestAntiDiagonal
 
 
-class TestDiagonal(TestRegion):
+class TestAntiTLBR(TestAntiDiagonal):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
-        self.item = Diagonal(self.board)
+        self.item = AntiTLBR(self.board)
 
     @property
     def clazz(self):
-        return Diagonal
+        return AntiTLBR
 
     @property
     def representation(self) -> str:
-        return "Diagonal(Board(9, 9, 3, 3, None, None, None, None))"
+        return "AntiTLBR(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Region, Diagonal}
+        return {Item, Composed, Cell, Region, Diagonal, AntiTLBR, AntiDiagonal}
 
     @property
     def config(self) -> str:
-        return "Diagonal: "
-
-    @property
-    def has_rule(self) -> bool:
-        return True
+        return "AntiTLBR:"
 
     def test_in(self):
+        self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 
 

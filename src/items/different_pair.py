@@ -43,16 +43,16 @@ class DifferentPair(Pair):
         for digit in self.digits:
             name = (
                 f"{self.__class__.__name__}"
-                "_"
-                "{digit}"
-                "_"
-                "{self.cell_1.row}"
-                "_"
-                "{self.cell_1.column}"
-                "_"
-                "{self.cell_2.row}"
-                "_"
-                "{self.cell_2.column}"
+                f"_"
+                f"{digit}"
+                f"_"
+                f"{self.cell_1.row}"
+                f"_"
+                f"{self.cell_1.column}"
+                f"_"
+                f"{self.cell_2.row}"
+                f"_"
+                f"{self.cell_2.column}"
             )
             choice1 = solver.choices[int(digit)][self.cell_1.row][self.cell_1.column]
             choice2 = solver.choices[int(digit)][self.cell_2.row][self.cell_2.column]
@@ -63,9 +63,9 @@ class DifferentPair(Pair):
             self.__class__.__name__:
                 (
                     f"{self.cell_1.row_column_string}"
-                    "-"
-                    "{self.cell_2.row_column_string}"
-                    "="
-                    "{','.join([str(d) for d in self.digits])"
+                    f"-"
+                    f"{self.cell_2.row_column_string}"
+                    f"="
+                    f"{','.join([str(d) for d in self.digits])}"
                 )
         }

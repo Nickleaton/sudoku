@@ -1,13 +1,13 @@
 from typing import List
 
 from src.glyphs.glyph import Glyph, LineGlyph
+from src.items.anti_diagonal import AntiDiagonal
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.standard_diagonal import StandardDiagonal
 from src.utils.coord import Coord
 
 
-class TLBR(StandardDiagonal):
+class AntiTLBR(AntiDiagonal):
 
     def __init__(self, board: Board):
         super().__init__(board)

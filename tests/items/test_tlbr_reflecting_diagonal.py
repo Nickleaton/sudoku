@@ -8,7 +8,7 @@ from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
 from src.items.tlbr_refecting_diagonal import TLBRReflecting
-from tests.items.test_diagonals import TestDiagonal
+from tests.items.test_diagonal import TestDiagonal
 
 
 class TestTLBRReflecting(TestDiagonal):
@@ -20,6 +20,10 @@ class TestTLBRReflecting(TestDiagonal):
     @property
     def clazz(self):
         return TLBRReflecting
+
+    @property
+    def has_rule(self) -> bool:
+        return True
 
     @property
     def representation(self) -> str:

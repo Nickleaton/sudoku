@@ -1,41 +1,43 @@
 import unittest
 from typing import Type
 
-from src.items.bltr import BLTR
+from src.items.anti_diagonal import AntiDiagonal
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
-from src.items.standard_diagonal import StandardDiagonal
-from tests.items.test_standard_diagonal import TestStandardDiagonal
+from tests.items.test_diagonal import TestDiagonal
 
 
-class TestBLTR(TestStandardDiagonal):
+class TestAntiDiagonal(TestDiagonal):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
-        self.item = BLTR(self.board)
+        self.item = AntiDiagonal(self.board)
 
     @property
     def clazz(self):
-        return BLTR
+        return AntiDiagonal
 
     @property
     def representation(self) -> str:
-        return "BLTR(Board(9, 9, 3, 3, None, None, None, None))"
+        return "AntiDiagonal(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, Diagonal, StandardDiagonal, BLTR}
+        return {Item, Composed, Region, Diagonal, AntiDiagonal}
 
     @property
     def config(self) -> str:
-        return "BLTR:"
+        return "AntiDiagonal: "
+
+    @property
+    def has_rule(self) -> bool:
+        return True
 
     def test_in(self):
-        self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 
 

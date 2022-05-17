@@ -1,41 +1,42 @@
 import unittest
 from typing import Type
 
-from src.items.bltr import BLTR
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed import Composed
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
-from src.items.standard_diagonal import StandardDiagonal
-from tests.items.test_standard_diagonal import TestStandardDiagonal
+from tests.items.test_region import TestRegion
 
 
-class TestBLTR(TestStandardDiagonal):
+class TestDiagonal(TestRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
-        self.item = BLTR(self.board)
+        self.item = Diagonal(self.board)
 
     @property
     def clazz(self):
-        return BLTR
+        return Diagonal
 
     @property
     def representation(self) -> str:
-        return "BLTR(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Diagonal(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, Diagonal, StandardDiagonal, BLTR}
+        return {Item, Composed, Region, Diagonal}
 
     @property
     def config(self) -> str:
-        return "BLTR:"
+        return "Diagonal: "
+
+    @property
+    def has_rule(self) -> bool:
+        return False
 
     def test_in(self):
-        self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 
 
