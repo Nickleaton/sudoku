@@ -86,7 +86,22 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(text, str(self.item))
 
     def test_standard_output(self):
-        print(self.item.standard_string())
+        expected = (
+            "+-------+-------+-------+\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "+-------+-------+-------+\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "+-------+-------+-------+\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
+            "+-------+-------+-------+\n"
+        )
+        self.assertEqual(expected, self.item.standard_string())
 
 
 if __name__ == '__main__':  # pragma: no cover
