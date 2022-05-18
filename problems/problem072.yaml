@@ -1,0 +1,73 @@
+Board:
+  Title: MinMaxSum Sudoku
+  Reference: https://www.funwithpuzzles.com/2018/04/minmax-sudoku-puzzle.html
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+      
+  - MinMaxSum: T1=11
+  - MinMaxSum: T2=7
+  - MinMaxSum: T3=10
+  - MinMaxSum: T4=11
+  - MinMaxSum: T5=10
+  - MinMaxSum: T6=9
+  - MinMaxSum: T7=14
+  - MinMaxSum: T8=9
+  - MinMaxSum: T9=8
+
+  - MinMaxSum: R1=12
+  - MinMaxSum: R2=9
+  - MinMaxSum: R3=11
+  - MinMaxSum: R4=14
+  - MinMaxSum: R5=10
+  - MinMaxSum: R6=5
+  - MinMaxSum: R7=11
+  - MinMaxSum: R8=9
+  - MinMaxSum: R9=10
+
+  - MinMaxSum: B1=8
+  - MinMaxSum: B2=12
+  - MinMaxSum: B3=10
+  - MinMaxSum: B4=11
+  - MinMaxSum: B5=10
+  - MinMaxSum: B6=9
+  - MinMaxSum: B7=5
+  - MinMaxSum: B8=16
+  - MinMaxSum: B9=9
+
+
+  - MinMaxSum: L1=12
+  - MinMaxSum: L2=9
+  - MinMaxSum: L3=9
+  - MinMaxSum: L4=12
+  - MinMaxSum: L5=10
+  - MinMaxSum: L6=8
+  - MinMaxSum: L7=5
+  - MinMaxSum: L8=15
+  - MinMaxSum: L9=10
+
+  - Knowns:
+      - .........
+      - .........
+      - .........
+      - ...123...
+      - ...456...
+      - ...789...
+      - .........
+      - .........
+      - .........
+
+Solution:
+  - 349812567
+  - 627395841
+  - 851647932
+  - 478123659
+  - 913456728
+  - 562789314
+  - 134578296
+  - 796234185
+  - 285961473
