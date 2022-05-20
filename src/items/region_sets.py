@@ -1,9 +1,9 @@
 from typing import Dict
 
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 
 
-class RegionSet(Composed):
+class RegionSet(ComposedItem):
     pass
 
 

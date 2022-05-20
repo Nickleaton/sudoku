@@ -4,14 +4,14 @@ from pulp import lpSum
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class Knight(Composed):
+class Knight(ComposedItem):
 
     def __init__(self, board: Board, digits: List[int]):
         super().__init__(board, [])

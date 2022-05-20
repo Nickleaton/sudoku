@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
 from src.items.difference_pair import DifferencePair
 from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
@@ -50,7 +50,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, DifferenceLine, DifferencePair, GreaterThanEqualDifferenceLine,
+        return {Cell, ComposedItem, DifferenceLine, DifferencePair, GreaterThanEqualDifferenceLine,
                 GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
 
 

@@ -2,7 +2,7 @@ import unittest
 from typing import Type
 
 from src.items.board import Board
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.indexing import Indexer
 from src.items.item import Item
 from src.items.region import Region
@@ -26,7 +26,7 @@ class TestIndexer(TestStandardRegion):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, StandardRegion, Region, Indexer}
+        return {Item, ComposedItem, StandardRegion, Region, Indexer}
 
     @property
     def config(self) -> str:

@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.knight import Knight
 from tests.items.test_item import TestItem
@@ -36,7 +36,7 @@ class TestKnight(TestItem):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Knight, Cell}
+        return {Item, ComposedItem, Knight, Cell}
 
 
 if __name__ == '__main__':  # pragma: no cover

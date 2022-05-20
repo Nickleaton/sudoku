@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
@@ -31,7 +31,7 @@ class TestTLBRReflecting(TestDiagonal):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Cell, Composed, Region, Diagonal, TLBRReflecting}
+        return {Item, Cell, ComposedItem, Region, Diagonal, TLBRReflecting}
 
     @property
     def config(self) -> str:

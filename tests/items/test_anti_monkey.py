@@ -5,7 +5,7 @@ from src.items.anti import Anti
 from src.items.anti_monkey import AntiMonkey
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.different_pair import DifferentPair
 from src.items.item import Item
 from src.items.pair import Pair
@@ -33,7 +33,7 @@ class TestAntiMonkey(TestAnti):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Anti, AntiMonkey, Cell, Composed, DifferentPair, Item, Pair, Region}
+        return {Anti, AntiMonkey, Cell, ComposedItem, DifferentPair, Item, Pair, Region}
 
     @property
     def config(self) -> str:

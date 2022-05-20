@@ -4,7 +4,7 @@ from typing import Type
 from src.items.anti_diagonal import AntiDiagonal
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
@@ -27,7 +27,7 @@ class TestAntiDiagonal(TestDiagonal):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Region, Diagonal, AntiDiagonal}
+        return {Item, ComposedItem, Region, Diagonal, AntiDiagonal}
 
     @property
     def config(self) -> str:

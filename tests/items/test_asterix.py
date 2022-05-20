@@ -4,7 +4,7 @@ from typing import Type
 from src.items.asterix import Asterix
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.region import Region
 from src.items.special_region import SpecialRegion
@@ -35,7 +35,7 @@ class TestAsterix(TestSpecialRegion):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, Asterix, SpecialRegion}
+        return {Item, ComposedItem, Cell, Region, Asterix, SpecialRegion}
 
     def test_in(self):
         self.assertIn(Cell.make(self.board, 5, 5), self.item)

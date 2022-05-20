@@ -5,7 +5,7 @@ import unittest
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 from parameterized import parameterized
 
-from src.commands.lp import LP
+from src.commands.lpcommand import LPCommand
 from src.commands.solve import Solve
 from src.commands.svg import SVG
 from src.items.solution import Solution
@@ -30,7 +30,7 @@ class TestFiles(unittest.TestCase):
         ]
     )
 
-    filenames = ['problem070']
+    # filenames = ['problem070']
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_svg(self, filename: str) -> None:
@@ -48,7 +48,7 @@ class TestFiles(unittest.TestCase):
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_lp(self, filename: str) -> None:
-        command = LP(os.path.join("problems", filename + ".yaml"), os.path.join("output", "lp", filename + ".lp"))
+        command = LPCommand(os.path.join("problems", filename + ".yaml"), os.path.join("output", "lp", filename + ".lp"))
         command.process()
         command.write()
 

@@ -11,5 +11,3 @@ class Solver:
 
     def solve(self) -> None:
         pass
-
-

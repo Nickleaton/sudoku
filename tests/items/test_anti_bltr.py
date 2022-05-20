@@ -5,7 +5,7 @@ from src.items.anti_bltr import AntiBLTR
 from src.items.anti_diagonal import AntiDiagonal
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
@@ -28,7 +28,7 @@ class TestAntiBLTR(TestAntiDiagonal):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, Diagonal, AntiBLTR, AntiDiagonal}
+        return {Item, ComposedItem, Cell, Region, Diagonal, AntiBLTR, AntiDiagonal}
 
     @property
     def config(self) -> str:

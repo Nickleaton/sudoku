@@ -2,7 +2,7 @@ import unittest
 from typing import Type
 
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
 from src.items.region import Region
@@ -26,7 +26,7 @@ class TestSequence(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, Item, Line, Region, Sequence}
+        return {Cell, ComposedItem, Item, Line, Region, Sequence}
 
     def test_max_difference(self):
         self.assertEqual(9, Sequence.max_diffence(1))

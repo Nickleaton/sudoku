@@ -1,11 +1,11 @@
 from typing import Set, Type, Dict
 
 from src.items.board import Board
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 
 
-class Constraints(Composed):
+class Constraints(ComposedItem):
 
     def __init__(self, board: Board):
         super().__init__(board, [])

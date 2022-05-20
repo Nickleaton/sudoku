@@ -8,16 +8,16 @@ from src.commands.simple_command import SimpleCommand
 from src.items.item import Item
 
 
-class SVG(SimpleCommand):
+class Answer(SimpleCommand):
 
     def process(self) -> None:
         super().process()
         assert self.problem is not None
         assert self.board is not None
-        logging.info("Producing svg")
+        logging.info("Producing answer")
         glyph = self.problem.sorted_glyphs
         canvas = Drawing(
-            filename="test.svg",
+            filename="answer.svg",
             size=("35cm", "35cm"),
             viewBox=f"0 0 {100 * (self.board.board_rows + 2)} {100 * (self.board.board_columns + 2)}"
         )

@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
 from src.items.difference_pair import DifferencePair
 from src.items.german_whisper import GermanWhisper
@@ -51,7 +51,7 @@ class TestGermanWhisper(TestGreaterThanEqualDifferenceLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, DifferenceLine, DifferencePair, GermanWhisper, GreaterThanEqualDifferenceLine,
+        return {Cell, ComposedItem, DifferenceLine, DifferencePair, GermanWhisper, GreaterThanEqualDifferenceLine,
                 GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
 
 

@@ -4,7 +4,7 @@ from typing import Type, List
 from src.items.anti import Anti
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from tests.items.test_item import TestItem
 
@@ -33,7 +33,7 @@ class TestAnti(TestItem):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Anti}
+        return {Item, ComposedItem, Anti}
 
     @property
     def pair_output(self) -> List:

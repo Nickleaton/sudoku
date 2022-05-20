@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.greater_than_pair import GreaterThanPair
 from src.items.item import Item
 from src.items.pair import Pair
@@ -40,7 +40,7 @@ class TestGreaterThanPair(TestPair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, GreaterThanPair, Item, Pair, Composed, Region}
+        return {Cell, GreaterThanPair, Item, Pair, ComposedItem, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

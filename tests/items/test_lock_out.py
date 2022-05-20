@@ -1,7 +1,7 @@
 from typing import Type
 
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
 from src.items.lock_out import LockOut
@@ -25,4 +25,4 @@ class TestLockOut(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, Item, Line, LockOut, Region}
+        return {Cell, ComposedItem, Item, Line, LockOut, Region}

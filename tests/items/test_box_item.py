@@ -4,7 +4,7 @@ from typing import Type
 from src.items.board import Board
 from src.items.box import Box
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.region import Region
 from src.items.standard_region import StandardRegion
@@ -35,7 +35,7 @@ class TestBox(TestStandardRegion):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, Region, StandardRegion, Box}
+        return {Item, ComposedItem, Cell, Region, StandardRegion, Box}
 
     def test_in(self):
         self.assertIn(Cell.make(self.board, 2, 2), self.item)

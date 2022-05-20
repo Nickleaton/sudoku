@@ -2,7 +2,7 @@ import unittest
 from typing import Type
 
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
 from src.items.region import Region
@@ -26,7 +26,7 @@ class TestThermometer(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, Item, Line, Region, Thermometer}
+        return {Cell, ComposedItem, Item, Line, Region, Thermometer}
 
 
 if __name__ == '__main__':  # pragma: no cover

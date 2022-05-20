@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.between import Between
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
 from src.items.region import Region
@@ -26,7 +26,7 @@ class TestBetween(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Between, Cell, Composed, Item, Line, Region}
+        return {Between, Cell, ComposedItem, Item, Line, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -2,7 +2,7 @@ import unittest
 from typing import Type
 
 from src.items.board import Board
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.region import Region
 from src.items.special_region import SpecialRegion
@@ -33,7 +33,7 @@ class TestSpecialRegion(TestRegion):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Region, SpecialRegion}
+        return {Item, ComposedItem, Region, SpecialRegion}
 
     def test_in(self):
         self.assertListEqual([], self.item.cells)

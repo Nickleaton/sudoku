@@ -8,7 +8,7 @@ from src.items.cell import Cell
 from src.items.column import Column
 from src.items.column_indexer import ColumnIndexer
 from src.items.columns import Columns
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.constraints import Constraints
 from src.items.indexing import Indexer
 from src.items.item import Item
@@ -73,7 +73,7 @@ class TestConstraints(TestComposed):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Box, Boxes, Cell, Column, ColumnIndexer, Columns, Composed, Constraints, Indexer, Item, Region,
+        return {Box, Boxes, Cell, Column, ColumnIndexer, Columns, ComposedItem, Constraints, Indexer, Item, Region,
                 RegionSet, Row, Rows, StandardRegion, StandardRegionSet}
 
 

@@ -1,17 +1,27 @@
-import os
 import unittest
 
 from src.commands.svg import SVG
 from tests.commands.test_command import TestCommand
 
 
-class TestLPcommand(TestCommand):
+class TestSVGcommand(TestCommand):
 
     def setUp(self) -> None:
-        self.command = SVG(
-            os.path.join('problems', 'hard', 'problem034.yaml'),
-            os.path.join('output', 'svg', 'problem001.svg')
-        )
+        self.command = SVG(r'problems/problem001.yaml', r'output/svg/problem001.svg')
+
+    @property
+    def output(self) -> str:
+        return r"output/svg/problem001.svg"
+
+    def clazz(self) -> str:
+        return SVG
+
+    @property
+    def representation(self) -> str:
+        return r"SVG('problems/problem001.yaml', 'output/svg/problem001.svg')"
+
+    def test_repr(self):
+        self.assertEqual(self.representation, repr(self.command))
 
 
 if __name__ == '__main__':  # pragma: no cover

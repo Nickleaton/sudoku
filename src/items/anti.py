@@ -2,13 +2,13 @@ from typing import List, Sequence, Any, Dict
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.different_pair import DifferentPair
 from src.items.item import Item
 from src.utils.coord import Coord
 
 
-class Anti(Composed):
+class Anti(ComposedItem):
 
     def __init__(self, board: Board, digits: List[int]):
         super().__init__(board, [])

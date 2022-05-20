@@ -8,7 +8,7 @@ from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
-class Composed(Item):
+class ComposedItem(Item):
 
     def __init__(self, board: Board, items: Sequence[Item]):
         super().__init__(board)
@@ -58,7 +58,7 @@ class Composed(Item):
     @property
     def used_classes(self) -> Set[Type['Item']]:
         result = super().used_classes
-        result = result.union({Composed})
+        result = result.union({ComposedItem})
         for item in self.items:
             result = result.union(item.used_classes)
         return result

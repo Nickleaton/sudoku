@@ -21,7 +21,7 @@ import src.items.center_product
 import src.items.column
 import src.items.column_indexer
 import src.items.columns
-import src.items.composed
+import src.items.composed_item
 import src.items.consecutive_pair
 import src.items.constraint_exception
 import src.items.constraints

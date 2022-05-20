@@ -5,7 +5,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.column import Column
 from src.items.columns import Columns
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.region import Region
 from src.items.region_sets import RegionSet, StandardRegionSet
@@ -33,7 +33,7 @@ class TestColumns(TestStandardRegionSet):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, StandardRegion, Region, Column, Columns, StandardRegion, RegionSet,
+        return {Item, ComposedItem, Cell, StandardRegion, Region, Column, Columns, StandardRegion, RegionSet,
                 StandardRegionSet}
 
     @property

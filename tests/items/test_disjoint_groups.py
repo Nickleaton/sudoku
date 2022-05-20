@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.disjoint_group import DisjointGroup
 from src.items.disjoint_groups import DisjointGroups
 from src.items.item import Item
@@ -33,7 +33,8 @@ class TestDisjointGroups(TestStandardRegionSet):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Item, Composed, Cell, StandardRegion, Region, DisjointGroup, DisjointGroups, RegionSet, StandardRegion,
+        return {Item, ComposedItem, Cell, StandardRegion, Region, DisjointGroup, DisjointGroups, RegionSet,
+                StandardRegion,
                 StandardRegionSet}
 
     @property

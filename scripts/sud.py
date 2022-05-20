@@ -3,7 +3,7 @@ import logging
 import sys
 
 from scripts.parser import parser
-from src.commands.html import HTML
+from src.commands.html_command import HTMLCommand
 from src.commands.img import IMG
 from src.commands.svg import SVG
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     command = None
     output = None
     if args.html is not None:
-        command = HTML(args.config, args.html)
+        command = HTMLCommand(args.config, args.html)
         output = args.html
     if args.svg is not None:
         command = SVG(args.config, args.svg)

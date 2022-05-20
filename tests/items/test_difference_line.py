@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
 from src.items.item import Item
 from src.items.line import Line
@@ -40,7 +40,7 @@ class TestDifferenceLine(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, DifferenceLine, Item, Line, Region}
+        return {Cell, ComposedItem, DifferenceLine, Item, Line, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

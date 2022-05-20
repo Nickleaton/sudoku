@@ -3,7 +3,7 @@ from typing import Type
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.difference_pair import DifferencePair
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
@@ -53,7 +53,7 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, DifferencePair, Item, Pair, GreaterThanEqualDifferencePair, Composed, Region}
+        return {Cell, DifferencePair, Item, Pair, GreaterThanEqualDifferencePair, ComposedItem, Region}
 
     def test_difference(self):
         self.assertEqual(self.difference, self.item.difference)

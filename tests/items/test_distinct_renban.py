@@ -2,7 +2,7 @@ import unittest
 from typing import Type
 
 from src.items.cell import Cell
-from src.items.composed import Composed
+from src.items.composed_item import ComposedItem
 from src.items.distinct_renban import DistinctRenban
 from src.items.item import Item
 from src.items.line import Line
@@ -27,7 +27,7 @@ class TestDistinctRenban(TestRenban):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Composed, Item, Line, Region, Renban, DistinctRenban}
+        return {Cell, ComposedItem, Item, Line, Region, Renban, DistinctRenban}
 
     def test_digit_str(self):
         self.assertEqual(1, DistinctRenban.digits_to_str([1]))
