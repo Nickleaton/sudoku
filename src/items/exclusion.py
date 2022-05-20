@@ -1,3 +1,4 @@
+import re
 from typing import List, Any, Dict
 
 from pulp import lpSum
@@ -43,7 +44,7 @@ class Exclusion(Item):
         position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
         for digit in self.digits:
             digit_sum = lpSum(

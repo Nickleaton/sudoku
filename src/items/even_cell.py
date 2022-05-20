@@ -1,3 +1,4 @@
+import re
 from typing import Optional, List, Dict
 
 from pulp import lpSum
@@ -33,7 +34,7 @@ class EvenCell(CellReference):
     def glyphs(self) -> List[Glyph]:
         return [EvenCellGlyph('EvenCell', Coord(self.row, self.column))]
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]

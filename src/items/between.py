@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from pulp import LpVariable, LpInteger
@@ -30,7 +31,7 @@ class Between(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Between', 'Comparison'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]

@@ -1,3 +1,4 @@
+import re
 from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, SquareGlyph
@@ -80,7 +81,7 @@ class MagicSquare(Region):
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         solver.model += solver.values[self.center.row][self.center.column] == 5, f"{self.__class__.__name__}_center"
         for i, line in enumerate(MagicSquare.lines):
             cell1 = self.cells[line[0] - 1]

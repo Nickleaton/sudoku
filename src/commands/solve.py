@@ -1,4 +1,5 @@
 import logging
+import re
 from typing import Optional
 
 from src.commands.simple_command import SimpleCommand
@@ -20,7 +21,7 @@ class Solve(SimpleCommand):
         assert self.board is not None
         assert self.problem is not None
         self.solver = PulpSolver(self.board)
-        self.problem.add_constraint(self.solver)
+        self.problem.add_constraint(self.solver, None, re.compile("Solution"))
         self.solver.solve()
-        self.solution = self.solver.solution
+        self.solution = self.solver.answer
         self.output = str(self.solution)

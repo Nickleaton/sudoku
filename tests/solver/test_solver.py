@@ -1,5 +1,7 @@
 import os
+import re
 import unittest
+from typing import Optional, Dict
 
 import oyaml as yaml
 
@@ -17,6 +19,13 @@ class TestSolver(unittest.TestCase):
     def test_setup(self):
         self.assertIsNotNone(self.board)
 
+    @staticmethod
+    def get_solution(problem: Dict) -> Optional[Solution]:
+        for item in problem:
+            if isinstance(item, Solution):
+                return item
+        return None
+
     def test_solve(self) -> None:
         filename = os.path.join("problems", "problem001.yaml")
         with open(filename, 'r', encoding="utf-8") as file:
@@ -27,14 +36,17 @@ class TestSolver(unittest.TestCase):
         problem = Item.create(board, {'Constraints': config['Constraints']})
         solver = PulpSolver(board)
 
-        problem.add_constraint(solver)
+        problem.add_constraint(solver, None, re.compile("Solution"))
 
         solver.solve()
         # print(str(solver.solution))
 
-        expected = Solution.create(problem.board, config['Solution'])
+        expected = self.get_solution(problem)
 
-        self.assertEqual(expected, solver.solution)
+        if expected is None:
+            print("No solution specified")
+            return
+        self.assertEqual(expected, solver.answer)
 
 
 if __name__ == '__main__':  # pragma: no cover

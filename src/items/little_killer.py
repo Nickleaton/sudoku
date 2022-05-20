@@ -1,3 +1,4 @@
+import re
 from typing import List, Tuple, Dict
 
 from pulp import lpSum
@@ -85,7 +86,7 @@ class LittleKiller(Region):
     def tags(self) -> set[str]:
         return super().tags.union({'LittleKiller', 'Killer'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         total = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
         name = f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
         solver.model += total == self.total, name

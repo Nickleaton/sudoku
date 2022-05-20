@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from pulp import lpSum
@@ -28,7 +29,7 @@ class Arrow(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Arrow', 'Sum'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         total = lpSum([solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self))])
         solver.model += total == solver.values[self.cells[0].row][self.cells[0].column], self.name
 

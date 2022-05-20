@@ -1,3 +1,4 @@
+import re
 import unittest
 from typing import Type
 
@@ -90,7 +91,7 @@ class TestItem(unittest.TestCase):
 
     def test_add_constraint(self) -> None:
         solver = PulpSolver(self.board)
-        self.item.add_constraint(solver)
+        self.item.add_constraint(solver, None, re.compile("Solution"))
 
     def test_to_dict(self) -> None:
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
@@ -102,9 +103,6 @@ class TestItem(unittest.TestCase):
 
     def test_css(self) -> None:
         self.assertIsNotNone(self.item.css())
-        # print("=" * 80)
-        # print(Item.css_text(self.item.css()))
-        # print("=" * 80)
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -1,3 +1,4 @@
+import re
 from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, KnownGlyph
@@ -80,7 +81,7 @@ class KnownCell(CellReference):
     def bookkeeping(self) -> None:
         self.cell.set_possible([self.digit])
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for digit in self.board.digit_range:
             target = 1 if digit == self.digit else 0
             name = f"Known_{self.row}_{self.column}_eq_{digit}"

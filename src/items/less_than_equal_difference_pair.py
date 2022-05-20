@@ -1,3 +1,4 @@
+import re
 from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
@@ -8,7 +9,7 @@ class LessThanEqualDifferencePair(DifferencePair):
     def tags(self) -> set[str]:
         return super().tags.union({'LessThanEqualDifference'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         value1 = solver.values[self.cell_1.row][self.cell_1.column]
         value2 = solver.values[self.cell_2.row][self.cell_2.column]
         difference = value1 - value2

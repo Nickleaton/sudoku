@@ -4,7 +4,7 @@ from typing import Optional
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum, getSolver
 
 from src.items.board import Board
-from src.items.solution import Solution
+from src.solvers.answer import Answer
 from src.solvers.solver import Solver
 
 
@@ -19,7 +19,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.model = LpProblem("Sudoku", LpMinimize)
         self.model += self.objective
         self.status = 'Pending'
-        self.solution: Optional[Solution] = None
+        self.answer: Optional[Answer] = None
         self.choices = LpVariable.dicts("Choice",
                                         (board.digit_range, board.row_range, board.column_range),
                                         0,
@@ -47,7 +47,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.status = LpStatus[self.model.status]
         if self.model.status != LpStatusOptimal:
             return
-        self.solution = Solution(self.board)
+        self.answer = Answer(self.board)
         for row in self.board.row_range:
             for column in self.board.column_range:
-                self.solution.set_value(row, column, int(self.values[row][column].varValue))
+                self.answer.set_value(row, column, int(self.values[row][column].varValue))

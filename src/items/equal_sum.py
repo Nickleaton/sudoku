@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from pulp import lpSum
@@ -31,7 +32,7 @@ class EqualSum(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'EqualSum', 'Sum'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         # Build areas
         areas: List[List[Cell]] = []
         current = 0

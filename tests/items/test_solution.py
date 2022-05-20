@@ -1,14 +1,23 @@
-import unittest
+from typing import Type
+
+import oyaml as yaml
 
 from src.items.board import Board
+from src.items.cell import Cell
+from src.items.cell_reference import CellReference
+from src.items.composed_item import ComposedItem
+from src.items.item import Item
+from src.items.known_cell import KnownCell
 from src.items.solution import Solution
+from tests.items.test_composed import TestComposed
 
 
-class TestSolution(unittest.TestCase):
+class TestSolution(TestComposed):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        data = [
+        self.size = 81
+        lines = [
             "123456789",
             "123456789",
             "123456789",
@@ -19,25 +28,32 @@ class TestSolution(unittest.TestCase):
             "123456789",
             "123456789"
         ]
-        self.item = Solution(self.board, data)
-        data = [
-            "123456789",
-            "123456789",
-            "123456789",
-            "123456789",
-            "123456789",
-            "123456789",
-            "123456789",
-            "123456789",
-            "123456781"
-        ]
-        self.other = Solution(self.board, data)
+
+        self.item = Solution(self.board, lines)
+
+    @property
+    def clazz(self):
+        return Solution
+
+    @property
+    def config(self) -> str:
+        return (
+            "Solution:\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+            "  - 123456789\n"
+        )
 
     @property
     def representation(self) -> str:
         return (
-            "Solution("
-            "Board(9, 9, 3, 3, None, None, None, None),"
+            "Solution(Board(9, 9, 3, 3, None, None, None, None), "
             "["
             "'123456789', "
             "'123456789', "
@@ -52,57 +68,20 @@ class TestSolution(unittest.TestCase):
             ")"
         )
 
-    def test_repr(self):
-        unittest.TestCase.maxDiff = None
-        self.assertEqual(self.representation, repr(self.item))
+    @property
+    def has_rule(self) -> bool:
+        return False
 
-    def test_set_get(self):
-        self.assertEqual(1, self.item.get_value(1, 1))
-        self.assertEqual(9, self.item.get_value(9, 9))
-        self.item.set_value(1, 1, 8)
-        self.item.set_value(9, 9, 8)
-        self.assertEqual(8, self.item.get_value(1, 1))
-        self.assertEqual(8, self.item.get_value(9, 9))
+    @property
+    def expected_classes(self) -> set[Type[Item]]:
+        return {Cell, CellReference, ComposedItem, Item, KnownCell, Solution}
 
-    def test_equality(self):
-        self.assertEqual(self.item, self.item)
-        self.assertNotEqual(self.item, self.other)
-        with self.assertRaises(Exception):
-            _ = self.item == '123'
-
-    def test_string(self):
-        text = ("Solution:\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                "  - 123456789\n"
-                )
-
-        self.assertEqual(text, str(self.item))
-
-    def test_standard_output(self):
-        expected = (
-            "+-------+-------+-------+\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "+-------+-------+-------+\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "+-------+-------+-------+\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "| 1 2 3 | 4 5 6 | 7 8 9 |\n"
-            "+-------+-------+-------+\n"
-        )
-        self.assertEqual(expected, self.item.standard_string())
-
-
-if __name__ == '__main__':  # pragma: no cover
-    unittest.main()
+    def test_to_dict(self) -> None:  # When changed to strict yaml, this will go
+        config = yaml.load(self.config, Loader=yaml.SafeLoader)
+        lines = [str(l) for l in config['Solution']]
+        config = {'Solution': lines}
+        if "Item" in config:
+            item = self.item
+        else:
+            item = Item.create(self.board, config)
+        self.assertDictEqual(item.to_dict(), config)

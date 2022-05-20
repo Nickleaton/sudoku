@@ -1,3 +1,4 @@
+import re
 from typing import Dict, Tuple, List, Set, Type
 
 from src.glyphs.glyph import Glyph, TextGlyph
@@ -66,7 +67,7 @@ class NumberedRoom(Item):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         if self.side == Side.LEFT:
             for d in self.board.digit_range:
                 first = solver.choices[d][self.start_cell.row][self.start_cell.column]

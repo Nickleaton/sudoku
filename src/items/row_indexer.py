@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, RectGlyph
@@ -30,7 +31,7 @@ class RowIndexer(Indexer):
     def tags(self) -> set[str]:
         return super().tags.union({'Indexing'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for cell in self.cells:
             for digit in solver.board.digit_range:
                 indexer = solver.choices[digit][cell.row][cell.column]

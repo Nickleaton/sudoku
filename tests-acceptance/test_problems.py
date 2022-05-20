@@ -9,6 +9,7 @@ from src.commands.lpcommand import LPCommand
 from src.commands.solve import Solve
 from src.commands.svg import SVG
 from src.items.solution import Solution
+from src.solvers.answer import Answer
 
 env = Environment(
     loader=FileSystemLoader(os.path.join('src', 'html')),
@@ -48,7 +49,8 @@ class TestFiles(unittest.TestCase):
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_lp(self, filename: str) -> None:
-        command = LPCommand(os.path.join("problems", filename + ".yaml"), os.path.join("output", "lp", filename + ".lp"))
+        command = LPCommand(os.path.join("problems", filename + ".yaml"),
+                            os.path.join("output", "lp", filename + ".lp"))
         command.process()
         command.write()
 
@@ -58,9 +60,12 @@ class TestFiles(unittest.TestCase):
                         os.path.join("output", "verify", filename + ".txt"))
         command.process()
         command.write()
-        print(command.output)
-        expected = Solution.create(command.board, command.config['Solution'])
-        self.assertEqual(expected, command.solution)
+        expected = None
+        for item in command.config['Constraints']:
+            if 'Solution' in item:
+                expected = Solution.create(command.board, item)
+        if expected is not None:
+            self.assertEqual(expected, command.solution)
 
 
 if __name__ == '__main__':  # pragma: no cover

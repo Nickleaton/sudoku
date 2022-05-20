@@ -1,4 +1,5 @@
 import abc
+import re
 from abc import ABC
 from typing import Optional, List, Set, Type, Dict, Any
 
@@ -6,9 +7,6 @@ from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
-
-
-# YAML = TypeVar("YAML", Dict, List, str, int, None)
 
 
 class Item(ABC):
@@ -82,7 +80,8 @@ class Item(ABC):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(({self.board!r})"
 
-    def add_constraint(self, solver: PulpSolver) -> None:  # pylint: disable=unused-argument
+    # pylint: disable=unused-argument
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         pass
 
     def bookkeeping(self) -> None:

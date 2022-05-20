@@ -1,3 +1,4 @@
+import re
 from typing import List
 
 from src.glyphs.glyph import Glyph, LineGlyph
@@ -25,7 +26,7 @@ class TLBRReflecting(Diagonal):
         return [
             LineGlyph('TLBRReflecting', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_unique_constraint(solver)
         for row in self.board.row_range:
             for column in self.board.column_range:

@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from pulp import LpAffineExpression, lpSum
@@ -40,7 +41,7 @@ class Entropic(Line):
     def top_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
         return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [7, 8, 9]])
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         # enforce that you cannot have a low next to a low, mid next to a mid, and top next to a top
         for i in range(0, len(self.cells) - 1):
             pname = f"{self.cells[i].row}_{self.cells[i].column}_{self.cells[i + 1].row}_{self.cells[i + 1].column}"

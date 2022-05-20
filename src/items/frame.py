@@ -1,3 +1,4 @@
+import re
 """ Frame Sudoku """
 
 from typing import List, Any, Dict
@@ -84,7 +85,7 @@ class Frame(FirstN):
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_total_constraint(solver, self.total)
 
     def to_dict(self) -> Dict:

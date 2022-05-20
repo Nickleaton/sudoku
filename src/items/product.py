@@ -1,3 +1,4 @@
+import re
 from typing import List, Any, Dict
 
 from src.items.board import Board
@@ -35,7 +36,7 @@ class Product(Region):
         position, product = cls.extract(board, yaml)
         return cls(board, position, product)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
     def to_dict(self) -> Dict:

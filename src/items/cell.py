@@ -1,3 +1,4 @@
+import re
 from itertools import product
 from typing import Dict, Tuple, List
 
@@ -144,7 +145,7 @@ class Cell(Item):
     def row_column_string(self) -> str:
         return f"{self.row}{self.column}"
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]

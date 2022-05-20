@@ -1,3 +1,4 @@
+import re
 from typing import List, Any, Dict
 
 from pulp import lpSum
@@ -55,7 +56,7 @@ class Knight(ComposedItem):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for digit in self.digits:
             for cell in self.cells:
                 include = []

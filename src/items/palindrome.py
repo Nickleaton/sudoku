@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
@@ -20,7 +21,7 @@ class Palindrome(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Palindrome'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for i in range(0, len(self) // 2):
             c1 = self.cells[i]
             c2 = self.cells[len(self) - i - 1]

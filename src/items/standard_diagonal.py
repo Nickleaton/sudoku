@@ -1,3 +1,4 @@
+import re
 from typing import List
 
 from src.items.diagonals import Diagonal
@@ -15,5 +16,5 @@ class StandardDiagonal(Diagonal):
     def tags(self) -> set[str]:
         return super().tags.union({'Diagonal', 'Uniqueness'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_unique_constraint(solver)

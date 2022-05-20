@@ -1,3 +1,4 @@
+import re
 from typing import Optional, List, Dict
 
 from pulp import lpSum
@@ -33,7 +34,7 @@ class OddCell(CellReference):
     def tags(self) -> set[str]:
         return super().tags.union({'Parity'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]

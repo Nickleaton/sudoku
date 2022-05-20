@@ -11,7 +11,7 @@ class TestHTMLcommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return r"HTML('problems\problem001.yaml', 'output\html\problem001.html')"
+        return r"HTMLCommand('problems\problem001.yaml', 'output\html\problem001.html')"
 
     @property
     def output(self) -> str:

@@ -1,3 +1,4 @@
+import re
 from typing import Dict
 
 from src.items.sum_pair import SumPair
@@ -18,8 +19,7 @@ class XPair(SumPair):
     def label(self) -> str:
         return "X"
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        super().add_constraint(solver)
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_unique_constraint(solver, True)
         self.add_allowed_constraint(solver, self.cells, [1, 2, 3, 4, 6, 7, 8, 9])
 

@@ -1,3 +1,4 @@
+import re
 from typing import List
 
 from src.glyphs.glyph import Glyph
@@ -28,6 +29,6 @@ class Column(StandardRegion):
     def tags(self) -> set[str]:
         return super().tags.union({'Column'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)

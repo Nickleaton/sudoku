@@ -39,7 +39,6 @@ class DistinctRenban(Renban):
         return sum([DistinctRenban.power(digit) for digit in digits])
 
     # def add_constraint(self, solver: PulpSolver) -> None:
-    #     super().add_constraint(solver)
     # solver.renbans[self.name] = LpVariable(f"{self.name}", 1, int(10 ** self.board.maximum_digit), LpInteger)
     # solver.distinct_renbans.append(solver.renbans[self.name])
     # total = lpSum(

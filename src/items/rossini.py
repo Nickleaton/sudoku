@@ -1,3 +1,4 @@
+import re
 from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
@@ -68,7 +69,7 @@ class Rossini(FirstN):
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> Dict:

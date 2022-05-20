@@ -1,6 +1,7 @@
 """
 Kropki Dots
 """
+import re
 from itertools import product
 from typing import List, Dict
 
@@ -111,7 +112,7 @@ class KropkiPair(Pair):
             solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f"{self.name}_Valid_{x}_{y}"
             count += 1
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_impossible_constraint(solver)
         self.add_implausible_constraint(solver)
         self.create_sos(solver)

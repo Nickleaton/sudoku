@@ -1,3 +1,4 @@
+import re
 from itertools import product
 from typing import List, Dict
 
@@ -26,7 +27,7 @@ class Quadro(Item):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r})"
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
         for row, column in product(self.board.row_range, self.board.column_range):
             if row == self.board.board_rows:

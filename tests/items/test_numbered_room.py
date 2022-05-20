@@ -1,3 +1,4 @@
+import re
 import unittest
 from typing import Type
 
@@ -44,7 +45,7 @@ class TestNumberedRoom(TestItem):
         ]
         for room in numbered_rooms:
             solver = PulpSolver(self.board)
-            room.add_constraint(solver)
+            room.add_constraint(solver, None, re.compile("Solution"))
 
 
 if __name__ == '__main__':  # pragma: no cover

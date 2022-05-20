@@ -1,80 +1,55 @@
 from itertools import product
-from typing import List, Optional, Dict
+from typing import List, Any, Dict
 
 from src.items.board import Board
+from src.items.cell_reference import CellReference
+from src.items.composed_item import ComposedItem
+from src.items.item import Item
+from src.items.known_cell import KnownCell
+from src.solvers.answer import Answer
 
 
-class Solution:
+class Solution(ComposedItem):
 
-    def __init__(self, board: Board, data: Optional[List[str]] = None):
-        self.board = board
-        self.data: List[List[int]] = [
-            [0 for _ in board.column_range]
-            for _ in board.row_range
-        ]
-        if data is not None:
-            for row, column in product(board.row_range, board.column_range):
-                digit = int(data[row - 1][column - 1])
-                self.set_value(row, column, digit)
-
-    def set_value(self, row: int, column: int, value: int) -> None:
-        self.data[row - 1][column - 1] = value
+    def __init__(self, board: Board, rows: List[str]):
+        super().__init__(board, [])
+        self.rows = rows
+        parts: List[CellReference] = []
+        for y, data in enumerate(self.rows):
+            row = y + 1
+            for x, digit in enumerate(data):
+                column = x + 1
+                parts.append(KnownCell(board, row, column, int(digit)))
+        self.add_items(parts)
 
     def get_value(self, row: int, column: int) -> int:
-        return self.data[row - 1][column - 1]
+        return int(self.rows[row - 1][column - 1])
+
+    @classmethod
+    def extract(cls, board: Board, yaml: Dict) -> Any:
+        return [list(str(y)) for y in yaml[cls.__name__]]
+
+    @classmethod
+    def create(cls, board: Board, yaml: Dict) -> Item:
+        items = Solution.extract(board, yaml)
+        return Solution(board, items)
+
+    def line_str(self) -> List[str]:
+        lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
+        for item in self:
+            lines[item.row - 1][item.column - 1] = item.letter()
+        return ["".join(line) for line in lines]
 
     def __repr__(self) -> str:
-        lines = [
-            "".join([str(d) for d in self.data[row - 1]])
-            for row in self.board.row_range
-        ]
-        return (f"Solution("
-                f"{self.board!r},"
-                f"{lines!r}"
-                ")"
-                )
+        return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
 
-    def __str__(self) -> str:
-        result = "Solution:\n"
-        for row in self.data:
-            result += f"  - {''.join([str(int(d)) for d in row])}\n"
-        return result
+    def to_dict(self) -> Dict:
+        return {self.__class__.__name__: self.line_str()}
 
     def __eq__(self, other: object) -> bool:
-        if isinstance(other, Solution):
+        if isinstance(other, Answer) or isinstance(other, Solution):
             for row, column in product(self.board.row_range, self.board.column_range):
                 if self.get_value(row, column) != other.get_value(row, column):
                     return False
             return True
         raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
-
-    @classmethod
-    def extract(cls, _: Board, yaml: Dict) -> List[str]:
-        return [str(line) for line in yaml]
-
-    @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'Solution':
-        return Solution(board, Solution.extract(board, yaml))
-
-    def standard_string(self) -> str:
-
-        def separator(self) -> str:
-            result = ""
-            for column in self.board.column_range:
-                if (column - 1) % self.board.box_columns == 0:
-                    result += "+-"
-                result += "--"
-            return result + "+\n"
-
-        assert self.board.box_rows is not None
-        result = ""
-        for row in self.board.row_range:
-            if (row - 1) % self.board.box_rows == 0:
-                result += separator(self)
-            for column in self.board.column_range:
-                if (column - 1) % self.board.box_columns == 0:
-                    result += "| "
-                result += f"{self.data[row - 1][column - 1]} "
-            result += "|\n"
-        result += separator(self)
-        return result

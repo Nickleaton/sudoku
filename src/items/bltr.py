@@ -1,3 +1,4 @@
+import re
 from typing import List
 
 from src.glyphs.glyph import LineGlyph, Glyph
@@ -14,7 +15,7 @@ class BLTR(StandardDiagonal):
         super().__init__(board)
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_unique_constraint(solver)
 
     @property

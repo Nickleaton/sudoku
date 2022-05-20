@@ -1,3 +1,4 @@
+import re
 from typing import List, Set, Dict
 
 from pulp import LpVariable, LpInteger
@@ -57,7 +58,7 @@ class Sequence(Line):
             possible.append(a.union(d))
         return possible
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         # Given there is an ascending sequence the cells must be unique
         # This also enforces that the gaps cannot go +2 -2 as an example
         self.add_unique_constraint(solver, optional=True)

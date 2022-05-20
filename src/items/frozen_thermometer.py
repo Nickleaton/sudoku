@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
@@ -22,7 +23,7 @@ class FrozenThermometer(Thermometer):
     def tags(self) -> set[str]:
         return super().tags.union({'Frozen Thermometer'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for i in range(1, len(self)):
             c1 = self.cells[i - 1]
             c2 = self.cells[i]

@@ -1,3 +1,4 @@
+import re
 from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph, FortressCellGlyph
@@ -28,7 +29,7 @@ class FortressCell(CellReference):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         cell = Coord(self.row, self.column)
         for offset in Direction.orthogonals():
             other = cell + offset

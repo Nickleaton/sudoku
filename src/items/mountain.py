@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
@@ -26,7 +27,7 @@ class Mountain(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Mountain', 'Adjacent', 'Set'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for i in range(0, len(self.cells) - 1):
             c1 = self.cells[i]
             c2 = self.cells[i + 1]

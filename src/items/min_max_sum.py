@@ -1,5 +1,6 @@
 # """ Frame Sudoku """
 #
+# import re
 # from typing import List, Any, Dict
 #
 # from pulp import LpVariable, LpInteger
@@ -87,7 +88,7 @@
 #         side, index, total = MinMaxSum.extract(board, yaml)
 #         return cls(board, side, index, total)
 #
-#     def add_constraint(self, solver: PulpSolver) -> None:
+#     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
 #         minimum = LpVariable(f"{self.name}_minimum", 1, self.board.maximum_digit, LpInteger)
 #         maximum = LpVariable(f"{self.name}_maximum", 1, self.board.maximum_digit, LpInteger)
 #         indicators = LpVariable.dicts(f"{self.name}_Indicators", (list(range(0, self.count()))), 0, 1, LpInteger)
