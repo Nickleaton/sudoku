@@ -15,7 +15,7 @@ class TestSolveCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return r"Solve('problems\problem001.yaml', 'output\solution\problem001.txt')"
+        return r"SolveCommand('problems\problem001.yaml', 'output\solution\problem001.txt')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

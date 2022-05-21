@@ -90,7 +90,7 @@ class TestItem(unittest.TestCase):
         self.assertEqual(self.expected_classes, self.item.used_classes)
 
     def test_add_constraint(self) -> None:
-        solver = PulpSolver(self.board)
+        solver = PulpSolver(self.board, 'test', "output/logs")
         self.item.add_constraint(solver, None, re.compile("Solution"))
 
     def test_to_dict(self) -> None:

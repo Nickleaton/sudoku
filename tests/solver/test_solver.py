@@ -34,12 +34,14 @@ class TestSolver(unittest.TestCase):
         board = Board.create('Board', config)
 
         problem = Item.create(board, {'Constraints': config['Constraints']})
-        solver = PulpSolver(board)
+        solver = PulpSolver(board, "problem001", "output/logs")
 
         problem.add_constraint(solver, None, re.compile("Solution"))
 
         solver.solve()
         # print(str(solver.solution))
+
+        # print (solver.get_log_details())
 
         expected = self.get_solution(problem)
 

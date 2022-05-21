@@ -20,7 +20,7 @@ class TestIMGCommand(TestCommand):
 
     @property
     def representation(self) -> str:
-        return r"IMG('output\jpg\problem001.jpg', SVG('problems\problem001.yaml'))"
+        return r"IMGCommand('output\jpg\problem001.jpg', SVGCommand('problems\problem001.yaml'))"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
