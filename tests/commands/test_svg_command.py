@@ -1,20 +1,20 @@
 import unittest
 
-from src.commands.svg import SVG
+from src.commands.svg_command import SVGCommand
 from tests.commands.test_command import TestCommand
 
 
 class TestSVGcommand(TestCommand):
 
     def setUp(self) -> None:
-        self.command = SVG(r'problems/problem001.yaml', r'output/svg/problem001.svg')
+        self.command = SVGCommand(r'problems/problem001.yaml', r'output/svg/problem001.svg')
 
     @property
     def output(self) -> str:
         return r"output/svg/problem001.svg"
 
     def clazz(self) -> str:
-        return SVG
+        return SVGCommand
 
     @property
     def representation(self) -> str:

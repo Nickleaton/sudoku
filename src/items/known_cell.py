@@ -11,9 +11,10 @@ from src.utils.coord import Coord
 
 class KnownCell(CellReference):
 
-    def __init__(self, board: Board, row: int, column: int, digit: int):
+    def __init__(self, board: Board, row: int, column: int, digit: int, prefix=None):
         super().__init__(board, row, column)
         self.digit = int(digit)
+        self.prefix = "Known" if prefix is None else prefix
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
@@ -84,7 +85,7 @@ class KnownCell(CellReference):
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for digit in self.board.digit_range:
             target = 1 if digit == self.digit else 0
-            name = f"Known_{self.row}_{self.column}_eq_{digit}"
+            name = f"{self.prefix}_{self.row}_{self.column}_eq_{digit}"
             solver.model += solver.choices[digit][self.row][self.column] == target, name
 
         # raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]

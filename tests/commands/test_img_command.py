@@ -1,17 +1,17 @@
 import os
 import unittest
 
-from src.commands.img import IMG
-from src.commands.svg import SVG
+from src.commands.img_command import IMGCommand
+from src.commands.svg_command import SVGCommand
 from tests.commands.test_command import TestCommand
 
 
 class TestIMGCommand(TestCommand):
 
     def setUp(self) -> None:
-        self.command = IMG(
+        self.command = IMGCommand(
             os.path.join('output', 'jpg', 'problem001.jpg'),
-            SVG(os.path.join('problems', 'problem001.yaml'))
+            SVGCommand(os.path.join('problems', 'problem001.yaml'))
         )
 
     @property

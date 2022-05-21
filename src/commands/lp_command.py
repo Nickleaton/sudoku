@@ -18,7 +18,7 @@ class LPCommand(SimpleCommand):
         assert self.problem is not None
         assert self.board is not None
         self.solver = PulpSolver(self.board)
-        self.problem.add_constraint(self.solver, None, re.compile("Solution"))
+        self.problem.add_constraint(self.solver, None, re.compile('Solution'))
 
     def write(self) -> None:
         assert self.solver is not None

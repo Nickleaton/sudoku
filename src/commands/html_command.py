@@ -4,7 +4,7 @@ import os
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 
 from src.commands.simple_command import SimpleCommand
-from src.commands.svg import SVG
+from src.commands.svg_command import SVGCommand
 
 env = Environment(
     loader=FileSystemLoader(os.path.join('src', 'html')),
@@ -16,7 +16,7 @@ class HTMLCommand(SimpleCommand):
 
     def __init__(self, config_filename: str, output_filename: str):
         super().__init__(config_filename, output_filename)
-        self.svg = SVG(config_filename, "")
+        self.svg = SVGCommand(config_filename, "")
 
     def process(self) -> None:
         super().process()

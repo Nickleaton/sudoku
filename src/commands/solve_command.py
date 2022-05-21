@@ -7,7 +7,7 @@ from src.items.solution import Solution
 from src.solvers.pulp_solver import PulpSolver
 
 
-class Solve(SimpleCommand):
+class SolveCommand(SimpleCommand):
 
     def __init__(self, config_filename: str, output_filename: str):
         super().__init__(config_filename, output_filename)
@@ -21,7 +21,7 @@ class Solve(SimpleCommand):
         assert self.board is not None
         assert self.problem is not None
         self.solver = PulpSolver(self.board)
-        self.problem.add_constraint(self.solver, None, re.compile("Solution"))
+        self.problem.add_constraint(self.solver, None, re.compile('Solution'))
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)

@@ -1,14 +1,14 @@
 import os
 import unittest
 
-from src.commands.solve import Solve
+from src.commands.solve_command import SolveCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 
 
-class TestLPcommand(TestSimpleCommand):
+class TestSolveCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
-        self.command = Solve(
+        self.command = SolveCommand(
             os.path.join('problems', 'problem001.yaml'),
             os.path.join('output', 'solution', 'problem001.txt')
         )

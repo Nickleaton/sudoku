@@ -5,11 +5,11 @@ import unittest
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 from parameterized import parameterized
 
-from src.commands.lpcommand import LPCommand
-from src.commands.solve import Solve
-from src.commands.svg import SVG
+from src.commands.lp_command import LPCommand
+from src.commands.solve_command import SolveCommand
+from src.commands.svg_command import SVGCommand
+from src.commands.verify_command import VerifyCommand
 from src.items.solution import Solution
-from src.solvers.answer import Answer
 
 env = Environment(
     loader=FileSystemLoader(os.path.join('src', 'html')),
@@ -35,14 +35,16 @@ class TestFiles(unittest.TestCase):
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_svg(self, filename: str) -> None:
-        command = SVG(os.path.join("problems", filename + ".yaml"), os.path.join("output", "svg", filename + ".svg"))
+        command = SVGCommand(os.path.join("problems", filename + ".yaml"),
+                             os.path.join("output", "svg", filename + ".svg"))
         command.process()
         self.assertIsNotNone(command.output)
         command.write()
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_html(self, filename: str) -> None:
-        command = SVG(os.path.join("problems", filename + ".yaml"), os.path.join("output", "html", filename + ".html"))
+        command = SVGCommand(os.path.join("problems", filename + ".yaml"),
+                             os.path.join("output", "html", filename + ".html"))
         command.process()
         self.assertIsNotNone(command.output)
         command.write()
@@ -55,9 +57,26 @@ class TestFiles(unittest.TestCase):
         command.write()
 
     @parameterized.expand(filenames, name_func=custom_name_func)
+    def test_solve(self, filename: str) -> None:
+        command = SolveCommand(
+            os.path.join("problems", filename + ".yaml"),
+            os.path.join("output", "solve", filename + ".txt")
+        )
+        command.process()
+        command.write()
+        expected = None
+        for item in command.config['Constraints']:
+            if 'Solution' in item:
+                expected = Solution.create(command.board, item)
+        if expected is not None:
+            self.assertEqual(expected, command.solution)
+
+    @parameterized.expand(filenames, name_func=custom_name_func)
     def test_verify(self, filename: str) -> None:
-        command = Solve(os.path.join("problems", filename + ".yaml"),
-                        os.path.join("output", "verify", filename + ".txt"))
+        command = VerifyCommand(
+            os.path.join("problems", filename + ".yaml"),
+            os.path.join("output", "verify", filename + ".txt")
+        )
         command.process()
         command.write()
         expected = None

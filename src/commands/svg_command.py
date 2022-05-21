@@ -1,5 +1,5 @@
 import logging
-import xml.dom.minidom
+import xml.dom
 
 from svgwrite import Drawing
 from svgwrite.container import Style
@@ -8,7 +8,7 @@ from src.commands.simple_command import SimpleCommand
 from src.items.item import Item
 
 
-class SVG(SimpleCommand):
+class SVGCommand(SimpleCommand):
 
     def process(self) -> None:
         super().process()

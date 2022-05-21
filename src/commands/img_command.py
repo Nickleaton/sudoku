@@ -6,12 +6,12 @@ from reportlab.graphics import renderPM
 from svglib.svglib import svg2rlg
 
 from src.commands.command import Command
-from src.commands.svg import SVG
+from src.commands.svg_command import SVGCommand
 
 
-class IMG(Command):
+class IMGCommand(Command):
 
-    def __init__(self, output_filename: str, svg: SVG):
+    def __init__(self, output_filename: str, svg: SVGCommand):
         super().__init__(output_filename)
         self.output_filename = output_filename
         self.svg = svg

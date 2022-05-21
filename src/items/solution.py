@@ -19,7 +19,7 @@ class Solution(ComposedItem):
             row = y + 1
             for x, digit in enumerate(data):
                 column = x + 1
-                parts.append(KnownCell(board, row, column, int(digit)))
+                parts.append(KnownCell(board, row, column, int(digit), 'Verify'))
         self.add_items(parts)
 
     def get_value(self, row: int, column: int) -> int:
