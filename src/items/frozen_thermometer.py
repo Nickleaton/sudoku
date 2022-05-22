@@ -2,6 +2,9 @@ import re
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
+from src.items.box import Box
+from src.items.column import Column
+from src.items.row import Row
 from src.items.thermometer import Thermometer
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -25,11 +28,20 @@ class FrozenThermometer(Thermometer):
 
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for i in range(1, len(self)):
-            c1 = self.cells[i - 1]
-            c2 = self.cells[i]
+            cell_1 = self.cells[i - 1]
+            cell_2 = self.cells[i]
 
-            name = f"{self.__class__.__name__}_rank_{c1.row}_{c1.column}_{c2.row}_{c2.column}"
-            solver.model += solver.values[c1.row][c1.column] <= solver.values[c2.row][c2.column], name
+            unique = {Box, Row, Column}
+            region_1 = {region for region in cell_1.top.regions() if region.__class__ in unique}
+            region_2 = {region for region in cell_2.top.regions() if region.__class__ in unique}
+
+            name = f"{self.__class__.__name__}_rank_{cell_1.row}_{cell_1.column}_{cell_2.row}_{cell_2.column}"
+            lower = solver.values[cell_1.row][cell_1.column]
+            upper = solver.values[cell_2.row][cell_2.column]
+            if len(region_1.intersection(region_2)) == 0:
+                solver.model += lower <= upper, name
+            else:
+                solver.model += lower + 1 <= upper, name
 
     def css(self) -> Dict:
         return {

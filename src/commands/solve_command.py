@@ -20,7 +20,7 @@ class SolveCommand(SimpleCommand):
         super().process()
         assert self.board is not None
         assert self.problem is not None
-        self.solver = PulpSolver(self.board, self.name, "output/logs")
+        self.solver = PulpSolver(self.board, self.name, "output/logs/solve")
         self.problem.add_constraint(self.solver, None, re.compile('Solution'))
         self.solver.solve()
         self.solution = self.solver.answer

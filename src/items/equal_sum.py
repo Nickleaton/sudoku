@@ -1,4 +1,5 @@
 import re
+import sys
 from typing import List, Dict
 
 from pulp import lpSum
@@ -43,12 +44,6 @@ class EqualSum(Line):
                 current = box
             areas[-1].append(cell)
 
-        # Cannot exceed the digit sum.
-        # total = LpVariable(f"{self.name}_total", cat='Integer', lowBound=1, upBound=self.board.digit_sum)
-        # for i, region in enumerate(areas):
-        #     cell_sum = lpSum([solver.values[cell.row][cell.column] for cell in region])
-        #     solver.model += total == cell_sum, f"{self.name}_{i}"
-
         # create a sum for each area
         sums = []
         for region in areas:
@@ -58,6 +53,16 @@ class EqualSum(Line):
         for i in range(0, len(areas)):
             j = 0 if i == len(areas) - 1 else i + 1
             solver.model += sums[i] == sums[j], f"{self.name}_{i}"
+
+        minimum = 0
+        maximum = sys.maxsize
+        for region in areas:
+            minimum = max(minimum, sum([i + 1 for i in range(0, len(region))]))
+            maximum = min(maximum, sum([(self.board.maximum_digit - i) for i in range(0, len(region))]))
+
+        for i in range(0, len(areas)):
+            solver.model += sums[i] >= minimum, f"{self.name}_minimum_{i}"
+            solver.model += sums[i] <= maximum, f"{self.name}_maximum_{i}"
 
     def css(self) -> Dict:
         return {

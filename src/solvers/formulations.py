@@ -6,6 +6,7 @@ from src.solvers.pulp_solver import PulpSolver
 
 
 class Formulations:
+    count = 0
 
     @staticmethod
     def parity(solver: PulpSolver, row: int, column: int) -> lpSum:
@@ -59,12 +60,23 @@ class Formulations:
         solver.model += x - target <= upper * (1 - variable), f"Product_Binary_{target.name}_d"
 
     @staticmethod
-    def logical_and(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]):
+    def logical_and(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]) -> None:
         n = len(variables)
         for var in variables:
             solver.model += target <= var, f"Logical_And_{target.name}_{var.name}_a"
         solver.model += target >= lpSum(variables) - (n - 1), f"Logical_And_{target.name}_b"
 
     @staticmethod
-    def logical_or(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]):
+    def logical_or(solver: PulpSolver, target: LpVariable, variables: List[LpVariable]) -> None:
         pass
+
+    @staticmethod
+    def abs(solver: PulpSolver, x1: LpVariable, x2: LpVariable, upper: int) -> LpElement:
+        d = LpVariable(f"Abs_Indicator_{Formulations.count}", 0, 1, LpInteger)
+        difference = LpVariable(f"Abs_Difference_{Formulations.count}", 0, upper, LpInteger)
+        solver.model += 0 <= difference - (x1 - x2), f"Abs_{Formulations.count}_a"
+        solver.model += difference - (x1 - x2) <= 2 * upper * (1 - d), f"Abs_{Formulations.count}_b"
+        solver.model += 0 <= difference - (x2 - x1), f"Abs_{Formulations.count}_c"
+        solver.model += difference - (x2 - x1) <= 2 * upper * d, f"Abs_{Formulations.count}_d"
+        Formulations.count += 1
+        return difference

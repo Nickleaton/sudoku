@@ -15,7 +15,7 @@ class SimpleCommand(Command):
     def __init__(self, config_filename: str, output_filename: Optional[str] = None):
         super().__init__(output_filename)
         self.config_filename: str = config_filename
-        self.name = os.path.basename(config_filename).split(".")[1]
+        self.name = os.path.basename(config_filename).split(".")[0]
         self.config: Optional[Dict] = None
         self.board: Optional[Board] = None
         self.problem: Optional[Item] = None

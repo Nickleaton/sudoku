@@ -1,0 +1,42 @@
+Board:
+  Title: Berlin Wall
+  Authour: Agent
+  Video: https://www.youtube.com/watch?v=Tve1ODS3mwY&ab_channel=Rangsk
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - AntiKing:
+  - GermanWhisper: 11, 22, 33, 44, 55, 66, 77, 88, 99
+  - GermanWhisper: 61, 72, 83, 94
+  - Arrow: 39, 28, 17
+  - Arrow: 25, 34, 43, 52
+  - Arrow: 35, 44, 53
+  - Arrow: 73, 64, 55, 46, 37
+  - Arrow: 57, 66, 75
+  - Arrow: 95, 86, 77, 68
+
+  - Knowns:
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - 4........
+
+  - Solution:
+    - 184732659
+    - 395684127
+    - 672195348
+    - 953841762
+    - 741926835
+    - 826357914
+    - 539418276
+    - 268573491
+    - 417269583

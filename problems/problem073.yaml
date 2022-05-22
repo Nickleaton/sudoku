@@ -1,0 +1,45 @@
+Board:
+  Title: Equal Sums
+  Authour: Rangsk
+  Reference: https://tinyurl.com/2p8sx3r4
+  Video: https://www.youtube.com/watch?v=6VQyDdhJK1Q&ab_channel=Rangsk
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - EqualSum: 11, 21, 32, 42, 43, 44
+  - EqualSum: 14, 15, 16, 17, 18
+  - EqualSum: 19, 28, 38, 48, 47, 46
+  - EqualSum: 29, 39, 49, 59
+  - EqualSum: 26, 36, 45
+  - EqualSum: 53, 52, 61, 72, 82
+  - EqualSum: 64, 63, 62, 71, 81, 91
+  - EqualSum: 55, 65, 75, 74, 84
+  - EqualSum: 66, 67, 68, 78, 89, 99
+  - EqualSum: 92, 93, 94, 95, 96
+  - EqualSum: 86, 97, 98
+
+  - Knowns:
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - ...7.....
+
+  - Solution:
+      - 146583972
+      - 593672418
+      - 728491536
+      - 917836245
+      - 632145789
+      - 854927163
+      - 465319827
+      - 371258694
+      - 289764351

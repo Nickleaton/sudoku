@@ -31,7 +31,7 @@ class TestFiles(unittest.TestCase):
         ]
     )
 
-    # filenames = ['problem070']
+    # filenames = ['problem022']
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_svg(self, filename: str) -> None:
@@ -58,6 +58,7 @@ class TestFiles(unittest.TestCase):
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_solve(self, filename: str) -> None:
+
         command = SolveCommand(
             os.path.join("problems", filename + ".yaml"),
             os.path.join("output", "solve", filename + ".txt")

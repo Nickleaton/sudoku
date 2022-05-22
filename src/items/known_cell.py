@@ -3,8 +3,11 @@ from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, KnownGlyph
 from src.items.board import Board
+from src.items.box import Box
 from src.items.cell_reference import CellReference
+from src.items.column import Column
 from src.items.item import Item
+from src.items.row import Row
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 
@@ -88,11 +91,11 @@ class KnownCell(CellReference):
             name = f"{self.prefix}_{self.row}_{self.column}_eq_{digit}"
             solver.model += solver.choices[digit][self.row][self.column] == target, name
 
-        # raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]
-        # filtered_regions = [region for region in raw_regions if self.cell in region]
-        # for region in filtered_regions:
-        #     for cell in region.cells:
-        #         if cell == self.cell:
-        #             continue
-        #         name = f"Exclude_{self.name}_{region.name}_{cell.name}_{self.digit}"
-        #         solver.model += solver.choices[self.digit][cell.row][cell.column] == 0, name
+        raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]
+        filtered_regions = [region for region in raw_regions if self.cell in region]
+        for region in filtered_regions:
+            for cell in region.cells:
+                if cell == self.cell:
+                    continue
+                name = f"Exclude_{self.name}_{region.name}_{cell.name}_{self.digit}"
+                solver.model += solver.choices[self.digit][cell.row][cell.column] == 0, name

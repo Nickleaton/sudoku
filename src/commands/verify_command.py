@@ -21,7 +21,7 @@ class VerifyCommand(SimpleCommand):
         super().process()
         assert self.board is not None
         assert self.problem is not None
-        self.solver = PulpSolver(self.board, self.name, "output/logs")
+        self.solver = PulpSolver(self.board, self.name, "output/logs/verify")
         self.problem.add_constraint(self.solver, None, None)
         self.solver.solve()
         self.solution = self.solver.answer

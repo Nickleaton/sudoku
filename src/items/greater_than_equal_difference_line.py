@@ -1,9 +1,12 @@
+import re
 from typing import List, Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.difference_line import DifferenceLine
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
+from src.solvers.formulations import Formulations
+from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
@@ -27,3 +30,10 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
     @property
     def tags(self) -> set[str]:
         return super().tags.union({'Difference', 'Comparison'})
+
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+        for i in range(0, len(self.cells) - 1):
+            x_1 = solver.values[self.cells[i].row][self.cells[i].column]
+            x_2 = solver.values[self.cells[i + 1].row][self.cells[i + 1].column]
+            name = f"{self.name}_{i}"
+            solver.model += Formulations.abs(solver, x_1, x_2, self.board.maximum_digit) >= self.difference, name

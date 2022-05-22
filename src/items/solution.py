@@ -22,6 +22,9 @@ class Solution(ComposedItem):
                 parts.append(KnownCell(board, row, column, int(digit), 'Verify'))
         self.add_items(parts)
 
+    def __hash__(self):
+        return hash("Solution")
+
     def get_value(self, row: int, column: int) -> int:
         return int(self.rows[row - 1][column - 1])
 
