@@ -39,7 +39,7 @@
             <arg value="acceptance_tests"/>
         </exec>
     </target>
-    <target name="acceptance-tests">
+    <target name="acceptance-tests" depends="generate-acceptance-tests">
         <mkdir dir="output/acceptance-tests"/>
         <exec executable="nose2" failonerror="true" taskname="nose2">
             <arg value="-s"/>
