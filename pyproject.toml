@@ -16,6 +16,18 @@ orloge = "^0.17.2"
 strictyaml = "^1.6.1"
 svglib = "^1.2.1"
 
+nose2 = "^0.11.0"
+mypy = "^0.950"
+pylint = "^2.13.7"
+lxml = "^4.8.0"
+pdoc = "^11.0.0"
+flake8 = "^4.0.1"
+pydocstyle = "^6.1.1"
+Sphinx = "^4.5.0"
+pandas = "^1.4.2"
+tox = "^3.25.0"
+perflint ="^0.7.1"
+
 [tool.poetry.dev-dependencies]
 nose2 = "^0.11.0"
 mypy = "^0.950"
@@ -32,3 +44,4 @@ perflint ="^0.7.1"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+

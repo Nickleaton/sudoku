@@ -53,12 +53,6 @@
         </exec>
     </target>
     <target name="pylint" depends="pylint.src,pylint.tests"/>
-    <target name="csstidy">
-        <mkdir dir="output/csstidy"/>
-        <exec executable="csstidy" failonerror="false" taskname="csstidy" output="output/csstidy/csstidy.txt">
-            <arg value="src/html/glyph.css"/>
-        </exec>
-    </target>
     <target name="pylint.src">
         <mkdir dir="output/pylint"/>
         <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/src.txt">
