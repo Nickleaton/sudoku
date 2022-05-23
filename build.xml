@@ -6,7 +6,7 @@
     <target name="echo">
         <echo>Echo Echo</echo>
     </target>
-    <target name="build" depends="install,pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
+    <target name="build" depends="install,update,pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
         <echo>Build</echo>
     </target>
     <target name="install">
@@ -15,7 +15,12 @@
             <arg value="install"/>
         </exec>
     </target>
-    <target name="test">
+    <target name="update">
+        <exec executable="C:\Users\nickl\AppData\Local\Programs\Python\Python310\Scripts\poetry" failonerror="true"
+              taskname="poetry">
+            <arg value="update"/>
+        </exec>
+    </target>    <target name="test">
         <mkdir dir="output/tests"/>
         <mkdir dir="output/lp"/>
         <mkdir dir="output/svg"/>
