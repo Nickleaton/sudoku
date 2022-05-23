@@ -20,7 +20,8 @@
               taskname="poetry">
             <arg value="update"/>
         </exec>
-    </target>    <target name="test">
+    </target>
+    <target name="test">
         <mkdir dir="output/tests"/>
         <mkdir dir="output/lp"/>
         <mkdir dir="output/svg"/>
@@ -57,7 +58,13 @@
             <arg value="--html-report"/>
         </exec>
     </target>
-    <target name="pylint" depends="pylint.src,pylint.tests"/>
+    <target name="pylint" depends="pylint.install,pylint.src,pylint.tests"/>
+    <target name="pylint.install">
+        <exec executable="pip" failonerror="true" taskname="pylint.install">
+            <arg value="install"/>
+            <arg value="pylint"/>
+        </exec>
+    </target>
     <target name="pylint.src">
         <mkdir dir="output/pylint"/>
         <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/src.txt">
