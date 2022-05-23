@@ -164,3 +164,8 @@ class Cell(Item):
                 'fill-opacity': 0
             }
         }
+
+    def __str__(self) -> str:
+        return f"Cell({self.row}, {self.column})"
+
+

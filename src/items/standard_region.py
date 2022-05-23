@@ -34,3 +34,6 @@ class StandardRegion(Region):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: self.index}
+
+    def __str__(self) -> str:
+        return f"{self.__class__.__name__}({self.index})"

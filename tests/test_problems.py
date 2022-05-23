@@ -31,7 +31,7 @@ class TestFiles(unittest.TestCase):
         ]
     )
 
-    # filenames = ['problem022']
+    # filenames = ['problem043']
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_svg(self, filename: str) -> None:
@@ -43,7 +43,7 @@ class TestFiles(unittest.TestCase):
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_html(self, filename: str) -> None:
-        command = SVGCommand(os.path.join("problems", filename + ".yaml"),
+        command = HTMLCommand(os.path.join("problems", filename + ".yaml"),
                              os.path.join("output", "html", filename + ".html"))
         command.process()
         self.assertIsNotNone(command.output)
@@ -58,7 +58,7 @@ class TestFiles(unittest.TestCase):
 
     @parameterized.expand(filenames, name_func=custom_name_func)
     def test_solve(self, filename: str) -> None:
-
+        # return
         command = SolveCommand(
             os.path.join("problems", filename + ".yaml"),
             os.path.join("output", "solve", filename + ".txt")

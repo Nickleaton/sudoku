@@ -59,6 +59,10 @@ class Between(Line):
             label = f"{self.name}_before_descending_{cell.row}_{cell.column}"
             solver.model += value + big_m * (1 - flag) >= end + 1, label
 
+            solver.model += solver.choices[1][cell.row][cell.column] == 0, \
+                            f"{self.name}_s_{1}_{cell.row}_{cell.column}"
+            solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, \
+                            f"{self.name}_e_{1}_{cell.row}_{cell.column}"
     def css(self) -> Dict:
         return {
             '.Between': {

@@ -113,6 +113,9 @@ class TestCell(TestItem):
         cell.set_possible([1])
         self.assertTrue(cell.fixed())
 
+    def test_regions(self):
+        print(self.item.top.regions())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

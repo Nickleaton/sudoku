@@ -35,3 +35,6 @@ class Row(StandardRegion):
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
+
+    def __str__(self) -> str:
+        return f"{self.__class__.__name__}({self.index})"
