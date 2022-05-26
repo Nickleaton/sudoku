@@ -1,0 +1,51 @@
+Board:
+  Title:  Sum Frame
+  Author: Clover
+  Video: https://www.youtube.com/watch?v=ojOATs9SDgY&ab_channel=CrackingTheCryptic
+  Reference:  https://tinyurl.com/k6dh9vzk
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - Frame: T4=15
+  - Frame: T7=23
+  - Frame: T8=15
+  - Frame: T9=7
+  - Frame: L1=6
+  - Frame: L2=15
+  - Frame: L3=24
+  - Frame: L6=15
+  - Frame: R4=10
+  - Frame: R7=22
+  - Frame: R8=15
+  - Frame: R9=8
+  - Frame: B1=9
+  - Frame: B2=15
+  - Frame: B3=21
+  - Frame: B6=10
+
+  - Knowns:
+      - ..28..9..
+      - .........
+      - 8.......1
+      - ........5
+      - .........
+      - 9........
+      - 3.......6
+      - .........
+      - ..7..64..
+
+  - Solution:
+    - 132867954
+    - 645319872
+    - 879425631
+    - 783692145
+    - 561734289
+    - 924158367
+    - 358241796
+    - 416973528
+    - 297586413

@@ -10,7 +10,7 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-#  - OrthogonallyAdjacent:
+  - OrthogonallyAdjacent:
 
 
   - Knowns:
