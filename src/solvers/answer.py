@@ -46,7 +46,7 @@ class Answer:
                 if self.get_value(row, column) != other.get_value(row, column):
                     return False
             return True
-        raise Exception(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        return other == self
 
     @classmethod
     def extract(cls, _: Board, yaml: Dict) -> List[str]:

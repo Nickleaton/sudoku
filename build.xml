@@ -26,14 +26,17 @@
         <mkdir dir="output/lp"/>
         <mkdir dir="output/svg"/>
         <exec executable="nose2" failonerror="true" taskname="nose2">
-            <arg value="-s"/>
+            <arg value="--config"/>
+            <arg value="nose2.cfg"/>
+            <arg value="--start-dir"/>
             <arg value="tests"/>
-            <arg value="-v"/>
-            <arg value="-C"/>
+            <arg value="--verbose"/>
             <arg value="--coverage-report"/>
             <arg value="html"/>
             <arg value="--pretty-assert"/>
             <arg value="--html-report"/>
+<!--            <arg value="&#45;&#45;exclude-dir"/>-->
+<!--            <arg value="acceptance_tests"/>-->
         </exec>
     </target>
     <target name="generate-acceptance-tests">

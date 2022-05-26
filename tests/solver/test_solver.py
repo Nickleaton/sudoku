@@ -13,12 +13,6 @@ from src.solvers.pulp_solver import PulpSolver
 
 class TestSolver(unittest.TestCase):
 
-    def setUp(self) -> None:
-        self.board = Board(9, 9, 3, 3)
-
-    def test_setup(self):
-        self.assertIsNotNone(self.board)
-
     @staticmethod
     def get_solution(problem: Dict) -> Optional[Solution]:
         for item in problem:
@@ -37,11 +31,9 @@ class TestSolver(unittest.TestCase):
         solver = PulpSolver(board, "problem001", "output/logs")
 
         problem.add_constraint(solver, None, re.compile("Solution"))
-
+        problem.bookkeeping()
+        problem.add_bookkeeping_contraint(solver, None, re.compile('Solution'))
         solver.solve()
-        # print(str(solver.solution))
-
-        # print (solver.get_log_details())
 
         expected = self.get_solution(problem)
 

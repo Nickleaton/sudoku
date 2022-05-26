@@ -2,14 +2,9 @@ import unittest
 from typing import Type
 
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.difference_pair import DifferencePair
-from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
 from src.items.orthogonally_adjacent import OrthogonallyAdjacent
-from src.items.pair import Pair
-from src.items.region import Region
 from tests.items.test_composed import TestComposed
 
 
@@ -21,7 +16,7 @@ class TestOrthogonallyAdjacent(TestComposed):
 
     @property
     def size(self):
-        return 288
+        return 0
 
     @property
     def clazz(self):
@@ -33,9 +28,7 @@ class TestOrthogonallyAdjacent(TestComposed):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {
-            OrthogonallyAdjacent, Cell, ComposedItem, DifferencePair, GreaterThanEqualDifferencePair, Item, Pair, Region
-        }
+        return {OrthogonallyAdjacent, ComposedItem, Item}
 
     @property
     def config(self) -> str:
