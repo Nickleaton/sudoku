@@ -61,6 +61,7 @@ import src.items.little_killer
 import src.items.lock_out
 import src.items.low_cell
 import src.items.magic_square
+import src.items.max_arrow
 import src.items.mid_cell
 import src.items.mountain
 import src.items.numbered_room

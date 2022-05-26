@@ -55,5 +55,5 @@ class FortressCell(CellReference):
             other = coord + offset
             if not self.board.is_valid_coordinate(other):
                 continue
-            cell.set_impossible(digit)
+            cell.set_impossible([digit])
             digit += 1

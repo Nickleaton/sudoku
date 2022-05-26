@@ -96,7 +96,10 @@ class AcceptanceTest(unittest.TestCase):
         for item in command.config['Constraints']:
             if 'Solution' in item:
                 expected = Solution.create(command.board, item)
-        if expected is not None:
+        if command.solution is None:
+            print("Solution is None")
+        elif expected is not None:
+            print(type(expected), type(command.solution))
             self.assertEqual(expected, command.solution)
 
     def test_verify(self) -> None:
@@ -110,5 +113,8 @@ class AcceptanceTest(unittest.TestCase):
         for item in command.config['Constraints']:
             if 'Solution' in item:
                 expected = Solution.create(command.board, item)
-        if expected is not None:
+        if command.solution is None:
+            print("Solution is None")
+        elif expected is not None:
+            print(type(expected), type(command.solution))
             self.assertEqual(expected, command.solution)

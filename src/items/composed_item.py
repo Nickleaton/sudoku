@@ -69,10 +69,6 @@ class ComposedItem(Item):
             if include is None or include.match(item.__class__.__name__):
                 if exclude is None or not exclude.match(item.__class__.__name__):
                     item.add_constraint(solver, include, exclude)
-                else:
-                    print(f"{item.__class__.__name__} Excluded")
-            else:
-                print(f"{item.__class__.__name__} Not included")
 
     def bookkeeping(self) -> None:
         for item in self.items:

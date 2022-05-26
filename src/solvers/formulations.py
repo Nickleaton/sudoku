@@ -80,3 +80,20 @@ class Formulations:
         solver.model += difference - (x2 - x1) <= 2 * upper * d, f"Abs_{Formulations.count}_d"
         Formulations.count += 1
         return difference
+
+    @staticmethod
+    def maximum(solver: PulpSolver, variables: List[LpVariable], lower: int, upper: int) -> LpElement:
+        value = LpVariable(f"Maximum_{Formulations.count}", lower, upper, LpInteger)
+        indicators = LpVariable.dicts(
+            f"Maximum_{Formulations.count}_indicator",
+            (range(0, len(variables))),
+            0,
+            1,
+            LpInteger
+        )
+        for i, var in enumerate(variables):
+            solver.model += value >= var, f"Maximum_{Formulations.count}_{i}_a"
+            solver.model += value <= var + (upper - lower) * (1 - indicators[i]), f"Maximum_{Formulations.count}_{i}_b"
+        solver.model += lpSum(indicators) == 1, f"Maximum_{Formulations.count}_SOS"
+        Formulations.count += 1
+        return value

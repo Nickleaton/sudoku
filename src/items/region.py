@@ -67,13 +67,7 @@ class Region(ComposedItem):
 
     def add_allowed_constraint(self, solver: PulpSolver, cells: List[Cell], allowed: List[int]):
         for cell in cells:
-            for digit in self.board.digit_range:
-                if digit not in allowed:
-                    name = f"Allowed_not_{cell.name}_{digit}"
-                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
-            if len(allowed) == 1:
-                name = f"Allowed_{cell.name}_{allowed[0]}"
-                solver.model += solver.choices[allowed[0]][cell.row][cell.column] == 1, name
+            cell.set_possible(allowed)
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}

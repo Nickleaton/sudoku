@@ -50,6 +50,7 @@ class Solution(ComposedItem):
         return {self.__class__.__name__: self.line_str()}
 
     def __eq__(self, other: object) -> bool:
+        print (self.__class__.__name__, other.__class__.__name__)
         if isinstance(other, Answer) or isinstance(other, Solution):
             for row, column in product(self.board.row_range, self.board.column_range):
                 if self.get_value(row, column) != other.get_value(row, column):
