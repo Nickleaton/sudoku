@@ -87,6 +87,15 @@ class Item(ABC):
     def bookkeeping(self) -> None:
         pass
 
+    def children(self) -> Set['Item']:
+        return {self}
+
+    def add_bookkeeping_contraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+        cells = [i for i in self.children() if i.__class__.__name__ == 'Cell']
+        for cell in cells:
+            cell.add_bookkeeping_contraint(solver, include, exclude)
+
+
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
 

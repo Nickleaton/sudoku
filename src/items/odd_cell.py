@@ -1,11 +1,7 @@
-import re
 from typing import Optional, List, Dict
-
-from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, OddCellGlyph
 from src.items.cell_reference import CellReference
-from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -34,18 +30,16 @@ class OddCell(CellReference):
     def tags(self) -> set[str]:
         return super().tags.union({'Parity'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
-        solver.model += lpSum(
-            [
-                solver.choices[digit][self.row][self.column]
-                for digit in self.board.digit_range
-                if not OddCell.included(digit)
-            ]
-        ) == 0, f"{self.__class__.__name__}_{self.row}_{self.column}"
-
     def css(self) -> Dict:
         return {
             ".OddCell": {
                 "fill": "gainsboro"
             }
         }
+
+    def bookkeeping(self) -> None:
+        for digit in self.board.digit_range:
+            if OddCell.included(digit):
+                self.cell.set_possible([digit])
+            else:
+                self.cell.set_impossible([digit])

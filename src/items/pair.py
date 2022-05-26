@@ -50,13 +50,15 @@ class Pair(Region):
 
     @property
     def label(self) -> str:
-        return "XX"
+        return ""
 
     @property
     def glyphs(self) -> List[Glyph]:
-        return [
-            EdgeTextGlyph(self.__class__.__name__, 0, self.cell_1.coord.center, self.cell_2.coord.center, self.label)
-        ]
+        if self.label != "":
+            return [
+                EdgeTextGlyph(self.__class__.__name__, 0, self.cell_1.coord.center, self.cell_2.coord.center, self.label)
+            ]
+        return []
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}

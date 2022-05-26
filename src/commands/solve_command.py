@@ -22,6 +22,8 @@ class SolveCommand(SimpleCommand):
         assert self.problem is not None
         self.solver = PulpSolver(self.board, self.name, "output/logs/solve")
         self.problem.add_constraint(self.solver, None, re.compile('Solution'))
+        self.problem.bookkeeping()
+        self.problem.add_bookkeeping_contraint(self.solver, None, re.compile('Solution'))
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)

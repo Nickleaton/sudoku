@@ -47,3 +47,6 @@ class CellReference(Item):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: int(self.cell.row_column_string)}
+
+    def children(self) -> Set[Item]:
+        return {self, self.cell}

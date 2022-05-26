@@ -47,6 +47,7 @@ import src.items.girandola
 import src.items.greater_than_equal_difference_line
 import src.items.greater_than_equal_difference_pair
 import src.items.greater_than_pair
+import src.items.high_cell
 import src.items.indexing
 import src.items.item
 import src.items.knight
@@ -58,11 +59,14 @@ import src.items.less_than_equal_difference_pair
 import src.items.line
 import src.items.little_killer
 import src.items.lock_out
+import src.items.low_cell
 import src.items.magic_square
+import src.items.mid_cell
 import src.items.mountain
 import src.items.numbered_room
 import src.items.odd_cell
 import src.items.orthogonal_product
+import src.items.orthogonally_adjacent
 import src.items.outside
 import src.items.pair
 import src.items.palindrome

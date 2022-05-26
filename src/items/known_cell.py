@@ -1,4 +1,3 @@
-import re
 from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, KnownGlyph
@@ -8,7 +7,6 @@ from src.items.cell_reference import CellReference
 from src.items.column import Column
 from src.items.item import Item
 from src.items.row import Row
-from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 
 
@@ -84,18 +82,10 @@ class KnownCell(CellReference):
 
     def bookkeeping(self) -> None:
         self.cell.set_possible([self.digit])
-
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
-        for digit in self.board.digit_range:
-            target = 1 if digit == self.digit else 0
-            name = f"{self.prefix}_{self.row}_{self.column}_eq_{digit}"
-            solver.model += solver.choices[digit][self.row][self.column] == target, name
-
         raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]
         filtered_regions = [region for region in raw_regions if self.cell in region]
         for region in filtered_regions:
             for cell in region.cells:
                 if cell == self.cell:
                     continue
-                name = f"Exclude_{self.name}_{region.name}_{cell.name}_{self.digit}"
-                solver.model += solver.choices[self.digit][cell.row][cell.column] == 0, name
+                cell.set_impossible([self.digit])

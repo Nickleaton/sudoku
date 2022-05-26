@@ -2,6 +2,7 @@ import re
 from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph, FortressCellGlyph
+from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -29,6 +30,14 @@ class FortressCell(CellReference):
     def tags(self) -> set[str]:
         return super().tags.union({'Comparison'})
 
+    def css(self) -> Dict:
+        return {
+            ".FortressCell": {
+                "stroke": "black",
+                "stroke-width": 3
+            }
+        }
+
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         cell = Coord(self.row, self.column)
         for offset in Direction.orthogonals():
@@ -38,10 +47,13 @@ class FortressCell(CellReference):
             solver.model += solver.values[self.row][self.column] >= solver.values[other.row][
                 other.column] + 1, f"Fortress_{self.row}_{self.column}_{other.row}_{other.column}"
 
-    def css(self) -> Dict:
-        return {
-            ".FortressCell": {
-                "stroke": "black",
-                "stroke-width": 3
-            }
-        }
+    def bookkeeping(self) -> None:
+        digit = 1
+        coord = Coord(self.row, self.column)
+        cell = Cell.make(self.board, self.row, self.column)
+        for offset in Direction.orthogonals():
+            other = coord + offset
+            if not self.board.is_valid_coordinate(other):
+                continue
+            cell.set_impossible(digit)
+            digit += 1

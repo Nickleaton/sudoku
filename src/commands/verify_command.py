@@ -1,6 +1,4 @@
 import logging
-import os.path
-import re
 from typing import Optional
 
 from src.commands.simple_command import SimpleCommand
@@ -23,6 +21,8 @@ class VerifyCommand(SimpleCommand):
         assert self.problem is not None
         self.solver = PulpSolver(self.board, self.name, "output/logs/verify")
         self.problem.add_constraint(self.solver, None, None)
+        self.problem.bookkeeping()
+        self.problem.add_bookkeeping_contraint(self.solver, None, None)
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)

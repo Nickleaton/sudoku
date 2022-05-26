@@ -1,0 +1,37 @@
+Board:
+  Title:  Ocean’s Trio
+  Author: Philip
+  Video: https://www.youtube.com/watch?v=ojOATs9SDgY&ab_channel=CrackingTheCryptic
+  Reference: https://tinyurl.com/4uhc2yr4
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+#  - OrthogonallyAdjacent:
+
+
+  - Knowns:
+      - lhmmhllhm
+      - hlmhlmhml
+      - mlhlmhlmh
+      - lmlmhhmhl
+      - hmhlmlhlm
+      - lhmlhmlhm
+      - mhlmlhmlh
+      - mlhhmlhml
+      - hmlhlmmlh
+
+  - Solution:
+      - 284691375
+      - 716835942
+      - 539247168
+      - 162479583
+      - 948352716
+      - 375186294
+      - 693518427
+      - 427963851
+      - 851724639
+

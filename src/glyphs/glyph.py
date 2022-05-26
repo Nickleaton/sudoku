@@ -343,6 +343,29 @@ class OddCellGlyph(Glyph):
         return f"{self.__class__.__name__}('{self.class_name}', {repr(self.coord)})"
 
 
+class LowCellGlyph(Glyph):
+
+    def __init__(self, class_name: str, coord: Coord):
+        super().__init__(class_name)
+        self.coord = coord
+
+    @classmethod
+    def symbol(cls) -> Optional[Symbol]:
+        result = Symbol(
+            viewBox="0 0 100 100",
+            id_="LowCell-symbol",
+            class_="LowCell"
+        )
+        result.add(Circle(center=(50, 50), r=35))
+        return result
+
+    def draw(self) -> Optional[BaseElement]:
+        return Use(href="#LowCell-symbol", insert=self.coord.point.coordinates, class_="LOwCell", height=100, width=100)
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.coord)})"
+
+
 class KropkiGlyph(CircleGlyph):
 
     def __init__(self, class_name: str, first: Coord, second: Coord):
@@ -399,6 +422,22 @@ class BoxGlyph(RectGlyph):
 
 
 class EvenCellGlyph(Glyph):
+
+    def __init__(self, class_name: str, position: Coord):
+        super().__init__(class_name)
+        self.position = position
+        self.percentage = 0.7
+        self.size = Coord(1, 1) * self.percentage
+
+    def draw(self) -> Optional[BaseElement]:
+        top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
+        return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)})"
+
+
+class MidCellGlyph(Glyph):
 
     def __init__(self, class_name: str, position: Coord):
         super().__init__(class_name)

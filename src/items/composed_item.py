@@ -74,6 +74,16 @@ class ComposedItem(Item):
             else:
                 print(f"{item.__class__.__name__} Not included")
 
+    def bookkeeping(self) -> None:
+        for item in self.items:
+            item.bookkeeping()
+
+    def children(self) -> Set[Item]:
+        result = {self}
+        for item in self.items:
+            result = result.union(item.children())
+        return result
+
     def __iter__(self):
         self._n = 0
         return self

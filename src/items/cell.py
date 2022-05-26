@@ -151,7 +151,13 @@ class Cell(Item):
                 solver.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
             ]
-        ) == 1
+        ) == 1, f'Unique_digit_{self.row}_{self.column}'
+
+    def add_bookkeeping_contraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+        for digit in self.board.digit_range:
+            if not self.possibles[digit-1]:
+                name = f"Imposible_{digit}_{self.row}_{self.column}"
+                solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: int(self.row_column_string)}
