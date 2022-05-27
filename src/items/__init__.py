@@ -54,6 +54,7 @@ import src.items.knight
 import src.items.known_cell
 import src.items.knowns
 import src.items.kropki_pair
+import src.items.kropki_pair2
 import src.items.less_than_equal_difference_line
 import src.items.less_than_equal_difference_pair
 import src.items.line

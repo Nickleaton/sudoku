@@ -27,23 +27,23 @@ Constraints:
   - ConsecutivePair: 87-88
   - ConsecutivePair: 97-98
   - ConsecutivePair: 98-99
-  - KropkiPair: 35-36
-  - KropkiPair: 27-37
-  - KropkiPair: 38-39
-  - KropkiPair: 48-58
-  - KropkiPair: 55-56
-  - KropkiPair: 55-65
-  - KropkiPair: 62-72
-  - KropkiPair: 83-84
-  - KropkiPair: 84-85
+  - KropkiPair2: 35-36
+  - KropkiPair2: 27-37
+  - KropkiPair2: 38-39
+  - KropkiPair2: 48-58
+  - KropkiPair2: 55-56
+  - KropkiPair2: 55-65
+  - KropkiPair2: 62-72
+  - KropkiPair2: 83-84
+  - KropkiPair2: 84-85
 
-#  - Solution:
-#    - 234981756
-#    - 165472893
-#    - 978536412
-#    - 412893567
-#    - 597624138
-#    - 683715924
-#    - 746359281
-#    - 351248679
-#    - 829167345
+  - Solution:
+    - 234981756
+    - 165472893
+    - 978536412
+    - 412893567
+    - 597624138
+    - 683715924
+    - 746359281
+    - 351248679
+    - 829167345
