@@ -47,5 +47,5 @@ class MaxArrow(Line):
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         bulb = solver.values[self.cells[0].row][self.cells[0].column]
         values = [solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self.cells))]
-        value = Formulations.maximum(solver, values, 1, self.board.maximum_digit)
+        value = Formulations.maximum(solver.model, values, 1, self.board.maximum_digit)
         solver.model += bulb == value, self.name

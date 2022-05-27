@@ -5,7 +5,6 @@ from src.glyphs.glyph import Glyph, LineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.diagonals import Diagonal
-from src.solvers.formulations import Formulations
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -33,7 +32,6 @@ class TLBRReflecting(Diagonal):
                 if row == column:
                     continue
                 name = f"{self.name}_{row}_{column}"
-                # pylint: disable=arguments-out-of-order
-                start = Formulations.parity(solver, row, column)
-                other = Formulations.parity(solver, column, row)
-                solver.model += start == other, name
+                c1 = Cell.make(self.board, row=row, column=column)
+                c2 = Cell.make(self.board, row=column, column=row)
+                solver.model += c1.parity(solver) == c2.parity(solver), name

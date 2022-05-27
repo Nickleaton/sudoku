@@ -5,8 +5,8 @@ from typing import List, Dict
 from pulp import lpSum
 
 from src.items.board import Board
+from src.items.cell import Cell
 from src.items.item import Item
-from src.solvers.formulations import Formulations
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -36,7 +36,7 @@ class Quadro(Item):
                 continue
             evens = lpSum(
                 [
-                    Formulations.parity(solver, int(row + offset.row), int(column + offset.column))
+                    Cell.make(self.board, int(row + offset.row), int(column + offset.column)).parity(solver)
                     for offset in offsets
                 ]
             )

@@ -145,6 +145,15 @@ class Cell(Item):
     def row_column_string(self) -> str:
         return f"{self.row}{self.column}"
 
+    def parity(self, solver) -> lpSum:
+        return lpSum(
+            [
+                solver.choices[digit][self.row][self.column]
+                for digit in self.board.digit_range
+                if digit % 2 == 0
+            ]
+        )
+
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         solver.model += lpSum(
             [
@@ -155,7 +164,7 @@ class Cell(Item):
 
     def add_bookkeeping_contraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for digit in self.board.digit_range:
-            if not self.possibles[digit-1]:
+            if not self.possibles[digit - 1]:
                 name = f"Imposible_{digit}_{self.row}_{self.column}"
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
@@ -173,5 +182,3 @@ class Cell(Item):
 
     def __str__(self) -> str:
         return f"Cell({self.row}, {self.column})"
-
-

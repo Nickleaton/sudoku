@@ -28,7 +28,7 @@ class TestSolver(unittest.TestCase):
         board = Board.create('Board', config)
 
         problem = Item.create(board, {'Constraints': config['Constraints']})
-        solver = PulpSolver(board, "problem001", "output/logs")
+        solver = PulpSolver(board, "problem001", os.path.join("output", "logs"))
 
         problem.add_constraint(solver, None, re.compile("Solution"))
         problem.bookkeeping()
@@ -37,6 +37,13 @@ class TestSolver(unittest.TestCase):
 
         expected = self.get_solution(problem)
 
+        print("x" * 80)
+        print (os.getcwd())
+        print("x" * 80)
+        print(expected)
+        print("x" * 80)
+        print(solver.answer)
+        print("x" * 80)
         if expected is None:
             print("No solution specified")
             return

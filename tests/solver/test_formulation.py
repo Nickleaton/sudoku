@@ -33,10 +33,10 @@ class TestFormulation(unittest.TestCase):
         model += absolute == Formulations.abs(model, x1, x2, 9)
         model.writeLP(os.path.join("output", "formulations", "lp", "absolute.lp"))
         model.solve(TestFormulation.get_application('absolute'))
-        print()
-        print(f"X1       {x1.varValue}")
-        print(f"X2       {x2.varValue}")
-        print(f"Absolute {absolute.varValue}")
+        # print()
+        # print(f"X1       {x1.varValue}")
+        # print(f"X2       {x2.varValue}")
+        # print(f"Absolute {absolute.varValue}")
         self.assertEqual(expected, absolute.varValue)
 
     def test_absolute(self):
@@ -55,9 +55,9 @@ class TestFormulation(unittest.TestCase):
         mini = Formulations.minimum(model, variables, 1, 9)
         model.writeLP(os.path.join("output", "formulations", "lp", "minimum.lp"))
         model.solve(TestFormulation.get_application('minimum'))
-        print()
-        print(f"Values   {repr(values)}")
-        print(f"Minimum  {mini.varValue}")
+        # print()
+        # print(f"Values   {repr(values)}")
+        # print(f"Minimum  {mini.varValue}")
         self.assertEqual(expected, mini.varValue)
 
     def test_minimum(self):
@@ -76,9 +76,9 @@ class TestFormulation(unittest.TestCase):
         maxi = Formulations.maximum(model, variables, 1, 9)
         model.writeLP(os.path.join("output", "formulations", "lp", "maximum.lp"))
         model.solve(TestFormulation.get_application('maximum'))
-        print()
-        print(f"Values   {repr(values)}")
-        print(f"Maximum  {maxi.varValue}")
+        # print()
+        # print(f"Values   {repr(values)}")
+        # print(f"Maximum  {maxi.varValue}")
         self.assertEqual(expected, maxi.varValue)
 
     def test_maximum(self):
