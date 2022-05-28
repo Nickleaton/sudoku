@@ -64,6 +64,8 @@ import src.items.low_cell
 import src.items.magic_square
 import src.items.max_arrow
 import src.items.mid_cell
+import src.items.min_max_difference
+import src.items.min_max_sum
 import src.items.mountain
 import src.items.numbered_room
 import src.items.odd_cell

@@ -1,0 +1,61 @@
+Board:
+  Title:  Min Max Difference
+  Author: Rajesh Kumar
+  Reference:  https://www.funwithpuzzles.com/2016/05/minmax-difference-sudoku.html
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+    - .........
+    - .....9...
+    - ..3...2..
+    - ...2.4...
+    - ....5....
+    - ...8.7...
+    - ..4...7..
+    - ...7.....
+    - .........
+
+  - MinMaxDifference: T1=4
+  - MinMaxDifference: T2=7
+  - MinMaxDifference: T3=5
+  - MinMaxDifference: T4=2
+  - MinMaxDifference: T5=5
+  - MinMaxDifference: T6=8
+  - MinMaxDifference: T7=7
+  - MinMaxDifference: T8=2
+  - MinMaxDifference: T9=4
+
+  - MinMaxDifference: R1=5
+  - MinMaxDifference: R2=7
+  - MinMaxDifference: R3=4
+  - MinMaxDifference: R4=7
+  - MinMaxDifference: R5=5
+  - MinMaxDifference: R6=4
+  - MinMaxDifference: R7=2
+  - MinMaxDifference: R8=2
+  - MinMaxDifference: R9=2
+
+  - MinMaxDifference: B1=5
+  - MinMaxDifference: B2=5
+  - MinMaxDifference: B3=5
+  - MinMaxDifference: B4=8
+  - MinMaxDifference: B5=5
+  - MinMaxDifference: B6=4
+  - MinMaxDifference: B7=6
+  - MinMaxDifference: B8=6
+  - MinMaxDifference: B9=6
+
+  - MinMaxDifference: L1=4
+  - MinMaxDifference: L2=3
+  - MinMaxDifference: L3=6
+  - MinMaxDifference: L4=2
+  - MinMaxDifference: L5=8
+  - MinMaxDifference: L6=2
+  - MinMaxDifference: L7=3
+  - MinMaxDifference: L8=3
+  - MinMaxDifference: L9=6

@@ -1,21 +1,22 @@
-import re
-""" Frame Sudoku """
+""" Min Max Difference Sudoku """
 
+import re
 from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
 from src.items.item import Item
+from src.solvers.formulations import Formulations
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.side import Side
 
 
-class Frame(FirstN):
+class MinMaxDifference(FirstN):
     """
     Handle frame sudoku:
-        Numbers outside the frame equal the sum of the first three numbers in the
+        Numbers outside the frame equal the difference of the minimum and maximum values in the first three cells
         corresponding row or column in the given direction
     """
 
@@ -48,9 +49,9 @@ class Frame(FirstN):
     def rules(self) -> List[Rule]:
         return [
             Rule(
-                'Frame',
+                'MinMaxDifference',
                 1,
-                "Numbers outside the frame equal the sum of the first three numbers in the "
+                "Numbers outside the frame equal the difference of the minimum and maximum number in the "
                 "corresponding row or column in the given direction"
             )
         ]
@@ -59,7 +60,7 @@ class Frame(FirstN):
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph(
-                'FrameText',
+                'MinMaxDiffenceText',
                 0,
                 self.side.marker(self.board, self.index).center,
                 str(self.total)
@@ -68,37 +69,40 @@ class Frame(FirstN):
 
     @property
     def tags(self) -> set[str]:
-        return super().tags.union({'Comparison', 'Frame'})
+        return super().tags.union({'Comparison', 'MinMaxDifference', 'Minimum', 'Maximum', 'Difference'})
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
-        side_str, index_str, total_str = regexp.match(yaml[cls.__name__]).groups()
+        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
+        side_str, offset_str, total_str = regexp.match(yaml[cls.__name__]).groups()
         side = Side.create(side_str)
-        index = int(index_str)
+        offset = int(offset_str)
         total = int(total_str)
-        return side, index, total
+        return side, offset, total
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        side, index, total = Frame.extract(board, yaml)
+        side, index, total = MinMaxDifference.extract(board, yaml)
         return cls(board, side, index, total)
 
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
-        self.add_total_constraint(solver, self.total)
+        xi = [solver.values[cell.row][cell.column] for cell in self.cells]
+        mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
+        maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
+        solver.model += Formulations.abs(solver.model, mini, maxi,self.board.maximum_digit) == self.total, self.name
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
     def css(self) -> Dict:
         return {
-            ".FrameTextForeground": {
+            ".MinMaxDifferenceTextForeground": {
                 "fill": "black",
                 "font-size": "30px",
                 "stroke": "black",
                 "stroke-width": 1
             },
-            ".FrameTextBackground": {
+            ".MinMaxDifferenceTextBackground": {
                 "fill": "white",
                 "font-size": "30px",
                 "font-weight": "bolder",

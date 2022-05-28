@@ -1,3 +1,4 @@
+import re
 from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, ConsecutiveGlyph
@@ -15,11 +16,12 @@ class ConsecutivePair(LessThanEqualDifferencePair):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        defintion = yaml[cls.__name__]
-        definition_string_1, definition_string_2 = defintion.split("-")
-
-        c1 = Cell.make(board, int(definition_string_1[0]), int(definition_string_1[1]))
-        c2 = Cell.make(board, int(definition_string_2[0]), int(definition_string_2[1]))
+        regexp = re.compile(
+            f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}])([{board.digit_values}])"
+        )
+        c1_row, c1_column, c2_row, c2_column = regexp.match(yaml[cls.__name__]).groups()
+        c1 = Cell.make(board, int(c1_row), int(c1_column))
+        c2 = Cell.make(board, int(c2_row), int(c2_column))
         return c1, c2
 
     @classmethod

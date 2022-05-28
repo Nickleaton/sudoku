@@ -1,4 +1,5 @@
-from typing import Optional, Dict
+import re
+from typing import Optional, Dict, Tuple
 
 import oyaml as yaml
 
@@ -54,13 +55,21 @@ class Board:
     def is_valid_coordinate(self, coord: Coord) -> bool:
         return self.is_valid(int(coord.row), int(coord.column))
 
+    @staticmethod
+    def parse_xy(s: str) -> Tuple[int, int]:
+        regexp = re.compile("([1234567890]+)x([1234567890]+)")
+        row_str, column_str = regexp.match(s).groups()
+        return int(row_str), int(column_str)
+
     @classmethod
     def create(cls, name: str, yaml_data: Dict) -> 'Board':
         y = yaml_data[name]
-        board_rows = int(y['Board'].split("x")[0])
-        board_columns = int(y['Board'].split("x")[1])
-        box_rows = int(y['Boxes'].split("x")[0]) if 'Boxes' in y else 0
-        box_columns = int(y['Boxes'].split("x")[1]) if 'Boxes' in y else 0
+        board_rows, board_columns = Board.parse_xy(y['Board'])
+        if 'Boxes' in y:
+            box_rows, box_columns = Board.parse_xy(y['Boxes'])
+        else:
+            box_rows = None
+            box_columns = None
         reference = y['Reference'] if 'Reference' in y else None
         video = y['Video'] if 'Video' in y else None
         title = y['Title'] if 'Title' in y else None
