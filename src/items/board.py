@@ -58,18 +58,20 @@ class Board:
     @staticmethod
     def parse_xy(s: str) -> Tuple[int, int]:
         regexp = re.compile("([1234567890]+)x([1234567890]+)")
-        row_str, column_str = regexp.match(s).groups()
+        match = regexp.match(s)
+        assert match is not None
+        row_str, column_str = match.groups()
         return int(row_str), int(column_str)
 
     @classmethod
     def create(cls, name: str, yaml_data: Dict) -> 'Board':
         y = yaml_data[name]
         board_rows, board_columns = Board.parse_xy(y['Board'])
+        box_rows = 0
+        box_columns = 0
         if 'Boxes' in y:
             box_rows, box_columns = Board.parse_xy(y['Boxes'])
-        else:
-            box_rows = None
-            box_columns = None
+
         reference = y['Reference'] if 'Reference' in y else None
         video = y['Video'] if 'Video' in y else None
         title = y['Title'] if 'Title' in y else None

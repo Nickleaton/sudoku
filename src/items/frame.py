@@ -73,7 +73,9 @@ class Frame(FirstN):
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
-        side_str, index_str, total_str = regexp.match(yaml[cls.__name__]).groups()
+        match = regexp.match(yaml[cls.__name__])
+        assert match is not None
+        side_str, index_str, total_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
         total = int(total_str)

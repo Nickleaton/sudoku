@@ -77,5 +77,89 @@ Disjunction
 Product values
 --------------
 
-Minimum and maximum
--------------------
+Minimum
+-------
+
+We want
+
+.. math:: y = minimum (x_i)
+
+where we know that
+
+.. math:: L \leq x_i \leq U
+
+
+Add binary variables
+
+.. math:: d_i
+
+Add the following constraints
+
+.. math::
+
+    y \leq x_i
+
+.. math::
+
+    y \geq x_i - (U-L)(1-d_i)
+
+.. math::
+    \sum_i d_i = 1
+
+the last being a SOS1 type constraint.
+
+Maximum
+-------
+
+We want
+
+.. math:: y = maximum (x_i)
+
+where we know that
+
+.. math:: L \leq x_i \leq U
+
+
+Add binary variables
+
+.. math:: d_i
+
+Add the following constraints
+
+.. math::
+
+    y \geq x_i
+
+.. math::
+
+    y \leq x_i + (U-L)(1-d_i)
+
+.. math::
+    \sum_i d_i = 1
+
+the last being a SOS1 type constraint.
+
+Absolute
+--------
+
+We want
+
+.. math:: y = | x_1 - x_2 |
+
+where we know that
+
+.. math:: 0 \leq x_i \leq U
+
+Add binary variable
+
+.. math:: d
+
+Add these constraints
+
+.. math:: 0 \leq y - (x_1 - x_2)
+.. math:: y - (x_1 - x_2) \leq 2 \cdot U \cdot d
+.. math:: 0 \leq y - (x_2 - x_1)
+.. math:: y - (x_2 - x_1) \leq 2 \cdot U \cdot (1-d)
+
+
+

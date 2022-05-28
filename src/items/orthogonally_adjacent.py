@@ -3,9 +3,7 @@ from itertools import product
 from typing import List, Dict
 
 from src.items.board import Board
-from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.direction import Direction
@@ -16,15 +14,6 @@ class OrthogonallyAdjacent(ComposedItem):
 
     def __init__(self, board: Board):
         super().__init__(board, [])
-        # pairs = []
-        # for row, column in product(board.row_range, board.row_range):
-        #     cell_1 = Cell.make(board, row, column)
-        #     for offset in Direction.orthogonals():
-        #         if not board.is_valid(row + offset.row, column + offset.column):
-        #             continue
-        #         cell_2 = Cell.make(board, row + offset.row, column + offset.column)
-        #         pairs.append(GreaterThanEqualDifferencePair(board, cell_1, cell_2, 2))
-        # self.add_items(pairs)
 
     @property
     def tags(self) -> set[str]:
@@ -49,7 +38,7 @@ class OrthogonallyAdjacent(ComposedItem):
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for row, column in product(self.board.row_range, self.board.row_range):
             for offset in Direction.orthogonals():
-                if not self.board.is_valid(row + offset.row, column + offset.column):
+                if not self.board.is_valid(int(row + offset.row), int(column + offset.column)):
                     continue
                 for digit in self.board.digit_range:
                     if digit + 1 > self.board.maximum_digit:
@@ -57,10 +46,10 @@ class OrthogonallyAdjacent(ComposedItem):
                     if digit - 1 < 1:
                         continue
                     lhs = solver.choices[digit][row][column]
-                    prefix = f"{self.name}_{row}_{column}_{row+offset.row}_{row+offset.column}_{digit}"
+                    prefix = f"{self.name}_{row}_{column}_{row + offset.row}_{row + offset.column}_{digit}"
 
-                    rhs_1 = solver.choices[digit+1][row+offset.row][column+offset.column]
-                    solver.model += lhs + rhs_1 <= 1, f"{prefix}_{digit+1}"
+                    rhs_1 = solver.choices[digit + 1][row + offset.row][column + offset.column]
+                    solver.model += lhs + rhs_1 <= 1, f"{prefix}_{digit + 1}"
 
-                    rhs_2 = solver.choices[digit-1][row+offset.row][column+offset.column]
-                    solver.model += lhs + rhs_2 <= 1, f"{prefix}_{digit-1}"
+                    rhs_2 = solver.choices[digit - 1][row + offset.row][column + offset.column]
+                    solver.model += lhs + rhs_2 <= 1, f"{prefix}_{digit - 1}"

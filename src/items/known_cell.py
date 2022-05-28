@@ -21,7 +21,9 @@ class KnownCell(CellReference):
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
-        row_str, column_string, digit_str = regex.match(yaml[cls.__name__]).groups()
+        match = regex.match(yaml[cls.__name__])
+        assert match is not None
+        row_str, column_string, digit_str = match.groups()
         return int(row_str), int(column_string), int(digit_str)
 
     @classmethod

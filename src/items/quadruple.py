@@ -36,7 +36,9 @@ class Quadruple(Item):
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
-        row_str, column_str, digits = regex.match(yaml[cls.__name__]).groups()
+        match = regex.match(yaml[cls.__name__])
+        assert match is not None
+        row_str, column_str, digits = match.groups()
         return Coord(int(row_str), int(column_str)), digits
 
     @classmethod

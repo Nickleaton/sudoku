@@ -19,7 +19,9 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         regexp = re.compile(
             f"([{board.digit_values}])([{board.digit_values}])-([{board.digit_values}])([{board.digit_values}])"
         )
-        c1_row, c1_column, c2_row, c2_column = regexp.match(yaml[cls.__name__]).groups()
+        match = regexp.match(yaml[cls.__name__])
+        assert match is not None
+        c1_row, c1_column, c2_row, c2_column = match.groups()
         c1 = Cell.make(board, int(c1_row), int(c1_column))
         c2 = Cell.make(board, int(c2_row), int(c2_column))
         return c1, c2

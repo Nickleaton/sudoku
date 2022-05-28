@@ -74,7 +74,9 @@ class FrameProduct(FirstN):
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
-        side_str, index_str, product_str = regexp.match(yaml[cls.__name__]).groups()
+        match = regexp.match(yaml[cls.__name__])
+        assert match is not None
+        side_str, index_str, product_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
         product = int(product_str)
