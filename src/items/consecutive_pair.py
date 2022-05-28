@@ -17,7 +17,7 @@ class ConsecutivePair(LessThanEqualDifferencePair):
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
         regexp = re.compile(
-            f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}])([{board.digit_values}])"
+            f"([{board.digit_values}])([{board.digit_values}])-([{board.digit_values}])([{board.digit_values}])"
         )
         c1_row, c1_column, c2_row, c2_column = regexp.match(yaml[cls.__name__]).groups()
         c1 = Cell.make(board, int(c1_row), int(c1_column))
