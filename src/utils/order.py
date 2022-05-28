@@ -28,5 +28,9 @@ class Order(Enum):
     def valid(letter: str) -> bool:
         return letter in ['I', 'D']
 
+    @staticmethod
+    def values() -> str:
+        return "".join([order.value for order in Order])
+
     def __repr__(self) -> str:
         return f"Order.{self.name}"

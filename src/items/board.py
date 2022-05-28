@@ -117,3 +117,7 @@ class Board:
         :return: Box number
         """
         return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
+
+    @property
+    def digit_values(self) -> str:
+        return "".join([str(digit) for digit in self.digit_range])

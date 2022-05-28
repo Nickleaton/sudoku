@@ -1,3 +1,4 @@
+import re
 from typing import Dict, Tuple, List, Set, Type
 
 from src.glyphs.glyph import Glyph, TextGlyph
@@ -19,10 +20,11 @@ class Sandwich(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        parts = yaml[cls.__name__].split("=")
-        side = Side.create(parts[0][0])
-        offset = int(parts[0][1])
-        total = int(parts[1])
+        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
+        side_str, offset_str, total_str = regexp.match(yaml[cls.__name__]).groups()
+        side = Side.create(side_str)
+        offset = int(offset_str)
+        total = int(total_str)
         return side, offset, total
 
     @classmethod

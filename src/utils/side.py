@@ -122,5 +122,9 @@ class Side(Enum):
                 return Coord(n + 1, 1)
         raise SideException("Unknown combination")  # pragma: no cover
 
+    @staticmethod
+    def values() -> str:
+        return "".join([side.value for side in Side])
+
     def __repr__(self) -> str:
         return f"Side.{self.name}"

@@ -1,3 +1,4 @@
+import re
 from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph, KnownGlyph
@@ -19,8 +20,9 @@ class KnownCell(CellReference):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        row_column, digit = yaml[cls.__name__].split("=")
-        return int(row_column[0]), int(row_column[1]), int(digit)
+        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
+        row_str, column_string, digit_str = regex.match(yaml[cls.__name__]).groups()
+        return int(row_str), int(column_string), int(digit_str)
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:

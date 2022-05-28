@@ -58,9 +58,10 @@ class Rossini(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        ref_str, order_str = yaml[cls.__name__].split("=")
-        side = Side.create(ref_str[0])
-        index = int(ref_str[1])
+        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([{Order.values()}])")
+        side_str, index_str, order_str = regexp.match(yaml[cls.__name__]).groups()
+        side = Side.create(side_str)
+        index = int(index_str)
         order = Order.create(order_str)
         return side, index, order
 

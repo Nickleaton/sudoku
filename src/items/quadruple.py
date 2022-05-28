@@ -35,9 +35,9 @@ class Quadruple(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        position_str, digits = yaml[cls.__name__].split("=")
-        position = Coord(int(position_str[0]), int(position_str[1]))
-        return position, digits
+        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
+        row_str, column_str, digits = regex.match(yaml[cls.__name__]).groups()
+        return Coord(int(row_str), int(column_str)), digits
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
