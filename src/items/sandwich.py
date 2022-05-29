@@ -1,10 +1,14 @@
 import re
 from typing import Dict, Tuple, List, Set, Type
 
+from pulp import LpVariable, LpInteger
+
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
 from src.items.item import Item
+from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+from src.utils.functions import Functions
 from src.utils.rule import Rule
 from src.utils.side import Side
 
@@ -81,3 +85,39 @@ class Sandwich(Item):
                 "font-weight": "bolder"
             }
         }
+
+    def add_constraint_row(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+        # set up boolean for sandwich.
+        # eg = 1 if 1 or 9 else 0
+        bread = LpVariable.dict(
+            f"Row_{self.index}",
+            self.board.board_rows,
+            0,
+            Functions.triangular(self.board.maximum_digit),
+            LpInteger
+        )
+        for column in self.board.board_columns:
+            one = solver.choices[1][self.index][column]
+            big = solver.choices[self.board.maximum_digit][self.index][column]
+            solver.model += bread[column] == one + big, f"Bread_column_{self.index}_{column}"
+
+    def add_constraint_column(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+        # set up boolean for sandwich.
+        # eg = 1 if 1 or 9 else 0
+        bread = LpVariable.dict(
+            f"Column_{self.index}",
+            self.board.board_columns,
+            0,
+            Functions.triangular(self.board.maximum_digit),
+            LpInteger
+        )
+        for row in self.board.board_rows:
+            one = solver.choices[1][row][self.index]
+            big = solver.choices[self.board.maximum_digit][row][self.index]
+            solver.model += bread[row] == one + big, f"Bread_row_{row}_{self.index}"
+
+    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+        if self.side.horizontal:
+            self.add_constraint_row(solver, include, exclude)
+        else:
+            self.add_constraint_column(solver, include, exclude)

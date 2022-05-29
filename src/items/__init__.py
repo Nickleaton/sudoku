@@ -74,6 +74,7 @@ import src.items.orthogonally_adjacent
 import src.items.outside
 import src.items.pair
 import src.items.palindrome
+import src.items.pencil_mark
 import src.items.product
 import src.items.quadro
 import src.items.quadruple

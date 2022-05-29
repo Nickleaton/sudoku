@@ -47,15 +47,28 @@ class Formulations:
         model += x - target <= upper * (1 - variable), f"Product_Binary_{target.name}_d"
 
     @staticmethod
-    def logical_and(model: LpProblem, target: LpVariable, variables: List[LpVariable]) -> None:
-        n = len(variables)
-        for var in variables:
-            model += target <= var, f"Logical_And_{target.name}_{var.name}_a"
-        model += target >= lpSum(variables) - (n - 1), f"Logical_And_{target.name}_b"
+    def logical_and(model: LpProblem, dis: List[LpVariable]) -> LpVariable:
+        d = LpVariable(f"l_and_{Formulations.count}", 0, 1, LpInteger)
+        n = len(dis)
+        for di in dis:
+            model += d <= di, f"Logical_And_{d.name}_{di.name}_a"
+        model += d >= lpSum(dis) - (n - 1), f"Logical_And_{d.name}_b"
+        return d
 
     @staticmethod
-    def logical_or(model: LpProblem, target: LpVariable, variables: List[LpVariable]) -> None:
-        pass
+    def logical_or(model: LpProblem, dis: List[LpVariable]) -> LpVariable:
+        d = LpVariable(f"l_and_{Formulations.count}", 0, 1, LpInteger)
+        n = len(dis)
+        for di in dis:
+            model += d >= di, f"Logical_or_{d.name}_{di.name}_a"
+        model += d <= 1, f"Logical_or_{d.name}_b"
+        return d
+
+    @staticmethod
+    def logical_not(model: LpProblem, di: LpVariable) -> LpVariable:
+        d = LpVariable(f"l_not_{Formulations.count}", 0, 1, LpInteger)
+        model += d == 1 - di, f"Logical_not_{di.name}"
+        return d
 
     @staticmethod
     def abs(model: LpProblem, x1: LpVariable, x2: LpVariable, upper: int) -> LpVariable:

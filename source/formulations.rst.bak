@@ -62,8 +62,6 @@ too large, or that causes solvers problems.
 
 So if you are comparing two digits set M equal to the maximum digit.
 
-.. _My target:
-.. _formulations-logical-and:
 Logical AND
 -----------
 
@@ -99,7 +97,6 @@ Add the following constraints
     d \geq 0
 
 
-.. _formulations-logical-or:
 Logical OR
 ----------
 
@@ -124,7 +121,6 @@ Add the following contraints
    d \leq 1
 		 
 
-.. _formulations-logical-not:
 Logical NOT
 -----------
 
@@ -140,42 +136,13 @@ Add the following constraint
 
     d = 1 - d_1
 		
+		
 
-.. _formulations-product-binary-and-value:
-Product binary and value
-------------------------
+Disjunction
+-----------
 
-We want
-
-.. math:: 
-
-    y = x \cdot d
-
-where x is the variable and d the binary
-
-We need that 
-
-.. math:: 
-	
-    L \leq x \leq U
-
-Add the following constraints
-
-.. math::
-
-    L \cdot d \leq y
-	
-.. math:: 
-
-    y <= U \cdot d
-	
-.. math:: 
-
-    L \cdot (1 - d) \leq x - y
-	
-.. math::
-
-    x - y \leq U \cdot (1 - d)
+Product values
+--------------
 
 Minimum
 -------
@@ -262,5 +229,4 @@ Add these constraints
 .. math:: y - (x_2 - x_1) \leq 2 \cdot U \cdot (1-d)
 
 
-Disjunction
------------
+

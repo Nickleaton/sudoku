@@ -95,7 +95,6 @@ class Item(ABC):
         for cell in cells:
             cell.add_bookkeeping_contraint(solver, include, exclude)
 
-
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
 

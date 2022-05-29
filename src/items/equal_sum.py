@@ -64,6 +64,14 @@ class EqualSum(Line):
             solver.model += sums[i] >= minimum, f"{self.name}_minimum_{i}"
             solver.model += sums[i] <= maximum, f"{self.name}_maximum_{i}"
 
+    def bookkeeping(self) -> None:
+        # add limits on cells
+
+        # ie. 1 cell total for 3 cell line
+
+        # 6-9 since triangular(3) = 6
+        pass
+
     def css(self) -> Dict:
         return {
             '.EqualSum': {

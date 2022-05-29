@@ -17,6 +17,9 @@ class LPCommand(SimpleCommand):
         super().process()
         assert self.problem is not None
         assert self.board is not None
+        print("=" * 80)
+        print(self.board)
+        print("=" * 80)
         self.solver = PulpSolver(self.board, self.name, "output/logs/lp")
         self.problem.add_constraint(self.solver, None, re.compile('Solution'))
         self.problem.bookkeeping()

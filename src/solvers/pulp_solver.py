@@ -21,7 +21,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.logname = os.path.join(log_path, name + ".log")
         if not os.path.exists(log_path):
             os.makedirs(log_path)
-        self.application = getSolver(solver_name, logPath=self.logname, msg=False, timeLimit=60)
+        self.application = getSolver(solver_name, logPath=self.logname, msg=False)
 
         self.objective = 0, "Objective"
         self.model = LpProblem("Sudoku", LpMinimize)
