@@ -1,0 +1,41 @@
+Board:
+  Title:  Battenburg Sudoku
+  Author: Rajesh Kumar
+  Reference:  https://www.funwithpuzzles.com/2016/02/battenburg-sudoku.html
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+  - Knowns:
+      - 15423..67
+      - ....57...
+      - .....68..
+      - ......5..
+      - ..3...1..
+      - ..8......
+      - ..17.....
+      - ...54....
+      - 94..61372
+
+  - NegativeBattenburg:
+
+  - Battenburg: 16
+  - Battenburg: 21
+  - Battenburg: 22
+  - Battenburg: 23
+  - Battenburg: 31
+  - Battenburg: 44
+  - Battenburg: 45
+  - Battenburg: 51
+  - Battenburg: 55
+  - Battenburg: 61
+  - Battenburg: 65
+  - Battenburg: 66
+  - Battenburg: 68
+  - Battenburg: 71
+  - Battenburg: 83
+
+

@@ -6,6 +6,7 @@ from pulp import lpSum
 
 from src.glyphs.glyph import Glyph, CellGlyph
 from src.items.board import Board
+from src.items.book_keeping import BookKeeping
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -28,53 +29,13 @@ class Cell(Item):
         super().__init__(board)
         self.row = row
         self.column = column
-        self.possibles = [True] * self.board.maximum_digit
+        self.book = BookKeeping(self.board.maximum_digit)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
 
     def __hash__(self):
         return self.row * self.board.maximum_digit + self.column
-
-    def set_possible(self, digits: List[int]) -> None:
-        for digit in self.board.digit_range:
-            if digit not in digits:
-                self.possibles[digit - 1] = False
-
-    def set_impossible(self, digits: List[int]) -> None:
-        for digit in self.board.digit_range:
-            if digit in digits:
-                self.possibles[digit - 1] = False
-
-    def set_odd(self) -> None:
-        for digit in self.board.digit_range:
-            if digit % 2 != 1:
-                self.possibles[digit - 1] = False
-
-    def set_even(self) -> None:
-        for digit in self.board.digit_range:
-            if digit % 2 != 0:
-                self.possibles[digit - 1] = False
-
-    def set_minimum(self, lower: int) -> None:
-        for digit in self.board.digit_range:
-            if digit < lower:
-                self.possibles[digit - 1] = False
-
-    def set_maximum(self, upper: int) -> None:
-        for digit in self.board.digit_range:
-            if digit > upper:
-                self.possibles[digit - 1] = False
-
-    def set_range(self, lower: int, upper: int) -> None:
-        self.set_minimum(lower)
-        self.set_maximum(upper)
-
-    def fixed(self) -> bool:
-        return sum(self.possibles) == 1
-
-    def is_possible(self, digit: int) -> bool:
-        return self.possibles[digit - 1]
 
     @staticmethod
     def letter() -> str:
@@ -164,7 +125,7 @@ class Cell(Item):
 
     def add_bookkeeping_contraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
         for digit in self.board.digit_range:
-            if not self.possibles[digit - 1]:
+            if not self.book[digit]:
                 name = f"Imposible_{digit}_{self.row}_{self.column}"
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 

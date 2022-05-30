@@ -1,0 +1,67 @@
+Board:
+  Title: Odd Even Renban
+  Author: Sam Cappleman-Lynes
+  Reference: https://tinyurl.com/4r82a9j5
+  Video: https://www.youtube.com/watch?v=0lKUNou9vuk&ab_channel=CrackingTheCryptic
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - Knowns:
+      - 34...7...
+      - ........7
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - 2........
+      - ...9...68
+
+  - Renban: 18, 19
+  - Renban: 22, 23, 24, 25, 25, 26
+  - Renban: 28, 38, 48
+  - Renban: 31, 41, 51
+  - Renban: 43, 44, 45
+  - Renban: 59, 69, 79
+  - Renban: 62, 72, 82
+  - Renban: 65, 66, 67
+  - Renban: 84, 85, 86, 87, 88
+  - Renban: 91, 92
+
+  - OddCell: 22
+  - OddCell: 24
+  - OddCell: 26
+  - OddCell: 28
+  - OddCell: 31
+  - OddCell: 44
+  - OddCell: 45
+  - OddCell: 48
+  - OddCell: 51
+  - OddCell: 62
+  - OddCell: 79
+  - OddCell: 82
+
+  - EvenCell: 19
+  - EvenCell: 59
+  - EvenCell: 65
+  - EvenCell: 66
+  - EvenCell: 84
+  - EvenCell: 86
+  - EvenCell: 88
+  - EvenCell: 91
+
+  - Solution:
+    - 349687512
+    - 812345697
+    - 765291483
+    - 624538179
+    - 531769824
+    - 978124356
+    - 186472935
+    - 293856741
+    - 457913268

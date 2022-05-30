@@ -47,12 +47,12 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
 
     def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
 
-        # add a constraint for values that are impossible on a line. e.g. 5 on a GermanWhispers
-        for cell in self.cells:
-            for digit in self.board.digit_range:
-                if abs(1 - digit) < self.difference and abs(self.board.maximum_digit - digit) < self.difference:
-                    name = f"{self.name}_{cell.name}_{digit}_not_allowed"
-                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
+        # # add a constraint for values that are impossible on a line. e.g. 5 on a GermanWhispers
+        # for cell in self.cells:
+        #     for digit in self.board.digit_range:
+        #         if abs(1 - digit) < self.difference and abs(self.board.maximum_digit - digit) < self.difference:
+        #             name = f"{self.name}_{cell.name}_{digit}_not_allowed_1"
+        #             solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
 
         # make sure that the difference is at least the difference
         for i in range(0, len(self.cells) - 1):

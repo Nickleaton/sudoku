@@ -13,7 +13,7 @@ class Thermometer(Line):
         return {
             ".Thermometer": {
                 "stroke": "grey",
-                "stroke-width": 20,
+                "stroke-width": 25,
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
                 "fill-opacity": 0

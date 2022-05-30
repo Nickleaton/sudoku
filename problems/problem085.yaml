@@ -1,0 +1,44 @@
+Board:
+  Title: Thermo Sudoku
+  Author: Clover
+  Reference: https://app.crackingthecryptic.com/sudoku/8mbQn8HFH9
+  Video: https://tinyurl.com/2mdfrdcf
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - SimpleThermometer: 11, 12, 13, 14, 15
+  - SimpleThermometer: 16, 17, 18, 19, 29, 28
+  - SimpleThermometer: 27, 26, 25, 24
+  - SimpleThermometer: 23, 22, 21, 31, 32
+  - SimpleThermometer: 33, 34, 35, 36, 37, 38
+  - SimpleThermometer: 39, 49, 48, 47, 46
+  - SimpleThermometer: 45, 44, 43, 42, 41, 51
+  - SimpleThermometer: 52, 53, 54, 55
+  - SimpleThermometer: 56, 57, 58, 59, 69
+  - SimpleThermometer: 68, 67, 66, 65
+  - SimpleThermometer: 64, 63
+  - SimpleThermometer: 62, 61
+  - SimpleThermometer: 71, 72, 73
+  - SimpleThermometer: 74,75, 76
+  - SimpleThermometer: 79, 78, 77
+  - SimpleThermometer: 89, 88
+  - SimpleThermometer: 87, 86
+  - SimpleThermometer: 85, 84
+  - SimpleThermometer: 81, 82, 83
+  - SimpleThermometer: 94, 95, 96, 97
+
+  - Solution:
+    - 267891345
+    - 543762198
+    - 891345672
+    - 754219863
+    - 912683457
+    - 638574219
+    - 389456721
+    - 126937584
+    - 475128936

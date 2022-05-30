@@ -85,11 +85,11 @@ class KnownCell(CellReference):
         }
 
     def bookkeeping(self) -> None:
-        self.cell.set_possible([self.digit])
+        self.cell.book.set_possible([self.digit])
         raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]
         filtered_regions = [region for region in raw_regions if self.cell in region]
         for region in filtered_regions:
             for cell in region.cells:
                 if cell == self.cell:
                     continue
-                cell.set_impossible([self.digit])
+                cell.book.set_impossible([self.digit])

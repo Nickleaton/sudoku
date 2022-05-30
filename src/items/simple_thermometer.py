@@ -16,7 +16,7 @@ class SimpleThermometer(Thermometer):
     @property
     def glyphs(self) -> List[Glyph]:
         return [
-            SimpleThermometerGlyph('SimpleThermometer', [cell.coord for cell in self.cells])
+            SimpleThermometerGlyph('Thermometer', [cell.coord for cell in self.cells])
         ]
 
     @property
@@ -46,10 +46,3 @@ class SimpleThermometer(Thermometer):
                 if digit not in possible:
                     solver.model += solver.choices[digit][cell.row][cell.column], f"{self.name}_{cell.name}_{digit}"
 
-                    # c2 = self.cells[0]
-        # c2_value = solver.values[c2.row][c2.column]
-        # name = f"{self.name}_lbound_{c2.row}_{c2.column}"
-        # solver.model += c2_value >= 0 + 1, name
-        #
-        # name = f"{self.name}_ubound_{c2.row}_{c2.column}"
-        # solver.model += c2_value <= self.board.maximum_digit - len(self) + 0 + 1, name

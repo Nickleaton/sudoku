@@ -45,6 +45,8 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
             self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
 
+        # self.model += lpSum(self.choices)  == self.board.board_rows * self.board.board_columns, "ChoiceCount"
+
     def save(self, filename: str) -> None:
         super().save(filename)
         self.model.writeLP(filename)

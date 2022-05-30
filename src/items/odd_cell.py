@@ -38,8 +38,4 @@ class OddCell(CellReference):
         }
 
     def bookkeeping(self) -> None:
-        for digit in self.board.digit_range:
-            if OddCell.included(digit):
-                self.cell.set_possible([digit])
-            else:
-                self.cell.set_impossible([digit])
+        self.cell.set_impossible([digit for digit in self.board.digit_range if not OddCell.included(digit)])

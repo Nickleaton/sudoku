@@ -10,6 +10,7 @@ import src.items.anti_queen
 import src.items.anti_tlbr
 import src.items.arrow
 import src.items.asterix
+import src.items.battenburg
 import src.items.between
 import src.items.bltr
 import src.items.board

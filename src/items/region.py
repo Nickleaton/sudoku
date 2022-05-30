@@ -67,7 +67,7 @@ class Region(ComposedItem):
 
     def add_allowed_constraint(self, solver: PulpSolver, cells: List[Cell], allowed: List[int]):
         for cell in cells:
-            cell.set_possible(allowed)
+            cell.book.set_possible(allowed)
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
