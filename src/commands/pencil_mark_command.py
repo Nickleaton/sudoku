@@ -1,5 +1,4 @@
 import logging
-import re
 import xml.dom
 
 from svgwrite import Drawing
@@ -15,10 +14,10 @@ class SVGCommand(SimpleCommand):
         super().process()
         assert self.problem is not None
         assert self.board is not None
-        logging.info("Producing problem svg")
+        logging.info("Producing svg for pencil marks")
         glyph = self.problem.sorted_glyphs()
         canvas = Drawing(
-            filename="test.svg",
+            filename="test_pencil_mark.svg",
             size=("35cm", "35cm"),
             viewBox=f"0 0 {100 * (self.board.board_rows + 2)} {100 * (self.board.board_columns + 2)}"
         )

@@ -1,6 +1,6 @@
 import re
 from itertools import product
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Optional
 
 from pulp import lpSum
 
@@ -49,7 +49,6 @@ class Cell(Item):
     def cells() -> List['Cell']:
         return list(Cell.cache.values())
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [CellGlyph('Cell', Coord(self.row, self.column))]
 
@@ -115,7 +114,7 @@ class Cell(Item):
             ]
         )
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]
@@ -123,7 +122,11 @@ class Cell(Item):
             ]
         ) == 1, f'Unique_digit_{self.row}_{self.column}'
 
-    def add_bookkeeping_contraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_bookkeeping_contraint(self,
+                                  solver: PulpSolver,
+                                  include: Optional[re.Pattern],
+                                  exclude: Optional[re.Pattern]
+                                  ) -> None:
         for digit in self.board.digit_range:
             if not self.book[digit]:
                 name = f"Imposible_{digit}_{self.row}_{self.column}"

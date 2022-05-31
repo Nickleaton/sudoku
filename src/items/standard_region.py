@@ -12,7 +12,6 @@ class StandardRegion(Region):
         super().__init__(board)
         self.index = index
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return []
 

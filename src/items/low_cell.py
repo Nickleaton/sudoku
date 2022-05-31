@@ -30,7 +30,6 @@ class LowCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Low", 1, "The digits 1,2 and 3 are marked with orange circles")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [LowCellGlyph('LowCell', Coord(self.row, self.column))]
 

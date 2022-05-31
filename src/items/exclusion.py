@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from pulp import lpSum
 
@@ -27,7 +27,6 @@ class Exclusion(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Exclusion', 3, 'Digit(s) cannot appear in the cells adjacent to the circle')]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             QuadrupleGlyph(class_name="Exclusion", position=self.position, numbers=self.numbers)
@@ -44,7 +43,7 @@ class Exclusion(Item):
         position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
         for digit in self.digits:
             digit_sum = lpSum(

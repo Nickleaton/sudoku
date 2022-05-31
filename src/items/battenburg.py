@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from src.glyphs.glyph import Glyph, BattenburgGlyph
 from src.items.board import Board
@@ -22,7 +22,6 @@ class Battenburg(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Quadruple', 3, 'Digits appearing in at last one of the cells adjacent to the circle')]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             BattenburgGlyph(class_name="Battenburg", coord=self.position)
@@ -41,7 +40,7 @@ class Battenburg(Item):
         position = Battenburg.extract(board, yaml)
         return cls(board, position)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
 
     def to_dict(self) -> Dict:

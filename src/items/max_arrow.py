@@ -1,7 +1,5 @@
 import re
-from typing import List, Dict
-
-from pulp import lpSum
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, ArrowLineGlyph
 from src.items.line import Line
@@ -22,7 +20,6 @@ class MaxArrow(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [ArrowLineGlyph('Arrow', [cell.coord for cell in self.cells])]
 
@@ -44,7 +41,7 @@ class MaxArrow(Line):
             }
         }
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         bulb = solver.values[self.cells[0].row][self.cells[0].column]
         values = [solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self.cells))]
         value = Formulations.maximum(solver.model, values, 1, self.board.maximum_digit)

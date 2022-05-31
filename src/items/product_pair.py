@@ -4,9 +4,9 @@ Kropki Dots
 import re
 from itertools import product
 from math import log10
-from typing import List, Dict
+from typing import List, Dict, Optional
 
-from pulp import LpVariable, LpInteger, lpSum, LpContinuous
+from pulp import LpVariable, lpSum, LpContinuous
 
 from src.glyphs.glyph import Glyph, KropkiGlyph
 from src.items.board import Board
@@ -36,7 +36,6 @@ class ProductPair(Pair):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
@@ -72,7 +71,7 @@ class ProductPair(Pair):
         self.cell_1.set_possible(self.possible())
         self.cell_2.set_possible(self.possible())
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         upper = int(log10(self.board.maximum_digit)) + 1
         l_1 = LpVariable(f"{self.name}_1", 0, upper, LpContinuous)
         l_2 = LpVariable(f"{self.name}_2", 0, upper, LpContinuous)

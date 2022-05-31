@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -39,7 +39,6 @@ class Outside(FirstN):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), "".join([str(digit) for digit in self.digits]))
@@ -62,7 +61,7 @@ class Outside(FirstN):
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_contains_constraint(solver, self.digits)
 
     def to_dict(self) -> Dict:

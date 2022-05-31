@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from pulp import lpSum
 
@@ -21,7 +21,6 @@ class Arrow(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [ArrowLineGlyph('Arrow', [cell.coord for cell in self.cells])]
 
@@ -43,7 +42,7 @@ class Arrow(Line):
             }
         }
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
 
         def triangular(n: int) -> int:
             return n * (n + 1) // 2
@@ -80,7 +79,7 @@ class Arrow(Line):
             if digit >= total:
                 continue
             choice = solver.choices[digit][self.cells[0].row][self.cells[0].column]
-            solver.model += choice == 0, f"{self.name}_{i}_{digit}_head"
+            solver.model += choice == 0, f"{self.name}_{digit}_head"
 
         for i in range(1, len(self.cells)):
             # value = solver.values[self.cells[i].row][self.cells[i].column]

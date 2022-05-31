@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, BoxGlyph
 from src.items.board import Board
@@ -45,7 +45,6 @@ class Box(StandardRegion):
     def rules(self) -> List[Rule]:
         return [Rule('Box', 1, 'Digits in each box must be unique')]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [BoxGlyph('Box', self.position, self.size)]
 
@@ -53,7 +52,7 @@ class Box(StandardRegion):
     def tags(self) -> set[str]:
         return super().tags.union({'Box'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 

@@ -1,4 +1,6 @@
 import re
+from typing import Optional
+
 from pulp import LpVariable, LpInteger
 
 from src.items.difference_pair import DifferencePair
@@ -11,7 +13,7 @@ class GreaterThanEqualDifferencePair(DifferencePair):
     def tags(self) -> set[str]:
         return super().tags.union({'GreaterThanEqualDifference'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         big_m = self.board.maximum_digit + 1
         indicator = LpVariable(f"Indicator_{self.name}", 0, 1, LpInteger)
         value_1 = solver.values[self.cell_1.row][self.cell_1.column]

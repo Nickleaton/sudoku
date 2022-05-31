@@ -1,5 +1,5 @@
 import re
-from typing import List, Set, Dict
+from typing import List, Set, Dict, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -25,7 +25,6 @@ class Sequence(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('Sequence', [cell.coord for cell in self.cells], False, False)]
 
@@ -58,7 +57,7 @@ class Sequence(Line):
             possible.append(a.union(d))
         return possible
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         # Given there is an ascending sequence the cells must be unique
         # This also enforces that the gaps cannot go +2 -2 as an example
         self.add_unique_constraint(solver, optional=True)

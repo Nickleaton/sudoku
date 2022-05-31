@@ -1,5 +1,5 @@
 import re
-from typing import List
+from typing import List, Optional
 
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver
@@ -26,6 +26,6 @@ class SumPair(Pair):
             )
         ]
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         total = solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
         solver.model += total == self.total, self.name

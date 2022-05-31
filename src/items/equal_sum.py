@@ -1,6 +1,6 @@
 import re
 import sys
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from pulp import lpSum
 
@@ -25,7 +25,6 @@ class EqualSum(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('EqualSum', [cell.coord for cell in self.cells], False, False)]
 
@@ -33,7 +32,7 @@ class EqualSum(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'EqualSum', 'Sum'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         # Build areas
         areas: List[List[Cell]] = []
         current = 0

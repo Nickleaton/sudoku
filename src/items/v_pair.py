@@ -1,5 +1,5 @@
 import re
-from typing import Dict
+from typing import Dict, Optional
 
 from src.items.sum_pair import SumPair
 from src.solvers.pulp_solver import PulpSolver
@@ -19,7 +19,7 @@ class VPair(SumPair):
     def label(self) -> str:
         return "V"
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_unique_constraint(solver, True)
         self.add_allowed_constraint(solver, self.cells, [1, 2, 3, 4])
 

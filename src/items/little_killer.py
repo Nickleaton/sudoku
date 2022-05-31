@@ -1,5 +1,5 @@
 import re
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Optional
 
 from pulp import lpSum
 
@@ -59,7 +59,6 @@ class LittleKiller(Region):
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 
-    @property
     def glyphs(self) -> List[Glyph]:
         delta2 = Coord(0, 0)
         if self.side == Side.TOP:
@@ -86,7 +85,7 @@ class LittleKiller(Region):
     def tags(self) -> set[str]:
         return super().tags.union({'LittleKiller', 'Killer'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         total = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
         name = f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
         solver.model += total == self.total, name

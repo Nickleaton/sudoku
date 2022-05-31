@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -51,7 +51,6 @@ class Window(Region):
     def rules(self) -> List[Rule]:
         return [Rule('Window', 1, 'Digits in same shaded window must be unique')]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [SquareGlyph('Window', self.center - Coord(1, 1), 3)]
 
@@ -59,7 +58,7 @@ class Window(Region):
     def tags(self) -> set[str]:
         return super().tags.union({'Window'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 

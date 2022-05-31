@@ -52,11 +52,16 @@ class Pair(Region):
     def label(self) -> str:
         return ""
 
-    @property
     def glyphs(self) -> List[Glyph]:
         if self.label != "":
             return [
-                EdgeTextGlyph(self.__class__.__name__, 0, self.cell_1.coord.center, self.cell_2.coord.center, self.label)
+                EdgeTextGlyph(
+                    self.__class__.__name__,
+                    0,
+                    self.cell_1.coord.center,
+                    self.cell_2.coord.center,
+                    self.label
+                )
             ]
         return []
 

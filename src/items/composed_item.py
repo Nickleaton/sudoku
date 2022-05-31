@@ -1,5 +1,5 @@
 import re
-from typing import List, Set, Type, Sequence, Dict
+from typing import List, Set, Type, Sequence, Dict, Optional
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -42,11 +42,10 @@ class ComposedItem(Item):
             result.extend(item.rules)
         return result
 
-    @property
     def glyphs(self) -> List[Glyph]:
         result = []
         for item in self.items:
-            result += item.glyphs
+            result += item.glyphs()
         return result
 
     @property
@@ -64,7 +63,7 @@ class ComposedItem(Item):
             result = result.union(item.used_classes)
         return result
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         for item in self.items:
             if include is None or include.match(item.__class__.__name__):
                 if exclude is None or not exclude.match(item.__class__.__name__):

@@ -1,5 +1,5 @@
 import re
-from typing import List, Set, Dict
+from typing import List, Set, Dict, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -21,7 +21,6 @@ class Renban(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('Renban', [cell.coord for cell in self.cells], False, False)]
 
@@ -47,7 +46,7 @@ class Renban(Line):
         right = set(range(self.board.maximum_digit, self.board.maximum_digit - length, -1))
         return left & right
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         # unique on lines
         self.add_unique_constraint(solver, True)
 

@@ -1,7 +1,7 @@
 """ Min Max Difference Sudoku """
 
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -56,7 +56,6 @@ class MinMaxDifference(FirstN):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph(
@@ -87,11 +86,11 @@ class MinMaxDifference(FirstN):
         side, index, total = MinMaxDifference.extract(board, yaml)
         return cls(board, side, index, total)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         xi = [solver.values[cell.row][cell.column] for cell in self.cells]
         mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
         maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
-        solver.model += Formulations.abs(solver.model, mini, maxi,self.board.maximum_digit) == self.total, self.name
+        solver.model += Formulations.abs(solver.model, mini, maxi, self.board.maximum_digit) == self.total, self.name
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}

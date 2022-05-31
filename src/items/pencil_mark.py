@@ -25,7 +25,6 @@ class PencilMarkCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("PencilMark", 1, "Digits restricted")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return []
 

@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.line import Line
@@ -13,7 +13,6 @@ class Palindrome(Line):
     def rules(self) -> List[Rule]:
         return [Rule('Palindrome', 1, "Cells along a purple line form a palindrome")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('Palindrome', [cell.coord for cell in self.cells], False, False)]
 
@@ -21,7 +20,7 @@ class Palindrome(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Palindrome'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         for i in range(0, len(self) // 2):
             c1 = self.cells[i]
             c2 = self.cells[len(self) - i - 1]

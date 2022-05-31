@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -47,6 +47,6 @@ class DisjointGroup(StandardRegion):
     def tags(self) -> set[str]:
         return super().tags.union({'Disjoint Group'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)

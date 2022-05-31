@@ -1,5 +1,5 @@
 import re
-from typing import List
+from typing import List, Optional
 
 from src.glyphs.glyph import Glyph, LineGlyph
 from src.items.board import Board
@@ -20,12 +20,11 @@ class TLBRReflecting(Diagonal):
     def rules(self) -> List[Rule]:
         return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             LineGlyph('TLBRReflecting', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_unique_constraint(solver)
         for row in self.board.row_range:
             for column in self.board.column_range:

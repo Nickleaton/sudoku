@@ -26,7 +26,6 @@ class EvenCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "An opaque grey square must contain an even digit")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [EvenCellGlyph('EvenCell', Coord(self.row, self.column))]
 

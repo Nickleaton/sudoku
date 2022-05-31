@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.line import Line
@@ -19,7 +19,6 @@ class Mountain(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('Mountain', [cell.coord for cell in self.cells], False, False)]
 
@@ -27,7 +26,7 @@ class Mountain(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Mountain', 'Adjacent', 'Set'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         for i in range(0, len(self.cells) - 1):
             c1 = self.cells[i]
             c2 = self.cells[i + 1]

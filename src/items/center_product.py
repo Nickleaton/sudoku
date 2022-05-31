@@ -24,7 +24,6 @@ class CenterProduct(Product):
             Rule('CenterProduct', 3, 'The number is the product of the digits in the four surronding cells')
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('CenterProduct', 0, self.position + Coord(1, 1), str(self.product))

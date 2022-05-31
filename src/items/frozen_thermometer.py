@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
 from src.items.box import Box
@@ -16,7 +16,6 @@ class FrozenThermometer(Thermometer):
     def rules(self) -> List[Rule]:
         return [Rule('FrozenThermo', 1, "Cells along a line with a bulb increase or stay the same from the bulb end")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             FrozenThermometerGlyph('FrozenThermometer', [cell.coord for cell in self.cells])
@@ -26,7 +25,7 @@ class FrozenThermometer(Thermometer):
     def tags(self) -> set[str]:
         return super().tags.union({'Frozen Thermometer'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         for i in range(1, len(self)):
             cell_1 = self.cells[i - 1]
             cell_2 = self.cells[i]

@@ -22,7 +22,6 @@ class OddCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "An opaque grey circle must contain an odd digit")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [OddCellGlyph('OddCell', Coord(self.row, self.column))]
 

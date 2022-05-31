@@ -3,7 +3,7 @@ Kropki Dots
 """
 import re
 from itertools import product
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from pulp import LpVariable, LpInteger, lpSum
 
@@ -42,7 +42,6 @@ class KropkiPair(Pair):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
@@ -112,7 +111,7 @@ class KropkiPair(Pair):
             solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f"{self.name}_Valid_{x}_{y}"
             count += 1
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_impossible_constraint(solver)
         self.add_implausible_constraint(solver)
         self.create_sos(solver)

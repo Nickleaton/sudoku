@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from pulp import lpSum
 
@@ -27,7 +27,6 @@ class Quadruple(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Quadruple', 3, 'Digits appearing in at last one of the cells adjacent to the circle')]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             QuadrupleGlyph(class_name="Quadruple", position=self.position, numbers=self.numbers)
@@ -46,7 +45,7 @@ class Quadruple(Item):
         position, numbers = Quadruple.extract(board, yaml)
         return cls(board, position, numbers)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
         for digit in self.digits:
             digit_sum = lpSum(

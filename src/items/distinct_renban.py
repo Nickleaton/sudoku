@@ -18,7 +18,6 @@ class DistinctRenban(Renban):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('DistinctRenban', [cell.coord for cell in self.cells], False, False)]
 

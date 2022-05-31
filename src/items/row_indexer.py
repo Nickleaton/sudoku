@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, RectGlyph
 from src.items.board import Board
@@ -23,7 +23,6 @@ class RowIndexer(Indexer):
     def other_variant() -> str:
         return "column"
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [RectGlyph('RowIndexer', Coord(self.index, 1), Coord(1, self.board.board_rows))]
 
@@ -31,7 +30,7 @@ class RowIndexer(Indexer):
     def tags(self) -> set[str]:
         return super().tags.union({'Indexing'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         for cell in self.cells:
             for digit in solver.board.digit_range:
                 indexer = solver.choices[digit][cell.row][cell.column]

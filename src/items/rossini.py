@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
@@ -42,7 +42,6 @@ class Rossini(FirstN):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             ArrowGlyph(
@@ -72,7 +71,7 @@ class Rossini(FirstN):
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> Dict:

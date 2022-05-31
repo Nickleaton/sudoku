@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Tuple, List, Set, Type
+from typing import Dict, Tuple, List, Set, Type, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -38,7 +38,6 @@ class Sandwich(Item):
         side, offset, total = cls.extract(board, yaml)
         return cls(board, side, offset, total)
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('Sandwich', 0, self.position, str(self.total)),
@@ -86,7 +85,11 @@ class Sandwich(Item):
             }
         }
 
-    def add_constraint_row(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint_row(self,
+                           solver: PulpSolver,
+                           include: Optional[re.Pattern],
+                           exclude: Optional[re.Pattern]
+                           ) -> None:
         # set up boolean for sandwich.
         # eg = 1 if 1 or 9 else 0
         bread = LpVariable.dict(
@@ -101,7 +104,11 @@ class Sandwich(Item):
             big = solver.choices[self.board.maximum_digit][self.index][column]
             solver.model += bread[column] == one + big, f"Bread_column_{self.index}_{column}"
 
-    def add_constraint_column(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint_column(self,
+                              solver: PulpSolver,
+                              include: Optional[re.Pattern],
+                              exclude: Optional[re.Pattern]
+                              ) -> None:
         # set up boolean for sandwich.
         # eg = 1 if 1 or 9 else 0
         bread = LpVariable.dict(
@@ -116,7 +123,7 @@ class Sandwich(Item):
             big = solver.choices[self.board.maximum_digit][row][self.index]
             solver.model += bread[row] == one + big, f"Bread_row_{row}_{self.index}"
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         if self.side.horizontal:
             self.add_constraint_row(solver, include, exclude)
         else:

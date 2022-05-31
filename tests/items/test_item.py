@@ -81,7 +81,7 @@ class TestItem(unittest.TestCase):
         self.assertLessEqual(len(sorted_unique), len(rules))
 
     def test_glyphs(self):
-        self.assertIsInstance(self.item.glyphs, list)
+        self.assertIsInstance(self.item.glyphs(), list)
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

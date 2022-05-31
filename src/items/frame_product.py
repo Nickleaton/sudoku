@@ -1,7 +1,7 @@
 """ Frame Sudoku """
 
 import re
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -56,7 +56,6 @@ class FrameProduct(FirstN):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph(
@@ -87,7 +86,7 @@ class FrameProduct(FirstN):
         side, index, product = FrameProduct.extract(board, yaml)
         return cls(board, side, index, product)
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
     def to_dict(self) -> Dict:

@@ -1,7 +1,6 @@
 import re
-from typing import List
+from typing import List, Optional
 
-from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
@@ -18,13 +17,6 @@ class Row(StandardRegion):
         self.unique = True
 
     @property
-    def glyphs(self) -> List[Glyph]:
-        result = []
-        for item in self.items:
-            result.extend(item.glyphs)
-        return result
-
-    @property
     def rules(self) -> List[Rule]:
         return [Rule('Row', 1, 'Digits in each row must be unique')]
 
@@ -32,7 +24,7 @@ class Row(StandardRegion):
     def tags(self) -> set[str]:
         return super().tags.union({'Row'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 

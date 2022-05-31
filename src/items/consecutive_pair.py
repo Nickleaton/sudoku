@@ -39,7 +39,6 @@ class ConsecutivePair(LessThanEqualDifferencePair):
     def tags(self) -> set[str]:
         return super().tags.union({'Consecutive'})
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [ConsecutiveGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 

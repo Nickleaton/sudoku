@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Tuple, List, Set, Type
+from typing import Dict, Tuple, List, Set, Type, Optional
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -35,7 +35,6 @@ class NumberedRoom(Item):
         side, offset, digit = cls.extract(board, yaml)
         return cls(board, side, offset, digit)
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('NumberedRoom', 0, self.reference, str(self.digit)),
@@ -67,7 +66,7 @@ class NumberedRoom(Item):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         if self.side == Side.LEFT:
             for d in self.board.digit_range:
                 first = solver.choices[d][self.start_cell.row][self.start_cell.column]

@@ -45,13 +45,11 @@ class Item(ABC):
     def sorted_unique_rules(self) -> List[Rule]:
         return sorted(list(set(self.rules)))
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return []
 
-    @property
     def sorted_glyphs(self) -> Glyph:
-        return ComposedGlyph('Composed', sorted(self.glyphs))
+        return ComposedGlyph('Composed', sorted(self.glyphs()))
 
     @property
     def name(self) -> str:
@@ -81,7 +79,7 @@ class Item(ABC):
         return f"{self.__class__.__name__}(({self.board!r})"
 
     # pylint: disable=unused-argument
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         pass
 
     def bookkeeping(self) -> None:
@@ -90,7 +88,10 @@ class Item(ABC):
     def children(self) -> Set['Item']:
         return {self}
 
-    def add_bookkeeping_contraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_bookkeeping_contraint(self,
+                                  solver: PulpSolver,
+                                  include: Optional[re.Pattern],
+                                  exclude: Optional[re.Pattern]) -> None:
         cells = [i for i in self.children() if i.__class__.__name__ == 'Cell']
         for cell in cells:
             cell.add_bookkeeping_contraint(solver, include, exclude)

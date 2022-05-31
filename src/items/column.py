@@ -1,5 +1,5 @@
 import re
-from typing import List
+from typing import List, Optional
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -17,7 +17,6 @@ class Column(StandardRegion):
         self.strict = True
         self.unique = True
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return []
 
@@ -29,7 +28,7 @@ class Column(StandardRegion):
     def tags(self) -> set[str]:
         return super().tags.union({'Column'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 

@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -23,7 +23,6 @@ class Between(Line):
             )
         ]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [BetweenGlyph('Between', [cell.coord for cell in self.cells])]
 
@@ -31,7 +30,7 @@ class Between(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Between', 'Comparison'})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]
@@ -59,10 +58,12 @@ class Between(Line):
             label = f"{self.name}_before_descending_{cell.row}_{cell.column}"
             solver.model += value + big_m * (1 - flag) >= end + 1, label
 
-            solver.model += solver.choices[1][cell.row][cell.column] == 0, \
-                            f"{self.name}_s_{1}_{cell.row}_{cell.column}"
-            solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, \
-                            f"{self.name}_e_{1}_{cell.row}_{cell.column}"
+            name = f"{self.name}_s_{1}_{cell.row}_{cell.column}"
+            solver.model += solver.choices[1][cell.row][cell.column] == 0, name
+
+            name = f"{self.name}_e_{1}_{cell.row}_{cell.column}"
+            solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
+
     def css(self) -> Dict:
         return {
             '.Between': {

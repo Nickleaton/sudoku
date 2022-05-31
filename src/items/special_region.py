@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -36,7 +36,6 @@ class SpecialRegion(Region):
     def rules(self) -> List[Rule]:
         return [Rule(self.region_name(), 1, 'Digits cannot repeat in highlighted cells')]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [SquareGlyph(self.region_name(), cell.coord, 1) for cell in self.cells]
 
@@ -44,7 +43,7 @@ class SpecialRegion(Region):
     def tags(self) -> set[str]:
         return super().tags.union({self.region_name()})
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 

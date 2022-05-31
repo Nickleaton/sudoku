@@ -22,7 +22,6 @@ class FortressCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "The digit in a fortress cell must be bigger than its orthogonal neighbours")]
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [FortressCellGlyph('FortressCell', Coord(self.row, self.column))]
 
@@ -38,7 +37,7 @@ class FortressCell(CellReference):
             }
         }
 
-    def add_constraint(self, solver: PulpSolver, include: re.Pattern, exclude: re.Pattern) -> None:
+    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
         cell = Coord(self.row, self.column)
         for offset in Direction.orthogonals():
             other = cell + offset

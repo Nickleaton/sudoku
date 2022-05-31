@@ -14,8 +14,8 @@ class Answer(SimpleCommand):
         super().process()
         assert self.problem is not None
         assert self.board is not None
-        logging.info("Producing answer")
-        glyph = self.problem.sorted_glyphs
+        logging.info("Producing answer svg")
+        glyph = self.problem.sorted_glyphs()
         canvas = Drawing(
             filename="answer.svg",
             size=("35cm", "35cm"),

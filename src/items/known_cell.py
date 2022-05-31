@@ -34,7 +34,6 @@ class KnownCell(CellReference):
     def letter(self) -> str:
         return str(self.digit)
 
-    @property
     def glyphs(self) -> List[Glyph]:
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
