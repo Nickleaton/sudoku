@@ -22,7 +22,7 @@ class TestFormulation(unittest.TestCase):
         log_path = os.path.join("output", "formulations", "logs")
         return getSolver('PULP_CBC_CMD', logPath=os.path.join(log_path, name + ".log"), msg=False, timeLimit=60)
 
-    def absolute(self, v1: int, v2: int, expected: int):
+    def absolute(self, v1: int, v2: int, expected: int) -> None:
         model = LpProblem("Sudoku", LpMinimize)
         absolute = LpVariable("minimum", 0, 9, LpInteger)
         x1 = LpVariable("x1", 1, 9, LpInteger)
@@ -39,12 +39,12 @@ class TestFormulation(unittest.TestCase):
         # print(f"Absolute {absolute.varValue}")
         self.assertEqual(expected, absolute.varValue)
 
-    def test_absolute(self):
+    def test_absolute(self) -> None:
         self.absolute(3, 9, 6)
         self.absolute(5, 3, 2)
         self.absolute(1, 1, 0)
 
-    def minimum(self, values: List[int], expected: int):
+    def minimum(self, values: List[int], expected: int) -> None:
         model = LpProblem("Sudoku", LpMinimize)
         variables: List[LpVariable] = []
         for i, value in enumerate(values):
@@ -55,17 +55,14 @@ class TestFormulation(unittest.TestCase):
         mini = Formulations.minimum(model, variables, 1, 9)
         model.writeLP(os.path.join("output", "formulations", "lp", "minimum.lp"))
         model.solve(TestFormulation.get_application('minimum'))
-        # print()
-        # print(f"Values   {repr(values)}")
-        # print(f"Minimum  {mini.varValue}")
         self.assertEqual(expected, mini.varValue)
 
-    def test_minimum(self):
+    def test_minimum(self) -> None:
         self.minimum([2, 2, 2], 2)
         self.minimum([1, 2, 3], 1)
         self.minimum([3, 2, 1], 1)
 
-    def maximum(self, values: List[int], expected: int):
+    def maximum(self, values: List[int], expected: int) -> None:
         model = LpProblem("Sudoku", LpMinimize)
         variables: List[LpVariable] = []
         for i, value in enumerate(values):
@@ -81,10 +78,66 @@ class TestFormulation(unittest.TestCase):
         # print(f"Maximum  {maxi.varValue}")
         self.assertEqual(expected, maxi.varValue)
 
-    def test_maximum(self):
+    def test_maximum(self) -> None:
         self.maximum([1, 2, 3], 3)
         self.maximum([3, 2, 1], 3)
         self.maximum([2, 2, 2], 2)
+
+    def test_logical_or(self) -> None:
+        ...
+
+    def test_logical_and(self) -> None:
+        ...
+
+    def logical_not(self, value: int, expected: int) -> None:
+        model = LpProblem("Sudoku", LpMinimize)
+        x = LpVariable("x", 0, 1, LpInteger)
+        y = LpVariable("x", 0, 1, LpInteger)
+        model += x == value
+        y = Formulations.logical_not(model, x)
+        model.writeLP(os.path.join("output", "formulations", "lp", "logical_not.lp"))
+        model.solve(TestFormulation.get_application('logical_not'))
+        self.assertEqual(expected, y.varValue)
+
+    def test_logical_not(self):
+        self.logical_not(1, 0)
+        self.logical_not(0, 1)
+
+    def logical_or(self, value1: int, value2: int, expected: int) -> None:
+        model = LpProblem("Sudoku", LpMinimize)
+        x1 = LpVariable("x1", 0, 1, LpInteger)
+        x2 = LpVariable("x2", 0, 1, LpInteger)
+        y = LpVariable("x", 0, 1, LpInteger)
+        model += x1 == value1
+        model += x2 == value2
+        y = Formulations.logical_or(model, [x1, x2])
+        model.writeLP(os.path.join("output", "formulations", "lp", "logical_or.lp"))
+        model.solve(TestFormulation.get_application('logical_or'))
+        self.assertEqual(expected, y.varValue)
+
+    def test_logical_or(self):
+        self.logical_or(0, 0, 0)
+        self.logical_or(0, 1, 1)
+        self.logical_or(1, 0, 1)
+        self.logical_or(1, 1, 1)
+
+    def logical_and(self, value1: int, value2: int, expected: int) -> None:
+        model = LpProblem("Sudoku", LpMinimize)
+        x1 = LpVariable("x1", 0, 1, LpInteger)
+        x2 = LpVariable("x2", 0, 1, LpInteger)
+        y = LpVariable("x", 0, 1, LpInteger)
+        model += x1 == value1
+        model += x2 == value2
+        y = Formulations.logical_and(model, [x1, x2])
+        model.writeLP(os.path.join("output", "formulations", "lp", "logical_and.lp"))
+        model.solve(TestFormulation.get_application('logical_and'))
+        self.assertEqual(expected, y.varValue)
+
+    def test_logical_and(self):
+        self.logical_and(0, 0, 0)
+        self.logical_and(0, 1, 0)
+        self.logical_and(1, 0, 0)
+        self.logical_and(1, 1, 1)
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -65,7 +65,6 @@ class LittleKiller(Region):
             delta2 = Coord(0, 1)
         if self.side == Side.RIGHT:
             delta2 = Coord(0, 1)
-        # print(self.reference, self.delta, self.reference + self.delta, self.direction, self.to_dict(), delta2)
         return [
             TextGlyph('LittleKiller', 0, self.reference + Coord(0.5, 0.5), str(self.total)),
             ArrowGlyph('LittleKiller', self.direction.angle.angle, self.reference + (self.delta * 0.90) + delta2)

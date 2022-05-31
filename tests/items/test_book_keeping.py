@@ -65,6 +65,42 @@ class TestBookKeeping(unittest.TestCase):
         book = BookKeeping(9)
         self.assertEqual("BookKeeping(9)", repr(book))
 
+    def test_and(self):
+        book1 = BookKeeping(9)
+        book1.set_range(1, 5)
+        book2 = BookKeeping(9)
+        book2.set_range(5, 9)
+        expected = BookKeeping(9)
+        expected.set_possible([5])
+        self.assertEqual(expected, book1 & book2)
+
+    def test_or(self):
+        book1 = BookKeeping(9)
+        book1.set_range(4, 5)
+        book2 = BookKeeping(9)
+        book2.set_range(5, 6)
+        expected = BookKeeping(9)
+        expected.set_possible([4, 5, 6])
+        self.assertEqual(expected, book1 | book2)
+
+    def test_not(self):
+        book = BookKeeping(9)
+        book.set_range(5, 9)
+        expected = BookKeeping(9)
+        expected.set_range(1, 4)
+        self.assertEqual(expected, ~book)
+
+    def test_eq(self):
+        book1 = BookKeeping(9)
+        book1.set_range(5, 9)
+        book2 = BookKeeping(9)
+        book2.set_range(5, 9)
+        book3 = BookKeeping(9)
+        book3.set_range(4, 9)
+        self.assertEqual(book1, book2)
+        self.assertNotEqual(book1, book3)
+        self.assertNotEqual(book2, book3)
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

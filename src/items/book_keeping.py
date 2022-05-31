@@ -30,6 +30,20 @@ class BookKeeping:
             result[i] = self[i] or other[i]
         return result
 
+    def __invert__(self) -> 'BookKeeping':
+        result = BookKeeping(self.maximum_digit)
+        for i in self.digit_range:
+            result[i] = not self[i]
+        return result
+
+    def __eq__(self, other) -> bool:
+        assert isinstance(other, BookKeeping)
+        assert self.maximum_digit == other.maximum_digit
+        for i in self.digit_range:
+            if self[i] != other[i]:
+                return False
+        return True
+
     def __str__(self) -> str:
         return "".join([str(i) if self[i] else ' ' for i in self.digit_range])
 
