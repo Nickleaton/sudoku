@@ -42,6 +42,12 @@ class ComposedItem(Item):
             result.extend(item.rules)
         return result
 
+    def flatten(self) -> List['Item']:
+        result = [self]
+        for item in self.items:
+            result.extend(item.flatten())
+        return result
+
     def glyphs(self) -> List[Glyph]:
         result = []
         for item in self.items:

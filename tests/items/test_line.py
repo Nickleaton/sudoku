@@ -7,19 +7,20 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
 from src.items.region import Region
-from tests.items.test_item import TestItem
+from tests.items.test_region import TestRegion
 
 
-class TestLine(TestItem):
-
-    @property
-    def clazz(self):
-        return Line
+class TestLine(TestRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = self.clazz(self.board, cells)
+        self.size = 3
+
+    @property
+    def clazz(self):
+        return Line
 
     @property
     def config(self) -> str:

@@ -15,6 +15,7 @@ class TestIndexer(TestStandardRegion):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
         self.item = Indexer(self.board, 1)
+        self.size = 0
 
     @property
     def clazz(self):

@@ -24,6 +24,7 @@ class TestEntropic(TestLine):
             Cell.make(self.board, 1, 6)
         ]
         self.item = Entropic(self.board, cells)
+        self.size = 6
 
     @property
     def config(self) -> str:

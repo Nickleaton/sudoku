@@ -17,6 +17,7 @@ class TestBLTR(TestStandardDiagonal):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
         self.item = BLTR(self.board)
+        self.size = 9
 
     @property
     def clazz(self):

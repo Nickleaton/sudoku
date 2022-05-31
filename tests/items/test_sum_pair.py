@@ -16,6 +16,7 @@ class TestSumPair(TestPair):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = SumPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
+        self.size = 2
 
     @property
     def clazz(self):

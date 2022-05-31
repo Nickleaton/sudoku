@@ -6,14 +6,16 @@ from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.knight import Knight
+from tests.items.test_composed import TestComposed
 from tests.items.test_item import TestItem
 
 
-class TestKnight(TestItem):
+class TestKnight(TestComposed):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Knight(self.board, [2, 4, 6, 8])
+        self.size = 81
 
     @property
     def clazz(self):

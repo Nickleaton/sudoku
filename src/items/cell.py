@@ -86,7 +86,7 @@ class Cell(Item):
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Cell):
             return self.row == other.row and self.column == other.column
-        raise CellException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        return False
 
     def __lt__(self, other: object) -> bool:
         if isinstance(other, Cell):

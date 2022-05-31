@@ -41,6 +41,9 @@ class Item(ABC):
     def rules(self) -> List[Rule]:
         return []
 
+    def flatten(self) -> List['Item']:
+        return [self]
+
     @property
     def sorted_unique_rules(self) -> List[Rule]:
         return sorted(list(set(self.rules)))

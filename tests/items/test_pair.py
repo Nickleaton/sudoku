@@ -7,14 +7,15 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
-from tests.items.test_item import TestItem
+from tests.items.test_region import TestRegion
 
 
-class TestPair(TestItem):
+class TestPair(TestRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Pair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
+        self.size = 2
 
     @property
     def clazz(self):
@@ -38,6 +39,10 @@ class TestPair(TestItem):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, Item, Pair, ComposedItem, Region}
+
+    @property
+    def inside(self) -> Cell:
+        return Cell.make(self.board, 1, 2)
 
 
 if __name__ == '__main__':  # pragma: no cover

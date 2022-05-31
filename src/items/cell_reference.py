@@ -32,6 +32,9 @@ class CellReference(Item):
     def letter(self) -> str:  # pylint: disable=no-self-use
         return '.'
 
+    def flatten(self) -> List[Item]:
+        return [self, self.cell]
+
     @property
     def rules(self) -> List[Rule]:
         return []

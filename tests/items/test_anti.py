@@ -6,15 +6,16 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
-from tests.items.test_item import TestItem
+from tests.items.test_composed import TestComposed
 
 
-class TestAnti(TestItem):
+class TestAnti(TestComposed):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         Cell.make_board(self.board)
         self.item = Anti(self.board, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+        self.size = 0
 
     @property
     def clazz(self):

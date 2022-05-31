@@ -17,7 +17,7 @@ class TestFrameProduct(TestFirstN):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = FrameProduct(self.board, Side.TOP, 1, 20)
-        self.size = 9
+        self.size = 3
 
     @property
     def clazz(self):

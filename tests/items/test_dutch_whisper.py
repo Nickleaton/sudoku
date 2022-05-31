@@ -22,6 +22,7 @@ class TestDutchWhispers(TestGreaterThanEqualDifferenceLine):
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = DutchWhisper(self.board, cells)
+        self.size = 5
 
     @property
     def clazz(self):

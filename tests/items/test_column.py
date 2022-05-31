@@ -16,6 +16,7 @@ class TestColumn(TestStandardRegion):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Column(self.board, 1)
+        self.size = 9
 
     @property
     def clazz(self):

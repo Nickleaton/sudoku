@@ -43,8 +43,7 @@ class TestCell(TestItem):
         two = Cell.make(self.board, 2, 1)
         self.assertEqual(one, one)
         self.assertNotEqual(one, two)
-        with self.assertRaises(CellException):
-            _ = one == "xxx"
+        self.assertNotEqual("xxx", one)
 
     def test_lt(self):
         one = Cell.make(self.board, 1, 1)
@@ -68,7 +67,7 @@ class TestCell(TestItem):
         self.assertEqual(".", self.item.letter())
 
     def test_regions(self):
-        print(self.item.top.regions())
+        self.assertIsNotNone(self.item.top.regions())
 
 
 if __name__ == '__main__':  # pragma: no cover

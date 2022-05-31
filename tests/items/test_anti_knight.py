@@ -18,6 +18,7 @@ class TestAntiKnight(TestAnti):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = AntiKnight(self.board)
+        self.size = 448
 
     @property
     def clazz(self):

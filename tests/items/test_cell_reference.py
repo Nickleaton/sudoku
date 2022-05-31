@@ -46,6 +46,9 @@ class TestCellReference(TestItem):
     def test_letter(self):
         self.assertEqual('.', self.item.letter())
 
+    def test_flatten(self) -> None:
+        self.assertListEqual([self.item, self.item.cell], self.item.flatten())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

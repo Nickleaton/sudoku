@@ -49,6 +49,12 @@ class TestComposed(TestItem):
         self.assertEqual(self.item, self.item.top)
         self.assertEqual(self.item, child.top)
 
+    def test_flatten(self) -> None:
+        expected = [self.item]
+        for item in self.item.items:
+            expected.extend(item.flatten())
+        self.assertListEqual(expected, self.item.flatten())
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

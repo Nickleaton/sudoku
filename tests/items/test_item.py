@@ -88,13 +88,13 @@ class TestItem(unittest.TestCase):
         return {Item}
 
     def test_used_classes(self) -> None:
-        if self.expected_classes != self.item.used_classes:  # pragma: no cover
-            print(self.__class__.__name__)
-            expected_names = sorted([cls.__name__ for cls in self.expected_classes])
-            used_names = sorted([cls.__name__ for cls in self.item.used_classes])
-            print(f"{{{', '.join(expected_names)}}}")
-            print(f"{{{', '.join(used_names)}}}")
-            print()
+        # if self.expected_classes != self.item.used_classes:  # pragma: no cover
+        #     expected_names = sorted([cls.__name__ for cls in self.expected_classes])
+        #     used_names = sorted([cls.__name__ for cls in self.item.used_classes])
+        #     print(self.__class__.__name__)
+        #     print(f"{{{', '.join(expected_names)}}}")
+        #     print(f"{{{', '.join(used_names)}}}")
+        #     print()
         self.assertEqual(self.expected_classes, self.item.used_classes)
 
     def test_add_constraint(self) -> None:
@@ -118,6 +118,9 @@ class TestItem(unittest.TestCase):
 
     def test_css(self) -> None:
         self.assertIsNotNone(self.item.css())
+
+    def test_flatten(self) -> None:
+        self.assertListEqual([self.item], self.item.flatten())
 
 
 if __name__ == '__main__':  # pragma: no cover

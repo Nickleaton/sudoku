@@ -22,6 +22,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
             Cell.make(self.board, 1, 3),
             1
         )
+        self.size = 2
 
     @property
     def clazz(self):

@@ -15,6 +15,7 @@ class TestStandardRegion(TestRegion):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = StandardRegion(self.board, 1)
+        self.size = 0
 
     @property
     def clazz(self):

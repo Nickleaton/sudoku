@@ -19,6 +19,7 @@ class TestAntiQueen(TestAnti):
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         Cell.make_board(self.board)
         self.item = AntiQueen(self.board, [8, 9])
+        self.size = 816
 
     @property
     def clazz(self):

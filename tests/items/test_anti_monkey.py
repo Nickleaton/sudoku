@@ -19,6 +19,7 @@ class TestAntiMonkey(TestAnti):
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         Cell.make_board(self.board)
         self.item = AntiMonkey(self.board)
+        self.size = 384
 
     @property
     def clazz(self):

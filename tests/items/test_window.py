@@ -16,6 +16,7 @@ class TestWindow(TestRegion):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Window(self.board, Coord(2, 2))
+        self.size = 9
 
     @property
     def clazz(self):

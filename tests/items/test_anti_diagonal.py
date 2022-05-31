@@ -16,6 +16,7 @@ class TestAntiDiagonal(TestDiagonal):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
         self.item = AntiDiagonal(self.board)
+        self.size = 0
 
     @property
     def clazz(self):

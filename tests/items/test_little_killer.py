@@ -9,14 +9,15 @@ from src.items.little_killer import LittleKiller
 from src.items.region import Region
 from src.utils.cyclic import Cyclic
 from src.utils.side import Side
-from tests.items.test_item import TestItem
+from tests.items.test_region import TestRegion
 
 
-class TestLittleKiller(TestItem):
+class TestLittleKiller(TestRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 20)
+        self.size = 6
 
     @property
     def clazz(self):
@@ -37,6 +38,10 @@ class TestLittleKiller(TestItem):
     @property
     def has_rule(self) -> bool:
         return True
+
+    @property
+    def inside(self) -> Cell:
+        return Cell.make(self.board, 1, 4)
 
 
 if __name__ == '__main__':  # pragma: no cover

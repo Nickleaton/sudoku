@@ -17,6 +17,7 @@ class TestAntiTLBR(TestAntiDiagonal):
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3)
         self.item = AntiTLBR(self.board)
+        self.size = 9
 
     @property
     def clazz(self):
