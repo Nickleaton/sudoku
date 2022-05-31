@@ -56,4 +56,4 @@ class PencilMarkCell(CellReference):
         return cls(board, row, column, digits)
 
     def bookkeeping(self) -> None:
-        self.cell.set_possible(self.digits)
+        self.cell.book.set_possible(self.digits)

@@ -101,9 +101,12 @@ class TestItem(unittest.TestCase):
         solver = PulpSolver(self.board, 'test', "output/logs")
         self.item.add_constraint(solver, None, re.compile("Solution"))
 
-    def test_bookkeeping(self) -> None:
+    def test_add_bookkeeping_contraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
         self.item.add_bookkeeping_contraint(solver, None, re.compile("Solution"))
+
+    def test_bookkeeping(self) -> None:
+        self.item.bookkeeping()
 
     def test_to_dict(self) -> None:
         config = yaml.load(self.config, Loader=yaml.SafeLoader)

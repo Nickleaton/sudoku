@@ -43,4 +43,4 @@ class MidCell(CellReference):
         }
 
     def bookkeeping(self) -> None:
-        self.cell.set_possible(MidCell.digits())
+        self.cell.book.set_possible(MidCell.digits())

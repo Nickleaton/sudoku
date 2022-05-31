@@ -38,4 +38,4 @@ class EvenCell(CellReference):
         }
 
     def bookkeeping(self) -> None:
-        self.cell.set_impossible([digit for digit in self.board.digit_range if not EvenCell.included(digit)])
+        self.cell.book.set_impossible([digit for digit in self.board.digit_range if not EvenCell.included(digit)])

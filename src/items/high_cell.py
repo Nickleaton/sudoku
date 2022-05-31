@@ -39,4 +39,4 @@ class HighCell(CellReference):
         return {}
 
     def bookkeeping(self) -> None:
-        self.cell.set_possible(HighCell.digits())
+        self.cell.book.set_possible(HighCell.digits())
