@@ -24,6 +24,10 @@ class TestCell(TestItem):
         return "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2)"
 
     @property
+    def str_representation(self) -> str:
+        return "Cell(1, 2)"
+
+    @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Item, Cell}
 

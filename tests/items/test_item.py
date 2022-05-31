@@ -50,6 +50,14 @@ class TestItem(unittest.TestCase):
         unittest.TestCase.maxDiff = None
         self.assertEqual(self.representation, repr(self.item))
 
+    @property
+    def str_representation(self) -> str:
+        return self.representation
+
+    def test_str(self):
+        unittest.TestCase.maxDiff = None
+        self.assertEqual(self.str_representation, str(self.item))
+
     def test_to_svg(self):
         self.assertIsNone(self.item.svg())
 
@@ -92,6 +100,10 @@ class TestItem(unittest.TestCase):
     def test_add_constraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
         self.item.add_constraint(solver, None, re.compile("Solution"))
+
+    def test_bookkeeping(self) -> None:
+        solver = PulpSolver(self.board, 'test', "output/logs")
+        self.item.add_bookkeeping_contraint(solver, None, re.compile("Solution"))
 
     def test_to_dict(self) -> None:
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
