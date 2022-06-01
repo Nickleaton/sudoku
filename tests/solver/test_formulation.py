@@ -83,16 +83,9 @@ class TestFormulation(unittest.TestCase):
         self.maximum([3, 2, 1], 3)
         self.maximum([2, 2, 2], 2)
 
-    def test_logical_or(self) -> None:
-        ...
-
-    def test_logical_and(self) -> None:
-        ...
-
     def logical_not(self, value: int, expected: int) -> None:
         model = LpProblem("Sudoku", LpMinimize)
         x = LpVariable("x", 0, 1, LpInteger)
-        y = LpVariable("x", 0, 1, LpInteger)
         model += x == value
         y = Formulations.logical_not(model, x)
         model.writeLP(os.path.join("output", "formulations", "lp", "logical_not.lp"))
@@ -107,7 +100,6 @@ class TestFormulation(unittest.TestCase):
         model = LpProblem("Sudoku", LpMinimize)
         x1 = LpVariable("x1", 0, 1, LpInteger)
         x2 = LpVariable("x2", 0, 1, LpInteger)
-        y = LpVariable("x", 0, 1, LpInteger)
         model += x1 == value1
         model += x2 == value2
         y = Formulations.logical_or(model, [x1, x2])
@@ -125,7 +117,6 @@ class TestFormulation(unittest.TestCase):
         model = LpProblem("Sudoku", LpMinimize)
         x1 = LpVariable("x1", 0, 1, LpInteger)
         x2 = LpVariable("x2", 0, 1, LpInteger)
-        y = LpVariable("x", 0, 1, LpInteger)
         model += x1 == value1
         model += x2 == value2
         y = Formulations.logical_and(model, [x1, x2])

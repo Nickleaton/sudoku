@@ -24,7 +24,7 @@ class Row(StandardRegion):
     def tags(self) -> set[str]:
         return super().tags.union({'Row'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 

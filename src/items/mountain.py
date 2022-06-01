@@ -26,7 +26,7 @@ class Mountain(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Mountain', 'Adjacent', 'Set'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for i in range(0, len(self.cells) - 1):
             c1 = self.cells[i]
             c2 = self.cells[i + 1]

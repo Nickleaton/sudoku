@@ -7,7 +7,6 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.knight import Knight
 from tests.items.test_composed import TestComposed
-from tests.items.test_item import TestItem
 
 
 class TestKnight(TestComposed):

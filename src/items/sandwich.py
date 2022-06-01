@@ -123,7 +123,7 @@ class Sandwich(Item):
             big = solver.choices[self.board.maximum_digit][row][self.index]
             solver.model += bread[row] == one + big, f"Bread_row_{row}_{self.index}"
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         if self.side.horizontal:
             self.add_constraint_row(solver, include, exclude)
         else:

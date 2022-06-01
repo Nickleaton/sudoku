@@ -61,7 +61,7 @@ class Outside(FirstN):
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_contains_constraint(solver, self.digits)
 
     def to_dict(self) -> Dict:

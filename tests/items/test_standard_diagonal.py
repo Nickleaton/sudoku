@@ -18,7 +18,6 @@ class TestStandardDiagonal(TestDiagonal):
         self.item = StandardDiagonal(self.board)
         self.size = 0
 
-
     @property
     def clazz(self):
         return StandardDiagonal

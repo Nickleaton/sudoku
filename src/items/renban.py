@@ -46,7 +46,7 @@ class Renban(Line):
         right = set(range(self.board.maximum_digit, self.board.maximum_digit - length, -1))
         return left & right
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         # unique on lines
         self.add_unique_constraint(solver, True)
 

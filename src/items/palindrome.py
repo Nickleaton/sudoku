@@ -20,7 +20,7 @@ class Palindrome(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Palindrome'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for i in range(0, len(self) // 2):
             c1 = self.cells[i]
             c2 = self.cells[len(self) - i - 1]

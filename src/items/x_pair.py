@@ -19,7 +19,7 @@ class XPair(SumPair):
     def label(self) -> str:
         return "X"
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver, True)
         self.add_allowed_constraint(solver, self.cells, [1, 2, 3, 4, 6, 7, 8, 9])
 

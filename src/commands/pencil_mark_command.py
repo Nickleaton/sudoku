@@ -1,21 +1,27 @@
 import logging
-import xml.dom
+import xml.dom.minidom
 
 from svgwrite import Drawing
 from svgwrite.container import Style
 
 from src.commands.simple_command import SimpleCommand
+from src.items.composed_item import ComposedItem
 from src.items.item import Item
+from src.items.solution import Solution
 
 
 class SVGCommand(SimpleCommand):
+
+    @staticmethod
+    def filter(item: Item) -> bool:
+        return item.__class__ not in [Solution]
 
     def process(self) -> None:
         super().process()
         assert self.problem is not None
         assert self.board is not None
         logging.info("Producing svg for pencil marks")
-        glyph = self.problem.sorted_glyphs()
+        glyph = ComposedItem(self.board, filter(self.problem.flatten(), SVGCommand.filter)).sorted_glyphs()
         canvas = Drawing(
             filename="test_pencil_mark.svg",
             size=("35cm", "35cm"),

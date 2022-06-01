@@ -1,6 +1,5 @@
-import re
 from itertools import product
-from typing import Dict, Tuple, List, Optional
+from typing import Dict, Tuple, List
 
 from pulp import lpSum
 
@@ -36,6 +35,9 @@ class Cell(Item):
 
     def __hash__(self):
         return self.row * self.board.maximum_digit + self.column
+
+    def __str__(self) -> str:
+        return f"Cell({self.row}, {self.column})"
 
     @staticmethod
     def letter() -> str:
@@ -114,7 +116,7 @@ class Cell(Item):
             ]
         )
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]
@@ -122,11 +124,7 @@ class Cell(Item):
             ]
         ) == 1, f'Unique_digit_{self.row}_{self.column}'
 
-    def add_bookkeeping_contraint(self,
-                                  solver: PulpSolver,
-                                  include: Optional[re.Pattern],
-                                  exclude: Optional[re.Pattern]
-                                  ) -> None:
+    def add_bookkeeping_contraint(self, solver: PulpSolver) -> None:
         for digit in self.board.digit_range:
             if not self.book[digit]:
                 name = f"Imposible_{digit}_{self.row}_{self.column}"
@@ -143,6 +141,3 @@ class Cell(Item):
                 'fill-opacity': 0
             }
         }
-
-    def __str__(self) -> str:
-        return f"Cell({self.row}, {self.column})"

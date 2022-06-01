@@ -20,9 +20,9 @@ class VerifyCommand(SimpleCommand):
         assert self.board is not None
         assert self.problem is not None
         self.solver = PulpSolver(self.board, self.name, "output/logs/verify")
-        self.problem.add_constraint(self.solver, None, None)
+        self.problem.add_constraint(self.solver)
         self.problem.bookkeeping()
-        self.problem.add_bookkeeping_contraint(self.solver, None, None)
+        self.problem.add_bookkeeping_contraint(self.solver)
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)

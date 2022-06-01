@@ -42,7 +42,7 @@ class Arrow(Line):
             }
         }
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
 
         def triangular(n: int) -> int:
             return n * (n + 1) // 2

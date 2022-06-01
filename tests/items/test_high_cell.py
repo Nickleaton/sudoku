@@ -4,7 +4,6 @@ from typing import Type
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
-from src.items.even_cell import EvenCell
 from src.items.high_cell import HighCell
 from src.items.item import Item
 from tests.items.test_cell_reference import TestCellReference

@@ -37,7 +37,7 @@ class FortressCell(CellReference):
             }
         }
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         cell = Coord(self.row, self.column)
         for offset in Direction.orthogonals():
             other = cell + offset

@@ -111,7 +111,7 @@ class KropkiPair(Pair):
             solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f"{self.name}_Valid_{x}_{y}"
             count += 1
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_impossible_constraint(solver)
         self.add_implausible_constraint(solver)
         self.create_sos(solver)

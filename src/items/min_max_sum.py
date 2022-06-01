@@ -86,7 +86,7 @@ class MinMaxSum(FirstN):
         side, index, total = MinMaxSum.extract(board, yaml)
         return cls(board, side, index, total)
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         xi = [solver.values[cell.row][cell.column] for cell in self.cells]
         mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
         maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)

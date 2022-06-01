@@ -1,5 +1,4 @@
-import re
-from typing import List, Set, Type, Sequence, Dict, Optional
+from typing import List, Set, Type, Sequence, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -69,11 +68,9 @@ class ComposedItem(Item):
             result = result.union(item.used_classes)
         return result
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for item in self.items:
-            if include is None or include.match(item.__class__.__name__):
-                if exclude is None or not exclude.match(item.__class__.__name__):
-                    item.add_constraint(solver, include, exclude)
+            item.add_constraint(solver)
 
     def bookkeeping(self) -> None:
         for item in self.items:

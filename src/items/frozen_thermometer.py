@@ -25,7 +25,7 @@ class FrozenThermometer(Thermometer):
     def tags(self) -> set[str]:
         return super().tags.union({'Frozen Thermometer'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for i in range(1, len(self)):
             cell_1 = self.cells[i - 1]
             cell_2 = self.cells[i]

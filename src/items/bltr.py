@@ -15,7 +15,7 @@ class BLTR(StandardDiagonal):
         super().__init__(board)
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver)
 
     def glyphs(self) -> List[Glyph]:

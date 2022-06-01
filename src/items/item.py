@@ -51,7 +51,10 @@ class Item(ABC):
     def glyphs(self) -> List[Glyph]:
         return []
 
-    def sorted_glyphs(self) -> Glyph:
+    def sorted_glyphs(self,
+                      include: Optional[re.Pattern] = None,
+                      exclude: Optional[re.Pattern] = None
+                      ) -> Glyph:
         return ComposedGlyph('Composed', sorted(self.glyphs()))
 
     @property
@@ -82,7 +85,7 @@ class Item(ABC):
         return f"{self.__class__.__name__}(({self.board!r})"
 
     # pylint: disable=unused-argument
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         pass
 
     def bookkeeping(self) -> None:
@@ -91,13 +94,10 @@ class Item(ABC):
     def children(self) -> Set['Item']:
         return {self}
 
-    def add_bookkeeping_contraint(self,
-                                  solver: PulpSolver,
-                                  include: Optional[re.Pattern],
-                                  exclude: Optional[re.Pattern]) -> None:
+    def add_bookkeeping_contraint(self, solver: PulpSolver) -> None:
         cells = [i for i in self.children() if i.__class__.__name__ == 'Cell']
         for cell in cells:
-            cell.add_bookkeeping_contraint(solver, include, exclude)
+            cell.add_bookkeeping_contraint(solver)
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}

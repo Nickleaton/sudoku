@@ -56,7 +56,7 @@ class Knight(ComposedItem):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for digit in self.digits:
             for cell in self.cells:
                 include = []

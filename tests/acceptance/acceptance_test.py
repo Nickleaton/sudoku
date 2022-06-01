@@ -12,6 +12,8 @@ from src.items.solution import Solution
 
 class AcceptanceTest(unittest.TestCase):
 
+    DIRECTORY = "test_results"
+
     def setUp(self) -> None:
         self.name = None
 
@@ -33,31 +35,31 @@ class AcceptanceTest(unittest.TestCase):
     def svg_filename(self) -> Optional[str]:
         if self.name is None:
             return None
-        return os.path.join("output", "svg", self.name + ".svg")
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.svg")
 
     @property
     def html_filename(self) -> Optional[str]:
         if self.name is None:
             return None
-        return os.path.join("output", "html", self.name + ".html")
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.html")
 
     @property
     def lp_filename(self) -> Optional[str]:
         if self.name is None:
             return None
-        return os.path.join("output", "lp", self.name + ".lp")
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.lp")
 
     @property
     def solution_filename(self) -> Optional[str]:
         if self.name is None:
             return None
-        return os.path.join("output", "solution", self.name + ".txt")
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "solution.txt")
 
     @property
     def verify_filename(self) -> Optional[str]:
         if self.name is None:
             return None
-        return os.path.join("output", "verify", self.name + ".txt")
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "verify.txt")
 
     def test_svg(self) -> None:
         if self.name is None:

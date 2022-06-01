@@ -30,7 +30,7 @@ class RowIndexer(Indexer):
     def tags(self) -> set[str]:
         return super().tags.union({'Indexing'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for cell in self.cells:
             for digit in solver.board.digit_range:
                 indexer = solver.choices[digit][cell.row][cell.column]

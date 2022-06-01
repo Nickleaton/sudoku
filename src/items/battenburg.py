@@ -40,7 +40,7 @@ class Battenburg(Item):
         position = Battenburg.extract(board, yaml)
         return cls(board, position)
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
 
     def to_dict(self) -> Dict:

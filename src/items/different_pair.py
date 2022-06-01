@@ -40,7 +40,7 @@ class DifferentPair(Pair):
     def tags(self) -> set[str]:
         return super().tags.union({'Different'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for digit in self.digits:
             name = (
                 f"{self.__class__.__name__}"

@@ -27,7 +27,7 @@ class AntiDiagonal(Diagonal):
     def tags(self) -> set[str]:
         return super().tags.union({'Diagonal', 'Uniqueness'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         # example. In a 9x9 with 3x3 boxes
         # In box 1 we add up the number of used digits for each digit on the diagonal.
         # In box 5 we add up the number of used digits for each digit on the diagonal.

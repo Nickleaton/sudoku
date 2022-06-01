@@ -71,7 +71,7 @@ class ProductPair(Pair):
         self.cell_1.set_possible(self.possible())
         self.cell_2.set_possible(self.possible())
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         upper = int(log10(self.board.maximum_digit)) + 1
         l_1 = LpVariable(f"{self.name}_1", 0, upper, LpContinuous)
         l_2 = LpVariable(f"{self.name}_2", 0, upper, LpContinuous)

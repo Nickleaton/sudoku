@@ -35,7 +35,7 @@ class OrthogonallyAdjacent(ComposedItem):
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         for row, column in product(self.board.row_range, self.board.row_range):
             for offset in Direction.orthogonals():
                 if not self.board.is_valid(int(row + offset.row), int(column + offset.column)):

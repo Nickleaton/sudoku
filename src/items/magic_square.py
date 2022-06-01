@@ -80,7 +80,7 @@ class MagicSquare(Region):
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         solver.model += solver.values[self.center.row][self.center.column] == 5, f"{self.__class__.__name__}_center"
         for i, line in enumerate(MagicSquare.lines):
             cell1 = self.cells[line[0] - 1]

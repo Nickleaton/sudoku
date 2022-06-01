@@ -32,7 +32,7 @@ class EqualSum(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'EqualSum', 'Sum'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         # Build areas
         areas: List[List[Cell]] = []
         current = 0

@@ -30,7 +30,7 @@ class Between(Line):
     def tags(self) -> set[str]:
         return super().tags.union({'Between', 'Comparison'})
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]

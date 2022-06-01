@@ -24,7 +24,7 @@ class TLBRReflecting(Diagonal):
         return [
             LineGlyph('TLBRReflecting', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver)
         for row in self.board.row_range:
             for column in self.board.column_range:

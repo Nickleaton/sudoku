@@ -1,4 +1,3 @@
-import re
 import unittest
 from typing import Type
 
@@ -99,11 +98,11 @@ class TestItem(unittest.TestCase):
 
     def test_add_constraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
-        self.item.add_constraint(solver, None, re.compile("Solution"))
+        self.item.add_constraint(solver)
 
     def test_add_bookkeeping_contraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
-        self.item.add_bookkeeping_contraint(solver, None, re.compile("Solution"))
+        self.item.add_bookkeeping_contraint(solver)
 
     def test_bookkeeping(self) -> None:
         self.item.bookkeeping()

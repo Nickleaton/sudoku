@@ -45,7 +45,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
                     result.add(r)
         return result
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
 
         # # add a constraint for values that are impossible on a line. e.g. 5 on a GermanWhispers
         # for cell in self.cells:

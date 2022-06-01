@@ -71,7 +71,7 @@ class Rossini(FirstN):
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> Dict:

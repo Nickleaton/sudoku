@@ -85,7 +85,7 @@ class Frame(FirstN):
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 
-    def add_constraint(self, solver: PulpSolver, include: Optional[re.Pattern], exclude: Optional[re.Pattern]) -> None:
+    def add_constraint(self, solver: PulpSolver) -> None:
         self.add_total_constraint(solver, self.total)
 
     def to_dict(self) -> Dict:
