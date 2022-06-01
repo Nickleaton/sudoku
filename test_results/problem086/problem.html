@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>  </title>
+		<link rel="stylesheet" href="glyph.css">
+	</head>
+	<body>
+		<h1>Problem</h1>
+		<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="35cm" version="1.1" viewBox="0 0 1100 1100" width="35cm">
+	<defs/>
+	<style type="text/css"><![CDATA[
+.Box {
+    fill-opacity: 0;
+    stroke: black;
+    stroke-width: 3;
+}
+
+.Cell {
+    fill-opacity: 0;
+    stroke: black;
+    stroke-width: 1;
+}
+
+.EvenCell {
+    fill: gainsboro;
+}
+
+.Known {
+    fill: black;
+    font-size: 70px;
+    font-weight: 500;
+    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+}
+
+.KnownBackground {
+    fill: white;
+    font-size: 70px;
+    font-weight: bolder;
+    stroke: white;
+    stroke-width: 8;
+}
+
+.KnownForeground {
+    fill: black;
+    font-size: 70px;
+    stroke: black;
+}
+
+.OddCell {
+    fill: gainsboro;
+}
+
+.Renban {
+    fill-opacity: 0;
+    stroke: purple;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 20;
+}
+
+.TextGlyphBackground {
+    fill: white;
+    font-size: 30px;
+    font-weight: bolder;
+    stroke: white;
+    stroke-width: 8;
+}
+
+.TextGlyphForeground {
+    fill: black;
+    font-size: 30px;
+    font-weight: bolder;
+    stroke: black;
+    stroke-width: 8;
+}
+
+.Unknown {
+    fill: blue;
+    font-size: 70px;
+    font-weight: 500;
+    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+}
+
+.UnknownBackground {
+    fill: white;
+    font-size: 70px;
+    font-weight: bolder;
+    stroke: white;
+    stroke-width: 8;
+}
+
+.UnknownForeground {
+    fill: blue;
+    font-size: 70px;
+    stroke: blue;
+}
+
+LittleNumber {
+    font-size: 20px;
+    stroke: black;
+}
+
+]]></style>
+	<symbol class="OddCell" id="OddCell-symbol" viewBox="0 0 100 100">
+		<circle cx="50" cy="50" r="35"/>
+	</symbol>
+	<g>
+		<rect class="Box" height="300" transform="translate(100, 100)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(100, 400)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(100, 700)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(400, 100)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(400, 400)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(400, 700)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(700, 100)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(700, 400)" width="300" x="0" y="0"/>
+		<rect class="Box" height="300" transform="translate(700, 700)" width="300" x="0" y="0"/>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<polyline class="Renban" points="850.0,150.0 950.0,150.0"/>
+		<polyline class="Renban" points="250.0,250.0 350.0,250.0 450.0,250.0 550.0,250.0 550.0,250.0 650.0,250.0"/>
+		<polyline class="Renban" points="850.0,250.0 850.0,350.0 850.0,450.0"/>
+		<polyline class="Renban" points="150.0,350.0 150.0,450.0 150.0,550.0"/>
+		<polyline class="Renban" points="350.0,450.0 450.0,450.0 550.0,450.0"/>
+		<polyline class="Renban" points="950.0,550.0 950.0,650.0 950.0,750.0"/>
+		<polyline class="Renban" points="250.0,650.0 250.0,750.0 250.0,850.0"/>
+		<polyline class="Renban" points="550.0,650.0 650.0,650.0 750.0,650.0"/>
+		<polyline class="Renban" points="450.0,850.0 550.0,850.0 650.0,850.0 750.0,850.0 850.0,850.0"/>
+		<polyline class="Renban" points="150.0,950.0 250.0,950.0"/>
+		<use class="OddCell" height="100" width="100" x="200" xlink:href="#OddCell-symbol" y="200"/>
+		<use class="OddCell" height="100" width="100" x="400" xlink:href="#OddCell-symbol" y="200"/>
+		<use class="OddCell" height="100" width="100" x="600" xlink:href="#OddCell-symbol" y="200"/>
+		<use class="OddCell" height="100" width="100" x="800" xlink:href="#OddCell-symbol" y="200"/>
+		<use class="OddCell" height="100" width="100" x="100" xlink:href="#OddCell-symbol" y="300"/>
+		<use class="OddCell" height="100" width="100" x="400" xlink:href="#OddCell-symbol" y="400"/>
+		<use class="OddCell" height="100" width="100" x="500" xlink:href="#OddCell-symbol" y="400"/>
+		<use class="OddCell" height="100" width="100" x="800" xlink:href="#OddCell-symbol" y="400"/>
+		<use class="OddCell" height="100" width="100" x="100" xlink:href="#OddCell-symbol" y="500"/>
+		<use class="OddCell" height="100" width="100" x="200" xlink:href="#OddCell-symbol" y="600"/>
+		<use class="OddCell" height="100" width="100" x="900" xlink:href="#OddCell-symbol" y="700"/>
+		<use class="OddCell" height="100" width="100" x="200" xlink:href="#OddCell-symbol" y="800"/>
+		<rect class="EvenCell" height="70.0" transform="translate(915.0, 115.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(915.0, 515.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(515.0, 615.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(615.0, 615.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(415.0, 815.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(615.0, 815.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(815.0, 815.0)" width="70.0" x="0" y="0"/>
+		<rect class="EvenCell" height="70.0" transform="translate(115.0, 915.0)" width="70.0" x="0" y="0"/>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 150.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 250.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 350.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 450.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 550.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 650.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 750.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 850.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(150.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(150.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">4</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(250.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(250.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">5</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(350.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(350.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">7</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(450.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(450.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">9</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(550.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(550.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">1</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(650.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(650.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">3</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(750.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(750.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">2</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(850.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(850.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">6</tspan>
+			</text>
+		</g>
+		<g>
+			<text class="KnownBackground" transform="translate(950.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+			<text class="KnownForeground" transform="translate(950.0, 950.0) ">
+				<tspan alignment-baseline="central" text-anchor="middle">8</tspan>
+			</text>
+		</g>
+	</g>
+</svg>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Meta</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr>
+					<td> Board</td>
+					<td> 9x9</td>
+				</tr>
+				
+				<tr>
+					<td> Boxes</td>
+					<td> 3x3</td>
+				</tr>
+				
+				<tr>
+					<td> Reference</td>
+					<td> https://tinyurl.com/4r82a9j5</td>
+				</tr>
+				
+				<tr>
+					<td> Video</td>
+					<td> https://www.youtube.com/watch?v=0lKUNou9vuk&amp;ab_channel=CrackingTheCryptic</td>
+				</tr>
+				
+				<tr>
+					<td> Title</td>
+					<td> Odd Even Renban</td>
+				</tr>
+				
+				<tr>
+					<td> Author</td>
+					<td> Sam Cappleman-Lynes</td>
+				</tr>
+				
+			</tbody>
+		</table>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Rule</th>
+					<th>Explanation</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr>
+					<td> Box</td>
+					<td> Digits in each box must be unique</td>
+				</tr>
+				
+				<tr>
+					<td> Renban</td>
+					<td> Pink lines must contain a set of consecutive, non-repeating digits, in any order</td>
+				</tr>
+				
+				<tr>
+					<td> Odd</td>
+					<td> An opaque grey circle must contain an odd digit</td>
+				</tr>
+				
+				<tr>
+					<td> Row</td>
+					<td> Digits in each row must be unique</td>
+				</tr>
+				
+				<tr>
+					<td> Column</td>
+					<td> Digits in each column must be unique</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</body>
+</html>
