@@ -1,22 +1,27 @@
 import logging
-import re
-import xml.dom
+import xml.dom.minidom
 
 from svgwrite import Drawing
 from svgwrite.container import Style
 
 from src.commands.simple_command import SimpleCommand
 from src.items.item import Item
+from src.items.solution import Solution
 
 
 class SVGCommand(SimpleCommand):
+
+    @staticmethod
+    def select(item: Item) -> bool:
+        return not isinstance(item, Solution)
 
     def process(self) -> None:
         super().process()
         assert self.problem is not None
         assert self.board is not None
         logging.info("Producing problem svg")
-        glyph = self.problem.sorted_glyphs()
+
+        glyph = self.problem.sorted_glyphs(SVGCommand.select)
         canvas = Drawing(
             filename="test.svg",
             size=("35cm", "35cm"),

@@ -11,10 +11,10 @@ class TestFormulation(unittest.TestCase):
 
     def setUp(self) -> None:
         log_path = os.path.join("output", "formulations", "logs")
-        if not os.path.exists(log_path):
+        if not os.path.exists(log_path):  # pragma: no cover
             os.makedirs(log_path)
         lp_path = os.path.join("output", "formulations", "lp")
-        if not os.path.exists(lp_path):
+        if not os.path.exists(lp_path):  # pragma: no cover
             os.makedirs(lp_path)
 
     @staticmethod

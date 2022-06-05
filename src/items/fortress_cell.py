@@ -1,9 +1,9 @@
-import re
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, FortressCellGlyph
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.direction import Direction
@@ -22,7 +22,7 @@ class FortressCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "The digit in a fortress cell must be bigger than its orthogonal neighbours")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [FortressCellGlyph('FortressCell', Coord(self.row, self.column))]
 
     @property

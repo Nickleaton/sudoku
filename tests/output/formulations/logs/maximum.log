@@ -2,7 +2,7 @@ Welcome to the CBC MILP Solver
 Version: 2.10.3 
 Build Date: Dec 15 2019 
 
-command line - C:\Users\nickl\AppData\Local\pypoetry\Cache\virtualenvs\sudoku-kpriBEho-py3.10\lib\site-packages\pulp\apis\..\solverdir\cbc\win\64\cbc.exe C:\Users\nickl\AppData\Local\Temp\5331c94715ea45c9af035161094a6244-pulp.mps sec 60 timeMode elapsed branch printingOptions all solution C:\Users\nickl\AppData\Local\Temp\5331c94715ea45c9af035161094a6244-pulp.sol (default strategy 1)
+command line - C:\Users\nickl\AppData\Local\pypoetry\Cache\virtualenvs\sudoku-kpriBEho-py3.10\lib\site-packages\pulp\apis\..\solverdir\cbc\win\64\cbc.exe C:\Users\nickl\AppData\Local\Temp\dae9dbde58784d689d4a7b0e2da90ff8-pulp.mps sec 60 timeMode elapsed branch printingOptions all solution C:\Users\nickl\AppData\Local\Temp\dae9dbde58784d689d4a7b0e2da90ff8-pulp.sol (default strategy 1)
 At line 2 NAME          MODEL
 At line 3 ROWS
 At line 15 COLUMNS
@@ -35,5 +35,5 @@ Time (CPU seconds):             0.00
 Time (Wallclock seconds):       0.00
 
 Option for printingOptions changed from normal to all
-Total time (CPU seconds):       0.01   (Wallclock seconds):       0.01
+Total time (CPU seconds):       0.01   (Wallclock seconds):       0.00
 

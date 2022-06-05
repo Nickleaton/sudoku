@@ -1,6 +1,5 @@
-import re
 from itertools import product
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 from pulp import lpSum
 

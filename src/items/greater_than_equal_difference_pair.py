@@ -1,6 +1,3 @@
-import re
-from typing import Optional
-
 from pulp import LpVariable, LpInteger
 
 from src.items.difference_pair import DifferencePair

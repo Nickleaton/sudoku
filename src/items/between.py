@@ -1,9 +1,9 @@
-import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Callable
 
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph, BetweenGlyph
+from src.items.item import Item
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -23,7 +23,7 @@ class Between(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [BetweenGlyph('Between', [cell.coord for cell in self.cells])]
 
     @property

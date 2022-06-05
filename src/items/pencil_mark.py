@@ -1,5 +1,5 @@
 import re
-from typing import Optional, List, Dict, Tuple
+from typing import Optional, List, Dict, Tuple, Callable
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -25,7 +25,7 @@ class PencilMarkCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("PencilMark", 1, "Digits restricted")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return []
 
     def css(self) -> Dict:

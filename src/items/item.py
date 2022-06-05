@@ -1,7 +1,6 @@
 import abc
-import re
 from abc import ABC
-from typing import Optional, List, Set, Type, Dict, Any
+from typing import Optional, List, Set, Type, Dict, Any, Callable
 
 from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board
@@ -9,9 +8,17 @@ from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
+class Item:
+    pass
+
+
 class Item(ABC):
     classes: Dict[str, 'Item'] = {}
     counter = 0
+
+    @staticmethod
+    def select_all(item: 'Item') -> bool:
+        return True
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
@@ -48,14 +55,11 @@ class Item(ABC):
     def sorted_unique_rules(self) -> List[Rule]:
         return sorted(list(set(self.rules)))
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return []
 
-    def sorted_glyphs(self,
-                      include: Optional[re.Pattern] = None,
-                      exclude: Optional[re.Pattern] = None
-                      ) -> Glyph:
-        return ComposedGlyph('Composed', sorted(self.glyphs()))
+    def sorted_glyphs(self, selector: Callable[['Item'], bool]) -> Glyph:
+        return ComposedGlyph('Composed', sorted(self.glyphs(selector)))
 
     @property
     def name(self) -> str:

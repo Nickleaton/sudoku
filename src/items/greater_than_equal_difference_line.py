@@ -1,5 +1,4 @@
-import re
-from typing import List, Sequence, Set, Optional
+from typing import List, Sequence, Set
 
 from pulp import lpSum
 

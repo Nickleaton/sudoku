@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict, Callable
 
 from src.glyphs.glyph import Glyph, BattenburgGlyph
 from src.items.board import Board
@@ -22,7 +22,7 @@ class Battenburg(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Quadruple', 3, 'Digits appearing in at last one of the cells adjacent to the circle')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             BattenburgGlyph(class_name="Battenburg", coord=self.position)
         ]
@@ -45,4 +45,3 @@ class Battenburg(Item):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: self.position.row * 10 + self.position.column}
-

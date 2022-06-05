@@ -1,7 +1,7 @@
-import re
-from typing import List, Set, Optional
+from typing import List, Set, Callable
 
 from src.glyphs.glyph import Glyph, SimpleThermometerGlyph
+from src.items.item import Item
 from src.items.thermometer import Thermometer
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -13,7 +13,7 @@ class SimpleThermometer(Thermometer):
     def rules(self) -> List[Rule]:
         return [Rule('SimpleThermometer', 1, "Cells along a line with a bulb strictly increase from the bulb end")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             SimpleThermometerGlyph('Thermometer', [cell.coord for cell in self.cells])
         ]
@@ -44,4 +44,3 @@ class SimpleThermometer(Thermometer):
             for digit in self.board.digit_range:
                 if digit not in possible:
                     solver.model += solver.choices[digit][cell.row][cell.column], f"{self.name}_{cell.name}_{digit}"
-

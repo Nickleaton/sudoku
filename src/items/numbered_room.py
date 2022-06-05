@@ -1,5 +1,4 @@
-import re
-from typing import Dict, Tuple, List, Set, Type, Optional
+from typing import Dict, Tuple, List, Set, Type, Callable
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -20,7 +19,16 @@ class NumberedRoom(Item):
         self.digit = digit
         self.direction = side.direction(Cyclic.CLOCKWISE)
         self.start_cell = side.start_cell(board, self.index)
-        self.reference = self.start_cell - self.direction.offset + Coord(0.5, 0.5)
+        if side == Side.TOP:
+            self.reference = self.start_cell - self.direction.offset + Coord(0.5, 1.5)
+        elif side == Side.RIGHT:
+            self.reference = self.start_cell - self.direction.offset + Coord(1.5, 0.5)
+        elif side == Side.BOTTOM:
+            self.reference = self.start_cell - self.direction.offset + Coord(0.5, -0.5)
+        elif side == Side.LEFT:
+            self.reference = self.start_cell - self.direction.offset + Coord(-0.5, 0.5)
+        else:  # pragma: no cover
+            raise Exception("Unexpected Side")
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
@@ -35,7 +43,7 @@ class NumberedRoom(Item):
         side, offset, digit = cls.extract(board, yaml)
         return cls(board, side, offset, digit)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             TextGlyph('NumberedRoom', 0, self.reference, str(self.digit)),
         ]

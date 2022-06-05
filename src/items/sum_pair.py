@@ -1,5 +1,4 @@
-import re
-from typing import List, Optional
+from typing import List
 
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver

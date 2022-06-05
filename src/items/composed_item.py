@@ -1,4 +1,4 @@
-from typing import List, Set, Type, Sequence, Dict
+from typing import List, Set, Type, Sequence, Dict, Callable
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -47,10 +47,13 @@ class ComposedItem(Item):
             result.extend(item.flatten())
         return result
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         result = []
         for item in self.items:
-            result += item.glyphs()
+            if selector(item):
+                result += item.glyphs(selector)
+            else:
+                print(f"Skipping glyphs for {item.__class__.__name__}")
         return result
 
     @property

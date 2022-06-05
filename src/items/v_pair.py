@@ -1,5 +1,4 @@
-import re
-from typing import Dict, Optional
+from typing import Dict
 
 from src.items.sum_pair import SumPair
 from src.solvers.pulp_solver import PulpSolver

@@ -10,7 +10,7 @@ from src.items.item import Item
 from src.items.solution import Solution
 
 
-class   SimpleCommand(Command):
+class SimpleCommand(Command):
 
     def __init__(self, config_filename: str, output_filename: Optional[str] = None):
         super().__init__(output_filename)

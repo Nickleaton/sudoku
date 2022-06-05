@@ -1,5 +1,5 @@
 import re
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Callable
 
 from src.glyphs.glyph import Glyph, KnownGlyph
 from src.items.board import Board
@@ -34,7 +34,7 @@ class KnownCell(CellReference):
     def letter(self) -> str:
         return str(self.digit)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
     def __repr__(self) -> str:

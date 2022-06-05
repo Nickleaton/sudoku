@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict, Callable
 
 from pulp import lpSum
 
@@ -27,7 +27,7 @@ class Quadruple(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Quadruple', 3, 'Digits appearing in at last one of the cells adjacent to the circle')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             QuadrupleGlyph(class_name="Quadruple", position=self.position, numbers=self.numbers)
         ]

@@ -1,6 +1,5 @@
-import re
 from itertools import product
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 from src.items.board import Board
 from src.items.composed_item import ComposedItem

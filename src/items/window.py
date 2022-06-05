@@ -1,5 +1,4 @@
-import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -51,7 +50,7 @@ class Window(Region):
     def rules(self) -> List[Rule]:
         return [Rule('Window', 1, 'Digits in same shaded window must be unique')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [SquareGlyph('Window', self.center - Coord(1, 1), 3)]
 
     @property

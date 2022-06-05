@@ -1,5 +1,5 @@
 import abc
-from typing import List, Set, Type, Tuple, Dict
+from typing import List, Set, Type, Tuple, Dict, Callable
 
 from src.glyphs.glyph import Glyph, EdgeTextGlyph
 from src.items.board import Board
@@ -52,7 +52,7 @@ class Pair(Region):
     def label(self) -> str:
         return ""
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         if self.label != "":
             return [
                 EdgeTextGlyph(

@@ -1,7 +1,8 @@
-from typing import List, Dict
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.cell import Cell
+from src.items.item import Item
 from src.items.product import Product
 from src.utils.coord import Coord
 from src.utils.direction import Direction
@@ -25,7 +26,7 @@ class OrthogonalProduct(Product):
                  'The number in the top left of the cell is product of the orthoganally adjacent digits')
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             TextGlyph('Product', 0, self.position + Coord(0.15, 0.15), str(self.product))
         ]

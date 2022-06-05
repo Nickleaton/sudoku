@@ -2,8 +2,11 @@ import os
 import unittest
 from typing import Optional
 
+from src.commands.bookkeeping_png_command import BookkeepingPNGCommand
 from src.commands.html_command import HTMLCommand
 from src.commands.lp_command import LPCommand
+from src.commands.problem_png_command import ProblemPNGCommand
+from src.commands.solution_png_command import SolutionPNGCommand
 from src.commands.solve_command import SolveCommand
 from src.commands.svg_command import SVGCommand
 from src.commands.verify_command import VerifyCommand
@@ -11,7 +14,6 @@ from src.items.solution import Solution
 
 
 class AcceptanceTest(unittest.TestCase):
-
     DIRECTORY = "test_results"
 
     def setUp(self) -> None:
@@ -60,6 +62,24 @@ class AcceptanceTest(unittest.TestCase):
         if self.name is None:
             return None
         return os.path.join(AcceptanceTest.DIRECTORY, self.name, "verify.txt")
+
+    @property
+    def png_problem_filename(self) -> Optional[str]:
+        if self.name is None:
+            return None
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.png")
+
+    @property
+    def png_solution_filename(self) -> Optional[str]:
+        if self.name is None:
+            return None
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "solution.png")
+
+    @property
+    def png_bookeeping_filename(self) -> Optional[str]:
+        if self.name is None:
+            return None
+        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "bookkeeping.png")
 
     def test_svg(self) -> None:
         if self.name is None:
@@ -114,3 +134,27 @@ class AcceptanceTest(unittest.TestCase):
                 expected = Solution.create(command.board, item)
         if expected is not None:
             self.assertEqual(expected, command.solution)
+
+    def test_problem_png(self) -> None:
+        if self.name is None:
+            return
+        AcceptanceTest.check_directory(self.png_problem_filename)
+        command = ProblemPNGCommand(self.yaml_filename, self.png_problem_filename)
+        command.process()
+        command.write()
+
+    def test_solution_png(self) -> None:
+        if self.name is None:
+            return
+        AcceptanceTest.check_directory(self.png_solution_filename)
+        command = SolutionPNGCommand(self.yaml_filename, self.png_problem_filename)
+        command.process()
+        command.write()
+
+    def test_bookeeping_png(self) -> None:
+        if self.name is None:
+            return
+        AcceptanceTest.check_directory(self.png_bookeeping_filename)
+        command = BookkeepingPNGCommand(self.yaml_filename, self.png_problem_filename)
+        command.process()
+        command.write()

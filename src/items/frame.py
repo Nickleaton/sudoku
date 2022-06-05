@@ -1,7 +1,8 @@
 import re
+
 """ Frame Sudoku """
 
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict, Callable
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -55,7 +56,7 @@ class Frame(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             TextGlyph(
                 'FrameText',

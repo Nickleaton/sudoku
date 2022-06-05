@@ -1,5 +1,4 @@
-import re
-from typing import List, Tuple, Dict, Optional
+from typing import List, Tuple, Dict, Callable
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -58,7 +57,7 @@ class MagicSquare(Region):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             SquareGlyph('MagicSquare', cell.coord, 1)
             for cell in self.cells

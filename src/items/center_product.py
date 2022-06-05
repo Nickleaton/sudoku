@@ -1,7 +1,8 @@
-from typing import List, Dict
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.cell import Cell
+from src.items.item import Item
 from src.items.product import Product
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -24,7 +25,7 @@ class CenterProduct(Product):
             Rule('CenterProduct', 3, 'The number is the product of the digits in the four surronding cells')
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             TextGlyph('CenterProduct', 0, self.position + Coord(1, 1), str(self.product))
         ]

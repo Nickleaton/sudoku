@@ -1,10 +1,10 @@
-import re
-from typing import List, Optional
+from typing import List, Callable
 
 from src.glyphs.glyph import Glyph, LineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.diagonals import Diagonal
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -20,7 +20,7 @@ class TLBRReflecting(Diagonal):
     def rules(self) -> List[Rule]:
         return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             LineGlyph('TLBRReflecting', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
 

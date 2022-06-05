@@ -1,5 +1,4 @@
-import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, BoxGlyph
 from src.items.board import Board
@@ -45,7 +44,7 @@ class Box(StandardRegion):
     def rules(self) -> List[Rule]:
         return [Rule('Box', 1, 'Digits in each box must be unique')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [BoxGlyph('Box', self.position, self.size)]
 
     @property

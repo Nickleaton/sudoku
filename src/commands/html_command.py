@@ -33,6 +33,3 @@ class HTMLCommand(SimpleCommand):
                 problem_svg=self.svg.output,
                 meta=self.problem.board.to_dict()['Board']
             )
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.config_filename}', '{self.output_filename}')"

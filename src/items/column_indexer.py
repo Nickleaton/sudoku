@@ -1,10 +1,10 @@
-import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, RectGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.indexing import Indexer
+from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 
@@ -23,7 +23,7 @@ class ColumnIndexer(Indexer):
     def other_variant() -> str:
         return "row"
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [RectGlyph('ColumnIndexer', Coord(1, self.index), Coord(self.board.board_columns, 1))]
 
     def add_constraint(self, solver: PulpSolver) -> None:

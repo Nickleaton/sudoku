@@ -1,7 +1,8 @@
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, EvenCellGlyph
 from src.items.cell_reference import CellReference
+from src.items.item import Item
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -26,7 +27,7 @@ class EvenCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "An opaque grey square must contain an even digit")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [EvenCellGlyph('EvenCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:

@@ -1,8 +1,9 @@
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Callable
 
 # from src.glyphs.glyph import Glyph, HighCellGlyph
 from src.glyphs.glyph import Glyph
 from src.items.cell_reference import CellReference
+from src.items.item import Item
 from src.utils.rule import Rule
 
 
@@ -30,7 +31,7 @@ class HighCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Low", 1, "The digits 7, 8 and 9 are not marked")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return []
         # return [HighCellGlyph('HighCell', Coord(self.row, self.column))]
 

@@ -1,5 +1,4 @@
 import logging
-import re
 from typing import Optional
 
 from src.commands.simple_command import SimpleCommand

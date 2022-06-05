@@ -1,5 +1,4 @@
-import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, SquareGlyph
 from src.items.board import Board
@@ -36,7 +35,7 @@ class SpecialRegion(Region):
     def rules(self) -> List[Rule]:
         return [Rule(self.region_name(), 1, 'Digits cannot repeat in highlighted cells')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [SquareGlyph(self.region_name(), cell.coord, 1) for cell in self.cells]
 
     @property

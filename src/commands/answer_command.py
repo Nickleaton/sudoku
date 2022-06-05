@@ -18,7 +18,7 @@ from src.items.solution import Solution
 class AnswerCommand(SimpleCommand):
 
     @staticmethod
-    def filter(item: Item) -> bool:
+    def selector(item: Item) -> bool:
         return item.__class__ in [Box, Cell, Column, Row, Solution, KnownCell]
 
     def process(self) -> None:
@@ -26,7 +26,7 @@ class AnswerCommand(SimpleCommand):
         assert self.problem is not None
         assert self.board is not None
         logging.info("Producing answer svg")
-        glyph = ComposedItem(self.board, filter(AnswerCommand.filter, self.problem.flatten())).sorted_glyphs()
+        glyph = self.problem.sorted_glyphs(AnswerCommand.selector)
         canvas = Drawing(
             filename="answer.svg",
             size=("35cm", "35cm"),

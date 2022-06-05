@@ -1,5 +1,4 @@
-import re
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict, Callable
 
 from src.glyphs.glyph import Glyph, TextGlyph
 from src.items.board import Board
@@ -39,7 +38,7 @@ class Outside(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), "".join([str(digit) for digit in self.digits]))
         ]

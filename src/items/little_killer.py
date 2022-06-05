@@ -1,5 +1,4 @@
-import re
-from typing import List, Tuple, Dict, Optional
+from typing import List, Tuple, Dict, Callable
 
 from pulp import lpSum
 
@@ -59,7 +58,7 @@ class LittleKiller(Region):
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         delta2 = Coord(0, 0)
         if self.side == Side.TOP:
             delta2 = Coord(0, 1)

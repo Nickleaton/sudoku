@@ -17,18 +17,10 @@ class Region(ComposedItem):
 
     def __init__(self, board: Board) -> None:
         super().__init__(board, [])
-        self.unique = False
-        self.strict = False
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
         return cls(board)
-
-    def is_unique(self) -> bool:
-        return self.unique
-
-    def strictly_unique(self) -> bool:
-        return self.unique and self.strict
 
     @property
     def cells(self) -> List[Cell]:

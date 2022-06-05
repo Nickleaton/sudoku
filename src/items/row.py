@@ -1,5 +1,4 @@
-import re
-from typing import List, Optional
+from typing import List
 
 from src.items.board import Board
 from src.items.cell import Cell

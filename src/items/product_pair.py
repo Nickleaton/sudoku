@@ -1,10 +1,9 @@
 """
 Kropki Dots
 """
-import re
 from itertools import product
 from math import log10
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 from pulp import LpVariable, lpSum, LpContinuous
 
@@ -36,7 +35,7 @@ class ProductPair(Pair):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector) -> List[Glyph]:
         return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
     @property

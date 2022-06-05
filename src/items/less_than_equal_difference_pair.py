@@ -1,6 +1,3 @@
-import re
-from typing import Optional
-
 from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 

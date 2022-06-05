@@ -1,5 +1,5 @@
 import re
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict, Callable
 
 from src.glyphs.glyph import Glyph, ArrowGlyph
 from src.items.board import Board
@@ -42,7 +42,7 @@ class Rossini(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             ArrowGlyph(
                 'Rossini',

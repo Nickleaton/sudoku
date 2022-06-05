@@ -1,9 +1,9 @@
-import re
-from typing import List, Set, Dict, Optional
+from typing import List, Set, Dict, Callable
 
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
+from src.items.item import Item
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -25,7 +25,7 @@ class Sequence(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [PolyLineGlyph('Sequence', [cell.coord for cell in self.cells], False, False)]
 
     @property

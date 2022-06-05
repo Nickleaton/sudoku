@@ -80,8 +80,5 @@ class TestSolution(TestComposed):
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         lines = [str(l) for l in config['Solution']]
         config = {'Solution': lines}
-        if "Item" in config:
-            item = self.item
-        else:
-            item = Item.create(self.board, config)
+        item = Item.create(self.board, config)
         self.assertDictEqual(item.to_dict(), config)

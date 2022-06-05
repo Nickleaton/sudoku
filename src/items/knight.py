@@ -1,5 +1,4 @@
-import re
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict
 
 from pulp import lpSum
 

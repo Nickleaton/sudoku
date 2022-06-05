@@ -1,6 +1,7 @@
-from typing import List, Dict
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
+from src.items.item import Item
 from src.items.renban import Renban
 from src.utils.rule import Rule
 
@@ -18,7 +19,7 @@ class DistinctRenban(Renban):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [PolyLineGlyph('DistinctRenban', [cell.coord for cell in self.cells], False, False)]
 
     @property

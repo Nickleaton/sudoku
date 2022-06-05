@@ -1,7 +1,8 @@
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, MidCellGlyph
 from src.items.cell_reference import CellReference
+from src.items.item import Item
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -30,7 +31,7 @@ class MidCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Mid", 1, "The digits 4, 5 and 6 are marked with blue squares")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [MidCellGlyph('MidCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:

@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Callable
 
 from pulp import lpSum
 
@@ -51,7 +51,7 @@ class Cell(Item):
     def cells() -> List['Cell']:
         return list(Cell.cache.values())
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [CellGlyph('Cell', Coord(self.row, self.column))]
 
     @classmethod

@@ -1,9 +1,10 @@
-from typing import List, Sequence, Dict
+from typing import List, Sequence, Dict, Callable
 
 from src.glyphs.glyph import Glyph, PolyLineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
+from src.items.item import Item
 
 
 class DutchWhisper(GreaterThanEqualDifferenceLine):
@@ -11,7 +12,7 @@ class DutchWhisper(GreaterThanEqualDifferenceLine):
     def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board, cells, 4)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [PolyLineGlyph('DutchWhisper', [cell.coord for cell in self.cells], False, False)]
 
     @property

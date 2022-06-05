@@ -7,9 +7,12 @@ from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.even_cell import EvenCell
 from src.items.fortress_cell import FortressCell
+from src.items.high_cell import HighCell
 from src.items.item import Item
 from src.items.known_cell import KnownCell
 from src.items.knowns import Knowns
+from src.items.low_cell import LowCell
+from src.items.mid_cell import MidCell
 from src.items.odd_cell import OddCell
 from tests.items.test_composed import TestComposed
 
@@ -23,8 +26,8 @@ class TestKnowns(TestComposed):
             "8..4.6..3",
             "o.9....2.",
             "e.......1",
-            "f..8..4..",
-            ".6.....1.",
+            "f..h..m..",
+            ".6.....l.",
             "..3..2..9",
             "7.2.3....",
             ".4....5..",
@@ -44,8 +47,8 @@ class TestKnowns(TestComposed):
             "  - 8..4.6..3\n"
             "  - o.9....2.\n"
             "  - e.......1\n"
-            "  - f..8..4..\n"
-            "  - .6.....1.\n"
+            "  - f..h..m..\n"
+            "  - .6.....l.\n"
             "  - ..3..2..9\n"
             "  - 7.2.3....\n"
             "  - .4....5..\n"
@@ -60,8 +63,8 @@ class TestKnowns(TestComposed):
             "'8..4.6..3', "
             "'o.9....2.', "
             "'e.......1', "
-            "'f..8..4..', "
-            "'.6.....1.', "
+            "'f..h..m..', "
+            "'.6.....l.', "
             "'..3..2..9', "
             "'7.2.3....', "
             "'.4....5..', "
@@ -76,7 +79,20 @@ class TestKnowns(TestComposed):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, ComposedItem, EvenCell, FortressCell, Item, KnownCell, Knowns, OddCell}
+        return {
+            Cell,
+            CellReference,
+            ComposedItem,
+            EvenCell,
+            FortressCell,
+            Item,
+            KnownCell,
+            Knowns,
+            OddCell,
+            LowCell,
+            MidCell,
+            HighCell
+        }
 
     def test_flatten(self) -> None:
         expected = [self.item]

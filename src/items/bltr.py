@@ -1,9 +1,9 @@
-import re
-from typing import List, Optional
+from typing import List, Callable
 
 from src.glyphs.glyph import LineGlyph, Glyph
 from src.items.board import Board
 from src.items.cell import Cell
+from src.items.item import Item
 from src.items.standard_diagonal import StandardDiagonal
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -18,5 +18,5 @@ class BLTR(StandardDiagonal):
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]

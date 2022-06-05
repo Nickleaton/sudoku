@@ -1,9 +1,9 @@
-import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
 from src.items.box import Box
 from src.items.column import Column
+from src.items.item import Item
 from src.items.row import Row
 from src.items.thermometer import Thermometer
 from src.solvers.pulp_solver import PulpSolver
@@ -16,7 +16,7 @@ class FrozenThermometer(Thermometer):
     def rules(self) -> List[Rule]:
         return [Rule('FrozenThermo', 1, "Cells along a line with a bulb increase or stay the same from the bulb end")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             FrozenThermometerGlyph('FrozenThermometer', [cell.coord for cell in self.cells])
         ]

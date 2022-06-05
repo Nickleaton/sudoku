@@ -58,7 +58,6 @@ class Formulations:
     @staticmethod
     def logical_or(model: LpProblem, dis: List[LpVariable]) -> LpVariable:
         d = LpVariable(f"l_and_{Formulations.count}", 0, 1, LpInteger)
-        n = len(dis)
         for di in dis:
             model += d >= di, f"Logical_or_{d.name}_{di.name}_a"
         model += d <= 1, f"Logical_or_{d.name}_b"

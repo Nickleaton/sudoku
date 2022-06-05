@@ -1,0 +1,43 @@
+Board:
+  Title: Hush
+  Author: Tallcat
+  Video: https://www.youtube.com/watch?v=83Gu7fk5_Io&ab_channel=zetamathdoespuzzles
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - GermanWhisper: 21, 11, 12
+  - GermanWhisper: 24, 15, 26
+  - GermanWhisper: 18, 19, 29
+  - GermanWhisper: 43, 54, 63
+  - GermanWhisper: 48, 59, 68
+  - GermanWhisper: 81, 91, 92
+  - GermanWhisper: 84, 95, 86
+  - GermanWhisper: 98, 99, 89
+
+  - NumberedRoom: T4=3
+  - NumberedRoom: T5=4
+
+  - NumberedRoom: R1=9
+
+  - NumberedRoom: B4=2
+  - NumberedRoom: B9=6
+
+  - NumberedRoom: L1=6
+  - NumberedRoom: L5=7
+  - NumberedRoom: L9=4
+
+  - Solution:
+    - 386475192
+    - 945182367
+    - 172693854
+    - 598364721
+    - 631257948
+    - 427819635
+    - 853941276
+    - 264738519
+    - 719526483

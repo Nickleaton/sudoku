@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Tuple, List, Set, Type, Optional
+from typing import Dict, Tuple, List, Set, Type, Optional, Callable
 
 from pulp import LpVariable, LpInteger
 
@@ -38,7 +38,7 @@ class Sandwich(Item):
         side, offset, total = cls.extract(board, yaml)
         return cls(board, side, offset, total)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return [
             TextGlyph('Sandwich', 0, self.position, str(self.total)),
         ]
@@ -85,11 +85,7 @@ class Sandwich(Item):
             }
         }
 
-    def add_constraint_row(self,
-                           solver: PulpSolver,
-                           include: Optional[re.Pattern],
-                           exclude: Optional[re.Pattern]
-                           ) -> None:
+    def add_constraint_row(self, solver: PulpSolver, ) -> None:
         # set up boolean for sandwich.
         # eg = 1 if 1 or 9 else 0
         bread = LpVariable.dict(
@@ -125,6 +121,6 @@ class Sandwich(Item):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         if self.side.horizontal:
-            self.add_constraint_row(solver, include, exclude)
+            self.add_constraint_row(solver)
         else:
-            self.add_constraint_column(solver, include, exclude)
+            self.add_constraint_column(solver)

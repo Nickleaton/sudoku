@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Callable
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -12,7 +12,7 @@ class StandardRegion(Region):
         super().__init__(board)
         self.index = index
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
         return []
 
     @classmethod
