@@ -312,6 +312,10 @@ class CircleGlyph(Glyph):
         self.center = center
         self.percentage = percentage
 
+    @property
+    def priority(self) -> int:
+        return 10
+
     def draw(self) -> Optional[BaseElement]:
         return Circle(transform=self.center.point.transform, r=self.percentage * Config.CELL_SIZE,
                       class_=self.class_name)
@@ -364,32 +368,6 @@ class LowCellGlyph(Glyph):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.class_name}', {repr(self.coord)})"
-
-
-class KropkiGlyph(CircleGlyph):
-
-    def __init__(self, class_name: str, first: Coord, second: Coord):
-        super().__init__(class_name, Coord.middle(first, second), 0.15)
-        self.first = first
-        self.second = second
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.first)}, {repr(self.second)})"
-
-
-class ConsecutiveGlyph(CircleGlyph):
-
-    def __init__(self, class_name: str, first: Coord, second: Coord):
-        super().__init__(class_name, Coord.middle(first, second), 0.15)
-        self.first = first
-        self.second = second
-
-    @property
-    def priority(self) -> int:
-        return 5
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.first)}, {repr(self.second)})"
 
 
 class RectGlyph(Glyph):

@@ -1,0 +1,499 @@
+{
+    "data": {
+        "arrow": [
+            {
+                "cells": [
+                    "R3C1"
+                ],
+                "lines": [
+                    [
+                        "R3C1",
+                        "R3C2",
+                        "R3C3",
+                        "R2C3"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R2C4"
+                ],
+                "lines": [
+                    [
+                        "R2C4",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R1C7"
+                ],
+                "lines": [
+                    [
+                        "R1C7",
+                        "R2C7",
+                        "R2C8",
+                        "R3C8"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R4C8"
+                ],
+                "lines": [
+                    [
+                        "R4C8",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R7C9"
+                ],
+                "lines": [
+                    [
+                        "R7C9",
+                        "R7C8",
+                        "R7C7",
+                        "R8C7"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C6"
+                ],
+                "lines": [
+                    [
+                        "R8C6",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C3"
+                ],
+                "lines": [
+                    [
+                        "R9C3",
+                        "R8C3",
+                        "R8C2",
+                        "R7C2"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R6C2"
+                ],
+                "lines": [
+                    [
+                        "R6C2",
+                        "R6C1",
+                        "R5C1",
+                        "R4C1"
+                    ]
+                ]
+            }
+        ],
+        "author": "Sam Cappleman-Lynes",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Digits on an arrow must add up to the digit in the attached circle.",
+        "size": 9,
+        "solution": [
+            5,
+            9,
+            7,
+            1,
+            2,
+            4,
+            8,
+            6,
+            3,
+            8,
+            4,
+            3,
+            7,
+            5,
+            6,
+            2,
+            1,
+            9,
+            6,
+            1,
+            2,
+            8,
+            9,
+            3,
+            4,
+            5,
+            7,
+            2,
+            8,
+            9,
+            3,
+            6,
+            1,
+            5,
+            7,
+            4,
+            1,
+            7,
+            5,
+            9,
+            4,
+            8,
+            6,
+            3,
+            2,
+            3,
+            6,
+            4,
+            2,
+            7,
+            5,
+            9,
+            8,
+            1,
+            9,
+            2,
+            6,
+            5,
+            3,
+            7,
+            1,
+            4,
+            8,
+            7,
+            5,
+            1,
+            4,
+            8,
+            9,
+            3,
+            2,
+            6,
+            4,
+            3,
+            8,
+            6,
+            1,
+            2,
+            7,
+            9,
+            5
+        ],
+        "title": "Jan 19, 2022: Arrow Sudoku",
+        "truecandidatesoptions": [
+            "colored"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=y9fh28sn"
+}

@@ -1,0 +1,108 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Each number you place into the grid represents the height of a building. Clues outside the grid tell you how many buildings can be \"seen\" in the corresponding row or column when looking from that direction; taller buildings block the view of any smaller buildings behind them. (For example: (4) 314592687 would be a valid fill where 3, 4, 5, and 9 are the 4 buildings seen.)",
+        "size": 6,
+        "text": [
+            {
+                "cells": [
+                    "R3C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R7C3"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "3"
+            }
+        ],
+        "title": "May 8, 2022: B1G3 Skyscrapers"
+    },
+    "url": "https://f-puzzles.com/?id=y5qttavs"
+}

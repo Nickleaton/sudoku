@@ -1,0 +1,503 @@
+{
+    "data": {
+        "author": "clover!",
+        "circle": [
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C3",
+                    "R2C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C6",
+                    "R8C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C5",
+                    "R7C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C5",
+                    "R3C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R3C2",
+                    "R4C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C8",
+                    "R7C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C4",
+                    "R5C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C7",
+                    "R5C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "=",
+                "width": 0.5
+            }
+        ],
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Equals signs in the grid tell you that the three digits above the clue have the same sum as the three digits below, or the three digits to the left of the clue have the same sum as the three digits to the right (see example image). For example, r2c1+r2c2+r2c3 = r2c4+r2c5+r2c6, and r4c8+r5c8+r6c8 = r7c8 + r8c8 + r9c8. ",
+        "size": 9,
+        "solution": [
+            7,
+            4,
+            8,
+            9,
+            1,
+            3,
+            6,
+            2,
+            5,
+            6,
+            5,
+            3,
+            2,
+            8,
+            4,
+            1,
+            7,
+            9,
+            9,
+            2,
+            1,
+            5,
+            6,
+            7,
+            3,
+            8,
+            4,
+            8,
+            7,
+            6,
+            4,
+            3,
+            9,
+            5,
+            1,
+            2,
+            5,
+            1,
+            9,
+            6,
+            7,
+            2,
+            8,
+            4,
+            3,
+            2,
+            3,
+            4,
+            8,
+            5,
+            1,
+            7,
+            9,
+            6,
+            3,
+            9,
+            7,
+            1,
+            4,
+            6,
+            2,
+            5,
+            8,
+            1,
+            8,
+            2,
+            3,
+            9,
+            5,
+            4,
+            6,
+            7,
+            4,
+            6,
+            5,
+            7,
+            2,
+            8,
+            9,
+            3,
+            1
+        ],
+        "title": "2/26/23: Block Sum Relations",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2j957etf"
+}

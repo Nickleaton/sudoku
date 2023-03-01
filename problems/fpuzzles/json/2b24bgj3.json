@@ -1,0 +1,250 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. No two cells containing even digits can share an edge.",
+        "size": 9,
+        "solution": [
+            2,
+            9,
+            4,
+            3,
+            6,
+            7,
+            1,
+            5,
+            8,
+            7,
+            6,
+            5,
+            2,
+            1,
+            8,
+            3,
+            4,
+            9,
+            3,
+            1,
+            8,
+            5,
+            4,
+            9,
+            6,
+            7,
+            2,
+            9,
+            2,
+            7,
+            6,
+            3,
+            4,
+            5,
+            8,
+            1,
+            8,
+            3,
+            6,
+            7,
+            5,
+            1,
+            2,
+            9,
+            4,
+            5,
+            4,
+            1,
+            8,
+            9,
+            2,
+            7,
+            6,
+            3,
+            6,
+            5,
+            2,
+            9,
+            8,
+            3,
+            4,
+            1,
+            7,
+            1,
+            8,
+            3,
+            4,
+            7,
+            6,
+            9,
+            2,
+            5,
+            4,
+            7,
+            9,
+            1,
+            2,
+            5,
+            8,
+            3,
+            6
+        ],
+        "title": "2/7: Waking Up is Hard to Do"
+    },
+    "url": "https://f-puzzles.com/?id=2b24bgj3"
+}

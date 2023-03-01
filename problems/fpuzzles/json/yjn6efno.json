@@ -1,0 +1,304 @@
+{
+    "data": {
+        "author": "clover!",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        5
+                    ],
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        4
+                    ],
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        4
+                    ],
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "value": 8
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        5
+                    ],
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Standard sudoku rules apply. Digits along a thermometer must strictly increase, starting at the bulb (round) end. ",
+        "size": 9,
+        "thermometer": [
+            {
+                "lines": [
+                    [
+                        "R5C1",
+                        "R5C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C3",
+                        "R5C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C6",
+                        "R5C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C8",
+                        "R5C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C2",
+                        "R7C2",
+                        "R7C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C7",
+                        "R3C8",
+                        "R4C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C1",
+                        "R3C2",
+                        "R3C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R7C7",
+                        "R7C8",
+                        "R6C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C6",
+                        "R6C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C3",
+                        "R4C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C5",
+                        "R4C5",
+                        "R4C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C4",
+                        "R6C5",
+                        "R7C5"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C5",
+                        "R2C5",
+                        "R2C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C4",
+                        "R8C5",
+                        "R9C5"
+                    ]
+                ]
+            }
+        ],
+        "title": "June 15, 2021: Thermo"
+    },
+    "url": "https://f-puzzles.com/?id=yjn6efno"
+}

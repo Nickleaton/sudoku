@@ -129,6 +129,7 @@ class AcceptanceTest(unittest.TestCase):
         command.process()
         command.write()
         expected = None
+        command.dump_variables()
         for item in command.config['Constraints']:
             if 'Solution' in item:
                 expected = Solution.create(command.board, item)

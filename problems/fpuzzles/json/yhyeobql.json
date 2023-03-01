@@ -1,0 +1,228 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. If two digits are given outside a row or column, then those two digits must appear as direct neighbours, *in the given order*, in that row or column.",
+        "size": 9,
+        "text": [
+            {
+                "cells": [
+                    "R4C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "1 2"
+            },
+            {
+                "cells": [
+                    "R6C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "1 2"
+            },
+            {
+                "cells": [
+                    "R8C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "4 7"
+            },
+            {
+                "cells": [
+                    "R2C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "6 9"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "6 8"
+            },
+            {
+                "cells": [
+                    "R0C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "5 9"
+            },
+            {
+                "cells": [
+                    "R0C2"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "8 9"
+            },
+            {
+                "cells": [
+                    "R0C8"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "8 7"
+            },
+            {
+                "cells": [
+                    "R1C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "3 1"
+            },
+            {
+                "cells": [
+                    "R9C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "7 8"
+            }
+        ],
+        "title": "Oct 2, 2021: Neighbours"
+    },
+    "url": "https://f-puzzles.com/?id=yhyeobql"
+}

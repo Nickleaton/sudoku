@@ -1,0 +1,191 @@
+{
+    "data": {
+        "author": "?",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Some thermometer shapes are in the grid; digits must be strictly increasing from the round bulb to the flat end.",
+        "size": 6,
+        "thermometer": [
+            {
+                "lines": [
+                    [
+                        "R4C6",
+                        "R4C5",
+                        "R4C4",
+                        "R4C3",
+                        "R4C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C1",
+                        "R3C2",
+                        "R3C3",
+                        "R3C4",
+                        "R3C5"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C3",
+                        "R1C4",
+                        "R1C5"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C2",
+                        "R6C3",
+                        "R5C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C1",
+                        "R2C1"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C6",
+                        "R5C6"
+                    ]
+                ]
+            }
+        ],
+        "title": "July 4, 2021: Thermo",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yf6lgq44"
+}

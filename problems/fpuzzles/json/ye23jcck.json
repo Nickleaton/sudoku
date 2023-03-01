@@ -1,0 +1,197 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8"
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. In each shaded 2x2 area, the two single digits on the top row must multiply to give the two-digit number on the bottom row. Digits may repeat in a shaded area if allowed by the normal rules.",
+        "size": 9,
+        "title": "Sep 5, 2021: Multiplication"
+    },
+    "url": "https://f-puzzles.com/?id=ye23jcck"
+}

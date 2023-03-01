@@ -40,6 +40,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
                                        board.maximum_digit,
                                        LpInteger
                                        )
+        self.variables = {}
 
         for row, column in product(board.row_range, board.column_range):
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)

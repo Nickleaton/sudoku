@@ -1,0 +1,288 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "difference": [
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C6"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C8",
+                    "R4C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R4C7",
+                    "R4C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R6C3"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R5C3"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R5C8",
+                    "R5C7"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R1C4",
+                    "R1C3"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R8C4",
+                    "R8C5"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R1C7"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R6C8"
+                ],
+                "value": "5"
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R2C4",
+                    "R3C4"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R3C4",
+                    "R4C4"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R6C6"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R8C6"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C4"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R1C1",
+                    "R2C1"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R8C9",
+                    "R9C9"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R9C8",
+                    "R9C9"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R6C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R9C6",
+                    "R9C7"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R2C5",
+                    "R2C6"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R9C3",
+                    "R8C3"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R4C2"
+                ],
+                "value": "3"
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Digits separated by a black dot must have a ratio of 3. Digits separated by a white dot must have a difference of 5. There is no negative constraint.",
+        "size": 9,
+        "title": "Oct 5, 2021: Gamma and Epsilon"
+    },
+    "url": "https://f-puzzles.com/?id=yeddajmn"
+}

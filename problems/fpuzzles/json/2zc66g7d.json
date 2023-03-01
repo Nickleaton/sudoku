@@ -1,0 +1,280 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. And that's it!",
+        "size": 9,
+        "solution": [
+            1,
+            4,
+            7,
+            5,
+            6,
+            9,
+            8,
+            3,
+            2,
+            9,
+            2,
+            6,
+            8,
+            3,
+            7,
+            5,
+            4,
+            1,
+            8,
+            5,
+            3,
+            1,
+            2,
+            4,
+            6,
+            9,
+            7,
+            7,
+            3,
+            2,
+            4,
+            1,
+            8,
+            9,
+            6,
+            5,
+            6,
+            9,
+            4,
+            2,
+            5,
+            3,
+            1,
+            7,
+            8,
+            5,
+            8,
+            1,
+            7,
+            9,
+            6,
+            4,
+            2,
+            3,
+            2,
+            6,
+            9,
+            3,
+            8,
+            1,
+            7,
+            5,
+            4,
+            4,
+            1,
+            5,
+            9,
+            7,
+            2,
+            3,
+            8,
+            6,
+            3,
+            7,
+            8,
+            6,
+            4,
+            5,
+            2,
+            1,
+            9
+        ],
+        "title": "9/21/22: \"wrong answers only\""
+    },
+    "url": "https://f-puzzles.com/?id=2zc66g7d"
+}

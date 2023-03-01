@@ -1,0 +1,601 @@
+{
+    "data": {
+        "author": "clover!",
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "rectangle": [
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C3",
+                    "R1C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C5",
+                    "R1C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C3",
+                    "R3C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R3C3",
+                    "R3C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C1",
+                    "R3C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C1",
+                    "R5C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C4",
+                    "R5C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C5",
+                    "R4C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C6",
+                    "R6C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C6",
+                    "R6C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C6",
+                    "R4C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R3C7",
+                    "R4C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C8",
+                    "R5C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C9",
+                    "R7C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R9C8",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R7C3",
+                    "R7C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            },
+            {
+                "angle": 45,
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C4",
+                    "R7C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "width": 0.35
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply.\n\nIf there's a diamond between two horizontally adjacent cells, then their difference is the same as the leftmost digit in that row.\n\nIf there's a diamond between two vertically adjacent cells, then their difference is the same as the topmost digit in that column.\n\nNot all possible diamonds are necessarily given.",
+        "size": 9,
+        "solution": [
+            3,
+            4,
+            8,
+            5,
+            2,
+            1,
+            7,
+            9,
+            6,
+            5,
+            6,
+            1,
+            8,
+            9,
+            7,
+            4,
+            2,
+            3,
+            7,
+            2,
+            9,
+            6,
+            4,
+            3,
+            8,
+            1,
+            5,
+            4,
+            9,
+            2,
+            7,
+            3,
+            5,
+            1,
+            6,
+            8,
+            1,
+            7,
+            3,
+            2,
+            6,
+            8,
+            9,
+            5,
+            4,
+            8,
+            5,
+            6,
+            4,
+            1,
+            9,
+            3,
+            7,
+            2,
+            2,
+            3,
+            7,
+            9,
+            8,
+            6,
+            5,
+            4,
+            1,
+            9,
+            8,
+            4,
+            1,
+            5,
+            2,
+            6,
+            3,
+            7,
+            6,
+            1,
+            5,
+            3,
+            7,
+            4,
+            2,
+            8,
+            9
+        ],
+        "title": "2/14/23: XY-Difference Pairs",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2lzzkns2"
+}

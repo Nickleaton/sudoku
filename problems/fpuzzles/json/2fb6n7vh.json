@@ -1,0 +1,346 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in cells separated by a V must sum to 5.",
+        "size": 9,
+        "solution": [
+            3,
+            2,
+            6,
+            7,
+            1,
+            8,
+            4,
+            9,
+            5,
+            4,
+            5,
+            7,
+            3,
+            2,
+            9,
+            1,
+            6,
+            8,
+            1,
+            9,
+            8,
+            6,
+            5,
+            4,
+            3,
+            2,
+            7,
+            8,
+            4,
+            3,
+            2,
+            9,
+            1,
+            7,
+            5,
+            6,
+            2,
+            1,
+            9,
+            5,
+            7,
+            6,
+            8,
+            4,
+            3,
+            7,
+            6,
+            5,
+            4,
+            8,
+            3,
+            2,
+            1,
+            9,
+            5,
+            3,
+            2,
+            1,
+            6,
+            7,
+            9,
+            8,
+            4,
+            6,
+            8,
+            4,
+            9,
+            3,
+            2,
+            5,
+            7,
+            1,
+            9,
+            7,
+            1,
+            8,
+            4,
+            5,
+            6,
+            3,
+            2
+        ],
+        "title": "VI VERI VSVDOKVM VIVVS VICI",
+        "xv": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R9C9",
+                    "R9C8"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R8C9",
+                    "R7C9"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R2C1"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R7C3",
+                    "R7C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R3C7",
+                    "R3C8"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R4C4",
+                    "R4C3"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R6C7",
+                    "R6C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R7C4",
+                    "R6C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R3C6",
+                    "R4C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R2C5"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R8C6",
+                    "R8C5"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R9C3",
+                    "R8C3"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R1C7"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R4C2",
+                    "R5C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R5C8",
+                    "R6C8"
+                ],
+                "value": "V"
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=2fb6n7vh"
+}

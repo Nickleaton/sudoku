@@ -1,0 +1,542 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "line": [
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R2C4",
+                        "R2C3",
+                        "R2C2",
+                        "R3C2",
+                        "R4C2",
+                        "R4C3",
+                        "R4C4",
+                        "R3C4"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R3C4",
+                        "R2C4"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R6C6",
+                        "R7C6",
+                        "R8C6",
+                        "R8C7",
+                        "R8C8",
+                        "R7C8",
+                        "R6C8",
+                        "R6C7"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R6C7",
+                        "R6C6"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R8C2",
+                        "R9C2",
+                        "R9C3"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R8C2",
+                        "R8C3",
+                        "R9C3"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R1C7",
+                        "R2C7",
+                        "R2C8"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R1C7",
+                        "R1C8",
+                        "R2C8"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R6C3",
+                        "R7C3",
+                        "R7C4"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R6C3",
+                        "R6C4",
+                        "R7C4"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R3C6",
+                        "R4C6",
+                        "R4C7"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R3C6",
+                        "R3C7",
+                        "R4C7"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R1C2",
+                        "R1C1",
+                        "R2C1",
+                        "R3C1",
+                        "R4C1",
+                        "R5C1",
+                        "R5C2",
+                        "R5C3"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            },
+            {
+                "fromConstraint": "Whispers",
+                "lines": [
+                    [
+                        "R5C7",
+                        "R5C8",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9",
+                        "R8C9",
+                        "R9C9",
+                        "R9C8"
+                    ]
+                ],
+                "outlineC": "#67F067",
+                "width": 0.3
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in cells directly connected by a green line must differ by at least 5.",
+        "size": 9,
+        "solution": [
+            9,
+            4,
+            5,
+            3,
+            1,
+            6,
+            2,
+            8,
+            7,
+            1,
+            8,
+            2,
+            7,
+            4,
+            5,
+            9,
+            3,
+            6,
+            7,
+            3,
+            6,
+            2,
+            8,
+            9,
+            1,
+            4,
+            5,
+            2,
+            9,
+            3,
+            8,
+            7,
+            1,
+            6,
+            5,
+            4,
+            8,
+            1,
+            7,
+            6,
+            5,
+            4,
+            3,
+            9,
+            2,
+            6,
+            5,
+            4,
+            9,
+            3,
+            2,
+            7,
+            1,
+            8,
+            5,
+            6,
+            9,
+            1,
+            2,
+            8,
+            4,
+            7,
+            3,
+            4,
+            7,
+            1,
+            5,
+            6,
+            3,
+            8,
+            2,
+            9,
+            3,
+            2,
+            8,
+            4,
+            9,
+            7,
+            5,
+            6,
+            1
+        ],
+        "title": "11/6/22: Spending Daylight",
+        "whispers": [
+            {
+                "lines": [
+                    [
+                        "R2C4",
+                        "R2C3",
+                        "R2C2",
+                        "R3C2",
+                        "R4C2",
+                        "R4C3",
+                        "R4C4",
+                        "R3C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C4",
+                        "R2C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C6",
+                        "R7C6",
+                        "R8C6",
+                        "R8C7",
+                        "R8C8",
+                        "R7C8",
+                        "R6C8",
+                        "R6C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C7",
+                        "R6C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C2",
+                        "R9C2",
+                        "R9C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C2",
+                        "R8C3",
+                        "R9C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C7",
+                        "R2C7",
+                        "R2C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C7",
+                        "R1C8",
+                        "R2C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C3",
+                        "R7C3",
+                        "R7C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C3",
+                        "R6C4",
+                        "R7C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C6",
+                        "R4C6",
+                        "R4C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C6",
+                        "R3C7",
+                        "R4C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C2",
+                        "R1C1",
+                        "R2C1",
+                        "R3C1",
+                        "R4C1",
+                        "R5C1",
+                        "R5C2",
+                        "R5C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C7",
+                        "R5C8",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9",
+                        "R8C9",
+                        "R9C9",
+                        "R9C8"
+                    ]
+                ]
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=2dmkyywd"
+}

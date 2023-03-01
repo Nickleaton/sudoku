@@ -1,0 +1,342 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Shade some cells in the grid such that the clues outside the grid indicate the sums of the contiguous runs of shaded cells found in that row or column. Multiple runs in the same row or column must be separated by at least one unshaded cell.",
+        "size": 9,
+        "solution": [
+            2,
+            1,
+            7,
+            5,
+            4,
+            8,
+            6,
+            3,
+            9,
+            4,
+            9,
+            5,
+            3,
+            1,
+            6,
+            2,
+            8,
+            7,
+            6,
+            3,
+            8,
+            2,
+            7,
+            9,
+            4,
+            1,
+            5,
+            8,
+            7,
+            9,
+            1,
+            6,
+            4,
+            5,
+            2,
+            3,
+            1,
+            2,
+            6,
+            9,
+            5,
+            3,
+            7,
+            4,
+            8,
+            3,
+            5,
+            4,
+            7,
+            8,
+            2,
+            1,
+            9,
+            6,
+            5,
+            6,
+            2,
+            8,
+            9,
+            1,
+            3,
+            7,
+            4,
+            7,
+            8,
+            1,
+            4,
+            3,
+            5,
+            9,
+            6,
+            2,
+            9,
+            4,
+            3,
+            6,
+            2,
+            7,
+            8,
+            5,
+            1
+        ],
+        "text": [
+            {
+                "cells": [
+                    "R9C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "45"
+            },
+            {
+                "cells": [
+                    "R0C9"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "45"
+            },
+            {
+                "cells": [
+                    "R0C1"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "45"
+            },
+            {
+                "cells": [
+                    "R1C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "2 42"
+            },
+            {
+                "cells": [
+                    "R0C2"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R0C8"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "3 5"
+            },
+            {
+                "cells": [
+                    "R8C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "7 2"
+            },
+            {
+                "cells": [
+                    "R0C3"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "41 3"
+            },
+            {
+                "cells": [
+                    "R3C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "6 30 5"
+            },
+            {
+                "cells": [
+                    "R7C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "5 23 4"
+            },
+            {
+                "cells": [
+                    "R2C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "4 5 7"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "5 27 6"
+            },
+            {
+                "cells": [
+                    "R4C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "8 25 3"
+            },
+            {
+                "cells": [
+                    "R6C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "3 22 6"
+            },
+            {
+                "cells": [
+                    "R0C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "8 19 7"
+            },
+            {
+                "cells": [
+                    "R0C7"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "6 20 8"
+            },
+            {
+                "cells": [
+                    "R5C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "1 30 8"
+            },
+            {
+                "cells": [
+                    "R0C5"
+                ],
+                "fontC": "#000000",
+                "size": 0.35,
+                "value": "4 35 2"
+            }
+        ],
+        "title": "August 10, 2022: Jocular Jaunt"
+    },
+    "url": "https://f-puzzles.com/?id=2osx9kxt"
+}

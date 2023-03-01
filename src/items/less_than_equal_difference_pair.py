@@ -1,8 +1,8 @@
-from src.items.difference_pair import DifferencePair
+from src.items.variable_difference_pair import VariableDifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
 
-class LessThanEqualDifferencePair(DifferencePair):
+class LessThanEqualDifferencePair(VariableDifferencePair):
 
     @property
     def tags(self) -> set[str]:

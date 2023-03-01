@@ -26,3 +26,8 @@ class VerifyCommand(SimpleCommand):
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)
+
+    def dump_variables(self) -> None:
+        for name in self.solver.variables.keys():
+            variable, variable_type = self.solver.variables[name]
+            print(f"{name:20} {variable_type.format(variable.varValue)}")

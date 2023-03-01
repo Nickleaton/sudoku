@@ -1,0 +1,462 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "cage": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R1C8",
+                    "R1C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "20"
+            },
+            {
+                "cells": [
+                    "R9C8",
+                    "R9C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "30"
+            },
+            {
+                "cells": [
+                    "R3C7",
+                    "R3C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "80"
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R3C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "80"
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R7C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "90"
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R7C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "90"
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "60"
+            },
+            {
+                "cells": [
+                    "R3C9",
+                    "R4C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "70"
+            },
+            {
+                "cells": [
+                    "R3C5",
+                    "R4C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "40"
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R4C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "60"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R5C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "30"
+            },
+            {
+                "cells": [
+                    "R6C1",
+                    "R7C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "30"
+            },
+            {
+                "cells": [
+                    "R5C3",
+                    "R5C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "40"
+            },
+            {
+                "cells": [
+                    "R5C6",
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "90"
+            },
+            {
+                "cells": [
+                    "R5C8",
+                    "R5C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "70"
+            },
+            {
+                "cells": [
+                    "R6C9",
+                    "R7C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "30"
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "60"
+            },
+            {
+                "cells": [
+                    "R6C5",
+                    "R7C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "40"
+            },
+            {
+                "cells": [
+                    "R9C1",
+                    "R9C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "40"
+            }
+        ],
+        "disabledlogic": [
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Each cage contains a two-digit number, read from left-to-right or top-to-bottom. The result of rounding that number to the nearest 10 (5s round up) is written in the corner of the cage.",
+        "size": 9,
+        "title": "August 5, 2021: Round Off",
+        "truecandidatesoptions": [
+            "colored"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yhuxu9nl"
+}

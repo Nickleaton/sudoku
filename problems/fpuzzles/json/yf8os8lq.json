@@ -1,0 +1,250 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Digits on an arrow must repeat at least once in the direction of the arrow.",
+        "size": 9,
+        "text": [
+            {
+                "cells": [
+                    "R6C9"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2196"
+            },
+            {
+                "cells": [
+                    "R5C8"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2196"
+            },
+            {
+                "cells": [
+                    "R4C7"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2196"
+            },
+            {
+                "cells": [
+                    "R1C6"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2199"
+            },
+            {
+                "cells": [
+                    "R2C5"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2199"
+            },
+            {
+                "cells": [
+                    "R3C4"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2199"
+            },
+            {
+                "cells": [
+                    "R4C1"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2198"
+            },
+            {
+                "cells": [
+                    "R5C2"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2198"
+            },
+            {
+                "cells": [
+                    "R6C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2198"
+            },
+            {
+                "cells": [
+                    "R9C4"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2197"
+            },
+            {
+                "cells": [
+                    "R8C5"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2197"
+            },
+            {
+                "cells": [
+                    "R7C6"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2197"
+            }
+        ],
+        "title": "August 8, 2021: Cupid Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=yf8os8lq"
+}

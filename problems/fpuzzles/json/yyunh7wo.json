@@ -1,0 +1,398 @@
+{
+    "data": {
+        "author": "Freddie Hand",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Standard sudoku rules apply. Also, digits in arrow cells tell you how far it is to the digit 9 in that direction. For example, if the digit 2 appears in r1c3, then a 9 must appear two cells to its right, in r1c5. ",
+        "size": 9,
+        "text": [
+            {
+                "cells": [
+                    "R1C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2192"
+            },
+            {
+                "cells": [
+                    "R3C2"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2192"
+            },
+            {
+                "cells": [
+                    "R4C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2192"
+            },
+            {
+                "cells": [
+                    "R4C2"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2192"
+            },
+            {
+                "cells": [
+                    "R4C1"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2192"
+            },
+            {
+                "cells": [
+                    "R7C1"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2192"
+            },
+            {
+                "cells": [
+                    "R9C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2191"
+            },
+            {
+                "cells": [
+                    "R9C4"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2191"
+            },
+            {
+                "cells": [
+                    "R7C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2191"
+            },
+            {
+                "cells": [
+                    "R5C4"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2191"
+            },
+            {
+                "cells": [
+                    "R6C1"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2191"
+            },
+            {
+                "cells": [
+                    "R1C2"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 0.75,
+                "value": "\u2193"
+            }
+        ],
+        "title": "Jan 4, 2021: Search Nine",
+        "truecandidatesoptions": [
+            "colored"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yyunh7wo"
+}

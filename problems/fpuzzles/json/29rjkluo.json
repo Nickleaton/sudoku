@@ -1,0 +1,283 @@
+{
+    "data": {
+        "author": "Eric Fox",
+        "cage": [
+            {
+                "cells": [
+                    "R2C5",
+                    "R2C6",
+                    "R3C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6x"
+            },
+            {
+                "cells": [
+                    "R1C1",
+                    "R2C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4+"
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R2C9",
+                    "R3C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "35x"
+            },
+            {
+                "cells": [
+                    "R8C8",
+                    "R8C9",
+                    "R9C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6+"
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R8C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R1C7",
+                    "R2C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R1C4",
+                    "R2C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R3C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "23"
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R5C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6-"
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R5C3",
+                    "R6C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "120"
+            },
+            {
+                "cells": [
+                    "R4C7",
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R8C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R8C3",
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "24"
+            },
+            {
+                "cells": [
+                    "R4C4",
+                    "R5C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "18"
+            },
+            {
+                "cells": [
+                    "R7C4",
+                    "R8C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C6",
+                    "R6C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "20"
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R8C6",
+                    "R9C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R5C8",
+                    "R5C9",
+                    "R6C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3-"
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. A clue represents the value obtained by applying an operation iteratively on the numbers in the region the clue is in. If no operation is given, it may be any of +, -, \u00d7, or \u00f7. Subtraction and division in regions with more than two numbers are handled by taking the largest number and subtracting/dividing all the others.",
+        "size": 9,
+        "title": "TomTom Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=29rjkluo"
+}

@@ -1,0 +1,267 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "diagonal+": true,
+        "diagonal-": true,
+        "grid": [
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along the indicated diagonals cannot repeat.",
+        "size": 9,
+        "solution": [
+            5,
+            4,
+            9,
+            6,
+            8,
+            3,
+            2,
+            7,
+            1,
+            1,
+            7,
+            3,
+            2,
+            5,
+            9,
+            6,
+            8,
+            4,
+            6,
+            2,
+            8,
+            4,
+            1,
+            7,
+            3,
+            5,
+            9,
+            2,
+            8,
+            4,
+            3,
+            7,
+            6,
+            1,
+            9,
+            5,
+            9,
+            6,
+            5,
+            8,
+            4,
+            1,
+            7,
+            3,
+            2,
+            3,
+            1,
+            7,
+            5,
+            9,
+            2,
+            4,
+            6,
+            8,
+            8,
+            3,
+            2,
+            1,
+            6,
+            5,
+            9,
+            4,
+            7,
+            4,
+            9,
+            6,
+            7,
+            2,
+            8,
+            5,
+            1,
+            3,
+            7,
+            5,
+            1,
+            9,
+            3,
+            4,
+            8,
+            2,
+            6
+        ],
+        "title": "Oct. 3, 2022: [SECRET]\u00b0 Angles"
+    },
+    "url": "https://f-puzzles.com/?id=2kkpwfjb"
+}

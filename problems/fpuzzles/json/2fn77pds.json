@@ -1,0 +1,519 @@
+{
+    "data": {
+        "author": "Bill Murphy",
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in blue squares must be a magic square where they contain the digits 1-9 and each row, column and diagonal must have the same total.\n",
+        "size": 9,
+        "solution": [
+            4,
+            9,
+            1,
+            5,
+            8,
+            3,
+            6,
+            7,
+            2,
+            3,
+            2,
+            8,
+            6,
+            4,
+            7,
+            1,
+            5,
+            9,
+            5,
+            6,
+            7,
+            2,
+            1,
+            9,
+            8,
+            3,
+            4,
+            7,
+            1,
+            5,
+            9,
+            3,
+            2,
+            4,
+            6,
+            8,
+            9,
+            8,
+            3,
+            4,
+            5,
+            6,
+            7,
+            2,
+            1,
+            2,
+            4,
+            6,
+            8,
+            7,
+            1,
+            5,
+            9,
+            3,
+            6,
+            7,
+            2,
+            1,
+            9,
+            8,
+            3,
+            4,
+            5,
+            1,
+            5,
+            9,
+            3,
+            6,
+            4,
+            2,
+            8,
+            7,
+            8,
+            3,
+            4,
+            7,
+            2,
+            5,
+            9,
+            1,
+            6
+        ],
+        "title": "Benediction",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2fn77pds"
+}

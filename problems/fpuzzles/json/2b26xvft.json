@@ -1,0 +1,101 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "clone": [
+            {
+                "cells": [
+                    "R1C2",
+                    "R2C1",
+                    "R2C2",
+                    "R3C2",
+                    "R4C2",
+                    "R5C1",
+                    "R5C2",
+                    "R5C3"
+                ],
+                "cloneCells": [
+                    "R2C5",
+                    "R3C4",
+                    "R3C5",
+                    "R4C5",
+                    "R5C5",
+                    "R6C4",
+                    "R6C5",
+                    "R6C6"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Grey regions are clones, and must contain the same digits in the same relative positions.",
+        "size": 6,
+        "title": "6/11/22: B1G3 Countdown: 1..."
+    },
+    "url": "https://f-puzzles.com/?id=2b26xvft"
+}

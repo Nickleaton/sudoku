@@ -1,0 +1,526 @@
+{
+    "data": {
+        "author": "clover!",
+        "cage": [
+            {
+                "cells": [
+                    "R3C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R4C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R1C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R1C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R1C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R1C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R3C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R4C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R3C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R3C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R3C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R4C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R5C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R2C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R4C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R4C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R6C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R6C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R5C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R6C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R7C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R6C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R7C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R8C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R8C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R9C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            }
+        ],
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Each cage is marked with a value exactly 1 off from the correct value that goes in that cage. For instance, if a cage is marked with a 2, it must contain either a 1 or a 3. If a cage is marked with a 9, it must contain an 8. ",
+        "size": 9,
+        "title": "July 3, 2022: Liar Sudoku",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2ccussmq"
+}

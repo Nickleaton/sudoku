@@ -51,6 +51,7 @@ class SimpleCommand(Command):
         with open(self.output_filename, 'w', encoding="utf-8") as file:
             file.write(self.output)
 
+
     def __repr__(self) -> str:
         if self.output_filename is None:
             return f"{self.__class__.__name__}('{self.config_filename}')"

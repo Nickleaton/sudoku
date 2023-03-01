@@ -1,6 +1,5 @@
-from typing import List, Dict, Callable
+from typing import Dict
 
-from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.item import Item
 from src.items.region import Region
@@ -11,9 +10,6 @@ class StandardRegion(Region):
     def __init__(self, board: Board, index: int):
         super().__init__(board)
         self.index = index
-
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
-        return []
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> int:

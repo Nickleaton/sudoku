@@ -1,0 +1,442 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R4C1",
+                        "R3C2",
+                        "R2C3",
+                        "R1C4"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R1C5",
+                        "R2C5",
+                        "R3C5",
+                        "R4C5"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R1C6",
+                        "R2C7",
+                        "R3C8",
+                        "R4C9"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R4C7",
+                        "R3C7",
+                        "R3C6"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R4C3",
+                        "R4C4",
+                        "R3C4"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R5C1",
+                        "R5C2",
+                        "R5C3",
+                        "R5C4"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R5C6",
+                        "R5C7",
+                        "R5C8",
+                        "R5C9"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R6C1",
+                        "R7C2",
+                        "R8C3",
+                        "R9C4"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R7C3",
+                        "R6C3",
+                        "R6C4"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R6C5",
+                        "R7C5",
+                        "R8C5",
+                        "R9C5"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R7C6",
+                        "R6C6",
+                        "R6C7"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R9C6",
+                        "R8C7",
+                        "R7C8",
+                        "R6C9"
+                    ]
+                ],
+                "outlineC": "#DFBFFF",
+                "width": 0.4
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along a purple line must form a set of consecutive digits with no repeats (in any order).",
+        "size": 9,
+        "title": "Purple Haze",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yz7cpdbc"
+}

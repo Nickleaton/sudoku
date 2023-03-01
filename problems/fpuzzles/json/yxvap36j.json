@@ -1,0 +1,404 @@
+{
+    "data": {
+        "author": "clover!",
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null,
+                    "region": 1
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 1,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 4,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 4,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 4,
+                    "value": 8
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null,
+                    "region": 1
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null,
+                    "region": 8
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 1
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null,
+                    "region": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 4,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 4
+                },
+                {
+                    "c": "#FFE060",
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 8,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 4
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 7,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 7
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 7
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 7
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 7,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 4
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 4
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 5,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 0
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 7,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 7
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 4
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null,
+                    "region": 8
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 0,
+                    "value": 2
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null,
+                    "region": 8
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 7,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null,
+                    "region": 8
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 0
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 0,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 7
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 6
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 6,
+                    "value": 3
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null,
+                    "region": 3
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 3
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 5
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 0,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 0
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 0
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 0
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 0,
+                    "value": 9
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null,
+                    "region": 3
+                },
+                {
+                    "c": "#FFE060",
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 8,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 3
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 3,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null,
+                    "region": 8
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 3,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 3,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 3,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "region": 2,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null,
+                    "region": 2
+                }
+            ]
+        ],
+        "ruleset": "Normal irregular sudoku rules apply, except that one of the nine regions (highlighted in orange) isn't connected. This region still contains the digits 1 through 9 exactly once each. ",
+        "size": 9,
+        "title": "May 15, 2022: Scattered",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yxvap36j"
+}

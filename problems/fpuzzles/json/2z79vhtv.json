@@ -1,0 +1,338 @@
+{
+    "data": {
+        "author": "jovi_al",
+        "difference": [
+            {
+                "cells": [
+                    "R1C2",
+                    "R2C2"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3"
+                ],
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R2C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R2C2"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R8C8",
+                    "R7C8"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R9C8",
+                    "R8C8"
+                ],
+                "value": "1"
+            },
+            {
+                "cells": [
+                    "R8C9",
+                    "R8C8"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R8C8",
+                    "R8C7"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R8C4"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R9C5",
+                    "R8C5"
+                ],
+                "value": "1"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R5C2"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R6C5"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R6C4",
+                    "R5C4"
+                ],
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R4C5",
+                    "R4C4"
+                ],
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R4C6",
+                    "R5C6"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R4C2"
+                ],
+                "value": "1"
+            },
+            {
+                "cells": [
+                    "R6C8",
+                    "R5C8"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R5C9",
+                    "R5C8"
+                ],
+                "value": "1"
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ],
+                "value": "1"
+            },
+            {
+                "cells": [
+                    "R2C6",
+                    "R2C5"
+                ],
+                "value": "2"
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R1C8",
+                    "R2C8"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R2C9",
+                    "R2C8"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R3C8"
+                ],
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R2C7"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R4C5",
+                    "R5C5"
+                ],
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C6"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R6C5"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C4"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R8C2"
+                ],
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R8C3",
+                    "R8C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R9C2"
+                ],
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R8C1",
+                    "R8C2"
+                ],
+                "value": "5"
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Digits separated by a black dot have a ratio of 1:X, where X is the number in the black dot. Digits separated by a white dot have a difference of N, where N is the number in the white dot.",
+        "size": 9,
+        "title": "Difference Ratio Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2z79vhtv"
+}

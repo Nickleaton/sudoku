@@ -1,0 +1,422 @@
+{
+    "data": {
+        "author": "clover!",
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFD0D0",
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply.\n\nEach digit in the first column tells you where the \"1\" is located in its row. For instance, if there's a 3 in the first column, the \"1\" in that row must be located in the third cell from the left. \n\nSimilarly, each digit in the fifth column tells you where the \"5\" is located in that row, and each digit in the ninth column tells you where the \"9\" is located in that row.",
+        "size": 9,
+        "solution": [
+            3,
+            6,
+            1,
+            9,
+            7,
+            2,
+            5,
+            8,
+            4,
+            8,
+            7,
+            2,
+            5,
+            4,
+            3,
+            6,
+            1,
+            9,
+            5,
+            4,
+            9,
+            6,
+            1,
+            8,
+            2,
+            7,
+            3,
+            2,
+            1,
+            7,
+            3,
+            8,
+            9,
+            4,
+            5,
+            6,
+            9,
+            8,
+            3,
+            4,
+            5,
+            6,
+            7,
+            2,
+            1,
+            4,
+            5,
+            6,
+            1,
+            2,
+            7,
+            3,
+            9,
+            8,
+            7,
+            3,
+            8,
+            2,
+            9,
+            4,
+            1,
+            6,
+            5,
+            1,
+            9,
+            4,
+            7,
+            6,
+            5,
+            8,
+            3,
+            2,
+            6,
+            2,
+            5,
+            8,
+            3,
+            1,
+            9,
+            4,
+            7
+        ],
+        "title": "Sept. 24, 2022: 159",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2e2zkum4"
+}

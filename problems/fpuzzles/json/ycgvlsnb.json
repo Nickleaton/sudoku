@@ -1,0 +1,176 @@
+{
+    "data": {
+        "author": "clover!",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Also, every digit must be orthogonally adjacent to at least one other digit with a consecutive value. For instance, every 1 must touch at least one 2, and every 4 must touch at least one 3 or 5 (not necessarily both.)",
+        "size": 9,
+        "title": "April 9, 2022: Touchy Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=ycgvlsnb"
+}

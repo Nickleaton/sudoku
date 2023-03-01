@@ -1,0 +1,458 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "cage": [
+            {
+                "cells": [
+                    "R1C7",
+                    "R1C8",
+                    "R2C7",
+                    "R2C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R2C5",
+                    "R2C6",
+                    "R3C5",
+                    "R3C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R4C3",
+                    "R4C4",
+                    "R5C3",
+                    "R5C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R5C6",
+                    "R5C7",
+                    "R6C6",
+                    "R6C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R7C4",
+                    "R7C5",
+                    "R8C4",
+                    "R8C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R8C3",
+                    "R9C2",
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Blue/caged regions are clones of each other (must contain the same digits in the same order).",
+        "size": 9,
+        "title": "July 28, 2021: Begun It Has",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yeb89yqt"
+}

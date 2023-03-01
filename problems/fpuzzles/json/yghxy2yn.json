@@ -1,0 +1,453 @@
+{
+    "data": {
+        "author": "clover!",
+        "disabledlogic": [
+            "tuples",
+            "pointing",
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R1C1",
+                        "R1C2",
+                        "R1C3",
+                        "R2C3",
+                        "R3C3",
+                        "R3C2",
+                        "R3C1",
+                        "R4C1"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R4C3",
+                        "R5C3",
+                        "R6C3",
+                        "R6C2",
+                        "R6C1",
+                        "R5C1",
+                        "R4C1"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R4C4",
+                        "R4C3"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R4C4",
+                        "R4C5",
+                        "R4C6",
+                        "R5C6",
+                        "R6C6",
+                        "R6C5",
+                        "R6C4"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R6C4",
+                        "R7C4",
+                        "R8C4",
+                        "R9C4",
+                        "R9C5",
+                        "R9C6",
+                        "R8C6",
+                        "R7C6"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R9C8",
+                        "R9C9",
+                        "R8C9",
+                        "R7C9",
+                        "R7C8"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R7C7",
+                        "R7C8"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R6C7",
+                        "R7C7"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R5C7",
+                        "R6C7"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R4C7",
+                        "R5C7"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R3C7",
+                        "R4C7"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R2C7",
+                        "R3C7"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R2C8",
+                        "R2C7"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R1C8",
+                        "R2C8"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            }
+        ],
+        "ruleset": "Standard sudoku rules apply. Along a grey line, digits differ from their neighbors by at least 5. Digits along a line may repeat as long as they follow all other rules. ",
+        "size": 9,
+        "title": "German Whispers",
+        "truecandidatesoptions": [
+            "logical"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yghxy2yn"
+}

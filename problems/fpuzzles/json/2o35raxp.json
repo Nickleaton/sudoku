@@ -1,0 +1,382 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ],
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                },
+                {
+                    "c": "#D0D0FF",
+                    "cArray": [
+                        "#D0D0FF"
+                    ]
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. In each blue region, it must be possible to draw a path that goes from 1-9 in order, travelling only horizontally and vertically.",
+        "size": 9,
+        "solution": [
+            5,
+            6,
+            7,
+            2,
+            3,
+            8,
+            4,
+            1,
+            9,
+            4,
+            1,
+            8,
+            5,
+            6,
+            9,
+            7,
+            2,
+            3,
+            3,
+            2,
+            9,
+            1,
+            7,
+            4,
+            6,
+            5,
+            8,
+            1,
+            3,
+            4,
+            9,
+            8,
+            7,
+            5,
+            6,
+            2,
+            7,
+            9,
+            2,
+            4,
+            5,
+            6,
+            8,
+            3,
+            1,
+            6,
+            8,
+            5,
+            3,
+            2,
+            1,
+            9,
+            7,
+            4,
+            9,
+            7,
+            6,
+            8,
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            5,
+            1,
+            7,
+            4,
+            3,
+            2,
+            9,
+            6,
+            2,
+            4,
+            3,
+            6,
+            9,
+            5,
+            1,
+            8,
+            7
+        ],
+        "title": "Jul 4, 2022: Meandering Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2o35raxp"
+}

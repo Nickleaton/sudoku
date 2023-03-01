@@ -1,0 +1,547 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "killercage": [
+            {
+                "cells": [
+                    "R5C7",
+                    "R5C8"
+                ],
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R5C3"
+                ],
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R3C2"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R3C8",
+                    "R3C9"
+                ],
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R7C9"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R7C2"
+                ],
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R7C3",
+                    "R8C3"
+                ],
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R7C5",
+                    "R8C5"
+                ],
+                "value": "12"
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R8C7"
+                ],
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R3C7"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R2C5",
+                    "R3C5"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R3C3"
+                ],
+                "value": "5"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply.\nKiller: Digits in cages cannot repeat and must sum to the total given.\nX-Sums: Clues outside the grid tell you the sum of the first X digits in the corresponding row or column, starting with the digit adjacent to the clue and continuing away from the clue, where X is the adjacent digit. (For example: ?????7534 (19) would be a valid fill for a row where 19 is the sum of the rightmost 4 digits.)",
+        "size": 9,
+        "solution": [
+            9,
+            6,
+            3,
+            7,
+            8,
+            2,
+            5,
+            4,
+            1,
+            8,
+            7,
+            1,
+            4,
+            6,
+            5,
+            2,
+            3,
+            9,
+            5,
+            2,
+            4,
+            3,
+            1,
+            9,
+            7,
+            8,
+            6,
+            7,
+            3,
+            5,
+            8,
+            4,
+            6,
+            1,
+            9,
+            2,
+            2,
+            8,
+            6,
+            1,
+            9,
+            7,
+            3,
+            5,
+            4,
+            1,
+            4,
+            9,
+            5,
+            2,
+            3,
+            6,
+            7,
+            8,
+            3,
+            1,
+            8,
+            6,
+            7,
+            4,
+            9,
+            2,
+            5,
+            4,
+            9,
+            7,
+            2,
+            5,
+            1,
+            8,
+            6,
+            3,
+            6,
+            5,
+            2,
+            9,
+            3,
+            8,
+            4,
+            1,
+            7
+        ],
+        "text": [
+            {
+                "cells": [
+                    "R0C3"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R0C3"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R0C7"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R0C7"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "18"
+            },
+            {
+                "cells": [
+                    "R10C7"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R10C7"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "27"
+            },
+            {
+                "cells": [
+                    "R10C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R10C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R10C3"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R10C3"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R3C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R3C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R3C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R3C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "34"
+            },
+            {
+                "cells": [
+                    "R7C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R7C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "12"
+            },
+            {
+                "cells": [
+                    "R7C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R7C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "27"
+            },
+            {
+                "cells": [
+                    "R5C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R5C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R5C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R5C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "19"
+            },
+            {
+                "cells": [
+                    "R0C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R0C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "42"
+            }
+        ],
+        "title": "January 11, 2023: Mathception",
+        "xsum": [
+            {
+                "cell": "R0C3",
+                "value": "8"
+            },
+            {
+                "cell": "R0C7",
+                "value": "18"
+            },
+            {
+                "cell": "R10C7",
+                "value": "27"
+            },
+            {
+                "cell": "R10C5",
+                "value": "15"
+            },
+            {
+                "cell": "R10C3",
+                "value": "9"
+            },
+            {
+                "cell": "R3C0",
+                "value": "15"
+            },
+            {
+                "cell": "R3C10",
+                "value": "34"
+            },
+            {
+                "cell": "R7C0",
+                "value": "12"
+            },
+            {
+                "cell": "R7C10",
+                "value": "27"
+            },
+            {
+                "cell": "R5C0",
+                "value": "10"
+            },
+            {
+                "cell": "R5C10",
+                "value": "19"
+            },
+            {
+                "cell": "R0C5",
+                "value": "42"
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=2k3jwp3g"
+}

@@ -1,0 +1,400 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                }
+            ]
+        ],
+        "line": [
+            {
+                "isNewConstraint": true,
+                "lines": [
+                    [
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R1C7",
+                        "R2C7",
+                        "R2C8",
+                        "R3C8",
+                        "R4C8",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9",
+                        "R7C8",
+                        "R7C7",
+                        "R8C7",
+                        "R8C6"
+                    ]
+                ],
+                "outlineC": "#60C060",
+                "width": 0.3
+            },
+            {
+                "isNewConstraint": true,
+                "lines": [
+                    [
+                        "R8C6",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4",
+                        "R9C3",
+                        "R8C3",
+                        "R8C2",
+                        "R7C2",
+                        "R6C2",
+                        "R6C1",
+                        "R5C1",
+                        "R4C1",
+                        "R3C1",
+                        "R3C2",
+                        "R3C3",
+                        "R2C3",
+                        "R2C4",
+                        "R1C4"
+                    ]
+                ],
+                "outlineC": "#60C060",
+                "width": 0.3
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Along green lines, digits must differ by at least 5.",
+        "size": 9,
+        "title": "January 20, 2022: Ernst",
+        "truecandidatesoptions": [],
+        "whispers": [
+            {
+                "lines": [
+                    [
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R1C7",
+                        "R2C7",
+                        "R2C8",
+                        "R3C8",
+                        "R4C8",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9",
+                        "R7C8",
+                        "R7C7",
+                        "R8C7",
+                        "R8C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C6",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4",
+                        "R9C3",
+                        "R8C3",
+                        "R8C2",
+                        "R7C2",
+                        "R6C2",
+                        "R6C1",
+                        "R5C1",
+                        "R4C1",
+                        "R3C1",
+                        "R3C2",
+                        "R3C3",
+                        "R2C3",
+                        "R2C4",
+                        "R1C4"
+                    ]
+                ]
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=y9adcw7j"
+}

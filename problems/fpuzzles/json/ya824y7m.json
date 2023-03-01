@@ -1,0 +1,250 @@
+{
+    "data": {
+        "arrow": [
+            {
+                "cells": [
+                    "R1C5"
+                ],
+                "lines": [
+                    [
+                        "R1C5",
+                        "R2C6",
+                        "R3C7"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R2C3"
+                ],
+                "lines": [
+                    [
+                        "R2C3",
+                        "R3C4",
+                        "R4C5"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R3C1"
+                ],
+                "lines": [
+                    [
+                        "R3C1",
+                        "R4C2",
+                        "R5C3"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C1"
+                ],
+                "lines": [
+                    [
+                        "R9C1",
+                        "R8C1",
+                        "R7C1",
+                        "R6C1"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R1C9"
+                ],
+                "lines": [
+                    [
+                        "R1C9",
+                        "R2C9",
+                        "R3C9",
+                        "R4C9"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R7C9"
+                ],
+                "lines": [
+                    [
+                        "R7C9",
+                        "R6C8",
+                        "R5C7"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C7"
+                ],
+                "lines": [
+                    [
+                        "R8C7",
+                        "R7C6",
+                        "R6C5"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C5"
+                ],
+                "lines": [
+                    [
+                        "R9C5",
+                        "R8C4",
+                        "R7C3"
+                    ]
+                ]
+            }
+        ],
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "highlightConflicts": false,
+        "ruleset": "Normal Sudoku rules apply. Digits along each arrow must _multiply_ to give the product shown in the circle.",
+        "size": 9,
+        "title": "Feb 27, 2022: Product Arrow"
+    },
+    "url": "https://f-puzzles.com/?id=ya824y7m"
+}

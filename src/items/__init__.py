@@ -23,12 +23,10 @@ import src.items.column
 import src.items.column_indexer
 import src.items.columns
 import src.items.composed_item
-import src.items.consecutive_pair
 import src.items.constraint_exception
 import src.items.constraints
 import src.items.diagonals
 import src.items.difference_line
-import src.items.difference_pair
 import src.items.different_pair
 import src.items.disjoint_group
 import src.items.disjoint_groups
@@ -39,6 +37,13 @@ import src.items.equal_sum
 import src.items.even_cell
 import src.items.exclusion
 import src.items.first_n
+import src.items.variable_difference_pair
+import src.items.variable_difference_pair
+import src.items.variable_pair
+import src.items.variable_product_pair
+import src.items.variable_ratio_pair
+import src.items.variable_sum_pair
+import src.items.variable_sum_pair
 import src.items.fortress_cell
 import src.items.frame
 import src.items.frame_product
@@ -55,7 +60,6 @@ import src.items.knight
 import src.items.known_cell
 import src.items.knowns
 import src.items.kropki_pair
-import src.items.kropki_pair2
 import src.items.less_than_equal_difference_line
 import src.items.less_than_equal_difference_pair
 import src.items.line
@@ -92,7 +96,6 @@ import src.items.simple_thermometer
 import src.items.solution
 import src.items.standard_diagonal
 import src.items.standard_region
-import src.items.sum_pair
 import src.items.thermometer
 import src.items.tlbr
 import src.items.tlbr_refecting_diagonal

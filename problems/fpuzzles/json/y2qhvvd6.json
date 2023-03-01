@@ -1,0 +1,430 @@
+{
+    "data": {
+        "author": "clover!",
+        "disabledlogic": [
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. A value outside of the grid gives the sum of the first three digits from that direction (closest to the clue) in that row or column. For instance, because a \"22\" clue appears to the right of row 7, the sum of the digits in row 7, columns 7/8/9 must be 22. ",
+        "size": 9,
+        "text": [
+            {
+                "cells": [
+                    "R1C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R2C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R3C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "24"
+            },
+            {
+                "cells": [
+                    "R0C9"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R0C8"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R0C7"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "23"
+            },
+            {
+                "cells": [
+                    "R9C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R8C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R7C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "22"
+            },
+            {
+                "cells": [
+                    "R10C1"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R10C2"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R10C3"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "21"
+            },
+            {
+                "cells": [
+                    "R4C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R6C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R10C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            }
+        ],
+        "title": "April 24, 2022: Sum Frame",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=y2qhvvd6"
+}

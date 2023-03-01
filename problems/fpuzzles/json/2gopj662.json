@@ -1,0 +1,525 @@
+{
+    "data": {
+        "author": "Bill Murphy",
+        "disabledlogic": [
+            "tuples",
+            "pointing",
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku Rules Apply. Clues outside the grid give digits that must appear in the first three cells in the direction of the arrow.",
+        "size": 9,
+        "solution": [
+            7,
+            1,
+            2,
+            5,
+            4,
+            3,
+            9,
+            6,
+            8,
+            3,
+            8,
+            4,
+            6,
+            9,
+            7,
+            5,
+            2,
+            1,
+            9,
+            5,
+            6,
+            1,
+            2,
+            8,
+            7,
+            3,
+            4,
+            6,
+            9,
+            1,
+            7,
+            5,
+            4,
+            3,
+            8,
+            2,
+            2,
+            3,
+            8,
+            9,
+            1,
+            6,
+            4,
+            7,
+            5,
+            5,
+            4,
+            7,
+            3,
+            8,
+            2,
+            1,
+            9,
+            6,
+            8,
+            7,
+            3,
+            4,
+            6,
+            5,
+            2,
+            1,
+            9,
+            1,
+            6,
+            5,
+            2,
+            3,
+            9,
+            8,
+            4,
+            7,
+            4,
+            2,
+            9,
+            8,
+            7,
+            1,
+            6,
+            5,
+            3
+        ],
+        "text": [
+            {
+                "cells": [
+                    "R8C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "88\ud83e\udc55"
+            },
+            {
+                "cells": [
+                    "R9C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "77\ud83e\udc55"
+            },
+            {
+                "cells": [
+                    "R10C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "34\ud83e\udc55"
+            },
+            {
+                "cells": [
+                    "R4C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "89\ud83e\udc55"
+            },
+            {
+                "cells": [
+                    "R6C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "29\ud83e\udc55"
+            },
+            {
+                "cells": [
+                    "R0C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "67\ud83e\udc56"
+            },
+            {
+                "cells": [
+                    "R0C1"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "11\ud83e\udc56"
+            },
+            {
+                "cells": [
+                    "R0C2"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "22\ud83e\udc56"
+            },
+            {
+                "cells": [
+                    "R0C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "29\ud83e\udc56"
+            },
+            {
+                "cells": [
+                    "R0C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5778"
+            },
+            {
+                "cells": [
+                    "R1C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5733"
+            },
+            {
+                "cells": [
+                    "R2C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5744"
+            },
+            {
+                "cells": [
+                    "R4C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5759"
+            },
+            {
+                "cells": [
+                    "R6C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5749"
+            },
+            {
+                "cells": [
+                    "R10C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5423"
+            },
+            {
+                "cells": [
+                    "R10C9"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5455"
+            },
+            {
+                "cells": [
+                    "R10C8"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5466"
+            },
+            {
+                "cells": [
+                    "R10C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5469"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "47\ud83e\udc56"
+            },
+            {
+                "cells": [
+                    "R10C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "\ud83e\udc5427"
+            }
+        ],
+        "title": "Diagonal Outside Sudoku",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2gopj662"
+}

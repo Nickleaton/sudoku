@@ -1,0 +1,212 @@
+{
+    "data": {
+        "author": "shye",
+        "grid": [
+            [
+                {
+                    "c": "#FFD0D0",
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#FFD0D0",
+                    "given": true,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "c": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "c": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#FFD0D0",
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "c": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "c": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0",
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#FFD0D0",
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "c": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "c": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "c": "#FFD0D0"
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Additionally, each digit in column 1 indicates which column the 1 appears in its respective row (for instance, if r3c1 was a 6, then r3c6 would be a 1). Likewise, each digit in column 5 indicates where 5 appears in the row, and each digit in column 9 indicates the 9 in the row.",
+        "size": 9,
+        "title": "Feb 2, 2023: 159 Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2o24mj96"
+}

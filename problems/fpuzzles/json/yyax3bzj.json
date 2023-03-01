@@ -1,0 +1,112 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ]
+        ],
+        "littlekillersum": [
+            {
+                "cell": "R3C0",
+                "cells": [
+                    "R2C1",
+                    "R1C2"
+                ],
+                "direction": "UR",
+                "value": "3"
+            },
+            {
+                "cell": "R0C4",
+                "cells": [
+                    "R1C5",
+                    "R2C6"
+                ],
+                "direction": "DR",
+                "value": "5"
+            },
+            {
+                "cell": "R4C7",
+                "cells": [
+                    "R5C6",
+                    "R6C5"
+                ],
+                "direction": "DL",
+                "value": "3"
+            },
+            {
+                "cell": "R7C3",
+                "cells": [
+                    "R6C2",
+                    "R5C1"
+                ],
+                "direction": "UL",
+                "value": "6"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Clues outside the grid tell you the sum of the digits along the indicated diagonal (digits may repeat if allowed by other rules).",
+        "size": 6,
+        "title": "May 8, 2022: B1G3 Lil Killer"
+    },
+    "url": "https://f-puzzles.com/?id=yyax3bzj"
+}

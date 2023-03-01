@@ -1,0 +1,450 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                }
+            ]
+        ],
+        "line": [
+            {
+                "isNewConstraint": true,
+                "lines": [
+                    [
+                        "R2C3",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R2C7",
+                        "R3C7",
+                        "R4C7",
+                        "R5C6"
+                    ]
+                ],
+                "outlineC": "#C060C0",
+                "width": 0.4
+            },
+            {
+                "isNewConstraint": true,
+                "lines": [
+                    [
+                        "R3C8",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C8",
+                        "R7C7",
+                        "R7C6",
+                        "R6C5"
+                    ]
+                ],
+                "outlineC": "#C060C0",
+                "width": 0.4
+            },
+            {
+                "isNewConstraint": true,
+                "lines": [
+                    [
+                        "R8C7",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4",
+                        "R8C3",
+                        "R7C3",
+                        "R6C3",
+                        "R5C4"
+                    ]
+                ],
+                "outlineC": "#C060C0",
+                "width": 0.4
+            },
+            {
+                "isNewConstraint": true,
+                "lines": [
+                    [
+                        "R7C2",
+                        "R6C1",
+                        "R5C1",
+                        "R4C1",
+                        "R3C2",
+                        "R3C3",
+                        "R3C4",
+                        "R4C5"
+                    ]
+                ],
+                "outlineC": "#C060C0",
+                "width": 0.4
+            }
+        ],
+        "renban": [
+            {
+                "lines": [
+                    [
+                        "R2C3",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R2C7",
+                        "R3C7",
+                        "R4C7",
+                        "R5C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C8",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C8",
+                        "R7C7",
+                        "R7C6",
+                        "R6C5"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C7",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4",
+                        "R8C3",
+                        "R7C3",
+                        "R6C3",
+                        "R5C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R7C2",
+                        "R6C1",
+                        "R5C1",
+                        "R4C1",
+                        "R3C2",
+                        "R3C3",
+                        "R3C4",
+                        "R4C5"
+                    ]
+                ]
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along purple renban lines must form a non-repeating consecutive set, in any order - for example, a 4-cell renban line could be 4352, but not 5679 or 2312.",
+        "size": 9,
+        "title": "11/27: Oxalis Quadrangularis",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2n2x9bvq"
+}

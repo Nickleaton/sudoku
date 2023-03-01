@@ -1,0 +1,436 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ]
+        ],
+        "line": [
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R1C2",
+                        "R1C3",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R1C7",
+                        "R1C8"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R9C2",
+                        "R9C3",
+                        "R9C4",
+                        "R9C5",
+                        "R9C6",
+                        "R9C7",
+                        "R9C8"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R8C9",
+                        "R7C9",
+                        "R6C9",
+                        "R5C9",
+                        "R4C9",
+                        "R3C9",
+                        "R2C9"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R2C1",
+                        "R3C1",
+                        "R4C1",
+                        "R5C1",
+                        "R6C1",
+                        "R7C1",
+                        "R8C1"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R8C2",
+                        "R7C3",
+                        "R6C4"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R4C6",
+                        "R3C7",
+                        "R2C8"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R2C2",
+                        "R3C3",
+                        "R4C4"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            },
+            {
+                "fromConstraint": "Region Sum Line",
+                "lines": [
+                    [
+                        "R6C6",
+                        "R7C7",
+                        "R8C8"
+                    ]
+                ],
+                "outlineC": "#2ECBFF",
+                "width": 0.25
+            }
+        ],
+        "regionsumline": [
+            {
+                "lines": [
+                    [
+                        "R1C2",
+                        "R1C3",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R1C7",
+                        "R1C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R9C2",
+                        "R9C3",
+                        "R9C4",
+                        "R9C5",
+                        "R9C6",
+                        "R9C7",
+                        "R9C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C9",
+                        "R7C9",
+                        "R6C9",
+                        "R5C9",
+                        "R4C9",
+                        "R3C9",
+                        "R2C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C1",
+                        "R3C1",
+                        "R4C1",
+                        "R5C1",
+                        "R6C1",
+                        "R7C1",
+                        "R8C1"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C2",
+                        "R7C3",
+                        "R6C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C6",
+                        "R3C7",
+                        "R2C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C2",
+                        "R3C3",
+                        "R4C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C6",
+                        "R7C7",
+                        "R8C8"
+                    ]
+                ]
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Also, there are some lines in the grid, and each line passes through more than one of the 3x3 regions. Along each line, the digits in every region it passes through have the same sum. (For instance, r1c2 + r1c3 = r1c4 + r1c5 + r1c6 = r1c7 + r1c8)",
+        "size": 9,
+        "solution": [
+            1,
+            8,
+            6,
+            3,
+            4,
+            7,
+            5,
+            9,
+            2,
+            9,
+            5,
+            7,
+            1,
+            2,
+            8,
+            6,
+            3,
+            4,
+            3,
+            4,
+            2,
+            5,
+            6,
+            9,
+            1,
+            7,
+            8,
+            2,
+            3,
+            5,
+            7,
+            1,
+            4,
+            9,
+            8,
+            6,
+            6,
+            7,
+            1,
+            8,
+            9,
+            2,
+            3,
+            4,
+            5,
+            4,
+            9,
+            8,
+            6,
+            5,
+            3,
+            7,
+            2,
+            1,
+            7,
+            6,
+            4,
+            9,
+            8,
+            1,
+            2,
+            5,
+            3,
+            5,
+            2,
+            3,
+            4,
+            7,
+            6,
+            8,
+            1,
+            9,
+            8,
+            1,
+            9,
+            2,
+            3,
+            5,
+            4,
+            6,
+            7
+        ],
+        "title": "10/15/22: Squeaky Sum Time"
+    },
+    "url": "https://f-puzzles.com/?id=2f9m2s2x"
+}

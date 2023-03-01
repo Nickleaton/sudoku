@@ -1,0 +1,178 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "diagonal+": true,
+        "diagonal-": true,
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Each marked diagonal must contain every number exactly once.",
+        "size": 9,
+        "title": "Apr 10, 2022: Diagonal Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=ya5tmmrr"
+}

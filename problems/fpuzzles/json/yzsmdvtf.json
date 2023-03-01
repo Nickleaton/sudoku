@@ -1,0 +1,187 @@
+{
+    "data": {
+        "author": "?",
+        "difference": [
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C5"
+                ]
+            }
+        ],
+        "disabledlogic": [
+            "tuples",
+            "pointing",
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R2C6",
+                    "R2C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R2C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R2C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C3",
+                    "R3C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C5",
+                    "R4C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C3",
+                    "R6C4"
+                ]
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Also, a white circle between two cells shows that the digits in those cells are consecutive (i.e., they differ by 1). A black circle shows that the digit in one of the cells has twice the value of the other. Not all possible circles are given.",
+        "size": 6,
+        "title": "July 4, 2021: Kropki",
+        "truecandidatesoptions": [
+            "logical"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yzsmdvtf"
+}

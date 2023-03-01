@@ -2,7 +2,7 @@ Welcome to the CBC MILP Solver
 Version: 2.10.3 
 Build Date: Dec 15 2019 
 
-command line - C:\Users\nickl\AppData\Local\pypoetry\Cache\virtualenvs\sudoku-kpriBEho-py3.10\lib\site-packages\pulp\apis\..\solverdir\cbc\win\64\cbc.exe C:\Users\nickl\AppData\Local\Temp\d5775524f9aa4ce2b65d37c54550f316-pulp.mps sec 60 timeMode elapsed branch printingOptions all solution C:\Users\nickl\AppData\Local\Temp\d5775524f9aa4ce2b65d37c54550f316-pulp.sol (default strategy 1)
+command line - C:\Users\nickl\AppData\Local\pypoetry\Cache\virtualenvs\sudoku-kpriBEho-py3.10\lib\site-packages\pulp\apis\..\solverdir\cbc\win\64\cbc.exe C:\Users\nickl\AppData\Local\Temp\19b5e746db3b43c0aea7dba6cd38c5d0-pulp.mps sec 60 timeMode elapsed branch printingOptions all solution C:\Users\nickl\AppData\Local\Temp\19b5e746db3b43c0aea7dba6cd38c5d0-pulp.sol (default strategy 1)
 At line 2 NAME          MODEL
 At line 3 ROWS
 At line 10 COLUMNS

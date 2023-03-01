@@ -1,0 +1,475 @@
+{
+    "data": {
+        "author": "Bill Murphy",
+        "cage": [
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R3C2",
+                    "R4C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R8C2",
+                    "R8C3",
+                    "R8C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R6C8",
+                    "R7C8",
+                    "R8C7",
+                    "R8C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "33"
+            },
+            {
+                "cells": [
+                    "R2C6",
+                    "R2C7",
+                    "R2C8",
+                    "R3C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "25"
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R3C3",
+                    "R3C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "26"
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R6C3",
+                    "R7C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "23"
+            },
+            {
+                "cells": [
+                    "R3C7",
+                    "R4C7",
+                    "R4C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R7C7",
+                    "R8C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R5C2",
+                    "R6C1",
+                    "R7C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R3C9",
+                    "R4C9",
+                    "R5C8",
+                    "R5C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "16"
+            }
+        ],
+        "disabledlogic": [
+            "tuples",
+            "pointing",
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku Rules Apply. Digits in cages must sum to the total at the top left corner and each cage must have at least a repeated digit. (Repeated digits may repeat more than once and more than one digit in a cage may repeat where it does not break any other sudoku rules.)",
+        "size": 9,
+        "solution": [
+            8,
+            7,
+            6,
+            1,
+            2,
+            5,
+            4,
+            3,
+            9,
+            4,
+            2,
+            1,
+            9,
+            3,
+            6,
+            8,
+            5,
+            7,
+            5,
+            3,
+            9,
+            8,
+            4,
+            7,
+            2,
+            6,
+            1,
+            9,
+            1,
+            5,
+            7,
+            8,
+            4,
+            3,
+            2,
+            6,
+            3,
+            6,
+            4,
+            2,
+            5,
+            9,
+            7,
+            1,
+            8,
+            2,
+            8,
+            7,
+            6,
+            1,
+            3,
+            5,
+            9,
+            4,
+            6,
+            4,
+            8,
+            3,
+            9,
+            2,
+            1,
+            7,
+            5,
+            7,
+            5,
+            2,
+            4,
+            6,
+            1,
+            9,
+            8,
+            3,
+            1,
+            9,
+            3,
+            5,
+            7,
+            8,
+            6,
+            4,
+            2
+        ],
+        "title": "Serial Killers",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2egr7scu"
+}

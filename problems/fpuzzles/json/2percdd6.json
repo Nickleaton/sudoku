@@ -1,0 +1,317 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "givenPencilMarks": [
+                        1,
+                        2
+                    ],
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": [
+                        1,
+                        2
+                    ],
+                    "value": 1
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R2C3",
+                        "R3C3",
+                        "R4C3",
+                        "R5C3",
+                        "R6C3",
+                        "R7C3",
+                        "R8C3"
+                    ]
+                ],
+                "outlineC": "#FFC4FF",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R6C5",
+                        "R7C6",
+                        "R8C7"
+                    ]
+                ],
+                "outlineC": "#FFC4FF",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R5C4",
+                        "R5C5",
+                        "R5C6",
+                        "R4C7",
+                        "R3C7",
+                        "R2C6",
+                        "R2C5",
+                        "R2C4"
+                    ]
+                ],
+                "outlineC": "#FFC4FF",
+                "width": 0.5
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. The numbers on each pink line must be a set of consecutive numbers, without repeats, but appearing in any order along the line.",
+        "size": 9,
+        "solution": [
+            8,
+            1,
+            2,
+            6,
+            3,
+            9,
+            4,
+            5,
+            7,
+            9,
+            7,
+            6,
+            5,
+            4,
+            8,
+            1,
+            2,
+            3,
+            4,
+            3,
+            5,
+            7,
+            2,
+            1,
+            6,
+            8,
+            9,
+            2,
+            9,
+            3,
+            8,
+            6,
+            5,
+            7,
+            4,
+            1,
+            1,
+            4,
+            7,
+            3,
+            9,
+            2,
+            8,
+            6,
+            5,
+            6,
+            5,
+            8,
+            4,
+            1,
+            7,
+            3,
+            9,
+            2,
+            7,
+            2,
+            4,
+            9,
+            8,
+            3,
+            5,
+            1,
+            6,
+            5,
+            8,
+            9,
+            1,
+            7,
+            6,
+            2,
+            3,
+            4,
+            3,
+            6,
+            1,
+            2,
+            5,
+            4,
+            9,
+            7,
+            8
+        ],
+        "title": "Aug 18, 2022: Renban Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2percdd6"
+}

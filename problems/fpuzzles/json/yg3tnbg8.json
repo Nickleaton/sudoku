@@ -1,0 +1,544 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "betweenline": [
+            {
+                "lines": [
+                    [
+                        "R1C1",
+                        "R1C2",
+                        "R1C3",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R1C7",
+                        "R1C8",
+                        "R1C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C1",
+                        "R2C2",
+                        "R2C3",
+                        "R2C4",
+                        "R2C5",
+                        "R2C6",
+                        "R2C7",
+                        "R2C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C9",
+                        "R3C9",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9",
+                        "R8C9",
+                        "R9C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C8",
+                        "R4C8",
+                        "R5C8",
+                        "R6C8",
+                        "R7C8",
+                        "R8C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R9C8",
+                        "R9C7",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4",
+                        "R9C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C7",
+                        "R8C6",
+                        "R8C5",
+                        "R8C4",
+                        "R8C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C1",
+                        "R7C1",
+                        "R6C1",
+                        "R5C1"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C5",
+                        "R4C6",
+                        "R4C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R6C2",
+                        "R6C3",
+                        "R6C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C3",
+                        "R5C4",
+                        "R6C5"
+                    ]
+                ]
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R1C1",
+                        "R1C2",
+                        "R1C3",
+                        "R1C4",
+                        "R1C5",
+                        "R1C6",
+                        "R1C7",
+                        "R1C8",
+                        "R1C9"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R2C9",
+                        "R3C9",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9",
+                        "R8C9",
+                        "R9C9"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R9C8",
+                        "R9C7",
+                        "R9C6",
+                        "R9C5",
+                        "R9C4",
+                        "R9C3"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R8C3",
+                        "R8C4",
+                        "R8C5",
+                        "R8C6",
+                        "R8C7"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R8C8",
+                        "R7C8",
+                        "R6C8",
+                        "R5C8",
+                        "R4C8",
+                        "R3C8"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R4C7",
+                        "R4C6",
+                        "R4C5"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R6C5",
+                        "R5C4",
+                        "R4C3"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R6C4",
+                        "R6C3",
+                        "R6C2"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R5C1",
+                        "R6C1",
+                        "R7C1",
+                        "R8C1"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R2C1",
+                        "R2C2",
+                        "R2C3",
+                        "R2C4",
+                        "R2C5",
+                        "R2C6",
+                        "R2C7",
+                        "R2C8"
+                    ]
+                ],
+                "outlineC": "#E6BCE6",
+                "width": 0.4
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along a line must have values strictly between the values in the circles on the ends of that line. Additionally, digits along a line, including the circles, must form a set of consecutive digits with no repeats (in any order - for example, 1324 would be a valid order, but 1235 would not since it is missing a 4).",
+        "size": 9,
+        "title": "TOWTCBBAR",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yg3tnbg8"
+}

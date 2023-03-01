@@ -1,0 +1,248 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {}
+            ]
+        ],
+        "killercage": [
+            {
+                "cells": [
+                    "R7C9",
+                    "R8C8",
+                    "R8C9"
+                ],
+                "value": "24"
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R2C4",
+                    "R3C4"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R4C4",
+                    "R5C3",
+                    "R5C4"
+                ],
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R8C6",
+                    "R8C7"
+                ],
+                "value": "23"
+            },
+            {
+                "cells": [
+                    "R5C6",
+                    "R5C7",
+                    "R6C6"
+                ],
+                "value": "22"
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R6C1",
+                    "R6C2"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R4C8",
+                    "R4C9",
+                    "R5C8"
+                ],
+                "value": "21"
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R2C9",
+                    "R3C9"
+                ],
+                "value": "20"
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R8C1",
+                    "R8C2"
+                ],
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R7C3",
+                    "R7C4",
+                    "R8C3"
+                ],
+                "value": "11"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R3C6",
+                    "R3C7"
+                ],
+                "value": "19"
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R2C2",
+                    "R3C1"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R2C5",
+                    "R2C6",
+                    "R3C5"
+                ],
+                "value": "18"
+            },
+            {
+                "cells": [
+                    "R7C5",
+                    "R8C4",
+                    "R8C5"
+                ],
+                "value": "12"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in cages cannot repeat and must sum to the total given.",
+        "size": 9,
+        "title": "5/25: Your Brain On Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2c7fubns"
+}

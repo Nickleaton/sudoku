@@ -1,0 +1,207 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {}
+            ]
+        ],
+        "nonconsecutive": true,
+        "ruleset": "Normal Sudoku rules apply. Digits in adjacent cells cannot be consecutive.",
+        "size": 9,
+        "title": "Jan 25, 2021: Non-consecutive"
+    },
+    "url": "https://f-puzzles.com/?id=y78a6baz"
+}

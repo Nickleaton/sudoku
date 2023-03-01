@@ -5,7 +5,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
-from src.items.difference_pair import DifferencePair
+from src.items.variable_difference_pair import VariableDifferencePair
 from src.items.german_whisper import GermanWhisper
 from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
@@ -52,7 +52,7 @@ class TestGermanWhisper(TestGreaterThanEqualDifferenceLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, DifferenceLine, DifferencePair, GermanWhisper, GreaterThanEqualDifferenceLine,
+        return {Cell, ComposedItem, DifferenceLine, VariableDifferencePair, GermanWhisper, GreaterThanEqualDifferenceLine,
                 GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
 
 

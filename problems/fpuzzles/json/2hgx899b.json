@@ -1,0 +1,385 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "littlekillersum": [
+            {
+                "cell": "R0C2",
+                "cells": [
+                    "R1C3",
+                    "R2C4",
+                    "R3C5",
+                    "R4C6",
+                    "R5C7",
+                    "R6C8",
+                    "R7C9"
+                ],
+                "direction": "DR",
+                "value": "9"
+            },
+            {
+                "cell": "R2C10",
+                "cells": [
+                    "R3C9",
+                    "R4C8",
+                    "R5C7",
+                    "R6C6",
+                    "R7C5",
+                    "R8C4",
+                    "R9C3"
+                ],
+                "direction": "DL",
+                "value": "14"
+            },
+            {
+                "cell": "R10C8",
+                "cells": [
+                    "R9C7",
+                    "R8C6",
+                    "R7C5",
+                    "R6C4",
+                    "R5C3",
+                    "R4C2",
+                    "R3C1"
+                ],
+                "direction": "UL",
+                "value": "19"
+            },
+            {
+                "cell": "R8C0",
+                "cells": [
+                    "R7C1",
+                    "R6C2",
+                    "R5C3",
+                    "R4C4",
+                    "R3C5",
+                    "R2C6",
+                    "R1C7"
+                ],
+                "direction": "UR",
+                "value": "24"
+            },
+            {
+                "cell": "R0C3",
+                "cells": [
+                    "R1C4",
+                    "R2C5",
+                    "R3C6",
+                    "R4C7",
+                    "R5C8",
+                    "R6C9"
+                ],
+                "direction": "DR",
+                "value": "29"
+            },
+            {
+                "cell": "R3C10",
+                "cells": [
+                    "R4C9",
+                    "R5C8",
+                    "R6C7",
+                    "R7C6",
+                    "R8C5",
+                    "R9C4"
+                ],
+                "direction": "DL",
+                "value": "34"
+            },
+            {
+                "cell": "R10C7",
+                "cells": [
+                    "R9C6",
+                    "R8C5",
+                    "R7C4",
+                    "R6C3",
+                    "R5C2",
+                    "R4C1"
+                ],
+                "direction": "UL",
+                "value": "39"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along the indicated diagonals must sum to the total given (digits may repeat if allowed by other rules).",
+        "size": 9,
+        "title": "Nov. 24, 2022: Gobble Gobble",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2hgx899b"
+}

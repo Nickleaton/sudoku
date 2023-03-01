@@ -1,0 +1,468 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "even": [
+            {
+                "cell": "R9C1"
+            },
+            {
+                "cell": "R6C5"
+            },
+            {
+                "cell": "R6C6"
+            },
+            {
+                "cell": "R1C9"
+            },
+            {
+                "cell": "R8C4"
+            },
+            {
+                "cell": "R8C6"
+            },
+            {
+                "cell": "R2C2"
+            }
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R4C3",
+                        "R4C4",
+                        "R4C5"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R2C2",
+                        "R2C3",
+                        "R2C4",
+                        "R2C5",
+                        "R2C6"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R1C8",
+                        "R1C9"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R2C8",
+                        "R3C8",
+                        "R4C8"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R5C9",
+                        "R6C9",
+                        "R7C9"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R6C5",
+                        "R6C6",
+                        "R6C7"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R8C4",
+                        "R8C5",
+                        "R8C6",
+                        "R8C7",
+                        "R8C8"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R6C2",
+                        "R7C2",
+                        "R8C2"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R9C1",
+                        "R9C2"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            },
+            {
+                "lines": [
+                    [
+                        "R5C1",
+                        "R4C1",
+                        "R3C1"
+                    ]
+                ],
+                "outlineC": "#B0FFB0",
+                "width": 0.3
+            }
+        ],
+        "odd": [
+            {
+                "cell": "R2C4"
+            },
+            {
+                "cell": "R2C6"
+            },
+            {
+                "cell": "R4C5"
+            },
+            {
+                "cell": "R4C4"
+            },
+            {
+                "cell": "R3C1"
+            },
+            {
+                "cell": "R5C1"
+            },
+            {
+                "cell": "R6C2"
+            },
+            {
+                "cell": "R8C2"
+            },
+            {
+                "cell": "R7C9"
+            },
+            {
+                "cell": "R4C8"
+            },
+            {
+                "cell": "R2C8"
+            },
+            {
+                "cell": "R5C9"
+            },
+            {
+                "cell": "R8C8"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along green lines must differ by at least 5. Digits in grey circles must be odd; digits in grey squares must be even.",
+        "size": 9,
+        "title": "February 10, 2022: Copycat",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=ybr3h87d"
+}

@@ -51,7 +51,7 @@ class ComposedItem(Item):
         result = []
         for item in self.items:
             if selector(item):
-                result += item.glyphs(selector)
+                result.extend(item.glyphs(selector))
             else:
                 print(f"Skipping glyphs for {item.__class__.__name__}")
         return result

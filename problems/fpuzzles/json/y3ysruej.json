@@ -1,0 +1,404 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "killercage": [
+            {
+                "cells": [
+                    "R1C3",
+                    "R1C4"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R1C6",
+                    "R1C7"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R3C9",
+                    "R4C9"
+                ],
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R6C9",
+                    "R7C9"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R9C6",
+                    "R9C7"
+                ],
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R9C3",
+                    "R9C4"
+                ],
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R6C1",
+                    "R7C1"
+                ],
+                "value": "16"
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R4C1"
+                ],
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ],
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ],
+                "value": "12"
+            },
+            {
+                "cells": [
+                    "R5C8",
+                    "R5C9"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R5C2"
+                ],
+                "value": "11"
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R7C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R3C3"
+                ],
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R7C3",
+                    "R8C3"
+                ],
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R3C7"
+                ],
+                "value": "10"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in cages cannot repeat and must sum to the total given.",
+        "size": 9,
+        "title": "Nov. 29, 2021: Paying Respect",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=y3ysruej"
+}

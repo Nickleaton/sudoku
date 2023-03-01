@@ -1,0 +1,108 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Clues outside the grid tell you the sum of the first X digits in the corresponding row or column, starting with the digit adjacent to the clue and continuing away from the clue, where X is the adjacent digit. (For example: ?????7534 (19) would be a valid fill for a row where 19 is the sum of the rightmost 4 digits.)",
+        "size": 6,
+        "text": [
+            {
+                "cells": [
+                    "R3C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R4C7"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R7C3"
+                ],
+                "fontC": "#000000",
+                "size": 0.75,
+                "value": "6"
+            }
+        ],
+        "title": "May 8, 2022: B1G3 X-Sums"
+    },
+    "url": "https://f-puzzles.com/?id=y55lsj3d"
+}

@@ -1,0 +1,217 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "even": [
+            {
+                "cell": "R1C5"
+            },
+            {
+                "cell": "R1C3"
+            },
+            {
+                "cell": "R2C2"
+            },
+            {
+                "cell": "R3C1"
+            },
+            {
+                "cell": "R2C4"
+            },
+            {
+                "cell": "R3C3"
+            },
+            {
+                "cell": "R4C2"
+            },
+            {
+                "cell": "R5C1"
+            },
+            {
+                "cell": "R9C5"
+            },
+            {
+                "cell": "R8C6"
+            },
+            {
+                "cell": "R7C7"
+            },
+            {
+                "cell": "R6C8"
+            },
+            {
+                "cell": "R5C9"
+            },
+            {
+                "cell": "R7C9"
+            },
+            {
+                "cell": "R8C8"
+            },
+            {
+                "cell": "R9C7"
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Digits placed in grey squares must be even.",
+        "size": 9,
+        "title": "Sep 29, 2021: Even Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=yexg7qb8"
+}

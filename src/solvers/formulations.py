@@ -1,6 +1,6 @@
 from typing import List
 
-from pulp import LpVariable, LpElement, LpInteger, lpSum, LpProblem
+from pulp import LpVariable, LpElement, LpInteger, lpSum, LpProblem, LpContinuous
 
 
 class Formulations:
@@ -72,7 +72,7 @@ class Formulations:
     @staticmethod
     def abs(model: LpProblem, x1: LpVariable, x2: LpVariable, upper: int) -> LpVariable:
         d = LpVariable(f"Abs_Indicator_{Formulations.count}", 0, 1, LpInteger)
-        y = LpVariable(f"Abs_Difference_{Formulations.count}", 0, upper, LpInteger)
+        y = LpVariable(f"Abs_Difference_{Formulations.count}", 0, upper, LpContinuous)
         model += 0 <= y - (x1 - x2), f"Abs_{Formulations.count}_a"
         model += y - (x1 - x2) <= 2 * upper * (1 - d), f"Abs_{Formulations.count}_b"
         model += 0 <= y - (x2 - x1), f"Abs_{Formulations.count}_c"

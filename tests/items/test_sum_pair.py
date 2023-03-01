@@ -7,7 +7,7 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
-from src.items.sum_pair import SumPair
+from src.items.variable_sum_pair import VariableSumPair
 from tests.items.test_pair import TestPair
 
 
@@ -20,7 +20,7 @@ class TestSumPair(TestPair):
 
     @property
     def clazz(self):
-        return SumPair
+        return VariableSumPair
 
     @property
     def config(self):

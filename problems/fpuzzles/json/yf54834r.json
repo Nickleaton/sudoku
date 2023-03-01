@@ -1,0 +1,422 @@
+{
+    "data": {
+        "author": "clover!",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        9
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        5
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. \n\nIf there is a value outside of a row or column, then the digit in the first cell of that row or column tells you how many cells, in total, are summed together to get that value. (Start summing from the direction in which the outside clue appears). \n\nFor instance, if the first cell in a row contains a 4, then the outside clue gives the sum of the first four digits in that row (which does include the 4 itself). If the first cell in a column is 7, then the outside clue gives the sum of the first seven digits in that column (again, including the 7). \n\nWorked example: suppose that the number \"10\" appears above a column. Then, the following would all be valid ways to start the column (not an exhaustive list):\n\n2 8\n3 5 2\n4 1 2 3",
+        "size": 9,
+        "text": [
+            {
+                "cells": [
+                    "R1C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R0C1"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "28"
+            },
+            {
+                "cells": [
+                    "R0C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R0C9"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R4C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R4C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "42"
+            },
+            {
+                "cells": [
+                    "R9C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "20"
+            },
+            {
+                "cells": [
+                    "R10C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R6C0"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "15"
+            },
+            {
+                "cells": [
+                    "R0C6"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "39"
+            },
+            {
+                "cells": [
+                    "R6C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "36"
+            },
+            {
+                "cells": [
+                    "R8C10"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "45"
+            },
+            {
+                "cells": [
+                    "R10C4"
+                ],
+                "fontC": "#000000",
+                "size": 0.5,
+                "value": "24"
+            }
+        ],
+        "title": "August 10, 2021: X-Sums",
+        "truecandidatesoptions": [
+            "logical"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yf54834r"
+}

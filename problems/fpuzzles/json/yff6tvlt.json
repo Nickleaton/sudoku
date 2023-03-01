@@ -1,0 +1,253 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "clone": [
+            {
+                "cells": [
+                    "R2C6"
+                ],
+                "cloneCells": [
+                    "R6C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C8"
+                ],
+                "cloneCells": [
+                    "R8C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C4"
+                ],
+                "cloneCells": [
+                    "R4C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C2"
+                ],
+                "cloneCells": [
+                    "R2C6"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 2
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. The digits placed on each thermometer shape must strictly increase starting from the bulb. The four shaded cells are clones and must all contain the same value.",
+        "size": 9,
+        "thermometer": [
+            {
+                "lines": [
+                    [
+                        "R2C3",
+                        "R2C4",
+                        "R2C5",
+                        "R2C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C4",
+                        "R8C5",
+                        "R8C6",
+                        "R8C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C8",
+                        "R4C8",
+                        "R5C8",
+                        "R6C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C2",
+                        "R5C2",
+                        "R6C2",
+                        "R7C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C2",
+                        "R3C3",
+                        "R4C4",
+                        "R5C5",
+                        "R6C6",
+                        "R7C7",
+                        "R8C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C4",
+                        "R3C5",
+                        "R3C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R7C4",
+                        "R7C5",
+                        "R7C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C9",
+                        "R5C9",
+                        "R6C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C1",
+                        "R5C1",
+                        "R6C1"
+                    ]
+                ]
+            }
+        ],
+        "title": "Sep 17, 2021: Thermo Clones"
+    },
+    "url": "https://f-puzzles.com/?id=yff6tvlt"
+}

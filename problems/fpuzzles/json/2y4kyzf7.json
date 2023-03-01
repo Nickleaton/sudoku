@@ -1,0 +1,356 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "difference": [
+            {
+                "cells": [
+                    "R8C7",
+                    "R8C6"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R7C7"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R6C9",
+                    "R6C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R4C9",
+                    "R5C9"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C9",
+                    "R3C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R2C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C6",
+                    "R2C6"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C5",
+                    "R4C5"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R6C8",
+                    "R7C8"
+                ],
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R7C3",
+                    "R7C4"
+                ],
+                "value": "5"
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R2C4",
+                    "R3C4"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R2C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R3C1"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R5C1"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R6C1"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R7C3"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R8C4",
+                    "R8C3"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R7C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R6C5"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R7C6"
+                ],
+                "value": "3"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply.\nGamma and Epsilon: Digits in cells separated by a white dot must have a difference of 5. Digits in cells separated by a black dot must have a ratio of 3:1. (No negative constraint - adjacent cells separated by no dot may have a difference of 5 or ratio of 3:1.)",
+        "size": 9,
+        "solution": [
+            5,
+            4,
+            9,
+            2,
+            8,
+            7,
+            1,
+            3,
+            6,
+            7,
+            2,
+            6,
+            3,
+            5,
+            1,
+            9,
+            4,
+            8,
+            3,
+            1,
+            8,
+            9,
+            4,
+            6,
+            5,
+            2,
+            7,
+            6,
+            8,
+            1,
+            7,
+            9,
+            3,
+            2,
+            5,
+            4,
+            2,
+            7,
+            5,
+            1,
+            6,
+            4,
+            3,
+            8,
+            9,
+            9,
+            3,
+            4,
+            5,
+            2,
+            8,
+            7,
+            6,
+            1,
+            4,
+            9,
+            3,
+            8,
+            7,
+            2,
+            6,
+            1,
+            5,
+            8,
+            5,
+            2,
+            6,
+            1,
+            9,
+            4,
+            7,
+            3,
+            1,
+            6,
+            7,
+            4,
+            3,
+            5,
+            8,
+            9,
+            2
+        ],
+        "title": "2/10/23: Love Numbers"
+    },
+    "url": "https://f-puzzles.com/?id=2y4kyzf7"
+}

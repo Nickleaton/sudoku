@@ -1,9 +1,9 @@
 from typing import Dict
 
-from src.items.sum_pair import SumPair
+from src.items.variable_sum_pair import VariableSumPair
 
 
-class XIPair(SumPair):
+class XIPair(VariableSumPair):
 
     @property
     def total(self) -> int:

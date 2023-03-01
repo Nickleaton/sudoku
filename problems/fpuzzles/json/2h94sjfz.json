@@ -1,0 +1,446 @@
+{
+    "data": {
+        "author": "Bill Murphy",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "killercage": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2",
+                    "R1C3",
+                    "R1C4"
+                ],
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R9C6",
+                    "R9C7",
+                    "R9C8",
+                    "R9C9"
+                ],
+                "value": "29"
+            },
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R2C4"
+                ],
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R3C3",
+                    "R3C4",
+                    "R4C4"
+                ],
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R8C6",
+                    "R8C7",
+                    "R8C8"
+                ],
+                "value": "18"
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R7C6",
+                    "R7C7"
+                ],
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R8C4",
+                    "R9C2",
+                    "R9C3",
+                    "R9C4"
+                ],
+                "value": "19"
+            },
+            {
+                "cells": [
+                    "R1C6",
+                    "R1C7",
+                    "R1C8",
+                    "R2C6"
+                ],
+                "value": "23"
+            }
+        ],
+        "ruleset": "Normal Sudoku Rules Apply. Digits along thermometers must increase starting from the bulb. Digits in cages must sum to the given total and may not repeat.",
+        "size": 9,
+        "thermometer": [
+            {
+                "lines": [
+                    [
+                        "R4C4",
+                        "R3C4",
+                        "R3C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C4",
+                        "R2C3",
+                        "R2C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C4",
+                        "R1C3",
+                        "R1C2",
+                        "R1C1"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R9C9",
+                        "R9C8",
+                        "R9C7",
+                        "R9C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C8",
+                        "R8C7",
+                        "R8C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R7C7",
+                        "R7C6",
+                        "R6C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R9C2",
+                        "R9C3",
+                        "R9C4",
+                        "R8C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C6",
+                        "R1C6",
+                        "R1C7",
+                        "R1C8"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C1",
+                        "R4C1",
+                        "R5C1",
+                        "R6C1",
+                        "R7C1",
+                        "R7C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C8",
+                        "R3C9",
+                        "R4C9",
+                        "R5C9",
+                        "R6C9",
+                        "R7C9"
+                    ]
+                ]
+            }
+        ],
+        "title": "A Real Humanmade Sudoku",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2h94sjfz"
+}

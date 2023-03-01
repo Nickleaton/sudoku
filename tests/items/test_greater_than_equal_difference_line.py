@@ -5,7 +5,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
-from src.items.difference_pair import DifferencePair
+from src.items.variable_difference_pair import VariableDifferencePair
 from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
@@ -51,7 +51,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, DifferenceLine, DifferencePair, GreaterThanEqualDifferenceLine,
+        return {Cell, ComposedItem, DifferenceLine, VariableDifferencePair, GreaterThanEqualDifferenceLine,
                 GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
 
 

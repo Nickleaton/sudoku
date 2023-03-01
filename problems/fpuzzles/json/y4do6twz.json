@@ -1,0 +1,232 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "difference": [
+            {
+                "cells": [
+                    "R9C4",
+                    "R9C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C5",
+                    "R9C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C6",
+                    "R9C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R1C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R1C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R1C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C9",
+                    "R5C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C9",
+                    "R5C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C8",
+                    "R4C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R5C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R6C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C1",
+                    "R6C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C6",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R6C4"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Numbers placed in cells connected by a white dot must be consecutive. Not all such pairs are necessarily marked.",
+        "size": 9,
+        "title": "May 22, 2022: Consec Pairs"
+    },
+    "url": "https://f-puzzles.com/?id=y4do6twz"
+}

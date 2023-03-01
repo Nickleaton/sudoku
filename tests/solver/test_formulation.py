@@ -2,7 +2,7 @@ import os
 import unittest
 from typing import List
 
-from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, getSolver, LpSolver
+from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, getSolver, LpSolver, LpContinuous
 
 from src.solvers.formulations import Formulations
 
@@ -22,7 +22,7 @@ class TestFormulation(unittest.TestCase):
         log_path = os.path.join("output", "formulations", "logs")
         return getSolver('PULP_CBC_CMD', logPath=os.path.join(log_path, name + ".log"), msg=False, timeLimit=60)
 
-    def absolute(self, v1: int, v2: int, expected: int) -> None:
+    def absolute_int(self, v1: int, v2: int, expected: int) -> None:
         model = LpProblem("Sudoku", LpMinimize)
         absolute = LpVariable("minimum", 0, 9, LpInteger)
         x1 = LpVariable("x1", 1, 9, LpInteger)
@@ -33,16 +33,32 @@ class TestFormulation(unittest.TestCase):
         model += absolute == Formulations.abs(model, x1, x2, 9)
         model.writeLP(os.path.join("output", "formulations", "lp", "absolute.lp"))
         model.solve(TestFormulation.get_application('absolute'))
-        # print()
-        # print(f"X1       {x1.varValue}")
-        # print(f"X2       {x2.varValue}")
-        # print(f"Absolute {absolute.varValue}")
         self.assertEqual(expected, absolute.varValue)
 
-    def test_absolute(self) -> None:
-        self.absolute(3, 9, 6)
-        self.absolute(5, 3, 2)
-        self.absolute(1, 1, 0)
+    def test_absolute_int(self) -> None:
+        self.absolute_int(3, 9, 6)
+        self.absolute_int(5, 3, 2)
+        self.absolute_int(1, 1, 0)
+
+    def absolute_float(self, v1: float, v2: float, expected: float) -> None:
+        model = LpProblem("Sudoku", LpMinimize)
+        absolute = LpVariable("minimum", 0, 9, LpContinuous)
+        x1 = LpVariable("x1", 1, 9, LpContinuous)
+        x2 = LpVariable("x2", 1, 9, LpContinuous)
+
+        model += x1 == v1
+        model += x2 == v2
+        model += absolute == Formulations.abs(model, x1, x2, 9)
+        model.writeLP(os.path.join("output", "formulations", "lp", "absolute.lp"))
+        model.solve(TestFormulation.get_application('absolute'))
+        self.assertEqual(expected, absolute.varValue)
+
+    def test_absolute_float(self) -> None:
+        self.absolute_float(3.0, 9.0, 6.0)
+        self.absolute_float(5.0, 3.0, 2.0)
+        self.absolute_float(1.0, 1.0, 0.0)
+        self.absolute_float(1.5, 2.8, 1.3)
+        self.absolute_float(4.5, 2.8, 1.7)
 
     def minimum(self, values: List[int], expected: int) -> None:
         model = LpProblem("Sudoku", LpMinimize)
@@ -73,9 +89,6 @@ class TestFormulation(unittest.TestCase):
         maxi = Formulations.maximum(model, variables, 1, 9)
         model.writeLP(os.path.join("output", "formulations", "lp", "maximum.lp"))
         model.solve(TestFormulation.get_application('maximum'))
-        # print()
-        # print(f"Values   {repr(values)}")
-        # print(f"Maximum  {maxi.varValue}")
         self.assertEqual(expected, maxi.varValue)
 
     def test_maximum(self) -> None:

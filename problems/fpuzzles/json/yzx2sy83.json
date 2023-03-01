@@ -1,0 +1,276 @@
+{
+    "data": {
+        "author": "clover!",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        4
+                    ],
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "centerPencilMarks": [
+                        9
+                    ],
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        5
+                    ],
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        4
+                    ],
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "littlekillersum": [
+            {
+                "cell": "R4C0",
+                "cells": [
+                    "R3C1",
+                    "R2C2",
+                    "R1C3"
+                ],
+                "direction": "UR",
+                "value": "8"
+            },
+            {
+                "cell": "R0C6",
+                "cells": [
+                    "R1C7",
+                    "R2C8",
+                    "R3C9"
+                ],
+                "direction": "DR",
+                "value": "9"
+            },
+            {
+                "cell": "R6C10",
+                "cells": [
+                    "R7C9",
+                    "R8C8",
+                    "R9C7"
+                ],
+                "direction": "DL",
+                "value": "10"
+            },
+            {
+                "cell": "R10C4",
+                "cells": [
+                    "R9C3",
+                    "R8C2",
+                    "R7C1"
+                ],
+                "direction": "UL",
+                "value": "11"
+            },
+            {
+                "cell": "R3C0",
+                "cells": [
+                    "R2C1",
+                    "R1C2"
+                ],
+                "direction": "UR",
+                "value": "9"
+            },
+            {
+                "cell": "R0C7",
+                "cells": [
+                    "R1C8",
+                    "R2C9"
+                ],
+                "direction": "DR",
+                "value": "10"
+            },
+            {
+                "cell": "R7C10",
+                "cells": [
+                    "R8C9",
+                    "R9C8"
+                ],
+                "direction": "DL",
+                "value": "11"
+            },
+            {
+                "cell": "R10C3",
+                "cells": [
+                    "R9C2",
+                    "R8C1"
+                ],
+                "direction": "UL",
+                "value": "12"
+            },
+            {
+                "cell": "R0C0",
+                "cells": [
+                    "R1C1",
+                    "R2C2",
+                    "R3C3",
+                    "R4C4",
+                    "R5C5",
+                    "R6C6",
+                    "R7C7",
+                    "R8C8",
+                    "R9C9"
+                ],
+                "direction": "DR",
+                "value": "41"
+            }
+        ],
+        "ruleset": "Standard sudoku rules apply. \n\nDigits along a marked diagonal must sum to the value indicated. Digits may repeat along a diagonal. ",
+        "size": 9,
+        "title": "June 14, 2021: Little Killer"
+    },
+    "url": "https://f-puzzles.com/?id=yzx2sy83"
+}

@@ -1,0 +1,470 @@
+{
+    "data": {
+        "author": "clover!",
+        "cage": [
+            {
+                "cells": [
+                    "R2C1",
+                    "R2C2",
+                    "R3C1",
+                    "R3C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R1C7",
+                    "R1C8",
+                    "R2C7",
+                    "R2C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R7C9",
+                    "R8C8",
+                    "R8C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R8C3",
+                    "R9C2",
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R6C3",
+                    "R6C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R3C4",
+                    "R4C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R4C6",
+                    "R4C7",
+                    "R4C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R7C6",
+                    "R8C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000"
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#60D060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#60D060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#60D060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#60D060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#60D060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#60D060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#FFE060",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#D0D0FF",
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "littlekillersum": [
+            {
+                "cell": "R3C0",
+                "cells": [
+                    "R2C1",
+                    "R1C2"
+                ],
+                "direction": "UR",
+                "value": "3"
+            },
+            {
+                "cell": "R0C7",
+                "cells": [
+                    "R1C8",
+                    "R2C9"
+                ],
+                "direction": "DR",
+                "value": "4"
+            },
+            {
+                "cell": "R7C10",
+                "cells": [
+                    "R8C9",
+                    "R9C8"
+                ],
+                "direction": "DL",
+                "value": "5"
+            },
+            {
+                "cell": "R10C3",
+                "cells": [
+                    "R9C2",
+                    "R8C1"
+                ],
+                "direction": "UL",
+                "value": "6"
+            },
+            {
+                "cell": "R6C10",
+                "cells": [
+                    "R7C9",
+                    "R8C8",
+                    "R9C7"
+                ],
+                "direction": "DL",
+                "value": "15"
+            },
+            {
+                "cell": "R0C6",
+                "cells": [
+                    "R1C7",
+                    "R2C8",
+                    "R3C9"
+                ],
+                "direction": "DR",
+                "value": "15"
+            },
+            {
+                "cell": "R10C4",
+                "cells": [
+                    "R9C3",
+                    "R8C2",
+                    "R7C1"
+                ],
+                "direction": "UL",
+                "value": "14"
+            },
+            {
+                "cell": "R4C0",
+                "cells": [
+                    "R3C1",
+                    "R2C2",
+                    "R1C3"
+                ],
+                "direction": "UR",
+                "value": "14"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. \n\nShapes of the same color are clones of each other. All shapes of the same color must contain exactly the same digits in the same positions. No rotation or reflection allowed!\n\nDigits along a marked diagonal must sum to the value shown. ",
+        "size": 9,
+        "title": "Oct 31, 2021: LK Clone",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yghm3394"
+}

@@ -5,7 +5,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.consecutive_pair import ConsecutivePair
-from src.items.difference_pair import DifferencePair
+from src.items.variable_difference_pair import VariableDifferencePair
 from src.items.item import Item
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.items.pair import Pair
@@ -48,7 +48,7 @@ class TestConsecutivePair(TestDifferencePair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ConsecutivePair, DifferencePair, Item, Pair, LessThanEqualDifferencePair, ComposedItem, Region}
+        return {Cell, ConsecutivePair, VariableDifferencePair, Item, Pair, LessThanEqualDifferencePair, ComposedItem, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

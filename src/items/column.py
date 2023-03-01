@@ -17,9 +17,6 @@ class Column(StandardRegion):
         self.strict = True
         self.unique = True
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
-        return []
-
     @property
     def rules(self) -> List[Rule]:
         return [Rule('Column', 1, 'Digits in each column must be unique')]

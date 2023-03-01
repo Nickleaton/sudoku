@@ -1,0 +1,249 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "quadruple": [
+            {
+                "cells": [
+                    "R3C1",
+                    "R3C2",
+                    "R4C1",
+                    "R4C2"
+                ],
+                "values": [
+                    2,
+                    3,
+                    5,
+                    6
+                ]
+            },
+            {
+                "cells": [
+                    "R6C8",
+                    "R6C9",
+                    "R7C8",
+                    "R7C9"
+                ],
+                "values": [
+                    4,
+                    5,
+                    7,
+                    8
+                ]
+            },
+            {
+                "cells": [
+                    "R1C6",
+                    "R1C7",
+                    "R2C6",
+                    "R2C7"
+                ],
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            {
+                "cells": [
+                    "R8C3",
+                    "R8C4",
+                    "R9C3",
+                    "R9C4"
+                ],
+                "values": [
+                    6,
+                    7,
+                    8,
+                    9
+                ]
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R6C3",
+                    "R7C2",
+                    "R7C3"
+                ],
+                "values": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R8C8",
+                    "R9C7",
+                    "R9C8"
+                ],
+                "values": [
+                    1,
+                    5,
+                    8,
+                    9
+                ]
+            },
+            {
+                "cells": [
+                    "R1C2",
+                    "R1C3",
+                    "R2C2",
+                    "R2C3"
+                ],
+                "values": [
+                    2,
+                    4,
+                    7,
+                    9
+                ]
+            },
+            {
+                "cells": [
+                    "R3C8",
+                    "R3C9",
+                    "R4C8",
+                    "R4C9"
+                ],
+                "values": [
+                    4,
+                    7,
+                    8
+                ]
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Each number written in a white circle must appear in one of the four cells around the circle.",
+        "size": 9,
+        "title": "Jul 16, 2022: Quadruple Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=284qax3b"
+}

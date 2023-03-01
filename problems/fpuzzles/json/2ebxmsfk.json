@@ -1,0 +1,390 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in cells separated by a V must sum to 5; digits in cells separated by an X must sum to 10. (No negative constraint - other pairs of cells may sum to 5 or 10.)",
+        "size": 9,
+        "solution": [
+            6,
+            9,
+            1,
+            4,
+            8,
+            2,
+            3,
+            7,
+            5,
+            5,
+            2,
+            3,
+            7,
+            9,
+            6,
+            4,
+            1,
+            8,
+            4,
+            7,
+            8,
+            5,
+            3,
+            1,
+            6,
+            9,
+            2,
+            1,
+            3,
+            9,
+            2,
+            6,
+            5,
+            8,
+            4,
+            7,
+            2,
+            5,
+            4,
+            8,
+            1,
+            7,
+            9,
+            6,
+            3,
+            8,
+            6,
+            7,
+            9,
+            4,
+            3,
+            5,
+            2,
+            1,
+            3,
+            1,
+            5,
+            6,
+            2,
+            9,
+            7,
+            8,
+            4,
+            7,
+            4,
+            6,
+            1,
+            5,
+            8,
+            2,
+            3,
+            9,
+            9,
+            8,
+            2,
+            3,
+            7,
+            4,
+            1,
+            5,
+            6
+        ],
+        "title": "September 25, 2022: Carpe XVem",
+        "xv": [
+            {
+                "cells": [
+                    "R1C5",
+                    "R1C6"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R1C7",
+                    "R1C8"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R3C9",
+                    "R2C9"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R4C9",
+                    "R5C9"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R8C1"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R6C1"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R9C2",
+                    "R9C3"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R9C4",
+                    "R9C5"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R9C6",
+                    "R9C7"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R1C3",
+                    "R1C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R6C9",
+                    "R7C9"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R4C1"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R2C3"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R4C2"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R6C8",
+                    "R7C8"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R8C6",
+                    "R8C7"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R8C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R8C3",
+                    "R8C2"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R3C8"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R2C8"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R1C7",
+                    "R1C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R9C4",
+                    "R9C3"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R2C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R8C8"
+                ],
+                "value": "V"
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=2ebxmsfk"
+}
