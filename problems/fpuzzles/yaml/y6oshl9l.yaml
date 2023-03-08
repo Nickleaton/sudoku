@@ -16,15 +16,15 @@ Constraints:
 - Columns: 
 - Rows: 
 - Boxes: 
-- MaxArrow: 12=21, 31, 41
-- MaxArrow: 29=18, 17, 16
-- MaxArrow: 81=92, 93, 94
-- MaxArrow: 98=89, 79, 69
-- MaxArrow: 72=61, 51
-- MaxArrow: 23=14, 15
-- MaxArrow: 38=49, 59
-- MaxArrow: 87=96, 95
-- MaxArrow: 63=53, 43, 34, 35
-- MaxArrow: 47=57, 67, 76, 75
-- MaxArrow: 27=36, 45, 54
-- MaxArrow: 83=74, 65, 56
+- SumArrow: 12=21, 31, 41
+- SumArrow: 29=18, 17, 16
+- SumArrow: 81=92, 93, 94
+- SumArrow: 98=89, 79, 69
+- SumArrow: 72=61, 51
+- SumArrow: 23=14, 15
+- SumArrow: 38=49, 59
+- SumArrow: 87=96, 95
+- SumArrow: 63=53, 43, 34, 35
+- SumArrow: 47=57, 67, 76, 75
+- SumArrow: 27=36, 45, 54
+- SumArrow: 83=74, 65, 56

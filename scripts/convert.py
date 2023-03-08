@@ -8,7 +8,7 @@ from typing import Dict, List, Tuple
 
 import oyaml as yaml
 
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.INFO)
 
 
 class ConversionException(Exception):
@@ -461,7 +461,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         if 'xv' in raw:
             out['Constraints'].extend(xv(raw['xv']))
     except NotImplementedError as e:
-        logging.log(logging.ERROR, f"{e}")
+        logging.log(logging.ERROR, f"{e} {source_file}")
         good = False
 
     if good:

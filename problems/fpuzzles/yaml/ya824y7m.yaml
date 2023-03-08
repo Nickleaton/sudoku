@@ -16,11 +16,11 @@ Constraints:
 - Columns: 
 - Rows: 
 - Boxes: 
-- ProductArrow: 15=26, 37
-- ProductArrow: 23=34, 45
-- ProductArrow: 31=42, 53
-- ProductArrow: 91=81, 71, 61
-- ProductArrow: 19=29, 39, 49
-- ProductArrow: 79=68, 57
-- ProductArrow: 87=76, 65
-- ProductArrow: 95=84, 73
+- SumArrow: 15=26, 37
+- SumArrow: 23=34, 45
+- SumArrow: 31=42, 53
+- SumArrow: 91=81, 71, 61
+- SumArrow: 19=29, 39, 49
+- SumArrow: 79=68, 57
+- SumArrow: 87=76, 65
+- SumArrow: 95=84, 73
