@@ -1,0 +1,53 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ..1......
+  - .........
+  - ......2..
+  - .........
+  - .........
+  - .........
+  - ..6......
+  - .........
+  - ......5..
+- Columns: 
+- Rows: 
+- Boxes: 
+- Even: !!python/tuple
+  - 6
+  - 1
+- Even: !!python/tuple
+  - 5
+  - 2
+- Even: !!python/tuple
+  - 4
+  - 3
+- Even: !!python/tuple
+  - 6
+  - 3
+- Even: !!python/tuple
+  - 4
+  - 7
+- Even: !!python/tuple
+  - 6
+  - 7
+- Even: !!python/tuple
+  - 5
+  - 8
+- Even: !!python/tuple
+  - 4
+  - 9
+- Even: !!python/tuple
+  - 3
+  - 5
+- Even: !!python/tuple
+  - 7
+  - 5
+- SimpleThermometer: 62, 53, 44, 55, 66, 57, 48
+- SimpleThermometer: 56, 45, 34, 25, 16
+- SimpleThermometer: 94, 85, 76, 65, 54
+- SimpleThermometer: 22, 33, 42, 51
+- SimpleThermometer: 59, 68, 77, 88

@@ -1,0 +1,26 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ....5...6
+  - ..3......
+  - 7...4....
+  - ...5.....
+  - ....7....
+  - .....9...
+  - ....8...4
+  - ......9..
+  - 8...2....
+- Columns: 
+- Rows: 
+- Boxes: 
+- ProductArrow: 15=26, 37
+- ProductArrow: 23=34, 45
+- ProductArrow: 31=42, 53
+- ProductArrow: 91=81, 71, 61
+- ProductArrow: 19=29, 39, 49
+- ProductArrow: 79=68, 57
+- ProductArrow: 87=76, 65
+- ProductArrow: 95=84, 73

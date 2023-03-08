@@ -1,0 +1,62 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 56-66
+  - ConsecutivePair: 65-64
+  - ConsecutivePair: 64-54
+  - ConsecutivePair: 44-54
+  - ConsecutivePair: 51-61
+  - ConsecutivePair: 42-41
+  - ConsecutivePair: 42-43
+  - ConsecutivePair: 53-43
+  - ConsecutivePair: 49-48
+  - ConsecutivePair: 57-58
+  - ConsecutivePair: 67-57
+  - ConsecutivePair: 67-68
+  - ConsecutivePair: 35-34
+  - ConsecutivePair: 36-26
+  - ConsecutivePair: 25-26
+  - ConsecutivePair: 15-25
+  - ConsecutivePair: 84-85
+  - ConsecutivePair: 75-74
+  - ConsecutivePair: 76-75
+  - ConsecutivePair: 76-86
+  - ConsecutivePair: 27-28
+  - ConsecutivePair: 18-17
+  - ConsecutivePair: 19-18
+  - ConsecutivePair: 19-29
+  - ConsecutivePair: 81-91
+- - KropkiPair: 46-45
+  - KropkiPair: 56-46
+  - KropkiPair: 65-66
+  - KropkiPair: 62-52
+  - KropkiPair: 61-62
+  - KropkiPair: 41-51
+  - KropkiPair: 59-69
+  - KropkiPair: 49-59
+  - KropkiPair: 58-48
+  - KropkiPair: 14-24
+  - KropkiPair: 24-34
+  - KropkiPair: 36-35
+  - KropkiPair: 96-95
+  - KropkiPair: 85-95
+  - KropkiPair: 74-84
+  - KropkiPair: 37-38
+  - KropkiPair: 38-28
+  - KropkiPair: 17-27
+  - KropkiPair: 82-92

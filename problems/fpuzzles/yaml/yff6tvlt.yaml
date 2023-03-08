@@ -1,0 +1,35 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - 76.......
+  - 8........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - ........1
+  - .......32
+- Columns: 
+- Rows: 
+- Boxes: 
+- ClonedRegion:
+  - Clone: R2C6=R6C8
+- ClonedRegion:
+  - Clone: R6C8=R8C4
+- ClonedRegion:
+  - Clone: R8C4=R4C2
+- ClonedRegion:
+  - Clone: R4C2=R2C6
+- SimpleThermometer: 23, 24, 25, 26
+- SimpleThermometer: 84, 85, 86, 87
+- SimpleThermometer: 38, 48, 58, 68
+- SimpleThermometer: 42, 52, 62, 72
+- SimpleThermometer: 22, 33, 44, 55, 66, 77, 88
+- SimpleThermometer: 34, 35, 36
+- SimpleThermometer: 74, 75, 76
+- SimpleThermometer: 49, 59, 69
+- SimpleThermometer: 41, 51, 61

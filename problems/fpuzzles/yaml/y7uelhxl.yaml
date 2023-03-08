@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - ........3
+  - .4.....2.
+  - ..5...1..
+  - ...4.....
+  - ....5....
+  - .....6...
+  - ..9...5..
+  - .8.....6.
+  - 7........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Between: 33, 34, 35, 36, 37
+- Between: 77, 76, 75, 74, 73
+- Between: 73, 63, 53, 43, 33
+- Between: 44, 54, 64
+- Between: 64, 65, 66
+- Between: 66, 56, 46
+- Between: 46, 45, 44
+- Between: 91, 82, 73
+- Between: 11, 22, 33
+- Between: 37, 28, 19
+- Between: 77, 88, 99
+- Between: 11, 12, 13, 14, 15
+- Between: 15, 16, 17, 18, 19
+- Between: 91, 92, 93, 94, 95
+- Between: 95, 96, 97, 98, 99
+- Between: 11, 21, 31, 41
+- Between: 41, 42, 43, 44
+- Between: 91, 81, 71, 61
+- Between: 61, 62, 63, 64
+- Between: 19, 29, 39, 49
+- Between: 99, 89, 79, 69
+- Between: 69, 68, 67, 66
+- Between: 37, 47, 57, 67, 77
+- Between: 46, 47, 48, 49

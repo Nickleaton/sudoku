@@ -1,0 +1,46 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - ....5....
+  - ..6...7..
+  - .....6...
+  - .6.....3.
+  - ...5.....
+  - ..3...2..
+  - ....8....
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 21-11
+  - ConsecutivePair: 11-12
+  - ConsecutivePair: 19-18
+  - ConsecutivePair: 29-19
+  - ConsecutivePair: 98-99
+  - ConsecutivePair: 89-99
+  - ConsecutivePair: 81-91
+  - ConsecutivePair: 92-91
+  - ConsecutivePair: 32-33
+  - ConsecutivePair: 23-33
+  - ConsecutivePair: 37-27
+  - ConsecutivePair: 38-37
+  - ConsecutivePair: 78-77
+  - ConsecutivePair: 87-77
+  - ConsecutivePair: 73-72
+  - ConsecutivePair: 73-83
+  - ConsecutivePair: 51-52
+  - ConsecutivePair: 53-52
+  - ConsecutivePair: 58-57
+  - ConsecutivePair: 59-58
+  - ConsecutivePair: 25-35
+  - ConsecutivePair: 75-85
+- - LittleKiller: L3=6
+  - LittleKiller: T7C=8
+  - LittleKiller: R7A=10
+  - LittleKiller: B3A=12
+  - LittleKiller: L5=30
+  - LittleKiller: R5A=6

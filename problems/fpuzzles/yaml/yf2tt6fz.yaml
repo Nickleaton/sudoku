@@ -1,0 +1,66 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 8.......3
+  - ....7....
+  - .2.....6.
+  - ...436...
+  - ...7.1...
+  - ...852...
+  - .3.....5.
+  - ....4....
+  - 9.......4
+- Columns: 
+- Rows: 
+- Boxes: 
+- - FortressCell: !!python/tuple
+    - 3
+    - 3
+  - FortressCell: !!python/tuple
+    - 3
+    - 4
+  - FortressCell: !!python/tuple
+    - 3
+    - 5
+  - FortressCell: !!python/tuple
+    - 3
+    - 6
+  - FortressCell: !!python/tuple
+    - 3
+    - 7
+  - FortressCell: !!python/tuple
+    - 4
+    - 7
+  - FortressCell: !!python/tuple
+    - 5
+    - 7
+  - FortressCell: !!python/tuple
+    - 6
+    - 7
+  - FortressCell: !!python/tuple
+    - 7
+    - 7
+  - FortressCell: !!python/tuple
+    - 7
+    - 6
+  - FortressCell: !!python/tuple
+    - 7
+    - 5
+  - FortressCell: !!python/tuple
+    - 7
+    - 4
+  - FortressCell: !!python/tuple
+    - 7
+    - 3
+  - FortressCell: !!python/tuple
+    - 6
+    - 3
+  - FortressCell: !!python/tuple
+    - 5
+    - 3
+  - FortressCell: !!python/tuple
+    - 4
+    - 3

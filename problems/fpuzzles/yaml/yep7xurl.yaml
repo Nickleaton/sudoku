@@ -1,0 +1,30 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Quadruple: 44=1245
+- Quadruple: 45=2356
+- Quadruple: 54=4578
+- Quadruple: 55=5689
+- Quadruple: 15=2345
+- Quadruple: 84=2367
+- Quadruple: 22=2345
+- Quadruple: 27=2378
+- Quadruple: 58=1234
+- Quadruple: 77=4567
+- Quadruple: 72=2379
+- Quadruple: 41=2469

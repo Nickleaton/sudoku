@@ -1,0 +1,63 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ...832...
+  - .........
+  - .6.....9.
+  - .5.....8.
+  - .7.369.4.
+  - .3.....6.
+  - .8.....7.
+  - .........
+  - ...785...
+- Columns: 
+- Rows: 
+- Boxes: 
+- - FortressCell: !!python/tuple
+    - 2
+    - 7
+  - FortressCell: !!python/tuple
+    - 2
+    - 6
+  - FortressCell: !!python/tuple
+    - 2
+    - 5
+  - FortressCell: !!python/tuple
+    - 2
+    - 4
+  - FortressCell: !!python/tuple
+    - 2
+    - 3
+  - FortressCell: !!python/tuple
+    - 3
+    - 3
+  - FortressCell: !!python/tuple
+    - 4
+    - 3
+  - FortressCell: !!python/tuple
+    - 5
+    - 3
+  - FortressCell: !!python/tuple
+    - 5
+    - 4
+  - FortressCell: !!python/tuple
+    - 5
+    - 5
+  - FortressCell: !!python/tuple
+    - 5
+    - 6
+  - FortressCell: !!python/tuple
+    - 5
+    - 7
+  - FortressCell: !!python/tuple
+    - 6
+    - 3
+  - FortressCell: !!python/tuple
+    - 7
+    - 3
+  - FortressCell: !!python/tuple
+    - 8
+    - 3

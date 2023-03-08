@@ -4,7 +4,7 @@ import json
 from selenium import webdriver
 from pathlib import Path
 
-directory = "problems/fpuzzles/json"
+directory = "problems/fpuzzles/goodjson"
 
 
 def process_url(url: str) -> None:
@@ -18,7 +18,7 @@ def process_url(url: str) -> None:
     query = parse_qs(current_parsed.query)
     uncompressed = decompressor.decompressFromBase64(query['load'][0].replace(" ", "+"))
     data = json.loads(uncompressed)
-    filename = Path(directory) / Path(ident + ".json")
+    filename = Path(directory) / Path(ident + ".goodjson")
     all_data = {'url': url, 'data': data}
     with filename.open('w') as file:
         file.write(json.dumps(all_data, sort_keys=True, indent=4))

@@ -1,0 +1,123 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Even: !!python/tuple
+  - 4
+  - 8
+- Even: !!python/tuple
+  - 6
+  - 8
+- Even: !!python/tuple
+  - 8
+  - 8
+- Even: !!python/tuple
+  - 2
+  - 5
+- Even: !!python/tuple
+  - 4
+  - 5
+- Even: !!python/tuple
+  - 6
+  - 5
+- Even: !!python/tuple
+  - 3
+  - 2
+- Even: !!python/tuple
+  - 5
+  - 2
+- Even: !!python/tuple
+  - 7
+  - 2
+- Even: !!python/tuple
+  - 6
+  - 3
+- Even: !!python/tuple
+  - 5
+  - 7
+- Even: !!python/tuple
+  - 7
+  - 9
+- Even: !!python/tuple
+  - 9
+  - 9
+- Even: !!python/tuple
+  - 2
+  - 1
+- Even: !!python/tuple
+  - 3
+  - 1
+- Even: !!python/tuple
+  - 4
+  - 9
+- Odd: !!python/tuple
+  - 3
+  - 8
+- Odd: !!python/tuple
+  - 5
+  - 8
+- Odd: !!python/tuple
+  - 7
+  - 8
+- Odd: !!python/tuple
+  - 7
+  - 5
+- Odd: !!python/tuple
+  - 5
+  - 5
+- Odd: !!python/tuple
+  - 3
+  - 5
+- Odd: !!python/tuple
+  - 4
+  - 2
+- Odd: !!python/tuple
+  - 6
+  - 2
+- Odd: !!python/tuple
+  - 8
+  - 2
+- Odd: !!python/tuple
+  - 5
+  - 3
+- Odd: !!python/tuple
+  - 2
+  - 7
+- Odd: !!python/tuple
+  - 8
+  - 9
+- Odd: !!python/tuple
+  - 1
+  - 1
+- Odd: !!python/tuple
+  - 6
+  - 1
+- Odd: !!python/tuple
+  - 8
+  - 6
+- Odd: !!python/tuple
+  - 2
+  - 4
+- SimpleThermometer: 28, 38, 48, 58, 68, 78, 88
+- SimpleThermometer: 15, 25, 35, 45, 55, 65, 75
+- SimpleThermometer: 22, 32, 42, 52, 62, 72, 82
+- SimpleThermometer: 93, 83, 73, 63, 53
+- SimpleThermometer: 17, 27, 37, 47, 57
+- SimpleThermometer: 59, 69, 79, 89, 99
+- SimpleThermometer: 51, 41, 31, 21, 11
+- SimpleThermometer: 76, 86, 96
+- SimpleThermometer: 34, 24, 14

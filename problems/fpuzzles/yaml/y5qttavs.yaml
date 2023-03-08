@@ -1,0 +1,15 @@
+Board:
+  Board: 6x6
+  Boxes: 2x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 4.....
+  - ......
+  - .....6
+  - 6..5..
+  - ......
+  - .....5
+- Columns: 
+- Rows: 
+- Boxes: 

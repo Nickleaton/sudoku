@@ -1,0 +1,88 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - 34...7...
+  - ........7
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - 2........
+  - ...9...68
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 349687512
+  - 812345697
+  - 765291483
+  - 624538179
+  - 531769824
+  - 978124356
+  - 186472935
+  - 293856741
+  - 457913268
+- Even: !!python/tuple
+  - 8
+  - 4
+- Even: !!python/tuple
+  - 8
+  - 6
+- Even: !!python/tuple
+  - 8
+  - 8
+- Even: !!python/tuple
+  - 5
+  - 9
+- Even: !!python/tuple
+  - 6
+  - 6
+- Even: !!python/tuple
+  - 6
+  - 5
+- Even: !!python/tuple
+  - 9
+  - 1
+- Even: !!python/tuple
+  - 1
+  - 9
+- Odd: !!python/tuple
+  - 2
+  - 2
+- Odd: !!python/tuple
+  - 2
+  - 4
+- Odd: !!python/tuple
+  - 2
+  - 6
+- Odd: !!python/tuple
+  - 2
+  - 8
+- Odd: !!python/tuple
+  - 4
+  - 8
+- Odd: !!python/tuple
+  - 6
+  - 2
+- Odd: !!python/tuple
+  - 8
+  - 2
+- Odd: !!python/tuple
+  - 3
+  - 1
+- Odd: !!python/tuple
+  - 5
+  - 1
+- Odd: !!python/tuple
+  - 7
+  - 9
+- Odd: !!python/tuple
+  - 4
+  - 4
+- Odd: !!python/tuple
+  - 4
+  - 5

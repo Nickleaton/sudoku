@@ -1,0 +1,25 @@
+Board:
+  Board: 6x6
+  Boxes: 2x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - ..4..1
+  - ....2.
+  - ...3..
+  - ......
+  - .4....
+  - 5.....
+- Columns: 
+- Rows: 
+- Boxes: 
+- ClonedRegion:
+  - Clone: R1C1=R2C4
+  - Clone: R1C3=R2C6
+  - Clone: R2C1=R3C4
+  - Clone: R2C3=R3C6
+  - Clone: R3C1=R4C4
+  - Clone: R3C2=R4C5
+  - Clone: R3C3=R4C6
+  - Clone: R4C3=R5C6
+  - Clone: R5C3=R6C6

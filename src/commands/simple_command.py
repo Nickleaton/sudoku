@@ -29,7 +29,7 @@ class SimpleCommand(Command):
 
     def create_board(self):
         logging.info("Creating board")
-        self.board = Board.create('Board', self.config)
+        self.board = Board.create_from_yaml('Board', self.config)
 
     def create_problem(self):
         logging.info("Creating problem")
@@ -50,7 +50,6 @@ class SimpleCommand(Command):
         logging.info(f"Writing output to {self.output_filename}")
         with open(self.output_filename, 'w', encoding="utf-8") as file:
             file.write(self.output)
-
 
     def __repr__(self) -> str:
         if self.output_filename is None:

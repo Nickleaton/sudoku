@@ -1,0 +1,19 @@
+Board:
+  Board: 6x6
+  Boxes: 2x3
+  Author: Setter 1
+Constraints:
+- Knowns:
+  - ......
+  - ......
+  - ......
+  - ......
+  - ......
+  - ......
+- Columns: 
+- Rows: 
+- Boxes: 
+- - LittleKiller: T1C=7
+  - LittleKiller: T2C=12
+  - LittleKiller: B5A=8
+  - LittleKiller: B6A=20

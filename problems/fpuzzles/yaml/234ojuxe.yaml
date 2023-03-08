@@ -1,0 +1,33 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - 7........
+  - .........
+  - 2........
+  - .........
+  - ........9
+  - .........
+  - ........2
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 81-82
+  - ConsecutivePair: 83-82
+  - ConsecutivePair: 28-18
+  - ConsecutivePair: 38-28
+  - ConsecutivePair: 98-97
+  - ConsecutivePair: 12-13
+- - KropkiPair: 28-27
+  - KropkiPair: 29-28
+  - KropkiPair: 82-92
+  - KropkiPair: 82-72
+  - KropkiPair: 96-97
+  - KropkiPair: 14-13
+- SimpleThermometer: 37, 26, 25, 24, 33, 43
+- SimpleThermometer: 53, 63, 73, 84, 85, 86
+- SimpleThermometer: 55, 56, 57, 67, 77, 87

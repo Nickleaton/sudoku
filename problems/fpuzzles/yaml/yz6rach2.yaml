@@ -1,0 +1,86 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - ....5....
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Even: !!python/tuple
+  - 5
+  - 3
+- Even: !!python/tuple
+  - 7
+  - 3
+- Even: !!python/tuple
+  - 6
+  - 2
+- Even: !!python/tuple
+  - 6
+  - 4
+- Even: !!python/tuple
+  - 5
+  - 7
+- Even: !!python/tuple
+  - 4
+  - 6
+- Even: !!python/tuple
+  - 3
+  - 7
+- Even: !!python/tuple
+  - 4
+  - 8
+- Even: !!python/tuple
+  - 8
+  - 1
+- Even: !!python/tuple
+  - 2
+  - 9
+- Even: !!python/tuple
+  - 8
+  - 6
+- Even: !!python/tuple
+  - 2
+  - 4
+- Killer: 9=41, 42, 51
+- Killer: 21=59, 68, 69
+- Killer: 8=71, 81, 91
+- Killer: 22=19, 29, 39
+- Killer: 21=53, 62, 63, 64, 73
+- Killer: 29=37, 46, 47, 48, 57
+- Killer: 16=24, 33, 34
+- Killer: 14=76, 77, 86
+- Odd: !!python/tuple
+  - 4
+  - 1
+- Odd: !!python/tuple
+  - 6
+  - 9
+- Odd: !!python/tuple
+  - 4
+  - 4
+- Odd: !!python/tuple
+  - 6
+  - 6
+- Odd: !!python/tuple
+  - 3
+  - 1
+- Odd: !!python/tuple
+  - 3
+  - 6
+- Odd: !!python/tuple
+  - 7
+  - 9
+- Odd: !!python/tuple
+  - 7
+  - 4

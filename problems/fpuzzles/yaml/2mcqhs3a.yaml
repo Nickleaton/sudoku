@@ -1,0 +1,46 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - ..135....
+  - ......9..
+  - ..91.57..
+  - ..7......
+  - ....975..
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 482679135
+  - 356214879
+  - 971358246
+  - 168742953
+  - 239165784
+  - 547983621
+  - 623497518
+  - 894521367
+  - 715836492
+- - ConsecutivePair: 85-86
+  - ConsecutivePair: 74-84
+  - ConsecutivePair: 72-73
+  - ConsecutivePair: 61-71
+  - ConsecutivePair: 52-51
+  - ConsecutivePair: 32-42
+  - ConsecutivePair: 23-22
+  - ConsecutivePair: 64-65
+  - ConsecutivePair: 44-43
+- - KropkiPair: 25-24
+  - KropkiPair: 26-36
+  - KropkiPair: 37-38
+  - KropkiPair: 39-49
+  - KropkiPair: 58-59
+  - KropkiPair: 46-45
+  - KropkiPair: 66-67
+  - KropkiPair: 87-88
+  - KropkiPair: 68-78

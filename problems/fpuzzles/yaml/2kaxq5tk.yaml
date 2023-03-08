@@ -1,0 +1,34 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Tyrgannus
+Constraints:
+- Knowns:
+  - .........
+  - 1.......9
+  - .........
+  - ..2...8..
+  - .........
+  - ..3...7..
+  - ...5.6...
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 25-15
+  - ConsecutivePair: 21-11
+  - ConsecutivePair: 29-19
+  - ConsecutivePair: 52-53
+  - ConsecutivePair: 58-57
+  - ConsecutivePair: 85-95
+  - ConsecutivePair: 83-84
+  - ConsecutivePair: 87-86
+  - ConsecutivePair: 47-48
+  - ConsecutivePair: 42-43
+- - KropkiPair: 24-14
+  - KropkiPair: 26-16
+  - KropkiPair: 61-71
+  - KropkiPair: 79-69
+  - KropkiPair: 85-84
+  - KropkiPair: 86-85

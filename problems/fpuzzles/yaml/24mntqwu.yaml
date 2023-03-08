@@ -1,0 +1,50 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 612983457
+  - 957164823
+  - 384572619
+  - 861725934
+  - 495316278
+  - 273849165
+  - 726438591
+  - 149257386
+  - 538691742
+- Killer: 7=11, 12
+- Killer: 8=23, 24
+- Killer: 9=35, 36
+- Killer: 11=15, 16
+- Killer: 10=27, 28
+- Killer: 12=47, 48
+- Killer: 11=31, 32
+- Killer: 8=43, 44
+- Killer: 7=55, 56
+- Killer: 7=67, 68
+- Killer: 13=51, 52
+- Killer: 11=83, 84
+- Killer: 9=71, 72
+- Killer: 10=95, 96
+- Killer: 11=87, 88
+- Killer: 11=75, 76
+- Killer: 11=63, 64
+- GermanWhisper: 15, 16, 27, 28, 39
+- GermanWhisper: 11, 12, 23, 24, 35, 36, 47, 48, 59
+- GermanWhisper: 31, 32, 43, 44, 55, 56, 67, 68, 79
+- GermanWhisper: 51, 52, 63, 64, 75, 76, 87, 88, 99
+- GermanWhisper: 71, 72, 83, 84, 95, 96

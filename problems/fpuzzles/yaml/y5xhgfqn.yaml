@@ -1,0 +1,27 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Eric Fox
+Constraints:
+- Knowns:
+  - ..481....
+  - .1...26..
+  - .......7.
+  - .......2.
+  - .........
+  - .9.......
+  - .5.......
+  - ..21...6.
+  - ....574..
+- Columns: 
+- Rows: 
+- Boxes: 
+- NegativeXV: 
+- X_Pair: 43-33
+- X_Pair: 44-34
+- X_Pair: 45-35
+- V_Pair: 75-65
+- V_Pair: 76-66
+- V_Pair: 77-67
+- V_Pair: 68-58
+- X_Pair: 42-52

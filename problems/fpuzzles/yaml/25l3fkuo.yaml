@@ -1,0 +1,18 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Bill Murphy
+Constraints:
+- Knowns:
+  - 13.......
+  - 57....86.
+  - ...3...4.
+  - ..316.5..
+  - ...89....
+  - .........
+  - .6.7..35.
+  - .82...71.
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 

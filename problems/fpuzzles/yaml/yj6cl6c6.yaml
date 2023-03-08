@@ -1,0 +1,28 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - ....2....
+  - .....3...
+  - ..7......
+  - .8.....4.
+  - ......5..
+  - ...9.....
+  - ....6....
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - LittleKiller: T7C=4
+  - LittleKiller: T6C=11
+  - LittleKiller: T5C=16
+  - LittleKiller: B5A=5
+  - LittleKiller: B4A=12
+  - LittleKiller: B3A=13
+  - LittleKiller: R7A=5
+  - LittleKiller: R6A=10
+  - LittleKiller: L4=9
+  - LittleKiller: L3=11

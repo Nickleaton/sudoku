@@ -1,0 +1,48 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - 9........
+  - .7.....3.
+  - ......8..
+  - .........
+  - .........
+  - .........
+  - ..7......
+  - .1.....9.
+  - ........7
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 51-52
+  - ConsecutivePair: 62-52
+  - ConsecutivePair: 62-63
+  - ConsecutivePair: 63-73
+  - ConsecutivePair: 74-73
+  - ConsecutivePair: 84-74
+  - ConsecutivePair: 58-59
+  - ConsecutivePair: 48-58
+  - ConsecutivePair: 47-48
+  - ConsecutivePair: 37-47
+  - ConsecutivePair: 36-37
+  - ConsecutivePair: 26-36
+  - ConsecutivePair: 46-56
+  - ConsecutivePair: 64-54
+- - KropkiPair: 15-25
+  - KropkiPair: 25-24
+  - KropkiPair: 34-24
+  - KropkiPair: 34-33
+  - KropkiPair: 43-33
+  - KropkiPair: 42-43
+  - KropkiPair: 95-85
+  - KropkiPair: 85-86
+  - KropkiPair: 76-77
+  - KropkiPair: 76-86
+  - KropkiPair: 67-77
+  - KropkiPair: 68-67
+  - KropkiPair: 44-54
+  - KropkiPair: 56-66
+  - KropkiPair: 87-97
+  - KropkiPair: 23-13

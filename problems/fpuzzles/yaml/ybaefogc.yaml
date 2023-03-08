@@ -1,0 +1,44 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .1.....5.
+  - ..3.5...7
+  - .....7...
+  - 7........
+  - ..1...3..
+  - ........9
+  - ...5.....
+  - 1...9.5..
+  - .5.....3.
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 817239456
+  - 623458197
+  - 549167823
+  - 782943615
+  - 961825374
+  - 435671289
+  - 394582761
+  - 178396542
+  - 256714938
+- - ConsecutivePair: 22-12
+  - ConsecutivePair: 98-88
+  - ConsecutivePair: 86-87
+  - ConsecutivePair: 23-24
+  - ConsecutivePair: 35-25
+  - ConsecutivePair: 85-75
+  - ConsecutivePair: 73-74
+  - ConsecutivePair: 37-36
+  - ConsecutivePair: 42-41
+  - ConsecutivePair: 53-43
+  - ConsecutivePair: 67-57
+  - ConsecutivePair: 69-68
+  - ConsecutivePair: 17-18
+  - ConsecutivePair: 29-19
+  - ConsecutivePair: 91-81
+  - ConsecutivePair: 93-92

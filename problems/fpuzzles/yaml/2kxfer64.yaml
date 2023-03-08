@@ -1,0 +1,76 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Bill Murphy
+Constraints:
+- Knowns:
+  - 37.....49
+  - 98.....63
+  - .........
+  - ...8.6...
+  - .........
+  - ...2.7...
+  - .........
+  - 59.....78
+  - 86.....94
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 372651849
+  - 985724163
+  - 146938527
+  - 459816732
+  - 728593416
+  - 613247985
+  - 237489651
+  - 594162378
+  - 861375294
+- - FortressCell: !!python/tuple
+    - 3
+    - 3
+  - FortressCell: !!python/tuple
+    - 5
+    - 3
+  - FortressCell: !!python/tuple
+    - 4
+    - 3
+  - FortressCell: !!python/tuple
+    - 6
+    - 3
+  - FortressCell: !!python/tuple
+    - 7
+    - 3
+  - FortressCell: !!python/tuple
+    - 7
+    - 4
+  - FortressCell: !!python/tuple
+    - 7
+    - 5
+  - FortressCell: !!python/tuple
+    - 7
+    - 6
+  - FortressCell: !!python/tuple
+    - 7
+    - 7
+  - FortressCell: !!python/tuple
+    - 6
+    - 7
+  - FortressCell: !!python/tuple
+    - 5
+    - 7
+  - FortressCell: !!python/tuple
+    - 4
+    - 7
+  - FortressCell: !!python/tuple
+    - 3
+    - 7
+  - FortressCell: !!python/tuple
+    - 3
+    - 6
+  - FortressCell: !!python/tuple
+    - 3
+    - 5
+  - FortressCell: !!python/tuple
+    - 3
+    - 4

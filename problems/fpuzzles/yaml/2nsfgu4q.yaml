@@ -1,0 +1,30 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - ....5....
+  - ...1.9...
+  - ....6....
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- SimpleThermometer: 42, 41, 51, 61, 62, 63
+- SimpleThermometer: 47, 48, 49, 59, 69, 68
+- SimpleThermometer: 26, 16, 15, 14, 24, 34
+- SimpleThermometer: 76, 86, 96, 95, 94, 84
+- SimpleThermometer: 67, 57, 58
+- SimpleThermometer: 52, 53, 43
+- SimpleThermometer: 27, 37, 36, 35, 25
+- SimpleThermometer: 85, 75, 74, 73, 83
+- SimpleThermometer: 13, 23, 33, 32, 31
+- SimpleThermometer: 21, 22, 12
+- SimpleThermometer: 79, 78, 77, 87, 97
+- SimpleThermometer: 98, 88, 89

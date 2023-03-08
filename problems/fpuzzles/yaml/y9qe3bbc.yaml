@@ -1,0 +1,110 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Even: !!python/tuple
+  - 3
+  - 3
+- Even: !!python/tuple
+  - 3
+  - 4
+- Even: !!python/tuple
+  - 3
+  - 7
+- Even: !!python/tuple
+  - 4
+  - 7
+- Even: !!python/tuple
+  - 7
+  - 7
+- Even: !!python/tuple
+  - 7
+  - 6
+- Even: !!python/tuple
+  - 6
+  - 3
+- Even: !!python/tuple
+  - 7
+  - 3
+- Even: !!python/tuple
+  - 7
+  - 4
+- Even: !!python/tuple
+  - 4
+  - 3
+- Even: !!python/tuple
+  - 3
+  - 6
+- Even: !!python/tuple
+  - 6
+  - 7
+- Even: !!python/tuple
+  - 2
+  - 1
+- Even: !!python/tuple
+  - 1
+  - 2
+- Even: !!python/tuple
+  - 8
+  - 1
+- Even: !!python/tuple
+  - 9
+  - 2
+- Even: !!python/tuple
+  - 9
+  - 8
+- Even: !!python/tuple
+  - 8
+  - 9
+- Even: !!python/tuple
+  - 1
+  - 8
+- Even: !!python/tuple
+  - 2
+  - 9
+- Even: !!python/tuple
+  - 4
+  - 6
+- Even: !!python/tuple
+  - 4
+  - 4
+- Even: !!python/tuple
+  - 6
+  - 4
+- Even: !!python/tuple
+  - 6
+  - 6
+- Killer: 6=33, 34
+- Killer: 8=37, 47
+- Killer: 14=76, 77
+- Killer: 12=63, 73
+- Killer: 9=43, 53
+- Killer: 9=35, 36
+- Killer: 9=57, 67
+- Killer: 9=74, 75
+- Killer: 7=17, 18
+- Killer: 7=12, 13
+- Killer: 7=21, 31
+- Killer: 7=97, 98
+- Killer: 7=79, 89
+- Killer: 7=92, 93
+- Killer: 7=71, 81
+- Killer: 9=45, 46
+- Killer: 9=44, 54
+- Killer: 9=64, 65
+- Killer: 9=56, 66
+- Killer: 7=29, 39

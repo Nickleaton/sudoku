@@ -1,0 +1,40 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .....9...
+  - .....4...
+  - .....7...
+  - .25......
+  - .........
+  - ......86.
+  - ...9.....
+  - ...3.....
+  - ...7.....
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 346859721
+  - 279134586
+  - 581267349
+  - 825693417
+  - 467518932
+  - 913472865
+  - 732986154
+  - 194325678
+  - 658741293
+- SumArrow: 42=33, 24
+- SumArrow: 26=37, 48
+- SumArrow: 68=77, 86
+- SumArrow: 43=34, 25
+- SumArrow: 36=47, 58
+- SumArrow: 67=76, 85
+- SumArrow: 74=63, 52
+- SumArrow: 84=73, 62
+- SumArrow: 16=27, 38
+- SumArrow: 94=83, 72
+- SumArrow: 41=32
+- SumArrow: 69=78

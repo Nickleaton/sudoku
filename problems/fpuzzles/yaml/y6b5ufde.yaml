@@ -1,0 +1,30 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 9.....5..
+  - .5...6.3.
+  - ..8.....9
+  - .........
+  - ...6.9...
+  - .........
+  - 7.....6..
+  - .2.8...7.
+  - ..6.....8
+- Columns: 
+- Rows: 
+- Boxes: 
+- SumArrow: 11=12, 13
+- SumArrow: 33=32, 31
+- SumArrow: 93=83, 73
+- SumArrow: 71=81, 91
+- SumArrow: 39=29, 19
+- SumArrow: 17=27, 37
+- SumArrow: 99=98, 97
+- SumArrow: 77=78, 79
+- SumArrow: 56=57, 58
+- SumArrow: 54=53, 52
+- SumArrow: 26=36, 46
+- SumArrow: 84=74, 64

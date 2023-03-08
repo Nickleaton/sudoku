@@ -1,0 +1,19 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ...9735..
+  - ..51..37.
+  - 973....1.
+  - 1......97
+  - 7.......3
+  - 35......1
+  - .1....735
+  - .37..19..
+  - ..9735...
+- Columns: 
+- Rows: 
+- Boxes: 
+- OrthoganallyAdjacent: 

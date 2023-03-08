@@ -1,0 +1,48 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ........9
+  - ...2.5...
+  - .........
+  - .........
+  - 3..5.8..4
+  - .........
+  - .........
+  - ...8.2...
+  - 7........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 25-15
+  - ConsecutivePair: 25-35
+  - ConsecutivePair: 45-55
+  - ConsecutivePair: 55-65
+  - ConsecutivePair: 75-85
+  - ConsecutivePair: 85-95
+  - ConsecutivePair: 12-22
+  - ConsecutivePair: 32-22
+  - ConsecutivePair: 32-42
+  - ConsecutivePair: 62-72
+  - ConsecutivePair: 72-82
+  - ConsecutivePair: 92-82
+  - ConsecutivePair: 88-98
+  - ConsecutivePair: 88-78
+  - ConsecutivePair: 78-68
+  - ConsecutivePair: 48-38
+  - ConsecutivePair: 38-28
+  - ConsecutivePair: 28-18
+  - ConsecutivePair: 68-58
+  - ConsecutivePair: 42-52
+  - ConsecutivePair: 26-27
+  - ConsecutivePair: 37-36
+  - ConsecutivePair: 47-46
+  - ConsecutivePair: 83-84
+  - ConsecutivePair: 74-73
+  - ConsecutivePair: 63-64
+  - ConsecutivePair: 53-54
+  - ConsecutivePair: 57-56
+  - ConsecutivePair: 66-67
+  - ConsecutivePair: 44-43

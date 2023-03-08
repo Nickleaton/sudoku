@@ -1,0 +1,56 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - ....4....
+  - ..2...7..
+  - .........
+  - .8.....2.
+  - .........
+  - ..6...3..
+  - ....5....
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 849627153
+  - 761543892
+  - 532198764
+  - 293874615
+  - 184365927
+  - 675219438
+  - 956782341
+  - 317456289
+  - 428931576
+- - ConsecutivePair: 43-33
+  - ConsecutivePair: 23-33
+  - ConsecutivePair: 33-34
+  - ConsecutivePair: 36-37
+  - ConsecutivePair: 38-37
+  - ConsecutivePair: 27-37
+  - ConsecutivePair: 47-37
+  - ConsecutivePair: 63-73
+  - ConsecutivePair: 72-73
+  - ConsecutivePair: 83-73
+  - ConsecutivePair: 74-73
+  - ConsecutivePair: 77-78
+  - ConsecutivePair: 77-67
+  - ConsecutivePair: 76-77
+  - ConsecutivePair: 87-77
+  - ConsecutivePair: 32-33
+  - ConsecutivePair: 84-85
+  - ConsecutivePair: 85-86
+  - ConsecutivePair: 58-48
+  - ConsecutivePair: 68-58
+  - ConsecutivePair: 42-52
+  - ConsecutivePair: 52-62
+  - ConsecutivePair: 24-25
+  - ConsecutivePair: 26-25
+  - ConsecutivePair: 61-62
+  - ConsecutivePair: 14-24
+  - ConsecutivePair: 56-46
+  - ConsecutivePair: 54-64

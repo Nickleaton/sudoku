@@ -21,7 +21,7 @@ class HTMLCommand(SimpleCommand):
     def process(self) -> None:
         super().process()
         self.svg.process()
-        logging.info("Producing html  file of type")
+        logging.info("Producing html file of type")
         assert self.problem is not None
         template = env.get_template("problem.html")
         if self.problem.sorted_unique_rules is None:

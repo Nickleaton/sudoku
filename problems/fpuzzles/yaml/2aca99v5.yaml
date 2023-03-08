@@ -1,0 +1,38 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - 9........
+  - 2.......3
+  - ........8
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- V_Pair: 43-44
+- V_Pair: 46-36
+- V_Pair: 67-66
+- V_Pair: 74-64
+- V_Pair: 44-34
+- V_Pair: 47-46
+- V_Pair: 66-76
+- V_Pair: 63-64
+- X_Pair: 35-34
+- X_Pair: 57-47
+- X_Pair: 76-75
+- X_Pair: 63-53
+- V_Pair: 11-12
+- V_Pair: 19-29
+- V_Pair: 99-98
+- V_Pair: 81-91
+- X_Pair: 18-19
+- X_Pair: 92-91
+- X_Pair: 94-95
+- X_Pair: 16-15

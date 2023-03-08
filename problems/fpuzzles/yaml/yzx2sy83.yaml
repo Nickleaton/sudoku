@@ -1,0 +1,27 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ....3....
+  - .2.....4.
+  - ..8......
+  - ...2.....
+  - 9.......5
+  - .....6...
+  - ......4..
+  - .8.....6.
+  - ....7....
+- Columns: 
+- Rows: 
+- Boxes: 
+- - LittleKiller: L4=8
+  - LittleKiller: T6C=9
+  - LittleKiller: R6A=10
+  - LittleKiller: B4A=11
+  - LittleKiller: L3=9
+  - LittleKiller: T7C=10
+  - LittleKiller: R7A=11
+  - LittleKiller: B3A=12
+  - LittleKiller: T0C=41

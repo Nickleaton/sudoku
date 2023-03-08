@@ -1,0 +1,40 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Freddie Hand
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .......75
+  - ........6
+  - .........
+  - 2........
+  - 65.......
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 967521483
+  - 523847169
+  - 814396275
+  - 185732946
+  - 439618752
+  - 276459318
+  - 651973824
+  - 342185697
+  - 798264531
+- Quadruple: 56=789
+- Quadruple: 17=468
+- Quadruple: 43=679
+- Quadruple: 16=117
+- Quadruple: 13=578
+- Quadruple: 86=455
+- Quadruple: 83=122
+- Quadruple: 82=489
+- Quadruple: 22=1234
+- Quadruple: 32=1458
+- Quadruple: 67=1238
+- Quadruple: 77=2689

@@ -1,0 +1,19 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ..9.6....
+  - ..8......
+  - ..4.3.897
+  - .........
+  - 4.2...7.5
+  - .........
+  - 261.5.9..
+  - ......1..
+  - ....2.5..
+- Columns: 
+- Rows: 
+- Boxes: 
+- UniqueRegion: 31, 32

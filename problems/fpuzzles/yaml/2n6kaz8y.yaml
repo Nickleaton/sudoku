@@ -1,0 +1,62 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 924837516
+  - 315964872
+  - 678512493
+  - 192458367
+  - 563179248
+  - 847623159
+  - 431296785
+  - 756381924
+  - 289745631
+- ClonedRegion:
+  - Clone: R1C1=R5C6
+  - Clone: R1C2=R5C7
+  - Clone: R1C3=R5C8
+  - Clone: R1C4=R5C9
+  - Clone: R2C1=R6C6
+  - Clone: R2C2=R6C7
+  - Clone: R2C3=R6C8
+  - Clone: R2C4=R6C9
+  - Clone: R3C1=R7C6
+  - Clone: R3C2=R7C7
+  - Clone: R3C3=R7C8
+  - Clone: R3C4=R7C9
+  - Clone: R4C1=R8C6
+  - Clone: R4C2=R8C7
+  - Clone: R4C3=R8C8
+  - Clone: R4C4=R8C9
+  - Clone: R5C1=R9C6
+  - Clone: R5C2=R9C7
+  - Clone: R5C3=R9C8
+  - Clone: R5C4=R9C9
+- - ConsecutivePair: 57-67
+  - ConsecutivePair: 58-68
+  - ConsecutivePair: 69-59
+  - ConsecutivePair: 76-77
+  - ConsecutivePair: 89-79
+  - ConsecutivePair: 98-88
+  - ConsecutivePair: 78-77
+- - KropkiPair: 12-22
+  - KropkiPair: 31-21
+  - KropkiPair: 13-14
+  - KropkiPair: 44-43
+  - KropkiPair: 52-53
+  - KropkiPair: 12-13

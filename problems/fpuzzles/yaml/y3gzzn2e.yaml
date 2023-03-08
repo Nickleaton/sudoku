@@ -1,0 +1,35 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .12......
+  - .34......
+  - .45......
+  - .67...58.
+  - ......24.
+  - ......65.
+  - ......13.
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- ClonedRegion:
+  - Clone: R1C1=R4C6
+  - Clone: R1C2=R4C7
+  - Clone: R1C3=R4C8
+  - Clone: R1C4=R4C9
+  - Clone: R2C1=R5C6
+  - Clone: R2C4=R5C9
+  - Clone: R3C1=R6C6
+  - Clone: R3C4=R6C9
+  - Clone: R4C1=R7C6
+  - Clone: R4C4=R7C9
+  - Clone: R5C1=R8C6
+  - Clone: R5C4=R8C9
+  - Clone: R6C1=R9C6
+  - Clone: R6C2=R9C7
+  - Clone: R6C3=R9C8
+  - Clone: R6C4=R9C9

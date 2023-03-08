@@ -1,0 +1,18 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: jovi_al
+Constraints:
+- Knowns:
+  - 123..9485
+  - 4.......7
+  - 5.......2
+  - ........1
+  - .........
+  - 7........
+  - 3.......8
+  - 9.......4
+  - 2874..916
+- Columns: 
+- Rows: 
+- Boxes: 

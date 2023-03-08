@@ -1,0 +1,22 @@
+Board:
+  Board: 6x6
+  Boxes: 2x3
+  Author: ?
+Constraints:
+- Knowns:
+  - ......
+  - ......
+  - ......
+  - ......
+  - ......
+  - ......
+- Columns: 
+- Rows: 
+- Boxes: 
+- Killer: 6=14, 23, 24
+- Killer: 7=25, 35, 36
+- Killer: 8=45, 46, 55
+- Killer: 9=53, 54, 64
+- Killer: 7=33, 43
+- Killer: 10=41, 42, 52
+- Killer: 12=21, 31, 32

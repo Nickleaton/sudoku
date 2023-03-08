@@ -1,0 +1,52 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Bill Murphy
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 369847512
+  - 428561739
+  - 751329486
+  - 296718345
+  - 583694271
+  - 174235698
+  - 642983157
+  - 937156824
+  - 815472963
+- - KropkiPair: 11-12
+  - KropkiPair: 12-22
+  - KropkiPair: 22-23
+  - KropkiPair: 32-33
+  - KropkiPair: 33-43
+  - KropkiPair: 99-98
+  - KropkiPair: 88-98
+  - KropkiPair: 87-88
+  - KropkiPair: 78-77
+  - KropkiPair: 67-77
+  - KropkiPair: 54-53
+  - KropkiPair: 54-64
+  - KropkiPair: 28-18
+  - KropkiPair: 29-28
+  - KropkiPair: 81-82
+  - KropkiPair: 82-92
+  - KropkiPair: 57-56
+  - KropkiPair: 46-56
+  - KropkiPair: 27-26
+  - KropkiPair: 84-83
+  - KropkiPair: 26-36
+  - KropkiPair: 84-74
+  - KropkiPair: 49-59
+  - KropkiPair: 61-51

@@ -1,0 +1,29 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ....2....
+  - .......4.
+  - ..5..8...
+  - .........
+  - .7.....8.
+  - .........
+  - ...8..2..
+  - .5.......
+  - ....5....
+- Columns: 
+- Rows: 
+- Boxes: 
+- SumArrow: 31=22, 13
+- SumArrow: 79=68, 57, 46
+- SumArrow: 73=62, 51
+- SumArrow: 37=26, 15
+- SumArrow: 55=44, 33
+- - LittleKiller: T4A=8
+  - LittleKiller: B6=10
+  - LittleKiller: L4C=21
+  - LittleKiller: R6A=21
+  - LittleKiller: T10A=40
+  - LittleKiller: T0C=49

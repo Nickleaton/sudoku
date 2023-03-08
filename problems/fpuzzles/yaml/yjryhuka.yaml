@@ -1,0 +1,45 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - 4..1.2...
+  - .........
+  - ...3.47..
+  - ..8...1..
+  - .........
+  - 7.......3
+  - ...6.7...
+  - .........
+  - ...8.9..2
+- Columns: 
+- Rows: 
+- Boxes: 
+- - FortressCell: !!python/tuple
+    - 2
+    - 5
+  - FortressCell: !!python/tuple
+    - 8
+    - 5
+  - FortressCell: !!python/tuple
+    - 4
+    - 5
+  - FortressCell: !!python/tuple
+    - 6
+    - 5
+  - FortressCell: !!python/tuple
+    - 5
+    - 2
+  - FortressCell: !!python/tuple
+    - 5
+    - 8
+  - FortressCell: !!python/tuple
+    - 4
+    - 1
+  - FortressCell: !!python/tuple
+    - 9
+    - 2
+  - FortressCell: !!python/tuple
+    - 1
+    - 8

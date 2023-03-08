@@ -1,0 +1,32 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - ...27....
+  - .2...5...
+  - ..7....2.
+  - .5.3...7.
+  - ....5....
+  - ..3..7.5.
+  - .3....7..
+  - ...5...3.
+  - ....32...
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 946273581
+  - 321865947
+  - 587419326
+  - 654321879
+  - 879654213
+  - 213987654
+  - 432198765
+  - 798546132
+  - 165732498
+- ColumnIndexer: 2
+- ColumnIndexer: 3
+- ColumnIndexer: 5
+- ColumnIndexer: 7

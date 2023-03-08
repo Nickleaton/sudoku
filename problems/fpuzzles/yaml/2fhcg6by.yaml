@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - 9..7.3..1
+  - .......3.
+  - .........
+  - 3..9....2
+  - .9..8..5.
+  - 1....7..4
+  - .........
+  - .4.......
+  - 2..4.6..8
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 984723561
+  - 762145839
+  - 531698427
+  - 358964712
+  - 497281653
+  - 126357984
+  - 613879245
+  - 849532176
+  - 275416398
+- - LittleKiller: L3=15
+  - LittleKiller: L4=15
+  - LittleKiller: T7C=15
+  - LittleKiller: T6C=15
+  - LittleKiller: R7A=15
+  - LittleKiller: R6A=15
+  - LittleKiller: B3A=15
+  - LittleKiller: B4A=15
+  - LittleKiller: B5A=15
+  - LittleKiller: L5=15
+  - LittleKiller: T5C=15
+  - LittleKiller: R5A=15
+  - LittleKiller: T4C=15
+  - LittleKiller: B6A=15

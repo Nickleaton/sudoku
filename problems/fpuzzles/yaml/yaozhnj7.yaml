@@ -1,0 +1,18 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - ..67123..
+  - .8...4.5.
+  - ....5142.
+  - 8...23.1.
+  - .......9.
+  - 9.1....8.
+  - .4....6..
+  - ..7.6....
+- Columns: 
+- Rows: 
+- Boxes: 

@@ -1,0 +1,52 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - ..8...6..
+  - ...2.....
+  - ..4.1.9..
+  - .....3...
+  - ..5...7..
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 691482375
+  - 523796418
+  - 478531692
+  - 139265847
+  - 254817963
+  - 867943521
+  - 315629784
+  - 746158239
+  - 982374156
+- X_Pair: 15-16
+- X_Pair: 17-18
+- X_Pair: 39-29
+- X_Pair: 49-59
+- X_Pair: 71-81
+- X_Pair: 51-61
+- X_Pair: 92-93
+- X_Pair: 94-95
+- V_Pair: 96-97
+- V_Pair: 13-14
+- V_Pair: 69-79
+- V_Pair: 31-41
+- X_Pair: 24-23
+- X_Pair: 32-42
+- X_Pair: 68-78
+- X_Pair: 86-87
+- V_Pair: 72-82
+- X_Pair: 83-82
+- X_Pair: 28-38
+- V_Pair: 27-28
+- V_Pair: 17-16
+- V_Pair: 94-93
+- V_Pair: 23-22
+- V_Pair: 87-88

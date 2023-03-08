@@ -1,0 +1,48 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 382976145
+  - 954132867
+  - 167854932
+  - 841367529
+  - 695241378
+  - 723589416
+  - 238615794
+  - 576493281
+  - 419728653
+- Quadruple: 22=4567
+- Quadruple: 72=3678
+- Quadruple: 77=2789
+- Quadruple: 27=3689
+- Quadruple: 34=3568
+- Quadruple: 65=1589
+- Quadruple: 85=289
+- Quadruple: 48=789
+- Quadruple: 51=679
+- Quadruple: 14=379
+- V_Pair: 23-24
+- X_Pair: 32-42
+- X_Pair: 83-84
+- V_Pair: 72-62
+- V_Pair: 86-87
+- X_Pair: 68-78
+- V_Pair: 38-48
+- X_Pair: 26-27
+- V_Pair: 54-44
+- X_Pair: 66-56

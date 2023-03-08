@@ -1,0 +1,30 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - 1........
+  - .........
+  - ..9......
+  - ...1.....
+  - .........
+  - .....9...
+  - ......1..
+  - .........
+  - ........9
+- Columns: 
+- Rows: 
+- Boxes: 
+- Sandwich: L1=5
+- Sandwich: T1=9
+- Sandwich: T3=2
+- Sandwich: T9=8
+- Sandwich: L9=6
+- Sandwich: L4=10
+- Sandwich: L6=10
+- Sandwich: T7=4
+- Sandwich: L2=5
+- Sandwich: L8=6
+- Sandwich: T6=10
+- Sandwich: T4=9

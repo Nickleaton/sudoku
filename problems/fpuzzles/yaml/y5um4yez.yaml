@@ -1,0 +1,18 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .......87
+  - .6.....1.
+  - ..2..4...
+  - .......3.
+  - 3...5...4
+  - .4.......
+  - ...3..5..
+  - .1.....2.
+  - 45.......
+- Columns: 
+- Rows: 
+- Boxes: 

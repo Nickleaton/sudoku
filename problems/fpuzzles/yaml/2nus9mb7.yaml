@@ -1,0 +1,38 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 135792468
+  - 468135792
+  - 792468135
+  - 924681357
+  - 681357924
+  - 357924681
+  - 579246813
+  - 813579246
+  - 246813579
+- OrthoganallyAdjacent: 
+- SimpleThermometer: 42, 43, 44, 45
+- SimpleThermometer: 65, 66, 67, 68
+- SimpleThermometer: 24, 25, 26, 27
+- SimpleThermometer: 83, 84, 85, 86
+- SimpleThermometer: 74, 75, 76, 77
+- SimpleThermometer: 33, 34, 35, 36
+- SimpleThermometer: 53, 54, 55, 56, 57
+- SimpleThermometer: 11, 12, 13, 14, 15
+- SimpleThermometer: 95, 96, 97, 98, 99

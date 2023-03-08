@@ -1,5 +1,5 @@
 #!c:\users\nickl\pycharmprojects\edf\venv\scripts\python.exe
-"""Custom json reporter for pylint and json to html export utility."""
+"""Custom goodjson reporter for pylint and goodjson to html export utility."""
 import argparse
 import html
 import json
@@ -164,7 +164,7 @@ def json2html(data):
 
 
 class _SetEncoder(json.JSONEncoder):
-    """Handle sets when dumping to json.
+    """Handle sets when dumping to goodjson.
 
     Note
     -----
@@ -179,7 +179,7 @@ class _SetEncoder(json.JSONEncoder):
 
 
 class CustomJsonReporter(BaseReporter):
-    """Customize the default json reporter.
+    """Customize the default goodjson reporter.
 
     Note
     -----
@@ -187,7 +187,7 @@ class CustomJsonReporter(BaseReporter):
 
     """
 
-    name = "custom json"
+    name = "custom goodjson"
 
     def __init__(self, output=sys.stdout):
         """Construct object."""

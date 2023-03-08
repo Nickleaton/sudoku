@@ -1,0 +1,31 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .....4321
+  - .....1..9
+  - .....3..5
+  - .....7216
+  - .........
+  - 2345.....
+  - 3..1.....
+  - 4..6.....
+  - 7163.....
+- Columns: 
+- Rows: 
+- Boxes: 
+- ClonedRegion:
+  - Clone: R1C1=R6C6
+  - Clone: R1C2=R6C7
+  - Clone: R1C3=R6C8
+  - Clone: R1C4=R6C9
+  - Clone: R2C1=R7C6
+  - Clone: R2C4=R7C9
+  - Clone: R3C1=R8C6
+  - Clone: R3C4=R8C9
+  - Clone: R4C1=R9C6
+  - Clone: R4C2=R9C7
+  - Clone: R4C3=R9C8
+  - Clone: R4C4=R9C9

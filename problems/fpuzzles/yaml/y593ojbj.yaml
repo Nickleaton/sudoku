@@ -1,0 +1,46 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Killer: 6=11, 12, 13
+- Killer: 7=97, 98, 99
+- Killer: 15=94, 95, 96
+- Killer: 12=73, 83, 93
+- Killer: 11=17, 27, 37
+- Killer: 13=34, 35, 36
+- Killer: 10=21, 31, 41
+- Killer: 15=14, 15, 16
+- Killer: 17=69, 79, 89
+- Killer: 14=42, 52, 62
+- Killer: 17=48, 58, 68
+- Killer: 16=45, 46, 47
+- Killer: 13=63, 64, 65
+- Killer: 11=74, 75, 76
+- V_Pair: 11-12
+- V_Pair: 99-98
+- X_Pair: 96-95
+- X_Pair: 14-15
+- X_Pair: 93-83
+- X_Pair: 27-17
+- V_Pair: 75-74
+- X_Pair: 36-35
+- V_Pair: 31-41
+- X_Pair: 69-79
+- X_Pair: 62-52
+- X_Pair: 58-48
+- X_Pair: 46-47
+- X_Pair: 65-64

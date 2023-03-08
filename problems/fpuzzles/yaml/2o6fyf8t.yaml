@@ -1,0 +1,46 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - ........8
+  - .12......
+  - .34......
+  - .....8.2.
+  - .........
+  - ...9.45..
+  - .....67..
+  - ...1.....
+  - 9........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 759631248
+  - 612847395
+  - 834592176
+  - 596318427
+  - 148275963
+  - 273964581
+  - 321486759
+  - 487159632
+  - 965723814
+- ClonedRegion:
+  - Clone: R1C1=R5C5
+  - Clone: R1C2=R5C6
+  - Clone: R1C3=R5C7
+  - Clone: R1C4=R5C8
+  - Clone: R2C1=R6C5
+  - Clone: R2C4=R6C8
+  - Clone: R3C1=R7C5
+  - Clone: R3C4=R7C8
+  - Clone: R4C1=R8C5
+  - Clone: R4C2=R8C6
+  - Clone: R4C3=R8C7
+  - Clone: R4C4=R8C8
+- ClonedRegion:
+  - Clone: R2C6=R6C2
+  - Clone: R2C7=R6C3
+  - Clone: R3C6=R7C2
+  - Clone: R3C7=R7C3

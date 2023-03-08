@@ -1,0 +1,26 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - 3.4......
+  - ...5.3...
+  - ......4.5
+  - ...4.....
+  - ......3..
+  - .4...5...
+  - .........
+  - ...3.4...
+- Columns: 
+- Rows: 
+- Boxes: 
+- SumArrow: 11, 12=31
+- SumArrow: 55, 56=36
+- SumArrow: 68, 69=49
+- SumArrow: 86, 87=67
+- SumArrow: 24, 25=44
+- SumArrow: 37, 38=57
+- SumArrow: 42, 43=23
+- SumArrow: 73, 74=54

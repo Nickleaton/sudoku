@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - ..1...2..
+  - ...3.4...
+  - ....5....
+  - ...6.7...
+  - ..8...9..
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 743261598
+  - 925843617
+  - 861795243
+  - 589314762
+  - 672958431
+  - 314627859
+  - 258136974
+  - 437589126
+  - 196472385
+- - XSum: T4=10
+  - XSum: T3=9
+  - XSum: B6=11
+  - XSum: B7=13
+  - XSum: R3=9
+  - XSum: R4=8
+  - XSum: L6=8
+  - XSum: L7=7
+  - XSum: T9=40
+  - XSum: B1=1
+  - XSum: T6=1
+  - XSum: B4=16
+  - XSum: L3=42
+  - XSum: R7=26

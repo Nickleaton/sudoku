@@ -1,0 +1,50 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ...1.....
+  - ........7
+  - .........
+  - 15.......
+  - ....7....
+  - .......58
+  - .........
+  - 7........
+  - .....1...
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 423167589
+  - 691458237
+  - 578239641
+  - 157823964
+  - 849675123
+  - 236914758
+  - 914582376
+  - 782396415
+  - 365741892
+- X_Pair: 22-23
+- V_Pair: 24-23
+- X_Pair: 34-33
+- V_Pair: 35-34
+- X_Pair: 75-76
+- V_Pair: 76-77
+- X_Pair: 86-87
+- V_Pair: 88-87
+- X_Pair: 45-44
+- V_Pair: 45-46
+- X_Pair: 65-64
+- V_Pair: 65-66
+- X_Pair: 71-72
+- V_Pair: 72-73
+- X_Pair: 82-83
+- V_Pair: 83-84
+- X_Pair: 26-27
+- V_Pair: 28-27
+- X_Pair: 38-37
+- V_Pair: 39-38
+- X_Pair: 49-48
+- V_Pair: 61-62

@@ -1,0 +1,35 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - ....1....
+  - ..7...4..
+  - .........
+  - .6.....8.
+  - .........
+  - ..3...5..
+  - ....2....
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- X_Pair: 43-44
+- V_Pair: 44-34
+- V_Pair: 46-36
+- X_Pair: 47-46
+- X_Pair: 67-66
+- V_Pair: 66-76
+- V_Pair: 64-74
+- X_Pair: 63-64
+- X_Pair: 59-49
+- V_Pair: 51-61
+- X_Pair: 41-31
+- X_Pair: 79-69
+- X_Pair: 71-81
+- X_Pair: 29-39
+- V_Pair: 22-32
+- V_Pair: 78-88
+- X_Pair: 27-26

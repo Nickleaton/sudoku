@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 9..7.2..3
+  - .......1.
+  - .........
+  - 4..9....2
+  - .9..8..6.
+  - 1....7..4
+  - .........
+  - .4.......
+  - 5..2.4..8
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 984712653
+  - 672345819
+  - 315698427
+  - 458961732
+  - 297483561
+  - 136527984
+  - 721859346
+  - 849136275
+  - 563274198
+- - LittleKiller: T4C=14
+  - LittleKiller: T5C=14
+  - LittleKiller: T6C=14
+  - LittleKiller: T7C=14
+  - LittleKiller: B3A=14
+  - LittleKiller: B4A=14
+  - LittleKiller: B5A=14
+  - LittleKiller: B6A=14
+  - LittleKiller: L3=14
+  - LittleKiller: L4=14
+  - LittleKiller: L5=14
+  - LittleKiller: R7A=14
+  - LittleKiller: R6A=14
+  - LittleKiller: R5A=14

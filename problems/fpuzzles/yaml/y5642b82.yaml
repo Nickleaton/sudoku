@@ -1,0 +1,22 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - ...8...1.
+  - 7........
+  - .........
+  - ........5
+  - .........
+  - 6........
+  - .........
+  - ........4
+  - .2...3...
+- Columns: 
+- Rows: 
+- Boxes: 
+- SimpleThermometer: 44, 43, 32, 33, 34, 23, 22
+- SimpleThermometer: 88, 87, 76, 77, 78, 67, 66
+- SimpleThermometer: 75, 74, 63, 64, 65, 54, 53
+- SimpleThermometer: 56, 45, 35, 36, 47, 57

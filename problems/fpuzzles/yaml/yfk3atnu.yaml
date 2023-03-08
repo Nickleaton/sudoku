@@ -1,0 +1,58 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- SumArrow: 13=12, 11
+- SumArrow: 16=15, 14
+- SumArrow: 61=51, 41, 31
+- SumArrow: 19=29, 39, 49
+- SumArrow: 91=92, 93, 94
+- SumArrow: 99=89, 79
+- SumArrow: 32=42, 43
+- SumArrow: 78=68, 67
+- SumArrow: 59=58, 57
+- SumArrow: 52=53, 54
+- - ConsecutivePair: 12-11
+  - ConsecutivePair: 13-12
+  - ConsecutivePair: 13-14
+  - ConsecutivePair: 15-14
+  - ConsecutivePair: 17-16
+  - ConsecutivePair: 18-17
+  - ConsecutivePair: 19-18
+  - ConsecutivePair: 41-51
+  - ConsecutivePair: 31-41
+  - ConsecutivePair: 21-31
+  - ConsecutivePair: 29-39
+  - ConsecutivePair: 49-39
+  - ConsecutivePair: 71-61
+  - ConsecutivePair: 71-81
+  - ConsecutivePair: 81-91
+  - ConsecutivePair: 92-93
+  - ConsecutivePair: 94-93
+  - ConsecutivePair: 94-95
+  - ConsecutivePair: 95-96
+  - ConsecutivePair: 98-97
+  - ConsecutivePair: 99-98
+  - ConsecutivePair: 89-79
+  - ConsecutivePair: 89-88
+  - ConsecutivePair: 87-88
+  - ConsecutivePair: 86-87
+  - ConsecutivePair: 22-21
+  - ConsecutivePair: 22-23
+  - ConsecutivePair: 23-24
+  - ConsecutivePair: 43-42
+  - ConsecutivePair: 66-67

@@ -1,0 +1,48 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 3........
+  - .........
+  - ...3.....
+  - ..3......
+  - .........
+  - ......3..
+  - .....3...
+  - .........
+  - ........3
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 18-28
+  - ConsecutivePair: 39-29
+  - ConsecutivePair: 92-82
+  - ConsecutivePair: 81-71
+  - ConsecutivePair: 71-61
+  - ConsecutivePair: 93-94
+  - ConsecutivePair: 16-17
+  - ConsecutivePair: 39-49
+  - ConsecutivePair: 45-44
+  - ConsecutivePair: 56-66
+  - ConsecutivePair: 66-65
+  - ConsecutivePair: 63-64
+  - ConsecutivePair: 46-36
+  - ConsecutivePair: 62-72
+  - ConsecutivePair: 27-26
+  - ConsecutivePair: 24-25
+  - ConsecutivePair: 95-96
+  - ConsecutivePair: 41-42
+  - ConsecutivePair: 14-13
+  - ConsecutivePair: 13-12
+  - ConsecutivePair: 14-24
+  - ConsecutivePair: 88-98
+  - ConsecutivePair: 36-37
+- - KropkiPair: 17-18
+  - KropkiPair: 29-28
+  - KropkiPair: 92-93
+  - KropkiPair: 81-82
+  - KropkiPair: 44-54
+  - KropkiPair: 85-86
+  - KropkiPair: 69-79

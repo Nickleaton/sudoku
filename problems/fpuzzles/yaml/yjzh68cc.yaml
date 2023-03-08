@@ -1,0 +1,38 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Killer: 3=11, 12
+- Killer: 7=13, 23
+- Killer: 6=33, 34
+- Killer: 5=25, 35
+- Killer: 9=15, 16
+- Killer: 7=17, 27
+- Killer: 7=28, 29
+- Killer: 4=39, 49
+- Killer: 5=58, 59
+- Killer: 5=56, 57
+- Killer: 17=98, 99
+- Killer: 10=87, 97
+- Killer: 10=76, 77
+- Killer: 10=75, 85
+- Killer: 13=94, 95
+- Killer: 17=53, 54
+- Killer: 10=83, 93
+- Killer: 12=51, 52
+- Killer: 12=61, 71
+- Killer: 12=81, 82

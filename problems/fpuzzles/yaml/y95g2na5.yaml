@@ -1,0 +1,25 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .1.....6.
+  - .........
+  - .........
+  - .........
+  - .25...93.
+  - ...7.2...
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- UniqueRegion: 13, 14, 15, 16, 17
+- UniqueRegion: 25, 35
+- UniqueRegion: 44, 45, 46, 55
+- UniqueRegion: 63, 64, 65, 66, 67, 74, 76
+- UniqueRegion: 26, 27, 28, 36, 38, 48, 57, 58
+- UniqueRegion: 84, 86, 93, 94, 95, 96, 97
+- UniqueRegion: 23, 24, 31, 32, 33, 41, 51

@@ -1,0 +1,32 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ...9.7...
+  - ....2....
+  - ...6.3...
+  - 5.3......
+  - .4.......
+  - 1.7......
+  - ......4.2
+  - .......6.
+  - ......1.5
+- Columns: 
+- Rows: 
+- Boxes: 
+- - ConsecutivePair: 42-32
+  - ConsecutivePair: 32-22
+  - ConsecutivePair: 24-23
+  - ConsecutivePair: 23-22
+  - ConsecutivePair: 92-93
+  - ConsecutivePair: 17-18
+  - ConsecutivePair: 67-77
+  - ConsecutivePair: 77-76
+  - ConsecutivePair: 71-81
+  - ConsecutivePair: 81-91
+- - KropkiPair: 84-85
+  - KropkiPair: 84-83
+  - KropkiPair: 58-48
+  - KropkiPair: 38-48
