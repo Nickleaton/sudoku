@@ -1,0 +1,357 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "cage": [
+            {
+                "cells": [
+                    "R1C4",
+                    "R1C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R1C6",
+                    "R1C7",
+                    "R1C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R1C9",
+                    "R2C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R2C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "1"
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R3C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R5C1",
+                    "R6C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R8C1",
+                    "R9C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R9C2",
+                    "R9C3",
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R9C5",
+                    "R9C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R8C6",
+                    "R8C7",
+                    "R8C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R7C9",
+                    "R8C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R4C9",
+                    "R5C9",
+                    "R6C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R3C5",
+                    "R4C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R6C5",
+                    "R7C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C5",
+                    "R5C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "16"
+            },
+            {
+                "cells": [
+                    "R5C3",
+                    "R6C3",
+                    "R7C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R3C7",
+                    "R4C7",
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Place a number from 1-7 into some cells of the grid so that every row, column and box contains each number exactly once, leaving two empty cells. Empty cells must not share an edge with each other. Numbers in a cage must add up to the given total.",
+        "size": 9,
+        "solution": [
+            7,
+            2,
+            6,
+            4,
+            5,
+            0,
+            1,
+            3,
+            0,
+            4,
+            0,
+            1,
+            0,
+            3,
+            2,
+            6,
+            7,
+            5,
+            0,
+            5,
+            3,
+            1,
+            7,
+            6,
+            0,
+            4,
+            2,
+            2,
+            7,
+            5,
+            0,
+            6,
+            1,
+            3,
+            0,
+            4,
+            1,
+            3,
+            0,
+            7,
+            4,
+            5,
+            0,
+            2,
+            6,
+            0,
+            6,
+            4,
+            2,
+            0,
+            3,
+            5,
+            1,
+            7,
+            6,
+            1,
+            0,
+            3,
+            2,
+            4,
+            7,
+            5,
+            0,
+            5,
+            4,
+            7,
+            6,
+            1,
+            0,
+            2,
+            0,
+            3,
+            3,
+            0,
+            2,
+            5,
+            0,
+            7,
+            4,
+            6,
+            1
+        ],
+        "title": "28 Jun, 2022: Killer 007"
+    },
+    "url": "https://f-puzzles.com/?id=2akv2h95"
+}

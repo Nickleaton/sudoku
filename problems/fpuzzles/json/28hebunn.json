@@ -1,0 +1,172 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "c": "#A8A8A8",
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. A number in a grey cell must be larger than both the first cell in its row and the first cell in its column.",
+        "size": 9,
+        "title": "Jul 19, 2022: First Impression"
+    },
+    "url": "https://f-puzzles.com/?id=28hebunn"
+}

@@ -1,0 +1,647 @@
+{
+    "data": {
+        "author": "Bill Murphy",
+        "circle": [
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R1C3",
+                    "R1C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R1C3",
+                    "R2C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "12",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R1C5",
+                    "R1C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "10",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R1C6",
+                    "R2C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "16",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R2C4",
+                    "R3C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R3C4",
+                    "R3C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "10",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R2C1",
+                    "R3C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R3C2",
+                    "R3C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R4C3",
+                    "R4C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R4C3",
+                    "R5C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "14",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R5C1",
+                    "R6C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "10",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R6C1",
+                    "R6C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R6C7",
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R6C7",
+                    "R6C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R4C8",
+                    "R4C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "14",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R4C9",
+                    "R5C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R7C8",
+                    "R7C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R7C9",
+                    "R8C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "12",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R8C7",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R9C8",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "10",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R7C5",
+                    "R7C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "12",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R7C6",
+                    "R8C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R9C4",
+                    "R8C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "12",
+                "width": 0.3
+            },
+            {
+                "baseC": "#BABABA",
+                "cells": [
+                    "R9C5",
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "value": "10",
+                "width": 0.3
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku Rules Apply. Digits in dots give the sum of the cells they connect.",
+        "size": 9,
+        "solution": [
+            6,
+            2,
+            4,
+            5,
+            1,
+            9,
+            7,
+            3,
+            8,
+            1,
+            9,
+            8,
+            6,
+            3,
+            7,
+            5,
+            2,
+            4,
+            3,
+            5,
+            7,
+            2,
+            8,
+            4,
+            6,
+            9,
+            1,
+            7,
+            3,
+            5,
+            1,
+            4,
+            2,
+            9,
+            8,
+            6,
+            8,
+            1,
+            9,
+            7,
+            5,
+            6,
+            3,
+            4,
+            2,
+            2,
+            4,
+            6,
+            3,
+            9,
+            8,
+            1,
+            5,
+            7,
+            4,
+            6,
+            2,
+            9,
+            7,
+            5,
+            8,
+            1,
+            3,
+            5,
+            8,
+            3,
+            4,
+            6,
+            1,
+            2,
+            7,
+            9,
+            9,
+            7,
+            1,
+            8,
+            2,
+            3,
+            4,
+            6,
+            5
+        ],
+        "title": "Sumdotty Once Told Me",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=2huhazjn"
+}

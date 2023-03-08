@@ -1,0 +1,294 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. If a star contains an odd number then the (up to) four numbers around it must be even, and if a star contains an even number then the (up to) four numbers around it must be odd.",
+        "size": 9,
+        "text": [
+            {
+                "cells": [
+                    "R5C6"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R6C5"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R5C4"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R4C5"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R4C2"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R3C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R2C4"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R6C8"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R7C7"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R8C6"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R9C3"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R8C2"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R3C9"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R2C8"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R1C7"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            },
+            {
+                "cells": [
+                    "R7C1"
+                ],
+                "fontC": "#CCCCCC",
+                "size": 1,
+                "value": "\u2606"
+            }
+        ],
+        "title": "Odd-Even Star Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2crwohgu"
+}

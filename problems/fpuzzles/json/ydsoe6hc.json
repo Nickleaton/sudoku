@@ -1,0 +1,194 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                }
+            ]
+        ],
+        "palindrome": [
+            {
+                "lines": [
+                    [
+                        "R1C3",
+                        "R1C4",
+                        "R2C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R2C2",
+                        "R2C3",
+                        "R3C3"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C3",
+                        "R4C2",
+                        "R5C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C3",
+                        "R6C3",
+                        "R6C4"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R4C5",
+                        "R4C6",
+                        "R5C6"
+                    ]
+                ]
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along a grey line must form a palindrome (read the same from either direction).",
+        "size": 6,
+        "title": "Oct. 9, 2021: B1G3 Palindrome",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=ydsoe6hc"
+}

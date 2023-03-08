@@ -1,0 +1,458 @@
+{
+    "data": {
+        "author": "clover!",
+        "cage": [
+            {
+                "cells": [
+                    "R2C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R2C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R1C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R1C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "2"
+            },
+            {
+                "cells": [
+                    "R1C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R2C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R5C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R5C7"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R4C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R6C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R5C3"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R5C1"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R8C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R9C2"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R9C5"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "4"
+            },
+            {
+                "cells": [
+                    "R7C6"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R8C8"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R8C9"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R3C4"
+                ],
+                "fontC": "#000000",
+                "outlineC": "#000000",
+                "value": "6"
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. The small digit in the top left corner of a cage is either the correct digit that goes in that cell, or it is one higher or one lower than the correct digit. ",
+        "size": 9,
+        "title": "Dec 6, 2021: True or Lie",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=y6hmtvls"
+}

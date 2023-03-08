@@ -1,0 +1,507 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "killercage": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R2C4"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R3C5",
+                    "R3C6"
+                ],
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R8C8"
+                ],
+                "value": "17"
+            },
+            {
+                "cells": [
+                    "R7C5",
+                    "R7C6"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R6C3",
+                    "R6C4"
+                ],
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R5C2"
+                ],
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R1C6"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R2C7",
+                    "R2C8"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R4C7",
+                    "R4C8"
+                ],
+                "value": "11"
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C6"
+                ],
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R6C7",
+                    "R6C8"
+                ],
+                "value": "12"
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R3C2"
+                ],
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R4C3",
+                    "R4C4"
+                ],
+                "value": "3"
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R7C2"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R8C3",
+                    "R8C4"
+                ],
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R9C5",
+                    "R9C6"
+                ],
+                "value": "11"
+            }
+        ],
+        "line": [
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R1C1",
+                        "R1C2",
+                        "R2C3",
+                        "R2C4",
+                        "R3C5",
+                        "R3C6",
+                        "R4C7",
+                        "R4C8",
+                        "R5C9"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            },
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R3C1",
+                        "R3C2",
+                        "R4C3",
+                        "R4C4",
+                        "R5C5",
+                        "R5C6",
+                        "R6C7",
+                        "R6C8",
+                        "R7C9"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            },
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R5C1",
+                        "R5C2",
+                        "R6C3",
+                        "R6C4",
+                        "R7C5",
+                        "R7C6",
+                        "R8C7",
+                        "R8C8",
+                        "R9C9"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            },
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R1C5",
+                        "R1C6",
+                        "R2C7",
+                        "R2C8",
+                        "R3C9"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            },
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R7C1",
+                        "R7C2",
+                        "R8C3",
+                        "R8C4",
+                        "R9C5",
+                        "R9C6"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            },
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R8C1",
+                        "R9C2"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            },
+            {
+                "fromConstraint": "Renban",
+                "lines": [
+                    [
+                        "R8C6",
+                        "R9C7"
+                    ]
+                ],
+                "outlineC": "#F067F0",
+                "width": 0.4
+            }
+        ],
+        "renban": [
+            {
+                "lines": [
+                    [
+                        "R1C1",
+                        "R1C2",
+                        "R2C3",
+                        "R2C4",
+                        "R3C5",
+                        "R3C6",
+                        "R4C7",
+                        "R4C8",
+                        "R5C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R3C1",
+                        "R3C2",
+                        "R4C3",
+                        "R4C4",
+                        "R5C5",
+                        "R5C6",
+                        "R6C7",
+                        "R6C8",
+                        "R7C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C1",
+                        "R5C2",
+                        "R6C3",
+                        "R6C4",
+                        "R7C5",
+                        "R7C6",
+                        "R8C7",
+                        "R8C8",
+                        "R9C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R1C5",
+                        "R1C6",
+                        "R2C7",
+                        "R2C8",
+                        "R3C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R7C1",
+                        "R7C2",
+                        "R8C3",
+                        "R8C4",
+                        "R9C5",
+                        "R9C6"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C1",
+                        "R9C2"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R8C6",
+                        "R9C7"
+                    ]
+                ]
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits in cages cannot repeat and must sum to the total given. Digits along purple renban lines must form a non-repeating consecutive set, in any order - for example, a 4-cell renban line could be 4352, but not 5679 or 2312.",
+        "size": 9,
+        "solution": [
+            2,
+            1,
+            4,
+            5,
+            3,
+            6,
+            7,
+            9,
+            8,
+            8,
+            9,
+            3,
+            4,
+            1,
+            7,
+            2,
+            5,
+            6,
+            6,
+            7,
+            5,
+            2,
+            9,
+            8,
+            1,
+            3,
+            4,
+            3,
+            8,
+            2,
+            1,
+            7,
+            4,
+            5,
+            6,
+            9,
+            4,
+            6,
+            1,
+            8,
+            5,
+            9,
+            3,
+            2,
+            7,
+            9,
+            5,
+            7,
+            3,
+            6,
+            2,
+            8,
+            4,
+            1,
+            5,
+            4,
+            8,
+            9,
+            2,
+            1,
+            6,
+            7,
+            3,
+            1,
+            3,
+            6,
+            7,
+            4,
+            5,
+            9,
+            8,
+            2,
+            7,
+            2,
+            9,
+            6,
+            8,
+            3,
+            4,
+            1,
+            5
+        ],
+        "title": "10/21/22: Sum Renban Or Other"
+    },
+    "url": "https://f-puzzles.com/?id=2bkbttr7"
+}

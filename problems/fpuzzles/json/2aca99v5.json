@@ -1,0 +1,264 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. If two cells are separated by a V, then they must contain digits adding to 5. If two cells are separated by an X, then they must contain digits adding to 10. Two cells without any marking between them may or may not contain digits adding to 5 or 10.",
+        "size": 9,
+        "title": "Nov 13, 2021: XV Pairs Sudoku",
+        "xv": [
+            {
+                "cells": [
+                    "R4C3",
+                    "R4C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R4C6",
+                    "R3C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R6C7",
+                    "R6C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R7C4",
+                    "R6C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R4C4",
+                    "R3C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R4C7",
+                    "R4C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R7C6"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R6C3",
+                    "R6C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R3C5",
+                    "R3C4"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R5C7",
+                    "R4C7"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R7C5"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R6C3",
+                    "R5C3"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R1C9",
+                    "R2C9"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R9C9",
+                    "R9C8"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R8C1",
+                    "R9C1"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R1C8",
+                    "R1C9"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R9C2",
+                    "R9C1"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R9C4",
+                    "R9C5"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R1C6",
+                    "R1C5"
+                ],
+                "value": "X"
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=2aca99v5"
+}

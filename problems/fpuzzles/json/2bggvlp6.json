@@ -1,0 +1,321 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "difference": [
+            {
+                "cells": [
+                    "R4C5",
+                    "R4C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C6",
+                    "R4C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C7",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C7",
+                    "R6C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C7",
+                    "R6C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C5",
+                    "R4C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R6C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C4",
+                    "R3C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R7C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C9",
+                    "R7C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R3C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C4",
+                    "R2C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R1C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C2",
+                    "R1C3"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R4C3",
+                    "R5C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R6C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C5",
+                    "R6C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C2",
+                    "R4C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C2",
+                    "R3C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C5",
+                    "R6C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R3C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R7C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R8C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R8C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R3C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R9C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C7",
+                    "R9C8"
+                ]
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Cells separated by a white dot must contain consecutive numbers. Cells separated by a black dot must contain numbers in a 1:2 ratio. Cells without markings may or may not contain numbers with such a relationship.",
+        "size": 9,
+        "title": "Jun 3, 2022: Kropki Pairs"
+    },
+    "url": "https://f-puzzles.com/?id=2bggvlp6"
+}

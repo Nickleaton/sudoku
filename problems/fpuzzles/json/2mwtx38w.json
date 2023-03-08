@@ -1,0 +1,199 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "c": "#A8A8A8"
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {},
+                {
+                    "c": "#A8A8A8"
+                },
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. If a grey cell has two grey cells immediately diagonally beneath it, then the number in the top cell must be the difference of the numbers in the bottom two cells.",
+        "size": 9,
+        "title": "Pyramid Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2mwtx38w"
+}

@@ -1,0 +1,218 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "clone": [
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R2C4",
+                    "R3C2",
+                    "R3C3",
+                    "R3C4",
+                    "R4C2",
+                    "R4C3",
+                    "R4C4"
+                ],
+                "cloneCells": [
+                    "R6C6",
+                    "R6C7",
+                    "R6C8",
+                    "R7C6",
+                    "R7C7",
+                    "R7C8",
+                    "R8C6",
+                    "R8C7",
+                    "R8C8"
+                ]
+            }
+        ],
+        "extraregion": [
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R2C4",
+                    "R3C2",
+                    "R3C3",
+                    "R3C4",
+                    "R4C2",
+                    "R4C3",
+                    "R4C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R6C7",
+                    "R6C8",
+                    "R7C6",
+                    "R7C7",
+                    "R7C8",
+                    "R8C6",
+                    "R8C7",
+                    "R8C8"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Each grey region contains the numbers from 1 to 9, and both grey regions contain exactly the same numbers in the same positions.",
+        "size": 9,
+        "title": "Jan 22, 2022: Clone Regions"
+    },
+    "url": "https://f-puzzles.com/?id=yaqk79ak"
+}

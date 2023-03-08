@@ -1,0 +1,223 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 2
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {}
+            ]
+        ],
+        "maximum": [
+            {
+                "cell": "R3C8"
+            },
+            {
+                "cell": "R6C7"
+            },
+            {
+                "cell": "R6C5"
+            },
+            {
+                "cell": "R4C5"
+            },
+            {
+                "cell": "R4C3"
+            },
+            {
+                "cell": "R5C9"
+            },
+            {
+                "cell": "R5C1"
+            },
+            {
+                "cell": "R3C4"
+            },
+            {
+                "cell": "R7C6"
+            },
+            {
+                "cell": "R7C9"
+            },
+            {
+                "cell": "R3C1"
+            },
+            {
+                "cell": "R7C2"
+            },
+            {
+                "cell": "R1C2"
+            },
+            {
+                "cell": "R9C8"
+            },
+            {
+                "cell": "R1C9"
+            },
+            {
+                "cell": "R9C1"
+            },
+            {
+                "cell": "R5C5"
+            },
+            {
+                "cell": "R6C4"
+            },
+            {
+                "cell": "R4C6"
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Wherever a shaded cell and an unshaded cell are adjacent, the shaded cell must contain a larger value than the unshaded cell.",
+        "size": 9,
+        "title": "Nov 16, 2021: Fortress Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=28c9ye3n"
+}

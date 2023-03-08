@@ -1,0 +1,488 @@
+{
+    "data": {
+        "author": "Sam. In disguise.",
+        "difference": [
+            {
+                "cells": [
+                    "R7C2",
+                    "R8C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R9C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R1C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C8",
+                    "R2C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R4C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R6C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R6C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R8C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C3",
+                    "R2C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C3",
+                    "R3C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R3C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C3",
+                    "R9C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C6",
+                    "R1C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C5",
+                    "R8C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C8",
+                    "R9C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C3",
+                    "R6C4"
+                ]
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                }
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R2C8",
+                    "R2C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C9",
+                    "R2C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R8C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C3",
+                    "R8C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C5",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C7",
+                    "R7C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C8",
+                    "R7C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R3C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C3",
+                    "R3C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C9",
+                    "R7C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C6",
+                    "R4C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R1C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C6",
+                    "R9C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C1",
+                    "R6C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C8",
+                    "R4C9"
+                ]
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Digits separated by a white dot must be consecutive. Digits separated by a black dot must be in a 1:2 ratio. Digits not separated by a dot may be consecutive, in a 1:2 ratio, or neither.",
+        "size": 9,
+        "title": "Oct 13, 2021: Kropki Pairs",
+        "truecandidatesoptions": [
+            "colored"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yjxz247x"
+}

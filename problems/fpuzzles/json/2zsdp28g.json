@@ -1,0 +1,233 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R4C2",
+                        "R5C2",
+                        "R6C2",
+                        "R7C3",
+                        "R8C4",
+                        "R8C5",
+                        "R8C6",
+                        "R7C7",
+                        "R6C8",
+                        "R5C8",
+                        "R4C8",
+                        "R3C7",
+                        "R2C6",
+                        "R2C5",
+                        "R2C4",
+                        "R3C3"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R3C3",
+                        "R4C2"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            },
+            {
+                "lines": [
+                    [
+                        "R4C4",
+                        "R5C4",
+                        "R6C4",
+                        "R6C5",
+                        "R6C6",
+                        "R5C6",
+                        "R4C6"
+                    ]
+                ],
+                "outlineC": "#CCCCCC",
+                "width": 0.5
+            }
+        ],
+        "ruleset": "Normal Sudoku rules apply. Along each grey line, the sequence of numbers must alternate between increasing and decreasing.",
+        "size": 9,
+        "title": "Aug 22, 22: Up and Down Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=2zsdp28g"
+}

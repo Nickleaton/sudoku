@@ -1,0 +1,352 @@
+{
+    "data": {
+        "author": "clover!",
+        "circle": [
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C2",
+                    "R1C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "2",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C4",
+                    "R2C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R3C4",
+                    "R3C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C3",
+                    "R4C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C5",
+                    "R5C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C6",
+                    "R5C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "2",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C6",
+                    "R6C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "5",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R7C6",
+                    "R7C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C7",
+                    "R8C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C6",
+                    "R1C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "35",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R9C4",
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "32",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R9C8",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "2",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C2",
+                    "R6C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "63",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C7",
+                    "R4C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "48",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R3C6",
+                    "R3C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "24",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R7C3",
+                    "R7C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "45",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C9",
+                    "R2C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "28",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C1",
+                    "R9C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "7",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C1",
+                    "R4C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "15",
+                "width": 0.5
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C9",
+                    "R5C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.5,
+                "outlineC": "#000000",
+                "value": "27",
+                "width": 0.5
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. The value in a white circle is the product of the digits in the two cells adjacent to that circle. ",
+        "size": 9,
+        "title": "Dec 1, 2021: Product Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=y6m7petj"
+}

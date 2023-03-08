@@ -1,0 +1,212 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ],
+            [
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {
+                    "highlight": "#FFD0D0"
+                },
+                {},
+                {},
+                {},
+                {
+                    "highlight": "#FFD0D0"
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. A digit placed in column 1 indicates the position of the 1 within that row. A digit placed within column 5 indicates the position of the 5 within that row. A digit placed within column 9 indicates the position of the 9 within that row.",
+        "size": 9,
+        "title": "August 20, 2021: 159 Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=yh53xjbb"
+}

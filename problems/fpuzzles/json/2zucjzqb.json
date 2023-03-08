@@ -1,0 +1,324 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "cage": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R2C1",
+                    "R3C1",
+                    "R4C1",
+                    "R5C1",
+                    "R6C1",
+                    "R7C1",
+                    "R8C1",
+                    "R9C1",
+                    "R1C5",
+                    "R2C5",
+                    "R3C5",
+                    "R4C5",
+                    "R5C5",
+                    "R6C5",
+                    "R7C5",
+                    "R8C5",
+                    "R9C5",
+                    "R1C9",
+                    "R2C9",
+                    "R3C9",
+                    "R4C9",
+                    "R5C9",
+                    "R6C9",
+                    "R7C9",
+                    "R8C9",
+                    "R9C9"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "Column Indexer",
+                "outlineC": "#C77C7C"
+            }
+        ],
+        "columnindexer": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R2C1",
+                    "R3C1",
+                    "R4C1",
+                    "R5C1",
+                    "R6C1",
+                    "R7C1",
+                    "R8C1",
+                    "R9C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5",
+                    "R3C5",
+                    "R4C5",
+                    "R5C5",
+                    "R6C5",
+                    "R7C5",
+                    "R8C5",
+                    "R9C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C9",
+                    "R2C9",
+                    "R3C9",
+                    "R4C9",
+                    "R5C9",
+                    "R6C9",
+                    "R7C9",
+                    "R8C9",
+                    "R9C9"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Each digit in column 1 indicates the location of the 1 in that row. For example, a 2 in r1c1 would indicate that the 1 in row 1 is in the second cell (r1c2). Likewise, each digit in columns 5 and 9 indicates the location of 5 and 9 respectively.",
+        "size": 9,
+        "solution": [
+            1,
+            6,
+            5,
+            7,
+            3,
+            4,
+            2,
+            8,
+            9,
+            4,
+            3,
+            2,
+            1,
+            8,
+            9,
+            7,
+            5,
+            6,
+            7,
+            8,
+            9,
+            2,
+            6,
+            5,
+            1,
+            4,
+            3,
+            5,
+            7,
+            3,
+            4,
+            1,
+            2,
+            6,
+            9,
+            8,
+            8,
+            9,
+            6,
+            3,
+            5,
+            7,
+            4,
+            1,
+            2,
+            2,
+            1,
+            4,
+            8,
+            9,
+            6,
+            3,
+            7,
+            5,
+            3,
+            2,
+            1,
+            5,
+            4,
+            8,
+            9,
+            6,
+            7,
+            6,
+            5,
+            7,
+            9,
+            2,
+            1,
+            8,
+            3,
+            4,
+            9,
+            4,
+            8,
+            6,
+            7,
+            3,
+            5,
+            2,
+            1
+        ],
+        "title": "Simply Having A Wonderful 159"
+    },
+    "url": "https://f-puzzles.com/?id=2zucjzqb"
+}

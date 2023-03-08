@@ -1,0 +1,534 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "circle": [
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C5",
+                    "R4C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C6",
+                    "R4C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "5",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C6",
+                    "R6C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "7",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C4",
+                    "R6C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "9",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "2",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C2",
+                    "R1C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C3",
+                    "R2C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R3C3",
+                    "R2C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "5",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C9",
+                    "R5C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C2",
+                    "R5C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "5",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R4C2",
+                    "R4C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C8",
+                    "R6C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R6C8",
+                    "R5C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R7C7",
+                    "R8C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C7",
+                    "R8C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "5",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R9C8",
+                    "R8C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R9C9",
+                    "R9C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "7",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C2",
+                    "R7C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C1",
+                    "R8C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "7",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C8",
+                    "R3C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "2",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C8",
+                    "R2C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "6",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R1C6",
+                    "R1C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "5",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R9C3",
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "4",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R5C2",
+                    "R5C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "3",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R2C7",
+                    "R1C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "8",
+                "width": 0.35
+            },
+            {
+                "baseC": "#FFFFFF",
+                "cells": [
+                    "R8C3",
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.35,
+                "outlineC": "#000000",
+                "value": "9",
+                "width": 0.35
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. A number in a white circle indicates the larger of the two numbers that it touches.",
+        "size": 9,
+        "solution": [
+            2,
+            1,
+            8,
+            6,
+            4,
+            3,
+            5,
+            7,
+            9,
+            9,
+            3,
+            4,
+            5,
+            2,
+            7,
+            8,
+            1,
+            6,
+            6,
+            7,
+            5,
+            1,
+            8,
+            9,
+            4,
+            2,
+            3,
+            8,
+            5,
+            6,
+            2,
+            3,
+            4,
+            7,
+            9,
+            1,
+            3,
+            2,
+            7,
+            9,
+            1,
+            5,
+            6,
+            4,
+            8,
+            4,
+            9,
+            1,
+            8,
+            7,
+            6,
+            2,
+            3,
+            5,
+            5,
+            6,
+            2,
+            7,
+            9,
+            1,
+            3,
+            8,
+            4,
+            7,
+            4,
+            9,
+            3,
+            6,
+            8,
+            1,
+            5,
+            2,
+            1,
+            8,
+            3,
+            4,
+            5,
+            2,
+            9,
+            6,
+            7
+        ],
+        "title": "Jul 22, 2022: Greater Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=23s4jb5o"
+}

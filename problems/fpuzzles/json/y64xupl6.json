@@ -1,0 +1,310 @@
+{
+    "data": {
+        "arrow": [
+            {
+                "cells": [
+                    "R1C4"
+                ],
+                "lines": [
+                    [
+                        "R1C4",
+                        "R1C5",
+                        "R1C6"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C6"
+                ],
+                "lines": [
+                    [
+                        "R9C6",
+                        "R9C5",
+                        "R9C4"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R4C5"
+                ],
+                "lines": [
+                    [
+                        "R4C5",
+                        "R5C5",
+                        "R6C5"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R4C9"
+                ],
+                "lines": [
+                    [
+                        "R4C9",
+                        "R5C9",
+                        "R6C9"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R4C1"
+                ],
+                "lines": [
+                    [
+                        "R4C1",
+                        "R5C1",
+                        "R6C1"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R1C1"
+                ],
+                "lines": [
+                    [
+                        "R1C1",
+                        "R1C2",
+                        "R1C3"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C9"
+                ],
+                "lines": [
+                    [
+                        "R9C9",
+                        "R9C8",
+                        "R9C7"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R2C8"
+                ],
+                "lines": [
+                    [
+                        "R2C8",
+                        "R3C8",
+                        "R3C9"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C2"
+                ],
+                "lines": [
+                    [
+                        "R8C2",
+                        "R7C2",
+                        "R7C1"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3"
+                ],
+                "lines": [
+                    [
+                        "R2C3",
+                        "R3C3",
+                        "R3C2",
+                        "R4C2",
+                        "R4C3"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R8C8"
+                ],
+                "lines": [
+                    [
+                        "R8C8",
+                        "R7C8",
+                        "R7C7",
+                        "R6C7",
+                        "R6C8"
+                    ]
+                ]
+            }
+        ],
+        "author": "clover!",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        5
+                    ],
+                    "given": true,
+                    "value": 5
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "centerPencilMarks": [
+                        1
+                    ],
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "centerPencilMarks": [
+                        5
+                    ],
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        1
+                    ],
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Standard sudoku rules apply.\n\nDigits along an arrow sum to the value in the corresponding circle. Two-digit circles should be read as two-digit numbers from left to right. ",
+        "size": 9,
+        "title": "June 10, 2021: Arrow"
+    },
+    "url": "https://f-puzzles.com/?id=y64xupl6"
+}

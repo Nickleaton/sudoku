@@ -1,0 +1,464 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "disabledlogic": [
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 5
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "c": "#A8A8A8",
+                    "cArray": [
+                        "#A8A8A8"
+                    ],
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 9
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 1
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Each shaded region contains exactly four distinct digits.",
+        "size": 9,
+        "title": "Sep 8, 2021: Antiwindoku",
+        "truecandidatesoptions": [
+            "colored"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yzdl3db3"
+}

@@ -1,0 +1,709 @@
+{
+    "data": {
+        "author": "clover!",
+        "circle": [
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R2C6",
+                    "R2C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R2C7",
+                    "R3C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R3C8",
+                    "R3C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R4C8",
+                    "R3C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R4C9",
+                    "R4C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R1C6",
+                    "R2C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R5C9",
+                    "R4C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R3C5",
+                    "R4C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R4C4",
+                    "R4C5"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R5C4",
+                    "R4C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R5C3",
+                    "R5C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R5C3",
+                    "R6C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R6C2",
+                    "R6C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R7C2",
+                    "R6C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R7C1",
+                    "R7C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R9C6",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R9C8",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            },
+            {
+                "baseC": "#20FFFF",
+                "cells": [
+                    "R9C8",
+                    "R8C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.3,
+                "outlineC": "#000000",
+                "width": 0.3
+            }
+        ],
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 4
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 6
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 3
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 8
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 7
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "given": true,
+                    "givenPencilMarks": null,
+                    "value": 2
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "rectangle": [
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R4C1",
+                    "R5C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R4C2",
+                    "R4C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R3C2",
+                    "R4C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R3C3",
+                    "R3C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R3C3",
+                    "R2C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R2C4",
+                    "R2C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R1C4",
+                    "R2C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R1C5",
+                    "R1C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R1C8",
+                    "R1C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R4C6",
+                    "R5C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R5C7",
+                    "R5C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R5C7",
+                    "R6C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R6C8",
+                    "R6C7"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R7C8",
+                    "R6C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R7C9",
+                    "R7C8"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R9C2",
+                    "R8C2"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R9C2",
+                    "R9C3"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            },
+            {
+                "baseC": "#FF9000",
+                "cells": [
+                    "R9C3",
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.25,
+                "outlineC": "#000000",
+                "width": 0.25
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply.\n\nIf an orange square appears between two cells, then those two digits must sum to 15 or more. If a blue circle appears between two cells, then those two digits must sum to 5 or less. Not all possible squares/circles are necessarily marked. ",
+        "size": 9,
+        "title": "Dec 30, 2021: High/Low Sums",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=y3ll2m5s"
+}

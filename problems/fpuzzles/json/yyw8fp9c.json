@@ -1,0 +1,270 @@
+{
+    "data": {
+        "author": "Tyrgannus",
+        "difference": [
+            {
+                "cells": [
+                    "R4C5",
+                    "R3C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C5",
+                    "R8C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C3",
+                    "R5C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C6",
+                    "R5C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C9",
+                    "R5C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C6",
+                    "R9C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C1",
+                    "R7C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R8C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C1",
+                    "R2C1"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                }
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C5",
+                    "R3C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C5",
+                    "R7C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R5C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C7",
+                    "R5C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C3",
+                    "R1C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C9",
+                    "R3C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C9",
+                    "R3C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C9",
+                    "R8C9"
+                ]
+            }
+        ],
+        "ruleset": "-Normal sudoku rules apply\n\n-Cells separated by a black dot have a 1:2 ratio. Cells separated by a white dot have consecutive digits. Not all dots are given.",
+        "size": 9,
+        "title": "January 3rd, 2022 Kropki Pairs"
+    },
+    "url": "https://f-puzzles.com/?id=yyw8fp9c"
+}

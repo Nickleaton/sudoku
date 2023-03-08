@@ -1,0 +1,419 @@
+{
+    "data": {
+        "arrow": [
+            {
+                "cells": [
+                    "R2C2"
+                ],
+                "lines": [
+                    [
+                        "R2C2",
+                        "R3C2",
+                        "R4C2"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4"
+                ],
+                "lines": [
+                    [
+                        "R5C4",
+                        "R5C3",
+                        "R5C2"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C6"
+                ],
+                "lines": [
+                    [
+                        "R8C6",
+                        "R7C6",
+                        "R6C6"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R5C6"
+                ],
+                "lines": [
+                    [
+                        "R5C6",
+                        "R5C7",
+                        "R5C8"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C8"
+                ],
+                "lines": [
+                    [
+                        "R8C8",
+                        "R7C8",
+                        "R6C8"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R2C4"
+                ],
+                "lines": [
+                    [
+                        "R2C4",
+                        "R3C4",
+                        "R4C4"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R7C1"
+                ],
+                "lines": [
+                    [
+                        "R7C1",
+                        "R8C1",
+                        "R9C1"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R3C9"
+                ],
+                "lines": [
+                    [
+                        "R3C9",
+                        "R2C9",
+                        "R1C9"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R7C3"
+                ],
+                "lines": [
+                    [
+                        "R7C3",
+                        "R7C4",
+                        "R7C5"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R3C7"
+                ],
+                "lines": [
+                    [
+                        "R3C7",
+                        "R3C6",
+                        "R3C5"
+                    ]
+                ]
+            }
+        ],
+        "author": "Sam Cappleman-Lynes",
+        "clone": [
+            {
+                "cells": [
+                    "R2C2",
+                    "R2C3",
+                    "R2C4"
+                ],
+                "cloneCells": [
+                    "R5C4",
+                    "R5C5",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C4",
+                    "R5C5",
+                    "R5C6"
+                ],
+                "cloneCells": [
+                    "R8C6",
+                    "R8C7",
+                    "R8C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C6",
+                    "R8C7",
+                    "R8C8"
+                ],
+                "cloneCells": [
+                    "R3C7",
+                    "R3C8",
+                    "R3C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C7",
+                    "R3C8",
+                    "R3C9"
+                ],
+                "cloneCells": [
+                    "R7C1",
+                    "R7C2",
+                    "R7C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R7C2",
+                    "R7C3"
+                ],
+                "cloneCells": [
+                    "R2C2",
+                    "R2C3",
+                    "R2C4"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                }
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. The numbers on the body of an arrow must add up to the number in the corresponding circle. The five grey areas are all exact clones of each other, with the same numbers in the same relative positions.",
+        "size": 9,
+        "solution": [
+            2,
+            9,
+            6,
+            4,
+            7,
+            8,
+            3,
+            1,
+            5,
+            5,
+            7,
+            8,
+            9,
+            3,
+            1,
+            2,
+            6,
+            4,
+            3,
+            1,
+            4,
+            6,
+            5,
+            2,
+            7,
+            8,
+            9,
+            8,
+            6,
+            7,
+            3,
+            1,
+            5,
+            9,
+            4,
+            2,
+            4,
+            5,
+            2,
+            7,
+            8,
+            9,
+            6,
+            3,
+            1,
+            9,
+            3,
+            1,
+            2,
+            6,
+            4,
+            5,
+            7,
+            8,
+            7,
+            8,
+            9,
+            5,
+            4,
+            3,
+            1,
+            2,
+            6,
+            6,
+            4,
+            5,
+            1,
+            2,
+            7,
+            8,
+            9,
+            3,
+            1,
+            2,
+            3,
+            8,
+            9,
+            6,
+            4,
+            5,
+            7
+        ],
+        "title": "Jul 13, 2022: Clone / Arrow"
+    },
+    "url": "https://f-puzzles.com/?id=27yvnblw"
+}

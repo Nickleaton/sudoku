@@ -1,0 +1,208 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 6
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. Numbers on each thermometer shape must increase along the thermometer, starting at the bulb.",
+        "size": 9,
+        "thermometer": [
+            {
+                "lines": [
+                    [
+                        "R1C1",
+                        "R2C2",
+                        "R3C3",
+                        "R2C4",
+                        "R1C5",
+                        "R2C6",
+                        "R3C7"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R7C3",
+                        "R8C4",
+                        "R9C5",
+                        "R8C6",
+                        "R7C7",
+                        "R8C8",
+                        "R9C9"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C5",
+                        "R4C4",
+                        "R5C3",
+                        "R6C2",
+                        "R5C1"
+                    ]
+                ]
+            },
+            {
+                "lines": [
+                    [
+                        "R5C5",
+                        "R6C6",
+                        "R5C7",
+                        "R4C8",
+                        "R5C9"
+                    ]
+                ]
+            }
+        ],
+        "title": "May 16, 2022: Thermo Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=yxjzuvaz"
+}

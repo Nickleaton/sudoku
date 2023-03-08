@@ -1,0 +1,342 @@
+{
+    "data": {
+        "arrow": [
+            {
+                "cells": [
+                    "R2C9"
+                ],
+                "lines": [
+                    [
+                        "R2C9",
+                        "R3C8",
+                        "R4C7"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C8"
+                ],
+                "lines": [
+                    [
+                        "R9C8",
+                        "R8C7",
+                        "R7C6"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R8C1"
+                ],
+                "lines": [
+                    [
+                        "R8C1",
+                        "R7C2",
+                        "R6C3"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R3C1"
+                ],
+                "lines": [
+                    [
+                        "R3C1",
+                        "R4C1",
+                        "R5C1"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R1C2"
+                ],
+                "lines": [
+                    [
+                        "R1C2",
+                        "R2C3",
+                        "R3C4"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R1C7"
+                ],
+                "lines": [
+                    [
+                        "R1C7",
+                        "R1C6",
+                        "R1C5"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R7C9"
+                ],
+                "lines": [
+                    [
+                        "R7C9",
+                        "R6C9",
+                        "R5C9"
+                    ]
+                ]
+            },
+            {
+                "cells": [
+                    "R9C3"
+                ],
+                "lines": [
+                    [
+                        "R9C3",
+                        "R9C4",
+                        "R9C5"
+                    ]
+                ]
+            }
+        ],
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Digits along arrows must sum to the circled total.",
+        "size": 9,
+        "solution": [
+            4,
+            2,
+            7,
+            6,
+            5,
+            3,
+            8,
+            9,
+            1,
+            6,
+            8,
+            1,
+            2,
+            7,
+            9,
+            4,
+            5,
+            3,
+            9,
+            3,
+            5,
+            1,
+            8,
+            4,
+            7,
+            2,
+            6,
+            8,
+            9,
+            2,
+            3,
+            6,
+            5,
+            1,
+            7,
+            4,
+            1,
+            6,
+            3,
+            4,
+            2,
+            7,
+            9,
+            8,
+            5,
+            7,
+            5,
+            4,
+            8,
+            9,
+            1,
+            6,
+            3,
+            2,
+            3,
+            1,
+            8,
+            9,
+            4,
+            2,
+            5,
+            6,
+            7,
+            5,
+            4,
+            9,
+            7,
+            3,
+            6,
+            2,
+            1,
+            8,
+            2,
+            7,
+            6,
+            5,
+            1,
+            8,
+            3,
+            4,
+            9
+        ],
+        "title": "9/27/22: Ready Steady Bow"
+    },
+    "url": "https://f-puzzles.com/?id=2p6ee7yb"
+}

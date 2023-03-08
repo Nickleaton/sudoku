@@ -1,0 +1,488 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 6
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Clues outside the grid tell you the sum of the first X digits in the corresponding row or column, starting with the digit adjacent to the clue and continuing away from the clue, where X is the adjacent digit. (For example: ?????7534 (19) would be a valid fill for a row where 19 is the sum of the rightmost 4 digits.)",
+        "size": 9,
+        "solution": [
+            8,
+            3,
+            9,
+            5,
+            4,
+            7,
+            6,
+            2,
+            1,
+            4,
+            1,
+            6,
+            9,
+            2,
+            8,
+            5,
+            3,
+            7,
+            7,
+            5,
+            2,
+            3,
+            1,
+            6,
+            4,
+            8,
+            9,
+            9,
+            8,
+            1,
+            2,
+            6,
+            4,
+            3,
+            7,
+            5,
+            3,
+            4,
+            7,
+            8,
+            5,
+            1,
+            9,
+            6,
+            2,
+            6,
+            2,
+            5,
+            7,
+            9,
+            3,
+            8,
+            1,
+            4,
+            1,
+            6,
+            3,
+            4,
+            7,
+            9,
+            2,
+            5,
+            8,
+            5,
+            7,
+            4,
+            6,
+            8,
+            2,
+            1,
+            9,
+            3,
+            2,
+            9,
+            8,
+            1,
+            3,
+            5,
+            7,
+            4,
+            6
+        ],
+        "text": [
+            {
+                "cells": [
+                    "R0C2"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R0C2"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R10C8"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R10C8"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "19"
+            },
+            {
+                "cells": [
+                    "R0C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R0C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R10C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R10C5"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "18"
+            },
+            {
+                "cells": [
+                    "R5C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R5C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R5C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R5C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "14"
+            },
+            {
+                "cells": [
+                    "R8C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R8C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "13"
+            },
+            {
+                "cells": [
+                    "R8C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R8C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "30"
+            },
+            {
+                "cells": [
+                    "R0C8"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R0C8"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "5"
+            },
+            {
+                "cells": [
+                    "R2C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R2C0"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "20"
+            },
+            {
+                "cells": [
+                    "R2C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R2C10"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "40"
+            },
+            {
+                "cells": [
+                    "R10C2"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 1.2,
+                "value": "\u25ef"
+            },
+            {
+                "cells": [
+                    "R10C2"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "X Sum",
+                "size": 0.7,
+                "value": "45"
+            }
+        ],
+        "title": "10/12/22: A Little Sum Thing",
+        "xsum": [
+            {
+                "cell": "R0C2",
+                "value": "9"
+            },
+            {
+                "cell": "R10C8",
+                "value": "19"
+            },
+            {
+                "cell": "R0C5",
+                "value": "13"
+            },
+            {
+                "cell": "R10C5",
+                "value": "18"
+            },
+            {
+                "cell": "R5C10",
+                "value": "8"
+            },
+            {
+                "cell": "R5C0",
+                "value": "14"
+            },
+            {
+                "cell": "R8C10",
+                "value": "13"
+            },
+            {
+                "cell": "R8C0",
+                "value": "30"
+            },
+            {
+                "cell": "R0C8",
+                "value": "5"
+            },
+            {
+                "cell": "R2C0",
+                "value": "20"
+            },
+            {
+                "cell": "R2C10",
+                "value": "40"
+            },
+            {
+                "cell": "R10C2",
+                "value": "45"
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=2p2c9ha3"
+}

@@ -1,0 +1,363 @@
+{
+    "data": {
+        "author": "Sam Cappleman-Lynes",
+        "difference": [
+            {
+                "cells": [
+                    "R3C1",
+                    "R4C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R5C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C1",
+                    "R5C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R6C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C1",
+                    "R7C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R7C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C3",
+                    "R7C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R3C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C2",
+                    "R2C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C3",
+                    "R3C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C6",
+                    "R4C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C6",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R7C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C6",
+                    "R7C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C7",
+                    "R7C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C8",
+                    "R7C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C6",
+                    "R3C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C7",
+                    "R2C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R3C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C4",
+                    "R3C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C4",
+                    "R7C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C8",
+                    "R3C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C9",
+                    "R7C8"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                }
+            ]
+        ],
+        "ruleset": "Normal Sudoku rules apply. If two cells are separated by a white dot they they must contain consecutive numbers. Pairs of cells without a dot may or may not contain consecutive numbers.",
+        "size": 9,
+        "solution": [
+            4,
+            6,
+            5,
+            8,
+            7,
+            9,
+            3,
+            2,
+            1,
+            3,
+            7,
+            2,
+            6,
+            5,
+            1,
+            4,
+            8,
+            9,
+            9,
+            8,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            6,
+            8,
+            1,
+            9,
+            3,
+            2,
+            5,
+            7,
+            6,
+            4,
+            7,
+            2,
+            3,
+            4,
+            9,
+            6,
+            1,
+            5,
+            8,
+            6,
+            5,
+            4,
+            1,
+            8,
+            7,
+            2,
+            9,
+            3,
+            5,
+            4,
+            6,
+            7,
+            1,
+            8,
+            9,
+            3,
+            2,
+            1,
+            3,
+            7,
+            9,
+            6,
+            2,
+            8,
+            4,
+            5,
+            2,
+            9,
+            8,
+            5,
+            4,
+            3,
+            6,
+            1,
+            7
+        ],
+        "title": "Aug 3, 2022: Consecutive Pairs"
+    },
+    "url": "https://f-puzzles.com/?id=22hhad2y"
+}

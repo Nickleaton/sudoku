@@ -1,0 +1,229 @@
+{
+    "data": {
+        "author": "clover!",
+        "grid": [
+            [
+                {
+                    "centerPencilMarks": [
+                        4
+                    ],
+                    "given": true,
+                    "value": 4
+                },
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        1
+                    ],
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        4
+                    ],
+                    "given": true,
+                    "value": 4
+                },
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        1
+                    ],
+                    "given": true,
+                    "value": 1
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        3
+                    ],
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        6
+                    ],
+                    "given": true,
+                    "value": 6
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        7
+                    ],
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        8
+                    ],
+                    "given": true,
+                    "value": 8
+                },
+                {},
+                {
+                    "centerPencilMarks": [
+                        9
+                    ],
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {
+                    "centerPencilMarks": [
+                        2
+                    ],
+                    "given": true,
+                    "value": 2
+                }
+            ]
+        ],
+        "maximum": [
+            {
+                "cell": "R2C5"
+            },
+            {
+                "cell": "R8C5"
+            },
+            {
+                "cell": "R4C5"
+            },
+            {
+                "cell": "R6C5"
+            },
+            {
+                "cell": "R5C2"
+            },
+            {
+                "cell": "R5C8"
+            },
+            {
+                "cell": "R4C1"
+            },
+            {
+                "cell": "R9C2"
+            },
+            {
+                "cell": "R1C8"
+            }
+        ],
+        "ruleset": "Standard sudoku rules apply. \n\nDigits in a grey square must be greater than all of their orthogonal neighbors in white squares. ",
+        "size": 9,
+        "title": "June 13, 2021: Fortress Sudoku"
+    },
+    "url": "https://f-puzzles.com/?id=yjryhuka"
+}

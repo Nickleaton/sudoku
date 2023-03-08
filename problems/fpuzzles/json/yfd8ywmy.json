@@ -1,0 +1,198 @@
+{
+    "data": {
+        "author": "?",
+        "disabledlogic": [
+            "tuples",
+            "pointing",
+            "fishes",
+            "wings",
+            "contradictions"
+        ],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "killercage": [
+            {
+                "cells": [
+                    "R1C4",
+                    "R2C3",
+                    "R2C4"
+                ],
+                "value": "6"
+            },
+            {
+                "cells": [
+                    "R2C5",
+                    "R3C5",
+                    "R3C6"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R4C5",
+                    "R4C6",
+                    "R5C5"
+                ],
+                "value": "8"
+            },
+            {
+                "cells": [
+                    "R5C3",
+                    "R5C4",
+                    "R6C4"
+                ],
+                "value": "9"
+            },
+            {
+                "cells": [
+                    "R3C3",
+                    "R4C3"
+                ],
+                "value": "7"
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R4C2",
+                    "R5C2"
+                ],
+                "value": "10"
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R3C1",
+                    "R3C2"
+                ],
+                "value": "12"
+            }
+        ],
+        "ruleset": "Normal sudoku rules apply. Also, the sum of the digits in each cage must equal the value given in the upper-left corner of that cage. Digits cannot repeat inside a cage.",
+        "size": 6,
+        "title": "July 4, 2021: Killer",
+        "truecandidatesoptions": [
+            "logical"
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=yfd8ywmy"
+}

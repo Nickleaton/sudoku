@@ -1,0 +1,269 @@
+{
+    "data": {
+        "author": "Tyrgannus",
+        "circle": [
+            {
+                "baseC": "#D07DE0",
+                "cells": [
+                    "R6C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.7,
+                "outlineC": "#D07DE0",
+                "width": 0.7
+            },
+            {
+                "baseC": "#D07DE0",
+                "cells": [
+                    "R4C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.7,
+                "outlineC": "#D07DE0",
+                "width": 0.7
+            },
+            {
+                "baseC": "#D07DE0",
+                "cells": [
+                    "R1C6"
+                ],
+                "fontC": "#000000",
+                "height": 0.7,
+                "outlineC": "#D07DE0",
+                "width": 0.7
+            },
+            {
+                "baseC": "#D07DE0",
+                "cells": [
+                    "R9C4"
+                ],
+                "fontC": "#000000",
+                "height": 0.7,
+                "outlineC": "#D07DE0",
+                "width": 0.7
+            },
+            {
+                "baseC": "#D07DE0",
+                "cells": [
+                    "R1C9"
+                ],
+                "fontC": "#000000",
+                "height": 0.7,
+                "outlineC": "#D07DE0",
+                "width": 0.7
+            },
+            {
+                "baseC": "#D07DE0",
+                "cells": [
+                    "R9C1"
+                ],
+                "fontC": "#000000",
+                "height": 0.7,
+                "outlineC": "#D07DE0",
+                "width": 0.7
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 9
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                }
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "line": [
+            {
+                "lines": [
+                    [
+                        "R6C1",
+                        "R5C2",
+                        "R4C3",
+                        "R3C2",
+                        "R2C3",
+                        "R3C4"
+                    ]
+                ],
+                "outlineC": "#D07DE0",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R4C9",
+                        "R5C8",
+                        "R6C7",
+                        "R7C8",
+                        "R8C7",
+                        "R7C6"
+                    ]
+                ],
+                "outlineC": "#D07DE0",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R1C6",
+                        "R2C6",
+                        "R3C6",
+                        "R4C6"
+                    ]
+                ],
+                "outlineC": "#D07DE0",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R6C4",
+                        "R7C4",
+                        "R8C4",
+                        "R9C4"
+                    ]
+                ],
+                "outlineC": "#D07DE0",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R9C1",
+                        "R8C2",
+                        "R7C3"
+                    ]
+                ],
+                "outlineC": "#D07DE0",
+                "width": 0.4
+            },
+            {
+                "lines": [
+                    [
+                        "R1C9",
+                        "R2C8",
+                        "R3C7"
+                    ]
+                ],
+                "outlineC": "#D07DE0",
+                "width": 0.4
+            }
+        ],
+        "ruleset": "-Normal sudoku rules apply in that each row, column, and bold outlined region must have the digits 1-9 appear once each.\n\n-Digits along a thermo must strictly increase from the bulb to the tip. All thermos are a string of consecutive digits (such as 1-2-3 or 5-6-7-8 etc.)",
+        "size": 9,
+        "title": "February \"2nd\", 2023:Renthermo"
+    },
+    "url": "https://f-puzzles.com/?id=22donmw2"
+}

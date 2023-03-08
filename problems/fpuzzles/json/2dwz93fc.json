@@ -1,0 +1,345 @@
+{
+    "data": {
+        "author": "Philip Newman",
+        "cage": [
+            {
+                "cells": [
+                    "R1C2",
+                    "R1C3",
+                    "R2C2",
+                    "R2C3",
+                    "R3C2",
+                    "R3C3",
+                    "R4C2",
+                    "R4C3",
+                    "R5C2",
+                    "R5C3",
+                    "R6C2",
+                    "R6C3",
+                    "R7C2",
+                    "R7C3",
+                    "R8C2",
+                    "R8C3",
+                    "R9C2",
+                    "R9C3",
+                    "R1C5",
+                    "R2C5",
+                    "R3C5",
+                    "R4C5",
+                    "R5C5",
+                    "R6C5",
+                    "R7C5",
+                    "R8C5",
+                    "R9C5",
+                    "R1C7",
+                    "R2C7",
+                    "R3C7",
+                    "R4C7",
+                    "R5C7",
+                    "R6C7",
+                    "R7C7",
+                    "R8C7",
+                    "R9C7"
+                ],
+                "fontC": "#000000",
+                "fromConstraint": "Column Indexer",
+                "outlineC": "#C77C7C"
+            }
+        ],
+        "columnindexer": [
+            {
+                "cells": [
+                    "R1C2",
+                    "R1C3",
+                    "R2C2",
+                    "R2C3",
+                    "R3C2",
+                    "R3C3",
+                    "R4C2",
+                    "R4C3",
+                    "R5C2",
+                    "R5C3",
+                    "R6C2",
+                    "R6C3",
+                    "R7C2",
+                    "R7C3",
+                    "R8C2",
+                    "R8C3",
+                    "R9C2",
+                    "R9C3"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5",
+                    "R3C5",
+                    "R4C5",
+                    "R5C5",
+                    "R6C5",
+                    "R7C5",
+                    "R8C5",
+                    "R9C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C7",
+                    "R2C7",
+                    "R3C7",
+                    "R4C7",
+                    "R5C7",
+                    "R6C7",
+                    "R7C7",
+                    "R8C7",
+                    "R9C7"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {}
+            ],
+            [
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 7
+                },
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 5
+                },
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {
+                    "given": true,
+                    "value": 3
+                },
+                {
+                    "given": true,
+                    "value": 2
+                },
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ruleset": "Normal sudoku rules apply. Each digit in column 2 indicates the location of the 2 in that row. For example, a 3 in r1c2 would indicate that the 2 in row 1 is in the third cell (r1c3). Likewise, each digit in columns 3, 5, and 7 indicates the location of 3, 5, and 7 respectively.",
+        "size": 9,
+        "solution": [
+            9,
+            4,
+            6,
+            2,
+            7,
+            3,
+            5,
+            8,
+            1,
+            3,
+            2,
+            1,
+            8,
+            6,
+            5,
+            9,
+            4,
+            7,
+            5,
+            8,
+            7,
+            4,
+            1,
+            9,
+            3,
+            2,
+            6,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1,
+            8,
+            7,
+            9,
+            8,
+            7,
+            9,
+            6,
+            5,
+            4,
+            2,
+            1,
+            3,
+            2,
+            1,
+            3,
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            4,
+            3,
+            2,
+            1,
+            9,
+            8,
+            7,
+            6,
+            5,
+            7,
+            9,
+            8,
+            5,
+            4,
+            6,
+            1,
+            3,
+            2,
+            1,
+            6,
+            5,
+            7,
+            3,
+            2,
+            4,
+            9,
+            8
+        ],
+        "title": "12/9: Wonderful Christmasprime"
+    },
+    "url": "https://f-puzzles.com/?id=2dwz93fc"
+}

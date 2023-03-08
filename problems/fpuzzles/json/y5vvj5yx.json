@@ -1,0 +1,327 @@
+{
+    "data": {
+        "author": "clover!",
+        "difference": [
+            {
+                "cells": [
+                    "R2C7",
+                    "R2C8"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C9",
+                    "R1C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C2",
+                    "R7C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R8C2",
+                    "R9C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C3",
+                    "R9C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R9C4",
+                    "R9C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R3C9",
+                    "R4C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C9",
+                    "R5C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C8",
+                    "R5C7"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C7",
+                    "R5C6"
+                ]
+            },
+            {
+                "cells": [
+                    "R6C6",
+                    "R6C5"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C6",
+                    "R6C6"
+                ]
+            }
+        ],
+        "grid": [
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ]
+        ],
+        "ratio": [
+            {
+                "cells": [
+                    "R1C3",
+                    "R1C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R1C4"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C8",
+                    "R2C9"
+                ]
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R1C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R4C1",
+                    "R3C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R5C1"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C2",
+                    "R8C2"
+                ]
+            },
+            {
+                "cells": [
+                    "R7C5",
+                    "R8C5"
+                ]
+            }
+        ],
+        "ruleset": "Standard sudoku rules apply.\n\nDigits on either side of an X sum to 10.\n\nDigits on either side of a V sum to 5.\n\nDigits on either side of a white dot are consecutive.\n\nDigits on either side of a black dot are in a 1:2 ratio.\n\nThere are no negative constraints (digits without a V, etc. may or may not have the property described.)",
+        "size": 9,
+        "title": "June 9, 2021: Ratio/Pairs/XV",
+        "xv": [
+            {
+                "cells": [
+                    "R1C1",
+                    "R1C2"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R1C3",
+                    "R1C4"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R1C5",
+                    "R2C5"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R2C6",
+                    "R2C5"
+                ],
+                "value": "V"
+            },
+            {
+                "cells": [
+                    "R2C6",
+                    "R2C7"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R2C1",
+                    "R3C1"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R5C1",
+                    "R4C1"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R5C2",
+                    "R6C2"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R9C1",
+                    "R9C2"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R5C9",
+                    "R5C8"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R8C5",
+                    "R9C5"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R6C5",
+                    "R7C5"
+                ],
+                "value": "X"
+            },
+            {
+                "cells": [
+                    "R6C7",
+                    "R5C7"
+                ],
+                "value": "X"
+            }
+        ]
+    },
+    "url": "https://f-puzzles.com/?id=y5vvj5yx"
+}

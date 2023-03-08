@@ -1,0 +1,181 @@
+{
+    "data": {
+        "author": "Setter 1",
+        "disabledlogic": [],
+        "grid": [
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ],
+            [
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                },
+                {
+                    "givenPencilMarks": null
+                }
+            ]
+        ],
+        "littlekillersum": [
+            {
+                "cell": "R0C1",
+                "cells": [
+                    "R1C2",
+                    "R2C3",
+                    "R3C4",
+                    "R4C5",
+                    "R5C6"
+                ],
+                "direction": "DR",
+                "value": "7"
+            },
+            {
+                "cell": "R0C2",
+                "cells": [
+                    "R1C3",
+                    "R2C4",
+                    "R3C5",
+                    "R4C6"
+                ],
+                "direction": "DR",
+                "value": "12"
+            },
+            {
+                "cell": "R7C5",
+                "cells": [
+                    "R6C4",
+                    "R5C3",
+                    "R4C2",
+                    "R3C1"
+                ],
+                "direction": "UL",
+                "value": "8"
+            },
+            {
+                "cell": "R7C6",
+                "cells": [
+                    "R6C5",
+                    "R5C4",
+                    "R4C3",
+                    "R3C2",
+                    "R2C1"
+                ],
+                "direction": "UL",
+                "value": "20"
+            }
+        ],
+        "ruleset": "Normal 6x6 sudoku rules apply. Also, digits along a marked diagonal must sum to the value shown. Digits may repeat along a diagonal, as long as they obey sudoku rules.",
+        "size": 6,
+        "title": "September 2, 2021: LK",
+        "truecandidatesoptions": []
+    },
+    "url": "https://f-puzzles.com/?id=yhukhep7"
+}
