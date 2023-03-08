@@ -4,7 +4,7 @@ import logging
 import sys
 from pathlib import Path
 from argparse import ArgumentParser
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple
 
 import oyaml as yaml
 
@@ -88,15 +88,15 @@ def side(s: str, n: int) -> str:
     return ""
 
 
-def antiking(data: Dict, n: int) -> Dict:
+def antiking() -> Dict:
     return {'AntiKing': ''}
 
 
-def antiknight(data: Dict, n: int) -> Dict:
+def antiknight() -> Dict:
     return {'AntiKnight': ''}
 
 
-def arrow(data: Dict, n: int) -> List:
+def arrow(data: Dict) -> List:
     result = []
     for item in data:
         lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
@@ -105,7 +105,7 @@ def arrow(data: Dict, n: int) -> List:
     return result
 
 
-def maxarrow(data: Dict, n: int) -> List:
+def maxarrow(data: Dict) -> List:
     result = []
     for item in data:
         lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
@@ -114,7 +114,7 @@ def maxarrow(data: Dict, n: int) -> List:
     return result
 
 
-def productarrow(data: Dict, n: int) -> List:
+def productarrow(data: Dict) -> List:
     result = []
     for item in data:
         lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
@@ -123,11 +123,7 @@ def productarrow(data: Dict, n: int) -> List:
     return result
 
 
-def author(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def betweenline(data: Dict, n: int) -> List:
+def betweenline(data: Dict) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -135,15 +131,7 @@ def betweenline(data: Dict, n: int) -> List:
     return result
 
 
-def cage(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def circle(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def clone(data: List, n: int) -> List:
+def clone(data: List) -> List:
     result = []
     for item in data:
         region = {'ClonedRegion': []}
@@ -153,7 +141,7 @@ def clone(data: List, n: int) -> List:
     return result
 
 
-def columnindexer(data: List, n: int) -> List:
+def columnindexer(data: List) -> List:
     result = []
     columns = set()
     for region in data:
@@ -165,15 +153,15 @@ def columnindexer(data: List, n: int) -> List:
     return result
 
 
-def diagonal_bltr(data: Dict, n: int) -> Dict:
+def diagonal_bltr() -> Dict:
     raise NotImplementedError(inspect.currentframe().f_code.co_name)
 
 
-def diagonal_tlbr(data: Dict, n: int) -> Dict:
+def diagonal_tlbr() -> Dict:
     raise NotImplementedError(inspect.currentframe().f_code.co_name)
 
 
-def difference(data: List, n: int) -> List:
+def difference(data: List) -> List:
     if len(data) == 0:
         return []
     result = []
@@ -184,16 +172,11 @@ def difference(data: List, n: int) -> List:
     return result
 
 
-def disabledlogic(data: Dict, n: int) -> Dict:
-    # TODO print(f'disabledlogic not implemented')
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def disjointgroups(data: Dict, n: int) -> Dict:
+def disjointgroups() -> Dict:
     return {"DisjointGroups": ""}
 
 
-def entropicline(data: List, n: int) -> List:
+def entropicline(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -201,14 +184,14 @@ def entropicline(data: List, n: int) -> List:
     return result
 
 
-def even(data: List, n: int) -> List:
+def even(data: List) -> List:
     result = []
     for item in data:
         result.append({'Even': rc(item['cell'])})
     return result
 
 
-def extraregion(data: List, n: int) -> List:
+def extraregion(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
@@ -216,11 +199,7 @@ def extraregion(data: List, n: int) -> List:
     return result
 
 
-def highlightConflicts(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def killercage(data: List, n: int) -> List:
+def killercage(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
@@ -230,10 +209,6 @@ def killercage(data: List, n: int) -> List:
         else:
             result.append({'UniqueRegion': rhs})
     return result
-
-
-def line(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
 
 
 def littlekillersum(data: List, n: int) -> List:
@@ -251,7 +226,7 @@ def littlekillersum(data: List, n: int) -> List:
     return result
 
 
-def lockout(data: List, n: int) -> List:
+def lockout(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -259,29 +234,29 @@ def lockout(data: List, n: int) -> List:
     return result
 
 
-def maximum(data: List, n: int) -> List:
+def maximum(data: List) -> List:
     result = []
     for item in data:
         result.append({'FortressCell': rc(item['cell'])})
     return result
 
 
-def negative(data: Dict, n: int) -> Dict:
-    return {"NegativeXV":""}
+def negative() -> Dict:
+    return {"NegativeXV": ""}
 
 
-def nonconsecutive(data: Dict, n: int) -> Dict:
+def nonconsecutive() -> Dict:
     return {'OrthoganallyAdjacent': ''}
 
 
-def odd(data: List, n: int) -> List:
+def odd(data: List) -> List:
     result = []
     for item in data:
         result.append({'Odd': rc(item['cell'])})
     return result
 
 
-def palindrome(data: List, n: int) -> List:
+def palindrome(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -289,7 +264,7 @@ def palindrome(data: List, n: int) -> List:
     return result
 
 
-def quadruple(data: Dict, n: int) -> List:
+def quadruple(data: Dict) -> List:
     result = []
     for quad in data:
         row = quad['cells'][0][1]
@@ -299,7 +274,7 @@ def quadruple(data: Dict, n: int) -> List:
     return result
 
 
-def ratio(data: Dict, n: int) -> List:
+def ratio(data: Dict) -> List:
     if len(data) == 0:
         return []
     result = []
@@ -310,11 +285,7 @@ def ratio(data: Dict, n: int) -> List:
     return result
 
 
-def rectangle(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def regionsumline(data: List, n: int) -> List:
+def regionsumline(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -322,16 +293,12 @@ def regionsumline(data: List, n: int) -> List:
     return result
 
 
-def renban(data: List, n: int) -> List:
+def renban(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
         result.append({'Renban': rhs})
     return result
-
-
-def ruleset(data: Dict, n: int) -> Dict:
-    return {}
 
 
 def sandwichsum(data: List, n: int) -> List:
@@ -348,15 +315,7 @@ def sandwichsum(data: List, n: int) -> List:
     return result
 
 
-def size(data: List, n: int) -> List:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def text(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def thermometer(data: List, n: int) -> List:
+def thermometer(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -364,15 +323,7 @@ def thermometer(data: List, n: int) -> List:
     return result
 
 
-def title(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def truecandidatesoptions(data: Dict, n: int) -> Dict:
-    raise NotImplementedError(inspect.currentframe().f_code.co_name)
-
-
-def whispers(data: List, n: int) -> List:
+def whispers(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
@@ -394,7 +345,7 @@ def xsum(data: List, n: int) -> List:
     return result
 
 
-def xv(data: List, n: int) -> List:
+def xv(data: List) -> List:
     if len(data) == 0:
         return []
     result = []
@@ -439,90 +390,76 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         #     out['Constraints'].append(author(raw['author'], n))
 
         if 'antiking' in raw:
-            out['Constraints'].append(antiking(raw['antiking'], n))
+            out['Constraints'].append(antiking())
         if 'antiknight' in raw:
-            out['Constraints'].append(antiknight(raw['antiknight'], n))
+            out['Constraints'].append(antiknight())
         if 'arrow' in raw:
-            out['Constraints'].extend(arrow(raw['arrow'], n))
+            out['Constraints'].extend(arrow(raw['arrow']))
         if 'maxarrow' in raw:
-            out['Constraints'].extend(maxarrow(raw['maxarrow'], n))
+            out['Constraints'].extend(maxarrow(raw['maxarrow']))
         if 'productarrow' in raw:
-            out['Constraints'].extend(productarrow(raw['productarrow'], n))
+            out['Constraints'].extend(productarrow(raw['productarrow']))
 
         if 'betweenline' in raw:
-            out['Constraints'].extend(betweenline(raw['betweenline'], n))
-        # if 'cage' in raw:
-        #     out['Constraints'].append(cage(raw['cage'], n))
-        # if 'circle' in raw:
-        #     out['Constraints'].append(circle(raw['circle'], n))
+            out['Constraints'].extend(betweenline(raw['betweenline']))
         if 'clone' in raw:
-            out['Constraints'].extend(clone(raw['clone'], n))
+            out['Constraints'].extend(clone(raw['clone']))
         if 'columnindexer' in raw:
-            out['Constraints'].extend(columnindexer(raw['columnindexer'], n))
+            out['Constraints'].extend(columnindexer(raw['columnindexer']))
         if 'diagonal_bltr' in raw:
-            out['Constraints'].append(diagonal_bltr(raw['diagonal_bltr'], n))
+            out['Constraints'].append(diagonal_bltr())
         if 'diagonal_tlbr' in raw:
-            out['Constraints'].append(diagonal_tlbr(raw['diagonal_tlbr'], n))
+            out['Constraints'].append(diagonal_tlbr())
         if 'difference' in raw:
-            out['Constraints'].append(difference(raw['difference'], n))
-        # if 'disabledlogic' in raw:
-        #     out['Constraints'].append(disabledlogic(raw['disabledlogic'], n))
+            out['Constraints'].append(difference(raw['difference']))
         if 'disjointgroups' in raw:
-            out['Constraints'].append(disjointgroups(raw['disjointgroups'], n))
+            out['Constraints'].append(disjointgroups())
         if 'entropicline' in raw:
-            out['Constraints'].extend(entropicline(raw['entropicline'], n))
+            out['Constraints'].extend(entropicline(raw['entropicline']))
         if 'even' in raw:
-            out['Constraints'].extend(even(raw['even'], n))
+            out['Constraints'].extend(even(raw['even']))
         if 'extraregion' in raw:
-            out['Constraints'].extend(extraregion(raw['extraregion'], n))
+            out['Constraints'].extend(extraregion(raw['extraregion']))
         # if 'highlightConflicts' in raw:
-        #     out['Constraints'].append(highlightConflicts(raw['highlightConflicts'], n))
+        #     out['Constraints'].append(highlightConflicts(raw['highlightConflicts']))
         if 'killercage' in raw:
-            out['Constraints'].extend(killercage(raw['killercage'], n))
+            out['Constraints'].extend(killercage(raw['killercage']))
         # if 'line' in raw:
-        #     out['Constraints'].append(line(raw['line'], n))
+        #     out['Constraints'].append(line(raw['line']))
         if 'littlekillersum' in raw:
             out['Constraints'].append(littlekillersum(raw['littlekillersum'], n))
         if 'lockout' in raw:
-            out['Constraints'].append(lockout(raw['lockout'], n))
+            out['Constraints'].append(lockout(raw['lockout']))
         if 'maximum' in raw:
-            out['Constraints'].append(maximum(raw['maximum'], n))
+            out['Constraints'].append(maximum(raw['maximum']))
         if 'negative' in raw:
-            out['Constraints'].append(negative(raw['negative'], n))
+            out['Constraints'].append(negative())
         if 'nonconsecutive' in raw:
-            out['Constraints'].append(nonconsecutive(raw['nonconsecutive'], n))
+            out['Constraints'].append(nonconsecutive())
         if 'odd' in raw:
-            out['Constraints'].extend(odd(raw['odd'], n))
+            out['Constraints'].extend(odd(raw['odd']))
         if 'palindrome' in raw:
-            out['Constraints'].extend(palindrome(raw['palindrome'], n))
+            out['Constraints'].extend(palindrome(raw['palindrome']))
         if 'quadruple' in raw:
-            out['Constraints'].extend(quadruple(raw['quadruple'], n))
+            out['Constraints'].extend(quadruple(raw['quadruple']))
         if 'ratio' in raw:
-            out['Constraints'].append(ratio(raw['ratio'], n))
-        if 'rectangle' in raw:
-            out['Constraints'].append(rectangle(raw['rectangle'], n))
+            out['Constraints'].append(ratio(raw['ratio']))
         if 'regionsumline' in raw:
-            out['Constraints'].extend(regionsumline(raw['regionsumline'], n))
+            out['Constraints'].extend(regionsumline(raw['regionsumline']))
         if 'renban' in raw:
-            out['Constraints'].extend(renban(raw['renban'], n))
+            out['Constraints'].extend(renban(raw['renban']))
         # if 'ruleset' in raw:
-        #     out['Constraints'].append(ruleset(raw['ruleset'], n))
+        #     out['Constraints'].append(ruleset(raw['ruleset']))
         if 'sandwichsum' in raw:
             out['Constraints'].extend(sandwichsum(raw['sandwichsum'], n))
-
-        # if 'text' in raw:
-        #     out['Constraints'].append(text(raw['text'], n))
         if 'thermometer' in raw:
-            out['Constraints'].extend(thermometer(raw['thermometer'], n))
-
-        # if 'truecandidatesoptions' in raw:
-        #     out['Constraints'].append(truecandidatesoptions(raw['truecandidatesoptions'], n))
+            out['Constraints'].extend(thermometer(raw['thermometer']))
         if 'whispers' in raw:
-            out['Constraints'].extend(whispers(raw['whispers'], n))
+            out['Constraints'].extend(whispers(raw['whispers']))
         if 'xsum' in raw:
             out['Constraints'].append(xsum(raw['xsum'], n))
         if 'xv' in raw:
-            out['Constraints'].extend(xv(raw['xv'], n))
+            out['Constraints'].extend(xv(raw['xv']))
     except NotImplementedError as e:
         logging.log(logging.ERROR, f"{e}")
         good = False
