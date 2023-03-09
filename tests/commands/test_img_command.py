@@ -11,7 +11,7 @@ class TestIMGCommand(TestCommand):
     def setUp(self) -> None:
         self.command = IMGCommand(
             os.path.join('output', 'jpg', 'problem001.jpg'),
-            SVGCommand(os.path.join('problems', 'problem001.yaml'))
+            SVGCommand(os.path.join('problems', 'easy', 'problem001.yaml'))
         )
 
     @property
@@ -20,7 +20,7 @@ class TestIMGCommand(TestCommand):
 
     @property
     def representation(self) -> str:
-        return r"IMGCommand('output\jpg\problem001.jpg', SVGCommand('problems\problem001.yaml'))"
+        return r"IMGCommand('output\jpg\problem001.jpg', SVGCommand('problems\easy\problem001.yaml'))"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

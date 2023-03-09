@@ -5,11 +5,11 @@ from src.commands.lp_command import LPCommand
 from tests.commands.test_command import TestCommand
 
 
-class TestLPcommand(TestCommand):
+class TestLPCommand(TestCommand):
 
     def setUp(self) -> None:
         self.command = LPCommand(
-            os.path.join('problems', 'problem001.yaml'),
+            os.path.join('problems', 'easy', 'problem001.yaml'),
             os.path.join('output', 'lp', 'problem001.lp')
         )
 
@@ -20,7 +20,7 @@ class TestLPcommand(TestCommand):
 
     @property
     def representation(self) -> str:
-        return r"LPCommand('problems\problem001.yaml', 'output\lp\problem001.lp')"
+        return r"LPCommand('problems\easy\problem001.yaml', 'output\lp\problem001.lp')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

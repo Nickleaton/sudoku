@@ -1,7 +1,6 @@
 Board:
   Board: 9x9
   Boxes: 3x3
-  Author: Test
 Constraints:
   - Columns:
   - Rows:

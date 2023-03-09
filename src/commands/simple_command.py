@@ -29,7 +29,7 @@ class SimpleCommand(Command):
 
     def create_board(self):
         logging.info("Creating board")
-        self.board = Board.create_from_yaml('Board', self.config)
+        self.board = Board.create('Board', self.config)
 
     def create_problem(self):
         logging.info("Creating problem")

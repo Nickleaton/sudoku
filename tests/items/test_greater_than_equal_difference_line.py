@@ -1,6 +1,7 @@
 import unittest
 from typing import Type
 
+from items.variable_pair import VariablePair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem

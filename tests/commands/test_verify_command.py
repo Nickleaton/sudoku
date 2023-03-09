@@ -9,13 +9,13 @@ class TestVerifycommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         self.command = VerifyCommand(
-            os.path.join('problems', 'problem001.yaml'),
+            os.path.join('problems', 'easy', 'problem001.yaml'),
             os.path.join('output', 'solution', 'problem001.txt')
         )
 
     @property
     def representation(self) -> str:
-        return r"VerifyCommand('problems\problem001.yaml', 'output\solution\problem001.txt')"
+        return r"VerifyCommand('problems\easy\problem001.yaml', 'output\solution\problem001.txt')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

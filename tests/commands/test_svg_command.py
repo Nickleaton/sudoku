@@ -7,7 +7,7 @@ from tests.commands.test_command import TestCommand
 class TestSVGcommand(TestCommand):
 
     def setUp(self) -> None:
-        self.command = SVGCommand(r'problems/problem001.yaml', r'output/svg/problem001.svg')
+        self.command = SVGCommand(r'problems/easy/problem001.yaml', r'output/svg/problem001.svg')
 
     @property
     def output(self) -> str:
@@ -18,7 +18,7 @@ class TestSVGcommand(TestCommand):
 
     @property
     def representation(self) -> str:
-        return r"SVGCommand('problems/problem001.yaml', 'output/svg/problem001.svg')"
+        return r"SVGCommand('problems/easy/problem001.yaml', 'output/svg/problem001.svg')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

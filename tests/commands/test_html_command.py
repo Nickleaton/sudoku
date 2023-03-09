@@ -7,11 +7,11 @@ from tests.commands.test_simple_command import TestSimpleCommand
 class TestHTMLcommand(TestSimpleCommand):
 
     def setUp(self) -> None:
-        self.command = HTMLCommand(r'problems\problem001.yaml', r'output\html\problem001.html')
+        self.command = HTMLCommand(r'problems\easy\problem001.yaml', r'output\html\problem001.html')
 
     @property
     def representation(self) -> str:
-        return r"HTMLCommand('problems\problem001.yaml', 'output\html\problem001.html')"
+        return r"HTMLCommand('problems\easy\problem001.yaml', 'output\html\problem001.html')"
 
     @property
     def output(self) -> str:

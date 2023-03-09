@@ -8,10 +8,10 @@ from tests.commands.test_command import TestCommand
 class TestSimpleCommand(TestCommand):
 
     def setUp(self) -> None:
-        self.command = SimpleCommand(r"problems\problem001.yaml", r"output\solution\problem001.txt")
+        self.command = SimpleCommand(r"problems\easy\problem001.yaml", r"output\solution\problem001.txt")
 
     def test_config(self):
-        self.assertEqual(os.path.join("problems", "problem001.yaml"), self.command.config_filename)
+        self.assertEqual(os.path.join("problems", "easy", "problem001.yaml"), self.command.config_filename)
 
     @property
     def output(self) -> str:
@@ -22,7 +22,7 @@ class TestSimpleCommand(TestCommand):
 
     @property
     def representation(self) -> str:
-        return f"{self.clazz()}('problems\\problem001.yaml', 'output\\solution\\problem001.txt')"
+        return f"{self.clazz()}('problems\\easy\\problem001.yaml', 'output\\solution\\problem001.txt')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

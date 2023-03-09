@@ -2,6 +2,7 @@
 import logging
 import sys
 
+from commands.solve_command import SolveCommand
 from scripts.parser import parser
 from src.commands.html_command import HTMLCommand
 from src.commands.img_command import IMGCommand
@@ -52,6 +53,8 @@ if __name__ == "__main__":
         logging.basicConfig(encoding='utf-8', level=args.loglevel)
     command = None
     output = None
+    if args.solve is not None:
+        command = SolveCommand(args.config, args.solve)
     if args.html is not None:
         command = HTMLCommand(args.config, args.html)
         output = args.html

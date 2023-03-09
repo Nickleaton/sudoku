@@ -100,7 +100,7 @@ class TestItem(unittest.TestCase):
         solver = PulpSolver(self.board, 'test', "output/logs")
         self.item.add_constraint(solver)
 
-    def test_add_bookkeeping_contraint(self) -> None:
+    def test_add_bookkeeping_constraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
         self.item.add_bookkeeping_contraint(solver)
 

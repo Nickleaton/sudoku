@@ -1,6 +1,7 @@
 import unittest
 from typing import Type
 
+from items.variable_pair import VariablePair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -52,8 +53,9 @@ class TestGermanWhisper(TestGreaterThanEqualDifferenceLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, DifferenceLine, VariableDifferencePair, GermanWhisper, GreaterThanEqualDifferenceLine,
-                GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
+        return {Cell, ComposedItem, DifferenceLine, VariableDifferencePair, GermanWhisper,
+                GreaterThanEqualDifferenceLine,
+                GreaterThanEqualDifferencePair, Item, Line, Pair, Region, VariablePair}
 
 
 if __name__ == '__main__':  # pragma: no cover

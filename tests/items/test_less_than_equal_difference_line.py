@@ -1,6 +1,7 @@
 import unittest
 from typing import Type
 
+from items.variable_pair import VariablePair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -50,9 +51,17 @@ class TestLessThanEqualDifferenceLine(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, LessThanEqualDifferenceLine, VariableDifferencePair, Item, LessThanEqualDifferencePair,
+        return {Cell,
+                ComposedItem,
+                LessThanEqualDifferenceLine,
+                VariableDifferencePair,
+                Item,
+                VariablePair,
+                LessThanEqualDifferencePair,
                 Line,
-                Pair, Region}
+                Pair,
+                Region
+                }
 
 
 if __name__ == '__main__':  # pragma: no cover
