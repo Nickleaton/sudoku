@@ -1,6 +1,5 @@
-import glob
-import os
 from argparse import ArgumentParser
+from pathlib import Path
 from string import Template
 from typing import List
 
@@ -15,8 +14,9 @@ class Test$classname(AcceptanceTest):
 
 
 def get_filenames(directory: str) -> List[str]:
-    pattern = os.path.join(directory, '*.yaml')
-    return glob.glob(pattern)
+    path = Path(directory)
+    pattern = path.glob('*.yaml')
+    return [str(f) for f in pattern]
 
 
 def parser() -> ArgumentParser:
@@ -33,7 +33,7 @@ def parser() -> ArgumentParser:
         help='output directory',
         action='store',
         dest='output',
-        default=os.path.join('tests', 'acceptance_tests')
+        default=Path('tests') / 'acceptance_tests'
     )
     return result
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     template = Template(RAW)
     for filename in get_filenames(args.source):
-        name = os.path.basename(filename)[:-5]
-        output_filename = os.path.join(args.output, "test_" + name + ".py")
+        name = "test_" + Path(filename).name.replace(".yaml", "") + ".py"
+        output_filename = Path(args.output) / name
         with open(output_filename, 'w', encoding='utf-8') as file:
             file.write(template.substitute(classname=name.capitalize(), name=name))
