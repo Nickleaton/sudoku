@@ -98,10 +98,10 @@ class Item(ABC):
     def children(self) -> Set['Item']:
         return {self}
 
-    def add_bookkeeping_contraint(self, solver: PulpSolver) -> None:
+    def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         cells = [i for i in self.children() if i.__class__.__name__ == 'Cell']
         for cell in cells:
-            cell.add_bookkeeping_contraint(solver)
+            cell.add_bookkeeping_constraint(solver)
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}

@@ -2,582 +2,582 @@
 Minimize
 Objective: __dummy
 Subject To
-Box_86228_Unique_1: Choice_1_1_1 + Choice_1_1_2 + Choice_1_1_3 + Choice_1_2_1
+Box_146242_Unique_1: Choice_1_1_1 + Choice_1_1_2 + Choice_1_1_3 + Choice_1_2_1
  + Choice_1_2_2 + Choice_1_2_3 + Choice_1_3_1 + Choice_1_3_2 + Choice_1_3_3
  = 1
-Box_86228_Unique_2: Choice_2_1_1 + Choice_2_1_2 + Choice_2_1_3 + Choice_2_2_1
+Box_146242_Unique_2: Choice_2_1_1 + Choice_2_1_2 + Choice_2_1_3 + Choice_2_2_1
  + Choice_2_2_2 + Choice_2_2_3 + Choice_2_3_1 + Choice_2_3_2 + Choice_2_3_3
  = 1
-Box_86228_Unique_3: Choice_3_1_1 + Choice_3_1_2 + Choice_3_1_3 + Choice_3_2_1
+Box_146242_Unique_3: Choice_3_1_1 + Choice_3_1_2 + Choice_3_1_3 + Choice_3_2_1
  + Choice_3_2_2 + Choice_3_2_3 + Choice_3_3_1 + Choice_3_3_2 + Choice_3_3_3
  = 1
-Box_86228_Unique_4: Choice_4_1_1 + Choice_4_1_2 + Choice_4_1_3 + Choice_4_2_1
+Box_146242_Unique_4: Choice_4_1_1 + Choice_4_1_2 + Choice_4_1_3 + Choice_4_2_1
  + Choice_4_2_2 + Choice_4_2_3 + Choice_4_3_1 + Choice_4_3_2 + Choice_4_3_3
  = 1
-Box_86228_Unique_5: Choice_5_1_1 + Choice_5_1_2 + Choice_5_1_3 + Choice_5_2_1
+Box_146242_Unique_5: Choice_5_1_1 + Choice_5_1_2 + Choice_5_1_3 + Choice_5_2_1
  + Choice_5_2_2 + Choice_5_2_3 + Choice_5_3_1 + Choice_5_3_2 + Choice_5_3_3
  = 1
-Box_86228_Unique_6: Choice_6_1_1 + Choice_6_1_2 + Choice_6_1_3 + Choice_6_2_1
+Box_146242_Unique_6: Choice_6_1_1 + Choice_6_1_2 + Choice_6_1_3 + Choice_6_2_1
  + Choice_6_2_2 + Choice_6_2_3 + Choice_6_3_1 + Choice_6_3_2 + Choice_6_3_3
  = 1
-Box_86228_Unique_7: Choice_7_1_1 + Choice_7_1_2 + Choice_7_1_3 + Choice_7_2_1
+Box_146242_Unique_7: Choice_7_1_1 + Choice_7_1_2 + Choice_7_1_3 + Choice_7_2_1
  + Choice_7_2_2 + Choice_7_2_3 + Choice_7_3_1 + Choice_7_3_2 + Choice_7_3_3
  = 1
-Box_86228_Unique_8: Choice_8_1_1 + Choice_8_1_2 + Choice_8_1_3 + Choice_8_2_1
+Box_146242_Unique_8: Choice_8_1_1 + Choice_8_1_2 + Choice_8_1_3 + Choice_8_2_1
  + Choice_8_2_2 + Choice_8_2_3 + Choice_8_3_1 + Choice_8_3_2 + Choice_8_3_3
  = 1
-Box_86228_Unique_9: Choice_9_1_1 + Choice_9_1_2 + Choice_9_1_3 + Choice_9_2_1
+Box_146242_Unique_9: Choice_9_1_1 + Choice_9_1_2 + Choice_9_1_3 + Choice_9_2_1
  + Choice_9_2_2 + Choice_9_2_3 + Choice_9_3_1 + Choice_9_3_2 + Choice_9_3_3
  = 1
-Box_86229_Unique_1: Choice_1_4_1 + Choice_1_4_2 + Choice_1_4_3 + Choice_1_5_1
+Box_146243_Unique_1: Choice_1_4_1 + Choice_1_4_2 + Choice_1_4_3 + Choice_1_5_1
  + Choice_1_5_2 + Choice_1_5_3 + Choice_1_6_1 + Choice_1_6_2 + Choice_1_6_3
  = 1
-Box_86229_Unique_2: Choice_2_4_1 + Choice_2_4_2 + Choice_2_4_3 + Choice_2_5_1
+Box_146243_Unique_2: Choice_2_4_1 + Choice_2_4_2 + Choice_2_4_3 + Choice_2_5_1
  + Choice_2_5_2 + Choice_2_5_3 + Choice_2_6_1 + Choice_2_6_2 + Choice_2_6_3
  = 1
-Box_86229_Unique_3: Choice_3_4_1 + Choice_3_4_2 + Choice_3_4_3 + Choice_3_5_1
+Box_146243_Unique_3: Choice_3_4_1 + Choice_3_4_2 + Choice_3_4_3 + Choice_3_5_1
  + Choice_3_5_2 + Choice_3_5_3 + Choice_3_6_1 + Choice_3_6_2 + Choice_3_6_3
  = 1
-Box_86229_Unique_4: Choice_4_4_1 + Choice_4_4_2 + Choice_4_4_3 + Choice_4_5_1
+Box_146243_Unique_4: Choice_4_4_1 + Choice_4_4_2 + Choice_4_4_3 + Choice_4_5_1
  + Choice_4_5_2 + Choice_4_5_3 + Choice_4_6_1 + Choice_4_6_2 + Choice_4_6_3
  = 1
-Box_86229_Unique_5: Choice_5_4_1 + Choice_5_4_2 + Choice_5_4_3 + Choice_5_5_1
+Box_146243_Unique_5: Choice_5_4_1 + Choice_5_4_2 + Choice_5_4_3 + Choice_5_5_1
  + Choice_5_5_2 + Choice_5_5_3 + Choice_5_6_1 + Choice_5_6_2 + Choice_5_6_3
  = 1
-Box_86229_Unique_6: Choice_6_4_1 + Choice_6_4_2 + Choice_6_4_3 + Choice_6_5_1
+Box_146243_Unique_6: Choice_6_4_1 + Choice_6_4_2 + Choice_6_4_3 + Choice_6_5_1
  + Choice_6_5_2 + Choice_6_5_3 + Choice_6_6_1 + Choice_6_6_2 + Choice_6_6_3
  = 1
-Box_86229_Unique_7: Choice_7_4_1 + Choice_7_4_2 + Choice_7_4_3 + Choice_7_5_1
+Box_146243_Unique_7: Choice_7_4_1 + Choice_7_4_2 + Choice_7_4_3 + Choice_7_5_1
  + Choice_7_5_2 + Choice_7_5_3 + Choice_7_6_1 + Choice_7_6_2 + Choice_7_6_3
  = 1
-Box_86229_Unique_8: Choice_8_4_1 + Choice_8_4_2 + Choice_8_4_3 + Choice_8_5_1
+Box_146243_Unique_8: Choice_8_4_1 + Choice_8_4_2 + Choice_8_4_3 + Choice_8_5_1
  + Choice_8_5_2 + Choice_8_5_3 + Choice_8_6_1 + Choice_8_6_2 + Choice_8_6_3
  = 1
-Box_86229_Unique_9: Choice_9_4_1 + Choice_9_4_2 + Choice_9_4_3 + Choice_9_5_1
+Box_146243_Unique_9: Choice_9_4_1 + Choice_9_4_2 + Choice_9_4_3 + Choice_9_5_1
  + Choice_9_5_2 + Choice_9_5_3 + Choice_9_6_1 + Choice_9_6_2 + Choice_9_6_3
  = 1
-Box_86230_Unique_1: Choice_1_7_1 + Choice_1_7_2 + Choice_1_7_3 + Choice_1_8_1
+Box_146244_Unique_1: Choice_1_7_1 + Choice_1_7_2 + Choice_1_7_3 + Choice_1_8_1
  + Choice_1_8_2 + Choice_1_8_3 + Choice_1_9_1 + Choice_1_9_2 + Choice_1_9_3
  = 1
-Box_86230_Unique_2: Choice_2_7_1 + Choice_2_7_2 + Choice_2_7_3 + Choice_2_8_1
+Box_146244_Unique_2: Choice_2_7_1 + Choice_2_7_2 + Choice_2_7_3 + Choice_2_8_1
  + Choice_2_8_2 + Choice_2_8_3 + Choice_2_9_1 + Choice_2_9_2 + Choice_2_9_3
  = 1
-Box_86230_Unique_3: Choice_3_7_1 + Choice_3_7_2 + Choice_3_7_3 + Choice_3_8_1
+Box_146244_Unique_3: Choice_3_7_1 + Choice_3_7_2 + Choice_3_7_3 + Choice_3_8_1
  + Choice_3_8_2 + Choice_3_8_3 + Choice_3_9_1 + Choice_3_9_2 + Choice_3_9_3
  = 1
-Box_86230_Unique_4: Choice_4_7_1 + Choice_4_7_2 + Choice_4_7_3 + Choice_4_8_1
+Box_146244_Unique_4: Choice_4_7_1 + Choice_4_7_2 + Choice_4_7_3 + Choice_4_8_1
  + Choice_4_8_2 + Choice_4_8_3 + Choice_4_9_1 + Choice_4_9_2 + Choice_4_9_3
  = 1
-Box_86230_Unique_5: Choice_5_7_1 + Choice_5_7_2 + Choice_5_7_3 + Choice_5_8_1
+Box_146244_Unique_5: Choice_5_7_1 + Choice_5_7_2 + Choice_5_7_3 + Choice_5_8_1
  + Choice_5_8_2 + Choice_5_8_3 + Choice_5_9_1 + Choice_5_9_2 + Choice_5_9_3
  = 1
-Box_86230_Unique_6: Choice_6_7_1 + Choice_6_7_2 + Choice_6_7_3 + Choice_6_8_1
+Box_146244_Unique_6: Choice_6_7_1 + Choice_6_7_2 + Choice_6_7_3 + Choice_6_8_1
  + Choice_6_8_2 + Choice_6_8_3 + Choice_6_9_1 + Choice_6_9_2 + Choice_6_9_3
  = 1
-Box_86230_Unique_7: Choice_7_7_1 + Choice_7_7_2 + Choice_7_7_3 + Choice_7_8_1
+Box_146244_Unique_7: Choice_7_7_1 + Choice_7_7_2 + Choice_7_7_3 + Choice_7_8_1
  + Choice_7_8_2 + Choice_7_8_3 + Choice_7_9_1 + Choice_7_9_2 + Choice_7_9_3
  = 1
-Box_86230_Unique_8: Choice_8_7_1 + Choice_8_7_2 + Choice_8_7_3 + Choice_8_8_1
+Box_146244_Unique_8: Choice_8_7_1 + Choice_8_7_2 + Choice_8_7_3 + Choice_8_8_1
  + Choice_8_8_2 + Choice_8_8_3 + Choice_8_9_1 + Choice_8_9_2 + Choice_8_9_3
  = 1
-Box_86230_Unique_9: Choice_9_7_1 + Choice_9_7_2 + Choice_9_7_3 + Choice_9_8_1
+Box_146244_Unique_9: Choice_9_7_1 + Choice_9_7_2 + Choice_9_7_3 + Choice_9_8_1
  + Choice_9_8_2 + Choice_9_8_3 + Choice_9_9_1 + Choice_9_9_2 + Choice_9_9_3
  = 1
-Box_86231_Unique_1: Choice_1_1_4 + Choice_1_1_5 + Choice_1_1_6 + Choice_1_2_4
+Box_146245_Unique_1: Choice_1_1_4 + Choice_1_1_5 + Choice_1_1_6 + Choice_1_2_4
  + Choice_1_2_5 + Choice_1_2_6 + Choice_1_3_4 + Choice_1_3_5 + Choice_1_3_6
  = 1
-Box_86231_Unique_2: Choice_2_1_4 + Choice_2_1_5 + Choice_2_1_6 + Choice_2_2_4
+Box_146245_Unique_2: Choice_2_1_4 + Choice_2_1_5 + Choice_2_1_6 + Choice_2_2_4
  + Choice_2_2_5 + Choice_2_2_6 + Choice_2_3_4 + Choice_2_3_5 + Choice_2_3_6
  = 1
-Box_86231_Unique_3: Choice_3_1_4 + Choice_3_1_5 + Choice_3_1_6 + Choice_3_2_4
+Box_146245_Unique_3: Choice_3_1_4 + Choice_3_1_5 + Choice_3_1_6 + Choice_3_2_4
  + Choice_3_2_5 + Choice_3_2_6 + Choice_3_3_4 + Choice_3_3_5 + Choice_3_3_6
  = 1
-Box_86231_Unique_4: Choice_4_1_4 + Choice_4_1_5 + Choice_4_1_6 + Choice_4_2_4
+Box_146245_Unique_4: Choice_4_1_4 + Choice_4_1_5 + Choice_4_1_6 + Choice_4_2_4
  + Choice_4_2_5 + Choice_4_2_6 + Choice_4_3_4 + Choice_4_3_5 + Choice_4_3_6
  = 1
-Box_86231_Unique_5: Choice_5_1_4 + Choice_5_1_5 + Choice_5_1_6 + Choice_5_2_4
+Box_146245_Unique_5: Choice_5_1_4 + Choice_5_1_5 + Choice_5_1_6 + Choice_5_2_4
  + Choice_5_2_5 + Choice_5_2_6 + Choice_5_3_4 + Choice_5_3_5 + Choice_5_3_6
  = 1
-Box_86231_Unique_6: Choice_6_1_4 + Choice_6_1_5 + Choice_6_1_6 + Choice_6_2_4
+Box_146245_Unique_6: Choice_6_1_4 + Choice_6_1_5 + Choice_6_1_6 + Choice_6_2_4
  + Choice_6_2_5 + Choice_6_2_6 + Choice_6_3_4 + Choice_6_3_5 + Choice_6_3_6
  = 1
-Box_86231_Unique_7: Choice_7_1_4 + Choice_7_1_5 + Choice_7_1_6 + Choice_7_2_4
+Box_146245_Unique_7: Choice_7_1_4 + Choice_7_1_5 + Choice_7_1_6 + Choice_7_2_4
  + Choice_7_2_5 + Choice_7_2_6 + Choice_7_3_4 + Choice_7_3_5 + Choice_7_3_6
  = 1
-Box_86231_Unique_8: Choice_8_1_4 + Choice_8_1_5 + Choice_8_1_6 + Choice_8_2_4
+Box_146245_Unique_8: Choice_8_1_4 + Choice_8_1_5 + Choice_8_1_6 + Choice_8_2_4
  + Choice_8_2_5 + Choice_8_2_6 + Choice_8_3_4 + Choice_8_3_5 + Choice_8_3_6
  = 1
-Box_86231_Unique_9: Choice_9_1_4 + Choice_9_1_5 + Choice_9_1_6 + Choice_9_2_4
+Box_146245_Unique_9: Choice_9_1_4 + Choice_9_1_5 + Choice_9_1_6 + Choice_9_2_4
  + Choice_9_2_5 + Choice_9_2_6 + Choice_9_3_4 + Choice_9_3_5 + Choice_9_3_6
  = 1
-Box_86232_Unique_1: Choice_1_4_4 + Choice_1_4_5 + Choice_1_4_6 + Choice_1_5_4
+Box_146246_Unique_1: Choice_1_4_4 + Choice_1_4_5 + Choice_1_4_6 + Choice_1_5_4
  + Choice_1_5_5 + Choice_1_5_6 + Choice_1_6_4 + Choice_1_6_5 + Choice_1_6_6
  = 1
-Box_86232_Unique_2: Choice_2_4_4 + Choice_2_4_5 + Choice_2_4_6 + Choice_2_5_4
+Box_146246_Unique_2: Choice_2_4_4 + Choice_2_4_5 + Choice_2_4_6 + Choice_2_5_4
  + Choice_2_5_5 + Choice_2_5_6 + Choice_2_6_4 + Choice_2_6_5 + Choice_2_6_6
  = 1
-Box_86232_Unique_3: Choice_3_4_4 + Choice_3_4_5 + Choice_3_4_6 + Choice_3_5_4
+Box_146246_Unique_3: Choice_3_4_4 + Choice_3_4_5 + Choice_3_4_6 + Choice_3_5_4
  + Choice_3_5_5 + Choice_3_5_6 + Choice_3_6_4 + Choice_3_6_5 + Choice_3_6_6
  = 1
-Box_86232_Unique_4: Choice_4_4_4 + Choice_4_4_5 + Choice_4_4_6 + Choice_4_5_4
+Box_146246_Unique_4: Choice_4_4_4 + Choice_4_4_5 + Choice_4_4_6 + Choice_4_5_4
  + Choice_4_5_5 + Choice_4_5_6 + Choice_4_6_4 + Choice_4_6_5 + Choice_4_6_6
  = 1
-Box_86232_Unique_5: Choice_5_4_4 + Choice_5_4_5 + Choice_5_4_6 + Choice_5_5_4
+Box_146246_Unique_5: Choice_5_4_4 + Choice_5_4_5 + Choice_5_4_6 + Choice_5_5_4
  + Choice_5_5_5 + Choice_5_5_6 + Choice_5_6_4 + Choice_5_6_5 + Choice_5_6_6
  = 1
-Box_86232_Unique_6: Choice_6_4_4 + Choice_6_4_5 + Choice_6_4_6 + Choice_6_5_4
+Box_146246_Unique_6: Choice_6_4_4 + Choice_6_4_5 + Choice_6_4_6 + Choice_6_5_4
  + Choice_6_5_5 + Choice_6_5_6 + Choice_6_6_4 + Choice_6_6_5 + Choice_6_6_6
  = 1
-Box_86232_Unique_7: Choice_7_4_4 + Choice_7_4_5 + Choice_7_4_6 + Choice_7_5_4
+Box_146246_Unique_7: Choice_7_4_4 + Choice_7_4_5 + Choice_7_4_6 + Choice_7_5_4
  + Choice_7_5_5 + Choice_7_5_6 + Choice_7_6_4 + Choice_7_6_5 + Choice_7_6_6
  = 1
-Box_86232_Unique_8: Choice_8_4_4 + Choice_8_4_5 + Choice_8_4_6 + Choice_8_5_4
+Box_146246_Unique_8: Choice_8_4_4 + Choice_8_4_5 + Choice_8_4_6 + Choice_8_5_4
  + Choice_8_5_5 + Choice_8_5_6 + Choice_8_6_4 + Choice_8_6_5 + Choice_8_6_6
  = 1
-Box_86232_Unique_9: Choice_9_4_4 + Choice_9_4_5 + Choice_9_4_6 + Choice_9_5_4
+Box_146246_Unique_9: Choice_9_4_4 + Choice_9_4_5 + Choice_9_4_6 + Choice_9_5_4
  + Choice_9_5_5 + Choice_9_5_6 + Choice_9_6_4 + Choice_9_6_5 + Choice_9_6_6
  = 1
-Box_86233_Unique_1: Choice_1_7_4 + Choice_1_7_5 + Choice_1_7_6 + Choice_1_8_4
+Box_146247_Unique_1: Choice_1_7_4 + Choice_1_7_5 + Choice_1_7_6 + Choice_1_8_4
  + Choice_1_8_5 + Choice_1_8_6 + Choice_1_9_4 + Choice_1_9_5 + Choice_1_9_6
  = 1
-Box_86233_Unique_2: Choice_2_7_4 + Choice_2_7_5 + Choice_2_7_6 + Choice_2_8_4
+Box_146247_Unique_2: Choice_2_7_4 + Choice_2_7_5 + Choice_2_7_6 + Choice_2_8_4
  + Choice_2_8_5 + Choice_2_8_6 + Choice_2_9_4 + Choice_2_9_5 + Choice_2_9_6
  = 1
-Box_86233_Unique_3: Choice_3_7_4 + Choice_3_7_5 + Choice_3_7_6 + Choice_3_8_4
+Box_146247_Unique_3: Choice_3_7_4 + Choice_3_7_5 + Choice_3_7_6 + Choice_3_8_4
  + Choice_3_8_5 + Choice_3_8_6 + Choice_3_9_4 + Choice_3_9_5 + Choice_3_9_6
  = 1
-Box_86233_Unique_4: Choice_4_7_4 + Choice_4_7_5 + Choice_4_7_6 + Choice_4_8_4
+Box_146247_Unique_4: Choice_4_7_4 + Choice_4_7_5 + Choice_4_7_6 + Choice_4_8_4
  + Choice_4_8_5 + Choice_4_8_6 + Choice_4_9_4 + Choice_4_9_5 + Choice_4_9_6
  = 1
-Box_86233_Unique_5: Choice_5_7_4 + Choice_5_7_5 + Choice_5_7_6 + Choice_5_8_4
+Box_146247_Unique_5: Choice_5_7_4 + Choice_5_7_5 + Choice_5_7_6 + Choice_5_8_4
  + Choice_5_8_5 + Choice_5_8_6 + Choice_5_9_4 + Choice_5_9_5 + Choice_5_9_6
  = 1
-Box_86233_Unique_6: Choice_6_7_4 + Choice_6_7_5 + Choice_6_7_6 + Choice_6_8_4
+Box_146247_Unique_6: Choice_6_7_4 + Choice_6_7_5 + Choice_6_7_6 + Choice_6_8_4
  + Choice_6_8_5 + Choice_6_8_6 + Choice_6_9_4 + Choice_6_9_5 + Choice_6_9_6
  = 1
-Box_86233_Unique_7: Choice_7_7_4 + Choice_7_7_5 + Choice_7_7_6 + Choice_7_8_4
+Box_146247_Unique_7: Choice_7_7_4 + Choice_7_7_5 + Choice_7_7_6 + Choice_7_8_4
  + Choice_7_8_5 + Choice_7_8_6 + Choice_7_9_4 + Choice_7_9_5 + Choice_7_9_6
  = 1
-Box_86233_Unique_8: Choice_8_7_4 + Choice_8_7_5 + Choice_8_7_6 + Choice_8_8_4
+Box_146247_Unique_8: Choice_8_7_4 + Choice_8_7_5 + Choice_8_7_6 + Choice_8_8_4
  + Choice_8_8_5 + Choice_8_8_6 + Choice_8_9_4 + Choice_8_9_5 + Choice_8_9_6
  = 1
-Box_86233_Unique_9: Choice_9_7_4 + Choice_9_7_5 + Choice_9_7_6 + Choice_9_8_4
+Box_146247_Unique_9: Choice_9_7_4 + Choice_9_7_5 + Choice_9_7_6 + Choice_9_8_4
  + Choice_9_8_5 + Choice_9_8_6 + Choice_9_9_4 + Choice_9_9_5 + Choice_9_9_6
  = 1
-Box_86234_Unique_1: Choice_1_1_7 + Choice_1_1_8 + Choice_1_1_9 + Choice_1_2_7
+Box_146248_Unique_1: Choice_1_1_7 + Choice_1_1_8 + Choice_1_1_9 + Choice_1_2_7
  + Choice_1_2_8 + Choice_1_2_9 + Choice_1_3_7 + Choice_1_3_8 + Choice_1_3_9
  = 1
-Box_86234_Unique_2: Choice_2_1_7 + Choice_2_1_8 + Choice_2_1_9 + Choice_2_2_7
+Box_146248_Unique_2: Choice_2_1_7 + Choice_2_1_8 + Choice_2_1_9 + Choice_2_2_7
  + Choice_2_2_8 + Choice_2_2_9 + Choice_2_3_7 + Choice_2_3_8 + Choice_2_3_9
  = 1
-Box_86234_Unique_3: Choice_3_1_7 + Choice_3_1_8 + Choice_3_1_9 + Choice_3_2_7
+Box_146248_Unique_3: Choice_3_1_7 + Choice_3_1_8 + Choice_3_1_9 + Choice_3_2_7
  + Choice_3_2_8 + Choice_3_2_9 + Choice_3_3_7 + Choice_3_3_8 + Choice_3_3_9
  = 1
-Box_86234_Unique_4: Choice_4_1_7 + Choice_4_1_8 + Choice_4_1_9 + Choice_4_2_7
+Box_146248_Unique_4: Choice_4_1_7 + Choice_4_1_8 + Choice_4_1_9 + Choice_4_2_7
  + Choice_4_2_8 + Choice_4_2_9 + Choice_4_3_7 + Choice_4_3_8 + Choice_4_3_9
  = 1
-Box_86234_Unique_5: Choice_5_1_7 + Choice_5_1_8 + Choice_5_1_9 + Choice_5_2_7
+Box_146248_Unique_5: Choice_5_1_7 + Choice_5_1_8 + Choice_5_1_9 + Choice_5_2_7
  + Choice_5_2_8 + Choice_5_2_9 + Choice_5_3_7 + Choice_5_3_8 + Choice_5_3_9
  = 1
-Box_86234_Unique_6: Choice_6_1_7 + Choice_6_1_8 + Choice_6_1_9 + Choice_6_2_7
+Box_146248_Unique_6: Choice_6_1_7 + Choice_6_1_8 + Choice_6_1_9 + Choice_6_2_7
  + Choice_6_2_8 + Choice_6_2_9 + Choice_6_3_7 + Choice_6_3_8 + Choice_6_3_9
  = 1
-Box_86234_Unique_7: Choice_7_1_7 + Choice_7_1_8 + Choice_7_1_9 + Choice_7_2_7
+Box_146248_Unique_7: Choice_7_1_7 + Choice_7_1_8 + Choice_7_1_9 + Choice_7_2_7
  + Choice_7_2_8 + Choice_7_2_9 + Choice_7_3_7 + Choice_7_3_8 + Choice_7_3_9
  = 1
-Box_86234_Unique_8: Choice_8_1_7 + Choice_8_1_8 + Choice_8_1_9 + Choice_8_2_7
+Box_146248_Unique_8: Choice_8_1_7 + Choice_8_1_8 + Choice_8_1_9 + Choice_8_2_7
  + Choice_8_2_8 + Choice_8_2_9 + Choice_8_3_7 + Choice_8_3_8 + Choice_8_3_9
  = 1
-Box_86234_Unique_9: Choice_9_1_7 + Choice_9_1_8 + Choice_9_1_9 + Choice_9_2_7
+Box_146248_Unique_9: Choice_9_1_7 + Choice_9_1_8 + Choice_9_1_9 + Choice_9_2_7
  + Choice_9_2_8 + Choice_9_2_9 + Choice_9_3_7 + Choice_9_3_8 + Choice_9_3_9
  = 1
-Box_86235_Unique_1: Choice_1_4_7 + Choice_1_4_8 + Choice_1_4_9 + Choice_1_5_7
+Box_146249_Unique_1: Choice_1_4_7 + Choice_1_4_8 + Choice_1_4_9 + Choice_1_5_7
  + Choice_1_5_8 + Choice_1_5_9 + Choice_1_6_7 + Choice_1_6_8 + Choice_1_6_9
  = 1
-Box_86235_Unique_2: Choice_2_4_7 + Choice_2_4_8 + Choice_2_4_9 + Choice_2_5_7
+Box_146249_Unique_2: Choice_2_4_7 + Choice_2_4_8 + Choice_2_4_9 + Choice_2_5_7
  + Choice_2_5_8 + Choice_2_5_9 + Choice_2_6_7 + Choice_2_6_8 + Choice_2_6_9
  = 1
-Box_86235_Unique_3: Choice_3_4_7 + Choice_3_4_8 + Choice_3_4_9 + Choice_3_5_7
+Box_146249_Unique_3: Choice_3_4_7 + Choice_3_4_8 + Choice_3_4_9 + Choice_3_5_7
  + Choice_3_5_8 + Choice_3_5_9 + Choice_3_6_7 + Choice_3_6_8 + Choice_3_6_9
  = 1
-Box_86235_Unique_4: Choice_4_4_7 + Choice_4_4_8 + Choice_4_4_9 + Choice_4_5_7
+Box_146249_Unique_4: Choice_4_4_7 + Choice_4_4_8 + Choice_4_4_9 + Choice_4_5_7
  + Choice_4_5_8 + Choice_4_5_9 + Choice_4_6_7 + Choice_4_6_8 + Choice_4_6_9
  = 1
-Box_86235_Unique_5: Choice_5_4_7 + Choice_5_4_8 + Choice_5_4_9 + Choice_5_5_7
+Box_146249_Unique_5: Choice_5_4_7 + Choice_5_4_8 + Choice_5_4_9 + Choice_5_5_7
  + Choice_5_5_8 + Choice_5_5_9 + Choice_5_6_7 + Choice_5_6_8 + Choice_5_6_9
  = 1
-Box_86235_Unique_6: Choice_6_4_7 + Choice_6_4_8 + Choice_6_4_9 + Choice_6_5_7
+Box_146249_Unique_6: Choice_6_4_7 + Choice_6_4_8 + Choice_6_4_9 + Choice_6_5_7
  + Choice_6_5_8 + Choice_6_5_9 + Choice_6_6_7 + Choice_6_6_8 + Choice_6_6_9
  = 1
-Box_86235_Unique_7: Choice_7_4_7 + Choice_7_4_8 + Choice_7_4_9 + Choice_7_5_7
+Box_146249_Unique_7: Choice_7_4_7 + Choice_7_4_8 + Choice_7_4_9 + Choice_7_5_7
  + Choice_7_5_8 + Choice_7_5_9 + Choice_7_6_7 + Choice_7_6_8 + Choice_7_6_9
  = 1
-Box_86235_Unique_8: Choice_8_4_7 + Choice_8_4_8 + Choice_8_4_9 + Choice_8_5_7
+Box_146249_Unique_8: Choice_8_4_7 + Choice_8_4_8 + Choice_8_4_9 + Choice_8_5_7
  + Choice_8_5_8 + Choice_8_5_9 + Choice_8_6_7 + Choice_8_6_8 + Choice_8_6_9
  = 1
-Box_86235_Unique_9: Choice_9_4_7 + Choice_9_4_8 + Choice_9_4_9 + Choice_9_5_7
+Box_146249_Unique_9: Choice_9_4_7 + Choice_9_4_8 + Choice_9_4_9 + Choice_9_5_7
  + Choice_9_5_8 + Choice_9_5_9 + Choice_9_6_7 + Choice_9_6_8 + Choice_9_6_9
  = 1
-Box_86236_Unique_1: Choice_1_7_7 + Choice_1_7_8 + Choice_1_7_9 + Choice_1_8_7
+Box_146250_Unique_1: Choice_1_7_7 + Choice_1_7_8 + Choice_1_7_9 + Choice_1_8_7
  + Choice_1_8_8 + Choice_1_8_9 + Choice_1_9_7 + Choice_1_9_8 + Choice_1_9_9
  = 1
-Box_86236_Unique_2: Choice_2_7_7 + Choice_2_7_8 + Choice_2_7_9 + Choice_2_8_7
+Box_146250_Unique_2: Choice_2_7_7 + Choice_2_7_8 + Choice_2_7_9 + Choice_2_8_7
  + Choice_2_8_8 + Choice_2_8_9 + Choice_2_9_7 + Choice_2_9_8 + Choice_2_9_9
  = 1
-Box_86236_Unique_3: Choice_3_7_7 + Choice_3_7_8 + Choice_3_7_9 + Choice_3_8_7
+Box_146250_Unique_3: Choice_3_7_7 + Choice_3_7_8 + Choice_3_7_9 + Choice_3_8_7
  + Choice_3_8_8 + Choice_3_8_9 + Choice_3_9_7 + Choice_3_9_8 + Choice_3_9_9
  = 1
-Box_86236_Unique_4: Choice_4_7_7 + Choice_4_7_8 + Choice_4_7_9 + Choice_4_8_7
+Box_146250_Unique_4: Choice_4_7_7 + Choice_4_7_8 + Choice_4_7_9 + Choice_4_8_7
  + Choice_4_8_8 + Choice_4_8_9 + Choice_4_9_7 + Choice_4_9_8 + Choice_4_9_9
  = 1
-Box_86236_Unique_5: Choice_5_7_7 + Choice_5_7_8 + Choice_5_7_9 + Choice_5_8_7
+Box_146250_Unique_5: Choice_5_7_7 + Choice_5_7_8 + Choice_5_7_9 + Choice_5_8_7
  + Choice_5_8_8 + Choice_5_8_9 + Choice_5_9_7 + Choice_5_9_8 + Choice_5_9_9
  = 1
-Box_86236_Unique_6: Choice_6_7_7 + Choice_6_7_8 + Choice_6_7_9 + Choice_6_8_7
+Box_146250_Unique_6: Choice_6_7_7 + Choice_6_7_8 + Choice_6_7_9 + Choice_6_8_7
  + Choice_6_8_8 + Choice_6_8_9 + Choice_6_9_7 + Choice_6_9_8 + Choice_6_9_9
  = 1
-Box_86236_Unique_7: Choice_7_7_7 + Choice_7_7_8 + Choice_7_7_9 + Choice_7_8_7
+Box_146250_Unique_7: Choice_7_7_7 + Choice_7_7_8 + Choice_7_7_9 + Choice_7_8_7
  + Choice_7_8_8 + Choice_7_8_9 + Choice_7_9_7 + Choice_7_9_8 + Choice_7_9_9
  = 1
-Box_86236_Unique_8: Choice_8_7_7 + Choice_8_7_8 + Choice_8_7_9 + Choice_8_8_7
+Box_146250_Unique_8: Choice_8_7_7 + Choice_8_7_8 + Choice_8_7_9 + Choice_8_8_7
  + Choice_8_8_8 + Choice_8_8_9 + Choice_8_9_7 + Choice_8_9_8 + Choice_8_9_9
  = 1
-Box_86236_Unique_9: Choice_9_7_7 + Choice_9_7_8 + Choice_9_7_9 + Choice_9_8_7
+Box_146250_Unique_9: Choice_9_7_7 + Choice_9_7_8 + Choice_9_7_9 + Choice_9_8_7
  + Choice_9_8_8 + Choice_9_8_9 + Choice_9_9_7 + Choice_9_9_8 + Choice_9_9_9
  = 1
-Column_86208_Unique_1: Choice_1_1_1 + Choice_1_2_1 + Choice_1_3_1
+Column_146222_Unique_1: Choice_1_1_1 + Choice_1_2_1 + Choice_1_3_1
  + Choice_1_4_1 + Choice_1_5_1 + Choice_1_6_1 + Choice_1_7_1 + Choice_1_8_1
  + Choice_1_9_1 = 1
-Column_86208_Unique_2: Choice_2_1_1 + Choice_2_2_1 + Choice_2_3_1
+Column_146222_Unique_2: Choice_2_1_1 + Choice_2_2_1 + Choice_2_3_1
  + Choice_2_4_1 + Choice_2_5_1 + Choice_2_6_1 + Choice_2_7_1 + Choice_2_8_1
  + Choice_2_9_1 = 1
-Column_86208_Unique_3: Choice_3_1_1 + Choice_3_2_1 + Choice_3_3_1
+Column_146222_Unique_3: Choice_3_1_1 + Choice_3_2_1 + Choice_3_3_1
  + Choice_3_4_1 + Choice_3_5_1 + Choice_3_6_1 + Choice_3_7_1 + Choice_3_8_1
  + Choice_3_9_1 = 1
-Column_86208_Unique_4: Choice_4_1_1 + Choice_4_2_1 + Choice_4_3_1
+Column_146222_Unique_4: Choice_4_1_1 + Choice_4_2_1 + Choice_4_3_1
  + Choice_4_4_1 + Choice_4_5_1 + Choice_4_6_1 + Choice_4_7_1 + Choice_4_8_1
  + Choice_4_9_1 = 1
-Column_86208_Unique_5: Choice_5_1_1 + Choice_5_2_1 + Choice_5_3_1
+Column_146222_Unique_5: Choice_5_1_1 + Choice_5_2_1 + Choice_5_3_1
  + Choice_5_4_1 + Choice_5_5_1 + Choice_5_6_1 + Choice_5_7_1 + Choice_5_8_1
  + Choice_5_9_1 = 1
-Column_86208_Unique_6: Choice_6_1_1 + Choice_6_2_1 + Choice_6_3_1
+Column_146222_Unique_6: Choice_6_1_1 + Choice_6_2_1 + Choice_6_3_1
  + Choice_6_4_1 + Choice_6_5_1 + Choice_6_6_1 + Choice_6_7_1 + Choice_6_8_1
  + Choice_6_9_1 = 1
-Column_86208_Unique_7: Choice_7_1_1 + Choice_7_2_1 + Choice_7_3_1
+Column_146222_Unique_7: Choice_7_1_1 + Choice_7_2_1 + Choice_7_3_1
  + Choice_7_4_1 + Choice_7_5_1 + Choice_7_6_1 + Choice_7_7_1 + Choice_7_8_1
  + Choice_7_9_1 = 1
-Column_86208_Unique_8: Choice_8_1_1 + Choice_8_2_1 + Choice_8_3_1
+Column_146222_Unique_8: Choice_8_1_1 + Choice_8_2_1 + Choice_8_3_1
  + Choice_8_4_1 + Choice_8_5_1 + Choice_8_6_1 + Choice_8_7_1 + Choice_8_8_1
  + Choice_8_9_1 = 1
-Column_86208_Unique_9: Choice_9_1_1 + Choice_9_2_1 + Choice_9_3_1
+Column_146222_Unique_9: Choice_9_1_1 + Choice_9_2_1 + Choice_9_3_1
  + Choice_9_4_1 + Choice_9_5_1 + Choice_9_6_1 + Choice_9_7_1 + Choice_9_8_1
  + Choice_9_9_1 = 1
-Column_86209_Unique_1: Choice_1_1_2 + Choice_1_2_2 + Choice_1_3_2
+Column_146223_Unique_1: Choice_1_1_2 + Choice_1_2_2 + Choice_1_3_2
  + Choice_1_4_2 + Choice_1_5_2 + Choice_1_6_2 + Choice_1_7_2 + Choice_1_8_2
  + Choice_1_9_2 = 1
-Column_86209_Unique_2: Choice_2_1_2 + Choice_2_2_2 + Choice_2_3_2
+Column_146223_Unique_2: Choice_2_1_2 + Choice_2_2_2 + Choice_2_3_2
  + Choice_2_4_2 + Choice_2_5_2 + Choice_2_6_2 + Choice_2_7_2 + Choice_2_8_2
  + Choice_2_9_2 = 1
-Column_86209_Unique_3: Choice_3_1_2 + Choice_3_2_2 + Choice_3_3_2
+Column_146223_Unique_3: Choice_3_1_2 + Choice_3_2_2 + Choice_3_3_2
  + Choice_3_4_2 + Choice_3_5_2 + Choice_3_6_2 + Choice_3_7_2 + Choice_3_8_2
  + Choice_3_9_2 = 1
-Column_86209_Unique_4: Choice_4_1_2 + Choice_4_2_2 + Choice_4_3_2
+Column_146223_Unique_4: Choice_4_1_2 + Choice_4_2_2 + Choice_4_3_2
  + Choice_4_4_2 + Choice_4_5_2 + Choice_4_6_2 + Choice_4_7_2 + Choice_4_8_2
  + Choice_4_9_2 = 1
-Column_86209_Unique_5: Choice_5_1_2 + Choice_5_2_2 + Choice_5_3_2
+Column_146223_Unique_5: Choice_5_1_2 + Choice_5_2_2 + Choice_5_3_2
  + Choice_5_4_2 + Choice_5_5_2 + Choice_5_6_2 + Choice_5_7_2 + Choice_5_8_2
  + Choice_5_9_2 = 1
-Column_86209_Unique_6: Choice_6_1_2 + Choice_6_2_2 + Choice_6_3_2
+Column_146223_Unique_6: Choice_6_1_2 + Choice_6_2_2 + Choice_6_3_2
  + Choice_6_4_2 + Choice_6_5_2 + Choice_6_6_2 + Choice_6_7_2 + Choice_6_8_2
  + Choice_6_9_2 = 1
-Column_86209_Unique_7: Choice_7_1_2 + Choice_7_2_2 + Choice_7_3_2
+Column_146223_Unique_7: Choice_7_1_2 + Choice_7_2_2 + Choice_7_3_2
  + Choice_7_4_2 + Choice_7_5_2 + Choice_7_6_2 + Choice_7_7_2 + Choice_7_8_2
  + Choice_7_9_2 = 1
-Column_86209_Unique_8: Choice_8_1_2 + Choice_8_2_2 + Choice_8_3_2
+Column_146223_Unique_8: Choice_8_1_2 + Choice_8_2_2 + Choice_8_3_2
  + Choice_8_4_2 + Choice_8_5_2 + Choice_8_6_2 + Choice_8_7_2 + Choice_8_8_2
  + Choice_8_9_2 = 1
-Column_86209_Unique_9: Choice_9_1_2 + Choice_9_2_2 + Choice_9_3_2
+Column_146223_Unique_9: Choice_9_1_2 + Choice_9_2_2 + Choice_9_3_2
  + Choice_9_4_2 + Choice_9_5_2 + Choice_9_6_2 + Choice_9_7_2 + Choice_9_8_2
  + Choice_9_9_2 = 1
-Column_86210_Unique_1: Choice_1_1_3 + Choice_1_2_3 + Choice_1_3_3
+Column_146224_Unique_1: Choice_1_1_3 + Choice_1_2_3 + Choice_1_3_3
  + Choice_1_4_3 + Choice_1_5_3 + Choice_1_6_3 + Choice_1_7_3 + Choice_1_8_3
  + Choice_1_9_3 = 1
-Column_86210_Unique_2: Choice_2_1_3 + Choice_2_2_3 + Choice_2_3_3
+Column_146224_Unique_2: Choice_2_1_3 + Choice_2_2_3 + Choice_2_3_3
  + Choice_2_4_3 + Choice_2_5_3 + Choice_2_6_3 + Choice_2_7_3 + Choice_2_8_3
  + Choice_2_9_3 = 1
-Column_86210_Unique_3: Choice_3_1_3 + Choice_3_2_3 + Choice_3_3_3
+Column_146224_Unique_3: Choice_3_1_3 + Choice_3_2_3 + Choice_3_3_3
  + Choice_3_4_3 + Choice_3_5_3 + Choice_3_6_3 + Choice_3_7_3 + Choice_3_8_3
  + Choice_3_9_3 = 1
-Column_86210_Unique_4: Choice_4_1_3 + Choice_4_2_3 + Choice_4_3_3
+Column_146224_Unique_4: Choice_4_1_3 + Choice_4_2_3 + Choice_4_3_3
  + Choice_4_4_3 + Choice_4_5_3 + Choice_4_6_3 + Choice_4_7_3 + Choice_4_8_3
  + Choice_4_9_3 = 1
-Column_86210_Unique_5: Choice_5_1_3 + Choice_5_2_3 + Choice_5_3_3
+Column_146224_Unique_5: Choice_5_1_3 + Choice_5_2_3 + Choice_5_3_3
  + Choice_5_4_3 + Choice_5_5_3 + Choice_5_6_3 + Choice_5_7_3 + Choice_5_8_3
  + Choice_5_9_3 = 1
-Column_86210_Unique_6: Choice_6_1_3 + Choice_6_2_3 + Choice_6_3_3
+Column_146224_Unique_6: Choice_6_1_3 + Choice_6_2_3 + Choice_6_3_3
  + Choice_6_4_3 + Choice_6_5_3 + Choice_6_6_3 + Choice_6_7_3 + Choice_6_8_3
  + Choice_6_9_3 = 1
-Column_86210_Unique_7: Choice_7_1_3 + Choice_7_2_3 + Choice_7_3_3
+Column_146224_Unique_7: Choice_7_1_3 + Choice_7_2_3 + Choice_7_3_3
  + Choice_7_4_3 + Choice_7_5_3 + Choice_7_6_3 + Choice_7_7_3 + Choice_7_8_3
  + Choice_7_9_3 = 1
-Column_86210_Unique_8: Choice_8_1_3 + Choice_8_2_3 + Choice_8_3_3
+Column_146224_Unique_8: Choice_8_1_3 + Choice_8_2_3 + Choice_8_3_3
  + Choice_8_4_3 + Choice_8_5_3 + Choice_8_6_3 + Choice_8_7_3 + Choice_8_8_3
  + Choice_8_9_3 = 1
-Column_86210_Unique_9: Choice_9_1_3 + Choice_9_2_3 + Choice_9_3_3
+Column_146224_Unique_9: Choice_9_1_3 + Choice_9_2_3 + Choice_9_3_3
  + Choice_9_4_3 + Choice_9_5_3 + Choice_9_6_3 + Choice_9_7_3 + Choice_9_8_3
  + Choice_9_9_3 = 1
-Column_86211_Unique_1: Choice_1_1_4 + Choice_1_2_4 + Choice_1_3_4
+Column_146225_Unique_1: Choice_1_1_4 + Choice_1_2_4 + Choice_1_3_4
  + Choice_1_4_4 + Choice_1_5_4 + Choice_1_6_4 + Choice_1_7_4 + Choice_1_8_4
  + Choice_1_9_4 = 1
-Column_86211_Unique_2: Choice_2_1_4 + Choice_2_2_4 + Choice_2_3_4
+Column_146225_Unique_2: Choice_2_1_4 + Choice_2_2_4 + Choice_2_3_4
  + Choice_2_4_4 + Choice_2_5_4 + Choice_2_6_4 + Choice_2_7_4 + Choice_2_8_4
  + Choice_2_9_4 = 1
-Column_86211_Unique_3: Choice_3_1_4 + Choice_3_2_4 + Choice_3_3_4
+Column_146225_Unique_3: Choice_3_1_4 + Choice_3_2_4 + Choice_3_3_4
  + Choice_3_4_4 + Choice_3_5_4 + Choice_3_6_4 + Choice_3_7_4 + Choice_3_8_4
  + Choice_3_9_4 = 1
-Column_86211_Unique_4: Choice_4_1_4 + Choice_4_2_4 + Choice_4_3_4
+Column_146225_Unique_4: Choice_4_1_4 + Choice_4_2_4 + Choice_4_3_4
  + Choice_4_4_4 + Choice_4_5_4 + Choice_4_6_4 + Choice_4_7_4 + Choice_4_8_4
  + Choice_4_9_4 = 1
-Column_86211_Unique_5: Choice_5_1_4 + Choice_5_2_4 + Choice_5_3_4
+Column_146225_Unique_5: Choice_5_1_4 + Choice_5_2_4 + Choice_5_3_4
  + Choice_5_4_4 + Choice_5_5_4 + Choice_5_6_4 + Choice_5_7_4 + Choice_5_8_4
  + Choice_5_9_4 = 1
-Column_86211_Unique_6: Choice_6_1_4 + Choice_6_2_4 + Choice_6_3_4
+Column_146225_Unique_6: Choice_6_1_4 + Choice_6_2_4 + Choice_6_3_4
  + Choice_6_4_4 + Choice_6_5_4 + Choice_6_6_4 + Choice_6_7_4 + Choice_6_8_4
  + Choice_6_9_4 = 1
-Column_86211_Unique_7: Choice_7_1_4 + Choice_7_2_4 + Choice_7_3_4
+Column_146225_Unique_7: Choice_7_1_4 + Choice_7_2_4 + Choice_7_3_4
  + Choice_7_4_4 + Choice_7_5_4 + Choice_7_6_4 + Choice_7_7_4 + Choice_7_8_4
  + Choice_7_9_4 = 1
-Column_86211_Unique_8: Choice_8_1_4 + Choice_8_2_4 + Choice_8_3_4
+Column_146225_Unique_8: Choice_8_1_4 + Choice_8_2_4 + Choice_8_3_4
  + Choice_8_4_4 + Choice_8_5_4 + Choice_8_6_4 + Choice_8_7_4 + Choice_8_8_4
  + Choice_8_9_4 = 1
-Column_86211_Unique_9: Choice_9_1_4 + Choice_9_2_4 + Choice_9_3_4
+Column_146225_Unique_9: Choice_9_1_4 + Choice_9_2_4 + Choice_9_3_4
  + Choice_9_4_4 + Choice_9_5_4 + Choice_9_6_4 + Choice_9_7_4 + Choice_9_8_4
  + Choice_9_9_4 = 1
-Column_86212_Unique_1: Choice_1_1_5 + Choice_1_2_5 + Choice_1_3_5
+Column_146226_Unique_1: Choice_1_1_5 + Choice_1_2_5 + Choice_1_3_5
  + Choice_1_4_5 + Choice_1_5_5 + Choice_1_6_5 + Choice_1_7_5 + Choice_1_8_5
  + Choice_1_9_5 = 1
-Column_86212_Unique_2: Choice_2_1_5 + Choice_2_2_5 + Choice_2_3_5
+Column_146226_Unique_2: Choice_2_1_5 + Choice_2_2_5 + Choice_2_3_5
  + Choice_2_4_5 + Choice_2_5_5 + Choice_2_6_5 + Choice_2_7_5 + Choice_2_8_5
  + Choice_2_9_5 = 1
-Column_86212_Unique_3: Choice_3_1_5 + Choice_3_2_5 + Choice_3_3_5
+Column_146226_Unique_3: Choice_3_1_5 + Choice_3_2_5 + Choice_3_3_5
  + Choice_3_4_5 + Choice_3_5_5 + Choice_3_6_5 + Choice_3_7_5 + Choice_3_8_5
  + Choice_3_9_5 = 1
-Column_86212_Unique_4: Choice_4_1_5 + Choice_4_2_5 + Choice_4_3_5
+Column_146226_Unique_4: Choice_4_1_5 + Choice_4_2_5 + Choice_4_3_5
  + Choice_4_4_5 + Choice_4_5_5 + Choice_4_6_5 + Choice_4_7_5 + Choice_4_8_5
  + Choice_4_9_5 = 1
-Column_86212_Unique_5: Choice_5_1_5 + Choice_5_2_5 + Choice_5_3_5
+Column_146226_Unique_5: Choice_5_1_5 + Choice_5_2_5 + Choice_5_3_5
  + Choice_5_4_5 + Choice_5_5_5 + Choice_5_6_5 + Choice_5_7_5 + Choice_5_8_5
  + Choice_5_9_5 = 1
-Column_86212_Unique_6: Choice_6_1_5 + Choice_6_2_5 + Choice_6_3_5
+Column_146226_Unique_6: Choice_6_1_5 + Choice_6_2_5 + Choice_6_3_5
  + Choice_6_4_5 + Choice_6_5_5 + Choice_6_6_5 + Choice_6_7_5 + Choice_6_8_5
  + Choice_6_9_5 = 1
-Column_86212_Unique_7: Choice_7_1_5 + Choice_7_2_5 + Choice_7_3_5
+Column_146226_Unique_7: Choice_7_1_5 + Choice_7_2_5 + Choice_7_3_5
  + Choice_7_4_5 + Choice_7_5_5 + Choice_7_6_5 + Choice_7_7_5 + Choice_7_8_5
  + Choice_7_9_5 = 1
-Column_86212_Unique_8: Choice_8_1_5 + Choice_8_2_5 + Choice_8_3_5
+Column_146226_Unique_8: Choice_8_1_5 + Choice_8_2_5 + Choice_8_3_5
  + Choice_8_4_5 + Choice_8_5_5 + Choice_8_6_5 + Choice_8_7_5 + Choice_8_8_5
  + Choice_8_9_5 = 1
-Column_86212_Unique_9: Choice_9_1_5 + Choice_9_2_5 + Choice_9_3_5
+Column_146226_Unique_9: Choice_9_1_5 + Choice_9_2_5 + Choice_9_3_5
  + Choice_9_4_5 + Choice_9_5_5 + Choice_9_6_5 + Choice_9_7_5 + Choice_9_8_5
  + Choice_9_9_5 = 1
-Column_86213_Unique_1: Choice_1_1_6 + Choice_1_2_6 + Choice_1_3_6
+Column_146227_Unique_1: Choice_1_1_6 + Choice_1_2_6 + Choice_1_3_6
  + Choice_1_4_6 + Choice_1_5_6 + Choice_1_6_6 + Choice_1_7_6 + Choice_1_8_6
  + Choice_1_9_6 = 1
-Column_86213_Unique_2: Choice_2_1_6 + Choice_2_2_6 + Choice_2_3_6
+Column_146227_Unique_2: Choice_2_1_6 + Choice_2_2_6 + Choice_2_3_6
  + Choice_2_4_6 + Choice_2_5_6 + Choice_2_6_6 + Choice_2_7_6 + Choice_2_8_6
  + Choice_2_9_6 = 1
-Column_86213_Unique_3: Choice_3_1_6 + Choice_3_2_6 + Choice_3_3_6
+Column_146227_Unique_3: Choice_3_1_6 + Choice_3_2_6 + Choice_3_3_6
  + Choice_3_4_6 + Choice_3_5_6 + Choice_3_6_6 + Choice_3_7_6 + Choice_3_8_6
  + Choice_3_9_6 = 1
-Column_86213_Unique_4: Choice_4_1_6 + Choice_4_2_6 + Choice_4_3_6
+Column_146227_Unique_4: Choice_4_1_6 + Choice_4_2_6 + Choice_4_3_6
  + Choice_4_4_6 + Choice_4_5_6 + Choice_4_6_6 + Choice_4_7_6 + Choice_4_8_6
  + Choice_4_9_6 = 1
-Column_86213_Unique_5: Choice_5_1_6 + Choice_5_2_6 + Choice_5_3_6
+Column_146227_Unique_5: Choice_5_1_6 + Choice_5_2_6 + Choice_5_3_6
  + Choice_5_4_6 + Choice_5_5_6 + Choice_5_6_6 + Choice_5_7_6 + Choice_5_8_6
  + Choice_5_9_6 = 1
-Column_86213_Unique_6: Choice_6_1_6 + Choice_6_2_6 + Choice_6_3_6
+Column_146227_Unique_6: Choice_6_1_6 + Choice_6_2_6 + Choice_6_3_6
  + Choice_6_4_6 + Choice_6_5_6 + Choice_6_6_6 + Choice_6_7_6 + Choice_6_8_6
  + Choice_6_9_6 = 1
-Column_86213_Unique_7: Choice_7_1_6 + Choice_7_2_6 + Choice_7_3_6
+Column_146227_Unique_7: Choice_7_1_6 + Choice_7_2_6 + Choice_7_3_6
  + Choice_7_4_6 + Choice_7_5_6 + Choice_7_6_6 + Choice_7_7_6 + Choice_7_8_6
  + Choice_7_9_6 = 1
-Column_86213_Unique_8: Choice_8_1_6 + Choice_8_2_6 + Choice_8_3_6
+Column_146227_Unique_8: Choice_8_1_6 + Choice_8_2_6 + Choice_8_3_6
  + Choice_8_4_6 + Choice_8_5_6 + Choice_8_6_6 + Choice_8_7_6 + Choice_8_8_6
  + Choice_8_9_6 = 1
-Column_86213_Unique_9: Choice_9_1_6 + Choice_9_2_6 + Choice_9_3_6
+Column_146227_Unique_9: Choice_9_1_6 + Choice_9_2_6 + Choice_9_3_6
  + Choice_9_4_6 + Choice_9_5_6 + Choice_9_6_6 + Choice_9_7_6 + Choice_9_8_6
  + Choice_9_9_6 = 1
-Column_86214_Unique_1: Choice_1_1_7 + Choice_1_2_7 + Choice_1_3_7
+Column_146228_Unique_1: Choice_1_1_7 + Choice_1_2_7 + Choice_1_3_7
  + Choice_1_4_7 + Choice_1_5_7 + Choice_1_6_7 + Choice_1_7_7 + Choice_1_8_7
  + Choice_1_9_7 = 1
-Column_86214_Unique_2: Choice_2_1_7 + Choice_2_2_7 + Choice_2_3_7
+Column_146228_Unique_2: Choice_2_1_7 + Choice_2_2_7 + Choice_2_3_7
  + Choice_2_4_7 + Choice_2_5_7 + Choice_2_6_7 + Choice_2_7_7 + Choice_2_8_7
  + Choice_2_9_7 = 1
-Column_86214_Unique_3: Choice_3_1_7 + Choice_3_2_7 + Choice_3_3_7
+Column_146228_Unique_3: Choice_3_1_7 + Choice_3_2_7 + Choice_3_3_7
  + Choice_3_4_7 + Choice_3_5_7 + Choice_3_6_7 + Choice_3_7_7 + Choice_3_8_7
  + Choice_3_9_7 = 1
-Column_86214_Unique_4: Choice_4_1_7 + Choice_4_2_7 + Choice_4_3_7
+Column_146228_Unique_4: Choice_4_1_7 + Choice_4_2_7 + Choice_4_3_7
  + Choice_4_4_7 + Choice_4_5_7 + Choice_4_6_7 + Choice_4_7_7 + Choice_4_8_7
  + Choice_4_9_7 = 1
-Column_86214_Unique_5: Choice_5_1_7 + Choice_5_2_7 + Choice_5_3_7
+Column_146228_Unique_5: Choice_5_1_7 + Choice_5_2_7 + Choice_5_3_7
  + Choice_5_4_7 + Choice_5_5_7 + Choice_5_6_7 + Choice_5_7_7 + Choice_5_8_7
  + Choice_5_9_7 = 1
-Column_86214_Unique_6: Choice_6_1_7 + Choice_6_2_7 + Choice_6_3_7
+Column_146228_Unique_6: Choice_6_1_7 + Choice_6_2_7 + Choice_6_3_7
  + Choice_6_4_7 + Choice_6_5_7 + Choice_6_6_7 + Choice_6_7_7 + Choice_6_8_7
  + Choice_6_9_7 = 1
-Column_86214_Unique_7: Choice_7_1_7 + Choice_7_2_7 + Choice_7_3_7
+Column_146228_Unique_7: Choice_7_1_7 + Choice_7_2_7 + Choice_7_3_7
  + Choice_7_4_7 + Choice_7_5_7 + Choice_7_6_7 + Choice_7_7_7 + Choice_7_8_7
  + Choice_7_9_7 = 1
-Column_86214_Unique_8: Choice_8_1_7 + Choice_8_2_7 + Choice_8_3_7
+Column_146228_Unique_8: Choice_8_1_7 + Choice_8_2_7 + Choice_8_3_7
  + Choice_8_4_7 + Choice_8_5_7 + Choice_8_6_7 + Choice_8_7_7 + Choice_8_8_7
  + Choice_8_9_7 = 1
-Column_86214_Unique_9: Choice_9_1_7 + Choice_9_2_7 + Choice_9_3_7
+Column_146228_Unique_9: Choice_9_1_7 + Choice_9_2_7 + Choice_9_3_7
  + Choice_9_4_7 + Choice_9_5_7 + Choice_9_6_7 + Choice_9_7_7 + Choice_9_8_7
  + Choice_9_9_7 = 1
-Column_86215_Unique_1: Choice_1_1_8 + Choice_1_2_8 + Choice_1_3_8
+Column_146229_Unique_1: Choice_1_1_8 + Choice_1_2_8 + Choice_1_3_8
  + Choice_1_4_8 + Choice_1_5_8 + Choice_1_6_8 + Choice_1_7_8 + Choice_1_8_8
  + Choice_1_9_8 = 1
-Column_86215_Unique_2: Choice_2_1_8 + Choice_2_2_8 + Choice_2_3_8
+Column_146229_Unique_2: Choice_2_1_8 + Choice_2_2_8 + Choice_2_3_8
  + Choice_2_4_8 + Choice_2_5_8 + Choice_2_6_8 + Choice_2_7_8 + Choice_2_8_8
  + Choice_2_9_8 = 1
-Column_86215_Unique_3: Choice_3_1_8 + Choice_3_2_8 + Choice_3_3_8
+Column_146229_Unique_3: Choice_3_1_8 + Choice_3_2_8 + Choice_3_3_8
  + Choice_3_4_8 + Choice_3_5_8 + Choice_3_6_8 + Choice_3_7_8 + Choice_3_8_8
  + Choice_3_9_8 = 1
-Column_86215_Unique_4: Choice_4_1_8 + Choice_4_2_8 + Choice_4_3_8
+Column_146229_Unique_4: Choice_4_1_8 + Choice_4_2_8 + Choice_4_3_8
  + Choice_4_4_8 + Choice_4_5_8 + Choice_4_6_8 + Choice_4_7_8 + Choice_4_8_8
  + Choice_4_9_8 = 1
-Column_86215_Unique_5: Choice_5_1_8 + Choice_5_2_8 + Choice_5_3_8
+Column_146229_Unique_5: Choice_5_1_8 + Choice_5_2_8 + Choice_5_3_8
  + Choice_5_4_8 + Choice_5_5_8 + Choice_5_6_8 + Choice_5_7_8 + Choice_5_8_8
  + Choice_5_9_8 = 1
-Column_86215_Unique_6: Choice_6_1_8 + Choice_6_2_8 + Choice_6_3_8
+Column_146229_Unique_6: Choice_6_1_8 + Choice_6_2_8 + Choice_6_3_8
  + Choice_6_4_8 + Choice_6_5_8 + Choice_6_6_8 + Choice_6_7_8 + Choice_6_8_8
  + Choice_6_9_8 = 1
-Column_86215_Unique_7: Choice_7_1_8 + Choice_7_2_8 + Choice_7_3_8
+Column_146229_Unique_7: Choice_7_1_8 + Choice_7_2_8 + Choice_7_3_8
  + Choice_7_4_8 + Choice_7_5_8 + Choice_7_6_8 + Choice_7_7_8 + Choice_7_8_8
  + Choice_7_9_8 = 1
-Column_86215_Unique_8: Choice_8_1_8 + Choice_8_2_8 + Choice_8_3_8
+Column_146229_Unique_8: Choice_8_1_8 + Choice_8_2_8 + Choice_8_3_8
  + Choice_8_4_8 + Choice_8_5_8 + Choice_8_6_8 + Choice_8_7_8 + Choice_8_8_8
  + Choice_8_9_8 = 1
-Column_86215_Unique_9: Choice_9_1_8 + Choice_9_2_8 + Choice_9_3_8
+Column_146229_Unique_9: Choice_9_1_8 + Choice_9_2_8 + Choice_9_3_8
  + Choice_9_4_8 + Choice_9_5_8 + Choice_9_6_8 + Choice_9_7_8 + Choice_9_8_8
  + Choice_9_9_8 = 1
-Column_86216_Unique_1: Choice_1_1_9 + Choice_1_2_9 + Choice_1_3_9
+Column_146230_Unique_1: Choice_1_1_9 + Choice_1_2_9 + Choice_1_3_9
  + Choice_1_4_9 + Choice_1_5_9 + Choice_1_6_9 + Choice_1_7_9 + Choice_1_8_9
  + Choice_1_9_9 = 1
-Column_86216_Unique_2: Choice_2_1_9 + Choice_2_2_9 + Choice_2_3_9
+Column_146230_Unique_2: Choice_2_1_9 + Choice_2_2_9 + Choice_2_3_9
  + Choice_2_4_9 + Choice_2_5_9 + Choice_2_6_9 + Choice_2_7_9 + Choice_2_8_9
  + Choice_2_9_9 = 1
-Column_86216_Unique_3: Choice_3_1_9 + Choice_3_2_9 + Choice_3_3_9
+Column_146230_Unique_3: Choice_3_1_9 + Choice_3_2_9 + Choice_3_3_9
  + Choice_3_4_9 + Choice_3_5_9 + Choice_3_6_9 + Choice_3_7_9 + Choice_3_8_9
  + Choice_3_9_9 = 1
-Column_86216_Unique_4: Choice_4_1_9 + Choice_4_2_9 + Choice_4_3_9
+Column_146230_Unique_4: Choice_4_1_9 + Choice_4_2_9 + Choice_4_3_9
  + Choice_4_4_9 + Choice_4_5_9 + Choice_4_6_9 + Choice_4_7_9 + Choice_4_8_9
  + Choice_4_9_9 = 1
-Column_86216_Unique_5: Choice_5_1_9 + Choice_5_2_9 + Choice_5_3_9
+Column_146230_Unique_5: Choice_5_1_9 + Choice_5_2_9 + Choice_5_3_9
  + Choice_5_4_9 + Choice_5_5_9 + Choice_5_6_9 + Choice_5_7_9 + Choice_5_8_9
  + Choice_5_9_9 = 1
-Column_86216_Unique_6: Choice_6_1_9 + Choice_6_2_9 + Choice_6_3_9
+Column_146230_Unique_6: Choice_6_1_9 + Choice_6_2_9 + Choice_6_3_9
  + Choice_6_4_9 + Choice_6_5_9 + Choice_6_6_9 + Choice_6_7_9 + Choice_6_8_9
  + Choice_6_9_9 = 1
-Column_86216_Unique_7: Choice_7_1_9 + Choice_7_2_9 + Choice_7_3_9
+Column_146230_Unique_7: Choice_7_1_9 + Choice_7_2_9 + Choice_7_3_9
  + Choice_7_4_9 + Choice_7_5_9 + Choice_7_6_9 + Choice_7_7_9 + Choice_7_8_9
  + Choice_7_9_9 = 1
-Column_86216_Unique_8: Choice_8_1_9 + Choice_8_2_9 + Choice_8_3_9
+Column_146230_Unique_8: Choice_8_1_9 + Choice_8_2_9 + Choice_8_3_9
  + Choice_8_4_9 + Choice_8_5_9 + Choice_8_6_9 + Choice_8_7_9 + Choice_8_8_9
  + Choice_8_9_9 = 1
-Column_86216_Unique_9: Choice_9_1_9 + Choice_9_2_9 + Choice_9_3_9
+Column_146230_Unique_9: Choice_9_1_9 + Choice_9_2_9 + Choice_9_3_9
  + Choice_9_4_9 + Choice_9_5_9 + Choice_9_6_9 + Choice_9_7_9 + Choice_9_8_9
  + Choice_9_9_9 = 1
-EqualSum_86238_0: Values_1_1 + Values_2_1 + Values_3_2 - Values_4_2
+EqualSum_146252_0: Values_1_1 + Values_2_1 + Values_3_2 - Values_4_2
  - Values_4_3 = 0
-EqualSum_86238_1: Values_4_2 + Values_4_3 - Values_4_4 = 0
-EqualSum_86238_2: - Values_1_1 - Values_2_1 - Values_3_2 + Values_4_4 = 0
-EqualSum_86238_maximum_0: Values_1_1 + Values_2_1 + Values_3_2 <= 9
-EqualSum_86238_maximum_1: Values_4_2 + Values_4_3 <= 9
-EqualSum_86238_maximum_2: Values_4_4 <= 9
-EqualSum_86238_minimum_0: Values_1_1 + Values_2_1 + Values_3_2 >= 6
-EqualSum_86238_minimum_1: Values_4_2 + Values_4_3 >= 6
-EqualSum_86238_minimum_2: Values_4_4 >= 6
-EqualSum_86239_0: Values_1_4 + Values_1_5 + Values_1_6 - Values_1_7
+EqualSum_146252_1: Values_4_2 + Values_4_3 - Values_4_4 = 0
+EqualSum_146252_2: - Values_1_1 - Values_2_1 - Values_3_2 + Values_4_4 = 0
+EqualSum_146252_maximum_0: Values_1_1 + Values_2_1 + Values_3_2 <= 9
+EqualSum_146252_maximum_1: Values_4_2 + Values_4_3 <= 9
+EqualSum_146252_maximum_2: Values_4_4 <= 9
+EqualSum_146252_minimum_0: Values_1_1 + Values_2_1 + Values_3_2 >= 6
+EqualSum_146252_minimum_1: Values_4_2 + Values_4_3 >= 6
+EqualSum_146252_minimum_2: Values_4_4 >= 6
+EqualSum_146253_0: Values_1_4 + Values_1_5 + Values_1_6 - Values_1_7
  - Values_1_8 = 0
-EqualSum_86239_1: - Values_1_4 - Values_1_5 - Values_1_6 + Values_1_7
+EqualSum_146253_1: - Values_1_4 - Values_1_5 - Values_1_6 + Values_1_7
  + Values_1_8 = 0
-EqualSum_86239_maximum_0: Values_1_4 + Values_1_5 + Values_1_6 <= 17
-EqualSum_86239_maximum_1: Values_1_7 + Values_1_8 <= 17
-EqualSum_86239_minimum_0: Values_1_4 + Values_1_5 + Values_1_6 >= 6
-EqualSum_86239_minimum_1: Values_1_7 + Values_1_8 >= 6
-EqualSum_86240_0: Values_1_9 + Values_2_8 + Values_3_8 - Values_4_7
+EqualSum_146253_maximum_0: Values_1_4 + Values_1_5 + Values_1_6 <= 17
+EqualSum_146253_maximum_1: Values_1_7 + Values_1_8 <= 17
+EqualSum_146253_minimum_0: Values_1_4 + Values_1_5 + Values_1_6 >= 6
+EqualSum_146253_minimum_1: Values_1_7 + Values_1_8 >= 6
+EqualSum_146254_0: Values_1_9 + Values_2_8 + Values_3_8 - Values_4_7
  - Values_4_8 = 0
-EqualSum_86240_1: - Values_4_6 + Values_4_7 + Values_4_8 = 0
-EqualSum_86240_2: - Values_1_9 - Values_2_8 - Values_3_8 + Values_4_6 = 0
-EqualSum_86240_maximum_0: Values_1_9 + Values_2_8 + Values_3_8 <= 9
-EqualSum_86240_maximum_1: Values_4_7 + Values_4_8 <= 9
-EqualSum_86240_maximum_2: Values_4_6 <= 9
-EqualSum_86240_minimum_0: Values_1_9 + Values_2_8 + Values_3_8 >= 6
-EqualSum_86240_minimum_1: Values_4_7 + Values_4_8 >= 6
-EqualSum_86240_minimum_2: Values_4_6 >= 6
-EqualSum_86241_0: Values_2_9 + Values_3_9 - Values_4_9 - Values_5_9 = 0
-EqualSum_86241_1: - Values_2_9 - Values_3_9 + Values_4_9 + Values_5_9 = 0
-EqualSum_86241_maximum_0: Values_2_9 + Values_3_9 <= 17
-EqualSum_86241_maximum_1: Values_4_9 + Values_5_9 <= 17
-EqualSum_86241_minimum_0: Values_2_9 + Values_3_9 >= 3
-EqualSum_86241_minimum_1: Values_4_9 + Values_5_9 >= 3
-EqualSum_86242_0: Values_2_6 + Values_3_6 - Values_4_5 = 0
-EqualSum_86242_1: - Values_2_6 - Values_3_6 + Values_4_5 = 0
-EqualSum_86242_maximum_0: Values_2_6 + Values_3_6 <= 9
-EqualSum_86242_maximum_1: Values_4_5 <= 9
-EqualSum_86242_minimum_0: Values_2_6 + Values_3_6 >= 3
-EqualSum_86242_minimum_1: Values_4_5 >= 3
-EqualSum_86243_0: Values_5_2 + Values_5_3 + Values_6_1 - Values_7_2
+EqualSum_146254_1: - Values_4_6 + Values_4_7 + Values_4_8 = 0
+EqualSum_146254_2: - Values_1_9 - Values_2_8 - Values_3_8 + Values_4_6 = 0
+EqualSum_146254_maximum_0: Values_1_9 + Values_2_8 + Values_3_8 <= 9
+EqualSum_146254_maximum_1: Values_4_7 + Values_4_8 <= 9
+EqualSum_146254_maximum_2: Values_4_6 <= 9
+EqualSum_146254_minimum_0: Values_1_9 + Values_2_8 + Values_3_8 >= 6
+EqualSum_146254_minimum_1: Values_4_7 + Values_4_8 >= 6
+EqualSum_146254_minimum_2: Values_4_6 >= 6
+EqualSum_146255_0: Values_2_9 + Values_3_9 - Values_4_9 - Values_5_9 = 0
+EqualSum_146255_1: - Values_2_9 - Values_3_9 + Values_4_9 + Values_5_9 = 0
+EqualSum_146255_maximum_0: Values_2_9 + Values_3_9 <= 17
+EqualSum_146255_maximum_1: Values_4_9 + Values_5_9 <= 17
+EqualSum_146255_minimum_0: Values_2_9 + Values_3_9 >= 3
+EqualSum_146255_minimum_1: Values_4_9 + Values_5_9 >= 3
+EqualSum_146256_0: Values_2_6 + Values_3_6 - Values_4_5 = 0
+EqualSum_146256_1: - Values_2_6 - Values_3_6 + Values_4_5 = 0
+EqualSum_146256_maximum_0: Values_2_6 + Values_3_6 <= 9
+EqualSum_146256_maximum_1: Values_4_5 <= 9
+EqualSum_146256_minimum_0: Values_2_6 + Values_3_6 >= 3
+EqualSum_146256_minimum_1: Values_4_5 >= 3
+EqualSum_146257_0: Values_5_2 + Values_5_3 + Values_6_1 - Values_7_2
  - Values_8_2 = 0
-EqualSum_86243_1: - Values_5_2 - Values_5_3 - Values_6_1 + Values_7_2
+EqualSum_146257_1: - Values_5_2 - Values_5_3 - Values_6_1 + Values_7_2
  + Values_8_2 = 0
-EqualSum_86243_maximum_0: Values_5_2 + Values_5_3 + Values_6_1 <= 17
-EqualSum_86243_maximum_1: Values_7_2 + Values_8_2 <= 17
-EqualSum_86243_minimum_0: Values_5_2 + Values_5_3 + Values_6_1 >= 6
-EqualSum_86243_minimum_1: Values_7_2 + Values_8_2 >= 6
-EqualSum_86244_0: - Values_6_2 - Values_6_3 + Values_6_4 = 0
-EqualSum_86244_1: Values_6_2 + Values_6_3 - Values_7_1 - Values_8_1
+EqualSum_146257_maximum_0: Values_5_2 + Values_5_3 + Values_6_1 <= 17
+EqualSum_146257_maximum_1: Values_7_2 + Values_8_2 <= 17
+EqualSum_146257_minimum_0: Values_5_2 + Values_5_3 + Values_6_1 >= 6
+EqualSum_146257_minimum_1: Values_7_2 + Values_8_2 >= 6
+EqualSum_146258_0: - Values_6_2 - Values_6_3 + Values_6_4 = 0
+EqualSum_146258_1: Values_6_2 + Values_6_3 - Values_7_1 - Values_8_1
  - Values_9_1 = 0
-EqualSum_86244_2: - Values_6_4 + Values_7_1 + Values_8_1 + Values_9_1 = 0
-EqualSum_86244_maximum_0: Values_6_4 <= 9
-EqualSum_86244_maximum_1: Values_6_2 + Values_6_3 <= 9
-EqualSum_86244_maximum_2: Values_7_1 + Values_8_1 + Values_9_1 <= 9
-EqualSum_86244_minimum_0: Values_6_4 >= 6
-EqualSum_86244_minimum_1: Values_6_2 + Values_6_3 >= 6
-EqualSum_86244_minimum_2: Values_7_1 + Values_8_1 + Values_9_1 >= 6
-EqualSum_86245_0: Values_5_5 + Values_6_5 - Values_7_4 - Values_7_5
+EqualSum_146258_2: - Values_6_4 + Values_7_1 + Values_8_1 + Values_9_1 = 0
+EqualSum_146258_maximum_0: Values_6_4 <= 9
+EqualSum_146258_maximum_1: Values_6_2 + Values_6_3 <= 9
+EqualSum_146258_maximum_2: Values_7_1 + Values_8_1 + Values_9_1 <= 9
+EqualSum_146258_minimum_0: Values_6_4 >= 6
+EqualSum_146258_minimum_1: Values_6_2 + Values_6_3 >= 6
+EqualSum_146258_minimum_2: Values_7_1 + Values_8_1 + Values_9_1 >= 6
+EqualSum_146259_0: Values_5_5 + Values_6_5 - Values_7_4 - Values_7_5
  - Values_8_4 = 0
-EqualSum_86245_1: - Values_5_5 - Values_6_5 + Values_7_4 + Values_7_5
+EqualSum_146259_1: - Values_5_5 - Values_6_5 + Values_7_4 + Values_7_5
  + Values_8_4 = 0
-EqualSum_86245_maximum_0: Values_5_5 + Values_6_5 <= 17
-EqualSum_86245_maximum_1: Values_7_4 + Values_7_5 + Values_8_4 <= 17
-EqualSum_86245_minimum_0: Values_5_5 + Values_6_5 >= 6
-EqualSum_86245_minimum_1: Values_7_4 + Values_7_5 + Values_8_4 >= 6
-EqualSum_86246_0: Values_6_6 - Values_6_7 - Values_6_8 = 0
-EqualSum_86246_1: Values_6_7 + Values_6_8 - Values_7_8 - Values_8_9
+EqualSum_146259_maximum_0: Values_5_5 + Values_6_5 <= 17
+EqualSum_146259_maximum_1: Values_7_4 + Values_7_5 + Values_8_4 <= 17
+EqualSum_146259_minimum_0: Values_5_5 + Values_6_5 >= 6
+EqualSum_146259_minimum_1: Values_7_4 + Values_7_5 + Values_8_4 >= 6
+EqualSum_146260_0: Values_6_6 - Values_6_7 - Values_6_8 = 0
+EqualSum_146260_1: Values_6_7 + Values_6_8 - Values_7_8 - Values_8_9
  - Values_9_9 = 0
-EqualSum_86246_2: - Values_6_6 + Values_7_8 + Values_8_9 + Values_9_9 = 0
-EqualSum_86246_maximum_0: Values_6_6 <= 9
-EqualSum_86246_maximum_1: Values_6_7 + Values_6_8 <= 9
-EqualSum_86246_maximum_2: Values_7_8 + Values_8_9 + Values_9_9 <= 9
-EqualSum_86246_minimum_0: Values_6_6 >= 6
-EqualSum_86246_minimum_1: Values_6_7 + Values_6_8 >= 6
-EqualSum_86246_minimum_2: Values_7_8 + Values_8_9 + Values_9_9 >= 6
-EqualSum_86247_0: Values_9_2 + Values_9_3 - Values_9_4 - Values_9_5
+EqualSum_146260_2: - Values_6_6 + Values_7_8 + Values_8_9 + Values_9_9 = 0
+EqualSum_146260_maximum_0: Values_6_6 <= 9
+EqualSum_146260_maximum_1: Values_6_7 + Values_6_8 <= 9
+EqualSum_146260_maximum_2: Values_7_8 + Values_8_9 + Values_9_9 <= 9
+EqualSum_146260_minimum_0: Values_6_6 >= 6
+EqualSum_146260_minimum_1: Values_6_7 + Values_6_8 >= 6
+EqualSum_146260_minimum_2: Values_7_8 + Values_8_9 + Values_9_9 >= 6
+EqualSum_146261_0: Values_9_2 + Values_9_3 - Values_9_4 - Values_9_5
  - Values_9_6 = 0
-EqualSum_86247_1: - Values_9_2 - Values_9_3 + Values_9_4 + Values_9_5
+EqualSum_146261_1: - Values_9_2 - Values_9_3 + Values_9_4 + Values_9_5
  + Values_9_6 = 0
-EqualSum_86247_maximum_0: Values_9_2 + Values_9_3 <= 17
-EqualSum_86247_maximum_1: Values_9_4 + Values_9_5 + Values_9_6 <= 17
-EqualSum_86247_minimum_0: Values_9_2 + Values_9_3 >= 6
-EqualSum_86247_minimum_1: Values_9_4 + Values_9_5 + Values_9_6 >= 6
-EqualSum_86248_0: Values_8_6 - Values_9_7 - Values_9_8 = 0
-EqualSum_86248_1: - Values_8_6 + Values_9_7 + Values_9_8 = 0
-EqualSum_86248_maximum_0: Values_8_6 <= 9
-EqualSum_86248_maximum_1: Values_9_7 + Values_9_8 <= 9
-EqualSum_86248_minimum_0: Values_8_6 >= 3
-EqualSum_86248_minimum_1: Values_9_7 + Values_9_8 >= 3
+EqualSum_146261_maximum_0: Values_9_2 + Values_9_3 <= 17
+EqualSum_146261_maximum_1: Values_9_4 + Values_9_5 + Values_9_6 <= 17
+EqualSum_146261_minimum_0: Values_9_2 + Values_9_3 >= 6
+EqualSum_146261_minimum_1: Values_9_4 + Values_9_5 + Values_9_6 >= 6
+EqualSum_146262_0: Values_8_6 - Values_9_7 - Values_9_8 = 0
+EqualSum_146262_1: - Values_8_6 + Values_9_7 + Values_9_8 = 0
+EqualSum_146262_maximum_0: Values_8_6 <= 9
+EqualSum_146262_maximum_1: Values_9_7 + Values_9_8 <= 9
+EqualSum_146262_minimum_0: Values_8_6 >= 3
+EqualSum_146262_minimum_1: Values_9_7 + Values_9_8 >= 3
 Imposible_1_1_1: Choice_1_1_1 = 0
 Imposible_1_1_2: Choice_1_1_2 = 0
 Imposible_1_1_3: Choice_1_1_3 = 0
@@ -1307,302 +1307,302 @@ Imposible_9_9_6: Choice_9_9_6 = 0
 Imposible_9_9_7: Choice_9_9_7 = 0
 Imposible_9_9_8: Choice_9_9_8 = 0
 Imposible_9_9_9: Choice_9_9_9 = 0
-Row_86218_Unique_1: Choice_1_1_1 + Choice_1_1_2 + Choice_1_1_3 + Choice_1_1_4
+Row_146232_Unique_1: Choice_1_1_1 + Choice_1_1_2 + Choice_1_1_3 + Choice_1_1_4
  + Choice_1_1_5 + Choice_1_1_6 + Choice_1_1_7 + Choice_1_1_8 + Choice_1_1_9
  = 1
-Row_86218_Unique_2: Choice_2_1_1 + Choice_2_1_2 + Choice_2_1_3 + Choice_2_1_4
+Row_146232_Unique_2: Choice_2_1_1 + Choice_2_1_2 + Choice_2_1_3 + Choice_2_1_4
  + Choice_2_1_5 + Choice_2_1_6 + Choice_2_1_7 + Choice_2_1_8 + Choice_2_1_9
  = 1
-Row_86218_Unique_3: Choice_3_1_1 + Choice_3_1_2 + Choice_3_1_3 + Choice_3_1_4
+Row_146232_Unique_3: Choice_3_1_1 + Choice_3_1_2 + Choice_3_1_3 + Choice_3_1_4
  + Choice_3_1_5 + Choice_3_1_6 + Choice_3_1_7 + Choice_3_1_8 + Choice_3_1_9
  = 1
-Row_86218_Unique_4: Choice_4_1_1 + Choice_4_1_2 + Choice_4_1_3 + Choice_4_1_4
+Row_146232_Unique_4: Choice_4_1_1 + Choice_4_1_2 + Choice_4_1_3 + Choice_4_1_4
  + Choice_4_1_5 + Choice_4_1_6 + Choice_4_1_7 + Choice_4_1_8 + Choice_4_1_9
  = 1
-Row_86218_Unique_5: Choice_5_1_1 + Choice_5_1_2 + Choice_5_1_3 + Choice_5_1_4
+Row_146232_Unique_5: Choice_5_1_1 + Choice_5_1_2 + Choice_5_1_3 + Choice_5_1_4
  + Choice_5_1_5 + Choice_5_1_6 + Choice_5_1_7 + Choice_5_1_8 + Choice_5_1_9
  = 1
-Row_86218_Unique_6: Choice_6_1_1 + Choice_6_1_2 + Choice_6_1_3 + Choice_6_1_4
+Row_146232_Unique_6: Choice_6_1_1 + Choice_6_1_2 + Choice_6_1_3 + Choice_6_1_4
  + Choice_6_1_5 + Choice_6_1_6 + Choice_6_1_7 + Choice_6_1_8 + Choice_6_1_9
  = 1
-Row_86218_Unique_7: Choice_7_1_1 + Choice_7_1_2 + Choice_7_1_3 + Choice_7_1_4
+Row_146232_Unique_7: Choice_7_1_1 + Choice_7_1_2 + Choice_7_1_3 + Choice_7_1_4
  + Choice_7_1_5 + Choice_7_1_6 + Choice_7_1_7 + Choice_7_1_8 + Choice_7_1_9
  = 1
-Row_86218_Unique_8: Choice_8_1_1 + Choice_8_1_2 + Choice_8_1_3 + Choice_8_1_4
+Row_146232_Unique_8: Choice_8_1_1 + Choice_8_1_2 + Choice_8_1_3 + Choice_8_1_4
  + Choice_8_1_5 + Choice_8_1_6 + Choice_8_1_7 + Choice_8_1_8 + Choice_8_1_9
  = 1
-Row_86218_Unique_9: Choice_9_1_1 + Choice_9_1_2 + Choice_9_1_3 + Choice_9_1_4
+Row_146232_Unique_9: Choice_9_1_1 + Choice_9_1_2 + Choice_9_1_3 + Choice_9_1_4
  + Choice_9_1_5 + Choice_9_1_6 + Choice_9_1_7 + Choice_9_1_8 + Choice_9_1_9
  = 1
-Row_86219_Unique_1: Choice_1_2_1 + Choice_1_2_2 + Choice_1_2_3 + Choice_1_2_4
+Row_146233_Unique_1: Choice_1_2_1 + Choice_1_2_2 + Choice_1_2_3 + Choice_1_2_4
  + Choice_1_2_5 + Choice_1_2_6 + Choice_1_2_7 + Choice_1_2_8 + Choice_1_2_9
  = 1
-Row_86219_Unique_2: Choice_2_2_1 + Choice_2_2_2 + Choice_2_2_3 + Choice_2_2_4
+Row_146233_Unique_2: Choice_2_2_1 + Choice_2_2_2 + Choice_2_2_3 + Choice_2_2_4
  + Choice_2_2_5 + Choice_2_2_6 + Choice_2_2_7 + Choice_2_2_8 + Choice_2_2_9
  = 1
-Row_86219_Unique_3: Choice_3_2_1 + Choice_3_2_2 + Choice_3_2_3 + Choice_3_2_4
+Row_146233_Unique_3: Choice_3_2_1 + Choice_3_2_2 + Choice_3_2_3 + Choice_3_2_4
  + Choice_3_2_5 + Choice_3_2_6 + Choice_3_2_7 + Choice_3_2_8 + Choice_3_2_9
  = 1
-Row_86219_Unique_4: Choice_4_2_1 + Choice_4_2_2 + Choice_4_2_3 + Choice_4_2_4
+Row_146233_Unique_4: Choice_4_2_1 + Choice_4_2_2 + Choice_4_2_3 + Choice_4_2_4
  + Choice_4_2_5 + Choice_4_2_6 + Choice_4_2_7 + Choice_4_2_8 + Choice_4_2_9
  = 1
-Row_86219_Unique_5: Choice_5_2_1 + Choice_5_2_2 + Choice_5_2_3 + Choice_5_2_4
+Row_146233_Unique_5: Choice_5_2_1 + Choice_5_2_2 + Choice_5_2_3 + Choice_5_2_4
  + Choice_5_2_5 + Choice_5_2_6 + Choice_5_2_7 + Choice_5_2_8 + Choice_5_2_9
  = 1
-Row_86219_Unique_6: Choice_6_2_1 + Choice_6_2_2 + Choice_6_2_3 + Choice_6_2_4
+Row_146233_Unique_6: Choice_6_2_1 + Choice_6_2_2 + Choice_6_2_3 + Choice_6_2_4
  + Choice_6_2_5 + Choice_6_2_6 + Choice_6_2_7 + Choice_6_2_8 + Choice_6_2_9
  = 1
-Row_86219_Unique_7: Choice_7_2_1 + Choice_7_2_2 + Choice_7_2_3 + Choice_7_2_4
+Row_146233_Unique_7: Choice_7_2_1 + Choice_7_2_2 + Choice_7_2_3 + Choice_7_2_4
  + Choice_7_2_5 + Choice_7_2_6 + Choice_7_2_7 + Choice_7_2_8 + Choice_7_2_9
  = 1
-Row_86219_Unique_8: Choice_8_2_1 + Choice_8_2_2 + Choice_8_2_3 + Choice_8_2_4
+Row_146233_Unique_8: Choice_8_2_1 + Choice_8_2_2 + Choice_8_2_3 + Choice_8_2_4
  + Choice_8_2_5 + Choice_8_2_6 + Choice_8_2_7 + Choice_8_2_8 + Choice_8_2_9
  = 1
-Row_86219_Unique_9: Choice_9_2_1 + Choice_9_2_2 + Choice_9_2_3 + Choice_9_2_4
+Row_146233_Unique_9: Choice_9_2_1 + Choice_9_2_2 + Choice_9_2_3 + Choice_9_2_4
  + Choice_9_2_5 + Choice_9_2_6 + Choice_9_2_7 + Choice_9_2_8 + Choice_9_2_9
  = 1
-Row_86220_Unique_1: Choice_1_3_1 + Choice_1_3_2 + Choice_1_3_3 + Choice_1_3_4
+Row_146234_Unique_1: Choice_1_3_1 + Choice_1_3_2 + Choice_1_3_3 + Choice_1_3_4
  + Choice_1_3_5 + Choice_1_3_6 + Choice_1_3_7 + Choice_1_3_8 + Choice_1_3_9
  = 1
-Row_86220_Unique_2: Choice_2_3_1 + Choice_2_3_2 + Choice_2_3_3 + Choice_2_3_4
+Row_146234_Unique_2: Choice_2_3_1 + Choice_2_3_2 + Choice_2_3_3 + Choice_2_3_4
  + Choice_2_3_5 + Choice_2_3_6 + Choice_2_3_7 + Choice_2_3_8 + Choice_2_3_9
  = 1
-Row_86220_Unique_3: Choice_3_3_1 + Choice_3_3_2 + Choice_3_3_3 + Choice_3_3_4
+Row_146234_Unique_3: Choice_3_3_1 + Choice_3_3_2 + Choice_3_3_3 + Choice_3_3_4
  + Choice_3_3_5 + Choice_3_3_6 + Choice_3_3_7 + Choice_3_3_8 + Choice_3_3_9
  = 1
-Row_86220_Unique_4: Choice_4_3_1 + Choice_4_3_2 + Choice_4_3_3 + Choice_4_3_4
+Row_146234_Unique_4: Choice_4_3_1 + Choice_4_3_2 + Choice_4_3_3 + Choice_4_3_4
  + Choice_4_3_5 + Choice_4_3_6 + Choice_4_3_7 + Choice_4_3_8 + Choice_4_3_9
  = 1
-Row_86220_Unique_5: Choice_5_3_1 + Choice_5_3_2 + Choice_5_3_3 + Choice_5_3_4
+Row_146234_Unique_5: Choice_5_3_1 + Choice_5_3_2 + Choice_5_3_3 + Choice_5_3_4
  + Choice_5_3_5 + Choice_5_3_6 + Choice_5_3_7 + Choice_5_3_8 + Choice_5_3_9
  = 1
-Row_86220_Unique_6: Choice_6_3_1 + Choice_6_3_2 + Choice_6_3_3 + Choice_6_3_4
+Row_146234_Unique_6: Choice_6_3_1 + Choice_6_3_2 + Choice_6_3_3 + Choice_6_3_4
  + Choice_6_3_5 + Choice_6_3_6 + Choice_6_3_7 + Choice_6_3_8 + Choice_6_3_9
  = 1
-Row_86220_Unique_7: Choice_7_3_1 + Choice_7_3_2 + Choice_7_3_3 + Choice_7_3_4
+Row_146234_Unique_7: Choice_7_3_1 + Choice_7_3_2 + Choice_7_3_3 + Choice_7_3_4
  + Choice_7_3_5 + Choice_7_3_6 + Choice_7_3_7 + Choice_7_3_8 + Choice_7_3_9
  = 1
-Row_86220_Unique_8: Choice_8_3_1 + Choice_8_3_2 + Choice_8_3_3 + Choice_8_3_4
+Row_146234_Unique_8: Choice_8_3_1 + Choice_8_3_2 + Choice_8_3_3 + Choice_8_3_4
  + Choice_8_3_5 + Choice_8_3_6 + Choice_8_3_7 + Choice_8_3_8 + Choice_8_3_9
  = 1
-Row_86220_Unique_9: Choice_9_3_1 + Choice_9_3_2 + Choice_9_3_3 + Choice_9_3_4
+Row_146234_Unique_9: Choice_9_3_1 + Choice_9_3_2 + Choice_9_3_3 + Choice_9_3_4
  + Choice_9_3_5 + Choice_9_3_6 + Choice_9_3_7 + Choice_9_3_8 + Choice_9_3_9
  = 1
-Row_86221_Unique_1: Choice_1_4_1 + Choice_1_4_2 + Choice_1_4_3 + Choice_1_4_4
+Row_146235_Unique_1: Choice_1_4_1 + Choice_1_4_2 + Choice_1_4_3 + Choice_1_4_4
  + Choice_1_4_5 + Choice_1_4_6 + Choice_1_4_7 + Choice_1_4_8 + Choice_1_4_9
  = 1
-Row_86221_Unique_2: Choice_2_4_1 + Choice_2_4_2 + Choice_2_4_3 + Choice_2_4_4
+Row_146235_Unique_2: Choice_2_4_1 + Choice_2_4_2 + Choice_2_4_3 + Choice_2_4_4
  + Choice_2_4_5 + Choice_2_4_6 + Choice_2_4_7 + Choice_2_4_8 + Choice_2_4_9
  = 1
-Row_86221_Unique_3: Choice_3_4_1 + Choice_3_4_2 + Choice_3_4_3 + Choice_3_4_4
+Row_146235_Unique_3: Choice_3_4_1 + Choice_3_4_2 + Choice_3_4_3 + Choice_3_4_4
  + Choice_3_4_5 + Choice_3_4_6 + Choice_3_4_7 + Choice_3_4_8 + Choice_3_4_9
  = 1
-Row_86221_Unique_4: Choice_4_4_1 + Choice_4_4_2 + Choice_4_4_3 + Choice_4_4_4
+Row_146235_Unique_4: Choice_4_4_1 + Choice_4_4_2 + Choice_4_4_3 + Choice_4_4_4
  + Choice_4_4_5 + Choice_4_4_6 + Choice_4_4_7 + Choice_4_4_8 + Choice_4_4_9
  = 1
-Row_86221_Unique_5: Choice_5_4_1 + Choice_5_4_2 + Choice_5_4_3 + Choice_5_4_4
+Row_146235_Unique_5: Choice_5_4_1 + Choice_5_4_2 + Choice_5_4_3 + Choice_5_4_4
  + Choice_5_4_5 + Choice_5_4_6 + Choice_5_4_7 + Choice_5_4_8 + Choice_5_4_9
  = 1
-Row_86221_Unique_6: Choice_6_4_1 + Choice_6_4_2 + Choice_6_4_3 + Choice_6_4_4
+Row_146235_Unique_6: Choice_6_4_1 + Choice_6_4_2 + Choice_6_4_3 + Choice_6_4_4
  + Choice_6_4_5 + Choice_6_4_6 + Choice_6_4_7 + Choice_6_4_8 + Choice_6_4_9
  = 1
-Row_86221_Unique_7: Choice_7_4_1 + Choice_7_4_2 + Choice_7_4_3 + Choice_7_4_4
+Row_146235_Unique_7: Choice_7_4_1 + Choice_7_4_2 + Choice_7_4_3 + Choice_7_4_4
  + Choice_7_4_5 + Choice_7_4_6 + Choice_7_4_7 + Choice_7_4_8 + Choice_7_4_9
  = 1
-Row_86221_Unique_8: Choice_8_4_1 + Choice_8_4_2 + Choice_8_4_3 + Choice_8_4_4
+Row_146235_Unique_8: Choice_8_4_1 + Choice_8_4_2 + Choice_8_4_3 + Choice_8_4_4
  + Choice_8_4_5 + Choice_8_4_6 + Choice_8_4_7 + Choice_8_4_8 + Choice_8_4_9
  = 1
-Row_86221_Unique_9: Choice_9_4_1 + Choice_9_4_2 + Choice_9_4_3 + Choice_9_4_4
+Row_146235_Unique_9: Choice_9_4_1 + Choice_9_4_2 + Choice_9_4_3 + Choice_9_4_4
  + Choice_9_4_5 + Choice_9_4_6 + Choice_9_4_7 + Choice_9_4_8 + Choice_9_4_9
  = 1
-Row_86222_Unique_1: Choice_1_5_1 + Choice_1_5_2 + Choice_1_5_3 + Choice_1_5_4
+Row_146236_Unique_1: Choice_1_5_1 + Choice_1_5_2 + Choice_1_5_3 + Choice_1_5_4
  + Choice_1_5_5 + Choice_1_5_6 + Choice_1_5_7 + Choice_1_5_8 + Choice_1_5_9
  = 1
-Row_86222_Unique_2: Choice_2_5_1 + Choice_2_5_2 + Choice_2_5_3 + Choice_2_5_4
+Row_146236_Unique_2: Choice_2_5_1 + Choice_2_5_2 + Choice_2_5_3 + Choice_2_5_4
  + Choice_2_5_5 + Choice_2_5_6 + Choice_2_5_7 + Choice_2_5_8 + Choice_2_5_9
  = 1
-Row_86222_Unique_3: Choice_3_5_1 + Choice_3_5_2 + Choice_3_5_3 + Choice_3_5_4
+Row_146236_Unique_3: Choice_3_5_1 + Choice_3_5_2 + Choice_3_5_3 + Choice_3_5_4
  + Choice_3_5_5 + Choice_3_5_6 + Choice_3_5_7 + Choice_3_5_8 + Choice_3_5_9
  = 1
-Row_86222_Unique_4: Choice_4_5_1 + Choice_4_5_2 + Choice_4_5_3 + Choice_4_5_4
+Row_146236_Unique_4: Choice_4_5_1 + Choice_4_5_2 + Choice_4_5_3 + Choice_4_5_4
  + Choice_4_5_5 + Choice_4_5_6 + Choice_4_5_7 + Choice_4_5_8 + Choice_4_5_9
  = 1
-Row_86222_Unique_5: Choice_5_5_1 + Choice_5_5_2 + Choice_5_5_3 + Choice_5_5_4
+Row_146236_Unique_5: Choice_5_5_1 + Choice_5_5_2 + Choice_5_5_3 + Choice_5_5_4
  + Choice_5_5_5 + Choice_5_5_6 + Choice_5_5_7 + Choice_5_5_8 + Choice_5_5_9
  = 1
-Row_86222_Unique_6: Choice_6_5_1 + Choice_6_5_2 + Choice_6_5_3 + Choice_6_5_4
+Row_146236_Unique_6: Choice_6_5_1 + Choice_6_5_2 + Choice_6_5_3 + Choice_6_5_4
  + Choice_6_5_5 + Choice_6_5_6 + Choice_6_5_7 + Choice_6_5_8 + Choice_6_5_9
  = 1
-Row_86222_Unique_7: Choice_7_5_1 + Choice_7_5_2 + Choice_7_5_3 + Choice_7_5_4
+Row_146236_Unique_7: Choice_7_5_1 + Choice_7_5_2 + Choice_7_5_3 + Choice_7_5_4
  + Choice_7_5_5 + Choice_7_5_6 + Choice_7_5_7 + Choice_7_5_8 + Choice_7_5_9
  = 1
-Row_86222_Unique_8: Choice_8_5_1 + Choice_8_5_2 + Choice_8_5_3 + Choice_8_5_4
+Row_146236_Unique_8: Choice_8_5_1 + Choice_8_5_2 + Choice_8_5_3 + Choice_8_5_4
  + Choice_8_5_5 + Choice_8_5_6 + Choice_8_5_7 + Choice_8_5_8 + Choice_8_5_9
  = 1
-Row_86222_Unique_9: Choice_9_5_1 + Choice_9_5_2 + Choice_9_5_3 + Choice_9_5_4
+Row_146236_Unique_9: Choice_9_5_1 + Choice_9_5_2 + Choice_9_5_3 + Choice_9_5_4
  + Choice_9_5_5 + Choice_9_5_6 + Choice_9_5_7 + Choice_9_5_8 + Choice_9_5_9
  = 1
-Row_86223_Unique_1: Choice_1_6_1 + Choice_1_6_2 + Choice_1_6_3 + Choice_1_6_4
+Row_146237_Unique_1: Choice_1_6_1 + Choice_1_6_2 + Choice_1_6_3 + Choice_1_6_4
  + Choice_1_6_5 + Choice_1_6_6 + Choice_1_6_7 + Choice_1_6_8 + Choice_1_6_9
  = 1
-Row_86223_Unique_2: Choice_2_6_1 + Choice_2_6_2 + Choice_2_6_3 + Choice_2_6_4
+Row_146237_Unique_2: Choice_2_6_1 + Choice_2_6_2 + Choice_2_6_3 + Choice_2_6_4
  + Choice_2_6_5 + Choice_2_6_6 + Choice_2_6_7 + Choice_2_6_8 + Choice_2_6_9
  = 1
-Row_86223_Unique_3: Choice_3_6_1 + Choice_3_6_2 + Choice_3_6_3 + Choice_3_6_4
+Row_146237_Unique_3: Choice_3_6_1 + Choice_3_6_2 + Choice_3_6_3 + Choice_3_6_4
  + Choice_3_6_5 + Choice_3_6_6 + Choice_3_6_7 + Choice_3_6_8 + Choice_3_6_9
  = 1
-Row_86223_Unique_4: Choice_4_6_1 + Choice_4_6_2 + Choice_4_6_3 + Choice_4_6_4
+Row_146237_Unique_4: Choice_4_6_1 + Choice_4_6_2 + Choice_4_6_3 + Choice_4_6_4
  + Choice_4_6_5 + Choice_4_6_6 + Choice_4_6_7 + Choice_4_6_8 + Choice_4_6_9
  = 1
-Row_86223_Unique_5: Choice_5_6_1 + Choice_5_6_2 + Choice_5_6_3 + Choice_5_6_4
+Row_146237_Unique_5: Choice_5_6_1 + Choice_5_6_2 + Choice_5_6_3 + Choice_5_6_4
  + Choice_5_6_5 + Choice_5_6_6 + Choice_5_6_7 + Choice_5_6_8 + Choice_5_6_9
  = 1
-Row_86223_Unique_6: Choice_6_6_1 + Choice_6_6_2 + Choice_6_6_3 + Choice_6_6_4
+Row_146237_Unique_6: Choice_6_6_1 + Choice_6_6_2 + Choice_6_6_3 + Choice_6_6_4
  + Choice_6_6_5 + Choice_6_6_6 + Choice_6_6_7 + Choice_6_6_8 + Choice_6_6_9
  = 1
-Row_86223_Unique_7: Choice_7_6_1 + Choice_7_6_2 + Choice_7_6_3 + Choice_7_6_4
+Row_146237_Unique_7: Choice_7_6_1 + Choice_7_6_2 + Choice_7_6_3 + Choice_7_6_4
  + Choice_7_6_5 + Choice_7_6_6 + Choice_7_6_7 + Choice_7_6_8 + Choice_7_6_9
  = 1
-Row_86223_Unique_8: Choice_8_6_1 + Choice_8_6_2 + Choice_8_6_3 + Choice_8_6_4
+Row_146237_Unique_8: Choice_8_6_1 + Choice_8_6_2 + Choice_8_6_3 + Choice_8_6_4
  + Choice_8_6_5 + Choice_8_6_6 + Choice_8_6_7 + Choice_8_6_8 + Choice_8_6_9
  = 1
-Row_86223_Unique_9: Choice_9_6_1 + Choice_9_6_2 + Choice_9_6_3 + Choice_9_6_4
+Row_146237_Unique_9: Choice_9_6_1 + Choice_9_6_2 + Choice_9_6_3 + Choice_9_6_4
  + Choice_9_6_5 + Choice_9_6_6 + Choice_9_6_7 + Choice_9_6_8 + Choice_9_6_9
  = 1
-Row_86224_Unique_1: Choice_1_7_1 + Choice_1_7_2 + Choice_1_7_3 + Choice_1_7_4
+Row_146238_Unique_1: Choice_1_7_1 + Choice_1_7_2 + Choice_1_7_3 + Choice_1_7_4
  + Choice_1_7_5 + Choice_1_7_6 + Choice_1_7_7 + Choice_1_7_8 + Choice_1_7_9
  = 1
-Row_86224_Unique_2: Choice_2_7_1 + Choice_2_7_2 + Choice_2_7_3 + Choice_2_7_4
+Row_146238_Unique_2: Choice_2_7_1 + Choice_2_7_2 + Choice_2_7_3 + Choice_2_7_4
  + Choice_2_7_5 + Choice_2_7_6 + Choice_2_7_7 + Choice_2_7_8 + Choice_2_7_9
  = 1
-Row_86224_Unique_3: Choice_3_7_1 + Choice_3_7_2 + Choice_3_7_3 + Choice_3_7_4
+Row_146238_Unique_3: Choice_3_7_1 + Choice_3_7_2 + Choice_3_7_3 + Choice_3_7_4
  + Choice_3_7_5 + Choice_3_7_6 + Choice_3_7_7 + Choice_3_7_8 + Choice_3_7_9
  = 1
-Row_86224_Unique_4: Choice_4_7_1 + Choice_4_7_2 + Choice_4_7_3 + Choice_4_7_4
+Row_146238_Unique_4: Choice_4_7_1 + Choice_4_7_2 + Choice_4_7_3 + Choice_4_7_4
  + Choice_4_7_5 + Choice_4_7_6 + Choice_4_7_7 + Choice_4_7_8 + Choice_4_7_9
  = 1
-Row_86224_Unique_5: Choice_5_7_1 + Choice_5_7_2 + Choice_5_7_3 + Choice_5_7_4
+Row_146238_Unique_5: Choice_5_7_1 + Choice_5_7_2 + Choice_5_7_3 + Choice_5_7_4
  + Choice_5_7_5 + Choice_5_7_6 + Choice_5_7_7 + Choice_5_7_8 + Choice_5_7_9
  = 1
-Row_86224_Unique_6: Choice_6_7_1 + Choice_6_7_2 + Choice_6_7_3 + Choice_6_7_4
+Row_146238_Unique_6: Choice_6_7_1 + Choice_6_7_2 + Choice_6_7_3 + Choice_6_7_4
  + Choice_6_7_5 + Choice_6_7_6 + Choice_6_7_7 + Choice_6_7_8 + Choice_6_7_9
  = 1
-Row_86224_Unique_7: Choice_7_7_1 + Choice_7_7_2 + Choice_7_7_3 + Choice_7_7_4
+Row_146238_Unique_7: Choice_7_7_1 + Choice_7_7_2 + Choice_7_7_3 + Choice_7_7_4
  + Choice_7_7_5 + Choice_7_7_6 + Choice_7_7_7 + Choice_7_7_8 + Choice_7_7_9
  = 1
-Row_86224_Unique_8: Choice_8_7_1 + Choice_8_7_2 + Choice_8_7_3 + Choice_8_7_4
+Row_146238_Unique_8: Choice_8_7_1 + Choice_8_7_2 + Choice_8_7_3 + Choice_8_7_4
  + Choice_8_7_5 + Choice_8_7_6 + Choice_8_7_7 + Choice_8_7_8 + Choice_8_7_9
  = 1
-Row_86224_Unique_9: Choice_9_7_1 + Choice_9_7_2 + Choice_9_7_3 + Choice_9_7_4
+Row_146238_Unique_9: Choice_9_7_1 + Choice_9_7_2 + Choice_9_7_3 + Choice_9_7_4
  + Choice_9_7_5 + Choice_9_7_6 + Choice_9_7_7 + Choice_9_7_8 + Choice_9_7_9
  = 1
-Row_86225_Unique_1: Choice_1_8_1 + Choice_1_8_2 + Choice_1_8_3 + Choice_1_8_4
+Row_146239_Unique_1: Choice_1_8_1 + Choice_1_8_2 + Choice_1_8_3 + Choice_1_8_4
  + Choice_1_8_5 + Choice_1_8_6 + Choice_1_8_7 + Choice_1_8_8 + Choice_1_8_9
  = 1
-Row_86225_Unique_2: Choice_2_8_1 + Choice_2_8_2 + Choice_2_8_3 + Choice_2_8_4
+Row_146239_Unique_2: Choice_2_8_1 + Choice_2_8_2 + Choice_2_8_3 + Choice_2_8_4
  + Choice_2_8_5 + Choice_2_8_6 + Choice_2_8_7 + Choice_2_8_8 + Choice_2_8_9
  = 1
-Row_86225_Unique_3: Choice_3_8_1 + Choice_3_8_2 + Choice_3_8_3 + Choice_3_8_4
+Row_146239_Unique_3: Choice_3_8_1 + Choice_3_8_2 + Choice_3_8_3 + Choice_3_8_4
  + Choice_3_8_5 + Choice_3_8_6 + Choice_3_8_7 + Choice_3_8_8 + Choice_3_8_9
  = 1
-Row_86225_Unique_4: Choice_4_8_1 + Choice_4_8_2 + Choice_4_8_3 + Choice_4_8_4
+Row_146239_Unique_4: Choice_4_8_1 + Choice_4_8_2 + Choice_4_8_3 + Choice_4_8_4
  + Choice_4_8_5 + Choice_4_8_6 + Choice_4_8_7 + Choice_4_8_8 + Choice_4_8_9
  = 1
-Row_86225_Unique_5: Choice_5_8_1 + Choice_5_8_2 + Choice_5_8_3 + Choice_5_8_4
+Row_146239_Unique_5: Choice_5_8_1 + Choice_5_8_2 + Choice_5_8_3 + Choice_5_8_4
  + Choice_5_8_5 + Choice_5_8_6 + Choice_5_8_7 + Choice_5_8_8 + Choice_5_8_9
  = 1
-Row_86225_Unique_6: Choice_6_8_1 + Choice_6_8_2 + Choice_6_8_3 + Choice_6_8_4
+Row_146239_Unique_6: Choice_6_8_1 + Choice_6_8_2 + Choice_6_8_3 + Choice_6_8_4
  + Choice_6_8_5 + Choice_6_8_6 + Choice_6_8_7 + Choice_6_8_8 + Choice_6_8_9
  = 1
-Row_86225_Unique_7: Choice_7_8_1 + Choice_7_8_2 + Choice_7_8_3 + Choice_7_8_4
+Row_146239_Unique_7: Choice_7_8_1 + Choice_7_8_2 + Choice_7_8_3 + Choice_7_8_4
  + Choice_7_8_5 + Choice_7_8_6 + Choice_7_8_7 + Choice_7_8_8 + Choice_7_8_9
  = 1
-Row_86225_Unique_8: Choice_8_8_1 + Choice_8_8_2 + Choice_8_8_3 + Choice_8_8_4
+Row_146239_Unique_8: Choice_8_8_1 + Choice_8_8_2 + Choice_8_8_3 + Choice_8_8_4
  + Choice_8_8_5 + Choice_8_8_6 + Choice_8_8_7 + Choice_8_8_8 + Choice_8_8_9
  = 1
-Row_86225_Unique_9: Choice_9_8_1 + Choice_9_8_2 + Choice_9_8_3 + Choice_9_8_4
+Row_146239_Unique_9: Choice_9_8_1 + Choice_9_8_2 + Choice_9_8_3 + Choice_9_8_4
  + Choice_9_8_5 + Choice_9_8_6 + Choice_9_8_7 + Choice_9_8_8 + Choice_9_8_9
  = 1
-Row_86226_Unique_1: Choice_1_9_1 + Choice_1_9_2 + Choice_1_9_3 + Choice_1_9_4
+Row_146240_Unique_1: Choice_1_9_1 + Choice_1_9_2 + Choice_1_9_3 + Choice_1_9_4
  + Choice_1_9_5 + Choice_1_9_6 + Choice_1_9_7 + Choice_1_9_8 + Choice_1_9_9
  = 1
-Row_86226_Unique_2: Choice_2_9_1 + Choice_2_9_2 + Choice_2_9_3 + Choice_2_9_4
+Row_146240_Unique_2: Choice_2_9_1 + Choice_2_9_2 + Choice_2_9_3 + Choice_2_9_4
  + Choice_2_9_5 + Choice_2_9_6 + Choice_2_9_7 + Choice_2_9_8 + Choice_2_9_9
  = 1
-Row_86226_Unique_3: Choice_3_9_1 + Choice_3_9_2 + Choice_3_9_3 + Choice_3_9_4
+Row_146240_Unique_3: Choice_3_9_1 + Choice_3_9_2 + Choice_3_9_3 + Choice_3_9_4
  + Choice_3_9_5 + Choice_3_9_6 + Choice_3_9_7 + Choice_3_9_8 + Choice_3_9_9
  = 1
-Row_86226_Unique_4: Choice_4_9_1 + Choice_4_9_2 + Choice_4_9_3 + Choice_4_9_4
+Row_146240_Unique_4: Choice_4_9_1 + Choice_4_9_2 + Choice_4_9_3 + Choice_4_9_4
  + Choice_4_9_5 + Choice_4_9_6 + Choice_4_9_7 + Choice_4_9_8 + Choice_4_9_9
  = 1
-Row_86226_Unique_5: Choice_5_9_1 + Choice_5_9_2 + Choice_5_9_3 + Choice_5_9_4
+Row_146240_Unique_5: Choice_5_9_1 + Choice_5_9_2 + Choice_5_9_3 + Choice_5_9_4
  + Choice_5_9_5 + Choice_5_9_6 + Choice_5_9_7 + Choice_5_9_8 + Choice_5_9_9
  = 1
-Row_86226_Unique_6: Choice_6_9_1 + Choice_6_9_2 + Choice_6_9_3 + Choice_6_9_4
+Row_146240_Unique_6: Choice_6_9_1 + Choice_6_9_2 + Choice_6_9_3 + Choice_6_9_4
  + Choice_6_9_5 + Choice_6_9_6 + Choice_6_9_7 + Choice_6_9_8 + Choice_6_9_9
  = 1
-Row_86226_Unique_7: Choice_7_9_1 + Choice_7_9_2 + Choice_7_9_3 + Choice_7_9_4
+Row_146240_Unique_7: Choice_7_9_1 + Choice_7_9_2 + Choice_7_9_3 + Choice_7_9_4
  + Choice_7_9_5 + Choice_7_9_6 + Choice_7_9_7 + Choice_7_9_8 + Choice_7_9_9
  = 1
-Row_86226_Unique_8: Choice_8_9_1 + Choice_8_9_2 + Choice_8_9_3 + Choice_8_9_4
+Row_146240_Unique_8: Choice_8_9_1 + Choice_8_9_2 + Choice_8_9_3 + Choice_8_9_4
  + Choice_8_9_5 + Choice_8_9_6 + Choice_8_9_7 + Choice_8_9_8 + Choice_8_9_9
  = 1
-Row_86226_Unique_9: Choice_9_9_1 + Choice_9_9_2 + Choice_9_9_3 + Choice_9_9_4
+Row_146240_Unique_9: Choice_9_9_1 + Choice_9_9_2 + Choice_9_9_3 + Choice_9_9_4
  + Choice_9_9_5 + Choice_9_9_6 + Choice_9_9_7 + Choice_9_9_8 + Choice_9_9_9
  = 1
-Total_Box_86228: Values_1_1 + Values_1_2 + Values_1_3 + Values_2_1
+Total_Box_146242: Values_1_1 + Values_1_2 + Values_1_3 + Values_2_1
  + Values_2_2 + Values_2_3 + Values_3_1 + Values_3_2 + Values_3_3 = 45
-Total_Box_86229: Values_4_1 + Values_4_2 + Values_4_3 + Values_5_1
+Total_Box_146243: Values_4_1 + Values_4_2 + Values_4_3 + Values_5_1
  + Values_5_2 + Values_5_3 + Values_6_1 + Values_6_2 + Values_6_3 = 45
-Total_Box_86230: Values_7_1 + Values_7_2 + Values_7_3 + Values_8_1
+Total_Box_146244: Values_7_1 + Values_7_2 + Values_7_3 + Values_8_1
  + Values_8_2 + Values_8_3 + Values_9_1 + Values_9_2 + Values_9_3 = 45
-Total_Box_86231: Values_1_4 + Values_1_5 + Values_1_6 + Values_2_4
+Total_Box_146245: Values_1_4 + Values_1_5 + Values_1_6 + Values_2_4
  + Values_2_5 + Values_2_6 + Values_3_4 + Values_3_5 + Values_3_6 = 45
-Total_Box_86232: Values_4_4 + Values_4_5 + Values_4_6 + Values_5_4
+Total_Box_146246: Values_4_4 + Values_4_5 + Values_4_6 + Values_5_4
  + Values_5_5 + Values_5_6 + Values_6_4 + Values_6_5 + Values_6_6 = 45
-Total_Box_86233: Values_7_4 + Values_7_5 + Values_7_6 + Values_8_4
+Total_Box_146247: Values_7_4 + Values_7_5 + Values_7_6 + Values_8_4
  + Values_8_5 + Values_8_6 + Values_9_4 + Values_9_5 + Values_9_6 = 45
-Total_Box_86234: Values_1_7 + Values_1_8 + Values_1_9 + Values_2_7
+Total_Box_146248: Values_1_7 + Values_1_8 + Values_1_9 + Values_2_7
  + Values_2_8 + Values_2_9 + Values_3_7 + Values_3_8 + Values_3_9 = 45
-Total_Box_86235: Values_4_7 + Values_4_8 + Values_4_9 + Values_5_7
+Total_Box_146249: Values_4_7 + Values_4_8 + Values_4_9 + Values_5_7
  + Values_5_8 + Values_5_9 + Values_6_7 + Values_6_8 + Values_6_9 = 45
-Total_Box_86236: Values_7_7 + Values_7_8 + Values_7_9 + Values_8_7
+Total_Box_146250: Values_7_7 + Values_7_8 + Values_7_9 + Values_8_7
  + Values_8_8 + Values_8_9 + Values_9_7 + Values_9_8 + Values_9_9 = 45
-Total_Column_86208: Values_1_1 + Values_2_1 + Values_3_1 + Values_4_1
+Total_Column_146222: Values_1_1 + Values_2_1 + Values_3_1 + Values_4_1
  + Values_5_1 + Values_6_1 + Values_7_1 + Values_8_1 + Values_9_1 = 45
-Total_Column_86209: Values_1_2 + Values_2_2 + Values_3_2 + Values_4_2
+Total_Column_146223: Values_1_2 + Values_2_2 + Values_3_2 + Values_4_2
  + Values_5_2 + Values_6_2 + Values_7_2 + Values_8_2 + Values_9_2 = 45
-Total_Column_86210: Values_1_3 + Values_2_3 + Values_3_3 + Values_4_3
+Total_Column_146224: Values_1_3 + Values_2_3 + Values_3_3 + Values_4_3
  + Values_5_3 + Values_6_3 + Values_7_3 + Values_8_3 + Values_9_3 = 45
-Total_Column_86211: Values_1_4 + Values_2_4 + Values_3_4 + Values_4_4
+Total_Column_146225: Values_1_4 + Values_2_4 + Values_3_4 + Values_4_4
  + Values_5_4 + Values_6_4 + Values_7_4 + Values_8_4 + Values_9_4 = 45
-Total_Column_86212: Values_1_5 + Values_2_5 + Values_3_5 + Values_4_5
+Total_Column_146226: Values_1_5 + Values_2_5 + Values_3_5 + Values_4_5
  + Values_5_5 + Values_6_5 + Values_7_5 + Values_8_5 + Values_9_5 = 45
-Total_Column_86213: Values_1_6 + Values_2_6 + Values_3_6 + Values_4_6
+Total_Column_146227: Values_1_6 + Values_2_6 + Values_3_6 + Values_4_6
  + Values_5_6 + Values_6_6 + Values_7_6 + Values_8_6 + Values_9_6 = 45
-Total_Column_86214: Values_1_7 + Values_2_7 + Values_3_7 + Values_4_7
+Total_Column_146228: Values_1_7 + Values_2_7 + Values_3_7 + Values_4_7
  + Values_5_7 + Values_6_7 + Values_7_7 + Values_8_7 + Values_9_7 = 45
-Total_Column_86215: Values_1_8 + Values_2_8 + Values_3_8 + Values_4_8
+Total_Column_146229: Values_1_8 + Values_2_8 + Values_3_8 + Values_4_8
  + Values_5_8 + Values_6_8 + Values_7_8 + Values_8_8 + Values_9_8 = 45
-Total_Column_86216: Values_1_9 + Values_2_9 + Values_3_9 + Values_4_9
+Total_Column_146230: Values_1_9 + Values_2_9 + Values_3_9 + Values_4_9
  + Values_5_9 + Values_6_9 + Values_7_9 + Values_8_9 + Values_9_9 = 45
-Total_Row_86218: Values_1_1 + Values_1_2 + Values_1_3 + Values_1_4
+Total_Row_146232: Values_1_1 + Values_1_2 + Values_1_3 + Values_1_4
  + Values_1_5 + Values_1_6 + Values_1_7 + Values_1_8 + Values_1_9 = 45
-Total_Row_86219: Values_2_1 + Values_2_2 + Values_2_3 + Values_2_4
+Total_Row_146233: Values_2_1 + Values_2_2 + Values_2_3 + Values_2_4
  + Values_2_5 + Values_2_6 + Values_2_7 + Values_2_8 + Values_2_9 = 45
-Total_Row_86220: Values_3_1 + Values_3_2 + Values_3_3 + Values_3_4
+Total_Row_146234: Values_3_1 + Values_3_2 + Values_3_3 + Values_3_4
  + Values_3_5 + Values_3_6 + Values_3_7 + Values_3_8 + Values_3_9 = 45
-Total_Row_86221: Values_4_1 + Values_4_2 + Values_4_3 + Values_4_4
+Total_Row_146235: Values_4_1 + Values_4_2 + Values_4_3 + Values_4_4
  + Values_4_5 + Values_4_6 + Values_4_7 + Values_4_8 + Values_4_9 = 45
-Total_Row_86222: Values_5_1 + Values_5_2 + Values_5_3 + Values_5_4
+Total_Row_146236: Values_5_1 + Values_5_2 + Values_5_3 + Values_5_4
  + Values_5_5 + Values_5_6 + Values_5_7 + Values_5_8 + Values_5_9 = 45
-Total_Row_86223: Values_6_1 + Values_6_2 + Values_6_3 + Values_6_4
+Total_Row_146237: Values_6_1 + Values_6_2 + Values_6_3 + Values_6_4
  + Values_6_5 + Values_6_6 + Values_6_7 + Values_6_8 + Values_6_9 = 45
-Total_Row_86224: Values_7_1 + Values_7_2 + Values_7_3 + Values_7_4
+Total_Row_146238: Values_7_1 + Values_7_2 + Values_7_3 + Values_7_4
  + Values_7_5 + Values_7_6 + Values_7_7 + Values_7_8 + Values_7_9 = 45
-Total_Row_86225: Values_8_1 + Values_8_2 + Values_8_3 + Values_8_4
+Total_Row_146239: Values_8_1 + Values_8_2 + Values_8_3 + Values_8_4
  + Values_8_5 + Values_8_6 + Values_8_7 + Values_8_8 + Values_8_9 = 45
-Total_Row_86226: Values_9_1 + Values_9_2 + Values_9_3 + Values_9_4
+Total_Row_146240: Values_9_1 + Values_9_2 + Values_9_3 + Values_9_4
  + Values_9_5 + Values_9_6 + Values_9_7 + Values_9_8 + Values_9_9 = 45
 Unique_cell_1_1: Choice_1_1_1 + 2 Choice_2_1_1 + 3 Choice_3_1_1
  + 4 Choice_4_1_1 + 5 Choice_5_1_1 + 6 Choice_6_1_1 + 7 Choice_7_1_1

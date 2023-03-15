@@ -369,7 +369,7 @@ class TestKropkiGlyph(TestCircleGlyph):
 
     @property
     def target(self):
-        return '<circle class="Style" cx="0" cy="0" r="15.0" transform="translate(150.0, 100.0)" />'
+        return '<rect class="Style" height="50.0" transform="translate(150.0, 100.0)" width="25.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
@@ -377,7 +377,7 @@ class TestKropkiGlyph(TestCircleGlyph):
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
-        return {CircleGlyph, Glyph, KropkiGlyph}
+        return {RectangleGlyph, Glyph, KropkiGlyph}
 
 
 class TestConsecutiveGlyph(TestCircleGlyph):
@@ -388,11 +388,30 @@ class TestConsecutiveGlyph(TestCircleGlyph):
 
     @property
     def target(self):
-        return '<circle class="Style" cx="0" cy="0" r="15.0" transform="translate(150.0, 100.0)" />'
+        return '<rect class="Style" height="50.0" transform="translate(150.0, 100.0)" width="25.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
         return "ConsecutiveGlyph('Style', Coord(1, 1), Coord(1, 2))"
+
+    @property
+    def expected_classes(self) -> set[Type[Glyph]]:
+        return {RectangleGlyph, ConsecutiveGlyph, Glyph}
+
+
+class TestConsecutive1Glyph(TestCircleGlyph):
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.glyph = Consecutive1Glyph('Style', Coord(1, 1), Coord(1, 2))
+
+    @property
+    def target(self):
+        return '<circle class="Style" cx="0" cy="0" r="15.0" transform="translate(150.0, 100.0)" />'
+
+    @property
+    def representation(self) -> str:
+        return "Consecutive1Glyph('Style', Coord(1, 1), Coord(1, 2))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

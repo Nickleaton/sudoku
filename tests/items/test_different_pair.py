@@ -4,28 +4,28 @@ from typing import Type
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.different_pair import DifferentPair
+from src.items.difference_pair import DifferencePair
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
 from tests.items.test_pair import TestPair
 
 
-class TestDifferentPair(TestPair):
+class TestDifferencePair(TestPair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = DifferentPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), [1, 2])
+        self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), [1, 2])
         self.size = 2
 
     @property
     def clazz(self):
-        return DifferentPair
+        return DifferencePair
 
     @property
     def representation(self) -> str:
         return (
-            "DifferentPair"
+            "DifferencePair"
             "("
             "Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
@@ -36,11 +36,11 @@ class TestDifferentPair(TestPair):
 
     @property
     def config(self) -> str:
-        return "DifferentPair: 12-13=1,2"
+        return "DifferencePair: 12-13=1,2"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, Item, Pair, DifferentPair, ComposedItem, Region}
+        return {Cell, Item, Pair, DifferencePair, ComposedItem, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

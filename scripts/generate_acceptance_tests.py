@@ -20,22 +20,22 @@ def get_filenames(directory: str) -> List[str]:
 
 
 def parser() -> ArgumentParser:
-    parser = ArgumentParser(description='Generate acceptance tests')
-    parser.add_argument(
+    result = ArgumentParser(description='Generate acceptance tests')
+    result.add_argument(
         '--source',
         help='directory containing yamls',
         action='store',
         dest='source',
         default='problems'
     )
-    parser.add_argument(
+    result.add_argument(
         '--output',
         help='output directory',
         action='store',
         dest='output',
         default=os.path.join('tests', 'acceptance_tests')
     )
-    return parser
+    return result
 
 
 if __name__ == '__main__':
@@ -44,6 +44,6 @@ if __name__ == '__main__':
     template = Template(RAW)
     for filename in get_filenames(args.source):
         name = os.path.basename(filename)[:-5]
-        outputfilename = os.path.join(args.output, "test_" + name + ".py")
-        with open(outputfilename, 'w', encoding='utf-8') as file:
+        output_filename = os.path.join(args.output, "test_" + name + ".py")
+        with open(output_filename, 'w', encoding='utf-8') as file:
             file.write(template.substitute(classname=name.capitalize(), name=name))

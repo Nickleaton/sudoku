@@ -11,6 +11,10 @@ from src.utils.rule import Rule
 class FixedDifferencePair(FixedPair):
 
     @property
+    def difference(self) -> int:
+        return self.total
+
+    @property
     def rules(self) -> List[Rule]:
         return [
             Rule(

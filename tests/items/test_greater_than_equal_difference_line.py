@@ -1,12 +1,12 @@
 import unittest
 from typing import Type
 
-from items.variable_pair import VariablePair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
-from src.items.variable_difference_pair import VariableDifferencePair
+from src.items.fixed_difference_pair import FixedDifferencePair
+from src.items.fixed_pair import FixedPair
 from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
@@ -52,7 +52,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, DifferenceLine, VariableDifferencePair, GreaterThanEqualDifferenceLine,
+        return {Cell, ComposedItem, DifferenceLine, FixedDifferencePair, FixedPair, GreaterThanEqualDifferenceLine,
                 GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
 
 

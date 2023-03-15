@@ -14,6 +14,10 @@ class ConsecutivePair(LessThanEqualDifferencePair):
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
         super().__init__(board, cell_1, cell_2, 1)
 
+    @property
+    def difference(self) -> int:
+        return 1
+
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
         regexp = re.compile(

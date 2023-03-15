@@ -124,7 +124,7 @@ class Cell(Item):
             ]
         ) == 1, f'Unique_digit_{self.row}_{self.column}'
 
-    def add_bookkeeping_contraint(self, solver: PulpSolver) -> None:
+    def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         for digit in self.board.digit_range:
             if not self.book[digit]:
                 name = f"Imposible_{digit}_{self.row}_{self.column}"

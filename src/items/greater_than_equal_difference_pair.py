@@ -1,10 +1,10 @@
 from pulp import LpVariable, LpInteger
 
-from src.items.variable_difference_pair import VariableDifferencePair
+from src.items.fixed_difference_pair import FixedDifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
 
-class GreaterThanEqualDifferencePair(VariableDifferencePair):
+class GreaterThanEqualDifferencePair(FixedDifferencePair):
 
     @property
     def tags(self) -> set[str]:

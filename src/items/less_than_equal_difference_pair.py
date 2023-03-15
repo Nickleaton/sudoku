@@ -1,8 +1,8 @@
-from src.items.variable_difference_pair import VariableDifferencePair
+from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
 
-class LessThanEqualDifferencePair(VariableDifferencePair):
+class LessThanEqualDifferencePair(DifferencePair):
 
     @property
     def tags(self) -> set[str]:
@@ -14,3 +14,7 @@ class LessThanEqualDifferencePair(VariableDifferencePair):
         difference = value1 - value2
         solver.model += difference <= self.difference, f"{self.name}_upper"
         solver.model += -difference <= self.difference, f"{self.name}_lower"
+
+    @property
+    def difference(self) -> int:
+        return 0

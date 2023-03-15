@@ -8,7 +8,7 @@ from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
-class DifferentPair(Pair):
+class DifferencePair(Pair):
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, digits: List[int]):
         super().__init__(board, cell_1, cell_2)
@@ -28,7 +28,7 @@ class DifferentPair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        cell_1, cell_2, digits = DifferentPair.extract(board, yaml)
+        cell_1, cell_2, digits = DifferencePair.extract(board, yaml)
         return cls(board, cell_1, cell_2, digits)
 
     @property

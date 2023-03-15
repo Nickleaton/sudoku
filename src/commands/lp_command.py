@@ -19,7 +19,7 @@ class LPCommand(SimpleCommand):
         self.solver = PulpSolver(self.board, self.name, "output/logs/lp")
         self.problem.add_constraint(self.solver)
         self.problem.bookkeeping()
-        self.problem.add_bookkeeping_contraint(self.solver)
+        self.problem.add_bookkeeping_constraint(self.solver)
 
     def write(self) -> None:
         assert self.solver is not None

@@ -12,7 +12,7 @@ from src.items.region import Region
 from tests.items.test_variable_pair import TestVariablePair
 
 
-class TestVariableSumPair(TestVariablePair):
+class TestSumPair(TestVariablePair):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)

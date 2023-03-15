@@ -1,13 +1,13 @@
 import unittest
 from typing import Type
 
+from src.items.sum_pair import SumPair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
-from src.items.variable_sum_pair import VariableSumPair
 from tests.items.test_pair import TestPair
 
 
@@ -20,19 +20,7 @@ class TestSumPair(TestPair):
 
     @property
     def clazz(self):
-        return VariableSumPair
-
-    @property
-    def config(self):
-        return "SumPair: 12-13"
-
-    @property
-    def has_rule(self) -> bool:
-        return True
-
-    @property
-    def total(self) -> int:
-        return 0
+        return SumPair
 
     @property
     def representation(self) -> str:
@@ -46,11 +34,19 @@ class TestSumPair(TestPair):
         )
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, SumPair, Item, Pair, ComposedItem, Region}
+    def config(self) -> str:
+        return "SumPair: 12-13"
 
-    def test_total(self):
-        self.assertEqual(self.total, self.item.total)
+    @property
+    def expected_classes(self) -> set[Type[Item]]:
+        return {Cell, Item, Pair, SumPair, ComposedItem, Region}
+
+    @property
+    def inside(self) -> Cell:
+        return Cell.make(self.board, 1, 2)
+
+    def has_rule(self) -> bool:
+        return True
 
 
 if __name__ == '__main__':  # pragma: no cover

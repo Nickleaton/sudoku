@@ -27,7 +27,7 @@ import src.items.constraint_exception
 import src.items.constraints
 import src.items.diagonals
 import src.items.difference_line
-import src.items.different_pair
+import src.items.difference_pair
 import src.items.disjoint_group
 import src.items.disjoint_groups
 import src.items.distinct_renban

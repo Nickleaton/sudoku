@@ -22,7 +22,7 @@ class SolveCommand(SimpleCommand):
         self.solver = PulpSolver(self.board, self.name, "output/logs/solve")
         self.problem.add_constraint(self.solver)
         self.problem.bookkeeping()
-        self.problem.add_bookkeeping_contraint(self.solver)
+        self.problem.add_bookkeeping_constraint(self.solver)
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)

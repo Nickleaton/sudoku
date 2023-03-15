@@ -87,14 +87,14 @@ class TestItem(unittest.TestCase):
         return {Item}
 
     def test_used_classes(self) -> None:
-        if self.expected_classes != self.item.used_classes:  # pragma: no cover
-            expected_names = sorted([cls.__name__ for cls in self.expected_classes])
-            used_names = sorted([cls.__name__ for cls in self.item.used_classes])
+        expected_names = sorted([cls.__name__ for cls in self.expected_classes])
+        used_names = sorted([cls.__name__ for cls in self.item.used_classes])
+        if expected_names != used_names:  # pragma: no cover
             print(self.__class__.__name__)
             print(f"{{{', '.join(expected_names)}}}")
             print(f"{{{', '.join(used_names)}}}")
             print()
-        self.assertEqual(self.expected_classes, self.item.used_classes)
+        self.assertCountEqual(expected_names, used_names)
 
     def test_add_constraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
@@ -102,7 +102,7 @@ class TestItem(unittest.TestCase):
 
     def test_add_bookkeeping_constraint(self) -> None:
         solver = PulpSolver(self.board, 'test', "output/logs")
-        self.item.add_bookkeeping_contraint(solver)
+        self.item.add_bookkeeping_constraint(solver)
 
     def test_bookkeeping(self) -> None:
         self.item.bookkeeping()

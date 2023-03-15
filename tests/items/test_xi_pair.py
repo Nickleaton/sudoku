@@ -1,15 +1,15 @@
 import unittest
 from typing import Type
 
+from src.items.sum_pair import SumPair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
-from src.items.variable_sum_pair import VariableSumPair
 from src.items.xi_pair import XIPair
-from tests.items.test_sum_pair import TestSumPair
+from tests.items.test_variable_sum_pair import TestSumPair
 
 
 class TestXIPair(TestSumPair):
@@ -48,7 +48,7 @@ class TestXIPair(TestSumPair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, VariableSumPair, Item, Pair, XIPair, ComposedItem, Region}
+        return {Cell, SumPair, Item, Pair, XIPair, ComposedItem, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

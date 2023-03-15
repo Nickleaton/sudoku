@@ -31,7 +31,7 @@ class AcceptanceTest(unittest.TestCase):
     def yaml_filename(self) -> Optional[str]:
         if self.name is None:
             return None
-        return os.path.join("problems", self.name + ".yaml")
+        return os.path.join("problems", "easy", self.name + ".yaml")
 
     @property
     def svg_filename(self) -> Optional[str]:
@@ -76,7 +76,7 @@ class AcceptanceTest(unittest.TestCase):
         return os.path.join(AcceptanceTest.DIRECTORY, self.name, "solution.png")
 
     @property
-    def png_bookeeping_filename(self) -> Optional[str]:
+    def png_bookkeeping_filename(self) -> Optional[str]:
         if self.name is None:
             return None
         return os.path.join(AcceptanceTest.DIRECTORY, self.name, "bookkeeping.png")
@@ -119,6 +119,7 @@ class AcceptanceTest(unittest.TestCase):
             if 'Solution' in item:
                 expected = Solution.create(command.board, item)
         if expected is not None:
+            # print(type(expected), type(command.solution))
             self.assertEqual(expected, command.solution)
 
     def test_verify(self) -> None:
@@ -152,10 +153,10 @@ class AcceptanceTest(unittest.TestCase):
         command.process()
         command.write()
 
-    def test_bookeeping_png(self) -> None:
+    def test_bookkeeping_png(self) -> None:
         if self.name is None:
             return
-        AcceptanceTest.check_directory(self.png_bookeeping_filename)
+        AcceptanceTest.check_directory(self.png_bookkeeping_filename)
         command = BookkeepingPNGCommand(self.yaml_filename, self.png_problem_filename)
         command.process()
         command.write()

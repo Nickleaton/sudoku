@@ -7,9 +7,9 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
-from src.items.variable_sum_pair import VariableSumPair
+from src.items.sum_pair import SumPair
 from src.items.x_pair import XPair
-from tests.items.test_sum_pair import TestSumPair
+from tests.items.test_variable_sum_pair import TestSumPair
 
 
 class TestXPair(TestSumPair):
@@ -48,7 +48,7 @@ class TestXPair(TestSumPair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, VariableSumPair, Item, Pair, XPair, Region, ComposedItem}
+        return {Cell, SumPair, Item, Pair, XPair, Region, ComposedItem}
 
 
 if __name__ == '__main__':  # pragma: no cover

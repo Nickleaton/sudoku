@@ -1,15 +1,16 @@
 import unittest
 from typing import Type
 
+from src.items.fixed_difference_pair import FixedDifferencePair
+from src.items.fixed_pair import FixedPair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.variable_difference_pair import VariableDifferencePair
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
-from tests.items.test_difference_pair import TestDifferencePair
+from tests.items.test_different_pair import TestDifferencePair
 
 
 class TestGreaterThanEqualDifferencePair(TestDifferencePair):
@@ -34,7 +35,7 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def has_rule(self) -> bool:
-        return False
+        return True
 
     @property
     def difference(self) -> int:
@@ -54,7 +55,7 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, VariableDifferencePair, Item, Pair, GreaterThanEqualDifferencePair, ComposedItem, Region}
+        return {Cell, FixedDifferencePair, FixedPair, Item, Pair, GreaterThanEqualDifferencePair, ComposedItem, Region}
 
     def test_difference(self):
         self.assertEqual(self.difference, self.item.difference)

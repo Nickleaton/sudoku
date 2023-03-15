@@ -1,15 +1,15 @@
 import unittest
 from typing import Type
 
+from src.items.difference_pair import DifferencePair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.variable_difference_pair import VariableDifferencePair
 from src.items.item import Item
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.items.pair import Pair
 from src.items.region import Region
-from tests.items.test_difference_pair import TestDifferencePair
+from tests.items.test_different_pair import TestDifferencePair
 
 
 class TestLessThanEqualDifferencePair(TestDifferencePair):
@@ -20,7 +20,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
             self.board,
             Cell.make(self.board, 1, 2),
             Cell.make(self.board, 1, 3),
-            1
+            [1, 2]
         )
         self.size = 2
 
@@ -30,7 +30,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def config(self) -> str:
-        return "LessThanEqualDifferencePair: 12-13=1"
+        return "LessThanEqualDifferencePair: 12-13=1,2"
 
     @property
     def has_rule(self) -> bool:
@@ -38,7 +38,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def difference(self) -> int:
-        return 1
+        return 0
 
     @property
     def representation(self) -> str:
@@ -48,13 +48,13 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
             "Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
-            "1"
+            "[1, 2]"
             ")"
         )
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, VariableDifferencePair, Item, Pair, LessThanEqualDifferencePair, ComposedItem, Region}
+        return {Cell, ComposedItem, DifferencePair, Item, LessThanEqualDifferencePair, Pair, Region}
 
     def test_difference(self):
         self.assertEqual(self.difference, self.item.difference)

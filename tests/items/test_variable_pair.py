@@ -46,9 +46,6 @@ class TestVariablePair(TestPair):
     def inside(self) -> Cell:
         return Cell.make(self.board, 1, 2)
 
-    def test_variable(self):
-        self.assertEqual("variable", self.item.var_name)
-
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

@@ -3,7 +3,7 @@ from typing import List, Sequence, Any, Dict
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.different_pair import DifferentPair
+from src.items.difference_pair import DifferencePair
 from src.items.item import Item
 from src.utils.coord import Coord
 
@@ -19,13 +19,13 @@ class Anti(ComposedItem):
     def offsets(self) -> List[Coord]:  # pylint: disable=no-self-use
         return []
 
-    def pairs(self, c1: Cell, digits: List[int]) -> Sequence[DifferentPair]:
+    def pairs(self, c1: Cell, digits: List[int]) -> Sequence[DifferencePair]:
         result = []
         for offset in self.offsets():
             if not self.board.is_valid(int(c1.row + offset.row), int(c1.column + offset.column)):
                 continue
             c2 = Cell.make(self.board, int(c1.row + offset.row), int(c1.column + offset.column))
-            result.append(DifferentPair(self.board, c1, c2, digits))
+            result.append(DifferencePair(self.board, c1, c2, digits))
         return result
 
     @property
