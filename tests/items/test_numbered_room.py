@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 from typing import Type
 
 from src.items.board import Board
@@ -43,7 +44,8 @@ class TestNumberedRoom(TestItem):
             NumberedRoom(self.board, Side.LEFT, 1, 9)
         ]
         for room in numbered_rooms:
-            solver = PulpSolver(self.board, 'test', "output/logs")
+            log_path = Path("output\\logs\\tests")
+            solver = PulpSolver(self.board, 'test', log_path)
             room.add_constraint(solver)
 
 

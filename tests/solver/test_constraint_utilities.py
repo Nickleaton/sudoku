@@ -1,5 +1,5 @@
-import os
 import unittest
+from pathlib import Path
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -10,12 +10,7 @@ from src.solvers.pulp_solver import PulpSolver
 class TestConstraintUtilities(unittest.TestCase):
 
     def setUp(self) -> None:
-        log_path = os.path.join("output", "formulations", "logs")
-        if not os.path.exists(log_path):  # pragma: no cover
-            os.makedirs(log_path)
-        lp_path = os.path.join("output", "formulations", "lp")
-        if not os.path.exists(lp_path):  # pragma: no cover
-            os.makedirs(lp_path)
+        log_path = Path("output\\logs\\formulations")
         self.board = Board(9, 9, 3, 3)
         self.solver = PulpSolver(self.board, "TestConstraintUtilities", log_path)
 
