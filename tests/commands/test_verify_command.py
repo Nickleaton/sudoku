@@ -1,21 +1,18 @@
-import os
 import unittest
+from pathlib import Path
 
 from src.commands.verify_command import VerifyCommand
-from tests.commands.test_simple_command import TestSimpleCommand
+from tests.commands.test_solver_command import TestSolverCommand
 
 
-class TestVerifycommand(TestSimpleCommand):
+class TestVerifyCommand(TestSolverCommand):
 
     def setUp(self) -> None:
-        self.command = VerifyCommand(
-            os.path.join('problems', 'easy', 'problem001.yaml'),
-            os.path.join('output', 'solution', 'problem001.txt')
-        )
+        self.command = VerifyCommand(Path('problems\\easy\\problem001.yaml'))
 
     @property
     def representation(self) -> str:
-        return r"VerifyCommand('problems\easy\problem001.yaml', 'output\solution\problem001.txt')"
+        return "VerifyCommand('problems\\easy\\problem001.yaml')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

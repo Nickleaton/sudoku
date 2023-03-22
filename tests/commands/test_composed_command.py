@@ -7,15 +7,14 @@ from tests.commands.test_command import TestCommand
 class TestComposedCommand(TestCommand):
 
     def setUp(self) -> None:
-        self.command = ComposedCommand("output.txt", [])
+        self.command = ComposedCommand([])
 
     @property
     def representation(self) -> str:
-        return "ComposedCommand('output.txt', [])"
+        return "ComposedCommand([])"
 
     def test_len(self):
         self.assertEqual(0, len(self.command))
-        self.command.write()
 
     def test_iteration(self):
         count = 0

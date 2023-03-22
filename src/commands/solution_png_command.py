@@ -1,5 +1,6 @@
 import logging
 import os
+from pathlib import Path
 
 from reportlab.graphics import renderPM
 from svglib.svglib import svg2rlg
@@ -12,10 +13,10 @@ class SolutionPNGCommand(SimpleCommand):
 
     def __init__(self, config_filename: str, output_filename: str):
         super().__init__(config_filename, output_filename)
-        self.tempfilename = "temp.svg"
-        if os.path.exists(self.tempfilename):
-            os.unlink(self.tempfilename)
-        self.svg = SVGCommand(config_filename, self.tempfilename)
+        self.temp_filename = Path("temp.svg")
+        if self.temp_filename.exists():
+            self.temp_filename.unlink()
+        self.svg = SVGCommand(config_filename, self.temp_filename)
 
     def process(self) -> None:
         super().process()
@@ -30,7 +31,7 @@ class SolutionPNGCommand(SimpleCommand):
         assert self.output is not None
         self.check_directory()
         logging.info("Producing png file")
-        drawing = svg2rlg(self.tempfilename)
-        renderPM.drawToFile(drawing, self.output_filename, fmt="PNG")
-        logging.info(f"Writing output to {self.output_filename}")
-        os.unlink(self.tempfilename)
+        drawing = svg2rlg(self.temp_filename.name)
+        renderPM.drawToFile(drawing, self.output_filename.name, fmt="PNG")
+        logging.info(f"Writing output to {self.output_filename.name}")
+        self.temp_filename.unlink()

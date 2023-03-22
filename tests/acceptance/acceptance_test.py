@@ -1,5 +1,6 @@
 import os
 import unittest
+from pathlib import Path
 from typing import Optional
 
 from src.commands.bookkeeping_png_command import BookkeepingPNGCommand
@@ -14,7 +15,7 @@ from src.items.solution import Solution
 
 
 class AcceptanceTest(unittest.TestCase):
-    DIRECTORY = "test_results"
+    DIRECTORY = Path("test_results")
 
     def setUp(self) -> None:
         self.name = None
@@ -28,58 +29,58 @@ class AcceptanceTest(unittest.TestCase):
             os.makedirs(dirname)
 
     @property
-    def yaml_filename(self) -> Optional[str]:
+    def yaml_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join("problems", "easy", self.name + ".yaml")
+        return Path("problems") / Path("easy") / Path(self.name + ".yaml")
 
     @property
-    def svg_filename(self) -> Optional[str]:
+    def svg_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.svg")
+        return AcceptanceTest.DIRECTORY / self.name / "problem.svg"
 
     @property
-    def html_filename(self) -> Optional[str]:
+    def html_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.html")
+        return AcceptanceTest.DIRECTORY / self.name / Path("problem.html")
 
     @property
-    def lp_filename(self) -> Optional[str]:
+    def lp_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.lp")
+        return AcceptanceTest.DIRECTORY / self.name / Path("problem.lp")
 
     @property
-    def solution_filename(self) -> Optional[str]:
+    def solution_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "solution.txt")
+        return AcceptanceTest.DIRECTORY / self.name / Path("solution.txt")
 
     @property
-    def verify_filename(self) -> Optional[str]:
+    def verify_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "verify.txt")
+        return AcceptanceTest.DIRECTORY / self.name / Path("verify.txt")
 
     @property
-    def png_problem_filename(self) -> Optional[str]:
+    def png_problem_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "problem.png")
+        return AcceptanceTest.DIRECTORY / self.name / Path("problem.png")
 
     @property
-    def png_solution_filename(self) -> Optional[str]:
+    def png_solution_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "solution.png")
+        return AcceptanceTest.DIRECTORY / self.name / Path("solution.png")
 
     @property
-    def png_bookkeeping_filename(self) -> Optional[str]:
+    def png_bookkeeping_filename(self) -> Optional[Path]:
         if self.name is None:
             return None
-        return os.path.join(AcceptanceTest.DIRECTORY, self.name, "bookkeeping.png")
+        return AcceptanceTest.DIRECTORY / self.name / Path("bookkeeping.png")
 
     def test_svg(self) -> None:
         if self.name is None:
@@ -160,3 +161,6 @@ class AcceptanceTest(unittest.TestCase):
         command = BookkeepingPNGCommand(self.yaml_filename, self.png_problem_filename)
         command.process()
         command.write()
+
+    def test_open_files(self) -> None:
+        pass

@@ -1,29 +1,36 @@
+""" Create an SVG drawing of the problem"""
 import logging
 import xml.dom.minidom
+from pathlib import Path
 
 from svgwrite import Drawing
 from svgwrite.container import Style
 
 from src.commands.simple_command import SimpleCommand
 from src.items.item import Item
-from src.items.solution import Solution
 
 
 class SVGCommand(SimpleCommand):
 
     @staticmethod
     def select(item: Item) -> bool:
-        return not isinstance(item, Solution)
+        """ Selector
+        :param item: Item to check if it's included in the output
+        :return: True if the item is to be displayed
+        """
+        return False
 
     def process(self) -> None:
+        """ Produce the SVG"""
         super().process()
         assert self.problem is not None
         assert self.board is not None
-        logging.info("Producing problem svg")
+        logging.info(f"Producing {self.name} svg")
 
         glyph = self.problem.sorted_glyphs(SVGCommand.select)
+        # TODO move sizes to config file
         canvas = Drawing(
-            filename="test.svg",
+            filename=f"{self.name}.svg",
             size=("35cm", "35cm"),
             viewBox=f"0 0 {100 * (self.board.board_rows + 2)} {100 * (self.board.board_columns + 2)}"
         )

@@ -62,9 +62,9 @@ if __name__ == "__main__":
         command = SVGCommand(args.config, args.svg)
         output = args.svg
     if args.png is not None:
-        command = IMGCommand(args.config, args.png, 'PNG')
+        command = IMGCommand(args.png, args.config)
     if args.jpg is not None:
-        command = IMGCommand(args.config, args.jpg, 'JPG')
+        command = IMGCommand(args.jpg, args.config)
     command.process()
     command.write()
     sys.exit(0)

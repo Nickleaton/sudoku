@@ -1,18 +1,18 @@
 import unittest
 from pathlib import Path
 
-from src.commands.html_command import HTMLCommand
+from src.commands.solver_command import SolverCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 
 
-class TestHTMLCommand(TestSimpleCommand):
+class TestSolverCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
-        self.command = HTMLCommand(Path('problems\\easy\\problem001.yaml'))
+        self.command = SolverCommand(Path('problems\\easy\\problem001.yaml'))
 
     @property
     def representation(self) -> str:
-        return "HTMLCommand('problems\\easy\\problem001.yaml')"
+        return r"SolverCommand('problems\easy\problem001.yaml')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

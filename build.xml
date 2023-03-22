@@ -40,7 +40,7 @@
     <target name="generate-acceptance-tests">
         <exec executable="python.exe" failonerror="true" taskname="generate-acceptance-tests">
             <arg value="scripts/generate_acceptance_tests.py"/>
-            <arg value="--source"></arg>
+            <arg value="--source"/>
             <arg value="problems/easy"/>
             <arg value="--output"/>
             <arg value="acceptance_tests"/>

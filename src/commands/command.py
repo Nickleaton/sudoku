@@ -1,28 +1,57 @@
+""" Command base class
+
+Commands are used to do the actual work.
+Based on the Command pattern from the Gang of Four book
+
+https://en.wikipedia.org/wiki/Command_pattern
+"""
 import logging
-import os
-from typing import Optional
+from pathlib import Path
 
 
 class Command:
+    """ Base class for all commands """
 
-    def __init__(self, output_filename: Optional[str]):
-        self.output_filename: Optional[str] = output_filename
-        self.parent: Optional[Command] = None
+    def __init__(self):
+        # def __init__(self, output_filename: Path | str):
+        """ Command base class"""
+        pass
+        # self.output_filename: Path | None = None
+        # if type(output_filename) == str:
+        #     self.output_filename = Path(output_filename)
+        # else:
+        #     self.output_filename = output_filename
+        # if self.output_filename is not None:
+        #     self.directory = self.output_filename.parent
+        # else:
+        #     self.directory = None
+        # self.parent: Optional[Command] = None
+
+    @property
+    def name(self) -> str:
+        """ Get the name of the class in a nice form"""
+        if self.__class__.__name__ == 'Command':
+            return self.__class__.__name__
+        return self.__class__.__name__.replace("Command", "")
 
     def process(self) -> None:
+        """" Execute the command """
         logging.info(f"{self.__class__.__name__} process")
 
-    def write(self) -> None:
-        logging.info(f"Writing output to {self.output_filename}")
+    #
+    # def write(self) -> None:
+    #     """ persist the output to output_filename"""
+    #     logging.info(f"Writing output to {self.output_filename.name}")
+    @staticmethod
+    def check_directory(file_name: Path) -> None:
+        """ Utility function to create the directory for file_name if it doesn't exist
 
-    def check_directory(self) -> None:
-        assert self.output_filename is not None
-        directory: str = os.path.dirname(self.output_filename)
-        if directory == '':
-            return
-        if not os.path.exists(directory):  # pragma: no cover
-            logging.info(f"Creating directory {directory}")
-            os.makedirs(directory)
+        :param file_name: Path to the file
+        """
+        assert file_name is not None
+        if not file_name.parent.exists():  # pragma: no cover
+            logging.info(f"Creating directory {file_name.parent.name}")
+            file_name.parent.mkdir()
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.output_filename}')"
+        return f"{self.__class__.__name__}()"

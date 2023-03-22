@@ -1,5 +1,5 @@
-import os.path
 from itertools import product
+from pathlib import Path
 from typing import Optional, Dict
 
 import orloge
@@ -12,17 +12,16 @@ from src.solvers.solver import Solver
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, board: Board, name: str, log_path: str, solver_name: str = 'PULP_CBC_CMD'):
+    def __init__(self, board: Board, name: str, log_file: Path, solver_name: str = 'PULP_CBC_CMD'):
         super().__init__(board)
-        self.solver_name = solver_name
         self.name = name
+        self.log_file = log_file
+        self.solver_name = solver_name
         if solver_name == 'PULP_CBC_CMD':
             self.application_name = 'CBC'
-        self.logname = os.path.join(log_path, name + ".log")
-        if not os.path.exists(log_path):
-            os.makedirs(log_path)
-        self.application = getSolver(solver_name, logPath=self.logname, msg=False)
-
+        if self.log_file.exists():
+            self.log_file.unlink()
+        self.application = getSolver(solver_name, logPath=self.log_file, msg=False)
         self.objective = 0, "Objective"
         self.model = LpProblem("Sudoku", LpMinimize)
         self.model += self.objective
@@ -64,4 +63,4 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
                 self.answer.set_value(row, column, int(self.values[row][column].varValue))
 
     def get_log_details(self) -> Dict:
-        return orloge.get_info_solver(self.logname, self.application_name)
+        return orloge.get_info_solver(self.log_file, self.application_name)

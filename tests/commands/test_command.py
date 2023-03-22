@@ -6,20 +6,22 @@ from src.commands.command import Command
 class TestCommand(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.command = Command("output.txt")
+        self.command = Command()
 
     @property
     def representation(self) -> str:
-        return r"Command('output.txt')"
+        return r"Command()"
 
-    @property
-    def output(self) -> str:
-        return r"output.txt"
+    # @property
+    # def output(self) -> Path:
+    #     return Path("output.txt")
 
     def test_command(self):
         self.command.process()
-        self.assertEqual(self.output, self.command.output_filename)
-        self.command.write()
+        if self.__class__.__name__ == 'TestCommand':
+            self.assertEqual(self.command.name, 'Command')
+        else:
+            self.assertEqual(self.command.name, self.__class__.__name__.replace("Test", "").replace("Command", ""))
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

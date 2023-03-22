@@ -1,5 +1,8 @@
+""" Base class for all image producing classes"""
+
 import logging
 import os
+from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from reportlab.graphics import renderPM
@@ -11,35 +14,34 @@ from src.commands.svg_command import SVGCommand
 
 class IMGCommand(Command):
 
-    def __init__(self, output_filename: str, svg: SVGCommand):
-        super().__init__(output_filename)
+    def __init__(self, svg: SVGCommand, output_filename: Path):
+        super().__init__()
         self.output_filename = output_filename
         self.svg = svg
-        self.file_format = self.output_filename.split('.')[-1]
         self.drawing = None
 
     def process(self) -> None:
         super().process()
-        logging.info(f"Producing image file of type {self.file_format}")
+        logging.info(f"Producing image file of type {self.output_filename.suffix[1:]}")
         self.svg.process()
         with NamedTemporaryFile() as ntf:
-            fname = ntf.name
+            temp_file_name = Path(ntf.name)
             ntf.close()
 
-        logging.debug(f"Writing to temp file name {fname}")
+        logging.debug(f"Writing to temp file name {temp_file_name}")
         if self.svg.output is not None:
-            with open(fname, 'w', encoding='utf-8') as file:
+            with open(temp_file_name, 'w', encoding='utf-8') as file:
                 file.write(self.svg.output)
         else:
             logging.error("Expecting output but it is empty")  # pragma: no cover
-        self.drawing = svg2rlg(fname)
-        logging.debug(f"Removing temp file name  {fname}")
-        os.unlink(fname)
+        self.drawing = svg2rlg(temp_file_name)
+        logging.debug(f"Removing temp file name  {temp_file_name}")
+        temp_file_name.unlink()
 
     def write(self) -> None:
         super().write()
         self.check_directory()
-        renderPM.drawToFile(self.drawing, self.output_filename, fmt=self.file_format)
+        renderPM.drawToFile(self.drawing, self.output_filename, fmt=self.output_filename.suffix)
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.output_filename}', {repr(self.svg)})"
+        return f"{self.__class__.__name__}({repr(self.svg)}, {self.output_filename})"
