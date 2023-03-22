@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 from typing import Type
 
 import oyaml as yaml
@@ -97,11 +98,11 @@ class TestItem(unittest.TestCase):
         self.assertCountEqual(expected_names, used_names)
 
     def test_add_constraint(self) -> None:
-        solver = PulpSolver(self.board, 'test', "output/logs")
+        solver = PulpSolver(self.board, 'test', Path("output/logs/tests"))
         self.item.add_constraint(solver)
 
     def test_add_bookkeeping_constraint(self) -> None:
-        solver = PulpSolver(self.board, 'test', "output/logs")
+        solver = PulpSolver(self.board, 'test', Path("output/logs/tests"))
         self.item.add_bookkeeping_constraint(solver)
 
     def test_bookkeeping(self) -> None:
