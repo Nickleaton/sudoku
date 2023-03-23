@@ -3,15 +3,16 @@ from pathlib import Path
 from string import Template
 from typing import List
 
-RAW = """from tests.acceptance.acceptance_test import AcceptanceTest
+RAW = """\"\"\" Acceptance test for problem $name \"\"\"
+
+from tests.acceptance.acceptance_test import AcceptanceTest
 
 
-class Test$classname(AcceptanceTest):
+class $classname(AcceptanceTest):
 
     def setUp(self) -> None:
         self.name = "$name"
 """
-
 
 def get_filenames(directory: str) -> List[str]:
     path = Path(directory)
@@ -43,7 +44,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     template = Template(RAW)
     for filename in get_filenames(args.source):
-        name = "test_" + Path(filename).name.replace(".yaml", "") + ".py"
-        output_filename = Path(args.output) / name
+        name = Path(filename).with_suffix("").name
+        output_filename = Path(args.output) / Path(f"test_{name}.py")
         with open(output_filename, 'w', encoding='utf-8') as file:
-            file.write(template.substitute(classname=name.capitalize(), name=name))
+            file.write(template.substitute(classname=f"Test{name.capitalize()}", name=name))

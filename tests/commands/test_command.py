@@ -23,6 +23,7 @@ class TestCommand(unittest.TestCase):
         else:
             self.assertEqual(self.command.name, self.__class__.__name__.replace("Test", "").replace("Command", ""))
 
+
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
 

@@ -12,6 +12,7 @@ class TestLPCommand(TestCommand):
 
     def test_command(self):
         self.command.process()
+        self.assertIsNotNone(self.command.output)
 
     @property
     def representation(self) -> str:

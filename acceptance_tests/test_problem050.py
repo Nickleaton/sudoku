@@ -1,3 +1,5 @@
+""" Acceptance test for problem problem050 """
+
 from tests.acceptance.acceptance_test import AcceptanceTest
 
 

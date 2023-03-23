@@ -7,25 +7,15 @@ https://en.wikipedia.org/wiki/Command_pattern
 """
 import logging
 from pathlib import Path
+from typing import Optional
 
 
 class Command:
     """ Base class for all commands """
 
     def __init__(self):
-        # def __init__(self, output_filename: Path | str):
         """ Command base class"""
         pass
-        # self.output_filename: Path | None = None
-        # if type(output_filename) == str:
-        #     self.output_filename = Path(output_filename)
-        # else:
-        #     self.output_filename = output_filename
-        # if self.output_filename is not None:
-        #     self.directory = self.output_filename.parent
-        # else:
-        #     self.directory = None
-        # self.parent: Optional[Command] = None
 
     @property
     def name(self) -> str:
