@@ -18,9 +18,9 @@ class BookkeepingPNGCommand(SimpleCommand):
             self.temp_file.unlink()
         self.svg = SVGCommand(config_filename)
 
-    def process(self) -> None:
-        super().process()
-        self.svg.process()
+    def execute(self) -> None:
+        super().execute()
+        self.svg.execute()
         assert self.problem is not None
     #
     # def write(self) -> None:

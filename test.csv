@@ -1,0 +1,136 @@
+id,uuid,caller,timestamp,problem,field,point
+1,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Rows,999
+2,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Columns,811
+3,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Elements,3888
+4,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Fixed Variables,648
+5,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,CPU seconds,0.01
+6,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Wallclock seconds,0.01
+7,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Iterations,0
+8,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Nodes,0
+9,e3cf643c-a2d4-4d93-b6b1-37ab9bf23431,Scratch,2023-03-25 14:11:47,test,Result,Optimal
+10,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Rows,999
+11,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Columns,811
+12,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Elements,3888
+13,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Fixed Variables,648
+14,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,CPU seconds,0.01
+15,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Wallclock seconds,0.01
+16,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Iterations,0
+17,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Nodes,0
+18,ec60d36d-0ecb-4a4e-ba1f-864c552fafaa,Scratch,2023-03-25 14:11:51,test,Result,Optimal
+19,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Rows,999
+20,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Columns,811
+21,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Elements,3888
+22,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Fixed Variables,648
+23,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,CPU seconds,0.01
+24,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Wallclock seconds,0.01
+25,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Iterations,0
+26,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Nodes,0
+27,bbfc8263-6510-42b6-b472-521a9757b700,Scratch,2023-03-25 14:23:48,test,Result,Optimal
+28,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Rows,999
+29,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Columns,811
+30,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Elements,3888
+31,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Fixed Variables,648
+32,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,CPU seconds,0.01
+33,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Wallclock seconds,0.01
+34,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Iterations,0
+35,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Nodes,0
+36,40987ce7-5a6b-4e65-bf45-96ce3dabafbf,Scratch,2023-03-25 14:24:29,test,Result,Optimal
+37,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Rows,999
+38,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Columns,811
+39,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Elements,3888
+40,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Fixed Variables,648
+41,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,CPU seconds,0.01
+42,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Wallclock seconds,0.01
+43,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Iterations,0
+44,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Nodes,0
+45,e33881a0-fd04-41d2-acca-cec9767af282,Scratch,2023-03-25 14:24:34,test,Result,Optimal
+46,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,Rows,999
+47,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,Columns,811
+48,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,Elements,3888
+49,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,Fixed Variables,648
+50,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,CPU seconds,0.01
+51,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,Wallclock seconds,0.01
+52,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:01,test,Iterations,0
+53,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:02,test,Nodes,0
+54,f9769b29-140c-4920-8653-0d587559a7af,Scratch,2023-03-25 14:27:02,test,Result,Optimal
+55,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Rows,999
+56,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Columns,811
+57,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Elements,3888
+58,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Fixed Variables,648
+59,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,CPU seconds,0.01
+60,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Wallclock seconds,0.01
+61,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Iterations,0
+62,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Nodes,0
+63,08a67aa1-d434-463a-944e-1b675fef8480,Scratch,2023-03-25 14:27:35,test,Result,Optimal
+64,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Rows,999
+65,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Columns,811
+66,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Elements,3888
+67,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Fixed Variables,648
+68,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,CPU seconds,0.01
+69,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Wallclock seconds,0.01
+70,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Iterations,0
+71,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Nodes,0
+72,71ca5b90-35d0-4eda-96a0-39d603d87b6d,Scratch,2023-03-25 14:27:48,test,Result,Optimal
+73,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Rows,999
+74,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Columns,811
+75,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Elements,3888
+76,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Fixed Variables,648
+77,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,CPU seconds,0.01
+78,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Wallclock seconds,0.01
+79,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Iterations,0
+80,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Nodes,0
+81,ae0f1898-862a-4c24-b2df-520271e2f944,Scratch,2023-03-25 14:28:42,test,Result,Optimal
+82,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Rows,999
+83,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Columns,811
+84,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Elements,3888
+85,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Fixed Variables,648
+86,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,CPU seconds,0.01
+87,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Wallclock seconds,0.01
+88,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Iterations,0
+89,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Nodes,0
+90,33ce3b0d-577a-4426-b063-5b8fe6627c62,Scratch,2023-03-25 14:28:57,test,Result,Optimal
+91,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Rows,999
+92,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Columns,811
+93,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Elements,3888
+94,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Fixed Variables,648
+95,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,CPU seconds,0.01
+96,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Wallclock seconds,0.01
+97,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Iterations,0
+98,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Nodes,0
+99,211e12cb-cf29-4c53-bc90-20b17d723610,Scratch,2023-03-25 14:30:21,test,Result,Optimal
+100,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Rows,999
+101,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Columns,811
+102,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Elements,3888
+103,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Fixed Variables,648
+104,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,CPU seconds,0.01
+105,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Wallclock seconds,0.01
+106,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Iterations,0
+107,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Nodes,0
+108,490ec8bb-1832-4863-aace-b4df3e5c8f4d,Scratch,2023-03-25 18:56:35,test,Result,Optimal
+109,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Rows,999
+110,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Columns,811
+111,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Elements,3888
+112,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Fixed Variables,648
+113,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,CPU seconds,0.01
+114,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Wallclock seconds,0.01
+115,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Iterations,0
+116,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Nodes,0
+117,7a36a7f2-c991-48e6-b8b1-a8e29b1a42e1,Scratch,2023-03-25 18:57:17,test,Result,Optimal
+118,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Rows,999
+119,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Columns,811
+120,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Elements,3888
+121,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Fixed Variables,648
+122,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,CPU seconds,0.01
+123,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Wallclock seconds,0.01
+124,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Iterations,0
+125,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Nodes,0
+126,d621cb2e-c606-4875-a5b4-67b5692b6d26,Scratch,2023-03-25 18:59:50,test,Result,Optimal
+127,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Rows,999
+128,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Columns,811
+129,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Elements,3888
+130,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Fixed Variables,648
+131,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,CPU seconds,0.01
+132,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Wallclock seconds,0.01
+133,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Iterations,0
+134,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Nodes,0
+135,b2037400-5ab4-464b-b61c-937e0015c113,Scratch,2023-03-25 18:59:53,test,Result,Optimal

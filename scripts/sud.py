@@ -65,6 +65,6 @@ if __name__ == "__main__":
         command = IMGCommand(args.png, args.config)
     if args.jpg is not None:
         command = IMGCommand(args.jpg, args.config)
-    command.process()
+    command.execute()
     command.write()
     sys.exit(0)

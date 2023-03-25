@@ -17,7 +17,7 @@ class TestCommand(unittest.TestCase):
     #     return Path("output.txt")
 
     def test_command(self):
-        self.command.process()
+        self.command.execute()
         if self.__class__.__name__ == 'TestCommand':
             self.assertEqual(self.command.name, 'Command')
         else:

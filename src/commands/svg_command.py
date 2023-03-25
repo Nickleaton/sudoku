@@ -1,7 +1,6 @@
 """ Create an SVG drawing of the problem"""
 import logging
 import xml.dom.minidom
-from pathlib import Path
 
 from svgwrite import Drawing
 from svgwrite.container import Style
@@ -20,9 +19,9 @@ class SVGCommand(SimpleCommand):
         """
         return False
 
-    def process(self) -> None:
+    def execute(self) -> None:
         """ Produce the SVG"""
-        super().process()
+        super().execute()
         assert self.problem is not None
         assert self.board is not None
         logging.info(f"Producing {self.name} svg")
@@ -44,4 +43,4 @@ class SVGCommand(SimpleCommand):
                 canvas.add(element)
         canvas.add(glyph.draw())
         elements = xml.dom.minidom.parseString(canvas.tostring())
-        self.output = str(elements.toprettyxml())
+        self.output['svg'] = str(elements.toprettyxml())

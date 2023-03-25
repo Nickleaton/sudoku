@@ -21,10 +21,10 @@ class ComposedCommand(Command):
         self.items: List[Command] = []
         self.add_items(items)
 
-    def process(self) -> None:
+    def execute(self) -> None:
         """ do the work """
         for item in self.items:
-            item.process()
+            item.execute()
 
     def add(self, item: Command):
         """ Add a command to the list to execute.

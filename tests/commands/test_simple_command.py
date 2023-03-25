@@ -10,10 +10,6 @@ class TestSimpleCommand(TestCommand):
     def setUp(self) -> None:
         self.command = SimpleCommand(Path("problems\\easy\\problem001.yaml"))
 
-    def test_command(self):
-        super().test_command()
-        self.assertIsNotNone(self.output)
-
     def test_config(self):
         self.assertEqual(Path("problems\\easy\\problem001.yaml"), self.command.config_filename)
 

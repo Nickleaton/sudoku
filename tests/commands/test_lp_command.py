@@ -11,7 +11,7 @@ class TestLPCommand(TestCommand):
         self.command = LPCommand(Path('problems\\easy\\problem001.yaml'))
 
     def test_command(self):
-        self.command.process()
+        self.command.execute()
         self.assertIsNotNone(self.command.output)
 
     @property

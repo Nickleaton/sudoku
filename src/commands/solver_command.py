@@ -18,7 +18,7 @@ class SolverCommand(SimpleCommand):
         self.solution: Optional[Solution] = None
         self.output: Optional[str] = None
 
-    def process(self) -> None:
+    def execute(self) -> None:
         """
         Solve the puzzle.
         1. Build a board
@@ -29,7 +29,7 @@ class SolverCommand(SimpleCommand):
         6. Output the solution
         """
         logging.info(f"Solving File {self.config_filename}")
-        super().process()
+        super().execute()
         assert self.board is not None
         assert self.problem is not None
         Command.check_directory(self.log_file_name)

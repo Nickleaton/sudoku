@@ -15,9 +15,9 @@ class LPCommand(SimpleCommand):
         super().__init__(config_filename)
         self.solver: Optional[PulpSolver] = None
 
-    def process(self) -> None:
+    def execute(self) -> None:
         logging.info(f"Produce LP File {self.config_filename}")
-        super().process()
+        super().execute()
         assert self.problem is not None
         assert self.board is not None
         log_file = Path("output/logs/lp") / Path(self.name + ".log")

@@ -85,7 +85,7 @@ class AcceptanceTest(unittest.TestCase):
             return
         AcceptanceTest.check_directory(self.svg_filename)
         command = SVGCommand(self.yaml_filename)
-        command.process()
+        command.execute()
         self.assertIsNotNone(command.output)
 
     def test_html(self) -> None:
@@ -93,7 +93,7 @@ class AcceptanceTest(unittest.TestCase):
             return
         AcceptanceTest.check_directory(self.html_filename)
         command = HTMLCommand(self.yaml_filename)
-        command.process()
+        command.execute()
         self.assertIsNotNone(command.output)
 
     def test_lp(self) -> None:
@@ -101,14 +101,14 @@ class AcceptanceTest(unittest.TestCase):
             return
         AcceptanceTest.check_directory(self.lp_filename)
         command = LPCommand(self.yaml_filename)
-        command.process()
+        command.execute()
 
     def test_solve(self) -> None:
         if self.name is None:
             return
         AcceptanceTest.check_directory(self.solution_filename)
         command = SolveCommand(self.yaml_filename)
-        command.process()
+        command.execute()
         expected = None
         for item in command.config['Constraints']:
             if 'Solution' in item:
@@ -122,7 +122,7 @@ class AcceptanceTest(unittest.TestCase):
             return
         AcceptanceTest.check_directory(self.verify_filename)
         command = VerifyCommand(self.yaml_filename)
-        command.process()
+        command.execute()
         expected = None
         # command.dump_variables()
         for item in command.config['Constraints']:
@@ -152,7 +152,7 @@ class AcceptanceTest(unittest.TestCase):
             return
         AcceptanceTest.check_directory(self.png_bookkeeping_filename)
         command = BookkeepingPNGCommand(self.yaml_filename)
-        command.process()
+        command.execute()
         self.assertIsNotNone(command.output)
 
     def test_open_files(self) -> None:

@@ -24,7 +24,7 @@ class Command:
             return self.__class__.__name__
         return self.__class__.__name__.replace("Command", "")
 
-    def process(self) -> None:
+    def execute(self) -> None:
         """" Execute the command """
         logging.info(f"{self.__class__.__name__} process")
 

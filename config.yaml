@@ -1,0 +1,23 @@
+statistic_database: test.db
+
+statistic_elements:
+  Rows: Problem MODEL has (\d+) rows, \d+ columns and \d+ elements
+  Columns: Problem MODEL has \d+ rows, (\d+) columns and \d+ elements
+  Elements: Problem MODEL has \d+ rows, \d+ columns and (\d+) elements
+  Fixed Variables: (\d+) variables fixed
+  CPU seconds: Time \(CPU seconds\):\s+(\d+\.\d+)
+  Wallclock seconds: Time \(Wallclock seconds\):\s+(\d+\.\d+)
+  Iterations: Total iterations:\s+(\d+)
+  Nodes: Enumerated nodes:\s+(\d+)
+  Result: Result -\s(\S+)\s
+
+drawing:
+  size: 35cm
+  cell_size: 100
+  killer_offset: 5
+  arrow_head_percentage: 0.3
+  thermo_head_percentage: 0.3
+  odd_cell_radius: 35
+  kropki_radius: 10
+  consecutive_radius: 10
+  even_cell_size: 70

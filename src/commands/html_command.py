@@ -25,10 +25,10 @@ class HTMLCommand(SimpleCommand):
         super().__init__(config_filename)
         self.svg = SVGCommand(config_filename)
 
-    def process(self) -> None:
+    def execute(self) -> None:
         """Create the html"""
-        super().process()
-        self.svg.process()
+        super().execute()
+        self.svg.execute()
         logging.info("Producing html file of type")
         assert self.problem is not None
         template = env.get_template("problem.html")

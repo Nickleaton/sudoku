@@ -317,7 +317,7 @@ class CircleGlyph(Glyph):
         return 10
 
     def draw(self) -> Optional[BaseElement]:
-        return Circle(transform=self.center.point.transform, r=self.percentage * Config.CELL_SIZE,
+        return Circle(transform=self.center.point.transform, r=self.percentage * Config.cell_size,
                       class_=self.class_name)
 
     def __repr__(self) -> str:
@@ -515,9 +515,9 @@ class RectangleGlyph(Glyph):
 
     def draw(self) -> Optional[BaseElement]:
         if self.vertical:
-            size = Point(Config.CELL_SIZE * self.percentage * self.ratio, Config.CELL_SIZE * self.percentage)
+            size = Point(Config.cell_size * self.percentage * self.ratio, Config.cell_size * self.percentage)
         else:
-            size = Point(Config.CELL_SIZE * self.percentage, Config.CELL_SIZE * self.percentage * self.ratio)
+            size = Point(Config.cell_size * self.percentage, Config.cell_size * self.percentage * self.ratio)
         position = Coord.middle(self.first, self.second)
         return Rect(transform=position.transform, size=size.coordinates, class_=self.class_name)
 
@@ -793,9 +793,9 @@ class LittleKillerGlyph(Glyph):
 class KillerGlyph(Glyph):
     offset = 10
 
-    size = Config.CELL_SIZE / 2.0
+    size = Config.cell_size / 2.0
 
-    long_size = Config.CELL_SIZE / 2.0 - offset
+    long_size = Config.cell_size / 2.0 - offset
 
     long_lines = {
         2: Vector(Coord(0, 0), Coord(0, 1)),

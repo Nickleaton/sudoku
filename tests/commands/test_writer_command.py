@@ -1,7 +1,6 @@
 import unittest
 from pathlib import Path
 
-from src.commands.simple_command import SimpleCommand
 from src.commands.svg_command import SVGCommand
 from src.commands.writer_command import WriterCommand
 from tests.commands.test_command import TestCommand
@@ -11,7 +10,7 @@ class TestWriterCommand(TestCommand):
 
     def setUp(self) -> None:
         self.child = SVGCommand(Path("problems\\easy\\problem001.yaml"))
-        self.command = WriterCommand(self.child, Path("output\\solution\\problem001.txt"))
+        self.command = WriterCommand(self.child, Path("output\\solution\\problem001.txt"), 'svg')
         self.command.file_name.unlink(missing_ok=True)
 
     def tearDown(self) -> None:
@@ -19,7 +18,7 @@ class TestWriterCommand(TestCommand):
 
     def test_process(self):
         self.assertFalse(self.command.file_name.exists())
-        self.command.process()
+        self.command.execute()
         self.assertTrue(self.command.file_name.exists())
 
     def clazz(self):

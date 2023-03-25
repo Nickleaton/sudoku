@@ -18,9 +18,9 @@ class SolutionPNGCommand(SimpleCommand):
             self.temp_filename.unlink()
         self.svg = SVGCommand(config_filename, self.temp_filename)
 
-    def process(self) -> None:
-        super().process()
-        self.svg.process()
+    def execute(self) -> None:
+        super().execute()
+        self.svg.execute()
         self.svg.write()
         assert self.problem is not None
 
