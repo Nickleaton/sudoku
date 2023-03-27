@@ -56,6 +56,7 @@ import src.items.greater_than_equal_difference_pair
 import src.items.greater_than_pair
 import src.items.high_cell
 import src.items.indexing
+import src.items.product_arrow
 import src.items.item
 import src.items.knight
 import src.items.known_cell
