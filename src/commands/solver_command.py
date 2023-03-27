@@ -11,9 +11,12 @@ from src.solvers.pulp_solver import PulpSolver
 
 class SolverCommand(SimpleCommand):
 
-    def __init__(self, config_filename: Path):
-        super().__init__(config_filename)
-        self.log_file_name = Path("output") / Path("logs") / Path(self.name) / Path("todo" + ".log")
+    def __init__(self, log_file_name: Path):
+        """ Construct a solver
+        :param log_file_name: Name of the file to write the log too
+        """
+        super().__init__()
+        self.log_file_name = log_file_name
         self.solver: Optional[PulpSolver] = None
         self.solution: Optional[Solution] = None
         self.output: Optional[str] = None
@@ -21,22 +24,20 @@ class SolverCommand(SimpleCommand):
     def execute(self) -> None:
         """
         Solve the puzzle.
-        1. Build a board
-        2. Build the constraints
-        3. Bookkeep to remove obvious invalid choices
-        4. Add any bookkeeping constraints.
-        5. Solve
-        6. Output the solution
+        1. Bookkeep to remove obvious invalid choices
+        2. Add any bookkeeping constraints.
+        3. Solve
+        4. Output the solution
         """
-        logging.info(f"Solving File {self.config_filename}")
+        assert self.parent.board is not None
+        assert self.parent.problem is not None
+        logging.info(f"Solving problem {self.parent.problem.name}")
         super().execute()
-        assert self.board is not None
-        assert self.problem is not None
         Command.check_directory(self.log_file_name)
-        self.solver = PulpSolver(self.board, self.name, self.log_file_name)
-        self.problem.add_constraint(self.solver)
-        self.problem.bookkeeping()
-        self.problem.add_bookkeeping_constraint(self.solver)
+        self.solver = PulpSolver(self.parent.board, self.parent.problem.name, self.log_file_name)
+        self.parent.problem.add_constraint(self.solver)
+        self.parent.problem.bookkeeping()
+        self.parent.problem.add_bookkeeping_constraint(self.solver)
         self.solver.solve()
         self.solution = self.solver.answer
         self.output = str(self.solution)

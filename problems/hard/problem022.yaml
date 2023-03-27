@@ -19,14 +19,14 @@ Constraints:
   - Renban: 61, 72 , 81
   - Renban: 83, 94
   - Renban: 98, 99 , 89
-  - Arrow:  34, 23, 13
-  - Arrow:  52, 62, 71
-  - Arrow:  64, 53, 43, 33
-  - Arrow:  66, 57, 47
-  - Arrow:  74, 63
-  - Arrow:  84, 73
-  - Arrow:  96, 87, 77, 67
-  - Arrow:  97, 86, 76
+  - SumArrow:  34, 23, 13
+  - SumArrow:  52, 62, 71
+  - SumArrow:  64, 53, 43, 33
+  - SumArrow:  66, 57, 47
+  - SumArrow:  74, 63
+  - SumArrow:  84, 73
+  - SumArrow:  96, 87, 77, 67
+  - SumArrow:  97, 86, 76
 
   - Solution:
     - 865472931

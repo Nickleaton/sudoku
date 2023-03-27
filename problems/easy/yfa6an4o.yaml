@@ -1,0 +1,19 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 3.....7.4
+  - .4.....1.
+  - 6.1...2..
+  - ...2.3...
+  - .........
+  - ...1.4...
+  - ..4...3.8
+  - .3.....2.
+  - 2.5.....1
+- Columns: 
+- Rows: 
+- Boxes: 
+- AntiKnight: 

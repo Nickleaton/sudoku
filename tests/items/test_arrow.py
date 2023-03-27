@@ -1,7 +1,7 @@
 import unittest
 from typing import Type
 
-from src.items.arrow import Arrow
+from src.items.sum_arrow import SumArrow
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -15,7 +15,7 @@ class TestArrow1(TestLine):
 
     @property
     def clazz(self):
-        return Arrow
+        return SumArrow
 
     @property
     def config(self) -> str:
@@ -27,7 +27,7 @@ class TestArrow1(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Arrow, Cell, ComposedItem, Item, Line, Region}
+        return {SumArrow, Cell, ComposedItem, Item, Line, Region}
 
 
 class TestArrow2(TestLine):
@@ -40,7 +40,7 @@ class TestArrow2(TestLine):
 
     @property
     def clazz(self):
-        return Arrow
+        return SumArrow
 
     @property
     def config(self) -> str:
@@ -52,7 +52,7 @@ class TestArrow2(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Arrow, Cell, ComposedItem, Item, Line, Region}
+        return {SumArrow, Cell, ComposedItem, Item, Line, Region}
 
     @property
     def representation(self) -> str:

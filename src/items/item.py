@@ -1,6 +1,9 @@
 import abc
+import logging
 from abc import ABC
 from typing import Optional, List, Set, Type, Dict, Any, Callable
+
+from sortedcontainers import SortedDict
 
 from src.glyphs.glyph import Glyph, ComposedGlyph
 from src.items.board import Board
@@ -8,12 +11,16 @@ from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
 
+class SudokuException(Exception):
+    pass
+
+
 class Item:
     pass
 
 
 class Item(ABC):
-    classes: Dict[str, 'Item'] = {}
+    classes: Dict[str, 'Item'] = SortedDict({})
     counter = 0
 
     @staticmethod
@@ -80,8 +87,10 @@ class Item(ABC):
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Item':
         if len(yaml) != 1:
-            raise Exception
+            raise SudokuException(f"Yaml={str(yaml)}")
         name = list(yaml.keys())[0]
+        if name not in cls.classes:
+            logging.error(f"Cannot find item {name}")
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 

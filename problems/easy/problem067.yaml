@@ -11,14 +11,14 @@ Constraints:
   - Rows:
   - Boxes:
 
-  - Arrow: 24, 23, 22, 12
-  - Arrow: 24, 25, 15
-  - Arrow: 28, 37, 46, 55
-  - Arrow: 68, 58, 48
-  - Arrow: 68, 78, 88, 89
-  - Arrow: 73, 64, 55
-  - Arrow: 82, 72, 62
-  - Arrow: 82, 83, 84
+  - SumArrow: 24, 23, 22, 12
+  - SumArrow: 24, 25, 15
+  - SumArrow: 28, 37, 46, 55
+  - SumArrow: 68, 58, 48
+  - SumArrow: 68, 78, 88, 89
+  - SumArrow: 73, 64, 55
+  - SumArrow: 82, 72, 62
+  - SumArrow: 82, 83, 84
 
   - Renban: 11, 22, 33
   - Renban: 27, 18, 29, 38

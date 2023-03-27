@@ -1,0 +1,46 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sham Capplemon-Limes
+Constraints:
+- Knowns:
+  - .........
+  - .1..2..3.
+  - .........
+  - 8.......3
+  - .4..5..6.
+  - 3.......8
+  - .........
+  - .7..8..9.
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 623194875
+  - 714825639
+  - 985736241
+  - 851467923
+  - 249358167
+  - 367912458
+  - 132549786
+  - 576281394
+  - 498673512
+- Killer: 21=11, 12, 13, 23, 33, 43
+- Killer: 22=67, 77, 87, 97, 98, 99
+- Killer: 15=71, 72, 73, 74, 75
+- Killer: 16=35, 36, 37, 38, 39
+- SimpleThermometer: 12, 11
+- SimpleThermometer: 14, 13
+- SimpleThermometer: 16, 15
+- SimpleThermometer: 19, 18
+- SimpleThermometer: 98, 99
+- SimpleThermometer: 96, 97
+- SimpleThermometer: 94, 95
+- SimpleThermometer: 37, 38
+- SimpleThermometer: 39, 49
+- SimpleThermometer: 26, 36
+- SimpleThermometer: 84, 74
+- SimpleThermometer: 73, 72
+- SimpleThermometer: 71, 61
+- SimpleThermometer: 54, 55, 56

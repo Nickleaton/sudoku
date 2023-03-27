@@ -1,0 +1,27 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - 5.....2..
+  - .......3.
+  - ..3......
+  - .........
+  - ...9.4...
+  - .........
+  - ......8..
+  - .5.......
+  - ..7.....2
+- Columns: 
+- Rows: 
+- Boxes: 
+- Between: 36, 35, 34, 33
+- Between: 74, 75, 76, 77
+- Between: 58, 48, 38, 28
+- Between: 52, 62, 72, 82
+- Between: 33, 44, 55, 66, 77
+- Between: 69, 79, 89, 99
+- Between: 41, 31, 21, 11
+- SimpleThermometer: 14, 25, 36, 47, 58, 69
+- SimpleThermometer: 41, 52, 63, 74, 85, 96

@@ -8,7 +8,7 @@
 	<body>
 		<h1>Problem</h1>
 		<?xml version="1.0" ?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="35cm" version="1.1" viewBox="0 0 1100 1100" width="35cm">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="25cm" version="1.1" viewBox="0 0 1100 1100" width="25cm">
 	<defs>
 		<marker class="Arrow ArrowStart" id="Arrow-start" markerHeight="35" markerWidth="35" refX="50" refY="50" viewBox="0 0 100 100">
 			<circle cx="50" cy="50" r="35"/>
@@ -338,13 +338,8 @@ LittleNumber {
 			<tbody>
 				
 				<tr>
-					<td> GermanWhisper</td>
-					<td> Any two cells directly connected by a green line must have a difference of at least 5</td>
-				</tr>
-				
-				<tr>
-					<td> AntiKing</td>
-					<td> Identical digits cannot be separated by a King&#39;s move</td>
+					<td> Row</td>
+					<td> Digits in each row must be unique</td>
 				</tr>
 				
 				<tr>
@@ -353,18 +348,23 @@ LittleNumber {
 				</tr>
 				
 				<tr>
+					<td> Box</td>
+					<td> Digits in each box must be unique</td>
+				</tr>
+				
+				<tr>
 					<td> Arrow</td>
 					<td> Digits along an arrow must sum to the digit in its circle. Digits may repeat along an arrow</td>
 				</tr>
 				
 				<tr>
-					<td> Row</td>
-					<td> Digits in each row must be unique</td>
+					<td> AntiKing</td>
+					<td> Identical digits cannot be separated by a King's move</td>
 				</tr>
 				
 				<tr>
-					<td> Box</td>
-					<td> Digits in each box must be unique</td>
+					<td> GermanWhisper</td>
+					<td> Any two cells directly connected by a green line must have a difference of at least 5</td>
 				</tr>
 				
 			</tbody>

@@ -1,0 +1,30 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - 9....1762
+  - 4........
+  - 3........
+  - 8........
+  - .........
+  - ........9
+  - ........3
+  - ........4
+  - 1672....8
+- Columns: 
+- Rows: 
+- Boxes: 
+- GermanWhisper: 32, 22, 13, 14, 25, 35, 44, 43
+- GermanWhisper: 43, 32
+- GermanWhisper: 27, 28, 39, 49, 58, 57, 46, 36
+- GermanWhisper: 36, 27
+- GermanWhisper: 78, 88, 97, 96, 85, 75, 66, 67
+- GermanWhisper: 67, 78
+- GermanWhisper: 83, 82, 71, 61, 52, 53, 64, 74
+- GermanWhisper: 74, 83
+- GermanWhisper: 32, 23, 24, 35
+- GermanWhisper: 27, 38, 48, 57
+- GermanWhisper: 78, 87, 86, 75
+- GermanWhisper: 83, 72, 62, 53

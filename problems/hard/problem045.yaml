@@ -8,14 +8,14 @@ Constraints:
   - Columns:
   - Rows:
   - Boxes:
-  - Arrow: 15, 14, 13
-  - Arrow: 47, 38, 29
-  - Arrow: 54, 53, 52
-  - Arrow: 54, 64, 65
-  - Arrow: 56, 46, 45
-  - Arrow: 56, 57, 58
-  - Arrow: 95, 96, 97
-  - Arrow: 63, 72, 81
+  - SumArrow: 15, 14, 13
+  - SumArrow: 47, 38, 29
+  - SumArrow: 54, 53, 52
+  - SumArrow: 54, 64, 65
+  - SumArrow: 56, 46, 45
+  - SumArrow: 56, 57, 58
+  - SumArrow: 95, 96, 97
+  - SumArrow: 63, 72, 81
   - KropkiPair: 15-16
   - KropkiPair: 35-45
   - KropkiPair: 37-47

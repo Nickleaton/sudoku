@@ -1,0 +1,22 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ....7..1.
+  - ...5...3.
+  - ..3....5.
+  - .1.....7.
+  - ....1....
+  - .8.....2.
+  - .6....4..
+  - .4...6...
+  - .2..8....
+- Columns: 
+- Rows: 
+- Boxes: 
+- SimpleThermometer: 91, 81, 71, 61, 51
+- SimpleThermometer: 19, 29, 39, 49, 59
+- SimpleThermometer: 43, 34, 25, 16, 17
+- SimpleThermometer: 67, 76, 85, 94, 93

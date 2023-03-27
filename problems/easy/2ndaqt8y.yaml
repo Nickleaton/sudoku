@@ -1,0 +1,40 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .5.....7.
+  - ....6....
+  - ...4..6..
+  - ..8.3....
+  - .....2...
+  - ...7.....
+  - .8.......
+  - ........1
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 162375849
+  - 859124376
+  - 374869125
+  - 295487613
+  - 748631592
+  - 613592487
+  - 421753968
+  - 587916234
+  - 936248751
+- Sandwich: T1=35
+- Sandwich: L1=35
+- Sandwich: T4=30
+- Sandwich: L4=30
+- Sandwich: T5=5
+- Sandwich: L5=5
+- Sandwich: T7=15
+- Sandwich: L7=15
+- Sandwich: L8=0
+- Sandwich: T8=0
+- Sandwich: L3=0
+- Sandwich: T3=20

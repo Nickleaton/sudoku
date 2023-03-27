@@ -139,4 +139,29 @@
             <arg value="tests/"/>
         </exec>
     </target>
+    <target name="convert-json-to-yaml">
+        <mkdir dir="problems/fpuzzles/yaml"/>
+        <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
+            <arg value="scripts/convert.py"/>
+            <arg value="--source"/>
+            <arg value="problems/fpuzzles/goodjson"/>
+            <arg value="--destination"/>
+            <arg value="problems/fpuzzles/yaml"/>
+        </exec>
+        <copy todir="problems/easy" overwrite="true">
+            <fileset dir="problems/fpuzzles/yaml">
+                <include name="**/*.yaml"/>
+            </fileset>
+        </copy>
+    </target>
+        <target name="convert-test">
+        <mkdir dir="problems/fpuzzles/test"/>
+        <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
+            <arg value="scripts/convert.py"/>
+            <arg value="--source"/>
+            <arg value="problems/fpuzzles/goodjson/yjryhuka.json"/>
+            <arg value="--destination"/>
+            <arg value="C:\Users\nickl\AppData\Roaming\JetBrains\PyCharm2022.3\scratches"/>
+        </exec>
+    </target>
 </project>

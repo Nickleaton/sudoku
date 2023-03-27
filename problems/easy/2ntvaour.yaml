@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 758934126
+  - 419286357
+  - 362175948
+  - 873459612
+  - 195627483
+  - 246813579
+  - 687341295
+  - 924568731
+  - 531792864
+- Killer: 21=33, 34, 43, 44, 53, 54
+- Killer: 22=56, 57, 66, 67, 76, 77
+- Killer: 21=16, 17, 18, 26, 27, 28
+- Killer: 22=82, 83, 84, 92, 93, 94
+- Quadruple: 33=1234
+- Quadruple: 66=1235
+- Quadruple: 82=1234
+- Quadruple: 17=1235
+- Quadruple: 74=3456
+- Quadruple: 25=5678
+- Quadruple: 61=2468
+- Quadruple: 38=1248
+- Quadruple: 78=1359
+- Quadruple: 21=1346

@@ -12,12 +12,12 @@ Constraints:
   - AntiKing:
   - GermanWhisper: 11, 22, 33, 44, 55, 66, 77, 88, 99
   - GermanWhisper: 61, 72, 83, 94
-  - Arrow: 39, 28, 17
-  - Arrow: 25, 34, 43, 52
-  - Arrow: 35, 44, 53
-  - Arrow: 73, 64, 55, 46, 37
-  - Arrow: 57, 66, 75
-  - Arrow: 95, 86, 77, 68
+  - SumArrow: 39, 28, 17
+  - SumArrow: 25, 34, 43, 52
+  - SumArrow: 35, 44, 53
+  - SumArrow: 73, 64, 55, 46, 37
+  - SumArrow: 57, 66, 75
+  - SumArrow: 95, 86, 77, 68
 
   - Knowns:
       - .........

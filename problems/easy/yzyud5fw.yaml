@@ -1,0 +1,22 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - .........
+  - ....8....
+  - ..84.96..
+  - ..53.17..
+  - .9..2..3.
+  - ..26.79..
+  - ..45.82..
+  - ....7....
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- UniqueRegion: 61, 71, 72, 81, 83, 91, 92, 93, 94
+- UniqueRegion: 11, 12, 13, 14, 21, 23, 31, 32, 41
+- UniqueRegion: 69, 78, 79, 87, 89, 96, 97, 98, 99
+- UniqueRegion: 16, 17, 18, 19, 27, 29, 38, 39, 49

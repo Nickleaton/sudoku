@@ -5,7 +5,6 @@ import src.commands.html_command
 import src.commands.img_command
 import src.commands.lp_command
 import src.commands.simple_command
-import src.commands.solve_command
 import src.commands.svg_command
 import src.commands.solver_command
 

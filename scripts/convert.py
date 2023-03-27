@@ -2,8 +2,8 @@ import inspect
 import json
 import logging
 import sys
-from pathlib import Path
 from argparse import ArgumentParser
+from pathlib import Path
 from typing import Dict, List, Tuple
 
 import oyaml as yaml
@@ -33,6 +33,8 @@ def header(data: Dict) -> Dict:
         box_y = 0
     author = data.get('author')
     if author is None:
+        author = 'Unknown'
+    elif author == '?':
         author = 'Unknown'
     return {'Board': f'{board_x}x{board_y}', 'Boxes': f'{box_x}x{box_y}', 'Author': author}
 
@@ -70,7 +72,7 @@ def cyclic(s: str) -> str:
         return "C"
     if s == 'UL':
         return "A"
-    if s == 'DR':
+    if s == 'UR':
         return "C"
     return ""
 
@@ -135,8 +137,14 @@ def clone(data: List) -> List:
     result = []
     for item in data:
         region = {'ClonedRegion': []}
-        for c, cc in zip(item['cells'], item['cloneCells']):
-            region['ClonedRegion'].append({'Clone': f"{c}={cc}"})
+        r1 = []
+        r2 = []
+        for c1, c2 in zip(item['cells'], item['cloneCells']):
+            r1.append(c1[1] + c1[3])
+            r2.append(c2[1] + c2[3])
+        s1 = ",".join(r1)
+        s2 = ",".join(r2)
+        region['ClonedRegion'] = [s1, s2]
         result.append(region)
     return result
 
@@ -187,7 +195,8 @@ def entropicline(data: List) -> List:
 def even(data: List) -> List:
     result = []
     for item in data:
-        result.append({'Even': rc(item['cell'])})
+        r, c = rc(item['cell'])
+        result.append({'EvenCell': f"{r}{c}"})
     return result
 
 
@@ -237,7 +246,8 @@ def lockout(data: List) -> List:
 def maximum(data: List) -> List:
     result = []
     for item in data:
-        result.append({'FortressCell': rc(item['cell'])})
+        r, c = rc(item['cell'])
+        result.append({'FortressCell': f"{r}{c}"})
     return result
 
 
@@ -246,13 +256,14 @@ def negative() -> Dict:
 
 
 def nonconsecutive() -> Dict:
-    return {'OrthoganallyAdjacent': ''}
+    return {'OrthogonallyAdjacent': ''}
 
 
 def odd(data: List) -> List:
     result = []
     for item in data:
-        result.append({'Odd': rc(item['cell'])})
+        r, c = rc(item['cell'])
+        result.append({'OddCell': f"{r}{c}"})
     return result
 
 
@@ -353,14 +364,14 @@ def xv(data: List) -> List:
         r1, c1 = rc(item['cells'][0])
         r2, c2 = rc(item['cells'][1])
         if item['value'] == 'V':
-            result.append({'V_Pair': f"{r1}{c1}-{r2}{c2}"})
+            result.append({'VPair': f"{r1}{c1}-{r2}{c2}"})
         elif item['value'] == 'X':
-            result.append({'X_Pair': f"{r1}{c1}-{r2}{c2}"})
+            result.append({'XPair': f"{r1}{c1}-{r2}{c2}"})
     return result
 
 
 def convert(source_file: Path, destination_file: Path) -> bool:
-    logging.log(logging.INFO, f"Convert {source_file} to {destination_file}")
+    logging.info(f"Convert {source_file} to {destination_file}")
     out = {}
     with source_file.open() as s_file:
         data = json.load(s_file)
@@ -411,7 +422,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         if 'diagonal_tlbr' in raw:
             out['Constraints'].append(diagonal_tlbr())
         if 'difference' in raw:
-            out['Constraints'].append(difference(raw['difference']))
+            out['Constraints'].extend(difference(raw['difference']))
         if 'disjointgroups' in raw:
             out['Constraints'].append(disjointgroups())
         if 'entropicline' in raw:
@@ -427,11 +438,11 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         # if 'line' in raw:
         #     out['Constraints'].append(line(raw['line']))
         if 'littlekillersum' in raw:
-            out['Constraints'].append(littlekillersum(raw['littlekillersum'], n))
+            out['Constraints'].extend(littlekillersum(raw['littlekillersum'], n))
         if 'lockout' in raw:
             out['Constraints'].append(lockout(raw['lockout']))
         if 'maximum' in raw:
-            out['Constraints'].append(maximum(raw['maximum']))
+            out['Constraints'].extend(maximum(raw['maximum']))
         if 'negative' in raw:
             out['Constraints'].append(negative())
         if 'nonconsecutive' in raw:
@@ -443,7 +454,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         if 'quadruple' in raw:
             out['Constraints'].extend(quadruple(raw['quadruple']))
         if 'ratio' in raw:
-            out['Constraints'].append(ratio(raw['ratio']))
+            out['Constraints'].extend(ratio(raw['ratio']))
         if 'regionsumline' in raw:
             out['Constraints'].extend(regionsumline(raw['regionsumline']))
         if 'renban' in raw:
@@ -493,7 +504,7 @@ def main() -> None:
     count = 0
     total_count = 0
 
-    logging.log(logging.INFO, "Start")
+    logging.info("Start")
     parser = get_parser()
     args = parser.parse_args()
     source = Path(args.source)
@@ -519,8 +530,8 @@ def main() -> None:
             if convert(source, destination):
                 count += 1
 
-    logging.log(logging.INFO, F"Count {count} / {total_count}")
-    logging.log(logging.INFO, "Finish")
+    logging.info(F"Count {count} / {total_count}")
+    logging.info("Finish")
 
 
 if __name__ == '__main__':

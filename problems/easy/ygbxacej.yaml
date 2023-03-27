@@ -1,0 +1,32 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Between: 96, 87, 78, 69
+- Between: 61, 72, 83, 94
+- Between: 16, 27, 38, 49
+- Between: 41, 32, 23, 14
+- Quadruple: 22=1289
+- Quadruple: 77=1379
+- Quadruple: 27=2368
+- Quadruple: 72=2478
+- Quadruple: 44=1245
+- Quadruple: 55=5689
+- Quadruple: 35=2345
+- Quadruple: 64=3789
+- Quadruple: 46=3578
+- Quadruple: 53=1347

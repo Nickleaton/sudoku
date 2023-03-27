@@ -1,0 +1,32 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .......9.
+  - .........
+  - .........
+  - ....4....
+  - .........
+  - ....3....
+  - .........
+  - .........
+  - .......7.
+- Columns: 
+- Rows: 
+- Boxes: 
+- Between: 41, 32, 23, 14
+- Between: 61, 72, 83, 94
+- Between: 43, 34, 25, 16
+- Between: 43, 53, 63
+- Between: 63, 74, 85, 96
+- Between: 98, 87, 76, 65
+- Between: 18, 27, 36, 45
+- Killer: 6=41, 51, 61
+- Killer: 7=13, 14, 15
+- Killer: 8=93, 94, 95
+- Killer: 18=43, 53, 63
+- Killer: 9=16, 17
+- Killer: 11=96, 97
+- Killer: 7=56, 57, 58

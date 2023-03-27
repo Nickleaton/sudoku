@@ -1,10 +1,11 @@
+import json
 import logging
 from argparse import ArgumentParser
-from urllib.parse import urlparse, parse_qs
-import lzstring
-import json
-from selenium import webdriver
 from pathlib import Path
+from urllib.parse import urlparse, parse_qs
+
+import lzstring
+from selenium import webdriver
 
 # directory = "problems/fpuzzles/json"
 
@@ -17,7 +18,7 @@ def process_url(url: str, directory: Path) -> None:
     ident = original_qs['id'][0]
     filename = Path(directory) / Path(ident + ".json")
     if filename.exists():
-        logging.log(logging.INFO, f"Skipping file {filename.name}")
+        logging.info(f"Skipping file {filename.name}")
         return
     driver = webdriver.Chrome()
     decompressor = lzstring.LZString()
@@ -29,7 +30,7 @@ def process_url(url: str, directory: Path) -> None:
 
     all_data = {'url': url, 'data': data}
     with filename.open('w') as file:
-        logging.log(logging.INFO, f"Writing file {filename.name}")
+        logging.info(f"Writing file {filename.name}")
         file.write(json.dumps(all_data, sort_keys=True, indent=4))
 
 
@@ -42,7 +43,7 @@ def get_parser() -> ArgumentParser:
 
 
 def main() -> None:
-    logging.log(logging.INFO, "Start")
+    logging.info("Start")
     parser = get_parser()
     args = parser.parse_args()
     source = Path(args.source)
@@ -50,9 +51,9 @@ def main() -> None:
     with open(source, 'r') as f:
         urls = f.readlines()
     for i, u in enumerate(urls):
-        logging.log(logging.INFO, f"{i:04d} {len(urls):04d} {u.strip()}")
+        logging.info(f"{i:04d} {len(urls):04d} {u.strip()}")
         process_url(u.strip(), destination)
-    logging.log(logging.INFO, "Finish")
+    logging.info("Finish")
 
 
 if __name__ == '__main__':

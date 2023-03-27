@@ -1,0 +1,37 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ..6813.5.
+  - 7........
+  - .........
+  - ...6...82
+  - .........
+  - 26...7...
+  - .........
+  - ........8
+  - .2.9416..
+- Columns: 
+- Rows: 
+- Boxes: 
+- MaxCell: 38
+- MaxCell: 67
+- MaxCell: 65
+- MaxCell: 45
+- MaxCell: 43
+- MaxCell: 59
+- MaxCell: 51
+- MaxCell: 34
+- MaxCell: 76
+- MaxCell: 79
+- MaxCell: 31
+- MaxCell: 72
+- MaxCell: 12
+- MaxCell: 98
+- MaxCell: 19
+- MaxCell: 91
+- MaxCell: 55
+- MaxCell: 64
+- MaxCell: 46

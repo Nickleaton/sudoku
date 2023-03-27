@@ -15,7 +15,7 @@ class Command:
 
     def __init__(self):
         """ Command base class"""
-        pass
+        self.parent = None
 
     @property
     def name(self) -> str:
@@ -41,7 +41,7 @@ class Command:
         assert file_name is not None
         if not file_name.parent.exists():  # pragma: no cover
             logging.info(f"Creating directory {file_name.parent.name}")
-            file_name.parent.mkdir()
+            file_name.parent.mkdir(parents=True, exist_ok=True)
 
     def __repr__(self):
         return f"{self.__class__.__name__}()"

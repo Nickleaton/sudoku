@@ -1,0 +1,52 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 963782541
+  - 871465239
+  - 524319786
+  - 735846192
+  - 286197354
+  - 149523678
+  - 318674925
+  - 497251863
+  - 652938417
+- Killer: 8=57, 58
+- Killer: 14=52, 53
+- Killer: 7=31, 32
+- Killer: 14=38, 39
+- Killer: 7=78, 79
+- Killer: 4=71, 72
+- Killer: 15=73, 83
+- Killer: 12=75, 85
+- Killer: 17=77, 87
+- Killer: 9=27, 37
+- Killer: 7=25, 35
+- Killer: 5=23, 33
+- - XSum: T3=8
+  - XSum: T7=18
+  - XSum: B7=27
+  - XSum: B5=15
+  - XSum: B3=9
+  - XSum: L3=15
+  - XSum: R3=34
+  - XSum: L7=12
+  - XSum: R7=27
+  - XSum: L5=10
+  - XSum: R5=19
+  - XSum: T5=42

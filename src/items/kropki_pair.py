@@ -6,7 +6,7 @@ from typing import List, Dict
 
 from pulp import LpVariable, LpInteger, lpSum
 
-from src.glyphs.glyph import Glyph, CircleGlyph
+from src.glyphs.glyph import Glyph, KropkiGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.pair import Pair
@@ -42,7 +42,7 @@ class KropkiPair(Pair):
         ]
 
     def glyphs(self, selector) -> List[Glyph]:
-        return [CircleGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
+        return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
     @property
     def tags(self) -> set[str]:

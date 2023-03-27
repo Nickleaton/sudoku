@@ -1,0 +1,28 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ........4
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - 6........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Quadruple: 11=13
+- Quadruple: 33=24
+- Quadruple: 88=79
+- Quadruple: 66=68
+- Quadruple: 48=57
+- Quadruple: 51=35
+- Quadruple: 54=2
+- Quadruple: 45=8
+- Quadruple: 73=35
+- Quadruple: 26=57

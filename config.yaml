@@ -11,8 +11,11 @@ statistic_elements:
   Nodes: Enumerated nodes:\s+(\d+)
   Result: Result -\s(\S+)\s
 
+templates:
+  html: src/html/problem.html
+
 drawing:
-  size: 35cm
+  size: 25cm
   cell_size: 100
   killer_offset: 5
   arrow_head_percentage: 0.3

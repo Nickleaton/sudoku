@@ -8,14 +8,14 @@ from pydotted import pydot
 class Config:
     __instance = None
 
-    def __new__(cls, config_file_path: Path):
+    def __new__(cls, config_file_path: Path = Path("config.yaml")):
         if cls.__instance is None:
             cls.__instance = super(Config, cls).__new__(cls)
             cls.__instance.__initialized = False
         cls.__instance.config_file_path = config_file_path
         return cls.__instance
 
-    def __init__(self, config_file_path: Path):
+    def __init__(self):
         if self.__initialized:
             return
         self.__initialized = True
@@ -26,6 +26,5 @@ class Config:
         return self.config[key]
 
 
-# config = Config(Path("config.yaml"))
-#
+# config = Config()
 # print(config.drawing.size)

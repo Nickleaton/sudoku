@@ -1,0 +1,30 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - ...7.....
+  - ..64.....
+  - ..2.9.8..
+  - .....15..
+  - .....3...
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- - XSum: T2=5
+  - XSum: T5=9
+  - XSum: T8=14
+  - XSum: L2=10
+  - XSum: L5=6
+  - XSum: L8=15
+  - XSum: B3=40
+  - XSum: R3=15
+  - XSum: B6=30
+  - XSum: R6=25
+  - XSum: R9=1
+  - XSum: B9=1

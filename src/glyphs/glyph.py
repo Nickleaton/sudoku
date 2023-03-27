@@ -15,6 +15,8 @@ from src.utils.point import Point
 from src.utils.vector import Vector
 from src.utils.vector_list import VectorList
 
+config = Config()
+
 
 class Glyph(ABC):
     """
@@ -317,7 +319,10 @@ class CircleGlyph(Glyph):
         return 10
 
     def draw(self) -> Optional[BaseElement]:
-        return Circle(transform=self.center.point.transform, r=self.percentage * Config.cell_size,
+        print(self.center.point.transform)
+        print(self.percentage)
+        print(config.drawing.cell_size)
+        return Circle(transform=self.center.point.transform, r=self.percentage * config.drawing.cell_size,
                       class_=self.class_name)
 
     def __repr__(self) -> str:
@@ -515,9 +520,11 @@ class RectangleGlyph(Glyph):
 
     def draw(self) -> Optional[BaseElement]:
         if self.vertical:
-            size = Point(Config.cell_size * self.percentage * self.ratio, Config.cell_size * self.percentage)
+            size = Point(config.drawing.cell_size * self.percentage * self.ratio,
+                         config.drawing.cell_size * self.percentage)
         else:
-            size = Point(Config.cell_size * self.percentage, Config.cell_size * self.percentage * self.ratio)
+            size = Point(config.drawing.cell_size * self.percentage,
+                         config.drawing.cell_size * self.percentage * self.ratio)
         position = Coord.middle(self.first, self.second)
         return Rect(transform=position.transform, size=size.coordinates, class_=self.class_name)
 
@@ -793,9 +800,9 @@ class LittleKillerGlyph(Glyph):
 class KillerGlyph(Glyph):
     offset = 10
 
-    size = Config.cell_size / 2.0
+    size = config.drawing.cell_size / 2.0
 
-    long_size = Config.cell_size / 2.0 - offset
+    long_size = config.drawing.cell_size / 2.0 - offset
 
     long_lines = {
         2: Vector(Coord(0, 0), Coord(0, 1)),

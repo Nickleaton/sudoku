@@ -1,0 +1,40 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ...5..7..
+  - .3.......
+  - ...6.....
+  - .........
+  - .95...47.
+  - .........
+  - .....7...
+  - .......4.
+  - ..8..4...
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 489523761
+  - 632471985
+  - 517698324
+  - 326749158
+  - 895132476
+  - 741865239
+  - 954287613
+  - 173956842
+  - 268314597
+- SumArrow: 22=32, 42
+- SumArrow: 52=62, 72
+- SumArrow: 88=78, 68
+- SumArrow: 58=48, 38
+- SumArrow: 14=15, 16
+- SumArrow: 17=18, 19
+- SumArrow: 96=95, 94
+- SumArrow: 93=92, 91
+- SumArrow: 76=65, 54
+- SumArrow: 34=45, 56
+- SumArrow: 57=47, 37
+- SumArrow: 53=63, 73

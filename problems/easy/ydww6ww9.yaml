@@ -1,0 +1,24 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Sam Cappleman-Lynes
+Constraints:
+- Knowns:
+  - ...123456
+  - .5.......
+  - .........
+  - 4........
+  - ...789...
+  - ........5
+  - .........
+  - .......2.
+  - 123456...
+- Columns: 
+- Rows: 
+- Boxes: 
+- Palindrome: 12, 13, 24, 34
+- Palindrome: 98, 97, 86, 76
+- Palindrome: 21, 31, 42, 43
+- Palindrome: 89, 79, 68, 67
+- Palindrome: 26, 37, 48, 59
+- Palindrome: 51, 62, 73, 84

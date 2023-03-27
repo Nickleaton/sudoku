@@ -1,0 +1,22 @@
+Board:
+  Board: 6x6
+  Boxes: 2x3
+  Author: GAS Who?
+Constraints:
+- Knowns:
+  - ......
+  - ....1.
+  - ......
+  - ......
+  - .6....
+  - ......
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 136524
+  - 524613
+  - 645231
+  - 213465
+  - 461352
+  - 352146

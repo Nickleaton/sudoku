@@ -1,0 +1,45 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - ....9....
+  - ..8...5..
+  - .........
+  - .1..2..6.
+  - .........
+  - ..7...3..
+  - ....4....
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 196275438
+  - 735498612
+  - 248136597
+  - 679814253
+  - 514327869
+  - 823659174
+  - 487961325
+  - 351742986
+  - 962583741
+- - XSum: L1=1
+  - XSum: R2=3
+  - XSum: L3=6
+  - XSum: R4=10
+  - XSum: L5=15
+  - XSum: R6=21
+  - XSum: L7=28
+  - XSum: R8=36
+  - XSum: L9=45
+  - XSum: R1=44
+  - XSum: L2=42
+  - XSum: R3=39
+  - XSum: L4=35
+  - XSum: L8=9
+  - XSum: R7=17
+  - XSum: T4=6
+  - XSum: B6=6

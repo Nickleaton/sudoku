@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="35cm" version="1.1" viewBox="0 0 1100 1100" width="35cm">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="25cm" version="1.1" viewBox="0 0 1100 1100" width="25cm">
 	<defs>
-		<marker class="FrozenThermometer FrozenThermometerStart" id="FrozenThermometer-start" refX="50" refY="50" viewBox="0 0 100 100">
+		<marker class="Thermometer ThermometerStart" id="Thermometer-start" refX="50" refY="50" viewBox="0 0 100 100">
 			<circle cx="50" cy="50" r="30"/>
 		</marker>
-		<marker class="Thermometer ThermometerStart" id="Thermometer-start" refX="50" refY="50" viewBox="0 0 100 100">
+		<marker class="FrozenThermometer FrozenThermometerStart" id="FrozenThermometer-start" refX="50" refY="50" viewBox="0 0 100 100">
 			<circle cx="50" cy="50" r="30"/>
 		</marker>
 	</defs>

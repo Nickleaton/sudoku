@@ -10,20 +10,20 @@ Constraints:
   - Rows:
   - Boxes:
 
-  - Arrow: 12, 13, 23, 33
-  - Arrow: 14, 15, 16
-  - Arrow: 18, 17, 27, 37
-  - Arrow: 42, 31
-  - Arrow: 43, 32
-  - Arrow: 48, 39
-  - Arrow: 53, 54, 55, 66
-  - Arrow: 57, 46
-  - Arrow: 62, 73
-  - Arrow: 67, 76
-  - Arrow: 68, 77
-  - Arrow: 92, 91, 81, 71
-  - Arrow: 95, 96, 97
-  - Arrow: 98, 99, 89, 79
+  - SumArrow: 12, 13, 23, 33
+  - SumArrow: 14, 15, 16
+  - SumArrow: 18, 17, 27, 37
+  - SumArrow: 42, 31
+  - SumArrow: 43, 32
+  - SumArrow: 48, 39
+  - SumArrow: 53, 54, 55, 66
+  - SumArrow: 57, 46
+  - SumArrow: 62, 73
+  - SumArrow: 67, 76
+  - SumArrow: 68, 77
+  - SumArrow: 92, 91, 81, 71
+  - SumArrow: 95, 96, 97
+  - SumArrow: 98, 99, 89, 79
 
   - Solution:
     - 685413297

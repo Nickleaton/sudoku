@@ -1,0 +1,40 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 342167895
+  - 951483276
+  - 687952134
+  - 518274963
+  - 463591728
+  - 729836451
+  - 875619342
+  - 236748519
+  - 194325687
+- Quadruple: 13=1124
+- Quadruple: 61=2778
+- Quadruple: 38=3346
+- Quadruple: 67=3445
+- Quadruple: 86=5568
+- Quadruple: 73=5667
+- Quadruple: 32=1788
+- Quadruple: 26=1223
+- Quadruple: 34=257
+- Quadruple: 46=147
+- Quadruple: 65=136
+- Quadruple: 53=358

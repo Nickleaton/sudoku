@@ -34,7 +34,7 @@ class Anti(ComposedItem):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        return [int(part) for part in yaml[cls.__name__].split(', ')]
+        return [int(part) for part in str(yaml[cls.__name__]).split(', ')]
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:

@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Philip Newman
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - ..6......
+  - ........4
+  - ....5....
+  - 6........
+  - ......4..
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- Solution:
+  - 945316287
+  - 182745936
+  - 736289145
+  - 293871654
+  - 817654392
+  - 654932718
+  - 569128473
+  - 471563829
+  - 328497561
+- GermanWhisper: 24, 23, 22, 32, 42, 43, 44, 34
+- GermanWhisper: 34, 24
+- GermanWhisper: 66, 76, 86, 87, 88, 78, 68, 67
+- GermanWhisper: 67, 66
+- GermanWhisper: 82, 92, 93
+- GermanWhisper: 82, 83, 93
+- GermanWhisper: 17, 27, 28
+- GermanWhisper: 17, 18, 28
+- GermanWhisper: 63, 73, 74
+- GermanWhisper: 63, 64, 74
+- GermanWhisper: 36, 46, 47
+- GermanWhisper: 36, 37, 47
+- GermanWhisper: 12, 11, 21, 31, 41, 51, 52, 53
+- GermanWhisper: 57, 58, 59, 69, 79, 89, 99, 98

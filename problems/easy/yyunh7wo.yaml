@@ -1,0 +1,18 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Freddie Hand
+Constraints:
+- Knowns:
+  - ......67.
+  - .........
+  - .......5.
+  - ......784
+  - .....7...
+  - ........5
+  - ......5.1
+  - .........
+  - .....38..
+- Columns: 
+- Rows: 
+- Boxes: 

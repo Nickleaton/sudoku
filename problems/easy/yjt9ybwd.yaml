@@ -1,0 +1,18 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: clover!
+Constraints:
+- Knowns:
+  - ......6.2
+  - .....3...
+  - 6...1....
+  - .5.......
+  - ..1...2..
+  - .......3.
+  - ....2...3
+  - ...4.....
+  - 7.8......
+- Columns: 
+- Rows: 
+- Boxes: 

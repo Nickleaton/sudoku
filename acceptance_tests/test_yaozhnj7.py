@@ -1,0 +1,9 @@
+""" Acceptance test for problem yaozhnj7 """
+
+from tests.acceptance.acceptance_test import AcceptanceTest
+
+
+class TestYaozhnj7(AcceptanceTest):
+
+    def setUp(self) -> None:
+        self.name = "yaozhnj7"

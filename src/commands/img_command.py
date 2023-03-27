@@ -29,7 +29,7 @@ class IMGCommand(Command):
         logging.debug(f"Writing to temp file name {temp_file_name}")
         if self.svg.output is not None:
             with open(temp_file_name, 'w', encoding='utf-8') as file:
-                file.write(self.svg.svg)
+                file.write(self.svg.output)
         else:
             logging.error("Expecting output but it is empty")  # pragma: no cover
         self.drawing = svg2rlg(temp_file_name)

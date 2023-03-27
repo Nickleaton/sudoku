@@ -1,0 +1,38 @@
+Board:
+  Board: 9x9
+  Boxes: 3x3
+  Author: Unknown
+Constraints:
+- Knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+- Columns: 
+- Rows: 
+- Boxes: 
+- SimpleThermometer: 11, 12, 13, 14, 15
+- SimpleThermometer: 16, 17, 18, 19, 29, 28
+- SimpleThermometer: 27, 26, 25, 24
+- SimpleThermometer: 23, 22, 21, 31, 32
+- SimpleThermometer: 33, 34, 35, 36, 37, 38
+- SimpleThermometer: 39, 49, 48, 47, 46
+- SimpleThermometer: 45, 44, 43, 42, 41, 51
+- SimpleThermometer: 52, 53, 54, 55
+- SimpleThermometer: 56, 57, 58, 59, 69
+- SimpleThermometer: 68, 67, 66, 65
+- SimpleThermometer: 64, 63
+- SimpleThermometer: 62, 61
+- SimpleThermometer: 71, 72, 73
+- SimpleThermometer: 74, 75, 76
+- SimpleThermometer: 79, 78, 77
+- SimpleThermometer: 89, 88
+- SimpleThermometer: 81, 82, 83
+- SimpleThermometer: 87, 86
+- SimpleThermometer: 85, 84
+- SimpleThermometer: 94, 95, 96, 97

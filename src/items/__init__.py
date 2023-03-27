@@ -8,7 +8,7 @@ import src.items.anti_knight
 import src.items.anti_monkey
 import src.items.anti_queen
 import src.items.anti_tlbr
-import src.items.arrow
+import src.items.sum_arrow
 import src.items.asterix
 import src.items.battenburg
 import src.items.between
@@ -24,6 +24,7 @@ import src.items.column_indexer
 import src.items.columns
 import src.items.composed_item
 import src.items.constraint_exception
+import src.items.consecutive_pair
 import src.items.constraints
 import src.items.diagonals
 import src.items.difference_line
@@ -64,6 +65,9 @@ import src.items.less_than_equal_difference_line
 import src.items.less_than_equal_difference_pair
 import src.items.line
 import src.items.little_killer
+import src.items.killer
+import src.items.cloned_region
+import src.items.unique_region
 import src.items.lock_out
 import src.items.low_cell
 import src.items.magic_square
