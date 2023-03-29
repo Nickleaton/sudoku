@@ -14,6 +14,9 @@ statistic_elements:
 templates:
   html: src/html/problem.html
 
+
+temporary_directory: c:/temp/sudoku
+
 drawing:
   size: 25cm
   cell_size: 100
