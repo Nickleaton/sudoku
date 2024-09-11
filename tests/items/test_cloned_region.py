@@ -1,14 +1,11 @@
 import unittest
 from typing import Type
 
-from src.items.cloned_region import ClonedRegion
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.composed_item import ComposedItem
+from src.items.cloned_region import ClonedRegion
 from src.items.item import Item
-from src.items.region import Region
 from tests.items.test_item import TestItem
-from tests.items.test_region import TestRegion
 
 
 class TestClonedRegion(TestItem):
@@ -32,7 +29,7 @@ class TestClonedRegion(TestItem):
                "[Cell(Board(9, 9, 3, 3, None, None, None, None), 9, 9), " \
                "Cell(Board(9, 9, 3, 3, None, None, None, None), 9, 8), " \
                "Cell(Board(9, 9, 3, 3, None, None, None, None), 9, 7)]" \
-                ")"
+               ")"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
