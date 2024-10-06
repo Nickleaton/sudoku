@@ -2,29 +2,30 @@ import unittest
 
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
-from src.commands.create_lp_command import CreateLPCommand
+from src.commands.create_rules_command import CreateRulesCommand
 from src.commands.load_config_command import LoadConfigCommand
-from src.commands.solver_command import SolverCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 
 
-class TestSolverCommand(TestSimpleCommand):
+class TestCreateRulesCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
         load_config = LoadConfigCommand(self.path)
         create_board = CreateBoardCommand()
         create_constraints = CreateConstraintsCommand()
-        create_lp = CreateLPCommand()
         load_config.execute(self.problem)
         create_board.execute(self.problem)
         create_constraints.execute(self.problem)
-        create_lp.execute(self.problem)
-        self.command = SolverCommand()
+        self.command = CreateRulesCommand()
+
+    def test_command(self):
+        self.command.execute(self.problem)
+        self.assertIsNotNone(self.problem.rules)
 
     @property
     def representation(self) -> str:
-        return r"SolverCommand()"
+        return r"CreateRulesCommand()"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

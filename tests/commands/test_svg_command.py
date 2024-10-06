@@ -1,25 +1,81 @@
 import unittest
-from pathlib import Path
 
+from src.commands.create_board_command import CreateBoardCommand
+from src.commands.create_constraints_command import CreateConstraintsCommand
+from src.commands.load_config_command import LoadConfigCommand
 from src.commands.svg_command import SVGCommand
-from tests.commands.test_command import TestCommand
+from src.items.item import Item
+from tests.commands.test_simple_command import TestSimpleCommand
 
 
-class TestSVGCommand(TestCommand):
+class TestSVGCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
-        self.command = SVGCommand('problems\\easy\\problem001.yaml')
+        super().setUp()
+        load_config_command = LoadConfigCommand(self.path)
+        create_board_command = CreateBoardCommand()
+        create_constraints_command = CreateConstraintsCommand()
+        load_config_command.execute(self.problem)
+        create_board_command.execute(self.problem)
+        create_constraints_command.execute(self.problem)
+        self.command = SVGCommand('svg')
 
-    @property
-    def output(self) -> Path:
-        return Path("output\\svg\\problem001.svg")
+    def test_execute(self):
+        self.assertIsNone(self.problem.svg)
+        self.command.execute(self.problem)
+        self.assertIsNotNone(self.command.problem_field in self.problem)
 
     @property
     def representation(self) -> str:
-        return "SVGCommand('problems\\easy\\problem001.yaml')"
+        return f"{self.command.__class__.__name__}({repr(self.command.problem_field)})"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
+
+    def test_in_select(self):
+        """ Test the `select` method of the command for the `in_select` item.
+
+        If the `in_select` property is not `None`, this test will check that the
+        `select` method of the command returns `True` for the item.
+        """
+        if (select := self.in_select) is not None:
+            self.assertTrue(self.command.select(select))
+
+    def test_out_select(self):
+        """
+        Test the `select` method of the command for the `out_select` item.
+
+        If the `out_select` property is not `None`, this test will check that the
+        `select` method of the command returns `False` for the item.
+        """
+        if (select := self.out_select) is not None:
+            self.assertFalse(self.command.select(select))
+
+    @property
+    def in_select(self) -> Item | None:
+        """
+        An item that should be included in the output of the command.
+
+        If this property is not `None`, the `select` method of the command
+        should return `True` for this item.
+
+        :return: An item that should be included in the output or `None`
+        :rtype: Item | None
+        """
+        return None
+
+    @property
+    def out_select(self) -> Item | None:
+        """
+        An item that should not be included in the output of the command.
+
+        If this property is not `None`, the `select` method of the command
+        should return `False` for this item.
+
+        :return: An item that should not be included in the output or `None`
+        :rtype: Item | None
+        """
+        return None
 
 
 if __name__ == '__main__':  # pragma: no cover

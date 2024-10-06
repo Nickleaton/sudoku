@@ -1,35 +1,35 @@
 import unittest
 from pathlib import Path
 
-from src.commands.svg_command import SVGCommand
-from src.commands.writer_command import WriterCommand
-from tests.commands.test_command import TestCommand
+from src.commands.file_writer_command import FileWriterCommand
+from src.commands.problem import Problem
+from tests.commands.test_simple_command import TestSimpleCommand
 
 
-class TestWriterCommand(TestCommand):
+class TestFileWriterCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
-        self.child = SVGCommand(Path("problems\\easy\\problem001.yaml"))
-        self.command = WriterCommand(self.child, Path("output\\solution\\problem001.txt"), 'svg')
-        self.command.file_name.unlink(missing_ok=True)
+        self.problem = Problem()
+        self.problem.svg = "Hello World"
+        self.command = FileWriterCommand("svg", Path("c:\\temp\\filewriter.txt"))
+        if self.command.file_name.exists():
+            self.command.file_name.unlink(missing_ok=True)
 
     def tearDown(self) -> None:
-        self.command.file_name.unlink(missing_ok=True)
+        if self.command.file_name.exists():
+            self.command.file_name.unlink(missing_ok=True)
 
     def test_process(self):
         self.assertFalse(self.command.file_name.exists())
-        self.command.execute()
+        self.command.execute(self.problem)
         self.assertTrue(self.command.file_name.exists())
-
-    def clazz(self):
-        return self.command.__class__.__name__
+        with self.command.file_name.open('r') as f:
+            self.assertEqual(self.problem.svg, f.read())
 
     @property
     def representation(self) -> str:
-        return f"{self.clazz()}(SVGCommand('problems\\easy\\problem001.yaml'), 'output\\\\solution\\\\problem001.txt')"
+        return f"{self.command.__class__.__name__}('svg', {repr(Path("c:\\temp\\filewriter.txt"))})"
 
-    def test_repr(self):
-        self.assertEqual(self.representation, repr(self.command))
 
 
 if __name__ == '__main__':  # pragma: no cover

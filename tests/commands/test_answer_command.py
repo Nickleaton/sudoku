@@ -1,31 +1,21 @@
 import unittest
-from pathlib import Path
-
-from src.commands.answer_command import AnswerCommand
-from tests.commands.test_command import TestCommand
 
 
-class TestAnswerCommand(TestCommand):
+from src.commands.composed_command import ComposedCommand
+from src.commands.create_board_command import CreateBoardCommand
+from src.commands.create_problem_command import CreateProblemCommand
+from src.commands.load_config_command import LoadConfigCommand
+from tests.commands.test_simple_command import TestSimpleCommand
+
+
+class TestAnswerCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
-        self.command = AnswerCommand(Path("problems\\easy\\problem001.yaml"))
-
-    def test_config(self):
-        self.assertEqual(Path("problems\\easy\\problem001.yaml"), self.command.config_filename)
-
-    @property
-    def output(self) -> Path:
-        return Path("output\\answer\\problem001.svg")
+        super().setUp()
+        self.command = AnswerCommand()
 
     def clazz(self):
         return self.command.__class__.__name__
-
-    @property
-    def representation(self) -> str:
-        return f"{self.clazz()}('problems\\easy\\problem001.yaml')"
-
-    def test_repr(self):
-        self.assertEqual(self.representation, repr(self.command))
 
 
 if __name__ == '__main__':  # pragma: no cover
