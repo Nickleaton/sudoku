@@ -1,39 +1,32 @@
-""" Base for different solvers """
-import logging
+""" Produce the text in LP format for the problem.
+"""
 
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.config import Config
 from src.utils.temporary_file import TemporaryFile
 
+config = Config()
 
-class SolverCommand(SimpleCommand):
 
-    def __init__(self):
-        """ Construct a solver """
+class CreateLPWithBookkeepingCommand(SimpleCommand):
+    """ Produce LP Version of the problem"""
+
+    def __init__(self, bookkeeping: bool = False) -> None:
         super().__init__()
 
     def execute(self, problem: Problem) -> None:
-        """
-        Solve the puzzle.
-        1. Bookkeep to remove obvious invalid choices
-        2. Add any bookkeeping constraints.
-        3. Solve
-        4. Output the solution
-        """
         super().execute(problem)
-        logging.info(f"Solving problem ({problem.name}")
         with TemporaryFile() as lf:
-            solver = PulpSolver(problem.board, problem.config.name, lf.name)
-            solver.solve()
-            problem.solution = solver.answer
+            problem.solver = PulpSolver(problem.board, problem.config.name, lf.name)
+            problem.constraints.bookkeeping()
+            problem.constraints.add_bookkeeping_constraint(problem.solver)
             with TemporaryFile() as tf:
-                solver.save(str(tf.name))
+                problem.solver.save(str(tf.name))
                 with open(tf.name) as f:
-                    problem.lp = f.read()
-            with open(lf.name) as f:
-                problem.log = f.read()
+                    problem.linear_program = f.read()
 
     def precondition_check(self, problem: Problem) -> None:
         if problem.config is None:
@@ -42,3 +35,6 @@ class SolverCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - Board not built')
         if problem.constraints is None:
             raise CommandException(f'{self.__class__.__name__} - Constraints not built')
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}()'

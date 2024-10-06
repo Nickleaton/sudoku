@@ -3,9 +3,10 @@
 see https://en.wikipedia.org/wiki/Command_pattern
 and https://en.wikipedia.org/wiki/Composite_pattern
 """
-from typing import Sequence, List, Optional, Dict
+from typing import Sequence, List, Optional, Self
 
 from src.commands.command import Command
+from src.commands.problem import Problem
 
 
 class ComposedCommand(Command):
@@ -13,51 +14,77 @@ class ComposedCommand(Command):
     The class can be iterated
     """
 
-    def __init__(self):
-        """ Construct the command
+    def __init__(self, items: List[Command] = None):
+        """
+        Initializes a new instance of the ComposedCommand class.
+
+        This method sets up the command by calling the base class's __init__ method and initializing
+        an empty list of commands.
+
+        Args:
+            items (List[Command], optional): A list of commands to be added to the
+                items list. Defaults to an empty list.
+
+        Returns:
+            None
         """
         super().__init__()
-        self.items: List[Command] = []
+        self.items: List[Command] = items if items is not None else []
 
-    def execute(self) -> None:
-        """ do the work """
+    def execute(self, problem: Problem) -> None:
+        """
+        Executes all the commands in the items list.
+
+        This function iterates over each item in the items list and calls the execute
+        method of each item.
+
+        Returns:
+            None
+        """
+        super().execute(problem)
         for item in self.items:
-            item.execute()
+            item.execute(problem)
 
     def add(self, item: Command) -> None:
-        """ Add a command to the list to execute.
-
-        :param item: Item to add
         """
+        Adds a command to the list of items and sets the parent of the item.
+
+        :param item: The command to add to the list of items.
+        :return: None
+        """
+
         self.items.append(item)
         item.parent = self
 
-    def add_with_name(self, name: str, item: Command) -> None:
-        """ Add a command to the list to execute and set an attribute with 'name' equal to item
-
-        :param item: Item to add
-        :param name: name of attribute
-        """
-        self.add(item)
-        setattr(self, name, item)
-
     def add_items(self, items: Sequence[Command]):
-        """ Bulk add commands
+        """
+        Bulk adds a list of commands to the composed command.
 
-        :param items: List of commands to add
+        :param items: A sequence of commands to add to the composed command.
+        :return: None
         """
         for item in items:
             self.add(item)
 
-    def add_named_items(self, items: Dict[str, Command]):
-        for name, item in items.items():
-            self.add_with_name(name, item)
+    def __or__(self, other: Command) -> Self:
+        self.add(other)
+        return self
 
     def __iter__(self):
+        """
+        Returns an iterator object for the composed command.
+
+        :return: The iterator object.
+        """
         self._n = 0
         return self
 
     def __next__(self) -> Optional[Command]:
+        """
+        Returns the next command in the sequence.
+
+        :return: The next command in the sequence, or None if the sequence has been exhausted.
+        """
         if self._n < len(self.items):
             result = self.items[self._n]
             self._n += 1
@@ -66,7 +93,15 @@ class ComposedCommand(Command):
         raise StopIteration
 
     def __len__(self) -> int:
+        """
+        Returns the number of items in the composed command.
+
+        :return: The number of items in the composed command.
+        """
         return len(self.items)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        Returns a string representation of the object, including its class name and a list of its items.
+        """
         return f"{self.__class__.__name__}([{', '.join([repr(item) for item in self])}])"
