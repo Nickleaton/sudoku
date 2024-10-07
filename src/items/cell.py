@@ -127,7 +127,7 @@ class Cell(Item):
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         for digit in self.board.digit_range:
             if not self.book[digit]:
-                name = f"Imposible_{digit}_{self.row}_{self.column}"
+                name = f"Impossible_{digit}_{self.row}_{self.column}"
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> Dict:
