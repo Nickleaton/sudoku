@@ -9,8 +9,36 @@ from src.items.board import Board
 
 class CreateSolverCommand(SimpleCommand):
 
-    def __init__(self):
+    def __init__(self,
+                 config: str = 'config',
+                 board: str = 'board',
+                 target: str = 'solver'
+                 ):
+        """
+        Construct a CreateSolverCommand
+
+        :param config: The attribute of the problem containing the configuration
+        :param board: The attribute of the problem containing the board
+        :param target: The attribute of the problem to store the solver in
+        """
         super().__init__()
+        self.config: str = config
+        self.board: str = board
+        self.target: str = target
+
+    def precondition_check(self, problem: Problem) -> None:
+        """
+        Check the preconditions for the command.
+
+        :param problem: The problem to check
+        :raises CommandException: If the preconditions are not met
+        """
+        if self.config not in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.config} not loaded')
+        if self.board not in problem:
+            raise CommandException('board')
+        if self.target in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
 
     def execute(self, problem: Problem) -> None:
         """
@@ -20,23 +48,10 @@ class CreateSolverCommand(SimpleCommand):
         logging.info("Creating Board")
         problem.board = Board.create('Board', problem.config)
 
-    def precondition_check(self, problem: Problem) -> None:
-        if problem.config is None:
-            raise CommandException('config')
-        if problem.board is not None:
-            raise CommandException('board')
-
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}()"
+        """
+        Return a string representation of the object.
 
-
-self.board = Board.create('Board', self.parent.config.config)
-self.the_problem = Item.create(self.board, {'Constraints': self.parent.config.config['Constraints']})
-self.solver = PulpSolver(self.board, self.name, lf.name)
-self.problem.add_constraint(self.solver)
-self.problem.bookkeeping()
-self.problem.add_bookkeeping_constraint(self.solver)
-with TemporaryFile() as tf:
-    self.solver.save(str(tf.name))
-    with open(tf.name) as f:
-        self.output = f.read()
+        :return: A string representation of the object
+        """
+        return f'{self.__class__.__name__} - config: {self.config}, board: {self.board}, target: {self.target}'

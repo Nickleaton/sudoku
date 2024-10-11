@@ -11,24 +11,23 @@ class TestCreateBoardCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        self.command = CreateBoardCommand()
-        self.load_config_command = LoadConfigCommand(self.path)
+        self.load_config_command = LoadConfigCommand(source=self.path, target='config')
         self.load_config_command.execute(self.problem)
+        self.command = CreateBoardCommand()
 
     @property
     def representation(self) -> str:
-        return "CreateBoardCommand()"
+        return "CreateBoardCommand('config', 'board')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
 
     def test_execute(self):
         self.command.execute(self.problem)
-        self.assertIsNotNone(self.problem.board)
-        self.assertIsInstance(self.problem.board, Board)
+        self.assertIn('board', self.problem)
 
     def test_exception(self):
-        with self.assertRaises(CommandException):
+        with self.assertRaises(KeyError):
             self.command.execute(self.empty_problem)
 
 

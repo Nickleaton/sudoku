@@ -9,7 +9,7 @@ import src.commands.create_rules_command
 import src.commands.img_command
 import src.commands.load_config_command
 import src.commands.simple_command
-import src.commands.solver_command
+import src.commands.solve_command
 import src.commands.svg_command
 import src.commands.template_command
 

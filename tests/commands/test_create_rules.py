@@ -25,7 +25,7 @@ class TestCreateRulesCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return r"CreateRulesCommand()"
+        return "CreateRulesCommand('constraints', 'rules')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

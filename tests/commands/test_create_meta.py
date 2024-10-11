@@ -11,7 +11,7 @@ class TestCreateMetaCommand(TestSimpleCommand):
         super().setUp()
         load_config = LoadConfigCommand(self.path)
         load_config.execute(self.problem)
-        self.command = CreateMetaCommand('meta')
+        self.command = CreateMetaCommand()
 
     def test_command(self):
         self.command.execute(self.problem)
@@ -19,7 +19,7 @@ class TestCreateMetaCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return r"CreateMetaCommand('meta')"
+        return r"CreateMetaCommand('config', 'meta')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

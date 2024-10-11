@@ -31,6 +31,29 @@ class ComposedCommand(Command):
         super().__init__()
         self.items: List[Command] = items if items is not None else []
 
+    def add(self, item: Command) -> None:
+        """
+        Adds a command to the list of items and sets the parent of the item.
+
+        :param item: The command to add to the list of items.
+        :return: None
+        """
+
+        self.items.append(item)
+
+    def add_items(self, items: Sequence[Command]) -> None:
+        """
+        Bulk adds a list of commands to the composed command.
+
+        :param items: A sequence of commands to add to the composed command.
+        :return: None
+        """
+        for item in items:
+            self.add(item)
+
+    def precondition_check(self, problem: Problem) -> None:
+        pass
+
     def execute(self, problem: Problem) -> None:
         """
         Executes all the commands in the items list.
@@ -45,27 +68,6 @@ class ComposedCommand(Command):
         for item in self.items:
             item.execute(problem)
 
-    def add(self, item: Command) -> None:
-        """
-        Adds a command to the list of items and sets the parent of the item.
-
-        :param item: The command to add to the list of items.
-        :return: None
-        """
-
-        self.items.append(item)
-        item.parent = self
-
-    def add_items(self, items: Sequence[Command]):
-        """
-        Bulk adds a list of commands to the composed command.
-
-        :param items: A sequence of commands to add to the composed command.
-        :return: None
-        """
-        for item in items:
-            self.add(item)
-
     def __or__(self, other: Command) -> Self:
         self.add(other)
         return self
@@ -76,8 +78,7 @@ class ComposedCommand(Command):
 
         :return: The iterator object.
         """
-        self._n = 0
-        return self
+        return iter(self.items)
 
     def __next__(self) -> Optional[Command]:
         """

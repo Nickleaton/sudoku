@@ -6,24 +6,42 @@ from typing import Optional
 import jinja2
 from jinja2 import Template
 
+from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.utils.file_handling import is_readable_file
 
 
 class TemplateCommand(SimpleCommand):
     """ Render the problem using a Jinja2 template """
 
-    def __init__(self, template_file_name: Path, field_name: str):
+    def __init__(self, template: Path | str, target: str):
         """Create the command
 
         :param template_file: name of the jinja2 template to use generating the html
-        :param field_name: name of the field in the problem that will contain the html
+        :param target: name of the field in the problem that will contain the html
         """
         super().__init__()
-        self.template_file_name: Path = template_file_name
-        self.field_name: str = field_name
-        with open(self.template_file_name) as f:
-            self.template: Template = jinja2.Template(source=f.read())
+        self.template_file: Path = Path(template) if isinstance(template, str) else template
+        self.target: str = target
+        self.template: Optional[Template] = None
+
+    def precondition_check(self, problem: Problem) -> None:
+        """
+        Check the preconditions for the command.
+
+        This method checks that the target attribute does not already exist in the
+        problem's configuration and that the source file exists and is readable.
+
+        :param problem: The problem to check
+        :raises CommandException: If the preconditions are not met
+        """
+        if not is_readable_file(self.template_file):
+            raise CommandException(
+                f'{self.__class__.__name__} - {self.template_file} does not exist or is not readable '
+            )
+        if self.target in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
 
     def execute(self, problem: Problem) -> None:
         """
@@ -39,8 +57,12 @@ class TemplateCommand(SimpleCommand):
             None
         """
         super().execute(problem)
-        logging.info("Producing html file")
-        problem[self.field_name] = self.template.render(problem)
+        if self.template is None:
+            logging.info(f"Loading template {self.template_file}")
+            with open(self.template_file) as f:
+                self.template: Template = jinja2.Template(source=f.read())
+        logging.info(f"Producing template results into {self.target}")
+        problem[self.target] = self.template.render(problem)
 
     def __repr__(self) -> str:
         """
@@ -49,4 +71,4 @@ class TemplateCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}('{self.template_file_name}', '{self.field_name}')"
+        return f"{self.__class__.__name__}('{self.template_file}', '{self.target}')"

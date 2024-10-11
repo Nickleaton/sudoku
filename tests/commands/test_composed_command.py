@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.simple_command import SimpleCommand
+from src.commands.null_command import NullCommand
 from tests.commands.test_command import TestCommand
 
 
@@ -8,11 +8,11 @@ class TestComposedCommand(TestCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        self.command = SimpleCommand() | SimpleCommand() | SimpleCommand()
+        self.command = NullCommand() | NullCommand() | NullCommand()
 
     @property
     def representation(self) -> str:
-        return "ComposedCommand([SimpleCommand(), SimpleCommand(), SimpleCommand()])"
+        return "ComposedCommand([NullCommand(), NullCommand(), NullCommand()])"
 
     def test_len(self):
         self.assertEqual(3, len(self.command))

@@ -3,14 +3,38 @@ from typing import Type
 
 from svgwrite import Drawing
 
-from src.glyphs.glyph import LineGlyph, PolyLineGlyph, \
-    ThermometerGlyph, CircleGlyph, KropkiGlyph, \
-    OddCellGlyph, ConsecutiveGlyph, Glyph, SquareGlyph, EvenCellGlyph, CellGlyph, BoxGlyph, \
-    BattenburgGlyph, TextGlyph, SimpleTextGlyph, KnownGlyph, EdgeTextGlyph, \
-    ArrowGlyph, StarGlyph, RectangleGlyph, Consecutive1Glyph, LittleArrowGlyph, LittleNumberGlyph, KillerTextGlyph, \
-    LittleKillerGlyph, ComposedGlyph, FortressCellGlyph, RectGlyph, ArrowLineGlyph, KillerGlyph, BetweenGlyph, \
-    SimpleThermometerGlyph, FrozenThermometerGlyph
-from src.glyphs.glyph import QuadrupleGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.star_glyph import StarGlyph
+from src.glyphs.killer_glyph import KillerGlyph
+from src.glyphs.little_killer_glyph import LittleKillerGlyph
+from src.glyphs.little_number_glyph import LittleNumberGlyph
+from src.glyphs.little_arrow_glyph import LittleArrowGlyph
+from src.glyphs.arrow_glyph import ArrowGlyph
+from src.glyphs.simple_text_glyph import SimpleTextGlyph
+from src.glyphs.known_glyph import KnownGlyph
+from src.glyphs.edge_text_glyph import EdgeTextGlyph
+from src.glyphs.killer_text_glyph import KillerTextGlyph
+from src.glyphs.text_glyph import TextGlyph
+from src.glyphs.kropki_glyph import KropkiGlyph
+from src.glyphs.consecutive1_glyph import Consecutive1Glyph
+from src.glyphs.consecutive_glyph import ConsecutiveGlyph
+from src.glyphs.rectangle_glyph import RectangleGlyph
+from src.glyphs.battenburg_glyph import BattenburgGlyph
+from src.glyphs.cell_glyph import CellGlyph
+from src.glyphs.fortress_cell_glyph import FortressCellGlyph
+from src.glyphs.between_line_glyph import BetweenGlyph
+from src.glyphs.even_cell_glyph import EvenCellGlyph
+from src.glyphs.rect_glyph import RectGlyph, SquareGlyph, BoxGlyph
+from src.glyphs.odd_cell_glyph import OddCellGlyph
+from src.glyphs.circle_glyph import CircleGlyph
+from src.glyphs.arrow_line_glyph import ArrowLineGlyph
+from src.glyphs.frozen_thermometer_glyph import FrozenThermometerGlyph
+from src.glyphs.simple_thermometer_glyph import SimpleThermometerGlyph
+from src.glyphs.thermometer_glyph import ThermometerGlyph
+from src.glyphs.poly_line_glyph import PolyLineGlyph
+from src.glyphs.line_glyph import LineGlyph
+from src.glyphs.composed_glyph import ComposedGlyph
+from src.glyphs.quadruple_glyph import QuadrupleGlyph
 from src.utils.angle import Angle
 from src.utils.coord import Coord
 from src.utils.direction import Direction

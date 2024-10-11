@@ -16,7 +16,7 @@ class TestLoadConfigCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return f"LoadConfigCommand('{self.path}')"
+        return r"LoadConfigCommand('problems\\easy\\problem001.yaml', 'config')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

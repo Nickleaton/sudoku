@@ -32,24 +32,24 @@ class TestIMGCommand(TestSimpleCommand):
 
     def test_execute(self):
         self.assertIsNotNone(self.problem.svg)
-        if self.command.file_name.exists():
-            self.command.file_name.unlink(missing_ok=True)
+        if self.command.target.exists():
+            self.command.target.unlink(missing_ok=True)
         self.command.execute(self.problem)
-        self.assertTrue(self.command.file_name.exists())
+        self.assertTrue(self.command.target.exists())
         # if self.command.file_name.exists():
         #     self.command.file_name.unlink(missing_ok=True)
 
     def xtest_formats(self):
         for fmt in ImageFormat:
             self.command.image_format = fmt
-            self.command.file_name = Path(f"test.{fmt.name.lower()}")
-            print (self.command.file_name)
-            if self.command.file_name.exists():
-                self.command.file_name.unlink(missing_ok=True)
+            self.command.target = Path(f"test.{fmt.name.lower()}")
+            print (self.command.target)
+            if self.command.target.exists():
+                self.command.target.unlink(missing_ok=True)
             self.command.execute(self.problem)
-            self.assertTrue(self.command.file_name.exists())
-            if self.command.file_name.exists():
-                self.command.file_name.unlink(missing_ok=True)
+            self.assertTrue(self.command.target.exists())
+            if self.command.target.exists():
+                self.command.target.unlink(missing_ok=True)
 
 
 if __name__ == '__main__':  # pragma: no cover

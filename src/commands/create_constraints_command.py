@@ -7,17 +7,31 @@ from src.items.item import Item
 
 
 class CreateConstraintsCommand(SimpleCommand):
-    def __init__(self) -> None:
+    def __init__(self, config: str = 'config', board:str = 'board', target: str = 'constraints'):
         """
-        Initialize CreateConstraintsCommand
+        Construct a CreateConstraintsCommand
+
+        :param source: The source attribute to use to build the constraints
+        :param target: The name of the attribute to store the constraints in
         """
         super().__init__()
+        self.config: str = config
+        self.board: str = board
+        self.target: str = target
 
     def precondition_check(self, problem: Problem) -> None:
-        if problem.config is None:
-            raise CommandException(f'{self.__class__.__name__} - Config not loaded')
-        if problem.board is None:
-            raise CommandException(f'{self.__class__.__name__} - Boad not created')
+        """
+        Check the preconditions for the command.
+
+        :param problem: The problem to check
+        :raises CommandException: If the preconditions are not met
+        """
+        if self.config not in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.target} does not exist in the problem')
+        if self.board not in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.board} does not exist in the problem')
+        if self.target in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists in the problem')
 
     def execute(self, problem: Problem) -> None:
         """
@@ -27,7 +41,7 @@ class CreateConstraintsCommand(SimpleCommand):
         """
         super().execute(problem)
         logging.info("Creating Constraints")
-        problem.constraints = Item.create(problem.board, {'Constraints': problem.config['Constraints']})
+        problem[self.target] = Item.create(problem[self.board], {'Constraints': problem[self.config]['Constraints']})
 
     def __repr__(self) -> str:
         """
@@ -36,4 +50,4 @@ class CreateConstraintsCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}()"
+        return f"{self.__class__.__name__}({repr(self.config)}, {repr(self.board)}, {repr(self.target)})"

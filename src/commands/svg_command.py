@@ -58,8 +58,6 @@ class SVGCommand(SimpleCommand):
         super().execute(problem)
         logging.info(f"Producing {self.name} svg")
 
-        # Todo problem needs to be a property
-
         # Get the glyphs to draw
         # There's an ordering so the items are drawn in the right order
         # This is what sorted glyphs does

@@ -43,8 +43,9 @@ class Command(ABC):
 
         return self.__class__.__name__.replace("Command", "") if self.__class__.__name__ != 'Command' else 'Command'
 
+    @abstractmethod
     def precondition_check(self, problem: Problem) -> None:
-        pass
+        raise NotImplementedError
 
     def execute(self, problem: Problem) -> None:
         """

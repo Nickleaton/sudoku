@@ -16,11 +16,11 @@ class TestConfigWriterCommand(TestSimpleCommand):
         self.problem = Problem()
         self.reader.execute(self.problem)
         self.output_path = Path("c:\\temp\\test.yaml")
-        self.command = ConfigWriterCommand(self.output_path)
+        self.command = ConfigWriterCommand(source='config', target=self.output_path)
 
     @property
     def representation(self) -> str:
-        return f"ConfigWriterCommand('{self.output_path}')"
+        return "ConfigWriterCommand('config', 'c:\\\\temp\\\\test.yaml')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
