@@ -27,25 +27,24 @@ class ClonedRegion(Item):
         self.region_a: List[Cell] = cells_a
         self.region_b: List[Cell] = cells_b
 
+
     def __repr__(self) -> str:
+        """
+        Return a string representation of the ClonedRegion.
 
-        def __repr__(self) -> str:
-            """
-            Return a string representation of the ClonedRegion.
+        The representation is a string that could be used to recreate the ClonedRegion.
+        It is of the form:
+        `ClonedRegion(board, cells_a, cells_b)`
 
-            The representation is a string that could be used to recreate the ClonedRegion.
-            It is of the form:
-            `ClonedRegion(board, cells_a, cells_b)`
-
-            :return: A string representation of the ClonedRegion
-            """
-            return (
-                f"{self.__class__.__name__}("
-                f"{self.board!r}, "
-                f"{repr(self.region_a)}, "
-                f"{repr(self.region_b)}"
-                f")"
-            )
+        :return: A string representation of the ClonedRegion
+        """
+        return (
+            f"{self.__class__.__name__}("
+            f"{self.board!r}, "
+            f"{repr(self.region_a)}, "
+            f"{repr(self.region_b)}"
+            f")"
+        )
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[List[Cell], List[Cell]]:
@@ -101,7 +100,6 @@ class ClonedRegion(Item):
             )
         ]
 
-    @property
     @property
     def tags(self) -> set[str]:
         """
