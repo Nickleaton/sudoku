@@ -22,7 +22,7 @@ from src.glyphs.rectangle_glyph import RectangleGlyph
 from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
-from src.glyphs.between_line_glyph import BetweenGlyph
+from src.glyphs.between_line_glyph import BetweenLineGlyph
 from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.glyphs.rect_glyph import RectGlyph, SquareGlyph, BoxGlyph
 from src.glyphs.odd_cell_glyph import OddCellGlyph
@@ -306,7 +306,7 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
 
     def setUp(self) -> None:
         super().setUp()
-        self.glyph = BetweenGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])
+        self.glyph = BetweenLineGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])
 
     @property
     def start_marker(self) -> str:
@@ -333,11 +333,11 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
 
     @property
     def representation(self) -> str:
-        return "BetweenGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])"
+        return "BetweenLineGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
-        return {BetweenGlyph, Glyph, PolyLineGlyph}
+        return {BetweenLineGlyph, Glyph, PolyLineGlyph}
 
 
 class TestCircleGlyph(TestGlyph):
