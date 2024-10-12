@@ -1,7 +1,8 @@
 import re
 from typing import List, Any, Dict, Callable
 
-from src.glyphs.glyph import Glyph, ArrowGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.arrow_glyph import ArrowGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
 from src.items.item import Item

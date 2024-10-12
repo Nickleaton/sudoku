@@ -1,7 +1,7 @@
 import abc
 import logging
 from abc import ABC
-from typing import Optional, List, Set, Type, Dict, Any, Callable, Self
+from typing import Optional, List, Set, Type, Dict, Callable, Self
 
 from sortedcontainers import SortedDict
 
@@ -24,11 +24,11 @@ class Item(ABC):
 
     They are created with the create method
     """
-    classes: Dict[str, Self] = SortedDict({})
+    classes: Dict[str, Type['Item']] = SortedDict({})
     counter = 0
 
     @staticmethod
-    def select_all(item: 'Item') -> bool:
+    def select_all(_: 'Item') -> bool:
         return True
 
     def __init_subclass__(cls, **kwargs):
@@ -184,9 +184,6 @@ class Item(ABC):
         """
         return set(self.__class__.__mro__).difference({abc.ABC, object})
     #
-    # @classmethod
-    # def extract(cls, board: Board, yaml: Dict) -> Any:  # pylint: disable=unused-argument
-    #     return yaml
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Self:

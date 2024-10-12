@@ -1,6 +1,7 @@
 from typing import List, Any, Dict, Callable
 
-from src.glyphs.glyph import Glyph, TextGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board
 from src.items.first_n import FirstN
 from src.items.item import Item

@@ -2,7 +2,8 @@ from typing import List, Any, Dict, Callable
 
 from pulp import lpSum
 
-from src.glyphs.glyph import Glyph, QuadrupleGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.quadruple_glyph import QuadrupleGlyph
 from src.items.board import Board
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver

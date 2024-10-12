@@ -1,6 +1,7 @@
 from typing import List, Set, Callable
 
-from src.glyphs.glyph import Glyph, SimpleThermometerGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.simple_thermometer_glyph import SimpleThermometerGlyph
 from src.items.item import Item
 from src.items.thermometer import Thermometer
 from src.solvers.pulp_solver import PulpSolver

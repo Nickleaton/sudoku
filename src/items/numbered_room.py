@@ -1,6 +1,7 @@
 from typing import Dict, Tuple, List, Set, Type, Callable
 
-from src.glyphs.glyph import Glyph, TextGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver

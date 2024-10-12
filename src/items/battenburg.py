@@ -1,7 +1,8 @@
 import re
 from typing import List, Any, Dict, Callable
 
-from src.glyphs.glyph import Glyph, BattenburgGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.items.board import Board
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
@@ -44,4 +45,14 @@ class Battenburg(Item):
         offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
 
     def to_dict(self) -> Dict:
+        """
+        Convert the item to a dictionary for serialisation.
+
+        The dictionary has a single key value pair where the key is the
+        item's class name and the value is the row and column values of the
+        item's position.
+
+        Returns:
+            Dict: A dictionary containing the item's class name and position.
+        """
         return {self.__class__.__name__: self.position.row * 10 + self.position.column}

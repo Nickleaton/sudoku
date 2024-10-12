@@ -1,7 +1,8 @@
 import abc
 from typing import List, Set, Type, Tuple, Dict, Callable
 
-from src.glyphs.glyph import Glyph, EdgeTextGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.edge_text_glyph import EdgeTextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item

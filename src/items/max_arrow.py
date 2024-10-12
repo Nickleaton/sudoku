@@ -1,6 +1,7 @@
 from typing import List, Dict, Callable
 
-from src.glyphs.glyph import Glyph, ArrowLineGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.items.item import Item
 from src.items.line import Line
 from src.solvers.formulations import Formulations

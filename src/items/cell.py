@@ -3,7 +3,8 @@ from typing import Dict, Tuple, List, Callable
 
 from pulp import lpSum
 
-from src.glyphs.glyph import Glyph, CellGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.cell_glyph import CellGlyph
 from src.items.board import Board
 from src.items.book_keeping import BookKeeping
 from src.items.item import Item

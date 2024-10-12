@@ -19,9 +19,8 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.solver_name = solver_name
         if solver_name == 'PULP_CBC_CMD':
             self.application_name = 'CBC'
-        if self.log_file.exists():
-            self.log_file.unlink()
-        self.application = getSolver(solver_name, logPath=self.log_file, msg=False)
+        self.log_file.unlink(missing_ok=True)
+        self.application = getSolver(solver_name, logPath=str(self.log_file), msg=1)
         self.objective = 0, "Objective"
         self.model = LpProblem("Sudoku", LpMinimize)
         self.model += self.objective

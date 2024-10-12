@@ -9,6 +9,8 @@ from src.commands.create_problem_command import CreateProblemCommand
 from src.commands.file_writer_command import FileWriterCommand
 from src.commands.html_command import HTMLCommand
 from src.commands.load_config_command import LoadConfigCommand
+from src.commands.lp_command import CreateLPCommand
+from src.commands.solver_command import SolveCommand
 from src.commands.svg_command import SVGCommand
 from src.utils.config import Config
 
@@ -46,11 +48,11 @@ class AcceptanceTest(unittest.TestCase):
         return AcceptanceTest.DIRECTORY / self.name / Path("problem.html")
 
     @property
-    def lp_filename(self) -> Optional[Path]:
+    def lp_file_name(self) -> Optional[Path]:
         return AcceptanceTest.DIRECTORY / self.name / Path("problem.lp")
 
     @property
-    def solution_filename(self) -> Optional[Path]:
+    def solution_file_name(self) -> Optional[Path]:
         return AcceptanceTest.DIRECTORY / self.name / Path("solution.txt")
 
     @property
@@ -81,29 +83,22 @@ class AcceptanceTest(unittest.TestCase):
         command.add_with_name('problem', CreateProblemCommand())
         command.add_with_name('svg', SVGCommand())
         command.add_with_name("html", HTMLCommand(Path(config.templates.html)))
+        command.add_with_name("lp", CreateLPCommand())
+        command.add_with_name("solver", SolveCommand())
         command.add_with_name("svg_writer", FileWriterCommand(self.svg_file_name, ['svg.output']))
         command.add_with_name("html_writer", FileWriterCommand(self.html_file_name, ['html.output']))
+        command.add_with_name("lp_writer", FileWriterCommand(self.lp_file_name, ['lp.output']))
+        command.add_with_name("log_writer", FileWriterCommand(self.log_file_name, ['solver.log']))
+        command.add_with_name("solution_writer", FileWriterCommand(self.solution_file_name, ['solver.solution_text']))
         command.execute()
         # Check file exists
         self.assertTrue(self.svg_file_name.exists())
         self.assertTrue(self.html_file_name.exists())
+        self.assertTrue(self.lp_file_name.exists())
+        self.assertTrue(self.log_file_name.exists())
+        self.assertTrue(self.solution_file_name.exists())
+        self.assertNotEqual('None', str(getattr(command, 'solver').solution))
 
-    # def test_svg(self) -> None:
-    #     if self.name is None:
-    #         return
-    #     AcceptanceTest.check_directory(self.svg_filename)
-    #     command = SVGCommand(self.yaml_filename)
-    #     command.execute()
-    #     self.assertIsNotNone(command.output)
-    #
-    # def test_html(self) -> None:
-    #     if self.name is None:
-    #         return
-    #     AcceptanceTest.check_directory(self.html_filename)
-    #     command = HTMLCommand(self.yaml_filename)
-    #     command.execute()
-    #     self.assertIsNotNone(command.output)
-    #
     # def test_lp(self) -> None:
     #     if self.name is None:
     #         return
@@ -135,3 +130,8 @@ class AcceptanceTest(unittest.TestCase):
     #
     # def test_open_files(self) -> None:
     #     pass
+
+
+import logging
+
+logging.basicConfig(level=logging.DEBUG, format='%(name)s %(levelname)s %(message)s')

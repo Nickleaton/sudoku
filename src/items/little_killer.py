@@ -2,7 +2,9 @@ from typing import List, Tuple, Dict, Callable
 
 from pulp import lpSum
 
-from src.glyphs.glyph import Glyph, TextGlyph, ArrowGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.arrow_glyph import ArrowGlyph
+from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item

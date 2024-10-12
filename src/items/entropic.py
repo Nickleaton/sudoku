@@ -2,7 +2,8 @@ from typing import List, Dict, Callable
 
 from pulp import LpAffineExpression, lpSum
 
-from src.glyphs.glyph import Glyph, PolyLineGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.item import Item
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver

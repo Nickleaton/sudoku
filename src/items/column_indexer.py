@@ -1,6 +1,7 @@
 from typing import List, Dict, Callable
 
-from src.glyphs.glyph import Glyph, RectGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.rect_glyph import RectGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.indexing import Indexer

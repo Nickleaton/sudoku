@@ -4,7 +4,8 @@ from typing import List, Set, Type, Tuple, Dict, Optional
 
 from pulp import LpElement
 
-from src.glyphs.glyph import Glyph, CircleGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.circle_glyph import CircleGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item

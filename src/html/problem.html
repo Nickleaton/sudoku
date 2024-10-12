@@ -2,12 +2,12 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title> {{ title }} </title>
+		<title> {{ config['Board']['Title'] }} </title>
 		<link rel="stylesheet" href="glyph.css">
 	</head>
 	<body>
 		<h1>Problem</h1>
-		{{ problem_svg | safe }}
+		{{ problem_svg.toprettyxml() | safe }}
 		<table>
 			<thead>
 				<tr>

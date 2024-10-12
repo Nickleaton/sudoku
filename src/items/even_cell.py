@@ -1,6 +1,7 @@
 from typing import Optional, List, Dict, Callable
 
-from src.glyphs.glyph import Glyph, EvenCellGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.utils.coord import Coord

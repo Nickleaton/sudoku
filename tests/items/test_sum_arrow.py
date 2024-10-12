@@ -19,7 +19,7 @@ class TestArrow1(TestLine):
 
     @property
     def config(self) -> str:
-        return "Arrow: 11, 12, 13"
+        return "SumArrow: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
@@ -44,7 +44,7 @@ class TestArrow2(TestLine):
 
     @property
     def config(self) -> str:
-        return "Arrow: 11, 12"
+        return "SumArrow: 11, 12"
 
     @property
     def has_rule(self) -> bool:

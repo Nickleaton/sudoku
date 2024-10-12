@@ -1,6 +1,7 @@
 from typing import List, Dict, Callable
 
-from src.glyphs.glyph import Glyph, FrozenThermometerGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.frozen_thermometer_glyph import FrozenThermometerGlyph
 from src.items.box import Box
 from src.items.column import Column
 from src.items.item import Item

@@ -1,6 +1,7 @@
 from typing import Optional, List, Dict, Callable
 
-from src.glyphs.glyph import Glyph, FortressCellGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.fortress_cell_glyph import FortressCellGlyph
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item

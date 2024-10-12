@@ -1,7 +1,8 @@
 import re
 from typing import List, Tuple, Dict
 
-from src.glyphs.glyph import Glyph, ConsecutiveGlyph
+from src.glyphs.glyph import Glyph
+from src.glyphs.consecutive_glyph import ConsecutiveGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
