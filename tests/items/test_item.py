@@ -47,7 +47,6 @@ class TestItem(unittest.TestCase):
         return "Item((Board(9, 9, 3, 3, None, None, None, None))"
 
     def test_repr(self):
-        unittest.TestCase.maxDiff = None
         self.assertEqual(self.representation, repr(self.item))
 
     @property

@@ -48,6 +48,9 @@ class Board:
         self.video = video
         self.title = title
         self.author = author
+        if title is not None:
+            if title != 'c':
+                print(f"hit {title}")
 
     def is_valid(self, row: int, column: int) -> bool:
         return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)

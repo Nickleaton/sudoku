@@ -28,7 +28,7 @@ class DifferencePair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        cell_1, cell_2, digits = DifferencePair.extract(board, yaml)
+        cell_1, cell_2, digits = cls.extract(board, yaml)
         return cls(board, cell_1, cell_2, digits)
 
     @property

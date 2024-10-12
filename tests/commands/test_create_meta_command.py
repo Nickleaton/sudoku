@@ -9,13 +9,15 @@ class TestCreateMetaCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        load_config = LoadConfigCommand(self.path)
-        load_config.execute(self.problem)
+        requirements = LoadConfigCommand(self.path)
+        requirements.execute(self.problem)
         self.command = CreateMetaCommand()
 
     def test_command(self):
+        self.assertIn('config', self.problem)
+        self.assertNotIn('meta', self.problem)
         self.command.execute(self.problem)
-        self.assertIsNotNone(self.problem.meta)
+        self.assertIn('meta', self.problem)
 
     @property
     def representation(self) -> str:
