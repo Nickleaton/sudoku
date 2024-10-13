@@ -4,7 +4,6 @@ import src.commands.create_board_command
 import src.commands.create_constraints_command
 import src.commands.create_lp_command
 import src.commands.create_lp_with_bookkeeping_command
-import src.commands.create_problem_command
 import src.commands.create_rules_command
 import src.commands.img_command
 import src.commands.load_config_command

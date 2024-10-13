@@ -10,6 +10,16 @@ from src.items.solution import Solution
 
 
 class SVGPencilMarkCommand(SVGCommand):
+
+    def __init__(self, problem_field: str = "pencil_mark_svg"):
+        """
+        Initialize the SVGProblemCommand
+
+        Parameters:
+            problem_field (str): The attribute of the problem that contains the root item to be drawn
+        """
+        super().__init__(problem_field)
+
     def select(self, item: Item) -> bool:
         """ Selector
 

@@ -12,7 +12,7 @@ class SVGTestSolutionCommand(TestSVGCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        self.command = SVGSolutionCommand('solution_svg')
+        self.command = SVGSolutionCommand('svg')
 
     @property
     def in_select(self) -> Item | None:

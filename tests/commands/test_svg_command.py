@@ -12,18 +12,16 @@ class TestSVGCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        load_config_command = LoadConfigCommand(self.path)
-        create_board_command = CreateBoardCommand()
-        create_constraints_command = CreateConstraintsCommand()
-        load_config_command.execute(self.problem)
-        create_board_command.execute(self.problem)
-        create_constraints_command.execute(self.problem)
+        requirements = LoadConfigCommand(self.path) \
+            | CreateBoardCommand() \
+            | CreateConstraintsCommand()
+        requirements.execute(self.problem)
         self.command = SVGCommand('svg')
 
     def test_execute(self):
-        self.assertIsNone(self.problem.svg)
+        self.assertNotIn('svg', self.problem)
         self.command.execute(self.problem)
-        self.assertIsNotNone(self.command.problem_field in self.problem)
+        self.assertIn('svg', self.problem)
 
     @property
     def representation(self) -> str:

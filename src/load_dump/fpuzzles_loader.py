@@ -35,8 +35,7 @@ class FPuzzlesLoader(Loader):
         else:
             raise LoaderError(f"{self.size}x{self.size} board not handled")
         if 'grid' in self.raw['data']:
-
-        return result
+            return result
 
     @property
     def reference(self) -> Optional[str]:
