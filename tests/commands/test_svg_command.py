@@ -25,7 +25,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return f"{self.command.__class__.__name__}({repr(self.command.problem_field)})"
+        return f"{self.command.__class__.__name__}({self.command.problem_field!r})"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
