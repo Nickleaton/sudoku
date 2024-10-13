@@ -13,7 +13,8 @@ from tests.items.test_region import TestRegion
 class TestLine(TestRegion):
 
     def setUp(self) -> None:
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
+        self.board = Board(9, 9, 3, 3, None, None, None,None)
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = self.clazz(self.board, cells)
         self.size = 3
@@ -37,6 +38,13 @@ class TestLine(TestRegion):
             f"]"
             f")"
         )
+
+    def test_repr(self):
+        if self.representation != repr(self.item):
+            print(self.representation)
+            print (repr(self.item))
+            pass
+        self.assertEqual(self.representation, repr(self.item))
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
