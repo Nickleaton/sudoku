@@ -54,4 +54,4 @@ class CreateSolverCommand(SimpleCommand):
 
         :return: A string representation of the object
         """
-        return f'{self.__class__.__name__} - config: {self.config}, board: {self.board}, target: {self.target}'
+        return f'{self.__class__.__name__}({self.config!r}, {self.board!r}, {self.target!r})'

@@ -50,4 +50,4 @@ class CreateConstraintsCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}({repr(self.config)}, {repr(self.board)}, {repr(self.target)})"
+        return f"{self.__class__.__name__}({self.config!r}, {self.board!r}, {self.target!r})"

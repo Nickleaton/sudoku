@@ -60,4 +60,4 @@ class CreateRulesCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}({repr(self.constraints)}, {repr(self.target)})"
+        return f"{self.__class__.__name__}({self.constraints!r}, {self.target!r})"

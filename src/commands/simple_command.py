@@ -10,8 +10,6 @@ class SimpleCommand(Command):
     def __init__(self):
         super().__init__()
 
-
-
     @abstractmethod
     def execute(self, problem: Problem) -> None:
         pass

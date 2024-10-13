@@ -1,7 +1,6 @@
 """ Create an SVG drawing of the problem"""
 import logging
 import xml.dom.minidom
-from abc import abstractmethod
 
 from svgwrite import Drawing
 from svgwrite.container import Style
@@ -21,7 +20,7 @@ class SVGCommand(SimpleCommand):
     Base class for SVG output commands
     """
 
-    def __init__(self, problem_field: str) -> object:
+    def __init__(self, problem_field: str):
         """
         Initialize the SVGCommand
 
@@ -92,4 +91,4 @@ class SVGCommand(SimpleCommand):
         # problem[self.problem_field] = str(elements.toprettyxml())
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.problem_field}')"
+        return f"{self.__class__.__name__}({self.problem_field!r})"

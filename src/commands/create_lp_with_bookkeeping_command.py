@@ -88,4 +88,4 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}({repr(self.board)}, {repr(self.config)}, {repr(self.constraints)}, {repr(self.solver)}, {repr(self.target)})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.config!r}, {self.constraints!r}, {self.solver!r}, {self.target!r})"

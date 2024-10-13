@@ -50,4 +50,4 @@ class SolveCommand(SimpleCommand):
         # Handle log
 
     def __repr__(self) -> str:
-        return f'{self.__class__.__name__}({repr(self.solver)}, {repr(self.target)}, {repr(self.log)})'
+        return f'{self.__class__.__name__}({self.solver!r}, {self.target!r}, {self.log!r})'

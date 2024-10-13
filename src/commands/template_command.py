@@ -71,4 +71,4 @@ class TemplateCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}('{self.template_file}', '{self.target}')"
+        return f"{self.__class__.__name__}({str(self.template_file)!r}, {self.target!r})"
