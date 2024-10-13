@@ -16,7 +16,7 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
                  config: str = 'config',
                  constraints: str = 'constraints',
                  solver: str = 'solver',
-                 target: str = 'lp'
+                 target: str = 'linear_program'
                  ):
         """
         Construct a CreateLPWithBookkeepingCommand
@@ -88,4 +88,4 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}({self.board}, {self.config}, {self.constraints}, {self.solver}, {self.target})"
+        return f"{self.__class__.__name__}({repr(self.board)}, {repr(self.config)}, {repr(self.constraints)}, {repr(self.solver)}, {repr(self.target)})"

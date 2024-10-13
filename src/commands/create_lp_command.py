@@ -16,7 +16,7 @@ class CreateLPCommand(SimpleCommand):
                  config: str = 'config',
                  constraints: str = 'constraints',
                  solver: str = 'solver',
-                 target: str = 'lp'
+                 target: str = 'linear_program'
                  ):
         """
         Construct a CreateLPWithBookkeepingCommand

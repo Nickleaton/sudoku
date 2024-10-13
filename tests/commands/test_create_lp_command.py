@@ -20,12 +20,12 @@ class TestCreateLPCommand(TestSimpleCommand):
 
     def test_command(self):
         self.command.execute(self.problem)
-        self.assertIsNotNone(self.problem.lp)
+        self.assertIsNotNone(self.problem.linear_program)
 
 
     @property
     def representation(self) -> str:
-        return "CreateLPCommand('board', 'config', 'constraints', 'solver', 'lp')"
+        return "CreateLPCommand('board', 'config', 'constraints', 'solver', 'linear_program')"
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
