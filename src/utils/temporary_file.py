@@ -5,6 +5,7 @@
                 f.write ("Hello World")
 
 """
+import logging
 from pathlib import Path
 from uuid import uuid4
 
@@ -21,11 +22,12 @@ class TemporaryFile:
 
         Use the config temporary directory specified in the config file
         """
-        directory = Path(config.temporary_directory)
-        directory.mkdir(exist_ok=True)
-        u = str(uuid4())
-        file_name = Path(u)
-        self._name = directory / file_name
+        directory: Path = Path(config.temporary_directory)
+        if not directory.exists():
+            logging.info(f"Creating directory {directory}")
+            directory.mkdir(parents=True)
+        file_name: Path = Path(str(uuid4()))
+        self._name: Path = directory / file_name
 
     @property
     def name(self) -> Path:

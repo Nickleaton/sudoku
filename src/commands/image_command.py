@@ -91,7 +91,7 @@ class ImageCommand(SimpleCommand):
         if self.image_format == ImageFormat.SVG:
             # handle svg which is just pretty print out as xml
             with open(self.target, 'wb') as f:
-                text: str =  str(problem[self.source].toprettyxml(indent="  "))
+                text: str = str(problem[self.source].toprettyxml(indent="  "))
                 f.write(text.encode('utf-8'))
         else:
             # for other formats, use renderPM to convert the xml to the specified format

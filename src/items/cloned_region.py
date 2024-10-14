@@ -27,7 +27,6 @@ class ClonedRegion(Item):
         self.region_a: List[Cell] = cells_a
         self.region_b: List[Cell] = cells_b
 
-
     def __repr__(self) -> str:
         """
         Return a string representation of the ClonedRegion.

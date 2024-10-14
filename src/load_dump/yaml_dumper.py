@@ -6,4 +6,3 @@ class YamlDumper(Dumper):
 
     def __init__(self, board: Board):
         super().__init__(board)
-

@@ -53,7 +53,6 @@ class CreateLPCommand(SimpleCommand):
         if self.target in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
 
-
     def execute(self, problem: Problem) -> None:
         """
         Produce the LP version of the problem.
@@ -79,8 +78,6 @@ class CreateLPCommand(SimpleCommand):
                 with open(tf.name) as f:
                     problem[self.target] = f.read()
 
-
-
     def __repr__(self) -> str:
         """
         Return a string representation of the object.
@@ -88,4 +85,13 @@ class CreateLPCommand(SimpleCommand):
         Returns:
             str: A string representation of the object.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.config!r}, {self.constraints!r}, {self.solver!r}, {self.target!r})"
+        return (
+            f"{self.__class__.__name__}"
+            f"("
+            f"{self.board!r}, "
+            f"{self.config!r}, "
+            f"{self.constraints!r}, "
+            f"{self.solver!r}, "
+            f"{self.target!r}"
+            f")"
+        )

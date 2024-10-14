@@ -20,7 +20,7 @@ class FixedSumPair(VariablePair):
             Rule(
                 self.__class__.__name__,
                 1,
-                f"Cells separated by an blue dot must have a sum the same sum"
+                "Cells separated by an blue dot must have a sum the same sum"
             )
         ]
 

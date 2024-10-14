@@ -52,5 +52,3 @@ class Glyph(ABC):
     @property
     def used_classes(self) -> Set[Type['Glyph']]:
         return set(self.__class__.__mro__).difference({abc.ABC, object})
-
-

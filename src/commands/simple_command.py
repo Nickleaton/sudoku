@@ -1,5 +1,3 @@
-from abc import abstractmethod
-
 from src.commands.command import Command
 from src.commands.composed_command import ComposedCommand
 from src.commands.problem import Problem
@@ -36,4 +34,3 @@ class SimpleCommand(Command):
         else:
             result.add(other)
         return result
-

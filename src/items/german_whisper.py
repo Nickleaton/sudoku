@@ -24,7 +24,7 @@ class GermanWhisper(GreaterThanEqualDifferenceLine):
             Rule(
                 self.__class__.__name__,
                 1,
-                f"Any two cells directly connected by a green line must have a difference of at least 5"
+                "Any two cells directly connected by a green line must have a difference of at least 5"
             )
         ]
 

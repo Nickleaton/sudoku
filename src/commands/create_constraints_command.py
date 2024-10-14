@@ -7,7 +7,7 @@ from src.items.item import Item
 
 
 class CreateConstraintsCommand(SimpleCommand):
-    def __init__(self, config: str = 'config', board:str = 'board', target: str = 'constraints'):
+    def __init__(self, config: str = 'config', board: str = 'board', target: str = 'constraints'):
         """
         Construct a CreateConstraintsCommand
 

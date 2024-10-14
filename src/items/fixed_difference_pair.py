@@ -21,8 +21,8 @@ class FixedDifferencePair(FixedPair):
                 self.__class__.__name__,
                 1,
                 (
-                    f"A white dot between two cells means that the digits in those cells "
-                    f"have a fixed difference."
+                    "A white dot between two cells means that the digits in those cells "
+                    "have a fixed difference."
                 )
             )
         ]

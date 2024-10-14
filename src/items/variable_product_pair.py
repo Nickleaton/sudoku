@@ -5,8 +5,8 @@ from typing import List, Dict, Optional
 
 from pulp import LpElement
 
-from src.solvers.constraint_utilities import ConstraintUtilities
 from src.items.variable_pair import VariablePair
+from src.solvers.constraint_utilities import ConstraintUtilities
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.variable_type import VariableType
@@ -21,8 +21,8 @@ class VariableProductPair(VariablePair):
                 self.__class__.__name__,
                 1,
                 (
-                    f"A red dot between two cells means that the digits in those cells "
-                    f"have a fixed product"
+                    "A red dot between two cells means that the digits in those cells "
+                    "have a fixed product"
                 )
             )
         ]

@@ -5,8 +5,8 @@ from typing import Optional, List, Set, Type, Dict, Callable, Self
 
 from sortedcontainers import SortedDict
 
-from src.glyphs.glyph import Glyph
 from src.glyphs.composed_glyph import ComposedGlyph
+from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -14,6 +14,7 @@ from src.utils.rule import Rule
 
 class SudokuException(Exception):
     pass
+
 
 class Item(ABC):
     """
@@ -24,15 +25,22 @@ class Item(ABC):
 
     They are created with the create method
     """
-    classes: Dict[str, Type['Item']] = SortedDict({})
-    counter = 0
 
-    @staticmethod
-    def select_all(_: 'Item') -> bool:
-        return True
+    # Class Variables
+
+    # register of classes
+    classes: Dict[str, Type['Item']] = SortedDict({})
+    # Counter of instances created
+    counter: int = 0
+
+    # Creation Routines
 
     def __init_subclass__(cls, **kwargs):
+        """
+        Register the class so that it can be created from yaml.
+        """
         super().__init_subclass__(**kwargs)
+        # Register the class
         Item.classes[cls.__name__] = cls
 
     def __init__(self, board: Board):
@@ -43,10 +51,46 @@ class Item(ABC):
             board: The board this item belongs to.
         """
         super().__init__()
+
+        # Board this item belongs to
         self.board: Board = board
+
+        # Pointer back to parent
         self.parent: Optional[Item] = None
+        # Allocation a new identity
         self.identity: int = Item.counter
         Item.counter += 1
+
+    @classmethod
+    def create(cls, board: Board, yaml: Dict) -> Self:
+        """
+        Create an instance of an item from a YAML dictionary.
+
+        The YAML dictionary must contain a single key-value pair, where the key
+        is the name of the item class and the value is a dictionary of arguments
+        to pass to the constructor of the item class.
+
+        Args:
+            board (Board): The board associated with this item.
+            yaml (Dict): A YAML dictionary containing the key-value pair to
+                create an item.
+
+        Returns:
+            Self: An instance of the item class associated with the YAML
+                dictionary.
+
+        Raises:
+            SudokuException: If the YAML dictionary does not contain a single
+                key-value pair.
+        """
+        if len(yaml) != 1:
+            raise SudokuException(f"Expecting one yaml item. Received Yaml={str(yaml)}")
+        name = list(yaml.keys())[0]
+        if name not in cls.classes:
+            logging.error(f"Cannot find item {name}")
+            raise SudokuException(f"Unknown item class {name}")
+        clazz = cls.classes[name]
+        return clazz.create(board, yaml)
 
     @property
     def top(self) -> Self:
@@ -60,10 +104,18 @@ class Item(ABC):
             return self
         return self.parent.top
 
-    def regions(self) -> Set[Self]:
+    def regions(self) -> Set['Item']:
+        """
+        Get the set of items used in this item.
+
+        The default implementation returns a set containing just this item.
+        Subclasses should override this method if they use other items.
+
+        Returns:
+            A set of items.
+        """
         return {self}
 
-    # pylint: disable=no-self-use
     def svg(self) -> Optional[Glyph]:
         """
         Return an SVG glyph which can be used to display the item.
@@ -86,6 +138,16 @@ class Item(ABC):
         return []
 
     def flatten(self) -> List[Self]:
+        """
+        Return a list of all items in the hierarchy that this item belongs to.
+
+        The default implementation returns a list containing just the current
+        item. Subclasses should override this method if they contain other items.
+
+        Returns:
+            List[Self]: A list of all items in the hierarchy that this item
+                belongs to.
+        """
         return [self]
 
     @property
@@ -183,37 +245,22 @@ class Item(ABC):
             Set[Type[Self]]: A set of classes that this item uses.
         """
         return set(self.__class__.__mro__).difference({abc.ABC, object})
+
     #
 
-    @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Self:
+    @staticmethod
+    def select_all(_: 'Item') -> bool:
         """
-        Create an instance of an item from a YAML dictionary.
-
-        The YAML dictionary must contain a single key-value pair, where the key
-        is the name of the item class and the value is a dictionary of arguments
-        to pass to the constructor of the item class.
+        The select method is used to select which items should be used when
+        generating the lp model. The method should return True if the item
+        should be used (i.e. included in the model) and False otherwise.
 
         Args:
-            board (Board): The board associated with this item.
-            yaml (Dict): A YAML dictionary containing the key-value pair to
-                create an item.
 
         Returns:
-            Self: An instance of the item class associated with the YAML
-                dictionary.
-
-        Raises:
-            SudokuException: If the YAML dictionary does not contain a single
-                key-value pair.
+            True
         """
-        if len(yaml) != 1:
-            raise SudokuException(f"Yaml={str(yaml)}")
-        name = list(yaml.keys())[0]
-        if name not in cls.classes:
-            logging.error(f"Cannot find item {name}")
-        clazz = cls.classes[name]
-        return clazz.create(board, yaml)
+        return True
 
     def __repr__(self) -> str:
         """
@@ -226,7 +273,7 @@ class Item(ABC):
         Returns:
             str: A string representation of this item.
         """
-        return f"{self.__class__.__name__}(({self.board!r})"
+        return f"{self.__class__.__name__}({self.board!r})"
 
     # pylint: disable=unused-argument
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -244,6 +291,18 @@ class Item(ABC):
         pass
 
     def bookkeeping(self) -> None:
+        """
+        Perform bookkeeping for this item.
+
+        This method is called when the solver is adding constraints to the
+        lp model. The method is expected to add any constraints required to
+        ensure that the bookkeeping for this item is done correctly.
+
+        .. note::
+
+            This method is not expected to be overridden by subclasses.
+
+        """
         pass
 
     def children(self) -> Set[Self]:
@@ -258,7 +317,6 @@ class Item(ABC):
             Set[Self]: A set of children items.
         """
         return {self}
-
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         """
@@ -277,6 +335,7 @@ class Item(ABC):
         Args:
             solver (PulpSolver): A solver that is solving the board associated with this item.
         """
+        # The following uses __class__.__name__ to avoid circular imports
         cells = [i for i in self.children() if i.__class__.__name__ == 'Cell']
         for cell in cells:
             cell.add_bookkeeping_constraint(solver)
@@ -293,9 +352,17 @@ class Item(ABC):
         """
         return {self.__class__.__name__: None}
 
-    # pylint: disable=no-self-use
     def css(self) -> Dict:
         # TODO Should we have this here?
+        """
+        Get the CSS for the item.
+
+        This method returns a dictionary with CSS attributes for items of this class. The key is the class name of the
+        item and the value is a dictionary with the CSS style for that class.
+
+        Returns:
+            Dict: A dictionary with CSS style for the class.
+        """
         return {
             '.TextGlyphForeground': {
                 'font-size': '30px',

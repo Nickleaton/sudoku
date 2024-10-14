@@ -22,8 +22,8 @@ class FixedRatioPair(VariablePair):
                 self.__class__.__name__,
                 1,
                 (
-                    f"A black dot between two cells means that one of the digits in those cells "
-                    f"have a fixed ratio. The ratio is not necessarily an integer"
+                    "A black dot between two cells means that one of the digits in those cells "
+                    "have a fixed ratio. The ratio is not necessarily an integer"
                 )
             )
         ]

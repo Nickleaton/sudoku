@@ -13,7 +13,7 @@ class FPuzzlesLoader(Loader):
             self.raw = json.load(file)
 
     def process(self) -> Board:
-        print (f"*** {self.raw['data'].keys()}")
+        print(f"*** {self.raw['data'].keys()}")
         if self.size == 9:
             result = Board(
                 9, 9,

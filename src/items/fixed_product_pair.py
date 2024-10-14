@@ -20,8 +20,8 @@ class FixedProductPair(FixedPair):
                 self.__class__.__name__,
                 1,
                 (
-                    f"A red dot between two cells means that the digits in those cells "
-                    f"have a fixed product"
+                    "A red dot between two cells means that the digits in those cells "
+                    "have a fixed product"
                 )
             )
         ]

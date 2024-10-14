@@ -19,7 +19,7 @@ class SumPair(Pair):
             Rule(
                 self.__class__.__name__,
                 1,
-                f"Cells separated by an blue dot must have a sum"
+                "Cells separated by an blue dot must have a sum"
             )
         ]
 
