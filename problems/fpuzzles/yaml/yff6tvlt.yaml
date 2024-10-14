@@ -16,18 +16,10 @@ Constraints:
 - Columns: 
 - Rows: 
 - Boxes: 
-- ClonedRegion:
-  - 26
-  - 68
-- ClonedRegion:
-  - 68
-  - 84
-- ClonedRegion:
-  - 84
-  - 42
-- ClonedRegion:
-  - 42
-  - 26
+- ClonedRegion: 26=68
+- ClonedRegion: 68=84
+- ClonedRegion: 84=42
+- ClonedRegion: 42=26
 - SimpleThermometer: 23, 24, 25, 26
 - SimpleThermometer: 84, 85, 86, 87
 - SimpleThermometer: 38, 48, 58, 68

@@ -36,18 +36,8 @@ Constraints:
 - SumArrow: 39=29, 19
 - SumArrow: 73=74, 75
 - SumArrow: 37=36, 35
-- ClonedRegion:
-  - 22,23,24
-  - 54,55,56
-- ClonedRegion:
-  - 54,55,56
-  - 86,87,88
-- ClonedRegion:
-  - 86,87,88
-  - 37,38,39
-- ClonedRegion:
-  - 37,38,39
-  - 71,72,73
-- ClonedRegion:
-  - 71,72,73
-  - 22,23,24
+- ClonedRegion: 22,23,24=54,55,56
+- ClonedRegion: 54,55,56=86,87,88
+- ClonedRegion: 86,87,88=37,38,39
+- ClonedRegion: 37,38,39=71,72,73
+- ClonedRegion: 71,72,73=22,23,24
