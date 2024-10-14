@@ -3,7 +3,9 @@
 see https://en.wikipedia.org/wiki/Command_pattern
 and https://en.wikipedia.org/wiki/Composite_pattern
 """
-from typing import Sequence, List, Optional, Self
+from typing import Sequence, List, Optional
+
+from typing_extensions import Self
 
 from src.commands.command import Command
 from src.commands.problem import Problem
@@ -14,7 +16,7 @@ class ComposedCommand(Command):
     The class can be iterated
     """
 
-    def __init__(self, items: List[Command] = None):
+    def __init__(self, items: Optional[List[Command]] = None):
         """
         Initializes a new instance of the ComposedCommand class.
 
@@ -52,6 +54,22 @@ class ComposedCommand(Command):
             self.add(item)
 
     def precondition_check(self, problem: Problem) -> None:
+        """
+        Checks the preconditions for all the commands in the items list.
+
+        This function iterates over each item in the items list and calls the
+        precondition_check method of each item.
+
+        :param problem: The problem to check the preconditions for.
+        :raises CommandException: If any of the commands raise a CommandException
+            when their preconditions are checked.
+        :return: None
+        """
+
+        # Pass through is deliberate. We don't want to execute anything here.
+        # When the children are executed they will do their precondition checks
+        # That matters because some of the commands build data in the problem
+        # that gets used in subsequent commands.
         pass
 
     def execute(self, problem: Problem) -> None:
@@ -68,9 +86,30 @@ class ComposedCommand(Command):
         for item in self.items:
             item.execute(problem)
 
-    def __or__(self, other: Command) -> Self:
-        self.add(other)
-        return self
+    def __or__(self, other: Command) -> 'ComposedCommand':
+        """
+        Combine two commands into a single composed command.
+
+        The `__or__` method implements the logical "or" operator for commands.
+        It takes another command as an argument and returns a composed command
+        that contains the current command and the other command.
+
+        If the other command is a composed command, its items are added to the
+        composed command. Otherwise, the other command is added directly to the
+        composed command.
+
+        Example:
+            ```
+            composed = command1 | command2 | command3
+            ```
+
+        :param other: The other command to combine.
+        :return: A composed command containing the two commands.
+        :rtype: ComposedCommand
+        """
+        result: ComposedCommand = ComposedCommand(self.items.copy())
+        result.add(other)
+        return result
 
     def __iter__(self):
         """
@@ -79,19 +118,6 @@ class ComposedCommand(Command):
         :return: The iterator object.
         """
         return iter(self.items)
-
-    def __next__(self) -> Optional[Command]:
-        """
-        Returns the next command in the sequence.
-
-        :return: The next command in the sequence, or None if the sequence has been exhausted.
-        """
-        if self._n < len(self.items):
-            result = self.items[self._n]
-            self._n += 1
-            return result
-        self._n = 0
-        raise StopIteration
 
     def __len__(self) -> int:
         """

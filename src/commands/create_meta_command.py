@@ -1,3 +1,5 @@
+import logging
+
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -42,6 +44,7 @@ class CreateMetaCommand(SimpleCommand):
             problem (Problem): The problem to create the field in.
         """
         super().execute(problem)
+        logging.info(f"Creating {self.target}")
         problem[self.target] = problem[self.source]['Board']
 
     def __repr__(self) -> str:

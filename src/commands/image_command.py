@@ -1,4 +1,5 @@
 """ Base class for all image producing classes"""
+import logging
 from enum import Enum
 from pathlib import Path
 
@@ -39,23 +40,20 @@ class ImageFormat(Enum):
             raise ValueError(f"Unsupported image format for suffix: {suffix}")
 
 
-class IMGCommand(SimpleCommand):
+class ImageCommand(SimpleCommand):
 
     def __init__(self, source: str, target: Path | str) -> None:
         """
-        Initialize an IMGCommand.
+        Initialize an ImageCommand.
 
         :param source: The attribute of the problem to write out
         :param target: The name of the file to write to
         :raises ValueError: If the file_name has an unsupported suffix
         """
         super().__init__()
-        if isinstance(target, str):
-            self.target: Path = Path(target)
-        else:
-            self.target: Path = target
+        self.target: Path = Path(target) if isinstance(target, str) else target
         self.source: str = source
-        self.image_format: ImageFormat = ImageFormat.from_suffix(target.suffix)
+        self.image_format: ImageFormat = ImageFormat.from_suffix(self.target.suffix)
 
     def precondition_check(self, problem: Problem) -> None:
         """
@@ -89,6 +87,7 @@ class IMGCommand(SimpleCommand):
             reason.
         """
         super().execute(problem)
+        logging.info(f"Creating {self.target}")
         if self.image_format == ImageFormat.SVG:
             # handle svg which is just pretty print out as xml
             with open(self.target, 'wb') as f:
@@ -103,7 +102,7 @@ class IMGCommand(SimpleCommand):
         """
         Return a string representation of the object.
 
-        The string is of the form "IMGCommand(problem_field, file_name)". The
+        The string is of the form "ImageCommand(problem_field, file_name)". The
         representation is useful for debugging and logging.
 
         :return: A string representation of the object.

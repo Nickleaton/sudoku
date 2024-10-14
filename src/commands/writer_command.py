@@ -19,10 +19,7 @@ class WriterCommand(SimpleCommand):
         :param target: The name of the file to write the configuration to
         """
         super().__init__()
-        if isinstance(target, str):
-            self.target: Path = Path(target)
-        else:
-            self.target: Path = target
+        self.target: Path = Path(target) if isinstance(target, str) else target
         self.source: str = source
 
     def precondition_check(self, problem: Problem) -> None:
@@ -59,7 +56,7 @@ class WriterCommand(SimpleCommand):
         if not self.target.parent.exists():
             logging.info(f"Creating directory {self.target.parent}")
             self.target.mkdir(parents=True, exist_ok=True)
-        logging.info(f"Writing file {self.target}")
+        logging.info(f"Creating {self.target}")
         with open(self.target, 'w', encoding="utf-8") as f:
             f.write(problem[self.source])
             f.close()

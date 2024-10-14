@@ -1,3 +1,5 @@
+import logging
+
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -48,6 +50,8 @@ class CreateRulesCommand(SimpleCommand):
         Returns:
             None
         """
+        super().execute(problem)
+        logging.info(f"Creating {self.target}")
         problem.rules = [
             {'name': rule.name, 'text': rule.text}
             for rule in problem[self.constraints].sorted_unique_rules

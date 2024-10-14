@@ -45,7 +45,7 @@ class CreateSolverCommand(SimpleCommand):
         Build the board
         """
         super().execute(problem)
-        logging.info("Creating Board")
+        logging.info(f"Creating {self.target}")
         problem.board = Board.create('Board', problem.config)
 
     def __repr__(self) -> str:

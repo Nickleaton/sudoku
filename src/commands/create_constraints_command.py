@@ -40,7 +40,7 @@ class CreateConstraintsCommand(SimpleCommand):
         :return: None
         """
         super().execute(problem)
-        logging.info("Creating Constraints")
+        logging.info(f"Creating {self.target}")
         problem[self.target] = Item.create(problem[self.board], {'Constraints': problem[self.config]['Constraints']})
 
     def __repr__(self) -> str:

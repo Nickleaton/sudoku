@@ -1,5 +1,6 @@
 """ Produce the text in LP format for the problem.
 """
+import logging
 
 from src.commands.command import CommandException
 from src.commands.problem import Problem
@@ -70,6 +71,7 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
             None
         """
         super().execute(problem)
+        logging.info(f"Creating {self.target}")
         with TemporaryFile() as lf:
             problem[self.solver] = PulpSolver(problem[self.board], problem[self.config].name, lf.name)
             problem[self.constraints].bookkeeping()

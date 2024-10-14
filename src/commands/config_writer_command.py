@@ -6,6 +6,7 @@ import oyaml as yaml
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.utils.file_handling import is_writeable_file
 
 
 def represent_none(self, _):
@@ -50,7 +51,7 @@ class ConfigWriterCommand(SimpleCommand):
         """
         if self.source not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.source} does not exist in the problem')
-        if not SimpleCommand.check_writeable_file(self.target):
+        if not is_writeable_file(self.target):
             raise CommandException(f'{self.__class__.__name__} - {self.target} is not writeable')
 
     def execute(self, problem: Problem) -> None:
@@ -71,8 +72,8 @@ class ConfigWriterCommand(SimpleCommand):
         Returns:
             None
         """
-        logging.info(f"Writing config File {self.target}")
         super().execute(problem)
+        logging.info(f"Creating {self.target}")
         with open(self.target, 'w', encoding='utf-8') as file:
             yaml.dump(problem[self.source].todict(), file, default_style=None)
 

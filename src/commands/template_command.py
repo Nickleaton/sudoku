@@ -56,12 +56,11 @@ class TemplateCommand(SimpleCommand):
         Returns:
             None
         """
-        super().execute(problem)
         if self.template is None:
             logging.info(f"Loading template {self.template_file}")
             with open(self.template_file) as f:
-                self.template: Template = jinja2.Template(source=f.read())
-        logging.info(f"Producing template results into {self.target}")
+                self.template = jinja2.Template(source=f.read())
+        logging.info(f"Creating {self.target}")
         problem[self.target] = self.template.render(problem)
 
     def __repr__(self) -> str:

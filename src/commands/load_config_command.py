@@ -46,7 +46,8 @@ class LoadConfigCommand(SimpleCommand):
         :return: None
         """
         super().execute(problem)
-        logging.info(f"Loading config File {self.source}")
+        logging.info(f"Loading {self.source}")
+        logging.info(f"Creating {self.target}")
         with open(self.source, 'r', encoding='utf-8') as file:
             problem[self.target] = pydot(yaml.load(file, yaml.SafeLoader))
 

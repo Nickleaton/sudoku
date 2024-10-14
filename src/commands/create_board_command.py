@@ -41,7 +41,7 @@ class CreateBoardCommand(SimpleCommand):
             None
         """
         super().execute(problem)
-        logging.info("Creating Board")
+        logging.info(f"Creating {self.target}")
         problem[self.target] = Board.create('Board', problem[self.source])
 
     def __repr__(self) -> str:

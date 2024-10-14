@@ -55,7 +55,7 @@ class SVGCommand(SimpleCommand):
     def execute(self, problem: Problem) -> None:
         """ Produce the SVG"""
         super().execute(problem)
-        logging.info(f"Producing {self.name} svg")
+        logging.info(f'Creating {self.problem_field}')
 
         # Get the glyphs to draw
         # There's an ordering so the items are drawn in the right order

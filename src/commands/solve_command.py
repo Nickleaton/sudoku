@@ -44,7 +44,7 @@ class SolveCommand(SimpleCommand):
 
         """
         super().execute(problem)
-        logging.info(f"Solving problem ({problem.name}")
+        logging.info(f'Creating {self.solver}')
         problem[self.solver].solve()
         problem[self.target] = problem[self.solver].answer
         # Handle log

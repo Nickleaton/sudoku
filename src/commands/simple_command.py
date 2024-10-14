@@ -10,9 +10,8 @@ class SimpleCommand(Command):
     def __init__(self):
         super().__init__()
 
-    @abstractmethod
     def execute(self, problem: Problem) -> None:
-        pass
+        super().execute(problem)
 
     def __or__(self, other: 'Command') -> ComposedCommand:
         """
@@ -37,3 +36,4 @@ class SimpleCommand(Command):
         else:
             result.add(other)
         return result
+
