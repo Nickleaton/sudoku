@@ -16,9 +16,9 @@ Constraints:
   - FixedProductPair: 62-72=FP
 
   - FixedRatioPair: 25-26=FR
-#  - FixedRatioPair: 63-64=FR
-#  - FixedRatioPair: 72-73=FR
-#  - FixedRatioPair: 76-86=FR
+  - FixedRatioPair: 63-64=FR
+  - FixedRatioPair: 72-73=FR
+  - FixedRatioPair: 76-86=FR
 
   - FixedSumPair: 42-52=FS
   - FixedSumPair: 62-63=FS

@@ -1,4 +1,6 @@
-""" Load Config File """
+"""
+Load Config File.
+"""
 import logging
 from pathlib import Path
 
@@ -15,7 +17,7 @@ class LoadConfigCommand(SimpleCommand):
 
     def __init__(self, source: Path | str, target: str = 'config'):
         """
-        Initialize LoadConfigCommand
+        Initialize LoadConfigCommand.
 
         :param source: Path to the config file
         """
@@ -41,7 +43,7 @@ class LoadConfigCommand(SimpleCommand):
     def execute(self, problem: Problem) -> None:
 
         """
-        Load the configuration from the YAML file
+        Load the configuration from the YAML file.
 
         :return: None
         """

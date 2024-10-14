@@ -29,7 +29,7 @@ class ConfigWriterCommand(SimpleCommand):
                  target: Path | str = 'dump_config.yaml') -> None:
 
         """
-        Construct a ConfigWriterCommand
+        Construct a ConfigWriterCommand.
 
         :param source: The attribute of the problem to store the configuration in
         :param target: The name of the file to write the configuration to

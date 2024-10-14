@@ -1,4 +1,6 @@
-""" Base for different solvers """
+"""
+Base for different solvers.
+"""
 import logging
 
 from src.commands.command import CommandException
@@ -41,7 +43,6 @@ class SolveCommand(SimpleCommand):
     def execute(self, problem: Problem) -> None:
         """
         Solve the puzzle.
-
         """
         super().execute(problem)
         logging.info(f'Creating {self.solver}')
@@ -50,4 +51,13 @@ class SolveCommand(SimpleCommand):
         # Handle log
 
     def __repr__(self) -> str:
+        """
+        Return a string representation of the object.
+
+        The string is of the form "SolveCommand(solver, target, log)". The
+        representation is useful for debugging and logging.
+
+        :return: A string representation of the object.
+        :rtype: str
+        """
         return f'{self.__class__.__name__}({self.solver!r}, {self.target!r}, {self.log!r})'

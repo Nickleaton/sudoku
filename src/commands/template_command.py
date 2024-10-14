@@ -1,4 +1,6 @@
-""" Command to produce an HTML file of the puzzle"""
+"""
+Command to produce an HTML file of the puzzle.
+"""
 import logging
 from pathlib import Path
 from typing import Optional
@@ -13,12 +15,13 @@ from src.utils.file_handling import is_readable_file
 
 
 class TemplateCommand(SimpleCommand):
-    """ Render the problem using a Jinja2 template """
+    """ Render the problem using a Jinja2 template. """
 
     def __init__(self, template: Path | str, target: str):
-        """Create the command
+        """
+        Create the command.
 
-        :param template_file: name of the jinja2 template to use generating the html
+        :param template: name of the jinja2 template to use generating the html
         :param target: name of the field in the problem that will contain the html
         """
         super().__init__()

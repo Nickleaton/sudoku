@@ -1,4 +1,6 @@
-""" Command that takes a command that produces and output string and writes it to a file """
+"""
+Command that takes a command that produces and output string and writes it to a file.
+"""
 import logging
 from pathlib import Path
 
@@ -9,11 +11,13 @@ from src.utils.file_handling import is_writeable_file
 
 
 class WriterCommand(SimpleCommand):
-    """ Create a file from the output of a child command"""
+    """
+    Create a file from the output of a child command.
+    """
 
     def __init__(self, source: str, target: Path | str):
         """
-        Construct a
+        Constructor.
 
         :param source: The attribute of the problem to store the configuration in
         :param target: The name of the file to write the configuration to
@@ -40,7 +44,7 @@ class WriterCommand(SimpleCommand):
 
     def execute(self, problem: Problem) -> None:
         """
-        Produce the file
+        Produce the file.
 
         This method performs the actual work of the command. It logs an info message
         indicating that the command is being processed and creates a new file in the

@@ -468,7 +468,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         if 'whispers' in raw:
             out['Constraints'].extend(whispers(raw['whispers']))
         if 'xsum' in raw:
-            out['Constraints'].append(xsum(raw['xsum'], n))
+            out['Constraints'].extend (xsum(raw['xsum'], n))
         if 'xv' in raw:
             out['Constraints'].extend(xv(raw['xv']))
     except NotImplementedError as e:

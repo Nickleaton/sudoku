@@ -1,4 +1,6 @@
-""" Create an SVG drawing of the problem"""
+"""
+Create an SVG drawing of the problem.
+"""
 
 from src.commands.svg_command import SVGCommand
 from src.items.item import Item
@@ -10,7 +12,7 @@ class SVGProblemCommand(SVGCommand):
 
     def __init__(self, problem_field: str = "problem_svg"):
         """
-        Initialize the SVGProblemCommand
+        Initialize the SVGProblemCommand.
 
         Parameters:
             problem_field (str): The attribute of the problem that contains the root item to be drawn
@@ -18,7 +20,9 @@ class SVGProblemCommand(SVGCommand):
         super().__init__(problem_field)
 
     def select(self, item: Item) -> bool:
-        """ Selector
+        """
+        Selector.
+
         :param item: Item to check if it's included in the output
         :return: True if the item is to be displayed
         """

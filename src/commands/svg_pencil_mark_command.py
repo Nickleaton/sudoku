@@ -1,4 +1,6 @@
-""" Create an SVG drawing of the problem"""
+"""
+Create an SVG drawing of the problem.
+"""
 
 # TODO - not used by default
 # The idea is for the possible values, 1-9 as small numbers in each cell
@@ -13,7 +15,7 @@ class SVGPencilMarkCommand(SVGCommand):
 
     def __init__(self, problem_field: str = "pencil_mark_svg"):
         """
-        Initialize the SVGProblemCommand
+        Initialize the SVGProblemCommand.
 
         Parameters:
             problem_field (str): The attribute of the problem that contains the root item to be drawn
@@ -21,7 +23,8 @@ class SVGPencilMarkCommand(SVGCommand):
         super().__init__(problem_field)
 
     def select(self, item: Item) -> bool:
-        """ Selector
+        """
+        Selector.
 
         TODO
 

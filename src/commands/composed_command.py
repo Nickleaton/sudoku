@@ -1,4 +1,5 @@
-""" Standard composed command
+"""
+Standard composed command.
 
 see https://en.wikipedia.org/wiki/Command_pattern
 and https://en.wikipedia.org/wiki/Composite_pattern
@@ -12,8 +13,9 @@ from src.commands.problem import Problem
 
 
 class ComposedCommand(Command):
-    """ Command built from other commands
-    The class can be iterated
+    """
+    Command built from other commands.
+    The class can be iterated.
     """
 
     def __init__(self, items: Optional[List[Command]] = None):

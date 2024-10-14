@@ -2,6 +2,7 @@ Board:
   Title: Boundaries
   Authour: Josh Johnson
   Video : https://www.youtube.com/watch?v=U2ER6QCYn1E&ab_channel=zetamathdoespuzzles
+  Reference: https://sudokupad.app/4u0atuniiv
   Board: 9x9
   Boxes: 3x3
 
@@ -18,12 +19,12 @@ Constraints:
   - Renban: 46, 56, 66, 76, 85, 94
   - Renban: 78, 68, 58, 59, 69, 79
 
-  - KropkiPair2: 18-19
-  - KropkiPair2: 27-37
-  - KropkiPair2: 52-53
-  - KropkiPair2: 77-87
-  - KropkiPair2: 88-89
-  - KropkiPair2: 89-99
+  - KropkiPair: 18-19
+  - KropkiPair: 27-37
+  - KropkiPair: 52-53
+  - KropkiPair: 77-87
+  - KropkiPair: 88-89
+  - KropkiPair: 89-99
 
   - ConsecutivePair: 11-21
   - ConsecutivePair: 21-22

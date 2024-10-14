@@ -1,4 +1,6 @@
-""" Create an SVG drawing of the problem"""
+"""
+Create an SVG drawing of the problem.
+"""
 import logging
 import xml.dom.minidom
 
@@ -17,12 +19,12 @@ config = Config()
 
 class SVGCommand(SimpleCommand):
     """
-    Base class for SVG output commands
+    Base class for SVG output commands.
     """
 
     def __init__(self, problem_field: str):
         """
-        Initialize the SVGCommand
+        Initialize the SVGCommand.
 
         Parameters:
             problem_field (str): The attribute of the problem that contains the root item to be drawn
@@ -32,7 +34,8 @@ class SVGCommand(SimpleCommand):
 
     def select(self, item: Item | None) -> bool:
         """
-        Selects whether the given item is to be drawn
+        Selects whether the given item is to be drawn.
+
         To be over writen in subclasses
         Default behavior is to draw a Cell, Boxes, Rows, or Columns
 
@@ -53,7 +56,7 @@ class SVGCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - Constraints not built')
 
     def execute(self, problem: Problem) -> None:
-        """ Produce the SVG"""
+        """ Produce the SVG. """
         super().execute(problem)
         logging.info(f'Creating {self.problem_field}')
 
@@ -91,4 +94,13 @@ class SVGCommand(SimpleCommand):
         # problem[self.problem_field] = str(elements.toprettyxml())
 
     def __repr__(self) -> str:
+        """
+        Return a string representation of the object.
+
+        The string is of the form "SVGCommand(problem_field)". The
+        representation is useful for debugging and logging.
+
+        :return: A string representation of the object.
+        :rtype: str
+        """
         return f"{self.__class__.__name__}({self.problem_field!r})"

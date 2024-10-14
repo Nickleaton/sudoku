@@ -26,15 +26,15 @@ Constraints:
   - 163479258
   - 574682193
   - 298135746
-- - XSum: T2=9
-  - XSum: B8=19
-  - XSum: T5=13
-  - XSum: B5=18
-  - XSum: R5=8
-  - XSum: L5=14
-  - XSum: R8=13
-  - XSum: L8=30
-  - XSum: T8=5
-  - XSum: L2=20
-  - XSum: R2=40
-  - XSum: B2=45
+- XSum: T2=9
+- XSum: B8=19
+- XSum: T5=13
+- XSum: B5=18
+- XSum: R5=8
+- XSum: L5=14
+- XSum: R8=13
+- XSum: L8=30
+- XSum: T8=5
+- XSum: L2=20
+- XSum: R2=40
+- XSum: B2=45

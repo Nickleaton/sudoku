@@ -30,9 +30,9 @@ class TestItem(unittest.TestCase):
         return "Item:"
 
     def test_create(self) -> None:
+        config = yaml.load(self.config, Loader=yaml.SafeLoader)
         if self.item.__class__.__name__ == 'Item':
             return
-        config = yaml.load(self.config, Loader=yaml.SafeLoader)
         item = Item.create(self.board, config)
         self.assertIsNotNone(item)
         self.assertIsInstance(item, self.clazz)
@@ -41,10 +41,11 @@ class TestItem(unittest.TestCase):
 
     def test_name(self) -> None:
         self.assertIsNotNone(self.item.name)
+        self.assertTrue(self.item.name.startswith(f"{self.clazz.__name__}_"))
 
     @property
     def representation(self) -> str:
-        return "Item((Board(9, 9, 3, 3, None, None, None, None))"
+        return f"Item({self.board!r})"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.item))

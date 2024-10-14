@@ -5,7 +5,7 @@ import sys
 from commands.solve_command import SolveCommand
 from scripts.parser import parser
 from src.commands.html_command import HTMLCommand
-from src.commands.img_command import IMGCommand
+from src.commands.img_command import ImageCommand
 from src.commands.svg_command import SVGCommand
 
 # def produce_jpg(config: str, filename: Optional[str]) -> None:
@@ -62,9 +62,9 @@ if __name__ == "__main__":
         command = SVGCommand(args.config, args.svg)
         output = args.svg
     if args.png is not None:
-        command = IMGCommand(args.png, args.config)
+        command = ImageCommand(args.png, args.config)
     if args.jpg is not None:
-        command = IMGCommand(args.jpg, args.config)
+        command = ImageCommand(args.jpg, args.config)
     command.execute()
     command.write()
     sys.exit(0)

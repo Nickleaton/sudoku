@@ -40,10 +40,6 @@ class TestLine(TestRegion):
         )
 
     def test_repr(self):
-        if self.representation != repr(self.item):
-            print(self.representation)
-            print (repr(self.item))
-            pass
         self.assertEqual(self.representation, repr(self.item))
 
     @property

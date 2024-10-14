@@ -1,4 +1,6 @@
-""" Base class for all image producing classes"""
+"""
+Base class for all image producing classes.
+"""
 import logging
 from enum import Enum
 from pathlib import Path
@@ -13,7 +15,7 @@ from src.utils.file_handling import is_readable_file
 
 
 class ImageFormat(Enum):
-    """ Enum for image formats """
+    """ Enum for image formats. """
     PNG = "png"
     GIF = "gif"
     JPEG = "jpeg"

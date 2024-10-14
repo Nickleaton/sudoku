@@ -7,7 +7,7 @@ from src.commands.simple_command import SimpleCommand
 class NullCommand(SimpleCommand):
     def __init__(self):
         """
-        Construct a NullCommand
+        Construct a NullCommand.
 
         This command does nothing and is used to indicate
         where a command should be inserted in a composed command

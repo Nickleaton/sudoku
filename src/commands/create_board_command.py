@@ -1,4 +1,6 @@
-""" Build Board Command """
+"""
+Build Board Command.
+"""
 import logging
 
 from src.commands.command import CommandException

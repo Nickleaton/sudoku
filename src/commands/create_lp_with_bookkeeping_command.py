@@ -10,7 +10,7 @@ from src.utils.temporary_file import TemporaryFile
 
 
 class CreateLPWithBookkeepingCommand(SimpleCommand):
-    """ Produce LP Version of the problem"""
+    """ Produce LP Version of the problem. """
 
     def __init__(self,
                  board: str = 'board',
@@ -20,7 +20,7 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
                  target: str = 'linear_program'
                  ):
         """
-        Construct a CreateLPWithBookkeepingCommand
+        Construct a CreateLPWithBookkeepingCommand.
 
         :param board: The field containing the board
         :param config: The field containing the configuration

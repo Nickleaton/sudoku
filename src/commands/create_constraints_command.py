@@ -9,7 +9,7 @@ from src.items.item import Item
 class CreateConstraintsCommand(SimpleCommand):
     def __init__(self, config: str = 'config', board: str = 'board', target: str = 'constraints'):
         """
-        Construct a CreateConstraintsCommand
+        Construct a CreateConstraintsCommand.
 
         :param source: The source attribute to use to build the constraints
         :param target: The name of the attribute to store the constraints in
@@ -35,7 +35,7 @@ class CreateConstraintsCommand(SimpleCommand):
 
     def execute(self, problem: Problem) -> None:
         """
-        Build the constraints
+        Build the constraints.
 
         :return: None
         """

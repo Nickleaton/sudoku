@@ -1,4 +1,6 @@
-""" Build Board Command """
+"""
+Build Solver Command.
+"""
 import logging
 
 from src.commands.command import CommandException
@@ -15,7 +17,7 @@ class CreateSolverCommand(SimpleCommand):
                  target: str = 'solver'
                  ):
         """
-        Construct a CreateSolverCommand
+        Construct a CreateSolverCommand.
 
         :param config: The attribute of the problem containing the configuration
         :param board: The attribute of the problem containing the board
@@ -42,7 +44,7 @@ class CreateSolverCommand(SimpleCommand):
 
     def execute(self, problem: Problem) -> None:
         """
-        Build the board
+        Build the Solver.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
