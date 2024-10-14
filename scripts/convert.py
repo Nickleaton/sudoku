@@ -144,7 +144,7 @@ def clone(data: List) -> List:
             r2.append(c2[1] + c2[3])
         s1 = ",".join(r1)
         s2 = ",".join(r2)
-        region['ClonedRegion'] = [s1, s2]
+        region['ClonedRegion'] = f"{s1}={s2}"
         result.append(region)
     return result
 
