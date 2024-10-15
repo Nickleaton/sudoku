@@ -82,7 +82,7 @@
     <target name="mypy">
         <mkdir dir="output/mypy"/>
         <exec executable="mypy" failonerror="false" taskname="mypy">
-            <arg value=" --check-untyped-defs"/>
+            <arg value="--check-untyped-defs"/>
             <arg value="--namespace-packages"/>
             <arg value="--html-report"/>
             <arg value="output/mypy"/>
