@@ -22,7 +22,7 @@ class SVGPencilMarkCommand(SVGCommand):
         """
         super().__init__(problem_field)
 
-    def select(self, item: Item) -> bool:
+    def select(self, item: Item | None) -> bool:
         """
         Selector.
 

@@ -9,7 +9,7 @@ from src.solvers.answer import Answer
 
 class SVGAnswerCommand(SVGCommand):
 
-    def select(self, item: Item) -> bool:
+    def select(self, item: Item | None) -> bool:
         """
         Selector.
         :param item: Item to check if it's included in the output
