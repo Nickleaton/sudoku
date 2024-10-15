@@ -18,7 +18,9 @@ class Glyph(ABC):
     def __init__(self, class_name: str):
         """
         Constructor
-        :param class_name: name of the class
+        :param class_name: name of the class creating the glyph. The
+        same glyph can be created from different classes, and the css depends on the
+        creator of the class, not the glyph itself.
         :type class_name: str
         """
         self.class_name = class_name
