@@ -73,7 +73,6 @@ class Config:
         try:
             with open(self.config_file_path) as file:
                 self.config = pydot(yaml.load(file, Loader=yaml.SafeLoader))
-            self.validate()
         except FileNotFoundError:
             raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}")
         except yaml.YAMLError as e:
