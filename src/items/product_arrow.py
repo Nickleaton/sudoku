@@ -23,7 +23,7 @@ class ProductArrow(Line):
             )
         ]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [ArrowLineGlyph('Arrow', [cell.coord for cell in self.cells])]
 
     @property

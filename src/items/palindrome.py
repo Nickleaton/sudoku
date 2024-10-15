@@ -14,7 +14,7 @@ class Palindrome(Line):
     def rules(self) -> List[Rule]:
         return [Rule('Palindrome', 1, "Cells along a purple line form a palindrome")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('Palindrome', [cell.coord for cell in self.cells], False, False)]
 
     @property

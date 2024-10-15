@@ -17,7 +17,7 @@ class FrozenThermometer(Thermometer):
     def rules(self) -> List[Rule]:
         return [Rule('FrozenThermo', 1, "Cells along a line with a bulb increase or stay the same from the bulb end")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             FrozenThermometerGlyph('FrozenThermometer', [cell.coord for cell in self.cells])
         ]

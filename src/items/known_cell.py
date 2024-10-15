@@ -76,7 +76,7 @@ class KnownCell(CellReference):
     def letter(self) -> str:
         return str(self.digit)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         """
         Return a list of SVG glyphs for this item.
 

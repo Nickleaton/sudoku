@@ -19,5 +19,5 @@ class BLTR(StandardDiagonal):
     def add_constraint(self, solver: PulpSolver) -> None:
         self.add_unique_constraint(solver)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]

@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Tuple, List, Set, Type, Optional, Callable
+from typing import Dict, Tuple, List, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -35,11 +35,11 @@ class Sandwich(Item):
         return side, offset, total
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> 'Sandwich':
         side, offset, total = cls.extract(board, yaml)
         return cls(board, side, offset, total)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('Sandwich', 0, self.position, str(self.total)),
         ]
@@ -59,12 +59,6 @@ class Sandwich(Item):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.total})"
-
-    @property
-    def used_classes(self) -> Set[Type['Item']]:
-        result = super().used_classes
-        result = result.union([self.__class__])
-        return result
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
@@ -96,7 +90,7 @@ class Sandwich(Item):
             Functions.triangular(self.board.maximum_digit),
             LpInteger
         )
-        for column in self.board.board_columns:
+        for column in self.board.column_range:
             one = solver.choices[1][self.index][column]
             big = solver.choices[self.board.maximum_digit][self.index][column]
             solver.model += bread[column] == one + big, f"Bread_column_{self.index}_{column}"
@@ -115,7 +109,7 @@ class Sandwich(Item):
             Functions.triangular(self.board.maximum_digit),
             LpInteger
         )
-        for row in self.board.board_rows:
+        for row in self.board.row_range:
             one = solver.choices[1][row][self.index]
             big = solver.choices[self.board.maximum_digit][row][self.index]
             solver.model += bread[row] == one + big, f"Bread_row_{row}_{self.index}"

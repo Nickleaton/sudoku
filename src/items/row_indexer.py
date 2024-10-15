@@ -24,7 +24,7 @@ class RowIndexer(Indexer):
     def other_variant() -> str:
         return "column"
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [RectGlyph('RowIndexer', Coord(self.index, 1), Coord(1, self.board.board_rows))]
 
     @property

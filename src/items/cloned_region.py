@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Callable, Set, Type
+from typing import List, Tuple, Dict, Set, Type
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -66,22 +66,28 @@ class ClonedRegion(Item):
         cells_a, cells_b = ClonedRegion.extract(board, yaml)
         return ClonedRegion(board, cells_a, cells_b)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         # TODO
         return []
 
     @property
-    def used_classes(self) -> Set[Type['Item']]:
+    def used_classes(self) -> Set[Type[Item]]:
         """
-        Get the set of items used in the two regions.
+        Return a set of classes that this item uses.
 
-        :return: A set of items
+        The set of classes is determined by traversing the method resolution
+        order (MRO) of the item's class. The set contains all classes in the
+        MRO, except for the abstract base class (`abc.ABC`) and the `object`
+        class.
+
+        Returns:
+            Set[Type[Self]]: A set of classes that this item uses.
         """
         result = super().used_classes
         for item in self.region_a:
-            result = result.union(item.used_classes)
+            result |= item.used_classes
         for item in self.region_b:
-            result = result.union(item.used_classes)
+            result |= item.used_classes
         return result
 
     @property

@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, List, Set, Type, Callable
+from typing import Dict, Tuple, List
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -44,7 +44,7 @@ class NumberedRoom(Item):
         side, offset, digit = cls.extract(board, yaml)
         return cls(board, side, offset, digit)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('NumberedRoom', 0, self.reference, str(self.digit)),
         ]
@@ -65,12 +65,6 @@ class NumberedRoom(Item):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.digit})"
-
-    @property
-    def used_classes(self) -> Set[Type['Item']]:
-        result = super().used_classes
-        result = result.union([self.__class__])
-        return result
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}

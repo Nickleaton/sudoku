@@ -36,7 +36,7 @@ class SpecialRegion(Region):
     def rules(self) -> List[Rule]:
         return [Rule(self.region_name(), 1, 'Digits cannot repeat in highlighted cells')]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [SquareGlyph(self.region_name(), cell.coord, 1) for cell in self.cells]
 
     @property

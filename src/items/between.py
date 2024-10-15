@@ -24,7 +24,7 @@ class Between(Line):
             )
         ]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [BetweenLineGlyph('Between', [cell.coord for cell in self.cells])]
 
     @property

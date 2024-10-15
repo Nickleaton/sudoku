@@ -1,9 +1,10 @@
 import abc
 import logging
 from abc import ABC
-from typing import Optional, List, Set, Type, Dict, Callable, Self
+from typing import Optional, List, Set, Type, Dict, Callable
 
 from sortedcontainers import SortedDict
+from typing_extensions import Self
 
 from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
@@ -167,7 +168,7 @@ class Item(ABC):
         """
         return sorted(list(set(self.rules)))
 
-    def glyphs(self, selector: Callable[[Self], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         """
         Return a list of SVG glyphs for this item.
 
@@ -202,7 +203,7 @@ class Item(ABC):
         Returns:
             Glyph: A single glyph representing all the glyphs for this item.
         """
-        return ComposedGlyph('Composed', sorted(self.glyphs(selector)))
+        return ComposedGlyph('Composed', sorted(self.glyphs()))
 
     @property
     def name(self) -> str:
@@ -232,7 +233,7 @@ class Item(ABC):
         return set()
 
     @property
-    def used_classes(self) -> Set[Type[Self]]:
+    def used_classes(self) -> Set[Type['Item']]:
         """
         Return a set of classes that this item uses.
 
@@ -244,6 +245,10 @@ class Item(ABC):
         Returns:
             Set[Type[Self]]: A set of classes that this item uses.
         """
+
+        # Since Item isn't completely declared yet, we need to
+        # get the class at runtime
+
         return set(self.__class__.__mro__).difference({abc.ABC, object})
 
     #

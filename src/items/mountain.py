@@ -20,7 +20,7 @@ class Mountain(Line):
             )
         ]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('Mountain', [cell.coord for cell in self.cells], False, False)]
 
     @property

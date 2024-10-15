@@ -14,7 +14,7 @@ class SimpleThermometer(Thermometer):
     def rules(self) -> List[Rule]:
         return [Rule('SimpleThermometer', 1, "Cells along a line with a bulb strictly increase from the bulb end")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             SimpleThermometerGlyph('Thermometer', [cell.coord for cell in self.cells])
         ]

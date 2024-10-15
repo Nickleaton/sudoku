@@ -51,7 +51,7 @@ class Window(Region):
     def rules(self) -> List[Rule]:
         return [Rule('Window', 1, 'Digits in same shaded window must be unique')]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [SquareGlyph('Window', self.center - Coord(1, 1), 3)]
 
     @property

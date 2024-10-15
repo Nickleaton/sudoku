@@ -52,7 +52,7 @@ class Cell(Item):
     def cells() -> List['Cell']:
         return list(Cell.cache.values())
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [CellGlyph('Cell', Coord(self.row, self.column))]
 
     @classmethod

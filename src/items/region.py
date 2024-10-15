@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Set, Type
 
 from pulp import lpSum
 
@@ -63,3 +63,23 @@ class Region(ComposedItem):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: None}
+
+    @property
+    def used_classes(self) -> Set[Type[Item]]:
+        """
+        Return a set of classes that this item uses.
+
+        The set of classes is determined by traversing the method resolution
+        order (MRO) of the item's class. The set contains all classes in the
+        MRO, except for the abstract base class (`abc.ABC`) and the `object`
+        class.
+
+        Returns:
+            Set[Type[Self]]: A set of classes that this item uses.
+        """
+        result = super().used_classes
+        # Iterate over the cells in the region
+        for cell in self.cells:
+            # Add the used classes of the cell to the result
+            result |= cell.used_classes
+        return result

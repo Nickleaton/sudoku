@@ -13,7 +13,7 @@ class DutchWhisper(GreaterThanEqualDifferenceLine):
     def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board, cells, 4)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [PolyLineGlyph('DutchWhisper', [cell.coord for cell in self.cells], False, False)]
 
     @property

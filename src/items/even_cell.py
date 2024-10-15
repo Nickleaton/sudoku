@@ -28,7 +28,7 @@ class EvenCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "An opaque grey square must contain an even digit")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [EvenCellGlyph('EvenCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:

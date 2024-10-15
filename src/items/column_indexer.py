@@ -24,7 +24,7 @@ class ColumnIndexer(Indexer):
     def other_variant() -> str:
         return "row"
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [RectGlyph('ColumnIndexer', Coord(1, self.index), Coord(self.board.board_columns, 1))]
 
     def add_constraint(self, solver: PulpSolver) -> None:

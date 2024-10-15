@@ -23,7 +23,7 @@ class Battenburg(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Quadruple', 3, 'Digits appearing in at last one of the cells adjacent to the circle')]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             BattenburgGlyph(class_name="Battenburg", coord=self.position)
         ]

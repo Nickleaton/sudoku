@@ -27,7 +27,7 @@ class OrthogonalProduct(Product):
                  'The number in the top left of the cell is product of the orthoganally adjacent digits')
         ]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph('Product', 0, self.position + Coord(0.15, 0.15), str(self.product))
         ]

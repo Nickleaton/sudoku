@@ -1,3 +1,4 @@
+from itertools import chain
 from typing import List, Set, Type, Sequence, Dict, Callable
 
 from src.glyphs.glyph import Glyph
@@ -47,14 +48,18 @@ class ComposedItem(Item):
             result.extend(item.flatten())
         return result
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
-        result = []
-        for item in self.items:
-            if selector(item):
-                result.extend(item.glyphs(selector))
-            # else:
-            #     print(f"Skipping glyphs for {item.__class__.__name__}")
-        return result
+    def glyphs(self) -> List[Glyph]:
+        """
+        Return a list of glyphs associated with this item.
+
+        The glyphs are determined by recursively traversing the item tree and
+        calling the `glyphs` method on each item.
+
+        Returns:
+            List[Glyph]: A list of glyphs associated with this item.
+        """
+        return list(chain.from_iterable(item.glyphs() for item in self.items))
+
 
     @property
     def tags(self) -> set[str]:
@@ -66,9 +71,8 @@ class ComposedItem(Item):
     @property
     def used_classes(self) -> Set[Type['Item']]:
         result = super().used_classes
-        result = result.union({ComposedItem})
         for item in self.items:
-            result = result.union(item.used_classes)
+            result |= item.used_classes
         return result
 
     def add_constraint(self, solver: PulpSolver) -> None:

@@ -33,7 +33,7 @@ class UniqueRegion(Region):
         cells = UniqueRegion.extract(board, yaml)
         return UniqueRegion(board, cells)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         # TODO
         return []
 

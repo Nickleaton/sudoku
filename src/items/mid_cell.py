@@ -32,7 +32,7 @@ class MidCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Mid", 1, "The digits 4, 5 and 6 are marked with blue squares")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [MidCellGlyph('MidCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:

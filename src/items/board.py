@@ -65,17 +65,19 @@ class Board:
 
     @classmethod
     def create(cls, name: str, yaml_data: Dict) -> 'Board':
-        y = yaml_data[name]
+        y: Dict = yaml_data[name]
+        board_rows: int
+        board_columns: int
         board_rows, board_columns = Board.parse_xy(y['Board'])
-        box_rows = 0
-        box_columns = 0
+        box_rows: int = 0
+        box_columns: int = 0
         if 'Boxes' in y:
             box_rows, box_columns = Board.parse_xy(y['Boxes'])
 
-        reference = y['Reference'] if 'Reference' in y else None
-        video = y['Video'] if 'Video' in y else None
-        title = y['Title'] if 'Title' in y else None
-        author = y['Author'] if 'Author' in y else None
+        reference: str | None = y['Reference'] if 'Reference' in y else None
+        video: str | None = y['Video'] if 'Video' in y else None
+        title: str | None = y['Title'] if 'Title' in y else None
+        author: str | None = y['Author'] if 'Author' in y else None
         return Board(
             board_rows,
             board_columns,
@@ -87,8 +89,8 @@ class Board:
             author
         )
 
-    def to_dict(self):
-        result = {'Board': {}}
+    def to_dict(self) -> Dict:
+        result: Dict = {'Board': {}}
         result['Board']['Board'] = f"{self.board_rows}x{self.board_columns}"
         if self.box_rows is not None:
             result['Board']['Boxes'] = f"{self.box_rows}x{self.box_columns}"

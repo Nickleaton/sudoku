@@ -15,5 +15,5 @@ class AntiTLBR(AntiDiagonal):
         super().__init__(board)
         self.add_items([Cell.make(board, i, i) for i in board.row_range])
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]

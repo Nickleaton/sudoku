@@ -22,13 +22,6 @@ class Pair(Region):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
 
-    @property
-    def used_classes(self) -> Set[Type[Item]]:
-        result = set(self.__class__.__mro__).difference({abc.ABC, object})
-        result = result.union(self.cell_1.used_classes)
-        result = result.union(self.cell_2.used_classes)
-        return result
-
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
         c1_str, c2_str = yaml[cls.__name__].split('-')
@@ -53,7 +46,7 @@ class Pair(Region):
     def label(self) -> str:
         return ""
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         if self.label != "":
             return [
                 EdgeTextGlyph(

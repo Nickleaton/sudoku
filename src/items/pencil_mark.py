@@ -25,7 +25,7 @@ class PencilMarkCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("PencilMark", 1, "Digits restricted")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return []
 
     def css(self) -> Dict:

@@ -11,12 +11,6 @@ class Constraints(ComposedItem):
         super().__init__(board, [])
         self._n = 0
 
-    @property
-    def used_classes(self) -> Set[Type['Item']]:
-        result = super().used_classes
-        result = result.union({Constraints})
-        return result
-
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
         result = cls(board)

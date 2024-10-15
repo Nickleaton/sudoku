@@ -23,7 +23,7 @@ class FortressCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Odd", 1, "The digit in a fortress cell must be bigger than its orthogonal neighbours")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [FortressCellGlyph('FortressCell', Coord(self.row, self.column))]
 
     @property

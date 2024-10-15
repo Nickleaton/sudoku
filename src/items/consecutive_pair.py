@@ -1,8 +1,8 @@
 import re
 from typing import List, Tuple, Dict
 
-from src.glyphs.glyph import Glyph
 from src.glyphs.consecutive_glyph import ConsecutiveGlyph
+from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
@@ -13,7 +13,7 @@ from src.utils.rule import Rule
 class ConsecutivePair(LessThanEqualDifferencePair):
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
-        super().__init__(board, cell_1, cell_2, 1)
+        super().__init__(board, cell_1, cell_2, [1])
 
     @property
     def difference(self) -> int:
@@ -44,7 +44,7 @@ class ConsecutivePair(LessThanEqualDifferencePair):
     def tags(self) -> set[str]:
         return super().tags.union({'Consecutive'})
 
-    def glyphs(self, selector) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [ConsecutiveGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
     def __repr__(self) -> str:

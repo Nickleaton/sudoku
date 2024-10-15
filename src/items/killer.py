@@ -39,7 +39,7 @@ class Killer(Region):
         total, cells = Killer.extract(board, yaml)
         return Killer(board, total, cells)
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         # TODO
         return []
 

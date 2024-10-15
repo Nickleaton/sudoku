@@ -27,7 +27,7 @@ class Exclusion(Item):
     def rules(self) -> List[Rule]:
         return [Rule('Exclusion', 3, 'Digit(s) cannot appear in the cells adjacent to the circle')]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [
             QuadrupleGlyph(class_name="Exclusion", position=self.position, numbers=self.numbers)
         ]

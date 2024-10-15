@@ -45,7 +45,7 @@ class Box(StandardRegion):
     def rules(self) -> List[Rule]:
         return [Rule('Box', 1, 'Digits in each box must be unique')]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return [BoxGlyph('Box', self.position, self.size)]
 
     @property

@@ -31,7 +31,7 @@ class HighCell(CellReference):
     def rules(self) -> List[Rule]:
         return [Rule("Low", 1, "The digits 7, 8 and 9 are not marked")]
 
-    def glyphs(self, selector: Callable[[Item], bool]) -> List[Glyph]:
+    def glyphs(self) -> List[Glyph]:
         return []
         # return [HighCellGlyph('HighCell', Coord(self.row, self.column))]
 
