@@ -1,9 +1,11 @@
 """ Generate a temporary filename in the temp directory
 
+Example:
+    ```
         with TemporaryFile() as tf:
             with open (tf.name, 'w') as f:
                 f.write ("Hello World")
-
+    ```
 """
 import logging
 from pathlib import Path
@@ -18,7 +20,7 @@ class TemporaryFile:
     """ Generate a temporary file name. Runs in a context """
 
     def __init__(self):
-        """  Create Temporary file
+        """  Create Temporary file.
 
         Use the config temporary directory specified in the config file
         """
