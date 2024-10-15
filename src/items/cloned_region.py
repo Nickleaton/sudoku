@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Set, Type
+from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -71,24 +71,8 @@ class ClonedRegion(Item):
         return []
 
     @property
-    def used_classes(self) -> Set[Type[Item]]:
-        """
-        Return a set of classes that this item uses.
-
-        The set of classes is determined by traversing the method resolution
-        order (MRO) of the item's class. The set contains all classes in the
-        MRO, except for the abstract base class (`abc.ABC`) and the `object`
-        class.
-
-        Returns:
-            Set[Type[Self]]: A set of classes that this item uses.
-        """
-        result = super().used_classes
-        for item in self.region_a:
-            result |= item.used_classes
-        for item in self.region_b:
-            result |= item.used_classes
-        return result
+    def references(self) -> List[Item]:
+        return self.region_a + self.region_b
 
     @property
     def rules(self) -> List[Rule]:

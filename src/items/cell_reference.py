@@ -1,4 +1,4 @@
-from typing import List, Set, Type, Tuple, Optional, Dict
+from typing import List, Set, Tuple, Optional, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -43,24 +43,11 @@ class CellReference(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r})"
 
     @property
-    def used_classes(self) -> Set[Type['Item']]:
-        """
-        Return a set of classes that this item uses.
-
-        The set of classes is determined by traversing the method resolution
-        order (MRO) of the item's class. The set contains all classes in the
-        MRO, except for the abstract base class (`abc.ABC`) and the `object`
-        class.
-
-        Returns:
-            Set[Type[Self]]: A set of classes that this item uses.
-        """
-        return super().used_classes | self.cell.used_classes
-
+    def references(self) -> List[Item]:
+        return [self.cell]
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: int(self.cell.row_column_string)}
-
 
     def children(self) -> Set[Item]:
         return {self, self.cell}

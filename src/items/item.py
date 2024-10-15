@@ -245,13 +245,25 @@ class Item(ABC):
         Returns:
             Set[Type[Self]]: A set of classes that this item uses.
         """
+        # Get the hierarchy of the class
+        result = set(self.__class__.__mro__).difference({abc.ABC, object})
+        # handle the references
+        for reference in self.references:
+            result |= reference.used_classes
+        return result
 
-        # Since Item isn't completely declared yet, we need to
-        # get the class at runtime
+    @property
+    def references(self) -> List['Item']:
+        """
+        Return a list of items that this item references.
 
-        return set(self.__class__.__mro__).difference({abc.ABC, object})
+        The default implementation returns an empty list, which means that there
+        are no items that this item references.
 
-    #
+        Returns:
+            List[Self]: A list of items that this item references.
+        """
+        return []
 
     @staticmethod
     def select_all(_: 'Item') -> bool:

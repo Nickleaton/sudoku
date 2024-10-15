@@ -1,5 +1,5 @@
 from itertools import chain
-from typing import List, Set, Type, Sequence, Dict, Callable
+from typing import List, Set, Sequence, Dict
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -60,7 +60,6 @@ class ComposedItem(Item):
         """
         return list(chain.from_iterable(item.glyphs() for item in self.items))
 
-
     @property
     def tags(self) -> set[str]:
         result = super().tags
@@ -69,11 +68,8 @@ class ComposedItem(Item):
         return result
 
     @property
-    def used_classes(self) -> Set[Type['Item']]:
-        result = super().used_classes
-        for item in self.items:
-            result |= item.used_classes
-        return result
+    def references(self) -> List[Item]:
+        return list(chain.from_iterable(item.references for item in self.items))
 
     def add_constraint(self, solver: PulpSolver) -> None:
         for item in self.items:
