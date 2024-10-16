@@ -64,7 +64,7 @@ class SVGCommand(SimpleCommand):
         # There's an ordering so the items are drawn in the right order
         # This is what sorted glyphs does
         # self.select is passed in and that will select which glyphs are to be drawn
-        glyphs: Glyph = problem.constraints.sorted_glyphs(self.select)
+        glyphs: Glyph = problem.constraints.sorted_glyphs()
 
         # Create the canvas for the SVG
         # There is a one cell border around the drawing
