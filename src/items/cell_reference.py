@@ -1,4 +1,4 @@
-from typing import List, Set, Tuple, Optional, Dict
+from typing import List, Set, Tuple, Optional, Dict, Type, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -43,8 +43,34 @@ class CellReference(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r})"
 
     @property
-    def references(self) -> List[Item]:
-        return [self.cell]
+    def used_classes(self) -> Set[Type['Item']]:
+        """
+        Return a set of classes that this item uses.
+
+        The set of classes is determined by traversing the method resolution
+        order (MRO) of the item's class. The set contains all classes in the
+        MRO, except for the abstract base class (`abc.ABC`) and the `object`
+        class.
+
+        Returns:
+            Set[Type[Self]]: A set of classes that this item uses.
+        """
+        return super().used_classes | self.cell.used_classes
+
+    def walk(self) -> Iterator[Item]:
+        """
+        Yield each item in the tree of items rooted at the current item.
+
+        The generator yields the current item, then recursively yields each item
+        in the tree rooted at the current item. The order of the items is
+        unspecified.
+
+        Yields:
+            Item: The current item, followed by each item in the tree rooted at
+                the current item.
+        """
+        yield self
+        yield self.cell
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: int(self.cell.row_column_string)}

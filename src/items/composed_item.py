@@ -1,5 +1,5 @@
 from itertools import chain
-from typing import List, Set, Sequence, Dict
+from typing import List, Set, Sequence, Dict, Type, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -15,7 +15,6 @@ class ComposedItem(Item):
         super().__init__(board)
         self.items: List[Item] = []
         self.add_items(items)
-        self._n: int = 0
 
     def regions(self) -> Set['Item']:
         result: Set[Item] = {self}
@@ -67,9 +66,21 @@ class ComposedItem(Item):
             result = result.union(item.tags)
         return result
 
-    @property
-    def references(self) -> List[Item]:
-        return list(chain.from_iterable(item.references for item in self.items))
+    def walk(self) -> Iterator[Item]:
+        """
+        Yield each item in the tree of items rooted at the current item.
+
+        The generator yields the current item, then recursively yields each item
+        in the tree rooted at the current item. The order of the items is
+        unspecified.
+
+        Yields:
+            Item: The current item, followed by each item in the tree rooted at
+                the current item.
+        """
+        yield self
+        for item in self.items:
+            yield from item.walk()
 
     def add_constraint(self, solver: PulpSolver) -> None:
         for item in self.items:
@@ -79,24 +90,8 @@ class ComposedItem(Item):
         for item in self.items:
             item.bookkeeping()
 
-    def children(self) -> Set[Item]:
-        result = {self}
-        for item in self.items:
-            result = result.union(item.children())
-        return result
-
     def __iter__(self):
-        self._n = 0
-        return self
-
-    def __next__(self) -> Item:
-        if self._n < len(self.items):
-            result = self.items[self._n]
-            self._n += 1
-        else:
-            self._n = 0
-            raise StopIteration
-        return result
+        return iter(self.items)
 
     def __len__(self) -> int:
         return len(self.items)

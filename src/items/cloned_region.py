@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Type, Set, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -71,8 +71,42 @@ class ClonedRegion(Item):
         return []
 
     @property
-    def references(self) -> List[Item]:
-        return self.region_a + self.region_b
+    def used_classes(self) -> Set[Type[Item]]:
+        """
+        Return a set of classes that this item uses.
+
+        The set of classes is determined by traversing the method resolution
+        order (MRO) of the item's class. The set contains all classes in the
+        MRO, except for the abstract base class (`abc.ABC`) and the `object`
+        class.
+
+        Returns:
+            Set[Type[Self]]: A set of classes that this item uses.
+        """
+        result = super().used_classes
+        for item in self.region_a:
+            result |= item.used_classes
+        for item in self.region_b:
+            result |= item.used_classes
+        return result
+
+    def walk(self) -> Iterator[Item]:
+        """
+        Yield each item in the tree of items rooted at the current item.
+
+        The generator yields the current item, then recursively yields each item
+        in the tree rooted at the current item. The order of the items is
+        unspecified.
+
+        Yields:
+            Item: The current item, followed by each item in the tree rooted at
+                the current item.
+        """
+        yield self
+        for item in self.region_a:
+            yield from item.walk()
+        for item in self.region_b:
+            yield from item.walk()
 
     @property
     def rules(self) -> List[Rule]:

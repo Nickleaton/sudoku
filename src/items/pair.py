@@ -1,5 +1,5 @@
 import abc
-from typing import List, Set, Type, Tuple, Dict, Callable
+from typing import List, Set, Type, Tuple, Dict, Callable, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.edge_text_glyph import EdgeTextGlyph
@@ -58,6 +58,7 @@ class Pair(Region):
                 )
             ]
         return []
+
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}

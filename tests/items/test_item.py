@@ -97,6 +97,12 @@ class TestItem(unittest.TestCase):
             print()
         self.assertCountEqual(expected_names, used_names)
 
+    def test_walk(self):
+        count = 1
+        for item in self.item.walk():
+            count += 1
+        self.assertGreaterEqual(count, 1)
+
     def test_add_constraint(self) -> None:
         solver = PulpSolver(self.board, 'test', Path("output/logs/tests"))
         self.item.add_constraint(solver)

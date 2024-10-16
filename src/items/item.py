@@ -1,7 +1,7 @@
 import abc
 import logging
 from abc import ABC
-from typing import Optional, List, Set, Type, Dict, Callable
+from typing import Optional, List, Set, Type, Dict, Iterator
 
 from sortedcontainers import SortedDict
 from typing_extensions import Self
@@ -179,26 +179,16 @@ class Item(ABC):
         So if we have answers in the tree, and we want the puzzle problem without
         the solution we can exclude it using a selector
 
-        Args:
-            selector (Callable[[Item], bool]): A function that takes an item and
-                returns a boolean indicating whether to include it in the list
-                of glyphs.
-
         Returns:
             List[Glyph]: A list of glyphs.
         """
         return []
 
-    def sorted_glyphs(self, selector: Callable[[Self], bool]) -> Glyph:
+    def sorted_glyphs(self) -> Glyph:
         """
         Return a single glyph representing all the glyphs for this item.
 
         The glyphs are sorted by their `z_order` attribute.
-
-        Args:
-            selector (Callable[[Item], bool]): A function that takes an item and
-                returns a boolean indicating whether to include it in the list
-                of glyphs.
 
         Returns:
             Glyph: A single glyph representing all the glyphs for this item.
@@ -232,6 +222,20 @@ class Item(ABC):
         """
         return set()
 
+    def walk(self) -> Iterator['Item']:
+        """
+        Yield each item in the tree of items rooted at the current item.
+
+        The generator yields the current item, then recursively yields each item
+        in the tree rooted at the current item. The order of the items is
+        unspecified.
+
+        Yields:
+            Item: The current item, followed by each item in the tree rooted at
+                the current item.
+        """
+        yield self
+
     @property
     def used_classes(self) -> Set[Type['Item']]:
         """
@@ -246,24 +250,11 @@ class Item(ABC):
             Set[Type[Self]]: A set of classes that this item uses.
         """
         # Get the hierarchy of the class
-        result = set(self.__class__.__mro__).difference({abc.ABC, object})
         # handle the references
-        for reference in self.references:
-            result |= reference.used_classes
-        return result
-
-    @property
-    def references(self) -> List['Item']:
-        """
-        Return a list of items that this item references.
-
-        The default implementation returns an empty list, which means that there
-        are no items that this item references.
-
-        Returns:
-            List[Self]: A list of items that this item references.
-        """
-        return []
+        result = set(self.__class__.__mro__)
+        for item in self.walk():
+            result |= set(item.__class__.__mro__)
+        return result.difference({abc.ABC, object})
 
     @staticmethod
     def select_all(_: 'Item') -> bool:
@@ -314,26 +305,8 @@ class Item(ABC):
         This method is called when the solver is adding constraints to the
         lp model. The method is expected to add any constraints required to
         ensure that the bookkeeping for this item is done correctly.
-
-        .. note::
-
-            This method is not expected to be overridden by subclasses.
-
         """
         pass
-
-    def children(self) -> Set[Self]:
-        """
-        Return a set of children items.
-
-        This method returns a set of items that are children of this item. By
-        default, this method returns a set containing only this item. Subclasses
-        of `Item` can override this method to add additional items to the set.
-
-        Returns:
-            Set[Self]: A set of children items.
-        """
-        return {self}
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         """
@@ -353,9 +326,9 @@ class Item(ABC):
             solver (PulpSolver): A solver that is solving the board associated with this item.
         """
         # The following uses __class__.__name__ to avoid circular imports
-        cells = [i for i in self.children() if i.__class__.__name__ == 'Cell']
-        for cell in cells:
-            cell.add_bookkeeping_constraint(solver)
+        for item in self.walk():
+            if item.__class__.__name__ == 'Cell':
+                item.add_bookkeeping_constraint(solver)
 
     def to_dict(self) -> Dict:
         """

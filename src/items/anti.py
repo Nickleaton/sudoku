@@ -14,7 +14,8 @@ class Anti(ComposedItem):
         super().__init__(board, [])
         self.digits = digits
         for cell in Cell.cells():
-            self.add_items(self.pairs(cell, digits))
+            pairs = self.pairs(cell, digits)
+            self.add_items(pairs)
 
     def offsets(self) -> List[Coord]:  # pylint: disable=no-self-use
         return []
