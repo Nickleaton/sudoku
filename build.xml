@@ -6,7 +6,7 @@
     <target name="echo">
         <echo>Echo Echo</echo>
     </target>
-    <target name="build" depends="install,update,pylint,mypy,flake8,test,pydocstyle,documentation1,documentation2">
+    <target name="build" depends="install,update,pylint,mypy,flake8,pydocstyle,documentation1,documentation2">
         <echo>Build</echo>
     </target>
     <target name="install">
@@ -21,22 +21,45 @@
             <arg value="update"/>
         </exec>
     </target>
-    <target name="test">
+
+    <target name="perflint">
+        <exec executable="perflint" failonerror="true">
+            <arg value="src"/>
+            <arg value="--disable"/>
+            <arg value="loop-global-usage,loop-invariant-statement"/>
+            <arg value="--output"/>
+            <arg value="output/perflint.html"/>
+        </exec>
+    </target>
+
+
+    <target name="pytest" depends="pytest-src,pytest-acceptance">
+        <echo>Pytest</echo>
+    </target>
+
+    <target name="pytest-src">
         <mkdir dir="output/tests"/>
         <mkdir dir="output/lp"/>
         <mkdir dir="output/svg"/>
-        <exec executable="nose2" failonerror="true" taskname="nose2">
-            <arg value="--config"/>
-            <arg value="nose2-tests.cfg"/>
-            <arg value="--start-dir"/>
-            <arg value="tests"/>
-            <arg value="--verbose"/>
-            <arg value="--coverage-report"/>
-            <arg value="html"/>
-            <arg value="--pretty-assert"/>
-            <arg value="--html-report"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="tests/items"/>
+            <!--            <arg value="tests/items tests/solver tests/utils tests/glyphs tests/commands "/>-->
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/tests.html"/>
         </exec>
     </target>
+
+    <target name="pytest-acceptance">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="acceptance_tests"/>
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/acceptance.html"/>
+        </exec>
+    </target>
+
     <target name="generate-acceptance-tests">
         <exec executable="python.exe" failonerror="true" taskname="generate-acceptance-tests">
             <arg value="scripts/generate_acceptance_tests.py"/>
@@ -46,36 +69,18 @@
             <arg value="acceptance_tests"/>
         </exec>
     </target>
-    <target name="acceptance-tests">
-        <mkdir dir="output/acceptance-tests"/>
-        <exec executable="nose2" failonerror="true" taskname="nose2">
-            <arg value="--config"/>
-            <arg value="nose2-acceptance-tests.cfg"/>
-            <arg value="--start-dir"/>
-            <arg value="acceptance_tests"/>
-            <arg value="--verbose"/>
-            <arg value="--coverage-report"/>
-            <arg value="html"/>
-            <arg value="--pretty-assert"/>
-            <arg value="--html-report"/>
-        </exec>
-    </target>
-    <target name="pylint" depends="pylint.install,pylint.src,pylint.tests"/>
-    <target name="pylint.install">
-        <exec executable="pip" failonerror="true" taskname="pylint.install">
-            <arg value="install"/>
-            <arg value="pylint"/>
-        </exec>
-    </target>
+    <target name="pylint" depends="pylint.src,pylint.tests"/>
+
     <target name="pylint.src">
         <mkdir dir="output/pylint"/>
-        <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/src.txt">
+        <exec executable="pylint" failonerror="false" taskname="pylint.src" output="output/pylint/src.txt">
             <arg value="src"/>
         </exec>
     </target>
+
     <target name="pylint.tests">
         <mkdir dir="output/pylint"/>
-        <exec executable="pylint" failonerror="false" taskname="pylint" output="output/pylint/tests.txt">
+        <exec executable="pylint" failonerror="false" taskname="pylint.tests" output="output/pylint/tests.txt">
             <arg value="tests"/>
         </exec>
     </target>
@@ -155,7 +160,7 @@
             </fileset>
         </copy>
     </target>
-        <target name="convert-test">
+    <target name="convert-test">
         <mkdir dir="problems/fpuzzles/test"/>
         <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
             <arg value="scripts/convert.py"/>

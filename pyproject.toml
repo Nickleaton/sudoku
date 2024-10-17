@@ -5,18 +5,17 @@ description = "Variant Sudoku Solver"
 authors = ["Nick Leaton <nickle@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-PuLP = "2.6.0"
+python = "^3.13"
+PuLP = "2.9.0"
 parameterized = "^0.8.1"
 svgwrite = "^1.4.2"
-jinja2 = "^3.1.1"
+jinja2 = "^3.1.4"
 oyaml = "^1.0"
-nose2-html-report = "^0.6.0"
 
 orloge = "^0.17.2"
 strictyaml = "^1.6.1"
 svglib = "^1.2.1"
-nose2 = "^0.12.0"
+pytest = "^8.3.3"
 mypy = "^0.961"
 pylint = "^2.13.7"
 lxml = "^4.8.0"
