@@ -9,7 +9,7 @@ from src.solvers.pulp_solver import PulpSolver
 from src.utils.temporary_file import TemporaryFile
 
 
-class CreateLPWithBookkeepingCommand(SimpleCommand):
+class CreateLinearProgramCommand(SimpleCommand):
     """ Produce LP Version of the problem. """
 
     def __init__(self,
@@ -20,7 +20,7 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
                  target: str = 'linear_program'
                  ):
         """
-        Construct a CreateLPWithBookkeepingCommand.
+        Construct a CreateLinearProgramWithBookkeepingCommand.
 
         :param board: The field containing the board
         :param config: The field containing the configuration
@@ -55,17 +55,16 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
 
     def execute(self, problem: Problem) -> None:
         """
-        Execute the command.
+        Produce the LP version of the problem.
 
         This method performs the actual work of the command. It logs an info message
-        indicating that the command is being processed and creates a new solver in the
-        problem, storing it in the field specified by `solver`. Book keeping on cells is
-        then applied adding the constraints to the solver.
-        The solver s then saved to a temporary file and the contents of the file are stored in
-        the field specified by `target`.
+        indicating that the command is being processed and creates a new LP solver in the
+        problem, storing it in the field specified by `self.solver`. The LP solver is then
+        saved to a temporary file and the text of that file is stored in the field
+        specified by `self.target`.
 
         Parameters:
-            problem (Problem): The problem to execute the command on
+            problem (Problem): The problem to create the LP version of.
 
         Returns:
             None
@@ -74,8 +73,6 @@ class CreateLPWithBookkeepingCommand(SimpleCommand):
         logging.info(f"Creating {self.target}")
         with TemporaryFile() as lf:
             problem[self.solver] = PulpSolver(problem[self.board], problem[self.config].name, lf.name)
-            problem[self.constraints].bookkeeping()
-            problem[self.constraints].add_bookkeeping_constraint(problem[self.solver])
             with TemporaryFile() as tf:
                 problem[self.solver].save(str(tf.name))
                 with open(tf.name) as f:
