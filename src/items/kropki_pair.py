@@ -76,9 +76,9 @@ class KropkiPair(Pair):
         :param solver: solver
         """
         for digit in set(self.board.digit_range) - self.possible():
-            name = f"{self.name}_Impossible_{digit}_{self.cell_1.row}_{self.cell_1.column}"
+            name = f"{self.name}_Impossible_kropki_pair_1_{digit}_{self.cell_1.row}_{self.cell_1.column}"
             solver.model += solver.choices[digit][self.cell_1.row][self.cell_1.column] == 0, name
-            name = f"{self.name}_Impossible_{digit}_{self.cell_2.row}_{self.cell_2.column}"
+            name = f"{self.name}_Impossible_kropki_pair_2_{digit}_{self.cell_2.row}_{self.cell_2.column}"
             solver.model += solver.choices[digit][self.cell_2.row][self.cell_2.column] == 0, name
 
     def add_implausible_constraint(self, solver: PulpSolver) -> None:

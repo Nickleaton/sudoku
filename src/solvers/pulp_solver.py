@@ -1,31 +1,44 @@
+from enum import Enum
 from itertools import product
 from pathlib import Path
-from typing import Optional, Dict
+from typing import Optional, Dict, Any
 
 import orloge
-from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, LpStatusOptimal, lpSum, getSolver
+from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
 from src.items.board import Board
 from src.solvers.answer import Answer
 from src.solvers.solver import Solver
 
 
+class Status(Enum):
+    NOT_SOLVED = "Not Solved"
+    OPTIMAL = "Optimal"
+    INFEASIBLE = "Infeasible"
+    UNBOUNDED = "Unbounded"
+    UNDEFINED = "Undefined"
+
+
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
     def __init__(self, board: Board, name: str, log_file: Path, solver_name: str = 'PULP_CBC_CMD'):
         super().__init__(board)
-        self.name = name
-        self.log_file = log_file
-        self.solver_name = solver_name
-        if solver_name == 'PULP_CBC_CMD':
-            self.application_name = 'CBC'
-        self.log_file.unlink(missing_ok=True)
-        self.application = getSolver(solver_name, logPath=str(self.log_file), msg=0)
-        self.objective = 0, "Objective"
-        self.model = LpProblem("Sudoku", LpMinimize)
+        self.name: str = name
+        self.log_file: Path = log_file
+        self.solver_name: str = solver_name
+        self.application_name = 'CBC' if solver_name == 'PULP_CBC_CMD' else solver_name
+        self.application: LpSolver = getSolver(solver_name, logPath=str(self.log_file), msg=0)
+        self.objective = 0, "DummyObjective"
+        self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
         self.model += self.objective
-        self.status = 'Pending'
+        self.status: Status = Status.NOT_SOLVED
         self.answer: Optional[Answer] = None
+        self.choices: dict[Any, LpVariable] = {}
+        self.values: dict[Any, LpVariable] = {}
+
+        self.log_file.unlink(missing_ok=True)
+        # Create the basic model framework
+        self.variables = {}
         self.choices = LpVariable.dicts("Choice",
                                         (board.digit_range, board.row_range, board.column_range),
                                         0,
@@ -38,13 +51,9 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
                                        board.maximum_digit,
                                        LpInteger
                                        )
-        self.variables = {}
-
         for row, column in product(board.row_range, board.column_range):
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
             self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
-
-        # self.model += lpSum(self.choices)  == self.board.board_rows * self.board.board_columns, "ChoiceCount"
 
     def save(self, filename: str) -> None:
         super().save(filename)
@@ -53,8 +62,9 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
     def solve(self) -> None:
         super().solve()
         self.model.solve(self.application)
-        self.status = LpStatus[self.model.status]
-        if self.model.status != LpStatusOptimal:
+        self.status = Status(LpStatus[self.model.status])
+        if self.status != Status.OPTIMAL:
+            self.answer = None
             return
         self.answer = Answer(self.board)
         for row in self.board.row_range:

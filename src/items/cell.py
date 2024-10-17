@@ -1,19 +1,19 @@
 from itertools import product
-from typing import Dict, Tuple, List, Callable
+from typing import Dict, Tuple, List
 
 from pulp import lpSum
 
-from src.glyphs.glyph import Glyph
 from src.glyphs.cell_glyph import CellGlyph
+from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.book_keeping import BookKeeping
-from src.items.item import Item
+from src.items.item import Item, SudokuException
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class CellException(Exception):
+class CellException(SudokuException):
     pass
 
 
@@ -128,7 +128,7 @@ class Cell(Item):
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         for digit in self.board.digit_range:
             if not self.book[digit]:
-                name = f"Impossible_{digit}_{self.row}_{self.column}"
+                name = f"Impossible_cell_{digit}_{self.row}_{self.column}"
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> Dict:
