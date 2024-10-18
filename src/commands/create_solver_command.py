@@ -7,6 +7,7 @@ from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.items.board import Board
+from src.solvers.pulp_solver import PulpSolver
 
 
 class CreateSolverCommand(SimpleCommand):
@@ -48,7 +49,7 @@ class CreateSolverCommand(SimpleCommand):
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
-        problem.board = Board.create('Board', problem.config)
+        problem[self.target] = PulpSolver(problem[self.board], problem[self.config].name, lf.name)
 
     def __repr__(self) -> str:
         """

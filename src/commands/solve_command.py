@@ -37,15 +37,13 @@ class SolveCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.solver} not created')
         if self.target in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
-        if self.log in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.log} already in problem')
 
     def execute(self, problem: Problem) -> None:
         """
         Solve the puzzle.
         """
         super().execute(problem)
-        logging.info(f'Creating {self.solver}')
+        logging.info(f"Solving {self.solver} and storing solution in {self.target}")
         problem[self.solver].solve()
         problem[self.target] = problem[self.solver].answer
         # Handle log

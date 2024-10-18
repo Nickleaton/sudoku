@@ -48,8 +48,8 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.board} not built')
         if self.constraints not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.constraints} not built')
-        if self.solver in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.solver} already in problem')
+        if self.solver not in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.solver} not built')
         if self.target in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
 
@@ -73,11 +73,11 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
         super().execute(problem)
         logging.info(f"Creating {self.target}")
         with TemporaryFile() as lf:
-            problem[self.solver] = PulpSolver(problem[self.board], problem[self.config].name, lf.name)
+
             problem[self.constraints].bookkeeping()
             problem[self.constraints].add_bookkeeping_constraint(problem[self.solver])
             with TemporaryFile() as tf:
-                problem[self.solver].save(str(tf.name))
+                problem[self.solver].save_lp(str(tf.name))
                 with open(tf.name) as f:
                     problem[self.target] = f.read()
 
