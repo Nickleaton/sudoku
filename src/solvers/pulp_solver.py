@@ -1,9 +1,9 @@
 from enum import Enum
 from itertools import product
 from pathlib import Path
-from typing import Optional, Dict, Any
+from tempfile import NamedTemporaryFile
+from typing import Optional, Any
 
-import orloge
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
 from src.items.board import Board
@@ -21,22 +21,27 @@ class Status(Enum):
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, board: Board, name: str, log_file: Path, solver_name: str = 'PULP_CBC_CMD'):
+    def __init__(self, board: Board, name: str, solver_name: str = 'PULP_CBC_CMD'):
         super().__init__(board)
+
+        # Names
+
         self.name: str = name
-        self.log_file: Path = log_file
         self.solver_name: str = solver_name
         self.application_name = 'CBC' if solver_name == 'PULP_CBC_CMD' else solver_name
-        self.application: LpSolver = getSolver(solver_name, logPath=str(self.log_file), msg=0)
-        self.objective = 0, "DummyObjective"
-        self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
-        self.model += self.objective
+
+        # Results
+
         self.status: Status = Status.NOT_SOLVED
+        self.log_details: Optional[str] = None
         self.answer: Optional[Answer] = None
+
+        # Model
+
+        self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
+        self.model += 0, "DummyObjective"
         self.choices: dict[Any, LpVariable] = {}
         self.values: dict[Any, LpVariable] = {}
-
-        self.log_file.unlink(missing_ok=True)
         # Create the basic model framework
         self.variables = {}
         self.choices = LpVariable.dicts("Choice",
@@ -55,21 +60,45 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
             self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
 
-    def save(self, filename: str) -> None:
-        super().save(filename)
-        self.model.writeLP(filename)
+    def save_lp(self, filename: Path | str) -> None:
+        """
+        Save the model as an LP file
+
+        :param filename:
+        :return:
+        """
+        super().save_lp(filename)
+        if isinstance(filename, Path):
+            self.model.writeLP(filename.name)
+        else:
+            self.model.writeLP(filename)
+
+    def save_mps(self, filename: Path | str) -> None:
+        """"
+        Save the model as an MPS file
+        """
+        super().save_mps(filename)
+        if isinstance(filename, Path):
+            self.model.writeMPS(filename.name)
+        else:
+            self.model.writeMPS(filename)
 
     def solve(self) -> None:
+        """
+        Solve the model
+        Update the status
+        Put the log into log_details
+        """
         super().solve()
-        self.model.solve(self.application)
-        self.status = Status(LpStatus[self.model.status])
-        if self.status != Status.OPTIMAL:
-            self.answer = None
-            return
-        self.answer = Answer(self.board)
-        for row in self.board.row_range:
-            for column in self.board.column_range:
-                self.answer.set_value(row, column, int(self.values[row][column].varValue))
-
-    def get_log_details(self) -> Dict:
-        return orloge.get_info_solver(self.log_file, self.application_name)
+        temp_log_file = NamedTemporaryFile(delete=False)
+        log_file_path: Path = Path(temp_log_file.name)
+        try:
+            # Get the solver and solve the model, capturing the log output
+            application: LpSolver = getSolver(self.solver_name, logPath=temp_log_file.name, msg=0)
+            self.model.solve(application)
+            self.status = Status(LpStatus[self.model.status])
+            with log_file_path.open('r') as log_file:
+                self.log_details = log_file.read()
+        finally:
+            # Ensure the temporary file is deleted
+            log_file_path.unlink(missing_ok=True)
