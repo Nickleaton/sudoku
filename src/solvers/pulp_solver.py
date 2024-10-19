@@ -1,7 +1,8 @@
+import sys
 from enum import Enum
+from io import StringIO
 from itertools import product
 from pathlib import Path
-from tempfile import NamedTemporaryFile
 from typing import Optional, Any
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
@@ -9,6 +10,7 @@ from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, 
 from src.items.board import Board
 from src.solvers.answer import Answer
 from src.solvers.solver import Solver
+from src.utils.config import Config
 
 
 class Status(Enum):
@@ -18,6 +20,7 @@ class Status(Enum):
     UNBOUNDED = "Unbounded"
     UNDEFINED = "Undefined"
 
+config = Config()
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
@@ -33,7 +36,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         # Results
 
         self.status: Status = Status.NOT_SOLVED
-        self.log_details: Optional[str] = None
+        self.log: Optional[str] = None
         self.answer: Optional[Answer] = None
 
         # Model
@@ -87,18 +90,15 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         """
         Solve the model
         Update the status
-        Put the log into log_details
+        Put the log into log
         """
         super().solve()
-        temp_log_file = NamedTemporaryFile(delete=False)
-        log_file_path: Path = Path(temp_log_file.name)
+        log_output: StringIO = StringIO()
         try:
-            # Get the solver and solve the model, capturing the log output
-            application: LpSolver = getSolver(self.solver_name, logPath=temp_log_file.name, msg=0)
+            sys.stdout = log_output
+            application: LpSolver = getSolver(self.solver_name, msg=1)
             self.model.solve(application)
-            self.status = Status(LpStatus[self.model.status])
-            with log_file_path.open('r') as log_file:
-                self.log_details = log_file.read()
         finally:
-            # Ensure the temporary file is deleted
-            log_file_path.unlink(missing_ok=True)
+            sys.stdout = sys.__stdout__
+        self.status = Status(LpStatus[self.model.status])
+        self.log = log_output.getvalue()

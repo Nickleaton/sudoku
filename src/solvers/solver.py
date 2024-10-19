@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import Optional
 
 from src.items.board import Board
 from src.solvers.answer import Answer
@@ -15,6 +14,7 @@ class Solver:
         pass
 
     def save_mps(self, filename: Path | str) -> None:
+        pass
 
     def solve(self) -> None:
         pass
