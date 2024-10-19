@@ -8,6 +8,7 @@ from src.utils.coord import Coord
 
 class Board:
 
+    PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(self,
                  board_rows: int,
@@ -30,6 +31,19 @@ class Board:
         self.maximum_digit = max(self.board_rows, self.board_columns)
         self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
+        self.primes = [p for p in self.PRIMES if p in self.digit_range]
+        chunk_size: int = self.maximum_digit // 3
+
+        self.low = self.digit_range[:chunk_size]
+        self.mid = self.digit_range[chunk_size:chunk_size * 2]
+        self.high = self.digit_range[chunk_size * 2:]
+
+
+        self.mod0 = [d for d in self.digit_range if d % 3 == 0]
+        self.mod1 = [d for d in self.digit_range if d % 3 == 1]
+        self.mod2 = [d for d in self.digit_range if d % 3 == 2]
+
+
         # Boxes
         if box_rows == 0:
             self.box_rows = 0
