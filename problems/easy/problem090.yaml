@@ -1,0 +1,44 @@
+Board:
+  Title: The Mote in the Quad's Eye
+  Author: Jeremy Dover
+  Video: https://www.youtube.com/watch?v=IykYoO3JCPQ&ab_channel=CrackingTheCryptic
+  Reference: https://www.youtube.com/watch?v=70oON2WLwPU
+  Board: 9x9
+  Boxes: 3x3
+
+Constraints:
+  - Columns:
+  - Rows:
+  - Boxes:
+
+  - Quadruple: 22=13
+  - Quadruple: 27=35
+  - Quadruple: 53=2569
+  - Quadruple: 43=2359
+  - Quadruple: 48=278
+  - Quadruple: 56=57
+  - Quadruple: 26=3589
+  - Quadruple: 64=1348
+  - Quadruple: 72=35
+  - Quadruple: 77=57
+  - Quadruple: 88=69
+
+  - MOTE: 11, 12, 13, 21, 31
+  - MOTE: 71, 81, 91, 92, 93
+  - MOTE: 17, 18, 19, 29, 39
+  - MOTE: 97, 98, 99, 89, 79
+  - MOTE: 38, 48
+  - MOTE: 41, 42, 43, 53
+  - MOTE: 45, 46, 55, 46, 56
+  - MOTE: 57, 67, 68, 69
+
+  - Solution:
+    - 594683127
+    - 263714589
+    - 781952634
+    - 815369472
+    - 649275318
+    - 327148965
+    - 952836741
+    - 138497256
+    - 476521893
