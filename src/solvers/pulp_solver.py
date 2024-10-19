@@ -20,7 +20,9 @@ class Status(Enum):
     UNBOUNDED = "Unbounded"
     UNDEFINED = "Undefined"
 
+
 config = Config()
+
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
@@ -59,6 +61,37 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
                                        board.maximum_digit,
                                        LpInteger
                                        )
+
+        self.parity = LpVariable.dicts("Parity",
+                                       (board.row_range, board.column_range),
+                                       0,
+                                       1,
+                                       LpInteger
+                                       )
+
+        self.levels = LpVariable.dicts("Low",
+                                    (board.row_range, board.column_range, board.levels),
+                                    0,
+                                    1,
+                                    LpInteger
+                                    )
+
+        self.modulos = LpVariable.dicts("Low",
+                                    (board.row_range, board.column_range, board.modulos),
+                                    0,
+                                    1,
+                                    LpInteger
+                                    )
+
+        self.prime = LpVariable.dicts("Low",
+                                    (board.row_range, board.column_range, board.primes),
+                                    0,
+                                    1,
+                                    LpInteger
+                                    )
+
+
+
         for row, column in product(board.row_range, board.column_range):
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
             self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
