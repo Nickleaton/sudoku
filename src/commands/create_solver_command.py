@@ -48,7 +48,10 @@ class CreateSolverCommand(SimpleCommand):
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
-        problem[self.target] = PulpSolver(problem[self.board], problem[self.config].name)
+        problem[self.target] = PulpSolver(
+            board=problem[self.board],
+            name=problem[self.board].title
+        )
 
     def __repr__(self) -> str:
         """

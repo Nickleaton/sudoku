@@ -75,6 +75,7 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
         with TemporaryFile() as lf:
 
             problem[self.constraints].bookkeeping()
+            # TODO
             problem[self.constraints].add_bookkeeping_constraint(problem[self.solver])
             with TemporaryFile() as tf:
                 problem[self.solver].save_lp(str(tf.name))

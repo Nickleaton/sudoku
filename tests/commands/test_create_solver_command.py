@@ -1,36 +1,29 @@
 import unittest
 
-
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
-from src.commands.create_linear_program_with_bookkeeping_command import CreateLinearProgramWithBookkeepingCommand
 from src.commands.create_solver_command import CreateSolverCommand
 from src.commands.load_config_command import LoadConfigCommand
-from tests.commands.test_simple_command import TestSimpleCommand
+from tests.commands.test_command import TestCommand
 
 
-
-class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
+class TestCreateSolverCommand(TestCommand):
 
     def setUp(self) -> None:
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
-                       | CreateSolverCommand() \
                        | CreateConstraintsCommand()
         requirements.execute(self.problem)
-        self.command = CreateLinearProgramWithBookkeepingCommand()
+        self.command = CreateSolverCommand()
 
     def test_command(self):
         self.command.execute(self.problem)
-        self.assertIsNotNone(self.problem.linear_program)
-        print(self.problem.contraints)
-        print(type(self.problem.contraints))
-        print(self.problem.contraints.bookkeeping_unique())
+        self.assertIsNotNone(self.problem.solver)
 
     @property
     def representation(self) -> str:
-        return r"CreateLinearProgramWithBookkeepingCommand('board', 'config', 'constraints', 'solver', 'linear_program')"
+        return "CreateSolverCommand('config', 'board', 'solver')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))
