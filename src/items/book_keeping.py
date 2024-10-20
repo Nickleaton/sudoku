@@ -1,5 +1,7 @@
 from typing import List
 
+from typing_extensions import Self
+
 
 class BookKeeping:
 
@@ -14,7 +16,7 @@ class BookKeeping:
     def __setitem__(self, digit: int, value: bool) -> None:
         self.possibles[digit - 1] = value
 
-    def __and__(self, other) -> 'BookKeeping':
+    def __and__(self, other) -> Self:
         assert isinstance(other, BookKeeping)
         assert self.maximum_digit == other.maximum_digit
         result = BookKeeping(self.maximum_digit)
@@ -22,7 +24,7 @@ class BookKeeping:
             result[i] = self[i] and other[i]
         return result
 
-    def __or__(self, other) -> 'BookKeeping':
+    def __or__(self, other) -> Self:
         assert isinstance(other, BookKeeping)
         assert self.maximum_digit == other.maximum_digit
         result = BookKeeping(self.maximum_digit)
@@ -30,7 +32,7 @@ class BookKeeping:
             result[i] = self[i] or other[i]
         return result
 
-    def __invert__(self) -> 'BookKeeping':
+    def __invert__(self) -> Self:
         result = BookKeeping(self.maximum_digit)
         for i in self.digit_range:
             result[i] = not self[i]
@@ -89,3 +91,6 @@ class BookKeeping:
 
     def is_possible(self, digit: int) -> bool:
         return self[digit]
+
+    def is_unique(self) -> bool:
+        return sum(self.possibles) == 1

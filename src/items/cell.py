@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Optional
 
 from pulp import lpSum
 
@@ -39,6 +39,12 @@ class Cell(Item):
 
     def __str__(self) -> str:
         return f"Cell({self.row}, {self.column})"
+
+    def marked_book(self) -> Optional[BookKeeping]:
+        """
+        Return the book for the cell.
+        """
+        return self.book
 
     @staticmethod
     def letter() -> str:
@@ -126,9 +132,11 @@ class Cell(Item):
         ) == 1, f'Unique_digit_{self.row}_{self.column}'
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
+        print(f"Bookkeeping {self.row} {self.column}")
         for digit in self.board.digit_range:
-            if not self.book[digit]:
-                name = f"Impossible_cell_{digit}_{self.row}_{self.column}"
+            if not self.book.is_possible(digit):
+                name = f"Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}"
+                print(name)
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> Dict:

@@ -9,6 +9,7 @@ from typing_extensions import Self
 from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
+from src.items.book_keeping import BookKeeping
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
@@ -327,8 +328,19 @@ class Item(ABC):
         """
         # The following uses __class__.__name__ to avoid circular imports
         for item in self.walk():
-            if item.__class__.__name__ == 'Cell':
-                item.add_bookkeeping_constraint(solver)
+            if self.marked_book is None:
+                continue
+            item.add_bookkeeping_constraint(solver)
+
+    def marked_book(self) -> Optional[BookKeeping]:
+        """
+        Return the book for the cell or None.
+        Enables Liskov Substitution Principle.
+        """
+        return None
+
+    def bookkeeping_unique(self) -> bool:
+        return all(item.marked_book().is_unique() for item in self.walk() if item.marked_book() is not None)
 
     def to_dict(self) -> Dict:
         """
