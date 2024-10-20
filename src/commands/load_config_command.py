@@ -35,10 +35,10 @@ class LoadConfigCommand(SimpleCommand):
         :param problem: The problem to check
         :raises CommandException: If the preconditions are not met
         """
-        if self.target in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
         if not is_readable_file(self.source):
             raise CommandException(f'{self.__class__.__name__} - {self.source} does not exist or is not readable ')
+        if self.target in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
 
     def execute(self, problem: Problem) -> None:
 
