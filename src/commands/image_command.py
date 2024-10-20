@@ -11,7 +11,7 @@ from svglib.svglib import svg2rlg
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.utils.file_handling import is_readable_file
+from src.utils.file_handling import is_readable_file, is_writeable_file
 
 
 class ImageFormat(Enum):
@@ -66,7 +66,7 @@ class ImageCommand(SimpleCommand):
         """
         if self.source not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.source} not in problem')
-        if not is_readable_file(self.target):
+        if not is_writeable_file(self.target):
             raise CommandException(f'{self.__class__.__name__} - {self.target} is not writeable')
 
     def execute(self, problem: Problem) -> None:
