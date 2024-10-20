@@ -101,6 +101,13 @@ class TestBookKeeping(unittest.TestCase):
         self.assertNotEqual(book1, book3)
         self.assertNotEqual(book2, book3)
 
+    def test_unique(self):
+        book = BookKeeping(9)
+        self.assertFalse(book.is_unique)
+        book.set_minimum(5)
+        self.assertFalse(book.is_unique)
+        book.set_maximum(5)
+        self.assertTrue(book.is_unique)
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
