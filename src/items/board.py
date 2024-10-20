@@ -34,11 +34,12 @@ class Board:
         self.primes = [p for p in self.PRIMES if p in self.digit_range]
         chunk_size: int = self.maximum_digit // 3
 
+        self.levels = ['low', 'mid', 'high']
         self.low = self.digit_range[:chunk_size]
         self.mid = self.digit_range[chunk_size:chunk_size * 2]
         self.high = self.digit_range[chunk_size * 2:]
 
-
+        self.modulos = [0, 1, 2]
         self.mod0 = [d for d in self.digit_range if d % 3 == 0]
         self.mod1 = [d for d in self.digit_range if d % 3 == 1]
         self.mod2 = [d for d in self.digit_range if d % 3 == 2]
