@@ -1,6 +1,5 @@
 import unittest
 
-from src.commands.load_config_command import LoadConfigCommand
 from src.commands.svg_answer_command import SVGAnswerCommand
 from src.items.battenburg import Battenburg
 from src.items.item import Item
@@ -13,8 +12,6 @@ class SVGTestAnswerCommand(TestSVGCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        requirements = LoadConfigCommand(self.path)
-        requirements.execute(self.problem)
         self.problem.answer = Answer(
             self.problem.board,
             [

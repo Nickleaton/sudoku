@@ -12,9 +12,8 @@ class TestConfigWriterCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        self.reader = LoadConfigCommand(self.path)
-        self.problem = Problem()
-        self.reader.execute(self.problem)
+        self.requirements = LoadConfigCommand(self.path)
+        self.requirements.execute(self.problem)
         self.output_path = Path("c:\\temp\\test.yaml")
         self.command = ConfigWriterCommand(source='config', target=self.output_path)
 

@@ -3,6 +3,7 @@ import unittest
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.create_linear_program_command import CreateLinearProgramCommand
+from src.commands.create_solver_command import CreateSolverCommand
 from src.commands.load_config_command import LoadConfigCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 
@@ -13,6 +14,7 @@ class TestCreateLinearProgramCommand(TestSimpleCommand):
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
+                       | CreateSolverCommand() \
                        | CreateConstraintsCommand()
         requirements.execute(self.problem)
         self.command = CreateLinearProgramCommand()

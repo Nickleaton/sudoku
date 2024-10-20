@@ -1,9 +1,7 @@
 import unittest
 
-from src.commands.command import CommandException
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.load_config_command import LoadConfigCommand
-from src.items.board import Board
 from tests.commands.test_simple_command import TestSimpleCommand
 
 
@@ -11,8 +9,8 @@ class TestCreateBoardCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        self.load_config_command = LoadConfigCommand(source=self.path, target='config')
-        self.load_config_command.execute(self.problem)
+        requirements = LoadConfigCommand(source=self.path, target='config')
+        requirements.execute(self.problem)
         self.command = CreateBoardCommand()
 
     @property

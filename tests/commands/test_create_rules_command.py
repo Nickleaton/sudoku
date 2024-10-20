@@ -11,12 +11,10 @@ class TestCreateRulesCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        load_config = LoadConfigCommand(self.path)
-        create_board = CreateBoardCommand()
-        create_constraints = CreateConstraintsCommand()
-        load_config.execute(self.problem)
-        create_board.execute(self.problem)
-        create_constraints.execute(self.problem)
+        requirements = LoadConfigCommand(self.path) \
+                       | CreateBoardCommand() \
+                       | CreateConstraintsCommand()
+        requirements.execute(self.problem)
         self.command = CreateRulesCommand()
 
     def test_command(self):

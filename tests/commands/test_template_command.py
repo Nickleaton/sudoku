@@ -15,13 +15,13 @@ class TestTemplateCommand(TestSimpleCommand):
 
     def setUp(self) -> None:
         super().setUp()
-        setup_command = LoadConfigCommand(self.path) \
+        requirements = LoadConfigCommand(self.path) \
                         | CreateMetaCommand() \
                         | CreateBoardCommand() \
                         | CreateConstraintsCommand() \
                         | CreateRulesCommand() \
                         | SVGProblemCommand('problem_svg')
-        setup_command.execute(self.problem)
+        requirements.execute(self.problem)
         self.command = TemplateCommand(template=Path('src\\html\\problem.html'), target='html')
 
     def test_command(self):
