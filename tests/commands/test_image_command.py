@@ -15,15 +15,11 @@ class TestImageCommand(TestSimpleCommand):
     def setUp(self) -> None:
         super().setUp()
         self.problem = Problem()
-        load_config_command = LoadConfigCommand(self.path)
-        create_board_command = CreateBoardCommand()
-        create_constraints_command = CreateConstraintsCommand()
-        svg_command = SVGCommand('svg')
-        load_config_command.execute(self.problem)
-        create_board_command.execute(self.problem)
-        create_constraints_command.execute(self.problem)
-        svg_command.execute(self.problem)
-
+        requirements = LoadConfigCommand(self.path) \
+            | CreateBoardCommand() \
+            | CreateConstraintsCommand() \
+            | SVGCommand('svg')
+        requirements.execute(self.problem)
         self.command = ImageCommand("svg", Path('test.svg'))
 
     @property
