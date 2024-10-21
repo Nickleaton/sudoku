@@ -17,9 +17,9 @@ from tests.items.test_line import TestLine
 class TestLessThanEqualDifferenceLine(TestLine):
 
     def setUp(self) -> None:
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
-        cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
-        self.item = self.clazz(self.board, cells)
+        super().setUp()
+        # Line is length 3
+        # Sice is 3 + 2 difference pairs = 5 items in the composed list
         self.size = 5
 
     @property
@@ -33,20 +33,6 @@ class TestLessThanEqualDifferenceLine(TestLine):
     @property
     def has_rule(self) -> bool:
         return True
-
-    @property
-    def representation(self) -> str:
-        return (
-            f"{self.clazz.__name__}"
-            f"("
-            f"Board(9, 9, 3, 3, None, None, None, None), "
-            f"["
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
-            f"]"
-            f")"
-        )
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

@@ -1,3 +1,4 @@
+import unittest
 from typing import Type
 
 from src.items.cell import Cell
@@ -26,3 +27,7 @@ class TestLockOut(TestLine):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, ComposedItem, Item, Line, LockOut, Region}
+
+
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()

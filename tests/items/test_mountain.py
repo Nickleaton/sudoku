@@ -14,6 +14,7 @@ from tests.items.test_line import TestLine
 class TestMountain(TestLine):
 
     def setUp(self) -> None:
+        # Needs separate create from TestLine because of shape
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [Cell.make(self.board, 2, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 2, 3)]
         self.item = self.clazz(self.board, cells)
@@ -29,6 +30,7 @@ class TestMountain(TestLine):
 
     @property
     def representation(self) -> str:
+        # Representation is the same as SetUp
         return (
             f"{self.clazz.__name__}(Board(9, 9, 3, 3, None, None, None, None), "
             f"["

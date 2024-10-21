@@ -328,7 +328,7 @@ class Item(ABC):
         """
         # The following uses __class__.__name__ to avoid circular imports
         for item in self.walk():
-            if self.marked_book is None:
+            if item.__class__.__name__ != 'Cell':
                 continue
             item.add_bookkeeping_constraint(solver)
 

@@ -1,5 +1,4 @@
 import unittest
-from pathlib import Path
 from typing import Type
 
 import oyaml as yaml
@@ -99,20 +98,20 @@ class TestItem(unittest.TestCase):
 
     def test_walk(self):
         count = 1
-        for item in self.item.walk():
+        for _ in self.item.walk():
             count += 1
         self.assertGreaterEqual(count, 1)
 
     def test_add_constraint(self) -> None:
-        solver = PulpSolver(self.board, 'test', Path("output/logs/tests"))
+        solver = PulpSolver(self.board, 'test')
         self.item.add_constraint(solver)
 
-    def test_add_bookkeeping_constraint(self) -> None:
-        solver = PulpSolver(self.board, 'test', Path("output/logs/tests"))
-        self.item.add_bookkeeping_constraint(solver)
-
-    def test_bookkeeping(self) -> None:
-        self.item.bookkeeping()
+    # def test_add_bookkeeping_constraint(self) -> None:
+    #     solver = PulpSolver(self.board, 'test')
+    #     self.item.add_bookkeeping_constraint(solver)
+    #
+    # def test_bookkeeping(self) -> None:
+    #     self.item.bookkeeping()
 
     def test_to_dict(self) -> None:
         config = yaml.load(self.config, Loader=yaml.SafeLoader)

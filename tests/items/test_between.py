@@ -2,7 +2,6 @@ import unittest
 from typing import Type
 
 from src.items.between import Between
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
@@ -12,10 +11,6 @@ from tests.items.test_line import TestLine
 
 
 class TestBetween(TestLine):
-
-    def setUp(self) -> None:
-        super().setUp()
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
 
     @property
     def clazz(self):

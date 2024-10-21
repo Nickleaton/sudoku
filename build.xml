@@ -37,38 +37,78 @@
         <echo>Pytest</echo>
     </target>
 
-    <target name="pytest-src">
-        <mkdir dir="output/tests"/>
-        <mkdir dir="output/lp"/>
-        <mkdir dir="output/svg"/>
-        <exec executable="pytest" failonerror="false" taskname="pytest">
-            <arg value="tests/items"/>
-            <!--            <arg value="tests/items tests/solver tests/utils tests/glyphs tests/commands "/>-->
-            <arg value="--rootdir=src"/>
-            <arg value="--html=output/tests/tests.html"/>
-        </exec>
-    </target>
 
     <target name="pytest-acceptance">
         <mkdir dir="output/tests"/>
         <mkdir dir="output/lp"/>
         <mkdir dir="output/svg"/>
         <exec executable="pytest" failonerror="false" taskname="pytest">
-            <arg value="acceptance_tests"/>
+            <arg value="tests/acceptance/run_acceptance_tests.py"/>
             <arg value="--rootdir=src"/>
             <arg value="--html=output/tests/acceptance.html"/>
         </exec>
     </target>
 
-    <target name="generate-acceptance-tests">
-        <exec executable="python.exe" failonerror="true" taskname="generate-acceptance-tests">
-            <arg value="scripts/generate_acceptance_tests.py"/>
-            <arg value="--source"/>
-            <arg value="problems/easy"/>
-            <arg value="--output"/>
-            <arg value="acceptance_tests"/>
+    <target name="pytest-src" depends="pytest-commands,pytest-glyphs,pytest-items,pytest-solver,pytest-utils">
+        <echo>Pytest src</echo>
+    </target>
+
+    <target name="pytest-commands">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="tests/commands"/>
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/commands.html"/>
         </exec>
     </target>
+
+    <target name="pytest-glyphs">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="tests/glyphs"/>
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/glyphs.html"/>
+        </exec>
+    </target>
+
+    <target name="pytest-items">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="tests/items"/>
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/items.html"/>
+        </exec>
+    </target>
+
+    <target name="pytest-solver">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="tests/solver"/>
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/solver.html"/>
+        </exec>
+    </target>
+
+
+    <target name="pytest-utils">
+        <mkdir dir="output/tests"/>
+        <mkdir dir="output/lp"/>
+        <mkdir dir="output/svg"/>
+        <exec executable="pytest" failonerror="false" taskname="pytest">
+            <arg value="tests/utils"/>
+            <arg value="--rootdir=src"/>
+            <arg value="--html=output/tests/utils.html"/>
+        </exec>
+    </target>
+
     <target name="pylint" depends="pylint.src,pylint.tests"/>
 
     <target name="pylint.src">

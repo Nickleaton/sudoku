@@ -1,12 +1,11 @@
 import sys
-from typing import List, Dict, Callable
+from typing import List, Dict
 
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.cell import Cell
-from src.items.item import Item
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -63,14 +62,6 @@ class EqualSum(Line):
         for i in range(0, len(areas)):
             solver.model += sums[i] >= minimum, f"{self.name}_minimum_{i}"
             solver.model += sums[i] <= maximum, f"{self.name}_maximum_{i}"
-
-    def bookkeeping(self) -> None:
-        # add limits on cells
-
-        # ie. 1 cell total for 3 cell line
-
-        # 6-9 since triangular(3) = 6
-        pass
 
     def css(self) -> Dict:
         return {

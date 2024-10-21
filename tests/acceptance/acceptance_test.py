@@ -2,13 +2,15 @@ import logging
 import os
 import unittest
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
+
+import pytest
 
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.create_linear_program_command import CreateLinearProgramCommand
-
 from src.commands.create_rules_command import CreateRulesCommand
+from src.commands.create_solver_command import CreateSolverCommand
 from src.commands.load_config_command import LoadConfigCommand
 from src.commands.problem import Problem
 from src.commands.solve_command import SolveCommand
@@ -21,8 +23,9 @@ logging.basicConfig(level=logging.DEBUG, format='%(name)s %(levelname)s %(messag
 class AcceptanceTest(unittest.TestCase):
     DIRECTORY = Path("test_results")
 
-    def setUp(self) -> None:
-        self.name = None
+    def __init__(self, name: str):
+        super().__init__()
+        self.name = name
 
     @staticmethod
     def check_directory(filename: Optional[str]) -> None:
@@ -84,6 +87,7 @@ class AcceptanceTest(unittest.TestCase):
                   | CreateBoardCommand() \
                   | CreateConstraintsCommand() \
                   | CreateRulesCommand() \
+                  | CreateSolverCommand() \
                   | CreateLinearProgramCommand() \
                   | SolveCommand()
 
@@ -95,9 +99,17 @@ class AcceptanceTest(unittest.TestCase):
         self.assertIsNotNone(problem.linear_program, 'Linear Program not created')
         self.assertIsNotNone(problem.rules, 'Rules not created')
         self.assertIsNotNone(problem.solver, 'Solver not created')
-        # Check file exists
-        # self.assertTrue(self.svg_file_name.exists())
-        # self.assertTrue(self.html_file_name.exists())
-        # self.assertTrue(self.lp_file_name.exists())
-        # self.assertTrue(self.log_file_name.exists())
-        # self.assertTrue(self.solution_file_name.exists())
+
+
+# New class for running multiple acceptance tests
+def get_problem_names() -> List[str]:
+    return [file.stem for file in Path("problems/easy").glob("*.yaml")]
+
+
+# Parameterize the test using the function
+@pytest.mark.parametrize("problem_name", get_problem_names())
+class TestAcceptance(AcceptanceTest):
+
+    def test_all(self, problem_name):
+        self.name = problem_name
+        super().test_all()  # Call the parent test method
