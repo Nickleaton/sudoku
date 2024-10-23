@@ -4,35 +4,34 @@ Board:
   Author: Valezius
   Board: 9x9
   Boxes: 3x3
-
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - CenterProduct: 13=480
-  - CenterProduct: 16=45
-  - CenterProduct: 22=108
-  - CenterProduct: 27=48
-  - CenterProduct: 31=675
-  - CenterProduct: 33=72
-  - CenterProduct: 36=1008
-  - CenterProduct: 38=448
-  - CenterProduct: 61=2268
-  - CenterProduct: 63=70
-  - CenterProduct: 66=384
-  - CenterProduct: 68=80
-  - CenterProduct: 72=840
-  - CenterProduct: 77=56
-  - CenterProduct: 83=864
-  - CenterProduct: 86=252
-
-  - Solution:
-    - 738241596
-    - 426589137
-    - 591367284
-    - 354618972
-    - 817925643
-    - 962734851
-    - 675193428
-    - 283456719
-    - 149872365
+  Columns:
+  Rows:
+  Boxes:
+  CenterProducts:
+    - 13=480
+    - 16=45
+    - 22=108
+    - 27=48
+    - 31=675
+    - 33=72
+    - 36=1008
+    - 38=448
+    - 61=2268
+    - 63=70
+    - 66=384
+    - 68=80
+    - 72=840
+    - 77=56
+    - 83=864
+    - 86=252
+Solution:
+  - 738241596
+  - 426589137
+  - 591367284
+  - 354618972
+  - 817925643
+  - 962734851
+  - 675193428
+  - 283456719
+  - 149872365

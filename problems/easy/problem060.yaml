@@ -4,30 +4,29 @@ Board:
   Author: Henry Kwok
   Board: 9x9
   Boxes: 3x3
-
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - OrthogonalProduct: 11=20
-  - OrthogonalProduct: 16=30
-  - OrthogonalProduct: 31=96
-  - OrthogonalProduct: 33=324
-  - OrthogonalProduct: 46=405
-  - OrthogonalProduct: 49=3
-  - OrthogonalProduct: 61=180
-  - OrthogonalProduct: 75=600
-  - OrthogonalProduct: 77=36
-  - OrthogonalProduct: 83=2835
-  - OrthogonalProduct: 91=4
-
-  - Solution:
-    - 957412638
-    - 416835972
-    - 238679451
-    - 823794516
-    - 594261783
-    - 761358294
-    - 689543127
-    - 172986345
-    - 345127869
+  Columns:
+  Rows:
+  Boxes:
+  OrthogonalProducts:
+    - 11=20
+    - 16=30
+    - 31=96
+    - 33=324
+    - 46=405
+    - 49=3
+    - 61=180
+    - 75=600
+    - 77=36
+    - 83=2835
+    - 91=4
+Solution:
+  - 957412638
+  - 416835972
+  - 238679451
+  - 823794516
+  - 594261783
+  - 761358294
+  - 689543127
+  - 172986345
+  - 345127869

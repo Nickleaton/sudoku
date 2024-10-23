@@ -6,41 +6,42 @@ Board:
   Board: 9x9
   Boxes: 3x3
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - Rossini: T1=D
-  - Rossini: T2=I
-  - Rossini: T3=I
-  - Rossini: T5=D
-  - Rossini: T7=D
-  - Rossini: R2=I
-  - Rossini: R4=D
-  - Rossini: B6=D
-  - Rossini: B7=D
-  - Rossini: B8=D
-  - Rossini: B9=I
-  - Rossini: L4=D
-  - Rossini: L5=I
-  - Rossini: L8=I
-  - Rossini: L9=D
-  - Knowns:
-      - ........2
-      - .......3.
-      - ..3...4..
-      - ...4.....
-      - ....5....
-      - .....6...
-      - ..6...7..
-      - .7.......
-      - 8........
-  - Solution:
-    - 741583692
-    - 682749531
-    - 593612487
-    - 965431278
-    - 237958146
-    - 418276359
-    - 326894715
-    - 179365824
-    - 854127963
+  Columns:
+  Rows:
+  Boxes:
+  Rossinis:
+    - T1=D
+    - T2=I
+    - T3=I
+    - T5=D
+    - T7=D
+    - R2=I
+    - R4=D
+    - B6=D
+    - B7=D
+    - B8=D
+    - B9=I
+    - L4=D
+    - L5=I
+    - L8=I
+    - L9=D
+  Knowns:
+    - ........2
+    - .......3.
+    - ..3...4..
+    - ...4.....
+    - ....5....
+    - .....6...
+    - ..6...7..
+    - .7.......
+    - 8........
+Solution:
+  - 741583692
+  - 682749531
+  - 593612487
+  - 965431278
+  - 237958146
+  - 418276359
+  - 326894715
+  - 179365824
+  - 854127963

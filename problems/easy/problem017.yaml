@@ -6,32 +6,31 @@ Board:
   Board: 9x9
   Boxes: 3x3
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-
-  - SimpleThermometer:   41, 31, 21, 11
-  - SimpleThermometer:   42, 32, 22, 12
-  - SimpleThermometer:   14, 24, 23
-  - SimpleThermometer:   45, 35, 25, 15
-  - SimpleThermometer:   38, 28, 18
-  - SimpleThermometer:   47, 46
-  - SimpleThermometer:   29, 39, 49, 59
-  - SimpleThermometer:   81, 71, 61, 51
-  - SimpleThermometer:   72, 82, 92
-  - SimpleThermometer:   73, 74
-  - SimpleThermometer:   65, 75, 85, 95
-  - SimpleThermometer:   76, 86, 87
-  - SimpleThermometer:   68, 78, 88, 98
-  - SimpleThermometer:   69, 79, 89, 99
-
-  - Solution:
-    - 947156382
-    - 835249671
-    - 621837954
-    - 314628795
-    - 782593416
-    - 596714823
-    - 458961237
-    - 169372548
-    - 273485169
+  Columns:
+  Rows:
+  Boxes:
+  SimpleThermometers:
+    - 41, 31, 21, 11
+    - 42, 32, 22, 12
+    - 14, 24, 23
+    - 45, 35, 25, 15
+    - 38, 28, 18
+    - 47, 46
+    - 29, 39, 49, 59
+    - 81, 71, 61, 51
+    - 72, 82, 92
+    - 73, 74
+    - 65, 75, 85, 95
+    - 76, 86, 87
+    - 68, 78, 88, 98
+    - 69, 79, 89, 99
+Solution:
+  - 947156382
+  - 835249671
+  - 621837954
+  - 314628795
+  - 782593416
+  - 596714823
+  - 458961237
+  - 169372548
+  - 273485169

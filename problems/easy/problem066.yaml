@@ -1,30 +1,28 @@
 Board:
   Title: Four flashes of Enlightenment
-  Authour: Mile Lemaic
-  Video : https://www.youtube.com/watch?v=bSFzEh0V_m8&ab_channel=CrackingTheCryptic
+  Author: Mile Lemaic
+  Video: https://www.youtube.com/watch?v=bSFzEh0V_m8&ab_channel=CrackingTheCryptic
   Reference: https://app.crackingthecryptic.com/sudoku/rJqFpfNPFq
   Board: 9x9
   Boxes: 3x3
 
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-
-  - SumArrow: 25, 34, 23, 12
-  - SumArrow: 82, 72, 62, 53, 43
-  - SumArrow: 85, 74, 64, 55
-  - SumArrow: 36, 47, 56, 67, 76
-
-  - AntiKnight:
-
-  - Solution:
-    - 149326785
-    - 623587914
-    - 587149326
-    - 851764239
-    - 762931458
-    - 934258167
-    - 318475692
-    - 276893541
-    - 495612873
+  Columns:
+  Rows:
+  Boxes:
+  AntiKnight:
+  SumArrows:
+    - 25, 34, 23, 12
+    - 82, 72, 62, 53, 43
+    - 85, 74, 64, 55
+    - 36, 47, 56, 67, 76
+Solution:
+  - 149326785
+  - 623587914
+  - 587149326
+  - 851764239
+  - 762931458
+  - 934258167
+  - 318475692
+  - 276893541
+  - 495612873

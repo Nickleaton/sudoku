@@ -5,12 +5,11 @@ Board:
   Video: https://tinyurl.com/wh33cukv
   Board: 9x9
   Boxes: 3x3
-
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - Knowns:
+  Columns:
+  Rows:
+  Boxes:
+  Knowns:
       - ........4
       - .........
       - .........
@@ -20,28 +19,27 @@ Constraints:
       - .........
       - .........
       - 6........
-
-  - Quadruple: 11=13
-  - Quadruple: 26=57
-  - Quadruple: 33=24
-  - Quadruple: 45=8
-  - Quadruple: 48=57
-  - Quadruple: 51=35
-  - Quadruple: 54=2
-  - Quadruple: 66=68
-  - Quadruple: 73=35
-  - Quadruple: 88=79
-
-
-  - Renban: 21, 11, 22, 12
-  - Renban: 28, 18, 29, 19
-  - Renban: 36, 26, 37, 27
-  - Renban: 43, 33, 44, 34
-  - Renban: 45, 46, 56
-  - Renban: 58, 48, 59, 49
-  - Renban: 61, 51, 62, 52
-  - Renban: 54, 64, 65
-  - Renban: 76, 66, 77, 67
-  - Renban: 83, 73, 84, 74
-  - Renban: 91, 81, 92, 82
-  - Renban: 98, 88, 99, 89
+  Quadruples:
+    - 11=13
+    - 26=57
+    - 33=24
+    - 45=8
+    - 48=57
+    - 51=35
+    - 54=2
+    - 66=68
+    - 73=35
+    - 88=79
+  Renbans:
+    - 21, 11, 22, 12
+    - 28, 18, 29, 19
+    - 36, 26, 37, 27
+    - 43, 33, 44, 34
+    - 45, 46, 56
+    - 58, 48, 59, 49
+    - 61, 51, 62, 52
+    - 54, 64, 65
+    - 76, 66, 77, 67
+    - 83, 73, 84, 74
+    - 91, 81, 92, 82
+    - 98, 88, 99, 89

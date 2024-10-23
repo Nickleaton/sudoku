@@ -6,44 +6,45 @@ Board:
   Board: 9x9
   Boxes: 3x3
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - ConsecutivePair: 11-12
-  - ConsecutivePair: 11-21
-  - ConsecutivePair: 12-13
-  - ConsecutivePair: 13-23
-  - ConsecutivePair: 32-33
-  - ConsecutivePair: 15-25
-  - ConsecutivePair: 51-61
-  - ConsecutivePair: 61-71
-  - ConsecutivePair: 46-56
-  - ConsecutivePair: 56-66
-  - ConsecutivePair: 47-48
-  - ConsecutivePair: 48-49
-  - ConsecutivePair: 74-84
-  - ConsecutivePair: 84-94
-  - ConsecutivePair: 86-96
-  - ConsecutivePair: 87-88
-  - ConsecutivePair: 97-98
-  - ConsecutivePair: 98-99
-  - KropkiPair2: 35-36
-  - KropkiPair2: 27-37
-  - KropkiPair2: 38-39
-  - KropkiPair2: 48-58
-  - KropkiPair2: 55-56
-  - KropkiPair2: 55-65
-  - KropkiPair2: 62-72
-  - KropkiPair2: 83-84
-  - KropkiPair2: 84-85
-
-  - Solution:
-    - 234981756
-    - 165472893
-    - 978536412
-    - 412893567
-    - 597624138
-    - 683715924
-    - 746359281
-    - 351248679
-    - 829167345
+  Columns:
+  Rows:
+  Boxes:
+  ConsecutivePairs:
+    - 11-12
+    - 11-21
+    - 12-13
+    - 13-23
+    - 32-33
+    - 15-25
+    - 51-61
+    - 61-71
+    - 46-56
+    - 56-66
+    - 47-48
+    - 48-49
+    - 74-84
+    - 84-94
+    - 86-96
+    - 87-88
+    - 97-98
+    - 98-99
+  KropkiPairs:
+    - 35-36
+    - 27-37
+    - 38-39
+    - 48-58
+    - 55-56
+    - 55-65
+    - 62-72
+    - 83-84
+    - 84-85
+Solution:
+  - 234981756
+  - 165472893
+  - 978536412
+  - 412893567
+  - 597624138
+  - 683715924
+  - 746359281
+  - 351248679
+  - 829167345

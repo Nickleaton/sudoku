@@ -4,53 +4,54 @@ Board:
   Board: 9x9
   Boxes: 3x3
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - Frame: T1=17
-  - Frame: T2=14
-  - Frame: T3=14
-  - Frame: T4=15
-  - Frame: T5=14
-  - Frame: T6=16
-  - Frame: T7=10
-  - Frame: T8=21
-  - Frame: T9=14 
-  - Frame: R1=18
-  - Frame: R2=12
-  - Frame: R3=15
-  - Frame: R4=19
-  - Frame: R5=12
-  - Frame: R6=14
-  - Frame: R7=19
-  - Frame: R8=13
-  - Frame: R9=13 
-  - Frame: B1=22
-  - Frame: B2=13
-  - Frame: B3=10
-  - Frame: B4=16
-  - Frame: B5=15
-  - Frame: B6=14
-  - Frame: B7=22
-  - Frame: B8=16
-  - Frame: B9=7 
-  - Frame: L1=20
-  - Frame: L2=12
-  - Frame: L3=13
-  - Frame: L4=18
-  - Frame: L5=11
-  - Frame: L6=16
-  - Frame: L7=18
-  - Frame: L8=12
-  - Frame: L9=15 
+  Columns:
+  Rows:
+  Boxes:
+  Frames:
+    - T1=17
+    - T2=14
+    - T3=14
+    - T4=15
+    - T5=14
+    - T6=16
+    - T7=10
+    - T8=21
+    - T9=14
+    - R1=18
+    - R2=12
+    - R3=15
+    - R4=19
+    - R5=12
+    - R6=14
+    - R7=19
+    - R8=13
+    - R9=13
+    - B1=22
+    - B2=13
+    - B3=10
+    - B4=16
+    - B5=15
+    - B6=14
+    - B7=22
+    - B8=16
+    - B9=7
+    - L1=20
+    - L2=12
+    - L3=13
+    - L4=18
+    - L5=11
+    - L6=16
+    - L7=18
+    - L8=12
+    - L9=15
 
-  - Solution:
-    - 596421783
-    - 831597246
-    - 427638195
-    - 279314658
-    - 164985327
-    - 358276419
-    - 783152964
-    - 615749832
-    - 942863571
+Solution:
+  - 596421783
+  - 831597246
+  - 427638195
+  - 279314658
+  - 164985327
+  - 358276419
+  - 783152964
+  - 615749832
+  - 942863571

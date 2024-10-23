@@ -5,50 +5,45 @@ Board:
   Reference: https://app.crackingthecryptic.com/sudoku/3gJJ7JJpGH
   Board: 9x9
   Boxes: 3x3
-
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-
-  - FixedProductPair: 15-16=FP
-  - FixedProductPair: 63-73=FP
-  - FixedProductPair: 62-72=FP
-
-  - FixedRatioPair: 25-26=FR
-  - FixedRatioPair: 63-64=FR
-  - FixedRatioPair: 72-73=FR
-  - FixedRatioPair: 76-86=FR
-
-  - FixedSumPair: 42-52=FS
-  - FixedSumPair: 62-63=FS
-  - FixedSumPair: 47-57=FS
-  - FixedSumPair: 48-49=FS
-  - FixedSumPair: 58-59=FS
-  - FixedSumPair: 67-68=FS
-  - FixedSumPair: 91-92=FS
-
-
-  - FixedDifferencePair: 12-22=FD
-  - FixedDifferencePair: 25-35=FD
-  - FixedDifferencePair: 35-36=FD
-  - FixedDifferencePair: 36-26=FD
-  - FixedDifferencePair: 37-47=FD
-  - FixedDifferencePair: 19-29=FD
-  - FixedDifferencePair: 38-39=FD
-  - FixedDifferencePair: 55-56=FD
-  - FixedDifferencePair: 88-98=FD
-
-
-
-  - Solution:
-    - 865143729
-    - 273569148
-    - 491278356
-    - 327685491
-    - 589421637
-    - 146937285
-    - 732896514
-    - 658314972
-    - 914752863
+  Columns:
+  Rows:
+  Boxes:
+  FixedProductPairs:
+    - 15-16=FP
+    - 63-73=FP
+    - 62-72=FP
+  FixedRatioPairs:
+    - 25-26=FR
+    - 63-64=FR
+    - 72-73=FR
+    - 76-86=FR
+  FixedSumPairs:
+    - 42-52=FS
+    - 62-63=FS
+    - 47-57=FS
+    - 48-49=FS
+    - 58-59=FS
+    - 67-68=FS
+    - 91-92=FS
+  FixedDifferencePairs:
+    - 12-22=FD
+    - 25-35=FD
+    - 35-36=FD
+    - 36-26=FD
+    - 37-47=FD
+    - 19-29=FD
+    - 38-39=FD
+    - 55-56=FD
+    - 88-98=FD
+Solution:
+  - 865143729
+  - 273569148
+  - 491278356
+  - 327685491
+  - 589421637
+  - 146937285
+  - 732896514
+  - 658314972
+  - 914752863
 

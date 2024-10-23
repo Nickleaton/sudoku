@@ -6,30 +6,31 @@ Board:
   Board: 9x9
   Boxes: 3x3
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - Knight: 2,4,6,8
-  - Quadruple: 11=23
-  - Quadruple: 22=5
-  - Quadruple: 33=89
-  - Quadruple: 18=34
-  - Quadruple: 27=89
-  - Quadruple: 36=56
-  - Quadruple: 63=45
-  - Quadruple: 72=1
-  - Quadruple: 81=67
-  - Quadruple: 66=12
-  - Quadruple: 77=25
-  - Quadruple: 88=8
+  Columns:
+  Rows:
+  Boxes:
+  Knight: 2,4,6,8
+  Quadruples:
+    - 11=23
+    - 22=5
+    - 33=89
+    - 18=34
+    - 27=89
+    - 36=56
+    - 63=45
+    - 72=1
+    - 81=67
+    - 66=12
+    - 77=25
+    - 88=8
 
-  - Solution:
-    - 196284735
-    - 325967841
-    - 748135692
-    - 259816374
-    - 481753926
-    - 637492158
-    - 814579263
-    - 962341587
-    - 573628419
+Solution:
+  - 196284735
+  - 325967841
+  - 748135692
+  - 259816374
+  - 481753926
+  - 637492158
+  - 814579263
+  - 962341587
+  - 573628419

@@ -5,69 +5,63 @@ Board:
   Boxes: 3x3
 
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-      
-  - MinMaxSum: T1=11
-  - MinMaxSum: T2=7
-  - MinMaxSum: T3=10
-  - MinMaxSum: T4=11
-  - MinMaxSum: T5=10
-  - MinMaxSum: T6=9
-  - MinMaxSum: T7=14
-  - MinMaxSum: T8=9
-  - MinMaxSum: T9=8
-
-  - MinMaxSum: R1=12
-  - MinMaxSum: R2=9
-  - MinMaxSum: R3=11
-  - MinMaxSum: R4=14
-  - MinMaxSum: R5=10
-  - MinMaxSum: R6=5
-  - MinMaxSum: R7=11
-  - MinMaxSum: R8=9
-  - MinMaxSum: R9=10
-
-  - MinMaxSum: B1=8
-  - MinMaxSum: B2=12
-  - MinMaxSum: B3=10
-  - MinMaxSum: B4=11
-  - MinMaxSum: B5=10
-  - MinMaxSum: B6=9
-  - MinMaxSum: B7=5
-  - MinMaxSum: B8=16
-  - MinMaxSum: B9=9
-
-
-  - MinMaxSum: L1=12
-  - MinMaxSum: L2=9
-  - MinMaxSum: L3=9
-  - MinMaxSum: L4=12
-  - MinMaxSum: L5=10
-  - MinMaxSum: L6=8
-  - MinMaxSum: L7=5
-  - MinMaxSum: L8=15
-  - MinMaxSum: L9=10
-
-  - Knowns:
-      - .........
-      - .........
-      - .........
-      - ...123...
-      - ...456...
-      - ...789...
-      - .........
-      - .........
-      - .........
-
-  - Solution:
-    - 349812567
-    - 627395841
-    - 851647932
-    - 478123659
-    - 913456728
-    - 562789314
-    - 134578296
-    - 796234185
-    - 285961473
+  Columns:
+  Rows:
+  Boxes:
+  MinMaxSums:
+    - T1=11
+    - T2=7
+    - T3=10
+    - T4=11
+    - T5=10
+    - T6=9
+    - T7=14
+    - T8=9
+    - T9=8
+    - R1=12
+    - R2=9
+    - R3=11
+    - R4=14
+    - R5=10
+    - R6=5
+    - R7=11
+    - R8=9
+    - R9=10
+    - B1=8
+    - B2=12
+    - B3=10
+    - B4=11
+    - B5=10
+    - B6=9
+    - B7=5
+    - B8=16
+    - B9=9
+    - L1=12
+    - L2=9
+    - L3=9
+    - L4=12
+    - L5=10
+    - L6=8
+    - L7=5
+    - L8=15
+    - L9=10
+  Knowns:
+    - .........
+    - .........
+    - .........
+    - ...123...
+    - ...456...
+    - ...789...
+    - .........
+    - .........
+    - .........
+Solution:
+  - 349812567
+  - 627395841
+  - 851647932
+  - 478123659
+  - 913456728
+  - 562789314
+  - 134578296
+  - 796234185
+  - 285961473

@@ -2,16 +2,16 @@ Board:
   Board: 4x4
   Boxes: 2x2
 Constraints:
-  - Columns:
-  - Rows:
-  - Boxes:
-  - Knowns:
+  Columns:
+  Rows:
+  Boxes:
+  Knowns:
     - 3.4.
     - .1.2
     - .4.3
     - 2.1.
-  - Solution:
-    - 3241
-    - 4132
-    - 1423
-    - 2314
+Solution:
+  - 3241
+  - 4132
+  - 1423
+  - 2314
