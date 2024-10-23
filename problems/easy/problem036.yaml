@@ -22,7 +22,7 @@ Constraints:
     - .........
     - .........
     - ........2
-  MagicSquare: 55, 11
+  MagicSquares: 55, 11
 
 Solution:
   - 843567219

@@ -7,11 +7,7 @@ Constraints:
   Columns:
   Rows:
   Boxes:
-  Windows:
-    - 33
-    - 37
-    - 73
-    - 77
+  Windows: 33, 37, 73, 77
   Knowns:
     - .........
     - ...2..61.
