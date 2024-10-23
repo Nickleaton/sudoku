@@ -1,19 +1,43 @@
-from typing import List, Callable
+from typing import List
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
 from src.items.anti_diagonal import AntiDiagonal
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
 from src.utils.coord import Coord
 
 
 class AntiBLTR(AntiDiagonal):
+    """Represents an AntiBLTR item on a board.
+
+    Inherits from the AntiDiagonal class and adds specific functionality
+    for the AntiBLTR, which includes managing cells on the anti-diagonal
+    from the bottom-left to the top-right of the board.
+    """
 
     def __init__(self, board: Board):
+        """Initializes the AntiBLTR with a board.
+        BLTR = Bottom Left to Top Right
+
+        Args:
+            board (Board): The board on which the AntiBLTR will be placed.
+        """
         super().__init__(board)
+        # Adds cells along the anti-diagonal from bottom-left to top-right
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
     def glyphs(self) -> List[Glyph]:
-        return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]
+        """Returns the glyphs associated with the AntiBLTR.
+
+        Glyphs visually represent the AntiBLTR's position on the board.
+
+        Returns:
+            List[Glyph]: A list of glyphs representing the AntiBLTR.
+        """
+        return [
+            LineGlyph('Diagonal',
+                      Coord(self.board.maximum_digit + 1, 1),  # Starting coordinate of the diagonal
+                      Coord(1, self.board.maximum_digit + 1)   # Ending coordinate of the diagonal
+                      )
+        ]
