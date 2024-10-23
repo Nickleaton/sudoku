@@ -127,6 +127,10 @@ class TestItem(unittest.TestCase):
     def test_flatten(self) -> None:
         self.assertListEqual([self.item], self.item.flatten())
 
+    def test_schema(self) -> None:
+        self.assertIsNotNone(self.item.schema())
+        self.assertIsInstance(self.item.schema(), dict)
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
