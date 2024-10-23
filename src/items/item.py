@@ -1,7 +1,7 @@
 import abc
 import logging
-from abc import ABC
-from typing import Optional, List, Set, Type, Dict, Iterator
+from abc import ABC, abstractmethod
+from typing import Optional, List, Set, Type, Dict, Iterator, Any
 
 from sortedcontainers import SortedDict
 from typing_extensions import Self
@@ -417,3 +417,6 @@ class Item(ABC):
             else:
                 result += f"{tab * indent}{k}: {v};\n"
         return result
+
+    def schema(self) -> Dict:
+        return {}
