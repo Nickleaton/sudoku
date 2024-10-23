@@ -1,10 +1,22 @@
 import re
+from enum import EnumDict, Enum
 from typing import Optional, Dict, Tuple
 
 import oyaml as yaml
 
 from src.utils.coord import Coord
 
+class BoardType(Enum):
+    B9X9 = "9x9"
+    B4X4 = "4x4"
+    B6X6 = "6x6"
+    B8X8 = "8x8"
+
+class BoxType(Enum):
+    B3X3 = "3x3"
+    B2X3 = "2x3"
+    B3X2 = "3x2"
+    B2X2 = "2x2"
 
 class Board:
 
