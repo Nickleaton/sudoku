@@ -1,7 +1,8 @@
 from src.utils.coord import Coord
+from src.utils.sudoku_exception import SudokuException
 
 
-class MatrixException(Exception):
+class MatrixException(SudokuException):
     pass
 
 
@@ -38,13 +39,13 @@ class Matrix:
         return f"{self.__class__.__name__}('{self.name}', {self.a}, {self.b}, {self.c}, {self.d})"
 
 
-R000 = Matrix('R000', 1, 0, 0, 1)
-R090 = Matrix('R090', 0, -1, 1, 0)
-R180 = Matrix('R180', -1, 0, 0, -1)
-R270 = Matrix('R270', 0, 1, -1, 0)
-FHOR = Matrix('FHOR', -1, 0, 0, 1)
-FVER = Matrix('FVER', 1, 0, 0, -1)
+ROTATE_000 = Matrix('ROTATE_000', 1, 0, 0, 1)
+ROTATE_090 = Matrix('ROTATE_090', 0, -1, 1, 0)
+ROTATE_180 = Matrix('ROTATE_180', -1, 0, 0, -1)
+ROTATE_270 = Matrix('ROTATE_270', 0, 1, -1, 0)
+FLIP_HORIZONTAL = Matrix('FLIP_HORIZONTAL', -1, 0, 0, 1)
+FLIP_VERTICAL = Matrix('FLIP_VERTICAL', 1, 0, 0, -1)
 
-ROTATIONS = [R000, R090, R180, R270]
-FLIPS = [R000, FVER, FHOR]
+ROTATIONS = [ROTATE_000, ROTATE_090, ROTATE_180, ROTATE_270]
+FLIPS = [ROTATE_000, FLIP_VERTICAL, FLIP_HORIZONTAL]
 TRANSFORMS = [r.compose(f) for r in ROTATIONS for f in FLIPS]

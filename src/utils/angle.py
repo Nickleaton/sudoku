@@ -1,13 +1,13 @@
-""" Utility class to manage angles """
-
-
 class AngleException(Exception):
     pass
 
 
 class Angle:
     """
-    Manage angles
+    Manage angles.
+
+    Args:
+        angle (float): The initial angle value. It is normalized to the range [0, 360).
     """
 
     def __init__(self, angle: float):
@@ -16,16 +16,20 @@ class Angle:
     @property
     def opposite(self) -> 'Angle':
         """
-        Return the opposite angle
-        :return: Angle
+        Returns the opposite of the current angle.
+
+        Returns:
+            Angle: A new angle that is 180 degrees away from the current one.
         """
         return Angle(self.angle + 180.0)
 
     @property
     def transform(self) -> str:
         """
-        return a svg transform string for the angle
-        :return: str
+        Returns a transform string for SVG that represents this angle.
+
+        Returns:
+            str: An SVG transform string. If the angle is 0, returns an empty string.
         """
         if self.angle == 0.0:
             return ""
@@ -33,33 +37,52 @@ class Angle:
 
     def __add__(self, other: 'Angle') -> 'Angle':
         """
-        Add two angles
-        :param other: Angle
-        :return: Angle
+        Adds this angle to another angle.
+
+        Args:
+            other (Angle): The angle to add.
+
+        Returns:
+            Angle: The result of adding the two angles.
         """
         return Angle(self.angle + other.angle)
 
     def __sub__(self, other: 'Angle') -> 'Angle':
         """
-        Subtract two angles
-        :param other: Angle
-        :return: Angle
+        Subtracts another angle from this angle.
+
+        Args:
+            other (Angle): The angle to subtract.
+
+        Returns:
+            Angle: The result of subtracting the other angle from this one.
         """
         return Angle(self.angle - other.angle)
 
     def __mul__(self, other: float) -> 'Angle':
         """
-        Multiply an angle by a scaler
-        :param other: scalar as float
-        :return: Angle
+        Multiplies this angle by a scalar.
+
+        Args:
+            other (float): The scalar value.
+
+        Returns:
+            Angle: The result of multiplying the angle by the scalar.
         """
         return Angle(self.angle * other)
 
     def __eq__(self, other: object) -> bool:
         """
-        Compare two angles for equality
-        :param other: Angle
-        :return: Angle
+        Checks if this angle is equal to another angle.
+
+        Args:
+            other (object): The object to compare to.
+
+        Returns:
+            bool: True if the angles are equal, otherwise False.
+
+        Raises:
+            AngleException: If `other` is not an instance of Angle.
         """
         if isinstance(other, Angle):
             return self.angle == other.angle
@@ -67,9 +90,16 @@ class Angle:
 
     def __lt__(self, other: object) -> bool:
         """
-        Compare two angles for less than
-        :param other: Angle
-        :return: bool
+        Checks if this angle is less than another angle.
+
+        Args:
+            other (object): The object to compare to.
+
+        Returns:
+            bool: True if this angle is less than the other angle.
+
+        Raises:
+            AngleException: If `other` is not an instance of Angle.
         """
         if isinstance(other, Angle):
             return self.angle < other.angle
@@ -77,9 +107,16 @@ class Angle:
 
     def __le__(self, other: object) -> bool:
         """
-        Compare two angles for less than or equal
-        :param other: Angle
-        :return: bool
+        Checks if this angle is less than or equal to another angle.
+
+        Args:
+            other (object): The object to compare to.
+
+        Returns:
+            bool: True if this angle is less than or equal to the other angle.
+
+        Raises:
+            AngleException: If `other` is not an instance of Angle.
         """
         if isinstance(other, Angle):
             return self.angle <= other.angle
@@ -87,7 +124,9 @@ class Angle:
 
     def __repr__(self) -> str:
         """
-        Return representation of Angle
-        :return: str
+        Returns a string representation of the Angle.
+
+        Returns:
+            str: The string representation of the angle.
         """
         return f"Angle({self.angle})"

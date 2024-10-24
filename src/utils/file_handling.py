@@ -2,22 +2,6 @@ import os
 from pathlib import Path
 
 
-# def check_if_writable(file_path: Path) -> bool:
-#     """
-#     Check if a file is writable, or if the directory allows file creation if it doesn't exist.
-#
-#     Args:
-#         file_path (Path): The path to the file to check.
-#
-#     Returns:
-#         bool: True if the file or directory is writable, False otherwise.
-#     """
-#     # Check if the file exists and is writable
-#     if file_path.exists():
-#         return os.access(file_path, os.W_OK)
-#     # If the file doesn't exist, check if the parent directory is writable
-#     return os.access(file_path.parent, os.W_OK)
-
 def is_writeable_file(file_name: Path) -> bool:
     """
     Check if the given file can be written to.

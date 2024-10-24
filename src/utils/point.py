@@ -1,4 +1,4 @@
-"""Class for 2d Points."""
+"""Class for 2D Points."""
 
 import math
 from typing import Tuple
@@ -13,8 +13,9 @@ class Point:
         """
         Construct a point.
 
-        :param x: float of the x coordinate
-        :param y: float of the y coordinate
+        Args:
+            x (float): The x coordinate.
+            y (float): The y coordinate.
         """
         self.x: float = x
         self.y: float = y
@@ -22,9 +23,10 @@ class Point:
     @property
     def transform(self) -> str:
         """
-        Returns a string for a SVG translation to point.
+        Returns a string for an SVG translation to point.
 
-        :return: str
+        Returns:
+            str: The SVG translation string.
         """
         return f"translate({round(self.x, 1)}, {round(self.y, 1)})"
 
@@ -32,17 +34,23 @@ class Point:
         """
         Add two points.
 
-        :param other:
-        :return: Point
+        Args:
+            other (Point): The point to add.
+
+        Returns:
+            Point: The resulting point after addition.
         """
         return Point(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: 'Point') -> 'Point':
         """
-        Difference of two points.
+        Calculate the difference of two points.
 
-        :param other:
-        :return: Point
+        Args:
+            other (Point): The point to subtract.
+
+        Returns:
+            Point: The resulting point after subtraction.
         """
         return Point(self.x - other.x, self.y - other.y)
 
@@ -50,17 +58,23 @@ class Point:
         """
         Scale a point by a scale factor.
 
-        :param other: scale
-        :return: Point
+        Args:
+            other (float): The scale factor.
+
+        Returns:
+            Point: The scaled point.
         """
         return Point(self.x * other, self.y * other)
 
     def __truediv__(self, other: float) -> 'Point':
         """
-        Scale a point by dividing by a  scale factor.
+        Scale a point by dividing by a scale factor.
 
-        :param other: scale
-        :return: Point
+        Args:
+            other (float): The scale factor.
+
+        Returns:
+            Point: The scaled point.
         """
         return Point(self.x / other, self.y / other)
 
@@ -68,32 +82,36 @@ class Point:
         """
         Return the negation of a point's coordinates.
 
-        :return: Point
+        Returns:
+            Point: The point with negated coordinates.
         """
         return Point(-self.x, -self.y)
 
     @property
     def magnitude(self) -> float:
         """
-        Return the Pythagorean magnitude of a point.
+        Return the Pythagorean magnitude of the point.
 
-        :return:  float
+        Returns:
+            float: The magnitude of the point.
         """
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     @property
     def coordinates(self) -> Tuple[float, float]:
         """
-        Get the coordinates as an x,y tuple.
+        Get the coordinates as an (x, y) tuple.
 
-        :return: Tuple.
+        Returns:
+            Tuple[float, float]: The x and y coordinates.
         """
         return self.x, self.y
 
     def __repr__(self) -> str:
         """
-        Representation of a Point.
+        Return a string representation of the Point.
 
-        :return: str
+        Returns:
+            str: The string representation of the point.
         """
         return f"Point({self.x}, {self.y})"
