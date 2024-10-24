@@ -1,3 +1,6 @@
+import math
+
+
 class AngleException(Exception):
     pass
 
@@ -8,12 +11,52 @@ class Angle:
 
     Args:
         angle (float): The initial angle value. It is normalized to the range [0, 360).
+        and represents the angle in degrees.
     """
 
     def __init__(self, angle: float):
         self.angle = float(angle) % 360.0
 
     @property
+    def radians(self) -> float:
+        """
+        Returns the angle in radians.
+
+        Returns:
+            float: The angle in radians.
+        """
+        return self.angle * math.pi / 180.0
+
+    @radians.setter
+    def radians(self, radians: float) -> None:
+        """
+        Sets the angle in radians.
+
+        Args:
+            radians (float): The angle in radians.
+        """
+        self.angle = radians * 180.0 / math.pi
+
+    @property
+    def degrees(self) -> float:
+        """
+        Returns the angle in degrees.
+
+        Returns:
+            float: The angle in degrees.
+        """
+        return self.angle
+
+    @degrees.setter
+    def degrees(self, degrees: float) -> None:
+        """
+        Sets the angle in degrees.
+
+        Args:
+            degrees (float): The angle in degrees.
+        """
+        self.angle = degrees % 360.0
+
     def opposite(self) -> 'Angle':
         """
         Returns the opposite of the current angle.
