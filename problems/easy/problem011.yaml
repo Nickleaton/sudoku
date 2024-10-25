@@ -2,14 +2,14 @@ Board:
   Title: WPC 2019 5.6 Diagonal Sudoku
   Reference: https://wspc2019.de/downloads/wsc_2019_instructionbooklet_v1.pdf
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
   TLBR:
   BLTR:
-  Knowns:
+  Known:
     - .........
     - ...249...
     - ...831...

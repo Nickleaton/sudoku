@@ -3,12 +3,12 @@ Board:
   Reference: https://nrich.maths.org/4903
   Author: Henry Kwok
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  OrthogonalProducts:
+  OrthogonalProduct:
     - 11=20
     - 16=30
     - 31=96

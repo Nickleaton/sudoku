@@ -4,7 +4,7 @@ Board:
   Video: https://www.youtube.com/watch?v=hAyZ9K2EBF0&ab_channel=CrackingTheCryptic
   Reference: https://cracking-the-cryptic.web.app/sudoku/2QM8JHJ4HB
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
@@ -12,7 +12,7 @@ Constraints:
   TLBR:
   BLTR:
   AntiKnight:
-  Knowns:
+  Known:
     - .........
     - .........
     - .........
@@ -22,7 +22,9 @@ Constraints:
     - .........
     - .........
     - ........2
-  MagicSquares: 55, 11
+  MagicSquare:
+    - 55
+    - 11
 
 Solution:
   - 843567219

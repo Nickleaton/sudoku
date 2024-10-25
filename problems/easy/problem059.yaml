@@ -3,13 +3,13 @@ Board:
   Video: https://www.youtube.com/watch?v=BnsD0-nBNlk&ab_channel=CrackingTheCryptic
   Author: Isaac Resnikof
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - ........1
     - .........
     - .........
@@ -19,7 +19,7 @@ Constraints:
     - .........
     - .........
     - .........
-  Sandwiches:
+  Sandwich:
     - T1=19
     - T2=7
     - T3=15

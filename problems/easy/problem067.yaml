@@ -4,13 +4,13 @@ Board:
   Video: https://www.youtube.com/watch?v=s-LYqmY_Hrs&ab_channel=CrackingTheCryptic
   Reference: https://app.crackingthecryptic.com/sudoku/gTQ3fMq6nM
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
   TLBRReflecting:
-  SumArrows:
+  SumArrow:
     - 24, 23, 22, 12
     - 24, 25, 15
     - 28, 37, 46, 55
@@ -19,7 +19,7 @@ Constraints:
     - 73, 64, 55
     - 82, 72, 62
     - 82, 83, 84
-  Renbans:
+  Renban:
     - 11, 22, 33
     - 27, 18, 29, 38
     - 52, 53

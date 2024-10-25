@@ -4,13 +4,17 @@ Board:
   Video: https://www.youtube.com/watch?v=GWu9pM4JtpQ&ab_channel=CrackingTheCryptic
   Reference: https://app.crackingthecryptic.com/sudoku/MF3rQB3Tgr
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knight: 2,4,6,8
-  Quadruples:
+  Knight: 
+    - 2
+    - 4
+    - 6
+    - 8
+  Quadruple:
     - 11=23
     - 22=5
     - 33=89

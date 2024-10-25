@@ -2,12 +2,12 @@ Board:
   Title: Arto Inkala
   Reference: https://www.sudokuwiki.org/
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - 8........
     - ..36.....
     - .7..9.2..

@@ -4,12 +4,12 @@ Board:
   Reference: https://app.crackingthecryptic.com/sudoku/366Pj32HbT
   Video: https://www.youtube.com/watch?v=Pw6-JJEVOgg&ab_channel=CrackingTheCryptic
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  ConsecutivePairs:
+  ConsecutivePair:
     - 11-12
     - 11-21
     - 12-13
@@ -28,7 +28,7 @@ Constraints:
     - 87-88
     - 97-98
     - 98-99
-  KropkiPairs:
+  KropkiPair:
     - 35-36
     - 27-37
     - 38-39

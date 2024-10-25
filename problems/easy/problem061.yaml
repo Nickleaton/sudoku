@@ -3,12 +3,12 @@ Board:
   Reference: https://www.dropbox.com/s/b60635mtcte0w1o/DLS_ProductSudoku.pdf
   Author: Valezius
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  CenterProducts:
+  CenterProduct:
     - 13=480
     - 16=45
     - 22=108

@@ -4,16 +4,16 @@ Board:
   Video: https://www.youtube.com/watch?v=iLMNlaVFQkE&ab_channel=CrackingTheCryptic
   Reference: https://app.crackingthecryptic.com/sudoku/27FLhTPrhL
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  ConsecutivePairs:
+  ConsecutivePair:
     - 51-61
     - 43-44
     - 57-58
-  SimpleThermometers:
+  SimpleThermometer:
     - 23, 22, 21
     - 23, 13, 12, 11
     - 23, 33, 32, 31
@@ -27,7 +27,9 @@ Constraints:
     - 71, 72, 73, 83, 82
     - 88, 89, 99, 98, 97
     - 88, 89, 79, 78, 77
-  MagicSquares: 55, 11
+  MagicSquare:
+    - 55
+    - 11
 Solution:
   - 542913876
   - 731468295

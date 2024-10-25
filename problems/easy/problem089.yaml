@@ -4,21 +4,21 @@ Board:
   Video: https://www.youtube.com/watch?v=IykYoO3JCPQ&ab_channel=CrackingTheCryptic
   Reference: https://app.crackingthecryptic.com/sudoku/3gJJ7JJpGH
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  FixedProductPairs:
+  FixedProductPair:
     - 15-16
     - 63-73
     - 62-72
-  FixedRatioPairs:
+  FixedRatioPair:
     - 25-26
     - 63-64
     - 72-73
     - 76-86
-  FixedSumPairs:
+  FixedSumPair:
     - 42-52
     - 62-63
     - 47-57
@@ -26,7 +26,7 @@ Constraints:
     - 58-59
     - 67-68
     - 91-92
-  FixedDifferencePairs:
+  FixedDifferencePair:
     - 12-22
     - 35-36
     - 36-26

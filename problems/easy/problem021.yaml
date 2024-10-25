@@ -3,12 +3,12 @@ Board:
   Video: https://www.youtube.com/watch?v=qGG8cw-1Ea0&ab_channel=CrackingTheCryptic
   Reference: https://cracking-the-cryptic.web.app/sudoku/7L22pTT9DH
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - 3....7...
     - .7..1....
     - ...9.....
@@ -18,7 +18,7 @@ Constraints:
     - .....4...
     - ....3..7.
     - ...2....6
-  Renbans:
+  Renban:
     - 17, 18, 28, 38, 39
     - 26, 27, 37, 47, 48
     - 35, 36, 46, 56, 57

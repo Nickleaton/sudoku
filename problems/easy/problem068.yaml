@@ -3,12 +3,12 @@ Board:
   Author: Rajesh Kumar
   Reference: https://www.funwithpuzzles.com/2018/07/exclusion-sudoku-puzzle.html
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Exclusions:
+  Exclusion:
     - 12=9
     - 18=4
     - 21=6
@@ -27,7 +27,7 @@ Constraints:
     - 78=9
     - 81=3
     - 87=5
-  Knowns:
+  Known:
     - 2...4.1..
     - .....2...
     - ....1...3

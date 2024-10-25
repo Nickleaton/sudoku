@@ -4,12 +4,12 @@ Board:
   Video: https://www.youtube.com/watch?v=ojOATs9SDgY&ab_channel=CrackingTheCryptic
   Reference: https://tinyurl.com/52264n43
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  MaxArrows:
+  MaxArrow:
     - 12, 21, 31, 41
     - 23, 14, 15
     - 29, 18, 17, 16
@@ -21,7 +21,7 @@ Constraints:
     - 83, 74, 65, 56
     - 87, 96, 95
     - 98, 89, 79, 69
-  Knowns:
+  Known:
     - .3.......
     - ..6.....4
     - ...1...6.

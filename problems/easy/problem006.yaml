@@ -2,13 +2,13 @@ Board:
   Title: WPC 2019 8.1 Antiknight
   Reference: https://wspc2019.de/downloads/wsc_2019_instructionbooklet_v1.pdf
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
   AntiKnight:
-  Knowns:
+  Known:
     - 3...5...4
     - ...2.6...
     - ..6...7..

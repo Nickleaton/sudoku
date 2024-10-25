@@ -3,7 +3,7 @@ Board:
   Author: Aad van de Wetering
   Reference: https://tinyurl.com/y79xndab
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
@@ -11,7 +11,7 @@ Constraints:
   AntiKing:
   BLTR:
   TLBR:
-  Knowns:
+  Known:
     - .........
     - .........
     - .........
@@ -21,7 +21,7 @@ Constraints:
     - 519......
     - .........
     - .........
-  DutchWhispers:
+  DutchWhisper:
     - 91, 82, 73, 64, 55, 46, 37, 28, 19, 18, 17, 16, 15, 14, 13, 12, 11, 22, 33, 44, 55, 66, 77, 88, 99
 Solution:
   - 481627395

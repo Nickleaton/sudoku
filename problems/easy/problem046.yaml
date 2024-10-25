@@ -3,12 +3,12 @@ Board:
   Author: Clover
   Reference: https://tinyurl.com/y79xndab
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - ....9....
     - .........
     - .........
@@ -18,7 +18,7 @@ Constraints:
     - .........
     - .........
     - ....4....
-  Outsides:
+  Outside:
     - L1=12
     - L3=56
     - L6=45

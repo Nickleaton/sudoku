@@ -4,19 +4,19 @@ Board:
   Reference: https://tinyurl.com/y4k48fsk
   Video: https://www.youtube.com/watch?v=SgD2nN2JebU
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  EntropicLines:
+  EntropicLine:
     - 41, 31, 21, 11, 12, 13, 14, 15, 16, 17
     - 44, 34, 35, 36, 46
     - 37, 47, 48, 38
     - 39, 49, 59, 69, 79, 89, 99, 98, 97, 96
     - 54, 45, 55, 56, 67, 57, 58
     - 82, 81, 92, 93
-  Quadruples:
+  Quadruple:
     - 22=12
     - 23=8
     - 32=46

@@ -3,12 +3,12 @@ Board:
   Author: Rajesh Kumar
   Reference: https://www.funwithpuzzles.com/2016/05/minmax-difference-sudoku.html
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - .........
     - .....9...
     - ..3...2..
@@ -18,7 +18,7 @@ Constraints:
     - ..4...7..
     - ...7.....
     - .........
-  MinMaxDifferences:
+  MinMaxDifference:
     - T1=4
     - T2=7
     - T3=5

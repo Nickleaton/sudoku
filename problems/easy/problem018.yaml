@@ -3,17 +3,17 @@ Board:
   Author: Kithyane
   Video: https://www.youtube.com/watch?v=wfN_vAbVoX8&ab_channel=SudoKanard
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  FrozenThermometers:
+  FrozenThermometer:
     - 11, 22, 13, 24, 15, 26, 17, 28, 19
     - 51, 42, 33, 44, 55, 46, 37, 48, 59
     - 79, 68, 57, 66, 75, 64, 53, 62, 71
     - 99, 88, 97, 86, 95, 84, 93, 82, 91
-  Knowns:
+  Known:
     - .........
     - .........
     - .....9...

@@ -3,23 +3,23 @@ Board:
   Author: Agent
   Video: https://www.youtube.com/watch?v=Tve1ODS3mwY&ab_channel=Rangsk
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
   AntiKing:
-  GermanWhispers:
+  GermanWhisper:
     - 11, 22, 33, 44, 55, 66, 77, 88, 99
     - 61, 72, 83, 94
-  SumArrows:
+  SumArrow:
     - 39, 28, 17
     - 25, 34, 43, 52
     - 35, 44, 53
     - 73, 64, 55, 46, 37
     - 57, 66, 75
     - 95, 86, 77, 68
-  Knowns:
+  Known:
     - .........
     - .........
     - .........

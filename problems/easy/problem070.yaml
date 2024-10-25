@@ -2,7 +2,7 @@ Board:
   Title: Antidiagonal
   Reference: http://wscwpc2018.cz/wp-content/uploads/2018/10/WSC_2018_instruction_booklet_v5.pdf
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 
 Constraints:
   Columns:
@@ -10,7 +10,7 @@ Constraints:
   Boxes:
   AntiTLBR:
   AntiBLTR:
-  Knowns:
+  Known:
     - ...3.....
     - ....2....
     - ...7.9...

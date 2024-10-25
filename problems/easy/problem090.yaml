@@ -4,12 +4,12 @@ Board:
   Video: https://www.youtube.com/watch?v=IykYoO3JCPQ&ab_channel=CrackingTheCryptic
   Reference: https://www.youtube.com/watch?v=70oON2WLwPU
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Quadruples:
+  Quadruple:
     - 22=13
     - 27=35
     - 53=2569
@@ -21,7 +21,7 @@ Constraints:
     - 72=35
     - 77=57
     - 88=69
-  MOTES:
+  MOTE:
     - 11, 12, 13, 21, 31
     - 71, 81, 91, 92, 93
     - 17, 18, 19, 29, 39

@@ -2,12 +2,12 @@ Board:
   Title: AI Escargot
   Video: https://www.youtube.com/watch?v=V0xdmvr6fFU&ab_channel=CrackingTheCryptic
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
       - 1....7.9.
       - .3..2...8
       - ..96..5..

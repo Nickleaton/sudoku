@@ -4,14 +4,14 @@ Board:
   Video: https://www.youtube.com/watch?v=bSFzEh0V_m8&ab_channel=CrackingTheCryptic
   Reference: https://app.crackingthecryptic.com/sudoku/rJqFpfNPFq
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 
 Constraints:
   Columns:
   Rows:
   Boxes:
   AntiKnight:
-  SumArrows:
+  SumArrow:
     - 25, 34, 23, 12
     - 82, 72, 62, 53, 43
     - 85, 74, 64, 55

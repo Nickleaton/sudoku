@@ -3,13 +3,13 @@ Board:
   Video: https://www.youtube.com/watch?v=7x9eiA1wyO4&ab_channel=StevenScott
   Reference: https://f-puzzles.com/?id=yyg683mg
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
   Girandola:
-  Knowns:
+  Known:
     - ..82.91..
     - ...6.5...
     - 4.......9

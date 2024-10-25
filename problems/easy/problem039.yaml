@@ -4,12 +4,12 @@ Board:
   Reference: https://tinyurl.com/2tyztpte
   Video: https://www.youtube.com/watch?v=XUQkX8NiRXw&ab_channel=CrackingTheCryptic
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - 1.3.5.7..
     - .........
     - .....3...
@@ -19,7 +19,7 @@ Constraints:
     - ...2.....
     - .........
     - ..8.6.4.2
-  ConsecutivePairs:
+  ConsecutivePair:
     - 11-12
     - 13-14
     - 15-16

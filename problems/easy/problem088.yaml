@@ -3,12 +3,12 @@ Board:
   Author: Tallcat
   Video: https://www.youtube.com/watch?v=83Gu7fk5_Io&ab_channel=zetamathdoespuzzles
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  GermanWhispers:
+  GermanWhisper:
     - 21, 11, 12
     - 24, 15, 26
     - 18, 19, 29
@@ -17,7 +17,7 @@ Constraints:
     - 81, 91, 92
     - 84, 95, 86
     - 98, 99, 89
-  NumberedRooms:
+  NumberedRoom:
     - T4=3
     - T5=4
     - R1=9

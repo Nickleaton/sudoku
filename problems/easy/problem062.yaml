@@ -3,13 +3,13 @@ Board:
   Reference: http://rohanrao.blogspot.com/2009/01/rules-of-product-frame-sudoku.html
   Author: Rohan Rao
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
       - .........
       - .........
       - ..1...4..
@@ -19,7 +19,7 @@ Constraints:
       - ..8...3..
       - .........
       - .........
-  FrameProducts:
+  FrameProduct:
     - T1=30
     - T2=336
     - T3=36

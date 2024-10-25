@@ -1,12 +1,12 @@
 Board:
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
   Author: Philip Newman
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - .........
     - .1.......
     - .........
@@ -16,7 +16,7 @@ Constraints:
     - ......5..
     - .......4.
     - ........3
-  SimpleThermometers:
+  SimpleThermometer:
     - 34, 24, 14, 15, 16, 26, 25
     - 19, 29, 39, 28, 17, 27, 37
     - 43, 53, 63, 52, 41, 51, 61

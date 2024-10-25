@@ -4,12 +4,12 @@ Board:
   Video: https://www.youtube.com/watch?v=E4yFULT49a4&ab_channel=CrackingTheCryptic
   Reference: https://cracking-the-cryptic.web.app/sudoku/hP46qg8QMp
   Board: 9x9
-  Boxes: 3x3
+  Box: 3x3
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Knowns:
+  Known:
     - 1.......8
     - ....5....
     - ....3....
@@ -19,7 +19,7 @@ Constraints:
     - ....1....
     - ....6....
     - 7.......1
-  Betweens:
+  Between:
     - 51, 41, 31, 22, 13, 14, 15
     - 15, 16, 17, 28, 39, 49, 59
     - 26, 37, 48
