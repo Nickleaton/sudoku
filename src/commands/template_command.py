@@ -15,14 +15,14 @@ from src.utils.file_handling import is_readable_file
 
 
 class TemplateCommand(SimpleCommand):
-    """ Render the problem using a Jinja2 template. """
+    """Render the problem using a Jinja2 template."""
 
     def __init__(self, template: Path | str, target: str):
-        """
-        Create the command.
+        """Create the command.
 
-        :param template: name of the jinja2 template to use generating the html
-        :param target: name of the field in the problem that will contain the html
+        Args:
+            template (Path | str): Name of the Jinja2 template to use for generating the HTML.
+            target (str): Name of the field in the problem that will contain the HTML.
         """
         super().__init__()
         self.template_file: Path = Path(template) if isinstance(template, str) else template
@@ -30,14 +30,16 @@ class TemplateCommand(SimpleCommand):
         self.template: Optional[Template] = None
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
+        """Check the preconditions for the command.
 
         This method checks that the target attribute does not already exist in the
         problem's configuration and that the source file exists and is readable.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem to check.
+
+        Raises:
+            CommandException: If the preconditions are not met.
         """
         if not is_readable_file(self.template_file):
             raise CommandException(
@@ -47,15 +49,14 @@ class TemplateCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Produce the HTML output of the puzzle.
+        """Produce the HTML output of the puzzle.
 
-        This function renders the jinja2 template using the values of the problem as
-        variables. The rendered HTML is stored in the problem in the field
-        specified by field_name.
+        This function renders the Jinja2 template using the values of the problem as
+        variables. The rendered HTML is stored in the problem in the field specified by target.
 
-        Parameters:
-            problem (Problem): The problem to render
+        Args:
+            problem (Problem): The problem to render.
+
         Returns:
             None
         """
@@ -67,8 +68,7 @@ class TemplateCommand(SimpleCommand):
         problem[self.target] = self.template.render(problem)
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the object.
+        """Return a string representation of the object.
 
         Returns:
             str: A string representation of the object.

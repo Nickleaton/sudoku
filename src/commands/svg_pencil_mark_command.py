@@ -14,21 +14,22 @@ from src.items.solution import Solution
 class SVGPencilMarkCommand(SVGCommand):
 
     def __init__(self, problem_field: str = "pencil_mark_svg"):
-        """
-        Initialize the SVGProblemCommand.
+        """Initialize the SVGPencilMarkCommand.
 
-        Parameters:
-            problem_field (str): The attribute of the problem that contains the root item to be drawn
+        Args:
+            problem_field (str): The attribute of the problem that contains the root item to be drawn.
         """
         super().__init__(problem_field)
 
     def select(self, item: Item | None) -> bool:
-        """
-        Selector.
+        """Selector to determine if the item should be displayed.
 
-        TODO
+        This method is a placeholder for future implementation.
 
-        :param item: Item to check if it's included in the output
-        :return: True if the item is to be displayed
+        Args:
+            item (Item | None): The item to check if it's included in the output.
+
+        Returns:
+            bool: True if the item is to be displayed, False otherwise.
         """
         return not isinstance(item, Solution)

@@ -1,8 +1,9 @@
-""" Command base class.
+"""
+Command base class.
 
-Commands are used to do the actual work.
-Based on the Command pattern from the Gang of Four book
-https://en.wikipedia.org/wiki/Command_pattern
+Commands are used to perform specific actions following the Command pattern
+from the Gang of Four book.
+For more information, see https://en.wikipedia.org/wiki/Command_pattern
 """
 import logging
 from abc import ABC
@@ -12,13 +13,19 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class CommandException(SudokuException):
-    """  Raised when there is an error in a command. """
+    """
+    Exception raised when an error occurs in a command.
+
+    Attributes:
+        attribute (str): The attribute of the problem that caused the error.
+    """
 
     def __init__(self, attribute: str):
         """
-        Initialize a CommandException.
+        Initializes a CommandException.
 
-        :param attribute: The attribute of the problem which caused the error.
+        Args:
+            attribute (str): The attribute of the problem that caused the error.
         """
         super().__init__(f"Error in {attribute}")
         self.attribute = attribute
@@ -26,44 +33,50 @@ class CommandException(SudokuException):
 
 class Command(ABC):
     """
-    Base class for all commands.
-    Implements the Command pattern from the Gang of Four book
+    Base class for all commands implementing the Command pattern.
+
+    Commands inheriting from this base class should define specific behavior
+    in their `execute` and `precondition_check` methods.
     """
 
     def __init__(self):
-        """ Command base class. """
+        """Initializes the Command base class."""
         pass
 
     @property
     def name(self) -> str:
         """
-        Get the name of the class in a readable form.
+        Retrieves a readable name for the command class.
 
         Returns:
-            str: The name of the class.
+            str: The name of the class, with "Command" removed if present.
         """
-
         return self.__class__.__name__.replace("Command", "") if self.__class__.__name__ != 'Command' else 'Command'
 
     def precondition_check(self, problem: Problem) -> None:
         """
-        Check the preconditions for the command.
+        Checks that the preconditions for the command are met.
 
-        This method checks that the preconditions for the command are met.
-        The preconditions may be different for each command and are determined
-        by the command's implementation.
+        This method should be overridden by subclasses to define specific
+        preconditions. Raises a `CommandException` if conditions are not met.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem instance to check.
+
+        Raises:
+            CommandException: If the preconditions are not met.
         """
         pass
 
     def execute(self, problem: Problem) -> None:
         """
-        Execute the command.
+        Executes the command, performing the specified action.
 
-        This method performs the actual work of the command. It logs an info message
-        indicating that the command is being processed.
+        Logs an info message indicating that the command is being processed
+        and checks preconditions by calling `precondition_check`.
+
+        Args:
+            problem (Problem): The problem instance to execute the command on.
 
         Returns:
             None

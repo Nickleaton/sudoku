@@ -8,11 +8,15 @@ from src.solvers.answer import Answer
 
 
 class SVGAnswerCommand(SVGCommand):
+    """Command to create an SVG drawing of the answer."""
 
     def select(self, item: Item | None) -> bool:
-        """
-        Selector.
-        :param item: Item to check if it's included in the output
-        :return: True if the item is to be displayed
+        """Determine if the item should be included in the output.
+
+        Args:
+            item (Item | None): The item to check for inclusion.
+
+        Returns:
+            bool: True if the item is to be displayed; otherwise, False.
         """
         return isinstance(item, Answer)

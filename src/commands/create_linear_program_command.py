@@ -5,7 +5,6 @@ import logging
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.solvers.pulp_solver import PulpSolver
 from src.utils.temporary_file import TemporaryFile
 
 

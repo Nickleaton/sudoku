@@ -9,17 +9,15 @@ from src.commands.simple_command import SimpleCommand
 
 
 class SolveCommand(SimpleCommand):
+    """Command to solve a problem using a specified solver."""
 
-    def __init__(self,
-                 solver: str = 'solver',
-                 target: str = 'solution',
-                 log: str = 'log'):
-        """
-        Construct a SolveCommand.
+    def __init__(self, solver: str = 'solver', target: str = 'solution', log: str = 'log'):
+        """Construct a SolveCommand.
 
-        :param solver: The field containing the solver to use
-        :param target: The field to store the solution in
-        :param log: The field to store the log of the solver
+        Args:
+            solver (str): The field containing the solver to use.
+            target (str): The field to store the solution in.
+            log (str): The field to store the log of the solver.
         """
         super().__init__()
         self.solver = solver
@@ -27,11 +25,13 @@ class SolveCommand(SimpleCommand):
         self.log = log
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
+        """Check the preconditions for the command.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem to check.
+
+        Raises:
+            CommandException: If the preconditions are not met.
         """
         if self.solver not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.solver} not created')
@@ -39,8 +39,10 @@ class SolveCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Solve the puzzle.
+        """Solve the puzzle.
+
+        Args:
+            problem (Problem): The problem to solve.
         """
         super().execute(problem)
         logging.info(f"Solving {self.solver} and storing solution in {self.target}")
@@ -49,13 +51,9 @@ class SolveCommand(SimpleCommand):
         # Handle log
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the object.
+        """Return a string representation of the object.
 
-        The string is of the form "SolveCommand(solver, target, log)". The
-        representation is useful for debugging and logging.
-
-        :return: A string representation of the object.
-        :rtype: str
+        Returns:
+            str: A string representation of the object.
         """
         return f'{self.__class__.__name__}({self.solver!r}, {self.target!r}, {self.log!r})'

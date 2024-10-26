@@ -5,7 +5,6 @@ import logging
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.solvers.pulp_solver import PulpSolver
 from src.utils.temporary_file import TemporaryFile
 
 
@@ -59,7 +58,7 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
 
         This method performs the actual work of the command. It logs an info message
         indicating that the command is being processed and creates a new solver in the
-        problem, storing it in the field specified by `solver`. Book keeping on cells is
+        problem, storing it in the field specified by `solver`. Bookkeeping on cells is
         then applied adding the constraints to the solver.
         The solver s then saved to a temporary file and the contents of the file are stored in
         the field specified by `target`.
@@ -72,8 +71,7 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
-        with TemporaryFile() as lf:
-
+        with TemporaryFile() as _:
             problem[self.constraints].bookkeeping()
             # TODO
             problem[self.constraints].add_bookkeeping_constraint(problem[self.solver])

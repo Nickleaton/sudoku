@@ -6,19 +6,17 @@ from src.commands.simple_command import SimpleCommand
 
 
 class CreateMetaCommand(SimpleCommand):
+    """
+    Command for creating a metadata field in the problem instance.
+    """
 
-    def __init__(self,
-                 source: str = 'config',
-                 target: str = 'meta'
-                 ):
-
+    def __init__(self, source: str = 'config', target: str = 'meta'):
         """
-        Initialize a CreateMetaCommand.
+        Initializes a CreateMetaCommand instance.
 
-        :param source: The name of the config to get the metadata from.
-            Defaults to 'config'.
-        :param target: The name of the field to store the metadata in.
-            Defaults to 'meta'.
+        Args:
+            source (str): The attribute in the problem containing the configuration data. Defaults to 'config'.
+            target (str): The attribute name in the problem where metadata will be stored. Defaults to 'meta'.
         """
         super().__init__()
         self.source: str = source
@@ -26,22 +24,32 @@ class CreateMetaCommand(SimpleCommand):
 
     def precondition_check(self, problem: Problem) -> None:
         """
-        Check the preconditions for the command.
+        Checks preconditions for command execution.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Ensures that the source attribute exists in the problem and the target attribute
+        does not already exist.
+
+        Args:
+            problem (Problem): The problem instance to check.
+
+        Raises:
+            CommandException: If the source attribute is missing or the target attribute
+                              already exists in the problem.
         """
         if self.source not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.source} not loaded')
+            raise CommandException(f"{self.__class__.__name__} - {self.source} not loaded")
         if self.target in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
+            raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
-    def execute(self, problem: Problem):
+    def execute(self, problem: Problem) -> None:
         """
-        Create the field in the problem.
+        Creates the metadata field in the problem.
 
-        Parameters:
-            problem (Problem): The problem to create the field in.
+        Logs a message indicating that the command is being processed and creates a new
+        metadata field in the problem, storing it in the specified target attribute.
+
+        Args:
+            problem (Problem): The problem instance to create the metadata in.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
@@ -49,7 +57,7 @@ class CreateMetaCommand(SimpleCommand):
 
     def __repr__(self) -> str:
         """
-        Return a string representation of the object.
+        Returns a string representation of the CreateMetaCommand instance.
 
         Returns:
             str: A string representation of the object.

@@ -3,16 +3,15 @@ import logging
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.items.item import Item
 
 
 class BookkeepingCommand(SimpleCommand):
-    def __init__(self, constraints: str = 'constraints', target: str = 'bookkeeping_unique') -> object:
+    def __init__(self, constraints: str = 'constraints', target: str = 'bookkeeping_unique'):
         """
         Run the bookkeeping command
 
-        :param constraints: The source attribute for the contraints
-        :param target: The name of the attribute to store if the bookeeping is unique
+        :param constraints: The source attribute for the constraints
+        :param target: The name of the attribute to store if the bookkeeping is unique
         """
         super().__init__()
         self.constraints: str = constraints

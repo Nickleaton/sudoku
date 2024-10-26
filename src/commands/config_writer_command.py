@@ -11,10 +11,14 @@ from src.utils.file_handling import is_writeable_file
 
 def represent_none(self, _):
     """
-    A YAML representer that converts None to an empty string.
+    Custom YAML representer to convert None to an empty string.
 
-    This is needed because the default YAML representer for None is
-    `~` which is not what we want.
+    This ensures that None values in YAML are represented as empty strings
+    rather than the default '~'.
+
+    Args:
+        self: The representer instance.
+        _: The value to represent (unused).
     """
     return self.represent_scalar('tag:yaml.org,2002:null', '')
 
@@ -24,15 +28,17 @@ yaml.add_representer(type(None), represent_none)
 
 
 class ConfigWriterCommand(SimpleCommand):
-    def __init__(self,
-                 source: str = 'config',
-                 target: Path | str = 'dump_config.yaml') -> None:
+    """
+    Command for writing configuration data to a YAML file.
+    """
 
+    def __init__(self, source: str = 'config', target: Path | str = 'dump_config.yaml') -> None:
         """
-        Construct a ConfigWriterCommand.
+        Initializes a ConfigWriterCommand instance.
 
-        :param source: The attribute of the problem to store the configuration in
-        :param target: The name of the file to write the configuration to
+        Args:
+            source (str): The attribute of the problem containing the configuration data.
+            target (Path | str): The path or filename to write the configuration to.
         """
         super().__init__()
         self.source: str = source
@@ -40,14 +46,17 @@ class ConfigWriterCommand(SimpleCommand):
 
     def precondition_check(self, problem: Problem) -> None:
         """
-        Check the preconditions for the command.
+        Checks preconditions for the command execution.
 
-        This method checks that the source attribute specified by
-        `source` exists in the problem and that the target file
-        specified by `target` is writeable.
+        Verifies that the configuration source exists in the problem and
+        that the target file is writable.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem instance to check.
+
+        Raises:
+            CommandException: If the source attribute is missing from the problem or
+                              if the target file is not writable.
         """
         if self.source not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.source} does not exist in the problem')
@@ -56,21 +65,17 @@ class ConfigWriterCommand(SimpleCommand):
 
     def execute(self, problem: Problem) -> None:
         """
-        Write the configuration to the specified file.
+        Writes the configuration to the specified file in YAML format.
 
-        The configuration is written in YAML format to the file specified
-        by `target`. The configuration is obtained from the problem field
-        specified by `source`.
+        The configuration is obtained from the problem field specified by `source`
+        and written to the target file in YAML format.
 
-        Parameters:
-            problem (Problem): The problem to obtain the configuration from.
+        Args:
+            problem (Problem): The problem instance containing the configuration data.
 
         Raises:
-            CommandException: If the target is not writeable or if the
-                configuration is not present in the problem.
-
-        Returns:
-            None
+            CommandException: If the target is not writable or the configuration
+                              is missing from the problem.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
@@ -79,7 +84,7 @@ class ConfigWriterCommand(SimpleCommand):
 
     def __repr__(self) -> str:
         """
-        Return a string representation of the object.
+        Returns a string representation of the ConfigWriterCommand instance.
 
         Returns:
             str: A string representation of the object.

@@ -1,18 +1,18 @@
 import logging
-
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.items.item import Item
-
+from src.items.constraints import Constraints
 
 class CreateConstraintsCommand(SimpleCommand):
     def __init__(self, config: str = 'config', board: str = 'board', target: str = 'constraints'):
         """
-        Construct a CreateConstraintsCommand.
+        Initializes the CreateConstraintsCommand.
 
-        :param source: The source attribute to use to build the constraints
-        :param target: The name of the attribute to store the constraints in
+        Args:
+            config (str): The key in the problem to find the configuration. Defaults to 'config'.
+            board (str): The key in the problem to find the board. Defaults to 'board'.
+            target (str): The key where constraints will be added to the problem. Defaults to 'constraints'.
         """
         super().__init__()
         self.config: str = config
@@ -21,33 +21,41 @@ class CreateConstraintsCommand(SimpleCommand):
 
     def precondition_check(self, problem: Problem) -> None:
         """
-        Check the preconditions for the command.
+        Checks if the necessary conditions are met before executing the command.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem instance to check conditions on.
+
+        Raises:
+            CommandException: If the configuration, board, or target constraints do not meet required conditions.
         """
         if self.config not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} does not exist in the problem')
+            raise CommandException(f'{self.__class__.__name__} - {self.config} configuration missing in problem')
         if self.board not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.board} does not exist in the problem')
+            raise CommandException(f'{self.__class__.__name__} - {self.board} board not defined in problem')
         if self.target in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.target} already exists in the problem')
 
     def execute(self, problem: Problem) -> None:
         """
-        Build the constraints.
+        Executes the command to create constraints.
 
-        :return: None
+        Args:
+            problem (Problem): The problem instance where constraints will be created and added.
+
+        Returns:
+            None
         """
         super().execute(problem)
-        logging.info(f"Creating {self.target}")
-        problem[self.target] = Item.create(problem[self.board], {'Constraints': problem[self.config]['Constraints']})
+        logging.debug(f"Creating {self.target}")
+        problem[self.target] = Constraints.create(problem[self.board],
+                                                  {'Constraints': problem[self.config]['Constraints']})
 
     def __repr__(self) -> str:
         """
-        Return a string representation of the object.
+        Returns a string representation of the object.
 
         Returns:
-            str: A string representation of the object.
+            str: A string representation showing configuration, board, and target.
         """
         return f"{self.__class__.__name__}({self.config!r}, {self.board!r}, {self.target!r})"

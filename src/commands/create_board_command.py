@@ -10,37 +10,50 @@ from src.items.board import Board
 
 
 class CreateBoardCommand(SimpleCommand):
+    """
+    Command for creating a board from configuration data.
+    """
 
     def __init__(self, source: str = 'config', target: str = 'board'):
+        """
+        Initializes a CreateBoardCommand instance.
+
+        Args:
+            source (str): The attribute in the problem where the configuration is stored.
+            target (str): The attribute name in the problem where the board will be stored.
+        """
         super().__init__()
         self.source = source
         self.target = target
 
     def precondition_check(self, problem: Problem) -> None:
         """
-        Check the preconditions for the command.
+        Checks preconditions for the command execution.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Verifies that the source attribute exists in the problem and that
+        the target attribute does not already exist.
+
+        Args:
+            problem (Problem): The problem instance to check.
+
+        Raises:
+            CommandException: If the source attribute is missing or the target attribute
+                              already exists in the problem.
         """
-        if self.source not in problem is None:
+        if self.source not in problem:
             raise CommandException(f"{self.source} not in problem")
         if self.target in problem:
             raise CommandException(f"{self.target} already in problem")
 
     def execute(self, problem: Problem) -> None:
         """
-        Create the board.
+        Creates the board and stores it in the problem.
 
-        This method performs the actual work of the command. It logs an info message
-        indicating that the command is being processed and creates a new board in the
-        problem, storing it in the field specified by `target`.
+        Logs a message indicating that the command is being processed and
+        creates a new board in the problem, storing it in the specified target attribute.
 
-        Parameters:
-            problem (Problem): The problem to create the board in.
-
-        Returns:
-            None
+        Args:
+            problem (Problem): The problem instance to create the board in.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
@@ -48,7 +61,7 @@ class CreateBoardCommand(SimpleCommand):
 
     def __repr__(self) -> str:
         """
-        Return a string representation of the object.
+        Returns a string representation of the CreateBoardCommand instance.
 
         Returns:
             str: A string representation of the object.

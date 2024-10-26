@@ -6,18 +6,17 @@ from src.commands.simple_command import SimpleCommand
 
 
 class CreateRulesCommand(SimpleCommand):
+    """
+    Command for creating a list of rules in the problem instance.
+    """
 
-    def __init__(self,
-                 constraints: str = 'constraints',
-                 target: str = 'rules'):
+    def __init__(self, constraints: str = 'constraints', target: str = 'rules'):
         """
-        Initialize a CreateRulesCommand object.
+        Initializes a CreateRulesCommand instance.
 
-        Parameters:
-            constraints (str): The name of the field in the problem
-                containing the constraints to generate rules from.
-            target (str): The name of the field in the problem that
-                this command will create.
+        Args:
+            constraints (str): The attribute in the problem containing constraints used to generate rules.
+            target (str): The attribute name in the problem where the generated rules will be stored.
         """
         super().__init__()
         self.constraints: str = constraints
@@ -25,41 +24,44 @@ class CreateRulesCommand(SimpleCommand):
 
     def precondition_check(self, problem: Problem) -> None:
         """
-        Check the preconditions for the command.
+        Checks preconditions for command execution.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Ensures that the constraints attribute exists in the problem and the target attribute
+        does not already exist.
+
+        Args:
+            problem (Problem): The problem instance to check.
+
+        Raises:
+            CommandException: If the constraints attribute is missing or the target attribute
+                              already exists in the problem.
         """
         if self.constraints not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.constraints} not loaded')
+            raise CommandException(f"{self.__class__.__name__} - {self.constraints} not loaded")
         if self.target in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
+            raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
     def execute(self, problem: Problem) -> None:
         """
-        Create a list of rules in the problem.
+        Creates a list of rules in the problem instance.
 
-        The rules are determined by recursively traversing the item tree and
-        calling the `rules` property on each item. The resulting list of rules
-        is de-duplicated and sorted in order. The rules are stored in the
-        problem in the field specified by `target`.
+        This function generates rules by traversing the item tree and calling the `rules`
+        property on each item in the constraints attribute. The rules are then de-duplicated,
+        sorted, and stored in the target attribute within the problem instance.
 
-        Parameters:
-            problem (Problem): The problem to generate the rules for.
-
-        Returns:
-            None
+        Args:
+            problem (Problem): The problem instance where the rules will be created.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
-        problem.rules = [
+        problem[self.target] = [
             {'name': rule.name, 'text': rule.text}
             for rule in problem[self.constraints].sorted_unique_rules
         ]
 
     def __repr__(self) -> str:
         """
-        Return a string representation of the object.
+        Returns a string representation of the CreateRulesCommand instance.
 
         Returns:
             str: A string representation of the object.
