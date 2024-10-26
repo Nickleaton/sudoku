@@ -1,5 +1,6 @@
 import unittest
 
+from src.commands.command import CommandException
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.load_config_command import LoadConfigCommand
 from tests.commands.test_simple_command import TestSimpleCommand
@@ -25,7 +26,7 @@ class TestCreateBoardCommand(TestSimpleCommand):
         self.assertIn('board', self.problem)
 
     def test_exception(self):
-        with self.assertRaises(KeyError):
+        with self.assertRaises(CommandException):
             self.command.execute(self.empty_problem)
 
 

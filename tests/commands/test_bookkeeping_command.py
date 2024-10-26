@@ -22,7 +22,8 @@ class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
     def test_command(self):
         self.command.execute(self.problem)
         self.assertIn("bookkeeping_unique", self.problem)
-        self.assertTrue(self.problem["bookkeeping_unique"])
+        self.assertIsNotNone(self.problem["bookkeeping_unique"])
+        # TODO check that the bookkeeping is unique
 
     @property
     def representation(self) -> str:

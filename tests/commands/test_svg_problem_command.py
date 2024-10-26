@@ -1,6 +1,5 @@
 import unittest
 
-from src.commands.svg_pencil_mark_command import SVGPencilMarkCommand
 from src.commands.svg_problem_command import SVGProblemCommand
 from tests.commands.test_svg_command import TestSVGCommand
 
