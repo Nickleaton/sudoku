@@ -4,21 +4,12 @@ from typing import Any
 
 from strictyaml import Regex
 
+from src.utils.sudoku_exception import SudokuException
 
-class ParserError(Exception):
-    """Exception raised for errors in the Parser.
 
-    Attributes:
-        message (str): Explanation of the error.
-    """
-
-    def __init__(self, message: str):
-        """Initializes ParserError with a message.
-
-        Args:
-            message (str): Explanation of the error.
-        """
-        super().__init__(message)
+class ParserError(SudokuException):
+    """Exception raised for errors in the Parser."""
+    pass
 
 
 class Parser(Regex):
