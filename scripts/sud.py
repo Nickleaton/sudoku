@@ -45,8 +45,8 @@ from src.commands.svg_command import SVGCommand
 
 
 if __name__ == "__main__":
-    argparser = parser()
-    args = argparser.parse_args()
+    argument_parser = parser()
+    args = argument_parser.parse_args()
     if args.logfile:
         logging.basicConfig(filename=args.logfile, encoding='utf-8', level=args.loglevel)
     else:

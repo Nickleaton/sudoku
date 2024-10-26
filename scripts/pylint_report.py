@@ -75,7 +75,7 @@ def get_score(stats):
 
 
 def get_score_history(score_dir):
-    """Return a ordered dict of score history as sha:score pairs.
+    """Return an ordered dict of score history as sha:score pairs.
 
     Note
     -----
@@ -93,14 +93,14 @@ def get_score_history(score_dir):
     # pylint: disable=redefined-outer-name
     out = OrderedDict()
     for f in sorted(glob(os.path.join(score_dir, 'pylint_*.log'))):
-        with open(f) as h:
-            s = h.readline(1)
+        with open(f) as history_file:
+            s = history_file.readline(1)
             out[f.split('.')[-2]] = float(s)
     return out
 
 
 def json2html(data):
-    """Generate an html file (based on :obj:`data`)."""
+    """Generate a html file (based on :obj:`data`)."""
     out = HTML_HEAD
     out += '<body>\n<h1><u>Pylint report</u></h1>\n'
 

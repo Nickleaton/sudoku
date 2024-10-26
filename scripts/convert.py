@@ -47,7 +47,7 @@ def grid(data: Dict, size: int) -> Dict:
             cell = data['grid'][x][y]
             row += '.' if cell.get('value') is None else str(cell.get('value'))
         values.append(row)
-    return {'Knowns': values}
+    return {'Known': values}
 
 
 def solution(data: Dict, size: int) -> Dict:

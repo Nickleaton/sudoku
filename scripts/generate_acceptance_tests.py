@@ -24,7 +24,7 @@ def parser() -> ArgumentParser:
     result = ArgumentParser(description='Generate acceptance tests')
     result.add_argument(
         '--source',
-        help='directory containing yamls',
+        help='directory containing yaml files',
         action='store',
         dest='source',
         default='problems'
