@@ -10,7 +10,8 @@ class TestUnknownParser(TestParser):
 
     def setUp(self):
         """Sets up the UnknownParser instance for testing."""
-        self.parser = UnknownParser()
+        self.parser: UnknownParser = UnknownParser()
+        self.representation: str = 'UnknownParser()'
         self.valid_input: List[Tuple[str, Any]] = []
         self.invalid_input: List[str] = \
             [

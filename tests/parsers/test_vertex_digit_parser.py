@@ -10,7 +10,8 @@ class TestVertexDigitParser(TestParser):
 
     def setUp(self):
         """Sets up the VertexDigitParser instance for testing."""
-        self.parser = VertexDigitParser()
+        self.parser: VertexDigitParser = VertexDigitParser()
+        self.representation: str = 'VertexDigitParser()'
         self.valid_input: List[Tuple[str, Any]] = [
             # Valid inputs for the Vertex Digit format
             ("12=3", [[1, 2], 3]),

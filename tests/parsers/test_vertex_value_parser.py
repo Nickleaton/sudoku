@@ -10,7 +10,8 @@ class TestVertexValueParser(TestParser):
 
     def setUp(self):
         """Sets up the VertexValueParser instance for testing."""
-        self.parser = VertexValueParser()
+        self.parser: VertexValueParser = VertexValueParser()
+        self.representation: str = 'VertexValueParser()'
         self.valid_input: List[Tuple[str, Any]] = [
             # Valid inputs for the Vertex Value format
             ("12=123", [[1, 2], 123]),

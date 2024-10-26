@@ -10,7 +10,8 @@ class TestQuadruplesParser(TestParser):
 
     def setUp(self):
         """Sets up the QuadruplesParser instance for testing."""
-        self.parser = QuadruplesParser()
+        self.parser: QuadruplesParser = QuadruplesParser()
+        self.representation: str = "QuadruplesParser()"
         self.valid_input: List[Tuple[str, Any]] = [
             # Valid quadruples format inputs
             ("12=123", [12, '123']),

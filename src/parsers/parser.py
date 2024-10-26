@@ -54,3 +54,13 @@ class Parser(Regex):
             NotImplementedError: This method should be implemented in subclasses.
         """
         pass
+
+    def __repr__(self) -> str:
+        """Returns a string representation of the Parser object.
+
+        Does not include the pattern for this class. This is because subclasses
+        pass the pattern up from their __init__ method, and this would be redundant
+        information. This clas is not meant to be instantiated directly.
+
+        """
+        return f"{self.__class__.__name__}()"

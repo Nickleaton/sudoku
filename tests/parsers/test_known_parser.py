@@ -10,7 +10,8 @@ class TestKnownParser(TestParser):
 
     def setUp(self):
         """Sets up the KnownParser instance for testing."""
-        self.parser = KnownParser()
+        self.parser: KnownParser = KnownParser()
+        self.representation: str = 'KnownParser()'
         self.valid_input: List[Tuple[str, Any]] = \
             [
                 ("123456789", ['1', '2', '3', '4', '5', '6', '7', '8', '9']),

@@ -10,7 +10,8 @@ class TestRossiniParser(TestParser):
 
     def setUp(self):
         """Sets up the RossiniParser instance for testing."""
-        self.parser = RossiniParser()
+        self.parser: RossiniParser = RossiniParser()
+        self.representation: str = "RossiniParser()"
         self.valid_input: List[Tuple[str, Any]] = [
             # Valid inputs for the Rossini format
             ("T0=D", ['T', 0, 'D']),

@@ -14,6 +14,7 @@ class TestParser(unittest.TestCase):
         self.parser: Parser = MockParser()  # Instantiate the MockParser
         self.valid_input: List[Tuple[str, Any]] = []
         self.invalid_input: List[str] = []
+        self.representation = 'MockParser()'
 
     def test_parse_empty_input(self):
         """Tests parsing an empty input string."""
@@ -34,10 +35,13 @@ class TestParser(unittest.TestCase):
     def test_invalid_input(self):
         """Tests parsing invalid inputs raises ParserError."""
         for input_text in self.invalid_input:
-            print(input_text)
             with self.assertRaises(ParserError) as cm:
                 self.parser.parse(input_text)
             self.assertIsNone(self.parser.result)
+
+    def test_repr(self):
+        """Tests the __repr__ method."""
+        self.assertEqual(repr(self.parser), self.representation)
 
 
 if __name__ == '__main__':  # pragma: no cover

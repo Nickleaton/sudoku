@@ -10,7 +10,8 @@ class TestLittleKillersParser(TestParser):
 
     def setUp(self):
         """Sets up the LittleKillersParser instance for testing."""
-        self.parser = LittleKillersParser()
+        self.parser: LittleKillersParser = LittleKillersParser()
+        self.representation: str = 'LittleKillersParser()'
         self.valid_input: List[Tuple[str, Any]] = \
             [
                 # Valid Little Killers format inputs

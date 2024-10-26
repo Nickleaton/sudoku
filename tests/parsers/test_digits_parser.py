@@ -10,7 +10,8 @@ class TestDigitsParser(TestParser):
 
     def setUp(self):
         """Sets up the DigitsParser instance for testing."""
-        self.parser = DigitsParser()
+        self.parser: DigitsParser = DigitsParser()
+        self.representation: str = 'DigitsParser()'
         self.valid_input: List[Tuple[str, Any]] = \
             [
                 ("1, 2, 3, 4, 5", [1, 2, 3, 4, 5]),

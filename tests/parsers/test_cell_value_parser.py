@@ -10,7 +10,8 @@ class TestCellValueParser(TestParser):
 
     def setUp(self):
         """Sets up the CellValueParser instance for testing."""
-        self.parser = CellValueParser()
+        self.parser: CellValueParser = CellValueParser()
+        self.representation: str = "CellValueParser()"
         self.valid_input: List[Tuple[str, Any]] = [
             # Valid inputs for the Cell Value format
             ("12=5", [[1, 2], 5]),
@@ -19,7 +20,6 @@ class TestCellValueParser(TestParser):
             ("78=42", [[7, 8], 42]),
             ("90=1", [[9, 0], 1]),
         ]
-
         self.invalid_input: List[str] = [
             # Invalid inputs that should raise ParserError
             "1=5",  # One digit on the left side

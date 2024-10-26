@@ -10,7 +10,8 @@ class TestDigitParser(TestParser):
 
     def setUp(self):
         """Sets up the DigitsParser instance for testing."""
-        self.parser = DigitParser()
+        self.parser: DigitParser = DigitParser()
+        self.representation: str = 'DigitParser()'
         self.valid_input: List[Tuple[str, Any]] = \
             [
                 # Valid single digit inputs

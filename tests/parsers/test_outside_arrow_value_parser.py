@@ -10,7 +10,8 @@ class TestOutsideArrowValueParser(TestParser):
 
     def setUp(self):
         """Sets up the OutsideArrowValueParser instance for testing."""
-        self.parser = OutsideArrowValueParser()
+        self.parser: OutsideArrowValueParser = OutsideArrowValueParser()
+        self.representation: str = 'OutsideArrowValueParser()'
         self.valid_input: List[Tuple[str, Any]] = [
             # Valid inputs for the Outside Arrow Value format
             ("T0=5", ['T', 0, 5]),
