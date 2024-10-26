@@ -57,6 +57,7 @@ class Angle:
         """
         self.angle = degrees % 360.0
 
+    @property
     def opposite(self) -> 'Angle':
         """
         Returns the opposite of the current angle.

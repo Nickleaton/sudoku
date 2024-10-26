@@ -1,9 +1,9 @@
 from enum import Enum
 from typing import List
 
-from src.items.item import SudokuException
 from src.utils.angle import Angle
 from src.utils.coord import Coord
+from src.utils.sudoku_exception import SudokuException
 
 
 class DirectionException(SudokuException):
