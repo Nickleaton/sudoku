@@ -1,3 +1,4 @@
+import unittest
 from typing import Type
 
 from src.glyphs.glyph import Glyph
@@ -32,5 +33,7 @@ class TestKillerTextGlyph(TestGlyph):
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
         return {Glyph, KillerTextGlyph}
+
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
