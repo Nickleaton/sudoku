@@ -31,7 +31,7 @@ class Rule:
             other (object): The other rule to compare.
 
         Returns:
-            bool: True if the rank of self is less than the rank of other.
+            bool: True if the rank of self is less than the rank of the other.
 
         Raises:
             RuleException: If other is not an instance of Rule.

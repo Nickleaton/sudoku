@@ -6,13 +6,14 @@ class AngleException(Exception):
 
 
 class Angle:
+    # noinspection GrazieInspection
     """
-    Manage angles.
+        Manage angles.
 
-    Args:
-        angle (float): The initial angle value. It is normalized to the range [0, 360).
-        and represents the angle in degrees.
-    """
+        Args:
+            angle (float): The initial angle value. It is normalized to the range [0, 360).
+            and represents the angle in degrees.
+        """
 
     def __init__(self, angle: float):
         self.angle = float(angle) % 360.0

@@ -1,5 +1,5 @@
 """List of Vectors."""
-from typing import List, Optional
+from typing import List, Optional, Iterator
 
 from src.utils.coord import Coord
 from src.utils.coord_list import CoordList
@@ -17,7 +17,7 @@ class VectorList:
     def __init__(self, items: List[Vector]):
         self.items = items
 
-    def __iter__(self) -> 'VectorList':
+    def __iter__(self) -> Iterator[Vector]:
         """Return an iterator for the vector list."""
         return iter(self.items)
 
