@@ -118,15 +118,14 @@ class Vector:
         Returns:
             bool: True if the vectors are mergeable, False otherwise.
         """
-        if self.start == other.start:
-            return self.direction.parallel(other.direction)
-        if self.start == other.end:
-            return self.direction.parallel(other.direction)
-        if self.end == other.start:
-            return self.direction.parallel(other.direction)
-        if self.end == other.end:
-            return self.direction.parallel(other.direction)
-        return False
+        # Check all combinations of start and ends and if connected
+        connected: bool = (
+                self.start == other.start or
+                self.start == other.end or
+                self.end == other.start or
+                self.end == other.end
+        )
+        return connected and self.direction.parallel(other.direction)
 
     def merge(self, other: 'Vector') -> 'Vector':
         """Merge this vector with another vector if they are mergeable.
@@ -138,7 +137,7 @@ class Vector:
             Vector: A new merged vector.
 
         Raises:
-            Exception: If the vectors are not mergeable.
+            VectorException: If the vectors are not mergeable.
         """
         if not self.mergeable(other):
             raise VectorException("Vectors are not mergeable")
@@ -146,14 +145,12 @@ class Vector:
             return self
         if self.start == other.start:
             return Vector(self.end, other.end)
-        if self.start == other.end:
+        elif self.start == other.end:
             return Vector(self.end, other.start)
-        if self.end == other.start:
+        elif self.end == other.start:
             return Vector(self.start, other.end)
-        if self.end == other.end:
+        else:  # self.end == other.end
             return Vector(self.start, other.start)
-        raise Exception("Non mergeable lines")  # pragma: no cover
-
 
     def __repr__(self) -> str:
         """Return a string representation of the vector.

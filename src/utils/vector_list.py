@@ -54,16 +54,26 @@ class VectorList:
         self.items.sort()
 
     def merge_vectors(self) -> 'VectorList':
-        """Merge vectors that are parallel and share endpoints."""
+        """
+        Merge vectors that are parallel and share endpoints.
+
+        This helps because we can draw vectors, then have this
+        algorithm optimize them.
+
+        Returns:
+            VectorList: A new list of merged vectors.
+        """
         merged_items: List[Vector] = []
 
-        for v in self.items:
-            for i, r in enumerate(merged_items):
-                if v.mergeable(r):
-                    merged_items[i] = v.merge(r)
+        for vector in self.items:
+            merged = False  # Track if a merge occurred
+            for i, merged_vector in enumerate(merged_items):
+                if vector.mergeable(merged_vector):
+                    merged_items[i] = vector.merge(merged_vector)
+                    merged = True
                     break
-            else:  # This executes if the for loop is not broken
-                merged_items.append(v)
+            if not merged:  # If no merge occurred, append v
+                merged_items.append(vector)
 
         return VectorList(sorted(merged_items))
 
