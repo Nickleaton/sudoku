@@ -5,6 +5,7 @@ from src.glyphs.text_glyph import TextGlyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.product import Product
+from src.parsers.cell_value_parser import CellValueParser
 from src.utils.coord import Coord
 from src.utils.direction import Direction
 from src.utils.rule import Rule
@@ -19,6 +20,7 @@ class OrthogonalProduct(Product):
             if self.board.is_valid_coordinate(location):
                 cells.append(Cell.make(self.board, int(location.row), int(location.column)))
         return cells
+
 
     @property
     def rules(self) -> List[Rule]:

@@ -1,4 +1,4 @@
-from typing import List, Any, Dict, Callable
+from typing import List, Any, Dict
 
 from pulp import lpSum
 
@@ -6,6 +6,7 @@ from src.glyphs.glyph import Glyph
 from src.glyphs.quadruple_glyph import QuadrupleGlyph
 from src.items.board import Board
 from src.items.item import Item
+from src.parsers.cell_value_parser import CellValueParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -18,6 +19,16 @@ class Exclusion(Item):
         self.position = position
         self.digits = digits
         self.numbers = "".join([str(d) for d in digits])
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> CellValueParser:
+        """ Return the parser for this item. """
+        return CellValueParser()
 
     def __repr__(self) -> str:
         digit_str = "".join([str(digit) for digit in self.digits])

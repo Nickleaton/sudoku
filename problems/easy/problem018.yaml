@@ -8,7 +8,7 @@ Constraints:
   Columns:
   Rows:
   Boxes:
-  FrozenThermometer:
+  FrozenThermometerLine:
     - 11, 22, 13, 24, 15, 26, 17, 28, 19
     - 51, 42, 33, 44, 55, 46, 37, 48, 59
     - 79, 68, 57, 66, 75, 64, 53, 62, 71

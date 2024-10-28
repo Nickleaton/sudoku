@@ -7,6 +7,7 @@ from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board
 from src.items.item import Item
+from src.parsers.frame_parser import FrameParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.functions import Functions
@@ -22,6 +23,16 @@ class Sandwich(Item):
         self.index = index
         self.total = total
         self.position = side.marker(board, self.index) + Coord(0.5, 0.5)
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> FrameParser:
+        """ Return the parser for this item. """
+        return FrameParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:

@@ -11,7 +11,7 @@ Constraints:
   Rows:
   Boxes:
   AntiKnight:
-  SumArrow:
+  SumArrowLine:
     - 25, 34, 23, 12
     - 82, 72, 62, 53, 43
     - 85, 74, 64, 55

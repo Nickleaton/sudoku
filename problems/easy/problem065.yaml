@@ -5,12 +5,11 @@ Board:
   Reference: https://sudokupad.app/4u0atuniiv
   Board: 9x9
   Box: 3x3
-
 Constraints:
   Columns:
   Rows:
   Boxes:
-  Renban:
+  RenbanLine:
     - 31, 41, 51, 52, 42, 32
     - 16, 25, 34, 44, 54, 64
     - 39, 38, 37, 47, 48, 49

@@ -1,4 +1,4 @@
-from typing import List, Any, Dict, Callable
+from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph

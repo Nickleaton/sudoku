@@ -1,8 +1,10 @@
 import re
 
+from src.parsers.frame_parser import FrameParser
+
 """ Frame Sudoku """
 
-from typing import List, Any, Dict, Callable
+from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -31,6 +33,15 @@ class Frame(FirstN):
         """
         super().__init__(board, side, index)
         self.total = total
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> FrameParser:
+        return FrameParser()
 
     def __repr__(self) -> str:
         """

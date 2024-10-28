@@ -9,11 +9,7 @@ Constraints:
   Columns:
   Rows:
   Boxes:
-  Knight: 
-    - 2
-    - 4
-    - 6
-    - 8
+  Knight: 2, 4, 6, 8
   Quadruple:
     - 11=23
     - 22=5

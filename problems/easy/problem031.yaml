@@ -13,7 +13,7 @@ Constraints:
     - 51-61
     - 43-44
     - 57-58
-  SimpleThermometer:
+  SimpleThermometerLine:
     - 23, 22, 21
     - 23, 13, 12, 11
     - 23, 33, 32, 31

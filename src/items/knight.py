@@ -6,6 +6,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
+from src.parsers.digits_parser import DigitsParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
@@ -17,6 +18,10 @@ class Knight(ComposedItem):
         super().__init__(board, [])
         self.add_items([Cell.make(board, row, column) for row in board.row_range for column in board.column_range])
         self.digits = digits
+
+    @classmethod
+    def parser(cls) -> DigitsParser:
+        return DigitsParser()
 
     @staticmethod
     def offsets() -> List[Coord]:

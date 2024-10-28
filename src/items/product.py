@@ -5,8 +5,12 @@ from src.items.cell import Cell
 from src.items.item import Item
 from src.items.multiplication import Multiplication
 from src.items.region import Region
+from src.parsers.cell_value_parser import CellValueParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+
+
+
 
 
 class Product(Region):
@@ -16,6 +20,16 @@ class Product(Region):
         self.position = position
         self.product = product
         self.add_items(self.get_cells())
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> CellValueParser:
+        """ Return the parser for this item. """
+        return CellValueParser()
 
     # pylint: disable=no-self-use
     def get_cells(self) -> List[Cell]:

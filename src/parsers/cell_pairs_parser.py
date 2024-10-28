@@ -7,7 +7,7 @@ class CellPairsParser(Parser):
     def __init__(self):
         """Initializes CellPairsParser with a regex pattern for comma-separated digits."""
         # Call the parent class (Parser) constructor with a regex pattern that matches the required format.
-        super().__init__(r"^\s*\d\d\s*=\s*\d\d\s*$")
+        super().__init__(r"^\s*\d\d\s*-\s*\d\d\s*$")
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract cell references.

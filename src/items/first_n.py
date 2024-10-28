@@ -5,6 +5,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
+from src.parsers.frame_parser import FrameParser
 from src.utils.coord import Coord
 from src.utils.side import Side
 
@@ -50,6 +51,17 @@ class FirstN(Region):
             self.coords.append(cell)
             cell += self.offset
         self.add_items([Cell.make(self.board, int(coord.row), int(coord.column)) for coord in self.coords])
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> FrameParser:
+        """ Return the parser for this item. """
+        return FrameParser()
+
 
     @property
     def tags(self) -> set[str]:

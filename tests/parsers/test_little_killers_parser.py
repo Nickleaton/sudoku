@@ -15,6 +15,7 @@ class TestLittleKillersParser(TestParser):
         self.valid_input: List[Tuple[str, Any]] = \
             [
                 # Valid Little Killers format inputs
+                ("T1=14", ['T', 1, 'C', 14]),
                 ("T1C=5", ['T', 1, 'C', 5]),
                 ("L2A=10", ['L', 2, 'A', 10]),
                 ("B3C=12", ['B', 3, 'C', 12]),

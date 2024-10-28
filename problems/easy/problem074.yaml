@@ -9,10 +9,10 @@ Constraints:
   Rows:
   Boxes:
   AntiKing:
-  GermanWhisper:
+  GermanWhisperLine:
     - 11, 22, 33, 44, 55, 66, 77, 88, 99
     - 61, 72, 83, 94
-  SumArrow:
+  SumArrowLine:
     - 39, 28, 17
     - 25, 34, 43, 52
     - 35, 44, 53
