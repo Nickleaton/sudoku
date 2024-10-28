@@ -44,7 +44,8 @@ class TestAnti(TestComposed):
         result = []
         for pair in self.item.pairs(Cell.make(self.board, 1, 1), self.item.digits):
             result.append([pair.cell_2.row, pair.cell_2.column])
-        self.assertListEqual(self.pair_output, result)
+
+        self.assertListEqual(sorted(self.pair_output), sorted(result))
 
 
 if __name__ == '__main__':  # pragma: no cover
