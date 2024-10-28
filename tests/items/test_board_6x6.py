@@ -33,7 +33,7 @@ class TestBoard6x6(unittest.TestCase):
         yaml_string = (
             "Board:\n"
             "  Board: 6x6\n"
-            "  Boxes: 2x3\n"
+            "  Box: 2x3\n"
             "  Reference: a\n"
             "  Video: b\n"
             "  Title: c\n"
