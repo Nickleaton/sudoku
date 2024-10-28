@@ -20,7 +20,7 @@ class TestFrozenThermometer(TestThermometerLine):
 
     @property
     def config(self) -> str:
-        return "FrozenThermometer: 11, 12, 13"
+        return "FrozenThermometerLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:

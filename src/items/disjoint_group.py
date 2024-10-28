@@ -34,14 +34,6 @@ class DisjointGroup(StandardRegion):
     def parser(cls) -> DigitParser:
         return DigitParser()
 
-    @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> int:
-        return int(yaml[cls.__name__])
-
-    @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
-        return cls(board, None)
-
     @property
     def rules(self) -> List[Rule]:
         return [Rule('DisjointGroup', 1, 'Digits in same place each box must be unique')]
