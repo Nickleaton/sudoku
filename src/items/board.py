@@ -1,10 +1,13 @@
 import re
-from enum import EnumDict, Enum
+from enum import Enum
 from typing import Optional, Dict, Tuple
 
 import oyaml as yaml
+import strictyaml
+from strictyaml import Validator
 
 from src.utils.coord import Coord
+
 
 class BoardType(Enum):
     B9X9 = "9x9"
@@ -12,15 +15,17 @@ class BoardType(Enum):
     B6X6 = "6x6"
     B8X8 = "8x8"
 
+
 class BoxType(Enum):
     B3X3 = "3x3"
     B2X3 = "2x3"
     B3X2 = "3x2"
     B2X2 = "2x2"
 
-class Board:
 
+class Board:
     PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(self,
                  board_rows: int,
@@ -56,7 +61,6 @@ class Board:
         self.mod1 = [d for d in self.digit_range if d % 3 == 1]
         self.mod2 = [d for d in self.digit_range if d % 3 == 2]
 
-
         # Boxes
         if box_rows == 0:
             self.box_rows = 0
@@ -82,6 +86,19 @@ class Board:
     def is_valid_coordinate(self, coord: Coord) -> bool:
         return self.is_valid(int(coord.row), int(coord.column))
 
+    @classmethod
+    def schema(cls) -> Validator:
+        return strictyaml.Map(
+            {
+                'Board': strictyaml.Str(),
+                strictyaml.Optional('Box'): strictyaml.Str(),
+                strictyaml.Optional('Video'): strictyaml.Str(),
+                strictyaml.Optional('Reference'): strictyaml.Str(),
+                strictyaml.Optional('Author'): strictyaml.Str(),
+                strictyaml.Optional('Title'): strictyaml.Str()
+            }
+        )
+
     @staticmethod
     def parse_xy(s: str) -> Tuple[int, int]:
         regexp = re.compile("([1234567890]+)x([1234567890]+)")
@@ -98,8 +115,8 @@ class Board:
         board_rows, board_columns = Board.parse_xy(y['Board'])
         box_rows: int = 0
         box_columns: int = 0
-        if 'Boxes' in y:
-            box_rows, box_columns = Board.parse_xy(y['Boxes'])
+        if 'Box' in y:
+            box_rows, box_columns = Board.parse_xy(y['Box'])
 
         reference: str | None = y['Reference'] if 'Reference' in y else None
         video: str | None = y['Video'] if 'Video' in y else None
@@ -120,7 +137,7 @@ class Board:
         result: Dict = {'Board': {}}
         result['Board']['Board'] = f"{self.board_rows}x{self.board_columns}"
         if self.box_rows is not None:
-            result['Board']['Boxes'] = f"{self.box_rows}x{self.box_columns}"
+            result['Board']['Box'] = f"{self.box_rows}x{self.box_columns}"
         if self.reference is not None:
             result['Board']['Reference'] = self.reference
         if self.reference is not None:

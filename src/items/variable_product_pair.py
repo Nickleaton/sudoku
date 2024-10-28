@@ -13,9 +13,15 @@ from src.utils.variable_type import VariableType
 
 
 class VariableProductPair(VariablePair):
+    """Represents a pair of variables with a fixed product in a Sudoku-like puzzle."""
 
     @property
     def rules(self) -> List[Rule]:
+        """Get the rules associated with this variable product pair.
+
+        Returns:
+            List[Rule]: A list of rules describing the product constraints.
+        """
         return [
             Rule(
                 self.__class__.__name__,
@@ -29,17 +35,41 @@ class VariableProductPair(VariablePair):
 
     @property
     def tags(self) -> set[str]:
+        """Get the tags associated with this variable product pair.
+
+        Returns:
+            set[str]: A set of tags for identifying this type of variable pair.
+        """
         return super().tags.union({'Product'})
 
     def target(self, solver: PulpSolver) -> Optional[LpElement]:
+        """Calculate the target expression for the variable product pair.
+
+        Args:
+            solver (PulpSolver): The solver instance to use for variable constraints.
+
+        Returns:
+            Optional[LpElement]: The expression representing the target constraints based on the logarithm of cell values,
+                                 or None if unable to calculate.
+        """
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
         x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)
         return x1 + x2
 
     def variable_type(self) -> VariableType:
-        return VariableType.LOGINT
+        """Get the variable type for this variable product pair.
+
+        Returns:
+            VariableType: The type of variable, which is LOG_INTEGER for this pair.
+        """
+        return VariableType.LOG_INTEGER
 
     def css(self) -> Dict:
+        """Get the CSS styles for this variable product pair.
+
+        Returns:
+            Dict: A dictionary containing CSS styles for visual representation.
+        """
         return {
             '.FixedProductPair': {
                 'fill': 'red',

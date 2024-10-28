@@ -60,7 +60,7 @@ class MinMaxDifference(FirstN):
     def glyphs(self) -> List[Glyph]:
         return [
             TextGlyph(
-                'MinMaxDiffenceText',
+                'MinMaxDifferenceText',
                 0,
                 self.side.marker(self.board, self.index).center,
                 str(self.total)

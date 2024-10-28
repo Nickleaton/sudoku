@@ -1,14 +1,15 @@
-from typing import List, Tuple, Dict, Callable
+from typing import List, Tuple, Dict
 
 from pulp import lpSum
 
-from src.glyphs.glyph import Glyph
 from src.glyphs.arrow_glyph import ArrowGlyph
+from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
+from src.parsers.little_killers_parser import LittleKillersParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
@@ -34,6 +35,16 @@ class LittleKiller(Region):
             coord += self.delta
         self.add_items(cells)
         self.reference = side.start(board, cyclic, offset) - self.delta
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> LittleKillersParser:
+        """ Return the parser for this item. """
+        return LittleKillersParser()
 
     def __repr__(self) -> str:
         return (

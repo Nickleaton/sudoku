@@ -1,11 +1,14 @@
 from itertools import product
 from typing import List, Any, Dict
 
+from strictyaml import Seq, Regex, Optional
+
 from src.items.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.known_cell import KnownCell
+from src.parsers.solution_parser import SolutionParser
 from src.solvers.answer import Answer
 
 
@@ -21,6 +24,10 @@ class Solution(ComposedItem):
                 column = x + 1
                 parts.append(KnownCell(board, row, column, int(digit), 'Verify'))
         self.add_items(parts)
+
+    @classmethod
+    def schema(cls) -> Dict:
+        return {Optional("Solution"): Seq(SolutionParser())}
 
     def __hash__(self):
         return hash("Solution")

@@ -25,7 +25,7 @@ class TestBoard(unittest.TestCase):
         yaml_string = (
             "Board:\n"
             "  Board: 8x8\n"
-            "  Boxes: 2x4\n"
+            "  Box: 2x4\n"
             "  Reference: a\n"
             "  Video: b\n"
             "  Title: c\n"

@@ -6,16 +6,16 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
 from src.items.region import Region
-from src.items.simple_thermometer import SimpleThermometer
-from src.items.thermometer import Thermometer
-from tests.items.test_thermometer import TestThermometer
+from src.items.simple_thermometer_line import SimpleThermometerLine
+from src.items.thermometer_line import ThermometerLine
+from tests.items.test_thermometer import TestThermometerLine
 
 
-class TestSimpleThermometer(TestThermometer):
+class TestSimpleThermometer(TestThermometerLine):
 
     @property
     def clazz(self):
-        return SimpleThermometer
+        return SimpleThermometerLine
 
     @property
     def config(self) -> str:
@@ -27,7 +27,7 @@ class TestSimpleThermometer(TestThermometer):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, Item, Line, Region, SimpleThermometer, Thermometer}
+        return {Cell, ComposedItem, Item, Line, Region, SimpleThermometerLine, ThermometerLine}
 
 
 if __name__ == '__main__':  # pragma: no cover

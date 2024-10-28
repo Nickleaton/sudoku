@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title> {{ title }} </title>
+		<!--suppress HtmlUnknownTarget -->
 		<link rel="stylesheet" href="glyph.css">
 	</head>
 	<body>
@@ -17,7 +18,8 @@
 			<tbody>
 				{% for filename, tags in data.items() %}
 				<tr>
-					<td><a href="{{ filename }}.html">{{ filename }}</a></td>
+					<td><!--suppress HtmlUnknownTarget -->
+						<a href="{{ filename }}.html">{{ filename }}</a></td>
 					<td> {{ tags }}</td>
 				</tr>
 				{% endfor %}

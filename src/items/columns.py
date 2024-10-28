@@ -1,7 +1,5 @@
 from typing import Dict
 
-import strictyaml
-
 from src.items.board import Board
 from src.items.column import Column
 from src.items.item import Item
@@ -36,14 +34,6 @@ class Columns(StandardRegionSet):
             Item: An instance of Columns.
         """
         return Columns(board)
-
-    def schema(self) -> Dict:
-        """Returns the schema for the columns.
-
-        Returns:
-            Any: Currently returns None, indicating no schema is defined.
-        """
-        return {strictyaml.Optional('Boxes'): None}
 
     def __repr__(self) -> str:
         """Returns a string representation of the Columns instance.

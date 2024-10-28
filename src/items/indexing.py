@@ -3,10 +3,15 @@ from typing import List, Dict
 from src.items.board import Board
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
+from src.parsers.digits_parser import DigitsParser
 from src.utils.rule import Rule
 
 
 class Indexer(StandardRegion):
+
+    @classmethod
+    def parser(cls) -> DigitsParser:
+        return DigitsParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> int:

@@ -2,9 +2,7 @@ import logging
 import os
 import unittest
 from pathlib import Path
-from typing import Optional, List
-
-import pytest
+from typing import Optional
 
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
@@ -23,9 +21,9 @@ logging.basicConfig(level=logging.DEBUG, format='%(name)s %(levelname)s %(messag
 class AcceptanceTest(unittest.TestCase):
     DIRECTORY = Path("test_results")
 
-    def __init__(self, name: str):
-        super().__init__()
-        self.name = name
+    def setUp(self):
+        self.name = self._testMethodName.replace("test_", "")
+        self.check_directory(str(self.DIRECTORY / self.name))
 
     @staticmethod
     def check_directory(filename: Optional[str]) -> None:
@@ -75,7 +73,7 @@ class AcceptanceTest(unittest.TestCase):
     def png_bookkeeping_filename(self) -> Optional[Path]:
         return AcceptanceTest.DIRECTORY / self.name / Path("bookkeeping.png")
 
-    def test_all(self):
+    def run_acceptance_test(self):
         if self.name is None:
             return
         # remove to make sure we generate
@@ -101,15 +99,20 @@ class AcceptanceTest(unittest.TestCase):
         self.assertIsNotNone(problem.solver, 'Solver not created')
 
 
-# New class for running multiple acceptance tests
-def get_problem_names() -> List[str]:
-    return [file.stem for file in Path("problems/easy").glob("*.yaml")]
+def generate_test_cases():
+    """Dynamically create test cases for each YAML file in the problems/easy directory."""
+    for problem_file in Path("problems/easy").glob("*.yaml"):
+        problem_name = problem_file.stem
+        test_name = f"test_{problem_name}"
 
+        def test_method(self, problem_name=problem_name):
+            self.name = problem_name
+            self.run_acceptance_test()
 
-# Parameterize the test using the function
-@pytest.mark.parametrize("problem_name", get_problem_names())
-class TestAcceptance(AcceptanceTest):
+        setattr(AcceptanceTest, test_name, test_method)
 
-    def test_all(self, problem_name):
-        self.name = problem_name
-        super().test_all()  # Call the parent test method
+# Generate all test cases before running unittest
+generate_test_cases()
+
+if __name__ == '__main__':
+    unittest.main()

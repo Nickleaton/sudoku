@@ -5,8 +5,22 @@ from src.utils.coord import Coord
 
 
 class Asterix(SpecialRegion):
+    """Represents an 'Asterix' region in a puzzle.
+
+    This special region consists of predefined coordinates within a puzzle grid.
+    It includes methods for retrieving its coordinates, name, and CSS styling.
+
+    Attributes:
+        None directly defined; inherits from SpecialRegion.
+    """
 
     def coords(self) -> List[Coord]:
+        """Provides the coordinates that define the Asterix region.
+
+        Returns:
+            List[Coord]: A list of Coord objects representing each cell in the
+            Asterix region.
+        """
         return [
             Coord(2, 5),
             Coord(3, 3),
@@ -20,9 +34,19 @@ class Asterix(SpecialRegion):
         ]
 
     def region_name(self) -> str:
+        """Provides the name of the region.
+
+        Returns:
+            str: The name of the region, 'Asterix'.
+        """
         return 'Asterix'
 
     def css(self) -> Dict:
+        """Defines the CSS style for rendering the Asterix region.
+
+        Returns:
+            Dict: CSS styling for the Asterix region, specifying stroke and fill colors.
+        """
         return {
             '.Asterix': {
                 'stroke': 'orange',

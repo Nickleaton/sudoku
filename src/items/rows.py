@@ -37,13 +37,7 @@ class Rows(StandardRegionSet):
         """
         return Rows(board)
 
-    def schema(self) -> Any:
-        """Returns the schema for the rows.
 
-        Returns:
-            Any: Currently returns None, indicating no schema is defined.
-        """
-        return {strictyaml.Optional('Rows'): None}
 
     def __repr__(self) -> str:
         """Returns a string representation of the Rows instance.

@@ -4,6 +4,7 @@ from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
+from src.parsers.cell_parser import CellParser
 from src.utils.rule import Rule
 
 
@@ -14,6 +15,15 @@ class CellReference(Item):
         self.cell = Cell.make(board, row, column)
         self.row = row
         self.column = column
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence """
+        return True
+
+    @classmethod
+    def parser(cls) -> CellParser:
+        return CellParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:

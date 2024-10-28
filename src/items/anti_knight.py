@@ -1,7 +1,5 @@
 from typing import List, Dict
 
-import strictyaml
-
 from src.items.anti import Anti
 from src.items.board import Board
 from src.items.item import Item
@@ -13,7 +11,7 @@ class AntiKnight(Anti):
     """Represents an AntiKnight item on a board.
 
     Inherits from the Anti class and provides specific functionality for
-    the AntiKnight, including movement offsets, rules, and schema.
+    the AntiKnight, including movement offsets, rules
     """
 
     def __init__(self, board: Board):
@@ -83,17 +81,6 @@ class AntiKnight(Anti):
         return [
             Rule("AntiKnight", 1, "Identical digits cannot be separated by a knight's move")
         ]
-
-    def schema(self) -> Dict:
-        """Returns the schema for the AntiKnight.
-
-        The schema defines the expected structure of data for the
-        AntiKnight item.
-
-        Returns:
-            Dict: A dictionary representing the schema for the AntiKnight.
-        """
-        return {strictyaml.Optional('AntiKnight'): None}
 
     def __repr__(self) -> str:
         """Returns a string representation of the AntiKnight instance.

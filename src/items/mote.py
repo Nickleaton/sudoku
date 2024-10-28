@@ -60,7 +60,7 @@ class Mote(Region):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         # TODO
-        # add up all choices for all cells in reqion where the cell is an odd or even digit
+        # add up all choices for all cells in region where the cell is an odd or even digit
         odd_count = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
         name = f"{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}"
         solver.model += odd_count > len(self.cells) // 2, name

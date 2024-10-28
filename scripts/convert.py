@@ -103,7 +103,7 @@ def arrow(data: Dict) -> List:
     for item in data:
         lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0][len(item['cells']):]])
-        result.append({"SumArrow": f"{lhs}={rhs}"})
+        result.append({"SumArrowLine": f"{lhs}={rhs}"})
     return result
 
 
@@ -112,7 +112,7 @@ def maxarrow(data: Dict) -> List:
     for item in data:
         lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0][len(item['cells']):]])
-        result.append({"MaxArrow": f"{lhs}={rhs}"})
+        result.append({"MaxArrowLine": f"{lhs}={rhs}"})
     return result
 
 
@@ -121,7 +121,7 @@ def productarrow(data: Dict) -> List:
     for item in data:
         lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0][len(item['cells']):]])
-        result.append({"ProductArrow": f"{lhs}={rhs}"})
+        result.append({"ProductArrowLine": f"{lhs}={rhs}"})
     return result
 
 
@@ -188,7 +188,7 @@ def entropicline(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
-        result.append({'Entropic': rhs})
+        result.append({'EntropicLine': rhs})
     return result
 
 
@@ -300,7 +300,7 @@ def regionsumline(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
-        result.append({'EqualSum': rhs})
+        result.append({'EqualSumLine': rhs})
     return result
 
 
@@ -308,7 +308,7 @@ def renban(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
-        result.append({'Renban': rhs})
+        result.append({'RenbanLine': rhs})
     return result
 
 
@@ -338,7 +338,7 @@ def whispers(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
-        result.append({'GermanWhisper': rhs})
+        result.append({'GermanWhisperLine': rhs})
     return result
 
 

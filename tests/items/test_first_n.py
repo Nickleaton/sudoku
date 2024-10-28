@@ -15,7 +15,7 @@ class TestFirstN(TestRegion):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = FirstN(self.board, Side.TOP, 1)
+        self.item = FirstN(board=self.board, side=Side.TOP, index=1, count=3)
         self.size = 3
 
     @property
@@ -24,7 +24,7 @@ class TestFirstN(TestRegion):
 
     @property
     def representation(self) -> str:
-        return "FirstN(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1)"
+        return "FirstN(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, 3)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -32,7 +32,7 @@ class TestFirstN(TestRegion):
 
     @property
     def config(self) -> str:
-        return "FirstN: T1"
+        return "FirstN: T13"
 
 
 if __name__ == '__main__':  # pragma: no cover

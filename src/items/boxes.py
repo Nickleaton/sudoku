@@ -41,13 +41,7 @@ class Boxes(StandardRegionSet):
         """
         return Boxes(board)
 
-    def schema(self) -> Dict:
-        """Returns the schema for the boxes.
 
-        Returns:
-            Any: Currently returns None, indicating no schema is defined.
-        """
-        return {strictyaml.Optional('Boxes'): None}
 
     def __repr__(self) -> str:
         """Returns a string representation of the Boxes instance.

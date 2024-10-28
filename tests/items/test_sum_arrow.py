@@ -1,7 +1,7 @@
 import unittest
 from typing import Type
 
-from src.items.sum_arrow import SumArrow
+from src.items.sum_arrow_line import SumArrowLine
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -11,15 +11,15 @@ from src.items.region import Region
 from tests.items.test_line import TestLine
 
 
-class TestArrow1(TestLine):
+class TestSumArrowLine1(TestLine):
 
     @property
     def clazz(self):
-        return SumArrow
+        return SumArrowLine
 
     @property
     def config(self) -> str:
-        return "SumArrow: 11, 12, 13"
+        return "SumArrowLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
@@ -27,10 +27,10 @@ class TestArrow1(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {SumArrow, Cell, ComposedItem, Item, Line, Region}
+        return {SumArrowLine, Cell, ComposedItem, Item, Line, Region}
 
 
-class TestArrow2(TestLine):
+class TestSumArrowLine2(TestLine):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -40,11 +40,11 @@ class TestArrow2(TestLine):
 
     @property
     def clazz(self):
-        return SumArrow
+        return SumArrowLine
 
     @property
     def config(self) -> str:
-        return "SumArrow: 11, 12"
+        return "SumArrowLine: 11, 12"
 
     @property
     def has_rule(self) -> bool:
@@ -52,7 +52,7 @@ class TestArrow2(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {SumArrow, Cell, ComposedItem, Item, Line, Region}
+        return {SumArrowLine, Cell, ComposedItem, Item, Line, Region}
 
     @property
     def representation(self) -> str:

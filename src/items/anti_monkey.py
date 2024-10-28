@@ -13,7 +13,7 @@ class AntiMonkey(Anti):
     """Represents an AntiMonkey item on a board.
 
     Inherits from the Anti class and provides specific functionality for
-    the AntiMonkey, including movement offsets, rules, and schema.
+    the AntiMonkey, including movement offsets, rules.
     """
 
     def __init__(self, board: Board):
@@ -83,17 +83,6 @@ class AntiMonkey(Anti):
         return [
             Rule("AntiMonkey", 1, "Identical digits cannot be separated by a Monkey move [3 forward, 1 to the side]")
         ]
-
-    def schema(self) -> Dict:
-        """Returns the schema for the AntiMonkey.
-
-        The schema defines the expected structure of data for the
-        AntiMonkey item.
-
-        Returns:
-            Dict: A dictionary representing the schema for the AntiMonkey.
-        """
-        return {strictyaml.Optional('AntiMonkey'): None}
 
     def __repr__(self) -> str:
         """Returns a string representation of the AntiMonkey instance.

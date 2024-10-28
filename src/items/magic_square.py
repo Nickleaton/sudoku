@@ -6,6 +6,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
+from src.parsers.cell_parser import CellParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.direction import Direction
@@ -24,6 +25,7 @@ class MagicSquare(Region):
         [3, 5, 7]
     ]
 
+
     def __init__(self, board: Board, center: Coord, corner: Coord):
         super().__init__(board)
         positions = [center + d * corner for d in Direction.all()]
@@ -36,6 +38,15 @@ class MagicSquare(Region):
         self.corner = corner
         self.strict = True
         self.unique = True
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> CellParser:
+        return CellParser()
 
     def __repr__(self) -> str:
         return (
@@ -90,7 +101,7 @@ class MagicSquare(Region):
             value2 = solver.values[cell2.row][cell2.column]
             value3 = solver.values[cell3.row][cell3.column]
             solver.model += value1 + value2 + value3 == 15, f"{self.__class__.__name__}_{i}"
-        # cells muust be unique
+        # cells must be unique
         self.add_unique_constraint(solver, self.strict)
         # cells must sum to 45
         self.add_total_constraint(solver, 45)

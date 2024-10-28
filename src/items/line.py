@@ -4,6 +4,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
+from src.parsers.cell_list_parser import CellListParser
 from src.utils.rule import Rule
 
 
@@ -12,6 +13,15 @@ class Line(Region):
     def __init__(self, board: Board, cells: Sequence[Cell]):
         super().__init__(board)
         self.add_items(cells)
+
+    @classmethod
+    def parser(cls) -> CellListParser():
+        return CellListParser()
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence """
+        return True
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> List[Cell]:

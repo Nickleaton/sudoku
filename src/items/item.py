@@ -1,8 +1,8 @@
 import abc
-import logging
-from abc import ABC, abstractmethod
-from typing import Optional, List, Set, Type, Dict, Iterator, Any
+from abc import ABC
+from typing import Optional, List, Set, Type, Dict, Iterator
 
+import strictyaml
 from sortedcontainers import SortedDict
 from typing_extensions import Self
 
@@ -10,12 +10,11 @@ from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.book_keeping import BookKeeping
+from src.parsers.none_parser import NoneParser
+from src.parsers.parser import Parser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
-
-
-class SudokuException(Exception):
-    pass
+from src.utils.sudoku_exception import SudokuException
 
 
 class Item(ABC):
@@ -64,6 +63,22 @@ class Item(ABC):
         Item.counter += 1
 
     @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence """
+        return False
+
+    @classmethod
+    def parser(cls) -> Parser:
+        return NoneParser()
+
+    @classmethod
+    def schema(cls) -> strictyaml.Validator | strictyaml.Optional:
+        if cls.is_sequence():
+            return strictyaml.Seq(cls.parser())
+        else:
+            return cls.parser()
+
+    @classmethod
     def create(cls, board: Board, yaml: Dict) -> Self:
         """
         Create an instance of an item from a YAML dictionary.
@@ -85,11 +100,11 @@ class Item(ABC):
             SudokuException: If the YAML dictionary does not contain a single
                 key-value pair.
         """
-        if len(yaml) != 1:
-            raise SudokuException(f"Expecting one yaml item. Received Yaml={str(yaml)}")
-        name = list(yaml.keys())[0]
+        if isinstance(yaml, str):
+            name = yaml
+        else:
+            name = list(yaml.keys())[0]
         if name not in cls.classes:
-            logging.error(f"Cannot find item {name}")
             raise SudokuException(f"Unknown item class {name}")
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
@@ -417,6 +432,3 @@ class Item(ABC):
             else:
                 result += f"{tab * indent}{k}: {v};\n"
         return result
-
-    def schema(self) -> Dict:
-        return {}

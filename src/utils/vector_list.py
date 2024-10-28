@@ -9,6 +9,7 @@ from src.utils.vector import Vector
 
 class VectorListException(SudokuException):
     """Exception when handling VectorList."""
+    pass
 
 
 class VectorList:

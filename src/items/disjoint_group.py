@@ -4,6 +4,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
+from src.parsers.digit_parser import DigitParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
@@ -30,13 +31,16 @@ class DisjointGroup(StandardRegion):
         self.unique = True
 
     @classmethod
+    def parser(cls) -> DigitParser:
+        return DigitParser()
+
+    @classmethod
     def extract(cls, board: Board, yaml: Dict) -> int:
         return int(yaml[cls.__name__])
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        index = cls.extract(board, yaml)
-        return cls(board, index)
+        return cls(board, None)
 
     @property
     def rules(self) -> List[Rule]:

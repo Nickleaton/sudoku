@@ -68,14 +68,6 @@ class AntiKing(Anti):
             Rule("AntiKing", 1, "Identical digits cannot be separated by a King's move")
         ]
 
-    def schema(self) -> Dict:
-        """Returns the schema for the AntiKing.
-
-        Returns:
-            Dict: A dictionary representing the schema for the AntiKing.
-        """
-        return {strictyaml.Optional('Antiking'): None}
-
     def __repr__(self) -> str:
         """Returns a string representation of the AntiKing instance.
 

@@ -1,15 +1,15 @@
-import abc
 import re
-from typing import List, Set, Type, Tuple, Dict, Optional
+from typing import List, Tuple, Dict, Optional
 
 from pulp import LpElement
 
-from src.glyphs.glyph import Glyph
 from src.glyphs.circle_glyph import CircleGlyph
+from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.pair import Pair
+from src.parsers.cell_pairs_parser import CellPairsParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 
@@ -23,7 +23,15 @@ class FixedPair(Pair):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.total})"
 
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
 
+    @classmethod
+    def parser(cls) -> CellPairsParser:
+        """ Return the parser for this item. """
+        return CellPairsParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:

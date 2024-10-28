@@ -7,6 +7,7 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
+from src.parsers.cell_pairs_parser import CellPairsParser
 from src.utils.rule import Rule
 
 
@@ -19,8 +20,16 @@ class Pair(Region):
         self.add(cell_1)
         self.add(cell_2)
 
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
+
+    @classmethod
+    def is_sequence(cls) -> bool:
+        """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def parser(cls) -> CellPairsParser:
+        return CellPairsParser()
+
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
@@ -62,3 +71,7 @@ class Pair(Region):
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}
+
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"

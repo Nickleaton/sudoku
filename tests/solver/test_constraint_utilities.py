@@ -1,5 +1,4 @@
 import unittest
-from pathlib import Path
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -10,9 +9,8 @@ from src.solvers.pulp_solver import PulpSolver
 class TestConstraintUtilities(unittest.TestCase):
 
     def setUp(self) -> None:
-        log_path = Path("output\\logs\\formulations")
         self.board = Board(9, 9, 3, 3)
-        self.solver = PulpSolver(self.board, "TestConstraintUtilities", log_path)
+        self.solver = PulpSolver(self.board, "TestConstraintUtilities")
 
     def test_logical_log10_cell(self) -> None:
         c1 = Cell.make(self.board, 1, 1)
