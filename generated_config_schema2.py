@@ -67,6 +67,8 @@ problem_schema = Map(
                 Optional("FixedDifferencePair"): Seq(CellPairsParser()),
                 Optional("FixedPair"): Seq(CellPairsParser()),
                 Optional("FixedProductPair"): Seq(CellPairsParser()),
+                Optional("FixedRatioPair"): Seq(CellPairsParser()),
+                Optional("FixedSumPair"): Seq(CellPairsParser()),
                 Optional("FortressCell"): Seq(CellParser()),
                 Optional("Frame"): Seq(FrameParser()),
                 Optional("FrameProduct"): Seq(FrameParser()),

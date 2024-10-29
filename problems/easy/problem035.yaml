@@ -1,0 +1,43 @@
+Board:
+  Title: How To Get A Distinction In Sudoku
+  Author: Zetamath
+  Video: https://www.youtube.com/watch?v=YVywJmvmEKY&ab_channel=CrackingTheCryptic
+  Reference: https://app.crackingthecryptic.com/sudoku/mMPF2P2NqM
+  Board: 9x9
+  Box: 3x3
+Constraints:
+  Columns:
+  Rows:
+  Boxes:
+  Known:
+      - .8.......
+      - .........
+      - .........
+      - .........
+      - .........
+      - .........
+      - ........2
+      - .........
+      - .........
+      - .........
+  DistinctRenbanLine:
+    - 14, 25
+    - 15, 16, 26
+    - 21, 31, 32, 42
+    - 24, 34, 33
+    - 35, 45
+    - 36, 46, 47
+    - 37, 38, 29
+    - 51, 52
+    - 53, 54
+    - 56, 57
+    - 58, 59
+    - 56, 57
+    - 66, 67, 68
+    - 82, 72, 73, 83
+    - 76, 86, 96
+    - 84, 94, 93
+    - 85, 95
+    - 97, 98, 99, 89
+
+

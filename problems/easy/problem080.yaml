@@ -1,0 +1,40 @@
+Board:
+  Title: Sandwich Sudoku
+  Author: Isaac Resnikoff
+  Video: https://www.youtube.com/watch?v=BnsD0-nBNlk&ab_channel=CrackingTheCryptic
+  Reference: https://cracking-the-cryptic.web.app/sudoku/LN7qpPB43L
+  Board: 9x9
+  Box: 3x3
+Constraints:
+  Columns:
+  Rows:
+  Boxes:
+  Known:
+    - ........1
+    - .........
+    - .........
+    - .........
+    - ....1....
+    - .........
+    - .........
+    - .........
+    - .........
+  Sandwich:
+    - T1=19
+    - T2=7
+    - T3=15
+    - T4=19
+    - T5=4
+    - T6=0
+    - T7=6
+    - T8=9
+    - T9=35
+    - L1=5
+    - L2=13
+    - L3=20
+    - L4=9
+    - L5=12
+    - L6=0
+    - L7=4
+    - L8=14
+    - L9=5

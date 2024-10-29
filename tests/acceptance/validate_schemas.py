@@ -4,7 +4,9 @@ import pytest
 from strictyaml import load
 
 from generated_config_schema2 import problem_schema
-#from config_schema import problem_schema
+
+
+# from config_schema import problem_schema
 
 
 @pytest.mark.parametrize("yaml_file", list(Path("problems/easy").glob("*.yaml")))
