@@ -1,4 +1,4 @@
-from strictyaml import Map, Seq, Optional, Str
+from strictyaml import Map, Seq, Optional, Str, Regex
 
 from src.parsers.cell_list_parser import CellListParser
 from src.parsers.cell_pairs_parser import CellPairsParser
@@ -63,12 +63,9 @@ problem_schema = Map(
                 Optional("EqualSumLine"): Seq(CellListParser()),
                 Optional("EvenCell"): Seq(CellParser()),
                 Optional("Exclusion"): Seq(CellValueParser()),
-                Optional("FirstN"): NoneParser(),
+                Optional("FirstN"): Seq(FrameParser()),
                 Optional("FixedDifferencePair"): Seq(CellPairsParser()),
                 Optional("FixedPair"): Seq(CellPairsParser()),
-                Optional("FixedProductPair"): Seq(CellPairsParser()),
-                Optional("FixedRatioPair"): Seq(CellPairsParser()),
-                Optional("FixedSumPair"): Seq(CellPairsParser()),
                 Optional("FortressCell"): Seq(CellParser()),
                 Optional("Frame"): Seq(FrameParser()),
                 Optional("FrameProduct"): Seq(FrameParser()),
@@ -105,7 +102,7 @@ problem_schema = Map(
                 Optional("Pair"): Seq(CellPairsParser()),
                 Optional("PalindromeLine"): Seq(CellListParser()),
                 Optional("PencilMarkCell"): Seq(CellParser()),
-                Optional("Product"): NoneParser(),
+                Optional("Product"): Seq(CellValueParser()),
                 Optional("ProductArrowLine"): Seq(CellListParser()),
                 Optional("Quadro"): NoneParser(),
                 Optional("Quadruple"): Seq(QuadruplesParser()),
