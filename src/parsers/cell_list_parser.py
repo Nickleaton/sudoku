@@ -1,3 +1,5 @@
+from typing import Dict, List, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class CellListParser(Parser):
     def __init__(self):
         """Initialize the CellListParser with a specific regex pattern."""
         super().__init__(r"^\s*\d\d\s*(?:,\s*\d\d\s*)*$")
+        self.answer: Optional[List[Dict[str, str]]] = None
 
     def parse(self, text: str) -> None:
         """Parse the input text into a list of cell coordinates.
@@ -26,6 +29,9 @@ class CellListParser(Parser):
             # Split the input text by commas, strip whitespace, and convert each
             # coordinate into a list of integers. The result is stored in the result attribute.
             self.result = [[int(d.strip()[0]), int(d.strip()[1])] for d in text.split(',')]
+            self.answer = [
+                {'row': d.strip()[0], 'column': d.strip()[1]} for d in text.split(',')
+            ]
         except ValueError:
             # Raise an error if any of the values cannot be converted to integers
             self.result = None

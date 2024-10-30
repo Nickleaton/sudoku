@@ -1,3 +1,5 @@
+from typing import Optional, List
+
 from src.parsers.parser import ParserError, Parser
 
 
@@ -22,6 +24,7 @@ class KnownParser(Parser):
 
         """
         super().__init__(r"^[0-9.flmheo]+$")
+        self.answer: Optional[List[str]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input string and stores the result in the 'result' attribute.
@@ -40,6 +43,7 @@ class KnownParser(Parser):
         try:
             # Split the input text by commas and convert each value as needed
             self.result = list(text)
+            self.answer = list(text)
         except ValueError as e:
             # Raise an error if any of the values cannot be converted to an integer
             self.result = None

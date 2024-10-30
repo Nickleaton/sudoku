@@ -12,7 +12,66 @@ class TestFrameParser(TestParser):
         """Sets up the FrameParser instance for testing."""
         self.parser: FrameParser = FrameParser()
         self.representation: str = 'FrameParser()'
-        self.valid_input: List[Tuple[str, Any]] = \
+        self.valid_input_result: List[Tuple[str, Any]] = \
+            [
+                # Valid FrameParser format inputs
+                (
+                    "T1=2",
+                    ['T', 1, 2]
+                ),
+                (
+                    "L3=10",
+                    ['L', 3, 10]
+                ),
+                (
+
+                    "B0=5",
+                    ['B', 0, 5]
+                ),
+                (
+                    "R9=99",
+                    ['R', 9, 99]
+                ),
+                (
+                    "T2=123",
+                    ['T', 2, 123]
+                ),
+                # Valid input with spaces
+                (
+                    " T 1 = 20 ",
+                    ['T', 1, 20]
+                ),
+            ]
+        self.valid_input_answer: List[Tuple[str, Any]] = \
+            [
+                # Valid FrameParser format inputs
+                (
+                    "T1=2",
+                    {'side': 'T', 'index': 1, 'value': 2}
+                ),
+                (
+                    "L3=10",
+                    {'side': 'L', 'index': 3, 'value': 10}
+                ),
+                (
+                    "B0=5",
+                    {'side': 'B', 'index': 0, 'value': 5}
+                ),
+                (
+                    "R9=99",
+                    {'side': 'R', 'index': 9, 'value': 99}
+                ),
+                (
+                    "T2=123",
+                    {'side': 'T', 'index': 2, 'value': 123}
+                ),
+                # Valid input with spaces
+                (
+                    " T 1 = 20 ",
+                    {'side': 'T', 'index': 1, 'value': 20}
+                ),
+            ]
+        self.valid_input_result: List[Tuple[str, Any]] = \
             [
                 # Valid FrameParser format inputs
                 ("T1=2", ['T', 1, 2]),

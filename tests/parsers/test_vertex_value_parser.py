@@ -12,13 +12,51 @@ class TestVertexValueParser(TestParser):
         """Sets up the VertexValueParser instance for testing."""
         self.parser: VertexValueParser = VertexValueParser()
         self.representation: str = 'VertexValueParser()'
-        self.valid_input: List[Tuple[str, Any]] = [
+        self.valid_input_result: List[Tuple[str, Any]] = [
             # Valid inputs for the Vertex Value format
-            ("12=123", [[1, 2], 123]),
-            ("34=0", [[3, 4], 0]),
-            ("56=789", [[5, 6], 789]),
-            ("78=4567", [[7, 8], 4567]),
-            ("90=1000", [[9, 0], 1000]),
+            (
+                "12=123",
+                [[1, 2], 123]
+            ),
+            (
+                "34=0",
+                [[3, 4], 0]
+            ),
+            (
+                "56=789",
+                [[5, 6], 789]
+            ),
+            (
+                "78=4567",
+                [[7, 8], 4567]
+            ),
+            (
+                "90=1000",
+                [[9, 0], 1000]
+            ),
+        ]
+        self.valid_input_answer: List[Tuple[str, Any]] = [
+            # Valid inputs for the Vertex Value format
+            (
+                "12=123",
+                {'vertex': {'row': '1', 'column': '2'}, 'value': '123'}
+            ),
+            (
+                "34=0",
+                {'vertex': {'row': '3', 'column': '4'}, 'value': '0'}
+            ),
+            (
+                "56=789",
+                {'vertex': {'row': '5', 'column': '6'}, 'value': '789'}
+            ),
+            (
+                "78=4567",
+                {'vertex': {'row': '7', 'column': '8'}, 'value': '4567'}
+            ),
+            (
+                "90=1000",
+                {'vertex': {'row': '9', 'column': '0'}, 'value': '1000'}
+            ),
         ]
 
         self.invalid_input: List[str] = [

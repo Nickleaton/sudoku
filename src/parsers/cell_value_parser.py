@@ -1,3 +1,5 @@
+from typing import Dict, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class CellValueParser(Parser):
     def __init__(self):
         """Initializes the CellValueParser with a regex pattern for the Cell Value format."""
         super().__init__(r'^\d{2}=\d+$')
+        self.answer: Optional[Dict[str, int]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract cell value components.
@@ -28,3 +31,10 @@ class CellValueParser(Parser):
 
         # Store results in the result attribute.
         self.result = [index, value]
+        self.answer = {
+            'cell': {
+                'row': str(index[0]),
+                'column': str(index[1])
+            },
+            'value': str(value)
+        }

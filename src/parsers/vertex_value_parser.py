@@ -1,3 +1,5 @@
+from typing import Any, Dict, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class VertexValueParser(Parser):
     def __init__(self):
         """Initializes the VertexValueParser with a regex pattern for the Vertex Value format."""
         super().__init__(r'^\d{2}=\d+$')
+        self.answer: Optional[Dict[str, Any]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract vertex value components.
@@ -28,3 +31,10 @@ class VertexValueParser(Parser):
 
         # Store results in the result attribute.
         self.result = [index, value]
+        self.answer = {
+            'vertex': {
+                'row': str(index[0]),
+                'column': str(index[1]),
+            },
+            'value': str(value)
+        }

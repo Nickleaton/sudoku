@@ -12,15 +12,59 @@ class TestCellParser(TestParser):
         """Sets up the CellParser instance for testing."""
         self.parser: CellParser = CellParser()
         self.representation: str = "CellParser()"
-        self.valid_input: List[Tuple[str, Any]] = \
+        self.valid_input_result: List[Tuple[str, Any]] = \
             [
-                ("12", [1, 2]),
-                ("01", [0, 1]),
-                ("99", [9, 9]),
-                # Valid inputs with leading/trailing whitespace
-                (" 12 ", [1, 2]),
-                (" 01 ", [0, 1]),
-                ("  99  ", [9, 9]),
+                (
+                    "12",
+                    [1, 2]
+                ),
+                (
+                    "01",
+                    [0, 1]
+                ),
+                (
+                    "99",
+                    [9, 9]
+                ),
+                (
+                    " 12 ",
+                    [1, 2]
+                ),
+                (
+                    " 01 ",
+                    [0, 1]
+                ),
+                (
+                    "  99  ",
+                    [9, 9]
+                ),
+            ]
+        self.valid_input_answer: List[Tuple[str, Any]] = \
+            [
+                (
+                    "12",
+                    {"row": 1, "column": 2}
+                ),
+                (
+                    "01",
+                    {"row": 0, "column": 1}
+                ),
+                (
+                    "99",
+                    {"row": 9, "column": 9}
+                ),
+                (
+                    " 12 ",
+                    {"row": 1, "column": 2}
+                ),
+                (
+                    " 01 ",
+                    {"row": 0, "column": 1}
+                ),
+                (
+                    "  99  ",
+                    {"row": 9, "column": 9}
+                ),
             ]
         self.invalid_input: List[str] = \
             [

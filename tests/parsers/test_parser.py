@@ -12,7 +12,8 @@ class TestParser(unittest.TestCase):
     def setUp(self):
         """Sets up the MockParser instance for testing."""
         self.parser: Parser = MockParser()  # Instantiate the MockParser
-        self.valid_input: List[Tuple[str, Any]] = []
+        self.valid_input_result: List[Tuple[str, Any]] = []
+        self.valid_input_answer: List[Tuple[str, Any]] = []
         self.invalid_input: List[str] = []
         self.representation = 'MockParser()'
 
@@ -26,9 +27,9 @@ class TestParser(unittest.TestCase):
         """Tests that the regular_expression attribute is correctly compiled."""
         self.assertIsInstance(self.parser.regular_expression, re.Pattern)
 
-    def test_parse_valid_input(self):
+    def test_parse_valid_input_result(self):
         """Tests parsing a valid comma-separated list of digits."""
-        for text, output in self.valid_input:
+        for text, output in self.valid_input_result:
             self.parser.parse(text)
             self.assertEqual(self.parser.result, output)
 
@@ -42,6 +43,11 @@ class TestParser(unittest.TestCase):
     def test_repr(self):
         """Tests the __repr__ method."""
         self.assertEqual(repr(self.parser), self.representation)
+
+    def test_valid_answer(self):
+        for text, output in self.valid_input_answer:
+            self.parser.parse(text)
+            self.assertEqual(self.parser.answer, output)
 
 
 if __name__ == '__main__':  # pragma: no cover

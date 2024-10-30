@@ -1,3 +1,5 @@
+from typing import Optional, Dict, Any
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class OutsideArrowValueParser(Parser):
     def __init__(self):
         """Initializes the OutsideArrowValueParser with a regex pattern for the Outside Arrow Value format."""
         super().__init__(r'^[TLBR]\d=\d+$')
+        self.answer: Optional[Dict[str, Any]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract components in the Outside Arrow Value format.
@@ -28,3 +31,8 @@ class OutsideArrowValueParser(Parser):
 
         # Store results in the result attribute.
         self.result = [side, index, value]
+        self.answer = {
+            'side': side,
+            'index': str(index),
+            'value': str(value),
+        }

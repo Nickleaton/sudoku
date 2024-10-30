@@ -1,5 +1,5 @@
 import unittest
-from typing import List, Tuple, Any
+from typing import List, Tuple
 
 from src.parsers.digits_parser import DigitsParser
 from tests.parsers.test_parser import TestParser
@@ -12,10 +12,27 @@ class TestDigitsParser(TestParser):
         """Sets up the DigitsParser instance for testing."""
         self.parser: DigitsParser = DigitsParser()
         self.representation: str = 'DigitsParser()'
-        self.valid_input: List[Tuple[str, Any]] = \
+        self.valid_input_result: List[Tuple[str, List[int]]] = \
             [
-                ("1, 2, 3, 4, 5", [1, 2, 3, 4, 5]),
-                (" 1,    2,3  , 4,   5   ", [1, 2, 3, 4, 5])
+                (
+                    "1, 2, 3, 4, 5",
+                    [1, 2, 3, 4, 5]
+                ),
+                (
+                    " 1,    2,3  , 4,   5   ",
+                    [1, 2, 3, 4, 5]
+                )
+            ]
+        self.valid_input_answer: List[Tuple[str, List[str]]] = \
+            [
+                (
+                    "1, 2, 3, 4, 5",
+                    ["1", "2", "3", "4", "5"]
+                ),
+                (
+                    " 1,    2,3  , 4,   5   ",
+                    ["1", "2", "3", "4", "5"]
+                )
             ]
         self.invalid_input: List[str] = \
             [

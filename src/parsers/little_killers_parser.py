@@ -1,3 +1,5 @@
+from typing import Dict, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class LittleKillersParser(Parser):
     def __init__(self):
         """Initializes the LittleKillersParser with a regex pattern for valid input formats."""
         super().__init__(r"^\s*[TLBR]\s*\d\s*[C|A]\s*=\s*\d+\s*$")
+        self.answer: Optional[Dict[str, int]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract components of the Little Killers format.
@@ -39,6 +42,12 @@ class LittleKillersParser(Parser):
 
             # Store the extracted components in the result attribute.
             self.result = [side, index, direction, value]
+            self.answer = {
+                'side': side,
+                'index': index,
+                'direction': direction,
+                'value': value
+            }
         except ValueError:
             # If any of the values cannot be converted or extracted, clear the result and raise an error.
             self.result = None

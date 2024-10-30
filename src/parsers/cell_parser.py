@@ -1,3 +1,5 @@
+from typing import Dict, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class CellParser(Parser):
     def __init__(self):
         """Initializes the CellParser with a regex pattern for two-digit numbers."""
         super().__init__(r"^\s*\d\d\s*$")
+        self.answer: Optional[Dict[str: int]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract two-digit cell references.
@@ -23,10 +26,14 @@ class CellParser(Parser):
             raise ParserError(f"{self.__class__.__name__} expects a two digit cell reference")
 
         try:
-            # Strip whitespace and convert the first two characters to integers,
-            # storing the result as a list of integers in the result attribute.
             self.result = [int(text.strip()[0]), int(text.strip()[1])]
+            self.answer = {
+                "row": int(text.strip()[0]),
+                "column": int(text.strip()[1])
+            }
         except ValueError:
             # If any of the values cannot be converted to an integer, clear the result and raise an error.
             self.result = None
             raise ParserError(f"{self.__class__.__name__} expects a two digit cell reference")
+
+

@@ -1,3 +1,5 @@
+from typing import Optional, Dict
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -7,6 +9,7 @@ class RossiniParser(Parser):
     def __init__(self):
         """Initializes the RossiniParser with a regex pattern for the Rossini format."""
         super().__init__(r'^[TLBR]\d=[DIU]$')
+        self.answer: Optional[Dict[str, Any]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract components in the Rossini format.
@@ -28,3 +31,8 @@ class RossiniParser(Parser):
 
         # Store results in the result attribute.
         self.result = [side, index, direction]
+        self.answer = {
+            'side': side,
+            'index': str(index),
+            'direction': direction
+        }

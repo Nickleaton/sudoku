@@ -1,5 +1,6 @@
+from typing import List, Optional, Dict, Any
+
 from src.parsers.parser import Parser, ParserError
-from typing import List, Optional
 
 
 class FrameParser(Parser):
@@ -20,6 +21,7 @@ class FrameParser(Parser):
         by a numeric index and a value separated by '='.
         """
         super().__init__(r"^\s*[TLBR]\s*\d\s*=\s*\d+\s*$")
+        self.answer: Optional[Dict[str, Any]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input string to extract side, index, and value.
@@ -43,6 +45,11 @@ class FrameParser(Parser):
 
             # Save parsed components as a list.
             self.result = [side, index, value]
+            self.answer = {
+                "side": side,
+                "index": index,
+                "value": value
+            }
         except ValueError:
             self.result = None
             raise ParserError(f"{self.__class__.__name__} expects valid input in the format 'T1=2' or similar")

@@ -1,3 +1,5 @@
+from typing import Dict, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -8,6 +10,7 @@ class CellPairsParser(Parser):
         """Initializes CellPairsParser with a regex pattern for comma-separated digits."""
         # Call the parent class (Parser) constructor with a regex pattern that matches the required format.
         super().__init__(r"^\s*\d\d\s*-\s*\d\d\s*$")
+        self.result: Optional[Dict[str, Dict[str, int]]] = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract cell references.
@@ -28,6 +31,16 @@ class CellPairsParser(Parser):
             # and store the result as a list of integers in the result attribute.
             text = text.replace(" ", "")
             self.result = [[int(text[0]), int(text[1])], [int(text[3]), int(text[4])]]
+            self.answer = {
+                'cell1': {
+                    'row': int(text[0]),
+                    'column': int(text[1])
+                },
+                'cell2': {
+                    'row': int(text[3]),
+                    'column': int(text[4])
+                }
+            }
         except ValueError:
             # If any of the values cannot be converted to an integer, raise an error.
             self.result = None  # Clear result in case of error.

@@ -1,3 +1,5 @@
+from typing import Dict, List, Optional
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -11,6 +13,7 @@ class DigitsParser(Parser):
     def __init__(self):
         """Initializes DigitsParser with a regex pattern for comma-separated digits."""
         super().__init__(r"^\s*\d\s*(?:,\s*\d\s*)*$")
+        self.answer: Optional[List[int]] = None
 
     def parse(self, text: str) -> None:
         """Parses a comma-separated string of digits.
@@ -36,6 +39,7 @@ class DigitsParser(Parser):
             # Split the input text by commas, strip whitespace from each digit,
             # and convert them to integers. The result is stored in the result attribute.
             self.result = [int(d.strip()) for d in text.split(',')]
+            self.answer = [d.strip() for d in text.split(',')]
         except ValueError:
             # Raise an error if any of the values cannot be converted to an integer
             self.result = None

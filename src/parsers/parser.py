@@ -33,6 +33,7 @@ class Parser(Regex):
         self.regular_expression: re.Pattern = re.compile(pattern)
         self.pattern: str = pattern
         self.result: Any = None
+        self.answer: Any = None
 
     @abstractmethod
     def parse(self, text: str) -> None:

@@ -7,6 +7,7 @@ class UnknownParser(Parser):
     def __init__(self):
         """Initializes DigitsParser with a regex pattern for comma-separated digits."""
         super().__init__(r"^This should never ever match$")
+        self.answer = None
 
     def parse(self, text: str) -> None:
         """Parses the given text according to the implemented pattern.

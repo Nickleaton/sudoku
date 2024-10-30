@@ -7,6 +7,7 @@ class QuadruplesParser(Parser):
     def __init__(self):
         """Initializes the QuadruplesParser with a regex pattern for the quadruples format."""
         super().__init__(r'^\d{2}=[\d?]+$')
+        self.answer = None
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract quadruple components.
@@ -27,6 +28,13 @@ class QuadruplesParser(Parser):
             left, right = text.split('=')
             # Store results: left should be two digits, right can be digits or '?'.
             self.result = [int(left.strip()), right.strip()]
+            self.answer = {
+                'cell': {
+                    'row': str(left[0]),
+                    'column': str(left[1])
+                },
+                'values': [str(v) for v in list(right.strip())]
+            }
         except ValueError:
             # If any of the values cannot be converted, clear the result and raise an error.
             self.result = None
