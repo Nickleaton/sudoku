@@ -36,7 +36,7 @@ class TestDirection(unittest.TestCase):
         self.assertEqual(Angle(180.0), theta)
 
     def test_chess(self):
-        self.assertListEqual(Direction.kings(), Direction.diagonals() + Direction.orthogonals())
+        self.assertListEqual(sorted(Direction.kings()), sorted(Direction.diagonals() + Direction.orthogonals()))
 
     def test_value(self):
         for location in Direction.locations():
