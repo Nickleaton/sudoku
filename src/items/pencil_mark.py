@@ -1,5 +1,5 @@
 import re
-from typing import Optional, List, Dict, Tuple, Callable
+from typing import Optional, List, Dict, Tuple
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board

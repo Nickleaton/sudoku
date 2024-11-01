@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from src.parsers.parser import Parser, ParserError
 

@@ -1,5 +1,5 @@
 import unittest
-from typing import List, Tuple, Any, Dict
+from typing import List, Tuple, Dict
 
 from src.parsers.digit_parser import DigitParser
 from tests.parsers.test_parser import TestParser

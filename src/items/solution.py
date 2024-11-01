@@ -1,7 +1,7 @@
 from itertools import product
 from typing import List, Any, Dict
 
-from strictyaml import Seq, Regex, Optional
+from strictyaml import Seq, Optional
 
 from src.items.board import Board
 from src.items.cell_reference import CellReference

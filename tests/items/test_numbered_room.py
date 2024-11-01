@@ -45,7 +45,7 @@ class TestNumberedRoom(TestItem):
         ]
         for room in numbered_rooms:
             log_path = Path("output\\logs\\tests")
-            solver = PulpSolver(self.board, 'test', log_path)
+            solver = PulpSolver(self.board, 'test', log_path.name)
             room.add_constraint(solver)
 
 

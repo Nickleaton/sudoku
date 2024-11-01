@@ -16,21 +16,45 @@ from src.utils.rule import Rule
 
 
 class KropkiPair(Pair):
+    """Represents a Kropki dot pair in a puzzle, where a black dot between two cells indicates
+    that one of the digits is exactly twice the other."""
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
+        """Initializes a KropkiPair with two cells and an empty SOS dictionary.
+
+        Args:
+            board (Board): The board instance this pair is part of.
+            cell_1 (Cell): The first cell in the pair.
+            cell_2 (Cell): The second cell in the pair.
+        """
         super().__init__(board, cell_1, cell_2)
         self.sos: Dict[int, LpVariable] = {}
 
     @property
     def factor(self) -> int:
+        """Gets the multiplication factor associated with this pair.
+
+        Returns:
+            int: The factor by which one cell's value must be a multiple of the other.
+        """
         return 2
 
     @property
     def factor_name(self) -> str:
+        """Gets the name of the factor.
+
+        Returns:
+            str: The name of the factor.
+        """
         return "double"
 
     @property
     def rules(self) -> List[Rule]:
+        """Defines the rule for the Kropki pair.
+
+        Returns:
+            List[Rule]: A list of rules for the Kropki pair.
+        """
         return [
             Rule(
                 self.__class__.__name__,
@@ -43,25 +67,39 @@ class KropkiPair(Pair):
         ]
 
     def glyphs(self) -> List[Glyph]:
+        """Generates glyph representations for the Kropki pair.
+
+        Returns:
+            List[Glyph]: A list of glyphs representing the Kropki pair.
+        """
         return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
     @property
     def tags(self) -> set[str]:
+        """Tags associated with the Kropki pair.
+
+        Returns:
+            set[str]: A set of tags for the Kropki pair.
+        """
         return super().tags.union({'Kropki'})
 
     def valid(self, x: int, y: int) -> bool:
-        """
-        Does x and y conform to a possible multiple?
-        :param x: first digit
-        :param y: second digit
-        :return: returns true if x is a multiple of self.factor and the same for y and x
+        """Checks if two digits conform to the Kropki pair rule.
+
+        Args:
+            x (int): The first digit.
+            y (int): The second digit.
+
+        Returns:
+            bool: True if one of the digits is exactly `factor` times the other.
         """
         return x == self.factor * y or self.factor * x == y
 
     def possible(self) -> set:
-        """
-        Work stubs which digits are possible
-        :return: set of digits
+        """Determines possible digits that satisfy the Kropki pair rule.
+
+        Returns:
+            set: A set of digits that satisfy the rule.
         """
         used = set({})
         for x, y in product(self.board.digit_range, self.board.digit_range):
@@ -71,9 +109,10 @@ class KropkiPair(Pair):
         return used
 
     def add_impossible_constraint(self, solver: PulpSolver) -> None:
-        """
-        Set any impossible digits to not be a choice
-        :param solver: solver
+        """Adds constraints for impossible digits in the pair cells.
+
+        Args:
+            solver (PulpSolver): The solver instance to which constraints are added.
         """
         for digit in set(self.board.digit_range) - self.possible():
             name = f"{self.name}_Impossible_kropki_pair_1_{digit}_{self.cell_1.row}_{self.cell_1.column}"
@@ -82,6 +121,11 @@ class KropkiPair(Pair):
             solver.model += solver.choices[digit][self.cell_2.row][self.cell_2.column] == 0, name
 
     def add_implausible_constraint(self, solver: PulpSolver) -> None:
+        """Adds constraints to restrict invalid digit pairs.
+
+        Args:
+            solver (PulpSolver): The solver instance to which constraints are added.
+        """
         for x, y in product(self.board.digit_range, self.board.digit_range):
             choice1 = solver.choices[x][self.cell_1.row][self.cell_1.column]
             choice2 = solver.choices[y][self.cell_2.row][self.cell_2.column]
@@ -90,6 +134,11 @@ class KropkiPair(Pair):
 
     @property
     def count(self) -> int:
+        """Counts the valid digit pairs that meet the Kropki pair rule.
+
+        Returns:
+            int: The count of valid digit pairs.
+        """
         count = 0
         for x, y in product(self.board.digit_range, self.board.digit_range):
             if self.valid(x, y):
@@ -97,11 +146,21 @@ class KropkiPair(Pair):
         return count
 
     def create_sos(self, solver: PulpSolver) -> None:
+        """Creates a set of special ordered sets (SOS) constraints.
+
+        Args:
+            solver (PulpSolver): The solver instance to which constraints are added.
+        """
         sos_range = range(0, self.count)
         self.sos = LpVariable.dicts(self.name, sos_range, 0, 1, LpInteger)
         solver.model += lpSum([self.sos[i] for i in sos_range]) == 1, f"{self.name}_SOS"
 
     def add_unique_constraints(self, solver: PulpSolver) -> None:
+        """Adds constraints ensuring that valid pairs are uniquely enforced.
+
+        Args:
+            solver (PulpSolver): The solver instance to which constraints are added.
+        """
         count = 0
         for x, y in product(self.board.digit_range, self.board.digit_range):
             if not self.valid(x, y):
@@ -112,12 +171,22 @@ class KropkiPair(Pair):
             count += 1
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Adds all constraints necessary for the Kropki pair rule.
+
+        Args:
+            solver (PulpSolver): The solver instance to which constraints are added.
+        """
         self.add_impossible_constraint(solver)
         self.add_implausible_constraint(solver)
         self.create_sos(solver)
         self.add_unique_constraints(solver)
 
     def css(self) -> Dict:
+        """Defines CSS styling properties for rendering the Kropki pair.
+
+        Returns:
+            Dict: A dictionary of CSS properties for the Kropki pair.
+        """
         return {
             '.KropkiPair': {
                 'fill': 'black',

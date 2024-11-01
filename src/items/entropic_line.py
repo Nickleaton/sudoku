@@ -1,12 +1,13 @@
 from typing import List, Dict
+
 from pulp import LpAffineExpression, lpSum
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
-from src.items.item import Item
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
+
 
 class EntropicLine(Line):
     """Represents a line with entropic constraints for a puzzle.

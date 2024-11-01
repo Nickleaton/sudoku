@@ -105,8 +105,8 @@ def generate_test_cases():
         problem_name = problem_file.stem
         test_name = f"test_{problem_name}"
 
-        def test_method(self, problem_name=problem_name):
-            self.name = problem_name
+        def test_method(self, name=problem_name):
+            self.name = name
             self.run_acceptance_test()
 
         setattr(AcceptanceTest, test_name, test_method)

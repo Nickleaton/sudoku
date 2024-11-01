@@ -1,10 +1,9 @@
-from typing import List, Callable
+from typing import List
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
 from src.items.standard_diagonal import StandardDiagonal
 from src.utils.coord import Coord
 

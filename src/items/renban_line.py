@@ -88,7 +88,7 @@ class RenbanLine(Line):
             solver.model += lower <= value, f"{self.name}_lower_{i}"
             solver.model += upper >= value, f"{self.name}_upper_{i}"
 
-        # Set the difference constraint based on line length
+        # Set the difference constraint based on the line's length
         solver.model += upper - lower == length - 1, f"{self.name}_range_{length - 1}"
 
         # Add the mandatory digits to the constraints

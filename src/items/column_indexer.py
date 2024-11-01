@@ -1,11 +1,10 @@
-from typing import List, Dict, Callable
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.indexing import Indexer
-from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 

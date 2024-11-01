@@ -101,7 +101,7 @@ class SequenceLine(Line):
             for the SequenceLine will be added.
 
         Constraints include uniqueness, sequence difference, and restricting possible
-        digits to speed up the solve.
+        digits to speed solving.
         """
         # Ensure the cells in the sequence have unique values
         self.add_unique_constraint(solver, optional=True)

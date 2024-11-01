@@ -1,6 +1,4 @@
-from typing import Dict, Any
-
-import strictyaml
+from typing import Dict
 
 from src.items.board import Board
 from src.items.item import Item

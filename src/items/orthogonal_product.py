@@ -1,11 +1,9 @@
-from typing import List, Dict, Callable
+from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.cell import Cell
-from src.items.item import Item
 from src.items.product import Product
-from src.parsers.cell_value_parser import CellValueParser
 from src.utils.coord import Coord
 from src.utils.direction import Direction
 from src.utils.rule import Rule

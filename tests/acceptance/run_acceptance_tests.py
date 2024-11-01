@@ -1,8 +1,6 @@
 import unittest
 from pathlib import Path
 
-from tests.acceptance.acceptance_test import AcceptanceTest
-
 # Directory containing test problem files
 ACCEPTANCE_TEST_DIR = Path('problems/easy')
 
@@ -16,8 +14,9 @@ def load_problem_tests():
     for problem_name in problem_files:
         if problem_name != 'problem009':
             continue
-        def test_method(self, problem_name=problem_name):
-            test = AcceptanceTest(problem_name)
+
+        def test_method(name=problem_name):
+            test = AcceptanceTest(name)
             test.test_all()
 
         # Assign a unique name to each test case method for unittest discovery

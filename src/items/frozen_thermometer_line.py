@@ -11,12 +11,8 @@ from src.utils.rule import Rule
 
 
 class FrozenThermometerLine(ThermometerLine):
-    """Represents a frozen thermometer line in a puzzle, where cells along the line must
-    increase or stay the same from the bulb end.
-
-    Attributes:
-        None: Inherits attributes from ThermometerLine.
-    """
+    """Represents a frozen thermometer line in a puzzle where cells along the line
+    must increase or stay the same from the bulb end."""
 
     @property
     def rules(self) -> List[Rule]:
@@ -48,8 +44,8 @@ class FrozenThermometerLine(ThermometerLine):
         return super().tags.union({'Frozen', 'FrozenThermometerLine'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the solver for the Frozen Thermometer line, ensuring that
-        the values in the line respect the frozen thermometer rules.
+        """Adds constraints to the solver for the Frozen Thermometer line, ensuring
+        values respect frozen thermometer rules.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.

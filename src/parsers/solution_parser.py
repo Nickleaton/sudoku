@@ -4,7 +4,7 @@ from src.parsers.parser import ParserError, Parser
 
 
 class SolutionParser(Parser):
-    """Parses a solution string containing cell velues
+    """Parses a solution string containing cell values
 
     Attributes:
         result (list[str]): A list of  one character values

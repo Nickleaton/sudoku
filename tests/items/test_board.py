@@ -7,9 +7,10 @@ from src.utils.coord import Coord
 class TestBoard(unittest.TestCase):
 
     def setUp(self):
-        self.board9x9_no_boxes = board = Board(9, 9, 0, 0, 'a', 'b', 'c', 'd')
-        self.board4x4 = Board(4, 4)
-        self.board8x8 = Board(8, 8, 2, 4, 'a', 'b', 'c', 'd')
+        self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, 'a', 'b', 'c', 'd')
+        self.board4x4: Board = Board(4, 4)
+        self.board8x8: Board = Board(8, 8, 2, 4, 'a', 'b', 'c', 'd')
+        self.board6x6: Board = Board(6, 6, 2, 3, 'a', 'b', 'c', 'd')
 
     def test_construction_8x8(self):
         self.assertEqual(8, self.board8x8.board_columns)

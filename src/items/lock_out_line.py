@@ -19,7 +19,7 @@ class LockOutLine(Line):
         Returns:
             List[Rule]: A list containing the LockOut rule, which specifies:
             - Diamond endpoints must be at least 4 cells apart.
-            - Digits on the line must lie strictly outside of the values at
+            - Digits on the line must lie strictly outside the values at
               the endpoints.
         """
         return [

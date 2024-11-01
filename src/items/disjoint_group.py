@@ -1,8 +1,7 @@
-from typing import List, Dict
+from typing import List
 
 from src.items.board import Board
 from src.items.cell import Cell
-from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.parsers.digit_parser import DigitParser
 from src.solvers.pulp_solver import PulpSolver

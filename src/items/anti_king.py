@@ -1,7 +1,5 @@
 from typing import List, Dict
 
-import strictyaml
-
 from src.items.anti import Anti
 from src.items.board import Board
 from src.items.item import Item

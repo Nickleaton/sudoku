@@ -42,9 +42,16 @@ class Known(ComposedItem):
                     parts.append(KnownCell(board, row, column, int(digit)))
         self.add_items(parts)
 
+    # Schema and creation
+
     @classmethod
     def is_sequence(cls) -> bool:
         """ Return True if this item is a sequence. """
+        return True
+
+    @classmethod
+    def is_composite(cls) -> bool:
+        """ Return True if this item is a composite. """
         return True
 
     @classmethod

@@ -1,10 +1,9 @@
 import unittest
 from typing import Type
 
-from src.items.difference_pair import DifferencePair
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
+from src.items.difference_pair import DifferencePair
 from src.items.item import Item
 from src.items.less_than_equal_difference_line import LessThanEqualDifferenceLine
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair

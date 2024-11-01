@@ -1,5 +1,5 @@
 import re
-from typing import List, Tuple, Dict, Callable
+from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.known_glyph import KnownGlyph

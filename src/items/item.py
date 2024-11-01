@@ -62,9 +62,16 @@ class Item(ABC):
         self.identity: int = Item.counter
         Item.counter += 1
 
+    # Schema and creation
+
     @classmethod
     def is_sequence(cls) -> bool:
         """ Return True if this item is a sequence """
+        return False
+
+    @classmethod
+    def is_composite(cls) -> bool:
+        """ Return True if this item is a composite """
         return False
 
     @classmethod

@@ -1,4 +1,4 @@
-from typing import List, Dict, Set, Type, Iterator
+from typing import List, Dict, Set, Type
 
 from pulp import lpSum
 

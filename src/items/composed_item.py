@@ -1,5 +1,5 @@
 from itertools import chain
-from typing import List, Set, Sequence, Dict, Type, Iterator
+from typing import List, Set, Sequence, Dict, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
