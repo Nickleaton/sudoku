@@ -1,7 +1,7 @@
 """ Config: A singleton class representing the configuration of an application. """
 import threading
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional, Dict
 
 import oyaml as yaml
 from pydotted import pydot
@@ -29,10 +29,10 @@ class Config:
           uri: "postgresql://user:pass@xxyyz:9999/mydb"
         ```
     """
-    __instance = None
-    __lock = threading.Lock()
+    __instance: Optional['Config'] = None
+    __lock: threading.Lock = threading.Lock()
 
-    def __new__(cls, config_file_path: Path = Path("config.yaml")):
+    def __new__(cls, config_file_path: Path = Path("config.yaml")) -> 'Config':
         """
         Creates a new instance of the `Config` class if one doesn't already exist.
 
@@ -55,10 +55,12 @@ class Config:
         """
         Initializes the `Config` class instance and reads the YAML configuration file.
         """
+        self.__initialized: bool
         if self.__initialized:
             return
         self.__initialized = True
-        self.config = None
+        self.config_file_path: Path
+        self.config: Optional[Dict[str, Any]] = None
         self.reload()
 
     def reload(self):
@@ -78,7 +80,7 @@ class Config:
         except yaml.YAMLError as e:
             raise ValueError(f"Error parsing YAML file: {e}")
 
-    def __getattr__(self, key: str) -> Any:
+    def __getattr__(self, key: str) -> Optional[Any]:
         """
         Retrieves the value of a configuration parameter from the config
         You can use dotted attribute access
