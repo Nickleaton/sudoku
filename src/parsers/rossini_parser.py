@@ -1,5 +1,3 @@
-from typing import Optional, Dict
-
 from src.parsers.parser import Parser, ParserError
 
 
@@ -8,8 +6,7 @@ class RossiniParser(Parser):
 
     def __init__(self):
         """Initializes the RossiniParser with a regex pattern for the Rossini format."""
-        super().__init__(r'^[TLBR]\d=[DIU]$')
-        self.answer: Optional[Dict[str, Any]] = None
+        super().__init__(pattern=r'^[TLBR]\d=[DIU]$', example_format="[TLBR]d=[DIU]")
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract components in the Rossini format.
@@ -24,15 +21,20 @@ class RossiniParser(Parser):
         if not self.regular_expression.match(text):
             raise ParserError(f"{self.__class__.__name__} expects format like '[TLBR]d=[DIU]'")
 
-        # Extract the components: side, index, and direction.
-        side = text[0]  # 'T', 'L', 'B', or 'R'
-        index = int(text[1])  # digit following the side
-        direction = text[3]  # 'D', 'I', or 'U'
+        try:
 
-        # Store results in the result attribute.
-        self.result = [side, index, direction]
-        self.answer = {
-            'side': side,
-            'index': str(index),
-            'direction': direction
-        }
+            # Extract the components: side, index, and direction.
+            side = text[0]  # 'T', 'L', 'B', or 'R'
+            index = int(text[1])  # digit following the side
+            direction = text[3]  # 'D', 'I', or 'U'
+
+            # Store results in the result attribute.
+            self.result = [side, index, direction]
+            self.answer = {
+                'side': side,
+                'index': str(index),
+                'direction': direction
+            }
+
+        except ValueError:
+            self.raise_error()

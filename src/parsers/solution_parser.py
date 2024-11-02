@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from src.parsers.parser import ParserError, Parser
 
 
@@ -13,8 +11,7 @@ class SolutionParser(Parser):
     def __init__(self):
         """Initializes the KnownParser with a regular expression for validating input strings.
         """
-        super().__init__(r"^\d+$")
-        self.answer: Optional[List[str]] = None
+        super().__init__(pattern=r"^\d+$", example_format="123456789")
 
     def parse(self, text: str) -> None:
         """Parses the input string and stores the result in the 'result' attribute.
@@ -32,10 +29,8 @@ class SolutionParser(Parser):
 
         try:
             # Split the input text by commas and convert each value as needed
-            self.result = list(text.replace(" ", ""))
-            self.answer = list(text.replace(" ", ""))
-        except ValueError as e:
-            # Raise an error if any of the values cannot be converted to an integer
-            self.result = None
-            raise ParserError(
-                f"{self.__class__.__name__} expects a string of solution values for one row: {e}")
+            stripped_text: str = text.replace(" ", "")
+            self.result = list(stripped_text)
+            self.answer = list(stripped_text)
+        except ValueError:
+            self.raise_error()

@@ -12,6 +12,7 @@ class TestUnknownParser(TestParser):
         """Sets up the UnknownParser instance for testing."""
         self.parser: UnknownParser = UnknownParser()
         self.representation: str = 'UnknownParser()'
+        self.example_format: str = ""
         self.valid_input_result: List[Tuple[str, Any]] = []
         self.valid_input_answer: List[Tuple[str, Any]] = []
         self.invalid_input: List[str] = \

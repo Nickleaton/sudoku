@@ -13,6 +13,7 @@ class TestSolutionParser(TestParser):
         """Sets up the SolutionParser instance for testing."""
         self.parser: SolutionParser = SolutionParser()
         self.representation: str = 'SolutionParser()'
+        self.example_format: str = '123456789'
         self.valid_input_result: List[Tuple[str, Any]] = [
             ("123456789", ['1', '2', '3', '4', '5', '6', '7', '8', '9']),
             ("111111111", ['1', '1', '1', '1', '1', '1', '1', '1', '1']),

@@ -12,6 +12,7 @@ class TestLittleKillersParser(TestParser):
         """Sets up the LittleKillersParser instance for testing."""
         self.parser: LittleKillersParser = LittleKillersParser()
         self.representation: str = 'LittleKillersParser()'
+        self.example_format: str = '[TLBR]i=dd'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
                 # Valid Little Killers format inputs
@@ -65,48 +66,48 @@ class TestLittleKillersParser(TestParser):
             # Valid Little Killers format inputs
             (
                 "T1C=14",
-                {'side': 'T', 'index': 1, 'direction': 'C', 'value': 14}
+                {'side': 'T', 'index': '1', 'direction': 'C', 'value': '14'}
             ),
             (
                 "T1C=5",
-                {'side': 'T', 'index': 1, 'direction': 'C', 'value': 5}
+                {'side': 'T', 'index': '1', 'direction': 'C', 'value': '5'}
             ),
             (
                 "L2A=10",
-                {'side': 'L', 'index': 2, 'direction': 'A', 'value': 10}
+                {'side': 'L', 'index': '2', 'direction': 'A', 'value': '10'}
             ),
             (
                 "B3C=12",
-                {'side': 'B', 'index': 3, 'direction': 'C', 'value': 12}
+                {'side': 'B', 'index': '3', 'direction': 'C', 'value': '12'}
             ),
             (
                 "R0A=0",
-                {'side': 'R', 'index': 0, 'direction': 'A', 'value': 0}
+                {'side': 'R', 'index': '0', 'direction': 'A', 'value': '0'}
             ),
             (
                 "T9C=100",
-                {'side': 'T', 'index': 9, 'direction': 'C', 'value': 100}
+                {'side': 'T', 'index': '9', 'direction': 'C', 'value': '100'}
             ),
             (
                 "L5A=50",
-                {'side': 'L', 'index': 5, 'direction': 'A', 'value': 50}
+                {'side': 'L', 'index': '5', 'direction': 'A', 'value': '50'}
             ),
             (
                 "T0C=1",
-                {'side': 'T', 'index': 0, 'direction': 'C', 'value': 1}
+                {'side': 'T', 'index': '0', 'direction': 'C', 'value': '1'}
             ),
             (
                 "R9A=999",
-                {'side': 'R', 'index': 9, 'direction': 'A', 'value': 999}
+                {'side': 'R', 'index': '9', 'direction': 'A', 'value': '999'}
             ),
             (
                 "B4C=2000",
-                {'side': 'B', 'index': 4, 'direction': 'C', 'value': 2000}
+                {'side': 'B', 'index': '4', 'direction': 'C', 'value': '2000'}
             ),
             # Valid input with spaces
             (
                 " L2 A = 5 ",
-                {'side': 'L', 'index': 2, 'direction': 'A', 'value': 5}
+                {'side': 'L', 'index': '2', 'direction': 'A', 'value': '5'}
             ),
         ]
 

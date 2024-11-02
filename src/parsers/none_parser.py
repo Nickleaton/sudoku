@@ -6,8 +6,7 @@ class NoneParser(Parser):
 
     def __init__(self):
         """Initializes the NoneParser with an empty pattern to match."""
-        super().__init__(r"^$")
-        self.answer: None = None
+        super().__init__(pattern=r"^$", example_format="")
 
     def parse(self, text: str) -> None:
         """Parses the input text, ensuring it is empty.
@@ -22,4 +21,4 @@ class NoneParser(Parser):
         if not self.regular_expression.match(text):
             raise ParserError(f"{self.__class__.__name__} expects nothing")
         self.result = None
-        self.answer = {}
+        self.answer = None

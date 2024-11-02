@@ -12,6 +12,7 @@ class TestOutsideArrowValueParser(TestParser):
         """Sets up the OutsideArrowValueParser instance for testing."""
         self.parser: OutsideArrowValueParser = OutsideArrowValueParser()
         self.representation: str = 'OutsideArrowValueParser()'
+        self.example_format: str = "[TLBR]d=dd"
         self.valid_input_result: List[Tuple[str, Any]] = [
             # Valid inputs for the Outside Arrow Value format
             (

@@ -1,4 +1,4 @@
-from typing import List, Optional, Dict, Any
+from typing import List, Optional
 
 from src.parsers.parser import Parser, ParserError
 
@@ -20,8 +20,7 @@ class FrameParser(Parser):
         whitespace, where the side is one of 'T', 'L', 'B', or 'R', followed
         by a numeric index and a value separated by '='.
         """
-        super().__init__(r"^\s*[TLBR]\s*\d\s*=\s*\d+\s*$")
-        self.answer: Optional[Dict[str, Any]] = None
+        super().__init__(pattern=r"^\s*[TLBR]\s*\d\s*=\s*\d+\s*$", example_format="[TLBR]i=v")
 
     def parse(self, text: str) -> None:
         """Parses the input string to extract side, index, and value.
@@ -38,18 +37,19 @@ class FrameParser(Parser):
 
         try:
             # Remove spaces to standardize input format.
-            text = text.replace(" ", "")
-            side: str = text[0]  # Extracts side indicator (T, L, B, R)
-            index: int = int(text[1])  # Converts the index portion to an integer
-            value: int = int(text.split("=")[1])  # Extracts the value after '=' as integer
+            stripped_text: str = text.replace(" ", "")
+            lhs: str = stripped_text.split("=")[0]
+            rhs: str = stripped_text.split("=")[1]
+            side: str = lhs[0]  # Extracts side indicator (T, L, B, R)
+            index: str = lhs[1]
+            value: str = rhs
 
             # Save parsed components as a list.
-            self.result = [side, index, value]
+            self.result = [side, int(index), int(value)]  # type: ignore[list-item]
             self.answer = {
                 "side": side,
                 "index": index,
                 "value": value
             }
         except ValueError:
-            self.result = None
-            raise ParserError(f"{self.__class__.__name__} expects valid input in the format 'T1=2' or similar")
+            self.raise_error()

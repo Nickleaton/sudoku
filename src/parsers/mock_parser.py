@@ -1,5 +1,3 @@
-from typing import Optional, List
-
 from src.parsers.parser import Parser, ParserError
 
 
@@ -19,8 +17,7 @@ class MockParser(Parser):
         This pattern is not used in the tests as this mock parser focuses
         on basic string manipulation rather than regex matching.
         """
-        super().__init__(r"")  # Dummy pattern, not used in tests
-        self.answer: Optional[List[str]]= None
+        super().__init__(pattern=r"", example_format="")  # Dummy pattern, not used in tests
 
     def parse(self, text: str):
         """Parses the input text into a list of strings.
@@ -40,5 +37,5 @@ class MockParser(Parser):
         """
         if not text:
             raise ParserError("Input cannot be empty.")
-        self.result = text.split(',')  # Basic implementation for testing
-        self.answer = text.split(',')  # Basic implementation for testing
+        self.result = text.split(',')
+        self.answer = text.split(',')

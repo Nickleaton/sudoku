@@ -12,22 +12,23 @@ class TestDigitParser(TestParser):
         """Sets up the DigitsParser instance for testing."""
         self.parser: DigitParser = DigitParser()
         self.representation: str = 'DigitParser()'
+        self.example_format: str = 'd'
         self.valid_input_result: List[Tuple[str, int]] = \
             [
                 # Valid single digit inputs
-                ("0", 0),
-                ("1", 1),
-                ("2", 2),
-                ("3", 3),
-                ("4", 4),
-                ("5", 5),
-                ("6", 6),
-                ("7", 7),
-                ("8", 8),
-                ("9", 9),
+                ("0", [0]),
+                ("1", [1]),
+                ("2", [2]),
+                ("3", [3]),
+                ("4", [4]),
+                ("5", [5]),
+                ("6", [6]),
+                ("7", [7]),
+                ("8", [8]),
+                ("9", [9]),
                 # Valid input with leading/trailing whitespace
-                (" 5 ", 5),
-                ("  0  ", 0),
+                (" 5 ", [5]),
+                ("  0  ", [0]),
             ]
         self.valid_input_answer: List[Tuple[str, Dict[str, str]]] = \
             [

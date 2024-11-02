@@ -1,3 +1,5 @@
+from typing import List
+
 from src.parsers.parser import Parser, ParserError
 
 
@@ -6,8 +8,7 @@ class QuadruplesParser(Parser):
 
     def __init__(self):
         """Initializes the QuadruplesParser with a regex pattern for the quadruples format."""
-        super().__init__(r'^\d{2}=[\d?]+$')
-        self.answer = None
+        super().__init__(pattern=r'^\d{2}=[\d?]+$', example_format='rc=dd??')
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract quadruple components.
@@ -25,17 +26,19 @@ class QuadruplesParser(Parser):
 
         try:
             # Split the input string into components based on '='
-            left, right = text.split('=')
+            stripped_text: str = text.replace(" ", "")
+            lhs: str = stripped_text.split('=')[0]
+            rhs: str = stripped_text.split('=')[1]
+
+            row: str = lhs[0]
+            column: str = lhs[1]
+            choices: List[str] = list(rhs)
             # Store results: left should be two digits, right can be digits or '?'.
-            self.result = [int(left.strip()), right.strip()]
+            self.result = [int(row), int(column), rhs]
             self.answer = {
-                'cell': {
-                    'row': str(left[0]),
-                    'column': str(left[1])
-                },
-                'values': [str(v) for v in list(right.strip())]
+                'row': row,
+                'column': column,
+                'values': choices
             }
         except ValueError:
-            # If any of the values cannot be converted, clear the result and raise an error.
-            self.result = None
-            raise ParserError(f"{self.__class__.__name__} expects a format like 'dd=ddd'")
+            self.raise_error()

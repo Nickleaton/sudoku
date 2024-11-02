@@ -12,6 +12,7 @@ class TestRossiniParser(TestParser):
         """Sets up the RossiniParser instance for testing."""
         self.parser: RossiniParser = RossiniParser()
         self.representation: str = "RossiniParser()"
+        self.example_format: str = '[TLBR]d=[DIU]'
         self.valid_input_result: List[Tuple[str, Any]] = [
             # Valid inputs for the Rossini format
             (

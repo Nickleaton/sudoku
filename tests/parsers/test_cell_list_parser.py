@@ -12,6 +12,7 @@ class TestCellListParser(TestParser):
         """Sets up the CellListParser instance for testing."""
         self.parser: CellListParser = CellListParser()
         self.representation: str = 'CellListParser()'
+        self.example_format: str = 'rc,rc,...'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
                 (

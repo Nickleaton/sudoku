@@ -12,6 +12,7 @@ class TestCellParser(TestParser):
         """Sets up the CellParser instance for testing."""
         self.parser: CellParser = CellParser()
         self.representation: str = "CellParser()"
+        self.example_format: str = 'rc'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
                 (
@@ -43,27 +44,27 @@ class TestCellParser(TestParser):
             [
                 (
                     "12",
-                    {"row": 1, "column": 2}
+                    {"row": '1', "column": '2'}
                 ),
                 (
                     "01",
-                    {"row": 0, "column": 1}
+                    {"row": '0', "column": '1'}
                 ),
                 (
                     "99",
-                    {"row": 9, "column": 9}
+                    {"row": '9', "column": '9'}
                 ),
                 (
                     " 12 ",
-                    {"row": 1, "column": 2}
+                    {"row": '1', "column": '2'}
                 ),
                 (
                     " 01 ",
-                    {"row": 0, "column": 1}
+                    {"row": '0', "column": '1'}
                 ),
                 (
                     "  99  ",
-                    {"row": 9, "column": 9}
+                    {"row": '9', "column": '9'}
                 ),
             ]
         self.invalid_input: List[str] = \

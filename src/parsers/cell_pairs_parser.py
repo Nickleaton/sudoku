@@ -1,5 +1,3 @@
-from typing import Dict, Optional
-
 from src.parsers.parser import Parser, ParserError
 
 
@@ -9,8 +7,7 @@ class CellPairsParser(Parser):
     def __init__(self):
         """Initializes CellPairsParser with a regex pattern for comma-separated digits."""
         # Call the parent class (Parser) constructor with a regex pattern that matches the required format.
-        super().__init__(r"^\s*\d\d\s*-\s*\d\d\s*$")
-        self.result: Optional[Dict[str, Dict[str, int]]] = None
+        super().__init__(pattern=r"^\s*\d\d\s*-\s*\d\d\s*$", example_format="r1c1=r2c2")
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract cell references.
@@ -29,19 +26,22 @@ class CellPairsParser(Parser):
         try:
             # Split the input text into individual characters, convert them to integers,
             # and store the result as a list of integers in the result attribute.
-            text = text.replace(" ", "")
-            self.result = [[int(text[0]), int(text[1])], [int(text[3]), int(text[4])]]
+            stripped_text: str = text.replace(" ", "")
+            row1: str = stripped_text[0]
+            column1: str = stripped_text[1]
+            row2: str = stripped_text[3]
+            column2: str = stripped_text[4]
+            self.result = [
+                int(row1),
+                int(column1),
+                int(row2),
+                int(column2)
+            ]
             self.answer = {
-                'cell1': {
-                    'row': int(text[0]),
-                    'column': int(text[1])
-                },
-                'cell2': {
-                    'row': int(text[3]),
-                    'column': int(text[4])
-                }
+                'row1': row1,
+                'column1': column1,
+                'row2': row2,
+                'column2': column2
             }
         except ValueError:
-            # If any of the values cannot be converted to an integer, raise an error.
-            self.result = None  # Clear result in case of error.
-            raise ParserError(f"{self.__class__.__name__} expects a cell reference equals cell reference eg '12=23'")
+            self.raise_error()

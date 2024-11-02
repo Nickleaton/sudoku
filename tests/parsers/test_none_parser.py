@@ -12,11 +12,12 @@ class TestNoneParser(TestParser):
         """Sets up the NoneParser instance for testing."""
         self.parser: NoneParser = NoneParser()
         self.representation: str = 'NoneParser()'
+        self.example_format: str = ''
         self.valid_input_result: List[Tuple[str, Any]] = [
             ("", None),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            ("", {}),
+            ("", None),
         ]
         self.invalid_input: List[str] = [
             "not empty",

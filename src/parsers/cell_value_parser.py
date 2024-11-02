@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import List
 
 from src.parsers.parser import Parser, ParserError
 
@@ -8,8 +8,7 @@ class CellValueParser(Parser):
 
     def __init__(self):
         """Initializes the CellValueParser with a regex pattern for the Cell Value format."""
-        super().__init__(r'^\d{2}=\d+$')
-        self.answer: Optional[Dict[str, int]] = None
+        super().__init__(pattern=r'^\d{2}=\d+$', example_format='rc=dd')
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract cell value components.
@@ -24,17 +23,21 @@ class CellValueParser(Parser):
         if not self.regular_expression.match(text):
             raise ParserError(f"{self.__class__.__name__} expects format like 'dd=d+'")
 
-        # Split the text at the equals sign to extract components.
-        index, value = text.split('=')
-        index = [int(index[0]), int(index[1])]  # Convert the two digits to integers
-        value = int(value)  # Convert the right side of the equals sign to an integer
+        try:
+            # Split the text at the equals sign to extract components.
+            parts: List[str] = text.split('=')
+            lhs: str = parts[0]
+            rhs: str = parts[1]
+            row: str = lhs[0]
+            column: str = lhs[1]
+            value: str = rhs
 
-        # Store results in the result attribute.
-        self.result = [index, value]
-        self.answer = {
-            'cell': {
-                'row': str(index[0]),
-                'column': str(index[1])
-            },
-            'value': str(value)
-        }
+            # Store results in the result attribute.
+            self.result = [int(row), int(column), int(value)]
+            self.answer = {
+                'row': row,
+                'column': column,
+                'value': value
+            }
+        except ValueError:
+            self.raise_error()

@@ -16,6 +16,7 @@ class TestParser(unittest.TestCase):
         self.valid_input_answer: List[Tuple[str, Any]] = []
         self.invalid_input: List[str] = []
         self.representation = 'MockParser()'
+        self.example_format: str | None = ""
 
     def test_parse_empty_input(self):
         """Tests parsing an empty input string."""
@@ -48,6 +49,27 @@ class TestParser(unittest.TestCase):
         for text, output in self.valid_input_answer:
             self.parser.parse(text)
             self.assertEqual(self.parser.answer, output)
+
+    def test_example_format(self):
+        self.assertEqual(self.parser.example_format, self.example_format)
+
+    def test_help(self):
+        self.assertIsNotNone(self.parser.help())
+
+    def test_raise_error(self):
+        with self.assertRaises(ParserError):
+            self.parser.raise_error()
+        self.parser.result = 'xxx'
+        self.parser.answer = 'xxx'
+        try:
+            self.parser.raise_error()
+        except ParserError as e:
+            self.assertIsNone(self.parser.result)
+            self.assertIsNone(self.parser.answer)
+            self.assertEqual(
+                str(e),
+                f"{self.parser.__class__.__name__} expects valid input in the format '{self.parser.example_format}'."
+            )
 
 
 if __name__ == '__main__':  # pragma: no cover

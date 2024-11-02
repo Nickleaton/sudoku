@@ -12,59 +12,59 @@ class TestCellPairsParser(TestParser):
         """Sets up the CellPairParser instance for testing."""
         self.parser: CellPairsParser = CellPairsParser()
         self.representation: str = 'CellPairsParser()'
-
+        self.example_format: str = 'r1c1=r2c2'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
                 (
                     "51-61",
-                    [[5, 1], [6, 1]]
+                    [5, 1, 6, 1]
                 ),
                 (
                     "12-34",
-                    [[1, 2], [3, 4]]
+                    [1, 2, 3, 4]
                 ),
                 (
                     "31-32",
-                    [[3, 1], [3, 2]]
+                    [3, 1, 3, 2]
                 ),
                 (
                     " 12 - 34 ",
-                    [[1, 2], [3, 4]]
+                    [1, 2, 3, 4]
                 ),  # whitespace around '-'
                 (
                     "12-34",
-                    [[1, 2], [3, 4]]
+                    [1, 2, 3, 4]
                 ),  # no spaces
                 (
                     " 12- 34 ",
-                    [[1, 2], [3, 4]]
+                    [1, 2, 3, 4]
                 ),  # mixed spaces
             ]
         self.valid_input_answer = \
             [
                 (
                     "51-61",
-                    {"cell1": {"row": 5, "column": 1}, "cell2": {"row": 6, "column": 1}}
+                    {"row1": '5', "column1": '1', "row2": '6', "column2": '1'}
                 ),
                 (
                     "12-34",
-                    {"cell1": {"row": 1, "column": 2}, "cell2": {"row": 3, "column": 4}}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
                 ),
                 (
                     "31-32",
-                    {"cell1": {"row": 3, "column": 1}, "cell2": {"row": 3, "column": 2}}
+                    {"row1": '3', "column1": '1', "row2": '3', "column2": '2'}
                 ),
                 (
                     " 12 - 34 ",
-                    {"cell1": {"row": 1, "column": 2}, "cell2": {"row": 3, "column": 4}}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
                 ),  # whitespace around '-'
                 (
                     "12-34",
-                    {"cell1": {"row": 1, "column": 2}, "cell2": {"row": 3, "column": 4}}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
                 ),  # no spaces
                 (
                     " 12- 34 ",
-                    {"cell1": {"row": 1, "column": 2}, "cell2": {"row": 3, "column": 4}}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
                 ),  # mixed spaces
             ]
         self.invalid_input: List[str] = \

@@ -12,27 +12,28 @@ class TestVertexDigitParser(TestParser):
         """Sets up the VertexDigitParser instance for testing."""
         self.parser: VertexDigitParser = VertexDigitParser()
         self.representation: str = 'VertexDigitParser()'
+        self.example_format: str = 'rc=d'
         self.valid_input_result: List[Tuple[str, Any]] = [
             # Valid inputs for the Vertex Digit format
             (
                 "12=3",
-                [[1, 2], 3]
+                [1, 2, 3]
             ),
             (
                 "34=0",
-                [[3, 4], 0]
+                [3, 4, 0]
             ),
             (
                 "56=7",
-                [[5, 6], 7]
+                [5, 6, 7]
             ),
             (
                 "78=9",
-                [[7, 8], 9]
+                [7, 8, 9]
             ),
             (
                 "90=1",
-                [[9, 0], 1]
+                [9, 0, 1]
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
@@ -40,35 +41,40 @@ class TestVertexDigitParser(TestParser):
             (
                 "12=3",
                 {
-                    'vertex': {'row': '1', 'column': '2'},
+                    'row': '1',
+                    'column': '2',
                     'digit': '3'
                 }
             ),
             (
                 "34=0",
                 {
-                    'vertex': {'row': '3', 'column': '4'},
+                    'row': '3',
+                    'column': '4',
                     'digit': '0'
                 }
             ),
             (
                 "56=7",
                 {
-                    'vertex': {'row': '5', 'column': '6'},
+                    'row': '5',
+                    'column': '6',
                     'digit': '7'
                 }
             ),
             (
                 "78=9",
                 {
-                    'vertex': {'row': '7', 'column': '8'},
+                    'row': '7',
+                    'column': '8',
                     'digit': '9'
                 }
             ),
             (
                 "90=1",
                 {
-                    'vertex': {'row': '9', 'column': '0'},
+                    'row': '9',
+                    'column': '0',
                     'digit': '1'
                 }
             ),

@@ -12,50 +12,51 @@ class TestCellValueParser(TestParser):
         """Sets up the CellValueParser instance for testing."""
         self.parser: CellValueParser = CellValueParser()
         self.representation: str = "CellValueParser()"
+        self.example_format: str = 'rc=dd'
         self.valid_input_result: List[Tuple[str, Any]] = [
             # Valid inputs for the Cell Value format
             (
                 "12=5",
-                [[1, 2], 5]
+                [1, 2, 5]
             ),
             (
                 "34=10",
-                [[3, 4], 10]
+                [3, 4, 10]
             ),
             (
                 "56=100",
-                [[5, 6], 100]
+                [5, 6, 100]
             ),
             (
                 "78=42",
-                [[7, 8], 42]
+                [7, 8, 42]
             ),
             (
                 "90=1",
-                [[9, 0], 1]
+                [9, 0, 1]
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
             # Valid inputs for the Cell Value format
             (
                 "12=5",
-                {'cell': {'row': '1', 'column': '2'}, 'value': '5'}
+                {'row': '1', 'column': '2', 'value': '5'}
             ),
             (
                 "34=10",
-                {'cell': {'row': '3', 'column': '4'}, 'value': '10'}
+                {'row': '3', 'column': '4', 'value': '10'}
             ),
             (
                 "56=100",
-                {'cell': {'row': '5', 'column': '6'}, 'value': '100'}
+                {'row': '5', 'column': '6', 'value': '100'}
             ),
             (
                 "78=42",
-                {'cell': {'row': '7', 'column': '8'}, 'value': '42'}
+                {'row': '7', 'column': '8', 'value': '42'}
             ),
             (
                 "90=1",
-                {'cell': {'row': '9', 'column': '0'}, 'value': '1'}
+                {'row': '9', 'column': '0', 'value': '1'}
             )
         ]
         self.invalid_input: List[str] = [

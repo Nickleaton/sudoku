@@ -1,4 +1,4 @@
-from typing import Dict, Any, Optional
+from typing import List
 
 from src.parsers.parser import Parser, ParserError
 
@@ -8,8 +8,7 @@ class VertexDigitParser(Parser):
 
     def __init__(self):
         """Initializes the VertexDigitParser with a regex pattern for the Vertex Digit format."""
-        super().__init__(r'^\d{2}=\d$')
-        self.answer: Optional[Dict[str, Any]] = None
+        super().__init__(pattern=r'^\d{2}=\d$', example_format='rc=d')
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract vertex digit components.
@@ -24,17 +23,19 @@ class VertexDigitParser(Parser):
         if not self.regular_expression.match(text):
             raise ParserError(f"{self.__class__.__name__} expects format like 'dd=d'")
 
-        # Split the text at the equals sign to extract components.
-        index, value = text.split('=')
-        index = [int(index[0]), int(index[1])]  # Convert the two digits to integers
-        value = int(value)  # Convert the right side of the equals sign to an integer
+        try:
+            # Split the text at the equals sign to extract components.
+            parts: List[str] = text.split('=')
+            row: str = parts[0][0]
+            column: str = parts[0][1]
+            value: str = parts[1]
 
-        # Store results in the result attribute.
-        self.result = [index, value]
-        self.answer = {
-            'vertex': {
-                'row': str(index[0]),
-                'column': str(index[1]),
-            },
-            'digit': str(value)
-        }
+            # Store results in the result attribute.
+            self.result = [int(row), int(column), int(value)]
+            self.answer = {
+                'row': row,
+                'column': column,
+                'digit': value
+            }
+        except ValueError:
+            self.raise_error()
