@@ -17,8 +17,5 @@ class NoneParser(Parser):
         Raises:
             ParserError: If the input text is not empty.
         """
-        # Check if the input text matches the defined regular expression pattern.
-        if not self.regular_expression.match(text):
-            raise ParserError(f"{self.__class__.__name__} expects nothing")
-        self.result = None
-        self.answer = None
+        raise ParserError(f"{self.__class__.__name__} expects nothing")
+
