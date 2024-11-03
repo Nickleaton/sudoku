@@ -5,3 +5,4 @@
 /build/
 /test_results/
 /test.svg
+**/__pycache__/

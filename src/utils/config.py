@@ -91,7 +91,9 @@ class Config:
         Returns:
             Any: The value of the configuration parameter.
         """
-        try:
+        if self.config is None:
+            raise AttributeError("Configuration has not been loaded.")
+
+        if key in self.config:
             return self.config[key]
-        except KeyError:
-            raise AttributeError(f"'Config' object has no attribute '{key}'")
+        raise AttributeError(f"'Config' object has no attribute '{key}'")

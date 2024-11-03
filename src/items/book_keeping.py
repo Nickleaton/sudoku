@@ -16,7 +16,7 @@ class BookKeeping:
     def __setitem__(self, digit: int, value: bool) -> None:
         self.possibles[digit - 1] = value
 
-    def __and__(self, other) -> Self:
+    def __and__(self, other) -> 'BookKeeping':
         assert isinstance(other, BookKeeping)
         assert self.maximum_digit == other.maximum_digit
         result = BookKeeping(self.maximum_digit)
@@ -24,7 +24,7 @@ class BookKeeping:
             result[i] = self[i] and other[i]
         return result
 
-    def __or__(self, other) -> Self:
+    def __or__(self, other) -> 'BookKeeping':
         assert isinstance(other, BookKeeping)
         assert self.maximum_digit == other.maximum_digit
         result = BookKeeping(self.maximum_digit)
@@ -32,7 +32,7 @@ class BookKeeping:
             result[i] = self[i] or other[i]
         return result
 
-    def __invert__(self) -> Self:
+    def __invert__(self) -> 'BookKeeping':
         result = BookKeeping(self.maximum_digit)
         for i in self.digit_range:
             result[i] = not self[i]

@@ -29,7 +29,11 @@ class TemporaryFile:
         Raises:
             OSError: If the directory cannot be created.
         """
-        directory: Path = Path(config.temporary_directory)
+        if not isinstance(config.temporary_directory, (str, Path)):
+            raise ValueError("Temporary directory must be a valid path string or Path object")
+        directory: Path = config.temporary_directory \
+            if isinstance(config.temporary_directory, Path) \
+            else Path(config.temporary_directory)
         if not directory.exists():
             logging.info(f"Creating directory {directory}")
             directory.mkdir(parents=True)
