@@ -16,12 +16,34 @@ class TestSide(unittest.TestCase):
         self.assertEqual(Side.BOTTOM, Side.create("B"))
         self.assertEqual(Side.LEFT, Side.create("L"))
 
+    def test_invalid(self):
+        with self.assertRaises(ValueError):
+            Side.create("X")
+
     def test_valid(self):
         self.assertTrue(Side.valid('T'))
         self.assertTrue(Side.valid('R'))
         self.assertTrue(Side.valid('B'))
         self.assertTrue(Side.valid('L'))
-        self.assertFalse(Side.valid('X'))
+
+    def test_horizontal_vertical_boundaries(self):
+        self.assertTrue(Side.TOP.vertical)
+        self.assertFalse(Side.TOP.horizontal)
+        self.assertTrue(Side.LEFT.horizontal)
+        self.assertFalse(Side.LEFT.vertical)
+
+    def test_values(self):
+        self.assertEqual("TRBL", Side.values())
+
+    def test_marker_edge_cases(self):
+        board = Board(9, 9)
+        self.assertEqual(Coord(0, 0), Side.TOP.marker(board, 0))
+        self.assertEqual(Coord(10, 9), Side.BOTTOM.marker(board, 9))
+
+    def test_start_cell_edge_cases(self):
+        board = Board(9, 9)
+        self.assertEqual(Coord(1, 9), Side.TOP.start_cell(board, 9))
+        self.assertEqual(Coord(9, 1), Side.BOTTOM.start_cell(board, 1))
 
     def test_direction(self):
         self.assertEqual(Direction.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))

@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Dict
 
 from src.items.board import Board
 from src.utils.coord import Coord
@@ -42,12 +43,10 @@ class Side(Enum):
         Returns:
             bool: True if the letter is valid, False otherwise.
         """
-        for side in Side:
-            if letter == side.value:
-                return True
-        return False
+        # noinspection PyProtectedMember
+        return letter in Side._value2member_map_
 
-    def direction(self, cyclic: Cyclic) -> Direction:  # pylint: disable=too-many-return-statements
+    def direction(self, cyclic: Cyclic) -> Direction:
         """Get the direction corresponding to the side and cyclic order.
 
         Args:
@@ -59,25 +58,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        if cyclic == Cyclic.CLOCKWISE:
-            if self == Side.TOP:
-                return Direction.DOWN_RIGHT
-            if self == Side.RIGHT:
-                return Direction.DOWN_LEFT
-            if self == Side.BOTTOM:
-                return Direction.UP_LEFT
-            if self == Side.LEFT:
-                return Direction.UP_RIGHT
-        if cyclic == Cyclic.ANTICLOCKWISE:
-            if self == Side.TOP:
-                return Direction.DOWN_LEFT
-            if self == Side.RIGHT:
-                return Direction.UP_LEFT
-            if self == Side.BOTTOM:
-                return Direction.UP_RIGHT
-            if self == Side.LEFT:
-                return Direction.DOWN_RIGHT
-        raise SideException("Unknown combination")  # pragma: no cover
+        return DIRECTION_MAP[(self, cyclic)]
 
     def order_direction(self, order: Order) -> Direction:  # pylint: disable=too-many-return-statements
         """Get the direction based on the side and order.
@@ -91,15 +72,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        if self == Side.TOP:
-            return Direction.DOWN if order == Order.INCREASING else Direction.UP
-        if self == Side.RIGHT:
-            return Direction.LEFT if order == Order.INCREASING else Direction.RIGHT
-        if self == Side.BOTTOM:
-            return Direction.UP if order == Order.INCREASING else Direction.DOWN
-        if self == Side.LEFT:
-            return Direction.RIGHT if order == Order.INCREASING else Direction.LEFT
-        raise SideException("Unknown combination")  # pragma: no cover
+        return ORDER_DIRECTION_MAP[(self, order)]
 
     def order_offset(self) -> Coord:  # pylint: disable=too-many-return-statements
         """Get the offset for the order based on the side.
@@ -110,15 +83,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        if self == Side.TOP:
-            return Direction.DOWN.offset
-        if self == Side.RIGHT:
-            return Direction.LEFT.offset
-        if self == Side.BOTTOM:
-            return Direction.UP.offset
-        if self == Side.LEFT:
-            return Direction.RIGHT.offset
-        raise SideException("Unknown combination")  # pragma: no cover
+        return ORDER_OFFSET_MAP[self]
 
     @property
     def horizontal(self) -> bool:
@@ -127,7 +92,7 @@ class Side(Enum):
         Returns:
             bool: True if the side is horizontal (LEFT or RIGHT), False otherwise.
         """
-        return self in [Side.LEFT, Side.RIGHT]
+        return self in {Side.LEFT, Side.RIGHT}
 
     @property
     def vertical(self) -> bool:
@@ -136,7 +101,7 @@ class Side(Enum):
         Returns:
             bool: True if the side is vertical (TOP or BOTTOM), False otherwise.
         """
-        return self in [Side.TOP, Side.BOTTOM]
+        return self in {Side.TOP, Side.BOTTOM}
 
     def marker(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         """Get the marker coordinate for the side on the board.
@@ -151,15 +116,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        if self == Side.TOP:
-            return Coord(0, n)
-        if self == Side.RIGHT:
-            return Coord(n, board.board_rows + 1)
-        if self == Side.BOTTOM:
-            return Coord(board.board_columns + 1, n)
-        if self == Side.LEFT:
-            return Coord(n, 0)
-        raise SideException("Unknown combination")  # pragma: no cover
+        return MARKER_COORDINATES[self](board, n)
 
     def start_cell(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         """Get the starting cell coordinate for the side on the board.
@@ -174,15 +131,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        if self == Side.TOP:
-            return Coord(1, n)
-        if self == Side.RIGHT:
-            return Coord(n, board.board_rows)
-        if self == Side.BOTTOM:
-            return Coord(board.board_columns, n)
-        if self == Side.LEFT:
-            return Coord(n, 1)
-        raise SideException("Unknown combination")  # pragma: no cover
+        return START_CELL_COORDINATES[self](board, n)
 
     def start(self, board: Board, cyclic: Cyclic, n: int) -> Coord:  # pylint: disable=too-many-return-statements
         """Get the starting coordinate for the side based on cyclic direction.
@@ -198,25 +147,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        if cyclic == Cyclic.CLOCKWISE:
-            if self == Side.TOP:
-                return Coord(1, n + 1)
-            if self == Side.RIGHT:
-                return Coord(n + 1, board.board_columns)
-            if self == Side.BOTTOM:
-                return Coord(board.board_rows, n - 1)
-            if self == Side.LEFT:
-                return Coord(n - 1, 1)
-        if cyclic == Cyclic.ANTICLOCKWISE:
-            if self == Side.TOP:
-                return Coord(1, n - 1)
-            if self == Side.RIGHT:
-                return Coord(n - 1, board.board_columns)
-            if self == Side.BOTTOM:
-                return Coord(board.board_rows, n + 1)
-            if self == Side.LEFT:
-                return Coord(n + 1, 1)
-        raise SideException("Unknown combination")  # pragma: no cover
+        return START_COORDINATES[(self, cyclic)](board, n)
 
     @staticmethod
     def values() -> str:
@@ -234,3 +165,59 @@ class Side(Enum):
             str: The string representation of the side.
         """
         return f"Side.{self.name}"
+
+
+DIRECTION_MAP: Dict[tuple, Direction] = {
+    (Side.TOP, Cyclic.CLOCKWISE): Direction.DOWN_RIGHT,
+    (Side.RIGHT, Cyclic.CLOCKWISE): Direction.DOWN_LEFT,
+    (Side.BOTTOM, Cyclic.CLOCKWISE): Direction.UP_LEFT,
+    (Side.LEFT, Cyclic.CLOCKWISE): Direction.UP_RIGHT,
+    (Side.TOP, Cyclic.ANTICLOCKWISE): Direction.DOWN_LEFT,
+    (Side.RIGHT, Cyclic.ANTICLOCKWISE): Direction.UP_LEFT,
+    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): Direction.UP_RIGHT,
+    (Side.LEFT, Cyclic.ANTICLOCKWISE): Direction.DOWN_RIGHT,
+}
+
+ORDER_DIRECTION_MAP: Dict[tuple, Direction] = {
+    (Side.TOP, Order.INCREASING): Direction.DOWN,
+    (Side.TOP, Order.DECREASING): Direction.UP,
+    (Side.RIGHT, Order.INCREASING): Direction.LEFT,
+    (Side.RIGHT, Order.DECREASING): Direction.RIGHT,
+    (Side.BOTTOM, Order.INCREASING): Direction.UP,
+    (Side.BOTTOM, Order.DECREASING): Direction.DOWN,
+    (Side.LEFT, Order.INCREASING): Direction.RIGHT,
+    (Side.LEFT, Order.DECREASING): Direction.LEFT,
+}
+
+ORDER_OFFSET_MAP: Dict[Side, Coord] = {
+    Side.TOP: Direction.DOWN.offset,
+    Side.RIGHT: Direction.LEFT.offset,
+    Side.BOTTOM: Direction.UP.offset,
+    Side.LEFT: Direction.RIGHT.offset,
+}
+
+# Coordinate mappings for `marker` and `start_cell` to reduce repetitive code
+MARKER_COORDINATES = {
+    Side.TOP: lambda board, n: Coord(0, n),
+    Side.RIGHT: lambda board, n: Coord(n, board.board_rows + 1),
+    Side.BOTTOM: lambda board, n: Coord(board.board_columns + 1, n),
+    Side.LEFT: lambda board, n: Coord(n, 0),
+}
+
+START_CELL_COORDINATES = {
+    Side.TOP: lambda board, n: Coord(1, n),
+    Side.RIGHT: lambda board, n: Coord(n, board.board_rows),
+    Side.BOTTOM: lambda board, n: Coord(board.board_columns, n),
+    Side.LEFT: lambda board, n: Coord(n, 1),
+}
+
+START_COORDINATES = {
+    (Side.TOP, Cyclic.CLOCKWISE): lambda board, n: Coord(1, n + 1),
+    (Side.RIGHT, Cyclic.CLOCKWISE): lambda board, n: Coord(n + 1, board.board_columns),
+    (Side.BOTTOM, Cyclic.CLOCKWISE): lambda board, n: Coord(board.board_rows, n - 1),
+    (Side.LEFT, Cyclic.CLOCKWISE): lambda board, n: Coord(n - 1, 1),
+    (Side.TOP, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(1, n - 1),
+    (Side.RIGHT, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(n - 1, board.board_columns),
+    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(board.board_rows, n + 1),
+    (Side.LEFT, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(n + 1, 1),
+}
