@@ -1,4 +1,5 @@
 from enum import Enum
+from functools import cache
 from typing import List
 
 from src.utils.angle import Angle
@@ -22,18 +23,7 @@ class Direction(Enum):
         self.location: int = location
 
     def __neg__(self) -> 'Direction':
-        opposite_map: dict[Direction, Direction] = {
-            Direction.UP_LEFT: Direction.DOWN_RIGHT,
-            Direction.UP: Direction.DOWN,
-            Direction.UP_RIGHT: Direction.DOWN_LEFT,
-            Direction.LEFT: Direction.RIGHT,
-            Direction.CENTER: Direction.CENTER,
-            Direction.RIGHT: Direction.LEFT,
-            Direction.DOWN_LEFT: Direction.UP_RIGHT,
-            Direction.DOWN: Direction.UP,
-            Direction.DOWN_RIGHT: Direction.UP_LEFT,
-        }
-        return opposite_map[self]
+        return OPPOSITE_MAP[self]
 
     @staticmethod
     def locations() -> List[int]:
@@ -74,55 +64,39 @@ class Direction(Enum):
         return self in [other, -other]
 
     @staticmethod
+    @cache
     def orthogonals() -> List[Coord]:
-        """
-        Returns a list of coordinate offsets for orthogonal directions (up, right, down, left).
-
-        Returns:
-            List[Coord]: The offsets for the orthogonal directions.
-        """
-        return [
-            d.offset for d in [
-                Direction.UP,
-                Direction.RIGHT,
-                Direction.DOWN,
-                Direction.LEFT
-            ]
-        ]
+        """Returns offsets for orthogonal directions (up, right, down, left)."""
+        return [Direction.UP.offset, Direction.RIGHT.offset, Direction.DOWN.offset, Direction.LEFT.offset]
 
     @staticmethod
+    @cache
     def diagonals() -> List[Coord]:
-        """
-        Returns a list of coordinate offsets for diagonal directions.
-
-        Returns:
-            List[Coord]: The offsets for the diagonal directions.
-        """
-        return [
-            d.offset for d in [
-                Direction.UP_LEFT,
-                Direction.UP_RIGHT,
-                Direction.DOWN_RIGHT,
-                Direction.DOWN_LEFT
-            ]
-        ]
+        """Returns offsets for diagonal directions."""
+        return [Direction.UP_LEFT.offset, Direction.UP_RIGHT.offset, Direction.DOWN_RIGHT.offset, Direction.DOWN_LEFT.offset]
 
     @staticmethod
+    @cache
     def kings() -> List[Coord]:
-        """
-        Returns a list of coordinate offsets for all directions except the center (king's movement in chess).
-
-        Returns:
-            List[Coord]: The offsets for the king's movement directions.
-        """
+        """Returns offsets for all directions except the center (king's movement in chess)."""
         return [d.offset for d in Direction if d != Direction.CENTER]
 
     @staticmethod
+    @cache
     def all() -> List[Coord]:
-        """
-        Returns a list of coordinate offsets for all directions, including the center.
-
-        Returns:
-            List[Coord]: The offsets for all directions.
-        """
+        """Returns offsets for all directions, including the center."""
         return [d.offset for d in Direction]
+
+
+# Define the opposite map outside the class to avoid `Direction` enum's limitations with subscripting.
+OPPOSITE_MAP = {
+    Direction.UP_LEFT: Direction.DOWN_RIGHT,
+    Direction.UP: Direction.DOWN,
+    Direction.UP_RIGHT: Direction.DOWN_LEFT,
+    Direction.LEFT: Direction.RIGHT,
+    Direction.CENTER: Direction.CENTER,
+    Direction.RIGHT: Direction.LEFT,
+    Direction.DOWN_LEFT: Direction.UP_RIGHT,
+    Direction.DOWN: Direction.UP,
+    Direction.DOWN_RIGHT: Direction.UP_LEFT,
+}
