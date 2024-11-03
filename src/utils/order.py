@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Dict
 
 
 class Order(Enum):
@@ -24,12 +25,8 @@ class Order(Enum):
         Returns:
             Order: The negated order.
         """
-        negation_map = {
-            Order.INCREASING: Order.DECREASING,
-            Order.DECREASING: Order.INCREASING,
-            Order.UNORDERED: Order.UNORDERED
-        }
-        return negation_map[self]
+
+        return NEGATION_MAP[self]
 
     @staticmethod
     def valid(letter: str) -> bool:
@@ -62,3 +59,10 @@ class Order(Enum):
             str: The string representation in the format 'Order.<name>'.
         """
         return f"Order.{self.name}"
+
+
+NEGATION_MAP: Dict[Order, Order] = {
+    Order.INCREASING: Order.DECREASING,
+    Order.DECREASING: Order.INCREASING,
+    Order.UNORDERED: Order.UNORDERED
+}

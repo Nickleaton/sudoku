@@ -28,6 +28,32 @@ class TestCoordList(unittest.TestCase):
             ]
         )
 
+    def test_add_new_coord(self):
+        new_coord = Coord(3, 4)
+        self.coords1.add(new_coord)
+        self.assertIn(new_coord, self.coords1)
+        self.assertEqual(len(self.coords1), 4)  # Ensure length increased
+
+    def test_add_duplicate_coord(self):
+        existing_coord = Coord(1, 2)
+        initial_length = len(self.coords1)
+        self.coords1.add(existing_coord)  # Try adding duplicate
+        self.assertEqual(len(self.coords1), initial_length)  # Length should not change
+
+    def test_sorting_after_addition(self):
+        self.coords1.add(Coord(0, 0))
+        self.assertEqual(self.coords1.items[0], Coord(0, 0))  # First item should be (0, 0)
+        self.assertEqual(len(self.coords1), 4)
+
+    def test_empty_initialization(self):
+        empty_coords = CoordList([])
+        self.assertEqual(len(empty_coords), 0)
+        self.assertEqual(repr(empty_coords), "CoordList([])")
+
+    def test_equality_with_different_types(self):
+        with self.assertRaises(CoordListException):
+            _ = self.coords1 == 123  # Should raise exception
+
     def test_iteration(self):
         i = 0
         for _ in self.coords1:

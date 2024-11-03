@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Iterator
+
 from src.items.item import SudokuException
 from src.utils.coord import Coord
 
@@ -19,36 +20,16 @@ class CoordList:
     """
 
     def __init__(self, items: List[Coord]):
-        self.items = items
-        self.sort()
-        self.n = 0
+        self.items = sorted(items)
 
-    def __iter__(self) -> 'CoordList':
+    def __iter__(self) -> Iterator[Coord]:
         """
         Initializes the iterator for the CoordList.
 
         Returns:
             CoordList: The current instance as an iterable.
         """
-        self.n = 0
-        return self
-
-    def __next__(self) -> Coord:
-        """
-        Retrieves the next item in the CoordList during iteration.
-
-        Returns:
-            Coord: The next Coord in the list.
-
-        Raises:
-            StopIteration: When the iteration is complete.
-        """
-        if self.n < len(self):
-            result = self.items[self.n]
-            self.n += 1
-        else:
-            raise StopIteration
-        return result
+        return iter(self.items)
 
     def __contains__(self, other: Coord) -> bool:
         """
@@ -60,10 +41,7 @@ class CoordList:
         Returns:
             bool: True if the Coord is in the list, otherwise False.
         """
-        for item in self.items:
-            if item == other:
-                return True
-        return False
+        return other in self.items
 
     def __len__(self) -> int:
         """
@@ -87,14 +65,9 @@ class CoordList:
         Raises:
             CoordListException: If the other object is not a CoordList.
         """
-        if isinstance(other, CoordList):
-            if len(self.items) != len(other.items):
-                return False
-            for i, o in zip(self.items, other.items):
-                if i != o:
-                    return False
-            return True
-        raise CoordListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        if not isinstance(other, CoordList):
+            raise CoordListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        return self.items == other.items
 
     def __repr__(self) -> str:
         """
@@ -105,12 +78,6 @@ class CoordList:
         """
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"
 
-    def sort(self) -> None:
-        """
-        Sorts the Coord objects in the list.
-        """
-        self.items = sorted(self.items)
-
     def add(self, item: Coord) -> None:
         """
         Adds a Coord to the list if it's not already present, and sorts the list.
@@ -118,6 +85,8 @@ class CoordList:
         Args:
             item (Coord): The Coord object to add.
         """
+        if not isinstance(item, Coord):
+            raise CoordListException(f"Item must be of type {Coord.__name__}.")
         if item not in self:
             self.items.append(item)
-        self.sort()
+            self.items.sort()  # Sort only after adding
