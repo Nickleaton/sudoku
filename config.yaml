@@ -50,6 +50,6 @@ colours:
     - orange
     - green
     - blue
-  odd_even:
+  parity:
     - orange
     - blue

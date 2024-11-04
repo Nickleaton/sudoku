@@ -80,7 +80,7 @@ class Config:
         except yaml.YAMLError as e:
             raise ValueError(f"Error parsing YAML file: {e}")
 
-    def __getattr__(self, key: str) -> Optional[Any]:
+    def __getattr__(self, key: str) -> Any:
         """
         Retrieves the value of a configuration parameter from the config
         You can use dotted attribute access
