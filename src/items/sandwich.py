@@ -16,8 +16,15 @@ from src.utils.side import Side
 
 
 class Sandwich(Item):
-
     def __init__(self, board: Board, side: Side, index: int, total: int):
+        """Initialize a Sandwich instance.
+
+        Args:
+            board (Board): The board associated with this sandwich.
+            side (Side): The side of the sandwich (e.g., left, right).
+            index (int): The index position of the sandwich on the specified side.
+            total (int): The total sum of the digits that the sandwich represents.
+        """
         super().__init__(board)
         self.side = side
         self.index = index
@@ -26,16 +33,36 @@ class Sandwich(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Check if this item is a sequence.
+
+        Returns:
+            bool: True if this item is a sequence, False otherwise.
+        """
         return True
 
     @classmethod
     def parser(cls) -> FrameParser:
-        """ Return the parser for this item. """
+        """Get the parser for this item.
+
+        Returns:
+            FrameParser: The parser associated with this sandwich.
+        """
         return FrameParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
+        """Extract side, index, and total from the provided YAML configuration.
+
+        Args:
+            board (Board): The board associated with this sandwich.
+            yaml (Dict): The YAML configuration containing the sandwich data.
+
+        Returns:
+            Tuple[Side, int, int]: A tuple containing the side, index, and total.
+
+        Raises:
+            AssertionError: If the regex match fails.
+        """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
         match = regexp.match(yaml[cls.__name__])
         assert match is not None
@@ -47,16 +74,33 @@ class Sandwich(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Sandwich':
+        """Create a Sandwich instance from YAML configuration.
+
+        Args:
+            board (Board): The board associated with this sandwich.
+            yaml (Dict): The YAML configuration containing the sandwich data.
+
+        Returns:
+            Sandwich: A new instance of Sandwich.
+        """
         side, offset, total = cls.extract(board, yaml)
         return cls(board, side, offset, total)
 
     def glyphs(self) -> List[Glyph]:
-        return [
-            TextGlyph('Sandwich', 0, self.position, str(self.total)),
-        ]
+        """Return a list of glyphs associated with this sandwich.
+
+        Returns:
+            List[Glyph]: A list of glyphs representing this sandwich.
+        """
+        return [TextGlyph('Sandwich', 0, self.position, str(self.total))]
 
     @property
     def rules(self) -> List[Rule]:
+        """Retrieve the rules associated with this sandwich.
+
+        Returns:
+            List[Rule]: A list of rules related to this sandwich.
+        """
         return [
             Rule(
                 'Sandwich',
@@ -69,12 +113,27 @@ class Sandwich(Item):
         ]
 
     def __repr__(self) -> str:
+        """Return a string representation of the Sandwich instance.
+
+        Returns:
+            str: A string representation of the Sandwich.
+        """
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.total})"
 
     def to_dict(self) -> Dict:
+        """Convert the Sandwich instance to a dictionary representation.
+
+        Returns:
+            Dict: A dictionary representation of the Sandwich.
+        """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
     def css(self) -> Dict:
+        """Get CSS styles for the Sandwich.
+
+        Returns:
+            Dict: A dictionary containing CSS styles for the Sandwich.
+        """
         return {
             ".SandwichForeground": {
                 "font-size": "30px",
@@ -91,42 +150,98 @@ class Sandwich(Item):
             }
         }
 
-    def add_constraint_row(self, solver: PulpSolver, ) -> None:
-        # set up boolean for sandwich.
-        # eg = 1 if 1 or 9 else 0
+    def add_constraint_rc(self,
+                          solver: PulpSolver,
+                          is_row: bool,
+                          index: int,
+                          include: Optional[re.Pattern] = None,
+                          exclude: Optional[re.Pattern] = None
+                          ) -> None:
+        """Add constraints for the sandwich in the specified row or column.
+
+        Sets up boolean variables indicating the positions of the digits 1 and the
+        maximum digit in the row or column to fulfill the sandwich constraint.
+        Optional patterns can be applied to specify inclusion or exclusion of
+        specific constraints.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints will be added.
+            is_row (bool): Indicates whether to apply the constraint to a row
+                (True) or column (False).
+            index (int): The index of the row or column to which constraints apply.
+            include (Optional[re.Pattern]): A regex pattern specifying which entries
+                to include in the constraint setup (if any).
+            exclude (Optional[re.Pattern]): A regex pattern specifying which entries
+                to exclude from the constraint setup (if any).
+        """
+        label = "Row" if is_row else "Column"
+        board_range = self.board.column_range if is_row else self.board.row_range
+        position_label = f"{label}_{index}"
+
+        # Set up boolean variables for positions containing 1 or the maximum digit
         bread = LpVariable.dict(
-            f"Row_{self.index}",
-            self.board.board_rows,
+            position_label,
+            board_range,
             0,
             Functions.triangular(self.board.maximum_digit),
             LpInteger
         )
-        for column in self.board.column_range:
-            one = solver.choices[1][self.index][column]
-            big = solver.choices[self.board.maximum_digit][self.index][column]
-            solver.model += bread[column] == one + big, f"Bread_column_{self.index}_{column}"
+
+        for pos in board_range:
+            # Check if the position matches the include or exclude pattern, if provided
+            if (include and not include.match(str(pos))) or (exclude and exclude.match(str(pos))):
+                continue
+
+            if is_row:
+                one = solver.choices[1][index][pos]
+                big = solver.choices[self.board.maximum_digit][index][pos]
+            else:
+                one = solver.choices[1][pos][index]
+                big = solver.choices[self.board.maximum_digit][pos][index]
+
+            # Ensure that bread[pos] is 1 if pos has a 1 or the maximum digit
+            solver.model += bread[pos] == one + big, f"Bread_{label.lower()}_{index}_{pos}"
+
+    def add_constraint_row(self,
+                           solver: PulpSolver,
+                           include: Optional[re.Pattern] = None,
+                           exclude: Optional[re.Pattern] = None
+                           ) -> None:
+        """Add constraints for the sandwich in the specified row.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints will be added.
+            include (Optional[re.Pattern]): A regex pattern specifying which columns
+                to include in the constraint setup (if any).
+            exclude (Optional[re.Pattern]): A regex pattern specifying which columns
+                to exclude from the constraint setup (if any).
+        """
+        self.add_constraint_rc(solver, True, self.index, include, exclude)
 
     def add_constraint_column(self,
                               solver: PulpSolver,
-                              include: Optional[re.Pattern],
-                              exclude: Optional[re.Pattern]
+                              include: Optional[re.Pattern] = None,
+                              exclude: Optional[re.Pattern] = None
                               ) -> None:
-        # set up boolean for sandwich.
-        # eg = 1 if 1 or 9 else 0
-        bread = LpVariable.dict(
-            f"Column_{self.index}",
-            self.board.board_columns,
-            0,
-            Functions.triangular(self.board.maximum_digit),
-            LpInteger
-        )
-        for row in self.board.row_range:
-            one = solver.choices[1][row][self.index]
-            big = solver.choices[self.board.maximum_digit][row][self.index]
-            solver.model += bread[row] == one + big, f"Bread_row_{row}_{self.index}"
+        """ Add constraints for the sandwich in the specified column.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints will be added.
+            include (Optional[re.Pattern]): A regex pattern specifying which columns
+                to include in the constraint setup (if any).
+            exclude (Optional[re.Pattern]): A regex pattern specifying which columns
+                to exclude from the constraint setup (if any).
+
+        """
+        self.add_constraint_rc(solver, False, self.index, include, exclude)
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Add the appropriate constraints for the sandwich based on its orientation.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints will be added.
+        """
         if self.side.horizontal:
             self.add_constraint_row(solver)
         else:
-            self.add_constraint_column(solver)
+            self.add_constraint_column(solver, None, None)

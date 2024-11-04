@@ -161,7 +161,7 @@ class Item(ABC):
         """
         return []
 
-    def flatten(self) -> List[Self]:
+    def flatten(self) -> List['Item']:
         """
         Return a list of all items in the hierarchy that this item belongs to.
 

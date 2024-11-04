@@ -4,51 +4,50 @@ from typing import List, Tuple, Dict
 from src.glyphs.glyph import Glyph
 from src.glyphs.known_glyph import KnownGlyph
 from src.items.board import Board
-from src.items.box import Box
 from src.items.cell_reference import CellReference
-from src.items.column import Column
 from src.items.item import Item
-from src.items.row import Row
+from src.items.standard_region import StandardRegion
 from src.utils.coord import Coord
 
 
 class KnownCell(CellReference):
     """
-    Item for a given cell in the board.
+    Represents a given cell in the board with a specified digit.
+
+    Attributes:
+        digit (int): The digit assigned to this cell.
+        prefix (str): The prefix used for the cell, defaults to "Known".
     """
 
     def __init__(self, board: Board, row: int, column: int, digit: int, prefix=None):
         """
-        Construct a KnownCell object.
+        Initializes a KnownCell instance.
 
         Args:
-        - board (Board): The board this item is attached to.
-        - row (int): The row of the cell in the board.
-        - column (int): The column of the cell in the board.
-        - digit (int): The digit that is placed in this cell.
-        - prefix (str): The prefix to be used in the item's name. Defaults to "Known".
+            board (Board): The board associated with this cell.
+            row (int): The row index of the cell.
+            column (int): The column index of the cell.
+            digit (int): The digit assigned to the cell.
+            prefix (str, optional): The prefix used for the cell. Defaults to "Known".
         """
         super().__init__(board, row, column)
         self.digit = int(digit)
         self.prefix = "Known" if prefix is None else prefix
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, int]:
         """
-        Extract the row, column, and digit from the given yaml string.
-
-        Example:  12=3
-
-        Would set row=1, column=2, to the value of 3
-
-
+        Extracts the row, column, and digit from the given YAML string.
 
         Args:
-        - board (Board): The board this item is attached to.
-        - yaml (Dict): The given yaml string.
+            board (Board): The board this item is attached to.
+            yaml (Dict): The given YAML string.
 
         Returns:
-        - Tuple[int, int, int]: The row, column, and digit of the item.
+            Tuple[int, int, int]: A tuple containing row, column, and digit values.
+
+        Raises:
+            AssertionError: If the input format does not match the expected regex pattern.
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
         match = regex.match(yaml[cls.__name__])
@@ -59,72 +58,61 @@ class KnownCell(CellReference):
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
         """
-        Create an instance of an item from a YAML dictionary.
+        Creates an instance of KnownCell from a YAML dictionary.
 
         Args:
-        - board (Board): The board associated with this item.
-        - yaml (Dict): A YAML dictionary containing the key-value pair to
-            create an item.
+            board (Board): The board associated with this item.
+            yaml (Dict): A YAML dictionary with the required parameters.
 
         Returns:
-        - Item: An instance of the item class associated with the YAML
-            dictionary.
+            Item: An instance of KnownCell.
         """
         row, column, digit = KnownCell.extract(board, yaml)
         return cls(board, row, column, digit)
 
     def letter(self) -> str:
+        """
+        Gets the digit as a string.
+
+        Returns:
+            str: The digit of the cell.
+        """
         return str(self.digit)
 
     def glyphs(self) -> List[Glyph]:
         """
-        Return a list of SVG glyphs for this item.
-
-        The glyphs are determined by calling the `glyph` method on each item in
-        the item tree. The `selector` function is used to determine which items
-        to include in the list of glyphs.
-
-        Args:
-        - selector (Callable[[Item], bool]): A function that takes an item and
-            returns a boolean indicating whether to include it in the list
-            of glyphs.
+        Returns a list of SVG glyphs for this item.
 
         Returns:
-        - List[Glyph]: A list of glyphs.
+            List[Glyph]: A list containing a KnownGlyph for this cell.
         """
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
     def __repr__(self) -> str:
         """
-        Return a string representation of this item.
-
-        The string representation is of the form `<class_name>(<board>, <cell>, <digit>)`, where
-        `<class_name>` is the name of the class of this item, `<board>` is a string representation
-        of the board associated with the item, `<cell>` is a string representation of the cell
-        associated with the item, and `<digit>` is the digit associated with the item.
+        Returns a string representation of this item.
 
         Returns:
-        - str: A string representation of this item.
+            str: A string representation of this KnownCell instance.
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})"
 
     def to_dict(self) -> Dict:
         """
-        Convert the item to a dictionary for serialisation.
-
-        The dictionary has a single key-value pair where the key is the
-        item's class name and the value is a string of the form
-        `<row><column>=<digit>`, where `<row>` is the row of the cell,
-        `<column>` is the column of the cell, and `<digit>` is the digit
-        associated with the cell.
+        Converts the item to a dictionary for serialization.
 
         Returns:
-        - Dict: A dictionary containing the item's class name and a string
-            representation of the item's data.
+            Dict: A dictionary with the class name as the key and cell information as the value.
         """
         return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
 
     def css(self) -> Dict:
+        """
+        Returns CSS properties for styling Known and Unknown cells.
+
+        Returns:
+            Dict: A dictionary of CSS properties.
+        """
         return {
             ".Known": {
                 'font-size': '70px',
@@ -166,19 +154,21 @@ class KnownCell(CellReference):
 
     def bookkeeping(self) -> None:
         """
-        Perform bookkeeping based on the contents of the cell.
+        Performs bookkeeping on this cell.
 
-        This means that the cell itself is set to be only the digit given,
-        and all other cells in the same row, column, or box are set to
-        not be able to contain the digit.
+        Sets the cell to only the assigned digit and restricts the same digit
+        in the row, column, and box of this cell.
 
-        :return: None
+        Returns:
+            None
         """
         self.cell.book.set_possible([self.digit])
-        raw_regions = [region for region in self.cell.top.regions() if region.__class__ in [Box, Row, Column]]
-        filtered_regions = [region for region in raw_regions if self.cell in region]
-        for region in filtered_regions:
-            for cell in region.cells:
-                if cell == self.cell:
-                    continue
-                cell.book.set_impossible([self.digit])
+        standard_regions: List[StandardRegion] = [
+            region for region in self.cell.top.regions() if isinstance(region, StandardRegion)
+        ]
+        for region in standard_regions:
+            if self.cell in region:
+                for cell in region.cells:
+                    if cell == self.cell:
+                        continue
+                    cell.book.set_impossible([self.digit])

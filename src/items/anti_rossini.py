@@ -6,24 +6,34 @@ from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.first_n import FirstN
 from src.items.item import Item
+from src.items.rossini import Rossini
+from src.solvers.pulp_solver import PulpSolver
 from src.utils.order import Order
 from src.utils.rule import Rule
 from src.utils.side import Side
 
 
 class AntiRossini(FirstN):
+    """Represents the Anti-Rossini rule in a puzzle where the three digits nearest
+    an arrow must strictly increase in the direction of the arrow.
+    """
 
-    def __init__(self, board: Board, side: Side, index: int, order: Order):
+    def __init__(self, board: Board, side: Side, index: int, order: Order) -> None:
+        """Initializes the AntiRossini rule with the specified board, side, index, and order.
+
+        Args:
+            board (Board): The game board.
+            side (Side): The side of the arrow.
+            index (int): The index for the arrow placement.
+            order (Order): The order direction for the arrow.
+        """
         super().__init__(board, side, index)
-        # Increasing or decreasing
         self.order = order
-        # Which direction for the arrow
         self.direction = self.side.order_direction(self.order)
 
     def __repr__(self) -> str:
         return (
-            f"{self.__class__.__name__}"
-            f"("
+            f"{self.__class__.__name__}("
             f"{self.board!r}, "
             f"{self.side!r}, "
             f"{self.index!r}, "
@@ -33,6 +43,11 @@ class AntiRossini(FirstN):
 
     @property
     def rules(self) -> List[Rule]:
+        """Returns the rules associated with the AntiRossini class.
+
+        Returns:
+            List[Rule]: The list of rules.
+        """
         return [
             Rule(
                 'Rossini',
@@ -43,6 +58,11 @@ class AntiRossini(FirstN):
         ]
 
     def glyphs(self) -> List[Glyph]:
+        """Generates glyphs for visual representation of the rule.
+
+        Returns:
+            List[Glyph]: A list of glyphs, specifically an ArrowGlyph.
+        """
         return [
             ArrowGlyph(
                 'Rossini',
@@ -53,31 +73,71 @@ class AntiRossini(FirstN):
 
     @property
     def tags(self) -> set[str]:
+        """Returns the tags associated with this rule.
+
+        Returns:
+            set[str]: A set of tags for the AntiRossini rule.
+        """
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
+        """Extracts the side, index, and order from the YAML configuration.
+
+        Args:
+            board (Board): The game board.
+            yaml (Dict): The YAML dictionary containing the rule configuration.
+
+        Returns:
+            Tuple[Side, int, Order]: The extracted side, index, and order.
+        """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([{Order.values()}])")
         match = regexp.match(yaml[cls.__name__])
-        assert match is not None
+        if not match:
+            raise ValueError(f"Invalid format for {cls.__name__} in YAML: {yaml[cls.__name__]}")
+
         side_str, index_str, order_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
-        order = Order.create(order_str)
+        order = Order(order_str)
         return side, index, order
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """Creates an AntiRossini instance from the YAML configuration.
+
+        Args:
+            board (Board): The game board.
+            yaml (Dict): The YAML dictionary containing the rule configuration.
+
+        Returns:
+            Item: An instance of the AntiRossini class.
+        """
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Adds the necessary constraints for this rule to the solver.
+
+        Args:
+            solver (PulpSolver): The solver instance.
+        """
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> Dict:
+        """Converts the AntiRossini instance to a dictionary representation.
+
+        Returns:
+            Dict: A dictionary representation of the instance.
+        """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
 
     def css(self) -> Dict:
+        """Returns the CSS styling for this rule.
+
+        Returns:
+            Dict: A dictionary containing CSS properties.
+        """
         return {
             ".Rossini": {
                 "stroke": "black",

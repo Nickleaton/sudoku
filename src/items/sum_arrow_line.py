@@ -4,6 +4,7 @@ from pulp import lpSum
 
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.glyphs.glyph import Glyph
+from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -101,7 +102,7 @@ class SumArrowLine(Line):
             return
 
         # Optimize by constraining cells based on box regions
-        regions = {}
+        regions: Dict[int, List[Cell]] = {}
         for i in range(1, len(self.cells)):
             box = self.board.box_index(self.cells[i].row, self.cells[i].column)
             if box not in regions:

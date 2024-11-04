@@ -10,39 +10,89 @@ from src.utils.rule import Rule
 
 
 class ComposedItem(Item):
-
     def __init__(self, board: Board, items: Sequence[Item]):
+        """
+        Initialize a ComposedItem instance.
+
+        Args:
+            board (Board): The board associated with this composed item.
+            items (Sequence[Item]): A sequence of items to be included in this composed item.
+        """
         super().__init__(board)
         self.items: List[Item] = []
         self.add_items(items)
 
     def regions(self) -> Set['Item']:
+        """
+        Retrieve all regions associated with this composed item.
+
+        This method aggregates regions from all contained items, including
+        the composed item itself.
+
+        Returns:
+            Set[Item]: A set of items representing all regions.
+        """
         result: Set[Item] = {self}
         for item in self.items:
             result |= item.regions()
         return result
 
     def add(self, item: Item):
+        """
+        Add a single item to the composed item and set its parent.
+
+        Args:
+            item (Item): The item to be added to the composed item.
+        """
         self.items.append(item)
         item.parent = self
 
     def add_items(self, items: Sequence[Item]):
+        """
+        Add multiple items to the composed item.
+
+        Args:
+            items (Sequence[Item]): A sequence of items to add.
+        """
         for item in items:
             self.add(item)
 
     @property
     def cells(self) -> List[Cell]:
+        """
+        Return a list of all cells contained in this composed item.
+
+        Returns:
+            List[Cell]: A list of cells.
+        """
         return [item for item in self.items if isinstance(item, Cell)]
 
     @property
     def rules(self) -> List[Rule]:
+        """
+        Retrieve all rules associated with this composed item.
+
+        This method aggregates rules from all contained items.
+
+        Returns:
+            List[Rule]: A list of rules associated with the contained items.
+        """
         result = []
         for item in self.items:
             result.extend(item.rules)
         return result
 
-    def flatten(self) -> List['Item']:
-        result = [self]
+    def flatten(self) -> List[Item]:
+        """
+        Flatten the item hierarchy into a single list.
+
+        This method traverses the composed item's items and their contained
+        items recursively, returning a flat list.
+
+        Returns:
+            List[Item]: A flattened list of all items in the hierarchy.
+        """
+        result: List[Item] = [self]
         for item in self.items:
             result.extend(item.flatten())
         return result
@@ -61,6 +111,13 @@ class ComposedItem(Item):
 
     @property
     def tags(self) -> set[str]:
+        """
+        Collect all tags from this item and its contained items.
+
+        Returns:
+            set[str]: A set of tags associated with the composed item and its
+            contained items.
+        """
         result = super().tags
         for item in self.items:
             result = result.union(item.tags)
@@ -76,39 +133,89 @@ class ComposedItem(Item):
 
         Yields:
             Item: The current item, followed by each item in the tree rooted at
-                the current item.
+            the current item.
         """
         yield self
         for item in self.items:
             yield from item.walk()
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """
+        Add constraints to the solver for each item in the composed item.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints will be added.
+        """
         for item in self.items:
             item.add_constraint(solver)
 
     def bookkeeping(self) -> None:
+        """
+        Perform bookkeeping for each item in the composed item.
+        """
         for item in self.items:
             item.bookkeeping()
 
     def __iter__(self):
+        """
+        Return an iterator for the contained items.
+
+        Returns:
+            Iterator[Item]: An iterator over the items in this composed item.
+        """
         return iter(self.items)
 
     def __len__(self) -> int:
+        """
+        Return the number of items in the composed item.
+
+        Returns:
+            int: The number of items in this composed item.
+        """
         return len(self.items)
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """
+        Create a new ComposedItem instance.
+
+        Args:
+            board (Board): The board associated with the new composed item.
+            yaml (Dict): The YAML configuration used to initialize the item.
+
+        Returns:
+            Item: A new instance of ComposedItem.
+        """
         return cls(board, [])
 
     def __repr__(self) -> str:
+        """
+        Return a string representation of the ComposedItem.
+
+        Returns:
+            str: A string representation of the ComposedItem instance.
+        """
         return f"{self.__class__.__name__}({self.board!r}, {self.items!r})"
 
     def to_dict(self) -> Dict:
+        """
+        Convert the composed item and its contained items to a dictionary.
+
+        Returns:
+            Dict: A dictionary representation of the composed item.
+        """
         if len(self.items) == 0:
             return {self.__class__.__name__: None}
         return {self.__class__.__name__: [item.to_dict() for item in self.items]}
 
     def css(self) -> Dict:
+        """
+        Collect CSS properties from this item and all contained items.
+
+        Returns:
+            Dict: A dictionary of CSS properties associated with the composed
+            item and its contained items.
+        """
         result = super().css()
         for item in self.items:
             result |= item.css()

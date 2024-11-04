@@ -3,7 +3,7 @@ from enum import Enum
 from io import StringIO
 from itertools import product
 from pathlib import Path
-from typing import Optional, Any
+from typing import Optional, Any, Dict
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
@@ -27,81 +27,80 @@ config = Config()
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
     def __init__(self, board: Board, name: str, solver_name: str = 'PULP_CBC_CMD'):
+        """Initializes the PulpSolver with a board and solver configuration.
+
+        Args:
+            board (Board): The game board containing the constraints.
+            name (str): The name of the solver instance.
+            solver_name (str): The name of the solver to use (default is 'PULP_CBC_CMD').
+        """
         super().__init__(board)
 
         # Names
-
         self.name: str = name
         self.solver_name: str = solver_name
         self.application_name = 'CBC' if solver_name == 'PULP_CBC_CMD' else solver_name
 
         # Results
-
         self.status: Status = Status.NOT_SOLVED
         self.log: Optional[str] = None
-        self.answer: Optional[Answer] = None
 
         # Model
-
         self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
         self.model += 0, "DummyObjective"
-        self.choices: dict[Any, LpVariable] = {}
-        self.values: dict[Any, LpVariable] = {}
+
         # Create the basic model framework
-        self.variables = {}
-        self.choices = LpVariable.dicts("Choice",
+        self.variables: Dict[Any, LpVariable] = {}
+        self.choices: Dict[Any, LpVariable] = LpVariable.dicts("Choice",
                                         (board.digit_range, board.row_range, board.column_range),
                                         0,
                                         1,
                                         LpInteger
                                         )
-        self.values = LpVariable.dicts("Values",
+        self.values: Dict[Any, LpVariable] = LpVariable.dicts("Values",
                                        (board.row_range, board.column_range),
                                        1,
                                        board.maximum_digit,
                                        LpInteger
                                        )
 
-        self.parity = LpVariable.dicts("Parity",
+        self.parity: Dict[Any, LpVariable] = LpVariable.dicts("Parity",
                                        (board.row_range, board.column_range),
                                        0,
                                        1,
                                        LpInteger
                                        )
 
-        self.levels = LpVariable.dicts("Low",
+        self.levels: Dict[Any, LpVariable] = LpVariable.dicts("Low",
                                     (board.row_range, board.column_range, board.levels),
                                     0,
                                     1,
                                     LpInteger
                                     )
 
-        self.modulos = LpVariable.dicts("Low",
+        self.modulos: Dict[Any, LpVariable] = LpVariable.dicts("Low",
                                     (board.row_range, board.column_range, board.modulos),
                                     0,
                                     1,
                                     LpInteger
                                     )
 
-        self.prime = LpVariable.dicts("Low",
+        self.prime: Dict[Any, LpVariable] = LpVariable.dicts("Low",
                                     (board.row_range, board.column_range, board.primes),
                                     0,
                                     1,
                                     LpInteger
                                     )
 
-
-
         for row, column in product(board.row_range, board.column_range):
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
             self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
 
     def save_lp(self, filename: Path | str) -> None:
-        """
-        Save the model as an LP file
+        """Saves the model as an LP file.
 
-        :param filename:
-        :return:
+        Args:
+            filename (Path | str): The filename or Path object where the LP file should be saved.
         """
         super().save_lp(filename)
         if isinstance(filename, Path):
@@ -110,8 +109,10 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             self.model.writeLP(filename)
 
     def save_mps(self, filename: Path | str) -> None:
-        """"
-        Save the model as an MPS file
+        """Saves the model as an MPS file.
+
+        Args:
+            filename (Path | str): The filename or Path object where the MPS file should be saved.
         """
         super().save_mps(filename)
         if isinstance(filename, Path):
@@ -120,10 +121,9 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             self.model.writeMPS(filename)
 
     def solve(self) -> None:
-        """
-        Solve the model
-        Update the status
-        Put the log into log
+        """Solves the model and updates the status.
+
+        The method captures the log output during the solving process and stores it in the `log` attribute.
         """
         super().solve()
         log_output: StringIO = StringIO()
