@@ -86,7 +86,7 @@ class Item(ABC):
             return cls.parser()
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Self:
+    def create(cls, board: Board, yaml: Dict) -> 'Item':
         """
         Create an instance of an item from a YAML dictionary.
 
@@ -117,7 +117,7 @@ class Item(ABC):
         return clazz.create(board, yaml)
 
     @property
-    def top(self) -> Self:
+    def top(self) -> 'Item':
         """
         The top most item in the hierarchy this item belongs to.
 
@@ -362,7 +362,23 @@ class Item(ABC):
         return None
 
     def bookkeeping_unique(self) -> bool:
-        return all(item.marked_book().is_unique() for item in self.walk() if item.marked_book() is not None)
+        """
+        Check if all bookkeeping items in the hierarchy are unique.
+
+        This method traverses the tree of items rooted at the current item,
+        calling the `marked_book` method for each item. It checks if each
+        `marked_book` is not None and that it is unique by calling
+        `is_unique()` on it.
+
+        Returns:
+            bool: True if all marked books are unique, False otherwise.
+        """
+        marked_books: List[BookKeeping] = []
+        for item in self.walk():
+            marked_book: Optional[BookKeeping] = item.marked_book()
+            if marked_book is not None:
+                marked_books.append(marked_book)
+        return all(marked_book.is_unique() for marked_book in marked_books)
 
     def to_dict(self) -> Dict:
         """
