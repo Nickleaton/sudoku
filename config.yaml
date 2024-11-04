@@ -27,3 +27,29 @@ drawing:
   kropki_radius: 10
   consecutive_radius: 10
   even_cell_size: 70
+  
+colours:
+  general:
+    - red
+    - green
+    - blue
+    - yellow
+    - orange
+    - purple
+    - cyan
+    - magenta
+    - lightcyan
+    - powderblue
+    - greenyellow
+    - blueviolet
+    - thistle
+    - salmon
+    - steelblue
+    - olive
+  high_mid_low:
+    - orange
+    - green
+    - blue
+  odd_even:
+    - orange
+    - blue

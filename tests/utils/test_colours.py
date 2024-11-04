@@ -12,8 +12,10 @@ class TestColourSet(unittest.TestCase):
 
     @staticmethod
     def generate_svg_grid(size: int, filename: Path):
+        print(f"Producing file {filename.name}")
+
         """Generates an SVG grid of specified size filled with colors."""
-        colors = ColourSet.colours(size * size)
+        colors = ColourSet.colours("general")
         svg_elements = []
         rect_size = 50  # Size of each square in the grid
 
