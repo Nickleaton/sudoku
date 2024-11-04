@@ -37,6 +37,18 @@ class Board:
                  title: Optional[str] = None,
                  author: Optional[str] = None
                  ):
+        """Initializes the Board with rows, columns, box dimensions, and optional metadata.
+
+        Args:
+            board_rows (int): Number of rows in the board.
+            board_columns (int): Number of columns in the board.
+            box_rows (int, optional): Number of rows in each box. Defaults to 0.
+            box_columns (int, optional): Number of columns in each box. Defaults to 0.
+            reference (Optional[str], optional): Reference URL for the puzzle, if available. Defaults to None.
+            video (Optional[str], optional): Video link related to the puzzle, if available. Defaults to None.
+            title (Optional[str], optional): Title of the puzzle, if available. Defaults to None.
+            author (Optional[str], optional): Author of the puzzle, if available. Defaults to None.
+        """
         # Rows
         self.board_rows = board_rows
         self.row_range = list(range(1, self.board_rows + 1))
@@ -81,13 +93,35 @@ class Board:
         self.author = author
 
     def is_valid(self, row: int, column: int) -> bool:
+        """Checks if a given row and column coordinate is valid within the board.
+
+        Args:
+            row (int): Row number.
+            column (int): Column number.
+
+        Returns:
+            bool: True if the coordinate is within bounds, False otherwise.
+        """
         return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
+        """Checks if a given coordinate is valid within the board.
+
+        Args:
+            coord (Coord): Coordinate to check.
+
+        Returns:
+            bool: True if the coordinate is within bounds, False otherwise.
+        """
         return self.is_valid(int(coord.row), int(coord.column))
 
     @classmethod
     def schema(cls) -> Validator:
+        """Defines the YAML schema for the board configuration.
+
+        Returns:
+            Validator: A `strictyaml` validator for the board configuration.
+        """
         return strictyaml.Map(
             {
                 'Board': strictyaml.Str(),
@@ -101,6 +135,17 @@ class Board:
 
     @staticmethod
     def parse_xy(s: str) -> Tuple[int, int]:
+        """Parses a string of the form 'NxM' into two integers.
+
+        Args:
+            s (str): String representing dimensions, e.g., "9x9".
+
+        Returns:
+            Tuple[int, int]: Parsed (row, column) dimensions.
+
+        Raises:
+            AssertionError: If the input string does not match the expected format.
+        """
         regexp = re.compile("([1234567890]+)x([1234567890]+)")
         match = regexp.match(s)
         assert match is not None
@@ -109,6 +154,15 @@ class Board:
 
     @classmethod
     def create(cls, name: str, yaml_data: Dict) -> 'Board':
+        """Creates a Board instance from a YAML data structure.
+
+        Args:
+            name (str): Name key for the board in the YAML data.
+            yaml_data (Dict[str, Any]): YAML data dictionary containing board configuration.
+
+        Returns:
+            Board: A new `Board` instance.
+        """
         y: Dict = yaml_data[name]
         board_rows: int
         board_columns: int
@@ -134,6 +188,11 @@ class Board:
         )
 
     def to_dict(self) -> Dict:
+        """Converts the Board attributes to a dictionary format for YAML serialization.
+
+        Returns:
+            Dict[str, Any]: Dictionary containing board configuration.
+        """
         result: Dict = {'Board': {}}
         result['Board']['Board'] = f"{self.board_rows}x{self.board_columns}"
         if self.box_rows is not None:
@@ -149,9 +208,19 @@ class Board:
         return result
 
     def to_yaml(self) -> str:
+        """Converts the Board instance to a YAML-formatted string.
+
+        Returns:
+            str: YAML-formatted representation of the board configuration.
+        """
         return str(yaml.dump(self.to_dict()))
 
     def __repr__(self) -> str:
+        """Provides a string representation of the Board instance for debugging.
+
+        Returns:
+            str: A string describing the Board instance with key attributes.
+        """
         return (
             f"{self.__class__.__name__}"
             f"("
@@ -167,14 +236,22 @@ class Board:
         )
 
     def box_index(self, row: int, column: int) -> int:
-        """
-        For a cell specified by row and column, return the box in which it lies
-        :param row: Row Coordinate
-        :param column: Column Coordinate
-        :return: Box number
-        """
+        """Determines the box index for a given cell specified by row and column.
+
+         Args:
+             row (int): Row coordinate of the cell.
+             column (int): Column coordinate of the cell.
+
+         Returns:
+             int: Box index number.
+         """
         return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
 
     @property
     def digit_values(self) -> str:
+        """Returns a string of valid digits for the board.
+
+        Returns:
+            str: A string of digits available on the board.
+        """
         return "".join([str(digit) for digit in self.digit_range])
