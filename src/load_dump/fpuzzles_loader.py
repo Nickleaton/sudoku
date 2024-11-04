@@ -1,5 +1,6 @@
 import json
 from typing import Optional, Any
+
 from src.items.board import Board
 from src.load_dump.loader import Loader, LoaderError
 
@@ -27,9 +28,27 @@ class FPuzzlesLoader(Loader):
             LoaderError: If the board size is not supported.
         """
         if self.size == 9:
-            return Board(9, 9, 3, 3, reference=self.reference, video=None, title=self.title, author=self.author)
+            return Board(
+                board_rows=9,
+                board_columns=9,
+                box_rows=3,
+                box_columns=3,
+                reference=self.reference,
+                video=None,
+                title=self.title,
+                author=self.author
+            )
         if self.size == 6:
-            return Board(6, 6, 3, 2, reference=self.reference, video=None, title=self.title, author=self.author)
+            return Board(
+                board_rows=6,
+                board_columns=6,
+                box_rows=3,
+                box_columns=2,
+                reference=self.reference,
+                video=None,
+                title=self.title,
+                author=self.author
+            )
         raise LoaderError(f"{self.size}x{self.size} board not handled")
 
     @property
