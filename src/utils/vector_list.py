@@ -94,5 +94,4 @@ class VectorList:
         for item in self.items:
             coords.add(item.start)
             coords.add(item.end)
-        coords.sort()
         return coords
