@@ -1,4 +1,5 @@
 import oyaml as yaml
+
 from src.items.board import Board
 from src.load_dump.loader import Loader
 
@@ -11,4 +12,4 @@ class YamlLoader(Loader):
             self.raw = yaml.safe_load(file)
 
     def process(self) -> Board:
-        return Board.create_from_yaml('Board', self.raw)
+        return Board.create('Board', self.raw)
