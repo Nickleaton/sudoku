@@ -40,7 +40,7 @@ class Solution(ComposedItem):
         return [list(str(y)) for y in yaml[cls.__name__]]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> 'Solution':
         items = Solution.extract(board, yaml)
         return Solution(board, items)
 

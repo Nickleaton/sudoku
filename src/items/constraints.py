@@ -14,7 +14,7 @@ class Constraints(ComposedItem):
     # Creation and schema
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: Dict) -> 'Constraints':
         result = cls(board)
         for key, value in yaml[cls.__name__].items():
             sub_yaml: Dict = {} if value is None else value
@@ -23,5 +23,5 @@ class Constraints(ComposedItem):
                 result.add(sub_class.create(board, sub_yaml))
             elif isinstance(sub_yaml, list):
                 for data in sub_yaml:
-                    result.add(sub_class(board, data))
+                    result.add(sub_class.create(board, data))
         return result
