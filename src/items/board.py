@@ -172,10 +172,10 @@ class Board:
         if 'Box' in y:
             box_rows, box_columns = Board.parse_xy(y['Box'])
 
-        reference: str | None = y['Reference'] if 'Reference' in y else None
-        video: str | None = y['Video'] if 'Video' in y else None
-        title: str | None = y['Title'] if 'Title' in y else None
-        author: str | None = y['Author'] if 'Author' in y else None
+        reference: str | None = y.get('Reference')
+        video: str | None = y.get('Video')
+        title: str | None = y.get('Title')
+        author: str | None = y.get('Author')
         return Board(
             board_rows,
             board_columns,

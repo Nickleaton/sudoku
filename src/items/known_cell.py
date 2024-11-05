@@ -70,15 +70,6 @@ class KnownCell(CellReference):
         row, column, digit = KnownCell.extract(board, yaml)
         return cls(board, row, column, digit)
 
-    def letter(self) -> str:
-        """
-        Gets the digit as a string.
-
-        Returns:
-            str: The digit of the cell.
-        """
-        return str(self.digit)
-
     def glyphs(self) -> List[Glyph]:
         """
         Returns a list of SVG glyphs for this item.

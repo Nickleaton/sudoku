@@ -9,8 +9,16 @@ from src.utils.rule import Rule
 
 
 class CellReference(Item):
+    """Represents a reference to a cell on a board."""
 
     def __init__(self, board: Board, row: int, column: int):
+        """Initializes the CellReference with a board and cell position.
+
+        Args:
+            board (Board): The board associated with this cell reference.
+            row (int): The row number (1-based).
+            column (int): The column number (1-based).
+        """
         super().__init__(board)
         self.cell = Cell.make(board, row, column)
         self.row = row
@@ -18,44 +26,95 @@ class CellReference(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence """
+        """Return True if this item is a sequence.
+
+        Returns:
+            bool: Always True for CellReference.
+        """
         return True
 
     @classmethod
     def parser(cls) -> CellParser:
+        """Returns the parser for CellReference.
+
+        Returns:
+            CellParser: An instance of CellParser.
+        """
         return CellParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
+        """Extracts the row and column from the given YAML dictionary.
+
+        Args:
+            board (Board): The board associated with this cell reference.
+            yaml (Dict): The YAML dictionary containing cell data.
+
+        Returns:
+            Tuple: A tuple containing the row and column as integers.
+        """
         data = yaml[cls.__name__]
         data = str(data)
         return int(data[0]), int(data[1])
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """Creates a CellReference instance from the given board and YAML data.
+
+        Args:
+            board (Board): The board associated with this cell reference.
+            yaml (Dict): The YAML dictionary containing cell data.
+
+        Returns:
+            Item: A new instance of CellReference.
+        """
         row, column = cls.extract(board, yaml)
         return cls(board, row, column)
 
     def svg(self) -> Optional[Glyph]:
+        """Returns an SVG representation of the cell.
+
+        Returns:
+            Optional[Glyph]: Always returns None for CellReference.
+        """
         return None
 
     def letter(self) -> str:  # pylint: disable=no-self-use
+        """Returns the letter representation of the cell.
+
+        Returns:
+            str: A string representing the cell, default is '.'.
+        """
         return '.'
 
     def flatten(self) -> List[Item]:
+        """Flattens the item into a list of items.
+
+        Returns:
+            List[Item]: A list containing the CellReference and its cell.
+        """
         return [self, self.cell]
 
     @property
     def rules(self) -> List[Rule]:
+        """Returns the list of rules associated with this item.
+
+        Returns:
+            List[Rule]: An empty list since CellReference has no rules.
+        """
         return []
 
     def __repr__(self) -> str:
+        """Returns a string representation of the CellReference instance.
+
+        Returns:
+            str: A string representation of the CellReference.
+        """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r})"
 
     @property
     def used_classes(self) -> Set[Type['Item']]:
-        """
-        Return a set of classes that this item uses.
+        """Returns a set of classes that this item uses.
 
         The set of classes is determined by traversing the method resolution
         order (MRO) of the item's class. The set contains all classes in the
@@ -68,8 +127,7 @@ class CellReference(Item):
         return super().used_classes | self.cell.used_classes
 
     def walk(self) -> Iterator[Item]:
-        """
-        Yield each item in the tree of items rooted at the current item.
+        """Yields each item in the tree of items rooted at the current item.
 
         The generator yields the current item, then recursively yields each item
         in the tree rooted at the current item. The order of the items is
@@ -83,7 +141,17 @@ class CellReference(Item):
         yield self.cell
 
     def to_dict(self) -> Dict:
+        """Converts the CellReference instance to a dictionary.
+
+        Returns:
+            Dict: A dictionary representation of the CellReference.
+        """
         return {self.__class__.__name__: int(self.cell.row_column_string)}
 
     def children(self) -> Set[Item]:
+        """Returns the child items of the CellReference.
+
+        Returns:
+            Set[Item]: A set containing the CellReference and its cell.
+        """
         return {self, self.cell}

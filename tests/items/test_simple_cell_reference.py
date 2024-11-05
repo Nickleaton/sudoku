@@ -5,23 +5,21 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
-from tests.items.test_item import TestItem
+from src.items.simple_cell_reference import SimpleCellReference
+from tests.items.test_cell_reference import TestCellReference
 
 
-class TestCellReference(TestItem):
+class TestSimpleCellReference(TestCellReference):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = CellReference(self.board, 1, 2)
-
-    @property
-    def clazz(self):
-        return CellReference
+        self.item = SimpleCellReference(self.board, 1, 2)
+        self.letter = '.'
 
     @property
     def representation(self) -> str:
         return (
-            "CellReference"
+            "SimpleCellReference"
             "("
             "Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), "
@@ -33,19 +31,19 @@ class TestCellReference(TestItem):
 
     @property
     def config(self) -> str:
-        return "CellReference: 12"
+        return "SimpleCellReference: 12"
 
     @property
-    def has_rule(self) -> bool:
-        return False
+    def clazz(self):
+        return SimpleCellReference
+
+    def test_letter(self):
+        self.assertEqual(self.clazz.letter(), self.letter)
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, Item}
-
-    def test_flatten(self) -> None:
-        self.assertListEqual([self.item, self.item.cell], self.item.flatten())
+        return {Cell, CellReference, SimpleCellReference, Item}
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == '__main__':
     unittest.main()

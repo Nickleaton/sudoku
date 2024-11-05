@@ -6,16 +6,18 @@ from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.low_cell import LowCell
-from tests.items.test_cell_reference import TestCellReference
+from src.items.simple_cell_reference import SimpleCellReference
+from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
-class TestLowCell(TestCellReference):
+class TestLowCell(TestSimpleCellReference):
 
     def setUp(self) -> None:
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = LowCell(self.board, 1, 2)
         self.good = [1, 2, 3]
         self.bad = [4, 5, 6, 7, 8, 9]
+        self.letter = 'l'
 
     @property
     def clazz(self):
@@ -44,10 +46,7 @@ class TestLowCell(TestCellReference):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, CellReference, Item, LowCell}
-
-    def test_letter(self):
-        self.assertEqual("l", self.item.letter())
+        return {Cell, CellReference, SimpleCellReference, Item, LowCell}
 
 
 if __name__ == '__main__':  # pragma: no cover

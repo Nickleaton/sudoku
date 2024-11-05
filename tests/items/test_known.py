@@ -14,6 +14,7 @@ from src.items.known import Known
 from src.items.low_cell import LowCell
 from src.items.mid_cell import MidCell
 from src.items.odd_cell import OddCell
+from src.items.simple_cell_reference import SimpleCellReference
 from tests.items.test_composed import TestComposed
 
 
@@ -82,6 +83,7 @@ class TestKnown(TestComposed):
         return {
             Cell,
             CellReference,
+            SimpleCellReference,
             ComposedItem,
             EvenCell,
             FortressCell,

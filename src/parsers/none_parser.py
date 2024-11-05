@@ -17,5 +17,7 @@ class NoneParser(Parser):
         Raises:
             ParserError: If the input text is not empty.
         """
+        # Check if text is empty; raise ParserError if not
+        if text != "":
+            raise ParserError(f"{self.__class__.__name__} expects nothing")
         raise ParserError(f"{self.__class__.__name__} expects nothing")
-

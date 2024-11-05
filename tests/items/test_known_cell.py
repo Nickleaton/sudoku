@@ -40,9 +40,6 @@ class TestKnownCell(TestCellReference):
     def expected_classes(self) -> set[Type[Item]]:
         return {Cell, CellReference, Item, KnownCell}
 
-    def test_letter(self):
-        self.assertEqual("9", self.item.letter())
-
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

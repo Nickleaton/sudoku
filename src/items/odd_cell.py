@@ -2,35 +2,75 @@ from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.odd_cell_glyph import OddCellGlyph
-from src.items.cell_reference import CellReference
+from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class OddCell(CellReference):
+class OddCell(SimpleCellReference):
+    """Represents an odd-numbered cell, which must contain an odd digit."""
 
     @staticmethod
     def included(digit: int) -> bool:
+        """Checks if the given digit is odd and valid for OddCell.
+
+        Args:
+            digit (int): The digit to check.
+
+        Returns:
+            bool: True if the digit is odd, False otherwise.
+        """
         return digit % 2 == 1
 
     def svg(self) -> Optional[Glyph]:
+        """Returns the SVG representation of the OddCell.
+
+        Returns:
+            Optional[Glyph]: Returns None as the SVG representation is not available for OddCell.
+        """
         return None
 
-    def letter(self) -> str:
+    @classmethod
+    def letter(cls) -> str:  # pylint: disable=no-self-use
+        """Returns the letter representation of an OddCell.
+
+        Returns:
+            str: The letter 'o' representing OddCell.
+        """
         return 'o'
 
     @property
     def rules(self) -> List[Rule]:
+        """Returns the rules associated with OddCell.
+
+        Returns:
+            List[Rule]: A list of rules, indicating that an opaque grey circle must contain an odd digit.
+        """
         return [Rule("Odd", 1, "An opaque grey circle must contain an odd digit")]
 
     def glyphs(self) -> List[Glyph]:
+        """Returns a list of Glyphs associated with OddCell.
+
+        Returns:
+            List[Glyph]: A list containing the OddCellGlyph for this cell.
+        """
         return [OddCellGlyph('OddCell', Coord(self.row, self.column))]
 
     @property
     def tags(self) -> set[str]:
+        """Returns a set of tags associated with OddCell.
+
+        Returns:
+            set[str]: A set of tags, including 'Parity' for OddCell.
+        """
         return super().tags.union({'Parity'})
 
     def css(self) -> Dict:
+        """Returns the CSS styles associated with OddCell.
+
+        Returns:
+            Dict: A dictionary containing the CSS styles, with a fill color of 'gainsboro' for OddCell.
+        """
         return {
             ".OddCell": {
                 "fill": "gainsboro"
@@ -38,4 +78,8 @@ class OddCell(CellReference):
         }
 
     def bookkeeping(self) -> None:
+        """Sets the impossible digits for the OddCell.
+
+        This method updates the bookkeeping system to exclude even digits and allow only odd digits for this cell.
+        """
         self.cell.book.set_impossible([digit for digit in self.board.digit_range if not OddCell.included(digit)])
