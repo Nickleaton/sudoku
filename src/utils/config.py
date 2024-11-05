@@ -97,3 +97,6 @@ class Config:
         if key in self.config:
             return self.config[key]
         raise AttributeError(f"'Config' object has no attribute '{key}'")
+
+    def get_dict(self, name: str):
+        return self.config[name]
