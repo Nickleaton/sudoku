@@ -9,11 +9,9 @@ from tests.acceptance.acceptance_test import AcceptanceTest
 
 def load_problem_tests():
     """Dynamically load problem files as individual test cases."""
-    problem_files = [file.stem for file in ACCEPTANCE_TEST_DIR.glob("*.yaml")]
+    problem_files = [file.stem for file in ACCEPTANCE_TEST_DIR.glob("*89.yaml")]
 
     for problem_name in problem_files:
-        if problem_name != 'problem009':
-            continue
 
         def test_method(name=problem_name):
             test = AcceptanceTest(name)

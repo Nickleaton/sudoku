@@ -9,8 +9,15 @@ from src.utils.rule import Rule
 
 
 class AntiDiagonal(Diagonal):
+    """Represents an anti-diagonal constraint on a Sudoku board, enforcing uniqueness of digits along specified diagonals."""
 
     def __init__(self, board: Board):
+        """
+        Initializes an AntiDiagonal instance with the given board, enforcing box size consistency.
+
+        Args:
+            board (Board): The Sudoku board associated with this anti-diagonal.
+        """
         assert board.box_rows == board.box_columns
         assert board.board_rows == board.board_rows
         assert board.board_rows % board.box_rows == 0
@@ -20,19 +27,35 @@ class AntiDiagonal(Diagonal):
 
     @property
     def rules(self) -> List[Rule]:
+        """
+        Provides the rule associated with the anti-diagonal constraint.
+
+        Returns:
+            List[Rule]: A list containing a rule that specifies the number of unique digits on each marked main diagonal.
+        """
         return [Rule('AntiDiagonal', 1, f"Each marked main diagonal contains exactly {self.size} different digits")]
 
     @property
     def tags(self) -> set[str]:
+        """
+        Provides the tags associated with the anti-diagonal constraint.
+
+        Returns:
+            set[str]: A set of tags, including 'Diagonal' and 'Uniqueness'.
+        """
         return super().tags.union({'Diagonal', 'Uniqueness'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        # example. In a 9x9 with 3x3 boxes
-        # In box 1 we add up the number of used digits for each digit on the diagonal.
-        # In box 5 we add up the number of used digits for each digit on the diagonal.
-        # The sums must be the same
-        # So if the diagonal in box one is 1,2,3 Then the total for digit 1 is 1, same for 2, 3, The others are 0
-        # Same applies to box 5. By equating the sums, we enforce the constraint.
+        """
+        Adds a constraint to enforce that the digit distribution is identical across marked diagonals in different boxes.
+
+        Args:
+            solver (PulpSolver): The solver to which the constraint is added.
+
+        Example:
+            For a 9x9 grid with 3x3 boxes, this method enforces that the sum of used digits on each diagonal
+            in one box matches the corresponding sum in another box, maintaining anti-diagonal consistency.
+        """
         if len(self.cells) == 0:
             return
         for b in range(0, self.count - 1):

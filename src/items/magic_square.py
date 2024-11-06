@@ -81,7 +81,7 @@ class MagicSquare(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[Coord, Coord]:
-        center, corner = yaml['MagicSquare'].split(', ')
+        center, corner = yaml['MagicSquare'].split(',')
         center = Coord(int(center[0]), int(center[1]))
         corner = Coord(int(corner[0]), int(corner[1]))
         return center, corner

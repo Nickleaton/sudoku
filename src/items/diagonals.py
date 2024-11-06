@@ -6,18 +6,47 @@ from src.items.region import Region
 
 
 class Diagonal(Region):
+    """Represents a diagonal region on a Sudoku board."""
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """
+        Creates a Diagonal instance from YAML configuration.
+
+        Args:
+            board (Board): The Sudoku board associated with this diagonal.
+            yaml (Dict): The YAML data to configure the diagonal (unused here).
+
+        Returns:
+            Item: A new instance of Diagonal.
+        """
         return cls(board)
 
     def __repr__(self) -> str:
+        """
+        Provides a string representation of the Diagonal instance.
+
+        Returns:
+            str: The class name and board representation.
+        """
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> Dict:
+        """
+        Converts the Diagonal instance to a dictionary format.
+
+        Returns:
+            Dict: A dictionary with the Diagonal class name as the key and None as the value.
+        """
         return {self.__class__.__name__: None}
 
     def css(self) -> Dict:
+        """
+        Provides CSS styling for the diagonal region.
+
+        Returns:
+            Dict: A dictionary with CSS properties for the diagonal, including stroke color and width.
+        """
         return {
             ".Diagonal": {
                 "stroke": "blue",

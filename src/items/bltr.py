@@ -10,13 +10,23 @@ from src.utils.coord import Coord
 
 
 class BLTR(StandardDiagonal):
+    """Represents a bottom-left to top-right diagonal constraint on a Sudoku board."""
 
     def __init__(self, board: Board):
+        """
+        Initializes a BLTR diagonal constraint for the given board.
+
+        Args:
+            board (Board): The Sudoku board on which this diagonal operates.
+        """
         super().__init__(board)
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        self.add_unique_constraint(solver)
-
     def glyphs(self) -> List[Glyph]:
+        """
+        Generates the visual representation (glyph) for the diagonal.
+
+        Returns:
+            List[Glyph]: A list containing the diagonal's glyph.
+        """
         return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]

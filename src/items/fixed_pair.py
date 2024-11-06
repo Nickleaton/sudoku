@@ -1,4 +1,3 @@
-import re
 from typing import List, Tuple, Dict, Optional
 
 from pulp import LpElement
@@ -16,12 +15,11 @@ from src.utils.coord import Coord
 
 class FixedPair(Pair):
 
-    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, total: int):
+    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
         super().__init__(board, cell_1, cell_2)
-        self.total = total
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.total})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -35,20 +33,16 @@ class FixedPair(Pair):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        rc_pattern = f"[{board.digit_values}][{board.digit_values}]"
-        int_pattern = "[1-9][0-9]*"
-        regex = re.compile(f"({rc_pattern})-({rc_pattern})=({int_pattern})")
-        match = regex.match(yaml[cls.__name__])
-        assert match is not None
-        c1_str, c2_str, total_str = match.groups()
-        c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
-        c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))
-        return c1, c2, total_str
+        lhs: str = yaml[cls.__name__].split('=')[0]
+        rhs: str = yaml[cls.__name__].split('=')[1]
+        c1: Cell = Cell.make(board, int(lhs[0]), int(lhs[1]))
+        c2: Cell = Cell.make(board, int(rhs[0]), int(rhs[1]))
+        return c1, c2
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
         c1, c2, total = cls.extract(board, yaml)
-        return cls(board, c1, c2, total)
+        return cls(board, c1, c2)
 
     @property
     def tags(self) -> set[str]:
@@ -69,7 +63,7 @@ class FixedPair(Pair):
 
     def to_dict(self) -> Dict:
         return {
-            self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}={self.total}"
+            self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"
         }
 
     def target(self, solver: PulpSolver) -> Optional[LpElement]:
@@ -79,4 +73,4 @@ class FixedPair(Pair):
         target = self.target(solver)
         if target is None:
             return
-        solver.model += target == self.total, self.name
+        # TODO

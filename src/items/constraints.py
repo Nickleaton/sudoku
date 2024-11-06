@@ -50,14 +50,14 @@ class Constraints(ComposedItem):
                     # If the subclass is composite (contains other constraints),
                     # recursively create and add it as a composite constraint
                     if sub_class.is_composite():
-                        result.add(sub_class.create(board, sub_yaml))
+                        result.add(sub_class.create(board, {key:sub_yaml}))
 
                     # If the subclass expects multiple constraints, represented as a list,
                     # create each item in the list as an individual constraint
                     elif isinstance(sub_yaml, list):
                         for data in sub_yaml:
                             # Create each constraint item and add it to the result
-                            result.add(sub_class.create(board, data))
+                            result.add(sub_class.create(board, {key:data}))
 
             # If `parts` is a list, it represents multiple instances of a single constraint type
             elif isinstance(parts, list):

@@ -1,5 +1,43 @@
 statistic_database: test.db
 
+logging:
+    # Required version of the logging configuration schema. '1' is the default.
+    version: 1
+
+    # When True, disables all existing loggers not explicitly defined in this config.
+    # Setting to False allows existing loggers to remain active.
+    disable_existing_loggers: False
+
+    # Configuration for the root logger, which affects all log messages globally.
+    root:
+        # Sets the logging level for the root logger.
+        # This example sets it to DEBUG, so all DEBUG level messages and above will be logged.
+        level: DEBUG
+
+        # Specifies the handlers that the root logger will use.
+        # In this case, it sends all log messages to the 'console' handler.
+        handlers: [console]
+
+    # Defines individual logging handlers, which specify where log messages should go.
+    handlers:
+        console:
+            # Uses a StreamHandler, which outputs log messages to a stream like stdout or stderr.
+            class: logging.StreamHandler
+
+            # Defines the formatter for this handler, which controls the log message format.
+            formatter: simple
+
+            # Directs output to standard output (stdout).
+            stream: ext://sys.stdout
+
+    # Defines individual formatters, which control the structure of log messages.
+    formatters:
+        simple:
+            # Sets the format for log messages, including timestamp, logger name, level, and message.
+            format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+
+
 statistic_elements:
   Rows: Problem MODEL has (\d+) rows, \d+ columns and \d+ elements
   Columns: Problem MODEL has \d+ rows, (\d+) columns and \d+ elements
@@ -29,6 +67,9 @@ drawing:
   even_cell_size: 70
   
 colours:
+  # The 'general' color set includes a wide variety of colours
+  # You don't want them to clash. Were cells need to be coloured
+  # the colours will be selected starting from the top of this list
   general:
     - red
     - green
@@ -46,10 +87,14 @@ colours:
     - salmon
     - steelblue
     - olive
+
+  # Entropic colouring
   high_mid_low:
-    - orange
-    - green
-    - blue
+    - orange   # High
+    - green    # Mid
+    - blue     # Low
+
+  # Parity Colouring
   parity:
-    - orange
-    - blue
+    - orange   # Odd
+    - blue     # Even

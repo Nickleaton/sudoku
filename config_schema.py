@@ -135,9 +135,11 @@ with open('generated_config_schema.py', 'w') as f:
     f.write(repr(problem_schema))
 
 with open('generated_config_schema2.py', 'w') as f:
-    import_names = set({})
+    import_names = {'SolutionParser'}
     constraints = {}
     for key, value in Item.classes.items():
+        if key == 'Solution':
+            continue
         constraints[strictyaml.Optional(key)] = value.schema()
         parser = value.parser()
         import_names.add(value.parser().__class__.__name__)
@@ -152,3 +154,4 @@ with open('generated_config_schema2.py', 'w') as f:
     for name in sorted(import_names):
         f.write(f"from src.parsers.{Name.camel_to_snake(name)} import {name}\n")
     f.write(f"problem_schema = {mapping!r}")
+    f.close()

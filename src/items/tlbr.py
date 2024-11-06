@@ -9,10 +9,23 @@ from src.utils.coord import Coord
 
 
 class TLBR(StandardDiagonal):
+    """Represents a top-left to bottom-right diagonal constraint on a Sudoku board."""
 
     def __init__(self, board: Board):
+        """
+        Initializes a TLBR diagonal constraint for the given board.
+
+        Args:
+            board (Board): The Sudoku board on which this diagonal operates.
+        """
         super().__init__(board)
         self.add_items([Cell.make(board, i, i) for i in board.row_range])
 
     def glyphs(self) -> List[Glyph]:
+        """
+        Generates the visual representation (glyph) for the diagonal.
+
+        Returns:
+            List[Glyph]: A list containing the diagonal's glyph.
+        """
         return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]

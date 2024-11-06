@@ -83,6 +83,33 @@ class Direction(Enum):
 
     @staticmethod
     @cache
+    def knights() -> List[Coord]:
+        """
+        Defines the relative coordinates for knight's moves.
+
+        Returns:
+            List[Coord]: List of offsets representing knight's moves.
+        """
+        return [
+            Coord(-1, -2),
+            Coord(1, -2),
+            Coord(-2, -1),
+            Coord(-2, 1),
+            Coord(-1, 2),
+            Coord(1, 2),
+            Coord(2, 1),
+            Coord(2, -1)
+        ]
+
+
+    @staticmethod
+    @cache
+    def all_but_center() -> List[Coord]:
+        """Returns offsets for all directions except the center."""
+        return [d.offset for d in Direction if d != Direction.CENTER]
+
+    @staticmethod
+    @cache
     def all() -> List[Coord]:
         """Returns offsets for all directions, including the center."""
         return [d.offset for d in Direction]

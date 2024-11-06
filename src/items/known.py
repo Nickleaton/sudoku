@@ -16,8 +16,14 @@ from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.known_parser import KnownParser
 
 CELL_TYPE_MAP: Dict[str, Type[SimpleCellReference]] = {
-    cls.letter(): cls for cls in SimpleCellReference.__subclasses__()
+    'f': FortressCell,
+    'l': LowCell,
+    'm': MidCell,
+    'h': HighCell,
+    'e': EvenCell,
+    'o': OddCell
 }
+
 
 class Known(ComposedItem):
     """Represents a collection of cells with known characteristics on the board."""

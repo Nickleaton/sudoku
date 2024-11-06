@@ -47,7 +47,7 @@ class CreateConstraintsCommand(SimpleCommand):
             None
         """
         super().execute(problem)
-        logging.debug(f"Creating {self.target}")
+        logging.info(f"Creating {self.target}")
         problem[self.target] = Constraints.create(problem[self.board],
                                                   {'Constraints': problem[self.config]['Constraints']})
 

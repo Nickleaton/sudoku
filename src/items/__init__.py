@@ -38,6 +38,9 @@ import src.items.equal_sum_line
 import src.items.even_cell
 import src.items.exclusion
 import src.items.first_n
+import src.items.fixed_product_pair
+import src.items.fixed_ratio_pair
+import src.items.fixed_sum_pair
 import src.items.fortress_cell
 import src.items.frame
 import src.items.frame_product
