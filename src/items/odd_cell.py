@@ -31,7 +31,7 @@ class OddCell(SimpleCellReference):
         return None
 
     @classmethod
-    def letter(cls) -> str:  # pylint: disable=no-self-use
+    def letter(cls) -> str:
         """Returns the letter representation of an OddCell.
 
         Returns:

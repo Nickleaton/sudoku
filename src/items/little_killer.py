@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
 
 from pulp import lpSum
 
@@ -18,9 +18,22 @@ from src.utils.side import Side
 
 
 class LittleKiller(Region):
+    """
+    Represents a Little Killer puzzle region where clues outside the grid
+    give the sum of the indicated diagonals, which may contain repeated digits.
+    """
 
-    # pylint: disable=too-many-arguments
     def __init__(self, board: Board, side: Side, cyclic: Cyclic, offset: int, total: int):
+        """
+        Constructs a LittleKiller region.
+
+        Args:
+            board (Board): The board being used.
+            side (Side): The side where the total is to go.
+            cyclic (Cyclic): The cyclic nature of the region.
+            offset (int): The offset to calculate the starting position.
+            total (int): The total sum of the indicated diagonals.
+        """
         super().__init__(board)
         self.side = side
         self.cyclic = cyclic
@@ -38,15 +51,31 @@ class LittleKiller(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """
+        Return whether this item is a sequence.
+
+        Returns:
+            bool: True, since LittleKiller is considered a sequence.
+        """
         return True
 
     @classmethod
     def parser(cls) -> LittleKillersParser:
-        """ Return the parser for this item. """
+        """
+        Return the parser used to extract data for the LittleKiller region.
+
+        Returns:
+            LittleKillersParser: The parser for LittleKiller regions.
+        """
         return LittleKillersParser()
 
     def __repr__(self) -> str:
+        """
+        Return a string representation of the LittleKiller region.
+
+        Returns:
+            str: A string representation of the LittleKiller object.
+        """
         return (
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
@@ -59,6 +88,16 @@ class LittleKiller(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, Cyclic, Side]:
+        """
+        Extract the parameters for creating a LittleKiller region from the YAML input.
+
+        Args:
+            board (Board): The board being used.
+            yaml (Dict): The YAML configuration for the LittleKiller region.
+
+        Returns:
+            Tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side values.
+        """
         parts = yaml[cls.__name__].split("=")
         total = int(parts[1])
         offset = int(parts[0][1])
@@ -68,10 +107,26 @@ class LittleKiller(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """
+        Create a LittleKiller region from the YAML configuration.
+
+        Args:
+            board (Board): The board being used.
+            yaml (Dict): The YAML configuration for the LittleKiller region.
+
+        Returns:
+            Item: The created LittleKiller item.
+        """
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 
     def glyphs(self) -> List[Glyph]:
+        """
+        Return a list of glyphs representing the LittleKiller region.
+
+        Returns:
+            List[Glyph]: A list of glyphs, including text and arrows.
+        """
         delta2 = Coord(0, 0)
         if self.side == Side.TOP:
             delta2 = Coord(0, 1)
@@ -84,6 +139,12 @@ class LittleKiller(Region):
 
     @property
     def rules(self) -> List[Rule]:
+        """
+        Return the rules associated with the LittleKiller region.
+
+        Returns:
+            List[Rule]: A list of rules defining the LittleKiller region's constraints.
+        """
         return [
             Rule(
                 "LittleKiller",
@@ -94,17 +155,41 @@ class LittleKiller(Region):
 
     @property
     def tags(self) -> set[str]:
+        """
+        Return the tags associated with the LittleKiller region.
+
+        Returns:
+            set[str]: A set of tags associated with the LittleKiller region.
+        """
         return super().tags.union({'LittleKiller', 'Killer'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """
+        Add the constraint for the LittleKiller region to the solver.
+
+        Args:
+            solver (PulpSolver): The solver to add the constraint to.
+        """
         total = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
         name = f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
         solver.model += total == self.total, name
 
     def to_dict(self) -> Dict:
+        """
+        Convert the LittleKiller region to a dictionary representation.
+
+        Returns:
+            Dict: A dictionary representing the LittleKiller region.
+        """
         return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}
 
     def css(self) -> Dict:
+        """
+        Return the CSS styling for the LittleKiller region.
+
+        Returns:
+            Dict: A dictionary of CSS styles for the LittleKiller region.
+        """
         return {
             '.LittleKiller': {
                 'font-size': '30px',
@@ -131,5 +216,4 @@ class LittleKiller(Region):
                 'stroke-width': 1,
                 'fill': 'black'
             }
-
         }

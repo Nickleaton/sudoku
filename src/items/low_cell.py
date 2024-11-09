@@ -32,7 +32,7 @@ class LowCell(SimpleCellReference):
         return digit in LowCell.digits()
 
     @classmethod
-    def letter(cls) -> str:  # pylint: disable=no-self-use
+    def letter(cls) -> str:
         """Returns the letter representation of a LowCell.
 
         Returns:

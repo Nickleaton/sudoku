@@ -1,9 +1,10 @@
 from typing import Dict
 
+
 from src.items.board import Board
 from src.items.item import Item
-from src.items.region_sets import StandardRegionSet
 from src.items.row import Row
+from src.items.standard_region_set import StandardRegionSet
 
 
 class Rows(StandardRegionSet):
@@ -34,8 +35,6 @@ class Rows(StandardRegionSet):
             Item: An instance of Rows.
         """
         return Rows(board)
-
-
 
     def __repr__(self) -> str:
         """Returns a string representation of the Rows instance.

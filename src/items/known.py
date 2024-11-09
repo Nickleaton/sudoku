@@ -46,7 +46,7 @@ class Known(ComposedItem):
                 column = x + 1
                 if code == '.':
                     continue
-                elif code in CELL_TYPE_MAP:
+                if code in CELL_TYPE_MAP:
                     parts.append(CELL_TYPE_MAP[code](board, row, column))
                 elif code in '0123456789':
                     parts.append(KnownCell(board, row, column, int(code)))

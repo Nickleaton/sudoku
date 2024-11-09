@@ -1,7 +1,5 @@
 from typing import List
 
-from typing_extensions import Self
-
 
 class BookKeeping:
 

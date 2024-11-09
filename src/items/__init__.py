@@ -83,7 +83,7 @@ import src.items.product_arrow
 import src.items.quadro
 import src.items.quadruple
 import src.items.region
-import src.items.region_sets
+import src.items.region_set
 import src.items.renban_line
 import src.items.rossini
 import src.items.row
@@ -95,6 +95,7 @@ import src.items.simple_thermometer_line
 import src.items.solution
 import src.items.standard_diagonal
 import src.items.standard_region
+import src.items.standard_region_set
 import src.items.sum_arrow_line
 import src.items.thermometer_line
 import src.items.tlbr

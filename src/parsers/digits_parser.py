@@ -10,7 +10,7 @@ class DigitsParser(Parser):
 
     def __init__(self):
         """Initializes DigitsParser with a regex pattern for comma-separated digits."""
-        super().__init__(pattern=r"^\s*\d\s*(?:,\s*\d\s*)*$", example_format="d,d,d,...")
+        super().__init__(pattern=f"{Parser.DIGIT}({Parser.COMMA}{Parser.DIGIT})+", example_format="1,2,3,...")
 
     def parse(self, text: str) -> None:
         """Parses a comma-separated string of digits.

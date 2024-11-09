@@ -51,7 +51,7 @@ class TestFixedPair(TestPair):
         return Cell.make(self.board, 1, 2)
 
     def test_difference(self):
-        self.assertEqual(self.difference, self.item.total)
+        self.assertEqual(self.difference, self.item.value)
 
 
 if __name__ == '__main__':  # pragma: no cover

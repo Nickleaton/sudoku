@@ -14,6 +14,9 @@ from src.utils.rule import Rule
 
 
 class MagicSquare(Region):
+    """Class representing a Magic Square puzzle in Sudoku."""
+
+    # The predefined lines for the magic square, representing rows, columns, and diagonals
     lines = [
         [1, 2, 3],
         [4, 5, 6],
@@ -25,8 +28,15 @@ class MagicSquare(Region):
         [3, 5, 7]
     ]
 
-
     def __init__(self, board: Board, center: Coord, corner: Coord):
+        """
+        Initialize the MagicSquare object.
+
+        Args:
+            board (Board): The board where the magic square is located.
+            center (Coord): The coordinate of the center of the magic square.
+            corner (Coord): The coordinate of the corner that defines the extent of the square.
+        """
         super().__init__(board)
         positions = [center + d * corner for d in Direction.all()]
         cells = [Cell.make(board, int(p.row), int(p.column)) for p in positions]
@@ -41,14 +51,26 @@ class MagicSquare(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Return True if this item is a sequence."""
         return True
 
     @classmethod
     def parser(cls) -> CellParser:
+        """
+        Return the parser for the magic square.
+
+        Returns:
+            CellParser: The parser for the magic square.
+        """
         return CellParser()
 
     def __repr__(self) -> str:
+        """
+        Return a string representation of the MagicSquare.
+
+        Returns:
+            str: A string representation of the MagicSquare object.
+        """
         return (
             f"{self.__class__.__name__}"
             f"("
@@ -60,16 +82,28 @@ class MagicSquare(Region):
 
     @property
     def rules(self) -> List[Rule]:
+        """
+        Get the rules associated with the MagicSquare.
+
+        Returns:
+            List[Rule]: A list of rules related to the MagicSquare.
+        """
         return [
             Rule(
                 'MagicSquare',
                 1,
-                "The purple box is a magic square with each three cell "
-                "row, column and diagonal adding to the same number"
+                "The purple box is a magic square with each three-cell "
+                "row, column, and diagonal adding to the same number."
             )
         ]
 
     def glyphs(self) -> List[Glyph]:
+        """
+        Get the glyphs representing the MagicSquare.
+
+        Returns:
+            List[Glyph]: A list of glyphs for the magic square cells.
+        """
         return [
             SquareGlyph('MagicSquare', cell.coord, 1)
             for cell in self.cells
@@ -77,10 +111,26 @@ class MagicSquare(Region):
 
     @property
     def tags(self) -> set[str]:
+        """
+        Get the tags associated with the MagicSquare.
+
+        Returns:
+            set[str]: A set of tags related to the MagicSquare.
+        """
         return super().tags.union({'MagicSquare', 'Sum'})
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[Coord, Coord]:
+        """
+        Extract the center and corner coordinates for the MagicSquare from YAML.
+
+        Args:
+            board (Board): The board to extract coordinates for.
+            yaml (Dict): The YAML configuration data.
+
+        Returns:
+            Tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
+        """
         center, corner = yaml['MagicSquare'].split(',')
         center = Coord(int(center[0]), int(center[1]))
         corner = Coord(int(corner[0]), int(corner[1]))
@@ -88,10 +138,26 @@ class MagicSquare(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """
+        Create a MagicSquare item from the YAML configuration.
+
+        Args:
+            board (Board): The board to create the MagicSquare on.
+            yaml (Dict): The YAML configuration data.
+
+        Returns:
+            Item: The created MagicSquare item.
+        """
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """
+        Add constraints for the MagicSquare to the solver.
+
+        Args:
+            solver (PulpSolver): The solver to add constraints to.
+        """
         solver.model += solver.values[self.center.row][self.center.column] == 5, f"{self.__class__.__name__}_center"
         for i, line in enumerate(MagicSquare.lines):
             cell1 = self.cells[line[0] - 1]
@@ -111,11 +177,23 @@ class MagicSquare(Region):
         self.add_allowed_constraint(solver, self.even_cells, [2, 4, 6, 8])
 
     def to_dict(self) -> Dict:
+        """
+        Convert the MagicSquare to a dictionary.
+
+        Returns:
+            Dict: A dictionary representing the MagicSquare.
+        """
         return {
             self.__class__.__name__: f"{self.center.row}{self.center.column}, {self.corner.row}{self.corner.column}"
         }
 
     def css(self) -> Dict:
+        """
+        Get the CSS styles for rendering the MagicSquare.
+
+        Returns:
+            Dict: A dictionary containing the CSS styles for the MagicSquare.
+        """
         return {
             '.MagicSquare': {
                 'fill': 'mediumpurple'

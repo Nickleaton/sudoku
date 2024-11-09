@@ -23,6 +23,16 @@ class Parser(Regex):
         result (Any): The result of the parsing operation.
     """
 
+    DIGIT = r"(\d)"
+    CELL = r"(\d\d)"
+    VALUE = r"(\d+)"
+    SIDE = r"([TLBR])"
+    KNOWN = r"([0-9.lmheof])"
+    DIRECTION=r"([CA])"
+    QUAD= r"([\d?]+)"
+    COMMA= r","
+    EQUALS= r"="
+
     def __init__(self, pattern: str, example_format: Optional[str] = None):
         """Initializes the Parser with a regex pattern.
 

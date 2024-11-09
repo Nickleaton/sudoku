@@ -10,23 +10,57 @@ from src.utils.coord import Coord
 
 
 class ColumnIndexer(Indexer):
+    """Represents an indexing mechanism for columns in a Sudoku board.
+
+    Inherits from Indexer and defines the indexing logic for columns, including
+    adding constraints and generating glyphs specific to columns.
+    """
 
     def __init__(self, board: Board, index: int):
+        """Initializes a ColumnIndexer with a board and column index.
+
+        Args:
+            board (Board): The board on which the column indexer will operate.
+            index (int): The index of the column to be indexed.
+        """
         super().__init__(board, index)
         self.add_items([Cell.make(board, row, index) for row in board.row_range])
 
     @staticmethod
     def variant() -> str:
+        """Returns the variant type for columns.
+
+        Returns:
+            str: "column", representing the column variant.
+        """
         return "column"
 
     @staticmethod
     def other_variant() -> str:
+        """Returns the other variant type for rows.
+
+        Returns:
+            str: "row", representing the row variant.
+        """
         return "row"
 
     def glyphs(self) -> List[Glyph]:
+        """Generates glyphs for visual representation of the ColumnIndexer.
+
+        Returns:
+            List[Glyph]: A list of glyphs representing the column indexer's region.
+        """
         return [RectGlyph('ColumnIndexer', Coord(1, self.index), Coord(self.board.board_columns, 1))]
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Adds constraints to the solver for the column indexing.
+
+        This method loops over the cells in the indexed column and adds constraints
+        that ensure the consistency of digits across the indexed column.
+
+        Args:
+            solver (PulpSolver): The solver to which the constraints will be added.
+        """
         for cell in self.cells:
             for digit in solver.board.digit_range:
                 indexer = solver.choices[digit][cell.row][cell.column]
@@ -34,6 +68,11 @@ class ColumnIndexer(Indexer):
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
     def css(self) -> Dict:
+        """Returns the CSS styling for the ColumnIndexer glyph.
+
+        Returns:
+            Dict: A dictionary defining the CSS styling for the column indexer.
+        """
         return {
             '.ColumnIndexer': {
                 'fill': 'pink'

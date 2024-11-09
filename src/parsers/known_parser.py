@@ -21,7 +21,7 @@ class KnownParser(Parser):
         f     fortress cell [Must be greater than its orthogonal neighbours]
 
         """
-        super().__init__(pattern=r"^[0-9.flmheo]+$", example_format="123456789")
+        super().__init__(pattern=f"^{Parser.KNOWN}+$", example_format="123456789")
 
     @classmethod
     def help(cls) -> str:

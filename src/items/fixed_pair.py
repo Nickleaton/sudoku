@@ -8,18 +8,16 @@ from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.pair import Pair
-from src.parsers.cell_pairs_parser import CellPairsParser
+from src.parsers.cell_pair_equal_value_parser import CellPairEqualValueParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 
 
 class FixedPair(Pair):
 
-    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
+    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, value: int):
         super().__init__(board, cell_1, cell_2)
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
+        self.value = value
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -27,22 +25,26 @@ class FixedPair(Pair):
         return True
 
     @classmethod
-    def parser(cls) -> CellPairsParser:
+    def parser(cls) -> CellPairEqualValueParser:
         """ Return the parser for this item. """
-        return CellPairsParser()
+        return CellPairEqualValueParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
         lhs: str = yaml[cls.__name__].split('=')[0]
-        rhs: str = yaml[cls.__name__].split('=')[1]
-        c1: Cell = Cell.make(board, int(lhs[0]), int(lhs[1]))
-        c2: Cell = Cell.make(board, int(rhs[0]), int(rhs[1]))
-        return c1, c2
+        value: int = int(yaml[cls.__name__].split('=')[1])
+        a: str = lhs.split('-')[0]
+        b: str = lhs.split('-')[1]
+        r1: int = int(a[0])
+        c1: int = int(a[1])
+        r2: int = int(b[0])
+        c2: int = int(b[1])
+        return r1, c1, r2, c2, value
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        c1, c2, total = cls.extract(board, yaml)
-        return cls(board, c1, c2)
+        r1, c1, r2, c2, value = cls.extract(board, yaml)
+        return cls(board, Cell(board, r1, c1), Cell(board, r2, c2), value)
 
     @property
     def tags(self) -> set[str]:
@@ -63,7 +65,7 @@ class FixedPair(Pair):
 
     def to_dict(self) -> Dict:
         return {
-            self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"
+            self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}={self.value}"
         }
 
     def target(self, solver: PulpSolver) -> Optional[LpElement]:
@@ -73,4 +75,6 @@ class FixedPair(Pair):
         target = self.target(solver)
         if target is None:
             return
-        # TODO
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.value!r})"

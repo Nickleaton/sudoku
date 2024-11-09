@@ -1,7 +1,7 @@
 import re
 
 
-class Name(object):
+class Name:
 
     @staticmethod
     def camel_to_snake(name: str) -> str:

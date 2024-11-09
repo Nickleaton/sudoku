@@ -32,7 +32,7 @@ class MidCell(SimpleCellReference):
         return digit in MidCell.digits()
 
     @classmethod
-    def letter(cls) -> str:  # pylint: disable=no-self-use
+    def letter(cls) -> str:
         """Returns the letter representation of a MidCell.
 
         Returns:
