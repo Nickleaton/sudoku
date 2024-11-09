@@ -39,10 +39,6 @@ class Command(ABC):
     in their `execute` and `precondition_check` methods.
     """
 
-    def __init__(self):
-        """Initializes the Command base class."""
-        pass
-
     @property
     def name(self) -> str:
         """

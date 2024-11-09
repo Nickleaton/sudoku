@@ -6,9 +6,6 @@ from src.commands.problem import Problem
 class SimpleCommand(Command):
     """Base class for simple commands."""
 
-    def __init__(self):
-        super().__init__()
-
     def execute(self, problem: Problem) -> None:
         """Execute the command.
 
