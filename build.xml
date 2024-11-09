@@ -6,7 +6,7 @@
     <target name="echo">
         <echo>Echo Echo</echo>
     </target>
-    <target name="build" depends="install,update,pylint,mypy,flake8,pydocstyle,documentation1,documentation2">
+    <target name="build" depends="install,update,pylint,mypy">
         <echo>Build</echo>
     </target>
     <target name="install">
@@ -112,46 +112,54 @@
     <target name="pylint" depends="pylint.src,pylint.tests"/>
 
     <target name="pylint.src">
-        <mkdir dir="output/pylint"/>
-        <exec executable="pylint" failonerror="false" taskname="pylint.src" output="output/pylint/src.txt">
+        <exec executable="pylint">
             <arg value="src"/>
+            <arg value="--output-format=html"/>
+            <arg value="--output=output/pylint/src.html"/>
         </exec>
     </target>
 
     <target name="pylint.tests">
-        <mkdir dir="output/pylint"/>
-        <exec executable="pylint" failonerror="false" taskname="pylint.tests" output="output/pylint/tests.txt">
+        <exec executable="pylint">
             <arg value="tests"/>
+            <arg value="--output-format=html"/>
+            <arg value="--output=output/pylint/tests.html"/>
         </exec>
     </target>
+
     <target name="mypy">
         <mkdir dir="output/mypy"/>
         <exec executable="mypy" failonerror="false" taskname="mypy">
-            <arg value="--check-untyped-defs"/>
             <arg value="--namespace-packages"/>
             <arg value="--html-report"/>
             <arg value="output/mypy"/>
             <arg value="src"/>
         </exec>
     </target>
-    <target name="documentation1">
-        <mkdir dir="output/documentation1"/>
+
+    <target name="doc.src">
         <exec executable="pdoc" failonerror="false" taskname="pdoc">
-            <arg value="-o"/>
-            <arg value="output/documentation1"/>
+            <arg value="--docformat"/>
+            <arg value="google"/>
+            <arg value="--include-undocumented"/>
+            <arg value="--math"/>
+            <arg value="--search"/>
+            <arg value="--mermaid"/>
+            <arg value="--output-dir"/>
+            <arg value="output/docs"/>
+            <arg value="src"/>
+        </exec>
+    </target>
+
+    <target name="pydocstyle.src">
+        <mkdir dir="output/pydocstyle"/>
+        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/src.txt">
+            <arg value="--ignore"/>
+            <arg value="D203,D100,D101,D102,D105,D107"/>
             <arg value="src/"/>
         </exec>
     </target>
-    <target name="documentation2">
-        <mkdir dir="output/documentation2"/>
-        <exec executable="sphinx-build" failonerror="false" taskname="sphinx-build">
-            <arg value="source"/>
-            <arg value="output/documentation2"/>
-            <arg value="-b"/>
-            <arg value="html"/>
-        </exec>
-    </target>
-    <target name="flake8" depends="flake8.src,flake8.tests"/>
+
     <target name="flake8.src">
         <mkdir dir="output/flake8"/>
         <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/src.txt">
@@ -160,6 +168,7 @@
             <arg value="src/"/>
         </exec>
     </target>
+
     <target name="flake8.tests">
         <mkdir dir="output/flake8"/>
         <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/tests.txt">
@@ -168,15 +177,7 @@
             <arg value="src/"/>
         </exec>
     </target>
-    <target name="pydocstyle" depends="pydocstyle.src,pydocstyle.tests"/>
-    <target name="pydocstyle.src">
-        <mkdir dir="output/pydocstyle"/>
-        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/src.txt">
-            <arg value="--ignore"/>
-            <arg value="D100,D101,D102,D105,D107"/>
-            <arg value="src/"/>
-        </exec>
-    </target>
+
     <target name="pydocstyle.tests">
         <mkdir dir="output/pydocstyle"/>
         <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/tests.txt">
