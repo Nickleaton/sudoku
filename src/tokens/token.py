@@ -1,10 +1,25 @@
 import re
 import sys
-from typing import Union, List, Optional
+from typing import Union, List, Optional, Dict, Type
+
+from sortedcontainers import SortedDict
 
 
 class Token(object):
     """Base class for all tokens used to represent patterns."""
+
+    classes: Dict[str, Type['Token']] = SortedDict({})
+
+    # Creation Routines
+
+    def __init_subclass__(cls, **kwargs):
+        """
+        Register the class so that it can be created from yaml.
+        """
+        super().__init_subclass__(**kwargs)
+        # Register the class
+        Token.classes[cls.__name__] = cls
+        Token.classes[Token.__name__] = Token
 
     def __init__(self, pattern: str):
         """Initializes a token with a given regex pattern.

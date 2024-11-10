@@ -21,6 +21,10 @@ class TestToken(unittest.TestCase):
         self.representation = "Token('A')"
         self.pattern = "A"
 
+    def test_register(self):
+        self.assertIn(self.token.__class__.__name__, Token.classes)
+        self.assertEqual(Token.classes[self.token.__class__.__name__], self.token.__class__)
+
     def test_backus_naur_form(self):
         """Test the Backus-Naur form of the OneOrMoreToken."""
         self.assertEqual(self.backus_naur, self.token.backus_naur_form())

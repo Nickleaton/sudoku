@@ -184,7 +184,7 @@ class MagicSquare(Region):
             Dict: A dictionary representing the MagicSquare.
         """
         return {
-            self.__class__.__name__: f"{self.center.row}{self.center.column}, {self.corner.row}{self.corner.column}"
+            self.__class__.__name__: f"{self.center.row}{self.center.column},{self.corner.row}{self.corner.column}"
         }
 
     def css(self) -> Dict:

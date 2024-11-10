@@ -1,6 +1,9 @@
 from typing import List
 
 from src.parsers.parser import Parser, ParserError
+from src.tokens.cell_token import CellToken
+from src.tokens.symbols import EqualsToken
+from src.tokens.value_token import ValueToken
 
 
 class CellValueParser(Parser):
@@ -9,6 +12,7 @@ class CellValueParser(Parser):
     def __init__(self):
         """Initializes the CellValueParser with a regex pattern for the Cell Value format."""
         super().__init__(pattern=r'^\d{2}=\d+$', example_format='rc=dd')
+        self.token = CellToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract cell value components.

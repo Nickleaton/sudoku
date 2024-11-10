@@ -1,4 +1,5 @@
 from src.parsers.parser import Parser, ParserError
+from src.tokens.cell_token import CellToken
 
 
 class CellParser(Parser):
@@ -7,6 +8,7 @@ class CellParser(Parser):
     def __init__(self):
         """Initializes the CellParser with a regex pattern for two-digit numbers."""
         super().__init__(pattern=r"^\s*\d\d\s*$", example_format="rc")
+        self.token = CellToken()
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract two-digit cell references.

@@ -1,4 +1,8 @@
 from src.parsers.parser import Parser, ParserError
+from src.tokens.digit_token import DigitToken
+from src.tokens.direction_token import DirectionToken
+from src.tokens.side_token import SideToken
+from src.tokens.symbols import EqualsToken
 
 
 class RossiniParser(Parser):
@@ -7,6 +11,7 @@ class RossiniParser(Parser):
     def __init__(self):
         """Initializes the RossiniParser with a regex pattern for the Rossini format."""
         super().__init__(pattern=r'^[TLBR]\d=[DIU]$', example_format="[TLBR]d=[DIU]")
+        self.token = SideToken() + DigitToken() + EqualsToken() + DirectionToken()
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract components in the Rossini format.

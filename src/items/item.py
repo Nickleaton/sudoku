@@ -43,6 +43,7 @@ class Item(ABC):
         super().__init_subclass__(**kwargs)
         # Register the class
         Item.classes[cls.__name__] = cls
+        Item.classes[Item.__name__] = Item
 
     def __init__(self, board: Board):
         """

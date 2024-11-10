@@ -24,6 +24,10 @@ class TestItem(unittest.TestCase):
     def test_top(self):
         self.assertEqual(self.item.top, self.item)
 
+    def test_register(self):
+        self.assertIn(self.item.__class__.__name__, Item.classes)
+        self.assertEqual(Item.classes[self.item.__class__.__name__], self.item.__class__)
+
     @property
     def config(self) -> str:
         return "Item:"
@@ -129,7 +133,7 @@ class TestItem(unittest.TestCase):
 
     def test_schema(self) -> None:
         self.assertIsNotNone(self.item.schema())
-        #self.assertIsInstance(self.item.schema(), dict)
+        # self.assertIsInstance(self.item.schema(), dict)
 
 
 if __name__ == '__main__':  # pragma: no cover

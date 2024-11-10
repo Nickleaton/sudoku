@@ -1,6 +1,6 @@
 import unittest
 
-from src.tokens.symbols import CommaToken, DashToken, EqualsToken, SymbolToken
+from src.tokens.symbols import CommaToken, DashToken, EqualsToken, SymbolToken, QuestionMarkToken
 from tests.tokens.test_simple_token import TestSimpleToken
 
 
@@ -60,6 +60,21 @@ class TestEqualsToken(TestSymbolToken):
         self.bad = ['X', '==']
         self.group_count = 1
         self.bnf = '"="'
+
+
+class TestQuestionMarkToken(TestSymbolToken):
+    """Test cases for the EqualsToken class."""
+
+    def setUp(self):
+        """Set up example tokens specific for testing EqualsToken."""
+        self.token = QuestionMarkToken()
+        self.representation = "QuestionMarkToken()"
+        self.pattern = r"\?"
+        self.name = 'QuestionMark'
+        self.good = ['?']
+        self.bad = ['X', '==']
+        self.group_count = 1
+        self.bnf = '"?"'
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ class FixedDifferencePair(FixedPair):
 
     @property
     def difference(self) -> int:
-        return self.total
+        return self.value
 
     @property
     def rules(self) -> List[Rule]:

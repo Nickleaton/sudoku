@@ -28,7 +28,7 @@ class TestMagicSquare(TestComposed):
 
     @property
     def config(self) -> str:
-        return "MagicSquare: 55, 11"
+        return "MagicSquare: 55,11"
 
     @property
     def has_rule(self) -> bool:

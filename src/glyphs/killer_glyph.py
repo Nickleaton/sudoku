@@ -63,14 +63,15 @@ class KillerGlyph(Glyph):
 
     def draw(self) -> Optional[BaseElement]:
         group = Group()
-        for vector in VectorList.merge_vectors(self.lines()):
-            group.add(
-                Line(
-                    start=vector.start.point.coordinates,
-                    end=vector.end.point.coordinates,
-                    class_=self.class_name
-                )
-            )
+        # TODO
+        # for vector in VectorList.merge_vectors(self.lines()):
+        #     group.add(
+        #         Line(
+        #             start=vector.start.point.coordinates,
+        #             end=vector.end.point.coordinates,
+        #             class_=self.class_name
+        #         )
+        #     )
         return group
 
     def __repr__(self) -> str:

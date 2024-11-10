@@ -1,4 +1,5 @@
 from src.parsers.parser import Parser, ParserError
+from src.tokens.digit_token import DigitToken
 
 
 class DigitParser(Parser):
@@ -7,6 +8,7 @@ class DigitParser(Parser):
     def __init__(self):
         """Initializes the DigitParser with a regex pattern for a one-digit number."""
         super().__init__(pattern=r"^\s*\d\s*$", example_format='d')
+        self.token = DigitToken()
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract a single digit.

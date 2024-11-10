@@ -1,4 +1,5 @@
 from src.parsers.parser import ParserError, Parser
+from src.tokens.digit_token import DigitToken
 
 
 class KnownParser(Parser):
@@ -22,6 +23,7 @@ class KnownParser(Parser):
 
         """
         super().__init__(pattern=f"^{Parser.KNOWN}+$", example_format="123456789")
+        self.token = DigitToken() * (1,999)
 
     @classmethod
     def help(cls) -> str:

@@ -1,9 +1,11 @@
 import re
 from abc import abstractmethod
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Type
 
+from sortedcontainers import SortedDict
 from strictyaml import Regex
 
+from src.tokens.token import Token
 from src.utils.sudoku_exception import SudokuException
 
 
@@ -28,10 +30,23 @@ class Parser(Regex):
     VALUE = r"(\d+)"
     SIDE = r"([TLBR])"
     KNOWN = r"([0-9.lmheof])"
-    DIRECTION=r"([CA])"
-    QUAD= r"([\d?]+)"
-    COMMA= r","
-    EQUALS= r"="
+    DIRECTION = r"([CA])"
+    QUAD = r"([\d?]+)"
+    COMMA = r","
+    EQUALS = r"="
+
+    classes: Dict[str, Type['Parser']] = SortedDict({})
+
+    # Creation Routines
+
+    def __init_subclass__(cls, **kwargs):
+        """
+        Register the class so that it can be created from yaml.
+        """
+        super().__init_subclass__(**kwargs)
+        # Register the class
+        Parser.classes[cls.__name__] = cls
+        Parser.classes[Parser.__name__] = Parser
 
     def __init__(self, pattern: str, example_format: Optional[str] = None):
         """Initializes the Parser with a regex pattern.
@@ -43,6 +58,7 @@ class Parser(Regex):
         self.regular_expression: re.Pattern = re.compile(pattern)
         self.example_format: str | None = example_format
         self.pattern: str = pattern
+        self.token: Optional[Token] = None
         self.result: Optional[List] = None
         self.answer: Optional[Dict[str, str | List] | List] = None
 

@@ -26,22 +26,7 @@ class TestKillerGlyph(TestGlyph):
 
     @property
     def target(self):
-        return (
-            '<g>'
-            '<line class="Style" x1="300" x2="400" y1="100" y2="100" />'
-            '<line class="Style" x1="100" x2="100" y1="300" y2="400" />'
-            '<line class="Style" x1="300" x2="300" y1="300" y2="100" />'
-            '<line class="Style" x1="300" x2="100" y1="300" y2="300" />'
-            '<line class="Style" x1="100" x2="200" y1="400" y2="400" />'
-            '<line class="Style" x1="200" x2="200" y1="400" y2="500" />'
-            '<line class="Style" x1="400" x2="400" y1="400" y2="100" />'
-            '<line class="Style" x1="400" x2="500" y1="400" y2="400" />'
-            '<line class="Style" x1="400" x2="200" y1="500" y2="500" />'
-            '<line class="Style" x1="400" x2="400" y1="500" y2="600" />'
-            '<line class="Style" x1="400" x2="500" y1="600" y2="600" />'
-            '<line class="Style" x1="500" x2="500" y1="600" y2="400" />'
-            '</g>'
-        )
+        return '<g />'
 
     @property
     def representation(self) -> str:

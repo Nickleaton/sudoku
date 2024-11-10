@@ -1,6 +1,9 @@
 from typing import List
 
 from src.parsers.parser import Parser, ParserError
+from src.tokens.cell_token import CellToken
+from src.tokens.digit_token import DigitToken
+from src.tokens.symbols import EqualsToken
 
 
 class VertexDigitParser(Parser):
@@ -9,6 +12,7 @@ class VertexDigitParser(Parser):
     def __init__(self):
         """Initializes the VertexDigitParser with a regex pattern for the Vertex Digit format."""
         super().__init__(pattern=r'^\d{2}=\d$', example_format='rc=d')
+        self.token = CellToken() + EqualsToken() + DigitToken()
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract vertex digit components.

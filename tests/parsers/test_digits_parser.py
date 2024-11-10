@@ -12,7 +12,7 @@ class TestDigitsParser(TestParser):
         """Sets up the DigitsParser instance for testing."""
         self.parser: DigitsParser = DigitsParser()
         self.representation: str = 'DigitsParser()'
-        self.example_format: str = 'd,d,d,...'
+        self.example_format: str = '1,2,3,...'
         self.valid_input_result: List[Tuple[str, List[int]]] = \
             [
                 (

@@ -1,6 +1,10 @@
 from typing import List, Optional
 
 from src.parsers.parser import Parser, ParserError
+from src.tokens.digit_token import DigitToken
+from src.tokens.side_token import SideToken
+from src.tokens.symbols import EqualsToken
+from src.tokens.value_token import ValueToken
 
 
 class FrameParser(Parser):
@@ -21,6 +25,7 @@ class FrameParser(Parser):
         by a numeric index and a value separated by '='.
         """
         super().__init__(pattern=r"^\s*[TLBR]\s*\d\s*=\s*\d+\s*$", example_format="[TLBR]i=v")
+        self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
         """Parses the input string to extract side, index, and value.

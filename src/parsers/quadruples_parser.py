@@ -1,6 +1,9 @@
 from typing import List
 
 from src.parsers.parser import Parser, ParserError
+from src.tokens.cell_token import CellToken
+from src.tokens.digit_token import DigitToken
+from src.tokens.symbols import EqualsToken, QuestionMarkToken
 
 
 class QuadruplesParser(Parser):
@@ -9,6 +12,7 @@ class QuadruplesParser(Parser):
     def __init__(self):
         """Initializes the QuadruplesParser with a regex pattern for the quadruples format."""
         super().__init__(pattern=r'^\d{2}=[\d?]+$', example_format='rc=dd??')
+        self.token = CellToken() + EqualsToken() + (DigitToken() + QuestionMarkToken()) * (1,4)
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract quadruple components.

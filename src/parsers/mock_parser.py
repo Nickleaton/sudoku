@@ -1,4 +1,5 @@
 from src.parsers.parser import Parser, ParserError
+from src.tokens.token import Token
 
 
 class MockParser(Parser):
@@ -18,6 +19,7 @@ class MockParser(Parser):
         on basic string manipulation rather than regex matching.
         """
         super().__init__(pattern=r"", example_format="")  # Dummy pattern, not used in tests
+        self.token = Token(r"")
 
     def parse(self, text: str):
         """Parses the input text into a list of strings.

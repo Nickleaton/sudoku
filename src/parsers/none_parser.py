@@ -1,4 +1,6 @@
+
 from src.parsers.parser import Parser, ParserError
+from src.tokens.token import Token
 
 
 class NoneParser(Parser):
@@ -7,6 +9,7 @@ class NoneParser(Parser):
     def __init__(self):
         """Initializes the NoneParser with an empty pattern to match."""
         super().__init__(pattern=r"^$", example_format="")
+        self.token = Token("")
 
     def parse(self, text: str) -> None:
         """Parses the input text, ensuring it is empty.

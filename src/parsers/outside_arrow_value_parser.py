@@ -1,4 +1,8 @@
 from src.parsers.parser import Parser, ParserError
+from src.tokens.digit_token import DigitToken
+from src.tokens.side_token import SideToken
+from src.tokens.symbols import EqualsToken
+from src.tokens.value_token import ValueToken
 
 
 class OutsideArrowValueParser(Parser):
@@ -7,6 +11,7 @@ class OutsideArrowValueParser(Parser):
     def __init__(self):
         """Initializes the OutsideArrowValueParser with a regex pattern for the Outside Arrow Value format."""
         super().__init__(pattern=r'^[TLBR]\d=\d+$', example_format="[TLBR]d=dd")
+        self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
         """Parses the input text to extract components in the Outside Arrow Value format.
