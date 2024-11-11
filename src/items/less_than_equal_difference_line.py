@@ -25,7 +25,7 @@ class LessThanEqualDifferenceLine(Line):
         super().__init__(board, cells)
         self.difference = board.maximum_digit
         for i in range(1, len(cells)):
-            self.add(LessThanEqualDifferencePair(self.board, cells[i - 1], cells[i], self.difference))
+            self.add(LessThanEqualDifferencePair(self.board, cells[i - 1], cells[i], [self.difference]))
 
     @property
     def rules(self) -> List[Rule]:
