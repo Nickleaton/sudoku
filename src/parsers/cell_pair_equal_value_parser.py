@@ -22,13 +22,13 @@ class CellPairEqualValueParser(Parser):
             c1: str = cell1_str[1]
             r2: str = cell2_str[0]
             c2: str = cell2_str[1]
-            self.result = [int(r1), int(c1), int(r2), int(c2), int(value)]
+            self.result = [int(r1), int(c1), int(r2), int(c2), int(rhs)]
             self.answer = {
                 "row1": r1,
                 "column1": c1,
                 "row2": r2,
                 "column2": c2,
-                "value": value
+                "value": rhs
             }
         except ValueError:
             self.raise_error()
