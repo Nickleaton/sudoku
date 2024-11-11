@@ -98,5 +98,26 @@ class Config:
             return self.config[key]
         raise AttributeError(f"'Config' object has no attribute '{key}'")
 
-    def get_dict(self, name: str):
-        return self.config[name]
+    def get_dict(self, name: str) -> Optional[Dict[str, Any]]:
+        """
+        Retrieves a dictionary from the configuration by its name.
+
+        If the configuration has not been loaded yet, it will attempt to reload it.
+        If the configuration is still not available after reloading, a ValueError is raised.
+
+        Args:
+            name (str): The name of the configuration parameter to retrieve.
+
+        Returns:
+            Optional[Dict[str, Any]]: The dictionary associated with the given name if it exists,
+            or `None` if the key does not exist.
+
+        Raises:
+            ValueError: If the configuration has not been loaded and cannot be reloaded.
+        """
+        if self.config is None:
+            self.reload()  # Try to reload the configuration
+        if self.config is None:
+            raise ValueError("Configuration has not been loaded.")  # If still None, raise an error
+        return self.config.get(name)  # Return the dictionary or None if the key doesn't exist
+
