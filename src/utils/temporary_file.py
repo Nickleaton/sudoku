@@ -9,6 +9,7 @@ Example:
 """
 import logging
 from pathlib import Path
+from typing import Optional, Type
 from uuid import uuid4
 
 from src.utils.config import Config
@@ -19,7 +20,7 @@ config = Config()
 class TemporaryFile:
     """Generate a temporary file name. Runs in a context."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Create a TemporaryFile instance.
 
         This constructor creates a temporary file in the directory specified
@@ -32,7 +33,8 @@ class TemporaryFile:
         if not isinstance(config.temporary_directory, (str, Path)):
             raise ValueError("Temporary directory must be a valid path string or Path object")
 
-        directory: Path = config.temporary_directory if isinstance(config.temporary_directory, Path) else Path(config.temporary_directory)
+        directory: Path = config.temporary_directory if isinstance(config.temporary_directory, Path) else Path(
+            config.temporary_directory)
 
         if not directory.exists():
             logging.info(f"Creating directory {directory}")
@@ -50,7 +52,7 @@ class TemporaryFile:
         """
         return self._name
 
-    def __enter__(self):
+    def __enter__(self) -> 'TemporaryFile':
         """Enter the runtime context related to this object.
 
         Returns:
@@ -58,7 +60,11 @@ class TemporaryFile:
         """
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self,
+                 exc_type: Optional[Type[BaseException]],
+                 exc_val: Optional[BaseException],
+                 exc_tb: Optional[object]
+                 ) -> None:
         """Exit the runtime context and remove the temporary file.
 
         This method is called when leaving the context manager. It
