@@ -1,3 +1,4 @@
+"""FrameParser."""
 from typing import List, Optional
 
 from src.parsers.parser import Parser, ParserError
@@ -18,7 +19,7 @@ class FrameParser(Parser):
     result: Optional[List[int]] = None
 
     def __init__(self):
-        """Initializes FrameParser with a regex pattern.
+        """Initialize FrameParser with a regex pattern.
 
         The regex pattern expects a string format of 'T1=2' with optional
         whitespace, where the side is one of 'T', 'L', 'B', or 'R', followed
@@ -28,7 +29,7 @@ class FrameParser(Parser):
         self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
-        """Parses the input string to extract side, index, and value.
+        """Parse the input string to extract side, index, and value.
 
         Args:
             text (str): The string input in the format 'T1=2' or similar.

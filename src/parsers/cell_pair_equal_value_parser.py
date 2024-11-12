@@ -1,13 +1,32 @@
-from config_schema import value
+"""CellPairEqualValueParser."""
 from src.parsers.parser import Parser, ParserError
 
 
 class CellPairEqualValueParser(Parser):
+    """Parser for cell pair equal value format, such as 'r1c1-r2c2=dd'."""
 
     def __init__(self):
+        """Initialize the parser with a regular expression pattern for cell pair equal value format.
+
+        The pattern matches a format like 'r1c1-r2c2=dd', where 'r1c1' and 'r2c2' are cell references
+        and 'dd' is a value.
+        """
         super().__init__(pattern=f"^{Parser.CELL}-{Parser.CELL}={Parser.VALUE}$", example_format="r1c1-r2c2=dd")
 
     def parse(self, text: str) -> None:
+        """Parse the input text for the cell pair equal value format.
+
+        This method validates the input text against the defined regular expression pattern. If the
+        text does not match the expected format, it raises a `ParserError`. It then splits the input
+        into its constituent parts, extracting the rows, columns, and value.
+
+        Args:
+            text (str): The input string to be parsed, expected in the format 'r1c1-r2c2=dd'.
+
+        Raises:
+            ParserError: If the input text does not match the expected format.
+            ValueError: If there is an issue parsing the values.
+        """
         # Check if the input text matches the defined regular expression pattern.
         if not self.regular_expression.match(text):
             raise ParserError(

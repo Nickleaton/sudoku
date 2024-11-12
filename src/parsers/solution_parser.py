@@ -1,22 +1,22 @@
+"""SolutionParser."""
 from src.parsers.parser import ParserError, Parser
 from src.tokens.digit_token import DigitToken
 
 
 class SolutionParser(Parser):
-    """Parses a solution string containing cell values
+    """Parses a solution string containing cell values.
 
     Attributes:
         result (list[str]): A list of  one character values
     """
 
     def __init__(self):
-        """Initializes the KnownParser with a regular expression for validating input strings.
-        """
+        """Initialize the KnownParser with a regular expression for validating input strings."""
         super().__init__(pattern=r"^\d+$", example_format="123456789")
         self.token = DigitToken() * (1,999)
 
     def parse(self, text: str) -> None:
-        """Parses the input string and stores the result in the 'result' attribute.
+        """Parse the input string and stores the result in the 'result' attribute.
 
         Args:
             text (str): The input string to be parsed.

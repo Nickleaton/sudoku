@@ -1,3 +1,4 @@
+"""LittleKillersParser."""
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
 from src.tokens.direction_token import DirectionToken
@@ -10,12 +11,12 @@ class LittleKillersParser(Parser):
     """Parser for the Little Killers format."""
 
     def __init__(self):
-        """Initializes the LittleKillersParser with a regex pattern for valid input formats."""
+        """Initialize the LittleKillersParser with a regex pattern for valid input formats."""
         super().__init__(pattern=r"^\s*[TLBR]\s*\d\s*[C|A]\s*=\s*\d+\s*$", example_format="[TLBR]i=dd")
         self.token = SideToken() + DigitToken() + DirectionToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
-        """Parses the input text to extract components of the Little Killers format.
+        """Parse the input text to extract components of the Little Killers format.
 
         Args:
             text (str): The input text expected to be in the format 'T1C=2' or similar.

@@ -1,4 +1,4 @@
-
+"""NoneParser."""
 from src.parsers.parser import Parser, ParserError
 from src.tokens.token import Token
 
@@ -7,12 +7,12 @@ class NoneParser(Parser):
     """Parser for validating empty input text."""
 
     def __init__(self):
-        """Initializes the NoneParser with an empty pattern to match."""
+        """Initialize the NoneParser with an empty pattern to match."""
         super().__init__(pattern=r"^$", example_format="")
         self.token = Token("")
 
     def parse(self, text: str) -> None:
-        """Parses the input text, ensuring it is empty.
+        """Parse the input text, ensuring it is empty.
 
         Args:
             text (str): The input text, expected to be empty.

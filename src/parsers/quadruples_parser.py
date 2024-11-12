@@ -1,3 +1,4 @@
+"""QuadruplesParser."""
 from typing import List
 
 from src.parsers.parser import Parser, ParserError
@@ -10,12 +11,12 @@ class QuadruplesParser(Parser):
     """Parser for quadruples in the format 'dd=ddd' where d is a digit and '?' is allowed."""
 
     def __init__(self):
-        """Initializes the QuadruplesParser with a regex pattern for the quadruples format."""
+        """Initialize the QuadruplesParser with a regex pattern for the quadruples format."""
         super().__init__(pattern=r'^\d{2}=[\d?]+$', example_format='rc=dd??')
         self.token = CellToken() + EqualsToken() + (DigitToken() + QuestionMarkToken()) * (1,4)
 
     def parse(self, text: str) -> None:
-        """Parses the input text to extract quadruple components.
+        """Parse the input text to extract quadruple components.
 
         Args:
             text (str): The input text expected to be in the format 'dd=ddd'.

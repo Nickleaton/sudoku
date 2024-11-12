@@ -1,3 +1,4 @@
+"""DigitsParser."""
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
 from src.tokens.symbols import CommaToken
@@ -5,19 +6,19 @@ from src.tokens.token import Token
 
 
 class DigitsParser(Parser):
-    """Parses a comma-separated list of single digits from a string.
+    """Parse a comma-separated list of single digits from a string.
 
     Attributes:
         result (list[int]): A list of parsed integer digits from the input string.
     """
 
     def __init__(self):
-        """Initializes DigitsParser with a regex pattern for comma-separated digits."""
+        """Initialize DigitsParser with a regex pattern for comma-separated digits."""
         super().__init__(pattern=r"^\d(?:,\d)*$", example_format="1,2,3,...")
         self.token: Token = DigitToken() + (CommaToken() + DigitToken()) * (0, 999)
 
     def parse(self, text: str) -> None:
-        """Parses a comma-separated string of digits.
+        """Parse a comma-separated string of digits.
 
         This method checks if the provided input string matches the expected
         pattern of a comma-separated list of digits. If the input is valid,

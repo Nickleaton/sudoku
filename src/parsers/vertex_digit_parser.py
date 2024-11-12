@@ -1,3 +1,4 @@
+"""VertexDigitParser."""
 from typing import List
 
 from src.parsers.parser import Parser, ParserError
@@ -10,12 +11,12 @@ class VertexDigitParser(Parser):
     """Parser for Vertex Digit format: 'dd=d' where dd are two digits and d is a single digit."""
 
     def __init__(self):
-        """Initializes the VertexDigitParser with a regex pattern for the Vertex Digit format."""
+        """Initialize the VertexDigitParser with a regex pattern for the Vertex Digit format."""
         super().__init__(pattern=r'^\d{2}=\d$', example_format='rc=d')
         self.token = CellToken() + EqualsToken() + DigitToken()
 
     def parse(self, text: str) -> None:
-        """Parses the input text to extract vertex digit components.
+        """Parse the input text to extract vertex digit components.
 
         Args:
             text (str): The input text expected to be in the format 'dd=d'.

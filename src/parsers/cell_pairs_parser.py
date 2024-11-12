@@ -1,3 +1,4 @@
+"""CellPairsParser."""
 from src.parsers.parser import Parser, ParserError
 from src.tokens.cell_token import CellToken
 from src.tokens.symbols import DashToken
@@ -7,13 +8,13 @@ class CellPairsParser(Parser):
     """Parser for cell pairs in the format 'XY=AB', where X, Y, A, and B are digits."""
 
     def __init__(self):
-        """Initializes CellPairsParser with a regex pattern for comma-separated digits."""
+        """Initialize CellPairsParser with a regex pattern for comma-separated digits."""
         # Call the parent class (Parser) constructor with a regex pattern that matches the required format.
         super().__init__(pattern=r"^\s*\d\d\s*-\s*\d\d\s*$", example_format="r1c1=r2c2")
         self.token = CellToken() + DashToken() + CellToken()
 
     def parse(self, text: str) -> None:
-        """Parses the input text to extract cell references.
+        """Parse the input text to extract cell references.
 
         Args:
             text (str): The input text in the format 'XY=AB' to be parsed.

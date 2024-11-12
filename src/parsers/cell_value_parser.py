@@ -1,3 +1,4 @@
+"""CellValueParser."""
 from typing import List
 
 from src.parsers.parser import Parser, ParserError
@@ -10,12 +11,12 @@ class CellValueParser(Parser):
     """Parser for Cell Value format: 'dd=d+' where dd are two digits and d+ is one or more digits."""
 
     def __init__(self):
-        """Initializes the CellValueParser with a regex pattern for the Cell Value format."""
+        """Initialize the CellValueParser with a regex pattern for the Cell Value format."""
         super().__init__(pattern=r'^\d{2}=\d+$', example_format='rc=dd')
         self.token = CellToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
-        """Parses the input text to extract cell value components.
+        """Parse the input text to extract cell value components.
 
         Args:
             text (str): The input text expected to be in the format 'dd=d+'.

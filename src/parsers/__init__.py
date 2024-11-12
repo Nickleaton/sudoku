@@ -1,3 +1,4 @@
+"""Parser package."""
 import src.parsers.cell_list_parser
 import src.parsers.cell_pairs_parser
 import src.parsers.cell_parser

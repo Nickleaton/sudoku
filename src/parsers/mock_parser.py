@@ -1,3 +1,4 @@
+"""MockParser."""
 from src.parsers.parser import Parser, ParserError
 from src.tokens.token import Token
 
@@ -13,7 +14,7 @@ class MockParser(Parser):
     """
 
     def __init__(self):
-        """Initializes the MockParser with a dummy regex pattern.
+        """Initialize the MockParser with a dummy regex pattern.
 
         This pattern is not used in the tests as this mock parser focuses
         on basic string manipulation rather than regex matching.
@@ -22,7 +23,7 @@ class MockParser(Parser):
         self.token = Token(r"")
 
     def parse(self, text: str):
-        """Parses the input text into a list of strings.
+        """Parse the input text into a list of strings.
 
         Splits the input text by commas and raises a ParserError if the
         input is empty.
