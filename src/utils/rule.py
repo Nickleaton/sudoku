@@ -1,9 +1,9 @@
-"""Class for Rules."""
+"""Rules describing constraints."""
 from typing import Optional
 
 
 class RuleException(Exception):
-    pass
+    """Exceptions for Rules."""
 
 
 class Rule:

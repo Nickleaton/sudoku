@@ -1,3 +1,4 @@
+"""Minimum or Maximum Enum."""
 from enum import Enum
 
 
@@ -15,7 +16,7 @@ class MinMax(Enum):
 
     def __repr__(self) -> str:
         """
-        Returns a string representation of the MinMax enum instance.
+        Return a string representation of the MinMax enum instance.
 
         Returns:
             str: The string representation in the format 'MinMax.<name>'.

@@ -1,9 +1,9 @@
+"""Tag."""
 from src.utils.sudoku_exception import SudokuException
 
 
 class TagException(SudokuException):
     """Exception raised for errors related to Tag comparisons."""
-    pass
 
 
 class Tag:

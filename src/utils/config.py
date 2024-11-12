@@ -1,4 +1,4 @@
-""" Config: A singleton class representing the configuration of an application. """
+"""Config: A singleton class representing the configuration of an application."""
 import threading
 from pathlib import Path
 from typing import Any, Optional, Dict
@@ -14,7 +14,6 @@ class Config:
     Attributes:
         config_file_path (Path): The path to the YAML configuration file.
         config (pydot): A nested dictionary representing the configuration read from the YAML file.
-
     Examples:
         ```
         from pathlib import Path
@@ -29,12 +28,13 @@ class Config:
           uri: "postgresql://user:pass@xxyyz:9999/mydb"
         ```
     """
+
     __instance: Optional['Config'] = None
     __lock: threading.Lock = threading.Lock()
 
     def __new__(cls, config_file_path: Path = Path("config.yaml")) -> 'Config':
         """
-        Creates a new instance of the `Config` class if one doesn't already exist.
+        Create a new instance of the `Config` class if one doesn't already exist.
 
         Args:
             config_file_path (Path): The path to the YAML configuration file.
@@ -52,9 +52,7 @@ class Config:
         return cls.__instance
 
     def __init__(self):
-        """
-        Initializes the `Config` class instance and reads the YAML configuration file.
-        """
+        """Initialize the `Config` class instance and reads the YAML configuration file."""
         self.__initialized: bool
         if self.__initialized:
             return
@@ -64,9 +62,7 @@ class Config:
         self.reload()
 
     def reload(self):
-        """
-        Reloads the configuration from the YAML file.
-        Also used on construction
+        """Reload the configuration from the YAML file.
 
         This can be used to force the configuration to be re-read from the YAML file.
         This is useful if the configuration file has changed since the application
@@ -82,7 +78,8 @@ class Config:
 
     def __getattr__(self, key: str) -> Any:
         """
-        Retrieves the value of a configuration parameter from the config
+        Retrieve the value of a configuration parameter from the config.
+
         You can use dotted attribute access
 
         Args:
@@ -100,7 +97,7 @@ class Config:
 
     def get_dict(self, name: str) -> Optional[Dict[str, Any]]:
         """
-        Retrieves a dictionary from the configuration by its name.
+        Retrieve a dictionary from the configuration by its name.
 
         If the configuration has not been loaded yet, it will attempt to reload it.
         If the configuration is still not available after reloading, a ValueError is raised.
@@ -120,4 +117,3 @@ class Config:
         if self.config is None:
             raise ValueError("Configuration has not been loaded.")  # If still None, raise an error
         return self.config.get(name)  # Return the dictionary or None if the key doesn't exist
-

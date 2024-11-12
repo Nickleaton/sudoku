@@ -1,38 +1,43 @@
+"""Cyclic Enum for direction of rotation."""
 from enum import Enum
 
 
 class Cyclic(Enum):
     """
-    An enumeration to represent cyclic directions: CLOCKWISE or ANTICLOCKWISE.
+    Enumeration representing cyclic directions: CLOCKWISE or ANTICLOCKWISE.
 
     Attributes:
-        CLOCKWISE (str): Represents the clockwise direction, indicated by 'C'.
-        ANTICLOCKWISE (str): Represents the anticlockwise direction, indicated by 'A'.
+        CLOCKWISE (Cyclic): Represents the clockwise direction, denoted by 'C'.
+        ANTICLOCKWISE (Cyclic): Represents the anticlockwise direction, denoted by 'A'.
     """
+
     CLOCKWISE = 'C'
     ANTICLOCKWISE = 'A'
 
     @staticmethod
     def create(letter: str) -> 'Cyclic':
         """
-        Creates a Cyclic enum instance from a single letter.
+        Create a Cyclic enum instance from a single character.
 
         Args:
-            letter (str): The letter representing the cyclic direction ('C' or 'A').
+            letter (str): The character representing the cyclic direction ('C' for CLOCKWISE or 'A' for ANTICLOCKWISE).
 
         Returns:
-            Cyclic: The corresponding Cyclic enum.
+            Cyclic: Corresponding Cyclic enum instance.
 
         Raises:
-            ValueError: If the letter is not valid.
+            ValueError: If the provided letter does not match a valid Cyclic direction.
         """
-        return Cyclic(letter)
+        try:
+            return Cyclic(letter)
+        except ValueError:
+            raise ValueError(f"Invalid letter '{letter}'. Must be 'C' or 'A'.")
 
     def __repr__(self) -> str:
         """
-        Returns a string representation of the Cyclic enum.
+        Return a string representation of the Cyclic enum instance.
 
         Returns:
-            str: The string representation in the format 'Cyclic.<name>'.
+            str: String in the format 'Cyclic.<name>'.
         """
         return f"Cyclic.{self.name}"

@@ -1,10 +1,10 @@
+"""Matrix for 2x2 transformations."""
 from src.utils.coord import Coord
 from src.utils.sudoku_exception import SudokuException
 
 
 class MatrixException(SudokuException):
     """Custom exception for errors related to Matrix operations."""
-    pass
 
 
 class Matrix:
@@ -21,7 +21,7 @@ class Matrix:
 
     def __init__(self, name: str, a: int, b: int, c: int, d: int):  # pylint: disable=too-many-arguments
         """
-        Initializes a Matrix with given parameters.
+        Initialize a Matrix with given parameters.
 
         Args:
             name (str): The name of the matrix.
@@ -38,7 +38,7 @@ class Matrix:
 
     def compose(self, other: 'Matrix') -> 'Matrix':
         """
-        Composes this matrix with another matrix using matrix multiplication.
+        Compose this matrix with another matrix using matrix multiplication.
 
         Args:
             other (Matrix): The matrix to compose with.
@@ -56,7 +56,7 @@ class Matrix:
 
     def transform(self, other: Coord) -> Coord:
         """
-        Transforms a coordinate using this matrix.
+        Transform a coordinate using this matrix.
 
         Args:
             other (Coord): The coordinate to be transformed.
@@ -71,7 +71,7 @@ class Matrix:
 
     def __eq__(self, other: object) -> bool:
         """
-        Compares this matrix to another matrix for equality.
+        Compare this matrix to another matrix for equality.
 
         Args:
             other (object): The object to compare to.
@@ -88,7 +88,7 @@ class Matrix:
 
     def __hash__(self) -> int:
         """
-        Returns a hash of the matrix based on its elements.
+        Return a hash of the matrix based on its elements.
 
         Returns:
             int: The hash value for the matrix.
@@ -97,7 +97,7 @@ class Matrix:
 
     def __repr__(self) -> str:
         """
-        Returns a string representation of the matrix.
+        Return a string representation of the matrix.
 
         Returns:
             str: A string representing the matrix object.

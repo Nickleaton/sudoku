@@ -1,3 +1,4 @@
+"""ColourSet."""
 from typing import List
 
 from src.utils.config import Config
@@ -9,7 +10,6 @@ config: Config = Config()
 
 class ColourException(SudokuException):
     """An exception raised when an invalid colour is provided."""
-    pass
 
 
 class ColourSet:

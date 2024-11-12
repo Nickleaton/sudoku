@@ -1,5 +1,5 @@
-"""Tag List"""
-from typing import List
+"""Tag List."""
+from typing import List, Iterator
 
 from src.utils.sudoku_exception import SudokuException
 from src.utils.tag import Tag
@@ -7,18 +7,18 @@ from src.utils.tag import Tag
 
 class TagListException(SudokuException):
     """Exception raised for errors related to TagList operations."""
-    pass
 
 
 class TagList:
-    """List of Tags.
+    """A list of Tags with methods for managing and sorting them.
 
     Attributes:
-        items (List[Tag]): The list of tags.
+        items (List[Tag]): The list of Tag instances.
+        n (int): Counter for tracking the number of operations or tags.
     """
 
     def __init__(self, items: List[Tag]):
-        """Construct a TagList instance.
+        """Initialize a TagList instance with a list of Tags, sorted upon initialization.
 
         Args:
             items (List[Tag]): A list of Tag instances.
@@ -27,30 +27,24 @@ class TagList:
         self.sort()
         self.n = 0
 
-    def __iter__(self) -> 'TagList':
-        """Return the iterator object for the TagList.
+    def __iter__(self) -> Iterator[Tag]:
+        """Return an iterator for the TagList.
 
         Returns:
-            TagList: The TagList instance itself.
+            Iterator[Tag]: An iterator over the list of Tags.
         """
-        self.n = 0
-        return self
+        return iter(self.items)
 
-    def __next__(self) -> Tag:
-        """Return the next Tag in the iteration.
+    def __getitem__(self, idx: int) -> Tag:
+        """Retrieve a Tag at a specified index.
+
+        Args:
+            idx (int): Index of the Tag to retrieve.
 
         Returns:
-            Tag: The next Tag instance.
-
-        Raises:
-            StopIteration: If there are no more Tags to return.
+            Tag: The Tag at the specified index.
         """
-        if self.n < len(self):
-            result = self.items[self.n]
-            self.n += 1
-        else:
-            raise StopIteration
-        return result
+        return self.items[idx]
 
     def __contains__(self, other: Tag) -> bool:
         """Check if a Tag is in the TagList.
@@ -75,13 +69,13 @@ class TagList:
         return len(self.items)
 
     def __eq__(self, other: object) -> bool:
-        """Check if two TagLists are equal.
+        """Check equality between two TagLists.
 
         Args:
-            other (object): The other TagList to compare.
+            other (object): Another TagList to compare.
 
         Returns:
-            bool: True if the TagLists have the same Tags in the same order, False otherwise.
+            bool: True if both TagLists contain the same Tags in the same order, False otherwise.
 
         Raises:
             TagListException: If the other object is not a TagList.
@@ -93,7 +87,7 @@ class TagList:
                 if i != o:
                     return False
             return True
-        raise TagListException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise TagListException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
         """Return a string representation of the TagList.
@@ -104,9 +98,9 @@ class TagList:
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"
 
     def sort(self) -> None:
-        """Sort the list of Tags by their priority.
+        """Sort the list of Tags by their priority or defined order.
 
-        This method sorts the Tags in the list based on their defined order.
+        This method organizes Tags in the list based on a priority attribute.
         """
         self.items = sorted(self.items)
 
@@ -115,6 +109,9 @@ class TagList:
 
         Args:
             item (Tag): The Tag instance to add.
+
+        Notes:
+            After adding, the list is automatically sorted.
         """
         if item not in self:
             self.items.append(item)

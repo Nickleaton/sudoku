@@ -1,3 +1,4 @@
+"""Side."""
 from enum import Enum
 from typing import Dict
 
@@ -10,7 +11,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class SideException(SudokuException):
-    pass
+    """Handle exceptions in the Side Enum."""
 
 
 class Side(Enum):

@@ -1,3 +1,4 @@
+"""Vector."""
 from src.utils.coord import Coord
 from src.utils.direction import Direction
 from src.utils.sudoku_exception import SudokuException
@@ -5,7 +6,6 @@ from src.utils.sudoku_exception import SudokuException
 
 class VectorException(SudokuException):
     """Exception raised for errors related to Vector operations."""
-    pass
 
 
 class Vector:
@@ -103,11 +103,11 @@ class Vector:
             return Direction.LEFT if self.start.column < self.end.column else \
                 Direction.RIGHT if self.start.column > self.end.column else \
                     Direction.CENTER
-        elif self.start.column == self.end.column:  # Vertical
+        if self.start.column == self.end.column:  # Vertical
             return Direction.UP if self.start.row < self.end.row else \
                 Direction.DOWN if self.start.row > self.end.row else \
                     Direction.CENTER
-        return Direction.CENTER
+        return Direction.CENTER # pragma: no cover
 
     def mergeable(self, other: 'Vector') -> bool:
         """Check if this vector can be merged with another vector.
@@ -145,12 +145,12 @@ class Vector:
             return self
         if self.start == other.start:
             return Vector(self.end, other.end)
-        elif self.start == other.end:
+        if self.start == other.end:
             return Vector(self.end, other.start)
-        elif self.end == other.start:
+        if self.end == other.start:
             return Vector(self.start, other.end)
-        else:  # self.end == other.end
-            return Vector(self.start, other.start)
+        # self.end == other.end
+        return Vector(self.start, other.start)
 
     def __repr__(self) -> str:
         """Return a string representation of the vector.

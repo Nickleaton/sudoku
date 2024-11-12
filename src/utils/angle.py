@@ -1,27 +1,29 @@
+"""Angle management for geometric operations."""
 import math
 
 
 class AngleException(Exception):
-    pass
+    """Exception raised for errors in Angle operations."""
 
 
 class Angle:
-    # noinspection GrazieInspection
-    """
-        Manage angles.
+    """Represents an angle with properties to manage degrees and radians.
 
-        Args:
-            angle (float): The initial angle value. It is normalized to the range [0, 360).
-            and represents the angle in degrees.
-        """
+    Attributes:
+        angle (float): The angle value in degrees, normalized to the range [0, 360).
+    """
 
     def __init__(self, angle: float):
+        """Initialize an Angle instance.
+
+        Args:
+            angle (float): The initial angle in degrees. It is normalized to [0, 360).
+        """
         self.angle = float(angle) % 360.0
 
     @property
     def radians(self) -> float:
-        """
-        Returns the angle in radians.
+        """Convert the angle to radians.
 
         Returns:
             float: The angle in radians.
@@ -30,8 +32,7 @@ class Angle:
 
     @radians.setter
     def radians(self, radians: float) -> None:
-        """
-        Sets the angle in radians.
+        """Set the angle using radians.
 
         Args:
             radians (float): The angle in radians.
@@ -40,8 +41,7 @@ class Angle:
 
     @property
     def degrees(self) -> float:
-        """
-        Returns the angle in degrees.
+        """Get the angle in degrees.
 
         Returns:
             float: The angle in degrees.
@@ -50,8 +50,7 @@ class Angle:
 
     @degrees.setter
     def degrees(self, degrees: float) -> None:
-        """
-        Sets the angle in degrees.
+        """Set the angle in degrees, normalized to [0, 360).
 
         Args:
             degrees (float): The angle in degrees.
@@ -60,116 +59,105 @@ class Angle:
 
     @property
     def opposite(self) -> 'Angle':
-        """
-        Returns the opposite of the current angle.
+        """Calculate the angle opposite to this one.
 
         Returns:
-            Angle: A new angle that is 180 degrees away from the current one.
+            Angle: A new angle that is 180 degrees from the current one.
         """
         return Angle(self.angle + 180.0)
 
     @property
     def transform(self) -> str:
-        """
-        Returns a transform string for SVG that represents this angle.
+        """Generate an SVG transform string for rotation by this angle.
 
         Returns:
-            str: An SVG transform string. If the angle is 0, returns an empty string.
+            str: The SVG transform string, or an empty string if the angle is 0.
         """
-        if self.angle == 0.0:
-            return ""
-        return f"rotate({self.angle})"
+        return "" if self.angle == 0.0 else f"rotate({self.angle})"
 
     def __add__(self, other: 'Angle') -> 'Angle':
-        """
-        Adds this angle to another angle.
+        """Add this angle to another angle.
 
         Args:
             other (Angle): The angle to add.
 
         Returns:
-            Angle: The result of adding the two angles.
+            Angle: The resulting angle.
         """
         return Angle(self.angle + other.angle)
 
     def __sub__(self, other: 'Angle') -> 'Angle':
-        """
-        Subtracts another angle from this angle.
+        """Subtract another angle from this angle.
 
         Args:
             other (Angle): The angle to subtract.
 
         Returns:
-            Angle: The result of subtracting the other angle from this one.
+            Angle: The resulting angle.
         """
         return Angle(self.angle - other.angle)
 
     def __mul__(self, other: float) -> 'Angle':
-        """
-        Multiplies this angle by a scalar.
+        """Multiply this angle by a scalar.
 
         Args:
-            other (float): The scalar value.
+            other (float): The scalar to multiply by.
 
         Returns:
-            Angle: The result of multiplying the angle by the scalar.
+            Angle: The resulting angle.
         """
         return Angle(self.angle * other)
 
     def __eq__(self, other: object) -> bool:
-        """
-        Checks if this angle is equal to another angle.
+        """Check if this angle is equal to another angle.
 
         Args:
-            other (object): The object to compare to.
+            other (object): The angle to compare to.
 
         Returns:
-            bool: True if the angles are equal, otherwise False.
+            bool: True if angles are equal.
 
         Raises:
-            AngleException: If `other` is not an instance of Angle.
+            AngleException: If `other` is not an Angle.
         """
         if isinstance(other, Angle):
             return self.angle == other.angle
-        raise AngleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
 
     def __lt__(self, other: object) -> bool:
-        """
-        Checks if this angle is less than another angle.
+        """Check if this angle is less than another angle.
 
         Args:
-            other (object): The object to compare to.
+            other (object): The angle to compare to.
 
         Returns:
-            bool: True if this angle is less than the other angle.
+            bool: True if this angle is less.
 
         Raises:
-            AngleException: If `other` is not an instance of Angle.
+            AngleException: If `other` is not an Angle.
         """
         if isinstance(other, Angle):
             return self.angle < other.angle
-        raise AngleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
 
     def __le__(self, other: object) -> bool:
-        """
-        Checks if this angle is less than or equal to another angle.
+        """Check if this angle is less than or equal to another angle.
 
         Args:
-            other (object): The object to compare to.
+            other (object): The angle to compare to.
 
         Returns:
-            bool: True if this angle is less than or equal to the other angle.
+            bool: True if this angle is less than or equal.
 
         Raises:
-            AngleException: If `other` is not an instance of Angle.
+            AngleException: If `other` is not an Angle.
         """
         if isinstance(other, Angle):
             return self.angle <= other.angle
-        raise AngleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the Angle.
+        """Return string representation of the Angle.
 
         Returns:
             str: The string representation of the angle.

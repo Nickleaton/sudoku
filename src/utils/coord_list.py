@@ -1,3 +1,4 @@
+"""CoordinateList."""
 from typing import List, Iterator
 
 from src.items.item import SudokuException
@@ -5,10 +6,7 @@ from src.utils.coord import Coord
 
 
 class CoordListException(SudokuException):
-    """
-    Custom exception for CoordList operations.
-    """
-    pass
+    """Custom exception for CoordList operations."""
 
 
 class CoordList:
@@ -20,11 +18,16 @@ class CoordList:
     """
 
     def __init__(self, items: List[Coord]):
+        """Initialize the CoordList with a sorted list of Coord objects.
+
+        Args:
+            items (List[Coord]): The list of Coord objects to manage.
+        """
         self.items = sorted(items)
 
     def __iter__(self) -> Iterator[Coord]:
         """
-        Initializes the iterator for the CoordList.
+        Initialize the iterator for the CoordList.
 
         Returns:
             CoordList: The current instance as an iterable.
@@ -33,7 +36,7 @@ class CoordList:
 
     def __contains__(self, other: Coord) -> bool:
         """
-        Checks if a given Coord is in the list.
+        Check if a given Coord is in the list.
 
         Args:
             other (Coord): The Coord object to check.
@@ -45,7 +48,7 @@ class CoordList:
 
     def __len__(self) -> int:
         """
-        Returns the number of items in the CoordList.
+        Return the number of items in the CoordList.
 
         Returns:
             int: The number of Coord objects in the list.
@@ -54,7 +57,7 @@ class CoordList:
 
     def __eq__(self, other: object) -> bool:
         """
-        Checks if two CoordList objects are equal.
+        Check if two CoordList objects are equal.
 
         Args:
             other (object): The object to compare with.
@@ -71,7 +74,7 @@ class CoordList:
 
     def __repr__(self) -> str:
         """
-        Returns a string representation of the CoordList.
+        Return a string representation of the CoordList.
 
         Returns:
             str: The string representation of the CoordList.
@@ -80,7 +83,7 @@ class CoordList:
 
     def add(self, item: Coord) -> None:
         """
-        Adds a Coord to the list if it's not already present, and sorts the list.
+        Add a Coord to the list if it's not already present, and sorts the list.
 
         Args:
             item (Coord): The Coord object to add.
