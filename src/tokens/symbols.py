@@ -1,3 +1,4 @@
+"""Tokens for Symbols."""
 from src.tokens.simple_token import SimpleToken
 
 
@@ -12,7 +13,7 @@ class SymbolToken(SimpleToken):
     """
 
     def __init__(self, symbol: str):
-        """Initializes a SymbolToken with a specific symbol.
+        """Initialize a SymbolToken with a specific symbol.
 
         Args:
             symbol (str): The symbol for this token.
@@ -21,7 +22,7 @@ class SymbolToken(SimpleToken):
         self.symbol: str = symbol
 
     def __repr__(self) -> str:
-        """Returns a string representation of the SymbolToken.
+        """Return a string representation of the SymbolToken.
 
         Returns:
             str: The representation of the SymbolToken, including the symbol.
@@ -29,7 +30,7 @@ class SymbolToken(SimpleToken):
         return f"SymbolToken('{self.symbol}')"
 
     def backus_naur_form(self) -> str:
-        """Returns the Backus-Naur form representation of the symbol.
+        """Return the Backus-Naur form representation of the symbol.
 
         Returns:
             str: The symbol in Backus-Naur form.
@@ -41,11 +42,11 @@ class EqualsToken(SymbolToken):
     """Represents an equals sign token."""
 
     def __init__(self):
-        """Initializes an equals token with pattern '='."""
+        """Initialize an equals token with pattern '='."""
         super().__init__("=")
 
     def __repr__(self) -> str:
-        """Returns a string representation of the EqualsToken.
+        """Return a string representation of the EqualsToken.
 
         Returns:
             str: The representation of the EqualsToken.
@@ -57,11 +58,11 @@ class CommaToken(SymbolToken):
     """Represents a comma token."""
 
     def __init__(self):
-        """Initializes a comma token with pattern ','."""
+        """Initialize a comma token with pattern ','."""
         super().__init__(",")
 
     def __repr__(self) -> str:
-        """Returns a string representation of the CommaToken.
+        """Return a string representation of the CommaToken.
 
         Returns:
             str: The representation of the CommaToken.
@@ -73,11 +74,11 @@ class DashToken(SymbolToken):
     """Represents a dash token."""
 
     def __init__(self):
-        """Initializes a dash token with pattern '-'."""
+        """Initialize a dash token with pattern '-'."""
         super().__init__("-")
 
     def __repr__(self) -> str:
-        """Returns a string representation of the DashToken.
+        """Return a string representation of the DashToken.
 
         Returns:
             str: The representation of the DashToken.
@@ -89,11 +90,11 @@ class QuestionMarkToken(SymbolToken):
     """Represents a question mark token."""
 
     def __init__(self):
-        """Initializes a question mark token with pattern '\\?'."""
+        """Initialize a question mark token with pattern '?'."""
         super().__init__(r"\?")
 
     def __repr__(self) -> str:
-        """Returns a string representation of the QuestionMarkToken.
+        """Return a string representation of the QuestionMarkToken.
 
         Returns:
             str: The representation of the QuestionMarkToken.
