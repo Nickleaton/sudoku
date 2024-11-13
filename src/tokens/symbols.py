@@ -94,7 +94,7 @@ class QuestionMarkToken(SymbolToken):
         super().__init__(r"\?")
 
     def backus_naur_form(self) -> str:
-        """Special to handle escaping."""
+        """Output BNF for a question mark."""
         return '"?"'
 
     def __repr__(self) -> str:

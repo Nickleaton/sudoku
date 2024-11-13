@@ -1,3 +1,5 @@
+"""PulpSolver class."""
+"""PulpSolver class for solving puzzles using linear programming."""
 import sys
 from enum import Enum
 from io import StringIO
@@ -13,6 +15,8 @@ from src.utils.config import Config
 
 
 class Status(Enum):
+    """Enum representing the status of the solution."""
+
     NOT_SOLVED = "Not Solved"
     OPTIMAL = "Optimal"
     INFEASIBLE = "Infeasible"
@@ -24,31 +28,45 @@ config = Config()
 
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
+    """
+    Solver class that uses PuLP to solve puzzles with linear programming.
+
+    Attributes:
+        name (str): The name of the solver instance.
+        solver_name (str): The solver to use, e.g., 'PULP_CBC_CMD'.
+        application_name (str): The name of the solver application.
+        status (Status): The status of the solution.
+        log (Optional[str]): Log of the solver process.
+        model (LpProblem): The linear programming model.
+        variables (Dict[Any, LpVariable]): Variables used in the model.
+        choices (Dict[Any, LpVariable]): Choice variables for digit assignments in cells.
+        values (Dict[Any, LpVariable]): Variables representing values in cells.
+        parity (Dict[Any, LpVariable]): Parity constraints on cells.
+        levels (Dict[Any, LpVariable]): Level constraints on cells.
+        modulos (Dict[Any, LpVariable]): Modulo constraints on cells.
+        prime (Dict[Any, LpVariable]): Prime constraints on cells.
+    """
 
     def __init__(self, board: Board, name: str, solver_name: str = 'PULP_CBC_CMD'):
-        """Initializes the PulpSolver with a board and solver configuration.
+        """Initialize the PulpSolver with a board and solver details.
 
         Args:
-            board (Board): The game board containing the constraints.
-            name (str): The name of the solver instance.
-            solver_name (str): The name of the solver to use (default is 'PULP_CBC_CMD').
+            board (Board): The board object representing the puzzle layout.
+            name (str): Name for the solver instance.
+            solver_name (str): Solver name, default is 'PULP_CBC_CMD'.
         """
         super().__init__(board)
 
-        # Names
         self.name: str = name
         self.solver_name: str = solver_name
         self.application_name = 'CBC' if solver_name == 'PULP_CBC_CMD' else solver_name
 
-        # Results
         self.status: Status = Status.NOT_SOLVED
         self.log: Optional[str] = None
 
-        # Model
         self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
         self.model += 0, "DummyObjective"
 
-        # Create the basic model framework
         self.variables: Dict[Any, LpVariable] = {}
         self.choices: Dict[Any, LpVariable] = LpVariable.dicts(
             "Choice",
@@ -64,7 +82,6 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             board.maximum_digit,
             LpInteger
         )
-
         self.parity: Dict[Any, LpVariable] = LpVariable.dicts(
             "Parity",
             (board.row_range, board.column_range),
@@ -72,7 +89,6 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             1,
             LpInteger
         )
-
         self.levels: Dict[Any, LpVariable] = LpVariable.dicts(
             "Low",
             (board.row_range, board.column_range, board.levels),
@@ -80,7 +96,6 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             1,
             LpInteger
         )
-
         self.modulos: Dict[Any, LpVariable] = LpVariable.dicts(
             "Low",
             (board.row_range, board.column_range, board.modulos),
@@ -88,7 +103,6 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             1,
             LpInteger
         )
-
         self.prime: Dict[Any, LpVariable] = LpVariable.dicts(
             "Low",
             (board.row_range, board.column_range, board.primes),
@@ -102,10 +116,10 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             self.model += total == self.values[row][column], f"Unique_cell_{row}_{column}"
 
     def save_lp(self, filename: Path | str) -> None:
-        """Saves the model as an LP file.
+        """Save the puzzle model in LP (Linear Programming) format.
 
         Args:
-            filename (Path | str): The filename or Path object where the LP file should be saved.
+            filename (Path | str): The path or name of the file to save the LP format.
         """
         super().save_lp(filename)
         if isinstance(filename, Path):
@@ -114,10 +128,10 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             self.model.writeLP(filename)
 
     def save_mps(self, filename: Path | str) -> None:
-        """Saves the model as an MPS file.
+        """Save the puzzle model in MPS (Mathematical Programming System) format.
 
         Args:
-            filename (Path | str): The filename or Path object where the MPS file should be saved.
+            filename (Path | str): The path or name of the file to save the MPS format.
         """
         super().save_mps(filename)
         if isinstance(filename, Path):
@@ -126,10 +140,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
             self.model.writeMPS(filename)
 
     def solve(self) -> None:
-        """Solves the model and updates the status.
-
-        The method captures the log output during the solving process and stores it in the `log` attribute.
-        """
+        """Solve the puzzle using the specified solver and updates the solution status."""
         super().solve()
         log_output: StringIO = StringIO()
         try:

@@ -1,3 +1,4 @@
+"""Constraint Utilities."""
 from math import log10, ceil
 
 from pulp import lpSum, LpVariable, LpContinuous
@@ -14,7 +15,7 @@ class ConstraintUtilities:
 
     @staticmethod
     def log10_cell(solver: PulpSolver, cell: Cell) -> LpVariable:
-        """Creates a log10 variable for a given cell in the solver.
+        """Create a log10 variable for a given cell in the solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the variable belongs.
