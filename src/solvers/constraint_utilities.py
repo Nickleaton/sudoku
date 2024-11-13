@@ -1,9 +1,12 @@
 from math import log10, ceil
+
 from pulp import lpSum, LpVariable, LpContinuous
+
 from src.items.cell import Cell
 from src.solvers.pulp_solver import PulpSolver
 
 
+# pylint: disable=too-few-public-methods
 class ConstraintUtilities:
     """Utility class for managing constraints in the PulpSolver."""
 

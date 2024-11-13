@@ -57,7 +57,7 @@ class Quadro(Item):
         Args:
             solver (PulpSolver): The solver to which the constraints will be added.
         """
-        offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
+        offsets = (Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1))
         for row, column in product(self.board.row_range, self.board.column_range):
             if row == self.board.board_rows:
                 continue

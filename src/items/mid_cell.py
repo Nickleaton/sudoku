@@ -31,8 +31,7 @@ class MidCell(SimpleCellReference):
         """
         return digit in MidCell.digits()
 
-    @classmethod
-    def letter(cls) -> str:
+    def letter(self) -> str:
         """Returns the letter representation of a MidCell.
 
         Returns:

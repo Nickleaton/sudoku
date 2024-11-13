@@ -38,7 +38,10 @@ class LessThanEqualDifferenceLine(Line):
             Rule(
                 self.__class__.__name__,
                 1,
-                f"Any two cells directly connected by a line must have a difference of less than or equal to {self.difference}."
+                (
+                    f"Any two cells directly connected by a line must have a difference "
+                    f"of less than or equal to {self.difference}."
+                )
             )
         ]
 

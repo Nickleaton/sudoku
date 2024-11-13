@@ -21,8 +21,7 @@ class FortressCell(SimpleCellReference):
         """
         return None
 
-    @classmethod
-    def letter(cls) -> str:  # pylint: disable=no-self-use
+    def letter(self) -> str:
         """Returns the letter representation of the FortressCell.
 
         Returns:
@@ -35,9 +34,16 @@ class FortressCell(SimpleCellReference):
         """Returns the rules associated with this FortressCell.
 
         Returns:
-            List[Rule]: A list containing the rule that the digit in a fortress cell must be bigger than its orthogonal neighbors.
+            List[Rule]: A list containing the rule that the digit in a
+                        fortress cell must be bigger than its orthogonal neighbors.
         """
-        return [Rule("Odd", 1, "The digit in a fortress cell must be bigger than its orthogonal neighbours")]
+        return [
+            Rule(
+                "Odd",
+                1,
+                "The digit in a fortress cell must be bigger than its orthogonal neighbours"
+            )
+        ]
 
     def glyphs(self) -> List[Glyph]:
         """Generates the glyphs associated with this FortressCell.
@@ -70,7 +76,9 @@ class FortressCell(SimpleCellReference):
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds a constraint to the solver ensuring the digit in the fortress cell is larger than its orthogonal neighbors.
+        """
+        Adds a constraint to the solver ensuring the digit in the fortress cell is larger than
+        its orthogonal neighbors.
 
         Args:
             solver (PulpSolver): The solver to which the constraint will be added.

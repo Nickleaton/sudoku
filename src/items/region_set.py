@@ -7,4 +7,3 @@ class RegionSet(ComposedItem):
     Inherits from ComposedItem to allow grouping of related items into a set.
     Used as a foundation for defining various types of region sets.
     """
-    pass

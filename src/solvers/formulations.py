@@ -6,7 +6,7 @@ from pulp import LpVariable, LpElement, LpInteger, lpSum, LpProblem, LpContinuou
 class Formulations:
     count = 0
 
-    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-positional-arguments
     @staticmethod
     def disjunction(
             model: LpProblem,
@@ -31,7 +31,7 @@ class Formulations:
         model += decision_3 <= decision_2, f"Binary_Binary_{decision_3.name}_b"
         model += decision_3 >= decision_1 + decision_2 - 1, f"Binary_Binary_{decision_3.name}_c"
 
-    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-positional-arguments
     @staticmethod
     def product_binary_var(
             model: LpProblem,

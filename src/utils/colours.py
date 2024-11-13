@@ -28,12 +28,7 @@ class ColourSet:
         colour_set = config.colours
         if colour_set is None or set_name not in colour_set:
             raise ColourException(f"Colour set '{set_name}' not found in {config.config_file_path.name}")
-
-        # Retrieve the color list for the specified set
         colors = colour_set[set_name]
-        if not colors:  # Check if color list is empty or None
-            raise ColourException(f"The color set '{set_name}' is empty or improperly configured.")
-
         return [str(c) for c in colors]
 
     @staticmethod

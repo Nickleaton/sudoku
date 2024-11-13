@@ -37,7 +37,9 @@ class AntiTLBR(AntiDiagonal):
         """
         return [
             LineGlyph('Diagonal',
-                      Coord(1, 1),  # Starting coordinate of the diagonal
-                      Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1)  # Ending coordinate of the diagonal
+                      # Starting coordinate of the diagonal
+                      Coord(1, 1),
+                      # Ending coordinate of the diagonal
+                      Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1)
                       )
         ]

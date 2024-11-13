@@ -93,6 +93,10 @@ class QuestionMarkToken(SymbolToken):
         """Initialize a question mark token with pattern '?'."""
         super().__init__(r"\?")
 
+    def backus_naur_form(self) -> str:
+        """Special to handle escaping."""
+        return '"?"'
+
     def __repr__(self) -> str:
         """Return a string representation of the QuestionMarkToken.
 

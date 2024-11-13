@@ -1,8 +1,10 @@
 import logging
+
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.items.constraints import Constraints
+
 
 class CreateConstraintsCommand(SimpleCommand):
     def __init__(self, config: str = 'config', board: str = 'board', target: str = 'constraints'):

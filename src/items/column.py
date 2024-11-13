@@ -20,7 +20,6 @@ class Column(StandardRegion):
     def parser(cls) -> DigitParser:
         return DigitParser()
 
-
     @property
     def rules(self) -> List[Rule]:
         return [Rule('Column', 1, 'Digits in each column must be unique')]

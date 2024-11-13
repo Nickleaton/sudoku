@@ -102,7 +102,8 @@ class Knight(ComposedItem):
         Returns the list of rules enforced by this constraint.
 
         Returns:
-            List[Rule]: Rules indicating that each specified digit must be reachable by a knight's move from at least one identical digit.
+            List[Rule]: Rules indicating that each specified digit must be reachable
+                        by a knight's move from at least one identical digit.
         """
         return [
             Rule("Knight", 1,

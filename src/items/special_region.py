@@ -17,11 +17,9 @@ class SpecialRegion(Region):
         super().__init__(board)
         self.add_items([Cell.make(board, int(coord.row), int(coord.column)) for coord in self.coords()])
 
-    # pylint: disable=no-self-use
     def region_name(self) -> str:
         return ""
 
-    # pylint: disable=no-self-use
     def coords(self) -> List[Coord]:
         return []
 

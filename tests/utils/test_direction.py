@@ -119,5 +119,6 @@ class TestDirection(unittest.TestCase):
         self.assertListEqual(Direction.all(), expected_all)
 
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

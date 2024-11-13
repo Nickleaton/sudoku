@@ -1,7 +1,8 @@
 import unittest
 
 from src.utils.coord import Coord
-from src.utils.matrix import ROTATE_000, ROTATE_090, ROTATE_180, ROTATE_270, FLIP_HORIZONTAL, FLIP_VERTICAL, MatrixException
+from src.utils.matrix import ROTATE_000, ROTATE_090, ROTATE_180, ROTATE_270, FLIP_HORIZONTAL, FLIP_VERTICAL, \
+    MatrixException, Matrix
 
 
 class TestMatrix(unittest.TestCase):
@@ -44,6 +45,18 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(Coord(1, -1), ROTATE_270.transform(x))
         self.assertEqual(Coord(1, -1), FLIP_VERTICAL.transform(x))
         self.assertEqual(Coord(-1, 1), FLIP_HORIZONTAL.transform(x))
+
+    def test_matrix_hash(self):
+        # Assuming Matrix(a, b, c, d) initializes a matrix with values a, b, c, d
+        matrix1 = Matrix('matrix1', 1, 2, 3, 4)
+        matrix2 = Matrix('matrix2', 1, 2, 3, 4)
+        matrix3 = Matrix('matrix3', 4, 3, 2, 1)
+
+        # Test that two identical matrices have the same hash
+        self.assertEqual(hash(matrix1), hash(matrix2))
+
+        # Test that two different matrices have different hashes
+        self.assertNotEqual(hash(matrix1), hash(matrix3))
 
     @staticmethod
     def alpha(w: int, x: int, y: int, z: int) -> int:

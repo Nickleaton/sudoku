@@ -16,6 +16,9 @@ class TestSymbolToken(TestSimpleToken):
         self.group_count = 1
         self.bnf = '"x"'
 
+    def test_backus_naur_form(self):
+        self.assertEqual(self.bnf, self.token.backus_naur_form())
+
 
 class TestCommaToken(TestSymbolToken):
     """Test cases for the CommaToken class."""
@@ -74,7 +77,7 @@ class TestQuestionMarkToken(TestSymbolToken):
         self.good = ['?']
         self.bad = ['X', '==']
         self.group_count = 1
-        self.bnf = '"?"'
+        self.bnf = r'"?"'
 
 
 if __name__ == "__main__":

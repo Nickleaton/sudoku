@@ -17,7 +17,7 @@ class Window(Region):
 
     # TODO Offsets in Coords
 
-    offsets = [
+    offsets = (
         Coord(-1, -1),
         Coord(-1, 0),
         Coord(-1, 1),
@@ -27,7 +27,7 @@ class Window(Region):
         Coord(1, -1),
         Coord(1, 0),
         Coord(1, 1)
-    ]
+    )
 
     @classmethod
     def is_sequence(cls) -> bool:

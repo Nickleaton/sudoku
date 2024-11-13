@@ -8,4 +8,3 @@ class SideToken(SimpleToken):
     def __init__(self):
         """Initialize a side token with pattern '([TLBR])'."""
         super().__init__(r"([TLBR])")
-

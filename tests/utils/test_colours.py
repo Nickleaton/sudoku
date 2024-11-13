@@ -35,6 +35,10 @@ class TestColourSet(unittest.TestCase):
         color = ColourSet.colour("parity", 1)
         self.assertEqual(color, "blue")
 
+    def test_invalid_name(self):
+        with self.assertRaises(ColourException):
+            _ = ColourSet.colours("xxxx")
+
     def test_invalid_colour_index(self):
         # Test for index out of range
         with self.assertRaises(IndexError):

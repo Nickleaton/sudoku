@@ -30,8 +30,7 @@ class HighCell(SimpleCellReference):
         """
         return digit in HighCell.digits()
 
-    @classmethod
-    def letter(cls) -> str:
+    def letter(self) -> str:
         """Returns the letter representation of the HighCell.
 
         Returns:

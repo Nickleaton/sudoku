@@ -61,6 +61,7 @@ class Order(Enum):
         """
         return f"Order.{self.name}"
 
+
 # Map to handle negation of Order
 NEGATION_MAP: Dict[Order, Order] = {
     Order.INCREASING: Order.DECREASING,

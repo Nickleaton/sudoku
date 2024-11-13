@@ -79,7 +79,7 @@ class CellReference(Item):
         """
         return None
 
-    def letter(self) -> str:  # pylint: disable=no-self-use
+    def letter(self) -> str:
         """Returns the letter representation of the cell.
 
         Returns:

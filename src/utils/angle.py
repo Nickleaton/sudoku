@@ -37,7 +37,7 @@ class Angle:
         Args:
             radians (float): The angle in radians.
         """
-        self.angle = radians * 180.0 / math.pi
+        self.angle = (radians * 180.0 / math.pi) % 360.0  # Normalize the angle in degrees
 
     @property
     def degrees(self) -> float:
@@ -121,7 +121,7 @@ class Angle:
             AngleException: If `other` is not an Angle.
         """
         if isinstance(other, Angle):
-            return self.angle == other.angle
+            return math.isclose(self.angle, other.angle, abs_tol=1e-9)
         raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
 
     def __lt__(self, other: object) -> bool:

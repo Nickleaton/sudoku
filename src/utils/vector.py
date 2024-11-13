@@ -91,8 +91,9 @@ class Vector:
             return Vector(self.start + other.start, self.end + other.end)
         raise VectorException(f'Addition  not supported for Vector and {other.__class__.__name__}')
 
+    # pylint: disable=too-many-return-statements
     @property
-    def direction(self) -> Direction:  # pylint: disable=too-many-return-statements
+    def direction(self) -> Direction:
         """Determine the direction of the vector.
 
         Returns:
@@ -100,14 +101,20 @@ class Vector:
         """
         # Only for orthogonal
         if self.start.row == self.end.row:  # Horizontal
-            return Direction.LEFT if self.start.column < self.end.column else \
-                Direction.RIGHT if self.start.column > self.end.column else \
-                    Direction.CENTER
+            if self.start.column < self.end.column:
+                return Direction.LEFT
+            if self.start.column > self.end.column:
+                return Direction.RIGHT
+            return Direction.CENTER
+
         if self.start.column == self.end.column:  # Vertical
-            return Direction.UP if self.start.row < self.end.row else \
-                Direction.DOWN if self.start.row > self.end.row else \
-                    Direction.CENTER
-        return Direction.CENTER # pragma: no cover
+            if self.start.row < self.end.row:
+                return Direction.UP
+            if self.start.row > self.end.row:
+                return Direction.DOWN
+            return Direction.CENTER
+
+        return Direction.CENTER  # pragma: no cover
 
     def mergeable(self, other: 'Vector') -> bool:
         """Check if this vector can be merged with another vector.
@@ -119,13 +126,14 @@ class Vector:
             bool: True if the vectors are mergeable, False otherwise.
         """
         # Check all combinations of start and ends and if connected
-        connected: bool = (
-                self.start == other.start or
-                self.start == other.end or
-                self.end == other.start or
-                self.end == other.end
-        )
-        return connected and self.direction.parallel(other.direction)
+        is_connected = False
+
+        is_connected = is_connected or self.start == other.start
+        is_connected = is_connected or self.start == other.end
+        is_connected = is_connected or self.end == other.start
+        is_connected = is_connected or self.end == other.end
+
+        return is_connected and self.direction.parallel(other.direction)
 
     def merge(self, other: 'Vector') -> 'Vector':
         """Merge this vector with another vector if they are mergeable.

@@ -1,6 +1,6 @@
 import unittest
 
-from src.utils.bound import Bounds
+from src.utils.bounds import Bounds
 
 
 class TestBounds(unittest.TestCase):

@@ -17,7 +17,7 @@ class MagicSquare(Region):
     """Class representing a Magic Square puzzle in Sudoku."""
 
     # The predefined lines for the magic square, representing rows, columns, and diagonals
-    lines = [
+    lines = (
         [1, 2, 3],
         [4, 5, 6],
         [7, 8, 9],
@@ -26,7 +26,7 @@ class MagicSquare(Region):
         [3, 6, 9],
         [1, 5, 9],
         [3, 5, 7]
-    ]
+    )
 
     def __init__(self, board: Board, center: Coord, corner: Coord):
         """

@@ -5,7 +5,7 @@ from src.utils.direction import Direction
 from src.utils.vector import Vector, VectorException
 
 
-class TestLine(unittest.TestCase):
+class TestVector(unittest.TestCase):
 
     def setUp(self) -> None:
         self.line_one = Vector(Coord(0, 0), Coord(1, 0))
@@ -42,6 +42,12 @@ class TestLine(unittest.TestCase):
 
         with self.assertRaises(VectorException):
             _ = self.zero == "xxxx"
+
+    def test_vector_lt_invalid_comparison(self):
+        vector1 = Vector(Coord(1, 1), Coord(2, 2))
+        with self.assertRaises(VectorException):
+            # noinspection PyTypeChecker
+            _ = vector1 < "not a vector"
 
     def test_mergeable(self):
         self.assertTrue(self.line_one.mergeable(self.line_one))
@@ -132,6 +138,12 @@ class TestLine(unittest.TestCase):
         self.assertFalse(vector2 <= vector1)
         self.assertFalse(vector2 <= vector1)
         self.assertFalse(vector1 < vector3)
+
+    def test_vector_direction_center(self):
+        start = Coord(1, 1)
+        end = Coord(1, 1)  # Same as start to trigger CENTER
+        vector = Vector(start, end)
+        assert vector.direction == Direction.CENTER, "Expected direction to be CENTER for identical start and end coordinates."
 
 
 if __name__ == '__main__':  # pragma: no cover

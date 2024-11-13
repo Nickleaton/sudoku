@@ -62,7 +62,6 @@ class Command(ABC):
         Raises:
             CommandException: If the preconditions are not met.
         """
-        pass
 
     def execute(self, problem: Problem) -> None:
         """

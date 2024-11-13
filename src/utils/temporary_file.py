@@ -1,12 +1,4 @@
-"""Generate a temporary filename in the temp directory.
-
-Example:
-    ```python
-    with TemporaryFile() as tf:
-        with open(tf.name, 'w') as f:
-            f.write("Hello World")
-    ```
-"""
+"""Generate a temporary filename in the temp directory."""
 import logging
 from pathlib import Path
 from typing import Optional, Type
@@ -29,6 +21,10 @@ class TemporaryFile:
 
         Raises:
             OSError: If the directory cannot be created.
+         Example:
+            with TemporaryFile() as tf:
+                with open(tf.name, 'w') as f:
+                    f.write("Hello World")
         """
         if not isinstance(config.temporary_directory, (str, Path)):
             raise ValueError("Temporary directory must be a valid path string or Path object")

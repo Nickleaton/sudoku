@@ -31,8 +31,8 @@ class LowCell(SimpleCellReference):
         """
         return digit in LowCell.digits()
 
-    @classmethod
-    def letter(cls) -> str:
+    def letter(self) -> str:
+
         """Returns the letter representation of a LowCell.
 
         Returns:

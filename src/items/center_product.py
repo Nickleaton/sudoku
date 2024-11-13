@@ -5,15 +5,15 @@ from src.glyphs.text_glyph import TextGlyph
 from src.items.cell import Cell
 from src.items.product import Product
 from src.utils.coord import Coord
+from src.utils.direction import Direction
 from src.utils.rule import Rule
 
 
 class CenterProduct(Product):
 
     def get_cells(self) -> List[Cell]:
-        offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
         cells = []
-        for offset in offsets:
+        for offset in Direction.orthogonals():
             location = self.position + offset
             if self.board.is_valid_coordinate(location):
                 cells.append(Cell.make(self.board, int(location.row), int(location.column)))

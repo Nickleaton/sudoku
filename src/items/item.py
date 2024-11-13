@@ -4,7 +4,6 @@ from typing import Optional, List, Set, Type, Dict, Iterator
 
 import strictyaml
 from sortedcontainers import SortedDict
-from typing_extensions import Self
 
 from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
@@ -17,6 +16,7 @@ from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuException
 
 
+# pylint: disable=too-many-public-methods
 class Item(ABC):
     """
     Top level of the Item hierarchy.
@@ -83,8 +83,7 @@ class Item(ABC):
     def schema(cls) -> strictyaml.Validator | strictyaml.Optional:
         if cls.is_sequence():
             return strictyaml.Seq(cls.parser())
-        else:
-            return cls.parser()
+        return cls.parser()
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Item':
@@ -320,7 +319,6 @@ class Item(ABC):
             solver (PulpSolver): A solver that is solving the board associated
                 with this item.
         """
-        pass
 
     def bookkeeping(self) -> None:
         """
@@ -330,7 +328,6 @@ class Item(ABC):
         lp model. The method is expected to add any constraints required to
         ensure that the bookkeeping for this item is done correctly.
         """
-        pass
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         """

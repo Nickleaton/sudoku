@@ -32,8 +32,8 @@ class TestImageCommand(TestSimpleCommand):
             self.command.target.unlink(missing_ok=True)
         self.command.execute(self.problem)
         self.assertTrue(self.command.target.exists())
-        # if self.command.file_name.exists():
-        #     self.command.file_name.unlink(missing_ok=True)
+        # if self.command.file.exists():
+        #     self.command.file.unlink(missing_ok=True)
 
     def xtest_formats(self):
         for fmt in ImageFormat:

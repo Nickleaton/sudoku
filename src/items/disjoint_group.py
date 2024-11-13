@@ -9,7 +9,7 @@ from src.utils.rule import Rule
 
 
 class DisjointGroup(StandardRegion):
-    offsets = [
+    offsets = (
         (0, 0),
         (0, 3),
         (0, 6),
@@ -19,7 +19,7 @@ class DisjointGroup(StandardRegion):
         (6, 0),
         (6, 3),
         (6, 6)
-    ]
+    )
 
     def __init__(self, board: Board, index: int):
         r = (index - 1) // 3 + 1

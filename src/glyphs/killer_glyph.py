@@ -2,7 +2,6 @@ from typing import List, Optional
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
-from svgwrite.shapes import Line
 
 from src.glyphs.glyph import Glyph, config
 from src.utils.coord import Coord

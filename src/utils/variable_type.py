@@ -30,7 +30,7 @@ class VariableType(Enum):
             return f"{pow(10, value):5.0f}"
         if self == VariableType.LOG_FLOAT:
             return f"{pow(10, value):5.3f}"
-        return 'Unknown'
+        return "Unknown"  # pragma: no cover
 
     def __repr__(self) -> str:
         """Return the string representation of the VariableType.

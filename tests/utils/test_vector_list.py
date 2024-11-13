@@ -44,6 +44,14 @@ class TestVectorList(unittest.TestCase):
             ]
         )
 
+    def test_vector_list_len(self):
+        self.assertEqual(3, len(self.vectors1))
+
+    def test_vector_list_iterator(self):
+        iterated_items = list(self.vectors1)
+        for idx, vector in enumerate(iterated_items):
+            self.assertEqual(vector, self.vectors1[idx])
+
     def test_equality(self):
         self.assertEqual(self.vectors1, self.vectors1)
         self.assertNotEqual(self.vectors1, self.vectors2)

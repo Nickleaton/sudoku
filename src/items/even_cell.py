@@ -22,8 +22,7 @@ class EvenCell(SimpleCellReference):
         """
         return digit % 2 == 0
 
-    @classmethod
-    def letter(cls) -> str:
+    def letter(self) -> str:
         """Returns the letter representation of the EvenCell.
 
         Returns:

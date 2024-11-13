@@ -1,14 +1,8 @@
-from typing import List
-
-from src.items.board import Board
-from src.items.cell import Cell
 from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
 
 class LessThanEqualDifferencePair(DifferencePair):
-    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, digits: List[int]):
-        super().__init__(board, cell_1, cell_2, digits)
 
     @property
     def tags(self) -> set[str]:

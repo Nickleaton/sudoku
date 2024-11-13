@@ -8,7 +8,6 @@ from typing import Optional, Any, Dict
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
 from src.items.board import Board
-from src.solvers.answer import Answer
 from src.solvers.solver import Solver
 from src.utils.config import Config
 
@@ -51,46 +50,52 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
         # Create the basic model framework
         self.variables: Dict[Any, LpVariable] = {}
-        self.choices: Dict[Any, LpVariable] = LpVariable.dicts("Choice",
-                                        (board.digit_range, board.row_range, board.column_range),
-                                        0,
-                                        1,
-                                        LpInteger
-                                        )
-        self.values: Dict[Any, LpVariable] = LpVariable.dicts("Values",
-                                       (board.row_range, board.column_range),
-                                       1,
-                                       board.maximum_digit,
-                                       LpInteger
-                                       )
+        self.choices: Dict[Any, LpVariable] = LpVariable.dicts(
+            "Choice",
+            (board.digit_range, board.row_range, board.column_range),
+            0,
+            1,
+            LpInteger
+        )
+        self.values: Dict[Any, LpVariable] = LpVariable.dicts(
+            "Values",
+            (board.row_range, board.column_range),
+            1,
+            board.maximum_digit,
+            LpInteger
+        )
 
-        self.parity: Dict[Any, LpVariable] = LpVariable.dicts("Parity",
-                                       (board.row_range, board.column_range),
-                                       0,
-                                       1,
-                                       LpInteger
-                                       )
+        self.parity: Dict[Any, LpVariable] = LpVariable.dicts(
+            "Parity",
+            (board.row_range, board.column_range),
+            0,
+            1,
+            LpInteger
+        )
 
-        self.levels: Dict[Any, LpVariable] = LpVariable.dicts("Low",
-                                    (board.row_range, board.column_range, board.levels),
-                                    0,
-                                    1,
-                                    LpInteger
-                                    )
+        self.levels: Dict[Any, LpVariable] = LpVariable.dicts(
+            "Low",
+            (board.row_range, board.column_range, board.levels),
+            0,
+            1,
+            LpInteger
+        )
 
-        self.modulos: Dict[Any, LpVariable] = LpVariable.dicts("Low",
-                                    (board.row_range, board.column_range, board.modulos),
-                                    0,
-                                    1,
-                                    LpInteger
-                                    )
+        self.modulos: Dict[Any, LpVariable] = LpVariable.dicts(
+            "Low",
+            (board.row_range, board.column_range, board.modulos),
+            0,
+            1,
+            LpInteger
+        )
 
-        self.prime: Dict[Any, LpVariable] = LpVariable.dicts("Low",
-                                    (board.row_range, board.column_range, board.primes),
-                                    0,
-                                    1,
-                                    LpInteger
-                                    )
+        self.prime: Dict[Any, LpVariable] = LpVariable.dicts(
+            "Low",
+            (board.row_range, board.column_range, board.primes),
+            0,
+            1,
+            LpInteger
+        )
 
         for row, column in product(board.row_range, board.column_range):
             total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)

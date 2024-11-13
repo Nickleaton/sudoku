@@ -1,18 +1,9 @@
 from src.commands.command import Command
 from src.commands.composed_command import ComposedCommand
-from src.commands.problem import Problem
 
 
 class SimpleCommand(Command):
     """Base class for simple commands."""
-
-    def execute(self, problem: Problem) -> None:
-        """Execute the command.
-
-        Args:
-            problem (Problem): The problem to execute the command on.
-        """
-        super().execute(problem)
 
     def __or__(self, other: 'Command') -> ComposedCommand:
         """Combine two commands into a single composed command.

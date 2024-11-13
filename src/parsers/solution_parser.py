@@ -13,7 +13,7 @@ class SolutionParser(Parser):
     def __init__(self):
         """Initialize the KnownParser with a regular expression for validating input strings."""
         super().__init__(pattern=r"^\d+$", example_format="123456789")
-        self.token = DigitToken() * (1,999)
+        self.token = DigitToken() * (1, 999)
 
     def parse(self, text: str) -> None:
         """Parse the input string and stores the result in the 'result' attribute.

@@ -1,5 +1,8 @@
 """CellPairEqualValueParser."""
 from src.parsers.parser import Parser, ParserError
+from src.tokens.cell_token import CellToken
+from src.tokens.symbols import DashToken, EqualsToken
+from src.tokens.value_token import ValueToken
 
 
 class CellPairEqualValueParser(Parser):
@@ -12,6 +15,7 @@ class CellPairEqualValueParser(Parser):
         and 'dd' is a value.
         """
         super().__init__(pattern=f"^{Parser.CELL}-{Parser.CELL}={Parser.VALUE}$", example_format="r1c1-r2c2=dd")
+        self.token = CellToken() + DashToken() + CellToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
         """Parse the input text for the cell pair equal value format.
@@ -28,6 +32,7 @@ class CellPairEqualValueParser(Parser):
             ValueError: If there is an issue parsing the values.
         """
         # Check if the input text matches the defined regular expression pattern.
+        text = text.replace(" ", "")
         if not self.regular_expression.match(text):
             raise ParserError(
                 f"{self.__class__.__name__} expects a cell pair equal value format like {self.example_format}")

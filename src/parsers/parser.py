@@ -31,7 +31,8 @@ class Parser(Regex):
         pattern (str): The regular expression pattern used for parsing.
         example_format (Optional[str]): A string example format for expected input.
         token (Optional[Token]): A token used for further processing or validation.
-        answer (Optional[Dict[str, str | List] | List]): The parsed result, can be a list or a dictionary depending on the implementation.
+        answer (Optional[Dict[str, str | List] | List]): The parsed result,
+                can be a list or a dictionary depending on the implementation.
     """
 
     DIGIT = r"(\d)"
@@ -105,7 +106,6 @@ class Parser(Regex):
         Raises:
             NotImplementedError: This method should be implemented in subclasses.
         """
-        pass
 
     def __repr__(self) -> str:
         """Return a string representation of the Parser object.

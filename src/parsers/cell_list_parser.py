@@ -5,7 +5,6 @@ from typing import List
 from src.parsers.parser import Parser, ParserError
 from src.tokens.cell_token import CellToken
 from src.tokens.symbols import CommaToken
-from src.tokens.token import OneOrMoreToken, SequenceToken
 
 
 class CellListParser(Parser):

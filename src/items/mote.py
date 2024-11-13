@@ -49,8 +49,10 @@ class Mote(Region):
             Rule(
                 "MOTE",
                 1,
-                "More odd than even or MOTE cages. " +
-                "In each cage, the number of odd digits is strictly greater than the number of even digits."
+                (
+                    "More odd than even or MOTE cages. "
+                    "In each cage, the number of odd digits is strictly greater than the number of even digits."
+                )
             )
         ]
 

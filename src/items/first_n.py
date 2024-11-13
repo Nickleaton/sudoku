@@ -62,7 +62,6 @@ class FirstN(Region):
         """ Return the parser for this item. """
         return FrameParser()
 
-
     @property
     def tags(self) -> set[str]:
         """

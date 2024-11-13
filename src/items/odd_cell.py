@@ -30,8 +30,7 @@ class OddCell(SimpleCellReference):
         """
         return None
 
-    @classmethod
-    def letter(cls) -> str:
+    def letter(self) -> str:
         """Returns the letter representation of an OddCell.
 
         Returns:

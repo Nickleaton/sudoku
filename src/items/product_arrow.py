@@ -72,6 +72,7 @@ class ProductArrowLine(Line):
             }
         }
 
+    # TODO: Implement the constraint logic for the ProductArrowLine
     def add_constraint(self, solver: PulpSolver) -> None:
         """Adds product constraints to the Pulp solver.
 
@@ -82,5 +83,3 @@ class ProductArrowLine(Line):
         Note:
             This method is currently not implemented.
         """
-        # TODO: Implement the constraint logic for the ProductArrowLine
-        pass

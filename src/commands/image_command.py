@@ -42,8 +42,8 @@ class ImageFormat(Enum):
         # Try to return the corresponding ImageFormat
         try:
             return cls(suffix)
-        except ValueError:
-            raise ValueError(f"Unsupported image format for suffix: {suffix}")
+        except ValueError as exc:
+            raise ValueError(f"Unsupported image format for suffix: {suffix}") from exc
 
 
 class ImageCommand(SimpleCommand):
@@ -113,7 +113,7 @@ class ImageCommand(SimpleCommand):
         """
         Return a string representation of the object.
 
-        The string is of the form "ImageCommand(problem_field, file_name)". The
+        The string is of the form "ImageCommand(problem_field, file)". The
         representation is useful for debugging and logging.
 
         Returns:

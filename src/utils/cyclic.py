@@ -30,8 +30,8 @@ class Cyclic(Enum):
         """
         try:
             return Cyclic(letter)
-        except ValueError:
-            raise ValueError(f"Invalid letter '{letter}'. Must be 'C' or 'A'.")
+        except ValueError as exc:
+            raise ValueError(f"Invalid letter '{letter}'. Must be 'C' or 'A'.") from exc
 
     def __repr__(self) -> str:
         """

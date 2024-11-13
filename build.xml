@@ -3,9 +3,6 @@
     <target name="info">
         <echo>Hello World - Sudoku!</echo>
     </target>
-    <target name="echo">
-        <echo>Echo Echo</echo>
-    </target>
     <target name="build" depends="install,update,pylint,mypy">
         <echo>Build</echo>
     </target>
@@ -103,9 +100,11 @@
         <mkdir dir="output/lp"/>
         <mkdir dir="output/svg"/>
         <exec executable="pytest" failonerror="false" taskname="pytest">
-            <arg value="tests/utils"/>
+            <arg value="--cov=src"/>
+            <arg value="tests"/>
             <arg value="--rootdir=src"/>
             <arg value="--html=output/tests/utils.html"/>
+            <arg value="--cov-report=html"/>
         </exec>
     </target>
 
@@ -113,17 +112,15 @@
 
     <target name="pylint.src">
         <exec executable="pylint">
+            <arg value="--disable=loop-invariant-statement,loop-invariant-statement,unused-argument,broad-exception-raised,too-many-positional-arguments,fixme"/>
+            <arg value="--max-args=10"/>
             <arg value="src"/>
-            <arg value="--output-format=html"/>
-            <arg value="--output=output/pylint/src.html"/>
         </exec>
     </target>
 
     <target name="pylint.tests">
         <exec executable="pylint">
             <arg value="tests"/>
-            <arg value="--output-format=html"/>
-            <arg value="--output=output/pylint/tests.html"/>
         </exec>
     </target>
 
@@ -151,13 +148,43 @@
         </exec>
     </target>
 
-    <target name="pydocstyle.src">
+    <!-- Macro definition for running pydocstyle on a specified name -->
+    <macrodef name="run-pydocstyle">
+        <attribute name="name"/>
+        <sequential>
+            <!-- Execute pydocstyle and store the result in a property -->
+            <exec executable="pydocstyle"
+                  failonerror="false"
+                  taskname="pydocstyle"
+                  output="output/pydocstyle/@{name}.txt"
+                  resultproperty="pydocstyle.@{name}.result">
+                <arg value="src/@{name}/"/>
+            </exec>
+
+            <!-- Set a status property to "pass" or "fail" based on the result -->
+            <condition property="pydocstyle.@{name}.status" value="fail">
+                <not>
+                    <equals arg1="${pydocstyle.@{name}.result}" arg2="0"/>
+                </not>
+            </condition>
+            <condition property="pydocstyle.@{name}.status" value="pass">
+                <equals arg1="${pydocstyle.@{name}.result}" arg2="0"/>
+            </condition>
+
+            <!-- Echo the status message for this directory -->
+            <echo message="pydocstyle ${pydocstyle.@{name}.status}: '@{name}'" />
+        </sequential>
+    </macrodef>
+
+    <target name="pydocstyle">
         <mkdir dir="output/pydocstyle"/>
-        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/src.txt">
-            <arg value="--ignore"/>
-            <arg value="D203,D100,D101,D102,D105,D107"/>
-            <arg value="src/"/>
-        </exec>
+        <run-pydocstyle name="commands"/>
+        <run-pydocstyle name="glyphs"/>
+        <run-pydocstyle name="items"/>
+        <run-pydocstyle name="parsers"/>
+        <run-pydocstyle name="solvers"/>
+        <run-pydocstyle name="tokens"/>
+        <run-pydocstyle name="utils"/>
     </target>
 
     <target name="flake8.src">
@@ -186,6 +213,7 @@
             <arg value="tests/"/>
         </exec>
     </target>
+
     <target name="convert-json-to-yaml">
         <mkdir dir="problems/fpuzzles/yaml"/>
         <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
@@ -209,6 +237,18 @@
             <arg value="problems/fpuzzles/goodjson/yjryhuka.json"/>
             <arg value="--destination"/>
             <arg value="C:\Users\nickl\AppData\Roaming\JetBrains\PyCharm2022.3\scratches"/>
+        </exec>
+    </target>
+
+    <target name="radon">
+        <mkdir dir="output/radon"/>
+        <exec executable="radon.exe" failonerror="true" output="output/radon/cc.txt">
+            <arg value="cc"/>
+            <arg value="src"/>
+        </exec>
+        <exec executable="radon.exe" failonerror="true" output="output/radon/mi.txt">
+            <arg value="mi"/>
+            <arg value="src"/>
         </exec>
     </target>
 </project>

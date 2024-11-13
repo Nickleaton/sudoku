@@ -78,7 +78,7 @@ class CreateLinearProgramCommand(SimpleCommand):
         #             problem[self.target] = f.read()
         with TemporaryFile() as tf:
             problem[self.solver].save_lp(str(tf.name))
-            with open(tf.name) as f:
+            with open(tf.name, encoding='utf-8') as f:
                 problem[self.target] = f.read()
 
     def __repr__(self) -> str:

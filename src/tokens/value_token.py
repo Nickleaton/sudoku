@@ -8,5 +8,3 @@ class ValueToken(SimpleToken):
     def __init__(self):
         """Initialize a value token with pattern."""
         super().__init__(r"(\d+)")
-
-

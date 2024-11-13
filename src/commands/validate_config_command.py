@@ -7,7 +7,7 @@ from pathlib import Path
 
 from strictyaml import YAMLValidationError, dirty_load
 
-from config_schema import problem_schema
+from src.parsers.config_schema import problem_schema
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand

@@ -36,6 +36,6 @@ class Functions:
         Raises:
             IndexError: If n is out of the range of the predefined list.
         """
-        if not (0 <= n < len(PRIMES)):
+        if n < 0 or n >= len(PRIMES):
             raise IndexError(f"Index {n} is out of bounds for the prime list.")
         return PRIMES[n]

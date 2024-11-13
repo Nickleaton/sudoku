@@ -9,7 +9,9 @@ from src.utils.rule import Rule
 
 
 class AntiDiagonal(Diagonal):
-    """Represents an anti-diagonal constraint on a Sudoku board, enforcing uniqueness of digits along specified diagonals."""
+    """
+    Represents an anti-diagonal constraint on a Sudoku board, enforcing uniqueness of digits along specified diagonals.
+    """
 
     def __init__(self, board: Board):
         """
@@ -31,9 +33,16 @@ class AntiDiagonal(Diagonal):
         Provides the rule associated with the anti-diagonal constraint.
 
         Returns:
-            List[Rule]: A list containing a rule that specifies the number of unique digits on each marked main diagonal.
+            List[Rule]: A list containing a rule that specifies the number of unique digits
+                        on each marked main diagonal.
         """
-        return [Rule('AntiDiagonal', 1, f"Each marked main diagonal contains exactly {self.size} different digits")]
+        return [
+            Rule(
+                'AntiDiagonal',
+                1,
+                f"Each marked main diagonal contains exactly {self.size} different digits"
+            )
+        ]
 
     @property
     def tags(self) -> set[str]:
@@ -47,7 +56,8 @@ class AntiDiagonal(Diagonal):
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """
-        Adds a constraint to enforce that the digit distribution is identical across marked diagonals in different boxes.
+        Adds a constraint to enforce that the digit distribution is identical
+        across marked diagonals in different boxes.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.

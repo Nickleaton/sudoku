@@ -22,22 +22,6 @@ class NullCommand(SimpleCommand):
         super().execute(problem)
         logging.info("NullCommand")
 
-    def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
-
-        This method is a no-op and exists solely to fulfill the abstract
-        base class requirement of the SimpleCommand class. NullCommand does
-        not have any preconditions.
-
-        Parameters:
-            problem (Problem): The problem to check
-
-        Returns:
-            None
-        """
-        pass
-
     def __repr__(self) -> str:
         """
         Return a string representation of the object.

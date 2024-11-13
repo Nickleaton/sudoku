@@ -19,7 +19,8 @@ class Matrix:
         d (int): The element in the second row, second column of the matrix.
     """
 
-    def __init__(self, name: str, a: int, b: int, c: int, d: int):  # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-positional-arguments
+    def __init__(self, name: str, a: int, b: int, c: int, d: int):
         """
         Initialize a Matrix with given parameters.
 

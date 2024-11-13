@@ -3,8 +3,10 @@ from tempfile import NamedTemporaryFile
 from typing import Dict
 
 import orloge
+
 from src.commands.command import CommandException, Command
 from src.commands.problem import Problem
+
 
 class AnalyseLogFileCommand(Command):
     """

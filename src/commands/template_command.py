@@ -62,7 +62,7 @@ class TemplateCommand(SimpleCommand):
         """
         if self.template is None:
             logging.info(f"Loading template {self.template_file}")
-            with open(self.template_file) as f:
+            with open(self.template_file, encoding='utf-8') as f:
                 self.template = jinja2.Template(source=f.read())
         logging.info(f"Creating {self.target}")
         problem[self.target] = self.template.render(problem)

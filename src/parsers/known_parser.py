@@ -25,15 +25,11 @@ class KnownParser(Parser):
             - 'e' for even,
             - 'o' for odd,
             - 'f' for a fortress cell (must be greater than its orthogonal neighbors).
-
-        Args:
-            None
         """
         super().__init__(pattern=f"^{Parser.KNOWN}+$", example_format="123456789")
         self.token = DigitToken() * (1, 999)
 
-    @classmethod
-    def help(cls) -> str:
+    def help(self) -> str:
         """Return the help string for the KnownParser.
 
         The help string describes the syntax and the valid values or restrictions for the known string.

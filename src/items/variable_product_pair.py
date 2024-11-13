@@ -1,6 +1,4 @@
-"""
-Kropki Dots
-"""
+"""Kropki Dots."""
 from typing import List, Dict, Optional
 
 from pulp import LpElement
@@ -49,8 +47,8 @@ class VariableProductPair(VariablePair):
             solver (PulpSolver): The solver instance to use for variable constraints.
 
         Returns:
-            Optional[LpElement]: The expression representing the target constraints based on the logarithm of cell values,
-                                 or None if unable to calculate.
+            Optional[LpElement]: The expression representing the target constraints based
+                                 on the logarithm of cell values,or None if unable to calculate.
         """
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
         x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)

@@ -26,6 +26,8 @@ class LoadConfigCommand(SimpleCommand):
         super().__init__()
         self.source: Path = Path(source) if isinstance(source, str) else source
         self.target: str = target
+        self.requirements = ['config']
+        self.target = 'target'
 
     def precondition_check(self, problem: Problem) -> None:
         """

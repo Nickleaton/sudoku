@@ -33,6 +33,9 @@ class TestCoordList(unittest.TestCase):
         self.coords1.add(new_coord)
         self.assertIn(new_coord, self.coords1)
         self.assertEqual(len(self.coords1), 4)  # Ensure length increased
+        with self.assertRaises(CoordListException):
+            # noinspection PyTypeChecker
+            self.coords1.add ('xxxx')
 
     def test_add_duplicate_coord(self):
         existing_coord = Coord(1, 2)

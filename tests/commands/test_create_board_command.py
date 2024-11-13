@@ -13,6 +13,8 @@ class TestCreateBoardCommand(TestSimpleCommand):
         requirements = LoadConfigCommand(source=self.path, target='config')
         requirements.execute(self.problem)
         self.command = CreateBoardCommand()
+        self.requirements = ['config']
+        self.target = "board"
 
     @property
     def representation(self) -> str:

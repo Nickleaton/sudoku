@@ -7,6 +7,7 @@ import strictyaml
 from strictyaml import Validator
 
 from src.utils.coord import Coord
+from src.utils.functions import PRIMES
 
 
 class BoardType(Enum):
@@ -24,7 +25,6 @@ class BoxType(Enum):
 
 
 class Board:
-    PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(self,
@@ -60,7 +60,7 @@ class Board:
         self.maximum_digit = max(self.board_rows, self.board_columns)
         self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
-        self.primes = [p for p in self.PRIMES if p in self.digit_range]
+        self.primes = [p for p in PRIMES if p in self.digit_range]
         chunk_size: int = self.maximum_digit // 3
 
         self.levels = ['low', 'mid', 'high']

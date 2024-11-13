@@ -18,6 +18,14 @@ class TestTagList(unittest.TestCase):
             i += 1
         self.assertEqual(i, len(self.tags1))
 
+    def test_tag_list_len(self):
+        self.assertEqual(2, len(self.tags1))
+
+    def test_tag_list_iterator(self):
+        iterated_items = list(self.tags1)
+        for idx, vector in enumerate(iterated_items):
+            self.assertEqual(vector, self.tags1[idx])
+
     def test_equality(self):
         self.assertEqual(self.tags1, self.tags1)
         self.assertNotEqual(self.tags1, self.tags2)

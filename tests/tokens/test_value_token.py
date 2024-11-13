@@ -8,7 +8,7 @@ class TestValueToken(TestSimpleToken):
     """Test cases for the SideToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing QuadToken."""
+        """Set up example tokens specific for testing QuadrupleToken."""
         self.token = ValueToken()
         self.representation = "ValueToken()"
         self.pattern = r"(\d+)"

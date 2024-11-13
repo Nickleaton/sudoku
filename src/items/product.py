@@ -108,6 +108,7 @@ class Product(Region):
         """Returns a dictionary representation of the Product instance.
 
         Returns:
-            Dict: A dictionary where the key is the class name and the value is a string representing the position and product.
+            Dict: A dictionary where the key is the class name and the
+                  value is a string representing the position and product.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={self.product}"}

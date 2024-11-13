@@ -1,19 +1,15 @@
 import re
 from typing import List, Any, Dict
 
-from pulp import lpSum
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.quadruple_glyph import QuadrupleGlyph
 from src.items.board import Board
 from src.items.item import Item
 from src.parsers.quadruples_parser import QuadruplesParser
-from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
-from src.utils.rule import Rule
 
 
-class Quadruple(Item):
+class QuadrupleBase(Item):
     """Represents a quadruple, a set of four digits positioned on the board.
 
     This class handles the parsing, constraints, and visual representation of quadruples.
@@ -59,25 +55,6 @@ class Quadruple(Item):
         digit_str = "".join([str(digit) for digit in self.digits])
         return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, '{digit_str}')"
 
-    @property
-    def rules(self) -> List[Rule]:
-        """Returns the list of rules associated with this quadruple.
-
-        Returns:
-            List[Rule]: A list containing the rule for this quadruple.
-        """
-        return [Rule('Quadruple', 3, 'Digits appearing in at least one of the cells adjacent to the circle')]
-
-    def glyphs(self) -> List[Glyph]:
-        """Generates glyphs for the visual representation of the Quadruple.
-
-        Returns:
-            List[Glyph]: A list of glyphs representing the quadruple's position and digits.
-        """
-        return [
-            QuadrupleGlyph(class_name="Quadruple", position=self.position, numbers=self.numbers)
-        ]
-
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
         """Extracts the position and digits from the YAML configuration.
@@ -106,24 +83,18 @@ class Quadruple(Item):
         Returns:
             Item: A new Quadruple instance.
         """
-        position, numbers = Quadruple.extract(board, yaml)
+        position, numbers = QuadrupleBase.extract(board, yaml)
         return cls(board, position, numbers)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints for the quadruple in the solver model.
+    def glyphs(self) -> List[Glyph]:
+        """Generates glyphs for the visual representation of the Quadruple.
 
-        Args:
-            solver (PulpSolver): The solver to which the constraints will be added.
+        Returns:
+            List[Glyph]: A list of glyphs representing the quadruple's position and digits.
         """
-        offsets = [Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1)]
-        for digit in self.digits:
-            digit_sum = lpSum(
-                [
-                    solver.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
-                    for offset in offsets
-                ]
-            )
-            solver.model += digit_sum >= 1, f"{self.name}_{digit}"
+        return [
+            QuadrupleGlyph(class_name=self.__class__.__name__, position=self.position, numbers=self.numbers)
+        ]
 
     def to_dict(self) -> Dict:
         """Converts the Quadruple to a dictionary representation.
@@ -140,12 +111,12 @@ class Quadruple(Item):
             Dict: A dictionary defining the CSS styles for the quadruple glyph.
         """
         return {
-            ".QuadrupleCircle": {
+            ".QuadrupleBaseCircle": {
                 "stroke-width": 2,
                 "stroke": "black",
                 "fill": "white"
             },
-            ".QuadrupleText": {
+            ".QuadrupleBaseText": {
                 "stroke": "black",
                 "fill": "black",
                 "font-size": "30px"

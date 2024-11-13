@@ -16,6 +16,19 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(36, Functions.triangular(8))
         self.assertEqual(45, Functions.triangular(9))
 
+    def test_prime(self):
+        self.assertEqual(2, Functions.prime(0))
+        self.assertEqual(3, Functions.prime(1))
+        self.assertEqual(5, Functions.prime(2))
+        self.assertEqual(7, Functions.prime(3))
+        self.assertEqual(97, Functions.prime(24))  # Testing the last prime in the list
+
+        # Test out of bounds
+        with self.assertRaises(IndexError):
+            Functions.prime(-1)  # Negative index
+        with self.assertRaises(IndexError):
+            Functions.prime(25)  # Index out of range
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

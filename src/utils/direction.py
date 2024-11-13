@@ -2,8 +2,10 @@
 from enum import Enum
 from functools import cache
 from typing import List
+
 from src.utils.angle import Angle
 from src.utils.coord import Coord
+
 
 class Direction(Enum):
     """Enum representing eight compass directions and center with angle, offset, and location values."""
@@ -95,7 +97,12 @@ class Direction(Enum):
         Returns:
             List[Coord]: List of coordinates for UP_LEFT, UP_RIGHT, DOWN_RIGHT, DOWN_LEFT.
         """
-        return [Direction.UP_LEFT.offset, Direction.UP_RIGHT.offset, Direction.DOWN_RIGHT.offset, Direction.DOWN_LEFT.offset]
+        return [
+            Direction.UP_LEFT.offset,
+            Direction.UP_RIGHT.offset,
+            Direction.DOWN_RIGHT.offset,
+            Direction.DOWN_LEFT.offset
+        ]
 
     @staticmethod
     @cache
@@ -115,7 +122,16 @@ class Direction(Enum):
         Returns:
             List[Coord]: List of coordinates representing knight's movement.
         """
-        return [Coord(-1, -2), Coord(1, -2), Coord(-2, -1), Coord(-2, 1), Coord(-1, 2), Coord(1, 2), Coord(2, 1), Coord(2, -1)]
+        return [
+            Coord(-1, -2),
+            Coord(1, -2),
+            Coord(-2, -1),
+            Coord(-2, 1),
+            Coord(-1, 2),
+            Coord(1, 2),
+            Coord(2, 1),
+            Coord(2, -1)
+        ]
 
     @staticmethod
     @cache
@@ -136,6 +152,7 @@ class Direction(Enum):
             List[Coord]: List of all coordinates.
         """
         return [d.offset for d in Direction]
+
 
 # Define the opposite map outside the class to avoid `Direction` enum's limitations with subscripting.
 OPPOSITE_MAP = {

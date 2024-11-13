@@ -8,4 +8,3 @@ class KnownToken(SimpleToken):
     def __init__(self):
         """Initialize a known token with pattern '([0-9.lmheof])'."""
         super().__init__(r"([0-9.lmheof])")
-
