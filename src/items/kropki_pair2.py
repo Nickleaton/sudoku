@@ -1,5 +1,4 @@
-"""
-Kropki Dots
+"""Kropki Dots
 """
 
 from src.items.board import Board

@@ -59,7 +59,7 @@ class MountainLine(Line):
         For each adjacent pair of cells along the line, a constraint is added
         to ensure that the value increases toward the mountain peak and decreases afterward.
         """
-        for i in range(0, len(self.cells) - 1):
+        for i in range(len(self.cells) - 1):
             c1 = self.cells[i]
             c2 = self.cells[i + 1]
             name = f"{self.name}_{i}"

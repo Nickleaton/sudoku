@@ -28,4 +28,4 @@ class OddCellGlyph(Glyph):
         return Use(href="#OddCell-symbol", insert=self.coord.point.coordinates, class_="OddCell", height=100, width=100)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.coord)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"

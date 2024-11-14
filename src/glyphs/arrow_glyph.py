@@ -25,4 +25,4 @@ class ArrowGlyph(Glyph):
         return text
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.angle.angle)}, {repr(self.position)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.angle.angle!r}, {self.position!r})"

@@ -105,13 +105,13 @@ class EntropicLine(Line):
             solver (PulpSolver): The solver to which constraints are added.
         """
         # Prevent consecutive cells from containing the same category.
-        for i in range(0, len(self.cells) - 1):
+        for i in range(len(self.cells) - 1):
             pname = f"{self.cells[i].row}_{self.cells[i].column}_{self.cells[i + 1].row}_{self.cells[i + 1].column}"
             solver.model += self.low_total(solver, i) + self.low_total(solver, i + 1) <= 1, f"{self.name}_a_low_{pname}"
             solver.model += self.mid_total(solver, i) + self.mid_total(solver, i + 1) <= 1, f"{self.name}_a_mid_{pname}"
             solver.model += self.top_total(solver, i) + self.top_total(solver, i + 1) <= 1, f"{self.name}_a_top_{pname}"
         # Enforce every 3 cells to follow the same entropic pattern.
-        for i in range(0, len(self.cells) - 3):
+        for i in range(len(self.cells) - 3):
             pname = f"{self.cells[i].row}_{self.cells[i].column}_{self.cells[i + 3].row}_{self.cells[i + 3].column}"
             solver.model += self.low_total(solver, i) == self.low_total(solver, i + 3), f"{self.name}_j_low_{pname}"
             solver.model += self.mid_total(solver, i) == self.mid_total(solver, i + 3), f"{self.name}_j_mid_{pname}"

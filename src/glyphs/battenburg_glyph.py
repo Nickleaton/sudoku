@@ -10,8 +10,7 @@ from src.utils.direction import Direction
 
 
 class BattenburgGlyph(Glyph):
-    """
-    Battenburg
+    """Battenburg
 
     CSS classes are BattenburgGlyphPink and BattenburgGlyphYellow
     """
@@ -48,4 +47,4 @@ class BattenburgGlyph(Glyph):
         )
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.coord)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"

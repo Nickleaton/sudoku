@@ -18,14 +18,12 @@ from src.utils.side import Side
 
 
 class LittleKiller(Region):
-    """
-    Represents a Little Killer puzzle region where clues outside the grid
+    """Represents a Little Killer puzzle region where clues outside the grid
     give the sum of the indicated diagonals, which may contain repeated digits.
     """
 
     def __init__(self, board: Board, side: Side, cyclic: Cyclic, offset: int, total: int):
-        """
-        Constructs a LittleKiller region.
+        """Constructs a LittleKiller region.
 
         Args:
             board (Board): The board being used.
@@ -51,8 +49,7 @@ class LittleKiller(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """
-        Return whether this item is a sequence.
+        """Return whether this item is a sequence.
 
         Returns:
             bool: True, since LittleKiller is considered a sequence.
@@ -61,8 +58,7 @@ class LittleKiller(Region):
 
     @classmethod
     def parser(cls) -> LittleKillersParser:
-        """
-        Return the parser used to extract data for the LittleKiller region.
+        """Return the parser used to extract data for the LittleKiller region.
 
         Returns:
             LittleKillersParser: The parser for LittleKiller regions.
@@ -70,8 +66,7 @@ class LittleKiller(Region):
         return LittleKillersParser()
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the LittleKiller region.
+        """Return a string representation of the LittleKiller region.
 
         Returns:
             str: A string representation of the LittleKiller object.
@@ -88,8 +83,7 @@ class LittleKiller(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, Cyclic, Side]:
-        """
-        Extract the parameters for creating a LittleKiller region from the YAML input.
+        """Extract the parameters for creating a LittleKiller region from the YAML input.
 
         Args:
             board (Board): The board being used.
@@ -107,8 +101,7 @@ class LittleKiller(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Create a LittleKiller region from the YAML configuration.
+        """Create a LittleKiller region from the YAML configuration.
 
         Args:
             board (Board): The board being used.
@@ -121,8 +114,7 @@ class LittleKiller(Region):
         return LittleKiller(board, side, cyclic, offset, total)
 
     def glyphs(self) -> List[Glyph]:
-        """
-        Return a list of glyphs representing the LittleKiller region.
+        """Return a list of glyphs representing the LittleKiller region.
 
         Returns:
             List[Glyph]: A list of glyphs, including text and arrows.
@@ -139,8 +131,7 @@ class LittleKiller(Region):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Return the rules associated with the LittleKiller region.
+        """Return the rules associated with the LittleKiller region.
 
         Returns:
             List[Rule]: A list of rules defining the LittleKiller region's constraints.
@@ -155,8 +146,7 @@ class LittleKiller(Region):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Return the tags associated with the LittleKiller region.
+        """Return the tags associated with the LittleKiller region.
 
         Returns:
             set[str]: A set of tags associated with the LittleKiller region.
@@ -164,8 +154,7 @@ class LittleKiller(Region):
         return super().tags.union({'LittleKiller', 'Killer'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Add the constraint for the LittleKiller region to the solver.
+        """Add the constraint for the LittleKiller region to the solver.
 
         Args:
             solver (PulpSolver): The solver to add the constraint to.
@@ -175,8 +164,7 @@ class LittleKiller(Region):
         solver.model += total == self.total, name
 
     def to_dict(self) -> Dict:
-        """
-        Convert the LittleKiller region to a dictionary representation.
+        """Convert the LittleKiller region to a dictionary representation.
 
         Returns:
             Dict: A dictionary representing the LittleKiller region.
@@ -184,8 +172,7 @@ class LittleKiller(Region):
         return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}
 
     def css(self) -> Dict:
-        """
-        Return the CSS styling for the LittleKiller region.
+        """Return the CSS styling for the LittleKiller region.
 
         Returns:
             Dict: A dictionary of CSS styles for the LittleKiller region.

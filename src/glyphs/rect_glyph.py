@@ -18,7 +18,7 @@ class RectGlyph(Glyph):
         return Rect(transform=self.position.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.size)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.size!r})"
 
 
 class SquareGlyph(RectGlyph):
@@ -27,10 +27,10 @@ class SquareGlyph(RectGlyph):
         super().__init__(class_name, position, Coord(size, size))
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.size.row)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.size.row!r})"
 
 
 class BoxGlyph(RectGlyph):
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.size)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.size!r})"

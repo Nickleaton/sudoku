@@ -1,4 +1,4 @@
-""" Frame Sudoku """
+"""Frame Sudoku"""
 
 import re
 from typing import List, Any, Dict
@@ -15,15 +15,13 @@ from src.utils.side import Side
 
 
 class FrameProduct(FirstN):
-    """
-    Handle frame sudoku:
-        Numbers outside the frame equal the product first three numbers in the
-        corresponding row or column in the given direction
+    """Handle frame sudoku:
+    Numbers outside the frame equal the product first three numbers in the
+    corresponding row or column in the given direction
     """
 
     def __init__(self, board: Board, side: Side, index: int, product: int):
-        """
-        Construct
+        """Construct
         :param board: board being used
         :param side: the side where the total is to go
         :param index: the row or column of the total
@@ -33,8 +31,7 @@ class FrameProduct(FirstN):
         self.product = product
 
     def __repr__(self) -> str:
-        """
-        representation of the frame
+        """Representation of the frame
         :return: str
         """
         return (

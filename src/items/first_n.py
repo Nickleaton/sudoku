@@ -27,8 +27,7 @@ class FirstN(Region):
     """
 
     def __init__(self, board: Board, side: Side, index: int, count: int = 3):
-        """
-        Initializes a FirstN region on the board.
+        """Initializes a FirstN region on the board.
 
         Args:
             board (Board): The game board.
@@ -54,18 +53,17 @@ class FirstN(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Return True if this item is a sequence."""
         return True
 
     @classmethod
     def parser(cls) -> FrameParser:
-        """ Return the parser for this item. """
+        """Return the parser for this item."""
         return FrameParser()
 
     @property
     def tags(self) -> set[str]:
-        """
-        Returns a set of tags associated with the region.
+        """Returns a set of tags associated with the region.
 
         Returns:
             set[str]: The set of tags, including 'FirstN'.
@@ -74,8 +72,7 @@ class FirstN(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """
-        Extracts the necessary information from a YAML file.
+        """Extracts the necessary information from a YAML file.
 
         Args:
             board (Board): The game board.
@@ -92,8 +89,7 @@ class FirstN(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Creates a FirstN region from the extracted YAML data.
+        """Creates a FirstN region from the extracted YAML data.
 
         Args:
             board (Board): The game board.
@@ -106,8 +102,7 @@ class FirstN(Region):
         return cls(board, side, index, count)
 
     def to_dict(self) -> Dict:
-        """
-        Converts the FirstN region to a dictionary representation.
+        """Converts the FirstN region to a dictionary representation.
 
         Returns:
             Dict: A dictionary representing the region.
@@ -115,8 +110,7 @@ class FirstN(Region):
         return {self.__class__.__name__: f"{self.side.value}{self.index}{self.count}"}
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the FirstN region.
+        """Returns a string representation of the FirstN region.
 
         Returns:
             str: The string representation.

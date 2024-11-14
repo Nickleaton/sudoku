@@ -41,8 +41,7 @@ class Cell(Item):
         return f"Cell({self.row}, {self.column})"
 
     def marked_book(self) -> Optional[BookKeeping]:
-        """
-        Return the book for the cell.
+        """Return the book for the cell.
         """
         return self.book
 

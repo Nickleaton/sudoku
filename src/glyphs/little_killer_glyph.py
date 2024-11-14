@@ -43,8 +43,8 @@ class LittleKillerGlyph(Glyph):
             f"{self.__class__.__name__}"
             f"("
             f"'{self.class_name}', "
-            f"{repr(self.position)}, "
-            f"{repr(self.angle)}, "
-            f"{repr(self.value)}"
+            f"{self.position!r}, "
+            f"{self.angle!r}, "
+            f"{self.value!r}"
             f")"
         )

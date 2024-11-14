@@ -163,7 +163,7 @@ class Formulations:
         y = LpVariable(f"Minimum_{Formulations.count}", lower, upper, LpInteger)
         d = LpVariable.dicts(
             f"Minimum_{Formulations.count}_indicator",
-            (range(0, len(xi))),
+            (range(len(xi))),
             0,
             1,
             LpInteger
@@ -191,7 +191,7 @@ class Formulations:
         y = LpVariable(f"Maximum_{Formulations.count}", lower, upper, LpInteger)
         d = LpVariable.dicts(
             f"Maximum_{Formulations.count}_indicator",
-            (range(0, len(xi))),
+            (range(len(xi))),
             0,
             1,
             LpInteger

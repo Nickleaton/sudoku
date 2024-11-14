@@ -8,8 +8,7 @@ from src.utils.coord import Coord
 
 
 class PolyLineGlyph(Glyph):
-    """
-    Polyline is a line through a list of coordinates
+    """Polyline is a line through a list of coordinates
     """
 
     def __init__(self, class_name: str, coords: List[Coord], start: bool, end: bool):
@@ -34,7 +33,7 @@ class PolyLineGlyph(Glyph):
             f"("
             f"'{self.class_name}', "
             f"[{', '.join([repr(coord) for coord in self.coords])}], "
-            f"{repr(self.start)}, "
-            f"{repr(self.end)}"
+            f"{self.start!r}, "
+            f"{self.end!r}"
             f")"
         )

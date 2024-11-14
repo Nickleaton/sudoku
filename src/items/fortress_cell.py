@@ -76,8 +76,7 @@ class FortressCell(SimpleCellReference):
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Adds a constraint to the solver ensuring the digit in the fortress cell is larger than
+        """Adds a constraint to the solver ensuring the digit in the fortress cell is larger than
         its orthogonal neighbors.
 
         Args:

@@ -13,15 +13,13 @@ from src.utils.side import Side
 
 
 class MinMaxDifference(FirstN):
-    """
-    Handle frame sudoku:
+    """Handle frame sudoku:
     Numbers outside the frame equal the difference of the minimum and maximum values in the first three cells
     corresponding row or column in the given direction.
     """
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
-        """
-        Initialize a MinMaxDifference frame.
+        """Initialize a MinMaxDifference frame.
 
         Args:
             board (Board): The board where the frame is located.
@@ -33,8 +31,7 @@ class MinMaxDifference(FirstN):
         self.total = total
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the MinMaxDifference frame.
+        """Return a string representation of the MinMaxDifference frame.
 
         Returns:
             str: A string representation of the object.
@@ -49,8 +46,7 @@ class MinMaxDifference(FirstN):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Get the rules associated with the MinMaxDifference frame.
+        """Get the rules associated with the MinMaxDifference frame.
 
         Returns:
             List[Rule]: A list containing the rules.
@@ -65,8 +61,7 @@ class MinMaxDifference(FirstN):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """
-        Get the glyphs representing the MinMaxDifference frame.
+        """Get the glyphs representing the MinMaxDifference frame.
 
         Returns:
             List[Glyph]: A list containing the glyphs for this frame.
@@ -82,8 +77,7 @@ class MinMaxDifference(FirstN):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Get the tags associated with the MinMaxDifference frame.
+        """Get the tags associated with the MinMaxDifference frame.
 
         Returns:
             set[str]: A set containing the tags.
@@ -92,8 +86,7 @@ class MinMaxDifference(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """
-        Extract the side, index, and total from the YAML configuration.
+        """Extract the side, index, and total from the YAML configuration.
 
         Args:
             board (Board): The board the configuration is for.
@@ -113,8 +106,7 @@ class MinMaxDifference(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Create a MinMaxDifference frame from the YAML configuration.
+        """Create a MinMaxDifference frame from the YAML configuration.
 
         Args:
             board (Board): The board to create the frame on.
@@ -127,8 +119,7 @@ class MinMaxDifference(FirstN):
         return cls(board, side, index, total)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Add the constraint for the MinMaxDifference frame to the solver.
+        """Add the constraint for the MinMaxDifference frame to the solver.
 
         Args:
             solver (PulpSolver): The solver to add the constraint to.
@@ -139,8 +130,7 @@ class MinMaxDifference(FirstN):
         solver.model += Formulations.abs(solver.model, mini, maxi, self.board.maximum_digit) == self.total, self.name
 
     def to_dict(self) -> Dict:
-        """
-        Convert the MinMaxDifference frame to a dictionary representation.
+        """Convert the MinMaxDifference frame to a dictionary representation.
 
         Returns:
             Dict: The dictionary representation of the object.
@@ -148,8 +138,7 @@ class MinMaxDifference(FirstN):
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
     def css(self) -> Dict:
-        """
-        Get the CSS styles for rendering the MinMaxDifference frame.
+        """Get the CSS styles for rendering the MinMaxDifference frame.
 
         Returns:
             Dict: The dictionary containing CSS styles.

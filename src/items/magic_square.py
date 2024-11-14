@@ -29,8 +29,7 @@ class MagicSquare(Region):
     )
 
     def __init__(self, board: Board, center: Coord, corner: Coord):
-        """
-        Initialize the MagicSquare object.
+        """Initialize the MagicSquare object.
 
         Args:
             board (Board): The board where the magic square is located.
@@ -56,8 +55,7 @@ class MagicSquare(Region):
 
     @classmethod
     def parser(cls) -> CellParser:
-        """
-        Return the parser for the magic square.
+        """Return the parser for the magic square.
 
         Returns:
             CellParser: The parser for the magic square.
@@ -65,8 +63,7 @@ class MagicSquare(Region):
         return CellParser()
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the MagicSquare.
+        """Return a string representation of the MagicSquare.
 
         Returns:
             str: A string representation of the MagicSquare object.
@@ -82,8 +79,7 @@ class MagicSquare(Region):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Get the rules associated with the MagicSquare.
+        """Get the rules associated with the MagicSquare.
 
         Returns:
             List[Rule]: A list of rules related to the MagicSquare.
@@ -98,8 +94,7 @@ class MagicSquare(Region):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """
-        Get the glyphs representing the MagicSquare.
+        """Get the glyphs representing the MagicSquare.
 
         Returns:
             List[Glyph]: A list of glyphs for the magic square cells.
@@ -111,8 +106,7 @@ class MagicSquare(Region):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Get the tags associated with the MagicSquare.
+        """Get the tags associated with the MagicSquare.
 
         Returns:
             set[str]: A set of tags related to the MagicSquare.
@@ -121,8 +115,7 @@ class MagicSquare(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[Coord, Coord]:
-        """
-        Extract the center and corner coordinates for the MagicSquare from YAML.
+        """Extract the center and corner coordinates for the MagicSquare from YAML.
 
         Args:
             board (Board): The board to extract coordinates for.
@@ -138,8 +131,7 @@ class MagicSquare(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Create a MagicSquare item from the YAML configuration.
+        """Create a MagicSquare item from the YAML configuration.
 
         Args:
             board (Board): The board to create the MagicSquare on.
@@ -152,8 +144,7 @@ class MagicSquare(Region):
         return cls(board, center, corner)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Add constraints for the MagicSquare to the solver.
+        """Add constraints for the MagicSquare to the solver.
 
         Args:
             solver (PulpSolver): The solver to add constraints to.
@@ -177,8 +168,7 @@ class MagicSquare(Region):
         self.add_allowed_constraint(solver, self.even_cells, [2, 4, 6, 8])
 
     def to_dict(self) -> Dict:
-        """
-        Convert the MagicSquare to a dictionary.
+        """Convert the MagicSquare to a dictionary.
 
         Returns:
             Dict: A dictionary representing the MagicSquare.
@@ -188,8 +178,7 @@ class MagicSquare(Region):
         }
 
     def css(self) -> Dict:
-        """
-        Get the CSS styles for rendering the MagicSquare.
+        """Get the CSS styles for rendering the MagicSquare.
 
         Returns:
             Dict: A dictionary containing the CSS styles for the MagicSquare.

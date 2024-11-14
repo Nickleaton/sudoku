@@ -1,5 +1,4 @@
-"""
-Kropki Dots
+"""Kropki Dots
 """
 from math import ceil, log10
 from typing import List, Dict

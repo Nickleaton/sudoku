@@ -8,8 +8,7 @@ from src.utils.coord import Coord
 
 
 class ArrowLineGlyph(PolyLineGlyph):
-    """
-    Arrow Line Glyph
+    """Arrow Line Glyph
     """
 
     def __init__(self, class_name: str, coords: List[Coord]):

@@ -16,8 +16,7 @@ class Region(ComposedItem):
     """Represents a collection of cells, enforcing various constraints on them."""
 
     def __init__(self, board: Board) -> None:
-        """
-        Initializes a Region on the given board.
+        """Initializes a Region on the given board.
 
         Args:
             board (Board): The Sudoku board associated with this region.
@@ -26,8 +25,7 @@ class Region(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Factory method to create a Region from YAML configuration.
+        """Factory method to create a Region from YAML configuration.
 
         Args:
             board (Board): The board on which this region will be created.
@@ -40,8 +38,7 @@ class Region(ComposedItem):
 
     @property
     def cells(self) -> List[Cell]:
-        """
-        Returns the list of cells in the region.
+        """Returns the list of cells in the region.
 
         Returns:
             List[Cell]: List of cells that belong to this region.
@@ -49,8 +46,7 @@ class Region(ComposedItem):
         return [item for item in self.items if isinstance(item, Cell)]
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the region.
+        """Returns a string representation of the region.
 
         Returns:
             str: String representation of the region.
@@ -58,8 +54,7 @@ class Region(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def add_unique_constraint(self, solver: PulpSolver, optional: bool = False):
-        """
-        Adds a constraint to ensure each digit appears only once in the region.
+        """Adds a constraint to ensure each digit appears only once in the region.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -73,8 +68,7 @@ class Region(ComposedItem):
                 solver.model += total == 1, f"{self.name}_Unique_{digit}"
 
     def add_total_constraint(self, solver: PulpSolver, total: int) -> None:
-        """
-        Adds a constraint to enforce a total sum of cell values within the region.
+        """Adds a constraint to enforce a total sum of cell values within the region.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -84,8 +78,7 @@ class Region(ComposedItem):
         solver.model += value == total, f"Total_{self.name}"
 
     def add_contains_constraint(self, solver: PulpSolver, digits: List[int]):
-        """
-        Adds constraints to ensure specified digits are present in the region.
+        """Adds constraints to ensure specified digits are present in the region.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -96,8 +89,7 @@ class Region(ComposedItem):
             solver.model += choice_total == 1, f"{self.name}_Contains_{digit}"
 
     def add_sequence_constraint(self, solver: PulpSolver, order: Order):
-        """
-        Adds a sequence constraint to enforce an ordered sequence of values.
+        """Adds a sequence constraint to enforce an ordered sequence of values.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -113,8 +105,7 @@ class Region(ComposedItem):
                 solver.model += value1 >= value2 + 1, name
 
     def add_allowed_constraint(self, solver: PulpSolver, cells: List[Cell], allowed: List[int]):
-        """
-        Adds constraints to restrict the allowed digits in specified cells.
+        """Adds constraints to restrict the allowed digits in specified cells.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -125,8 +116,7 @@ class Region(ComposedItem):
             cell.book.set_possible(allowed)
 
     def to_dict(self) -> Dict:
-        """
-        Serializes the region to a dictionary format.
+        """Serializes the region to a dictionary format.
 
         Returns:
             Dict: Dictionary representation of the region.
@@ -135,8 +125,7 @@ class Region(ComposedItem):
 
     @property
     def used_classes(self) -> Set[Type[Item]]:
-        """
-        Returns a set of classes used by this region and its cells.
+        """Returns a set of classes used by this region and its cells.
 
         Returns:
             Set[Type[Item]]: Set of classes utilized within the region.

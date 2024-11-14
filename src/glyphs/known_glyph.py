@@ -14,4 +14,4 @@ class KnownGlyph(SimpleTextGlyph):
         self.number = number
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.location)}, {str(self.number)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.location!r}, {self.number!s})"

@@ -12,7 +12,8 @@ from src.utils.rule import Rule
 
 class FrozenThermometerLine(ThermometerLine):
     """Represents a frozen thermometer line in a puzzle where cells along the line
-    must increase or stay the same from the bulb end."""
+    must increase or stay the same from the bulb end.
+    """
 
     @property
     def rules(self) -> List[Rule]:

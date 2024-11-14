@@ -29,4 +29,4 @@ class LittleArrowGlyph(Glyph):
         return text
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.location)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.location!r})"

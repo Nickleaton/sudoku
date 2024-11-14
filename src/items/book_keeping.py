@@ -48,7 +48,7 @@ class BookKeeping:
         return "".join([str(i) if self[i] else ' ' for i in self.digit_range])
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({repr(self.maximum_digit)})"
+        return f"{self.__class__.__name__}({self.maximum_digit!r})"
 
     def set_possible(self, digits: List[int]) -> None:
         for digit in self.digit_range:

@@ -54,7 +54,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
         #             solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
 
         # make sure that the difference is at least the difference
-        for i in range(0, len(self.cells) - 1):
+        for i in range(len(self.cells) - 1):
             for digit in self.board.digit_range:
                 name = f"{self.name}_{i}_{digit}"
                 total = lpSum(

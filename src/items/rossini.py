@@ -32,7 +32,7 @@ class Rossini(FirstN):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Return True if this item is a sequence."""
         return True
 
     @classmethod

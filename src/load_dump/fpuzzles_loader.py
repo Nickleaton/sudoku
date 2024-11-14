@@ -15,7 +15,7 @@ class FPuzzlesLoader(Loader):
             filename (str): Path to the FPuzzles JSON file.
         """
         super().__init__(filename)
-        with open(filename, 'r') as file:
+        with open(filename) as file:
             self.raw = json.load(file)
 
     def process(self) -> Board:

@@ -27,8 +27,7 @@ config = Config()
 
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
-    """
-    Solver class that uses PuLP to solve puzzles with linear programming.
+    """Solver class that uses PuLP to solve puzzles with linear programming.
 
     Attributes:
         name (str): The name of the solver instance.

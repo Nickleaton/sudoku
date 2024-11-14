@@ -12,8 +12,7 @@ class Line(Region):
     """Represents a line consisting of multiple cells on a board."""
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """
-        Initialize a Line instance.
+        """Initialize a Line instance.
 
         Args:
             board (Board): The board associated with this line.
@@ -34,8 +33,7 @@ class Line(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> List[Cell]:
-        """
-        Extract a list of Cell instances from the provided YAML dictionary.
+        """Extract a list of Cell instances from the provided YAML dictionary.
 
         Args:
             board (Board): The board associated with the cells.
@@ -48,8 +46,7 @@ class Line(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Create a Line instance from a YAML dictionary.
+        """Create a Line instance from a YAML dictionary.
 
         Args:
             board (Board): The board associated with the line.
@@ -62,8 +59,7 @@ class Line(Region):
         return cls(board, cells)
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of this line.
+        """Return a string representation of this line.
 
         Returns:
             str: A string representation of the Line instance, including the board and cells.
@@ -78,8 +74,7 @@ class Line(Region):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Return a set of tags associated with this line.
+        """Return a set of tags associated with this line.
 
         Returns:
             set[str]: A set containing the tags associated with this line.
@@ -87,8 +82,7 @@ class Line(Region):
         return super().tags.union({'Line'})
 
     def to_dict(self) -> Dict:
-        """
-        Convert the line to a dictionary representation.
+        """Convert the line to a dictionary representation.
 
         Returns:
             Dict: A dictionary representation of the line, including the cells.

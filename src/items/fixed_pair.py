@@ -21,12 +21,12 @@ class FixedPair(Pair):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Return True if this item is a sequence."""
         return True
 
     @classmethod
     def parser(cls) -> CellPairEqualValueParser:
-        """ Return the parser for this item. """
+        """Return the parser for this item."""
         return CellPairEqualValueParser()
 
     @classmethod

@@ -22,12 +22,12 @@ class Exclusion(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Return True if this item is a sequence."""
         return True
 
     @classmethod
     def parser(cls) -> CellValueParser:
-        """ Return the parser for this item. """
+        """Return the parser for this item."""
         return CellValueParser()
 
     def __repr__(self) -> str:

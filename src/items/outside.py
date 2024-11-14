@@ -13,7 +13,8 @@ from src.utils.side import Side
 
 class Outside(FirstN):
     """Represents a constraint where a clue outside a row or column specifies digits
-    that must appear in the first three cells nearest the clue in that row or column."""
+    that must appear in the first three cells nearest the clue in that row or column.
+    """
 
     def __init__(self, board: Board, side: Side, index: int, digits: List[int]):
         """Initializes the Outside item with the given board, side, index, and digits.

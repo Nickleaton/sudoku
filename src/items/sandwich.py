@@ -223,7 +223,7 @@ class Sandwich(Item):
                               include: Optional[re.Pattern] = None,
                               exclude: Optional[re.Pattern] = None
                               ) -> None:
-        """ Add constraints for the sandwich in the specified column.
+        """Add constraints for the sandwich in the specified column.
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.

@@ -9,4 +9,4 @@ class ConsecutiveGlyph(RectangleGlyph):
         super().__init__(class_name, first, second, 0.25, 2.0, vertical)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {str(self.first)}, {str(self.second)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.first!s}, {self.second!s})"

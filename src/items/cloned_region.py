@@ -9,13 +9,11 @@ from src.utils.rule import Rule
 
 
 class ClonedRegion(Item):
-    """
-    In a cloned region, the cells in the first region are clones of the cells in the second region.
+    """In a cloned region, the cells in the first region are clones of the cells in the second region.
     """
 
     def __init__(self, board, cells_a: List[Cell], cells_b: List[Cell]):
-        """
-        Construct a ClonedRegion.
+        """Construct a ClonedRegion.
 
         :param board: The board with the two regions
         :param cells_a: The cells in the first region
@@ -28,8 +26,7 @@ class ClonedRegion(Item):
         self.region_b: List[Cell] = cells_b
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the ClonedRegion.
+        """Return a string representation of the ClonedRegion.
 
         The representation is a string that could be used to recreate the ClonedRegion.
         It is of the form:
@@ -40,8 +37,8 @@ class ClonedRegion(Item):
         return (
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
-            f"{repr(self.region_a)}, "
-            f"{repr(self.region_b)}"
+            f"{self.region_a!r}, "
+            f"{self.region_b!r}"
             f")"
         )
 
@@ -56,8 +53,7 @@ class ClonedRegion(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Create a ClonedRegion from a Board and a YAML dict.
+        """Create a ClonedRegion from a Board and a YAML dict.
 
         :param board: The board with the two regions
         :param yaml: A YAML dict with the two regions
@@ -72,8 +68,7 @@ class ClonedRegion(Item):
 
     @property
     def used_classes(self) -> Set[Type[Item]]:
-        """
-        Return a set of classes that this item uses.
+        """Return a set of classes that this item uses.
 
         The set of classes is determined by traversing the method resolution
         order (MRO) of the item's class. The set contains all classes in the
@@ -91,8 +86,7 @@ class ClonedRegion(Item):
         return result
 
     def walk(self) -> Iterator[Item]:
-        """
-        Yield each item in the tree of items rooted at the current item.
+        """Yield each item in the tree of items rooted at the current item.
 
         The generator yields the current item, then recursively yields each item
         in the tree rooted at the current item. The order of the items is
@@ -110,8 +104,7 @@ class ClonedRegion(Item):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Get the list of rules for this ClonedRegion.
+        """Get the list of rules for this ClonedRegion.
 
         :return: A list of rules
         """
@@ -125,8 +118,7 @@ class ClonedRegion(Item):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Get the set of tags for this item.
+        """Get the set of tags for this item.
 
         The tags are a set of strings that can be used to identify items with certain properties.
         The default tags are 'Item' and any tags that the item's classes have.
@@ -135,8 +127,7 @@ class ClonedRegion(Item):
         return super().tags.union({'ClonedRegion'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Add the constraint that the two regions are clones of each other.
+        """Add the constraint that the two regions are clones of each other.
 
         The constraint is that for each pair of cells in the two regions, the values in the cells are the same.
 
@@ -150,8 +141,7 @@ class ClonedRegion(Item):
             solver.model += value_1 == value_2, name
 
     def to_dict(self) -> Dict:
-        """
-        Convert the ClonedRegion to a dictionary for YAML dump.
+        """Convert the ClonedRegion to a dictionary for YAML dump.
 
         The dictionary has one key-value pair. The key is the name of the class and the value is a string of the form:
         the first region and <cell_str_b> is a comma-separated string of the row and column of each cell in the second
@@ -164,8 +154,7 @@ class ClonedRegion(Item):
         return {self.__class__.__name__: f"{cell_str_a}={cell_str_b}"}
 
     def css(self) -> Dict:
-        """
-        Get the CSS for the ClonedRegion.
+        """Get the CSS for the ClonedRegion.
 
         The CSS is a dictionary with three keys: 'ClonedRegion', 'ClonedRegionForeground', and 'ClonedRegionBackground'.
         The value for each key is a dictionary with the CSS style for that class.

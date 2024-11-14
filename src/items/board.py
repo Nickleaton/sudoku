@@ -238,13 +238,13 @@ class Board:
     def box_index(self, row: int, column: int) -> int:
         """Determines the box index for a given cell specified by row and column.
 
-         Args:
-             row (int): Row coordinate of the cell.
-             column (int): Column coordinate of the cell.
+        Args:
+            row (int): Row coordinate of the cell.
+            column (int): Column coordinate of the cell.
 
-         Returns:
-             int: Box index number.
-         """
+        Returns:
+            int: Box index number.
+        """
         return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
 
     @property

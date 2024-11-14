@@ -28,4 +28,4 @@ class LowCellGlyph(Glyph):
         return Use(href="#LowCell-symbol", insert=self.coord.point.coordinates, class_="LOwCell", height=100, width=100)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.coord)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"

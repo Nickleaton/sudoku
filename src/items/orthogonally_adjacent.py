@@ -13,8 +13,7 @@ class OrthogonallyAdjacent(ComposedItem):
     """Represents a region where consecutive digits are restricted from being orthogonally adjacent."""
 
     def __init__(self, board: Board):
-        """
-        Initializes the OrthogonallyAdjacent constraint on the given board.
+        """Initializes the OrthogonallyAdjacent constraint on the given board.
 
         Args:
             board (Board): The Sudoku board to which the constraint applies.
@@ -23,8 +22,7 @@ class OrthogonallyAdjacent(ComposedItem):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Returns a set of tags associated with this constraint.
+        """Returns a set of tags associated with this constraint.
 
         Returns:
             set[str]: Tags including 'OrthogonallyAdjacent'.
@@ -33,8 +31,7 @@ class OrthogonallyAdjacent(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """
-        Factory method to create an OrthogonallyAdjacent constraint from YAML configuration.
+        """Factory method to create an OrthogonallyAdjacent constraint from YAML configuration.
 
         Args:
             board (Board): The board on which this constraint is created.
@@ -47,8 +44,7 @@ class OrthogonallyAdjacent(ComposedItem):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Returns the list of rules enforced by this constraint.
+        """Returns the list of rules enforced by this constraint.
 
         Returns:
             List[Rule]: Rules indicating that consecutive digits cannot be orthogonally adjacent.
@@ -58,8 +54,7 @@ class OrthogonallyAdjacent(ComposedItem):
         ]
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the OrthogonallyAdjacent constraint.
+        """Returns a string representation of the OrthogonallyAdjacent constraint.
 
         Returns:
             str: String representation of the constraint.
@@ -67,8 +62,7 @@ class OrthogonallyAdjacent(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> Dict:
-        """
-        Serializes the OrthogonallyAdjacent constraint to a dictionary format.
+        """Serializes the OrthogonallyAdjacent constraint to a dictionary format.
 
         Returns:
             Dict: Dictionary representation of the constraint.
@@ -76,8 +70,7 @@ class OrthogonallyAdjacent(ComposedItem):
         return {self.__class__.__name__: None}
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Adds the orthogonally adjacent constraint to the solver.
+        """Adds the orthogonally adjacent constraint to the solver.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.

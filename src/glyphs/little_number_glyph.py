@@ -26,4 +26,4 @@ class LittleNumberGlyph(Glyph):
         return text
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)}, {repr(self.number)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.number!r})"

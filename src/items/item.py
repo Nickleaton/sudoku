@@ -18,8 +18,7 @@ from src.utils.sudoku_exception import SudokuException
 
 # pylint: disable=too-many-public-methods
 class Item(ABC):
-    """
-    Top level of the Item hierarchy.
+    """Top level of the Item hierarchy.
     Items generate the constraints
     Items generate the svg to view the problems and solutions
     Items manage bookkeeping to simplify problems
@@ -37,8 +36,7 @@ class Item(ABC):
     # Creation Routines
 
     def __init_subclass__(cls, **kwargs):
-        """
-        Register the class so that it can be created from yaml.
+        """Register the class so that it can be created from yaml.
         """
         super().__init_subclass__(**kwargs)
         # Register the class
@@ -46,8 +44,7 @@ class Item(ABC):
         Item.classes[Item.__name__] = Item
 
     def __init__(self, board: Board):
-        """
-        Constructor.
+        """Constructor.
 
         Args:
             board: The board this item belongs to.
@@ -67,12 +64,12 @@ class Item(ABC):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence """
+        """Return True if this item is a sequence"""
         return False
 
     @classmethod
     def is_composite(cls) -> bool:
-        """ Return True if this item is a composite """
+        """Return True if this item is a composite"""
         return False
 
     @classmethod
@@ -87,8 +84,7 @@ class Item(ABC):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Item':
-        """
-        Create an instance of an item from a YAML dictionary.
+        """Create an instance of an item from a YAML dictionary.
 
         The YAML dictionary must contain a single key-value pair, where the key
         is the name of the item class and the value is a dictionary of arguments
@@ -118,8 +114,7 @@ class Item(ABC):
 
     @property
     def top(self) -> 'Item':
-        """
-        The top most item in the hierarchy this item belongs to.
+        """The top most item in the hierarchy this item belongs to.
 
         Returns:
             The top most item.
@@ -129,8 +124,7 @@ class Item(ABC):
         return self.parent.top
 
     def regions(self) -> Set['Item']:
-        """
-        Get the set of items used in this item.
+        """Get the set of items used in this item.
 
         The default implementation returns a set containing just this item.
         Subclasses should override this method if they use other items.
@@ -141,8 +135,7 @@ class Item(ABC):
         return {self}
 
     def svg(self) -> Optional[Glyph]:
-        """
-        Return an SVG glyph which can be used to display the item.
+        """Return an SVG glyph which can be used to display the item.
         The default implementation returns None, which means that the item
         should not be displayed.
         """
@@ -150,8 +143,7 @@ class Item(ABC):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Return a list of rules that apply to this item.
+        """Return a list of rules that apply to this item.
 
         The default implementation returns an empty list, which means that there
         are no rules that apply to this item.
@@ -162,8 +154,7 @@ class Item(ABC):
         return []
 
     def flatten(self) -> List['Item']:
-        """
-        Return a list of all items in the hierarchy that this item belongs to.
+        """Return a list of all items in the hierarchy that this item belongs to.
 
         The default implementation returns a list containing just the current
         item. Subclasses should override this method if they contain other items.
@@ -176,8 +167,7 @@ class Item(ABC):
 
     @property
     def sorted_unique_rules(self) -> List[Rule]:
-        """
-        Return a list of unique rules that apply to this item, sorted in order.
+        """Return a list of unique rules that apply to this item, sorted in order.
 
         The rules are determined by recursively traversing the item tree and
         calling the `rules` property on each item. The resulting list of rules
@@ -192,8 +182,7 @@ class Item(ABC):
         return sorted(list(set(self.rules)))
 
     def glyphs(self) -> List[Glyph]:
-        """
-        Return a list of SVG glyphs for this item.
+        """Return a list of SVG glyphs for this item.
 
         The glyphs are determined by recursively traversing the item tree and
         calling the `svg` method on each item. The `selector` function is used to
@@ -208,8 +197,7 @@ class Item(ABC):
         return []
 
     def sorted_glyphs(self) -> Glyph:
-        """
-        Return a single glyph representing all the glyphs for this item.
+        """Return a single glyph representing all the glyphs for this item.
 
         The glyphs are sorted by their `z_order` attribute.
 
@@ -220,8 +208,7 @@ class Item(ABC):
 
     @property
     def name(self) -> str:
-        """
-        Return a string identifying the item.
+        """Return a string identifying the item.
 
         The string is of the form `<class_name>_<identity>`, where `<class_name>`
         is the name of the class of the item and `<identity>` is an integer
@@ -234,8 +221,7 @@ class Item(ABC):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Return a set of strings associated with this item.
+        """Return a set of strings associated with this item.
 
         The set of strings is used to identify items with certain properties,
         such as the type of item or the constraints it enforces.
@@ -246,8 +232,7 @@ class Item(ABC):
         return set()
 
     def walk(self) -> Iterator['Item']:
-        """
-        Yield each item in the tree of items rooted at the current item.
+        """Yield each item in the tree of items rooted at the current item.
 
         The generator yields the current item, then recursively yields each item
         in the tree rooted at the current item. The order of the items is
@@ -261,8 +246,7 @@ class Item(ABC):
 
     @property
     def used_classes(self) -> Set[Type['Item']]:
-        """
-        Return a set of classes that this item uses.
+        """Return a set of classes that this item uses.
 
         The set of classes is determined by traversing the method resolution
         order (MRO) of the item's class. The set contains all classes in the
@@ -281,8 +265,7 @@ class Item(ABC):
 
     @staticmethod
     def select_all(_: 'Item') -> bool:
-        """
-        The select method is used to select which items should be used when
+        """The select method is used to select which items should be used when
         generating the lp model. The method should return True if the item
         should be used (i.e. included in the model) and False otherwise.
 
@@ -294,8 +277,7 @@ class Item(ABC):
         return True
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of this item.
+        """Return a string representation of this item.
 
         The string representation is of the form `<class_name>(<board>)`, where
         `<class_name>` is the name of the class of the item and `<board>` is a
@@ -308,8 +290,7 @@ class Item(ABC):
 
     # pylint: disable=unused-argument
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Add a constraint to the given solver.
+        """Add a constraint to the given solver.
 
         This method is called when the given solver is solving the board
         associated with this item. The item is expected to add any constraints
@@ -321,8 +302,7 @@ class Item(ABC):
         """
 
     def bookkeeping(self) -> None:
-        """
-        Perform bookkeeping for this item.
+        """Perform bookkeeping for this item.
 
         This method is called when the solver is adding constraints to the
         lp model. The method is expected to add any constraints required to
@@ -330,8 +310,7 @@ class Item(ABC):
         """
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
-        """
-        Add a constraint to the given solver to keep track of the values chosen for all children of this item.
+        """Add a constraint to the given solver to keep track of the values chosen for all children of this item.
 
         In some cases we can completely eliminate choices. For example, if we have a cell with only one possible value
         in row 4 column 5, then we can eliminate that value from all other cells in that row and column.
@@ -353,15 +332,13 @@ class Item(ABC):
             item.add_bookkeeping_constraint(solver)
 
     def marked_book(self) -> Optional[BookKeeping]:
-        """
-        Return the book for the cell or None.
+        """Return the book for the cell or None.
         Enables Liskov Substitution Principle.
         """
         return None
 
     def bookkeeping_unique(self) -> bool:
-        """
-        Check if all bookkeeping items in the hierarchy are unique.
+        """Check if all bookkeeping items in the hierarchy are unique.
 
         This method traverses the tree of items rooted at the current item,
         calling the `marked_book` method for each item. It checks if each
@@ -379,8 +356,7 @@ class Item(ABC):
         return all(marked_book.is_unique() for marked_book in marked_books)
 
     def to_dict(self) -> Dict:
-        """
-        Convert the item to a dictionary for YAML dump.
+        """Convert the item to a dictionary for YAML dump.
 
         The dictionary has one key-value pair. The key is the name of the class
         of the item and the value is `None`.
@@ -392,8 +368,7 @@ class Item(ABC):
 
     def css(self) -> Dict:
         # TODO Should we have this here?
-        """
-        Get the CSS for the item.
+        """Get the CSS for the item.
 
         This method returns a dictionary with CSS attributes for items of this class. The key is the class name of the
         item and the value is a dictionary with the CSS style for that class.
@@ -424,9 +399,7 @@ class Item(ABC):
 
     @staticmethod
     def css_text(data: Dict, indent: int = 0) -> str:
-        """
-
-        TODO think if this is the wrong way. We could recurse the tree coming back with any
+        """TODO think if this is the wrong way. We could recurse the tree coming back with any
         children's css building up a dictionary and returning it.
 
         Convert a dictionary of css rules to a string.

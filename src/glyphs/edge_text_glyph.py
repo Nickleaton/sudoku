@@ -20,8 +20,8 @@ class EdgeTextGlyph(TextGlyph):
             f"("
             f"'{self.class_name}', "
             f"{self.angle.angle}, "
-            f"{repr(self.first)}, "
-            f"{repr(self.second)}, "
+            f"{self.first!r}, "
+            f"{self.second!r}, "
             f"'{self.text}'"
             f")"
         )

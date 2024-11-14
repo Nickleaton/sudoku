@@ -111,7 +111,7 @@ class SequenceLine(Line):
         difference = LpVariable(self.name, -max_diff, max_diff, LpInteger)
 
         # Set the constraint for each consecutive pair of cells
-        for i in range(0, len(self.cells) - 1):
+        for i in range(len(self.cells) - 1):
             value1 = solver.values[self.cells[i].row][self.cells[i].column]
             value2 = solver.values[self.cells[i + 1].row][self.cells[i + 1].column]
             solver.model += value1 - value2 == difference, f"{self.name}_{i}"

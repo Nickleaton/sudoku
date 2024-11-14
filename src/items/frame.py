@@ -13,15 +13,13 @@ from src.utils.side import Side
 
 
 class Frame(FirstN):
-    """
-    Handle frame sudoku:
-        Numbers outside the frame equal the sum of the first three numbers in the
-        corresponding row or column in the given direction
+    """Handle frame sudoku:
+    Numbers outside the frame equal the sum of the first three numbers in the
+    corresponding row or column in the given direction
     """
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
-        """
-        Construct
+        """Construct
         :param board: board being used
         :param side: the side where the total is to go
         :param index: the row or column of the total
@@ -32,7 +30,7 @@ class Frame(FirstN):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """ Return True if this item is a sequence. """
+        """Return True if this item is a sequence."""
         return True
 
     @classmethod
@@ -40,8 +38,7 @@ class Frame(FirstN):
         return FrameParser()
 
     def __repr__(self) -> str:
-        """
-        representation of the frame
+        """Representation of the frame
         :return: str
         """
         return (

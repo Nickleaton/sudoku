@@ -23,7 +23,7 @@ class Mote(Region):
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
             f"{self.total!r}, "
-            f"{repr(self.cells)}"
+            f"{self.cells!r}"
             f")"
         )
 

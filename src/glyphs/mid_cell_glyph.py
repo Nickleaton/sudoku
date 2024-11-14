@@ -20,4 +20,4 @@ class MidCellGlyph(Glyph):
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"

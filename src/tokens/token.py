@@ -6,7 +6,7 @@ from typing import Union, List, Optional, Dict, Type
 from sortedcontainers import SortedDict
 
 
-class Token(object):
+class Token:
     """Base class for all tokens used to represent patterns."""
 
     classes: Dict[str, Type['Token']] = SortedDict({})
@@ -236,7 +236,7 @@ class RepeatToken(Token):
         Returns:
             str: The string representation of the repeated token.
         """
-        return f"{self.__class__.__name__}({repr(self.token)}, {self.lower}, {self.upper})"
+        return f"{self.__class__.__name__}({self.token!r}, {self.lower}, {self.upper})"
 
 
 class OptionalToken(RepeatToken):
@@ -264,7 +264,7 @@ class OptionalToken(RepeatToken):
         Returns:
             str: The string representation of the optional token.
         """
-        return f"{self.__class__.__name__}({repr(self.token)})"
+        return f"{self.__class__.__name__}({self.token!r})"
 
 
 class OneOrMoreToken(RepeatToken):
@@ -292,7 +292,7 @@ class OneOrMoreToken(RepeatToken):
         Returns:
             str: The string representation of the one or more token.
         """
-        return f"{self.__class__.__name__}({repr(self.token)})"
+        return f"{self.__class__.__name__}({self.token!r})"
 
 
 class ZeroOrMoreToken(RepeatToken):
@@ -320,4 +320,4 @@ class ZeroOrMoreToken(RepeatToken):
         Returns:
             str: The string representation of the zero or more token.
         """
-        return f"{self.__class__.__name__}({repr(self.token)})"
+        return f"{self.__class__.__name__}({self.token!r})"

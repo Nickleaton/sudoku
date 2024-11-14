@@ -7,13 +7,11 @@ from src.glyphs.glyph import Glyph
 
 
 class ComposedGlyph(Glyph):
-    """
-    Standard Composed Pattern for Glyphs
+    """Standard Composed Pattern for Glyphs
     """
 
     def __init__(self, class_name: str, items: Optional[List[Glyph]] = None):
-        """
-        Constructor
+        """Constructor
 
         :param class_name: The name of the class creating the glyph
         :param items: A list of glyphs to be grouped together

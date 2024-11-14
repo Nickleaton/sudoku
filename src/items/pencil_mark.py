@@ -36,7 +36,7 @@ class PencilMarkCell(CellReference):
         }
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {repr(self.digits)})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digits!r})"
 
     def to_dict(self) -> Dict:
         return {self.__class__.__name__: f"{self.cell.row_column_string}={''.join([str(d) for d in self.digits])}"}

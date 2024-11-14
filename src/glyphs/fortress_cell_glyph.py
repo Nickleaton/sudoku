@@ -8,4 +8,4 @@ class FortressCellGlyph(SquareGlyph):
         super().__init__(class_name, position, 1)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.class_name}', {repr(self.position)})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"

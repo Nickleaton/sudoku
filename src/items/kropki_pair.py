@@ -1,5 +1,4 @@
-"""
-Kropki Dots
+"""Kropki Dots
 """
 from itertools import product
 from typing import List, Dict
@@ -17,7 +16,8 @@ from src.utils.rule import Rule
 
 class KropkiPair(Pair):
     """Represents a Kropki dot pair in a puzzle, where a black dot between two cells indicates
-    that one of the digits is exactly twice the other."""
+    that one of the digits is exactly twice the other.
+    """
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
         """Initializes a KropkiPair with two cells and an empty SOS dictionary.
@@ -151,7 +151,7 @@ class KropkiPair(Pair):
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.
         """
-        sos_range = range(0, self.count)
+        sos_range = range(self.count)
         self.sos = LpVariable.dicts(self.name, sos_range, 0, 1, LpInteger)
         solver.model += lpSum([self.sos[i] for i in sos_range]) == 1, f"{self.name}_SOS"
 

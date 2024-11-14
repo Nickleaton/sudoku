@@ -30,7 +30,7 @@ class UniqueRegion(Region):
         return (
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
-            f"{repr(self.cells)}"
+            f"{self.cells!r}"
             f")"
         )
 

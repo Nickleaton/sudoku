@@ -1,5 +1,4 @@
-"""
-Kropki Dots
+"""Kropki Dots
 """
 from typing import List, Dict, Optional
 

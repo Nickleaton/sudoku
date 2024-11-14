@@ -8,8 +8,7 @@ from src.utils.coord import Coord
 
 
 class BetweenLineGlyph(PolyLineGlyph):
-    """
-    Between line glyph
+    """Between line glyph
     """
 
     def __init__(self, class_name: str, coords: List[Coord]):

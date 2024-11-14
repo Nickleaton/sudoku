@@ -14,8 +14,7 @@ class TLBRReflecting(Diagonal):
     """Represents a top-left to bottom-right reflecting diagonal with parity constraints on a Sudoku board."""
 
     def __init__(self, board: Board):
-        """
-        Initializes a TLBRReflecting diagonal constraint with parity reflection.
+        """Initializes a TLBRReflecting diagonal constraint with parity reflection.
 
         Args:
             board (Board): The Sudoku board on which this diagonal operates.
@@ -25,8 +24,7 @@ class TLBRReflecting(Diagonal):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Provides the rule associated with the TLBRReflecting diagonal.
+        """Provides the rule associated with the TLBRReflecting diagonal.
 
         Returns:
             List[Rule]: A list containing a rule that specifies parity reflection along the diagonal.
@@ -34,8 +32,7 @@ class TLBRReflecting(Diagonal):
         return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
 
     def glyphs(self) -> List[Glyph]:
-        """
-        Generates the visual representation (glyph) for the reflecting diagonal.
+        """Generates the visual representation (glyph) for the reflecting diagonal.
 
         Returns:
             List[Glyph]: A list containing the glyph for the TLBRReflecting diagonal.
@@ -45,8 +42,7 @@ class TLBRReflecting(Diagonal):
         ]
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Adds constraints to enforce uniqueness and parity reflection along the diagonal.
+        """Adds constraints to enforce uniqueness and parity reflection along the diagonal.
 
         Args:
             solver (PulpSolver): The solver to which the constraints are added.

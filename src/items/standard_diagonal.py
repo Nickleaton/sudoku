@@ -10,8 +10,7 @@ class StandardDiagonal(Diagonal):
 
     @property
     def rules(self) -> List[Rule]:
-        """
-        Provides the rule associated with the standard diagonal.
+        """Provides the rule associated with the standard diagonal.
 
         Returns:
             List[Rule]: A list of rules indicating that digits along the diagonal cannot repeat.
@@ -20,8 +19,7 @@ class StandardDiagonal(Diagonal):
 
     @property
     def tags(self) -> set[str]:
-        """
-        Provides the tags associated with the standard diagonal.
+        """Provides the tags associated with the standard diagonal.
 
         Returns:
             set[str]: A set of tags, including 'Diagonal' and 'Uniqueness'.
@@ -29,8 +27,7 @@ class StandardDiagonal(Diagonal):
         return super().tags.union({'Diagonal', 'Uniqueness'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """
-        Adds a unique constraint to ensure each digit on the diagonal appears only once.
+        """Adds a unique constraint to ensure each digit on the diagonal appears only once.
 
         Args:
             solver (PulpSolver): The solver to which the uniqueness constraint is added.

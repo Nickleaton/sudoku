@@ -53,7 +53,7 @@ class PalindromeLine(Line):
         For each pair of mirrored cells along the line, a constraint is added
         to ensure their values are identical, maintaining the palindrome.
         """
-        for i in range(0, len(self) // 2):
+        for i in range(len(self) // 2):
             c1 = self.cells[i]
             c2 = self.cells[len(self) - i - 1]
             name = f"{self.name}_{i}"

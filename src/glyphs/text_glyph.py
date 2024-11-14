@@ -37,5 +37,5 @@ class TextGlyph(Glyph):
 
     def __repr__(self) -> str:
         return (
-            f"{self.__class__.__name__}('{self.class_name}', {self.angle.angle}, {repr(self.position)}, '{self.text}')"
+            f"{self.__class__.__name__}('{self.class_name}', {self.angle.angle}, {self.position!r}, '{self.text}')"
         )
