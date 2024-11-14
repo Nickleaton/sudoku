@@ -10,7 +10,7 @@ class Diagonal(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Diagonal instance from YAML configuration.
+        """Create a Diagonal instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board associated with this diagonal.
@@ -22,7 +22,7 @@ class Diagonal(Region):
         return cls(board)
 
     def __repr__(self) -> str:
-        """Provides a string representation of the Diagonal instance.
+        """Provide a string representation of the Diagonal instance.
 
         Returns:
             str: The class name and board representation.
@@ -30,7 +30,7 @@ class Diagonal(Region):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> Dict:
-        """Converts the Diagonal instance to a dictionary format.
+        """Convert the Diagonal instance to a dictionary format.
 
         Returns:
             Dict: A dictionary with the Diagonal class name as the key and None as the value.
@@ -38,7 +38,7 @@ class Diagonal(Region):
         return {self.__class__.__name__: None}
 
     def css(self) -> Dict:
-        """Provides CSS styling for the diagonal region.
+        """Provide CSS styling for the diagonal region.
 
         Returns:
             Dict: A dictionary with CSS properties for the diagonal, including stroke color and width.

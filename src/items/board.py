@@ -11,6 +11,8 @@ from src.utils.functions import PRIMES
 
 
 class BoardType(Enum):
+    """Types of boards."""
+
     B9X9 = "9x9"
     B4X4 = "4x4"
     B6X6 = "6x6"
@@ -18,6 +20,8 @@ class BoardType(Enum):
 
 
 class BoxType(Enum):
+    """Types of boxes."""
+
     B3X3 = "3x3"
     B2X3 = "2x3"
     B3X2 = "3x2"
@@ -25,6 +29,7 @@ class BoxType(Enum):
 
 
 class Board:
+    """Represents a Sudoku board."""
 
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(self,
@@ -37,7 +42,7 @@ class Board:
                  title: Optional[str] = None,
                  author: Optional[str] = None
                  ):
-        """Initializes the Board with rows, columns, box dimensions, and optional metadata.
+        """Initialize the Board with rows, columns, box dimensions, and optional metadata.
 
         Args:
             board_rows (int): Number of rows in the board.
@@ -93,7 +98,7 @@ class Board:
         self.author = author
 
     def is_valid(self, row: int, column: int) -> bool:
-        """Checks if a given row and column coordinate is valid within the board.
+        """Check if a given row and column coordinate is valid within the board.
 
         Args:
             row (int): Row number.
@@ -105,7 +110,7 @@ class Board:
         return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
-        """Checks if a given coordinate is valid within the board.
+        """Check if a given coordinate is valid within the board.
 
         Args:
             coord (Coord): Coordinate to check.
@@ -117,7 +122,7 @@ class Board:
 
     @classmethod
     def schema(cls) -> Validator:
-        """Defines the YAML schema for the board configuration.
+        """Define the YAML schema for the board configuration.
 
         Returns:
             Validator: A `strictyaml` validator for the board configuration.
@@ -135,7 +140,7 @@ class Board:
 
     @staticmethod
     def parse_xy(s: str) -> Tuple[int, int]:
-        """Parses a string of the form 'NxM' into two integers.
+        """Parse a string of the form 'NxM' into two integers.
 
         Args:
             s (str): String representing dimensions, e.g., "9x9".
@@ -154,7 +159,7 @@ class Board:
 
     @classmethod
     def create(cls, name: str, yaml_data: Dict) -> 'Board':
-        """Creates a Board instance from a YAML data structure.
+        """Create a Board instance from a YAML data structure.
 
         Args:
             name (str): Name key for the board in the YAML data.
@@ -188,7 +193,7 @@ class Board:
         )
 
     def to_dict(self) -> Dict:
-        """Converts the Board attributes to a dictionary format for YAML serialization.
+        """Convert the Board attributes to a dictionary format for YAML serialization.
 
         Returns:
             Dict[str, Any]: Dictionary containing board configuration.
@@ -208,7 +213,7 @@ class Board:
         return result
 
     def to_yaml(self) -> str:
-        """Converts the Board instance to a YAML-formatted string.
+        """Convert the Board instance to a YAML-formatted string.
 
         Returns:
             str: YAML-formatted representation of the board configuration.
@@ -216,7 +221,7 @@ class Board:
         return str(yaml.dump(self.to_dict()))
 
     def __repr__(self) -> str:
-        """Provides a string representation of the Board instance for debugging.
+        """Provide a string representation of the Board instance for debugging.
 
         Returns:
             str: A string describing the Board instance with key attributes.
@@ -236,7 +241,7 @@ class Board:
         )
 
     def box_index(self, row: int, column: int) -> int:
-        """Determines the box index for a given cell specified by row and column.
+        """Determine the box index for a given cell specified by row and column.
 
         Args:
             row (int): Row coordinate of the cell.
@@ -249,7 +254,7 @@ class Board:
 
     @property
     def digit_values(self) -> str:
-        """Returns a string of valid digits for the board.
+        """Return a string of valid digits for the board.
 
         Returns:
             str: A string of digits available on the board.

@@ -15,7 +15,7 @@ class AntiKnight(Anti):
     """
 
     def __init__(self, board: Board):
-        """Initializes the AntiKnight with a board.
+        """Initialize the AntiKnight with a board.
 
         Args:
             board (Board): The board on which the AntiKnight will be placed.
@@ -23,7 +23,7 @@ class AntiKnight(Anti):
         super().__init__(board, list(board.digit_range))
 
     def offsets(self) -> List[Coord]:
-        """Returns the movement offsets for the AntiKnight.
+        """Return the movement offsets for the AntiKnight.
 
         The offsets represent the relative positions a knight can move
         in chess.
@@ -44,7 +44,7 @@ class AntiKnight(Anti):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the AntiKnight.
+        """Return the tags associated with the AntiKnight.
 
         The tags include those from the superclass and the specific tag
         'Knight'.
@@ -56,7 +56,7 @@ class AntiKnight(Anti):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates an instance of AntiKnight from the given board and YAML.
+        """Create an instance of AntiKnight from the given board and YAML.
 
         Args:
             cls: The class of the item being created.
@@ -70,7 +70,7 @@ class AntiKnight(Anti):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the AntiKnight.
+        """Return the rules associated with the AntiKnight.
 
         The rules specify the restrictions on the placement of digits
         in relation to knight moves.
@@ -83,7 +83,7 @@ class AntiKnight(Anti):
         ]
 
     def __repr__(self) -> str:
-        """Returns a string representation of the AntiKnight instance.
+        """Return a string representation of the AntiKnight instance.
 
         Returns:
             str: A string representation of the AntiKnight.
@@ -91,7 +91,7 @@ class AntiKnight(Anti):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> Dict:
-        """Converts the AntiKnight instance to a dictionary representation.
+        """Convert the AntiKnight instance to a dictionary representation.
 
         Returns:
             Dict: A dictionary representation of the AntiKnight.

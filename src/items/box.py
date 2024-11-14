@@ -13,8 +13,15 @@ from src.utils.rule import Rule
 
 
 class Box(StandardRegion):
+    """Represents a box in the puzzle grid, containing cells within a defined region."""
 
     def __init__(self, board: Board, index: int):
+        """Initialize the Box with a specified board and index.
+
+        Args:
+            board (Board): The game board instance.
+            index (int): The index of the box within the board.
+        """
         super().__init__(board, index)
         self.position = self.start()
         self.add_items(
@@ -27,41 +34,95 @@ class Box(StandardRegion):
 
     @classmethod
     def parser(cls) -> DigitParser:
+        """Provide the parser for the Box class.
+
+        Returns:
+            DigitParser: The parser for handling digit input related to boxes.
+        """
         return DigitParser()
 
     def start(self) -> Coord:
+        """Calculate the starting coordinate for the box within the board.
+
+        Returns:
+            Coord: The starting coordinate of the box.
+        """
         r = ((self.index - 1) * self.board.box_rows) % self.board.maximum_digit + 1
         c = ((self.index - 1) // self.board.box_columns) * self.board.box_columns + 1
         return Coord(r, c)
 
     @property
     def size(self) -> Coord:
+        """Define the size of the box in terms of rows and columns.
+
+        Returns:
+            Coord: The dimensions of the box.
+        """
         return Coord(self.board.box_rows, self.board.box_columns)
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """Create a Box instance from YAML configuration.
+
+        Args:
+            board (Board): The game board instance.
+            yaml (Dict): The YAML configuration for initializing the Box.
+
+        Returns:
+            Item: An instance of the Box class.
+        """
         index = cls.extract(board, yaml)
         return cls(board, index)
 
     def __repr__(self) -> str:
+        """Provide a string representation of the Box instance.
+
+        Returns:
+            str: A string representation of the Box instance.
+        """
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
 
     @property
     def rules(self) -> List[Rule]:
+        """Define the rules associated with the Box.
+
+        Returns:
+            List[Rule]: A list of rules indicating that digits in the box must be unique.
+        """
         return [Rule('Box', 1, 'Digits in each box must be unique')]
 
     def glyphs(self) -> List[Glyph]:
+        """Generate glyphs for visual representation of the box.
+
+        Returns:
+            List[Glyph]: A list of glyphs, specifically a BoxGlyph.
+        """
         return [BoxGlyph('Box', self.position, self.size)]
 
     @property
     def tags(self) -> set[str]:
+        """Define the tags associated with the Box.
+
+        Returns:
+            set[str]: A set of tags for the Box.
+        """
         return super().tags.union({'Box'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Add constraints for this box to the solver.
+
+        Args:
+            solver (PulpSolver): The solver instance for which constraints are being added.
+        """
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
     def css(self) -> Dict:
+        """Return the CSS styling for the box.
+
+        Returns:
+            Dict: A dictionary containing CSS properties for the box.
+        """
         return {
             ".Box": {
                 'stroke': 'black',
@@ -71,4 +132,9 @@ class Box(StandardRegion):
         }
 
     def __str__(self) -> str:
+        """Provide a simplified string representation of the Box.
+
+        Returns:
+            str: A simplified string representation of the Box instance.
+        """
         return f"{self.__class__.__name__}({self.index})"

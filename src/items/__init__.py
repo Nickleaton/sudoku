@@ -1,4 +1,4 @@
-# Module that handles constraints.
+"""Module that handles constraints."""
 
 import src.items.anti
 import src.items.anti_bltr
@@ -22,12 +22,12 @@ import src.items.cell_reference
 import src.items.center_product
 import src.items.cloned_region
 import src.items.column
-import src.items.columns
 import src.items.column_indexer
+import src.items.columns
 import src.items.composed_item
 import src.items.consecutive_pair
-import src.items.constraints
 import src.items.constraint_exception
+import src.items.constraints
 import src.items.diagonals
 import src.items.difference_line
 import src.items.difference_pair
@@ -79,8 +79,8 @@ import src.items.mountain_line
 import src.items.multiplication
 import src.items.numbered_room
 import src.items.odd_cell
-import src.items.orthogonally_adjacent
 import src.items.orthogonal_product
+import src.items.orthogonally_adjacent
 import src.items.outside
 import src.items.pair
 import src.items.palindrome_line
@@ -97,8 +97,8 @@ import src.items.region_set
 import src.items.renban_line
 import src.items.rossini
 import src.items.row
-import src.items.rows
 import src.items.row_indexer
+import src.items.rows
 import src.items.sandwich
 import src.items.sequence_line
 import src.items.simple_cell_reference
@@ -114,13 +114,13 @@ import src.items.thermometer_line
 import src.items.tlbr
 import src.items.tlbr_refecting_diagonal
 import src.items.unique_region
+import src.items.v_pair
 import src.items.variable_difference_pair
 import src.items.variable_pair
 import src.items.variable_product_pair
 import src.items.variable_ratio_pair
 import src.items.variable_sum_pair
 import src.items.vi_pair
-import src.items.v_pair
 import src.items.window
-import src.items.xi_pair
 import src.items.x_pair
+import src.items.xi_pair

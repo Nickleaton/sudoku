@@ -12,7 +12,7 @@ class BLTR(StandardDiagonal):
     """Represents a bottom-left to top-right diagonal constraint on a Sudoku board."""
 
     def __init__(self, board: Board):
-        """Initializes a BLTR diagonal constraint for the given board.
+        """Initialize a BLTR diagonal constraint for the given board.
 
         Args:
             board (Board): The Sudoku board on which this diagonal operates.
@@ -21,7 +21,7 @@ class BLTR(StandardDiagonal):
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the visual representation (glyph) for the diagonal.
+        """Generate the visual representation (glyph) for the diagonal.
 
         Returns:
             List[Glyph]: A list containing the diagonal's glyph.

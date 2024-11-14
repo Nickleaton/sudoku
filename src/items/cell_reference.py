@@ -12,7 +12,7 @@ class CellReference(Item):
     """Represents a reference to a cell on a board."""
 
     def __init__(self, board: Board, row: int, column: int):
-        """Initializes the CellReference with a board and cell position.
+        """Initialize the CellReference with a board and cell position.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -35,7 +35,7 @@ class CellReference(Item):
 
     @classmethod
     def parser(cls) -> CellParser:
-        """Returns the parser for CellReference.
+        """Return the parser for CellReference.
 
         Returns:
             CellParser: An instance of CellParser.
@@ -44,7 +44,7 @@ class CellReference(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        """Extracts the row and column from the given YAML dictionary.
+        """Extract the row and column from the given YAML dictionary.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -59,7 +59,7 @@ class CellReference(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a CellReference instance from the given board and YAML data.
+        """Create a CellReference instance from the given board and YAML data.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -72,7 +72,7 @@ class CellReference(Item):
         return cls(board, row, column)
 
     def svg(self) -> Optional[Glyph]:
-        """Returns an SVG representation of the cell.
+        """Return an SVG representation of the cell.
 
         Returns:
             Optional[Glyph]: Always returns None for CellReference.
@@ -80,7 +80,7 @@ class CellReference(Item):
         return None
 
     def letter(self) -> str:
-        """Returns the letter representation of the cell.
+        """Return the letter representation of the cell.
 
         Returns:
             str: A string representing the cell, default is '.'.
@@ -88,7 +88,7 @@ class CellReference(Item):
         return '.'
 
     def flatten(self) -> List[Item]:
-        """Flattens the item into a list of items.
+        """Flatten the item into a list of items.
 
         Returns:
             List[Item]: A list containing the CellReference and its cell.
@@ -97,7 +97,7 @@ class CellReference(Item):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the list of rules associated with this item.
+        """Return the list of rules associated with this item.
 
         Returns:
             List[Rule]: An empty list since CellReference has no rules.
@@ -105,7 +105,7 @@ class CellReference(Item):
         return []
 
     def __repr__(self) -> str:
-        """Returns a string representation of the CellReference instance.
+        """Return a string representation of the CellReference instance.
 
         Returns:
             str: A string representation of the CellReference.
@@ -114,7 +114,7 @@ class CellReference(Item):
 
     @property
     def used_classes(self) -> Set[Type['Item']]:
-        """Returns a set of classes that this item uses.
+        """Return a set of classes that this item uses.
 
         The set of classes is determined by traversing the method resolution
         order (MRO) of the item's class. The set contains all classes in the
@@ -127,7 +127,7 @@ class CellReference(Item):
         return super().used_classes | self.cell.used_classes
 
     def walk(self) -> Iterator[Item]:
-        """Yields each item in the tree of items rooted at the current item.
+        """Yield each item in the tree of items rooted at the current item.
 
         The generator yields the current item, then recursively yields each item
         in the tree rooted at the current item. The order of the items is
@@ -141,7 +141,7 @@ class CellReference(Item):
         yield self.cell
 
     def to_dict(self) -> Dict:
-        """Converts the CellReference instance to a dictionary.
+        """Convert the CellReference instance to a dictionary.
 
         Returns:
             Dict: A dictionary representation of the CellReference.
@@ -149,7 +149,7 @@ class CellReference(Item):
         return {self.__class__.__name__: int(self.cell.row_column_string)}
 
     def children(self) -> Set[Item]:
-        """Returns the child items of the CellReference.
+        """Return the child items of the CellReference.
 
         Returns:
             Set[Item]: A set containing the CellReference and its cell.

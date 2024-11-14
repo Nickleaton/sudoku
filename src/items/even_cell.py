@@ -12,7 +12,7 @@ class EvenCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Checks if the digit is even.
+        """Check if the digit is even.
 
         Args:
             digit (int): The digit to check.
@@ -23,7 +23,7 @@ class EvenCell(SimpleCellReference):
         return digit % 2 == 0
 
     def letter(self) -> str:
-        """Returns the letter representation of the EvenCell.
+        """Return the letter representation of the EvenCell.
 
         Returns:
             str: The letter representation, 'e' for EvenCell.
@@ -31,7 +31,7 @@ class EvenCell(SimpleCellReference):
         return 'e'
 
     def svg(self) -> Optional[Glyph]:
-        """Returns an SVG representation of the EvenCell.
+        """Return an SVG representation of the EvenCell.
 
         Returns:
             Optional[Glyph]: Always returns None for EvenCell.
@@ -40,7 +40,7 @@ class EvenCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with this EvenCell.
+        """Return the tags associated with this EvenCell.
 
         Returns:
             set[str]: A set of tags including 'Parity'.
@@ -49,7 +49,7 @@ class EvenCell(SimpleCellReference):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with this EvenCell.
+        """Return the rules associated with this EvenCell.
 
         Returns:
             List[Rule]: A list containing the rule that specifies an opaque grey square must contain an even digit.
@@ -57,7 +57,7 @@ class EvenCell(SimpleCellReference):
         return [Rule("Odd", 1, "An opaque grey square must contain an even digit")]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the glyphs associated with this EvenCell.
+        """Generate the glyphs associated with this EvenCell.
 
         Returns:
             List[Glyph]: A list containing the EvenCellGlyph.
@@ -65,7 +65,7 @@ class EvenCell(SimpleCellReference):
         return [EvenCellGlyph('EvenCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the EvenCell.
+        """Return the CSS styling for the EvenCell.
 
         Returns:
             Dict: A dictionary containing the CSS properties for the EvenCell.
@@ -77,7 +77,7 @@ class EvenCell(SimpleCellReference):
         }
 
     def bookkeeping(self) -> None:
-        """Updates the bookkeeping for the EvenCell.
+        """Update the bookkeeping for the EvenCell.
 
         Sets the impossibility of containing odd digits in the cell's bookkeeping.
         """

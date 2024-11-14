@@ -17,7 +17,7 @@ class ColumnIndexer(Indexer):
     """
 
     def __init__(self, board: Board, index: int):
-        """Initializes a ColumnIndexer with a board and column index.
+        """Initialize a ColumnIndexer with a board and column index.
 
         Args:
             board (Board): The board on which the column indexer will operate.
@@ -28,7 +28,7 @@ class ColumnIndexer(Indexer):
 
     @staticmethod
     def variant() -> str:
-        """Returns the variant type for columns.
+        """Return the variant type for columns.
 
         Returns:
             str: "column", representing the column variant.
@@ -37,7 +37,7 @@ class ColumnIndexer(Indexer):
 
     @staticmethod
     def other_variant() -> str:
-        """Returns the other variant type for rows.
+        """Return the other variant type for rows.
 
         Returns:
             str: "row", representing the row variant.
@@ -45,7 +45,7 @@ class ColumnIndexer(Indexer):
         return "row"
 
     def glyphs(self) -> List[Glyph]:
-        """Generates glyphs for visual representation of the ColumnIndexer.
+        """Generate glyphs for visual representation of the ColumnIndexer.
 
         Returns:
             List[Glyph]: A list of glyphs representing the column indexer's region.
@@ -53,7 +53,7 @@ class ColumnIndexer(Indexer):
         return [RectGlyph('ColumnIndexer', Coord(1, self.index), Coord(self.board.board_columns, 1))]
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the solver for the column indexing.
+        """Add constraints to the solver for the column indexing.
 
         This method loops over the cells in the indexed column and adds constraints
         that ensure the consistency of digits across the indexed column.
@@ -68,7 +68,7 @@ class ColumnIndexer(Indexer):
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the ColumnIndexer glyph.
+        """Return the CSS styling for the ColumnIndexer glyph.
 
         Returns:
             Dict: A dictionary defining the CSS styling for the column indexer.

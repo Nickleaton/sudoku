@@ -12,7 +12,7 @@ from src.utils.rule import Rule
 
 
 class Battenburg(Item):
-    """Represents a Battenburg pattern in a puzzle.
+    """Represent a Battenburg pattern in a puzzle.
 
     The Battenburg pattern is defined by its position on the board,
     constraints for adjacent cells, and methods for parsing, serialization,
@@ -23,7 +23,7 @@ class Battenburg(Item):
     """
 
     def __init__(self, board: Board, position: Coord):
-        """Initializes a Battenburg pattern with the given board and position.
+        """Initialize a Battenburg pattern with the given board and position.
 
         Args:
             board (Board): The puzzle board on which the Battenburg pattern is placed.
@@ -33,7 +33,7 @@ class Battenburg(Item):
         self.position = position
 
     def __repr__(self) -> str:
-        """Represents the Battenburg object as a string for debugging.
+        """Represent the Battenburg object as a string for debugging.
 
         Returns:
             str: A string representation of the Battenburg object.
@@ -42,7 +42,7 @@ class Battenburg(Item):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rules associated with the Battenburg pattern.
+        """Define the rules associated with the Battenburg pattern.
 
         Returns:
             List[Rule]: A list containing rules related to the Battenburg pattern.
@@ -50,7 +50,7 @@ class Battenburg(Item):
         return [Rule('Quadruple', 3, 'Digits appearing in at least one of the cells adjacent to the circle')]
 
     def glyphs(self) -> List[Glyph]:
-        """Creates glyph representations of the Battenburg pattern for rendering.
+        """Create glyph representations of the Battenburg pattern for rendering.
 
         Returns:
             List[Glyph]: A list containing a BattenburgGlyph for graphical representation.
@@ -59,7 +59,7 @@ class Battenburg(Item):
 
     @classmethod
     def parser(cls) -> CellListParser:
-        """Provides a parser for interpreting Battenburg configurations.
+        """Provide a parser for interpreting Battenburg configurations.
 
         Returns:
             CellListParser: A parser for handling cell lists in the Battenburg configuration.
@@ -68,7 +68,7 @@ class Battenburg(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the position of the Battenburg pattern from YAML data.
+        """Extract the position of the Battenburg pattern from YAML data.
 
         Args:
             board (Board): The puzzle board, containing board constraints.
@@ -88,7 +88,7 @@ class Battenburg(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Battenburg item from YAML data.
+        """Create a Battenburg item from YAML data.
 
         Args:
             board (Board): The puzzle board on which the Battenburg will be placed.
@@ -101,7 +101,7 @@ class Battenburg(Item):
         return cls(board, position)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds puzzle constraints for the Battenburg pattern to the solver.
+        """Add puzzle constraints for the Battenburg pattern to the solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.
@@ -110,7 +110,7 @@ class Battenburg(Item):
         # TOOD Constraints implementation will go here
 
     def to_dict(self) -> Dict:
-        """Converts the Battenburg item to a dictionary for serialization.
+        """Convert the Battenburg item to a dictionary for serialization.
 
         The dictionary has a single key-value pair where the key is the
         item's class name, and the value is the row and column values of the

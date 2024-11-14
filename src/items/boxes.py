@@ -14,7 +14,7 @@ class Boxes(StandardRegionSet):
     """
 
     def __init__(self, board: Board):
-        """Initializes the Boxes instance.
+        """Initialize the Boxes instance.
 
         Args:
             board (Board): The board that contains the boxes.
@@ -27,7 +27,7 @@ class Boxes(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Boxes instance.
+        """Create a Boxes instance.
 
         Args:
             cls: The class itself (Boxes).
@@ -40,7 +40,7 @@ class Boxes(StandardRegionSet):
         return Boxes(board)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Boxes instance.
+        """Return a string representation of the Boxes instance.
 
         Returns:
             str: A string representation of the Boxes instance.

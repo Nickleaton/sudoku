@@ -12,7 +12,7 @@ EXCLUDE_VALUES_ON_LINE = False
 
 
 class BetweenLine(Line):
-    """Represents a line between two filled circles in a puzzle.
+    """Represent a line between two filled circles in a puzzle.
 
     The values in the cells along this line must strictly fall between the
     values in the filled circles at either end of the line.
@@ -23,7 +23,7 @@ class BetweenLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rules associated with the BetweenLine.
+        """Define the rules associated with the BetweenLine.
 
         Returns:
             List[Rule]: A list containing rules related to the BetweenLine.
@@ -37,7 +37,7 @@ class BetweenLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Creates glyph representations of the BetweenLine for rendering.
+        """Create glyph representations of the BetweenLine for rendering.
 
         Returns:
             List[Glyph]: A list containing a BetweenLineGlyph for graphical representation.
@@ -46,7 +46,7 @@ class BetweenLine(Line):
 
     @property
     def tags(self) -> set[str]:
-        """Defines tags associated with the BetweenLine.
+        """Define tags associated with the BetweenLine.
 
         Returns:
             set[str]: A set of tags that categorize the BetweenLine.
@@ -54,7 +54,7 @@ class BetweenLine(Line):
         return super().tags.union({'BetweenLine', 'Comparison'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds puzzle constraints for the BetweenLine to the solver.
+        """Add puzzle constraints for the BetweenLine to the solver.
 
         The constraints enforce that the values in cells between the filled circles
         are strictly greater than the starting circle's value and strictly less than
@@ -97,7 +97,7 @@ class BetweenLine(Line):
             solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
 
     def css(self) -> Dict:
-        """Defines the CSS style for rendering the BetweenLine.
+        """Define the CSS style for rendering the BetweenLine.
 
         Returns:
             Dict: CSS styling for the BetweenLine, specifying stroke and fill colors.

@@ -14,12 +14,13 @@ from src.utils.side import Side
 
 
 class AntiRossini(FirstN):
-    """Represents the Anti-Rossini rule in a puzzle where the three digits nearest
-    an arrow must strictly increase in the direction of the arrow.
+    """Represent the Anti-Rossini rule in a puzzle.
+
+    The three digits nearest an arrow must strictly increase in the direction of the arrow.
     """
 
     def __init__(self, board: Board, side: Side, index: int, order: Order) -> None:
-        """Initializes the AntiRossini rule with the specified board, side, index, and order.
+        """Initialize the AntiRossini rule with the specified board, side, index, and order.
 
         Args:
             board (Board): The game board.
@@ -32,6 +33,11 @@ class AntiRossini(FirstN):
         self.direction = self.side.order_direction(self.order)
 
     def __repr__(self) -> str:
+        """Return a string representation of the AntiRossini instance.
+
+        Returns:
+            str: A string representation of the instance.
+        """
         return (
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
@@ -43,7 +49,7 @@ class AntiRossini(FirstN):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the AntiRossini class.
+        """Return the rules associated with the AntiRossini class.
 
         Returns:
             List[Rule]: The list of rules.
@@ -58,7 +64,7 @@ class AntiRossini(FirstN):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates glyphs for visual representation of the rule.
+        """Generate glyphs for visual representation of the rule.
 
         Returns:
             List[Glyph]: A list of glyphs, specifically an ArrowGlyph.
@@ -73,7 +79,7 @@ class AntiRossini(FirstN):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with this rule.
+        """Return the tags associated with this rule.
 
         Returns:
             set[str]: A set of tags for the AntiRossini rule.
@@ -82,7 +88,7 @@ class AntiRossini(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the side, index, and order from the YAML configuration.
+        """Extract the side, index, and order from the YAML configuration.
 
         Args:
             board (Board): The game board.
@@ -104,7 +110,7 @@ class AntiRossini(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates an AntiRossini instance from the YAML configuration.
+        """Create an AntiRossini instance from the YAML configuration.
 
         Args:
             board (Board): The game board.
@@ -117,7 +123,7 @@ class AntiRossini(FirstN):
         return cls(board, side, index, order)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the necessary constraints for this rule to the solver.
+        """Add the necessary constraints for this rule to the solver.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -125,7 +131,7 @@ class AntiRossini(FirstN):
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> Dict:
-        """Converts the AntiRossini instance to a dictionary representation.
+        """Convert the AntiRossini instance to a dictionary representation.
 
         Returns:
             Dict: A dictionary representation of the instance.
@@ -133,7 +139,7 @@ class AntiRossini(FirstN):
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
 
     def css(self) -> Dict:
-        """Returns the CSS styling for this rule.
+        """Return the CSS styling for this rule.
 
         Returns:
             Dict: A dictionary containing CSS properties.

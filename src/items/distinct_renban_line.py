@@ -7,52 +7,88 @@ from src.utils.rule import Rule
 
 
 class DistinctRenbanLine(RenbanLine):
+    """Distinct Renban line.
+
+    The digits on the line are consecutive,non-repeating.
+    No two lines contain exactly the same set of digits.
+    """
 
     @property
     def rules(self) -> List[Rule]:
+        """Retrieve the rules for the distinct Renban line.
+
+        Returns:
+            List[Rule]: A list of rules for the distinct Renban line.
+        """
         return [
             Rule(
                 'DistinctRenbanLine',
                 1,
                 "Pink lines must contain a set of consecutive, non-repeating digits, in any order,"
-                "No two purple lines can contain exactly the same digits"
+                " No two purple lines can contain exactly the same digits"
             )
         ]
 
     def glyphs(self) -> List[Glyph]:
+        """Generate the glyphs for visual representation of the distinct Renban line.
+
+        Returns:
+            List[Glyph]: A list containing the PolyLineGlyph representing the distinct Renban line.
+        """
         return [PolyLineGlyph('DistinctRenbanLine', [cell.coord for cell in self.cells], False, False)]
 
     @property
     def tags(self) -> set[str]:
+        """Retrieve the tags associated with the distinct Renban line.
+
+        Returns:
+            set[str]: A set of tags for the distinct Renban line, including 'DistinctRenbanLine',
+                      'RenbanLine', 'Adjacent', and 'Set'.
+        """
         return super().tags.union({'DistinctRenbanLine', 'RenbanLine', 'Adjacent', 'Set'})
 
     @staticmethod
-    def power(digit: int):
+    def power(digit: int) -> int:
+        """Compute the power of 2 corresponding to a given digit.
+
+        Args:
+            digit (int): The digit for which to compute the power.
+
+        Returns:
+            int: The power of 2 corresponding to the given digit.
+        """
         return 2 ** (digit - 1)
 
     @staticmethod
-    def power_str(power: int):
+    def power_str(power: int) -> str:
+        """Convert a power value to a string of digits based on its binary representation.
+
+        Args:
+            power (int): The power value to convert.
+
+        Returns:
+            str: A string representation of the digits corresponding to the binary representation of the power.
+        """
         return "".join([str(i + 1) for i, c in enumerate(f"{power:b}"[::-1]) if c == '1'])
 
     @staticmethod
-    def digits_to_str(digits: List[int]):
+    def digits_to_str(digits: List[int]) -> int:
+        """Convert a list of digits into a unique integer based on their powers.
+
+        Args:
+            digits (List[int]): The list of digits to convert.
+
+        Returns:
+            int: A unique integer representing the sum of the powers of the digits.
+        """
         return sum([DistinctRenbanLine.power(digit) for digit in digits])
 
-    # def add_constraint(self, solver: PulpSolver) -> None:
-    # solver.renbans[self.name] = LpVariable(f"{self.name}", 1, int(10 ** self.board.maximum_digit), LpInteger)
-    # solver.distinct_renbans.append(solver.renbans[self.name])
-    # total = lpSum(
-    #     [
-    #         DistinctRenban.power(digit) * solver.choices[digit][cell.row][cell.column]
-    #         for digit in self.board.digit_range
-    #         for cell in self.cells
-    #     ]
-    # )
-    # solver.model += solver.distinct_renbans[self.name] == total, self.name
-    # for dr in solver.distinct_renbans:
-    #     solver.model + not_equal(dr, solver.renbans[self.name])
-
     def css(self) -> Dict:
+        """Retrieve the CSS style for rendering the distinct Renban line.
+
+        Returns:
+            Dict: A dictionary containing the CSS properties for the distinct Renban line.
+        """
         return {
             '.DistinctRenbanLine': {
                 'stroke': 'purple',

@@ -14,7 +14,7 @@ class Columns(StandardRegionSet):
     """
 
     def __init__(self, board: Board):
-        """Initializes the Columns instance.
+        """Initialize the Columns instance.
 
         Args:
             board (Board): The board that contains the columns.
@@ -23,7 +23,7 @@ class Columns(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Columns instance.
+        """Create a Columns instance.
 
         Args:
             cls: The class itself (Columns).
@@ -36,7 +36,7 @@ class Columns(StandardRegionSet):
         return Columns(board)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Columns instance.
+        """Return a string representation of the Columns instance.
 
         Returns:
             str: A string representation of the Columns instance.

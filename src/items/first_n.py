@@ -11,23 +11,10 @@ from src.utils.side import Side
 
 
 class FirstN(Region):
-    """First N cells from a given side and index.
-
-    This class represents a region of the first N cells starting from a specific side
-    and index on the board. The cells are calculated based on the direction given
-    by the side and its offset.
-
-    Attributes:
-        side (Side): The side of the board from which to start.
-        index (int): The starting index from which cells will be selected.
-        count (int): The number of cells to include in the region (default is 3).
-        offset (Coord): The direction offset calculated from the side.
-        reference (Coord): The reference cell used to determine the starting position.
-        coords (list[Coord]): A list of coordinates for the cells included in the region.
-    """
+    """First N cells from a given side and index."""
 
     def __init__(self, board: Board, side: Side, index: int, count: int = 3):
-        """Initializes a FirstN region on the board.
+        """Initialize a FirstN region on the board.
 
         Args:
             board (Board): The game board.
@@ -63,7 +50,7 @@ class FirstN(Region):
 
     @property
     def tags(self) -> set[str]:
-        """Returns a set of tags associated with the region.
+        """Return a set of tags associated with the region.
 
         Returns:
             set[str]: The set of tags, including 'FirstN'.
@@ -72,7 +59,7 @@ class FirstN(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the necessary information from a YAML file.
+        """Extract the necessary information from a YAML file.
 
         Args:
             board (Board): The game board.
@@ -89,7 +76,7 @@ class FirstN(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a FirstN region from the extracted YAML data.
+        """Create a FirstN region from the extracted YAML data.
 
         Args:
             board (Board): The game board.
@@ -102,7 +89,7 @@ class FirstN(Region):
         return cls(board, side, index, count)
 
     def to_dict(self) -> Dict:
-        """Converts the FirstN region to a dictionary representation.
+        """Convert the FirstN region to a dictionary representation.
 
         Returns:
             Dict: A dictionary representing the region.
@@ -110,7 +97,7 @@ class FirstN(Region):
         return {self.__class__.__name__: f"{self.side.value}{self.index}{self.count}"}
 
     def __repr__(self) -> str:
-        """Returns a string representation of the FirstN region.
+        """Return a string representation of the FirstN region.
 
         Returns:
             str: The string representation.

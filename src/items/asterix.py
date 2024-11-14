@@ -15,7 +15,7 @@ class Asterix(SpecialRegion):
     """
 
     def coords(self) -> List[Coord]:
-        """Provides the coordinates that define the Asterix region.
+        """Provide the coordinates that define the Asterix region.
 
         Returns:
             List[Coord]: A list of Coord objects representing each cell in the
@@ -34,7 +34,7 @@ class Asterix(SpecialRegion):
         ]
 
     def region_name(self) -> str:
-        """Provides the name of the region.
+        """Provide the name of the region.
 
         Returns:
             str: The name of the region, 'Asterix'.
@@ -42,7 +42,7 @@ class Asterix(SpecialRegion):
         return 'Asterix'
 
     def css(self) -> Dict:
-        """Defines the CSS style for rendering the Asterix region.
+        """Define the CSS style for rendering the Asterix region.
 
         Returns:
             Dict: CSS styling for the Asterix region, specifying stroke and fill colors.

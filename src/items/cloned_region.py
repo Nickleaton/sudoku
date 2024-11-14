@@ -9,16 +9,15 @@ from src.utils.rule import Rule
 
 
 class ClonedRegion(Item):
-    """In a cloned region, the cells in the first region are clones of the cells in the second region.
-    """
+    """Represents a cloned region constraint in a Sudoku variant."""
 
-    def __init__(self, board, cells_a: List[Cell], cells_b: List[Cell]):
-        """Construct a ClonedRegion.
+    def __init__(self, board: Board, cells_a: List[Cell], cells_b: List[Cell]):
+        """Initialize a ClonedRegion with two sets of cells that must have the same values.
 
-        :param board: The board with the two regions
-        :param cells_a: The cells in the first region
-        :param cells_b: The cells in the second region
-        :raise AssertionError: If the two regions have different numbers of cells
+        Args:
+            board (Board): The Sudoku board instance.
+            cells_a (List[Cell]): The first set of cells in the cloned region.
+            cells_b (List[Cell]): The second set of cells in the cloned region.
         """
         super().__init__(board)
         assert len(cells_a) == len(cells_b)
@@ -26,13 +25,10 @@ class ClonedRegion(Item):
         self.region_b: List[Cell] = cells_b
 
     def __repr__(self) -> str:
-        """Return a string representation of the ClonedRegion.
+        """Provide a string representation of the ClonedRegion instance.
 
-        The representation is a string that could be used to recreate the ClonedRegion.
-        It is of the form:
-        `ClonedRegion(board, cells_a, cells_b)`
-
-        :return: A string representation of the ClonedRegion
+        Returns:
+            str: A string representing the ClonedRegion.
         """
         return (
             f"{self.__class__.__name__}("
@@ -44,7 +40,15 @@ class ClonedRegion(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[List[Cell], List[Cell]]:
-        # Force string conversion because yaml might convert to int which you don't want when just one cell is cloned
+        """Extract two sets of cells from YAML configuration.
+
+        Args:
+            board (Board): The Sudoku board instance.
+            yaml (Dict): The YAML configuration containing cell coordinates.
+
+        Returns:
+            Tuple[List[Cell], List[Cell]]: Two lists of cells representing the cloned regions.
+        """
         part_a = str(yaml[cls.__name__].split('=')[0])
         part_b = str(yaml[cls.__name__].split('=')[1])
         cells_a = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in part_a.split(',')]
@@ -53,30 +57,32 @@ class ClonedRegion(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Create a ClonedRegion from a Board and a YAML dict.
+        """Create a ClonedRegion from YAML configuration.
 
-        :param board: The board with the two regions
-        :param yaml: A YAML dict with the two regions
-        :return: A ClonedRegion
+        Args:
+            board (Board): The Sudoku board instance.
+            yaml (Dict): The YAML configuration.
+
+        Returns:
+            Item: An instance of ClonedRegion.
         """
         cells_a, cells_b = ClonedRegion.extract(board, yaml)
         return ClonedRegion(board, cells_a, cells_b)
 
     def glyphs(self) -> List[Glyph]:
-        # TODO
+        """Retrieve the glyphs for the cloned region.
+
+        Returns:
+            List[Glyph]: An empty list, as this region has no specific glyphs.
+        """
         return []
 
     @property
     def used_classes(self) -> Set[Type[Item]]:
-        """Return a set of classes that this item uses.
-
-        The set of classes is determined by traversing the method resolution
-        order (MRO) of the item's class. The set contains all classes in the
-        MRO, except for the abstract base class (`abc.ABC`) and the `object`
-        class.
+        """Retrieve the classes used in the cloned region.
 
         Returns:
-            Set[Type[Self]]: A set of classes that this item uses.
+            Set[Type[Item]]: A set of item types used in the cloned region.
         """
         result = super().used_classes
         for item in self.region_a:
@@ -86,15 +92,10 @@ class ClonedRegion(Item):
         return result
 
     def walk(self) -> Iterator[Item]:
-        """Yield each item in the tree of items rooted at the current item.
-
-        The generator yields the current item, then recursively yields each item
-        in the tree rooted at the current item. The order of the items is
-        unspecified.
+        """Walk through all items in the cloned region.
 
         Yields:
-            Item: The current item, followed by each item in the tree rooted at
-                the current item.
+            Iterator[Item]: An iterator of items within the cloned region.
         """
         yield self
         for item in self.region_a:
@@ -104,9 +105,10 @@ class ClonedRegion(Item):
 
     @property
     def rules(self) -> List[Rule]:
-        """Get the list of rules for this ClonedRegion.
+        """Define the rule associated with the cloned region.
 
-        :return: A list of rules
+        Returns:
+            List[Rule]: A list containing the rule for cloned regions.
         """
         return [
             Rule(
@@ -117,22 +119,19 @@ class ClonedRegion(Item):
         ]
 
     @property
-    def tags(self) -> set[str]:
-        """Get the set of tags for this item.
+    def tags(self) -> Set[str]:
+        """Retrieve tags for the cloned region.
 
-        The tags are a set of strings that can be used to identify items with certain properties.
-        The default tags are 'Item' and any tags that the item's classes have.
-        :return: A set of strings
+        Returns:
+            Set[str]: A set of tags, including 'ClonedRegion'.
         """
         return super().tags.union({'ClonedRegion'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add the constraint that the two regions are clones of each other.
+        """Add constraints to ensure cloned regions have the same values.
 
-        The constraint is that for each pair of cells in the two regions, the values in the cells are the same.
-
-        :param solver: The solver to add the constraint to
-        :return: None
+        Args:
+            solver (PulpSolver): The solver to add constraints to.
         """
         for cell_1, cell_2 in zip(self.region_a, self.region_b):
             name = f"{self.__class__.__name__}_{cell_1.row}{cell_1.column}_{cell_2.row}{cell_2.column}"
@@ -141,25 +140,20 @@ class ClonedRegion(Item):
             solver.model += value_1 == value_2, name
 
     def to_dict(self) -> Dict:
-        """Convert the ClonedRegion to a dictionary for YAML dump.
+        """Convert the cloned region to a dictionary representation.
 
-        The dictionary has one key-value pair. The key is the name of the class and the value is a string of the form:
-        the first region and <cell_str_b> is a comma-separated string of the row and column of each cell in the second
-        region.
-
-        :return: A dictionary with one key-value pair
+        Returns:
+            Dict: A dictionary representation of the cloned region.
         """
         cell_str_a = ",".join([f"{cell.row}{cell.column}" for cell in self.region_a])
         cell_str_b = ",".join([f"{cell.row}{cell.column}" for cell in self.region_b])
         return {self.__class__.__name__: f"{cell_str_a}={cell_str_b}"}
 
     def css(self) -> Dict:
-        """Get the CSS for the ClonedRegion.
+        """Return the CSS styling for the cloned region glyphs.
 
-        The CSS is a dictionary with three keys: 'ClonedRegion', 'ClonedRegionForeground', and 'ClonedRegionBackground'.
-        The value for each key is a dictionary with the CSS style for that class.
-
-        :return: A dictionary of CSS styles
+        Returns:
+            Dict: A dictionary containing CSS styles for the cloned region.
         """
         return {
             '.ClonedRegion': {

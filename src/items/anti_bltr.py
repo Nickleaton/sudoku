@@ -9,7 +9,7 @@ from src.utils.coord import Coord
 
 
 class AntiBLTR(AntiDiagonal):
-    """Represents an AntiBLTR item on a board.
+    """Represent an AntiBLTR item on a board.
 
     Inherits from the AntiDiagonal class and adds specific functionality
     for the AntiBLTR, which includes managing cells on the anti-diagonal
@@ -17,8 +17,9 @@ class AntiBLTR(AntiDiagonal):
     """
 
     def __init__(self, board: Board):
-        """Initializes the AntiBLTR with a board.
-        BLTR = Bottom Left to Top Right
+        """Initialize the AntiBLTR with a board.
+
+        BLTR = Bottom Left to Top Right.
 
         Args:
             board (Board): The board on which the AntiBLTR will be placed.
@@ -28,7 +29,7 @@ class AntiBLTR(AntiDiagonal):
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
     def glyphs(self) -> List[Glyph]:
-        """Returns the glyphs associated with the AntiBLTR.
+        """Return the glyphs associated with the AntiBLTR.
 
         Glyphs visually represent the AntiBLTR's position on the board.
 

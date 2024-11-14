@@ -7,12 +7,13 @@ from src.items.greater_than_equal_difference_line import GreaterThanEqualDiffere
 
 
 class DutchWhisperLine(GreaterThanEqualDifferenceLine):
-    """Represents a Dutch Whisper line in a puzzle, where the difference between
-    connected cells must be at least 4.
+    """Dutch Whisper line.
+
+    The difference between connected cells must be at least 4.
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initializes a DutchWhisperLine instance.
+        """Initialize a DutchWhisperLine instance.
 
         Args:
             board (Board): The game board to which the line belongs.
@@ -21,7 +22,7 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         super().__init__(board, cells, 4)
 
     def glyphs(self) -> List[Glyph]:
-        """Creates a visual representation of the Dutch Whisper line.
+        """Create a visual representation of the Dutch Whisper line.
 
         Returns:
             List[Glyph]: A list containing a PolyLineGlyph for rendering the line.
@@ -30,7 +31,7 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
 
     @property
     def tags(self) -> set[str]:
-        """Tags associated with the Dutch Whisper line.
+        """Tag associated with the Dutch Whisper line.
 
         Returns:
             set[str]: Tags specific to Dutch Whisper lines, combined with inherited tags.

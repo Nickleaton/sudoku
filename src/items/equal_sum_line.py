@@ -20,7 +20,7 @@ class EqualSumLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines rules specific to EqualSumLine.
+        """Define rules specific to EqualSumLine.
 
         Returns:
             List[Rule]: A list containing a Rule object that specifies equal
@@ -37,7 +37,7 @@ class EqualSumLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates a graphical representation of the EqualSumLine.
+        """Generate a graphical representation of the EqualSumLine.
 
         Returns:
             List[Glyph]: A list containing a `PolyLineGlyph` instance with
@@ -56,7 +56,7 @@ class EqualSumLine(Line):
         return super().tags.union({'EqualSumLine', 'Sum'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds equal segment sum constraints to the Pulp solver.
+        """Add equal segment sum constraints to the Pulp solver.
 
         Constraints ensure that the sum of digits within each segment
         (for each 3x3 box the line passes through) is the same.

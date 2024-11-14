@@ -36,8 +36,7 @@ class Item(ABC):
     # Creation Routines
 
     def __init_subclass__(cls, **kwargs):
-        """Register the class so that it can be created from yaml.
-        """
+        """Register the class so that it can be created from yaml."""
         super().__init_subclass__(**kwargs)
         # Register the class
         Item.classes[cls.__name__] = cls

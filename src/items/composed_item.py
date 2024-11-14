@@ -10,6 +10,8 @@ from src.utils.rule import Rule
 
 
 class ComposedItem(Item):
+    """Composed Items."""
+
     def __init__(self, board: Board, items: Sequence[Item]):
         """Initialize a ComposedItem instance.
 
@@ -139,8 +141,7 @@ class ComposedItem(Item):
             item.add_constraint(solver)
 
     def bookkeeping(self) -> None:
-        """Perform bookkeeping for each item in the composed item.
-        """
+        """Perform bookkeeping for each item in the composed item."""
         for item in self.items:
             item.bookkeeping()
 

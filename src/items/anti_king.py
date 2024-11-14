@@ -16,7 +16,7 @@ class AntiKing(Anti):
     """
 
     def __init__(self, board: Board):
-        """Initializes the AntiKing instance.
+        """Initialize the AntiKing instance.
 
         Args:
             board (Board): The board associated with this AntiKing rule.
@@ -24,7 +24,7 @@ class AntiKing(Anti):
         super().__init__(board, list(board.digit_range))
 
     def offsets(self) -> List[Coord]:
-        """Returns the possible move offsets for the Anti-King.
+        """Return the possible move offsets for the Anti-King.
 
         Returns:
             List[Coord]: A list of coordinates representing the King's move offsets.
@@ -33,7 +33,7 @@ class AntiKing(Anti):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates an AntiKing instance.
+        """Create an AntiKing instance.
 
         Args:
             cls: The class itself (AntiKing).
@@ -47,7 +47,7 @@ class AntiKing(Anti):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the AntiKing rule.
+        """Return the tags associated with the AntiKing rule.
 
         Returns:
             set[str]: A set of tags, including 'King'.
@@ -56,7 +56,7 @@ class AntiKing(Anti):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the AntiKing.
+        """Return the rules associated with the AntiKing.
 
         Returns:
             List[Rule]: A list of rules for the AntiKing, stating that
@@ -67,7 +67,7 @@ class AntiKing(Anti):
         ]
 
     def __repr__(self) -> str:
-        """Returns a string representation of the AntiKing instance.
+        """Return a string representation of the AntiKing instance.
 
         Returns:
             str: A string representation of the AntiKing instance.
@@ -75,7 +75,7 @@ class AntiKing(Anti):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> Dict:
-        """Converts the AntiKing instance to a dictionary representation.
+        """Convert the AntiKing instance to a dictionary representation.
 
         Returns:
             Dict: A dictionary representation of the AntiKing instance.

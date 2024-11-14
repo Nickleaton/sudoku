@@ -6,8 +6,7 @@ from src.items.line import Line
 
 
 class DifferenceLine(Line):
-    """Represents a line in a puzzle where the cells connected by the line must
-    have a specified difference.
+    """Represent a line where cells on the line have a specified difference.
 
     Attributes:
         difference (int): The required difference between connected cells.
@@ -16,7 +15,7 @@ class DifferenceLine(Line):
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell], difference: int = 0):
-        """Initializes a DifferenceLine with the given board, cells, and difference.
+        """Initialize a DifferenceLine with the given board, cells, and difference.
 
         Args:
             board (Board): The game board containing the cells.
@@ -30,7 +29,7 @@ class DifferenceLine(Line):
 
     @property
     def tags(self) -> set[str]:
-        """Tags associated with the DifferenceLine.
+        """Tag associated with the DifferenceLine.
 
         Returns:
             set[str]: A set of tags specific to the DifferenceLine.

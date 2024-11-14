@@ -15,7 +15,7 @@ class AntiMonkey(Anti):
     """
 
     def __init__(self, board: Board):
-        """Initializes the AntiMonkey with a board.
+        """Initialize the AntiMonkey with a board.
 
         Args:
             board (Board): The board on which the AntiMonkey will be placed.
@@ -23,7 +23,7 @@ class AntiMonkey(Anti):
         super().__init__(board, list(board.digit_range))
 
     def offsets(self) -> List[Coord]:
-        """Returns the movement offsets for the AntiMonkey.
+        """Return the movement offsets for the AntiMonkey.
 
         The offsets represent the relative positions a monkey can move
         in this game.
@@ -44,7 +44,7 @@ class AntiMonkey(Anti):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the AntiMonkey.
+        """Return the tags associated with the AntiMonkey.
 
         The tags include those from the superclass and the specific tag
         'Monkey'.
@@ -56,7 +56,7 @@ class AntiMonkey(Anti):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates an instance of AntiMonkey from the given board and YAML.
+        """Create an instance of AntiMonkey from the given board and YAML.
 
         Args:
             cls: The class of the item being created.
@@ -70,7 +70,7 @@ class AntiMonkey(Anti):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the AntiMonkey.
+        """Return the rules associated with the AntiMonkey.
 
         The rules specify the restrictions on the placement of digits
         in relation to monkey moves.
@@ -83,7 +83,7 @@ class AntiMonkey(Anti):
         ]
 
     def __repr__(self) -> str:
-        """Returns a string representation of the AntiMonkey instance.
+        """Return a string representation of the AntiMonkey instance.
 
         Returns:
             str: A string representation of the AntiMonkey.
@@ -91,7 +91,7 @@ class AntiMonkey(Anti):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> Dict:
-        """Converts the AntiMonkey instance to a dictionary representation.
+        """Convert the AntiMonkey instance to a dictionary representation.
 
         Returns:
             Dict: A dictionary representation of the AntiMonkey.

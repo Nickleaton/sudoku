@@ -8,14 +8,14 @@ from src.utils.rule import Rule
 
 
 class AntiQueens(Anti):
-    """Represents an AntiQueen item on a board.
+    """Represent an AntiQueen item on a board.
 
     Inherits from the Anti class and provides specific functionality for
     the AntiQueen, including movement offsets, rules, and schema.
     """
 
     def __init__(self, board: Board, digits: List[int]):
-        """Initializes the AntiQueen with a board and a list of digits.
+        """Initialize the AntiQueen with a board and a list of digits.
 
         Args:
             board (Board): The board on which the AntiQueen will be placed.
@@ -25,7 +25,7 @@ class AntiQueens(Anti):
         self.digits = digits
 
     def offsets(self) -> List[Coord]:
-        """Returns the movement offsets for the AntiQueen.
+        """Return the movement offsets for the AntiQueen.
 
         The offsets represent the relative positions a queen can move
         in chess (diagonally in all four directions).
@@ -43,7 +43,7 @@ class AntiQueens(Anti):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the AntiQueen.
+        """Return the tags associated with the AntiQueen.
 
         The tags include those from the superclass and the specific tag
         'Queen'.
@@ -55,7 +55,7 @@ class AntiQueens(Anti):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the AntiQueen.
+        """Return the rules associated with the AntiQueen.
 
         The rules specify the restrictions on the placement of digits
         in relation to queen moves.
@@ -70,15 +70,29 @@ class AntiQueens(Anti):
 
     @classmethod
     def parser(cls) -> DigitsParser:
+        """Return a DigitsParser instance for parsing the AntiQueen digits.
+
+        Returns:
+            DigitsParser: The parser for AntiQueen digits.
+        """
         return DigitsParser()
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'AntiQueens':
+        """Create an AntiQueens instance using the YAML configuration.
+
+        Args:
+            board (Board): The board on which the AntiQueens will be placed.
+            yaml (Dict): The YAML configuration dictionary containing the digits.
+
+        Returns:
+            AntiQueens: An instance of the AntiQueens class with the parsed digits.
+        """
         lst = cls.extract(board, yaml)
         return cls(board, lst)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the AntiQueens instance.
+        """Return a string representation of the AntiQueens instance.
 
         Returns:
             str: A string representation of the AntiQueens.

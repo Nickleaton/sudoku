@@ -21,7 +21,7 @@ class EntropicLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rules for the entropic line.
+        """Define the rules for the entropic line.
 
         Returns:
             List[Rule]: A list containing the entropic rule, enforcing that
@@ -39,7 +39,7 @@ class EntropicLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Creates glyph representations of the entropic line for rendering.
+        """Create glyph representations of the entropic line for rendering.
 
         Returns:
             List[Glyph]: A list of PolyLineGlyph objects representing the line.
@@ -48,7 +48,7 @@ class EntropicLine(Line):
 
     @property
     def tags(self) -> set[str]:
-        """Provides tags associated with the entropic line.
+        """Provide tags associated with the entropic line.
 
         Returns:
             set[str]: A set of tags identifying the entropic line.
@@ -56,7 +56,7 @@ class EntropicLine(Line):
         return super().tags.union({'EntropicLine', 'Set'})
 
     def low_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculates the total for low digits in a specified cell.
+        """Calculate the total for low digits in a specified cell.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -68,7 +68,7 @@ class EntropicLine(Line):
         return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [1, 2, 3]])
 
     def mid_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculates the total for medium digits in a specified cell.
+        """Calculate the total for medium digits in a specified cell.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -80,7 +80,7 @@ class EntropicLine(Line):
         return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [4, 5, 6]])
 
     def top_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculates the total for high digits in a specified cell.
+        """Calculate the total for high digits in a specified cell.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -92,7 +92,7 @@ class EntropicLine(Line):
         return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [7, 8, 9]])
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints for entropic rules to the solver model.
+        """Add constraints for entropic rules to the solver model.
 
         Enforces two constraints:
         - No two successive cells along the line contain the same category
@@ -118,7 +118,7 @@ class EntropicLine(Line):
             solver.model += self.top_total(solver, i) == self.top_total(solver, i + 3), f"{self.name}_j_top_{pname}"
 
     def css(self) -> Dict:
-        """Defines the CSS style for rendering the entropic line.
+        """Define the CSS style for rendering the entropic line.
 
         Returns:
             Dict: CSS styling for the line, setting color and stroke properties.

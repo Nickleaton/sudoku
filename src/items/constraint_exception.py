@@ -1,2 +1,2 @@
 class ConstraintException(Exception):
-    pass
+    """Handle Exception for Constraint-specific errors."""

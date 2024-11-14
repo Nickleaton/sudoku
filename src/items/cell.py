@@ -1,5 +1,5 @@
 from itertools import product
-from typing import Dict, Tuple, List, Optional
+from typing import Dict, Tuple, List, Optional, ClassVar
 
 from pulp import lpSum
 
@@ -14,54 +14,111 @@ from src.utils.rule import Rule
 
 
 class CellException(SudokuException):
-    pass
+    """Exception for Cell-specific errors."""
 
 
-# pylint: disable=too-many-public-methods
 class Cell(Item):
-    cache: Dict[Tuple[int, int], 'Cell'] = {}
+    """Represents a cell in a Sudoku board."""
+
+    cache: ClassVar[Dict[Tuple[int, int], 'Cell']] = {}
 
     @classmethod
     def clear(cls):
+        """Clear the cell cache."""
         cls.cache.clear()
 
     def __init__(self, board: Board, row: int, column: int):
+        """Initialize a Cell with a board, row, and column.
+
+        Args:
+            board (Board): The Sudoku board the cell belongs to.
+            row (int): The row position of the cell.
+            column (int): The column position of the cell.
+        """
         super().__init__(board)
         self.row = row
         self.column = column
         self.book = BookKeeping(self.board.maximum_digit)
 
     def __repr__(self) -> str:
+        """Return a detailed string representation of the cell.
+
+        Returns:
+            str: A string representation including board, row, and column.
+        """
         return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
 
     def __hash__(self):
+        """Compute a unique hash for the cell based on row and column.
+
+        Returns:
+            int: The hash value of the cell.
+        """
         return self.row * self.board.maximum_digit + self.column
 
     def __str__(self) -> str:
+        """Return a string identifier for the cell.
+
+        Returns:
+            str: A string in the format 'Cell(row, column)'.
+        """
         return f"Cell({self.row}, {self.column})"
 
     def marked_book(self) -> Optional[BookKeeping]:
-        """Return the book for the cell.
+        """Return the bookkeeping instance for the cell.
+
+        Returns:
+            Optional[BookKeeping]: The BookKeeping instance for tracking digit possibilities.
         """
         return self.book
 
     @staticmethod
     def letter() -> str:
+        """Return the letter used for cell representation.
+
+        Returns:
+            str: A placeholder letter for the cell.
+        """
         return '.'
 
     @property
     def rules(self) -> List[Rule]:
+        """Return the list of rules associated with the cell.
+
+        Returns:
+            List[Rule]: A list of Rule instances.
+        """
         return []
 
     @staticmethod
     def cells() -> List['Cell']:
+        """Return all cached cells.
+
+        Returns:
+            List[Cell]: A list of all cached Cell instances.
+        """
         return list(Cell.cache.values())
 
     def glyphs(self) -> List[Glyph]:
+        """Return the glyph representation of the cell.
+
+        Returns:
+            List[Glyph]: A list containing the CellGlyph for the cell.
+        """
         return [CellGlyph('Cell', Coord(self.row, self.column))]
 
     @classmethod
     def make(cls, board: Board, row: int, column: int) -> 'Cell':
+        """Create a new cell or retrieve it from the cache.
+
+        Args:
+            board (Board): The Sudoku board the cell belongs to.
+            row (int): The row position of the cell.
+            column (int): The column position of the cell.
+
+        Returns:
+            Cell: The created or cached cell.
+        """
         key = (row, column)
         if key in Cell.cache:
             return Cell.cache[key]
@@ -71,32 +128,81 @@ class Cell(Item):
 
     @classmethod
     def make_board(cls, board: Board):
+        """Generate all cells for a given board and cache them.
+
+        Args:
+            board (Board): The board for which cells are created.
+        """
         for row, column in product(board.row_range, board.column_range):
             Cell.make(board, row, column)
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Coord:
+        """Extract coordinates from a YAML representation.
+
+        Args:
+            board (Board): The board the coordinates belong to.
+            yaml (Dict): A dictionary containing coordinate data.
+
+        Returns:
+            Coord: The extracted coordinate.
+        """
         return Coord.create_from_int(yaml[cls.__name__])
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """Create a cell from YAML data.
+
+        Args:
+            board (Board): The board the cell belongs to.
+            yaml (Dict): A dictionary with cell data.
+
+        Returns:
+            Item: The created cell instance.
+        """
         coord: Coord = Cell.extract(board, yaml)
         return cls(board, int(coord.row), int(coord.column))
 
     @property
     def valid(self) -> bool:
+        """Check if the cell is valid on the board.
+
+        Returns:
+            bool: True if the cell is valid, False otherwise.
+        """
         return self.board.is_valid(self.row, self.column)
 
     @property
     def row_column(self) -> Tuple[int, int]:
+        """Return the row and column of the cell.
+
+        Returns:
+            Tuple[int, int]: The (row, column) tuple of the cell.
+        """
         return self.row, self.column
 
     def __eq__(self, other: object) -> bool:
+        """Compare the cell with another cell for equality.
+
+        Args:
+            other (object): The object to compare.
+
+        Returns:
+            bool: True if both cells have the same row and column, False otherwise.
+        """
         if isinstance(other, Cell):
             return self.row == other.row and self.column == other.column
         return False
 
     def __lt__(self, other: object) -> bool:
+        """Compare the cell with another cell based on row and column.
+
+        Args:
+            other (object): The object to compare.
+
+        Returns:
+            bool: True if this cell is less than the other cell.
+        """
         if isinstance(other, Cell):
             if self.row < other.row:
                 return True
@@ -107,13 +213,31 @@ class Cell(Item):
 
     @property
     def coord(self) -> Coord:
+        """Return the coordinate of the cell.
+
+        Returns:
+            Coord: The coordinate of the cell.
+        """
         return Coord(self.row, self.column)
 
     @property
     def row_column_string(self) -> str:
+        """Return a string representation of the cell's row and column.
+
+        Returns:
+            str: A string combining row and column numbers.
+        """
         return f"{self.row}{self.column}"
 
     def parity(self, solver) -> lpSum:
+        """Compute the parity constraint for the cell.
+
+        Args:
+            solver (PulpSolver): The solver instance.
+
+        Returns:
+            lpSum: A linear program sum for even digits in the cell.
+        """
         return lpSum(
             [
                 solver.choices[digit][self.row][self.column]
@@ -123,6 +247,11 @@ class Cell(Item):
         )
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Add a unique digit constraint for the cell.
+
+        Args:
+            solver (PulpSolver): The solver instance.
+        """
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]
@@ -131,6 +260,11 @@ class Cell(Item):
         ) == 1, f'Unique_digit_{self.row}_{self.column}'
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
+        """Add constraints based on bookkeeping for the cell.
+
+        Args:
+            solver (PulpSolver): The solver instance.
+        """
         print(f"Bookkeeping {self.row} {self.column}")
         for digit in self.board.digit_range:
             if not self.book.is_possible(digit):
@@ -139,9 +273,19 @@ class Cell(Item):
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> Dict:
+        """Convert the cell to a dictionary format.
+
+        Returns:
+            Dict: A dictionary representation of the cell.
+        """
         return {self.__class__.__name__: int(self.row_column_string)}
 
     def css(self) -> Dict:
+        """Return CSS styling for the cell.
+
+        Returns:
+            Dict: A dictionary containing CSS styles for the cell.
+        """
         return {
             '.Cell': {
                 'stroke': 'black',

@@ -9,7 +9,7 @@ class Constraints(ComposedItem):
     """Represents a collection of constraints applied to a puzzle board."""
 
     def __init__(self, board: Board):
-        """Initializes the Constraints with a reference to the board.
+        """Initialize the Constraints with a reference to the board.
 
         Args:
             board (Board): The board to which these constraints apply.
@@ -19,7 +19,7 @@ class Constraints(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Constraints':
-        """Creates a Constraints instance from YAML configuration.
+        """Create a Constraints instance from YAML configuration.
 
         Args:
             board (Board): The board to which these constraints apply.

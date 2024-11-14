@@ -10,7 +10,8 @@ from src.utils.coord import Coord
 
 class AntiTLBR(AntiDiagonal):
     """Represents an AntiTLBR item on a board.
-    TLBR = Top left to bottom right
+
+    TLBR = Top left to bottom right.
 
     Inherits from the AntiDiagonal class and adds specific functionality
     for the AntiTLBR, which includes managing cells on the anti-diagonal
@@ -18,7 +19,7 @@ class AntiTLBR(AntiDiagonal):
     """
 
     def __init__(self, board: Board):
-        """Initializes the AntiTLBR with a board.
+        """Initialize the AntiTLBR with a board.
 
         Args:
             board (Board): The board on which the AntiTLBR will be placed.
@@ -28,7 +29,7 @@ class AntiTLBR(AntiDiagonal):
         self.add_items([Cell.make(board, i, i) for i in board.row_range])
 
     def glyphs(self) -> List[Glyph]:
-        """Returns the glyphs associated with the AntiTLBR.
+        """Return the glyphs associated with the AntiTLBR.
 
         Glyphs visually represent the AntiTLBR's position on the board.
 
