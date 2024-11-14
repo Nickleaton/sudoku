@@ -3,8 +3,7 @@ from enum import Enum
 
 
 class Cyclic(Enum):
-    """
-    Enumeration representing cyclic directions: CLOCKWISE or ANTICLOCKWISE.
+    """Enumeration representing cyclic directions: CLOCKWISE or ANTICLOCKWISE.
 
     Attributes:
         CLOCKWISE (Cyclic): Represents the clockwise direction, denoted by 'C'.
@@ -16,8 +15,7 @@ class Cyclic(Enum):
 
     @staticmethod
     def create(letter: str) -> 'Cyclic':
-        """
-        Create a Cyclic enum instance from a single character.
+        """Create a Cyclic enum instance from a single character.
 
         Args:
             letter (str): The character representing the cyclic direction ('C' for CLOCKWISE or 'A' for ANTICLOCKWISE).
@@ -34,8 +32,7 @@ class Cyclic(Enum):
             raise ValueError(f"Invalid letter '{letter}'. Must be 'C' or 'A'.") from exc
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the Cyclic enum instance.
+        """Return a string representation of the Cyclic enum instance.
 
         Returns:
             str: String in the format 'Cyclic.<name>'.

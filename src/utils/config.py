@@ -8,12 +8,12 @@ from pydotted import pydot
 
 
 class Config:
-    """
-    A singleton class representing the configuration of an application.
+    """A singleton class representing the configuration of an application.
 
     Attributes:
         config_file_path (Path): The path to the YAML configuration file.
         config (pydot): A nested dictionary representing the configuration read from the YAML file.
+
     Examples:
         ```
         from pathlib import Path
@@ -33,8 +33,7 @@ class Config:
     __lock: threading.Lock = threading.Lock()
 
     def __new__(cls, config_file_path: Path = Path("config.yaml")) -> 'Config':
-        """
-        Create a new instance of the `Config` class if one doesn't already exist.
+        """Create a new instance of the `Config` class if one doesn't already exist.
 
         Args:
             config_file_path (Path): The path to the YAML configuration file.
@@ -79,8 +78,7 @@ class Config:
             raise ValueError(f"Error parsing YAML file: {exc}") from exc
 
     def __getattr__(self, key: str) -> Any:
-        """
-        Retrieve the value of a configuration parameter from the config.
+        """Retrieve the value of a configuration parameter from the config.
 
         You can use dotted attribute access
 
@@ -98,8 +96,7 @@ class Config:
         raise AttributeError(f"'Config' object has no attribute '{key}'")
 
     def get_dict(self, name: str) -> Optional[Dict[str, Any]]:
-        """
-        Retrieve a dictionary from the configuration by its name.
+        """Retrieve a dictionary from the configuration by its name.
 
         If the configuration has not been loaded yet, it will attempt to reload it.
         If the configuration is still not available after reloading, a ValueError is raised.

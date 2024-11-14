@@ -10,8 +10,7 @@ class Rule:
     """Rule class. Manage the human-readable rules for a Sudoku."""
 
     def __init__(self, name: str, rank: int, text: Optional[str] = None):
-        """
-        Construct a rule.
+        """Construct a rule.
 
         Args:
             name (str): The name for the rule.
@@ -24,8 +23,7 @@ class Rule:
         self.text: Optional[str] = text
 
     def __lt__(self, other: object) -> bool:
-        """
-        Compare two rules. Lowest rank rule comes first.
+        """Compare two rules. Lowest rank rule comes first.
 
         Args:
             other (object): The other rule to compare.
@@ -41,8 +39,7 @@ class Rule:
         raise RuleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __eq__(self, other: object) -> bool:
-        """
-        Compare two rules for equality by comparing names.
+        """Compare two rules for equality by comparing names.
 
         Args:
             other (object): The other rule to compare.
@@ -58,8 +55,7 @@ class Rule:
         raise RuleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the Rule.
+        """Return a string representation of the Rule.
 
         Returns:
             str: The string representation of the rule.
@@ -67,8 +63,7 @@ class Rule:
         return f"{self.__class__.__name__}('{self.name}', {self.rank}, '{self.text}')"
 
     def __hash__(self) -> int:
-        """
-        Hash a rule.
+        """Hash a rule.
 
         Returns:
             int: The hash value of the rule.
@@ -77,8 +72,7 @@ class Rule:
 
     @property
     def html(self) -> str:
-        """
-        Generate HTML for the rule.
+        """Generate HTML for the rule.
 
         Returns:
             str: The HTML string representing the rule.

@@ -8,8 +8,7 @@ class Functions:
 
     @staticmethod
     def triangular(n: int) -> int:
-        """
-        Calculate the nth triangular number.
+        """Calculate the nth triangular number.
 
         The nth triangular number is the sum of the integers from 1 to n,
         and can be calculated as n * (n + 1) // 2.
@@ -24,8 +23,7 @@ class Functions:
 
     @staticmethod
     def prime(n: int) -> int:
-        """
-        Retrieve the nth prime number from a predefined list.
+        """Retrieve the nth prime number from a predefined list.
 
         Args:
             n (int): The index of the prime number to retrieve (0-based).

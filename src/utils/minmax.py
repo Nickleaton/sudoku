@@ -3,8 +3,7 @@ from enum import Enum
 
 
 class MinMax(Enum):
-    """
-    An enumeration to represent the concepts of minimum and maximum values.
+    """An enumeration to represent the concepts of minimum and maximum values.
 
     Attributes:
         MINIMUM (str): Represents the minimum value.
@@ -15,8 +14,7 @@ class MinMax(Enum):
     MAXIMUM = 'Maximum'
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the MinMax enum instance.
+        """Return a string representation of the MinMax enum instance.
 
         Returns:
             str: The string representation in the format 'MinMax.<name>'.

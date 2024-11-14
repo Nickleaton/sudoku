@@ -8,8 +8,7 @@ class MatrixException(SudokuException):
 
 
 class Matrix:
-    """
-    Represents a 2x2 matrix and provides methods to compose, transform, and compare matrices.
+    """Represents a 2x2 matrix and provides methods to compose, transform, and compare matrices.
 
     Attributes:
         name (str): The name of the matrix.
@@ -21,8 +20,7 @@ class Matrix:
 
     # pylint: disable=too-many-positional-arguments
     def __init__(self, name: str, a: int, b: int, c: int, d: int):
-        """
-        Initialize a Matrix with given parameters.
+        """Initialize a Matrix with given parameters.
 
         Args:
             name (str): The name of the matrix.
@@ -38,8 +36,7 @@ class Matrix:
         self.d = d
 
     def compose(self, other: 'Matrix') -> 'Matrix':
-        """
-        Compose this matrix with another matrix using matrix multiplication.
+        """Compose this matrix with another matrix using matrix multiplication.
 
         Args:
             other (Matrix): The matrix to compose with.
@@ -56,8 +53,7 @@ class Matrix:
         )
 
     def transform(self, other: Coord) -> Coord:
-        """
-        Transform a coordinate using this matrix.
+        """Transform a coordinate using this matrix.
 
         Args:
             other (Coord): The coordinate to be transformed.
@@ -71,8 +67,7 @@ class Matrix:
         )
 
     def __eq__(self, other: object) -> bool:
-        """
-        Compare this matrix to another matrix for equality.
+        """Compare this matrix to another matrix for equality.
 
         Args:
             other (object): The object to compare to.
@@ -88,8 +83,7 @@ class Matrix:
         raise MatrixException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     def __hash__(self) -> int:
-        """
-        Return a hash of the matrix based on its elements.
+        """Return a hash of the matrix based on its elements.
 
         Returns:
             int: The hash value for the matrix.
@@ -97,8 +91,7 @@ class Matrix:
         return hash((self.a, self.b, self.c, self.d))
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the matrix.
+        """Return a string representation of the matrix.
 
         Returns:
             str: A string representing the matrix object.

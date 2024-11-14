@@ -4,8 +4,7 @@ from pathlib import Path
 
 
 def is_writeable_file(file: Path) -> bool:
-    """
-    Check if the given file can be written to.
+    """Check if the given file can be written to.
 
     If the file does not exist, return True (it can be created).
     If the file exists and is writable, return True.
@@ -23,8 +22,7 @@ def is_writeable_file(file: Path) -> bool:
 
 
 def is_readable_file(file: Path) -> bool:
-    """
-    Check if the given file can be read.
+    """Check if the given file can be read.
 
     If the file exists and is readable, return True.
     Otherwise, return False.

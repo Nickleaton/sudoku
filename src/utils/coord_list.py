@@ -10,8 +10,7 @@ class CoordListException(SudokuException):
 
 
 class CoordList:
-    """
-    A class to manage a list of Coord objects.
+    """A class to manage a list of Coord objects.
 
     Args:
         items (List[Coord]): The list of Coord objects.
@@ -26,8 +25,7 @@ class CoordList:
         self.items = sorted(items)
 
     def __iter__(self) -> Iterator[Coord]:
-        """
-        Initialize the iterator for the CoordList.
+        """Initialize the iterator for the CoordList.
 
         Returns:
             CoordList: The current instance as an iterable.
@@ -35,8 +33,7 @@ class CoordList:
         return iter(self.items)
 
     def __contains__(self, other: Coord) -> bool:
-        """
-        Check if a given Coord is in the list.
+        """Check if a given Coord is in the list.
 
         Args:
             other (Coord): The Coord object to check.
@@ -47,8 +44,7 @@ class CoordList:
         return other in self.items
 
     def __len__(self) -> int:
-        """
-        Return the number of items in the CoordList.
+        """Return the number of items in the CoordList.
 
         Returns:
             int: The number of Coord objects in the list.
@@ -56,8 +52,7 @@ class CoordList:
         return len(self.items)
 
     def __eq__(self, other: object) -> bool:
-        """
-        Check if two CoordList objects are equal.
+        """Check if two CoordList objects are equal.
 
         Args:
             other (object): The object to compare with.
@@ -73,8 +68,7 @@ class CoordList:
         return self.items == other.items
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the CoordList.
+        """Return a string representation of the CoordList.
 
         Returns:
             str: The string representation of the CoordList.
@@ -82,8 +76,7 @@ class CoordList:
         return f"{self.__class__.__name__}([{', '.join([repr(v) for v in self.items])}])"
 
     def add(self, item: Coord) -> None:
-        """
-        Add a Coord to the list if it's not already present, and sorts the list.
+        """Add a Coord to the list if it's not already present, and sorts the list.
 
         Args:
             item (Coord): The Coord object to add.

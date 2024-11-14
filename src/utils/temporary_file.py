@@ -21,7 +21,8 @@ class TemporaryFile:
 
         Raises:
             OSError: If the directory cannot be created.
-         Example:
+
+        Example:
             with TemporaryFile() as tf:
                 with open(tf.name, 'w') as f:
                     f.write("Hello World")
@@ -37,16 +38,16 @@ class TemporaryFile:
             directory.mkdir(parents=True)
 
         file_name: str = f"{uuid4()}.tmp"  # Add a ".tmp" extension for clarity
-        self._name: Path = directory / file_name
+        self._path: Path = directory / file_name
 
     @property
-    def name(self) -> Path:
-        """Get the name of the temporary file.
+    def path(self) -> Path:
+        """Get the path of the temporary file.
 
         Returns:
             Path: The path of the temporary file.
         """
-        return self._name
+        return self._path
 
     def __enter__(self) -> 'TemporaryFile':
         """Enter the runtime context related to this object.
@@ -71,4 +72,4 @@ class TemporaryFile:
             exc_val (Exception): The exception instance if an exception was raised.
             exc_tb (TracebackType): The traceback object if an exception was raised.
         """
-        self._name.unlink(missing_ok=True)
+        self._path.unlink(missing_ok=True)

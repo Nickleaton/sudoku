@@ -4,8 +4,7 @@ from typing import Dict
 
 
 class Order(Enum):
-    """
-    An enumeration to represent the ordering of a sequence: increasing, decreasing, or unordered.
+    """An enumeration to represent the ordering of a sequence: increasing, decreasing, or unordered.
 
     Attributes:
         INCREASING (str): Represents increasing order.
@@ -18,8 +17,7 @@ class Order(Enum):
     UNORDERED = 'U'
 
     def __neg__(self) -> 'Order':
-        """
-        Return the opposite of the current ordering.
+        """Return the opposite of the current ordering.
 
         INCREASING becomes DECREASING, and vice versa.
         UNORDERED remains the same.
@@ -31,8 +29,7 @@ class Order(Enum):
 
     @staticmethod
     def valid(letter: str) -> bool:
-        """
-        Check if the given letter is a valid value of the Order enum.
+        """Check if the given letter is a valid value of the Order enum.
 
         Args:
             letter (str): The letter to check.
@@ -44,8 +41,7 @@ class Order(Enum):
 
     @staticmethod
     def values() -> str:
-        """
-        Return a string containing all the possible values of the Order enum.
+        """Return a string containing all the possible values of the Order enum.
 
         Returns:
             str: A string containing 'I', 'D', and 'U'.
@@ -53,8 +49,7 @@ class Order(Enum):
         return "".join(order.value for order in Order)
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the Order enum instance.
+        """Return a string representation of the Order enum instance.
 
         Returns:
             str: The string representation in the format 'Order.<name>'.

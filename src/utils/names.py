@@ -7,8 +7,7 @@ class Name:
 
     @staticmethod
     def camel_to_snake(name: str) -> str:
-        """
-        Convert a camelCase string to snake_case.
+        """Convert a camelCase string to snake_case.
 
         Args:
             name (str): The camelCase string to convert.
@@ -20,8 +19,7 @@ class Name:
 
     @staticmethod
     def snake_to_camel(name: str) -> str:
-        """
-        Convert a snake_case string to camelCase.
+        """Convert a snake_case string to camelCase.
 
         Args:
             name (str): The snake_case string to convert.

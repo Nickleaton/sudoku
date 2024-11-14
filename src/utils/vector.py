@@ -166,4 +166,4 @@ class Vector:
         Returns:
             str: The representation of the vector including its start and end coordinates.
         """
-        return f"{self.__class__.__name__}({repr(self.start)}, {repr(self.end)})"
+        return f"{self.__class__.__name__}({self.start!r}, {self.end!r})"
