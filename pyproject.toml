@@ -1,36 +1,128 @@
+[project]
+name = "sudoku"
+version = "0.0.1"
+description = "A sudoku solver"
+authors = [{ name = "Nick Leaton", email = "nickle@example.com" }]
+keywords = ["Sudoku", "Solver"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Sudoku",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Games/Entertainment :: Puzzle Games",
+    "Programming Language :: Python :: 3.12"
+]
+
+[project.urls]
+Homepage = "https://github.com/nickleaton/sudoku"
+Documentation = "https://github.com/nickleaton/sudoku"
+Repository = "https://github.com/nickleaton/sudoku"
+Issues = "https://github.com/nickleaton/sudoku/issues"
+Changelog = "https://github.com/nickleaton/sudoku/CHANGELOG.md"
+
+[project.scripts]
+suds = "sudoku.run_suds"
+
 [tool.poetry]
 name = "sudoku"
-version = "0.1.0"
+version = "0.0.1"
 description = "Variant Sudoku Solver"
 authors = ["Nick Leaton <nickle@gmail.com>"]
-
-[tool.poetry.dependencies]
-python = "^3.13"
-PuLP = "2.9.0"
-parameterized = "^0.8.1"
-svgwrite = "^1.4.2"
-jinja2 = "^3.1.4"
-oyaml = "^1.0"
-
-orloge = "^0.17.2"
-strictyaml = "^1.6.1"
-svglib = "^1.2.1"
-pytest = "^8.3.3"
-mypy = "^0.961"
-pylint = "^2.13.7"
-lxml = "^4.8.0"
-pdoc = "^12.0.2"
-flake8 = "^4.0.1"
-pydocstyle = "^6.1.1"
-sphinx = "^5.0.2"
-pandas = "^1.4.2"
-tox = "^3.25.0"
-perflint ="^0.7.1"
-charset-normalizer = "^2.1.0"
+readme = "README.md"
+package-mode = false
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+
+python = "^3.12"
+
+# Libraries
+PuLP = "2.9.0"
+jinja2 = "^3.1.4"
+lxml = "^4.8.0"
+orloge = "^0.17.2"
+oyaml = "^1.0"
+pillow = "^10.4.0"
+pydotted = "^0.0.8"
+reportlab = "^4.2.5"
+requests = "^2.32.0"
+sortedcontainers = "^2.4.0"
+strictyaml = "^1.7.3"
+svglib = "^1.2.1"
+svgwrite = "^1.4.3"
+urllib3 = "^2.2.3"
+
+
+# Test
+pytest = "^8.3.3"
+pytest-benchmark = "^5.1.0"
+pytest-cov = "^6.0.0"
+
+# build
+pdoc = "^12.0.2"
+poetry = "^1.8.4"
+tox = "^3.25.0"
+
+# Code Analysis
+
+bandit = "^1.7.10"
+flake8 = "^7.1.1"
+mypy = "^0.961"
+perflint = "^0.7.1"
+pydocstyle = "^6.1.1"
+pylint = "^2.13.7"
+radon = "^6.0.1"
+vulture = "^2.13"
+Flake8-pyproject = "^1.2.3"
+ruff = "^0.7.3"
+
 
 [tool.ruff.lint.pylint]
 max-args = 10
+
+[tool.flake8]
+ignore = ['F401']
+max-line-length = 88
+count = true
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+directory = "output/coverage"
+
+[tool.mypy]
+
+[mypy]
+
+python_version = 3.13
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+check_untyped_defs = true
+exclude = [
+    "pulp"
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=sudoku --cov-report=xml --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.ruff]
+
+# Same as Black.
+line-length = 120
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py38"
+
+[tool.ruff.lint]
+
+select = ["E", "F", "W", "I"]
+ignore = ["F401", "I001"]
+
+fixable = ["ALL"]
+unfixable = []

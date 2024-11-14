@@ -32,7 +32,7 @@ class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return r"CreateLinearProgramWithBookkeepingCommand('board', 'config', 'constraints', 'solver', 'linear_program')"
+        return "CreateLinearProgramWithBookkeepingCommand('board', 'config', 'constraints', 'solver', 'linear_program')"
 
     def test_repr(self):
         self.assertEqual(self.representation, repr(self.command))

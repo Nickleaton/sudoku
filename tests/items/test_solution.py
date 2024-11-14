@@ -78,7 +78,7 @@ class TestSolution(TestComposed):
 
     def test_to_dict(self) -> None:  # When changed to strict yaml, this will go
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
-        lines = [str(l) for l in config['Solution']]
+        lines = [str(line) for line in config['Solution']]
         config = {'Solution': lines}
         item = Item.create(self.board, config)
         self.assertDictEqual(item.to_dict(), config)

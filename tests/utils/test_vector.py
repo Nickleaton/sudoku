@@ -143,7 +143,11 @@ class TestVector(unittest.TestCase):
         start = Coord(1, 1)
         end = Coord(1, 1)  # Same as start to trigger CENTER
         vector = Vector(start, end)
-        assert vector.direction == Direction.CENTER, "Expected direction to be CENTER for identical start and end coordinates."
+        self.assertEqual(
+            vector.direction,
+            Direction.CENTER,
+            "Expected direction to be CENTER for identical start and end coordinates."
+        )
 
 
 if __name__ == '__main__':  # pragma: no cover

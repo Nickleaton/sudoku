@@ -1,10 +1,9 @@
 import unittest
 from pathlib import Path
 
-# Directory containing test problem files
-ACCEPTANCE_TEST_DIR = Path('problems/easy')
-
 from tests.acceptance.acceptance_test import AcceptanceTest
+
+ACCEPTANCE_TEST_DIR = Path('problems/easy')
 
 
 def load_problem_tests():
@@ -12,7 +11,6 @@ def load_problem_tests():
     problem_files = [file.stem for file in ACCEPTANCE_TEST_DIR.glob("*89.yaml")]
 
     for problem_name in problem_files:
-
         def test_method(name=problem_name):
             test = AcceptanceTest(name)
             test.test_all()

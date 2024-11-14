@@ -16,11 +16,25 @@ class SVGTestSolutionCommand(TestSVGCommand):
 
     @property
     def in_select(self) -> Item | None:
-        return Solution(self.problem.board, ["123456789", "123456789", "123456789", "123456789", "123456789", "123456789", "123456789", "123456789", "123456789"])
+        return Solution(
+            self.problem.board,
+            [
+                "123456789",
+                "123456789",
+                "123456789",
+                "123456789",
+                "123456789",
+                "123456789",
+                "123456789",
+                "123456789",
+                "123456789"
+            ]
+        )
 
     @property
     def out_select(self) -> Item | None:
         return Battenburg(self.problem.board, Coord(2, 2))
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

@@ -1,4 +1,3 @@
-"""PulpSolver class."""
 """PulpSolver class for solving puzzles using linear programming."""
 import sys
 from enum import Enum

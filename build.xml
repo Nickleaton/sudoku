@@ -7,13 +7,13 @@
         <echo>Build</echo>
     </target>
     <target name="install">
-        <exec executable="C:\Users\nickl\AppData\Local\Programs\Python\Python310\Scripts\poetry" failonerror="true"
+        <exec executable="poetry" failonerror="true"
               taskname="poetry">
             <arg value="install"/>
         </exec>
     </target>
     <target name="update">
-        <exec executable="C:\Users\nickl\AppData\Local\Programs\Python\Python310\Scripts\poetry" failonerror="true"
+        <exec executable="poetry" failonerror="true"
               taskname="poetry">
             <arg value="update"/>
         </exec>
@@ -172,7 +172,7 @@
             </condition>
 
             <!-- Echo the status message for this directory -->
-            <echo message="pydocstyle ${pydocstyle.@{name}.status}: '@{name}'" />
+            <echo message="pydocstyle ${pydocstyle.@{name}.status}: '@{name}'"/>
         </sequential>
     </macrodef>
 
@@ -185,6 +185,15 @@
         <run-pydocstyle name="solvers"/>
         <run-pydocstyle name="tokens"/>
         <run-pydocstyle name="utils"/>
+    </target>
+
+    <target name="ruff">
+        <mkdir dir="output/ruff"/>
+        <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/src.txt">
+            <arg value="check"/>
+            <arg value="src/"/>
+            <arg value="tests/"/>
+        </exec>
     </target>
 
     <target name="flake8.src">
@@ -249,6 +258,30 @@
         <exec executable="radon.exe" failonerror="true" output="output/radon/mi.txt">
             <arg value="mi"/>
             <arg value="src"/>
+        </exec>
+    </target>
+
+    <target name="bandit.src">
+        <mkdir dir="output/bandit"/>
+        <exec executable="bandit" failonerror="false" taskname="bandit" output="output/bandit/src.txt">
+            <arg value="-r"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="vulture">
+        <mkdir dir="output/vulture"/>
+        <exec executable="vulture" failonerror="false" taskname="vulture" output="output/vulture/vulture.txt">
+            <arg value="src/"/>
+            <arg value="tests/"/>
+        </exec>
+    </target>
+
+        <target name="checkov">
+        <mkdir dir="output/checkov"/>
+        <exec executable="checkov" failonerror="false" taskname="checkov" output="output/checkov/checkov.txt">
+            <arg value="src/"/>
+            <arg value="tests/"/>
         </exec>
     </target>
 </project>

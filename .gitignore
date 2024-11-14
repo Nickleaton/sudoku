@@ -4,6 +4,6 @@
 /poetry.lock
 /build/
 /test_results/
-/test.svg
 **/__pycache__/
 **/*.pyc
+secrets.toml

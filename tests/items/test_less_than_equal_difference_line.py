@@ -35,8 +35,17 @@ class TestLessThanEqualDifferenceLine(TestLine):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        return {Cell, ComposedItem, DifferencePair, Item, LessThanEqualDifferenceLine, LessThanEqualDifferencePair, Line,
-                Pair, Region}
+        return {
+            Cell,
+            ComposedItem,
+            DifferencePair,
+            Item,
+            LessThanEqualDifferenceLine,
+            LessThanEqualDifferencePair,
+            Line,
+            Pair,
+            Region
+        }
 
 
 if __name__ == '__main__':  # pragma: no cover
