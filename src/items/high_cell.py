@@ -11,7 +11,7 @@ class HighCell(SimpleCellReference):
 
     @staticmethod
     def digits() -> List[int]:
-        """Returns the list of allowed digits for the HighCell.
+        """Return the list of allowed digits for the HighCell.
 
         Returns:
             List[int]: A list of digits [7, 8, 9] that are allowed in the HighCell.
@@ -20,7 +20,7 @@ class HighCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Checks if the given digit is allowed for the HighCell.
+        """Check if the given digit is allowed for the HighCell.
 
         Args:
             digit (int): The digit to check.
@@ -31,7 +31,7 @@ class HighCell(SimpleCellReference):
         return digit in HighCell.digits()
 
     def letter(self) -> str:
-        """Returns the letter representation of the HighCell.
+        """Return the letter representation of the HighCell.
 
         Returns:
             str: The letter representation, 'h' for HighCell.
@@ -39,7 +39,7 @@ class HighCell(SimpleCellReference):
         return 'h'
 
     def svg(self) -> Optional[Glyph]:
-        """Returns an SVG representation of the HighCell.
+        """Return an SVG representation of the HighCell.
 
         Returns:
             Optional[Glyph]: Always returns None for HighCell.
@@ -48,7 +48,7 @@ class HighCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with this HighCell.
+        """Return the tags associated with this HighCell.
 
         Returns:
             set[str]: A set of tags including 'Trio'.
@@ -57,7 +57,7 @@ class HighCell(SimpleCellReference):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with this HighCell.
+        """Return the rules associated with this HighCell.
 
         Returns:
             List[Rule]: A list containing the rule that the digits 7, 8, and 9 are not marked.
@@ -65,7 +65,7 @@ class HighCell(SimpleCellReference):
         return [Rule("Low", 1, "The digits 7, 8 and 9 are not marked")]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the glyphs associated with this HighCell.
+        """Generate the glyphs associated with this HighCell.
 
         Returns:
             List[Glyph]: An empty list as no glyphs are associated with this HighCell.
@@ -74,7 +74,7 @@ class HighCell(SimpleCellReference):
         # return [HighCellGlyph('HighCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the HighCell.
+        """Return the CSS styling for the HighCell.
 
         Returns:
             Dict: An empty dictionary as no specific CSS styling is applied.
@@ -82,7 +82,7 @@ class HighCell(SimpleCellReference):
         return {}
 
     def bookkeeping(self) -> None:
-        """Updates the bookkeeping for the HighCell.
+        """Update the bookkeeping for the HighCell.
 
         Sets the possible digits for the HighCell to be {7, 8, 9}.
         """

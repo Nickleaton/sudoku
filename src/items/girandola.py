@@ -5,11 +5,14 @@ from src.utils.coord import Coord
 
 
 class Girandola(SpecialRegion):
+    """Define the Girandola special region in the Sudoku grid."""
 
     def region_name(self) -> str:
+        """Return the name of the region."""
         return "Girandola"
 
     def coords(self) -> List[Coord]:
+        """Return the coordinates that define the Girandola region."""
         return [
             Coord(1, 1),
             Coord(1, 9),
@@ -23,6 +26,7 @@ class Girandola(SpecialRegion):
         ]
 
     def css(self) -> Dict:
+        """Return the CSS styling for the Girandola region."""
         return {
             ".Girandola": {
                 "stroke": "lightgreen",

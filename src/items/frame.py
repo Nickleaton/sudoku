@@ -13,18 +13,10 @@ from src.utils.side import Side
 
 
 class Frame(FirstN):
-    """Handle frame sudoku:
-    Numbers outside the frame equal the sum of the first three numbers in the
-    corresponding row or column in the given direction
-    """
+    """Frame Constraints."""
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
-        """Construct
-        :param board: board being used
-        :param side: the side where the total is to go
-        :param index: the row or column of the total
-        :param total: the actual total
-        """
+        """Initialize a Frame instance with the given board, side, index, and total."""
         super().__init__(board, side, index)
         self.total = total
 
@@ -35,12 +27,11 @@ class Frame(FirstN):
 
     @classmethod
     def parser(cls) -> FrameParser:
+        """Return the parser for this item."""
         return FrameParser()
 
     def __repr__(self) -> str:
-        """Representation of the frame
-        :return: str
-        """
+        """Return the string representation of the frame."""
         return (
             f"{self.__class__.__name__}"
             f"("
@@ -52,6 +43,7 @@ class Frame(FirstN):
 
     @property
     def rules(self) -> List[Rule]:
+        """Return the rules associated with the frame."""
         return [
             Rule(
                 'Frame',
@@ -62,6 +54,7 @@ class Frame(FirstN):
         ]
 
     def glyphs(self) -> List[Glyph]:
+        """Return the list of glyphs associated with the frame."""
         return [
             TextGlyph(
                 'FrameText',
@@ -73,10 +66,12 @@ class Frame(FirstN):
 
     @property
     def tags(self) -> set[str]:
+        """Return the tags associated with the frame."""
         return super().tags.union({'Comparison', 'Frame'})
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
+        """Extract and return the side, index, and total from the given YAML configuration."""
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
         match = regexp.match(yaml[cls.__name__])
         assert match is not None
@@ -88,16 +83,20 @@ class Frame(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
+        """Create and return a Frame instance based on the provided YAML configuration."""
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 
     def add_constraint(self, solver: PulpSolver) -> None:
+        """Add the constraint for the frame to the solver."""
         self.add_total_constraint(solver, self.total)
 
     def to_dict(self) -> Dict:
+        """Return a dictionary representation of the frame."""
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
     def css(self) -> Dict:
+        """Return the CSS styles for visualizing the frame."""
         return {
             ".FrameTextForeground": {
                 "fill": "black",

@@ -14,7 +14,7 @@ class FortressCell(SimpleCellReference):
     """Represents a fortress cell in a puzzle, where the digit must be greater than its orthogonal neighbors."""
 
     def svg(self) -> Optional[Glyph]:
-        """Returns an SVG representation of the FortressCell.
+        """Return an SVG representation of the FortressCell.
 
         Returns:
             Optional[Glyph]: Always returns None for FortressCell.
@@ -22,7 +22,7 @@ class FortressCell(SimpleCellReference):
         return None
 
     def letter(self) -> str:
-        """Returns the letter representation of the FortressCell.
+        """Return the letter representation of the FortressCell.
 
         Returns:
             str: The letter representation, 'f' for FortressCell.
@@ -31,7 +31,7 @@ class FortressCell(SimpleCellReference):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with this FortressCell.
+        """Return the rules associated with this FortressCell.
 
         Returns:
             List[Rule]: A list containing the rule that the digit in a
@@ -46,7 +46,7 @@ class FortressCell(SimpleCellReference):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the glyphs associated with this FortressCell.
+        """Generate the glyphs associated with this FortressCell.
 
         Returns:
             List[Glyph]: A list containing the FortressCellGlyph.
@@ -55,7 +55,7 @@ class FortressCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with this FortressCell.
+        """Return the tags associated with this FortressCell.
 
         Returns:
             set[str]: A set of tags including 'Comparison'.
@@ -63,7 +63,7 @@ class FortressCell(SimpleCellReference):
         return super().tags.union({'Comparison'})
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the FortressCell.
+        """Return the CSS styling for the FortressCell.
 
         Returns:
             Dict: A dictionary containing the CSS properties for the FortressCell.
@@ -76,8 +76,7 @@ class FortressCell(SimpleCellReference):
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds a constraint to the solver ensuring the digit in the fortress cell is larger than
-        its orthogonal neighbors.
+        """Add a constraint ensuring the digit in the fortress cell is larger than its orthogonal neighbors.
 
         Args:
             solver (PulpSolver): The solver to which the constraint will be added.
@@ -91,7 +90,7 @@ class FortressCell(SimpleCellReference):
                 other.column] + 1, f"Fortress_{self.row}_{self.column}_{other.row}_{other.column}"
 
     def bookkeeping(self) -> None:
-        """Updates the bookkeeping for the FortressCell.
+        """Update the bookkeeping for the FortressCell.
 
         Sets the impossibility of containing digits that cannot be valid for the fortress cell's constraints.
         """

@@ -11,13 +11,14 @@ from src.utils.rule import Rule
 
 
 class FrozenThermometerLine(ThermometerLine):
-    """Represents a frozen thermometer line in a puzzle where cells along the line
-    must increase or stay the same from the bulb end.
+    """Represents a frozen thermometer line.
+
+    The cells along the line must increase or stay the same from the bulb end.
     """
 
     @property
     def rules(self) -> List[Rule]:
-        """Gets the rules associated with the Frozen Thermometer line.
+        """Get the rules associated with the Frozen Thermometer line.
 
         Returns:
             List[Rule]: A list of rules specific to the Frozen Thermometer line.
@@ -26,7 +27,7 @@ class FrozenThermometerLine(ThermometerLine):
                      "Cells along a line with a bulb increase or stay the same from the bulb end")]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates glyph representations for the Frozen Thermometer line.
+        """Generate glyph representations for the Frozen Thermometer line.
 
         Returns:
             List[Glyph]: A list of glyphs representing the Frozen Thermometer line.
@@ -45,8 +46,7 @@ class FrozenThermometerLine(ThermometerLine):
         return super().tags.union({'Frozen', 'FrozenThermometerLine'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the solver for the Frozen Thermometer line, ensuring
-        values respect frozen thermometer rules.
+        """Add constraints to the solver for the Frozen Thermometer line.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.
@@ -68,7 +68,7 @@ class FrozenThermometerLine(ThermometerLine):
                 solver.model += lower + 1 <= upper, name
 
     def css(self) -> Dict:
-        """Defines CSS styling properties for rendering the Frozen Thermometer line.
+        """Define CSS styling properties for rendering the Frozen Thermometer line.
 
         Returns:
             Dict: A dictionary defining CSS properties for the Frozen Thermometer line.
