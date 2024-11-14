@@ -1,4 +1,5 @@
-from typing import List, Optional
+"""Handle Glyphs for a killer cage."""
+from typing import List, Optional, Dict, Tuple, ClassVar
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -12,20 +13,20 @@ from src.utils.vector_list import VectorList
 
 
 class KillerGlyph(Glyph):
-    offset = 10
+    """Represents a Killer glyph that can be drawn using various lines and vectors, based on cell coordinates."""
 
-    size = config.drawing.cell_size / 2.0
+    offset: int = 10
+    size: float = config.drawing.cell_size / 2.0
+    long_size: float = config.drawing.cell_size / 2.0 - offset
 
-    long_size = config.drawing.cell_size / 2.0 - offset
-
-    long_lines = {
+    long_lines: ClassVar[Dict[int, Vector]] = {
         2: Vector(Coord(0, 0), Coord(0, 1)),
         4: Vector(Coord(0, 0), Coord(1, 0)),
         6: Vector(Coord(0, 1), Coord(1, 1)),
         8: Vector(Coord(1, 0), Coord(1, 1))
     }
 
-    short_lines = {
+    short_lines: ClassVar[Dict[int, Tuple[Point, Direction]]] = {
         12: (Point(-1, -1), Direction.UP),
         23: (Point(1, -1), Direction.UP),
         36: (Point(1, -1), Direction.RIGHT),
@@ -37,16 +38,38 @@ class KillerGlyph(Glyph):
     }
 
     def __init__(self, class_name: str, cells: List[Coord]):
+        """Initialize the KillerGlyph with a class name and list of cell coordinates.
+
+        Args:
+            class_name (str): The class name for the glyph's SVG element.
+            cells (List[Coord]): A sorted list of coordinates representing the cells.
+        """
         super().__init__(class_name)
         self.cells = sorted(cells)
 
     def outside(self, cell: Coord) -> bool:
+        """Check if a given cell is outside the current set of glyph cells.
+
+        Args:
+            cell (Coord): The coordinate to check.
+
+        Returns:
+            bool: True if the cell is outside, otherwise False.
+        """
         for c in self.cells:
             if cell.row == c.row and cell.column == c.column:
                 return False
         return True
 
     def cell_long_lines(self, cell: Coord) -> VectorList:
+        """Generate long line vectors for a given cell.
+
+        Args:
+            cell (Coord): The coordinate of the cell.
+
+        Returns:
+            VectorList: A list of vectors representing long lines for the cell.
+        """
         vectors = []
         for location, vector in KillerGlyph.long_lines.items():
             if self.outside(cell + Direction(location).offset):
@@ -54,6 +77,11 @@ class KillerGlyph(Glyph):
         return VectorList(vectors)
 
     def lines(self) -> VectorList:
+        """Generate all the lines for the glyph, based on its cells.
+
+        Returns:
+            VectorList: A sorted list of all vectors for the glyph's lines.
+        """
         results = VectorList([])
         for cell in self.cells:
             results += self.cell_long_lines(cell)
@@ -61,17 +89,19 @@ class KillerGlyph(Glyph):
         return results
 
     def draw(self) -> Optional[BaseElement]:
+        """Draw the glyph by generating the necessary SVG elements.
+
+        Returns:
+            Optional[BaseElement]: A group of SVG elements representing the glyph.
+        """
         group = Group()
-        # TODO
-        # for vector in VectorList.merge_vectors(self.lines()):
-        #     group.add(
-        #         Line(
-        #             start=vector.start.point.coordinates,
-        #             end=vector.end.point.coordinates,
-        #             class_=self.class_name
-        #         )
-        #     )
+        # TODO: Add drawing logic for merged vectors in the group.
         return group
 
     def __repr__(self) -> str:
+        """Return a string representation of the KillerGlyph.
+
+        Returns:
+            str: A string representing the KillerGlyph instance with its class name and cells.
+        """
         return f"{self.__class__.__name__}('{self.class_name}', [{', '.join([repr(cell) for cell in self.cells])}])"

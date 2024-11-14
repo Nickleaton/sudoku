@@ -1,50 +1,55 @@
 from typing import Optional
 
 from svgwrite.base import BaseElement
-from svgwrite.container import Group
 from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
-from src.utils.angle import Angle
 from src.utils.coord import Coord
+from src.utils.direction import Direction
 
 
-class LittleKillerGlyph(Glyph):
-    arrow = "\uA71B"  # ꜛ
+class LittleArrowGlyph(Glyph):
+    """Represents a small arrow glyph, drawn using an SVG text element."""
 
-    def __init__(self, class_name: str, position: Coord, angle: Angle, value: int):
+    arrow = "\u25B2"  # Unicode character for the upward triangle (▲)
+
+    def __init__(self, class_name: str, position: Coord, location: int):
+        """Initialize the LittleArrowGlyph with the given class name, position, and direction.
+
+        Args:
+            class_name (str): The class name for the SVG element.
+            position (Coord): The position of the glyph in coordinates.
+            location (int): The direction of the arrow (used to calculate the angle).
+        """
         super().__init__(class_name)
-        self.position = position
-        self.angle = angle
-        self.value = value
+        self.position = position  # The position of the glyph
+        self.location = location  # The direction of the arrow (angle)
 
     def draw(self) -> Optional[BaseElement]:
-        group = Group()
-        position = (self.position + Coord(0.28, 0.28)).center
-        text = Text("",
-                    transform=position.transform,
-                    class_=self.class_name
-                    )
-        span = TSpan(str(self.value), alignment_baseline='central', text_anchor='middle')
-        text.add(span)
-        group.add(text)
+        """Draw the arrow glyph as an SVG text element with a direction.
 
+        Returns:
+            Optional[BaseElement]: An SVG Text element containing the arrow symbol or None if not drawn.
+        """
+        # Determine the direction using the location value
+        direction = Direction.direction(self.location)
+        # Define the size of the glyph
+        size = Coord(0.4, 0.4)
+        position = self.position + size  # Adjust position by the size of the arrow
+        # Create an SVG Text element to represent the arrow
         text = Text("",
-                    transform=position.transform + " " + self.angle.transform,
+                    transform=position.transform + " " + direction.angle.transform,
                     class_=self.class_name
                     )
-        span = TSpan(LittleKillerGlyph.arrow, alignment_baseline='central', text_anchor='middle')
+        # Create a TSpan for the arrow symbol and add it to the text element
+        span = TSpan(LittleArrowGlyph.arrow, alignment_baseline='central', text_anchor='middle')
         text.add(span)
-        group.add(text)
-        return group
+        return text
 
     def __repr__(self) -> str:
-        return (
-            f"{self.__class__.__name__}"
-            f"("
-            f"'{self.class_name}', "
-            f"{self.position!r}, "
-            f"{self.angle!r}, "
-            f"{self.value!r}"
-            f")"
-        )
+        """Return a string representation of the LittleArrowGlyph.
+
+        Returns:
+            str: A string representing the LittleArrowGlyph instance with its class name, position, and location.
+        """
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.location!r})"

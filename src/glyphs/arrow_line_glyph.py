@@ -1,3 +1,10 @@
+"""Arrow Line Glyph module.
+
+This module defines the `ArrowLineGlyph` class, which represents an arrow line glyph in an SVG format.
+It extends `PolyLineGlyph` and includes methods for adding start and end markers to the line, as well as
+providing a string representation of the object.
+"""
+
 from typing import List, Optional
 
 from svgwrite.container import Marker
@@ -8,14 +15,32 @@ from src.utils.coord import Coord
 
 
 class ArrowLineGlyph(PolyLineGlyph):
-    """Arrow Line Glyph
-    """
+    """Represents an arrow line glyph with start and end markers."""
 
     def __init__(self, class_name: str, coords: List[Coord]):
+        """Initialize an ArrowLineGlyph instance.
+
+        This constructor creates an arrow line glyph with the specified class name and coordinates.
+
+        Args:
+            class_name (str): The class name to be assigned to the SVG element.
+            coords (List[Coord]): A list of coordinates representing the points of the line.
+
+        Returns:
+            None
+        """
         super().__init__(class_name, coords, True, True)
 
     @classmethod
     def start_marker(cls) -> Optional[Marker]:
+        """Create and return the start marker for the arrow line.
+
+        This method defines the appearance of the start marker, which is represented as a circle.
+
+        Returns:
+            Marker: The start marker for the arrow line.
+            None: If the marker cannot be created.
+        """
         marker = Marker(
             insert=(50, 50),
             size=(35, 35),
@@ -28,6 +53,14 @@ class ArrowLineGlyph(PolyLineGlyph):
 
     @classmethod
     def end_marker(cls) -> Optional[Marker]:
+        """Create and return the end marker for the arrow line.
+
+        This method defines the appearance of the end marker, which is represented as a polyline.
+
+        Returns:
+            Marker: The end marker for the arrow line.
+            None: If the marker cannot be created.
+        """
         marker = Marker(
             insert=(20, 20),
             size=(20, 20),
@@ -40,6 +73,14 @@ class ArrowLineGlyph(PolyLineGlyph):
         return marker
 
     def __repr__(self) -> str:
+        """Return a string representation of the ArrowLineGlyph instance.
+
+        This method provides a human-readable representation of the object, showing the class name,
+        class name, and coordinates.
+
+        Returns:
+            str: A string representation of the ArrowLineGlyph instance.
+        """
         return (
             f"{self.__class__.__name__}"
             f"("
