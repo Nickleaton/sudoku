@@ -1,6 +1,4 @@
-"""
-Command that takes a command that produces an output string and writes it to a file.
-"""
+"""Command that takes a command that produces an output string and writes it to a file."""
 import logging
 from pathlib import Path
 
@@ -14,7 +12,7 @@ class WriterCommand(SimpleCommand):
     """Create a file from the output of a child command."""
 
     def __init__(self, source: str, target: Path | str):
-        """Constructor.
+        """Create the command.
 
         Args:
             source (str): The attribute of the problem to store the configuration in.
@@ -60,7 +58,7 @@ class WriterCommand(SimpleCommand):
             logging.info(f"Creating directory {self.target.parent}")
             self.target.parent.mkdir(parents=True, exist_ok=True)
         logging.info(f"Creating {self.target}")
-        with open(self.target, 'w', encoding="utf-8") as f:
+        with self.target.open(mode= 'w', encoding="utf-8") as f:
             f.write(problem[self.source])
 
     def __repr__(self) -> str:

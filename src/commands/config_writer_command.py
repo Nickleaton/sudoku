@@ -1,3 +1,4 @@
+"""ConfigWriterCommand."""
 import logging
 from pathlib import Path
 
@@ -8,47 +9,28 @@ from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.utils.file_handling import is_writeable_file
 
-
-def represent_none(self, _):
-    """
-    Custom YAML representer to convert None to an empty string.
-
-    This ensures that None values in YAML are represented as empty strings
-    rather than the default '~'.
-
-    Args:
-        self: The representer instance.
-        _: The value to represent (unused).
-    """
-    return self.represent_scalar('tag:yaml.org,2002:null', '')
-
-
-# Register the representer with the YAML dumper
-yaml.add_representer(type(None), represent_none)
+# Register None-type representation in YAML as an empty string
+yaml.add_representer(type(None), lambda self, _: self.represent_scalar('tag:yaml.org,2002:null', ''))
 
 
 class ConfigWriterCommand(SimpleCommand):
-    """
-    Command for writing configuration data to a YAML file.
-    """
+    """Write configuration data to a YAML file."""
 
     def __init__(self, source: str = 'config', target: Path | str = 'dump_config.yaml') -> None:
-        """
-        Initializes a ConfigWriterCommand instance.
+        """Initialize a ConfigWriterCommand instance.
 
         Args:
             source (str): The attribute of the problem containing the configuration data.
-            target (Path | str): The path or filename to write the configuration to.
+            target (Path): The path or filename to write the configuration to.
         """
         super().__init__()
         self.source: str = source
         self.target: Path = Path(target) if isinstance(target, str) else target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Checks preconditions for the command execution.
+        """Check preconditions for the command execution.
 
-        Verifies that the configuration source exists in the problem and
+        Verify that the configuration source exists in the problem and
         that the target file is writable.
 
         Args:
@@ -64,11 +46,10 @@ class ConfigWriterCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} is not writeable')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Writes the configuration to the specified file in YAML format.
+        """Write the configuration to the specified file in YAML format.
 
-        The configuration is obtained from the problem field specified by `source`
-        and written to the target file in YAML format.
+        Retrieve the configuration from the problem field specified by `source`
+        and write it to the target file in YAML format.
 
         Args:
             problem (Problem): The problem instance containing the configuration data.
@@ -79,12 +60,15 @@ class ConfigWriterCommand(SimpleCommand):
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
-        with open(self.target, 'w', encoding='utf-8') as file:
-            yaml.dump(problem[self.source].todict(), file, default_style=None)
+        try:
+            with self.target.open('w', encoding='utf-8') as file:
+                yaml.dump(problem[self.source].todict(), file, default_style=None)
+        except OSError as exc:
+            raise OSError(f"Failed to write to {self.target}: {exc}") from exc
+
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the ConfigWriterCommand instance.
+        """Return a string representation of the ConfigWriterCommand instance.
 
         Returns:
             str: A string representation of the object.

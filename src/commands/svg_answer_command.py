@@ -1,6 +1,4 @@
-"""
-Create an SVG drawing of the solution.
-"""
+"""Create an SVG drawing of the solution."""
 
 from src.commands.svg_command import SVGCommand
 from src.items.item import Item

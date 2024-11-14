@@ -1,3 +1,4 @@
+"""SimpleCommand."""
 from src.commands.command import Command
 from src.commands.composed_command import ComposedCommand
 

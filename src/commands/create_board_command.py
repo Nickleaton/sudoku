@@ -1,6 +1,4 @@
-"""
-Build Board Command.
-"""
+"""CreateBoardCommand."""
 import logging
 
 from src.commands.command import CommandException
@@ -10,60 +8,54 @@ from src.items.board import Board
 
 
 class CreateBoardCommand(SimpleCommand):
-    """
-    Command for creating a board from configuration data.
-    """
+    """Command to create a board from configuration data."""
 
     def __init__(self, source: str = 'config', target: str = 'board'):
-        """
-        Initializes a CreateBoardCommand instance.
+        """Initialize a CreateBoardCommand instance.
 
         Args:
-            source (str): The attribute in the problem where the configuration is stored.
-            target (str): The attribute name in the problem where the board will be stored.
+            source (str): Attribute in the problem where the configuration is stored.
+            target (str): Attribute name in the problem where the board will be stored.
         """
         super().__init__()
         self.source = source
         self.target = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Checks preconditions for the command execution.
+        """Check preconditions for command execution.
 
-        Verifies that the source attribute exists in the problem and that
+        Verify that the source attribute exists in the problem and that
         the target attribute does not already exist.
 
         Args:
-            problem (Problem): The problem instance to check.
+            problem (Problem): Problem instance to check.
 
         Raises:
             CommandException: If the source attribute is missing or the target attribute
                               already exists in the problem.
         """
         if self.source not in problem:
-            raise CommandException(f"{self.source} not in problem")
+            raise CommandException(f"Source '{self.source}' not in problem")
         if self.target in problem:
-            raise CommandException(f"{self.target} already in problem")
+            raise CommandException(f"Target '{self.target}' already in problem")
 
     def execute(self, problem: Problem) -> None:
-        """
-        Creates the board and stores it in the problem.
+        """Create the board and store it in the problem.
 
-        Logs a message indicating that the command is being processed and
-        creates a new board in the problem, storing it in the specified target attribute.
+        Log a message indicating that the command is being processed and
+        create a new board in the problem, storing it in the specified target attribute.
 
         Args:
-            problem (Problem): The problem instance to create the board in.
+            problem (Problem): Problem instance to create the board in.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
         problem[self.target] = Board.create('Board', problem[self.source])
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the CreateBoardCommand instance.
+        """Return a string representation of the CreateBoardCommand instance.
 
         Returns:
-            str: A string representation of the object.
+            str: String representation of the object.
         """
         return f"{self.__class__.__name__}({self.source!r}, {self.target!r})"

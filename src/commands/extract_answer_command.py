@@ -1,3 +1,4 @@
+"""ExtractAnswerCommand."""
 from src.commands.command import CommandException, Command
 from src.commands.problem import Problem
 from src.solvers.answer import Answer
@@ -5,13 +6,10 @@ from src.solvers.pulp_solver import Status
 
 
 class ExtractAnswerCommand(Command):
-    """
-    Command for extracting the answer from the solver's results.
-    """
+    """Command for extracting the answer from the solver's results."""
 
     def __init__(self, solver: str = 'solver', target: str = 'answer'):
-        """
-        Initializes an ExtractAnswerCommand instance.
+        """Initialize an ExtractAnswerCommand instance.
 
         Args:
             solver (str): The attribute in the problem containing the solver.
@@ -22,8 +20,7 @@ class ExtractAnswerCommand(Command):
         self.target = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Checks preconditions before executing the command.
+        """Check preconditions before executing the command.
 
         Ensures that a solver has been set in the problem and that the target
         attribute does not already exist.
@@ -41,8 +38,7 @@ class ExtractAnswerCommand(Command):
             raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
     def execute(self, problem: Problem) -> None:
-        """
-        Extracts the answer from the solver's results and stores it in the problem.
+        """Extract the answer from the solver's results and stores it in the problem.
 
         If the solver's status is not optimal, the command will not store an answer.
 
@@ -64,8 +60,7 @@ class ExtractAnswerCommand(Command):
                 problem[self.target].set_value(row, column, int(problem[self.solver].values[row][column].varValue))
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the ExtractAnswerCommand instance.
+        """Return a string representation of the ExtractAnswerCommand instance.
 
         Returns:
             str: A string representation of the object.

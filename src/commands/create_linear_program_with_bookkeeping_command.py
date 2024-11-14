@@ -1,5 +1,4 @@
-""" Produce the text in LP format for the problem.
-"""
+"""Produce the text in LP format for the problem."""
 import logging
 
 from src.commands.command import CommandException
@@ -9,7 +8,7 @@ from src.utils.temporary_file import TemporaryFile
 
 
 class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
-    """ Produce LP Version of the problem. """
+    """Produce LP Version of the problem."""
 
     def __init__(self,
                  board: str = 'board',
@@ -18,14 +17,14 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
                  solver: str = 'solver',
                  target: str = 'linear_program'
                  ):
-        """
-        Construct a CreateLinearProgramWithBookkeepingCommand.
+        """Initialize a CreateLinearProgramWithBookkeepingCommand.
 
-        :param board: The field containing the board
-        :param config: The field containing the configuration
-        :param constraints: The field containing the constraints
-        :param solver: The field containing the solver
-        :param target: The field to store the output
+        Args:
+            board (str): The field containing the board.
+            config (str): The field containing the configuration.
+            constraints (str): The field containing the constraints.
+            solver (str): The field containing the solver.
+            target (str): The field to store the output.
         """
         super().__init__()
         self.board: str = board
@@ -35,11 +34,13 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
         self.target = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
+        """Check the preconditions for the command.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem to check.
+
+        Raises:
+            CommandException: If any of the preconditions are not met.
         """
         if self.config not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.config} not loaded')
@@ -53,21 +54,17 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Execute the command.
+        """Execute the command.
 
         This method performs the actual work of the command. It logs an info message
         indicating that the command is being processed and creates a new solver in the
         problem, storing it in the field specified by `solver`. Bookkeeping on cells is
-        then applied adding the constraints to the solver.
-        The solver s then saved to a temporary file and the contents of the file are stored in
+        then applied, adding the constraints to the solver.
+        The solver is then saved to a temporary file, and the contents of the file are stored in
         the field specified by `target`.
 
-        Parameters:
-            problem (Problem): The problem to execute the command on
-
-        Returns:
-            None
+        Args:
+            problem (Problem): The problem instance to execute the command on.
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
@@ -76,13 +73,12 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
             # TODO
             problem[self.constraints].add_bookkeeping_constraint(problem[self.solver])
             with TemporaryFile() as tf:
-                problem[self.solver].save_lp(str(tf.name))
-                with open(tf.name, encoding='utf-8') as f:
+                problem[self.solver].save_lp(str(tf.path))
+                with tf.path.open(mode='r', encoding='utf-8') as f:
                     problem[self.target] = f.read()
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the object.
+        """Return a string representation of the object.
 
         Returns:
             str: A string representation of the object.

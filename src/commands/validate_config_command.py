@@ -1,6 +1,4 @@
-"""
-Validate Config File.
-"""
+"""Validate Config File."""
 
 import logging
 from pathlib import Path
@@ -18,7 +16,7 @@ class ValidateConfigCommand(SimpleCommand):
     """Command to validate a configuration file against a schema."""
 
     def __init__(self, source: Path | str, target: str = 'config_validation'):
-        """Initializes the ValidateConfigCommand.
+        """Initialize the ValidateConfigCommand.
 
         Args:
             source (Path | str): The path to the configuration file to validate.
@@ -30,7 +28,7 @@ class ValidateConfigCommand(SimpleCommand):
         self.target: str = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """Checks preconditions before executing the command.
+        """Check preconditions before executing the command.
 
         Validates that the source file is readable and that the target does not already exist
         in the problem.
@@ -47,7 +45,7 @@ class ValidateConfigCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
 
     def execute(self, problem: Problem) -> None:
-        """Executes the validation of the configuration file.
+        """Execute the validation of the configuration file.
 
         Loads the configuration file and validates it against the schema. If the validation
         is successful, it sets the target in the problem to None. Otherwise, it stores the
@@ -59,7 +57,7 @@ class ValidateConfigCommand(SimpleCommand):
         super().execute(problem)
         logging.info(f"Loading {self.source}")
         logging.info(f"Validating {self.target}")
-        with open(self.source, 'r', encoding='utf-8') as file:
+        with self.source.open(mode= 'r', encoding='utf-8') as file:
             yaml_data = file.read()
             try:
                 _ = dirty_load(yaml_data, problem_schema)

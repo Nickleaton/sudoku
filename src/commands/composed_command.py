@@ -1,5 +1,4 @@
-"""
-Standard composed command.
+"""Standard composed command.
 
 For more information, see:
 - https://en.wikipedia.org/wiki/Command_pattern
@@ -12,14 +11,10 @@ from src.commands.problem import Problem
 
 
 class ComposedCommand(Command):
-    """
-    Command that combines multiple other commands, allowing them to be executed
-    as a single unit. Supports iteration and combination with the logical "or" operator.
-    """
+    """Combine multiple commands."""
 
     def __init__(self, items: Optional[List[Command]] = None):
-        """
-        Initializes a new instance of the ComposedCommand class.
+        """Initialize a new instance of the ComposedCommand class.
 
         Args:
             items (List[Command], optional): A list of commands to initialize
@@ -29,8 +24,7 @@ class ComposedCommand(Command):
         self.items: List[Command] = items if items is not None else []
 
     def add(self, item: Command) -> None:
-        """
-        Adds a command to the composed command.
+        """Add a command to the composed command.
 
         Args:
             item (Command): The command to add.
@@ -38,8 +32,7 @@ class ComposedCommand(Command):
         self.items.append(item)
 
     def add_items(self, items: Sequence[Command]) -> None:
-        """
-        Adds multiple commands to the composed command.
+        """Add multiple commands to the composed command.
 
         Args:
             items (Sequence[Command]): A sequence of commands to add.
@@ -48,8 +41,7 @@ class ComposedCommand(Command):
             self.add(item)
 
     def execute(self, problem: Problem) -> None:
-        """
-        Executes all commands in the composed command sequentially.
+        """Execute all commands in the composed command sequentially.
 
         Args:
             problem (Problem): The problem instance to execute the commands on.
@@ -59,8 +51,7 @@ class ComposedCommand(Command):
             item.execute(problem)
 
     def __or__(self, other: Command) -> 'ComposedCommand':
-        """
-        Combines two commands into a new composed command.
+        """Combine two commands into a new composed command.
 
         Args:
             other (Command): The other command to combine with.
@@ -78,8 +69,7 @@ class ComposedCommand(Command):
         return result
 
     def __iter__(self):
-        """
-        Returns an iterator for the composed command.
+        """Return an iterator for the composed command.
 
         Returns:
             Iterator[Command]: An iterator over the commands in the composed command.
@@ -87,8 +77,7 @@ class ComposedCommand(Command):
         return iter(self.items)
 
     def __len__(self) -> int:
-        """
-        Returns the number of commands in the composed command.
+        """Return the number of commands in the composed command.
 
         Returns:
             int: The number of commands.
@@ -96,8 +85,7 @@ class ComposedCommand(Command):
         return len(self.items)
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the composed command.
+        """Return a string representation of the composed command.
 
         Returns:
             str: A representation of the composed command with its items.

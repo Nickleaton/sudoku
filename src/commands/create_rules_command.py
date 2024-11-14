@@ -1,3 +1,4 @@
+"""CreateRulesCommand."""
 import logging
 
 from src.commands.command import CommandException
@@ -6,13 +7,10 @@ from src.commands.simple_command import SimpleCommand
 
 
 class CreateRulesCommand(SimpleCommand):
-    """
-    Command for creating a list of rules in the problem instance.
-    """
+    """Command for creating a list of rules in the problem instance."""
 
     def __init__(self, constraints: str = 'constraints', target: str = 'rules'):
-        """
-        Initializes a CreateRulesCommand instance.
+        """Initialize a CreateRulesCommand instance.
 
         Args:
             constraints (str): The attribute in the problem containing constraints used to generate rules.
@@ -23,8 +21,7 @@ class CreateRulesCommand(SimpleCommand):
         self.target: str = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Checks preconditions for command execution.
+        """Check preconditions for command execution.
 
         Ensures that the constraints attribute exists in the problem and the target attribute
         does not already exist.
@@ -42,8 +39,7 @@ class CreateRulesCommand(SimpleCommand):
             raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
     def execute(self, problem: Problem) -> None:
-        """
-        Creates a list of rules in the problem instance.
+        """Create a list of rules in the problem instance.
 
         This function generates rules by traversing the item tree and calling the `rules`
         property on each item in the constraints attribute. The rules are then de-duplicated,
@@ -60,8 +56,7 @@ class CreateRulesCommand(SimpleCommand):
         ]
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the CreateRulesCommand instance.
+        """Return a string representation of the CreateRulesCommand instance.
 
         Returns:
             str: A string representation of the object.

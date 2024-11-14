@@ -1,3 +1,4 @@
+"""CreateSolverCommand."""
 import logging
 
 from src.commands.command import CommandException
@@ -7,13 +8,10 @@ from src.solvers.pulp_solver import PulpSolver
 
 
 class CreateSolverCommand(SimpleCommand):
-    """
-    Command for creating a solver instance based on the given configuration and board.
-    """
+    """Command for creating a solver instance based on the given configuration and board."""
 
     def __init__(self, config: str = 'config', board: str = 'board', target: str = 'solver'):
-        """
-        Initializes a CreateSolverCommand instance.
+        """Initialize a CreateSolverCommand instance.
 
         Args:
             config (str): The attribute in the problem containing the configuration.
@@ -26,8 +24,7 @@ class CreateSolverCommand(SimpleCommand):
         self.target: str = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Checks preconditions for command execution.
+        """Check preconditions for command execution.
 
         Ensures that the config and board attributes exist in the problem and that the
         target attribute does not already exist.
@@ -47,8 +44,7 @@ class CreateSolverCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Builds the solver and stores it in the problem instance.
+        """Build the solver and stores it in the problem instance.
 
         This method creates a new PulpSolver instance using the provided board and configuration,
         and stores it in the target attribute within the problem instance.
@@ -64,8 +60,7 @@ class CreateSolverCommand(SimpleCommand):
         )
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the CreateSolverCommand instance.
+        """Return a string representation of the CreateSolverCommand instance.
 
         Returns:
             str: A string representation of the object.

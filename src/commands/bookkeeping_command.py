@@ -1,3 +1,4 @@
+"""BookkeepingCommand."""
 import logging
 
 from src.commands.command import CommandException
@@ -6,23 +7,27 @@ from src.commands.simple_command import SimpleCommand
 
 
 class BookkeepingCommand(SimpleCommand):
-    def __init__(self, constraints: str = 'constraints', target: str = 'bookkeeping_unique'):
-        """
-        Run the bookkeeping command
+    """Command to handle bookkeeping of values for cells."""
 
-        :param constraints: The source attribute for the constraints
-        :param target: The name of the attribute to store if the bookkeeping is unique
+    def __init__(self, constraints: str = 'constraints', target: str = 'bookkeeping_unique'):
+        """Initialize the BookkeepingCommand.
+
+        Args:
+            constraints (str): The source attribute for the constraints.
+            target (str): The name of the attribute to store if the bookkeeping is unique.
         """
         super().__init__()
         self.constraints: str = constraints
         self.target: str = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
+        """Check the preconditions for the command.
 
-        :param problem: The problem to check
-        :raises CommandException: If the preconditions are not met
+        Args:
+            problem (Problem): The problem to check.
+
+        Raises:
+            CommandException: If the preconditions are not met.
         """
         if self.constraints not in problem:
             raise CommandException(f'{self.__class__.__name__} - {self.constraints} does not exist in the problem')
@@ -30,10 +35,13 @@ class BookkeepingCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already exists in the problem')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Do the bookkeeping
+        """Execute the bookkeeping operation.
 
-        :return: None
+        Args:
+            problem (Problem): The problem on which to perform bookkeeping.
+
+        Returns:
+            None
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
@@ -41,8 +49,7 @@ class BookkeepingCommand(SimpleCommand):
         problem[self.target] = problem[self.constraints].bookkeeping_unique()
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the object.
+        """Return a string representation of the object.
 
         Returns:
             str: A string representation of the object.

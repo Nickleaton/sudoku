@@ -1,6 +1,4 @@
-"""
-Base class for all image producing classes.
-"""
+"""Base class for all image producing classes."""
 import logging
 from enum import Enum
 from pathlib import Path
@@ -16,6 +14,7 @@ from src.utils.file_handling import is_writeable_file
 
 class ImageFormat(Enum):
     """Enum for image formats."""
+
     PNG = "png"
     GIF = "gif"
     JPEG = "jpeg"
@@ -26,8 +25,7 @@ class ImageFormat(Enum):
 
     @classmethod
     def from_suffix(cls, suffix: str) -> 'ImageFormat':
-        """
-        Return the ImageFormat corresponding to the given suffix.
+        """Return the ImageFormat corresponding to the given suffix.
 
         Args:
             suffix (str): The file suffix, optionally with a leading '.'.
@@ -47,10 +45,10 @@ class ImageFormat(Enum):
 
 
 class ImageCommand(SimpleCommand):
+    """Command to produce images."""
 
     def __init__(self, source: str, target: Path | str) -> None:
-        """
-        Initialize an ImageCommand.
+        """Initialize an ImageCommand.
 
         Args:
             source (str): The attribute of the problem to write out.
@@ -65,8 +63,7 @@ class ImageCommand(SimpleCommand):
         self.image_format: ImageFormat = ImageFormat.from_suffix(self.target.suffix)
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
+        """Check the preconditions for the command.
 
         Args:
             problem (Problem): The problem to check.
@@ -80,8 +77,7 @@ class ImageCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} is not writeable')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Write the image to a file.
+        """Write the image to a file.
 
         The image is written to the file specified in `target`. The image format
         is determined by the suffix of the file name. If the suffix is ".svg",
@@ -99,19 +95,21 @@ class ImageCommand(SimpleCommand):
         """
         super().execute(problem)
         logging.info(f"Creating {self.target}")
-        if self.image_format == ImageFormat.SVG:
-            # Handle SVG which is just pretty print out as XML
-            with open(self.target, 'wb') as f:
-                text: str = str(problem[self.source].toprettyxml(indent="  "))
-                f.write(text.encode('utf-8'))
-        else:
-            # For other formats, use renderPM to convert the XML to the specified format
-            drawing = svg2rlg(problem[self.source])
-            renderPM.drawToFile(drawing, self.target.name, fmt=self.image_format.name)
+        try:
+            if self.image_format == ImageFormat.SVG:
+                # Handle SVG which is just pretty print out as XML
+                with self.target.open(mode='wb', encoding='utf-8') as f:
+                    text: str = str(problem[self.source].toprettyxml(indent="  "))
+                    f.write(text.encode('utf-8'))
+            else:
+                # For other formats, use renderPM to convert the XML to the specified format
+                drawing = svg2rlg(problem[self.source])
+                renderPM.drawToFile(drawing, self.target.name, fmt=self.image_format.name)
+        except OSError as exc:
+            raise CommandException(f"Failed to write to {self.target}: {exc}") from exc
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the object.
+        """Return a string representation of the object.
 
         The string is of the form "ImageCommand(problem_field, file)". The
         representation is useful for debugging and logging.

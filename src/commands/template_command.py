@@ -1,6 +1,4 @@
-"""
-Command to produce an HTML file of the puzzle.
-"""
+"""Command to produce an HTML file of the puzzle."""
 import logging
 from pathlib import Path
 from typing import Optional
@@ -62,7 +60,7 @@ class TemplateCommand(SimpleCommand):
         """
         if self.template is None:
             logging.info(f"Loading template {self.template_file}")
-            with open(self.template_file, encoding='utf-8') as f:
+            with self.template_file.open(mode='r', encoding='utf-8') as f:
                 self.template = jinja2.Template(source=f.read())
         logging.info(f"Creating {self.target}")
         problem[self.target] = self.template.render(problem)

@@ -1,15 +1,13 @@
+"""ExtractLogCommand."""
 from src.commands.command import Command, CommandException
 from src.commands.problem import Problem
 
 
 class ExtractLogCommand(Command):
-    """
-    Command for extracting the log from the solver's results.
-    """
+    """Command for extracting the log from the solver's results."""
 
     def __init__(self, solver: str = 'solver', target: str = 'log'):
-        """
-        Initializes an ExtractLogCommand instance.
+        """Initialize an ExtractLogCommand instance.
 
         Args:
             solver (str): The attribute in the problem containing the solver.
@@ -20,8 +18,7 @@ class ExtractLogCommand(Command):
         self.target = target
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Checks preconditions before executing the command.
+        """Check preconditions before executing the command.
 
         Ensures that the specified solver exists in the problem and that
         the target attribute does not already exist.
@@ -39,8 +36,7 @@ class ExtractLogCommand(Command):
             raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
     def execute(self, problem: Problem) -> None:
-        """
-        Extracts the log from the solver and stores it in the problem.
+        """Extract the log from the solver and stores it in the problem.
 
         Args:
             problem (Problem): The problem instance from which to extract the log.
@@ -54,8 +50,7 @@ class ExtractLogCommand(Command):
         }
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the ExtractLogCommand instance.
+        """Return a string representation of the ExtractLogCommand instance.
 
         Returns:
             str: A string representation of the object.

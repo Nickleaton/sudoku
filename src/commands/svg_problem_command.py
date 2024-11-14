@@ -1,6 +1,4 @@
-"""
-Create an SVG drawing of the problem.
-"""
+"""Create an SVG drawing of the problem."""
 
 from src.commands.svg_command import SVGCommand
 from src.items.item import Item
@@ -9,6 +7,7 @@ from src.solvers.answer import Answer
 
 
 class SVGProblemCommand(SVGCommand):
+    """Create an SVG drawing of the problem."""
 
     def __init__(self, problem_field: str = "problem_svg"):
         """Initialize the SVGProblemCommand.

@@ -1,6 +1,4 @@
-"""
-Create an SVG drawing of the problem.
-"""
+"""Create an SVG drawing of the problem."""
 import logging
 import xml.dom.minidom
 

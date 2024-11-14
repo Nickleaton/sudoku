@@ -1,8 +1,5 @@
-"""
-Create an SVG drawing of the problem.
-"""
+"""Create an SVG drawing of the problem."""
 
-# TODO - not used by default
 # The idea is for the possible values, 1-9 as small numbers in each cell
 # Will also need corner marks, and central marks
 
@@ -12,6 +9,7 @@ from src.items.solution import Solution
 
 
 class SVGPencilMarkCommand(SVGCommand):
+    """Create an SVG drawing of the problem."""
 
     def __init__(self, problem_field: str = "pencil_mark_svg"):
         """Initialize the SVGPencilMarkCommand.

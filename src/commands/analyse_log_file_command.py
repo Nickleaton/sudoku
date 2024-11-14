@@ -1,3 +1,4 @@
+"""AnalyseLogFileCommand."""
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Dict
@@ -9,13 +10,10 @@ from src.commands.problem import Problem
 
 
 class AnalyseLogFileCommand(Command):
-    """
-    Command to analyze the solver's log file and extract relevant information.
-    """
+    """Command to analyze the solver's log file and extract relevant information."""
 
     def __init__(self, log: str = 'log', target: str = 'log_analysis'):
-        """
-        Initializes the AnalyseLogFileCommand.
+        """Initialize the AnalyseLogFileCommand.
 
         Args:
             log (str): The key in the problem where log data is stored. Defaults to 'log'.
@@ -26,8 +24,7 @@ class AnalyseLogFileCommand(Command):
         self.target: str = target
 
     def precondition_check(self, problem: Problem):
-        """
-        Checks if the necessary conditions are met before executing the command.
+        """Check if the necessary conditions are met before executing the command.
 
         Args:
             problem (Problem): The problem instance to check for preconditions.
@@ -41,8 +38,7 @@ class AnalyseLogFileCommand(Command):
             raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
     def execute(self, problem: Problem):
-        """
-        Executes the command to analyze the solver's log file.
+        """Execute the command to analyze the solver's log file.
 
         Args:
             problem (Problem): The problem instance containing the log data.
@@ -64,8 +60,7 @@ class AnalyseLogFileCommand(Command):
             log_path.unlink(missing_ok=True)
 
     def __repr__(self) -> str:
-        """
-        Returns a string representation of the object.
+        """Return a string representation of the object.
 
         Returns:
             str: A string representation of the AnalyseLogFileCommand instance, showing log and target keys.

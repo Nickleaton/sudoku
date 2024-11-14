@@ -1,6 +1,4 @@
-"""
-Load Config File.
-"""
+"""Load Config File."""
 import logging
 from pathlib import Path
 
@@ -14,10 +12,10 @@ from src.utils.file_handling import is_readable_file
 
 
 class LoadConfigCommand(SimpleCommand):
+    """Load Config into the problem."""
 
     def __init__(self, source: Path | str, target: str = 'config'):
-        """
-        Initialize LoadConfigCommand.
+        """Initialize LoadConfigCommand.
 
         Args:
             source (Path | str): Path to the config file.
@@ -30,8 +28,7 @@ class LoadConfigCommand(SimpleCommand):
         self.target = 'target'
 
     def precondition_check(self, problem: Problem) -> None:
-        """
-        Check the preconditions for the command.
+        """Check the preconditions for the command.
 
         This method checks that the target attribute does not already exist in the
         problem's configuration and that the source file exists and is readable.
@@ -48,8 +45,7 @@ class LoadConfigCommand(SimpleCommand):
             raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
 
     def execute(self, problem: Problem) -> None:
-        """
-        Load the configuration from the YAML file.
+        """Load the configuration from the YAML file.
 
         Args:
             problem (Problem): The problem to load the config into.
@@ -60,12 +56,14 @@ class LoadConfigCommand(SimpleCommand):
         super().execute(problem)
         logging.info(f"Loading {self.source}")
         logging.info(f"Creating {self.target}")
-        with open(self.source, 'r', encoding='utf-8') as file:
-            problem[self.target] = pydot(yaml.load(file, yaml.SafeLoader))
+        try:
+            with self.source.open(mode='r', encoding='utf-8') as file:
+                problem[self.target] = pydot(yaml.load(file, yaml.SafeLoader))
+        except Exception as exc:
+            raise CommandException(f"Failed to load {self.source}: {exc}") from exc
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the object.
+        """Return a string representation of the object.
 
         Returns:
             str: A string representation of the object.

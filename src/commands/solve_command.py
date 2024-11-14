@@ -1,6 +1,4 @@
-"""
-Base for different solvers.
-"""
+"""Base for different solvers."""
 import logging
 
 from src.commands.command import CommandException
