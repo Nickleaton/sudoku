@@ -17,7 +17,7 @@ class MaxArrowLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines rules specific to MaxArrowLine.
+        """Define rules specific to MaxArrowLine.
 
         Returns:
             List[Rule]: A list containing a single Rule object that specifies:
@@ -32,7 +32,7 @@ class MaxArrowLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates a graphical representation of the MaxArrowLine.
+        """Generate a graphical representation of the MaxArrowLine.
 
         Returns:
             List[Glyph]: A list containing an `ArrowLineGlyph` instance with
@@ -71,7 +71,7 @@ class MaxArrowLine(Line):
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds maximum constraints to the Pulp solver.
+        """Add maximum constraints to the Pulp solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints

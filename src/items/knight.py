@@ -17,7 +17,7 @@ class Knight(ComposedItem):
     """Represents a constraint that enforces a knight's move rule on certain digits."""
 
     def __init__(self, board: Board, digits: List[int]):
-        """Initializes the Knight constraint with the specified board and digits.
+        """Initialize the Knight constraint with the specified board and digits.
 
         Args:
             board (Board): The Sudoku board on which the constraint applies.
@@ -29,7 +29,7 @@ class Knight(ComposedItem):
 
     @classmethod
     def parser(cls) -> DigitsParser:
-        """Provides the parser for extracting digits for the knight constraint.
+        """Provide the parser for extracting digits for the knight constraint.
 
         Returns:
             DigitsParser: A parser to extract digits from input.
@@ -38,7 +38,7 @@ class Knight(ComposedItem):
 
     @staticmethod
     def offsets() -> List[Coord]:
-        """Defines the relative coordinates for knight's moves.
+        """Define the relative coordinates for knight's moves.
 
         Returns:
             List[Coord]: List of offsets representing knight's moves.
@@ -56,7 +56,7 @@ class Knight(ComposedItem):
 
     @property
     def tags(self) -> set[str]:
-        """Returns tags associated with this constraint.
+        """Return tags associated with this constraint.
 
         Returns:
             set[str]: Tags including 'Knight'.
@@ -65,7 +65,7 @@ class Knight(ComposedItem):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts digits from YAML configuration.
+        """Extract digits from YAML configuration.
 
         Args:
             board (Board): The Sudoku board for context.
@@ -78,7 +78,7 @@ class Knight(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Factory method to create a Knight constraint from YAML configuration.
+        """Create a Knight constraint from YAML configuration.
 
         Args:
             board (Board): The board on which this constraint is created.
@@ -92,7 +92,7 @@ class Knight(ComposedItem):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the list of rules enforced by this constraint.
+        """Return the list of rules enforced by this constraint.
 
         Returns:
             List[Rule]: Rules indicating that each specified digit must be reachable
@@ -104,7 +104,7 @@ class Knight(ComposedItem):
         ]
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Knight constraint.
+        """Return a string representation of the Knight constraint.
 
         Returns:
             str: String representation of the constraint.
@@ -112,7 +112,7 @@ class Knight(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the knight constraint to the solver.
+        """Add the knight constraint to the solver.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -128,7 +128,7 @@ class Knight(ComposedItem):
                 solver.model += start <= possibles, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
     def to_dict(self) -> Dict:
-        """Serializes the Knight constraint to a dictionary format.
+        """Serialize the Knight constraint to a dictionary format.
 
         Returns:
             Dict: Dictionary representation of the constraint.

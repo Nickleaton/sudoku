@@ -26,7 +26,7 @@ CELL_TYPE_MAP: Dict[str, Type[SimpleCellReference]] = {
 
 
 class Known(ComposedItem):
-    """Represents a collection of cells with known characteristics on the board."""
+    """Represent a collection of cells with known characteristics on the board."""
 
     def __init__(self, board: Board, rows: List[str]):
         """Initialize the Known object with a board and a list of row data.
@@ -75,7 +75,7 @@ class Known(ComposedItem):
 
     @classmethod
     def parser(cls) -> KnownParser:
-        """Returns an instance of the parser class associated with Known.
+        """Return an instance of the parser class associated with Known.
 
         Returns:
             KnownParser: An instance of KnownParser.
@@ -84,7 +84,7 @@ class Known(ComposedItem):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts a list of row strings from a YAML dictionary for Known.
+        """Extract a list of row strings from a YAML dictionary for Known.
 
         Args:
             board (Board): The board instance.
@@ -98,7 +98,7 @@ class Known(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Known instance from YAML data.
+        """Create a Known instance from YAML data.
 
         Args:
             board (Board): The board instance.
@@ -111,7 +111,7 @@ class Known(ComposedItem):
         return Known(board, items)
 
     def line_str(self) -> List[str]:
-        """Returns a list of row strings representing the board layout for Known items.
+        """Return a list of row strings representing the board layout for Known items.
 
         Returns:
             List[str]: A list of strings where each string represents a row of the board.
@@ -129,7 +129,7 @@ class Known(ComposedItem):
         return ["".join(line) for line in lines]
 
     def __repr__(self) -> str:
-        """String representation for debugging, includes board and the current line_str state.
+        """Return representation of the Known instance.
 
         Returns:
             str: A string representation of the Known instance.

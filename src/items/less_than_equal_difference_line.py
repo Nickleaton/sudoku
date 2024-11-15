@@ -8,15 +8,16 @@ from src.utils.rule import Rule
 
 
 class LessThanEqualDifferenceLine(Line):
-    """Represents a line in a puzzle where the cells connected by the line must
-    have a difference that is less than or equal to a specified value.
+    """Represents a difference line in a puzzle.
+
+    The cells connected by the line must have a difference that is less than or equal to a specified value.
 
     Attributes:
         difference (int): The maximum allowable difference between connected cells.
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initializes a LessThanEqualDifferenceLine with the given board and cells.
+        """Initialize a LessThanEqualDifferenceLine with the given board and cells.
 
         Args:
             board (Board): The game board containing the cells.
@@ -29,7 +30,7 @@ class LessThanEqualDifferenceLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Gets the rules associated with the LessThanEqualDifferenceLine.
+        """Get the rules associated with the LessThanEqualDifferenceLine.
 
         Returns:
             List[Rule]: A list of rules specific to the LessThanEqualDifferenceLine.

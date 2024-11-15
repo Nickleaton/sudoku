@@ -11,7 +11,7 @@ from src.utils.coord import Coord
 
 
 class KnownCell(CellReference):
-    """Represents a given cell in the board with a specified digit.
+    """Represent a given cell in the board with a specified digit.
 
     Attributes:
         digit (int): The digit assigned to this cell.
@@ -19,7 +19,7 @@ class KnownCell(CellReference):
     """
 
     def __init__(self, board: Board, row: int, column: int, digit: int, prefix=None):
-        """Initializes a KnownCell instance.
+        """Initialize a KnownCell instance.
 
         Args:
             board (Board): The board associated with this cell.
@@ -34,7 +34,7 @@ class KnownCell(CellReference):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, int]:
-        """Extracts the row, column, and digit from the given YAML string.
+        """Extract the row, column, and digit from the given YAML string.
 
         Args:
             board (Board): The board this item is attached to.
@@ -54,7 +54,7 @@ class KnownCell(CellReference):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates an instance of KnownCell from a YAML dictionary.
+        """Create an instance of KnownCell from a YAML dictionary.
 
         Args:
             board (Board): The board associated with this item.
@@ -67,7 +67,7 @@ class KnownCell(CellReference):
         return cls(board, row, column, digit)
 
     def glyphs(self) -> List[Glyph]:
-        """Returns a list of SVG glyphs for this item.
+        """Return a list of SVG glyphs for this item.
 
         Returns:
             List[Glyph]: A list containing a KnownGlyph for this cell.
@@ -75,7 +75,7 @@ class KnownCell(CellReference):
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
     def __repr__(self) -> str:
-        """Returns a string representation of this item.
+        """Return a string representation of this item.
 
         Returns:
             str: A string representation of this KnownCell instance.
@@ -83,7 +83,7 @@ class KnownCell(CellReference):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})"
 
     def to_dict(self) -> Dict:
-        """Converts the item to a dictionary for serialization.
+        """Convert the item to a dictionary for serialization.
 
         Returns:
             Dict: A dictionary with the class name as the key and cell information as the value.
@@ -91,7 +91,7 @@ class KnownCell(CellReference):
         return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
 
     def css(self) -> Dict:
-        """Returns CSS properties for styling Known and Unknown cells.
+        """Return CSS properties for styling Known and Unknown cells.
 
         Returns:
             Dict: A dictionary of CSS properties.
@@ -136,7 +136,7 @@ class KnownCell(CellReference):
         }
 
     def bookkeeping(self) -> None:
-        """Performs bookkeeping on this cell.
+        """Perform bookkeeping on this cell.
 
         Sets the cell to only the assigned digit and restricts the same digit
         in the row, column, and box of this cell.

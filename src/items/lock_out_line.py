@@ -14,13 +14,10 @@ class LockOutLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """List of rules that apply to this LockOutLine.
+        """Return list of rules that apply to this LockOutLine.
 
         Returns:
-            List[Rule]: A list containing the LockOut rule, which specifies:
-            - Diamond endpoints must be at least 4 cells apart.
-            - Digits on the line must lie strictly outside the values at
-              the endpoints.
+            List[Rule]: A list containing the LockOut rules
         """
         return [
             Rule(

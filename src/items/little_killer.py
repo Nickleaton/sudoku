@@ -18,12 +18,13 @@ from src.utils.side import Side
 
 
 class LittleKiller(Region):
-    """Represents a Little Killer puzzle region where clues outside the grid
-    give the sum of the indicated diagonals, which may contain repeated digits.
+    """Represents a Little Killer puzzle region.
+
+    Clues outside the grid give the sum of the indicated diagonals, which may contain repeated digits.
     """
 
     def __init__(self, board: Board, side: Side, cyclic: Cyclic, offset: int, total: int):
-        """Constructs a LittleKiller region.
+        """Construct a LittleKiller region.
 
         Args:
             board (Board): The board being used.

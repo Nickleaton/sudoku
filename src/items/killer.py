@@ -15,7 +15,7 @@ class Killer(Region):
     """Represents a Killer cage in the puzzle, which is a group of cells with a specified total sum constraint."""
 
     def __init__(self, board: Board, total: int, cells: List[Item]) -> None:
-        """Initializes a Killer cage with a board, a total target sum, and a list of cells.
+        """Initialize a Killer cage with a board, a total target sum, and a list of cells.
 
         Args:
             board (Board): The game board.
@@ -27,7 +27,7 @@ class Killer(Region):
         self.add_items(cells)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Killer cage."""
+        """Return a string representation of the Killer cage."""
         return (
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
@@ -38,7 +38,7 @@ class Killer(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple[int, List[Item]]:
-        """Extracts the target total and cell positions for the Killer cage from the YAML configuration.
+        """Extract the target total and cell positions for the Killer cage from the YAML configuration.
 
         Args:
             board (Board): The game board.
@@ -56,7 +56,7 @@ class Killer(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Killer cage from the YAML configuration.
+        """Create a Killer cage from the YAML configuration.
 
         Args:
             board (Board): The game board.
@@ -69,7 +69,7 @@ class Killer(Region):
         return Killer(board, total, cells)
 
     def glyphs(self) -> List[Glyph]:
-        """Returns the glyphs for the Killer cage.
+        """Return the glyphs for the Killer cage.
 
         Returns:
             List[Glyph]: A list of glyphs representing the Killer cage.
@@ -79,7 +79,7 @@ class Killer(Region):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rules associated with the Killer cage.
+        """Define the rules associated with the Killer cage.
 
         Returns:
             List[Rule]: A list of rules that apply to the Killer cage.
@@ -94,7 +94,7 @@ class Killer(Region):
 
     @property
     def tags(self) -> set[str]:
-        """Returns tags associated with the Killer cage.
+        """Return tags associated with the Killer cage.
 
         Returns:
             set[str]: A set of tags for the Killer cage.
@@ -102,7 +102,7 @@ class Killer(Region):
         return super().tags.union({'Killer'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the constraint to the solver for the Killer cage's total sum.
+        """Add the constraint to the solver for the Killer cage's total sum.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -112,7 +112,7 @@ class Killer(Region):
         solver.model += total == self.total, name
 
     def to_dict(self) -> Dict[str, str]:
-        """Converts the Killer cage to a dictionary representation.
+        """Convert the Killer cage to a dictionary representation.
 
         Returns:
             Dict[str, str]: A dictionary with the Killer cage's class name and configuration string.
@@ -121,7 +121,7 @@ class Killer(Region):
         return {self.__class__.__name__: f"{self.total}={cell_str}"}
 
     def css(self) -> Dict[str, Dict[str, Any]]:
-        """Returns the CSS styles for rendering the Killer cage.
+        """Return the CSS styles for rendering the Killer cage.
 
         Returns:
             Dict[str, Dict[str, Any]]: CSS properties for the Killer cage's appearance.

@@ -12,7 +12,7 @@ class LowCell(SimpleCellReference):
 
     @staticmethod
     def digits() -> List[int]:
-        """Returns the list of digits allowed for LowCell.
+        """Return the list of digits allowed for LowCell.
 
         Returns:
             List[int]: A list of digits [1, 2, 3] allowed for LowCell.
@@ -21,7 +21,7 @@ class LowCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Checks if a given digit is included in the list of valid digits for LowCell.
+        """Check if a given digit is included in the list of valid digits for LowCell.
 
         Args:
             digit (int): The digit to check.
@@ -32,7 +32,7 @@ class LowCell(SimpleCellReference):
         return digit in LowCell.digits()
 
     def letter(self) -> str:
-        """Returns the letter representation of a LowCell.
+        """Return the letter representation of a LowCell.
 
         Returns:
             str: The letter 'l' representing LowCell.
@@ -40,7 +40,7 @@ class LowCell(SimpleCellReference):
         return 'l'
 
     def svg(self) -> Optional[Glyph]:
-        """Returns the SVG representation of the LowCell.
+        """Return the SVG representation of the LowCell.
 
         Returns:
             Optional[Glyph]: Returns None as the SVG representation is not available for LowCell.
@@ -49,7 +49,7 @@ class LowCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Returns a set of tags associated with the LowCell.
+        """Return a set of tags associated with the LowCell.
 
         Returns:
             set[str]: A set of tags, including 'Trio' for LowCell.
@@ -58,7 +58,7 @@ class LowCell(SimpleCellReference):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with LowCell.
+        """Return the rules associated with LowCell.
 
         Returns:
             List[Rule]: A list of rules, indicating that digits 1, 2, and 3 are marked with orange circles.
@@ -66,7 +66,7 @@ class LowCell(SimpleCellReference):
         return [Rule("Low", 1, "The digits 1, 2, and 3 are marked with orange circles")]
 
     def glyphs(self) -> List[Glyph]:
-        """Returns a list of Glyphs associated with LowCell.
+        """Return a list of Glyphs associated with LowCell.
 
         Returns:
             List[Glyph]: A list containing the LowCellGlyph for this cell.
@@ -74,7 +74,7 @@ class LowCell(SimpleCellReference):
         return [LowCellGlyph('LowCell', Coord(self.row, self.column))]
 
     def css(self) -> Dict:
-        """Returns the CSS styles associated with LowCell.
+        """Return the CSS styles associated with LowCell.
 
         Returns:
             Dict: A dictionary containing the CSS styles, with a stroke of orange and a white fill.
@@ -87,7 +87,7 @@ class LowCell(SimpleCellReference):
         }
 
     def bookkeeping(self) -> None:
-        """Sets the possible digits for the LowCell.
+        """Set the possible digits for the LowCell.
 
         This method updates the bookkeeping system to allow only the digits [1, 2, 3] for this cell.
         """
