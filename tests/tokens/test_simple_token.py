@@ -1,3 +1,4 @@
+"""TestSimpleToken."""
 import unittest
 
 from src.tokens.simple_token import SimpleToken
@@ -26,3 +27,4 @@ class TestSimpleToken(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

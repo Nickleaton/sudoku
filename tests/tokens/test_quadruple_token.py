@@ -1,3 +1,4 @@
+"""TestQuadrupleToken."""
 import unittest
 
 from src.tokens.quadruple_token import QuadrupleToken
@@ -20,3 +21,4 @@ class TestQuadToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
+

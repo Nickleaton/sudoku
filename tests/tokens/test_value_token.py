@@ -1,3 +1,4 @@
+"""TestValueToken."""
 import unittest
 
 from src.tokens.value_token import ValueToken
@@ -17,3 +18,4 @@ class TestValueToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
+

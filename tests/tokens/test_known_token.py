@@ -1,3 +1,4 @@
+"""TestKnownToken."""
 import unittest
 
 from src.tokens.known_token import KnownToken
@@ -20,3 +21,4 @@ class TestKnownToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
+

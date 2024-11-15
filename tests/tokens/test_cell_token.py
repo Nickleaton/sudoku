@@ -1,3 +1,4 @@
+"""TestCellToken."""
 import unittest
 
 from src.tokens.cell_token import CellToken
@@ -20,3 +21,4 @@ class TestCellToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
+

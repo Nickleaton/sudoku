@@ -1,3 +1,4 @@
+"""TestSideToken."""
 import unittest
 
 from src.tokens.side_token import SideToken
@@ -20,3 +21,4 @@ class TestSideToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
+

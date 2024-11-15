@@ -1,3 +1,4 @@
+"""TestSymbols."""
 import unittest
 
 from src.tokens.symbols import CommaToken, DashToken, EqualsToken, SymbolToken, QuestionMarkToken
@@ -5,6 +6,8 @@ from tests.tokens.test_simple_token import TestSimpleToken
 
 
 class TestSymbolToken(TestSimpleToken):
+    """Test Symbol Token."""
+
     def setUp(self):
         """Set up example tokens specific for testing DashToken."""
         self.token = SymbolToken('x')
@@ -17,6 +20,7 @@ class TestSymbolToken(TestSimpleToken):
         self.bnf = '"x"'
 
     def test_backus_naur_form(self):
+        """Test Backus-Naur form of the Token."""
         self.assertEqual(self.bnf, self.token.backus_naur_form())
 
 

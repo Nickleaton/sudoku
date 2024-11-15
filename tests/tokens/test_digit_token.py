@@ -1,3 +1,4 @@
+"""TestDigitToken."""
 import unittest
 
 from src.tokens.digit_token import DigitToken
@@ -19,3 +20,4 @@ class TestDigitToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
+
