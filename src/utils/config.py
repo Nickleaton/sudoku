@@ -44,7 +44,7 @@ class Config:
         # pylint: disable=protected-access
         with cls.__lock:  # Acquire the lock before proceeding
             if cls.__instance is None:
-                cls.__instance = super(Config, cls).__new__(cls)
+                cls.__instance = super().__new__(cls)
 
                 cls.__instance.__initialized = False
                 cls.__instance.config_file_path = config_file_path
@@ -70,10 +70,12 @@ class Config:
         started.
         """
         try:
-            with open(self.config_file_path, encoding='utf-8') as file:
+            with self.config_file_path.open(mode='r', encoding='utf-8') as file:
                 self.config = pydot(yaml.load(file, Loader=yaml.SafeLoader))
         except FileNotFoundError as exc:
             raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}") from exc
+        except OSError as exc:
+            raise OSError(f"Configuration file not readable: {self.config_file_path}") from exc
         except yaml.YAMLError as exc:
             raise ValueError(f"Error parsing YAML file: {exc}") from exc
 

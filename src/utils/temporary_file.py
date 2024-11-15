@@ -1,6 +1,7 @@
 """Generate a temporary filename in the temp directory."""
 import logging
 from pathlib import Path
+from types import TracebackType
 from typing import Optional, Type
 from uuid import uuid4
 
@@ -60,7 +61,7 @@ class TemporaryFile:
     def __exit__(self,
                  _exc_type: Optional[Type[BaseException]],
                  _exc_val: Optional[BaseException],
-                 _exc_tb: Optional[object]
+                 _exc_tb: Optional[TracebackType]
                  ) -> None:
         """Exit the runtime context and remove the temporary file.
 

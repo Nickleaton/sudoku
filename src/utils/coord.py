@@ -74,11 +74,11 @@ class Coord:
             return Coord(self.row * other, self.column * other)
         raise CoordException(f"Multiplication not supported for Coord and {type(other)}")
 
-    def __truediv__(self, other: float | int) -> 'Coord':
+    def __truediv__(self, other: float) -> 'Coord':
         """Divide a Coord by a scalar.
 
         Args:
-            other (float | int): The scalar to divide by.
+            other (float): The scalar to divide by.
 
         Returns:
             Coord: A new Coord object after division.

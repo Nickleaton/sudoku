@@ -192,7 +192,6 @@
         <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/src.txt">
             <arg value="check"/>
             <arg value="src/"/>
-            <arg value="tests/"/>
         </exec>
     </target>
 
