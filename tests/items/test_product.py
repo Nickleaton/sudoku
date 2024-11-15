@@ -48,7 +48,6 @@ class TestProduct(TestRegion):
 
     def test_in(self):
         """Placeholder for testing membership or containment logic."""
-        pass
 
 
 if __name__ == '__main__':  # pragma: no cover

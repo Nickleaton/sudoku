@@ -60,7 +60,7 @@ class TestSolution(TestComposed):
         """Return the string representation of the Solution."""
         return (
             "Solution(Board(9, 9, 3, 3, None, None, None, None), "
-            "[" 
+            "["
             "'123456789', "
             "'123456789', "
             "'123456789', "

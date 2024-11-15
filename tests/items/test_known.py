@@ -65,7 +65,7 @@ class TestKnown(TestComposed):
         """Return a string representation of the Known instance."""
         return (
             "Known(Board(9, 9, 3, 3, None, None, None, None), "
-            "[" 
+            "["
             "'8..4.6..3', "
             "'o.9....2.', "
             "'e.......1', "

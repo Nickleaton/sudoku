@@ -8,7 +8,6 @@ from tests.items.test_item import TestItem
 class TestSandwich(TestItem):
     """Test suite for the Sandwich class."""
 
-    pass
 
 
 if __name__ == '__main__':  # pragma: no cover

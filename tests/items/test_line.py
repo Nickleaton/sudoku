@@ -37,7 +37,7 @@ class TestLine(TestRegion):
         """Return the string representation of the Line instance."""
         return (
             f"{self.clazz.__name__}(Board(9, 9, 3, 3, None, None, None, None), "
-            f"[" 
+            f"["
             f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
             f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
             f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"

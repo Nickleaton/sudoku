@@ -56,7 +56,7 @@ class TestConstraints(TestComposed):
         """Return the string representation for the Constraints."""
         return (
             "Constraints(Board(9, 9, 3, 3, None, None, None, None), "
-            "[" 
+            "["
             "Columns(Board(9, 9, 3, 3, None, None, None, None)), "
             "Rows(Board(9, 9, 3, 3, None, None, None, None)), "
             "Boxes(Board(9, 9, 3, 3, None, None, None, None)), "
