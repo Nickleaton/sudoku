@@ -1,58 +1,40 @@
 from typing import Optional
-
 from svgwrite.base import BaseElement
-from svgwrite.container import Symbol, Use
-from svgwrite.shapes import Circle
+from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
 from src.utils.coord import Coord
 
 
-class LowCellGlyph(Glyph):
-    """Represents a glyph for a low cell, rendered using an SVG symbol and circle."""
+class MidCellGlyph(Glyph):
+    """Represents a glyph for a mid-cell marker in an SVG drawing."""
 
-    def __init__(self, class_name: str, coord: Coord):
-        """Initialize the LowCellGlyph with the given class name and coordinates.
+    def __init__(self, class_name: str, position: Coord):
+        """Initialize the MidCellGlyph with a class name and position.
 
         Args:
-            class_name (str): The class name for the SVG element.
-            coord (Coord): The coordinates where the glyph will be placed.
+            class_name (str): The CSS class name to apply to the glyph.
+            position (Coord): The position of the glyph in the grid.
         """
         super().__init__(class_name)
-        self.coord = coord  # Coordinates for the low cell glyph
-
-    @classmethod
-    def symbol(cls) -> Optional[Symbol]:
-        """Create the SVG symbol for the low cell glyph, containing a circle.
-
-        This method defines a symbol that can be reused in the SVG output. The symbol
-        consists of a circle with a radius of 35 units, centered at (50, 50) within a 100x100 viewBox.
-
-        Returns:
-            Optional[Symbol]: An SVG symbol element representing the low cell glyph.
-        """
-        result = Symbol(
-            viewBox="0 0 100 100",
-            id_="LowCell-symbol",
-            class_="LowCell"
-        )
-        result.add(Circle(center=(50, 50), r=35))  # Adding a circle inside the symbol
-        return result
+        self.position = position
+        self.percentage = 0.7
+        self.size = Coord(1, 1) * self.percentage
 
     def draw(self) -> Optional[BaseElement]:
-        """Draw the LowCellGlyph by referencing the SVG symbol.
-
-        This method uses the defined symbol and places it at the coordinates specified in `self.coord`.
+        """Create an SVG rectangle element representing the mid-cell glyph.
 
         Returns:
-            Optional[BaseElement]: An SVG Use element that references the symbol, positioned at `coord`.
+            Optional[BaseElement]: The SVG rectangle element or None.
         """
-        return Use(href="#LowCell-symbol", insert=self.coord.point.coordinates, class_="LowCell", height=100, width=100)
+        top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
+        return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return a string representation of the LowCellGlyph.
+        """Return a string representation of the MidCellGlyph instance.
 
         Returns:
-            str: A string representing the LowCellGlyph instance with its class name and coordinates.
+            str: A string representation of the glyph in the format
+                MidCellGlyph('<class_name>', <position>).
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
