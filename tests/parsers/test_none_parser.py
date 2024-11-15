@@ -1,3 +1,4 @@
+"""TestNoneParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -10,7 +11,7 @@ class TestNoneParser(TestParser):
     """Test case for the NoneParser class."""
 
     def setUp(self):
-        """Sets up the NoneParser instance for testing."""
+        """Set up the NoneParser instance for testing."""
         self.parser: NoneParser = NoneParser()
         self.representation: str = 'NoneParser()'
         self.example_format: str = ''
@@ -25,9 +26,7 @@ class TestNoneParser(TestParser):
         ]
 
     def test_parse_empty_input(self):
-        """Tests parsing an empty input string doesn't apply for this parser"""
-        """Tests that an empty input string is parsed successfully, while non-empty input raises ParserError."""
-        # Test parsing with valid input (empty string)
+        """Tests parsing an empty input string doesn't apply for this parser."""
         try:
             self.parser.parse("")
             self.fail("ParserError was not raised for empty input")
@@ -37,3 +36,4 @@ class TestNoneParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

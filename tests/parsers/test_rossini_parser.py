@@ -1,3 +1,4 @@
+"""TestRossiniParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestRossiniParser(TestParser):
     """Test case for the RossiniParser class."""
 
     def setUp(self):
-        """Sets up the RossiniParser instance for testing."""
+        """Set up the RossiniParser instance for testing."""
         self.parser: RossiniParser = RossiniParser()
         self.representation: str = "RossiniParser()"
         self.example_format: str = '[TLBR]d=[DIU]'
@@ -93,3 +94,4 @@ class TestRossiniParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

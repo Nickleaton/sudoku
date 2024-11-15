@@ -1,3 +1,4 @@
+"""TestSolutionParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -10,7 +11,7 @@ class TestSolutionParser(TestParser):
     """Test case for the SolutionParser class."""
 
     def setUp(self):
-        """Sets up the SolutionParser instance for testing."""
+        """Set up the SolutionParser instance for testing."""
         self.parser: SolutionParser = SolutionParser()
         self.representation: str = 'SolutionParser()'
         self.example_format: str = '123456789'
@@ -56,3 +57,4 @@ class TestSolutionParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

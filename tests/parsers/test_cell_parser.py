@@ -1,3 +1,4 @@
+"""TestCellParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestCellParser(TestParser):
     """Test case for the CellParser class."""
 
     def setUp(self):
-        """Sets up the CellParser instance for testing."""
+        """Set up the CellParser instance for testing."""
         self.parser: CellParser = CellParser()
         self.representation: str = "CellParser()"
         self.example_format: str = 'rc'
@@ -84,3 +85,4 @@ class TestCellParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

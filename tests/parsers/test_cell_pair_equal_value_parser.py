@@ -1,3 +1,4 @@
+"""TestCellPairEqualValueParser."""
 import unittest
 from typing import List, Tuple, Any
 from src.parsers.cell_pair_equal_value_parser import CellPairEqualValueParser
@@ -9,7 +10,7 @@ class TestCellPairEqualValueParser(TestParser):
     """Test case for the CellPairEqualValueParser class."""
 
     def setUp(self):
-        """Sets up the CellPairEqualValueParser instance for testing."""
+        """Set up the CellPairEqualValueParser instance for testing."""
         self.parser: CellPairEqualValueParser = CellPairEqualValueParser()
         self.representation: str = 'CellPairEqualValueParser()'
         self.example_format: str = 'r1c1-r2c2=dd'
@@ -104,3 +105,4 @@ class TestCellPairEqualValueParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

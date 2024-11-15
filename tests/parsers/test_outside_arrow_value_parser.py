@@ -1,3 +1,4 @@
+"""TestOutsideArrowValueParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestOutsideArrowValueParser(TestParser):
     """Test case for the OutsideArrowValueParser class."""
 
     def setUp(self):
-        """Sets up the OutsideArrowValueParser instance for testing."""
+        """Set up the OutsideArrowValueParser instance for testing."""
         self.parser: OutsideArrowValueParser = OutsideArrowValueParser()
         self.representation: str = 'OutsideArrowValueParser()'
         self.example_format: str = "[TLBR]d=dd"
@@ -93,3 +94,4 @@ class TestOutsideArrowValueParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

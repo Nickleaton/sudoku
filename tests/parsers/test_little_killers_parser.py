@@ -1,3 +1,4 @@
+"""TestLittleKillersParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestLittleKillersParser(TestParser):
     """Test case for the LittleKillersParser class."""
 
     def setUp(self):
-        """Sets up the LittleKillersParser instance for testing."""
+        """Set up the LittleKillersParser instance for testing."""
         self.parser: LittleKillersParser = LittleKillersParser()
         self.representation: str = 'LittleKillersParser()'
         self.example_format: str = '[TLBR]i=dd'
@@ -131,3 +132,4 @@ class TestLittleKillersParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

@@ -1,3 +1,4 @@
+"""TestQuadruplesParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestQuadruplesParser(TestParser):
     """Test case for the QuadruplesParser class."""
 
     def setUp(self):
-        """Sets up the QuadruplesParser instance for testing."""
+        """Set up the QuadruplesParser instance for testing."""
         self.parser: QuadruplesParser = QuadruplesParser()
         self.representation: str = "QuadruplesParser()"
         self.example_format: str = 'rc=dd??'
@@ -112,3 +113,4 @@ class TestQuadruplesParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

@@ -1,3 +1,4 @@
+"""TestFrameParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestFrameParser(TestParser):
     """Test case for the FrameParser class."""
 
     def setUp(self):
-        """Sets up the FrameParser instance for testing."""
+        """Set up the FrameParser instance for testing."""
         self.parser: FrameParser = FrameParser()
         self.representation: str = 'FrameParser()'
         self.example_format: str = '[TLBR]i=v'
@@ -100,3 +101,4 @@ class TestFrameParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

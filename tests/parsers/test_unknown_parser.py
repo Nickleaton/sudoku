@@ -1,3 +1,4 @@
+"""TestUnknownParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestUnknownParser(TestParser):
     """Test case for the UnknownParser class."""
 
     def setUp(self):
-        """Sets up the UnknownParser instance for testing."""
+        """Set up the UnknownParser instance for testing."""
         self.parser: UnknownParser = UnknownParser()
         self.representation: str = 'UnknownParser()'
         self.example_format: str = ""
@@ -24,3 +25,4 @@ class TestUnknownParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

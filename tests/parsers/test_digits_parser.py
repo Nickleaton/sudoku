@@ -1,3 +1,4 @@
+"""TestDigitsParser."""
 import unittest
 from typing import List, Tuple
 
@@ -9,7 +10,7 @@ class TestDigitsParser(TestParser):
     """Test case for the DigitsParser class."""
 
     def setUp(self):
-        """Sets up the DigitsParser instance for testing."""
+        """Set up the DigitsParser instance for testing."""
         self.parser: DigitsParser = DigitsParser()
         self.representation: str = 'DigitsParser()'
         self.example_format: str = '1,2,3,...'
@@ -49,3 +50,4 @@ class TestDigitsParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+

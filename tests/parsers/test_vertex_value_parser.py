@@ -1,3 +1,4 @@
+"""TestVertexValueParser."""
 import unittest
 from typing import List, Tuple, Any
 
@@ -9,7 +10,7 @@ class TestVertexValueParser(TestParser):
     """Test case for the VertexValueParser class."""
 
     def setUp(self):
-        """Sets up the VertexValueParser instance for testing."""
+        """Set up the VertexValueParser instance for testing."""
         self.parser: VertexValueParser = VertexValueParser()
         self.representation: str = 'VertexValueParser()'
         self.example_format: str = 'rc=dd'
@@ -75,3 +76,4 @@ class TestVertexValueParser(TestParser):
 
 if __name__ == "__main__":
     unittest.main()
+
