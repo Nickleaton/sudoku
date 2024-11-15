@@ -3,6 +3,7 @@ import sys
 from typing import List, Dict
 
 from pulp import lpSum
+
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.cell import Cell
@@ -111,4 +112,3 @@ class EqualSumLine(Line):
                 'fill-opacity': 0
             }
         }
-

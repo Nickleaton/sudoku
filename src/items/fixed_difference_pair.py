@@ -77,4 +77,3 @@ class FixedDifferencePair(FixedPair):
                 'stroke': 'black'
             }
         }
-

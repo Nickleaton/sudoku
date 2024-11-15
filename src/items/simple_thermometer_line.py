@@ -1,10 +1,9 @@
 """SimpleThermometerLine."""
 from typing import List, Set
 
-from src.items.thermometer_line import ThermometerLine
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.simple_thermometer_glyph import SimpleThermometerGlyph
+from src.items.thermometer_line import ThermometerLine
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 
@@ -71,4 +70,3 @@ class SimpleThermometerLine(ThermometerLine):
             for digit in self.board.digit_range:
                 if digit not in possible:
                     solver.model += solver.choices[digit][cell.row][cell.column], f"{self.name}_{cell.name}_{digit}"
-

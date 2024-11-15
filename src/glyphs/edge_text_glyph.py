@@ -45,4 +45,3 @@ class EdgeTextGlyph(TextGlyph):
             f"'{self.text}'"
             f")"
         )
-

@@ -78,4 +78,3 @@ class StandardRegion(Region):
             str: A string representation showing the region name and index.
         """
         return f"{self.__class__.__name__}({self.index})"
-

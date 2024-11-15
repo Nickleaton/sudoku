@@ -177,4 +177,3 @@ class ClonedRegion(Item):
                 'font-weight': 'bolder'
             }
         }
-

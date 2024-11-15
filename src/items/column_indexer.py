@@ -79,4 +79,3 @@ class ColumnIndexer(Indexer):
                 'fill': 'pink'
             }
         }
-

@@ -54,4 +54,3 @@ class Asterix(SpecialRegion):
                 'fill': 'orange'
             }
         }
-

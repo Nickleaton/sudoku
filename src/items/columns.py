@@ -43,4 +43,3 @@ class Columns(StandardRegionSet):
             str: A string representation of the Columns instance.
         """
         return f"{self.__class__.__name__}({self.board!r})"
-

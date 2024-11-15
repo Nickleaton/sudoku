@@ -88,4 +88,3 @@ class FrozenThermometerLine(ThermometerLine):
                 'stroke-width': 30
             }
         }
-

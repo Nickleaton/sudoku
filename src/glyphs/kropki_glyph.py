@@ -25,4 +25,3 @@ class KropkiGlyph(RectangleGlyph):
             str: A string representing the KropkiGlyph instance with its class name and coordinates.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.first!s}, {self.second!s})"
-

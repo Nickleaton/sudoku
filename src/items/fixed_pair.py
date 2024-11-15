@@ -149,4 +149,3 @@ class FixedPair(Pair):
             str: A string that represents the FixedPair object.
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.value!r})"
-

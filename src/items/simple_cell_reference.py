@@ -12,4 +12,3 @@ class SimpleCellReference(CellReference):
             str: The letter '.' representing a simple, unmarked cell.
         """
         return '.'
-

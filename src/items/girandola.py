@@ -34,4 +34,3 @@ class Girandola(SpecialRegion):
                 "fill": "lightgreen"
             }
         }
-

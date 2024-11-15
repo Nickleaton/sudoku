@@ -154,4 +154,3 @@ class Window(Region):
                 'fill': 'lightcyan'
             }
         }
-

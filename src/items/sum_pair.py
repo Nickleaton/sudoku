@@ -59,4 +59,3 @@ class SumPair(Pair):
                 'stroke': 'black'
             }
         }
-

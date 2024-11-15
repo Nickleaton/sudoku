@@ -220,7 +220,7 @@ class Item:
         result = set(self.__class__.__mro__)
         for item in self.walk():
             result |= set(item.__class__.__mro__)
-        return result.difference ({object})
+        return result.difference({object})
 
     @staticmethod
     def select_all(_: 'Item') -> bool:
@@ -341,4 +341,3 @@ class Item:
             else:
                 result += f"{tab * indent}{k}: {v};\n"
         return result
-

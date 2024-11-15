@@ -60,4 +60,3 @@ class TLBRReflecting(Diagonal):
                 c1 = Cell.make(self.board, row=row, column=column)
                 c2 = Cell.make(self.board, row=column, column=row)
                 solver.model += c1.parity(solver) == c2.parity(solver), name
-

@@ -30,4 +30,3 @@ class KnownGlyph(SimpleTextGlyph):
             str: A string representing the KnownGlyph instance with its class name, location, and number.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.location!r}, {self.number!s})"
-

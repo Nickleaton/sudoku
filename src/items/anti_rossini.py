@@ -152,4 +152,3 @@ class AntiRossini(FirstN):
                 "font-size": "30px"
             }
         }
-

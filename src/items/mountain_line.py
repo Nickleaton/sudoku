@@ -85,4 +85,3 @@ class MountainLine(Line):
                 "stroke-width": 20,
             }
         }
-

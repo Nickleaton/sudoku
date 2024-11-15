@@ -62,4 +62,3 @@ class VPair(SumPair):
                 "font-weight": "bolder"
             }
         }
-

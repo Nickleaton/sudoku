@@ -22,4 +22,3 @@ class FortressCellGlyph(SquareGlyph):
             str: A string representing the FortressCellGlyph instance.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
-

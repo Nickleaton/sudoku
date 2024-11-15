@@ -116,4 +116,3 @@ class BetweenLine(Line):
                 # Style for the end of the line can be added here
             }
         }
-

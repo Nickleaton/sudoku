@@ -82,4 +82,3 @@ class CircleGlyph(Glyph):
             str: A string representation of the CircleGlyph instance.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.center!r}, {self.percentage!r})"
-

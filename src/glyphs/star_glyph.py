@@ -22,4 +22,3 @@ class StarGlyph(SimpleTextGlyph):
             str: A string representing the StarGlyph with its class name and position.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
-

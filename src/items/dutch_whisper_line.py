@@ -1,5 +1,6 @@
 """DutchWhisperLine."""
 from typing import List, Sequence, Dict
+
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.board import Board
@@ -54,4 +55,3 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
                 'fill-opacity': 0
             }
         }
-

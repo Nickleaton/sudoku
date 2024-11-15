@@ -52,4 +52,3 @@ class VIPair(SumPair):
                 "font-weight": "bolder"
             }
         }
-

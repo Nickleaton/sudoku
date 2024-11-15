@@ -82,4 +82,3 @@ class ArrowLineGlyph(PolyLineGlyph):
             f"[{', '.join([repr(coord) for coord in self.coords])}]"
             f")"
         )
-

@@ -83,4 +83,3 @@ class OrthogonalProduct(Product):
                 'font-weight': 'bolder'
             }
         }
-

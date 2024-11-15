@@ -46,4 +46,3 @@ class CellGlyph(SquareGlyph):
             int: The priority of the cell glyph.
         """
         return 4
-

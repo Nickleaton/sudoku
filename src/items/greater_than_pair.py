@@ -42,4 +42,3 @@ class GreaterThanPair(Pair):
             set[str]: A set of tags, including 'Comparison'.
         """
         return super().tags.union({'Comparison'})
-

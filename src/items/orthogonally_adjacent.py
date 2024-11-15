@@ -93,4 +93,3 @@ class OrthogonallyAdjacent(ComposedItem):
 
                     rhs_2 = solver.choices[digit - 1][row + offset.row][column + offset.column]
                     solver.model += lhs + rhs_2 <= 1, f"{prefix}_{digit - 1}"
-

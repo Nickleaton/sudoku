@@ -189,4 +189,3 @@ class MagicSquare(Region):
                 'fill': 'mediumpurple'
             }
         }
-

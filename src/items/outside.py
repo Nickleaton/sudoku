@@ -152,4 +152,3 @@ class Outside(FirstN):
                 "font-weight": "bolder"
             }
         }
-

@@ -35,4 +35,3 @@ class LessThanEqualDifferencePair(DifferencePair):
             int: The maximum allowed difference, which is always 0 for this class.
         """
         return 0
-

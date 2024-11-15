@@ -123,4 +123,3 @@ class QuadrupleBase(Item):
                 "font-size": "30px"
             }
         }
-

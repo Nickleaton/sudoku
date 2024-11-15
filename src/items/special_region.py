@@ -107,4 +107,3 @@ class SpecialRegion(Region):
             Dict: A dictionary representing the region.
         """
         return {self.__class__.__name__: None}
-

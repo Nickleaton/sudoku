@@ -45,4 +45,3 @@ class AntiTLBR(AntiDiagonal):
                       Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1)
                       )
         ]
-

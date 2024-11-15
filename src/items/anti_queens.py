@@ -99,4 +99,3 @@ class AntiQueens(Anti):
             str: A string representation of the AntiQueens.
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
-

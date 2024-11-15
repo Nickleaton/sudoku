@@ -39,4 +39,3 @@ class FrozenThermometerGlyph(ThermometerGlyph):
             f"[{', '.join([repr(coord) for coord in self.coords])}]"
             f")"
         )
-

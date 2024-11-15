@@ -75,4 +75,3 @@ class DisjointGroup(StandardRegion):
         """
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
-

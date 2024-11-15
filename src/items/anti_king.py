@@ -82,4 +82,3 @@ class AntiKing(Anti):
             Dict: A dictionary representation of the AntiKing instance.
         """
         return {self.__class__.__name__: None}
-

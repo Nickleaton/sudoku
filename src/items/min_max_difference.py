@@ -160,4 +160,3 @@ class MinMaxDifference(FirstN):
                 "stroke-width": 8
             }
         }
-

@@ -194,4 +194,3 @@ class NumberedRoom(Item):
                 'font-weight': 'bolder'
             }
         }
-

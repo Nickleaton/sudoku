@@ -72,4 +72,3 @@ class BoxGlyph(RectGlyph):
             str: A string representing the `BoxGlyph` instance, including its class name, position, and size.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.size!r})"
-

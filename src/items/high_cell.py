@@ -88,4 +88,3 @@ class HighCell(SimpleCellReference):
         Sets the possible digits for the HighCell to be {7, 8, 9}.
         """
         self.cell.book.set_possible(HighCell.digits())
-

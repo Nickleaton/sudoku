@@ -155,4 +155,3 @@ class KnownCell(CellReference):
                     if cell == self.cell:
                         continue
                     cell.book.set_impossible([self.digit])
-

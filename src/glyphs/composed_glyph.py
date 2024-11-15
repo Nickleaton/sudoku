@@ -91,4 +91,3 @@ class ComposedGlyph(Glyph):
         for item in self.items:
             result = result.union(item.used_classes)  # Add the used classes from each item
         return result
-

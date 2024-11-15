@@ -51,4 +51,3 @@ class Puzzle(Item):
             str: A string representing the puzzle's board, solution, and constraints.
         """
         return f"Puzzle(board={self.board}, solution={self.solution}, constraints={self.constraints})"
-

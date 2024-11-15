@@ -1,5 +1,6 @@
 """MidCellGlyph."""
 from typing import Optional
+
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 
@@ -39,4 +40,3 @@ class MidCellGlyph(Glyph):
                 MidCellGlyph('<class_name>', <position>).
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
-

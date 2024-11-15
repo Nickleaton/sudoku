@@ -31,4 +31,3 @@ class ConsecutiveGlyph(RectangleGlyph):
             str: A string representation of the ConsecutiveGlyph instance.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.first!s}, {self.second!s})"
-

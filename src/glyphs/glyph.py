@@ -93,4 +93,3 @@ class Glyph:
             Set[Type[Glyph]]: A set of classes from the class hierarchy that define this glyph.
         """
         return set(self.__class__.__mro__).difference({abc.ABC, object})
-

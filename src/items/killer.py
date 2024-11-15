@@ -148,4 +148,3 @@ class Killer(Region):
                 'font-weight': 'bolder'
             }
         }
-

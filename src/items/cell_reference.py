@@ -156,4 +156,3 @@ class CellReference(Item):
             Set[Item]: A set containing the CellReference and its cell.
         """
         return {self, self.cell}
-

@@ -72,4 +72,3 @@ class LittleKillerGlyph(Glyph):
             f"{self.value!r}"
             f")"
         )
-

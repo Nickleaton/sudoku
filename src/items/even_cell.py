@@ -83,4 +83,3 @@ class EvenCell(SimpleCellReference):
         Sets the impossibility of containing odd digits in the cell's bookkeeping.
         """
         self.cell.book.set_impossible([digit for digit in self.board.digit_range if not EvenCell.included(digit)])
-

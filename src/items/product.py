@@ -113,4 +113,3 @@ class Product(Region):
                   value is a string representing the position and product.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={self.product}"}
-

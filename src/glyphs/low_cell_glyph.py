@@ -46,4 +46,3 @@ class LittleNumberGlyph(Glyph):
             str: A string representing the LittleNumberGlyph instance with its class name, position, and number.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.number!r})"
-

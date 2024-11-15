@@ -139,4 +139,3 @@ class Box(StandardRegion):
             str: A simplified string representation of the Box instance.
         """
         return f"{self.__class__.__name__}({self.index})"
-

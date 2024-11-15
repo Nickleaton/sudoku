@@ -135,4 +135,3 @@ class Knight(ComposedItem):
             Dict: Dictionary representation of the constraint.
         """
         return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}
-

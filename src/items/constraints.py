@@ -68,4 +68,3 @@ class Constraints(ComposedItem):
 
         # Return the populated Constraints instance
         return result
-

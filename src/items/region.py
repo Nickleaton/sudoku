@@ -135,4 +135,3 @@ class Region(ComposedItem):
         for cell in self.cells:
             result |= cell.used_classes
         return result
-

@@ -64,4 +64,3 @@ class TextGlyph(Glyph):
         return (
             f"{self.__class__.__name__}('{self.class_name}', {self.angle.angle}, {self.position!r}, '{self.text}')"
         )
-

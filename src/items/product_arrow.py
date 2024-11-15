@@ -84,4 +84,3 @@ class ProductArrowLine(Line):
         Note:
             This method is currently not implemented.
         """
-

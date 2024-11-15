@@ -68,4 +68,3 @@ class CenterProduct(Product):
                 'font-weight': 'bolder'
             }
         }
-

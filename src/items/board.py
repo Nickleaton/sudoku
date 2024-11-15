@@ -261,4 +261,3 @@ class Board:
             str: A string of digits available on the board.
         """
         return "".join([str(digit) for digit in self.digit_range])
-

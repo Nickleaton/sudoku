@@ -99,4 +99,3 @@ class DistinctRenbanLine(RenbanLine):
                 'fill-opacity': 0
             }
         }
-

@@ -40,7 +40,6 @@ class AntiBLTR(AntiDiagonal):
         return [
             LineGlyph('Diagonal',
                       Coord(self.board.maximum_digit + 1, 1),  # Starting coordinate of the diagonal
-                      Coord(1, self.board.maximum_digit + 1)   # Ending coordinate of the diagonal
+                      Coord(1, self.board.maximum_digit + 1)  # Ending coordinate of the diagonal
                       )
         ]
-

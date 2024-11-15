@@ -62,7 +62,6 @@ import src.items.knight
 import src.items.known
 import src.items.known_cell
 import src.items.kropki_pair
-import src.items.kropki_pair2
 import src.items.less_than_equal_difference_line
 import src.items.less_than_equal_difference_pair
 import src.items.line
@@ -112,7 +111,7 @@ import src.items.sum_arrow_line
 import src.items.sum_pair
 import src.items.thermometer_line
 import src.items.tlbr
-import src.items.tlbr_refecting_diagonal
+import src.items.tlbr_reflecting_diagonal
 import src.items.unique_region
 import src.items.v_pair
 import src.items.variable_difference_pair

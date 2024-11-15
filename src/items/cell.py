@@ -294,4 +294,3 @@ class Cell(Item):
                 'fill-opacity': 0
             }
         }
-

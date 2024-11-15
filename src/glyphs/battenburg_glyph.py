@@ -89,4 +89,3 @@ class BattenburgGlyph(Glyph):
             str: A string representation of the BattenburgGlyph instance.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"
-

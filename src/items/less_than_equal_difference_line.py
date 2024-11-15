@@ -55,4 +55,3 @@ class LessThanEqualDifferenceLine(Line):
             set[str]: A set of tags specific to the LessThanEqualDifferenceLine.
         """
         return super().tags.union({'Difference', 'Comparison'})
-

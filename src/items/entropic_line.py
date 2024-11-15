@@ -133,4 +133,3 @@ class EntropicLine(Line):
                 'fill-opacity': 0
             }
         }
-

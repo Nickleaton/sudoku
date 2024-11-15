@@ -58,4 +58,3 @@ class OddCellGlyph(Glyph):
             str: A string representation of the glyph.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"
-

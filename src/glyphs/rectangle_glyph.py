@@ -76,4 +76,3 @@ class RectangleGlyph(Glyph):
             f"{self.ratio!r}, "
             f"{self.vertical!r})"
         )
-

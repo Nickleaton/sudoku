@@ -144,4 +144,3 @@ class Known(ComposedItem):
             Dict[str, List[str]]: A dictionary representation of the Known instance with line_str as values.
         """
         return {self.__class__.__name__: self.line_str()}
-

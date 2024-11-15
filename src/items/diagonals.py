@@ -50,4 +50,3 @@ class Diagonal(Region):
                 "stroke-width": "3px"
             }
         }
-

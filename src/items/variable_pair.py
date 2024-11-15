@@ -126,4 +126,3 @@ class VariablePair(Pair):
         if self.__class__.__name__ not in solver.variables:
             solver.variables[self.__class__.__name__] = (LpVariable(self.__class__.__name__), self.variable_type())
         solver.model += target == solver.variables[self.__class__.__name__][0], self.name
-

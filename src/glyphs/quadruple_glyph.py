@@ -68,4 +68,3 @@ class QuadrupleGlyph(Glyph):
             str: A string representing the QuadrupleGlyph instance, including its class name, position, and numbers.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, '{self.numbers}')"
-

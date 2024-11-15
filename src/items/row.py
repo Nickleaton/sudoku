@@ -67,4 +67,3 @@ class Row(StandardRegion):
             str: A string representation of the Row.
         """
         return f"{self.__class__.__name__}({self.index})"
-

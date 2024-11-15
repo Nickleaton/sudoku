@@ -206,4 +206,3 @@ class LittleKiller(Region):
                 'fill': 'black'
             }
         }
-

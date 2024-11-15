@@ -61,4 +61,3 @@ class XPair(SumPair):
                 "font-weight": "bolder"
             }
         }
-

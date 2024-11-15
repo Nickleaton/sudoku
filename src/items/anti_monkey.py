@@ -98,4 +98,3 @@ class AntiMonkey(Anti):
             Dict: A dictionary representation of the AntiMonkey.
         """
         return {self.__class__.__name__: None}
-

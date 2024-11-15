@@ -8,4 +8,3 @@ class SimpleTextGlyph(TextGlyph):
     This class currently doesn't add additional behavior but can be extended
     in the future for specific use cases or simplifications.
     """
-

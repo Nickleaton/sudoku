@@ -43,4 +43,3 @@ class DifferenceLine(Line):
     #     for cell, digit in product(self.cells, self.excluded):
     #         name = f"Excluded_{cell.name}_{digit}"
     #         solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
-

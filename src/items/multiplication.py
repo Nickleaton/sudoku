@@ -62,4 +62,3 @@ class Multiplication:
             for digit in board.digit_range:
                 if digit not in valid_digits:
                     solver.model += solver.choices[digit][cell.row][cell.column] == 0, f"{name}_{cell.name}_{digit}"
-

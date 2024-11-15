@@ -122,4 +122,3 @@ class DifferencePair(Pair):
                     f"{','.join([str(d) for d in self.digits])}"
                 )
         }
-

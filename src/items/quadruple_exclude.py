@@ -82,4 +82,3 @@ class QuadrupleExclude(QuadrupleBase):
                 "font-size": "30px"
             }
         }
-

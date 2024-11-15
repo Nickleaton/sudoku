@@ -157,4 +157,3 @@ class Rossini(FirstN):
                 "font-size": "30px"
             }
         }
-

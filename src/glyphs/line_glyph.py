@@ -39,4 +39,3 @@ class LineGlyph(Glyph):
             str: A string representing the LineGlyph instance with its class name and start/end coordinates.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.start!s}, {self.end!s})"
-

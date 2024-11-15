@@ -2,6 +2,7 @@
 from typing import List, Set, Dict
 
 from pulp import LpVariable, LpInteger
+
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.line import Line
@@ -141,4 +142,3 @@ class SequenceLine(Line):
                 "fill-opacity": 0
             }
         }
-

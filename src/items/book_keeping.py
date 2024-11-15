@@ -198,4 +198,3 @@ class BookKeeping:
             bool: True if only one digit is possible, False otherwise.
         """
         return sum(self.possibles) == 1
-

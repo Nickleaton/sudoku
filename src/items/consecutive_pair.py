@@ -123,4 +123,3 @@ class ConsecutivePair(LessThanEqualDifferencePair):
                 'stroke': 'black'
             }
         }
-

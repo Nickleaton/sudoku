@@ -153,4 +153,3 @@ class Exclusion(Item):
                 "font-size": "30px"
             }
         }
-

@@ -55,9 +55,9 @@ class FixedRatioPair(VariablePair):
             LpElement: The target constraint, which is the absolute difference between
                        the logarithms of the cell values.
         """
-        limit:int = ceil(log10(self.board.maximum_digit)) + 1
-        x1:LpVariable = ConstraintUtilities.log10_cell(solver, self.cell_1)
-        x2:LpVariable = ConstraintUtilities.log10_cell(solver, self.cell_2)
+        limit: int = ceil(log10(self.board.maximum_digit)) + 1
+        x1: LpVariable = ConstraintUtilities.log10_cell(solver, self.cell_1)
+        x2: LpVariable = ConstraintUtilities.log10_cell(solver, self.cell_2)
         return Formulations.abs(
             solver.model,
             x1,

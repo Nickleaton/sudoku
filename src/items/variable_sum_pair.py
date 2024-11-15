@@ -56,4 +56,3 @@ class VariableSumPair(VariablePair):
                 'stroke': 'black'
             }
         }
-

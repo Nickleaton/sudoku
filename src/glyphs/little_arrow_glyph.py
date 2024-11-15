@@ -54,4 +54,3 @@ class LittleArrowGlyph(Glyph):
             str: A string representing the LittleArrowGlyph instance with its class name, position, and location.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.location!r})"
-

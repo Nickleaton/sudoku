@@ -111,4 +111,3 @@ class RenbanLine(Line):
                 "fill-opacity": 0
             }
         }
-

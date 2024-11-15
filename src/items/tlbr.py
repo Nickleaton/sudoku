@@ -28,4 +28,3 @@ class TLBR(StandardDiagonal):
             List[Glyph]: A list containing the diagonal's glyph.
         """
         return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
-

@@ -195,4 +195,3 @@ class KropkiPair(Pair):
                 'background': 'transparent'
             }
         }
-

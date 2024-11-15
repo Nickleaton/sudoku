@@ -38,4 +38,3 @@ class DisjointGroups(StandardRegionSet):
             str: The string representation of the instance.
         """
         return f"{self.__class__.__name__}({self.board!r})"
-

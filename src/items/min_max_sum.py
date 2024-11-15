@@ -160,4 +160,3 @@ class MinMaxSum(FirstN):
                 "stroke-width": 8
             }
         }
-

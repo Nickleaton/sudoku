@@ -105,4 +105,3 @@ class Indexer(StandardRegion):
             from the superclass.
         """
         return super().tags.union({'Indexing'})
-

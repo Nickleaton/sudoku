@@ -155,4 +155,3 @@ class Mote(Region):
                 'font-weight': 'bolder'
             }
         }
-

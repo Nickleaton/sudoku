@@ -98,4 +98,3 @@ class AntiKnight(Anti):
             Dict: A dictionary representation of the AntiKnight.
         """
         return {self.__class__.__name__: None}
-

@@ -93,4 +93,3 @@ class MidCell(SimpleCellReference):
         This method updates the bookkeeping system to allow only the digits [4, 5, 6] for this cell.
         """
         self.cell.book.set_possible(MidCell.digits())
-

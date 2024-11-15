@@ -113,4 +113,3 @@ class Frame(FirstN):
                 "stroke-width": 8
             }
         }
-

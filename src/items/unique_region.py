@@ -1,5 +1,6 @@
 """UniqueRegion."""
 from typing import List, Dict, Sequence
+
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
 from src.items.cell import Cell
@@ -137,4 +138,3 @@ class UniqueRegion(Region):
                 'font-weight': 'bolder'
             }
         }
-

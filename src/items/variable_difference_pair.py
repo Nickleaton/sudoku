@@ -74,4 +74,3 @@ class VariableDifferencePair(VariablePair):
                 'stroke': 'black'
             }
         }
-

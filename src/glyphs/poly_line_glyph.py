@@ -55,4 +55,3 @@ class PolyLineGlyph(Glyph):
             f"{self.end!r}"
             f")"
         )
-

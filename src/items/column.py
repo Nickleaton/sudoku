@@ -67,4 +67,3 @@ class Column(StandardRegion):
             str: A string representing the Column.
         """
         return f"{self.__class__.__name__}({self.index})"
-

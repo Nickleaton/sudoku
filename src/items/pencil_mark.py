@@ -123,4 +123,3 @@ class PencilMarkCell(CellReference):
         This sets the possible digits for the cell in the board's bookkeeping system.
         """
         self.cell.book.set_possible(self.digits)
-

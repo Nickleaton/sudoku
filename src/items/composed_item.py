@@ -204,4 +204,3 @@ class ComposedItem(Item):
         for item in self.items:
             result |= item.css()
         return result
-

@@ -76,4 +76,3 @@ class PalindromeLine(Line):
                 "fill-opacity": 0
             }
         }
-

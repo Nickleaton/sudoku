@@ -104,4 +104,3 @@ class FortressCell(SimpleCellReference):
                 continue
             cell.book.set_impossible([digit])
             digit += 1
-

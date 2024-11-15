@@ -41,4 +41,3 @@ class GreaterThanEqualDifferencePair(FixedDifferencePair):
 
         # Lower bound constraint: difference must be at most the specified difference when the indicator is 1
         solver.model += difference <= - self.difference * (1 - indicator) + big_m * indicator, f"{self.name}_lower"
-

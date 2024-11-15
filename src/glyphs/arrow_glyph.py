@@ -60,4 +60,3 @@ class ArrowGlyph(Glyph):
             str: A string representation of the ArrowGlyph instance.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.angle.angle!r}, {self.position!r})"
-

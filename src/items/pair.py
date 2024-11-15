@@ -141,4 +141,3 @@ class Pair(Region):
             str: A string representing the Pair instance with its board, cell_1, and cell_2.
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
-
