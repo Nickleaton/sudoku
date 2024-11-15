@@ -1,14 +1,13 @@
 """Validate Config File."""
-
 import logging
 from pathlib import Path
 
 from strictyaml import YAMLValidationError, dirty_load
 
-from src.parsers.config_schema import problem_schema
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.parsers.config_schema import problem_schema
 from src.utils.file_handling import is_readable_file
 
 
@@ -57,7 +56,7 @@ class ValidateConfigCommand(SimpleCommand):
         super().execute(problem)
         logging.info(f"Loading {self.source}")
         logging.info(f"Validating {self.target}")
-        with self.source.open(mode= 'r', encoding='utf-8') as file:
+        with self.source.open(mode='r', encoding='utf-8') as file:
             yaml_data = file.read()
             try:
                 _ = dirty_load(yaml_data, problem_schema)

@@ -58,7 +58,7 @@ class WriterCommand(SimpleCommand):
             logging.info(f"Creating directory {self.target.parent}")
             self.target.parent.mkdir(parents=True, exist_ok=True)
         logging.info(f"Creating {self.target}")
-        with self.target.open(mode= 'w', encoding="utf-8") as f:
+        with self.target.open(mode='w', encoding="utf-8") as f:
             f.write(problem[self.source])
 
     def __repr__(self) -> str:

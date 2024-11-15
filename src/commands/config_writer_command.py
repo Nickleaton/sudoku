@@ -66,7 +66,6 @@ class ConfigWriterCommand(SimpleCommand):
         except OSError as exc:
             raise OSError(f"Failed to write to {self.target}: {exc}") from exc
 
-
     def __repr__(self) -> str:
         """Return a string representation of the ConfigWriterCommand instance.
 
