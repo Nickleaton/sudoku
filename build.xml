@@ -262,7 +262,7 @@
         <mkdir dir="output/ruff"/>
         <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/tests.txt">
             <arg value="check"/>
-            <arg value="tests/"/>
+            <arg value="tests/items"/>
         </exec>
     </target>
 

@@ -12,9 +12,9 @@ def validate_yaml_file(yaml_file: Path):
         if parsed_yaml is None:
             raise ValueError(f"Failed to load YAML file: {yaml_file.name}")
     except YAMLParseError as e:
-        raise ValueError(f"Failed to parse YAML file {yaml_file.name}: {e}")
+        raise ValueError(f"Failed to parse YAML file {yaml_file.name}: {e}") from e
     except Exception as e:
-        raise ValueError(f"Unexpected error with YAML file {yaml_file.name}: {e}")
+        raise ValueError(f"Unexpected error with YAML file {yaml_file.name}: {e}") from e
 
 
 if __name__ == "__main__":

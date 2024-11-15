@@ -11,6 +11,7 @@ from src.solvers.formulations import Formulations
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.side import Side
+from src.utils.sudoku_exception import SudokuException
 
 
 class MinMaxDifference(FirstN):
