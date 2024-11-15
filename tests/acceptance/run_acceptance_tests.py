@@ -21,7 +21,7 @@ def load_problem_tests():
 
 class AcceptanceTestSuite(unittest.TestCase):
     """Test suite for dynamically loaded acceptance tests."""
-    pass
+
 
 
 load_problem_tests()  # Call to load problem tests

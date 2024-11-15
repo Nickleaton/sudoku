@@ -31,7 +31,7 @@ class TestSVGCommand(TestSimpleCommand):
         self.assertEqual(self.representation, repr(self.command))
 
     def test_in_select(self):
-        """ Test the `select` method of the command for the `in_select` item.
+        """Test the `select` method of the command for the `in_select` item.
 
         If the `in_select` property is not `None`, this test will check that the
         `select` method of the command returns `True` for the item.
@@ -40,8 +40,7 @@ class TestSVGCommand(TestSimpleCommand):
             self.assertTrue(self.command.select(select))
 
     def test_out_select(self):
-        """
-        Test the `select` method of the command for the `out_select` item.
+        """Test the `select` method of the command for the `out_select` item.
 
         If the `out_select` property is not `None`, this test will check that the
         `select` method of the command returns `False` for the item.
@@ -51,8 +50,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def in_select(self) -> Item | None:
-        """
-        An item that should be included in the output of the command.
+        """An item that should be included in the output of the command.
 
         If this property is not `None`, the `select` method of the command
         should return `True` for this item.
@@ -64,8 +62,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def out_select(self) -> Item | None:
-        """
-        An item that should not be included in the output of the command.
+        """An item that should not be included in the output of the command.
 
         If this property is not `None`, the `select` method of the command
         should return `False` for this item.

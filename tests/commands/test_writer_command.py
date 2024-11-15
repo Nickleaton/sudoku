@@ -28,7 +28,7 @@ class TestWriterCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
-        return f"{self.command.__class__.__name__}('svg', {repr("c:\\temp\\filewriter.txt")})"
+        return f"{self.command.__class__.__name__}('svg', {"c:\\temp\\filewriter.txt"!r})"
 
 
 

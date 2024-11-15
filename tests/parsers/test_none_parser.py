@@ -25,7 +25,7 @@ class TestNoneParser(TestParser):
         ]
 
     def test_parse_empty_input(self):
-        """Tests parsing an empty input string doesn't apply for this parser """
+        """Tests parsing an empty input string doesn't apply for this parser"""
         """Tests that an empty input string is parsed successfully, while non-empty input raises ParserError."""
         # Test parsing with valid input (empty string)
         try:
