@@ -1,3 +1,4 @@
+"""TestBoxItem."""
 import unittest
 from typing import Type
 
@@ -12,33 +13,41 @@ from tests.items.test_standard_region import TestStandardRegion
 
 
 class TestBox(TestStandardRegion):
+    """Test suite for the Box item in the Board."""
 
     def setUp(self) -> None:
+        """Set up the Board and Box instance for testing."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Box(self.board, 1)
         self.size = 9
 
     @property
     def clazz(self):
+        """Return the Box class."""
         return Box
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the Box item."""
         return "Box: 1"
 
     @property
     def representation(self) -> str:
+        """Return the string representation for the Box item."""
         return "Box(Board(9, 9, 3, 3, None, None, None, None), 1)"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the Box has a rule associated with it."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Box item should belong to."""
         return {Item, ComposedItem, Cell, Region, StandardRegion, Box}
 
     def test_in(self):
+        """Test if specific Cells are in the Box item."""
         self.assertIn(Cell.make(self.board, 2, 2), self.item)
         self.assertNotIn(Cell.make(self.board, 9, 9), self.item)
 

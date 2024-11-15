@@ -1,3 +1,5 @@
+"""TestProduct module."""
+
 import unittest
 from typing import Type
 
@@ -11,33 +13,41 @@ from tests.items.test_region import TestRegion
 
 
 class TestProduct(TestRegion):
+    """Test suite for the Product class."""
 
     def setUp(self) -> None:
+        """Set up a test instance of Product."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Product(self.board, Coord(2, 2), 5)
         self.size = 0
 
     @property
     def clazz(self):
+        """Return the Product class."""
         return Product
 
     @property
     def representation(self) -> str:
+        """Return the string representation of Product."""
         return "Product(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), 5)"
 
     @property
     def config(self) -> str:
+        """Return the configuration string for Product."""
         return "Product: 22=5"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the Product has an associated rule."""
         return False
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Product instance should belong to."""
         return {ComposedItem, Item, Product, Region}
 
     def test_in(self):
+        """Placeholder for testing membership or containment logic."""
         pass
 
 

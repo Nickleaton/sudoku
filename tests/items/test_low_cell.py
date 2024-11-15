@@ -1,3 +1,4 @@
+"""TestLowCell."""
 import unittest
 from typing import Type
 
@@ -11,8 +12,10 @@ from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestLowCell(TestSimpleCellReference):
+    """Test suite for the LowCell class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for LowCell."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = LowCell(self.board, 1, 2)
         self.good = [1, 2, 3]
@@ -21,10 +24,12 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def clazz(self):
+        """Return the LowCell class."""
         return LowCell
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the LowCell instance."""
         return (
             "LowCell(Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
@@ -32,9 +37,11 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the LowCell instance."""
         return "LowCell: 12"
 
     def test_included(self):
+        """Test the included method for LowCell with good and bad values."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:
@@ -42,10 +49,12 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the LowCell instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the LowCell instance should belong to."""
         return {Cell, CellReference, SimpleCellReference, Item, LowCell}
 
 

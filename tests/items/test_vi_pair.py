@@ -1,3 +1,4 @@
+"""TestViPair."""
 import unittest
 from typing import Type
 
@@ -53,3 +54,4 @@ class TestVIPair(TestSumPair):
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
+

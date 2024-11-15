@@ -1,3 +1,5 @@
+"""TestSequenceLine module."""
+
 import unittest
 from typing import Type
 
@@ -11,6 +13,7 @@ from tests.items.test_line import TestLine
 
 
 class TestSequenceLine(TestLine):
+    """Test suite for the SequenceLine class."""
 
     @property
     def clazz(self):
@@ -29,6 +32,7 @@ class TestSequenceLine(TestLine):
         return {Cell, ComposedItem, Item, Line, Region, SequenceLine}
 
     def test_max_difference(self):
+        """Test the max_difference method of the SequenceLine class."""
         self.assertEqual(9, SequenceLine.max_difference(1))
         self.assertEqual(8, SequenceLine.max_difference(2))
         self.assertEqual(3, SequenceLine.max_difference(3))

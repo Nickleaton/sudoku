@@ -1,3 +1,5 @@
+"""TestQuadro module."""
+
 import unittest
 from typing import Type
 
@@ -8,29 +10,36 @@ from tests.items.test_item import TestItem
 
 
 class TestQuadro(TestItem):
+    """Test suite for the Quadro class."""
 
     def setUp(self) -> None:
+        """Set up a test instance of Quadro."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Quadro(self.board)
 
     @property
     def clazz(self):
+        """Return the Quadro class."""
         return Quadro
 
     @property
     def representation(self) -> str:
+        """Return the string representation of Quadro."""
         return "Quadro(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def config(self) -> str:
+        """Return the configuration string for Quadro."""
         return "Quadro:"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the Quadro has an associated rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Quadro instance should belong to."""
         return {Item, Quadro}
 
 

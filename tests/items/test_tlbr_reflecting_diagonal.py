@@ -1,3 +1,5 @@
+"""TestTLBRReflecting module."""
+
 import unittest
 from typing import Type
 
@@ -12,33 +14,41 @@ from tests.items.test_diagonal import TestDiagonal
 
 
 class TestTLBRReflecting(TestDiagonal):
+    """Test case for TLBRReflecting class, which extends Diagonal."""
 
     def setUp(self) -> None:
+        """Set up the test case with a Board and TLBRReflecting item."""
         self.board = Board(9, 9, 3, 3)
         self.item = TLBRReflecting(self.board)
         self.size = 9
 
     @property
     def clazz(self):
+        """Return the TLBRReflecting class."""
         return TLBRReflecting
 
     @property
     def has_rule(self) -> bool:
+        """Return True indicating that the TLBRReflecting item has a rule."""
         return True
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the TLBRReflecting item."""
         return "TLBRReflecting(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected set of classes for TLBRReflecting."""
         return {Item, Cell, ComposedItem, Region, Diagonal, TLBRReflecting}
 
     @property
     def config(self) -> str:
+        """Return the configuration string for TLBRReflecting."""
         return "TLBRReflecting:"
 
     def test_in(self):
+        """Test that specific cells are part of the TLBRReflecting region."""
         self.assertIn(Cell.make(self.board, 1, 1), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 

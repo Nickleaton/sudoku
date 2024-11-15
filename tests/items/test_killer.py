@@ -1,3 +1,4 @@
+"""TestKiller."""
 import unittest
 from typing import Type
 
@@ -11,8 +12,10 @@ from tests.items.test_region import TestRegion
 
 
 class TestKiller(TestRegion):
+    """Test suite for the Killer class, inheriting from TestRegion."""
 
     def setUp(self) -> None:
+        """Set up the test case with a board, cells, and a Killer instance."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.cells = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
         self.item = Killer(self.board, 24, self.cells)
@@ -20,10 +23,12 @@ class TestKiller(TestRegion):
 
     @property
     def clazz(self):
+        """Return the Killer class."""
         return Killer
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the Killer instance."""
         return "Killer(Board(9, 9, 3, 3, None, None, None, None), 24, " \
                "[Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), " \
                "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), " \
@@ -31,18 +36,22 @@ class TestKiller(TestRegion):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Killer instance should belong to."""
         return {Cell, ComposedItem, Item, Killer, Region}
 
     @property
     def config(self) -> str:
+        """Return the configuration string for Killer."""
         return "Killer: 24=11,12,13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the Killer instance has a rule."""
         return True
 
     @property
     def inside(self) -> Cell:
+        """Return a specific Cell instance for testing."""
         return Cell.make(self.board, 1, 2)
 
 

@@ -1,3 +1,4 @@
+"""TestConstraints."""
 import unittest
 from typing import Type
 
@@ -22,8 +23,10 @@ from tests.items.test_composed import TestComposed
 
 
 class TestConstraints(TestComposed):
+    """Test suite for the Constraints class."""
 
     def setUp(self) -> None:
+        """Set up the Board and Constraints instance for testing."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Constraints(self.board)
         self.item.add(Columns(self.board))
@@ -34,12 +37,15 @@ class TestConstraints(TestComposed):
 
     @property
     def clazz(self):
+        """Return the Constraints class."""
         return Constraints
 
     def test_construction(self):
+        """Test the construction of the Constraints instance."""
         self.assertEqual(self.size, len(self.item.items))
 
     def test_iteration(self):
+        """Test iteration over the items in Constraints."""
         count = 0
         for _ in self.item:
             count += 1
@@ -47,9 +53,10 @@ class TestConstraints(TestComposed):
 
     @property
     def representation(self) -> str:
+        """Return the string representation for the Constraints."""
         return (
             "Constraints(Board(9, 9, 3, 3, None, None, None, None), "
-            "["
+            "[" 
             "Columns(Board(9, 9, 3, 3, None, None, None, None)), "
             "Rows(Board(9, 9, 3, 3, None, None, None, None)), "
             "Boxes(Board(9, 9, 3, 3, None, None, None, None)), "
@@ -60,6 +67,7 @@ class TestConstraints(TestComposed):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the Constraints."""
         return (
             "Constraints:\n"
             "  - Columns:\n"
@@ -70,10 +78,12 @@ class TestConstraints(TestComposed):
 
     @property
     def has_rule(self) -> bool:
+        """Indicates if the Constraints has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Constraints should belong to."""
         return {Box, Boxes, Cell, Column, ColumnIndexer, Columns, ComposedItem, Constraints, Indexer, Item, Region,
                 RegionSet, Row, Rows, StandardRegion, StandardRegionSet}
 

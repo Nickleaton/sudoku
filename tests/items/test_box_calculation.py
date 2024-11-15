@@ -1,3 +1,4 @@
+"""TestBoxCalculation."""
 import unittest
 from typing import List
 
@@ -6,8 +7,10 @@ from src.items.box import Box
 
 
 class TestBoxCalculation(unittest.TestCase):
+    """Test suite for box calculations in a Board."""
 
     def check(self, n: int, width: int, height: int, expected: List) -> None:
+        """Helper function to check the start row and column of each box."""
         problem = Board(n, n, width, height)
         for i, row, column in expected:
             box = Box(problem, i)
@@ -17,6 +20,7 @@ class TestBoxCalculation(unittest.TestCase):
             self.assertEqual(column, column_start)
 
     def test_9_9_3_3(self):
+        """Test box calculations for a 9x9 grid with 3x3 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 4, 1],
@@ -31,6 +35,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(9, 3, 3, expected)
 
     def test_8_8_2_4(self):
+        """Test box calculations for an 8x8 grid with 2x4 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 3, 1],
@@ -44,6 +49,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(8, 2, 4, expected)
 
     def test_8_8_4_2(self):
+        """Test box calculations for an 8x8 grid with 4x2 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 5, 1],
@@ -57,6 +63,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(8, 4, 2, expected)
 
     def test_6_6_2_3(self):
+        """Test box calculations for a 6x6 grid with 2x3 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 3, 1],
@@ -68,6 +75,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(6, 2, 3, expected)
 
     def test_6_6_3_2(self):
+        """Test box calculations for a 6x6 grid with 3x2 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 4, 1],
@@ -79,6 +87,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(6, 3, 2, expected)
 
     def test_4_4_2_2(self):
+        """Test box calculations for a 4x4 grid with 2x2 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 3, 1],

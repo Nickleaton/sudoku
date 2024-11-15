@@ -1,3 +1,4 @@
+"""TestKropkiPair."""
 import unittest
 from typing import Type
 
@@ -12,26 +13,32 @@ from tests.items.test_pair import TestPair
 
 
 class TestKropkiPair(TestPair):
+    """Test suite for the KropkiPair class, inheriting from TestPair."""
 
     def setUp(self) -> None:
+        """Set up the test case with a board and a KropkiPair instance."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = KropkiPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 
     @property
     def clazz(self):
+        """Return the KropkiPair class."""
         return KropkiPair
 
     @property
     def config(self):
+        """Return the configuration string for KropkiPair."""
         return "KropkiPair: 12-13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the KropkiPair instance has a rule."""
         return True
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the KropkiPair instance."""
         return (
             "KropkiPair("
             "Board(9, 9, 3, 3, None, None, None, None), "
@@ -42,6 +49,7 @@ class TestKropkiPair(TestPair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the KropkiPair instance should belong to."""
         return {Cell, Item, KropkiPair, Pair, Region, ComposedItem}
 
 

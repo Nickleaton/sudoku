@@ -1,3 +1,5 @@
+"""TestThermometer module."""
+
 import unittest
 from typing import Type
 
@@ -11,21 +13,26 @@ from tests.items.test_line import TestLine
 
 
 class TestThermometerLine(TestLine):
+    """Test case for ThermometerLine class."""
 
     @property
     def clazz(self):
+        """Return the ThermometerLine class."""
         return ThermometerLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for ThermometerLine."""
         return "ThermometerLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether ThermometerLine has a rule."""
         return False
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected set of classes for ThermometerLine."""
         return {Cell, ComposedItem, Item, Line, Region, ThermometerLine}
 
 

@@ -1,3 +1,4 @@
+"""TestWindow."""
 import unittest
 from typing import Type
 
@@ -41,3 +42,4 @@ class TestWindow(TestRegion):
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
+

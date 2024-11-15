@@ -1,3 +1,4 @@
+"""TestEntropicLine."""
 import unittest
 from typing import Type
 
@@ -12,8 +13,10 @@ from tests.items.test_line import TestLine
 
 
 class TestEntropicLine(TestLine):
+    """Test suite for the EntropicLine class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [
             Cell.make(self.board, 1, 1),
@@ -28,19 +31,22 @@ class TestEntropicLine(TestLine):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the EntropicLine."""
         return "EntropicLine: 11, 12, 13, 14, 15, 16"
 
     @property
     def clazz(self):
+        """Return the EntropicLine class."""
         return EntropicLine
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the EntropicLine."""
         return (
             "EntropicLine"
             "("
             "Board(9, 9, 3, 3, None, None, None, None), "
-            "["
+            "[" 
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
@@ -53,10 +59,12 @@ class TestEntropicLine(TestLine):
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the EntropicLine has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the EntropicLine should belong to."""
         return {Cell, ComposedItem, EntropicLine, Item, Line, Region}
 
 

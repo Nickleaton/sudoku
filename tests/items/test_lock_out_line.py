@@ -1,3 +1,4 @@
+"""TestLockOutLine."""
 import unittest
 from typing import Type
 
@@ -11,21 +12,26 @@ from tests.items.test_line import TestLine
 
 
 class TestLockOutLine(TestLine):
+    """Test suite for the LockOutLine class."""
 
     @property
     def clazz(self):
+        """Return the LockOutLine class."""
         return LockOutLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the LockOutLine instance."""
         return "LockOutLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the LockOutLine instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the LockOutLine instance should belong to."""
         return {Cell, ComposedItem, Item, Line, LockOutLine, Region}
 
 

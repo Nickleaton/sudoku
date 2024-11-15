@@ -1,3 +1,4 @@
+"""TestDisjointGroups."""
 import unittest
 from typing import Type
 
@@ -15,32 +16,38 @@ from tests.items.test_standard_region_sets import TestStandardRegionSet
 
 
 class TestDisjointGroups(TestStandardRegionSet):
+    """Test suite for the DisjointGroups class."""
 
     def setUp(self) -> None:
+        """Set up the test environment, creating the board and the DisjointGroups item."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = DisjointGroups(self.board)
         self.size = 9
 
     @property
     def clazz(self):
+        """Return the DisjointGroups class."""
         return DisjointGroups
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the DisjointGroups."""
         return "DisjointGroups:"
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the DisjointGroups item."""
         return "DisjointGroups(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the DisjointGroups should belong to."""
         return {Item, ComposedItem, Cell, StandardRegion, Region, DisjointGroup, DisjointGroups, RegionSet,
-                StandardRegion,
-                StandardRegionSet}
+                StandardRegion, StandardRegionSet}
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the DisjointGroups has a rule."""
         return True
 
 

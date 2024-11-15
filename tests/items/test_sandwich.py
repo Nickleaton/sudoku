@@ -1,9 +1,13 @@
+"""TestSandwich module."""
+
 import unittest
 
 from tests.items.test_item import TestItem
 
 
 class TestSandwich(TestItem):
+    """Test suite for the Sandwich class."""
+
     pass
 
 

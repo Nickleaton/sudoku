@@ -1,3 +1,4 @@
+"""TestDifferenceLine."""
 import unittest
 from typing import Type
 
@@ -11,17 +12,21 @@ from tests.items.test_line import TestLine
 
 
 class TestDifferenceLine(TestLine):
+    """Test suite for the DifferenceLine class."""
 
     @property
     def clazz(self):
+        """Return the DifferenceLine class."""
         return DifferenceLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the DifferenceLine."""
         return "DifferenceLine: 11, 12, 13"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the DifferenceLine should belong to."""
         return {Cell, ComposedItem, DifferenceLine, Item, Line, Region}
 
 

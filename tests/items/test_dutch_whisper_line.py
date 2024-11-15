@@ -1,3 +1,4 @@
+"""TestDutchWhisperLine."""
 import unittest
 from typing import Type
 
@@ -18,8 +19,10 @@ from tests.items.test_greater_than_equal_difference_line import TestGreaterThanE
 
 
 class TestDutchWhispers(TestGreaterThanEqualDifferenceLine):
+    """Test suite for the DutchWhisperLine class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = DutchWhisperLine(self.board, cells)
@@ -27,19 +30,22 @@ class TestDutchWhispers(TestGreaterThanEqualDifferenceLine):
 
     @property
     def clazz(self):
+        """Return the DutchWhisperLine class."""
         return DutchWhisperLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the DutchWhisperLine."""
         return "DutchWhisperLine: 11, 12, 13"
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the DutchWhisperLine."""
         return (
             "DutchWhisperLine"
             "("
             "Board(9, 9, 3, 3, None, None, None, None), "
-            "["
+            "[" 
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
@@ -49,10 +55,12 @@ class TestDutchWhispers(TestGreaterThanEqualDifferenceLine):
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the DutchWhisperLine has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the DutchWhisperLine should belong to."""
         return {Cell, ComposedItem, DifferenceLine, DutchWhisperLine, FixedDifferencePair, FixedPair,
                 GreaterThanEqualDifferenceLine, GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
 

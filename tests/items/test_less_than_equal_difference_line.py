@@ -1,3 +1,4 @@
+"""TestLessThanEqualDifferenceLine."""
 import unittest
 from typing import Type
 
@@ -14,27 +15,33 @@ from tests.items.test_line import TestLine
 
 
 class TestLessThanEqualDifferenceLine(TestLine):
+    """Test suite for the LessThanEqualDifferenceLine class, inheriting from TestLine."""
 
     def setUp(self) -> None:
+        """Set up the test case, initializing the size for the composed list."""
         super().setUp()
         # Line is length 3
-        # Sice is 3 + 2 difference pairs = 5 items in the composed list
+        # Size is 3 + 2 difference pairs = 5 items in the composed list
         self.size = 5
 
     @property
     def clazz(self):
+        """Return the LessThanEqualDifferenceLine class."""
         return LessThanEqualDifferenceLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for LessThanEqualDifferenceLine."""
         return "LessThanEqualDifferenceLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the LessThanEqualDifferenceLine instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the LessThanEqualDifferenceLine instance should belong to."""
         return {
             Cell,
             ComposedItem,

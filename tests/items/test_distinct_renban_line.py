@@ -1,3 +1,4 @@
+"""TestDistinctRenbanLine."""
 import unittest
 from typing import Type
 
@@ -12,24 +13,30 @@ from tests.items.test_renban_line import TestRenbanLine
 
 
 class TestDistinctRenbanLine(TestRenbanLine):
+    """Test suite for the DistinctRenbanLine class."""
 
     @property
     def clazz(self):
+        """Return the DistinctRenbanLine class."""
         return DistinctRenbanLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the DistinctRenbanLine."""
         return "DistinctRenbanLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the DistinctRenbanLine has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the DistinctRenbanLine should belong to."""
         return {Cell, ComposedItem, Item, Line, Region, RenbanLine, DistinctRenbanLine}
 
     def test_digit_str(self):
+        """Test the conversion of digits to strings."""
         self.assertEqual(1, DistinctRenbanLine.digits_to_str([1]))
         self.assertEqual(2, DistinctRenbanLine.digits_to_str([2]))
         self.assertEqual(4, DistinctRenbanLine.digits_to_str([3]))
@@ -39,11 +46,11 @@ class TestDistinctRenbanLine(TestRenbanLine):
         self.assertEqual(64, DistinctRenbanLine.digits_to_str([7]))
         self.assertEqual(128, DistinctRenbanLine.digits_to_str([8]))
         self.assertEqual(256, DistinctRenbanLine.digits_to_str([9]))
-
         self.assertEqual(1 + 2 + 4, DistinctRenbanLine.digits_to_str([1, 2, 3]))
         self.assertEqual(64 + 128 + 256, DistinctRenbanLine.digits_to_str([7, 8, 9]))
 
     def test_power(self):
+        """Test the calculation of powers for the DistinctRenbanLine."""
         self.assertEqual(1, DistinctRenbanLine.power(1))
         self.assertEqual(2, DistinctRenbanLine.power(2))
         self.assertEqual(4, DistinctRenbanLine.power(3))
@@ -55,6 +62,7 @@ class TestDistinctRenbanLine(TestRenbanLine):
         self.assertEqual(256, DistinctRenbanLine.power(9))
 
     def test_power_string(self):
+        """Test the conversion of power values to string representations."""
         self.assertEqual('1', DistinctRenbanLine.power_str(1))
         self.assertEqual('2', DistinctRenbanLine.power_str(2))
         self.assertEqual('9', DistinctRenbanLine.power_str(256))

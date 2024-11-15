@@ -1,3 +1,4 @@
+"""TestCellReference."""
 import unittest
 from typing import Type
 
@@ -9,17 +10,21 @@ from tests.items.test_item import TestItem
 
 
 class TestCellReference(TestItem):
+    """Test suite for the CellReference item in the Board."""
 
     def setUp(self) -> None:
+        """Set up the Board and CellReference instance for testing."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = CellReference(self.board, 1, 2)
 
     @property
     def clazz(self):
+        """Return the CellReference class."""
         return CellReference
 
     @property
     def representation(self) -> str:
+        """Return the string representation for the CellReference item."""
         return (
             "CellReference"
             "("
@@ -33,17 +38,21 @@ class TestCellReference(TestItem):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the CellReference item."""
         return "CellReference: 12"
 
     @property
     def has_rule(self) -> bool:
+        """Indicates if the CellReference has a rule."""
         return False
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the CellReference item should belong to."""
         return {Cell, CellReference, Item}
 
     def test_flatten(self) -> None:
+        """Test the flatten method of the CellReference."""
         self.assertListEqual([self.item, self.item.cell], self.item.flatten())
 
 

@@ -1,3 +1,4 @@
+"""TestVariableProductPair."""
 import unittest
 from typing import Type
 
@@ -54,3 +55,4 @@ class TestVariableProductPair(TestVariablePair):
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
+

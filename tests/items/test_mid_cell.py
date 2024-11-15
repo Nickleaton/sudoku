@@ -1,3 +1,4 @@
+"""TestMidCell."""
 import unittest
 from typing import Type
 
@@ -11,8 +12,10 @@ from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestMidCell(TestSimpleCellReference):
+    """Test suite for the MidCell class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = MidCell(self.board, 1, 2)
         self.good = [4, 5, 6]
@@ -21,10 +24,12 @@ class TestMidCell(TestSimpleCellReference):
 
     @property
     def clazz(self):
+        """Return the MidCell class."""
         return MidCell
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the MidCell instance."""
         return (
             "MidCell(Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
@@ -32,9 +37,11 @@ class TestMidCell(TestSimpleCellReference):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the MidCell instance."""
         return "MidCell: 12"
 
     def test_included(self):
+        """Test the 'included' method to check if values are correctly included or excluded."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:
@@ -42,10 +49,12 @@ class TestMidCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the MidCell instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the MidCell instance should belong to."""
         return {Cell, CellReference, SimpleCellReference, Item, MidCell}
 
 

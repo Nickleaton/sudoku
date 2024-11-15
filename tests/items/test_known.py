@@ -1,3 +1,4 @@
+"""TestKnown."""
 import unittest
 from typing import Type
 
@@ -19,8 +20,10 @@ from tests.items.test_composed import TestComposed
 
 
 class TestKnown(TestComposed):
+    """Test suite for the Known class, inheriting from TestComposed."""
 
     def setUp(self) -> None:
+        """Set up the test case with a board and a Known instance."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.size = 26
         lines = [
@@ -34,15 +37,16 @@ class TestKnown(TestComposed):
             ".4....5..",
             "5..7.9..8"
         ]
-
         self.item = Known(self.board, lines)
 
     @property
     def clazz(self):
+        """Return the Known class."""
         return Known
 
     @property
     def config(self) -> str:
+        """Return the configuration string for Known."""
         return (
             "Known:\n"
             "  - 8..4.6..3\n"
@@ -58,9 +62,10 @@ class TestKnown(TestComposed):
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the Known instance."""
         return (
             "Known(Board(9, 9, 3, 3, None, None, None, None), "
-            "["
+            "[" 
             "'8..4.6..3', "
             "'o.9....2.', "
             "'e.......1', "
@@ -76,10 +81,12 @@ class TestKnown(TestComposed):
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the Known instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Known instance should belong to."""
         return {
             Cell,
             CellReference,
@@ -97,6 +104,7 @@ class TestKnown(TestComposed):
         }
 
     def test_flatten(self) -> None:
+        """Test the flatten method of the Known instance."""
         expected = [self.item]
         for item in self.item.items:
             if isinstance(item, CellReference):

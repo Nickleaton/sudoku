@@ -1,3 +1,4 @@
+"""TestOddCell."""
 import unittest
 from typing import Type
 
@@ -11,8 +12,10 @@ from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestOdd(TestSimpleCellReference):
+    """Test suite for the OddCell class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for OddCell."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = OddCell(self.board, 1, 2)
         self.good = [1, 3, 5, 7, 9]
@@ -21,10 +24,12 @@ class TestOdd(TestSimpleCellReference):
 
     @property
     def clazz(self):
+        """Return the OddCell class."""
         return OddCell
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the OddCell instance."""
         return (
             "OddCell"
             "("
@@ -35,9 +40,11 @@ class TestOdd(TestSimpleCellReference):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for OddCell."""
         return "OddCell: 12"
 
     def test_included(self):
+        """Test that the OddCell includes the correct values."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:
@@ -45,10 +52,12 @@ class TestOdd(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the OddCell instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the OddCell instance should belong to."""
         return {Cell, CellReference, SimpleCellReference, Item, OddCell}
 
 

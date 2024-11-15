@@ -1,3 +1,5 @@
+"""TestRow module."""
+
 import unittest
 from typing import Type
 
@@ -12,33 +14,41 @@ from tests.items.test_standard_region import TestStandardRegion
 
 
 class TestRow(TestStandardRegion):
+    """Test suite for the Row class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for Row."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Row(self.board, 1)
         self.size = 9
 
     @property
     def clazz(self):
+        """Return the Row class."""
         return Row
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the Row instance."""
         return "Row: 1"
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the Row instance."""
         return "Row(Board(9, 9, 3, 3, None, None, None, None), 1)"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the Row instance has an associated rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes the Row instance should belong to."""
         return {Item, ComposedItem, Cell, Region, StandardRegion, Row}
 
     def test_in(self):
+        """Test if specific cells are in or out of the Row instance."""
         self.assertIn(Cell.make(self.board, 1, 1), self.item)
         self.assertNotIn(Cell.make(self.board, 9, 9), self.item)
 

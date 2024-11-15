@@ -1,3 +1,4 @@
+"""TestFixedPair."""
 import unittest
 from typing import Type
 
@@ -12,18 +13,22 @@ from tests.items.test_pair import TestPair
 
 
 class TestFixedPair(TestPair):
+    """Test suite for the FixedPair class."""
 
     def setUp(self) -> None:
+        """Set up the test environment by creating a board and initializing the FixedPair item."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = FixedPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 1)
         self.size = 2
 
     @property
     def clazz(self):
+        """Return the FixedPair class."""
         return FixedPair
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the FixedPair instance."""
         return (
             "FixedPair"
             "("
@@ -36,21 +41,26 @@ class TestFixedPair(TestPair):
 
     @property
     def difference(self) -> int:
+        """Return the difference value for the FixedPair instance."""
         return 1
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the FixedPair."""
         return "FixedPair: 12-13=1"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the FixedPair should belong to."""
         return {Cell, Item, Pair, FixedPair, ComposedItem, Region}
 
     @property
     def inside(self) -> Cell:
+        """Return the inside cell of the FixedPair."""
         return Cell.make(self.board, 1, 2)
 
     def test_difference(self):
+        """Test that the difference value is correctly assigned."""
         self.assertEqual(self.difference, self.item.value)
 
 

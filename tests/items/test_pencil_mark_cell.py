@@ -1,3 +1,4 @@
+"""TestPencilMarkCell."""
 import unittest
 from typing import Type
 
@@ -10,17 +11,21 @@ from tests.items.test_cell_reference import TestCellReference
 
 
 class TestPencilMarkCell(TestCellReference):
+    """Test suite for the PencilMarkCell class."""
 
     def setUp(self) -> None:
+        """Set up a test instance of PencilMarkCell."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = PencilMarkCell(self.board, 1, 2, [2, 4, 6, 8])
 
     @property
     def clazz(self):
+        """Return the PencilMarkCell class."""
         return PencilMarkCell
 
     @property
     def representation(self) -> str:
+        """Return the string representation of PencilMarkCell."""
         return (
             "PencilMarkCell(Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
@@ -30,13 +35,16 @@ class TestPencilMarkCell(TestCellReference):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for PencilMarkCell."""
         return "PencilMarkCell: 12=2468"
 
     def has_rule(self) -> bool:
+        """Return whether PencilMarkCell has an associated rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the PencilMarkCell instance should belong to."""
         return {Cell, CellReference, Item, PencilMarkCell}
 
 

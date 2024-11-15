@@ -1,3 +1,4 @@
+"""TestFixedDifferencePair."""
 import unittest
 from typing import Type
 
@@ -13,8 +14,10 @@ from tests.items.test_fixed_pair import TestFixedPair
 
 
 class TestFixedDifferencePair(TestFixedPair):
+    """Test suite for the FixedDifferencePair class."""
 
     def setUp(self) -> None:
+        """Set up the test environment by creating a board and initializing the FixedDifferencePair item."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = FixedDifferencePair(
             self.board,
@@ -26,10 +29,12 @@ class TestFixedDifferencePair(TestFixedPair):
 
     @property
     def clazz(self):
+        """Return the FixedDifferencePair class."""
         return FixedDifferencePair
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the FixedDifferencePair instance."""
         return (
             "FixedDifferencePair"
             "("
@@ -42,13 +47,16 @@ class TestFixedDifferencePair(TestFixedPair):
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the FixedDifferencePair."""
         return "FixedDifferencePair: 12-13=1"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the FixedDifferencePair should belong to."""
         return {Cell, Item, Pair, FixedPair, FixedDifferencePair, ComposedItem, Region}
 
     def has_rule(self) -> bool:
+        """Return True if the FixedDifferencePair has a rule, otherwise False."""
         return True
 
 

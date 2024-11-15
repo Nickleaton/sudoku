@@ -1,3 +1,4 @@
+"""TestFrame."""
 import unittest
 from typing import Type
 
@@ -13,30 +14,37 @@ from tests.items.test_first_n import TestFirstN
 
 
 class TestFrame(TestFirstN):
+    """Test suite for the Frame class."""
 
     def setUp(self) -> None:
+        """Set up the test environment by creating a board and initializing the Frame item."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Frame(self.board, Side.TOP, 1, 20)
         self.size = 3
 
     @property
     def clazz(self):
+        """Return the Frame class."""
         return Frame
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the Frame instance."""
         return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the Frame."""
         return "Frame: T1=20"
 
     @property
     def has_rule(self) -> bool:
+        """Return True to indicate the rule is present for the Frame."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the Frame should belong to."""
         return {Cell, ComposedItem, FirstN, Frame, Item, Region}
 
 

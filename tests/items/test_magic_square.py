@@ -1,3 +1,4 @@
+"""TestMagicSquare."""
 import unittest
 from typing import Type
 
@@ -12,30 +13,37 @@ from tests.items.test_composed import TestComposed
 
 
 class TestMagicSquare(TestComposed):
+    """Test suite for the MagicSquare class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for MagicSquare."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = MagicSquare(self.board, Coord(5, 5), Coord(1, 1))
         self.size = 9
 
     @property
     def clazz(self):
+        """Return the MagicSquare class."""
         return MagicSquare
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the MagicSquare instance."""
         return "MagicSquare(Board(9, 9, 3, 3, None, None, None, None), Coord(5, 5), Coord(1, 1))"
 
     @property
     def config(self) -> str:
+        """Return the configuration string for the MagicSquare instance."""
         return "MagicSquare: 55,11"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the MagicSquare instance has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected classes that the MagicSquare instance should belong to."""
         return {Item, Cell, ComposedItem, Region, MagicSquare}
 
 
