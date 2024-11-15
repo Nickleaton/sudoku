@@ -1,3 +1,4 @@
+"""StandardRegionSet."""
 from typing import Dict
 
 from src.items.region_set import RegionSet
@@ -17,3 +18,4 @@ class StandardRegionSet(RegionSet):
             and None as the value (placeholder).
         """
         return {self.__class__.__name__: None}
+

@@ -1,3 +1,4 @@
+"""CenterProduct."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -67,3 +68,4 @@ class CenterProduct(Product):
                 'font-weight': 'bolder'
             }
         }
+

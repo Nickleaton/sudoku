@@ -1,3 +1,4 @@
+"""DistinctRenbanLine."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -98,3 +99,4 @@ class DistinctRenbanLine(RenbanLine):
                 'fill-opacity': 0
             }
         }
+

@@ -1,3 +1,4 @@
+"""BetweenLine."""
 from typing import List, Dict
 
 from pulp import LpVariable, LpInteger
@@ -115,3 +116,4 @@ class BetweenLine(Line):
                 # Style for the end of the line can be added here
             }
         }
+

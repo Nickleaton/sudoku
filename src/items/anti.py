@@ -1,3 +1,4 @@
+"""Anti."""
 from typing import List, Sequence, Any, Dict
 
 from src.items.board import Board

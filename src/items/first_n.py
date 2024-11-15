@@ -1,4 +1,4 @@
-"""First N cells from a given side and index."""
+"""FirstN."""
 from typing import Any, Dict
 
 from src.items.board import Board

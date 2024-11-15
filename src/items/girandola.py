@@ -1,3 +1,4 @@
+"""Girandola."""
 from typing import List, Dict
 
 from src.items.special_region import SpecialRegion
@@ -33,3 +34,4 @@ class Girandola(SpecialRegion):
                 "fill": "lightgreen"
             }
         }
+

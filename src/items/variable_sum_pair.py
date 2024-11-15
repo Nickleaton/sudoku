@@ -1,3 +1,4 @@
+"""VariableSumPair."""
 from typing import List, Dict
 
 from pulp import LpElement
@@ -55,3 +56,4 @@ class VariableSumPair(VariablePair):
                 'stroke': 'black'
             }
         }
+

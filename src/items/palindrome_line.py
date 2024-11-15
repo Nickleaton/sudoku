@@ -1,3 +1,4 @@
+"""PalindromeLine."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -75,3 +76,4 @@ class PalindromeLine(Line):
                 "fill-opacity": 0
             }
         }
+

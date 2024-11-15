@@ -1,3 +1,4 @@
+"""MountainLine."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -84,3 +85,4 @@ class MountainLine(Line):
                 "stroke-width": 20,
             }
         }
+

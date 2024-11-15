@@ -1,3 +1,4 @@
+"""EntropicLine."""
 from typing import List, Dict
 
 from pulp import LpAffineExpression, lpSum
@@ -132,3 +133,4 @@ class EntropicLine(Line):
                 'fill-opacity': 0
             }
         }
+

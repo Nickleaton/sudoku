@@ -1,3 +1,4 @@
+"""XPair."""
 from typing import Dict
 
 from src.items.sum_pair import SumPair
@@ -60,3 +61,4 @@ class XPair(SumPair):
                 "font-weight": "bolder"
             }
         }
+

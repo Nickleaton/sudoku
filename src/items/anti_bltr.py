@@ -1,3 +1,4 @@
+"""AntiBltr."""
 from typing import List
 
 from src.glyphs.glyph import Glyph
@@ -42,3 +43,4 @@ class AntiBLTR(AntiDiagonal):
                       Coord(1, self.board.maximum_digit + 1)   # Ending coordinate of the diagonal
                       )
         ]
+

@@ -1,3 +1,4 @@
+"""Sandwich."""
 import re
 from typing import Dict, Tuple, List, Optional
 
@@ -247,3 +248,4 @@ class Sandwich(Item):
             self.add_constraint_row(solver)
         else:
             self.add_constraint_column(solver, None, None)
+

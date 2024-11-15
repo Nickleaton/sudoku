@@ -1,3 +1,4 @@
+"""Item."""
 
 from typing import Optional, List, Set, Type, Dict, Iterator
 
@@ -340,3 +341,4 @@ class Item:
             else:
                 result += f"{tab * indent}{k}: {v};\n"
         return result
+

@@ -1,3 +1,4 @@
+"""OrthogonalProduct."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -82,3 +83,4 @@ class OrthogonalProduct(Product):
                 'font-weight': 'bolder'
             }
         }
+

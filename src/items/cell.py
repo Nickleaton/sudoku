@@ -1,3 +1,4 @@
+"""Cell."""
 from itertools import product
 from typing import Dict, Tuple, List, Optional, ClassVar
 
@@ -293,3 +294,4 @@ class Cell(Item):
                 'fill-opacity': 0
             }
         }
+

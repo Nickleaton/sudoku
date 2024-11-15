@@ -1,3 +1,4 @@
+"""Known."""
 from typing import List, Any, Dict, Type
 
 # Import statements for the required classes and types used in Known
@@ -143,3 +144,4 @@ class Known(ComposedItem):
             Dict[str, List[str]]: A dictionary representation of the Known instance with line_str as values.
         """
         return {self.__class__.__name__: self.line_str()}
+

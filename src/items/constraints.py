@@ -1,3 +1,4 @@
+"""Constraints."""
 from typing import Dict, Type, List
 
 from src.items.board import Board
@@ -67,3 +68,4 @@ class Constraints(ComposedItem):
 
         # Return the populated Constraints instance
         return result
+

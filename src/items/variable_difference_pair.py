@@ -1,3 +1,4 @@
+"""VariableDifferencePair."""
 from typing import List, Dict
 
 from pulp import LpElement
@@ -73,3 +74,4 @@ class VariableDifferencePair(VariablePair):
                 'stroke': 'black'
             }
         }
+

@@ -1,3 +1,4 @@
+"""MinMaxDifference."""
 import re
 from typing import List, Any, Dict
 
@@ -159,3 +160,4 @@ class MinMaxDifference(FirstN):
                 "stroke-width": 8
             }
         }
+

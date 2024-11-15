@@ -1,3 +1,4 @@
+"""XiPair."""
 from typing import Dict
 from src.items.sum_pair import SumPair
 
@@ -50,3 +51,4 @@ class XIPair(SumPair):
                 "font-weight": "bolder"
             }
         }
+

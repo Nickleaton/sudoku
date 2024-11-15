@@ -1,3 +1,4 @@
+"""GreaterThanPair."""
 from typing import List
 
 from src.items.pair import Pair
@@ -41,3 +42,4 @@ class GreaterThanPair(Pair):
             set[str]: A set of tags, including 'Comparison'.
         """
         return super().tags.union({'Comparison'})
+

@@ -1,3 +1,4 @@
+"""Killer."""
 from typing import List, Tuple, Dict, Any
 
 from pulp import lpSum
@@ -147,3 +148,4 @@ class Killer(Region):
                 'font-weight': 'bolder'
             }
         }
+

@@ -1,3 +1,4 @@
+"""Battenburg."""
 import re
 from typing import List, Any, Dict
 
@@ -120,3 +121,4 @@ class Battenburg(Item):
             Dict: A dictionary containing the item's class name and position.
         """
         return {self.__class__.__name__: self.position.row * 10 + self.position.column}
+

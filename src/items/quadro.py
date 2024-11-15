@@ -1,3 +1,4 @@
+"""Quadro."""
 from itertools import product
 from typing import List, Dict
 
@@ -78,3 +79,4 @@ class Quadro(Item):
             # There are four cells. At least one must be odd.
             # If there are 4 evens, it's wrong. So no more than 3 evens means at least one odd
             solver.model += evens <= 3, f"{self.name}_{row}_{column}_odd"
+

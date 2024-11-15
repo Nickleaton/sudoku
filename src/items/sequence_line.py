@@ -1,3 +1,4 @@
+"""SequenceLine."""
 from typing import List, Set, Dict
 
 from pulp import LpVariable, LpInteger
@@ -140,3 +141,4 @@ class SequenceLine(Line):
                 "fill-opacity": 0
             }
         }
+

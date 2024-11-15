@@ -1,3 +1,4 @@
+"""DisjointGroup."""
 from typing import List, Tuple
 
 from src.items.board import Board
@@ -74,3 +75,4 @@ class DisjointGroup(StandardRegion):
         """
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
+

@@ -1,3 +1,4 @@
+"""LowCell."""
 from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -92,3 +93,4 @@ class LowCell(SimpleCellReference):
         This method updates the bookkeeping system to allow only the digits [1, 2, 3] for this cell.
         """
         self.cell.book.set_possible(LowCell.digits())
+

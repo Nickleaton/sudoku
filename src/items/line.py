@@ -1,3 +1,4 @@
+"""Line."""
 from typing import List, Sequence, Dict
 
 from src.items.board import Board
@@ -88,3 +89,4 @@ class Line(Region):
             Dict: A dictionary representation of the line, including the cells.
         """
         return {self.__class__.__name__: ", ".join([cell.row_column_string for cell in self.cells])}
+

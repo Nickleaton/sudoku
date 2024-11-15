@@ -1,3 +1,4 @@
+"""FixedDifferencePair."""
 from typing import List, Dict
 
 from pulp import LpElement
@@ -76,3 +77,4 @@ class FixedDifferencePair(FixedPair):
                 'stroke': 'black'
             }
         }
+

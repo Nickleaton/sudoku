@@ -1,3 +1,4 @@
+"""ThermometerLine."""
 from typing import Dict
 from src.items.line import Line
 
@@ -32,3 +33,4 @@ class ThermometerLine(Line):
                 "fill-opacity": 0
             }
         }
+

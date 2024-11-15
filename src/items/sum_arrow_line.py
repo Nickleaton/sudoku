@@ -1,3 +1,4 @@
+"""SumArrowLine."""
 from typing import List, Dict
 
 from pulp import lpSum
@@ -7,6 +8,7 @@ from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.functions import Functions
 from src.utils.rule import Rule
 
 
@@ -69,27 +71,11 @@ class SumArrowLine(Line):
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add constraints to the Pulp solver to enforce the sum rule along the arrow.
-
-        The cells along the arrow must sum to the value in the starting cell. Additional constraints
-        are added to optimize the solution by limiting possible values in specific regions.
+        """Constrain the cells along the arrow so they sum to the value in the starting cell.
 
         Args:
             solver (PulpSolver): The Pulp solver instance to which constraints will be added.
         """
-
-        # TODO: Move this to utils
-        def triangular(n: int) -> int:
-            """Calculate the triangular number for `n`, representing the sum of first `n` integers.
-
-            Args:
-                n (int): The number of terms in the sum.
-
-            Returns:
-                int: The sum of the first `n` integers.
-            """
-            return n * (n + 1) // 2
-
         # Sum constraint: the sum of arrow cells must equal the starting cell value
         total = lpSum([solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self))])
         solver.model += total == solver.values[self.cells[0].row][self.cells[0].column], self.name
@@ -111,7 +97,7 @@ class SumArrowLine(Line):
             regions[box].append(self.cells[i])
 
         # Set minimum sum constraints based on the smallest possible sum per box region
-        total = sum(triangular(len(v)) for v in regions.values())
+        total = sum(Functions.triangular(len(v)) for v in regions.values())
         solver.model += solver.values[self.cells[0].row][self.cells[0].column] >= total, f"{self.name}_head"
 
         # Further restrictions based on digit values

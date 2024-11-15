@@ -105,3 +105,4 @@ class KillerGlyph(Glyph):
             str: A string representing the KillerGlyph instance with its class name and cells.
         """
         return f"{self.__class__.__name__}('{self.class_name}', [{', '.join([repr(cell) for cell in self.cells])}])"
+

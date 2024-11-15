@@ -1,3 +1,4 @@
+"""Row."""
 from typing import List
 
 from src.items.board import Board
@@ -66,3 +67,4 @@ class Row(StandardRegion):
             str: A string representation of the Row.
         """
         return f"{self.__class__.__name__}({self.index})"
+

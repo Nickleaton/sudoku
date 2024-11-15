@@ -1,3 +1,4 @@
+"""SumPair."""
 from typing import List, Dict
 
 from pulp import LpElement
@@ -58,3 +59,4 @@ class SumPair(Pair):
                 'stroke': 'black'
             }
         }
+

@@ -1,3 +1,4 @@
+"""DifferencePair."""
 from typing import List, Tuple, Dict
 
 from src.items.board import Board
@@ -121,3 +122,4 @@ class DifferencePair(Pair):
                     f"{','.join([str(d) for d in self.digits])}"
                 )
         }
+

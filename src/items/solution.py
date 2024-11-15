@@ -1,3 +1,4 @@
+"""Solution."""
 from itertools import product
 from typing import List, Any, Dict
 
@@ -143,3 +144,4 @@ class Solution(ComposedItem):
                     return False
             return True
         raise Exception(f"Cannot compare {self} {other} {other.__class__.__name__} with {self.__class__.__name__}")
+

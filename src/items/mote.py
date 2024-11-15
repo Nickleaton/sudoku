@@ -1,3 +1,4 @@
+"""Mote."""
 from typing import List, Tuple, Dict
 
 from pulp import lpSum
@@ -154,3 +155,4 @@ class Mote(Region):
                 'font-weight': 'bolder'
             }
         }
+

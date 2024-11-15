@@ -1,3 +1,4 @@
+"""GreaterThanEqualDifferenceLine."""
 from typing import List, Sequence, Set
 
 from pulp import lpSum
@@ -110,3 +111,4 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
                 for digit in [4, 6]:
                     name = f"{self.name}_{self.cells[i].name}_{digit}_not_allowed"
                     solver.model += solver.choices[digit][self.cells[i].row][self.cells[i].column] == 0, name
+

@@ -1,3 +1,4 @@
+"""RowIndexer."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -88,3 +89,4 @@ class RowIndexer(Indexer):
                 'fill': 'pink'
             }
         }
+

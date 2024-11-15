@@ -1,4 +1,4 @@
-"""Frame Product Sudoku ."""
+"""FrameProduct."""
 
 import re
 from typing import List, Any, Dict
@@ -114,3 +114,4 @@ class FrameProduct(FirstN):
             Dict: The dictionary representation.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.product}"}
+

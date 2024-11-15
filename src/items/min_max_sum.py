@@ -1,3 +1,4 @@
+"""MinMaxSum."""
 import re
 from typing import List, Any, Dict
 
@@ -159,3 +160,4 @@ class MinMaxSum(FirstN):
                 "stroke-width": 8
             }
         }
+

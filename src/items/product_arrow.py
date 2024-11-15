@@ -1,3 +1,4 @@
+"""ProductArrow."""
 from typing import List, Dict
 
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
@@ -83,3 +84,4 @@ class ProductArrowLine(Line):
         Note:
             This method is currently not implemented.
         """
+

@@ -1,3 +1,4 @@
+"""ComposedItem."""
 from itertools import chain
 from typing import List, Set, Sequence, Dict, Iterator
 
@@ -203,3 +204,4 @@ class ComposedItem(Item):
         for item in self.items:
             result |= item.css()
         return result
+

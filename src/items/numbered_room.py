@@ -1,3 +1,4 @@
+"""NumberedRoom."""
 from typing import Dict, Tuple, List
 
 from src.glyphs.glyph import Glyph
@@ -193,3 +194,4 @@ class NumberedRoom(Item):
                 'font-weight': 'bolder'
             }
         }
+

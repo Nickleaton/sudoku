@@ -1,3 +1,4 @@
+"""RenbanLine."""
 from typing import List, Set, Dict
 
 from pulp import LpVariable, LpInteger
@@ -110,3 +111,4 @@ class RenbanLine(Line):
                 "fill-opacity": 0
             }
         }
+

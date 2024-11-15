@@ -28,5 +28,3 @@ import src.commands.svg_solution_command
 import src.commands.template_command
 import src.commands.validate_config_command
 import src.commands.writer_command
-
-

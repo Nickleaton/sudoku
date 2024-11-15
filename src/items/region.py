@@ -1,3 +1,4 @@
+"""Region."""
 from typing import List, Dict, Set, Type
 
 from pulp import lpSum
@@ -134,3 +135,4 @@ class Region(ComposedItem):
         for cell in self.cells:
             result |= cell.used_classes
         return result
+

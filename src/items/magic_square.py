@@ -1,3 +1,4 @@
+"""MagicSquare."""
 from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph
@@ -188,3 +189,4 @@ class MagicSquare(Region):
                 'fill': 'mediumpurple'
             }
         }
+

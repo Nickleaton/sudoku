@@ -1,4 +1,4 @@
-"""Kropki Dots."""
+"""VariableProductPair."""
 from typing import List, Dict, Optional
 
 from pulp import LpElement

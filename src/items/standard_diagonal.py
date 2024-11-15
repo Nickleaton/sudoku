@@ -1,3 +1,4 @@
+"""StandardDiagonal."""
 from typing import List
 
 from src.items.diagonals import Diagonal
@@ -33,3 +34,4 @@ class StandardDiagonal(Diagonal):
             solver (PulpSolver): The solver to which the uniqueness constraint is added.
         """
         self.add_unique_constraint(solver)
+

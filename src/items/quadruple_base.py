@@ -1,3 +1,4 @@
+"""QuadrupleBase."""
 import re
 from typing import List, Any, Dict
 
@@ -122,3 +123,4 @@ class QuadrupleBase(Item):
                 "font-size": "30px"
             }
         }
+

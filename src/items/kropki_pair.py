@@ -1,4 +1,4 @@
-"""Kropki Dots."""
+"""KropkiPair."""
 from itertools import product
 from typing import List, Dict
 
@@ -195,3 +195,4 @@ class KropkiPair(Pair):
                 'background': 'transparent'
             }
         }
+

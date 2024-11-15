@@ -1,3 +1,4 @@
+"""KnownCell."""
 import re
 from typing import List, Tuple, Dict
 
@@ -154,3 +155,4 @@ class KnownCell(CellReference):
                     if cell == self.cell:
                         continue
                     cell.book.set_impossible([self.digit])
+

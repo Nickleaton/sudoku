@@ -1,3 +1,4 @@
+"""AntiRossini."""
 import re
 from typing import List, Dict, Any
 
@@ -151,3 +152,4 @@ class AntiRossini(FirstN):
                 "font-size": "30px"
             }
         }
+

@@ -1,3 +1,4 @@
+"""Rows."""
 from typing import Dict
 
 
@@ -43,3 +44,4 @@ class Rows(StandardRegionSet):
             str: A string representation of the Rows instance.
         """
         return f"{self.__class__.__name__}({self.board!r})"
+

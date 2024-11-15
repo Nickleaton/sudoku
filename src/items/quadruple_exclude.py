@@ -1,3 +1,4 @@
+"""QuadrupleExclude."""
 import re
 from typing import List, Any, Dict
 
@@ -81,3 +82,4 @@ class QuadrupleExclude(QuadrupleBase):
                 "font-size": "30px"
             }
         }
+

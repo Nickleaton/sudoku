@@ -1,3 +1,4 @@
+"""EqualSumLine."""
 import sys
 from typing import List, Dict
 
@@ -110,3 +111,4 @@ class EqualSumLine(Line):
                 'fill-opacity': 0
             }
         }
+

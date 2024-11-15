@@ -1,3 +1,4 @@
+"""Indexing."""
 from typing import List, Dict
 
 from src.items.board import Board
@@ -104,3 +105,4 @@ class Indexer(StandardRegion):
             from the superclass.
         """
         return super().tags.union({'Indexing'})
+

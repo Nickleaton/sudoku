@@ -1,3 +1,4 @@
+"""LittleKiller."""
 from typing import Dict, List, Tuple
 
 from pulp import lpSum
@@ -205,3 +206,4 @@ class LittleKiller(Region):
                 'fill': 'black'
             }
         }
+

@@ -1,3 +1,4 @@
+"""ClonedRegion."""
 from typing import List, Tuple, Dict, Type, Set, Iterator
 
 from src.glyphs.glyph import Glyph
@@ -176,3 +177,4 @@ class ClonedRegion(Item):
                 'font-weight': 'bolder'
             }
         }
+

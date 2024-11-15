@@ -1,3 +1,4 @@
+"""QuadrupleInclude."""
 import re
 from typing import List, Dict, Any
 
@@ -81,3 +82,4 @@ class QuadrupleInclude(QuadrupleBase):
                 "font-size": "30px"
             }
         }
+

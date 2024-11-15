@@ -1,3 +1,4 @@
+"""Diagonals."""
 from typing import Dict
 
 from src.items.board import Board
@@ -49,3 +50,4 @@ class Diagonal(Region):
                 "stroke-width": "3px"
             }
         }
+

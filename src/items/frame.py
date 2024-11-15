@@ -1,3 +1,4 @@
+"""Frame."""
 import re
 from typing import List, Any, Dict
 
@@ -112,3 +113,4 @@ class Frame(FirstN):
                 "stroke-width": 8
             }
         }
+

@@ -1,3 +1,4 @@
+"""MaxArrow."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -84,3 +85,4 @@ class MaxArrowLine(Line):
         values = [solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self.cells))]
         value = Formulations.maximum(solver.model, values, 1, self.board.maximum_digit)
         solver.model += bulb == value, self.name
+

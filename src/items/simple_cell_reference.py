@@ -1,3 +1,4 @@
+"""SimpleCellReference."""
 from src.items.cell_reference import CellReference
 
 
@@ -11,3 +12,4 @@ class SimpleCellReference(CellReference):
             str: The letter '.' representing a simple, unmarked cell.
         """
         return '.'
+

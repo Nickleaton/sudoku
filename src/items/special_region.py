@@ -1,3 +1,4 @@
+"""SpecialRegion."""
 from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
@@ -106,3 +107,4 @@ class SpecialRegion(Region):
             Dict: A dictionary representing the region.
         """
         return {self.__class__.__name__: None}
+

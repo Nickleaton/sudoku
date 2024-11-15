@@ -1,3 +1,4 @@
+"""Board."""
 import re
 from enum import Enum
 from typing import Optional, Dict, Tuple
@@ -260,3 +261,4 @@ class Board:
             str: A string of digits available on the board.
         """
         return "".join([str(digit) for digit in self.digit_range])
+

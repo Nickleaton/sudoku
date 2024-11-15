@@ -1,3 +1,4 @@
+"""AntiTlbr."""
 from typing import List
 
 from src.glyphs.glyph import Glyph
@@ -44,3 +45,4 @@ class AntiTLBR(AntiDiagonal):
                       Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1)
                       )
         ]
+

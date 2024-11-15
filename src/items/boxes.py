@@ -1,3 +1,4 @@
+"""Boxes."""
 from typing import Dict
 
 from src.items.board import Board
@@ -46,3 +47,4 @@ class Boxes(StandardRegionSet):
             str: A string representation of the Boxes instance.
         """
         return f"{self.__class__.__name__}({self.board!r})"
+

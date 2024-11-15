@@ -1,3 +1,4 @@
+"""LessThanEqualDifferencePair."""
 from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
@@ -34,3 +35,4 @@ class LessThanEqualDifferencePair(DifferencePair):
             int: The maximum allowed difference, which is always 0 for this class.
         """
         return 0
+

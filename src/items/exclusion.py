@@ -1,3 +1,4 @@
+"""Exclusion."""
 from typing import List, Any, Dict
 
 from pulp import lpSum
@@ -152,3 +153,4 @@ class Exclusion(Item):
                 "font-size": "30px"
             }
         }
+

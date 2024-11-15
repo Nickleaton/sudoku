@@ -1,4 +1,4 @@
-"""Kropki Dots."""
+"""FixedRatioPair."""
 from math import ceil, log10
 from typing import List, Dict
 

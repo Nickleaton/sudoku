@@ -1,3 +1,4 @@
+"""FortressCell."""
 from typing import Optional, List, Dict
 
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
@@ -103,3 +104,4 @@ class FortressCell(SimpleCellReference):
                 continue
             cell.book.set_impossible([digit])
             digit += 1
+

@@ -1,3 +1,4 @@
+"""FrozenThermometerLine."""
 from typing import List, Dict
 
 from src.glyphs.frozen_thermometer_glyph import FrozenThermometerGlyph
@@ -87,3 +88,4 @@ class FrozenThermometerLine(ThermometerLine):
                 'stroke-width': 30
             }
         }
+

@@ -1,3 +1,4 @@
+"""Outside."""
 from typing import List, Any, Dict
 
 from src.glyphs.glyph import Glyph
@@ -151,3 +152,4 @@ class Outside(FirstN):
                 "font-weight": "bolder"
             }
         }
+

@@ -1,3 +1,4 @@
+"""ConsecutivePair."""
 import re
 from typing import List, Tuple, Dict
 
@@ -122,3 +123,4 @@ class ConsecutivePair(LessThanEqualDifferencePair):
                 'stroke': 'black'
             }
         }
+

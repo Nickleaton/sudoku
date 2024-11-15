@@ -1,3 +1,4 @@
+"""CellReference."""
 from typing import List, Set, Tuple, Optional, Dict, Type, Iterator
 
 from src.glyphs.glyph import Glyph
@@ -155,3 +156,4 @@ class CellReference(Item):
             Set[Item]: A set containing the CellReference and its cell.
         """
         return {self, self.cell}
+

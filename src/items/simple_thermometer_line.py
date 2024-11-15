@@ -1,3 +1,4 @@
+"""SimpleThermometerLine."""
 from typing import List, Set
 
 from src.items.thermometer_line import ThermometerLine
@@ -70,3 +71,4 @@ class SimpleThermometerLine(ThermometerLine):
             for digit in self.board.digit_range:
                 if digit not in possible:
                     solver.model += solver.choices[digit][cell.row][cell.column], f"{self.name}_{cell.name}_{digit}"
+

@@ -1,3 +1,4 @@
+"""AntiDiagonal."""
 from typing import List
 
 from pulp import lpSum
@@ -72,3 +73,4 @@ class AntiDiagonal(Diagonal):
                     for x in range((b + 1) * self.size, (b + 2) * self.size)
                 )
                 solver.model += first == second, f"{self.name}_{b + 1}_{digit}"
+

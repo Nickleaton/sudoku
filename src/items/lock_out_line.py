@@ -1,3 +1,4 @@
+"""LockOutLine."""
 from typing import List
 
 from src.items.line import Line
@@ -39,3 +40,4 @@ class LockOutLine(Line):
             combined with additional tags specific to the LockOutLine.
         """
         return super().tags.union({'LockOut', 'Comparison'})
+
