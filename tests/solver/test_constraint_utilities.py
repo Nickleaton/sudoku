@@ -1,3 +1,4 @@
+"""Test ConstraintUtilities class for logical operations."""
 import unittest
 
 from src.items.board import Board
@@ -7,12 +8,17 @@ from src.solvers.pulp_solver import PulpSolver
 
 
 class TestConstraintUtilities(unittest.TestCase):
+    """Test the ConstraintUtilities class and its methods."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
+        # Initialize the board and solver for tests
         self.board = Board(9, 9, 3, 3)
         self.solver = PulpSolver(self.board, "TestConstraintUtilities")
 
     def test_logical_log10_cell(self) -> None:
+        """Test the log10_cell method of the ConstraintUtilities class."""
+        # Create a cell and apply the log10_cell method
         c1 = Cell.make(self.board, 1, 1)
         rule = ConstraintUtilities.log10_cell(self.solver, c1)
         self.assertEqual('Log10_1_1', str(rule))
