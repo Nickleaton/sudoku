@@ -16,7 +16,7 @@ class PalindromeLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines rules specific to PalindromeLine.
+        """Define rules specific to PalindromeLine.
 
         Returns:
             List[Rule]: A list containing a single Rule object that specifies:
@@ -25,7 +25,7 @@ class PalindromeLine(Line):
         return [Rule('PalindromeLine', 1, "Cells along a purple line form a palindrome")]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates a graphical representation of the PalindromeLine.
+        """Generate a graphical representation of the PalindromeLine.
 
         Returns:
             List[Glyph]: A list containing a `PolyLineGlyph` instance with
@@ -44,7 +44,7 @@ class PalindromeLine(Line):
         return super().tags.union({'PalindromeLine'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds palindrome constraints to the Pulp solver.
+        """Add palindrome constraints to the Pulp solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints

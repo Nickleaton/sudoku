@@ -3,8 +3,9 @@ from src.items.line import Line
 
 
 class ThermometerLine(Line):
-    """Represents a thermometer line in a puzzle, typically used to indicate a
-    comparison between digits.
+    """Thermometer line.
+
+    Digits increase along the line.
     """
 
     @property

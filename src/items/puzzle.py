@@ -10,7 +10,7 @@ class Puzzle(Item):
     """Represents a puzzle that includes a board, solution, and constraints."""
 
     def __init__(self, board: Board, solution: Optional[Solution] = None, constraints: Optional[Constraints] = None):
-        """Initializes a Puzzle instance with a board, optional solution, and optional constraints.
+        """Initialize a Puzzle instance with a board, optional solution, and optional constraints.
 
         Args:
             board (Board): The puzzle's board.
@@ -23,7 +23,7 @@ class Puzzle(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Puzzle':  # Use 'Puzzle' instead of Item
-        """Creates a Puzzle instance from a YAML configuration.
+        """Create a Puzzle instance from a YAML configuration.
 
         Args:
             board (Board): The board for the puzzle.
@@ -44,7 +44,7 @@ class Puzzle(Item):
         return Puzzle(parsed_board, solution, constraints)  # Pass the parsed_board
 
     def __repr__(self) -> str:
-        """Provides a string representation of the Puzzle instance.
+        """Provide a string representation of the Puzzle instance.
 
         Returns:
             str: A string representing the puzzle's board, solution, and constraints.

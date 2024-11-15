@@ -12,25 +12,29 @@ from src.utils.rule import Rule
 
 
 class Quadro(Item):
-    """Represents a 2×2 block of cells that enforces a parity rule on the digits.
+    """Represents a 2*2 block of cells that enforces a parity rule on the digits.
 
-    The rule states that there must be at least one even and one odd digit in every 2×2 adjacent cells.
+    The rule states that there must be at least one even and one odd digit in every 2*2 adjacent cells.
     """
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the list of rules associated with this Quadro.
+        """Return the list of rules associated with this Quadro.
 
         Returns:
             List[Rule]: A list containing the rule for the Quadro.
         """
         return [
-            Rule('Quadro', 3, 'There must be at least one even and at least one odd digit in every 2×2 adjacent cells')
+            Rule(
+                'Quadro',
+                3,
+                'There must be at least one even and at least one odd digit in every 2*2 adjacent cells'
+            )
         ]
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a new Quadro instance for the given board.
+        """Create a new Quadro instance for the given board.
 
         Args:
             board (Board): The board on which the Quadro is placed.
@@ -42,7 +46,7 @@ class Quadro(Item):
         return cls(board)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Quadro instance.
+        """Return a string representation of the Quadro instance.
 
         Returns:
             str: A string representing the Quadro instance with its board.
@@ -50,9 +54,9 @@ class Quadro(Item):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the parity constraints for the Quadro to the solver model.
+        """Add the parity constraints for the Quadro to the solver model.
 
-        For each 2×2 block of cells, the constraint ensures there is at least one even and one odd digit.
+        For each 2*2 block of cells, the constraint ensures there is at least one even and one odd digit.
 
         Args:
             solver (PulpSolver): The solver to which the constraints will be added.

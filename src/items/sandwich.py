@@ -16,6 +16,8 @@ from src.utils.side import Side
 
 
 class Sandwich(Item):
+    """Sandwich Constraint."""
+
     def __init__(self, board: Board, side: Side, index: int, total: int):
         """Initialize a Sandwich instance.
 

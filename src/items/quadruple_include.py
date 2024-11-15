@@ -18,7 +18,7 @@ class QuadrupleInclude(QuadrupleBase):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the position and digits from the YAML configuration.
+        """Extract the position and digits from the YAML configuration.
 
         Args:
             board (Board): The board to extract the quadruple data for.
@@ -35,7 +35,7 @@ class QuadrupleInclude(QuadrupleBase):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the list of rules associated with this quadruple.
+        """Return the list of rules associated with this quadruple.
 
         Returns:
             List[Rule]: A list containing the rule for this quadruple.
@@ -43,7 +43,7 @@ class QuadrupleInclude(QuadrupleBase):
         return [Rule('QuadrupleInclude', 3, 'Digits appearing must appear in cells adjacent to the circle')]
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints for the quadruple in the solver model.
+        """Add constraints for the quadruple in the solver model.
 
         Args:
             solver (PulpSolver): The solver to which the constraints will be added.
@@ -64,7 +64,7 @@ class QuadrupleInclude(QuadrupleBase):
             solver.model += digit_sum >= 1, f"{self.name}_{digit}"
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the Quadruple glyphs.
+        """Return the CSS styling for the Quadruple glyphs.
 
         Returns:
             Dict: A dictionary defining the CSS styles for the quadruple glyph.

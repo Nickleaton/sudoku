@@ -17,7 +17,7 @@ class ProductArrowLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines rules specific to ProductArrowLine.
+        """Define rules specific to ProductArrowLine.
 
         Returns:
             List[Rule]: A list containing a single Rule object that specifies:
@@ -34,7 +34,7 @@ class ProductArrowLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates graphical representation of the ProductArrowLine.
+        """Generate graphical representation of the ProductArrowLine.
 
         Returns:
             List[Glyph]: A list containing an `ArrowLineGlyph` instance with
@@ -74,7 +74,7 @@ class ProductArrowLine(Line):
 
     # TODO: Implement the constraint logic for the ProductArrowLine
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds product constraints to the Pulp solver.
+        """Add product constraints to the Pulp solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints

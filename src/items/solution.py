@@ -16,7 +16,7 @@ class Solution(ComposedItem):
     """Represents a solution composed of known cells for a given board."""
 
     def __init__(self, board: Board, rows: List[str]):
-        """Initializes the Solution with a board and row data.
+        """Initialize the Solution with a board and row data.
 
         Args:
             board (Board): The board associated with this solution.
@@ -34,7 +34,7 @@ class Solution(ComposedItem):
 
     @classmethod
     def schema(cls) -> Dict:
-        """Returns the schema for the Solution class.
+        """Return the schema for the Solution class.
 
         Returns:
             Dict: A dictionary defining the YAML schema for Solution.
@@ -42,7 +42,7 @@ class Solution(ComposedItem):
         return {Optional("Solution"): Seq(SolutionParser())}
 
     def __hash__(self):
-        """Returns a hash of the Solution.
+        """Return a hash of the Solution.
 
         Returns:
             int: A hash value for the Solution instance.
@@ -50,7 +50,7 @@ class Solution(ComposedItem):
         return hash("Solution")
 
     def get_value(self, row: int, column: int) -> int:
-        """Gets the digit value at the specified row and column.
+        """Get the digit value at the specified row and column.
 
         Args:
             row (int): The row number (1-based).
@@ -63,7 +63,7 @@ class Solution(ComposedItem):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts solution rows from the given YAML dictionary.
+        """Extract solution rows from the given YAML dictionary.
 
         Args:
             board (Board): The board associated with this solution.
@@ -76,7 +76,7 @@ class Solution(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> 'Solution':
-        """Creates a Solution instance from the given board and YAML.
+        """Create a Solution instance from the given board and YAML.
 
         Args:
             board (Board): The board associated with this solution.
@@ -89,7 +89,7 @@ class Solution(ComposedItem):
         return Solution(board, items)
 
     def line_str(self) -> List[str]:
-        """Returns a list of row strings representing the board layout for known items.
+        """Return a list of row strings representing the board layout for known items.
 
         Returns:
             List[str]: A list of strings, each representing a row on the board.
@@ -110,7 +110,7 @@ class Solution(ComposedItem):
         return ["".join(line) for line in lines]
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Solution instance.
+        """Return a string representation of the Solution instance.
 
         Returns:
             str: A string representation of the Solution.
@@ -118,7 +118,7 @@ class Solution(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
 
     def to_dict(self) -> Dict:
-        """Converts the Solution instance to a dictionary.
+        """Convert the Solution instance to a dictionary.
 
         Returns:
             Dict: A dictionary representation of the Solution.
@@ -126,7 +126,7 @@ class Solution(ComposedItem):
         return {self.__class__.__name__: self.line_str()}
 
     def __eq__(self, other: object) -> bool:
-        """Checks if two Solution instances are equal based on their values.
+        """Check if two Solution instances are equal based on their values.
 
         Args:
             other (object): The other object to compare.

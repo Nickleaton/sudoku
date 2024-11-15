@@ -15,7 +15,7 @@ class Rows(StandardRegionSet):
     """
 
     def __init__(self, board: Board):
-        """Initializes the Rows instance.
+        """Initialize the Rows instance.
 
         Args:
             board (Board): The board that contains the rows.
@@ -24,7 +24,7 @@ class Rows(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Rows instance.
+        """Create a Rows instance.
 
         Args:
             cls: The class itself (Rows).
@@ -37,7 +37,7 @@ class Rows(StandardRegionSet):
         return Rows(board)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Rows instance.
+        """Return a string representation of the Rows instance.
 
         Returns:
             str: A string representation of the Rows instance.

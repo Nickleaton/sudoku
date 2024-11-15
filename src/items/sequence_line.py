@@ -18,7 +18,7 @@ class SequenceLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines rules specific to SequenceLine.
+        """Define rules specific to SequenceLine.
 
         Returns:
             List[Rule]: A list containing a single Rule object that specifies:
@@ -36,7 +36,7 @@ class SequenceLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates a graphical representation of the SequenceLine.
+        """Generate a graphical representation of the SequenceLine.
 
         Returns:
             List[Glyph]: A list containing a `PolyLineGlyph` instance with
@@ -56,7 +56,7 @@ class SequenceLine(Line):
 
     @staticmethod
     def max_difference(length: int) -> int:
-        """Determines the maximum possible difference for an arithmetic sequence of a given length.
+        """Determine the maximum possible difference for an arithmetic sequence of a given length.
 
         Args:
             length (int): The length of the sequence.
@@ -77,7 +77,7 @@ class SequenceLine(Line):
         return 1
 
     def possible_digits(self) -> List[Set[int]]:
-        """Determines possible digits for each cell along the sequence.
+        """Determine possible digits for each cell along the sequence.
 
         Returns:
             List[Set[int]]: A list of sets containing possible digits for each
@@ -94,7 +94,7 @@ class SequenceLine(Line):
         return possible
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds arithmetic sequence constraints to the Pulp solver.
+        """Add arithmetic sequence constraints to the Pulp solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints

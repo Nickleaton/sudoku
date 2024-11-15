@@ -17,7 +17,7 @@ class Product(Region):
     """
 
     def __init__(self, board: Board, position: Coord, product: int):
-        """Initializes a Product constraint on the board at a specific position.
+        """Initialize a Product constraint on the board at a specific position.
 
         Args:
             board (Board): The board on which the product constraint is applied.
@@ -31,7 +31,7 @@ class Product(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Indicates whether this item is a sequence.
+        """Indicate whether this item is a sequence.
 
         Returns:
             bool: True, since the product constraint is treated as a sequence.
@@ -40,7 +40,7 @@ class Product(Region):
 
     @classmethod
     def parser(cls) -> CellValueParser:
-        """Returns the parser for this item.
+        """Return the parser for this item.
 
         Returns:
             CellValueParser: The parser for extracting product constraints from the YAML configuration.
@@ -48,7 +48,7 @@ class Product(Region):
         return CellValueParser()
 
     def get_cells(self) -> List[Cell]:
-        """Returns the list of cells associated with this product constraint.
+        """Return the list of cells associated with this product constraint.
 
         Since this method is intended to be overridden by subclasses, it currently returns an empty list.
 
@@ -58,7 +58,7 @@ class Product(Region):
         return []
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Product instance.
+        """Return a string representation of the Product instance.
 
         Returns:
             str: A string representing the Product instance with its board, position, and product.
@@ -67,7 +67,7 @@ class Product(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the position and product value from the YAML configuration.
+        """Extract the position and product value from the YAML configuration.
 
         Args:
             board (Board): The board to which the constraint applies.
@@ -82,7 +82,7 @@ class Product(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a new Product instance from the given board and YAML configuration.
+        """Create a new Product instance from the given board and YAML configuration.
 
         Args:
             board (Board): The board on which the product constraint is applied.
@@ -95,7 +95,7 @@ class Product(Region):
         return cls(board, position, product)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the product constraint to the solver model.
+        """Add the product constraint to the solver model.
 
         This method ensures that the product of the digits in the relevant cells matches the specified product.
 
@@ -105,7 +105,7 @@ class Product(Region):
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
     def to_dict(self) -> Dict:
-        """Returns a dictionary representation of the Product instance.
+        """Return a dictionary representation of the Product instance.
 
         Returns:
             Dict: A dictionary where the key is the class name and the

@@ -10,13 +10,14 @@ from src.utils.rule import Rule
 
 
 class RenbanLine(Line):
-    """Represents a Renban line in a puzzle, where the digits must be a set of consecutive,
-    non-repeating numbers in any order.
+    """Represent a Renban line.
+
+    The digits must be a set of consecutive, non-repeating numbers in any order.
     """
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rules for the RenbanLine.
+        """Define the rules for the RenbanLine.
 
         Returns:
             List[Rule]: A list of Rule objects specifying the Renban's digit requirements.
@@ -30,7 +31,7 @@ class RenbanLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Creates a visual representation of the RenbanLine.
+        """Create a visual representation of the RenbanLine.
 
         Returns:
             List[Glyph]: A list containing a PolyLineGlyph for rendering.
@@ -47,7 +48,7 @@ class RenbanLine(Line):
         return super().tags.union({'RenbanLine', 'Adjacent', 'Set'})
 
     def mandatory_digits(self, length: int) -> Set[int]:
-        """Determines the mandatory digits present on the Renban line based on its length.
+        """Determine the mandatory digits present on the Renban line based on its length.
 
         For a line of a certain length, this method calculates which digits must appear
         in order to fulfill the requirements of consecutive, non-repeating digits.
@@ -63,7 +64,7 @@ class RenbanLine(Line):
         return left & right
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the Pulp solver to enforce the Renban line rules.
+        """Add constraints to the Pulp solver to enforce the Renban line rules.
 
         This includes uniqueness of digits, bounds for the minimum and maximum digits,
         and the total range of digits based on the line's length.

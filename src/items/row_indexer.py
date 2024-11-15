@@ -17,7 +17,7 @@ class RowIndexer(Indexer):
     """
 
     def __init__(self, board: Board, index: int):
-        """Initializes a RowIndexer with a board and row index.
+        """Initialize a RowIndexer with a board and row index.
 
         Args:
             board (Board): The board on which the row indexer will operate.
@@ -28,7 +28,7 @@ class RowIndexer(Indexer):
 
     @staticmethod
     def variant() -> str:
-        """Returns the variant type for rows.
+        """Return the variant type for rows.
 
         Returns:
             str: "row", representing the row variant.
@@ -37,7 +37,7 @@ class RowIndexer(Indexer):
 
     @staticmethod
     def other_variant() -> str:
-        """Returns the other variant type for columns.
+        """Return the other variant type for columns.
 
         Returns:
             str: "column", representing the column variant.
@@ -45,7 +45,7 @@ class RowIndexer(Indexer):
         return "column"
 
     def glyphs(self) -> List[Glyph]:
-        """Generates glyphs for visual representation of the RowIndexer.
+        """Generate glyphs for visual representation of the RowIndexer.
 
         Returns:
             List[Glyph]: A list of glyphs representing the row indexer's region.
@@ -54,7 +54,7 @@ class RowIndexer(Indexer):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the RowIndexer.
+        """Return the tags associated with the RowIndexer.
 
         Returns:
             set[str]: A set of tags, including 'Indexing', combined with any tags
@@ -63,7 +63,7 @@ class RowIndexer(Indexer):
         return super().tags.union({'Indexing'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the solver for the row indexing.
+        """Add constraints to the solver for the row indexing.
 
         This method loops over the cells in the indexed row and adds constraints
         that ensure the consistency of digits across the indexed row.
@@ -78,7 +78,7 @@ class RowIndexer(Indexer):
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the RowIndexer glyph.
+        """Return the CSS styling for the RowIndexer glyph.
 
         Returns:
             Dict: A dictionary defining the CSS styling for the row indexer.

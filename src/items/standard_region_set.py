@@ -4,13 +4,13 @@ from src.items.region_set import RegionSet
 
 
 class StandardRegionSet(RegionSet):
-    """Represents a standard region set in a board configuration.
+    """Represent a standard region set in a board configuration.
 
     Inherits from RegionSet to define regions with standard configurations.
     """
 
     def to_dict(self) -> Dict:
-        """Converts the StandardRegionSet instance to a dictionary.
+        """Convert the StandardRegionSet instance to a dictionary.
 
         Returns:
             Dict: A dictionary representation of the instance, with the class name as the key

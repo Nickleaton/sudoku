@@ -9,13 +9,14 @@ from src.utils.rule import Rule
 
 
 class SimpleThermometerLine(ThermometerLine):
-    """Represents a simple thermometer line in a puzzle, where cells along the line must
-    strictly increase from the bulb end.
+    """Simple thermometer line.
+
+    Cells along the line must strictly increase from the bulb end.
     """
 
     @property
     def rules(self) -> List[Rule]:
-        """Gets the rules associated with the Simple Thermometer line.
+        """Get the rules associated with the Simple Thermometer line.
 
         Returns:
             List[Rule]: A list of rules specific to the Simple Thermometer line.
@@ -24,7 +25,7 @@ class SimpleThermometerLine(ThermometerLine):
                      "Cells along a line with a bulb strictly increase from the bulb end")]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates glyph representations for the Simple Thermometer line.
+        """Generate glyph representations for the Simple Thermometer line.
 
         Returns:
             List[Glyph]: A list of glyphs representing the Simple Thermometer line.
@@ -43,8 +44,7 @@ class SimpleThermometerLine(ThermometerLine):
         return super().tags.union({'SimpleThermometerLine'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the solver for the Simple Thermometer line, ensuring that
-        the values in the line respect the simple thermometer rules.
+        """Add constraints.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.

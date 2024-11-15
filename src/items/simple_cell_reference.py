@@ -5,7 +5,7 @@ class SimpleCellReference(CellReference):
     """Represents a simple cell reference, which typically holds no specific digit value."""
 
     def letter(self) -> str:
-        """Returns the default letter representation of a SimpleCellReference.
+        """Return the default letter representation of a SimpleCellReference.
 
         Returns:
             str: The letter '.' representing a simple, unmarked cell.

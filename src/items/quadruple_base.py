@@ -16,7 +16,7 @@ class QuadrupleBase(Item):
     """
 
     def __init__(self, board: Board, position: Coord, digits: str):
-        """Initializes a Quadruple instance with a position and digits.
+        """Initialize a Quadruple instance with a position and digits.
 
         Args:
             board (Board): The board on which the quadruple is placed.
@@ -30,7 +30,7 @@ class QuadrupleBase(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Returns whether this item represents a sequence.
+        """Return whether this item represents a sequence.
 
         Returns:
             bool: True, since a quadruple is a sequence of digits.
@@ -39,7 +39,7 @@ class QuadrupleBase(Item):
 
     @classmethod
     def parser(cls) -> QuadruplesParser:
-        """Returns the parser associated with this item.
+        """Return the parser associated with this item.
 
         Returns:
             QuadruplesParser: A parser for quadruples.
@@ -47,7 +47,7 @@ class QuadrupleBase(Item):
         return QuadruplesParser()
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Quadruple instance.
+        """Return a string representation of the Quadruple instance.
 
         Returns:
             str: A string representing the Quadruple instance with board, position, and digits.
@@ -57,7 +57,7 @@ class QuadrupleBase(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the position and digits from the YAML configuration.
+        """Extract the position and digits from the YAML configuration.
 
         Args:
             board (Board): The board to extract the quadruple data for.
@@ -74,7 +74,7 @@ class QuadrupleBase(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a new Quadruple instance from the YAML configuration.
+        """Create a new Quadruple instance from the YAML configuration.
 
         Args:
             board (Board): The board on which the quadruple will be placed.
@@ -87,7 +87,7 @@ class QuadrupleBase(Item):
         return cls(board, position, numbers)
 
     def glyphs(self) -> List[Glyph]:
-        """Generates glyphs for the visual representation of the Quadruple.
+        """Generate glyphs for the visual representation of the Quadruple.
 
         Returns:
             List[Glyph]: A list of glyphs representing the quadruple's position and digits.
@@ -97,7 +97,7 @@ class QuadrupleBase(Item):
         ]
 
     def to_dict(self) -> Dict:
-        """Converts the Quadruple to a dictionary representation.
+        """Convert the Quadruple to a dictionary representation.
 
         Returns:
             Dict: A dictionary containing the position and digits of the quadruple.
@@ -105,7 +105,7 @@ class QuadrupleBase(Item):
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
 
     def css(self) -> Dict:
-        """Returns the CSS styling for the Quadruple glyphs.
+        """Return the CSS styling for the Quadruple glyphs.
 
         Returns:
             Dict: A dictionary defining the CSS styles for the quadruple glyph.

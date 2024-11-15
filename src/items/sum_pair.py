@@ -8,25 +8,49 @@ from src.utils.rule import Rule
 
 
 class SumPair(Pair):
+    """Represents a pair of cells where their values must sum to a fixed target."""
 
     @property
     def tags(self) -> set[str]:
+        """Get the tags associated with the SumPair.
+
+        Returns:
+            set[str]: A set of tags including 'Sum'.
+        """
         return super().tags.union({'Sum'})
 
     @property
     def rules(self) -> List[Rule]:
+        """Get the rules associated with the SumPair.
+
+        Returns:
+            List[Rule]: A list of rules describing the SumPair constraints.
+        """
         return [
             Rule(
                 self.__class__.__name__,
                 1,
-                "Cells separated by an blue dot must have a sum"
+                "Cells separated by a blue dot must have a sum"
             )
         ]
 
     def target(self, solver: PulpSolver) -> LpElement:
+        """Calculate the target sum of the cell pair in the solver.
+
+        Args:
+            solver (PulpSolver): The solver managing the constraints.
+
+        Returns:
+            LpElement: The sum of the values of the two cells.
+        """
         return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
 
     def css(self) -> Dict:
+        """Define the CSS styles for rendering SumPair glyphs.
+
+        Returns:
+            Dict: A dictionary of CSS properties.
+        """
         return {
             '.FixedSumPair': {
                 'fill': 'cyan',

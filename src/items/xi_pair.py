@@ -1,23 +1,40 @@
 from typing import Dict
-
 from src.items.sum_pair import SumPair
 
 
 class XIPair(SumPair):
+    """Represent an 'XI' pair, inheriting from `SumPair`."""
 
     @property
     def total(self) -> int:
+        """Return the total value of the 'XI' pair.
+
+        Return 11 as the total value for 'XI' pairs.
+        """
         return 11
 
     @property
     def tags(self) -> set[str]:
+        """Return the set of tags associated with the 'XI' pair.
+
+        Include 'XI' along with the tags from the parent class.
+        """
         return super().tags.union({'XI'})
 
     @property
     def label(self) -> str:
+        """Return the label for the 'XI' pair.
+
+        Return "XI" as the label for this pair.
+        """
         return "XI"
 
     def css(self) -> Dict:
+        """Return the CSS styles for the 'XI' pair.
+
+        Define and return a dictionary of CSS styles for the foreground
+        and background elements.
+        """
         return {
             ".XIPairForeground": {
                 "font-size": "30px",

@@ -14,11 +14,10 @@ from src.utils.side import Side
 
 
 class Rossini(FirstN):
-    """Represents the Rossini constraint for a puzzle.
-    """
+    """Represents the Rossini constraint for a puzzle."""
 
     def __init__(self, board: Board, side: Side, index: int, order: Order):
-        """Initializes a Rossini object.
+        """Initialize a Rossini object.
 
         Args:
             board (Board): The puzzle board.
@@ -41,7 +40,7 @@ class Rossini(FirstN):
         return RossiniParser()
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Rossini object.
+        """Return a string representation of the Rossini object.
 
         Returns:
             str: The string representation.
@@ -57,7 +56,7 @@ class Rossini(FirstN):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rule for the Rossini constraint.
+        """Define the rule for the Rossini constraint.
 
         Returns:
             List[Rule]: A list containing a single rule for the Rossini constraint.
@@ -72,7 +71,7 @@ class Rossini(FirstN):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Returns the glyphs representing the Rossini constraint.
+        """Return the glyphs representing the Rossini constraint.
 
         Returns:
             List[Glyph]: A list containing the arrow glyph for the Rossini constraint.
@@ -87,7 +86,7 @@ class Rossini(FirstN):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the Rossini constraint.
+        """Return the tags associated with the Rossini constraint.
 
         Returns:
             set[str]: A set of tags including 'Comparison' and 'Rossini'.
@@ -96,7 +95,7 @@ class Rossini(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts Rossini constraint details from YAML data.
+        """Extract Rossini constraint details from YAML data.
 
         Args:
             board (Board): The puzzle board.
@@ -116,7 +115,7 @@ class Rossini(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a Rossini object from extracted YAML data.
+        """Create a Rossini object from extracted YAML data.
 
         Args:
             board (Board): The puzzle board.
@@ -129,7 +128,7 @@ class Rossini(FirstN):
         return cls(board, side, index, order)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the Rossini constraint to the given solver.
+        """Add the Rossini constraint to the given solver.
 
         Args:
             solver (PulpSolver): The solver to which the constraint will be added.
@@ -137,7 +136,7 @@ class Rossini(FirstN):
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> Dict:
-        """Converts the Rossini object to a dictionary representation.
+        """Convert the Rossini object to a dictionary representation.
 
         Returns:
             Dict: The dictionary representation of the Rossini object.
@@ -145,7 +144,7 @@ class Rossini(FirstN):
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
 
     def css(self) -> Dict:
-        """Returns the CSS style for displaying the Rossini constraint.
+        """Return the CSS style for displaying the Rossini constraint.
 
         Returns:
             Dict: The CSS style.

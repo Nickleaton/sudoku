@@ -19,7 +19,7 @@ class SumArrowLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines the rules for the SumArrowLine.
+        """Define the rules for the SumArrowLine.
 
         Returns:
             List[Rule]: A list of Rule objects specifying the arrow's summing requirement.
@@ -33,7 +33,7 @@ class SumArrowLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Creates a visual representation of the SumArrowLine.
+        """Create a visual representation of the SumArrowLine.
 
         Returns:
             List[Glyph]: A list containing an `ArrowLineGlyph` for rendering.
@@ -69,7 +69,7 @@ class SumArrowLine(Line):
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds constraints to the Pulp solver to enforce the sum rule along the arrow.
+        """Add constraints to the Pulp solver to enforce the sum rule along the arrow.
 
         The cells along the arrow must sum to the value in the starting cell. Additional constraints
         are added to optimize the solution by limiting possible values in specific regions.
@@ -78,8 +78,9 @@ class SumArrowLine(Line):
             solver (PulpSolver): The Pulp solver instance to which constraints will be added.
         """
 
+        # TODO: Move this to utils
         def triangular(n: int) -> int:
-            """Calculates the triangular number for `n`, representing the sum of first `n` integers.
+            """Calculate the triangular number for `n`, representing the sum of first `n` integers.
 
             Args:
                 n (int): The number of terms in the sum.
