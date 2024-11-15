@@ -130,12 +130,16 @@ select = [
     "PYI", # flake8-pyi
     "UP", # pyupgrade
     "RUF", # ruff
-#    "W", # pycodestyle
+    "W", # pycodestyle
 ]
 
-# Exclude D100 D102 for the moment
-
-ignore = ["F401", "I001", "D413", "D100"]
+ignore = [
+    "F401",  # Unused import (can be useful for certain IDEs or imports in tests)
+    "I001",  # Ignore missing type annotations (might be intentional for specific cases)
+    "D413",  # Docstring line too long (depends on project style or linter settings)
+    "D203",  # One blank line before class (we prefer no blank line before classes)
+    "D213"   # Multi-line docstring summary second line (we don't need a blank line after the summary)
+]
 
 
 fixable = ["ALL"]

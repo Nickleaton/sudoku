@@ -108,7 +108,7 @@ class Battenburg(Item):
             solver (PulpSolver): The solver instance to which the constraints are added.
         """
         _ = (Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1))
-        # TOOD Constraints implementation will go here
+        # TODO Constraints implementation will go here
 
     def to_dict(self) -> Dict:
         """Convert the Battenburg item to a dictionary for serialization.

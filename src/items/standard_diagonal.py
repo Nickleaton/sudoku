@@ -11,7 +11,7 @@ class StandardDiagonal(Diagonal):
 
     @property
     def rules(self) -> List[Rule]:
-        """Providesthe rule associated with the standard diagonal.
+        """Provide the rule associated with the standard diagonal.
 
         Returns:
             List[Rule]: A list of rules indicating that digits along the diagonal cannot repeat.

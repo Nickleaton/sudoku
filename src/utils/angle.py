@@ -7,11 +7,8 @@ class AngleException(Exception):
 
 
 class Angle:
-    """Represents an angle with properties to manage degrees and radians.
-
-    Attributes:
-        angle (float): The angle value in degrees, normalized to the range [0, 360).
-    """
+    # noinspection GrazieInspection
+    """Represents an angle with properties to manage degrees and radians."""
 
     def __init__(self, angle: float):
         """Initialize an Angle instance.

@@ -1,4 +1,6 @@
+"""FPuzzlesLoader."""
 import json
+from pathlib import Path
 from typing import Optional, Any
 
 from src.items.board import Board
@@ -8,18 +10,18 @@ from src.load_dump.loader import Loader, LoaderError
 class FPuzzlesLoader(Loader):
     """Loader for reading and processing FPuzzles JSON files to create Board objects."""
 
-    def __init__(self, filename: str) -> None:
-        """Initializes the loader by reading JSON data from a file.
+    def __init__(self, file_path: Path) -> None:
+        """Initialize the loader by reading JSON data from a file.
 
         Args:
-            filename (str): Path to the FPuzzles JSON file.
+            file_path (Path): Path to the FPuzzles JSON file.
         """
-        super().__init__(filename)
-        with open(filename) as file:
+        super().__init__(file_path)
+        with file_path.open(mode='r', encoding='utf-8') as file:
             self.raw = json.load(file)
 
     def process(self) -> Board:
-        """Processes the loaded data to create a Board instance based on board size.
+        """Process the loaded data to create a Board instance based on board size.
 
         Returns:
             Board: A Board instance configured for the puzzle's size.
@@ -53,7 +55,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def reference(self) -> Optional[str]:
-        """Fetches the puzzle reference URL from the JSON data, cast to a string if not None.
+        """Fetch the puzzle reference URL from the JSON data, cast to a string if not None.
 
         Returns:
             Optional[str]: URL reference for the puzzle, if available.
@@ -63,7 +65,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def title(self) -> Optional[str]:
-        """Fetches the puzzle title from the JSON data, cast to a string if not None.
+        """Fetch the puzzle title from the JSON data, cast to a string if not None.
 
         Returns:
             Optional[str]: Title of the puzzle, if available.
@@ -73,7 +75,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def author(self) -> Optional[str]:
-        """Fetches the puzzle author from the JSON data, cast to a string if not None.
+        """Fetch the puzzle author from the JSON data, cast to a string if not None.
 
         Returns:
             Optional[str]: Author of the puzzle, if available.
@@ -83,7 +85,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def size(self) -> Optional[int]:
-        """Fetches the puzzle board size from the JSON data, cast to an int if not None.
+        """Fetch the puzzle board size from the JSON data, cast to an int if not None.
 
         Returns:
             Optional[int]: Size of the puzzle board, if available.

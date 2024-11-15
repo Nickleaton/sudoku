@@ -13,7 +13,7 @@ class Line(Region):
     """Represents a line consisting of multiple cells on a board."""
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initializ a Line instance.
+        """Initialize a Line instance.
 
         Args:
             board (Board): The board associated with this line.

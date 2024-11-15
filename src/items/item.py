@@ -74,7 +74,7 @@ class Item:
 
     @classmethod
     def parser(cls) -> Parser:
-        """Returnsthe parser for this item.
+        """Return the parser for this item.
 
         Returns:
             Parser: The appropriate parser for this item.

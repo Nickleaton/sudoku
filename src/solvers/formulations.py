@@ -76,53 +76,53 @@ class Formulations:
         model += x - target <= upper * (1 - variable), f"Product_Binary_{target.name}_d"
 
     @staticmethod
-    def logical_and(model: LpProblem, dis: List[LpVariable]) -> LpVariable:
+    def logical_and(model: LpProblem, binaries: List[LpVariable]) -> LpVariable:
         """Implement a logical AND constraint.
 
         Args:
             model: The linear programming model to add constraints to.
-            dis: A list of binary decision variables.
+            binaries: A list of binary decision variables.
 
         Returns:
-            LpVariable: A binary variable that is 1 if all variables in dis are 1, else 0.
+            LpVariable: A binary variable that is 1 if all variables in binaries are 1, else 0.
         """
         d = LpVariable(f"l_and_{Formulations.count}", 0, 1, LpInteger)
-        n = len(dis)
-        for di in dis:
+        n = len(binaries)
+        for di in binaries:
             model += d <= di, f"Logical_And_{d.name}_{di.name}_a"
-        model += d >= lpSum(dis) - (n - 1), f"Logical_And_{d.name}_b"
+        model += d >= lpSum(binaries) - (n - 1), f"Logical_And_{d.name}_b"
         return d
 
     @staticmethod
-    def logical_or(model: LpProblem, dis: List[LpVariable]) -> LpVariable:
+    def logical_or(model: LpProblem, binaries: List[LpVariable]) -> LpVariable:
         """Implement a logical OR constraint.
 
         Args:
             model: The linear programming model to add constraints to.
-            dis: A list of binary decision variables.
+            binaries: A list of binary decision variables.
 
         Returns:
-            LpVariable: A binary variable that is 1 if at least one variable in dis is 1, else 0.
+            LpVariable: A binary variable that is 1 if at least one variable in binaries is 1, else 0.
         """
         d = LpVariable(f"l_or_{Formulations.count}", 0, 1, LpInteger)
-        for di in dis:
+        for di in binaries:
             model += d >= di, f"Logical_or_{d.name}_{di.name}_a"
         model += d <= 1, f"Logical_or_{d.name}_b"
         return d
 
     @staticmethod
-    def logical_not(model: LpProblem, di: LpVariable) -> LpVariable:
+    def logical_not(model: LpProblem, binary: LpVariable) -> LpVariable:
         """Implement a logical NOT constraint.
 
         Args:
             model: The linear programming model to add constraints to.
-            di: A binary decision variable.
+            binary: A binary decision variable.
 
         Returns:
             LpVariable: A binary variable that is the negation of di.
         """
         d = LpVariable(f"l_not_{Formulations.count}", 0, 1, LpInteger)
-        model += d == 1 - di, f"Logical_not_{di.name}"
+        model += d == 1 - binary, f"Logical_not_{binary.name}"
         return d
 
     @staticmethod

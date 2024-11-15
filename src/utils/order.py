@@ -1,4 +1,4 @@
-"""Enum to handle Orders - Increasing, Decreasing or unoredered."""
+"""Enum to handle Orders - Increasing, Decreasing or unordered."""
 from enum import Enum
 from typing import Dict
 
