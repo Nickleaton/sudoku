@@ -1,3 +1,4 @@
+"""TestColours."""
 import unittest
 from pathlib import Path
 
@@ -6,49 +7,52 @@ from src.utils.config import Config
 
 
 class TestColourSet(unittest.TestCase):
+    """Test the ColourSet class."""
 
     def setUp(self):
+        """Set up the test environment by creating the output directory and initializing the config."""
         self.directory = Path("output/tests/colours")
         self.directory.mkdir(parents=True, exist_ok=True)
         # Set up a mock config with known color values
         self.config = Config()
 
     def test_colours_retrieval(self):
-        # Test retrieving a valid color set
+        """Test retrieving a valid color set."""
         colors = ColourSet.colours("parity")
         self.assertEqual(colors, ["orange", "blue"])
 
     def test_missing_colour_set(self):
-        # Test for a missing color set
+        """Test for a missing color set."""
         with self.assertRaises(ColourException):
             ColourSet.colours("non_existent_set")
 
     def test_empty_colour_set(self):
-        # Test for an empty color set
+        """Test for an empty color set."""
         with self.assertRaises(ColourException):
             ColourSet.colours("empty")
 
     def test_colour_index_retrieval(self):
-        # Test for valid index retrieval
+        """Test for valid index retrieval in a color set."""
         color = ColourSet.colour("parity", 0)
         self.assertEqual(color, "orange")
         color = ColourSet.colour("parity", 1)
         self.assertEqual(color, "blue")
 
     def test_invalid_name(self):
+        """Test for an invalid color set name."""
         with self.assertRaises(ColourException):
             _ = ColourSet.colours("xxxx")
 
     def test_invalid_colour_index(self):
-        # Test for index out of range
+        """Test for index out of range in color retrieval."""
         with self.assertRaises(IndexError):
             ColourSet.colour("general", 99)  # Index 99 is out of range
 
     @staticmethod
     def generate_svg_grid(size: int, filename: Path):
+        """Generate an SVG grid of specified size filled with colors."""
         print(f"Producing file {filename.name}")
 
-        """Generates an SVG grid of specified size filled with colors."""
         colors = ColourSet.colours("general")
         svg_elements = []
         rect_size = 50  # Size of each square in the grid
@@ -76,10 +80,11 @@ class TestColourSet(unittest.TestCase):
         )
 
         # Write the SVG content to a file
-        with filename.open(mode= 'w',encoding='utf-8') as f:
+        with filename.open(mode= 'w', encoding='utf-8') as f:
             f.write(svg)
 
     def test_svg_generation(self):
+        """Test generating SVG grids of various sizes."""
         sizes = [4, 6, 9, 16]
         for size in sizes:
             self.config.reload()

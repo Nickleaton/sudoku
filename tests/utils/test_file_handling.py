@@ -1,3 +1,4 @@
+"""TestFileHandling."""
 import os
 import tempfile
 import unittest
@@ -7,15 +8,18 @@ from src.utils.file_handling import is_readable_file, is_writeable_file
 
 
 class TestFilePermissions(unittest.TestCase):
+    """Test file read and write permissions."""
 
     def test_nonexistent_file(self):
+        """Test non-existent file."""
         # Scenario 1: File that doesn't exist
         non_existent_file = Path(tempfile.gettempdir()) / "nonexistent_file.txt"
         self.assertFalse(is_readable_file(non_existent_file))
         self.assertTrue(is_writeable_file(non_existent_file))
 
     def test_existing_readable_writeable_file(self):
-        # Scenario 2: File that exists and is both readable and writeable
+        """Test an existing file that is both readable and writable."""
+        # Scenario 2: File that exists and is both readable and writable
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             file_path = Path(temp_file.name)
 
@@ -26,7 +30,8 @@ class TestFilePermissions(unittest.TestCase):
             file_path.unlink(missing_ok=True)  # Clean up the temporary file
 
     def test_existing_readable_not_writeable_file(self):
-        # Scenario 3: File that exists, is readable but not writeable
+        """Test an existing file that is readable but not writable."""
+        # Scenario 3: File that exists, is readable but not writable
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             file_path = Path(temp_file.name)
         try:

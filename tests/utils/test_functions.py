@@ -1,11 +1,14 @@
+"""TestFunctions."""
 import unittest
 
 from src.utils.functions import Functions
 
 
 class TestFunctions(unittest.TestCase):
+    """Test utility functions for generating triangular numbers and primes."""
 
     def test_triangular(self):
+        """Test the triangular number function."""
         self.assertEqual(1, Functions.triangular(1))
         self.assertEqual(3, Functions.triangular(2))
         self.assertEqual(6, Functions.triangular(3))
@@ -17,6 +20,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(45, Functions.triangular(9))
 
     def test_prime(self):
+        """Test the prime number function."""
         self.assertEqual(2, Functions.prime(0))
         self.assertEqual(3, Functions.prime(1))
         self.assertEqual(5, Functions.prime(2))

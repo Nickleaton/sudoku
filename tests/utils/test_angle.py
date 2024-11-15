@@ -1,3 +1,4 @@
+"""TestAngle."""
 import math
 import unittest
 
@@ -5,9 +6,10 @@ from src.utils.angle import Angle, AngleException
 
 
 class TestAngle(unittest.TestCase):
+    """Test the Angle class."""
 
     def test_angle(self):
-        # Test initialization and normalization
+        """Test initialization and normalization of angles."""
         theta = Angle(0.0)
         self.assertEqual(Angle(0.0), theta)
 
@@ -28,7 +30,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(0.1), theta)
 
     def test_add(self):
-        # Test angle addition
+        """Test angle addition and normalization."""
         theta = Angle(45.0)
         self.assertEqual(Angle(90.0), theta + theta)
 
@@ -37,7 +39,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(30.0), theta + Angle(40.0))
 
     def test_sub(self):
-        # Test angle subtraction
+        """Test angle subtraction and normalization."""
         theta = Angle(45.0)
         self.assertEqual(Angle(0.0), theta - theta)
 
@@ -46,7 +48,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(350.0), theta - Angle(20.0))
 
     def test_mul(self):
-        # Test angle multiplication
+        """Test angle multiplication and wraparound."""
         theta = Angle(45.0)
         self.assertEqual(Angle(90.0), theta * 2.0)
 
@@ -55,7 +57,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(360.0), theta * 2.0)  # Should normalize to 0
 
     def test_opposite(self):
-        # Test opposite angle (should add 180 degrees)
+        """Test opposite angle (should add 180 degrees)."""
         theta = Angle(10)
         self.assertEqual(Angle(190.0), theta.opposite)
 
@@ -64,7 +66,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(0.0), theta.opposite)
 
     def test_transform(self):
-        # Test transform string generation
+        """Test transform string generation."""
         theta = Angle(10.0)
         self.assertEqual("rotate(10.0)", theta.transform)
         theta = Angle(0.0)
@@ -75,12 +77,12 @@ class TestAngle(unittest.TestCase):
         self.assertEqual("rotate(10.0)", theta.transform)
 
     def test_repr(self):
-        # Test __repr__ method
+        """Test the __repr__ method."""
         theta = Angle(10.0)
         self.assertEqual("Angle(10.0)", str(theta))
 
     def test_compare(self):
-        # Test comparisons (==, !=, <, <=, >, >=)
+        """Test comparisons (==, !=, <, <=, >, >=)."""
         theta = Angle(10.0)
         beta = Angle(20.0)
         self.assertEqual(theta, theta)
@@ -98,7 +100,8 @@ class TestAngle(unittest.TestCase):
             _ = theta <= "xxx"
 
     def test_edge_case(self):
-        # Test very small angle close to 0 (should normalize correctly)
+        """Test very small and very large angles (should normalize correctly)."""
+        # Test very small angle close to 0
         theta = Angle(0.0001)
         self.assertEqual(Angle(0.0001), theta)
 
@@ -107,7 +110,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(359.9999), theta)
 
     def test_degrees_property(self):
-        # Test getting and setting degrees
+        """Test getting and setting degrees and normalization."""
         theta = Angle(45.0)
         self.assertEqual(theta.degrees, 45.0)
 
@@ -124,7 +127,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(theta.degrees, 315.0)
 
     def test_radians_property(self):
-        # Test getting and setting radians
+        """Test getting and setting radians and normalization."""
         theta = Angle(45.0)
         self.assertAlmostEqual(theta.radians, math.radians(45.0), places=6)
 

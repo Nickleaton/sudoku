@@ -1,3 +1,4 @@
+"""TestCoord."""
 import unittest
 from typing import Any
 
@@ -5,27 +6,33 @@ from src.utils.coord import Coord, CoordException
 
 
 class TestCoord(unittest.TestCase):
+    """Test the Coord class."""
 
     def test_transform(self):
+        """Test the transform method of the Coord class."""
         cell = Coord(1, 2)
         self.assertEqual("translate(200, 100)", cell.transform)
 
     def test_cell(self):
+        """Test the row and column attributes of the Coord class."""
         cell = Coord(1, 2)
         self.assertEqual(1, cell.row)
         self.assertEqual(2, cell.column)
 
     def test_add(self):
+        """Test adding two Coord instances."""
         cell = Coord(1, 2) + Coord(2, 3)
         self.assertEqual(3, cell.row)
         self.assertEqual(5, cell.column)
 
     def test_sub(self):
+        """Test subtracting two Coord instances."""
         cell = Coord(2, 3) - Coord(1, 2)
         self.assertEqual(1, cell.row)
         self.assertEqual(1, cell.column)
 
     def test_mul(self):
+        """Test multiplying a Coord instance by a scalar or another Coord."""
         cell = Coord(1, 2) * 2.0
         self.assertEqual(2, cell.row)
         self.assertEqual(4, cell.column)
@@ -37,42 +44,51 @@ class TestCoord(unittest.TestCase):
             _ = cell1 * "number"
 
     def test_truediv(self):
+        """Test dividing a Coord instance by a scalar."""
         cell = Coord(2, 4) / 2.0
         self.assertEqual(1, cell.row)
         self.assertEqual(2, cell.column)
 
     def test_neg(self):
+        """Test negating a Coord instance."""
         cell = -Coord(1, -2)
         self.assertEqual(-1, cell.row)
         self.assertEqual(2, cell.column)
 
     def test_eq(self):
+        """Test equality comparison between two Coord instances."""
         self.assertTrue(Coord(1, 2) == Coord(1, 2))
 
     def test_ne(self):
+        """Test inequality comparison between two Coord instances."""
         self.assertTrue(Coord(2, 2) != Coord(1, 2))
 
     def test_lt(self):
+        """Test less-than comparison between two Coord instances."""
         self.assertTrue(Coord(1, 2) < Coord(2, 2))
         self.assertTrue(Coord(1, 2) < Coord(1, 3))
         self.assertFalse(Coord(1, 2) < Coord(1, 2))
 
     def test_middle(self):
+        """Test finding the middle point between two Coord instances."""
         coord = Coord.middle(Coord(1, 1), Coord(1, 2))
         self.assertEqual(1, coord.row)
         self.assertEqual(1.5, coord.column)
 
     def test_point(self):
+        """Test the point representation of a Coord instance."""
         cell = Coord(1, 2)
         self.assertEqual(100, cell.point.y)
         self.assertEqual(200, cell.point.x)
 
     def test_center(self):
+        """Test the center point of a Coord instance."""
         cell = Coord(1, 1)
         self.assertEqual(1.5, cell.center.row)
         self.assertEqual(1.5, cell.center.column)
 
     def test_corners(self):
+        """Test the corner points of a Coord instance."""
         cell = Coord(1, 1)
         self.assertEqual(1, cell.top_right.row)
         self.assertEqual(2, cell.top_right.column)
@@ -84,10 +100,12 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(1, cell.bottom_left.column)
 
     def test_repr(self):
+        """Test the string representation of a Coord instance."""
         cell = Coord(1, 2)
         self.assertEqual("Coord(1, 2)", str(cell))
 
     def test_compare(self):
+        """Test comparison operators for Coord instances."""
         coord1 = Coord(1, 2)
         coord2 = Coord(2, 1)
         coord3 = Coord(1, 3)
@@ -105,10 +123,12 @@ class TestCoord(unittest.TestCase):
 
     @staticmethod
     def check_yaml(yaml: Any) -> int:
+        """Validate the given YAML and return the number of errors."""
         errors = Coord.validate(yaml)
         return len(errors)
 
     def test_validate(self):
+        """Test the validation of various YAML inputs."""
         self.assertEqual(0, TestCoord.check_yaml([1, 1]))
         self.assertEqual(1, TestCoord.check_yaml([1, 2, 3]))
         self.assertEqual(1, TestCoord.check_yaml("xxx"))
@@ -116,5 +136,5 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(1, TestCoord.check_yaml([1, 'y']))
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == '__main__':
     unittest.main()
