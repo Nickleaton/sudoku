@@ -2,6 +2,7 @@ import unittest
 
 from src.items.board import Board
 from src.solvers.answer import Answer
+from src.utils.sudoku_exception import SudokuException
 
 
 class TestAnswer(unittest.TestCase):
@@ -67,7 +68,7 @@ class TestAnswer(unittest.TestCase):
     def test_equality(self):
         self.assertEqual(self.item, self.item)
         self.assertNotEqual(self.item, self.other)
-        with self.assertRaises(Exception):
+        with self.assertRaises(SudokuException):
             _ = self.item == '123'
 
     def test_string(self):

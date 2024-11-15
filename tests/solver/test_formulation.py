@@ -9,8 +9,8 @@ from src.solvers.formulations import Formulations
 
 
 class TestFormulation(unittest.TestCase):
-    logs: Dict[str, int] = {}
-    lp_files: Dict[str, int] = {}
+    logs: ClassVar[Dict[str, int]] = {}
+    lp_files: ClassVar[Dict[str, int]] = {}
 
     def setUp(self) -> None:
         """Initializes the test environment by setting up the base directory, log path, and lp path.

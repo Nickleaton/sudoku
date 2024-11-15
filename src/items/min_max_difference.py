@@ -2,8 +2,6 @@
 import re
 from typing import List, Any, Dict
 
-from src.exceptions import SudokuException
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board

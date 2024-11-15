@@ -3,6 +3,7 @@ from itertools import product
 from typing import List, Optional, Dict
 
 from src.items.board import Board
+from src.utils.sudoku_exception import SudokuException
 
 
 class Answer:
@@ -88,7 +89,7 @@ class Answer:
                 if self.get_value(row, column) != other.get_value(row, column):
                     return False
             return True
-        return other == self
+        raise SudokuException(f"Cannot compare {other.__class__.__name__} with {self.__class__.__name__}")
 
     @classmethod
     def extract(cls, _: Board, yaml: Dict) -> List[str]:

@@ -1,20 +1,21 @@
 from pathlib import Path
-
-from strictyaml import load
-
-from generated_config_schema2 import problem_schema as problem_schema
+from strictyaml import load, YAMLParseError
+from generated_config_schema2 import problem_schema
 
 
-# from config_schema import problem_schema
-
-
-def yaml_files(yaml_file):
-    """Test to validate each YAML file against a strictyaml schema"""
-    with yaml_file.open() as f:
-        yaml_content = f.read()
-    parsed_yaml = load(yaml_content, problem_schema)
-    assert parsed_yaml is not None, f"Failed to load YAML file: {yaml_file.name}"
+def validate_yaml_file(yaml_file: Path):
+    """Validate a YAML file against the strictyaml schema."""
+    try:
+        with yaml_file.open() as f:
+            yaml_content = f.read()
+        parsed_yaml = load(yaml_content, problem_schema)
+        if parsed_yaml is None:
+            raise ValueError(f"Failed to load YAML file: {yaml_file.name}")
+    except YAMLParseError as e:
+        raise ValueError(f"Failed to parse YAML file {yaml_file.name}: {e}")
+    except Exception as e:
+        raise ValueError(f"Unexpected error with YAML file {yaml_file.name}: {e}")
 
 
 if __name__ == "__main__":
-    yaml_files(Path('problems/easy/problem001.yaml'))
+    validate_yaml_file(Path('problems/easy/problem001.yaml'))

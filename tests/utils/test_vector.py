@@ -112,7 +112,7 @@ class TestVector(unittest.TestCase):
         self.assertEqual(self.line_one, self.line_one.merge(self.line_one))
         self.assertEqual(self.line_one, self.line_one.merge(-self.line_one))
         self.assertEqual(Vector(Coord(1, 0), Coord(-1, 0)), self.line_one.merge(self.line_five))
-        with self.assertRaises(Exception):
+        with self.assertRaises(VectorException):
             _ = self.line_one.merge(self.line_four)
 
     def test_add(self):
@@ -121,7 +121,7 @@ class TestVector(unittest.TestCase):
         self.assertEqual(Vector(Coord(3, 3), Coord(4, 1)), vector1 + vector2)
         coord = Coord(2, 2)
         self.assertEqual(Vector(Coord(3, 3), Coord(4, 3)), vector1 + coord)
-        with self.assertRaises(Exception):
+        with self.assertRaises(VectorException):
             _ = vector1 + "x"
 
     def test_comparison(self):

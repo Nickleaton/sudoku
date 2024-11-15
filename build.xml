@@ -149,7 +149,6 @@
     </target>
 
 
-
     <target name="convert-json-to-yaml">
         <mkdir dir="problems/fpuzzles/yaml"/>
         <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
@@ -196,6 +195,14 @@
         </exec>
     </target>
 
+    <target name="bandit.tests">
+        <mkdir dir="output/bandit"/>
+        <exec executable="bandit" failonerror="false" taskname="bandit" output="output/bandit/tests.txt">
+            <arg value="-r"/>
+            <arg value="tests/"/>
+        </exec>
+    </target>
+
     <target name="vulture">
         <mkdir dir="output/vulture"/>
         <exec executable="vulture" failonerror="false" taskname="vulture" output="output/vulture/vulture.txt">
@@ -204,7 +211,7 @@
         </exec>
     </target>
 
-      <!-- Macro definition for running pydocstyle on a specified name -->
+    <!-- Macro definition for running pydocstyle on a specified name -->
     <macrodef name="run-pydocstyle">
         <attribute name="name"/>
         <sequential>

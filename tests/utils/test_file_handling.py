@@ -31,11 +31,11 @@ class TestFilePermissions(unittest.TestCase):
             file_path = Path(temp_file.name)
         try:
             # Make file read-only
-            os.chmod(file_path, 0o444)  # Read-only permissions
+            file_path.chmod(0o444)  # Read-only permissions
             self.assertTrue(is_readable_file(file_path))
             self.assertFalse(is_writeable_file(file_path))
         finally:
-            os.chmod(file_path, 0o666)  # Restore write permissions for cleanup
+            file_path.chmod(0o666)  # Restore write permissions for cleanup
             file_path.unlink(missing_ok=True)
 
 
