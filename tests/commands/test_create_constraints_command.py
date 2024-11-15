@@ -1,3 +1,4 @@
+"""TestCreateConstraintsCommand."""
 import unittest
 
 from src.commands.create_board_command import CreateBoardCommand
@@ -8,8 +9,10 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestCreateConstraintsCommand(TestSimpleCommand):
+    """Test suite for the CreateConstraintsCommand class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand()
@@ -18,12 +21,15 @@ class TestCreateConstraintsCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the CreateConstraintsCommand."""
         return "CreateConstraintsCommand('config', 'board', 'constraints')"
 
     def test_repr(self):
+        """Test the __repr__ method of the CreateConstraintsCommand."""
         self.assertEqual(self.representation, repr(self.command))
 
     def test_execute(self):
+        """Test the execute method of the CreateConstraintsCommand."""
         self.assertIsNotNone(self.problem.config)
         self.assertIsNotNone(self.problem.board)
         self.assertIsNone(self.problem.constraints)

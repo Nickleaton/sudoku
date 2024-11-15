@@ -1,3 +1,4 @@
+"""TestSvgSolutionCommand."""
 import unittest
 
 from src.commands.svg_solution_command import SVGSolutionCommand
@@ -9,13 +10,23 @@ from tests.commands.test_svg_command import TestSVGCommand
 
 
 class SVGTestSolutionCommand(TestSVGCommand):
+    """Test suite for SVGSolutionCommand class."""
 
-    def setUp(self) -> None:
+    def setUp(self):
+        """Set up the test environment for SVGSolutionCommand."""
         super().setUp()
         self.command = SVGSolutionCommand('svg')
 
     @property
-    def in_select(self) -> Item | None:
+    def in_select(self):
+        """Return an item to be included in the output of the command.
+
+        If this property is not `None`, the `select` method of the command should
+        return `True` for this item.
+
+        Returns:
+            Item: An item to be selected, or `None`.
+        """
         return Solution(
             self.problem.board,
             [
@@ -32,7 +43,15 @@ class SVGTestSolutionCommand(TestSVGCommand):
         )
 
     @property
-    def out_select(self) -> Item | None:
+    def out_select(self):
+        """Return an item not to be included in the output of the command.
+
+        If this property is not `None`, the `select` method of the command should
+        return `False` for this item.
+
+        Returns:
+            Item: An item that should not be selected, or `None`.
+        """
         return Battenburg(self.problem.board, Coord(2, 2))
 
 

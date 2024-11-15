@@ -1,3 +1,4 @@
+"""TestSvgCommand."""
 import unittest
 
 from src.commands.create_board_command import CreateBoardCommand
@@ -9,8 +10,10 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestSVGCommand(TestSimpleCommand):
+    """Test suite for SVGCommand class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for SVGCommand."""
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
             | CreateBoardCommand() \
@@ -19,15 +22,18 @@ class TestSVGCommand(TestSimpleCommand):
         self.command = SVGCommand('svg')
 
     def test_execute(self):
+        """Test the execution of the SVGCommand."""
         self.assertNotIn('svg', self.problem)
         self.command.execute(self.problem)
         self.assertIn('svg', self.problem)
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the command."""
         return f"{self.command.__class__.__name__}({self.command.problem_field!r})"
 
     def test_repr(self):
+        """Test the `repr` method of the command."""
         self.assertEqual(self.representation, repr(self.command))
 
     def test_in_select(self):
@@ -50,7 +56,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def in_select(self) -> Item | None:
-        """An item that should be included in the output of the command.
+        """Return an item that should be included in the output of the command.
 
         If this property is not `None`, the `select` method of the command
         should return `True` for this item.
@@ -62,7 +68,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def out_select(self) -> Item | None:
-        """An item that should not be included in the output of the command.
+        """Return an item that should not be included in the output of the command.
 
         If this property is not `None`, the `select` method of the command
         should return `False` for this item.

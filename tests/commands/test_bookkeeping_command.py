@@ -1,3 +1,4 @@
+"""TestBookkeepingCommand."""
 import unittest
 
 from src.commands.bookkeeping_command import BookkeepingCommand
@@ -9,8 +10,10 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
+    """Test suite for the BookkeepingCommand."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
@@ -20,13 +23,15 @@ class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
         self.command = BookkeepingCommand()
 
     def test_command(self):
+        """Test the execution of the BookkeepingCommand."""
         self.command.execute(self.problem)
         self.assertIn("bookkeeping_unique", self.problem)
         self.assertIsNotNone(self.problem["bookkeeping_unique"])
-        # TODO check that the bookkeeping is unique
+        # TODO: Check that the bookkeeping is unique
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the command."""
         return r"BookkeepingCommand('constraints', 'bookkeeping_unique')"
 
 

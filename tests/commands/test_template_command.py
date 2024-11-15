@@ -1,3 +1,4 @@
+"""TestTemplateCommand."""
 import unittest
 from pathlib import Path
 
@@ -12,8 +13,14 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestTemplateCommand(TestSimpleCommand):
+    """Test suite for TemplateCommand class."""
 
-    def setUp(self) -> None:
+    def setUp(self):
+        """Set up the test environment for TemplateCommand.
+
+        This method sets up the problem and executes the required commands to
+        prepare for testing the TemplateCommand.
+        """
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                         | CreateMetaCommand() \
@@ -25,14 +32,28 @@ class TestTemplateCommand(TestSimpleCommand):
         self.command = TemplateCommand(template=Path('src\\html\\problem.html'), target='html')
 
     def test_command(self):
+        """Test the execution of TemplateCommand.
+
+        This method checks if the TemplateCommand correctly generates the HTML output
+        for the given problem.
+        """
         self.command.execute(self.problem)
         self.assertIsNotNone(self.problem.html)
 
     @property
-    def representation(self) -> str:
+    def representation(self):
+        """Return the string representation of the TemplateCommand.
+
+        Returns:
+            str: The representation of the TemplateCommand instance.
+        """
         return "TemplateCommand('src\\\\html\\\\problem.html', 'html')"
 
     def test_repr(self):
+        """Test the __repr__ method of TemplateCommand.
+
+        This method checks if the string representation matches the expected value.
+        """
         self.assertEqual(self.representation, repr(self.command))
 
 

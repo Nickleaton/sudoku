@@ -1,3 +1,4 @@
+"""TestImageCommand."""
 import unittest
 from pathlib import Path
 
@@ -11,8 +12,10 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestImageCommand(TestSimpleCommand):
+    """Test suite for the ImageCommand class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         super().setUp()
         self.problem = Problem()
         requirements = LoadConfigCommand(self.path) \
@@ -24,18 +27,19 @@ class TestImageCommand(TestSimpleCommand):
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the ImageCommand."""
         return "ImageCommand('svg', WindowsPath('test.svg'))"
 
     def test_execute(self):
+        """Test the execute method of ImageCommand."""
         self.assertIsNotNone(self.problem.svg)
         if self.command.target.exists():
             self.command.target.unlink(missing_ok=True)
         self.command.execute(self.problem)
         self.assertTrue(self.command.target.exists())
-        # if self.command.file.exists():
-        #     self.command.file.unlink(missing_ok=True)
 
     def xtest_formats(self):
+        """Test different image formats."""
         for fmt in ImageFormat:
             self.command.image_format = fmt
             self.command.target = Path(f"test.{fmt.name.lower()}")

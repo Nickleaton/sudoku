@@ -1,3 +1,4 @@
+"""TestCreateSolverCommand."""
 import unittest
 
 from src.commands.create_board_command import CreateBoardCommand
@@ -8,8 +9,10 @@ from tests.commands.test_command import TestCommand
 
 
 class TestCreateSolverCommand(TestCommand):
+    """Test suite for the CreateSolverCommand class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
@@ -18,14 +21,17 @@ class TestCreateSolverCommand(TestCommand):
         self.command = CreateSolverCommand()
 
     def test_command(self):
+        """Test the execute method of CreateSolverCommand."""
         self.command.execute(self.problem)
         self.assertIsNotNone(self.problem.solver)
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the CreateSolverCommand."""
         return "CreateSolverCommand('config', 'board', 'solver')"
 
     def test_repr(self):
+        """Test the string representation of the command."""
         self.assertEqual(self.representation, repr(self.command))
 
 

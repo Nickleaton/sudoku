@@ -1,7 +1,7 @@
+"""TestSolveCommand."""
 import unittest
 
 from src.commands.create_linear_program_command import CreateLinearProgramCommand
-
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.create_solver_command import CreateSolverCommand
@@ -12,8 +12,10 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestSolveCommand(TestSimpleCommand):
+    """Test suite for SolveCommand class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for SolveCommand."""
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
@@ -24,12 +26,14 @@ class TestSolveCommand(TestSimpleCommand):
         self.command = SolveCommand()
 
     def test_command(self):
+        """Test the execution of the SolveCommand."""
         self.assertEqual(self.problem.solver.status, Status.NOT_SOLVED)
         self.command.execute(self.problem)
         self.assertEqual(self.problem.solver.status, Status.OPTIMAL)
 
     @property
     def representation(self) -> str:
+        """Return a string representation of the SolveCommand."""
         return "SolveCommand('solver', 'solution', 'log')"
 
 

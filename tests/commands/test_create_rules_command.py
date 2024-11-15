@@ -1,3 +1,4 @@
+"""TestCreateRulesCommand."""
 import unittest
 
 from src.commands.create_board_command import CreateBoardCommand
@@ -8,8 +9,10 @@ from tests.commands.test_simple_command import TestSimpleCommand
 
 
 class TestCreateRulesCommand(TestSimpleCommand):
+    """Test suite for the CreateRulesCommand class."""
 
     def setUp(self) -> None:
+        """Set up the test environment."""
         super().setUp()
         requirements = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
@@ -18,14 +21,17 @@ class TestCreateRulesCommand(TestSimpleCommand):
         self.command = CreateRulesCommand()
 
     def test_command(self):
+        """Test the execute method of CreateRulesCommand."""
         self.command.execute(self.problem)
         self.assertIsNotNone(self.problem.rules)
 
     @property
     def representation(self) -> str:
+        """Return the string representation of the CreateRulesCommand."""
         return "CreateRulesCommand('constraints', 'rules')"
 
     def test_repr(self):
+        """Test the string representation of the command."""
         self.assertEqual(self.representation, repr(self.command))
 
 
