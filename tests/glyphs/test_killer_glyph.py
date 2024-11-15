@@ -1,3 +1,4 @@
+"""TestKillerGlyph."""
 import unittest
 from typing import Type
 
@@ -8,8 +9,13 @@ from tests.glyphs.test_glyph import TestGlyph
 
 
 class TestKillerGlyph(TestGlyph):
+    """Test suite for the KillerGlyph class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for KillerGlyph.
+
+        Initializes the cells and a KillerGlyph instance for testing.
+        """
         super().setUp()
         cells = [
             Coord(1, 3),
@@ -26,10 +32,20 @@ class TestKillerGlyph(TestGlyph):
 
     @property
     def target(self):
+        """Get the target SVG markup for the KillerGlyph.
+
+        Returns:
+            str: The expected target SVG markup.
+        """
         return '<g />'
 
     @property
     def representation(self) -> str:
+        """Get the string representation of the KillerGlyph instance.
+
+        Returns:
+            str: The string representation of the KillerGlyph.
+        """
         return (
             "KillerGlyph('Style', "
             "["
@@ -41,6 +57,11 @@ class TestKillerGlyph(TestGlyph):
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
+        """Get the expected set of classes that KillerGlyph should inherit from.
+
+        Returns:
+            set[Type[Glyph]]: A set containing the expected classes.
+        """
         return {Glyph, KillerGlyph}
 
 

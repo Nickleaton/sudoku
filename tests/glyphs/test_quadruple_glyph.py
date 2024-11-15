@@ -1,3 +1,4 @@
+"""TestQuadrupleGlyph."""
 import unittest
 from typing import Type
 
@@ -8,13 +9,23 @@ from tests.glyphs.test_glyph import TestGlyph
 
 
 class TestQuadrupleGlyph(TestGlyph):
+    """Test suite for the QuadrupleGlyph class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for QuadrupleGlyph.
+
+        Initializes the style, coordinates, and value ('1234') for the QuadrupleGlyph.
+        """
         super().setUp()
         self.glyph = QuadrupleGlyph("Style", Coord(2, 2), "1234")
 
     @property
-    def target(self):
+    def target(self) -> str:
+        """Get the expected SVG markup for the QuadrupleGlyph.
+
+        Returns:
+            str: The expected SVG markup for the QuadrupleGlyph, including a circle and text elements.
+        """
         return (
             '<g>'
             '<circle class="StyleCircle" cx="300" cy="300" r="35" />'
@@ -26,10 +37,20 @@ class TestQuadrupleGlyph(TestGlyph):
 
     @property
     def representation(self) -> str:
+        """Get the string representation of the QuadrupleGlyph instance.
+
+        Returns:
+            str: The string representation of the QuadrupleGlyph with style, coordinates, and value.
+        """
         return "QuadrupleGlyph('Style', Coord(2, 2), '1234')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
+        """Get the expected set of classes that QuadrupleGlyph should inherit from.
+
+        Returns:
+            set[Type[Glyph]]: A set containing the expected classes.
+        """
         return {Glyph, QuadrupleGlyph}
 
 

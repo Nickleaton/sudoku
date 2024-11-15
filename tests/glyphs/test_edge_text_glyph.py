@@ -1,3 +1,4 @@
+"""TestEdgeTextGlyph."""
 import unittest
 from typing import Type
 
@@ -9,13 +10,23 @@ from tests.glyphs.test_glyph import TestGlyph
 
 
 class TestEdgeTextGlyph(TestGlyph):
+    """Test suite for the EdgeTextGlyph class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for EdgeTextGlyph.
+
+        Initializes an instance of EdgeTextGlyph with the given style, offset, and coordinates.
+        """
         super().setUp()
         self.glyph = EdgeTextGlyph('Style', 0, Coord(1, 1), Coord(1, 2), 'X')
 
     @property
-    def target(self):
+    def target(self) -> str:
+        """Get the target SVG markup for EdgeTextGlyph.
+
+        Returns:
+            str: The SVG markup representing the EdgeTextGlyph, including both foreground and background text elements.
+        """
         return (
             '<g>'
             '<text class="StyleBackground" transform="translate(150.0, 100.0) ">'
@@ -29,10 +40,20 @@ class TestEdgeTextGlyph(TestGlyph):
 
     @property
     def representation(self) -> str:
+        """Return the string representation of EdgeTextGlyph.
+
+        Returns:
+            str: The string representation of the EdgeTextGlyph instance.
+        """
         return "EdgeTextGlyph('Style', 0.0, Coord(1, 1), Coord(1, 2), 'X')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
+        """Get the expected set of classes that EdgeTextGlyph should inherit from.
+
+        Returns:
+            set[Type[Glyph]]: A set containing the expected classes.
+        """
         return {EdgeTextGlyph, Glyph, TextGlyph}
 
 

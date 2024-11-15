@@ -1,3 +1,4 @@
+"""TestBetweenLineGlyph."""
 import unittest
 from typing import Type
 
@@ -9,13 +10,23 @@ from tests.glyphs.test_poly_line_glyph import TestPolyLineGlyph
 
 
 class TestBetweenLineGlyph(TestPolyLineGlyph):
+    """Test suite for BetweenLineGlyph class."""
 
     def setUp(self) -> None:
+        """Set up the test environment for BetweenLineGlyph.
+
+        Initializes an instance of BetweenLineGlyph with the given style and coordinates.
+        """
         super().setUp()
         self.glyph = BetweenLineGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])
 
     @property
     def start_marker(self) -> str:
+        """Get the start marker SVG markup for BetweenLineGlyph.
+
+        Returns:
+            str: The SVG markup for the start marker of the BetweenLineGlyph.
+        """
         return (
             '<marker class="Between BetweenStart" id="Between-start" markerHeight="35" markerWidth="35" '
             'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
@@ -23,13 +34,23 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
 
     @property
     def end_marker(self) -> str:
+        """Get the end marker SVG markup for BetweenLineGlyph.
+
+        Returns:
+            str: The SVG markup for the end marker of the BetweenLineGlyph.
+        """
         return (
             '<marker class="Between BetweenEnd" id="Between-end" markerHeight="35" markerWidth="35" '
             'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
         )
 
     @property
-    def target(self):
+    def target(self) -> str:
+        """Get the target SVG markup for BetweenLineGlyph.
+
+        Returns:
+            str: The SVG markup for the polyline representing the BetweenLineGlyph.
+        """
         return (
             '<polyline class="Style" '
             'marker-end="url(#Style-end)" '
@@ -39,10 +60,20 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
 
     @property
     def representation(self) -> str:
+        """Return the string representation of BetweenLineGlyph.
+
+        Returns:
+            str: The string representation of the BetweenLineGlyph instance.
+        """
         return "BetweenLineGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
+        """Get the expected set of classes that BetweenLineGlyph should inherit from.
+
+        Returns:
+            set[Type[Glyph]]: A set containing the expected classes.
+        """
         return {BetweenLineGlyph, Glyph, PolyLineGlyph}
 
 
