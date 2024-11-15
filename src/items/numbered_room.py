@@ -21,7 +21,7 @@ class NumberedRoom(Item):
     """
 
     def __init__(self, board: Board, side: Side, index: int, digit: int):
-        """Initializes the NumberedRoom with the given board, side, index, and digit.
+        """Initialize the NumberedRoom with the given board, side, index, and digit.
 
         Args:
             board (Board): The board this item belongs to.
@@ -48,7 +48,7 @@ class NumberedRoom(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Returns True if the NumberedRoom is part of a sequence.
+        """Return True if the NumberedRoom is part of a sequence.
 
         Returns:
             bool: True, since the NumberedRoom is part of a sequence.
@@ -57,7 +57,7 @@ class NumberedRoom(Item):
 
     @classmethod
     def parser(cls) -> FrameParser:
-        """Returns the parser for the NumberedRoom.
+        """Return the parser for the NumberedRoom.
 
         Returns:
             FrameParser: The parser associated with the NumberedRoom item.
@@ -66,7 +66,7 @@ class NumberedRoom(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Tuple:
-        """Extracts the side, index, and digit from the YAML configuration for the NumberedRoom.
+        """Extract the side, index, and digit from the YAML configuration for the NumberedRoom.
 
         Args:
             board (Board): The board associated with the item.
@@ -83,7 +83,7 @@ class NumberedRoom(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates a NumberedRoom item from the given YAML configuration.
+        """Create a NumberedRoom item from the given YAML configuration.
 
         Args:
             board (Board): The board associated with this item.
@@ -96,7 +96,7 @@ class NumberedRoom(Item):
         return cls(board, side, offset, digit)
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the glyphs for the NumberedRoom.
+        """Generate the glyphs for the NumberedRoom.
 
         Returns:
             List[Glyph]: A list containing a `TextGlyph` representing the digit for the NumberedRoom.
@@ -107,7 +107,7 @@ class NumberedRoom(Item):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the NumberedRoom.
+        """Return the rules associated with the NumberedRoom.
 
         Returns:
             List[Rule]: A list containing a single rule for the NumberedRoom.
@@ -125,7 +125,7 @@ class NumberedRoom(Item):
         ]
 
     def __repr__(self) -> str:
-        """Returns a string representation of the NumberedRoom.
+        """Return a string representation of the NumberedRoom.
 
         Returns:
             str: A string representation of the NumberedRoom item.
@@ -133,7 +133,7 @@ class NumberedRoom(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.digit})"
 
     def to_dict(self) -> Dict:
-        """Converts the NumberedRoom to a dictionary representation.
+        """Convert the NumberedRoom to a dictionary representation.
 
         Returns:
             Dict: A dictionary representing the NumberedRoom item.
@@ -141,7 +141,7 @@ class NumberedRoom(Item):
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the constraints for the NumberedRoom to the solver.
+        """Add the constraints for the NumberedRoom to the solver.
 
         Depending on the side of the NumberedRoom, the constraint is added by comparing
         the choices for the digit in the specified row/column.
@@ -173,7 +173,7 @@ class NumberedRoom(Item):
             raise Exception(f"Unexpected Side {self.side.name}")
 
     def css(self) -> Dict:
-        """Returns the CSS styles associated with the NumberedRoom glyphs.
+        """Return the CSS styles associated with the NumberedRoom glyphs.
 
         Returns:
             Dict: A dictionary containing the CSS styles for the NumberedRoom glyphs.

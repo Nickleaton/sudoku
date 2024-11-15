@@ -12,12 +12,14 @@ from src.utils.side import Side
 
 
 class Outside(FirstN):
-    """Represents a constraint where a clue outside a row or column specifies digits
+    """Outside Constraint.
+
+    A constraint where a clue outside a row or column specifies digits
     that must appear in the first three cells nearest the clue in that row or column.
     """
 
     def __init__(self, board: Board, side: Side, index: int, digits: List[int]):
-        """Initializes the Outside item with the given board, side, index, and digits.
+        """Initialize the Outside item with the given board, side, index, and digits.
 
         Args:
             board (Board): The board this item belongs to.
@@ -29,7 +31,7 @@ class Outside(FirstN):
         self.digits = digits
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Outside item.
+        """Return a string representation of the Outside item.
 
         Returns:
             str: A string representation of the Outside item.
@@ -45,7 +47,7 @@ class Outside(FirstN):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the Outside constraint.
+        """Return the rules associated with the Outside constraint.
 
         Returns:
             List[Rule]: A list containing a single rule for the Outside constraint.
@@ -60,7 +62,7 @@ class Outside(FirstN):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the glyphs for the Outside constraint.
+        """Generate the glyphs for the Outside constraint.
 
         This method generates a text glyph that displays the digits for the Outside constraint
         at the appropriate position.
@@ -74,7 +76,7 @@ class Outside(FirstN):
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the Outside item.
+        """Return the tags associated with the Outside item.
 
         Returns:
             set[str]: A set of tags, including 'Comparison' and 'Order'.
@@ -83,7 +85,7 @@ class Outside(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: Dict) -> Any:
-        """Extracts the side, index, and digits for the Outside constraint from the YAML configuration.
+        """Extract the side, index, and digits for the Outside constraint from the YAML configuration.
 
         Args:
             board (Board): The board associated with this item.
@@ -100,7 +102,7 @@ class Outside(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
-        """Creates an Outside item from the given YAML configuration.
+        """Create an Outside item from the given YAML configuration.
 
         Args:
             board (Board): The board associated with this item.
@@ -113,7 +115,7 @@ class Outside(FirstN):
         return cls(board, side, index, digits)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds the constraint to the solver for the Outside item.
+        """Add the constraint to the solver for the Outside item.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -121,7 +123,7 @@ class Outside(FirstN):
         self.add_contains_constraint(solver, self.digits)
 
     def to_dict(self) -> Dict:
-        """Converts the Outside item to a dictionary representation.
+        """Convert the Outside item to a dictionary representation.
 
         Returns:
             Dict: A dictionary representing the Outside item.
@@ -129,7 +131,7 @@ class Outside(FirstN):
         return {self.__class__.__name__: f"{self.side.value}{self.index}={''.join([str(d) for d in self.digits])}"}
 
     def css(self) -> Dict:
-        """Returns the CSS styles associated with the Outside glyphs.
+        """Return the CSS styles associated with the Outside glyphs.
 
         Returns:
             Dict: A dictionary containing the CSS styles for the Outside glyphs.

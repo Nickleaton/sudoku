@@ -12,7 +12,7 @@ class OddCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Checks if the given digit is odd and valid for OddCell.
+        """Check if the given digit is odd and valid for OddCell.
 
         Args:
             digit (int): The digit to check.
@@ -23,7 +23,7 @@ class OddCell(SimpleCellReference):
         return digit % 2 == 1
 
     def svg(self) -> Optional[Glyph]:
-        """Returns the SVG representation of the OddCell.
+        """Return the SVG representation of the OddCell.
 
         Returns:
             Optional[Glyph]: Returns None as the SVG representation is not available for OddCell.
@@ -31,7 +31,7 @@ class OddCell(SimpleCellReference):
         return None
 
     def letter(self) -> str:
-        """Returns the letter representation of an OddCell.
+        """Return the letter representation of an OddCell.
 
         Returns:
             str: The letter 'o' representing OddCell.
@@ -40,7 +40,7 @@ class OddCell(SimpleCellReference):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with OddCell.
+        """Return the rules associated with OddCell.
 
         Returns:
             List[Rule]: A list of rules, indicating that an opaque grey circle must contain an odd digit.
@@ -48,7 +48,7 @@ class OddCell(SimpleCellReference):
         return [Rule("Odd", 1, "An opaque grey circle must contain an odd digit")]
 
     def glyphs(self) -> List[Glyph]:
-        """Returns a list of Glyphs associated with OddCell.
+        """Return a list of Glyphs associated with OddCell.
 
         Returns:
             List[Glyph]: A list containing the OddCellGlyph for this cell.
@@ -57,7 +57,7 @@ class OddCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Returns a set of tags associated with OddCell.
+        """Return a set of tags associated with OddCell.
 
         Returns:
             set[str]: A set of tags, including 'Parity' for OddCell.
@@ -65,7 +65,7 @@ class OddCell(SimpleCellReference):
         return super().tags.union({'Parity'})
 
     def css(self) -> Dict:
-        """Returns the CSS styles associated with OddCell.
+        """Return the CSS styles associated with OddCell.
 
         Returns:
             Dict: A dictionary containing the CSS styles, with a fill color of 'gainsboro' for OddCell.
@@ -77,7 +77,7 @@ class OddCell(SimpleCellReference):
         }
 
     def bookkeeping(self) -> None:
-        """Sets the impossible digits for the OddCell.
+        """Set the impossible digits for the OddCell.
 
         This method updates the bookkeeping system to exclude even digits and allow only odd digits for this cell.
         """

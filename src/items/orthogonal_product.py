@@ -10,14 +10,14 @@ from src.utils.rule import Rule
 
 
 class OrthogonalProduct(Product):
-    """Represents a product constraint based on orthogonally adjacent cells.
+    """Represent a product constraint based on orthogonally adjacent cells.
 
     This class defines a product constraint where the number in the top-left cell
     is the product of the orthogonally adjacent digits.
     """
 
     def get_cells(self) -> List[Cell]:
-        """Gets the cells involved in the orthogonal product constraint.
+        """Get the cells involved in the orthogonal product constraint.
 
         This method returns the cells that are orthogonally adjacent to the product's position.
 
@@ -33,7 +33,7 @@ class OrthogonalProduct(Product):
 
     @property
     def rules(self) -> List[Rule]:
-        """Returns the rules associated with the orthogonal product.
+        """Return the rules associated with the orthogonal product.
 
         This rule defines that the number in the top-left cell is the product of the orthogonally
         adjacent digits.
@@ -47,7 +47,7 @@ class OrthogonalProduct(Product):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates the glyphs for the orthogonal product.
+        """Generate the glyphs for the orthogonal product.
 
         This method generates a text glyph that shows the product at the specified position.
 
@@ -59,7 +59,7 @@ class OrthogonalProduct(Product):
         ]
 
     def css(self) -> Dict:
-        """Returns the CSS styles associated with the orthogonal product glyphs.
+        """Return the CSS styles associated with the orthogonal product glyphs.
 
         This method provides the CSS styles for both the foreground and background of the
         orthogonal product glyph.

@@ -16,7 +16,7 @@ class MountainLine(Line):
 
     @property
     def rules(self) -> List[Rule]:
-        """Defines rules specific to MountainLine.
+        """Define rules specific to MountainLine.
 
         Returns:
             List[Rule]: A list containing a single Rule object that specifies:
@@ -31,7 +31,7 @@ class MountainLine(Line):
         ]
 
     def glyphs(self) -> List[Glyph]:
-        """Generates a graphical representation of the MountainLine.
+        """Generate a graphical representation of the MountainLine.
 
         Returns:
             List[Glyph]: A list containing a `PolyLineGlyph` instance with
@@ -50,7 +50,7 @@ class MountainLine(Line):
         return super().tags.union({'MountainLine', 'Adjacent', 'Set'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Adds mountain constraints to the Pulp solver.
+        """Add mountain constraints to the Pulp solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints

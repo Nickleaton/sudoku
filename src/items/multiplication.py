@@ -9,27 +9,43 @@ from src.solvers.pulp_solver import PulpSolver
 
 
 class Multiplication:
+    """Provides functionality for handling multiplication constraints in Sudoku puzzles."""
 
     @staticmethod
     def get_set(board: Board, n: int) -> Set[int]:
-        used = set({})
+        """Determine the set of digits that can contribute to a given product.
+
+        Args:
+            board (Board): The Sudoku board, providing the valid digit range.
+            n (int): The target product.
+
+        Returns:
+            Set[int]: The set of digits that can contribute to the target product.
+        """
+        used = set()
         for a in board.digit_range:
             for b in board.digit_range:
                 for c in board.digit_range:
                     for d in board.digit_range:
                         product = a * b * c * d
                         if product == n:
-                            used.add(a)
-                            used.add(b)
-                            used.add(c)
-                            used.add(d)
+                            used.update({a, b, c, d})
                         if product > n:
                             break
         return used
 
     @staticmethod
     def add_constraint(board: Board, solver: PulpSolver, cells: List[Cell], product: int, name: str) -> None:
-        # multiplication restriction
+        """Add constraints to enforce a multiplication rule on a group of cells.
+
+        Args:
+            board (Board): The Sudoku board, providing the valid digit range.
+            solver (PulpSolver): The solver to which the constraints are added.
+            cells (List[Cell]): The list of cells involved in the multiplication.
+            product (int): The target product of the cell values.
+            name (str): The base name for the constraints.
+        """
+        # Enforce the multiplication restriction using logarithms
         log_product = lpSum(
             [
                 log10(digit) * solver.choices[digit][cell.row][cell.column]
@@ -37,9 +53,9 @@ class Multiplication:
                 for cell in cells
             ]
         )
-        solver.model += log_product == log10(product)
+        solver.model += log_product == log10(product), f"{name}_log_constraint"
 
-        # restrict possible choices
+        # Restrict the possible choices for each cell
         valid_digits = Multiplication.get_set(board, product)
         for cell in cells:
             for digit in board.digit_range:

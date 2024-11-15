@@ -13,7 +13,8 @@ from src.utils.side import Side
 
 
 class MinMaxSum(FirstN):
-    """Handle frame sudoku:
+    """Handle frame sudoku.
+
     Numbers outside the frame equal the sum of the minimum and maximum values in the first three cells
     corresponding row or column in the given direction.
     """
