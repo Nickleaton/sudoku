@@ -1,7 +1,7 @@
 """Create an SVG drawing of the problem."""
 import logging
-import xml.dom.minidom
 
+from defusedxml.minidom import parseString
 from svgwrite import Drawing
 from svgwrite.container import Style
 
@@ -94,7 +94,7 @@ class SVGCommand(SimpleCommand):
         canvas.add(glyphs.draw())
 
         # Convert to xml
-        elements = xml.dom.minidom.parseString(canvas.tostring())
+        elements = parseString(canvas.tostring())
         problem[self.problem_field] = elements
 
     def __repr__(self) -> str:

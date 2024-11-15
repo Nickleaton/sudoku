@@ -196,8 +196,11 @@ class RepeatToken(Token):
         Raises:
             AssertionError: If lower is greater than upper.
         """
-        assert lower >= 0, "Lower bound cannot be negative."
-        assert lower <= upper, "Lower bound must be less than or equal to upper bound."
+        if lower < 0:
+            raise SudokuException("Lower bound cannot be negative.")
+
+        if lower > upper:
+            raise SudokuException("Lower bound must be less than or equal to upper bound.")
 
         self.lower: int = lower
         self.upper: int = upper

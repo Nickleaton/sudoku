@@ -49,7 +49,8 @@ class VariablePair(Pair):
         var_pattern = "[a-zA-Z][a-zA-Z]*"
         regex = re.compile(f"({rc_pattern})-({rc_pattern})=({var_pattern})")
         match = regex.match(yaml[cls.__name__])
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         c1_str, c2_str, var_str = match.groups()
         c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
         c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))

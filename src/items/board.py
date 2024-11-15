@@ -86,8 +86,14 @@ class Board:
             self.box_count = 0
             self.box_range = None
         else:
-            assert board_rows % box_rows == 0
-            assert board_columns % box_columns == 0
+            if board_rows % box_rows != 0:
+                raise SudokuException(
+                    f"Board rows ({board_rows}) must be divisible by box rows ({box_rows})."
+                )
+            if board_columns % box_columns != 0:
+                raise SudokuException(
+                    f"Board columns ({board_columns}) must be divisible by box columns ({box_columns})."
+                )
             self.box_rows = box_rows
             self.box_columns = box_columns
             self.box_count = (board_rows // box_rows) * (board_columns // box_columns)
@@ -154,7 +160,8 @@ class Board:
         """
         regexp = re.compile("([1234567890]+)x([1234567890]+)")
         match = regexp.match(s)
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         row_str, column_str = match.groups()
         return int(row_str), int(column_str)
 

@@ -18,9 +18,15 @@ class AntiDiagonal(Diagonal):
         Args:
             board (Board): The Sudoku board associated with this anti-diagonal.
         """
-        assert board.box_rows == board.box_columns
-        assert board.board_rows == board.board_rows
-        assert board.board_rows % board.box_rows == 0
+        if board.box_rows != board.box_columns:
+            raise SudokuException(f"Box rows ({board.box_rows}) and box columns ({board.box_columns}) must be equal.")
+
+        if board.board_rows != board.board_rows:
+            raise SudokuException(f"Board rows ({board.board_rows}) are inconsistent.")
+
+        if board.board_rows % board.box_rows != 0:
+            raise SudokuException(f"Board rows ({board.board_rows}) must be divisible by box rows ({board.box_rows}).")
+
         super().__init__(board)
         self.size = board.box_rows
         self.count = board.board_rows // board.box_rows

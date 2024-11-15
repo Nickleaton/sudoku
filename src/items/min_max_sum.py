@@ -99,7 +99,8 @@ class MinMaxSum(FirstN):
         """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
         match = regexp.match(yaml[cls.__name__])
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)

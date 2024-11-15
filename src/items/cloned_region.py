@@ -21,7 +21,10 @@ class ClonedRegion(Item):
             cells_b (List[Cell]): The second set of cells in the cloned region.
         """
         super().__init__(board)
-        assert len(cells_a) == len(cells_b)
+        if len(cells_a) != len(cells_b):
+            raise SudokuException(
+                f"Length mismatch: cells_a has {len(cells_a)} elements, but cells_b has {len(cells_b)} elements."
+            )
         self.region_a: List[Cell] = cells_a
         self.region_b: List[Cell] = cells_b
 

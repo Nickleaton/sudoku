@@ -44,8 +44,10 @@ class BookKeeping:
         Returns:
             BookKeeping: A new instance with combined possibilities.
         """
-        assert isinstance(other, BookKeeping)
-        assert self.maximum_digit == other.maximum_digit
+        if not isinstance(other, BookKeeping):
+            raise SudokuException(f"Expected an instance of BookKeeping, got {type(other)}.")
+        if self.maximum_digit != other.maximum_digit:
+            raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
         result = BookKeeping(self.maximum_digit)
         for i in self.digit_range:
             result[i] = self[i] and other[i]
@@ -60,8 +62,10 @@ class BookKeeping:
         Returns:
             BookKeeping: A new instance with combined possibilities.
         """
-        assert isinstance(other, BookKeeping)
-        assert self.maximum_digit == other.maximum_digit
+        if not isinstance(other, BookKeeping):
+            raise SudokuException(f"Expected an instance of BookKeeping, got {type(other)}.")
+        if self.maximum_digit != other.maximum_digit:
+            raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
         result = BookKeeping(self.maximum_digit)
         for i in self.digit_range:
             result[i] = self[i] or other[i]
@@ -87,8 +91,10 @@ class BookKeeping:
         Returns:
             bool: True if both instances have identical possibilities, False otherwise.
         """
-        assert isinstance(other, BookKeeping)
-        assert self.maximum_digit == other.maximum_digit
+        if not isinstance(other, BookKeeping):
+            raise SudokuException(f"Expected an instance of BookKeeping, got {type(other)}.")
+        if self.maximum_digit != other.maximum_digit:
+            raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
         for i in self.digit_range:
             if self[i] != other[i]:
                 return False

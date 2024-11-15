@@ -48,7 +48,8 @@ class ConsecutivePair(LessThanEqualDifferencePair):
             f"([{board.digit_values}])([{board.digit_values}])-([{board.digit_values}])([{board.digit_values}])"
         )
         match = regexp.match(yaml[cls.__name__])
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         c1_row, c1_column, c2_row, c2_column = match.groups()
         c1 = Cell.make(board, int(c1_row), int(c1_column))
         c2 = Cell.make(board, int(c2_row), int(c2_column))

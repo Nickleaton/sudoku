@@ -107,7 +107,8 @@ class Rossini(FirstN):
         """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([{Order.values()}])")
         match = regexp.match(yaml[cls.__name__])
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         side_str, index_str, order_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)

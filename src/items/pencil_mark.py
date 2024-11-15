@@ -99,7 +99,8 @@ class PencilMarkCell(CellReference):
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
         match = regex.match(yaml[cls.__name__])
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         row_str, column_str, digits = match.groups()
         return int(row_str), int(column_str), [int(s) for s in digits]
 

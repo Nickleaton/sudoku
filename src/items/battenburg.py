@@ -83,7 +83,8 @@ class Battenburg(Item):
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])")
         match = regex.match(str(yaml[cls.__name__]))
-        assert match is not None
+        if match is None:
+            raise SudokuException("Match is None, expected a valid match.")
         row_str, column_str = match.groups()
         return Coord(int(row_str), int(column_str))
 

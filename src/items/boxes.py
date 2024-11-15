@@ -23,7 +23,8 @@ class Boxes(StandardRegionSet):
         Raises:
             AssertionError: If the board's box_range is None.
         """
-        assert board.box_range is not None
+        if board.box_range is None:
+            raise SudokuException("box_range cannot be None.")
         super().__init__(board, [Box(board, i) for i in board.box_range])
 
     @classmethod
