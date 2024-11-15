@@ -14,6 +14,7 @@ from src.utils.coord import Coord
 from src.utils.functions import Functions
 from src.utils.rule import Rule
 from src.utils.side import Side
+from src.utils.sudoku_exception import SudokuException
 
 
 class Sandwich(Item):

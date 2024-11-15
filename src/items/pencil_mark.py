@@ -7,6 +7,7 @@ from src.items.board import Board
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuException
 
 
 class PencilMarkCell(CellReference):

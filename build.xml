@@ -148,79 +148,7 @@
         </exec>
     </target>
 
-    <!-- Macro definition for running pydocstyle on a specified name -->
-    <macrodef name="run-pydocstyle">
-        <attribute name="name"/>
-        <sequential>
-            <!-- Execute pydocstyle and store the result in a property -->
-            <exec executable="pydocstyle"
-                  failonerror="false"
-                  taskname="pydocstyle"
-                  output="output/pydocstyle/@{name}.txt"
-                  resultproperty="pydocstyle.@{name}.result">
-                <arg value="src/@{name}/"/>
-            </exec>
 
-            <!-- Set a status property to "pass" or "fail" based on the result -->
-            <condition property="pydocstyle.@{name}.status" value="fail">
-                <not>
-                    <equals arg1="${pydocstyle.@{name}.result}" arg2="0"/>
-                </not>
-            </condition>
-            <condition property="pydocstyle.@{name}.status" value="pass">
-                <equals arg1="${pydocstyle.@{name}.result}" arg2="0"/>
-            </condition>
-
-            <!-- Echo the status message for this directory -->
-            <echo message="pydocstyle ${pydocstyle.@{name}.status}: '@{name}'"/>
-        </sequential>
-    </macrodef>
-
-    <target name="pydocstyle">
-        <mkdir dir="output/pydocstyle"/>
-        <run-pydocstyle name="commands"/>
-        <run-pydocstyle name="glyphs"/>
-        <run-pydocstyle name="items"/>
-        <run-pydocstyle name="parsers"/>
-        <run-pydocstyle name="solvers"/>
-        <run-pydocstyle name="tokens"/>
-        <run-pydocstyle name="utils"/>
-    </target>
-
-    <target name="ruff">
-        <mkdir dir="output/ruff"/>
-        <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/src.txt">
-            <arg value="check"/>
-            <arg value="src/"/>
-        </exec>
-    </target>
-
-    <target name="flake8.src">
-        <mkdir dir="output/flake8"/>
-        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/src.txt">
-            <arg value="--max-line-length"/>
-            <arg value="120"/>
-            <arg value="src/"/>
-        </exec>
-    </target>
-
-    <target name="flake8.tests">
-        <mkdir dir="output/flake8"/>
-        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/tests.txt">
-            <arg value="--max-line-length"/>
-            <arg value="120"/>
-            <arg value="src/"/>
-        </exec>
-    </target>
-
-    <target name="pydocstyle.tests">
-        <mkdir dir="output/pydocstyle"/>
-        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/tests.txt">
-            <arg value="--ignore"/>
-            <arg value="D100,D101,D102,D105,D107"/>
-            <arg value="tests/"/>
-        </exec>
-    </target>
 
     <target name="convert-json-to-yaml">
         <mkdir dir="problems/fpuzzles/yaml"/>
@@ -276,11 +204,86 @@
         </exec>
     </target>
 
-        <target name="checkov">
-        <mkdir dir="output/checkov"/>
-        <exec executable="checkov" failonerror="false" taskname="checkov" output="output/checkov/checkov.txt">
+      <!-- Macro definition for running pydocstyle on a specified name -->
+    <macrodef name="run-pydocstyle">
+        <attribute name="name"/>
+        <sequential>
+            <!-- Execute pydocstyle and store the result in a property -->
+            <exec executable="pydocstyle"
+                  failonerror="false"
+                  taskname="pydocstyle"
+                  output="output/pydocstyle/@{name}.txt"
+                  resultproperty="pydocstyle.@{name}.result">
+                <arg value="src/@{name}/"/>
+            </exec>
+
+            <!-- Set a status property to "pass" or "fail" based on the result -->
+            <condition property="pydocstyle.@{name}.status" value="fail">
+                <not>
+                    <equals arg1="${pydocstyle.@{name}.result}" arg2="0"/>
+                </not>
+            </condition>
+            <condition property="pydocstyle.@{name}.status" value="pass">
+                <equals arg1="${pydocstyle.@{name}.result}" arg2="0"/>
+            </condition>
+
+            <!-- Echo the status message for this directory -->
+            <echo message="pydocstyle ${pydocstyle.@{name}.status}: '@{name}'"/>
+        </sequential>
+    </macrodef>
+
+    <target name="pydocstyle">
+        <mkdir dir="output/pydocstyle"/>
+        <run-pydocstyle name="commands"/>
+        <run-pydocstyle name="glyphs"/>
+        <run-pydocstyle name="items"/>
+        <run-pydocstyle name="parsers"/>
+        <run-pydocstyle name="solvers"/>
+        <run-pydocstyle name="tokens"/>
+        <run-pydocstyle name="utils"/>
+    </target>
+
+    <target name="ruff.src">
+        <mkdir dir="output/ruff"/>
+        <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/src.txt">
+            <arg value="check"/>
             <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="ruff.tests">
+        <mkdir dir="output/ruff"/>
+        <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/tests.txt">
+            <arg value="check"/>
             <arg value="tests/"/>
         </exec>
     </target>
+
+    <target name="flake8.src">
+        <mkdir dir="output/flake8"/>
+        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/src.txt">
+            <arg value="--max-line-length"/>
+            <arg value="120"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="flake8.tests">
+        <mkdir dir="output/flake8"/>
+        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/tests.txt">
+            <arg value="--max-line-length"/>
+            <arg value="120"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="pydocstyle.tests">
+        <mkdir dir="output/pydocstyle"/>
+        <exec executable="pydocstyle" failonerror="false" taskname="pydocstyle" output="output/pydocstyle/tests.txt">
+            <arg value="--ignore"/>
+            <arg value="D100,D101,D102,D105,D107"/>
+            <arg value="tests/"/>
+        </exec>
+    </target>
+
 </project>

@@ -12,6 +12,7 @@ from src.items.item import Item
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+from src.utils.sudoku_exception import SudokuException
 from src.utils.variable_type import VariableType
 
 

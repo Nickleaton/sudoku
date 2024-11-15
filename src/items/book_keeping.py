@@ -1,5 +1,6 @@
 """BookKeeping."""
 from typing import List
+from src.utils.sudoku_exception import SudokuException
 
 
 class BookKeeping:

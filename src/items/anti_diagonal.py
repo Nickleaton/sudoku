@@ -7,6 +7,7 @@ from src.items.board import Board
 from src.items.diagonals import Diagonal
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuException
 
 
 class AntiDiagonal(Diagonal):

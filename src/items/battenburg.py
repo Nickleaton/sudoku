@@ -10,6 +10,7 @@ from src.parsers.cell_list_parser import CellListParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuException
 
 
 class Battenburg(Item):

@@ -9,6 +9,7 @@ from strictyaml import Validator
 
 from src.utils.coord import Coord
 from src.utils.functions import PRIMES
+from src.utils.sudoku_exception import SudokuException
 
 
 class BoardType(Enum):

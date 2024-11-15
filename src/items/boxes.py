@@ -5,6 +5,7 @@ from src.items.board import Board
 from src.items.box import Box
 from src.items.item import Item
 from src.items.standard_region_set import StandardRegionSet
+from src.utils.sudoku_exception import SudokuException
 
 
 class Boxes(StandardRegionSet):

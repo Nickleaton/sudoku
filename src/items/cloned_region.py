@@ -7,6 +7,7 @@ from src.items.cell import Cell
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuException
 
 
 class ClonedRegion(Item):

@@ -9,6 +9,7 @@ from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.utils.coord import Coord
+from src.utils.sudoku_exception import SudokuException
 
 
 class KnownCell(CellReference):

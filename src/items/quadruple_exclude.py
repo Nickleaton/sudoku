@@ -9,6 +9,7 @@ from src.items.quadruple_base import QuadrupleBase
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuException
 
 
 class QuadrupleExclude(QuadrupleBase):

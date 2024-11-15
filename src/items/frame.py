@@ -11,6 +11,7 @@ from src.parsers.frame_parser import FrameParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.side import Side
+from src.utils.sudoku_exception import SudokuException
 
 
 class Frame(FirstN):

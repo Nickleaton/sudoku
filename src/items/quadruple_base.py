@@ -8,6 +8,7 @@ from src.items.board import Board
 from src.items.item import Item
 from src.parsers.quadruples_parser import QuadruplesParser
 from src.utils.coord import Coord
+from src.utils.sudoku_exception import SudokuException
 
 
 class QuadrupleBase(Item):

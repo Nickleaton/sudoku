@@ -9,6 +9,7 @@ from src.items.cell import Cell
 from src.items.item import Item
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuException
 
 
 class ConsecutivePair(LessThanEqualDifferencePair):

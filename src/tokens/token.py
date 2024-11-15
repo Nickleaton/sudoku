@@ -5,6 +5,8 @@ from typing import Union, List, Optional, Dict, Type
 
 from sortedcontainers import SortedDict
 
+from src.utils.sudoku_exception import SudokuException
+
 
 class Token:
     """Base class for all tokens used to represent patterns."""
