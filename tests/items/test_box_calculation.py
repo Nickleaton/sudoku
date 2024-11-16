@@ -10,7 +10,7 @@ class TestBoxCalculation(unittest.TestCase):
     """Test suite for box calculations in a Board."""
 
     def check(self, n: int, width: int, height: int, expected: List) -> None:
-        """Helper function to check the start row and column of each box."""
+        """Check the start row and column of each box."""
         problem = Board(n, n, width, height)
         for i, row, column in expected:
             box = Box(problem, i)

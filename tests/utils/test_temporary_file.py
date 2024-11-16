@@ -1,10 +1,11 @@
 """TestTemporaryFile."""
 
+import logging
 import unittest
 from pathlib import Path
+
 from src.utils.config import Config
 from src.utils.temporary_file import TemporaryFile
-import logging
 
 config = Config()
 
@@ -21,11 +22,11 @@ class TestTemporaryFile(unittest.TestCase):
 
         try:
             with TemporaryFile() as tf:
-                self.assertFalse(tf.name.exists())  # Ensure file doesn't exist initially
-                with tf.open(mode='w', encoding='utf-8') as f:
+                self.assertFalse(tf.path.exists())  # Ensure file doesn't exist initially
+                with tf.path.open(mode='w', encoding='utf-8') as f:
                     f.write('Hello world')  # Write to the temporary file
-                self.assertTrue(tf.name.exists())  # Ensure file exists after writing
-            self.assertFalse(tf.name.exists())  # Ensure file is removed after closing
+                self.assertTrue(tf.path.exists())  # Ensure file exists after writing
+            self.assertFalse(tf.path.exists())  # Ensure file is removed after closing
             if config.temporary_directory.exists():
                 config.temporary_directory.rmdir()  # Clean up directory if needed
         except OSError as e:

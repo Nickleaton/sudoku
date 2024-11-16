@@ -43,7 +43,18 @@ class TestRows(TestStandardRegionSet):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes the Rows instance should belong to."""
-        return {Item, ComposedItem, Cell, StandardRegion, Region, Row, Rows, StandardRegion, RegionSet, StandardRegionSet}
+        return {
+            Item,
+            ComposedItem,
+            Cell,
+            StandardRegion,
+            Region,
+            Row,
+            Rows,
+            StandardRegion,
+            RegionSet,
+            StandardRegionSet
+        }
 
     @property
     def has_rule(self) -> bool:

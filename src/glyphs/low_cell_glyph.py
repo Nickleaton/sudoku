@@ -62,4 +62,3 @@ class LowCellGlyph(Glyph):
             str: The string representation of the LowCellGlyph.
         """
         return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"
-

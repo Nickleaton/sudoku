@@ -1,4 +1,4 @@
-""""Dumper."""
+"""Dumper."""
 from abc import ABC, abstractmethod
 
 from src.items.board import Board

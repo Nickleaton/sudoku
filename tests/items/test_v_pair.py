@@ -14,30 +14,40 @@ from tests.items.test_variable_sum_pair import TestSumPair
 
 
 class TestVPair(TestSumPair):
+    """Test suite for the VPair class."""
 
     def setUp(self) -> None:
+        """Set up the board and VPair item for testing."""
+        # Initialize the board with dimensions 9x9 and block size 3x3
         self.board = Board(9, 9, 3, 3, None, None, None, None)
+        # Create a VPair item with two cells
         self.item = VPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
+        # Set the size of the pair to 2
         self.size = 2
 
     @property
     def clazz(self):
+        """Return the VPair class."""
         return VPair
 
     @property
     def config(self):
+        """Return the configuration string for VPair."""
         return "VPair: 12-13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether the rule applies for VPair."""
         return True
 
     @property
     def total(self) -> int:
+        """Return the total value for VPair."""
         return 5
 
     @property
     def representation(self) -> str:
+        """Return the string representation of VPair."""
         return (
             "VPair"
             "("
@@ -49,9 +59,9 @@ class TestVPair(TestSumPair):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected set of classes for VPair."""
         return {Cell, SumPair, Item, Pair, VPair, Region, ComposedItem}
 
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
-

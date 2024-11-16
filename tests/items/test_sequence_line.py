@@ -17,18 +17,22 @@ class TestSequenceLine(TestLine):
 
     @property
     def clazz(self):
+        """Return the SequenceLine class."""
         return SequenceLine
 
     @property
     def config(self) -> str:
+        """Return the configuration string for SequenceLine."""
         return "SequenceLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
+        """Return whether SequenceLine has a rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
+        """Return the expected set of classes for SequenceLine."""
         return {Cell, ComposedItem, Item, Line, Region, SequenceLine}
 
     def test_max_difference(self):

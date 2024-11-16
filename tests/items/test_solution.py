@@ -1,5 +1,6 @@
 """TestSolution module."""
 
+import unittest
 from typing import Type
 
 import oyaml as yaml
@@ -91,6 +92,7 @@ class TestSolution(TestComposed):
         config = {'Solution': lines}
         item = Item.create(self.board, config)
         self.assertDictEqual(item.to_dict(), config)
+
 
 if __name__ == '__main__':
     unittest.main()
