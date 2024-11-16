@@ -1,56 +1,47 @@
-"""TestWriterCommand."""
+"""TestArrowGlyph."""
 import unittest
-from pathlib import Path
+from typing import Type
 
-from src.commands.writer_command import WriterCommand
-from src.commands.problem import Problem
-from tests.commands.test_simple_command import TestSimpleCommand
+from src.glyphs.arrow_glyph import ArrowGlyph
+from src.glyphs.glyph import Glyph
+from src.utils.coord import Coord
+from tests.glyphs.test_glyph import TestGlyph
 
 
-class TestWriterCommand(TestSimpleCommand):
-    """Test suite for WriterCommand class."""
+class TestArrowGlyph(TestGlyph):
 
     def setUp(self) -> None:
-        """Set up the test environment for WriterCommand.
+        super().setUp()
+        self.glyph = ArrowGlyph('Style', 90.0, Coord(0, 0))
 
-        This method initializes the problem and prepares the WriterCommand
-        with a target file path for testing.
-        """
-        self.problem = Problem()
-        self.problem.svg = "Hello World"
-        self.command = WriterCommand("svg", Path("c:\\temp\\filewriter.txt"))
-        if self.command.target.exists():
-            self.command.target.unlink(missing_ok=True)
+    @property
+    def start_marker(self) -> str:
+        return ""
 
-    def tearDown(self) -> None:
-        """Clean up after each test.
+    @property
+    def end_marker(self) -> str:
+        return ""
 
-        This method deletes the target file if it exists after the test has run.
-        """
-        if self.command.target.exists():
-            self.command.target.unlink(missing_ok=True)
+    @property
+    def symbol(self) -> str:
+        return ""
 
-    def test_process(self):
-        """Test the execute method of WriterCommand.
-
-        This method checks if the target file is created and contains the
-        expected content after execution.
-        """
-        self.assertFalse(self.command.target.exists())
-        self.command.execute(self.problem)
-        self.assertTrue(self.command.target.exists())
-        with self.command.target.open('r') as f:
-            self.assertEqual(self.problem.svg, f.read())
+    @property
+    def target(self):
+        return (
+            '<text class="Style" transform="translate(0, 0) rotate(90.0)">'
+            '<tspan alignment-baseline="central" text-anchor="middle">↑</tspan></text>'
+        )
 
     @property
     def representation(self) -> str:
-        """Return the string representation of WriterCommand.
+        return "ArrowGlyph('Style', 90.0, Coord(0, 0))"
 
-        Returns:
-            str: The representation of the WriterCommand instance with file path.
-        """
-        return f"{self.command.__class__.__name__}('svg', {'c:\\temp\\filewriter.txt'!r})"
+    @property
+    def expected_classes(self) -> set[Type[Glyph]]:
+        return {ArrowGlyph, Glyph}
 
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
+
