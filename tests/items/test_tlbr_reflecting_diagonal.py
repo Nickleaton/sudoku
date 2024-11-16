@@ -9,7 +9,7 @@ from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
 from src.items.item import Item
 from src.items.region import Region
-from src.items.tlbr_refecting_diagonal import TLBRReflecting
+from src.items.tlbr_reflecting_diagonal import TLBRReflecting
 from tests.items.test_diagonal import TestDiagonal
 
 
