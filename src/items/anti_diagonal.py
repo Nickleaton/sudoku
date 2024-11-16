@@ -57,6 +57,7 @@ class AntiDiagonal(Diagonal):
         """
         return super().tags.union({'Diagonal', 'Uniqueness'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Enforce that the digit distribution is identical across marked diagonals in different boxes.
 

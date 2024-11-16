@@ -27,24 +27,9 @@ config = Config()
 
 
 class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
-    """Solver class that uses PuLP to solve puzzles with linear programming.
+    """Solver class that uses PuLP to solve puzzles with linear programming."""
 
-    Attributes:
-        name (str): The name of the solver instance.
-        solver_name (str): The solver to use, e.g., 'PULP_CBC_CMD'.
-        application_name (str): The name of the solver application.
-        status (Status): The status of the solution.
-        log (Optional[str]): Log of the solver process.
-        model (LpProblem): The linear programming model.
-        variables (Dict[Any, LpVariable]): Variables used in the model.
-        choices (Dict[Any, LpVariable]): Choice variables for digit assignments in cells.
-        values (Dict[Any, LpVariable]): Variables representing values in cells.
-        parity (Dict[Any, LpVariable]): Parity constraints on cells.
-        levels (Dict[Any, LpVariable]): Level constraints on cells.
-        modulos (Dict[Any, LpVariable]): Modulo constraints on cells.
-        prime (Dict[Any, LpVariable]): Prime constraints on cells.
-    """
-
+    # pylint: disable=loop-invariant-statement
     def __init__(self, board: Board, name: str, solver_name: str = 'PULP_CBC_CMD'):
         """Initialize the PulpSolver with a board and solver details.
 

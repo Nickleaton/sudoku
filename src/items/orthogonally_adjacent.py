@@ -70,6 +70,7 @@ class OrthogonallyAdjacent(ComposedItem):
         """
         return {self.__class__.__name__: None}
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the orthogonally adjacent constraint to the solver.
 

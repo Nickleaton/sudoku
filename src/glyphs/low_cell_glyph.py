@@ -10,8 +10,7 @@ from src.utils.coord import Coord
 
 
 class LowCellGlyph(Glyph):
-    """
-    Represents a low cell glyph for SVG drawing.
+    """Represents a low cell glyph for SVG drawing.
 
     Inherits from Glyph and provides functionality to generate
     an SVG symbol for a low cell and to draw it using a specific

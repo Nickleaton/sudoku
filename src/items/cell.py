@@ -260,6 +260,7 @@ class Cell(Item):
             ]
         ) == 1, f'Unique_digit_{self.row}_{self.column}'
 
+    # pylint: disable=loop-invariant-statement
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
         """Add constraints based on bookkeeping for the cell.
 
@@ -270,7 +271,6 @@ class Cell(Item):
         for digit in self.board.digit_range:
             if not self.book.is_possible(digit):
                 name = f"Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}"
-                print(name)
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> Dict:

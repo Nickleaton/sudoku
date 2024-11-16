@@ -112,6 +112,7 @@ class Knight(ComposedItem):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the knight constraint to the solver.
 

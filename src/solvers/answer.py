@@ -75,6 +75,7 @@ class Answer:
             result += f"  - {''.join([str(int(d)) for d in row])}\n"
         return result
 
+    # pylint: disable=loop-invariant-statement
     def __eq__(self, other: object) -> bool:
         """Check equality between two Answer objects.
 
@@ -117,6 +118,7 @@ class Answer:
         """
         return Answer(board, Answer.extract(board, yaml))
 
+    # pylint: disable=loop-invariant-statement
     def standard_string(self) -> str:
         """Return the board as a formatted string with separators for rows and boxes.
 

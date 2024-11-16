@@ -50,6 +50,7 @@ class MountainLine(Line):
         """
         return super().tags.union({'MountainLine', 'Adjacent', 'Set'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add mountain constraints to the Pulp solver.
 

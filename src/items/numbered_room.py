@@ -141,6 +141,7 @@ class NumberedRoom(Item):
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraints for the NumberedRoom to the solver.
 

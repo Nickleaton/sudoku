@@ -70,6 +70,7 @@ class SumArrowLine(Line):
             }
         }
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Constrain the cells along the arrow so they sum to the value in the starting cell.
 

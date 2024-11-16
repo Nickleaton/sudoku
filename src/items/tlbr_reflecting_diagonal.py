@@ -59,4 +59,5 @@ class TLBRReflecting(Diagonal):
                 name = f"{self.name}_{row}_{column}"
                 c1 = Cell.make(self.board, row=row, column=column)
                 c2 = Cell.make(self.board, row=column, column=row)
+                # pylint: disable=loop-invariant-statement
                 solver.model += c1.parity(solver) == c2.parity(solver), name

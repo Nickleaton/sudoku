@@ -82,6 +82,7 @@ class DifferencePair(Pair):
         """
         return super().tags.union({'Different'})
 
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver for the difference pair.
 
@@ -104,6 +105,7 @@ class DifferencePair(Pair):
             )
             choice1 = solver.choices[int(digit)][self.cell_1.row][self.cell_1.column]
             choice2 = solver.choices[int(digit)][self.cell_2.row][self.cell_2.column]
+            # pylint: disable=loop-invariant-statement
             solver.model += choice1 + choice2 <= 1, name
 
     def to_dict(self) -> Dict:

@@ -76,6 +76,7 @@ class FortressCell(SimpleCellReference):
             }
         }
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add a constraint ensuring the digit in the fortress cell is larger than its orthogonal neighbors.
 

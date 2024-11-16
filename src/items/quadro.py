@@ -54,6 +54,7 @@ class Quadro(Item):
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the parity constraints for the Quadro to the solver model.
 

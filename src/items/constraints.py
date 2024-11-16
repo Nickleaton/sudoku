@@ -46,16 +46,16 @@ class Constraints(ComposedItem):
                     sub_yaml: Dict = {} if value is None else value
 
                     # Retrieve the appropriate subclass from Item's registered classes
+                    # pylint: disable=loop-invariant-statement
                     sub_class: Type[Item] = Item.classes[key]
 
                     # If the subclass is composite (contains other constraints),
                     # recursively create and add it as a composite constraint
                     if sub_class.is_composite():
                         result.add(sub_class.create(board, {key: sub_yaml}))
-
-                    # If the subclass expects multiple constraints, represented as a list,
-                    # create each item in the list as an individual constraint
                     elif isinstance(sub_yaml, list):
+                        # If the subclass expects multiple constraints, represented as a list,
+                        # create each item in the list as an individual constraint
                         for data in sub_yaml:
                             # Create each constraint item and add it to the result
                             result.add(sub_class.create(board, {key: data}))

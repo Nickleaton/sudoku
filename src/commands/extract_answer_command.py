@@ -37,6 +37,7 @@ class ExtractAnswerCommand(Command):
         if self.target in problem:
             raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
 
+    # pylint: disable=loop-invariant-statement
     def execute(self, problem: Problem) -> None:
         """Extract the answer from the solver's results and stores it in the problem.
 

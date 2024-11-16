@@ -2,8 +2,6 @@
 import unittest
 from typing import Type
 
-from pkginfo.commandline import Simple
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference

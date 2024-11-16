@@ -147,6 +147,7 @@ class Formulations:
         Formulations.count += 1
         return y
 
+    # pylint: disable=loop-invariant-statement
     @staticmethod
     def minimum(model: LpProblem, xi: List[LpVariable], lower: int, upper: int) -> LpVariable:
         """Calculate the minimum of a list of variables.
@@ -175,6 +176,7 @@ class Formulations:
         Formulations.count += 1
         return y
 
+    # pylint: disable=loop-invariant-statement
     @staticmethod
     def maximum(model: LpProblem, xi: List[LpVariable], lower: int, upper: int) -> LpVariable:
         """Calculate the maximum of a list of variables.

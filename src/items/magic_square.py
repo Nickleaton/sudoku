@@ -144,6 +144,7 @@ class MagicSquare(Region):
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints for the MagicSquare to the solver.
 

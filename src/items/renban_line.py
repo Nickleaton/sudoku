@@ -64,6 +64,7 @@ class RenbanLine(Line):
         right = set(range(self.board.maximum_digit, self.board.maximum_digit - length, -1))
         return left & right
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the Pulp solver to enforce the Renban line rules.
 

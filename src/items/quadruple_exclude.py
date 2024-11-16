@@ -45,6 +45,7 @@ class QuadrupleExclude(QuadrupleBase):
         """
         return [Rule('QuadrupleExclude', 3, 'Digits appearing must not in the cells adjacent to the circle')]
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints for the quadruple in the solver model.
 

@@ -91,10 +91,12 @@ class SequenceLine(Line):
         possible = []
         for i in range(1, length + 1):
             a = set(range(i, i + big_m - length + 1))
+            # pylint: disable=loop-invariant-statement
             d = {big_m - x + 1 for x in range(i, i + big_m - length + 1)}
             possible.append(a.union(d))
         return possible
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add arithmetic sequence constraints to the Pulp solver.
 

@@ -271,6 +271,7 @@ class Item:
         """
         return None
 
+    # pylint: disable=loop-invariant-statement
     def bookkeeping_unique(self) -> bool:
         """Check if all bookkeeping items in the hierarchy are unique.
 
@@ -332,12 +333,13 @@ class Item:
         """
         tab = '    '
         result = ""
+        spacer: str = tab * indent
         for k in sorted(data.keys()):
             v = data[k]
             if isinstance(v, dict):
-                result += f"{tab * indent}{k} {{\n"
+                result += f"{spacer}{k} {{\n"
                 result += Item.css_text(v, indent + 1)
-                result += f"{tab * indent}}}\n\n"
+                result += f"{spacer}}}\n\n"
             else:
-                result += f"{tab * indent}{k}: {v};\n"
+                result += f"{spacer}{k}: {v};\n"
         return result

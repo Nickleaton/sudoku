@@ -53,6 +53,7 @@ class ColumnIndexer(Indexer):
         """
         return [RectGlyph('ColumnIndexer', Coord(1, self.index), Coord(self.board.board_columns, 1))]
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver for the column indexing.
 

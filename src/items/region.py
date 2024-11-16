@@ -54,6 +54,7 @@ class Region(ComposedItem):
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
+    # pylint: disable=loop-invariant-statement
     def add_unique_constraint(self, solver: PulpSolver, optional: bool = False):
         """Add a constraint to ensure each digit appears only once in the region.
 
@@ -64,10 +65,12 @@ class Region(ComposedItem):
         for digit in self.board.digit_range:
             total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in set(self.cells)])
             if optional:
+                # pylint: disable=loop-invariant-statement
                 solver.model += total <= 1, f"{self.name}_Unique_{digit}"
             else:
                 solver.model += total == 1, f"{self.name}_Unique_{digit}"
 
+    # pylint: disable=loop-invariant-statement
     def add_total_constraint(self, solver: PulpSolver, total: int) -> None:
         """Add a constraint to enforce a total sum of cell values within the region.
 
@@ -78,6 +81,7 @@ class Region(ComposedItem):
         value = lpSum([solver.values[cell.row][cell.column] for cell in self.cells])
         solver.model += value == total, f"Total_{self.name}"
 
+    # pylint: disable=loop-invariant-statement
     def add_contains_constraint(self, solver: PulpSolver, digits: List[int]):
         """Add constraints to ensure specified digits are present in the region.
 
@@ -87,8 +91,10 @@ class Region(ComposedItem):
         """
         for digit in digits:
             choice_total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
+            # pylint: disable=loop-invariant-statement
             solver.model += choice_total == 1, f"{self.name}_Contains_{digit}"
 
+    # pylint: disable=loop-invariant-statement
     def add_sequence_constraint(self, solver: PulpSolver, order: Order):
         """Add a sequence constraint to enforce an ordered sequence of values.
 

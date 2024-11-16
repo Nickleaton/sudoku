@@ -44,6 +44,7 @@ class PalindromeLine(Line):
         """
         return super().tags.union({'PalindromeLine'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add palindrome constraints to the Pulp solver.
 

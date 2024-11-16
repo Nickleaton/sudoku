@@ -104,6 +104,7 @@ class Exclusion(Item):
         position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the exclusion constraint to the solver.
 

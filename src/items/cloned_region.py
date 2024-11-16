@@ -132,6 +132,7 @@ class ClonedRegion(Item):
         """
         return super().tags.union({'ClonedRegion'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to ensure cloned regions have the same values.
 

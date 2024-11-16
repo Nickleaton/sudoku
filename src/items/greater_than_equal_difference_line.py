@@ -59,6 +59,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
         return super().tags.union({'Difference', 'Comparison'})
 
     @staticmethod
+    # pylint: disable=loop-invariant-statement
     def get_regions(cell: Cell) -> Set:
         """Get the regions that the given cell belongs to.
 
@@ -68,13 +69,14 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
         Returns:
             Set: A set of regions (Box, Row, Column) that the cell is part of.
         """
-        regions = {region for region in cell.top.regions()}
+        regions = set(cell.top.regions())
         result: Set = set()
         for r in regions:
             if r.__class__ in [Box, Column, Row] and cell in r:
                 result.add(r)
         return result
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver for the greater-than-equal difference.
 

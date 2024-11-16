@@ -155,6 +155,7 @@ class Sandwich(Item):
             }
         }
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint_rc(self,
                           solver: PulpSolver,
                           is_row: bool,

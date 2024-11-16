@@ -46,6 +46,7 @@ class FrozenThermometerLine(ThermometerLine):
         """
         return super().tags.union({'Frozen', 'FrozenThermometerLine'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver for the Frozen Thermometer line.
 

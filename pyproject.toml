@@ -53,6 +53,7 @@ strictyaml = "^1.7.3"
 svglib = "^1.2.1"
 svgwrite = "^1.4.3"
 urllib3 = "^2.2.3"
+defusedxml = "^0.7.1"
 
 
 # Test
@@ -77,6 +78,8 @@ radon = "^6.0.1"
 vulture = "^2.13"
 Flake8-pyproject = "^1.2.3"
 ruff = "^0.7.3"
+wemake-python-styleguide = "^0.19.2"
+nitpick = "^0.35.0"
 
 
 [tool.ruff.lint.pylint]

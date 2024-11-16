@@ -13,6 +13,7 @@ class Multiplication:
     """Provides functionality for handling multiplication constraints in Sudoku puzzles."""
 
     @staticmethod
+    # pylint: disable=loop-invariant-statement
     def get_set(board: Board, n: int) -> Set[int]:
         """Determine the set of digits that can contribute to a given product.
 
@@ -23,12 +24,12 @@ class Multiplication:
         Returns:
             Set[int]: The set of digits that can contribute to the target product.
         """
-        used = set()
+        used: Set[int] = set()
         for a in board.digit_range:
             for b in board.digit_range:
                 for c in board.digit_range:
                     for d in board.digit_range:
-                        product = a * b * c * d
+                        product: int = a * b * c * d
                         if product == n:
                             used.update({a, b, c, d})
                         if product > n:
@@ -36,6 +37,7 @@ class Multiplication:
         return used
 
     @staticmethod
+    # pylint: disable=loop-invariant-statement
     def add_constraint(board: Board, solver: PulpSolver, cells: List[Cell], product: int, name: str) -> None:
         """Add constraints to enforce a multiplication rule on a group of cells.
 

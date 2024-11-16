@@ -108,6 +108,7 @@ class KropkiPair(Pair):
                 used.add(y)
         return used
 
+    # pylint: disable=loop-invariant-statement
     def add_impossible_constraint(self, solver: PulpSolver) -> None:
         """Add constraints for impossible digits in the pair cells.
 
@@ -120,6 +121,7 @@ class KropkiPair(Pair):
             name = f"{self.name}_Impossible_kropki_pair_2_{digit}_{self.cell_2.row}_{self.cell_2.column}"
             solver.model += solver.choices[digit][self.cell_2.row][self.cell_2.column] == 0, name
 
+    # pylint: disable=loop-invariant-statement
     def add_implausible_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to restrict invalid digit pairs.
 

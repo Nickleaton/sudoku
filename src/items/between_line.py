@@ -54,6 +54,7 @@ class BetweenLine(Line):
         """
         return super().tags.union({'BetweenLine', 'Comparison'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add puzzle constraints for the BetweenLine to the solver.
 

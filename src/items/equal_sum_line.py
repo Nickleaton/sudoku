@@ -57,6 +57,7 @@ class EqualSumLine(Line):
         """
         return super().tags.union({'EqualSumLine', 'Sum'})
 
+    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add equal segment sum constraints to the Pulp solver.
 
