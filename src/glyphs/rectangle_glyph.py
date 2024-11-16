@@ -69,7 +69,7 @@ class RectangleGlyph(Glyph):
         """
         return (
             f"{self.__class__.__name__}("
-            f"{self.class_name}, "
+            f"'{self.class_name}', "
             f"{self.first!r}, "
             f"{self.second!r}, "
             f"{self.percentage!r}, "
