@@ -1,5 +1,5 @@
 """NumberedRoom."""
-from typing import Dict, Tuple, List
+from typing import Dict, tuple, List
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -66,7 +66,7 @@ class NumberedRoom(Item):
         return FrameParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> tuple:
         """Extract the side, index, and digit from the YAML configuration for the NumberedRoom.
 
         Args:
@@ -74,7 +74,7 @@ class NumberedRoom(Item):
             yaml (Dict): The YAML configuration containing the NumberedRoom data.
 
         Returns:
-            Tuple: A tuple containing the side, index, and digit.
+            tuple: A tuple containing the side, index, and digit.
         """
         parts = yaml[cls.__name__].split("=")
         side = Side.create(parts[0][0])

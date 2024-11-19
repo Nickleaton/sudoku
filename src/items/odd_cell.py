@@ -1,5 +1,5 @@
 """OddCell."""
-from typing import Optional, List, Dict
+from typing import Optional, list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.odd_cell_glyph import OddCellGlyph
@@ -40,15 +40,15 @@ class OddCell(SimpleCellReference):
         return 'o'
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with OddCell.
 
         Returns:
-            List[Rule]: A list of rules, indicating that an opaque grey circle must contain an odd digit.
+            list[Rule]: A list of rules, indicating that an opaque grey circle must contain an odd digit.
         """
         return [Rule("Odd", 1, "An opaque grey circle must contain an odd digit")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of Glyphs associated with OddCell.
 
         Returns:
@@ -65,11 +65,11 @@ class OddCell(SimpleCellReference):
         """
         return super().tags.union({'Parity'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles associated with OddCell.
 
         Returns:
-            Dict: A dictionary containing the CSS styles, with a fill color of 'gainsboro' for OddCell.
+            dict: A dictionary containing the CSS styles, with a fill color of 'gainsboro' for OddCell.
         """
         return {
             ".OddCell": {

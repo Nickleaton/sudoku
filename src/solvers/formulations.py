@@ -1,5 +1,4 @@
 """Formulations for LP functions."""
-from typing import List
 
 from pulp import LpVariable, LpElement, LpInteger, lpSum, LpProblem, LpContinuous
 
@@ -21,12 +20,12 @@ class Formulations:
         """Implement a disjunction constraint on a variable.
 
         Args:
-            model: The linear programming model to add constraints to.
-            var: The decision variable subject to the disjunction constraint.
-            lower_1: The lower bound of the first range.
-            upper_1: The upper bound of the first range.
-            lower_2: The lower bound of the second range.
-            upper_2: The upper bound of the second range.
+            model (LpProblem): The linear programming model to add constraints to.
+            var (LpElement): The decision variable subject to the disjunction constraint.
+            lower_1 (int): The lower bound of the first range.
+            upper_1 (int): The upper bound of the first range.
+            lower_2 (int): The lower bound of the second range.
+            upper_2 (int): The upper bound of the second range.
         """
         isupper = LpVariable(f"Disjunction_{var.name}_isupper", lowBound=0, upBound=1, cat=LpInteger)
         model += var <= upper_1 + (upper_2 - upper_1) * isupper, f"Disjunction_{var.name}_a"
@@ -42,10 +41,10 @@ class Formulations:
         """Calculate the product of two binary variables as a third binary variable.
 
         Args:
-            model: The linear programming model to add constraints to.
-            decision_1: The first binary decision variable.
-            decision_2: The second binary decision variable.
-            decision_3: The binary variable representing the product of decision_1 and decision_2.
+            model (LpProblem): The linear programming model to add constraints to.
+            decision_1 (LpElement): The first binary decision variable.
+            decision_2 (LpElement): The second binary decision variable.
+            decision_3 (LpVariable): The binary variable representing the product of decision_1 and decision_2.
         """
         model += decision_3 <= decision_1, f"Binary_Binary_{decision_3.name}_a"
         model += decision_3 <= decision_2, f"Binary_Binary_{decision_3.name}_b"
@@ -63,12 +62,12 @@ class Formulations:
         """Calculate the product of a binary variable and another variable within a bounded range.
 
         Args:
-            model: The linear programming model to add constraints to.
-            variable: The binary decision variable.
-            x: The decision variable to be multiplied by the binary variable.
-            target: The resulting product variable.
-            lower: The lower bound for x.
-            upper: The upper bound for x.
+            model (LpProblem): The linear programming model to add constraints to.
+            variable (LpElement): The binary decision variable.
+            x (LpElement): The decision variable to be multiplied by the binary variable.
+            target (LpVariable): The resulting product variable.
+            lower (int): The lower bound for x.
+            upper (int): The upper bound for x.
         """
         model += lower * variable <= target, f"Product_Binary_{target.name}_a"
         model += target <= upper * variable, f"Product_Binary_{target.name}_b"
@@ -76,12 +75,12 @@ class Formulations:
         model += x - target <= upper * (1 - variable), f"Product_Binary_{target.name}_d"
 
     @staticmethod
-    def logical_and(model: LpProblem, binaries: List[LpVariable]) -> LpVariable:
+    def logical_and(model: LpProblem, binaries: list[LpVariable]) -> LpVariable:
         """Implement a logical AND constraint.
 
         Args:
-            model: The linear programming model to add constraints to.
-            binaries: A list of binary decision variables.
+            model (LpProblem): The linear programming model to add constraints to.
+            binaries (list[LpVariable]): A list of binary decision variables.
 
         Returns:
             LpVariable: A binary variable that is 1 if all variables in binaries are 1, else 0.
@@ -94,12 +93,12 @@ class Formulations:
         return d
 
     @staticmethod
-    def logical_or(model: LpProblem, binaries: List[LpVariable]) -> LpVariable:
+    def logical_or(model: LpProblem, binaries: list[LpVariable]) -> LpVariable:
         """Implement a logical OR constraint.
 
         Args:
-            model: The linear programming model to add constraints to.
-            binaries: A list of binary decision variables.
+            model (LpProblem): The linear programming model to add constraints to.
+            binaries (list[LpVariable]): A list of binary decision variables.
 
         Returns:
             LpVariable: A binary variable that is 1 if at least one variable in binaries is 1, else 0.
@@ -115,11 +114,11 @@ class Formulations:
         """Implement a logical NOT constraint.
 
         Args:
-            model: The linear programming model to add constraints to.
-            binary: A binary decision variable.
+            model (LpProblem): The linear programming model to add constraints to.
+            binary (LpVariable): A binary decision variable.
 
         Returns:
-            LpVariable: A binary variable that is the negation of di.
+            LpVariable: A binary variable that is the negation of binary.
         """
         d = LpVariable(f"l_not_{Formulations.count}", 0, 1, LpInteger)
         model += d == 1 - binary, f"Logical_not_{binary.name}"
@@ -130,10 +129,10 @@ class Formulations:
         """Calculate the absolute difference between two variables.
 
         Args:
-            model: The linear programming model to add constraints to.
-            x1: The first decision variable.
-            x2: The second decision variable.
-            upper: An upper bound on the absolute difference.
+            model (LpProblem): The linear programming model to add constraints to.
+            x1 (LpVariable): The first decision variable.
+            x2 (LpVariable): The second decision variable.
+            upper (int): An upper bound on the absolute difference.
 
         Returns:
             LpVariable: A variable representing the absolute difference.
@@ -147,16 +146,15 @@ class Formulations:
         Formulations.count += 1
         return y
 
-    # pylint: disable=loop-invariant-statement
     @staticmethod
-    def minimum(model: LpProblem, xi: List[LpVariable], lower: int, upper: int) -> LpVariable:
+    def minimum(model: LpProblem, xi: list[LpVariable], lower: int, upper: int) -> LpVariable:
         """Calculate the minimum of a list of variables.
 
         Args:
-            model: The linear programming model to add constraints to.
-            xi: A list of decision variables.
-            lower: The lower bound for the minimum variable.
-            upper: The upper bound for the minimum variable.
+            model (LpProblem): The linear programming model to add constraints to.
+            xi (list[LpVariable]): A list of decision variables.
+            lower (int): The lower bound for the minimum variable.
+            upper (int): The upper bound for the minimum variable.
 
         Returns:
             LpVariable: A variable representing the minimum value of xi.
@@ -176,16 +174,15 @@ class Formulations:
         Formulations.count += 1
         return y
 
-    # pylint: disable=loop-invariant-statement
     @staticmethod
-    def maximum(model: LpProblem, xi: List[LpVariable], lower: int, upper: int) -> LpVariable:
+    def maximum(model: LpProblem, xi: list[LpVariable], lower: int, upper: int) -> LpVariable:
         """Calculate the maximum of a list of variables.
 
         Args:
-            model: The linear programming model to add constraints to.
-            xi: A list of decision variables.
-            lower: The lower bound for the maximum variable.
-            upper: The upper bound for the maximum variable.
+            model (LpProblem): The linear programming model to add constraints to.
+            xi (list[LpVariable]): A list of decision variables.
+            lower (int): The lower bound for the maximum variable.
+            upper (int): The upper bound for the maximum variable.
 
         Returns:
             LpVariable: A variable representing the maximum value of xi.

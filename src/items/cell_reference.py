@@ -1,5 +1,5 @@
 """CellReference."""
-from typing import List, Set, Tuple, Optional, Dict, Type, Iterator
+from typing import List, set, tuple, Optional, Dict, Type, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -44,7 +44,7 @@ class CellReference(Item):
         return CellParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> tuple:
         """Extract the row and column from the given YAML dictionary.
 
         Args:
@@ -52,7 +52,7 @@ class CellReference(Item):
             yaml (Dict): The YAML dictionary containing cell data.
 
         Returns:
-            Tuple: A tuple containing the row and column as integers.
+            tuple: A tuple containing the row and column as integers.
         """
         data = yaml[cls.__name__]
         data = str(data)
@@ -114,7 +114,7 @@ class CellReference(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r})"
 
     @property
-    def used_classes(self) -> Set[Type['Item']]:
+    def used_classes(self) -> set[Type['Item']]:
         """Return a set of classes that this item uses.
 
         The set of classes is determined by traversing the method resolution
@@ -123,7 +123,7 @@ class CellReference(Item):
         class.
 
         Returns:
-            Set[Type[Self]]: A set of classes that this item uses.
+            set[Type[Self]]: A set of classes that this item uses.
         """
         return super().used_classes | self.cell.used_classes
 
@@ -149,10 +149,10 @@ class CellReference(Item):
         """
         return {self.__class__.__name__: int(self.cell.row_column_string)}
 
-    def children(self) -> Set[Item]:
+    def children(self) -> set[Item]:
         """Return the child items of the CellReference.
 
         Returns:
-            Set[Item]: A set containing the CellReference and its cell.
+            set[Item]: A set containing the CellReference and its cell.
         """
         return {self, self.cell}

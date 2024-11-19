@@ -1,5 +1,5 @@
 """SequenceLine."""
-from typing import List, Set, Dict
+from typing import List, set, Dict
 
 from pulp import LpVariable, LpInteger
 
@@ -78,11 +78,11 @@ class SequenceLine(Line):
             return 2
         return 1
 
-    def possible_digits(self) -> List[Set[int]]:
+    def possible_digits(self) -> List[set[int]]:
         """Determine possible digits for each cell along the sequence.
 
         Returns:
-            List[Set[int]]: A list of sets containing possible digits for each
+            List[set[int]]: A list of sets containing possible digits for each
             cell, based on the maximum digit and length of the sequence.
         """
         length = len(self.cells)

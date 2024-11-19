@@ -48,7 +48,7 @@ class MountainLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags specific to the MountainLine.
         """
-        return super().tags.union({'MountainLine', 'Adjacent', 'Set'})
+        return super().tags.union({'MountainLine', 'Adjacent', 'set'})
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:

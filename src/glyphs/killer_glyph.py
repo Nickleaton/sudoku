@@ -1,5 +1,5 @@
 """KillerGlyph."""
-from typing import List, Optional, Dict, Tuple, ClassVar
+from typing import List, Optional, Dict, tuple, ClassVar
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -26,7 +26,7 @@ class KillerGlyph(Glyph):
         8: Vector(Coord(1, 0), Coord(1, 1))
     }
 
-    short_lines: ClassVar[Dict[int, Tuple[Point, Direction]]] = {
+    short_lines: ClassVar[Dict[int, tuple[Point, Direction]]] = {
         12: (Point(-1, -1), Direction.UP),
         23: (Point(1, -1), Direction.UP),
         36: (Point(1, -1), Direction.RIGHT),

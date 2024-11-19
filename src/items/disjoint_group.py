@@ -1,5 +1,5 @@
 """DisjointGroup."""
-from typing import List, Tuple
+from typing import list, tuple
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -14,7 +14,7 @@ class DisjointGroup(StandardRegion):
 
     # Offsets for the cells in the disjoint group
     # TODO Move and think about a multiply by scalar
-    offsets: Tuple[Tuple[int, int]] = (
+    offsets: tuple[tuple[int, int]] = (
         (0, 0),
         (0, 3),
         (0, 6),
@@ -50,11 +50,11 @@ class DisjointGroup(StandardRegion):
         return DigitParser()
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Retrieve the rules for the disjoint group.
 
         Returns:
-            List[Rule]: A list containing the rule for the disjoint group.
+            list[Rule]: A list containing the rule for the disjoint group.
         """
         return [Rule('DisjointGroup', 1, 'Digits in same place each box must be unique')]
 

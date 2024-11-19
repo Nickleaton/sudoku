@@ -1,6 +1,6 @@
 """VariablePair."""
 import re
-from typing import List, Tuple, Dict, Optional
+from typing import List, tuple, Dict, Optional
 
 from pulp import LpElement, LpVariable
 
@@ -36,7 +36,7 @@ class VariablePair(Pair):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.var_name!r})"
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> tuple:
         """Extract the coordinates and variable name from the YAML data.
 
         Args:
@@ -44,7 +44,7 @@ class VariablePair(Pair):
             yaml (Dict): The YAML data containing the pair definition.
 
         Returns:
-            Tuple: A tuple containing two Cell objects and the variable name.
+            tuple: A tuple containing two Cell objects and the variable name.
         """
         rc_pattern = f"[{board.digit_values}][{board.digit_values}]"
         var_pattern = "[a-zA-Z][a-zA-Z]*"

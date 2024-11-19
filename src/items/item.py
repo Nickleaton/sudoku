@@ -1,6 +1,6 @@
 """Item."""
 
-from typing import Optional, List, Set, Type, Dict, Iterator
+from typing import Optional, List, set, Type, Dict, Iterator
 
 import strictyaml
 from sortedcontainers import SortedDict
@@ -112,6 +112,7 @@ class Item:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
             raise SudokuException(f"Unknown item class {name}")
+        print (f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 
@@ -126,7 +127,7 @@ class Item:
             return self
         return self.parent.top
 
-    def regions(self) -> Set['Item']:
+    def regions(self) -> set['Item']:
         """Get the set of items used in this item.
 
         Returns:
@@ -211,7 +212,7 @@ class Item:
         yield self
 
     @property
-    def used_classes(self) -> Set[Type['Item']]:
+    def used_classes(self) -> set[Type['Item']]:
         """Return a set of classes used by this item.
 
         Returns:

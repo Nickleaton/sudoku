@@ -1,6 +1,6 @@
 """Constraint Utilities."""
 from math import log10, ceil
-from typing import Dict, ClassVar
+from typing import dict, ClassVar
 
 from pulp import lpSum, LpVariable, LpContinuous
 
@@ -12,7 +12,7 @@ from src.solvers.pulp_solver import PulpSolver
 class ConstraintUtilities:
     """Utility class for managing constraints in the PulpSolver."""
 
-    variables: ClassVar[Dict[str, LpVariable]] = {}
+    variables: ClassVar[dict[str, LpVariable]] = {}
 
     @staticmethod
     def log10_cell(solver: PulpSolver, cell: Cell) -> LpVariable:

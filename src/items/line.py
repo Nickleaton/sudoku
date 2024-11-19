@@ -1,5 +1,5 @@
 """Line."""
-from typing import List, Sequence, Dict
+from typing import list, Sequence, dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -33,12 +33,12 @@ class Line(Region):
         return True
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> List[Cell]:
+    def extract(cls, board: Board, yaml: dict) -> list[Cell]:
         """Extract a list of Cell instances from the provided YAML dictionary.
 
         Args:
             board (Board): The board associated with the cells.
-            yaml (Dict): A dictionary containing the YAML data.
+            yaml (dict): A dictionary containing the YAML data.
 
         Returns:
             List[Cell]: A list of Cell instances extracted from the YAML data.
@@ -46,12 +46,12 @@ class Line(Region):
         return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Line instance from a YAML dictionary.
 
         Args:
             board (Board): The board associated with the line.
-            yaml (Dict): A dictionary containing the YAML data.
+            yaml (dict): A dictionary containing the YAML data.
 
         Returns:
             Item: A new instance of Line created from the YAML data.
@@ -69,7 +69,7 @@ class Line(Region):
         return f"{self.__class__.__name__}({self.board!r}, [{cell_str}])"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return an empty list of rules associated with this line."""
         return []
 
@@ -82,10 +82,10 @@ class Line(Region):
         """
         return super().tags.union({'Line'})
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the line to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the line, including the cells.
+            dict: A dictionary representation of the line, including the cells.
         """
         return {self.__class__.__name__: ", ".join([cell.row_column_string for cell in self.cells])}

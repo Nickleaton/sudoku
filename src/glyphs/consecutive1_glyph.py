@@ -25,7 +25,7 @@ class Consecutive1Glyph(RectangleGlyph):
         parameters to the parent `RectangleGlyph` class.
 
         Args:
-            class_name (str): Set the CSS class name for the rectangle.
+            class_name (str): set the CSS class name for the rectangle.
             first (Coord): The first coordinate for the rectangle.
             second (Coord): The second coordinate for the rectangle.
         """

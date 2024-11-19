@@ -1,5 +1,5 @@
 """RenbanLine."""
-from typing import List, Set, Dict
+from typing import List, set, Dict
 
 from pulp import LpVariable, LpInteger
 
@@ -46,9 +46,9 @@ class RenbanLine(Line):
         Returns:
             set[str]: Tags specific to RenbanLine, combined with inherited tags.
         """
-        return super().tags.union({'RenbanLine', 'Adjacent', 'Set'})
+        return super().tags.union({'RenbanLine', 'Adjacent', 'set'})
 
-    def mandatory_digits(self, length: int) -> Set[int]:
+    def mandatory_digits(self, length: int) -> set[int]:
         """Determine the mandatory digits present on the Renban line based on its length.
 
         For a line of a certain length, this method calculates which digits must appear
@@ -58,7 +58,7 @@ class RenbanLine(Line):
             length (int): The number of cells in the Renban line.
 
         Returns:
-            Set[int]: A set of mandatory digits that must appear on the line.
+            set[int]: A set of mandatory digits that must appear on the line.
         """
         left = set(range(1, length + 1))
         right = set(range(self.board.maximum_digit, self.board.maximum_digit - length, -1))

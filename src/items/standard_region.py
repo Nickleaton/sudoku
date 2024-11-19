@@ -61,7 +61,7 @@ class StandardRegion(Region):
         Returns:
             set[str]: A set of tags including 'Uniqueness' and 'Standard Set'.
         """
-        return super().tags.union({'Uniqueness', 'Standard Set'})
+        return super().tags.union({'Uniqueness', 'Standard set'})
 
     def to_dict(self) -> Dict:
         """Convert the standard region to a dictionary representation.

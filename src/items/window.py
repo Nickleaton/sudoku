@@ -1,5 +1,4 @@
 """Window."""
-from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import SquareGlyph
@@ -65,7 +64,7 @@ class Window(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Coord:
+    def extract(cls, board: Board, yaml: dict) -> Coord:
         """Extract the center coordinate from the YAML data.
 
         Args:
@@ -79,12 +78,12 @@ class Window(Region):
         return Coord(int(data[0]), int(data[1]))
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Window instance from the YAML data.
 
         Args:
             board (Board): The board to create the window on.
-            yaml (Dict): The YAML data for the window.
+            yaml (dict): The YAML data for the window.
 
         Returns:
             Item: The created Window instance.
@@ -101,19 +100,19 @@ class Window(Region):
         return f"{self.__class__.__name__}({self.board!r}, {self.center!r})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with this window.
 
         Returns:
-            List[Rule]: A list of rules for the window.
+            list[Rule]: A list of rules for the window.
         """
         return [Rule('Window', 1, 'Digits in same shaded window must be unique')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing this window.
 
         Returns:
-            List[Glyph]: A list of glyphs for the window.
+            list[Glyph]: A list of glyphs for the window.
         """
         return [SquareGlyph('Window', self.center - Coord(1, 1), 3)]
 
@@ -135,19 +134,19 @@ class Window(Region):
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the window to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the window.
+            dict: A dictionary representation of the window.
         """
         return {self.__class__.__name__: self.center.row * 10 + self.center.column}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get the CSS styles for this window.
 
         Returns:
-            Dict: A dictionary of CSS styles for the window.
+            dict: A dictionary of CSS styles for the window.
         """
         return {
             '.Window': {

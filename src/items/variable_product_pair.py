@@ -1,5 +1,5 @@
 """VariableProductPair."""
-from typing import List, Dict, Optional
+from typing import list, dict, Optional
 
 from pulp import LpElement
 
@@ -14,11 +14,11 @@ class VariableProductPair(VariablePair):
     """Represents a pair of variables with a fixed product in a Sudoku-like puzzle."""
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with this variable product pair.
 
         Returns:
-            List[Rule]: A list of rules describing the product constraints.
+            list[Rule]: A list of rules describing the product constraints.
         """
         return [
             Rule(
@@ -62,11 +62,11 @@ class VariableProductPair(VariablePair):
         """
         return VariableType.LOG_INTEGER
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get the CSS styles for this variable product pair.
 
         Returns:
-            Dict: A dictionary containing CSS styles for visual representation.
+            dict: A dictionary containing CSS styles for visual representation.
         """
         return {
             '.FixedProductPair': {

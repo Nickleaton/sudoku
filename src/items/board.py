@@ -1,7 +1,7 @@
 """Board."""
 import re
 from enum import Enum
-from typing import Optional, Dict, Tuple
+from typing import Optional, dict, tuple
 
 import oyaml as yaml
 import strictyaml
@@ -147,14 +147,14 @@ class Board:
         )
 
     @staticmethod
-    def parse_xy(s: str) -> Tuple[int, int]:
+    def parse_xy(s: str) -> tuple[int, int]:
         """Parse a string of the form 'NxM' into two integers.
 
         Args:
             s (str): String representing dimensions, e.g., "9x9".
 
         Returns:
-            Tuple[int, int]: Parsed (row, column) dimensions.
+            tuple[int, int]: Parsed (row, column) dimensions.
 
         Raises:
             AssertionError: If the input string does not match the expected format.
@@ -167,17 +167,17 @@ class Board:
         return int(row_str), int(column_str)
 
     @classmethod
-    def create(cls, name: str, yaml_data: Dict) -> 'Board':
+    def create(cls, name: str, yaml_data: dict) -> 'Board':
         """Create a Board instance from a YAML data structure.
 
         Args:
             name (str): Name key for the board in the YAML data.
-            yaml_data (Dict[str, Any]): YAML data dictionary containing board configuration.
+            yaml_data (dict[str, Any]): YAML data dictionary containing board configuration.
 
         Returns:
             Board: A new `Board` instance.
         """
-        y: Dict = yaml_data[name]
+        y: dict = yaml_data[name]
         board_rows: int
         board_columns: int
         board_rows, board_columns = Board.parse_xy(y['Board'])
@@ -201,13 +201,13 @@ class Board:
             author
         )
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Board attributes to a dictionary format for YAML serialization.
 
         Returns:
-            Dict[str, Any]: Dictionary containing board configuration.
+            dict[str, Any]: dictionary containing board configuration.
         """
-        result: Dict = {'Board': {}}
+        result: dict = {'Board': {}}
         result['Board']['Board'] = f"{self.board_rows}x{self.board_columns}"
         if self.box_rows is not None:
             result['Board']['Box'] = f"{self.box_rows}x{self.box_columns}"

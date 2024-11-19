@@ -1,5 +1,5 @@
 """SumPair."""
-from typing import List, Dict
+from typing import list, dict
 
 from pulp import LpElement
 
@@ -21,11 +21,11 @@ class SumPair(Pair):
         return super().tags.union({'Sum'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the SumPair.
 
         Returns:
-            List[Rule]: A list of rules describing the SumPair constraints.
+            list[Rule]: A list of rules describing the SumPair constraints.
         """
         return [
             Rule(
@@ -46,7 +46,7 @@ class SumPair(Pair):
         """
         return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define the CSS styles for rendering SumPair glyphs.
 
         Returns:

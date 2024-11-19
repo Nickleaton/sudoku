@@ -1,5 +1,5 @@
 """Pair."""
-from typing import List, Tuple, Dict
+from typing import list, tuple, dict
 
 from src.glyphs.edge_text_glyph import EdgeTextGlyph
 from src.glyphs.glyph import Glyph
@@ -50,7 +50,7 @@ class Pair(Region):
         return CellPairsParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the pair of cells from the YAML configuration.
 
         Args:
@@ -66,12 +66,12 @@ class Pair(Region):
         return c1, c2
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a new Pair instance from the given board and YAML configuration.
 
         Args:
             board (Board): The board on which the pair is defined.
-            yaml (Dict): The YAML configuration that defines the pair.
+            yaml (dict): The YAML configuration that defines the pair.
 
         Returns:
             Item: A new Pair instance.
@@ -80,7 +80,7 @@ class Pair(Region):
         return cls(board, c1, c2)
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return a list of rules associated with the pair.
 
         Returns:
@@ -106,13 +106,13 @@ class Pair(Region):
         """
         return ""
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the pair.
 
         If a label is set, it returns a glyph representing the edge between the two cells with the label.
 
         Returns:
-            List[Glyph]: A list of glyphs, or an empty list if no label is set.
+            list[Glyph]: A list of glyphs, or an empty list if no label is set.
         """
         if self.label != "":
             return [
@@ -126,11 +126,11 @@ class Pair(Region):
             ]
         return []
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Return a dictionary representation of the pair.
 
         Returns:
-            Dict: A dictionary where the key is the class name and the value is a string representing the pair of cells.
+            dict: A dictionary where the key is the class name and the value is a string representing the pair of cells.
         """
         return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}
 

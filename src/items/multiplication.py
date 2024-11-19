@@ -1,6 +1,6 @@
 """Multiplication."""
 from math import log10
-from typing import List, Set
+from typing import list, set
 
 from pulp import lpSum
 
@@ -14,7 +14,7 @@ class Multiplication:
 
     @staticmethod
     # pylint: disable=loop-invariant-statement
-    def get_set(board: Board, n: int) -> Set[int]:
+    def get_set(board: Board, n: int) -> set[int]:
         """Determine the set of digits that can contribute to a given product.
 
         Args:
@@ -22,9 +22,9 @@ class Multiplication:
             n (int): The target product.
 
         Returns:
-            Set[int]: The set of digits that can contribute to the target product.
+            set[int]: The set of digits that can contribute to the target product.
         """
-        used: Set[int] = set()
+        used: set[int] = set()
         for a in board.digit_range:
             for b in board.digit_range:
                 for c in board.digit_range:
@@ -38,13 +38,13 @@ class Multiplication:
 
     @staticmethod
     # pylint: disable=loop-invariant-statement
-    def add_constraint(board: Board, solver: PulpSolver, cells: List[Cell], product: int, name: str) -> None:
+    def add_constraint(board: Board, solver: PulpSolver, cells: list[Cell], product: int, name: str) -> None:
         """Add constraints to enforce a multiplication rule on a group of cells.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
             solver (PulpSolver): The solver to which the constraints are added.
-            cells (List[Cell]): The list of cells involved in the multiplication.
+            cells (list[Cell]): The list of cells involved in the multiplication.
             product (int): The target product of the cell values.
             name (str): The base name for the constraints.
         """

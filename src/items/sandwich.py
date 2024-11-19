@@ -1,6 +1,6 @@
 """Sandwich."""
 import re
-from typing import Dict, Tuple, List, Optional
+from typing import Dict, tuple, List, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -54,7 +54,7 @@ class Sandwich(Item):
         return FrameParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> tuple:
         """Extract side, index, and total from the provided YAML configuration.
 
         Args:
@@ -62,7 +62,7 @@ class Sandwich(Item):
             yaml (Dict): The YAML configuration containing the sandwich data.
 
         Returns:
-            Tuple[Side, int, int]: A tuple containing the side, index, and total.
+            tuple[Side, int, int]: A tuple containing the side, index, and total.
 
         Raises:
             AssertionError: If the regex match fails.

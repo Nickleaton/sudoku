@@ -1,6 +1,5 @@
 """KropkiPair."""
 from itertools import product
-from typing import List, Dict
 
 from pulp import LpVariable, LpInteger, lpSum
 
@@ -28,7 +27,7 @@ class KropkiPair(Pair):
             cell_2 (Cell): The second cell in the pair.
         """
         super().__init__(board, cell_1, cell_2)
-        self.sos: Dict[int, LpVariable] = {}
+        self.sos: dict[int, LpVariable] = {}
 
     @property
     def factor(self) -> int:
@@ -49,11 +48,11 @@ class KropkiPair(Pair):
         return "double"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rule for the Kropki pair.
 
         Returns:
-            List[Rule]: A list of rules for the Kropki pair.
+            list[Rule]: A list of rules for the Kropki pair.
         """
         return [
             Rule(
@@ -66,11 +65,11 @@ class KropkiPair(Pair):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Kropki pair.
 
         Returns:
-            List[Glyph]: A list of glyphs representing the Kropki pair.
+            list[Glyph]: A list of glyphs representing the Kropki pair.
         """
         return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
@@ -183,11 +182,11 @@ class KropkiPair(Pair):
         self.create_sos(solver)
         self.add_unique_constraints(solver)
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define CSS styling properties for rendering the Kropki pair.
 
         Returns:
-            Dict: A dictionary of CSS properties for the Kropki pair.
+            dict: A dictionary of CSS properties for the Kropki pair.
         """
         return {
             '.KropkiPair': {

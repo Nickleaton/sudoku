@@ -1,5 +1,5 @@
 """ComposedGlyph."""
-from typing import List, Optional, Set, Type
+from typing import List, Optional, set, Type
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -24,7 +24,7 @@ class ComposedGlyph(Glyph):
         """Initialize the ComposedGlyph with a given class name and optional items.
 
         Args:
-            class_name (str): Set the CSS class name for the composed glyph.
+            class_name (str): set the CSS class name for the composed glyph.
             items (Optional[List[Glyph]], optional): Provide a list of `Glyph`
                 objects to include in the composition. Default is an empty list.
         """
@@ -76,14 +76,14 @@ class ComposedGlyph(Glyph):
         return group
 
     @property
-    def used_classes(self) -> Set[Type[Glyph]]:
+    def used_classes(self) -> set[Type[Glyph]]:
         """Return all classes used by the composed glyph and its items.
 
         Collect and return a set of all the `Glyph` classes used by the composed
         glyph, including those used by its constituent items.
 
         Returns:
-            Set[Type[Glyph]]: Return a set of all `Glyph` classes used in the
+            set[Type[Glyph]]: Return a set of all `Glyph` classes used in the
             composition.
         """
         result = super().used_classes  # Include the used classes from the parent class

@@ -1,5 +1,5 @@
 """Boxes."""
-from typing import Dict
+from typing import dict
 
 from src.items.board import Board
 from src.items.box import Box
@@ -29,13 +29,13 @@ class Boxes(StandardRegionSet):
         super().__init__(board, [Box(board, i) for i in board.box_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Boxes instance.
 
         Args:
             cls: The class itself (Boxes).
             board (Board): The board to associate with the boxes.
-            yaml (Dict): A dictionary containing YAML configuration (not used).
+            yaml (dict): A dictionary containing YAML configuration (not used).
 
         Returns:
             Item: An instance of Boxes.

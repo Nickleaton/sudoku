@@ -1,5 +1,5 @@
 """ClonedRegion."""
-from typing import List, Tuple, Dict, Type, Set, Iterator
+from typing import List, tuple, Dict, Type, set, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -44,7 +44,7 @@ class ClonedRegion(Item):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[List[Cell], List[Cell]]:
+    def extract(cls, board: Board, yaml: Dict) -> tuple[List[Cell], List[Cell]]:
         """Extract two sets of cells from YAML configuration.
 
         Args:
@@ -52,7 +52,7 @@ class ClonedRegion(Item):
             yaml (Dict): The YAML configuration containing cell coordinates.
 
         Returns:
-            Tuple[List[Cell], List[Cell]]: Two lists of cells representing the cloned regions.
+            tuple[List[Cell], List[Cell]]: Two lists of cells representing the cloned regions.
         """
         part_a = str(yaml[cls.__name__].split('=')[0])
         part_b = str(yaml[cls.__name__].split('=')[1])
@@ -83,11 +83,11 @@ class ClonedRegion(Item):
         return []
 
     @property
-    def used_classes(self) -> Set[Type[Item]]:
+    def used_classes(self) -> set[Type[Item]]:
         """Retrieve the classes used in the cloned region.
 
         Returns:
-            Set[Type[Item]]: A set of item types used in the cloned region.
+            set[Type[Item]]: A set of item types used in the cloned region.
         """
         result = super().used_classes
         for item in self.region_a:
@@ -124,11 +124,11 @@ class ClonedRegion(Item):
         ]
 
     @property
-    def tags(self) -> Set[str]:
+    def tags(self) -> set[str]:
         """Retrieve tags for the cloned region.
 
         Returns:
-            Set[str]: A set of tags, including 'ClonedRegion'.
+            set[str]: A set of tags, including 'ClonedRegion'.
         """
         return super().tags.union({'ClonedRegion'})
 

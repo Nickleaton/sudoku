@@ -1,6 +1,5 @@
 """KnownCell."""
 import re
-from typing import List, Tuple, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.known_glyph import KnownGlyph
@@ -35,15 +34,15 @@ class KnownCell(CellReference):
         self.prefix = "Known" if prefix is None else prefix
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, int]:
+    def extract(cls, board: Board, yaml: dict) -> tuple[int, int, int]:
         """Extract the row, column, and digit from the given YAML string.
 
         Args:
             board (Board): The board this item is attached to.
-            yaml (Dict): The given YAML string.
+            yaml (dict): The given YAML string.
 
         Returns:
-            Tuple[int, int, int]: A tuple containing row, column, and digit values.
+            tuple[int, int, int]: A tuple containing row, column, and digit values.
 
         Raises:
             AssertionError: If the input format does not match the expected regex pattern.
@@ -56,12 +55,12 @@ class KnownCell(CellReference):
         return int(row_str), int(column_string), int(digit_str)
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an instance of KnownCell from a YAML dictionary.
 
         Args:
             board (Board): The board associated with this item.
-            yaml (Dict): A YAML dictionary with the required parameters.
+            yaml (dict): A YAML dictionary with the required parameters.
 
         Returns:
             Item: An instance of KnownCell.
@@ -69,11 +68,11 @@ class KnownCell(CellReference):
         row, column, digit = KnownCell.extract(board, yaml)
         return cls(board, row, column, digit)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of SVG glyphs for this item.
 
         Returns:
-            List[Glyph]: A list containing a KnownGlyph for this cell.
+            list[Glyph]: A list containing a KnownGlyph for this cell.
         """
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
@@ -85,19 +84,19 @@ class KnownCell(CellReference):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the item to a dictionary for serialization.
 
         Returns:
-            Dict: A dictionary with the class name as the key and cell information as the value.
+            dict: A dictionary with the class name as the key and cell information as the value.
         """
         return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return CSS properties for styling Known and Unknown cells.
 
         Returns:
-            Dict: A dictionary of CSS properties.
+            dict: A dictionary of CSS properties.
         """
         return {
             ".Known": {
@@ -148,7 +147,7 @@ class KnownCell(CellReference):
             None
         """
         self.cell.book.set_possible([self.digit])
-        standard_regions: List[StandardRegion] = [
+        standard_regions: list[StandardRegion] = [
             region for region in self.cell.top.regions() if isinstance(region, StandardRegion)
         ]
         for region in standard_regions:

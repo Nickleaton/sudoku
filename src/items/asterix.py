@@ -1,5 +1,5 @@
 """Asterix."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord
@@ -15,11 +15,11 @@ class Asterix(SpecialRegion):
         None directly defined; inherits from SpecialRegion.
     """
 
-    def coords(self) -> List[Coord]:
+    def coords(self) -> list[Coord]:
         """Provide the coordinates that define the Asterix region.
 
         Returns:
-            List[Coord]: A list of Coord objects representing each cell in the
+            list[Coord]: A list of Coord objects representing each cell in the
             Asterix region.
         """
         return [
@@ -42,11 +42,11 @@ class Asterix(SpecialRegion):
         """
         return 'Asterix'
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define the CSS style for rendering the Asterix region.
 
         Returns:
-            Dict: CSS styling for the Asterix region, specifying stroke and fill colors.
+            dict: CSS styling for the Asterix region, specifying stroke and fill colors.
         """
         return {
             '.Asterix': {

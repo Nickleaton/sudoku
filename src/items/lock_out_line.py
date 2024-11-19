@@ -1,5 +1,5 @@
 """LockOutLine."""
-from typing import List
+from typing import list
 
 from src.items.line import Line
 from src.utils.rule import Rule
@@ -14,11 +14,11 @@ class LockOutLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return list of rules that apply to this LockOutLine.
 
         Returns:
-            List[Rule]: A list containing the LockOut rules
+            list[Rule]: A list containing the LockOut rules
         """
         return [
             Rule(

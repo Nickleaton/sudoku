@@ -84,7 +84,7 @@ class Exclusion(Item):
             yaml (Dict): The YAML data containing the Exclusion definition.
 
         Returns:
-            Tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as a string.
+            tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as a string.
         """
         position_str, digits = yaml[cls.__name__].split("=")
         position = Coord(int(position_str[0]), int(position_str[1]))

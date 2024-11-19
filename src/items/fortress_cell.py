@@ -1,5 +1,5 @@
 """FortressCell."""
-from typing import Optional, List, Dict
+from typing import Optional, list, dict
 
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
 from src.glyphs.glyph import Glyph
@@ -31,11 +31,11 @@ class FortressCell(SimpleCellReference):
         return 'f'
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with this FortressCell.
 
         Returns:
-            List[Rule]: A list containing the rule that the digit in a
+            list[Rule]: A list containing the rule that the digit in a
                         fortress cell must be bigger than its orthogonal neighbors.
         """
         return [
@@ -46,7 +46,7 @@ class FortressCell(SimpleCellReference):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs associated with this FortressCell.
 
         Returns:
@@ -63,11 +63,11 @@ class FortressCell(SimpleCellReference):
         """
         return super().tags.union({'Comparison'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the FortressCell.
 
         Returns:
-            Dict: A dictionary containing the CSS properties for the FortressCell.
+            dict: A dictionary containing the CSS properties for the FortressCell.
         """
         return {
             ".FortressCell": {

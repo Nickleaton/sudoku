@@ -1,5 +1,4 @@
 """EntropicLine."""
-from typing import List, Dict
 
 from pulp import LpAffineExpression, lpSum
 
@@ -21,11 +20,11 @@ class EntropicLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules for the entropic line.
 
         Returns:
-            List[Rule]: A list containing the entropic rule, enforcing that
+            list[Rule]: A list containing the entropic rule, enforcing that
             any three successive cells contain low, medium, and high digits.
         """
         return [
@@ -39,11 +38,11 @@ class EntropicLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create glyph representations of the entropic line for rendering.
 
         Returns:
-            List[Glyph]: A list of PolyLineGlyph objects representing the line.
+            list[Glyph]: A list of PolyLineGlyph objects representing the line.
         """
         return [PolyLineGlyph('EntropicLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -54,7 +53,7 @@ class EntropicLine(Line):
         Returns:
             set[str]: A set of tags identifying the entropic line.
         """
-        return super().tags.union({'EntropicLine', 'Set'})
+        return super().tags.union({'EntropicLine', 'set'})
 
     def low_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
         """Calculate the total for low digits in a specified cell.
@@ -119,11 +118,11 @@ class EntropicLine(Line):
             solver.model += self.mid_total(solver, i) == self.mid_total(solver, i + 3), f"{self.name}_j_mid_{pname}"
             solver.model += self.top_total(solver, i) == self.top_total(solver, i + 3), f"{self.name}_j_top_{pname}"
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define the CSS style for rendering the entropic line.
 
         Returns:
-            Dict: CSS styling for the line, setting color and stroke properties.
+            dict: CSS styling for the line, setting color and stroke properties.
         """
         return {
             '.EntropicLine': {

@@ -1,5 +1,5 @@
 """FirstN."""
-from typing import Any, Dict
+from typing import Any, dict
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -58,12 +58,12 @@ class FirstN(Region):
         return super().tags.union({'FirstN'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the necessary information from a YAML file.
 
         Args:
             board (Board): The game board.
-            yaml (Dict): A dictionary containing the YAML data.
+            yaml (dict): A dictionary containing the YAML data.
 
         Returns:
             tuple: A tuple containing the side, index, and count values.
@@ -75,12 +75,12 @@ class FirstN(Region):
         return side, index, count
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a FirstN region from the extracted YAML data.
 
         Args:
             board (Board): The game board.
-            yaml (Dict): A dictionary containing the YAML data.
+            yaml (dict): A dictionary containing the YAML data.
 
         Returns:
             Item: A FirstN region object.
@@ -88,7 +88,7 @@ class FirstN(Region):
         side, index, count = FirstN.extract(board, yaml)
         return cls(board, side, index, count)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the FirstN region to a dictionary representation.
 
         Returns:

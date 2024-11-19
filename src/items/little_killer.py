@@ -1,5 +1,5 @@
 """LittleKiller."""
-from typing import Dict, List, Tuple
+from typing import dict, list, tuple
 
 from pulp import lpSum
 
@@ -84,7 +84,7 @@ class LittleKiller(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[int, int, Cyclic, Side]:
+    def extract(cls, board: Board, yaml: dict) -> tuple[int, int, Cyclic, Side]:
         """Extract the parameters for creating a LittleKiller region from the YAML input.
 
         Args:
@@ -92,7 +92,7 @@ class LittleKiller(Region):
             yaml (Dict): The YAML configuration for the LittleKiller region.
 
         Returns:
-            Tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side values.
+            tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side values.
         """
         parts = yaml[cls.__name__].split("=")
         total = int(parts[1])
@@ -102,7 +102,7 @@ class LittleKiller(Region):
         return total, offset, cyclic, side
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a LittleKiller region from the YAML configuration.
 
         Args:
@@ -115,11 +115,11 @@ class LittleKiller(Region):
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of glyphs representing the LittleKiller region.
 
         Returns:
-            List[Glyph]: A list of glyphs, including text and arrows.
+            list[Glyph]: A list of glyphs, including text and arrows.
         """
         delta2 = Coord(0, 0)
         if self.side == Side.TOP:
@@ -132,7 +132,7 @@ class LittleKiller(Region):
         ]
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the LittleKiller region.
 
         Returns:
@@ -165,19 +165,19 @@ class LittleKiller(Region):
         name = f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
         solver.model += total == self.total, name
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the LittleKiller region to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the LittleKiller region.
+            dict: A dictionary representing the LittleKiller region.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the LittleKiller region.
 
         Returns:
-            Dict: A dictionary of CSS styles for the LittleKiller region.
+            dict: A dictionary of CSS styles for the LittleKiller region.
         """
         return {
             '.LittleKiller': {

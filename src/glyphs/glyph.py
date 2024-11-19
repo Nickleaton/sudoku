@@ -1,6 +1,6 @@
 """Glyph."""
 import abc
-from typing import Type, Set, Optional
+from typing import Type, set, Optional
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Marker
@@ -86,10 +86,10 @@ class Glyph:
         return f"{self.__class__.__name__}('{self.class_name}')"
 
     @property
-    def used_classes(self) -> Set[Type['Glyph']]:
+    def used_classes(self) -> set[Type['Glyph']]:
         """Return a set of all the classes that have contributed to this glyph.
 
         Returns:
-            Set[Type[Glyph]]: A set of classes from the class hierarchy that define this glyph.
+            set[Type[Glyph]]: A set of classes from the class hierarchy that define this glyph.
         """
         return set(self.__class__.__mro__).difference({abc.ABC, object})

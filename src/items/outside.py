@@ -93,7 +93,7 @@ class Outside(FirstN):
             yaml (Dict): The YAML configuration containing the Outside data.
 
         Returns:
-            Tuple: A tuple containing the side, index, and digits list.
+            tuple: A tuple containing the side, index, and digits list.
         """
         data = yaml['Outside']
         side = Side.create(data[0])

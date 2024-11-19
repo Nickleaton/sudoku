@@ -1,5 +1,5 @@
 """PalindromeLine."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -16,19 +16,19 @@ class PalindromeLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define rules specific to PalindromeLine.
 
         Returns:
-            List[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing a single Rule object that specifies:
             - Cells along a purple line form a palindrome.
         """
         return [Rule('PalindromeLine', 1, "Cells along a purple line form a palindrome")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate a graphical representation of the PalindromeLine.
 
-        Returns:
+        list:
             List[Glyph]: A list containing a `PolyLineGlyph` instance with
             cell coordinates for display as a palindrome line.
         """
@@ -61,7 +61,7 @@ class PalindromeLine(Line):
             name = f"{self.name}_{i}"
             solver.model += solver.values[c1.row][c1.column] == solver.values[c2.row][c2.column], name
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styles for rendering the PalindromeLine in the user interface.
 
         Returns:

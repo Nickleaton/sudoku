@@ -1,5 +1,5 @@
 """AntiQueens."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.items.anti import Anti
 from src.items.board import Board
@@ -15,26 +15,26 @@ class AntiQueens(Anti):
     the AntiQueen, including movement offsets, rules, and schema.
     """
 
-    def __init__(self, board: Board, digits: List[int]):
+    def __init__(self, board: Board, digits: list[int]):
         """Initialize the AntiQueen with a board and a list of digits.
 
         Args:
             board (Board): The board on which the AntiQueen will be placed.
-            digits (List[int]): A list of digits associated with the AntiQueen.
+            digits (list[int]): A list of digits associated with the AntiQueen.
         """
         super().__init__(board, digits)
         self.digits = digits
 
-    def offsets(self) -> List[Coord]:
+    def offsets(self) -> list[Coord]:
         """Return the movement offsets for the AntiQueen.
 
         The offsets represent the relative positions a queen can move
         in chess (diagonally in all four directions).
 
         Returns:
-            List[Coord]: A list of coordinate offsets for the AntiQueen.
+            list[Coord]: A list of coordinate offsets for the AntiQueen.
         """
-        results: List[Coord] = []
+        results: list[Coord] = []
         for distance in self.board.digit_range:
             results.append(Coord(-1, -1) * distance)  # Move diagonally up-left
             results.append(Coord(1, -1) * distance)  # Move diagonally up-right
@@ -55,14 +55,14 @@ class AntiQueens(Anti):
         return super().tags.union({'Queen'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the AntiQueen.
 
         The rules specify the restrictions on the placement of digits
         in relation to queen moves.
 
         Returns:
-            List[Rule]: A list of rules for the AntiQueen.
+            list[Rule]: A list of rules for the AntiQueen.
         """
         digit_str = ' '.join([str(digit) for digit in self.digits])
         return [
@@ -79,12 +79,12 @@ class AntiQueens(Anti):
         return DigitsParser()
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'AntiQueens':
+    def create(cls, board: Board, yaml: dict) -> 'AntiQueens':
         """Create an AntiQueens instance using the YAML configuration.
 
         Args:
             board (Board): The board on which the AntiQueens will be placed.
-            yaml (Dict): The YAML configuration dictionary containing the digits.
+            yaml (dict): The YAML configuration dictionary containing the digits.
 
         Returns:
             AntiQueens: An instance of the AntiQueens class with the parsed digits.

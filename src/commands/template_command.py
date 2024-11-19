@@ -39,12 +39,13 @@ class TemplateCommand(SimpleCommand):
         Raises:
             CommandException: If the preconditions are not met.
         """
+        if self.target in problem:
+            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
         if not is_readable_file(self.template_file):
             raise CommandException(
                 f'{self.__class__.__name__} - {self.template_file} does not exist or is not readable '
             )
-        if self.target in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists')
+
 
     def execute(self, problem: Problem) -> None:
         """Produce the HTML output of the puzzle.

@@ -1,5 +1,5 @@
 """DistinctRenbanLine."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -15,11 +15,11 @@ class DistinctRenbanLine(RenbanLine):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Retrieve the rules for the distinct Renban line.
 
         Returns:
-            List[Rule]: A list of rules for the distinct Renban line.
+            list[Rule]: A list of rules for the distinct Renban line.
         """
         return [
             Rule(
@@ -30,11 +30,11 @@ class DistinctRenbanLine(RenbanLine):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for visual representation of the distinct Renban line.
 
         Returns:
-            List[Glyph]: A list containing the PolyLineGlyph representing the distinct Renban line.
+            list[Glyph]: A list containing the PolyLineGlyph representing the distinct Renban line.
         """
         return [PolyLineGlyph('DistinctRenbanLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -46,7 +46,7 @@ class DistinctRenbanLine(RenbanLine):
             set[str]: A set of tags for the distinct Renban line, including 'DistinctRenbanLine',
                       'RenbanLine', 'Adjacent', and 'Set'.
         """
-        return super().tags.union({'DistinctRenbanLine', 'RenbanLine', 'Adjacent', 'Set'})
+        return super().tags.union({'DistinctRenbanLine', 'RenbanLine', 'Adjacent', 'set'})
 
     @staticmethod
     def power(digit: int) -> int:
@@ -73,7 +73,7 @@ class DistinctRenbanLine(RenbanLine):
         return "".join([str(i + 1) for i, c in enumerate(f"{power:b}"[::-1]) if c == '1'])
 
     @staticmethod
-    def digits_to_str(digits: List[int]) -> int:
+    def digits_to_str(digits: list[int]) -> int:
         """Convert a list of digits into a unique integer based on their powers.
 
         Args:
@@ -84,11 +84,11 @@ class DistinctRenbanLine(RenbanLine):
         """
         return sum([DistinctRenbanLine.power(digit) for digit in digits])
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Retrieve the CSS style for rendering the distinct Renban line.
 
         Returns:
-            Dict: A dictionary containing the CSS properties for the distinct Renban line.
+            dict: A dictionary containing the CSS properties for the distinct Renban line.
         """
         return {
             '.DistinctRenbanLine': {

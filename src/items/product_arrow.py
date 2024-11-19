@@ -1,5 +1,5 @@
 """ProductArrow."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.glyphs.glyph import Glyph
@@ -17,11 +17,11 @@ class ProductArrowLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define rules specific to ProductArrowLine.
 
         Returns:
-            List[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing a single Rule object that specifies:
             - Digits along an arrow, when multiplied, should equal the circle's digit.
             - Digits may repeat along the arrow if other rules allow.
         """
@@ -34,11 +34,11 @@ class ProductArrowLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate graphical representation of the ProductArrowLine.
 
         Returns:
-            List[Glyph]: A list containing an `ArrowLineGlyph` instance with
+            list[Glyph]: A list containing an `ArrowLineGlyph` instance with
             cell coordinates for display as an arrow line.
         """
         return [ArrowLineGlyph('Arrow', [cell.coord for cell in self.cells])]
@@ -53,7 +53,7 @@ class ProductArrowLine(Line):
         """
         return super().tags.union({'Arrow', 'Product'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styles for rendering the ProductArrowLine in the user interface.
 
         Returns:

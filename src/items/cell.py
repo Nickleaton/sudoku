@@ -1,6 +1,6 @@
 """Cell."""
 from itertools import product
-from typing import Dict, Tuple, List, Optional, ClassVar
+from typing import Dict, tuple, List, Optional, ClassVar
 
 from pulp import lpSum
 
@@ -21,7 +21,7 @@ class CellException(SudokuException):
 class Cell(Item):
     """Represents a cell in a Sudoku board."""
 
-    cache: ClassVar[Dict[Tuple[int, int], 'Cell']] = {}
+    cache: ClassVar[Dict[tuple[int, int], 'Cell']] = {}
 
     @classmethod
     def clear(cls):
@@ -174,11 +174,11 @@ class Cell(Item):
         return self.board.is_valid(self.row, self.column)
 
     @property
-    def row_column(self) -> Tuple[int, int]:
+    def row_column(self) -> tuple[int, int]:
         """Return the row and column of the cell.
 
         Returns:
-            Tuple[int, int]: The (row, column) tuple of the cell.
+            tuple[int, int]: The (row, column) tuple of the cell.
         """
         return self.row, self.column
 

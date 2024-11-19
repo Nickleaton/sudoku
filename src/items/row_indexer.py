@@ -1,5 +1,5 @@
 """RowIndexer."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph
@@ -45,11 +45,11 @@ class RowIndexer(Indexer):
         """
         return "column"
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyphs for visual representation of the RowIndexer.
 
         Returns:
-            List[Glyph]: A list of glyphs representing the row indexer's region.
+            list[Glyph]: A list of glyphs representing the row indexer's region.
         """
         return [RectGlyph('RowIndexer', Coord(self.index, 1), Coord(1, self.board.board_rows))]
 
@@ -79,11 +79,11 @@ class RowIndexer(Indexer):
                 indexed = solver.choices[cell.row][digit][cell.column]
                 solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the RowIndexer glyph.
 
         Returns:
-            Dict: A dictionary defining the CSS styling for the row indexer.
+            dict: A dictionary defining the CSS styling for the row indexer.
         """
         return {
             '.RowIndexer': {

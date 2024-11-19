@@ -1,6 +1,6 @@
 """PencilMark."""
 import re
-from typing import Optional, List, Dict, Tuple
+from typing import Optional, List, Dict, tuple
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -88,7 +88,7 @@ class PencilMarkCell(CellReference):
         return {self.__class__.__name__: f"{self.cell.row_column_string}={''.join([str(d) for d in self.digits])}"}
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> tuple:
         """Extract the parameters needed to create a PencilMarkCell from YAML data.
 
         Args:
@@ -96,7 +96,7 @@ class PencilMarkCell(CellReference):
             yaml (Dict): The YAML configuration for the cell.
 
         Returns:
-            Tuple: A tuple containing the row, column, and pencil-marked digits.
+            tuple: A tuple containing the row, column, and pencil-marked digits.
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
         match = regex.match(yaml[cls.__name__])

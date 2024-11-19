@@ -1,6 +1,6 @@
 """Quadro."""
 from itertools import product
-from typing import List, Dict
+from typing import list, dict
 
 from pulp import lpSum
 
@@ -19,11 +19,11 @@ class Quadro(Item):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules associated with this Quadro.
 
         Returns:
-            List[Rule]: A list containing the rule for the Quadro.
+            list[Rule]: A list containing the rule for the Quadro.
         """
         return [
             Rule(
@@ -34,12 +34,12 @@ class Quadro(Item):
         ]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a new Quadro instance for the given board.
 
         Args:
             board (Board): The board on which the Quadro is placed.
-            yaml (Dict): The YAML configuration (currently unused for this class).
+            yaml (dict): The YAML configuration (currently unused for this class).
 
         Returns:
             Item: A new Quadro instance.

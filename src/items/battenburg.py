@@ -1,6 +1,6 @@
 """Battenburg."""
 import re
-from typing import List, Any, Dict
+from typing import list, Any, dict
 
 from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.glyphs.glyph import Glyph
@@ -43,19 +43,19 @@ class Battenburg(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.position!r})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules associated with the Battenburg pattern.
 
         Returns:
-            List[Rule]: A list containing rules related to the Battenburg pattern.
+            list[Rule]: A list containing rules related to the Battenburg pattern.
         """
         return [Rule('Quadruple', 3, 'Digits appearing in at least one of the cells adjacent to the circle')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create glyph representations of the Battenburg pattern for rendering.
 
         Returns:
-            List[Glyph]: A list containing a BattenburgGlyph for graphical representation.
+            list[Glyph]: A list containing a BattenburgGlyph for graphical representation.
         """
         return [BattenburgGlyph(class_name="Battenburg", coord=self.position)]
 
@@ -69,12 +69,12 @@ class Battenburg(Item):
         return CellListParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the position of the Battenburg pattern from YAML data.
 
         Args:
             board (Board): The puzzle board, containing board constraints.
-            yaml (Dict): The YAML data from which to extract the Battenburg's position.
+            yaml (dict): The YAML data from which to extract the Battenburg's position.
 
         Returns:
             Coord: The coordinate position of the Battenburg pattern.
@@ -90,12 +90,12 @@ class Battenburg(Item):
         return Coord(int(row_str), int(column_str))
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Battenburg item from YAML data.
 
         Args:
             board (Board): The puzzle board on which the Battenburg will be placed.
-            yaml (Dict): The YAML data used to create the Battenburg item.
+            yaml (dict): The YAML data used to create the Battenburg item.
 
         Returns:
             Item: An instance of the Battenburg item.
@@ -112,7 +112,7 @@ class Battenburg(Item):
         _ = (Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1))
         # TODO Constraints implementation will go here
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Battenburg item to a dictionary for serialization.
 
         The dictionary has a single key-value pair where the key is the

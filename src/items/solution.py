@@ -1,6 +1,6 @@
 """Solution."""
 from itertools import product
-from typing import List, Any, Dict
+from typing import list, Any, dict
 
 from strictyaml import Seq, Optional
 
@@ -16,16 +16,16 @@ from src.solvers.answer import Answer
 class Solution(ComposedItem):
     """Represents a solution composed of known cells for a given board."""
 
-    def __init__(self, board: Board, rows: List[str]):
+    def __init__(self, board: Board, rows: list[str]):
         """Initialize the Solution with a board and row data.
 
         Args:
             board (Board): The board associated with this solution.
-            rows (List[str]): A list of strings representing rows of digits.
+            rows (list[str]): A list of strings representing rows of digits.
         """
         super().__init__(board, [])
         self.rows = rows
-        parts: List[CellReference] = []
+        parts: list[CellReference] = []
         for y, data in enumerate(self.rows):
             row = y + 1
             for x, digit in enumerate(data):
@@ -34,11 +34,11 @@ class Solution(ComposedItem):
         self.add_items(parts)
 
     @classmethod
-    def schema(cls) -> Dict:
+    def schema(cls) -> dict:
         """Return the schema for the Solution class.
 
         Returns:
-            Dict: A dictionary defining the YAML schema for Solution.
+            dict: A dictionary defining the YAML schema for Solution.
         """
         return {Optional("Solution"): Seq(SolutionParser())}
 
@@ -63,12 +63,12 @@ class Solution(ComposedItem):
         return int(self.rows[row - 1][column - 1])
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract solution rows from the given YAML dictionary.
 
         Args:
             board (Board): The board associated with this solution.
-            yaml (Dict): The YAML dictionary containing solution data.
+            yaml (dict): The YAML dictionary containing solution data.
 
         Returns:
             Any: A list of lists representing the solution rows.
@@ -76,7 +76,7 @@ class Solution(ComposedItem):
         return [list(str(y)) for y in yaml[cls.__name__]]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'Solution':
+    def create(cls, board: Board, yaml: dict) -> 'Solution':
         """Create a Solution instance from the given board and YAML.
 
         Args:
@@ -89,11 +89,11 @@ class Solution(ComposedItem):
         items = Solution.extract(board, yaml)
         return Solution(board, items)
 
-    def line_str(self) -> List[str]:
+    def line_str(self) -> list[str]:
         """Return a list of row strings representing the board layout for known items.
 
         Returns:
-            List[str]: A list of strings, each representing a row on the board.
+            list[str]: A list of strings, each representing a row on the board.
         """
         # Initialize a 2D list with placeholders for each cell on the board
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
@@ -118,11 +118,11 @@ class Solution(ComposedItem):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Solution instance to a dictionary.
 
         Returns:
-            Dict: A dictionary representation of the Solution.
+            dict: A dictionary representation of the Solution.
         """
         return {self.__class__.__name__: self.line_str()}
 

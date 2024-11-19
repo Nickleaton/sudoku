@@ -22,3 +22,7 @@ class Problem(pydot):
             None
         """
         super().__init__()
+
+    def __str__(self) -> str:
+        """Return a string of the keys."""
+        return f"| {', '.join(self.keys())} |"

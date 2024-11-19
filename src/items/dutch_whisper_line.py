@@ -23,6 +23,10 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         """
         super().__init__(board, cells, 4)
 
+    def __repr__(self) -> str:
+        """Return a string representation of the instance."""
+        return f"{self.__class__.__name__}({self.board!r}, {self.cells!r})"
+
     def glyphs(self) -> List[Glyph]:
         """Create a visual representation of the Dutch Whisper line.
 

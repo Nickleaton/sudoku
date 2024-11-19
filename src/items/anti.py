@@ -1,5 +1,5 @@
 """Anti."""
-from typing import List, Sequence, Any, Dict
+from typing import  Sequence, Any
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -19,12 +19,12 @@ class Anti(ComposedItem):
         digits: A list of integers representing the digits involved in the 'Anti' constraint.
     """
 
-    def __init__(self, board: Board, digits: List[int]):
+    def __init__(self, board: Board, digits: list[int]):
         """Initialize the Anti object with a board and digits.
 
         Args:
             board (Board): The board where the Anti constraint will be applied.
-            digits (List[int]): A list of digits for the Anti constraint.
+            digits (list[int]): A list of digits for the Anti constraint.
 
         The constructor iterates through all the cells on the board and generates
         pairs of cells with the given digits.
@@ -35,23 +35,23 @@ class Anti(ComposedItem):
             pairs = self.pairs(cell, digits)
             self.add_items(pairs)
 
-    def offsets(self) -> List[Coord]:
+    def offsets(self) -> list[Coord]:
         """Return a list of offsets for the Anti constraint.
 
         This method can be overridden in subclasses to provide specific offsets
         for the Anti constraint.
 
         Returns:
-            List[Coord]: An empty list as the default for offsets.
+            list[Coord]: An empty list as the default for offsets.
         """
         return []
 
-    def pairs(self, c1: Cell, digits: List[int]) -> Sequence[DifferencePair]:
+    def pairs(self, c1: Cell, digits: list[int]) -> Sequence[DifferencePair]:
         """Pairs of cells are generated based on the provided digits and offsets.
 
         Args:
             c1 (Cell): The first cell to consider.
-            digits (List[int]): The list of digits for which the pairs are generated.
+            digits (list[int]): The list of digits for which the pairs are generated.
 
         Returns:
             Sequence[DifferencePair]: A sequence of DifferencePair objects representing
@@ -77,13 +77,13 @@ class Anti(ComposedItem):
         return super().tags.union({'Chess', 'Anti'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract a list of digits from the YAML configuration.
 
         Args:
             cls (type): The class that calls this method (used for extracting class-level data).
             board (Board): The board object (not used in this method but required for interface).
-            yaml (Dict): The YAML configuration dictionary from which the digits are extracted.
+            yaml (dict): The YAML configuration dictionary from which the digits are extracted.
 
         Returns:
             Any: A list of integers representing the digits extracted from the YAML.
@@ -91,13 +91,13 @@ class Anti(ComposedItem):
         return [int(part) for part in str(yaml[cls.__name__]).split(', ')]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an object from the given YAML.
 
         Args:
             cls (type): The class that calls this method (used for creating an instance of the class).
             board (Board): The board object where the Anti constraint will be applied.
-            yaml (Dict): The YAML configuration dictionary containing the digits.
+            yaml (dict): The YAML configuration dictionary containing the digits.
 
         Returns:
             Item: An instance of the Anti class with the parsed digits.
@@ -113,10 +113,10 @@ class Anti(ComposedItem):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Anti object is converted to a dictionary.
 
         Returns:
-            Dict: A dictionary representation of the Anti object with the digits.
+            dict: A dictionary representation of the Anti object with the digits.
         """
         return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}

@@ -1,5 +1,5 @@
 """Killer."""
-from typing import List, Tuple, Dict, Any
+from typing import List, tuple, Dict, Any
 
 from pulp import lpSum
 
@@ -38,7 +38,7 @@ class Killer(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[int, List[Item]]:
+    def extract(cls, board: Board, yaml: Dict) -> tuple[int, List[Item]]:
         """Extract the target total and cell positions for the Killer cage from the YAML configuration.
 
         Args:
@@ -46,7 +46,7 @@ class Killer(Region):
             yaml (Dict): The YAML dictionary containing the Killer cage configuration.
 
         Returns:
-            Tuple[int, List[Item]]: The target total and a list of cell items for the cage.
+            tuple[int, List[Item]]: The target total and a list of cell items for the cage.
         """
         parts = yaml[cls.__name__].split("=")
         total: int = int(parts[0].strip())

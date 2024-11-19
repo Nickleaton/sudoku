@@ -1,5 +1,5 @@
 """SimpleThermometerLine."""
-from typing import List, Set
+from typing import List, set
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.simple_thermometer_glyph import SimpleThermometerGlyph
@@ -67,7 +67,7 @@ class SimpleThermometerLine(ThermometerLine):
             upper: int = self.board.maximum_digit - len(self) + i + 1
 
             # pylint: disable=unnecessary-comprehension
-            possible: Set[int] = {i for i in range(lower, upper + 1)}
+            possible: set[int] = {i for i in range(lower, upper + 1)}
             for digit in self.board.digit_range:
                 if digit not in possible:
                     solver.model += solver.choices[digit][cell.row][cell.column], f"{self.name}_{cell.name}_{digit}"

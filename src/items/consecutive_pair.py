@@ -1,6 +1,5 @@
 """ConsecutivePair."""
 import re
-from typing import List, Tuple, Dict
 
 from src.glyphs.consecutive_glyph import ConsecutiveGlyph
 from src.glyphs.glyph import Glyph
@@ -35,15 +34,15 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         return 1
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[Cell, Cell]:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell]:
         """Extract cell coordinates from YAML data and create cell instances.
 
         Args:
             board (Board): The board instance for cell creation.
-            yaml (Dict): The YAML data containing cell pair information.
+            yaml (dict): The YAML data containing cell pair information.
 
         Returns:
-            Tuple[Cell, Cell]: A tuple of two cells representing the consecutive pair.
+            tuple[Cell, Cell]: A tuple of two cells representing the consecutive pair.
         """
         regexp = re.compile(
             f"([{board.digit_values}])([{board.digit_values}])-([{board.digit_values}])([{board.digit_values}])"
@@ -57,12 +56,12 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         return c1, c2
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a ConsecutivePair instance from YAML data.
 
         Args:
             board (Board): The board instance.
-            yaml (Dict): The YAML data containing cell information.
+            yaml (dict): The YAML data containing cell information.
 
         Returns:
             Item: An instance of ConsecutivePair.
@@ -71,11 +70,11 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         return cls(board, c1, c2)
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rule for consecutive pairs.
 
         Returns:
-            List[Rule]: A list containing the consecutive rule.
+            list[Rule]: A list containing the consecutive rule.
         """
         return [Rule("ConsecutivePair", 1, "Cells separated by a white dot must be consecutive")]
 
@@ -88,11 +87,11 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         """
         return super().tags.union({'Consecutive'})
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Define the glyphs associated with the consecutive pair.
 
         Returns:
-            List[Glyph]: A list containing the glyph for the consecutive pair.
+            list[Glyph]: A list containing the glyph for the consecutive pair.
         """
         return [ConsecutiveGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
 
@@ -104,19 +103,19 @@ class ConsecutivePair(LessThanEqualDifferencePair):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the ConsecutivePair to a dictionary format.
 
         Returns:
-            Dict: A dictionary representation of the consecutive pair.
+            dict: A dictionary representation of the consecutive pair.
         """
         return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define CSS styles for the consecutive pair.
 
         Returns:
-            Dict: CSS styling rules for the consecutive pair glyphs.
+            dict: CSS styling rules for the consecutive pair glyphs.
         """
         return {
             '.ConsecutivePair': {

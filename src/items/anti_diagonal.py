@@ -1,5 +1,5 @@
 """AntiDiagonal."""
-from typing import List
+from typing import list
 
 from pulp import lpSum
 
@@ -33,11 +33,11 @@ class AntiDiagonal(Diagonal):
         self.count = board.board_rows // board.box_rows
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Provide the rule associated with the anti-diagonal constraint.
 
         Returns:
-            List[Rule]: A list containing a rule that specifies the number of unique digits
+            list[Rule]: A list containing a rule that specifies the number of unique digits
                         on each marked main diagonal.
         """
         return [

@@ -1,5 +1,5 @@
 """Mote."""
-from typing import List, Tuple, Dict
+from typing import List, tuple, Dict
 
 from pulp import lpSum
 
@@ -43,7 +43,7 @@ class Mote(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[int, List[Item]]:
+    def extract(cls, board: Board, yaml: Dict) -> tuple[int, List[Item]]:
         """Extract the MOTE configuration from a YAML dictionary.
 
         Args:
@@ -51,7 +51,7 @@ class Mote(Region):
             yaml (Dict): The YAML configuration dictionary.
 
         Returns:
-            Tuple[int, List[Item]]: The total sum and the list of cells.
+            tuple[int, List[Item]]: The total sum and the list of cells.
         """
         parts = yaml[cls.__name__].split("=")
         total = int(parts[0].strip())

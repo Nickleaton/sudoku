@@ -1,6 +1,6 @@
 """VariableRatioPair."""
 from math import ceil, log10
-from typing import List, Dict
+from typing import list, dict
 
 from pulp import LpElement
 
@@ -16,11 +16,11 @@ class VariableRatioPair(VariablePair):
     """Represents a pair of variables with a fixed ratio in a Sudoku-like puzzle."""
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with this variable ratio pair.
 
         Returns:
-            List[Rule]: A list of rules describing the ratio constraints.
+            list[Rule]: A list of rules describing the ratio constraints.
         """
         return [
             Rule(
@@ -69,11 +69,11 @@ class VariableRatioPair(VariablePair):
             limit
         )
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get the CSS styles for this variable ratio pair.
 
         Returns:
-            Dict: A dictionary containing CSS styles for visual representation.
+            dict: A dictionary containing CSS styles for visual representation.
         """
         return {
             '.FixedRatioPair': {

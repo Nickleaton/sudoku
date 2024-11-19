@@ -96,7 +96,7 @@ class AntiRossini(FirstN):
             yaml (Dict): The YAML dictionary containing the rule configuration.
 
         Returns:
-            Tuple[Side, int, Order]: The extracted side, index, and order.
+            tuple[Side, int, Order]: The extracted side, index, and order.
         """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([{Order.values()}])")
         match = regexp.match(yaml[cls.__name__])

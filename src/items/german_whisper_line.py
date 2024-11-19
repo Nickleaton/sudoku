@@ -1,5 +1,5 @@
 """GermanWhisperLine."""
-from typing import List, Sequence, Dict
+from typing import Sequence
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -15,7 +15,7 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
     The difference between connected cells must be at least 5.
 
     Attributes:
-        excluded (List[int]): Digits that are excluded from the line (e.g., 5).
+        excluded (list[int]): Digits that are excluded from the line (e.g., 5).
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
@@ -28,20 +28,20 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
         super().__init__(board, cells, 5)
         self.excluded = [5]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create a visual representation of the German Whisper line.
 
         Returns:
-            List[Glyph]: A list containing a PolyLineGlyph for rendering the line.
+            list[Glyph]: A list containing a PolyLineGlyph for rendering the line.
         """
         return [PolyLineGlyph('GermanWhisperLine', [cell.coord for cell in self.cells], False, False)]
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules for the German Whisper line.
 
         Returns:
-            List[Rule]: A list of Rule objects specifying the digit difference requirements.
+            list[Rule]: A list of Rule objects specifying the digit difference requirements.
         """
         return [
             Rule(
@@ -60,11 +60,11 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
         """
         return super().tags.union({'German Whisper'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styling properties for rendering the German Whisper line.
 
         Returns:
-            Dict: A dictionary defining CSS properties for the German Whisper line.
+            dict: A dictionary defining CSS properties for the German Whisper line.
         """
         return {
             '.GermanWhisperLine': {

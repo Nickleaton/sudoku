@@ -1,7 +1,7 @@
 """Class for 2D Points."""
 
 import math
-from typing import Tuple
+from typing import tuple
 
 CELL_SIZE = 100
 
@@ -90,11 +90,11 @@ class Point:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     @property
-    def coordinates(self) -> Tuple[float, float]:
+    def coordinates(self) -> tuple[float, float]:
         """Get the coordinates as an (x, y) tuple.
 
         Returns:
-            Tuple[float, float]: The x and y coordinates.
+            tuple[float, float]: The x and y coordinates.
         """
         return self.x, self.y
 

@@ -75,7 +75,7 @@ class FrameProduct(FirstN):
             yaml (Dict): The YAML configuration from which the frame product is parsed.
 
         Returns:
-            Tuple[Side, int, int]: The side, index, and product extracted from the YAML.
+            tuple[Side, int, int]: The side, index, and product extracted from the YAML.
         """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
         match = regexp.match(yaml[cls.__name__])

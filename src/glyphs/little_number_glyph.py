@@ -1,3 +1,4 @@
+"""LittleNumberGlyph."""
 from typing import Optional
 
 from svgwrite.base import BaseElement
@@ -8,13 +9,27 @@ from src.utils.coord import Coord
 
 
 class LittleNumberGlyph(Glyph):
+    """Represents a small number glyph for Sudoku or similar puzzles."""
 
     def __init__(self, class_name: str, position: Coord, number: int):
+        """Initialize a Little Number glyph.
+
+        Args:
+            class_name (str): The CSS class name for styling the glyph.
+            position (Coord): The coordinate position of the glyph.
+            number (int): The number to display in the glyph.
+        """
         super().__init__(class_name)
         self.position = position
         self.number = number
 
     def draw(self) -> Optional[BaseElement]:
+        """Create an SVG representation of the Little Number glyph.
+
+        Returns:
+            Optional[BaseElement]: An SVG `Text` element displaying the number,
+            or None if the glyph cannot be drawn.
+        """
         size = Coord(0.35, 0.35)
         position = self.position + size
         text = Text("",
@@ -26,4 +41,10 @@ class LittleNumberGlyph(Glyph):
         return text
 
     def __repr__(self) -> str:
+        """Return a string representation of the Little Number glyph.
+
+        Returns:
+            str: The string representation of the glyph, including class name,
+            position, and number.
+        """
         return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.number!r})"

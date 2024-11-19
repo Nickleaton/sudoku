@@ -4,7 +4,7 @@ from enum import Enum
 from io import StringIO
 from itertools import product
 from pathlib import Path
-from typing import Optional, Any, Dict
+from typing import Optional, Any
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
@@ -50,43 +50,43 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
         self.model += 0, "DummyObjective"
 
-        self.variables: Dict[Any, LpVariable] = {}
-        self.choices: Dict[Any, LpVariable] = LpVariable.dicts(
+        self.variables: dict[Any, LpVariable] = {}
+        self.choices: dict[Any, LpVariable] = LpVariable.dicts(
             "Choice",
             (board.digit_range, board.row_range, board.column_range),
             0,
             1,
             LpInteger
         )
-        self.values: Dict[Any, LpVariable] = LpVariable.dicts(
+        self.values: dict[Any, LpVariable] = LpVariable.dicts(
             "Values",
             (board.row_range, board.column_range),
             1,
             board.maximum_digit,
             LpInteger
         )
-        self.parity: Dict[Any, LpVariable] = LpVariable.dicts(
+        self.parity: dict[Any, LpVariable] = LpVariable.dicts(
             "Parity",
             (board.row_range, board.column_range),
             0,
             1,
             LpInteger
         )
-        self.levels: Dict[Any, LpVariable] = LpVariable.dicts(
+        self.levels: dict[Any, LpVariable] = LpVariable.dicts(
             "Low",
             (board.row_range, board.column_range, board.levels),
             0,
             1,
             LpInteger
         )
-        self.modulos: Dict[Any, LpVariable] = LpVariable.dicts(
+        self.modulos: dict[Any, LpVariable] = LpVariable.dicts(
             "Low",
             (board.row_range, board.column_range, board.modulos),
             0,
             1,
             LpInteger
         )
-        self.prime: Dict[Any, LpVariable] = LpVariable.dicts(
+        self.prime: dict[Any, LpVariable] = LpVariable.dicts(
             "Low",
             (board.row_range, board.column_range, board.primes),
             0,

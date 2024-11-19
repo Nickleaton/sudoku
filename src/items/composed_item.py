@@ -1,6 +1,6 @@
 """ComposedItem."""
 from itertools import chain
-from typing import List, Set, Sequence, Dict, Iterator
+from typing import List, set, Sequence, Dict, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -24,16 +24,16 @@ class ComposedItem(Item):
         self.items: List[Item] = []
         self.add_items(items)
 
-    def regions(self) -> Set['Item']:
+    def regions(self) -> set['Item']:
         """Retrieve all regions associated with this composed item.
 
         This method aggregates regions from all contained items, including
         the composed item itself.
 
         Returns:
-            Set[Item]: A set of items representing all regions.
+            set[Item]: A set of items representing all regions.
         """
-        result: Set[Item] = {self}
+        result: set[Item] = {self}
         for item in self.items:
             result |= item.regions()
         return result

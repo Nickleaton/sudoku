@@ -1,5 +1,5 @@
 """Girandola."""
-from typing import List, Dict
+from typing import list, dict
 
 from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord
@@ -12,7 +12,7 @@ class Girandola(SpecialRegion):
         """Return the name of the region."""
         return "Girandola"
 
-    def coords(self) -> List[Coord]:
+    def coords(self) -> list[Coord]:
         """Return the coordinates that define the Girandola region."""
         return [
             Coord(1, 1),
@@ -26,7 +26,7 @@ class Girandola(SpecialRegion):
             Coord(9, 9)
         ]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the Girandola region."""
         return {
             ".Girandola": {

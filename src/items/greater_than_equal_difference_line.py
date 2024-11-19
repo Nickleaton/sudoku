@@ -1,5 +1,5 @@
 """GreaterThanEqualDifferenceLine."""
-from typing import List, Sequence, Set
+from typing import list, Sequence, set
 
 from pulp import lpSum
 
@@ -35,11 +35,11 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
         return f"{self.__class__.__name__}({self.board!r}, {self.cells!r}, {self.difference})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules for the greater-than-equal difference.
 
         Returns:
-            List[Rule]: A list of rules for the constraint.
+            list[Rule]: A list of rules for the constraint.
         """
         return [
             Rule(
@@ -60,7 +60,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
 
     @staticmethod
     # pylint: disable=loop-invariant-statement
-    def get_regions(cell: Cell) -> Set:
+    def get_regions(cell: Cell) -> set:
         """Get the regions that the given cell belongs to.
 
         Args:
@@ -70,7 +70,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
             Set: A set of regions (Box, Row, Column) that the cell is part of.
         """
         regions = set(cell.top.regions())
-        result: Set = set()
+        result: set = set()
         for r in regions:
             if r.__class__ in [Box, Column, Row] and cell in r:
                 result.add(r)

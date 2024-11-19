@@ -1,5 +1,4 @@
 """SpecialRegion."""
-from typing import List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import SquareGlyph
@@ -32,21 +31,21 @@ class SpecialRegion(Region):
         """
         return ""
 
-    def coords(self) -> List[Coord]:
+    def coords(self) -> list[Coord]:
         """Get the coordinates of the cells in the special region.
 
         Returns:
-            List[Coord]: A list of coordinates for the region's cells.
+            list[Coord]: A list of coordinates for the region's cells.
         """
         return []
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a SpecialRegion instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration.
+            yaml (dict): The YAML configuration.
 
         Returns:
             Item: An instance of SpecialRegion.
@@ -62,19 +61,19 @@ class SpecialRegion(Region):
         return f"{self.__class__.__name__}({self.board!r})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the special region.
 
         Returns:
-            List[Rule]: A list containing the rule that digits cannot repeat in the region.
+            list[Rule]: A list containing the rule that digits cannot repeat in the region.
         """
         return [Rule(self.region_name(), 1, 'Digits cannot repeat in highlighted cells')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing the special region.
 
         Returns:
-            List[Glyph]: A list of square glyphs for each cell in the region.
+            list[Glyph]: A list of square glyphs for each cell in the region.
         """
         return [SquareGlyph(self.region_name(), cell.coord, 1) for cell in self.cells]
 
@@ -100,10 +99,10 @@ class SpecialRegion(Region):
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the special region to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the region.
+            dict: A dictionary representing the region.
         """
         return {self.__class__.__name__: None}

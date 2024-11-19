@@ -1,5 +1,5 @@
 """FixedPair."""
-from typing import List, Tuple, Dict, Optional
+from typing import List, tuple, Dict, Optional
 
 from pulp import LpElement
 
@@ -48,7 +48,7 @@ class FixedPair(Pair):
         return CellPairEqualValueParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple:
+    def extract(cls, board: Board, yaml: Dict) -> tuple:
         """Extract the fixed pair information from a YAML dictionary.
 
         Args:
@@ -56,7 +56,7 @@ class FixedPair(Pair):
             yaml (Dict): The dictionary containing the pair's configuration.
 
         Returns:
-            Tuple: A tuple containing the row and column coordinates of the two cells, and the fixed value.
+            tuple: A tuple containing the row and column coordinates of the two cells, and the fixed value.
         """
         lhs: str = yaml[cls.__name__].split('=')[0]
         value: int = int(yaml[cls.__name__].split('=')[1])

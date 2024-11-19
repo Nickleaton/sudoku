@@ -96,7 +96,7 @@ class MinMaxSum(FirstN):
             yaml (Dict): The YAML configuration data.
 
         Returns:
-            Tuple: A tuple containing the side, index, and total.
+            tuple: A tuple containing the side, index, and total.
         """
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
         match = regexp.match(yaml[cls.__name__])

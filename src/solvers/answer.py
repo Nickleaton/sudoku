@@ -1,6 +1,5 @@
 """Answer class."""
 from itertools import product
-from typing import List, Optional, Dict
 
 from src.items.board import Board
 from src.utils.sudoku_exception import SudokuException
@@ -9,15 +8,15 @@ from src.utils.sudoku_exception import SudokuException
 class Answer:
     """Represents the solution (answer) for a Sudoku board."""
 
-    def __init__(self, board: Board, data: Optional[List[str]] = None):
+    def __init__(self, board: Board, data: list[str] | None = None):
         """Initialize the Answer object with a given board and optional data.
 
         Args:
             board (Board): The board associated with this answer.
-            data (Optional[List[str]]): A list of strings representing the initial board configuration.
+            data (Optional[list[str]]): A list of strings representing the initial board configuration.
         """
         self.board = board
-        self.data: List[List[int]] = [
+        self.data: list[list[int]] = [
             [0 for _ in board.column_range]
             for _ in board.row_range
         ]
@@ -93,25 +92,25 @@ class Answer:
         raise SudokuException(f"Cannot compare {other.__class__.__name__} with {self.__class__.__name__}")
 
     @classmethod
-    def extract(cls, _: Board, yaml: Dict) -> List[str]:
+    def extract(cls, _: Board, yaml: dict) -> list[str]:
         """Extract the answer data from a YAML dictionary.
 
         Args:
             _ (Board): The board object (unused here).
-            yaml (Dict): A dictionary containing the board's configuration.
+            yaml (dict): A dictionary containing the board's configuration.
 
         Returns:
-            List[str]: A list of strings representing the board data.
+            list[str]: A list of strings representing the board data.
         """
         return [str(line) for line in yaml]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'Answer':
+    def create(cls, board: Board, yaml: dict) -> 'Answer':
         """Create an Answer object from a board and YAML data.
 
         Args:
             board (Board): The board associated with this answer.
-            yaml (Dict): A dictionary containing the board configuration.
+            yaml (dict): A dictionary containing the board configuration.
 
         Returns:
             Answer: A newly created Answer object.

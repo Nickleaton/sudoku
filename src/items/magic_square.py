@@ -1,5 +1,5 @@
 """MagicSquare."""
-from typing import List, Tuple, Dict
+from typing import List, tuple, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import SquareGlyph
@@ -115,7 +115,7 @@ class MagicSquare(Region):
         return super().tags.union({'MagicSquare', 'Sum'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Tuple[Coord, Coord]:
+    def extract(cls, board: Board, yaml: Dict) -> tuple[Coord, Coord]:
         """Extract the center and corner coordinates for the MagicSquare from YAML.
 
         Args:
@@ -123,7 +123,7 @@ class MagicSquare(Region):
             yaml (Dict): The YAML configuration data.
 
         Returns:
-            Tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
+            tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
         """
         center, corner = yaml['MagicSquare'].split(',')
         center = Coord(int(center[0]), int(center[1]))

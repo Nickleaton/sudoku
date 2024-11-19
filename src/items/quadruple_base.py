@@ -73,7 +73,7 @@ class QuadrupleBase(Item):
         if match is None:
             raise SudokuException("Match is None, expected a valid match.")
         row_str, column_str, digits = match.groups()
-        return Coord(int(row_str), int(column_str)), digits
+        return Coord(int(row_str), int(column_str)), list(digits)
 
     @classmethod
     def create(cls, board: Board, yaml: Dict) -> Item:
