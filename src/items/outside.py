@@ -1,5 +1,5 @@
 """Outside."""
-from typing import List, Any, Dict
+from typing import Any
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -19,14 +19,14 @@ class Outside(FirstN):
     that must appear in the first three cells nearest the clue in that row or column.
     """
 
-    def __init__(self, board: Board, side: Side, index: int, digits: List[int]):
+    def __init__(self, board: Board, side: Side, index: int, digits: list[int]):
         """Initialize the Outside item with the given board, side, index, and digits.
 
         Args:
             board (Board): The board this item belongs to.
             side (Side): The side of the board (top, left, bottom, right).
             index (int): The index of the row or column.
-            digits (List[int]): The list of digits that must appear in the first three cells.
+            digits (list[int]): The list of digits that must appear in the first three cells.
         """
         super().__init__(board, side, index)
         self.digits = digits
@@ -47,11 +47,11 @@ class Outside(FirstN):
         )
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the Outside constraint.
 
         Returns:
-            List[Rule]: A list containing a single rule for the Outside constraint.
+            list[Rule]: A list containing a single rule for the Outside constraint.
         """
         return [
             Rule(
@@ -62,14 +62,14 @@ class Outside(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the Outside constraint.
 
         This method generates a text glyph that displays the digits for the Outside constraint
         at the appropriate position.
 
         Returns:
-            List[Glyph]: A list containing a `TextGlyph` showing the digits.
+            list[Glyph]: A list containing a `TextGlyph` showing the digits.
         """
         return [
             TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), "".join([str(digit) for digit in self.digits]))
@@ -85,12 +85,12 @@ class Outside(FirstN):
         return super().tags.union({'Comparison', 'Order'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the side, index, and digits for the Outside constraint from the YAML configuration.
 
         Args:
             board (Board): The board associated with this item.
-            yaml (Dict): The YAML configuration containing the Outside data.
+            yaml (dict): The YAML configuration containing the Outside data.
 
         Returns:
             tuple: A tuple containing the side, index, and digits list.
@@ -102,12 +102,12 @@ class Outside(FirstN):
         return side, index, digits
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an Outside item from the given YAML configuration.
 
         Args:
             board (Board): The board associated with this item.
-            yaml (Dict): The YAML configuration containing the Outside data.
+            yaml (dict): The YAML configuration containing the Outside data.
 
         Returns:
             Item: The created Outside item.
@@ -123,19 +123,19 @@ class Outside(FirstN):
         """
         self.add_contains_constraint(solver, self.digits)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Outside item to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the Outside item.
+            dict: A dictionary representing the Outside item.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={''.join([str(d) for d in self.digits])}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles associated with the Outside glyphs.
 
         Returns:
-            Dict: A dictionary containing the CSS styles for the Outside glyphs.
+            dict: A dictionary containing the CSS styles for the Outside glyphs.
         """
         return {
             ".OutsideForeground": {

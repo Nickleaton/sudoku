@@ -1,5 +1,4 @@
 """Girandola."""
-from typing import list, dict
 
 from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord

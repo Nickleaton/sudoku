@@ -1,6 +1,4 @@
 """EvenCell."""
-from typing import Optional, List, Dict
-
 from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.glyphs.glyph import Glyph
 from src.items.simple_cell_reference import SimpleCellReference
@@ -31,11 +29,11 @@ class EvenCell(SimpleCellReference):
         """
         return 'e'
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return an SVG representation of the EvenCell.
 
         Returns:
-            Optional[Glyph]: Always returns None for EvenCell.
+            Glyph | None: Always returns None for EvenCell.
         """
         return None
 
@@ -49,27 +47,27 @@ class EvenCell(SimpleCellReference):
         return super().tags.union({'Parity'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with this EvenCell.
 
         Returns:
-            List[Rule]: A list containing the rule that specifies an opaque grey square must contain an even digit.
+            list[Rule]: A list containing the rule that specifies an opaque grey square must contain an even digit.
         """
         return [Rule("Odd", 1, "An opaque grey square must contain an even digit")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs associated with this EvenCell.
 
         Returns:
-            List[Glyph]: A list containing the EvenCellGlyph.
+            list[Glyph]: A list containing the EvenCellGlyph.
         """
         return [EvenCellGlyph('EvenCell', Coord(self.row, self.column))]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the EvenCell.
 
         Returns:
-            Dict: A dictionary containing the CSS properties for the EvenCell.
+            dict: A dictionary containing the CSS properties for the EvenCell.
         """
         return {
             ".EvenCell": {

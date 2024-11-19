@@ -1,5 +1,5 @@
 """RectGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
@@ -23,11 +23,11 @@ class RectGlyph(Glyph):
         self.position = position  # The position of the rectangle
         self.size = size  # The size (width and height) of the rectangle
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the rectangle using the specified position and size.
 
         Returns:
-            Optional[BaseElement]: An SVG `Rect` element representing the rectangle.
+            BaseElement | None: An SVG `Rect` element representing the rectangle.
         """
         return Rect(transform=self.position.transform, size=self.size.point.coordinates, class_=self.class_name)
 

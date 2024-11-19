@@ -1,5 +1,5 @@
 """ArrowGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.text import Text, TSpan
@@ -31,7 +31,7 @@ class ArrowGlyph(Glyph):
         self.angle = Angle(float(angle))  # Convert angle to an Angle object
         self.position = position
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the arrow on an SVG canvas.
 
         Create and return an SVG text element that represents the arrow, applying the specified

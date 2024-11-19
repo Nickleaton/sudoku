@@ -1,5 +1,5 @@
 """LittleNumberGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.text import Text, TSpan
@@ -23,11 +23,11 @@ class LittleNumberGlyph(Glyph):
         self.position = position
         self.number = number
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Create an SVG representation of the Little Number glyph.
 
         Returns:
-            Optional[BaseElement]: An SVG `Text` element displaying the number,
+            BaseElement | None: An SVG `Text` element displaying the number,
             or None if the glyph cannot be drawn.
         """
         size = Coord(0.35, 0.35)

@@ -1,6 +1,5 @@
 """EqualSumLine."""
 import sys
-from typing import List, Dict
 
 from pulp import lpSum
 
@@ -21,11 +20,11 @@ class EqualSumLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define rules specific to EqualSumLine.
 
         Returns:
-            List[Rule]: A list containing a Rule object that specifies equal
+            list[Rule]: A list containing a Rule object that specifies equal
             segment sums within each 3x3 box the line passes through.
         """
         return [
@@ -38,11 +37,11 @@ class EqualSumLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate a graphical representation of the EqualSumLine.
 
         Returns:
-            List[Glyph]: A list containing a `PolyLineGlyph` instance with
+            list[Glyph]: A list containing a `PolyLineGlyph` instance with
             cell coordinates for rendering the equal-sum line.
         """
         return [PolyLineGlyph('EqualSumLine', [cell.coord for cell in self.cells], False, False)]
@@ -69,7 +68,7 @@ class EqualSumLine(Line):
             the EqualSumLine will be added.
         """
         # Build areas: group cells by 3x3 boxes
-        areas: List[List[Cell]] = []
+        areas: list[list[Cell]] = []
         current = 0
         for cell in self.cells:
             box = self.board.box_index(cell.row, cell.column)
@@ -97,11 +96,11 @@ class EqualSumLine(Line):
             solver.model += sums[i] >= minimum, f"{self.name}_minimum_{i}"
             solver.model += sums[i] <= maximum, f"{self.name}_maximum_{i}"
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styles for rendering the EqualSumLine in the user interface.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.EqualSumLine`
+            dict: A dictionary defining CSS properties for `.EqualSumLine`
             to style this line in a distinct way.
         """
         return {

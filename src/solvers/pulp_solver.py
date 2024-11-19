@@ -4,7 +4,7 @@ from enum import Enum
 from io import StringIO
 from itertools import product
 from pathlib import Path
-from typing import Optional, Any
+from typing import Any
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
@@ -45,7 +45,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.application_name = 'CBC' if solver_name == 'PULP_CBC_CMD' else solver_name
 
         self.status: Status = Status.NOT_SOLVED
-        self.log: Optional[str] = None
+        self.log: str | None = None
 
         self.model: LpProblem = LpProblem("Sudoku", LpMinimize)
         self.model += 0, "DummyObjective"

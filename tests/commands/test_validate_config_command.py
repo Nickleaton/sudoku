@@ -15,6 +15,7 @@ class TestValidateConfigCommand(TestSimpleCommand):
         This method sets up the problem and prepares the command to be tested.
         """
         super().setUp()
+        # TODO change to load first the yaml, then validate
         self.command = ValidateConfigCommand(self.path)
         self.problem = Problem()
 

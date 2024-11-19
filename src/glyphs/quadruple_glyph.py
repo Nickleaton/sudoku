@@ -1,5 +1,5 @@
 """QuadrupleGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -25,7 +25,7 @@ class QuadrupleGlyph(Glyph):
         self.position = position  # The position of the glyph
         self.numbers = numbers  # The numbers to be displayed inside the circle
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the circle and the associated text for the quadruple glyph.
 
         This method creates an SVG `Group` containing a `Circle` and a `Text` element.
@@ -33,7 +33,7 @@ class QuadrupleGlyph(Glyph):
         rendered inside the circle.
 
         Returns:
-            Optional[BaseElement]: An SVG `Group` containing the circle and text elements.
+            BaseElement | None: An SVG `Group` containing the circle and text elements.
         """
         group = Group()
 

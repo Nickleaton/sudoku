@@ -1,5 +1,5 @@
 """Constraints."""
-from typing import Dict, Type, List
+from typing import Type
 
 from src.items.board import Board
 from src.items.composed_item import ComposedItem
@@ -19,12 +19,12 @@ class Constraints(ComposedItem):
         self._n = 0  # This could represent the number of constraints or similar purpose
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'Constraints':
+    def create(cls, board: Board, yaml: dict) -> 'Constraints':
         """Create a Constraints instance from YAML configuration.
 
         Args:
             board (Board): The board to which these constraints apply.
-            yaml (Dict): A dictionary containing the YAML configuration for the constraints.
+            yaml (dict): A dictionary containing the YAML configuration for the constraints.
 
         Returns:
             Constraints: An instance of `Constraints` populated with the given configuration.
@@ -36,14 +36,14 @@ class Constraints(ComposedItem):
         # If not, skip processing as no relevant constraints are defined
         if cls.__name__ in yaml:
             # Extract the constraints data specific to this class from the YAML configuration
-            parts: Dict | List = yaml[cls.__name__]
+            parts: dict | list = yaml[cls.__name__]
 
             # If `parts` is a dictionary, it represents a named set of constraints
             if isinstance(parts, dict):
                 for key, value in parts.items():
                     # Each key corresponds to a specific constraint type (subclass of Item)
                     # Each value is a dictionary containing the constraint's configuration or `None`
-                    sub_yaml: Dict = {} if value is None else value
+                    sub_yaml: dict = {} if value is None else value
 
                     # Retrieve the appropriate subclass from Item's registered classes
                     # pylint: disable=loop-invariant-statement

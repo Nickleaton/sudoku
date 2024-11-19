@@ -1,5 +1,5 @@
 """EvenCellGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
@@ -23,11 +23,11 @@ class EvenCellGlyph(Glyph):
         self.percentage = 0.7  # Scaling factor for the size of the glyph
         self.size = Coord(1, 1) * self.percentage  # Scaled size of the glyph
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the glyph as an SVG rectangle with the appropriate position and size.
 
         Returns:
-            Optional[BaseElement]: An SVG BaseElement (a rectangle) or None if not drawn.
+            BaseElement | None: An SVG BaseElement (a rectangle) or None if not drawn.
         """
         # Calculate the top-left corner of the rectangle after applying scaling
         top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0

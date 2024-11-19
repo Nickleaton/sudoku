@@ -1,5 +1,4 @@
 """LowCell."""
-from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.low_cell_glyph import LowCellGlyph
@@ -12,11 +11,11 @@ class LowCell(SimpleCellReference):
     """Represents a low cell, which can contain one of the digits 1, 2, or 3."""
 
     @staticmethod
-    def digits() -> List[int]:
+    def digits() -> list[int]:
         """Return the list of digits allowed for LowCell.
 
         Returns:
-            List[int]: A list of digits [1, 2, 3] allowed for LowCell.
+            list[int]: A list of digits [1, 2, 3] allowed for LowCell.
         """
         return [1, 2, 3]
 
@@ -40,11 +39,11 @@ class LowCell(SimpleCellReference):
         """
         return 'l'
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return the SVG representation of the LowCell.
 
         Returns:
-            Optional[Glyph]: Returns None as the SVG representation is not available for LowCell.
+            Glyph | None: Returns None as the SVG representation is not available for LowCell.
         """
         return None
 
@@ -58,27 +57,27 @@ class LowCell(SimpleCellReference):
         return super().tags.union({'Trio'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with LowCell.
 
         Returns:
-            List[Rule]: A list of rules, indicating that digits 1, 2, and 3 are marked with orange circles.
+            list[Rule]: A list of rules, indicating that digits 1, 2, and 3 are marked with orange circles.
         """
         return [Rule("Low", 1, "The digits 1, 2, and 3 are marked with orange circles")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of Glyphs associated with LowCell.
 
         Returns:
-            List[Glyph]: A list containing the LowCellGlyph for this cell.
+            list[Glyph]: A list containing the LowCellGlyph for this cell.
         """
         return [LowCellGlyph('LowCell', Coord(self.row, self.column))]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles associated with LowCell.
 
         Returns:
-            Dict: A dictionary containing the CSS styles, with a stroke of orange and a white fill.
+            dict: A dictionary containing the CSS styles, with a stroke of orange and a white fill.
         """
         return {
             ".LowCell": {

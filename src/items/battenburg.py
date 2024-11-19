@@ -1,6 +1,6 @@
 """Battenburg."""
 import re
-from typing import list, Any, dict
+from typing import Any
 
 from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.glyphs.glyph import Glyph
@@ -120,6 +120,6 @@ class Battenburg(Item):
         item's position.
 
         Returns:
-            Dict: A dictionary containing the item's class name and position.
+            dict: A dictionary containing the item's class name and position.
         """
         return {self.__class__.__name__: self.position.row * 10 + self.position.column}

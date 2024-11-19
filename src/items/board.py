@@ -1,7 +1,6 @@
 """Board."""
 import re
 from enum import Enum
-from typing import Optional, dict, tuple
 
 import oyaml as yaml
 import strictyaml
@@ -39,10 +38,10 @@ class Board:
                  board_columns: int,
                  box_rows: int = 0,
                  box_columns: int = 0,
-                 reference: Optional[str] = None,
-                 video: Optional[str] = None,
-                 title: Optional[str] = None,
-                 author: Optional[str] = None
+                 reference: str | None = None,
+                 video: str | None = None,
+                 title: str | None = None,
+                 author: str | None = None
                  ):
         """Initialize the Board with rows, columns, box dimensions, and optional metadata.
 
@@ -51,10 +50,10 @@ class Board:
             board_columns (int): Number of columns in the board.
             box_rows (int, optional): Number of rows in each box. Defaults to 0.
             box_columns (int, optional): Number of columns in each box. Defaults to 0.
-            reference (Optional[str], optional): Reference URL for the puzzle, if available. Defaults to None.
-            video (Optional[str], optional): Video link related to the puzzle, if available. Defaults to None.
-            title (Optional[str], optional): Title of the puzzle, if available. Defaults to None.
-            author (Optional[str], optional): Author of the puzzle, if available. Defaults to None.
+            reference (str | None, optional): Reference URL for the puzzle, if available. Defaults to None.
+            video (str | None, optional): Video link related to the puzzle, if available. Defaults to None.
+            title (str | None, optional): Title of the puzzle, if available. Defaults to None.
+            author (str | None, optional): Author of the puzzle, if available. Defaults to None.
         """
         # Rows
         self.board_rows = board_rows

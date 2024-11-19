@@ -1,6 +1,6 @@
 """ComposedItem."""
 from itertools import chain
-from typing import List, set, Sequence, Dict, Iterator
+from typing import Sequence, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -21,7 +21,7 @@ class ComposedItem(Item):
             items (Sequence[Item]): A sequence of items to be included in this composed item.
         """
         super().__init__(board)
-        self.items: List[Item] = []
+        self.items: list[Item] = []
         self.add_items(items)
 
     def regions(self) -> set['Item']:
@@ -57,50 +57,50 @@ class ComposedItem(Item):
             self.add(item)
 
     @property
-    def cells(self) -> List[Cell]:
+    def cells(self) -> list[Cell]:
         """Return a list of all cells contained in this composed item.
 
         Returns:
-            List[Cell]: A list of cells.
+            list[Cell]: A list of cells.
         """
         return [item for item in self.items if isinstance(item, Cell)]
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Retrieve all rules associated with this composed item.
 
         This method aggregates rules from all contained items.
 
         Returns:
-            List[Rule]: A list of rules associated with the contained items.
+            list[Rule]: A list of rules associated with the contained items.
         """
         result = []
         for item in self.items:
             result.extend(item.rules)
         return result
 
-    def flatten(self) -> List[Item]:
+    def flatten(self) -> list[Item]:
         """Flatten the item hierarchy into a single list.
 
         This method traverses the composed item's items and their contained
         items recursively, returning a flat list.
 
         Returns:
-            List[Item]: A flattened list of all items in the hierarchy.
+            list[Item]: A flattened list of all items in the hierarchy.
         """
-        result: List[Item] = [self]
+        result: list[Item] = [self]
         for item in self.items:
             result.extend(item.flatten())
         return result
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of glyphs associated with this item.
 
         The glyphs are determined by recursively traversing the item tree and
         calling the `glyphs` method on each item.
 
         Returns:
-            List[Glyph]: A list of glyphs associated with this item.
+            list[Glyph]: A list of glyphs associated with this item.
         """
         return list(chain.from_iterable(item.glyphs() for item in self.items))
 
@@ -163,12 +163,12 @@ class ComposedItem(Item):
         return len(self.items)
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a new ComposedItem instance.
 
         Args:
             board (Board): The board associated with the new composed item.
-            yaml (Dict): The YAML configuration used to initialize the item.
+            yaml (dict): The YAML configuration used to initialize the item.
 
         Returns:
             Item: A new instance of ComposedItem.
@@ -183,21 +183,21 @@ class ComposedItem(Item):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.items!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the composed item and its contained items to a dictionary.
 
         Returns:
-            Dict: A dictionary representation of the composed item.
+            dict: A dictionary representation of the composed item.
         """
         if len(self.items) == 0:
             return {self.__class__.__name__: None}
         return {self.__class__.__name__: [item.to_dict() for item in self.items]}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Collect CSS properties from this item and all contained items.
 
         Returns:
-            Dict: A dictionary of CSS properties associated with the composed
+            dict: A dictionary of CSS properties associated with the composed
             item and its contained items.
         """
         result = super().css()

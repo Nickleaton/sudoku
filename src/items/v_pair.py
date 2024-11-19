@@ -1,5 +1,5 @@
 """VPair."""
-from typing import Dict
+
 
 from src.items.sum_pair import SumPair
 from src.solvers.pulp_solver import PulpSolver
@@ -41,7 +41,7 @@ class VPair(SumPair):
         self.add_unique_constraint(solver, True)
         self.add_allowed_constraint(solver, self.cells, [1, 2, 3, 4])
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for the 'V' pair.
 
         Define and return a dictionary of CSS styles for the foreground

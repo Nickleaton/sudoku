@@ -1,6 +1,5 @@
 """Sandwich."""
 import re
-from typing import Dict, tuple, List, Optional
 
 from pulp import LpVariable, LpInteger
 
@@ -54,12 +53,12 @@ class Sandwich(Item):
         return FrameParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract side, index, and total from the provided YAML configuration.
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml (Dict): The YAML configuration containing the sandwich data.
+            yaml (dict): The YAML configuration containing the sandwich data.
 
         Returns:
             tuple[Side, int, int]: A tuple containing the side, index, and total.
@@ -78,12 +77,12 @@ class Sandwich(Item):
         return side, offset, total
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'Sandwich':
+    def create(cls, board: Board, yaml: dict) -> 'Sandwich':
         """Create a Sandwich instance from YAML configuration.
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml (Dict): The YAML configuration containing the sandwich data.
+            yaml (dict): The YAML configuration containing the sandwich data.
 
         Returns:
             Sandwich: A new instance of Sandwich.
@@ -91,20 +90,20 @@ class Sandwich(Item):
         side, offset, total = cls.extract(board, yaml)
         return cls(board, side, offset, total)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of glyphs associated with this sandwich.
 
         Returns:
-            List[Glyph]: A list of glyphs representing this sandwich.
+            list[Glyph]: A list of glyphs representing this sandwich.
         """
         return [TextGlyph('Sandwich', 0, self.position, str(self.total))]
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Retrieve the rules associated with this sandwich.
 
         Returns:
-            List[Rule]: A list of rules related to this sandwich.
+            list[Rule]: A list of rules related to this sandwich.
         """
         return [
             Rule(
@@ -125,19 +124,19 @@ class Sandwich(Item):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.total})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Sandwich instance to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the Sandwich.
+            dict: A dictionary representation of the Sandwich.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get CSS styles for the Sandwich.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the Sandwich.
+            dict: A dictionary containing CSS styles for the Sandwich.
         """
         return {
             ".SandwichForeground": {
@@ -160,14 +159,14 @@ class Sandwich(Item):
                           solver: PulpSolver,
                           is_row: bool,
                           index: int,
-                          include: Optional[re.Pattern] = None,
-                          exclude: Optional[re.Pattern] = None
+                          include: re.Pattern | None = None,
+                          exclude: re.Pattern | None = None
                           ) -> None:
         """Add constraints for the sandwich in the specified row or column.
 
         Sets up boolean variables indicating the positions of the digits 1 and the
         maximum digit in the row or column to fulfill the sandwich constraint.
-        Optional patterns can be applied to specify inclusion or exclusion of
+        Patterns can be applied to specify inclusion or exclusion of
         specific constraints.
 
         Args:
@@ -175,9 +174,9 @@ class Sandwich(Item):
             is_row (bool): Indicates whether to apply the constraint to a row
                 (True) or column (False).
             index (int): The index of the row or column to which constraints apply.
-            include (Optional[re.Pattern]): A regex pattern specifying which entries
+            include (re.Pattern | None): A regex pattern specifying which entries
                 to include in the constraint setup (if any).
-            exclude (Optional[re.Pattern]): A regex pattern specifying which entries
+            exclude (re.Pattern | None): A regex pattern specifying which entries
                 to exclude from the constraint setup (if any).
         """
         label = "Row" if is_row else "Column"
@@ -210,32 +209,32 @@ class Sandwich(Item):
 
     def add_constraint_row(self,
                            solver: PulpSolver,
-                           include: Optional[re.Pattern] = None,
-                           exclude: Optional[re.Pattern] = None
+                           include: re.Pattern | None = None,
+                           exclude: re.Pattern | None = None
                            ) -> None:
         """Add constraints for the sandwich in the specified row.
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
-            include (Optional[re.Pattern]): A regex pattern specifying which columns
+            include (re.Pattern | None): A regex pattern specifying which columns
                 to include in the constraint setup (if any).
-            exclude (Optional[re.Pattern]): A regex pattern specifying which columns
+            exclude (re.Pattern | None): A regex pattern specifying which columns
                 to exclude from the constraint setup (if any).
         """
         self.add_constraint_rc(solver, True, self.index, include, exclude)
 
     def add_constraint_column(self,
                               solver: PulpSolver,
-                              include: Optional[re.Pattern] = None,
-                              exclude: Optional[re.Pattern] = None
+                              include: re.Pattern | None = None,
+                              exclude: re.Pattern | None = None
                               ) -> None:
         """Add constraints for the sandwich in the specified column.
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
-            include (Optional[re.Pattern]): A regex pattern specifying which columns
+            include (re.Pattern | None): A regex pattern specifying which columns
                 to include in the constraint setup (if any).
-            exclude (Optional[re.Pattern]): A regex pattern specifying which columns
+            exclude (re.Pattern | None): A regex pattern specifying which columns
                 to exclude from the constraint setup (if any).
 
         """

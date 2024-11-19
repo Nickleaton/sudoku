@@ -1,6 +1,5 @@
 """CellListParser."""
 import re
-from typing import List
 
 from src.parsers.parser import Parser, ParserError
 from src.tokens.cell_token import CellToken
@@ -31,7 +30,7 @@ class CellListParser(Parser):
             raise ParserError(f"{self.__class__.__name__} expects a comma-separated list of cell coordinates")
 
         try:
-            cells: List[str] = re.findall(r'(\d\d)', text)
+            cells: list[str] = re.findall(r'(\d\d)', text)
             self.result = [[int(cell[0]), int(cell[1])] for cell in cells]
             self.answer = [
                 {'row': cell[0], 'column': cell[1]} for cell in cells

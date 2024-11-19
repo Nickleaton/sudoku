@@ -1,5 +1,5 @@
 """LittleArrowGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.text import Text, TSpan
@@ -26,11 +26,11 @@ class LittleArrowGlyph(Glyph):
         self.position = position  # The position of the glyph
         self.location = location  # The direction of the arrow (angle)
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the arrow glyph as an SVG text element with a direction.
 
         Returns:
-            Optional[BaseElement]: An SVG Text element containing the arrow symbol or None if not drawn.
+            BaseElement | None: An SVG Text element containing the arrow symbol or None if not drawn.
         """
         # Determine the direction using the location value
         direction = Direction.direction(self.location)

@@ -1,6 +1,5 @@
 """OrthogonallyAdjacent."""
 from itertools import product
-from typing import List, Dict
 
 from src.items.board import Board
 from src.items.composed_item import ComposedItem
@@ -31,12 +30,12 @@ class OrthogonallyAdjacent(ComposedItem):
         return super().tags.union({'OrthogonallyAdjacent'})
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an OrthogonallyAdjacent constraint from YAML configuration.
 
         Args:
             board (Board): The board on which this constraint is created.
-            yaml (Dict): YAML configuration for the constraint.
+            yaml (dict): YAML configuration for the constraint.
 
         Returns:
             Item: The instantiated OrthogonallyAdjacent constraint.
@@ -44,11 +43,11 @@ class OrthogonallyAdjacent(ComposedItem):
         return OrthogonallyAdjacent(board)
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules enforced by this constraint.
 
         Returns:
-            List[Rule]: Rules indicating that consecutive digits cannot be orthogonally adjacent.
+            list[Rule]: Rules indicating that consecutive digits cannot be orthogonally adjacent.
         """
         return [
             Rule("OrthogonallyAdjacent", 1, "Consecutive digits must never be orthogonally adjacent")
@@ -62,11 +61,11 @@ class OrthogonallyAdjacent(ComposedItem):
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Serialize the OrthogonallyAdjacent constraint to a dictionary format.
 
         Returns:
-            Dict: Dictionary representation of the constraint.
+            dict: Dictionary representation of the constraint.
         """
         return {self.__class__.__name__: None}
 

@@ -1,5 +1,4 @@
 """PalindromeLine."""
-from typing import list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -29,7 +28,7 @@ class PalindromeLine(Line):
         """Generate a graphical representation of the PalindromeLine.
 
         list:
-            List[Glyph]: A list containing a `PolyLineGlyph` instance with
+            list[Glyph]: A list containing a `PolyLineGlyph` instance with
             cell coordinates for display as a palindrome line.
         """
         return [PolyLineGlyph('PalindromeLine', [cell.coord for cell in self.cells], False, False)]
@@ -65,7 +64,7 @@ class PalindromeLine(Line):
         """CSS styles for rendering the PalindromeLine in the user interface.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.PalindromeLine` to
+            dict: A dictionary defining CSS properties for `.PalindromeLine` to
             style this line as a palindrome line.
         """
         return {

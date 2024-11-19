@@ -1,6 +1,4 @@
 """AntiBltr."""
-from typing import List
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
 from src.items.anti_diagonal import AntiDiagonal
@@ -29,13 +27,13 @@ class AntiBLTR(AntiDiagonal):
         # Adds cells along the anti-diagonal from bottom-left to top-right
         self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the glyphs associated with the AntiBLTR.
 
         Glyphs visually represent the AntiBLTR's position on the board.
 
         Returns:
-            List[Glyph]: A list of glyphs representing the AntiBLTR.
+            list[Glyph]: A list of glyphs representing the AntiBLTR.
         """
         return [
             LineGlyph('Diagonal',

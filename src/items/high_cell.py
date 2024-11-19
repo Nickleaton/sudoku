@@ -1,7 +1,5 @@
 """HighCell."""
-from typing import Optional, List, Dict
 
-# from src.glyphs.glyph import Glyph, HighCellGlyph
 from src.glyphs.glyph import Glyph
 from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.rule import Rule
@@ -11,11 +9,11 @@ class HighCell(SimpleCellReference):
     """Represents a cell that must contain a digit from the set {7, 8, 9}."""
 
     @staticmethod
-    def digits() -> List[int]:
+    def digits() -> list[int]:
         """Return the list of allowed digits for the HighCell.
 
         Returns:
-            List[int]: A list of digits [7, 8, 9] that are allowed in the HighCell.
+            list[int]: A list of digits [7, 8, 9] that are allowed in the HighCell.
         """
         return [7, 8, 9]
 
@@ -39,11 +37,11 @@ class HighCell(SimpleCellReference):
         """
         return 'h'
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return an SVG representation of the HighCell.
 
         Returns:
-            Optional[Glyph]: Always returns None for HighCell.
+            Glyph | None: Always returns None for HighCell.
         """
         return None
 
@@ -57,28 +55,28 @@ class HighCell(SimpleCellReference):
         return super().tags.union({'Trio'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with this HighCell.
 
         Returns:
-            List[Rule]: A list containing the rule that the digits 7, 8, and 9 are not marked.
+            list[Rule]: A list containing the rule that the digits 7, 8, and 9 are not marked.
         """
         return [Rule("Low", 1, "The digits 7, 8 and 9 are not marked")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs associated with this HighCell.
 
         Returns:
-            List[Glyph]: An empty list as no glyphs are associated with this HighCell.
+            list[Glyph]: An empty list as no glyphs are associated with this HighCell.
         """
         return []
         # return [HighCellGlyph('HighCell', Coord(self.row, self.column))]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the HighCell.
 
         Returns:
-            Dict: An empty dictionary as no specific CSS styling is applied.
+            dict: An empty dictionary as no specific CSS styling is applied.
         """
         return {}
 

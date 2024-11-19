@@ -1,5 +1,5 @@
 """ComposedGlyph."""
-from typing import List, Optional, set, Type
+from typing import Type
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -17,15 +17,15 @@ class ComposedGlyph(Glyph):
 
     Attributes:
         class_name (str): The CSS class name for the composed glyph.
-        items (List[Glyph]): A list of `Glyph` objects to include in the composition.
+        items (list[Glyph]): A list of `Glyph` objects to include in the composition.
     """
 
-    def __init__(self, class_name: str, items: Optional[List[Glyph]] = None):
+    def __init__(self, class_name: str, items: list[Glyph] | None = None):
         """Initialize the ComposedGlyph with a given class name and optional items.
 
         Args:
             class_name (str): set the CSS class name for the composed glyph.
-            items (Optional[List[Glyph]], optional): Provide a list of `Glyph`
+            items (list[Glyph] | None], optional): Provide a list of `Glyph`
                 objects to include in the composition. Default is an empty list.
         """
         super().__init__(class_name)
@@ -60,14 +60,14 @@ class ComposedGlyph(Glyph):
         """
         self.items.append(item)
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the composed glyph on an SVG canvas.
 
         Create an SVG `Group` element containing all the glyphs in the composition.
         Draw each glyph in sorted order.
 
         Returns:
-            Optional[BaseElement]: Return an SVG `Group` element containing the
+            BaseElement | None: Return an SVG `Group` element containing the
             glyphs, or `None` if no valid glyphs exist.
         """
         group = Group()

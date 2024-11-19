@@ -1,5 +1,5 @@
 """SimpleThermometerGlyph."""
-from typing import Optional
+
 
 from svgwrite.container import Marker
 from svgwrite.shapes import Circle
@@ -15,7 +15,7 @@ class SimpleThermometerGlyph(ThermometerGlyph):
     """
 
     @classmethod
-    def start_marker(cls) -> Optional[Marker]:
+    def start_marker(cls) -> Marker | None:
         """Create and return a custom marker for the start of the thermometer."""
         marker = Marker(
             insert=(50, 50),

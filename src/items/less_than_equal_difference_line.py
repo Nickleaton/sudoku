@@ -1,5 +1,5 @@
 """LessThanEqualDifferenceLine."""
-from typing import List, Sequence
+from typing import Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -30,11 +30,11 @@ class LessThanEqualDifferenceLine(Line):
             self.add(LessThanEqualDifferencePair(self.board, cells[i - 1], cells[i], [self.difference]))
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the LessThanEqualDifferenceLine.
 
         Returns:
-            List[Rule]: A list of rules specific to the LessThanEqualDifferenceLine.
+            list[Rule]: A list of rules specific to the LessThanEqualDifferenceLine.
         """
         return [
             Rule(

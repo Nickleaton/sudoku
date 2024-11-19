@@ -1,7 +1,7 @@
 """FrameProduct."""
 
 import re
-from typing import List, Any, Dict
+from typing import Any
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -39,7 +39,7 @@ class FrameProduct(FirstN):
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.product})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rule for this frame product."""
         return [
             Rule(
@@ -50,7 +50,7 @@ class FrameProduct(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the glyphs for the frame product."""
         return [
             TextGlyph(
@@ -67,12 +67,12 @@ class FrameProduct(FirstN):
         return super().tags.union({'Product', 'Frame'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the side, index, and product from the YAML configuration.
 
         Args:
             board (Board): The board instance for context.
-            yaml (Dict): The YAML configuration from which the frame product is parsed.
+            yaml (dict): The YAML configuration from which the frame product is parsed.
 
         Returns:
             tuple[Side, int, int]: The side, index, and product extracted from the YAML.
@@ -88,12 +88,12 @@ class FrameProduct(FirstN):
         return side, index, product
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a FrameProduct instance from the YAML configuration.
 
         Args:
             board (Board): The board instance.
-            yaml (Dict): The YAML configuration.
+            yaml (dict): The YAML configuration.
 
         Returns:
             Item: The FrameProduct instance created from the YAML.
@@ -109,10 +109,10 @@ class FrameProduct(FirstN):
         """
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Return a dictionary representation of the frame product.
 
         Returns:
-            Dict: The dictionary representation.
+            dict: The dictionary representation.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.product}"}

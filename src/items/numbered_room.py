@@ -1,6 +1,4 @@
 """NumberedRoom."""
-from typing import Dict, tuple, List
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.board import Board
@@ -66,12 +64,12 @@ class NumberedRoom(Item):
         return FrameParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the side, index, and digit from the YAML configuration for the NumberedRoom.
 
         Args:
             board (Board): The board associated with the item.
-            yaml (Dict): The YAML configuration containing the NumberedRoom data.
+            yaml (dict): The YAML configuration containing the NumberedRoom data.
 
         Returns:
             tuple: A tuple containing the side, index, and digit.
@@ -83,12 +81,12 @@ class NumberedRoom(Item):
         return side, offset, digit
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a NumberedRoom item from the given YAML configuration.
 
         Args:
             board (Board): The board associated with this item.
-            yaml (Dict): The YAML configuration containing the NumberedRoom data.
+            yaml (dict): The YAML configuration containing the NumberedRoom data.
 
         Returns:
             Item: The created NumberedRoom item.
@@ -96,22 +94,22 @@ class NumberedRoom(Item):
         side, offset, digit = cls.extract(board, yaml)
         return cls(board, side, offset, digit)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the NumberedRoom.
 
         Returns:
-            List[Glyph]: A list containing a `TextGlyph` representing the digit for the NumberedRoom.
+            list[Glyph]: A list containing a `TextGlyph` representing the digit for the NumberedRoom.
         """
         return [
             TextGlyph('NumberedRoom', 0, self.reference, str(self.digit)),
         ]
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the NumberedRoom.
 
         Returns:
-            List[Rule]: A list containing a single rule for the NumberedRoom.
+            list[Rule]: A list containing a single rule for the NumberedRoom.
         """
         return [
             Rule(
@@ -133,11 +131,11 @@ class NumberedRoom(Item):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.digit})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the NumberedRoom to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the NumberedRoom item.
+            dict: A dictionary representing the NumberedRoom item.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
 
@@ -174,11 +172,11 @@ class NumberedRoom(Item):
         else:  # pragma: no cover
             raise Exception(f"Unexpected Side {self.side.name}")
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles associated with the NumberedRoom glyphs.
 
         Returns:
-            Dict: A dictionary containing the CSS styles for the NumberedRoom glyphs.
+            dict: A dictionary containing the CSS styles for the NumberedRoom glyphs.
         """
         return {
             '.NumberedRoomForeground': {

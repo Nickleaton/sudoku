@@ -1,5 +1,5 @@
 """ProductArrow."""
-from typing import list, dict
+
 
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.glyphs.glyph import Glyph
@@ -57,7 +57,7 @@ class ProductArrowLine(Line):
         """CSS styles for rendering the ProductArrowLine in the user interface.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.Arrow`, `.ArrowStart`,
+            dict: A dictionary defining CSS properties for `.Arrow`, `.ArrowStart`,
             and `.ArrowEnd` classes used to style this arrow line visually.
         """
         return {

@@ -14,11 +14,13 @@ class TestCreateSolverCommand(TestCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(self.path) \
+        self.prerequisites = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
                        | CreateConstraintsCommand()
-        requirements.execute(self.problem)
+        self.prerequisites.execute(self.problem)
         self.command = CreateSolverCommand()
+        self.requirements = ['config', 'board']
+        self.target = "solver"
 
     def test_command(self):
         """Test the execute method of CreateSolverCommand."""

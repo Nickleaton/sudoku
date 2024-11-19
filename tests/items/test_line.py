@@ -45,10 +45,6 @@ class TestLine(TestRegion):
             f")"
         )
 
-    def test_repr(self):
-        """Test the string representation of the Line instance."""
-        self.assertEqual(self.representation, repr(self.item))
-
     @property
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes that the Line instance should belong to."""

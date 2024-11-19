@@ -16,7 +16,7 @@ class TestCommand(unittest.TestCase):
         self.empty_problem = Problem()
         self.path = Path('problems\\easy\\problem001.yaml')
         self.requirements = []
-        self.target = ""
+        self.target = "xyzzy"
 
     def test_command(self):
         """Test the execution of the Command."""
@@ -43,11 +43,17 @@ class TestCommand(unittest.TestCase):
     def test_preconditions(self):
         """Test the precondition checks of the Command."""
         problem = Problem()
+        print ("Requirements")
         for requirement in self.requirements:
+            print ("+requirement", requirement)
+            print (problem)
             with self.assertRaises(CommandException):
                 self.command.precondition_check(problem)
             problem[requirement] = ""
+        print("Target")
+        print("-requirement", self.target)
         self.command.precondition_check(problem)
+        print("Done")
 
 
 if __name__ == '__main__':  # pragma: no cover

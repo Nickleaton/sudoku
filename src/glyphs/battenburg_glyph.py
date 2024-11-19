@@ -1,5 +1,5 @@
 """BattenburgGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Marker, Symbol, Use
@@ -34,7 +34,7 @@ class BattenburgGlyph(Glyph):
         self.coord = coord
 
     @classmethod
-    def symbol(cls) -> Optional[Marker]:
+    def symbol(cls) -> Marker | None:
         """Create and return the SVG symbol for the Battenburg pattern.
 
         This method generates an SVG symbol containing a 2x2 grid of rectangles with alternating
@@ -61,7 +61,7 @@ class BattenburgGlyph(Glyph):
             )
         return result
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the Battenburg pattern on an SVG canvas.
 
         This method creates an SVG `Use` element that references the Battenburg symbol

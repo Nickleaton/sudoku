@@ -69,7 +69,7 @@ class Window(Region):
 
         Args:
             board (Board): The board to extract data for.
-            yaml (Dict): The YAML data containing coordinates.
+            yaml (dict): The YAML data containing coordinates.
 
         Returns:
             Coord: The extracted coordinate.

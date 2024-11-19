@@ -46,7 +46,7 @@ class TestSimpleCellReference(TestCellReference):
 
     def test_letter(self):
         """Test the letter method of SimpleCellReference."""
-        self.assertEqual(self.clazz.letter(), self.letter)
+        self.assertEqual(self.item.letter(), self.letter)
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

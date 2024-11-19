@@ -1,5 +1,5 @@
 """XiPair."""
-from typing import Dict
+
 
 from src.items.sum_pair import SumPair
 
@@ -31,7 +31,7 @@ class XIPair(SumPair):
         """
         return "XI"
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for the 'XI' pair.
 
         Define and return a dictionary of CSS styles for the foreground

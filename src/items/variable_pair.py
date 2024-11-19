@@ -1,6 +1,5 @@
 """VariablePair."""
 import re
-from typing import List, tuple, Dict, Optional
 
 from pulp import LpElement, LpVariable
 
@@ -36,12 +35,12 @@ class VariablePair(Pair):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.var_name!r})"
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the coordinates and variable name from the YAML data.
 
         Args:
             board (Board): The board to extract coordinates for.
-            yaml (Dict): The YAML data containing the pair definition.
+            yaml (dict): The YAML data containing the pair definition.
 
         Returns:
             tuple: A tuple containing two Cell objects and the variable name.
@@ -58,12 +57,12 @@ class VariablePair(Pair):
         return c1, c2, var_str
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a VariablePair instance from the YAML data.
 
         Args:
             board (Board): The board to create the pair on.
-            yaml (Dict): The YAML data containing the pair definition.
+            yaml (dict): The YAML data containing the pair definition.
 
         Returns:
             Item: A VariablePair instance.
@@ -81,7 +80,7 @@ class VariablePair(Pair):
         """Get the label associated with the VariablePair."""
         return ""
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyphs for the VariablePair instance."""
         return [
             CircleGlyph(
@@ -91,20 +90,20 @@ class VariablePair(Pair):
             )
         ]
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the VariablePair to a dictionary representation."""
         return {
             self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}={self.var_name}"
         }
 
-    def target(self, solver: PulpSolver) -> Optional[LpElement]:
+    def target(self, solver: PulpSolver) -> LpElement | None:
         """Define the target variable for the pair in the solver.
 
         Args:
             solver (PulpSolver): The solver to add the target for.
 
         Returns:
-            Optional[LpElement]: The target variable or None if not defined.
+            LpElement | None: The target variable or None if not defined.
         """
         return None
 
@@ -126,5 +125,5 @@ class VariablePair(Pair):
         if target is None:
             return
         if self.__class__.__name__ not in solver.variables:
-            solver.variables[self.__class__.__name__] = (LpVariable(self.__class__.__name__), self.variable_type())
+            solver.variables[self.__class__.__name__] = LpVariable(self.__class__.__name__)
         solver.model += target == solver.variables[self.__class__.__name__][0], self.name

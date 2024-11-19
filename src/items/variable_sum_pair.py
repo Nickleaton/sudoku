@@ -1,6 +1,4 @@
 """VariableSumPair."""
-from typing import List, Dict
-
 from pulp import LpElement
 
 from src.items.variable_pair import VariablePair
@@ -18,7 +16,7 @@ class VariableSumPair(VariablePair):
         return super().tags.union({'Sum'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rule for the VariableSumPair: cells must have the same sum."""
         return [
             Rule(
@@ -47,7 +45,7 @@ class VariableSumPair(VariablePair):
         """
         return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for the VariableSumPair."""
         return {
             '.FixedSumPair': {

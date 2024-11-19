@@ -1,6 +1,6 @@
 """Rossini."""
 import re
-from typing import List, Any, Dict
+from typing import Any
 
 from src.glyphs.arrow_glyph import ArrowGlyph
 from src.glyphs.glyph import Glyph
@@ -57,11 +57,11 @@ class Rossini(FirstN):
         )
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rule for the Rossini constraint.
 
         Returns:
-            List[Rule]: A list containing a single rule for the Rossini constraint.
+            list[Rule]: A list containing a single rule for the Rossini constraint.
         """
         return [
             Rule(
@@ -72,11 +72,11 @@ class Rossini(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the glyphs representing the Rossini constraint.
 
         Returns:
-            List[Glyph]: A list containing the arrow glyph for the Rossini constraint.
+            list[Glyph]: A list containing the arrow glyph for the Rossini constraint.
         """
         return [
             ArrowGlyph(
@@ -96,12 +96,12 @@ class Rossini(FirstN):
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract Rossini constraint details from YAML data.
 
         Args:
             board (Board): The puzzle board.
-            yaml (Dict): The YAML data containing constraint information.
+            yaml (dict): The YAML data containing constraint information.
 
         Returns:
             Any: The extracted side, index, and order.
@@ -117,12 +117,12 @@ class Rossini(FirstN):
         return side, index, order
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Rossini object from extracted YAML data.
 
         Args:
             board (Board): The puzzle board.
-            yaml (Dict): The YAML data containing constraint information.
+            yaml (dict): The YAML data containing constraint information.
 
         Returns:
             Item: The created Rossini object.
@@ -138,19 +138,19 @@ class Rossini(FirstN):
         """
         self.add_sequence_constraint(solver, self.order)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Rossini object to a dictionary representation.
 
         Returns:
-            Dict: The dictionary representation of the Rossini object.
+            dict: The dictionary representation of the Rossini object.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS style for displaying the Rossini constraint.
 
         Returns:
-            Dict: The CSS style.
+            dict: The CSS style.
         """
         return {
             ".Rossini": {

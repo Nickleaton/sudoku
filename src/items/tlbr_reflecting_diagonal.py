@@ -1,6 +1,4 @@
 """TlbrReflectingDiagonal."""
-from typing import List
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
 from src.items.board import Board
@@ -24,19 +22,19 @@ class TLBRReflecting(Diagonal):
         self.add_items([Cell.make(board, i, i) for i in board.row_range])
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Provide the rule associated with the TLBRReflecting diagonal.
 
         Returns:
-            List[Rule]: A list containing a rule that specifies parity reflection along the diagonal.
+            list[Rule]: A list containing a rule that specifies parity reflection along the diagonal.
         """
         return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate the visual representation (glyph) for the reflecting diagonal.
 
         Returns:
-            List[Glyph]: A list containing the glyph for the TLBRReflecting diagonal.
+            list[Glyph]: A list containing the glyph for the TLBRReflecting diagonal.
         """
         return [
             LineGlyph('TLBRReflecting', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))

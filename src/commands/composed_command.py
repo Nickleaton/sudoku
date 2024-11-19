@@ -4,7 +4,7 @@ For more information, see:
 - https://en.wikipedia.org/wiki/Command_pattern
 - https://en.wikipedia.org/wiki/Composite_pattern
 """
-from typing import Sequence, List, Optional
+from typing import Sequence
 
 from src.commands.command import Command
 from src.commands.problem import Problem
@@ -13,15 +13,15 @@ from src.commands.problem import Problem
 class ComposedCommand(Command):
     """Combine multiple commands."""
 
-    def __init__(self, items: Optional[List[Command]] = None):
+    def __init__(self, items: list[Command] | None = None):
         """Initialize a new instance of the ComposedCommand class.
 
         Args:
-            items (List[Command], optional): A list of commands to initialize
+            items (list[Command], optional): A list of commands to initialize
                 in the composed command. Defaults to an empty list.
         """
         super().__init__()
-        self.items: List[Command] = items if items is not None else []
+        self.items: list[Command] = items if items is not None else []
 
     def add(self, item: Command) -> None:
         """Add a command to the composed command.

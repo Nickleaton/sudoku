@@ -1,5 +1,4 @@
 """BetweenLine."""
-from typing import List, Dict
 
 from pulp import LpVariable, LpInteger
 
@@ -23,11 +22,11 @@ class BetweenLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules associated with the BetweenLine.
 
         Returns:
-            List[Rule]: A list containing rules related to the BetweenLine.
+            list[Rule]: A list containing rules related to the BetweenLine.
         """
         return [
             Rule(
@@ -37,11 +36,11 @@ class BetweenLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create glyph representations of the BetweenLine for rendering.
 
         Returns:
-            List[Glyph]: A list containing a BetweenLineGlyph for graphical representation.
+            list[Glyph]: A list containing a BetweenLineGlyph for graphical representation.
         """
         return [BetweenLineGlyph('BetweenLine', [cell.coord for cell in self.cells])]
 
@@ -98,11 +97,11 @@ class BetweenLine(Line):
             name = f"{self.name}_e_{1}_{cell.row}_{cell.column}"
             solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define the CSS style for rendering the BetweenLine.
 
         Returns:
-            Dict: CSS styling for the BetweenLine, specifying stroke and fill colors.
+            dict: CSS styling for the BetweenLine, specifying stroke and fill colors.
         """
         return {
             '.BetweenLine': {

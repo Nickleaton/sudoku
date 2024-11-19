@@ -1,6 +1,6 @@
 """QuadrupleBase."""
 import re
-from typing import List, Any, Dict
+from typing import Any
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.quadruple_glyph import QuadrupleGlyph
@@ -58,12 +58,12 @@ class QuadrupleBase(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, '{digit_str}')"
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the position and digits from the YAML configuration.
 
         Args:
             board (Board): The board to extract the quadruple data for.
-            yaml (Dict): The YAML data containing the quadruple information.
+            yaml (dict): The YAML data containing the quadruple information.
 
         Returns:
             tuple: A tuple containing a `Coord` object for the position and a string of digits.
@@ -76,12 +76,12 @@ class QuadrupleBase(Item):
         return Coord(int(row_str), int(column_str)), list(digits)
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a new Quadruple instance from the YAML configuration.
 
         Args:
             board (Board): The board on which the quadruple will be placed.
-            yaml (Dict): The YAML data for the quadruple.
+            yaml (dict): The YAML data for the quadruple.
 
         Returns:
             Item: A new Quadruple instance.
@@ -89,29 +89,29 @@ class QuadrupleBase(Item):
         position, numbers = QuadrupleBase.extract(board, yaml)
         return cls(board, position, numbers)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyphs for the visual representation of the Quadruple.
 
         Returns:
-            List[Glyph]: A list of glyphs representing the quadruple's position and digits.
+            list[Glyph]: A list of glyphs representing the quadruple's position and digits.
         """
         return [
             QuadrupleGlyph(class_name=self.__class__.__name__, position=self.position, numbers=self.numbers)
         ]
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Quadruple to a dictionary representation.
 
         Returns:
-            Dict: A dictionary containing the position and digits of the quadruple.
+            dict: A dictionary containing the position and digits of the quadruple.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the Quadruple glyphs.
 
         Returns:
-            Dict: A dictionary defining the CSS styles for the quadruple glyph.
+            dict: A dictionary defining the CSS styles for the quadruple glyph.
         """
         return {
             ".QuadrupleBaseCircle": {

@@ -1,5 +1,4 @@
 """AntiQueens."""
-from typing import list, dict
 
 from src.items.anti import Anti
 from src.items.board import Board

@@ -1,6 +1,6 @@
 """Frame."""
 import re
-from typing import List, Any, Dict
+from typing import Any
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -44,7 +44,7 @@ class Frame(FirstN):
         )
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the frame."""
         return [
             Rule(
@@ -55,7 +55,7 @@ class Frame(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the list of glyphs associated with the frame."""
         return [
             TextGlyph(
@@ -72,7 +72,7 @@ class Frame(FirstN):
         return super().tags.union({'Comparison', 'Frame'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract and return the side, index, and total from the given YAML configuration."""
         regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
         match = regexp.match(yaml[cls.__name__])
@@ -85,7 +85,7 @@ class Frame(FirstN):
         return side, index, total
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create and return a Frame instance based on the provided YAML configuration."""
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
@@ -94,11 +94,11 @@ class Frame(FirstN):
         """Add the constraint for the frame to the solver."""
         self.add_total_constraint(solver, self.total)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Return a dictionary representation of the frame."""
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for visualizing the frame."""
         return {
             ".FrameTextForeground": {

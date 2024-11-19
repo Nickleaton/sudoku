@@ -1,6 +1,5 @@
 """Enum to handle Orders - Increasing, Decreasing or unordered."""
 from enum import Enum
-from typing import Dict
 
 
 class Order(Enum):
@@ -58,7 +57,7 @@ class Order(Enum):
 
 
 # Map to handle negation of Order
-NEGATION_MAP: Dict[Order, Order] = {
+NEGATION_MAP: dict[Order, Order] = {
     Order.INCREASING: Order.DECREASING,
     Order.DECREASING: Order.INCREASING,
     Order.UNORDERED: Order.UNORDERED

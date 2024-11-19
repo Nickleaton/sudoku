@@ -1,8 +1,8 @@
 """Solution."""
 from itertools import product
-from typing import list, Any, dict
+from typing import Any
 
-from strictyaml import Seq, Optional
+import strictyaml
 
 from src.items.board import Board
 from src.items.cell_reference import CellReference
@@ -40,7 +40,7 @@ class Solution(ComposedItem):
         Returns:
             dict: A dictionary defining the YAML schema for Solution.
         """
-        return {Optional("Solution"): Seq(SolutionParser())}
+        return {strictyaml.Optional("Solution"): strictyaml.Seq(SolutionParser())}
 
     def __hash__(self):
         """Return a hash of the Solution.
@@ -81,7 +81,7 @@ class Solution(ComposedItem):
 
         Args:
             board (Board): The board associated with this solution.
-            yaml (Dict): The YAML dictionary containing solution data.
+            yaml (dict): The YAML dictionary containing solution data.
 
         Returns:
             Solution: A new Solution instance.

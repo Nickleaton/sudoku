@@ -1,5 +1,5 @@
 """CircleGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Circle
@@ -52,14 +52,14 @@ class CircleGlyph(Glyph):
         """
         return 10
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the circle glyph on an SVG canvas.
 
         This method creates an SVG `Circle` element with the specified center and
         radius, scaled by the `percentage` relative to the current cell size.
 
         Returns:
-            Optional[BaseElement]: The SVG `Circle` element if drawing is possible,
+            BaseElement | None: The SVG `Circle` element if drawing is possible,
             otherwise `None` if no valid configuration is available.
         """
         cell_size: int = 100

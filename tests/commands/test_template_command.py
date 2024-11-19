@@ -22,14 +22,16 @@ class TestTemplateCommand(TestSimpleCommand):
         prepare for testing the TemplateCommand.
         """
         super().setUp()
-        requirements = LoadConfigCommand(self.path) \
-                        | CreateMetaCommand() \
-                        | CreateBoardCommand() \
-                        | CreateConstraintsCommand() \
-                        | CreateRulesCommand() \
-                        | SVGProblemCommand('problem_svg')
-        requirements.execute(self.problem)
+        self.prerequisites = LoadConfigCommand(self.path) \
+                             | CreateMetaCommand() \
+                             | CreateBoardCommand() \
+                             | CreateConstraintsCommand() \
+                             | CreateRulesCommand() \
+                             | SVGProblemCommand('problem_svg')
+        self.prerequisites.execute(self.problem)
         self.command = TemplateCommand(template=Path('src\\html\\problem.html'), target='html')
+        self.requirements = ['config', 'meta', 'board', 'constraints', 'rules', 'problem_svg']
+        self.target = "html"
 
     def test_command(self):
         """Test the execution of TemplateCommand.

@@ -2,7 +2,7 @@
 import logging
 from pathlib import Path
 from types import TracebackType
-from typing import Optional, Type
+from typing import Type
 from uuid import uuid4
 
 from src.utils.config import Config
@@ -59,9 +59,9 @@ class TemporaryFile:
         return self
 
     def __exit__(self,
-                 _exc_type: Optional[Type[BaseException]],
-                 _exc_val: Optional[BaseException],
-                 _exc_tb: Optional[TracebackType]
+                 _exc_type: Type[BaseException] | None,
+                 _exc_val: BaseException | None,
+                 _exc_tb: TracebackType | None
                  ) -> None:
         """Exit the runtime context and remove the temporary file.
 
@@ -69,8 +69,8 @@ class TemporaryFile:
         deletes the temporary file if it exists.
 
         Args:
-            exc_type (type): The exception type if an exception was raised.
-            exc_val (Exception): The exception instance if an exception was raised.
-            exc_tb (TracebackType): The traceback object if an exception was raised.
+            exc_type (type | None): The exception type if an exception was raised.
+            exc_val (Exception | None): The exception instance if an exception was raised.
+            exc_tb (TracebackType | None): The traceback object if an exception was raised.
         """
         self._path.unlink(missing_ok=True)

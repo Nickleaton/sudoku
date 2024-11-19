@@ -1,5 +1,4 @@
 """MidCell."""
-from typing import Optional, List, Dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.mid_cell_glyph import MidCellGlyph
@@ -12,11 +11,11 @@ class MidCell(SimpleCellReference):
     """Represents a mid-range cell, which can contain one of the digits 4, 5, or 6."""
 
     @staticmethod
-    def digits() -> List[int]:
+    def digits() -> list[int]:
         """Return the list of digits allowed for MidCell.
 
         Returns:
-            List[int]: A list of digits [4, 5, 6] allowed for MidCell.
+            list[int]: A list of digits [4, 5, 6] allowed for MidCell.
         """
         return [4, 5, 6]
 
@@ -40,11 +39,11 @@ class MidCell(SimpleCellReference):
         """
         return 'm'
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return the SVG representation of the MidCell.
 
         Returns:
-            Optional[Glyph]: Returns None as the SVG representation is not available for MidCell.
+            Glyph | None: Returns None as the SVG representation is not available for MidCell.
         """
         return None
 
@@ -58,27 +57,27 @@ class MidCell(SimpleCellReference):
         return super().tags.union({'Trio'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with MidCell.
 
         Returns:
-            List[Rule]: A list of rules, indicating that digits 4, 5, and 6 are marked with blue squares.
+            list[Rule]: A list of rules, indicating that digits 4, 5, and 6 are marked with blue squares.
         """
         return [Rule("Mid", 1, "The digits 4, 5, and 6 are marked with blue squares")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of Glyphs associated with MidCell.
 
         Returns:
-            List[Glyph]: A list containing the MidCellGlyph for this cell.
+            list[Glyph]: A list containing the MidCellGlyph for this cell.
         """
         return [MidCellGlyph('MidCell', Coord(self.row, self.column))]
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles associated with MidCell.
 
         Returns:
-            Dict: A dictionary containing the CSS styles, with a stroke of blue and a white fill.
+            dict: A dictionary containing the CSS styles, with a stroke of blue and a white fill.
         """
         return {
             ".MidCell": {

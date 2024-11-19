@@ -1,7 +1,7 @@
 """Token Base class."""
 import re
 import sys
-from typing import Union, List, Optional, Dict, Type
+from typing import Type
 
 from sortedcontainers import SortedDict
 
@@ -11,7 +11,7 @@ from src.utils.sudoku_exception import SudokuException
 class Token:
     """Base class for all tokens used to represent patterns."""
 
-    classes: Dict[str, Type['Token']] = SortedDict({})
+    classes: dict[str, Type['Token']] = SortedDict({})
 
     # Creation Routines
 
@@ -37,11 +37,11 @@ class Token:
         self.regexp: re.Pattern = re.compile(f"^{pattern}$")
 
     @property
-    def name(self) -> Optional[str]:
+    def name(self) -> str | None:
         """Return the name of the token.
 
         Returns:
-            Optional[str]: The name of the token (class name without 'Token'), or 'Token' for the base class.
+            str | None: The name of the token (class name without 'Token'), or 'Token' for the base class.
         """
         return "Token" if self.__class__.__name__ == "Token" else self.__class__.__name__[:-5]
 
@@ -56,14 +56,14 @@ class Token:
         """
         return self.regexp.match(text) is not None
 
-    def groups(self, text: str) -> List[str]:
+    def groups(self, text: str) -> list[str]:
         """Return the matched groups from the text.
 
         Args:
             text (str): The text to match.
 
         Returns:
-            List[str]: A list of matched groups, or an empty list if there is no match.
+            list[str]: A list of matched groups, or an empty list if there is no match.
         """
         match = self.regexp.match(text)
         if match is None:
@@ -108,11 +108,11 @@ class Token:
         """
         return ChoiceToken([self, other])
 
-    def __mul__(self, times: Union[int, tuple]) -> 'RepeatToken':
+    def __mul__(self, times: int | tuple) -> 'RepeatToken':
         """Repeat the token a specified number of times.
 
         Args:
-            times (Union[int, tuple]): Either an integer or a tuple specifying the repetition count.
+            times (int | tuple): Either an integer or a tuple specifying the repetition count.
                 - If an integer, it specifies the exact number of repetitions or 0 for unlimited repetitions.
                 - If a tuple, it specifies the lower and maximum number of repetitions.
 
@@ -127,11 +127,11 @@ class Token:
 class SequenceToken(Token):
     """Represent a sequence of tokens concatenated together."""
 
-    def __init__(self, tokens: List[Token]):
+    def __init__(self, tokens: list[Token]):
         """Initialize a sequence of tokens.
 
         Args:
-            tokens (List[Token]): A list of tokens to concatenate in sequence.
+            tokens (list[Token]): A list of tokens to concatenate in sequence.
         """
         combined_pattern = ''.join(f"({token.pattern})" for token in tokens)
         super().__init__(combined_pattern)
@@ -157,11 +157,11 @@ class SequenceToken(Token):
 class ChoiceToken(Token):
     """Represent an alternation (either/or) pattern between tokens."""
 
-    def __init__(self, tokens: List[Token]):
+    def __init__(self, tokens: list[Token]):
         """Initialize an alternation pattern between multiple tokens.
 
         Args:
-            tokens (List[Token]): A list of tokens to alternate between.
+            tokens (list[Token]): A list of tokens to alternate between.
         """
         alternation_pattern = '|'.join([f"({token.pattern})" for token in tokens])
         super().__init__(alternation_pattern)

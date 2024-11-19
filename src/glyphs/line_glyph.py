@@ -1,5 +1,5 @@
 """LineGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Line
@@ -23,11 +23,11 @@ class LineGlyph(Glyph):
         self.start = start  # Starting coordinate of the line
         self.end = end  # Ending coordinate of the line
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the line as an SVG element.
 
         Returns:
-            Optional[BaseElement]: An SVG Line element or None if not drawn.
+            BaseElement | None: An SVG Line element or None if not drawn.
         """
         # Create and return an SVG Line element from start to end coordinates
         return Line(start=self.start.point.coordinates, end=self.end.point.coordinates, class_=self.class_name)

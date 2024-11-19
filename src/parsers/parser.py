@@ -1,6 +1,6 @@
 """Parser."""
 import re
-from typing import Optional, List, Dict, Type
+from typing import Type
 
 from sortedcontainers import SortedDict
 from strictyaml import Regex
@@ -24,15 +24,6 @@ class Parser(Regex):
     parsers that validate and process strings according to defined
     patterns. It includes mechanisms for matching input strings with
     regular expressions and handling the results.
-
-    Attributes:
-        result (Any): The result of the parsing operation, can vary based on the implementation.
-        classes (Dict[str, Type['Parser']]): A dictionary of subclasses, used for dynamic class registration.
-        pattern (str): The regular expression pattern used for parsing.
-        example_format (Optional[str]): A string example format for expected input.
-        token (Optional[Token]): A token used for further processing or validation.
-        answer (Optional[Dict[str, str | List] | List]): The parsed result,
-                can be a list or a dictionary depending on the implementation.
     """
 
     DIGIT = r"(\d)"
@@ -45,7 +36,7 @@ class Parser(Regex):
     COMMA = r","
     EQUALS = r"="
 
-    classes: Dict[str, Type['Parser']] = SortedDict({})
+    classes: dict[str, Type['Parser']] = SortedDict({})
 
     # Creation Routines
 
@@ -63,7 +54,7 @@ class Parser(Regex):
         Parser.classes[cls.__name__] = cls
         Parser.classes[Parser.__name__] = Parser
 
-    def __init__(self, pattern: str, example_format: Optional[str] = None):
+    def __init__(self, pattern: str, example_format: str | None = None):
         """Initialize the Parser with a regex pattern.
 
         This constructor sets up the regular expression for parsing, along with
@@ -72,15 +63,15 @@ class Parser(Regex):
 
         Args:
             pattern (str): The regex pattern to be used for parsing.
-            example_format (Optional[str]): An optional example format for expected input.
+            example_format (str | None): An optional example format for expected input.
         """
         super().__init__(pattern)
         self.regular_expression: re.Pattern = re.compile(pattern)
-        self.example_format: Optional[str] = example_format
+        self.example_format: str | None = example_format
         self.pattern: str = pattern
-        self.token: Optional[Token] = None
-        self.result: Optional[List] = None
-        self.answer: Optional[Dict[str, str | List] | List] = None
+        self.token: Token | None = None
+        self.result: list | None = None
+        self.answer: dict[str, str | list] | list | None = None
 
     def help(self) -> str:
         """Provide help or description for the parser.

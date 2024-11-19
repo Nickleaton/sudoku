@@ -1,5 +1,4 @@
 """SimpleThermometerLine."""
-from typing import List, set
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.simple_thermometer_glyph import SimpleThermometerGlyph
@@ -15,20 +14,20 @@ class SimpleThermometerLine(ThermometerLine):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the Simple Thermometer line.
 
         Returns:
-            List[Rule]: A list of rules specific to the Simple Thermometer line.
+            list[Rule]: A list of rules specific to the Simple Thermometer line.
         """
         return [Rule('SimpleThermometerLine', 1,
                      "Cells along a line with a bulb strictly increase from the bulb end")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Simple Thermometer line.
 
         Returns:
-            List[Glyph]: A list of glyphs representing the Simple Thermometer line.
+            list[Glyph]: A list of glyphs representing the Simple Thermometer line.
         """
         return [
             SimpleThermometerGlyph('SimpleThermometerLine', [cell.coord for cell in self.cells])

@@ -1,6 +1,4 @@
 """DisjointGroups."""
-from typing import Dict
-
 from src.items.board import Board
 from src.items.disjoint_group import DisjointGroup
 from src.items.item import Item
@@ -19,12 +17,12 @@ class DisjointGroups(StandardRegionSet):
         super().__init__(board, [DisjointGroup(board, i) for i in board.digit_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a DisjointGroups instance.
 
         Args:
             board (Board): The board on which disjoint groups will be created.
-            yaml (Dict): YAML configuration data, not used in this method.
+            yaml (dict): YAML configuration data, not used in this method.
 
         Returns:
             Item: An instance of DisjointGroups.

@@ -1,6 +1,6 @@
 """Constraint Utilities."""
 from math import log10, ceil
-from typing import dict, ClassVar
+from typing import ClassVar
 
 from pulp import lpSum, LpVariable, LpContinuous
 

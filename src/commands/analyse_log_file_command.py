@@ -1,7 +1,6 @@
 """AnalyseLogFileCommand."""
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-from typing import Dict
 
 import orloge
 
@@ -46,7 +45,7 @@ class AnalyseLogFileCommand(Command):
         Returns:
             None
         """
-        log_data: Dict = problem[self.log]
+        log_data: dict = problem[self.log]
         application_name: str = log_data['application_name']
         log_contents: str = log_data['log_contents']
         with NamedTemporaryFile(mode='w+', delete=False) as temp_log_file:

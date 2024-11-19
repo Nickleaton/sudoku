@@ -1,5 +1,5 @@
 """LittleKillerGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -29,11 +29,11 @@ class LittleKillerGlyph(Glyph):
         self.angle = angle
         self.value = value
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Create an SVG representation of the Little Killer glyph.
 
         Returns:
-            Optional[BaseElement]: A group containing the arrow and value elements,
+            BaseElement | None: A group containing the arrow and value elements,
             or None if the glyph cannot be drawn.
         """
         group = Group()

@@ -1,7 +1,6 @@
 """Direction."""
 from enum import Enum
 from functools import cache
-from typing import List
 
 from src.utils.angle import Angle
 from src.utils.coord import Coord
@@ -42,11 +41,11 @@ class Direction(Enum):
         return OPPOSITE_MAP[self]
 
     @staticmethod
-    def locations() -> List[int]:
+    def locations() -> list[int]:
         """Get list of unique integer values representing each direction.
 
         Returns:
-            List[int]: List of location identifiers.
+            list[int]: list of location identifiers.
         """
         return [d.location for d in Direction]
 
@@ -81,21 +80,21 @@ class Direction(Enum):
 
     @staticmethod
     @cache
-    def orthogonals() -> List[Coord]:
+    def orthogonals() -> list[Coord]:
         """Get coordinates for orthogonal directions.
 
         Returns:
-            List[Coord]: List of coordinates for UP, RIGHT, DOWN, LEFT.
+            list[Coord]: list of coordinates for UP, RIGHT, DOWN, LEFT.
         """
         return [Direction.UP.offset, Direction.RIGHT.offset, Direction.DOWN.offset, Direction.LEFT.offset]
 
     @staticmethod
     @cache
-    def diagonals() -> List[Coord]:
+    def diagonals() -> list[Coord]:
         """Get coordinates for diagonal directions.
 
         Returns:
-            List[Coord]: List of coordinates for UP_LEFT, UP_RIGHT, DOWN_RIGHT, DOWN_LEFT.
+            list[Coord]: list of coordinates for UP_LEFT, UP_RIGHT, DOWN_RIGHT, DOWN_LEFT.
         """
         return [
             Direction.UP_LEFT.offset,
@@ -106,21 +105,21 @@ class Direction(Enum):
 
     @staticmethod
     @cache
-    def kings() -> List[Coord]:
+    def kings() -> list[Coord]:
         """Get coordinates for all directions except CENTER, simulating king's movement.
 
         Returns:
-            List[Coord]: List of coordinates excluding CENTER.
+            list[Coord]: list of coordinates excluding CENTER.
         """
         return [d.offset for d in Direction if d != Direction.CENTER]
 
     @staticmethod
     @cache
-    def knights() -> List[Coord]:
+    def knights() -> list[Coord]:
         """Get coordinates for knight's movement in chess.
 
         Returns:
-            List[Coord]: List of coordinates representing knight's movement.
+            list[Coord]: list of coordinates representing knight's movement.
         """
         return [
             Coord(-1, -2),
@@ -135,21 +134,21 @@ class Direction(Enum):
 
     @staticmethod
     @cache
-    def all_but_center() -> List[Coord]:
+    def all_but_center() -> list[Coord]:
         """Get coordinates for all directions except CENTER.
 
         Returns:
-            List[Coord]: List of coordinates excluding CENTER.
+            list[Coord]: list of coordinates excluding CENTER.
         """
         return [d.offset for d in Direction if d != Direction.CENTER]
 
     @staticmethod
     @cache
-    def all() -> List[Coord]:
+    def all() -> list[Coord]:
         """Get coordinates for all directions including CENTER.
 
         Returns:
-            List[Coord]: List of all coordinates.
+            list[Coord]: list of all coordinates.
         """
         return [d.offset for d in Direction]
 

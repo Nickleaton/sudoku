@@ -1,6 +1,4 @@
 """StandardDiagonal."""
-from typing import List
-
 from src.items.diagonals import Diagonal
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -10,11 +8,11 @@ class StandardDiagonal(Diagonal):
     """Represents a standard Sudoku diagonal with uniqueness constraints for each digit."""
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Provide the rule associated with the standard diagonal.
 
         Returns:
-            List[Rule]: A list of rules indicating that digits along the diagonal cannot repeat.
+            list[Rule]: A list of rules indicating that digits along the diagonal cannot repeat.
         """
         return [Rule('Diagonal', 1, "Digits along a blue diagonal cannot repeat")]
 

@@ -12,9 +12,11 @@ class TestCreateMetaCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(self.path)
-        requirements.execute(self.problem)
+        self.prerequisites = LoadConfigCommand(self.path)
+        self.prerequisites.execute(self.problem)
         self.command = CreateMetaCommand()
+        self.requirements = ['config']
+        self.target = "meta"
 
     def test_command(self):
         """Test the execute method of CreateMetaCommand."""

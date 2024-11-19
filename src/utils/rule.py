@@ -1,5 +1,5 @@
 """Rules describing constraints."""
-from typing import Optional
+
 
 
 class RuleException(Exception):
@@ -9,18 +9,18 @@ class RuleException(Exception):
 class Rule:
     """Rule class. Manage the human-readable rules for a Sudoku."""
 
-    def __init__(self, name: str, rank: int, text: Optional[str] = None):
+    def __init__(self, name: str, rank: int, text: str | None = None):
         """Construct a rule.
 
         Args:
             name (str): The name for the rule.
             rank (int): Rank controls the order of appearance of rules.
                         The lower ranked rule will appear first.
-            text (Optional[str], optional): Text of the rule. Defaults to None.
+            text (str | None): Text of the rule. Defaults to None.
         """
         self.name: str = name
         self.rank: int = rank
-        self.text: Optional[str] = text
+        self.text: str | None = text
 
     def __lt__(self, other: object) -> bool:
         """Compare two rules. Lowest rank rule comes first.

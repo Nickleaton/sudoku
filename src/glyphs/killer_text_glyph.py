@@ -1,5 +1,5 @@
 """KillerTextGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -27,11 +27,11 @@ class KillerTextGlyph(Glyph):
         self.position = position  # The position of the text in coordinates
         self.text = text  # The text content to display
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the KillerTextGlyph as an SVG element, rendering the text with background and foreground.
 
         Returns:
-            Optional[BaseElement]: A group containing two text elements (background and foreground) or None.
+            BaseElement | None: A group containing two text elements (background and foreground) or None.
         """
         group = Group()
         # Positioning the text with a small offset

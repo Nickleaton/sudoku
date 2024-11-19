@@ -15,6 +15,8 @@ class TestLoadConfigCommand(TestSimpleCommand):
         super().setUp()
         self.command = LoadConfigCommand(self.path)
         self.problem = Problem()
+        self.requirements = []
+        self.target = "config"
 
     @property
     def representation(self) -> str:

@@ -1,5 +1,4 @@
 """AntiKnight."""
-from typing import List, Dict
 
 from src.items.anti import Anti
 from src.items.board import Board
@@ -23,14 +22,14 @@ class AntiKnight(Anti):
         """
         super().__init__(board, list(board.digit_range))
 
-    def offsets(self) -> List[Coord]:
+    def offsets(self) -> list[Coord]:
         """Return the movement offsets for the AntiKnight.
 
         The offsets represent the relative positions a knight can move
         in chess.
 
         Returns:
-            List[Coord]: A list of coordinate offsets for the AntiKnight.
+            list[Coord]: A list of coordinate offsets for the AntiKnight.
         """
         return [
             Coord(-1, -2),
@@ -56,13 +55,13 @@ class AntiKnight(Anti):
         return super().tags.union({'Knight'})
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an instance of AntiKnight from the given board and YAML.
 
         Args:
             cls: The class of the item being created.
             board (Board): The board on which the AntiKnight will be placed.
-            yaml (Dict): A dictionary containing configuration data.
+            yaml (dict): A dictionary containing configuration data.
 
         Returns:
             Item: An instance of AntiKnight.
@@ -70,14 +69,14 @@ class AntiKnight(Anti):
         return AntiKnight(board)
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the AntiKnight.
 
         The rules specify the restrictions on the placement of digits
         in relation to knight moves.
 
         Returns:
-            List[Rule]: A list of rules for the AntiKnight.
+            list[Rule]: A list of rules for the AntiKnight.
         """
         return [
             Rule("AntiKnight", 1, "Identical digits cannot be separated by a knight's move")
@@ -91,10 +90,10 @@ class AntiKnight(Anti):
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the AntiKnight instance to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the AntiKnight.
+            dict: A dictionary representation of the AntiKnight.
         """
         return {self.__class__.__name__: None}

@@ -1,5 +1,5 @@
 """Region."""
-from typing import List, Dict, set, Type
+from typing import Type
 
 from pulp import lpSum
 
@@ -25,12 +25,12 @@ class Region(ComposedItem):
         super().__init__(board, [])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Region from YAML configuration.
 
         Args:
             board (Board): The board on which this region will be created.
-            yaml (Dict): The YAML configuration for this region.
+            yaml (dict): The YAML configuration for this region.
 
         Returns:
             Item: The instantiated Region.
@@ -38,11 +38,11 @@ class Region(ComposedItem):
         return cls(board)
 
     @property
-    def cells(self) -> List[Cell]:
+    def cells(self) -> list[Cell]:
         """Return the list of cells in the region.
 
         Returns:
-            List[Cell]: List of cells that belong to this region.
+            list[Cell]: list of cells that belong to this region.
         """
         return [item for item in self.items if isinstance(item, Cell)]
 
@@ -82,12 +82,12 @@ class Region(ComposedItem):
         solver.model += value == total, f"Total_{self.name}"
 
     # pylint: disable=loop-invariant-statement
-    def add_contains_constraint(self, solver: PulpSolver, digits: List[int]):
+    def add_contains_constraint(self, solver: PulpSolver, digits: list[int]):
         """Add constraints to ensure specified digits are present in the region.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
-            digits (List[int]): The digits that must be included in the region.
+            digits (list[int]): The digits that must be included in the region.
         """
         for digit in digits:
             choice_total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
@@ -111,22 +111,22 @@ class Region(ComposedItem):
             else:
                 solver.model += value1 >= value2 + 1, name
 
-    def add_allowed_constraint(self, solver: PulpSolver, cells: List[Cell], allowed: List[int]):
+    def add_allowed_constraint(self, solver: PulpSolver, cells: list[Cell], allowed: list[int]):
         """Add constraints to restrict the allowed digits in specified cells.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
-            cells (List[Cell]): List of cells to restrict.
-            allowed (List[int]): List of allowed digits for the cells.
+            cells (list[Cell]): list of cells to restrict.
+            allowed (list[int]): list of allowed digits for the cells.
         """
         for cell in cells:
             cell.book.set_possible(allowed)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Serialize the region to a dictionary format.
 
         Returns:
-            Dict: Dictionary representation of the region.
+            dict: Dictionary representation of the region.
         """
         return {self.__class__.__name__: None}
 

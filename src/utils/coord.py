@@ -1,5 +1,4 @@
 """Coordinate."""
-from typing import List
 from src.utils.point import Point
 from src.utils.sudoku_exception import SudokuException
 
@@ -130,14 +129,14 @@ class Coord:
         raise CoordException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
 
     @staticmethod
-    def validate(yaml) -> List[str]:
+    def validate(yaml) -> list[str]:
         """Validate a list containing row and column values.
 
         Args:
             yaml: The input list to validate.
 
         Returns:
-            List[str]: A list of error messages if validation fails, otherwise an empty list.
+            list[str]: A list of error messages if validation fails, otherwise an empty list.
         """
         result = []
         if not isinstance(yaml, list):

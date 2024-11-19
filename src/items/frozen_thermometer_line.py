@@ -1,6 +1,4 @@
 """FrozenThermometerLine."""
-from typing import List, Dict
-
 from src.glyphs.frozen_thermometer_glyph import FrozenThermometerGlyph
 from src.glyphs.glyph import Glyph
 from src.items.box import Box
@@ -18,20 +16,20 @@ class FrozenThermometerLine(ThermometerLine):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the Frozen Thermometer line.
 
         Returns:
-            List[Rule]: A list of rules specific to the Frozen Thermometer line.
+            list[Rule]: A list of rules specific to the Frozen Thermometer line.
         """
         return [Rule('FrozenThermometerLine', 1,
                      "Cells along a line with a bulb increase or stay the same from the bulb end")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Frozen Thermometer line.
 
         Returns:
-            List[Glyph]: A list of glyphs representing the Frozen Thermometer line.
+            list[Glyph]: A list of glyphs representing the Frozen Thermometer line.
         """
         return [
             FrozenThermometerGlyph('FrozenThermometerLine', [cell.coord for cell in self.cells])
@@ -69,11 +67,11 @@ class FrozenThermometerLine(ThermometerLine):
             else:
                 solver.model += lower + 1 <= upper, name
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define CSS styling properties for rendering the Frozen Thermometer line.
 
         Returns:
-            Dict: A dictionary defining CSS properties for the Frozen Thermometer line.
+            dict: A dictionary defining CSS properties for the Frozen Thermometer line.
         """
         return {
             '.FrozenThermometerLine': {

@@ -15,12 +15,14 @@ class TestCreateLinearProgramCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(self.path) \
+        self.prerequisites = LoadConfigCommand(self.path) \
                        | CreateBoardCommand() \
                        | CreateSolverCommand() \
                        | CreateConstraintsCommand()
-        requirements.execute(self.problem)
+        self.prerequisites.execute(self.problem)
         self.command = CreateLinearProgramCommand()
+        self.requirements = ['board', 'config', 'constraints', 'solver']
+        self.target = "linear_program"
 
     def test_command(self):
         """Test the execute method of the CreateLinearProgramCommand."""

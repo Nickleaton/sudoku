@@ -1,5 +1,5 @@
 """Boxes."""
-from typing import dict
+
 
 from src.items.board import Board
 from src.items.box import Box

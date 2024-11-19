@@ -1,5 +1,6 @@
 """TestCreateLinearProgramWithBookkeepingCommand."""
 import unittest
+
 import pytest
 
 from src.commands.create_board_command import CreateBoardCommand
@@ -16,21 +17,20 @@ class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(self.path) \
-                       | CreateBoardCommand() \
-                       | CreateSolverCommand() \
-                       | CreateConstraintsCommand()
-        requirements.execute(self.problem)
+        self.prerequisites = LoadConfigCommand(self.path) \
+                             | CreateBoardCommand() \
+                             | CreateSolverCommand() \
+                             | CreateConstraintsCommand()
+        self.prerequisites.execute(self.problem)
         self.command = CreateLinearProgramWithBookkeepingCommand()
+        self.requirements = ['board', 'config', 'constraints', 'solver']
+        self.target = "linear_program"
 
     @pytest.mark.skip(reason="Ignore until bookkeeping is implemented properly")
     def test_command(self):
         """Test the execute method of CreateLinearProgramWithBookkeepingCommand."""
         self.command.execute(self.problem)
         self.assertIsNotNone(self.problem.linear_program)
-        print(self.problem.constraints)
-        print(type(self.problem.constraints))
-        print(self.problem.constraints.bookkeeping_unique())
 
     @property
     def representation(self) -> str:

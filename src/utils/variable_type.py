@@ -1,6 +1,5 @@
 """Enum for the type of variable."""
 from enum import Enum
-from typing import Optional
 
 
 class VariableType(Enum):
@@ -11,11 +10,11 @@ class VariableType(Enum):
     LOG_INTEGER = 'log_int'
     LOG_FLOAT = 'log_float'
 
-    def format(self, value: Optional[float]) -> str:
+    def format(self, value: float | None) -> str:
         """Format a given value based on the variable type.
 
         Args:
-            value (Optional[float]): The value to format. If None, returns " None".
+            value (float | None): The value to format. If None, returns " None".
 
         Returns:
             str: The formatted string representation of the value based on its type.

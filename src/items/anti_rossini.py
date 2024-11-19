@@ -1,6 +1,6 @@
 """AntiRossini."""
 import re
-from typing import List, Dict, Any
+from typing import Any
 
 from src.glyphs.arrow_glyph import ArrowGlyph
 from src.glyphs.glyph import Glyph
@@ -49,11 +49,11 @@ class AntiRossini(FirstN):
         )
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the AntiRossini class.
 
         Returns:
-            List[Rule]: The list of rules.
+            list[Rule]: The list of rules.
         """
         return [
             Rule(
@@ -64,11 +64,11 @@ class AntiRossini(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyphs for visual representation of the rule.
 
         Returns:
-            List[Glyph]: A list of glyphs, specifically an ArrowGlyph.
+            list[Glyph]: A list of glyphs, specifically an ArrowGlyph.
         """
         return [
             ArrowGlyph(
@@ -88,12 +88,12 @@ class AntiRossini(FirstN):
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the side, index, and order from the YAML configuration.
 
         Args:
             board (Board): The game board.
-            yaml (Dict): The YAML dictionary containing the rule configuration.
+            yaml (dict): The YAML dictionary containing the rule configuration.
 
         Returns:
             tuple[Side, int, Order]: The extracted side, index, and order.
@@ -110,12 +110,12 @@ class AntiRossini(FirstN):
         return side, index, order
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an AntiRossini instance from the YAML configuration.
 
         Args:
             board (Board): The game board.
-            yaml (Dict): The YAML dictionary containing the rule configuration.
+            yaml (dict): The YAML dictionary containing the rule configuration.
 
         Returns:
             Item: An instance of the AntiRossini class.
@@ -131,19 +131,19 @@ class AntiRossini(FirstN):
         """
         self.add_sequence_constraint(solver, self.order)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the AntiRossini instance to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the instance.
+            dict: A dictionary representation of the instance.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for this rule.
 
         Returns:
-            Dict: A dictionary containing CSS properties.
+            dict: A dictionary containing CSS properties.
         """
         return {
             ".Rossini": {

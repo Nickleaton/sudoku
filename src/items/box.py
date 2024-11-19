@@ -1,6 +1,4 @@
 """Box."""
-from typing import List, Dict
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import BoxGlyph
 from src.items.board import Board
@@ -62,12 +60,12 @@ class Box(StandardRegion):
         return Coord(self.board.box_rows, self.board.box_columns)
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Box instance from YAML configuration.
 
         Args:
             board (Board): The game board instance.
-            yaml (Dict): The YAML configuration for initializing the Box.
+            yaml (dict): The YAML configuration for initializing the Box.
 
         Returns:
             Item: An instance of the Box class.
@@ -84,19 +82,19 @@ class Box(StandardRegion):
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules associated with the Box.
 
         Returns:
-            List[Rule]: A list of rules indicating that digits in the box must be unique.
+            list[Rule]: A list of rules indicating that digits in the box must be unique.
         """
         return [Rule('Box', 1, 'Digits in each box must be unique')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate glyphs for visual representation of the box.
 
         Returns:
-            List[Glyph]: A list of glyphs, specifically a BoxGlyph.
+            list[Glyph]: A list of glyphs, specifically a BoxGlyph.
         """
         return [BoxGlyph('Box', self.position, self.size)]
 
@@ -118,11 +116,11 @@ class Box(StandardRegion):
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the box.
 
         Returns:
-            Dict: A dictionary containing CSS properties for the box.
+            dict: A dictionary containing CSS properties for the box.
         """
         return {
             ".Box": {

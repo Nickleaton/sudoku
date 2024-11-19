@@ -1,6 +1,6 @@
 """Item."""
 
-from typing import Optional, List, set, Type, Dict, Iterator
+from typing import Type, Iterator
 
 import strictyaml
 from sortedcontainers import SortedDict
@@ -25,7 +25,7 @@ class Item:
     """
 
     # Class Variables
-    classes: Dict[str, Type['Item']] = SortedDict({})
+    classes: dict[str, Type['Item']] = SortedDict({})
     counter: int = 0
 
     # Creation Routines
@@ -50,7 +50,7 @@ class Item:
         super().__init__()
 
         self.board: Board = board
-        self.parent: Optional[Item] = None
+        self.parent: Item | None = None
         self.identity: int = Item.counter
         Item.counter += 1
 
@@ -93,12 +93,12 @@ class Item:
         return cls.parser()
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> 'Item':
+    def create(cls, board: Board, yaml: dict) -> 'Item':
         """Create an instance of the item from a YAML dictionary.
 
         Args:
             board (Board): The board this item belongs to.
-            yaml (Dict): The YAML data to create the item.
+            yaml (dict): The YAML data to create the item.
 
         Returns:
             Item: The created instance of the item.
@@ -112,7 +112,7 @@ class Item:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
             raise SudokuException(f"Unknown item class {name}")
-        print (f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
+        print(f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 
@@ -135,7 +135,7 @@ class Item:
         """
         return {self}
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return an SVG glyph to represent this item.
 
         Returns:
@@ -144,36 +144,36 @@ class Item:
         return None
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules that apply to this item.
 
         Returns:
-            List[Rule]: A list of rules.
+            list[Rule]: A list of rules.
         """
         return []
 
-    def flatten(self) -> List['Item']:
+    def flatten(self) -> list['Item']:
         """Flatten the item hierarchy into a list.
 
         Returns:
-            List[Item]: A list of items in the hierarchy.
+            list[Item]: A list of items in the hierarchy.
         """
         return [self]
 
     @property
-    def sorted_unique_rules(self) -> List[Rule]:
+    def sorted_unique_rules(self) -> list[Rule]:
         """Return unique, sorted rules that apply to this item.
 
         Returns:
-            List[Rule]: A sorted list of unique rules.
+            list[Rule]: A sorted list of unique rules.
         """
         return sorted(list(set(self.rules)))
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return a list of SVG glyphs for this item.
 
         Returns:
-            List[Glyph]: A list of SVG glyphs.
+            list[Glyph]: A list of SVG glyphs.
         """
         return []
 
@@ -264,7 +264,7 @@ class Item:
                 continue
             item.add_bookkeeping_constraint(solver)
 
-    def marked_book(self) -> Optional[BookKeeping]:
+    def marked_book(self) -> BookKeeping | None:
         """Return the bookkeeping object for this item, or None.
 
         Returns:
@@ -279,26 +279,26 @@ class Item:
         Returns:
             bool: True if all marked books are unique, False otherwise.
         """
-        marked_books: List[BookKeeping] = []
+        marked_books: list[BookKeeping] = []
         for item in self.walk():
-            marked_book: Optional[BookKeeping] = item.marked_book()
+            marked_book: BookKeeping | None = item.marked_book()
             if marked_book is not None:
                 marked_books.append(marked_book)
         return all(marked_book.is_unique() for marked_book in marked_books)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the item to a dictionary for YAML dumping.
 
         Returns:
-            Dict: A dictionary representing the item.
+            dict: A dictionary representing the item.
         """
         return {self.__class__.__name__: None}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for this item.
 
         Returns:
-            Dict: A dictionary containing CSS styles.
+            dict: A dictionary containing CSS styles.
         """
         return {
             '.TextGlyphForeground': {
@@ -322,11 +322,11 @@ class Item:
         }
 
     @staticmethod
-    def css_text(data: Dict, indent: int = 0) -> str:
+    def css_text(data: dict, indent: int = 0) -> str:
         """Convert a dictionary of CSS rules to a string.
 
         Args:
-            data (Dict): A dictionary of CSS rules.
+            data (dict): A dictionary of CSS rules.
             indent (int, optional): The number of spaces to indent each line. Defaults to 0.
 
         Returns:

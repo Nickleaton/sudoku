@@ -1,6 +1,4 @@
 """Mote."""
-from typing import List, tuple, Dict
-
 from pulp import lpSum
 
 from src.glyphs.glyph import Glyph
@@ -15,13 +13,13 @@ from src.utils.rule import Rule
 class Mote(Region):
     """Represents a MOTE cage where the number of odd digits must exceed even digits."""
 
-    def __init__(self, board: Board, total: int, cells: List[Item]):
+    def __init__(self, board: Board, total: int, cells: list[Item]):
         """Initialize the MOTE region.
 
         Args:
             board (Board): The Sudoku board.
             total (int): The total sum for the MOTE cage.
-            cells (List[Item]): The list of cells in the cage.
+            cells (list[Item]): The list of cells in the cage.
         """
         super().__init__(board)
         self.total = total
@@ -43,15 +41,15 @@ class Mote(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple[int, List[Item]]:
+    def extract(cls, board: Board, yaml: dict) -> tuple[int, list[Item]]:
         """Extract the MOTE configuration from a YAML dictionary.
 
         Args:
             board (Board): The Sudoku board.
-            yaml (Dict): The YAML configuration dictionary.
+            yaml (dict): The YAML configuration dictionary.
 
         Returns:
-            tuple[int, List[Item]]: The total sum and the list of cells.
+            tuple[int, list[Item]]: The total sum and the list of cells.
         """
         parts = yaml[cls.__name__].split("=")
         total = int(parts[0].strip())
@@ -59,12 +57,12 @@ class Mote(Region):
         return total, cells
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a MOTE region from a YAML dictionary.
 
         Args:
             board (Board): The Sudoku board.
-            yaml (Dict): The YAML configuration dictionary.
+            yaml (dict): The YAML configuration dictionary.
 
         Returns:
             Item: The created Mote instance.
@@ -72,21 +70,21 @@ class Mote(Region):
         total, cells = Mote.extract(board, yaml)
         return Mote(board, total, cells)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Retrieve the list of glyphs representing the MOTE.
 
         Returns:
-            List[Glyph]: An empty list (to be implemented).
+            list[Glyph]: An empty list (to be implemented).
         """
         # TODO: Implement glyph creation
         return []
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Retrieve the list of rules associated with the MOTE.
 
         Returns:
-            List[Rule]: A list containing the MOTE rule.
+            list[Rule]: A list containing the MOTE rule.
         """
         return [
             Rule(
@@ -119,20 +117,20 @@ class Mote(Region):
         name = f"{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}"
         solver.model += odd_count > len(self.cells) // 2, name
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the MOTE to a dictionary representation.
 
         Returns:
-            Dict: A dictionary with the MOTE's YAML representation.
+            dict: A dictionary with the MOTE's YAML representation.
         """
         cell_str = ",".join([f"{cell.row}{cell.column}" for cell in self.cells])
         return {self.__class__.__name__: f"{self.total}={cell_str}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Retrieve the CSS styles associated with the MOTE.
 
         Returns:
-            Dict: A dictionary containing CSS styles for different MOTE elements.
+            dict: A dictionary containing CSS styles for different MOTE elements.
         """
         return {
             '.MOTE': {

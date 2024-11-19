@@ -1,5 +1,5 @@
 """AntiDiagonal."""
-from typing import list
+
 
 from pulp import lpSum
 

@@ -1,5 +1,5 @@
 """Pair."""
-from typing import list, tuple, dict
+
 
 from src.glyphs.edge_text_glyph import EdgeTextGlyph
 from src.glyphs.glyph import Glyph
@@ -55,7 +55,7 @@ class Pair(Region):
 
         Args:
             board (Board): The board on which the pair is defined.
-            yaml (Dict): The YAML configuration that defines the pair.
+            yaml (dict): The YAML configuration that defines the pair.
 
         Returns:
             tuple: A tuple containing the two cells in the pair.
@@ -84,7 +84,7 @@ class Pair(Region):
         """Return a list of rules associated with the pair.
 
         Returns:
-            List[Rule]: An empty list, as there are no specific rules defined for pairs.
+            list[Rule]: An empty list, as there are no specific rules defined for pairs.
         """
         return []
 

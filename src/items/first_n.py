@@ -1,5 +1,5 @@
 """FirstN."""
-from typing import Any, dict
+from typing import Any
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -92,7 +92,7 @@ class FirstN(Region):
         """Convert the FirstN region to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the region.
+            dict: A dictionary representing the region.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}{self.count}"}
 

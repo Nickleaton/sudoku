@@ -1,5 +1,5 @@
 """LittleKiller."""
-from typing import dict, list, tuple
+
 
 from pulp import lpSum
 
@@ -89,7 +89,7 @@ class LittleKiller(Region):
 
         Args:
             board (Board): The board being used.
-            yaml (Dict): The YAML configuration for the LittleKiller region.
+            yaml (dict): The YAML configuration for the LittleKiller region.
 
         Returns:
             tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side values.
@@ -107,7 +107,7 @@ class LittleKiller(Region):
 
         Args:
             board (Board): The board being used.
-            yaml (Dict): The YAML configuration for the LittleKiller region.
+            yaml (dict): The YAML configuration for the LittleKiller region.
 
         Returns:
             Item: The created LittleKiller item.
@@ -136,7 +136,7 @@ class LittleKiller(Region):
         """Return the rules associated with the LittleKiller region.
 
         Returns:
-            List[Rule]: A list of rules defining the LittleKiller region's constraints.
+            list[Rule]: A list of rules defining the LittleKiller region's constraints.
         """
         return [
             Rule(

@@ -1,5 +1,5 @@
 """XPair."""
-from typing import Dict
+
 
 from src.items.sum_pair import SumPair
 from src.solvers.pulp_solver import PulpSolver
@@ -40,7 +40,7 @@ class XPair(SumPair):
         self.add_unique_constraint(solver, True)
         self.add_allowed_constraint(solver, self.cells, [1, 2, 3, 4, 6, 7, 8, 9])
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for the 'X' pair.
 
         Define and return a dictionary of CSS styles for the foreground

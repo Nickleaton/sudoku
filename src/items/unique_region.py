@@ -1,5 +1,5 @@
 """UniqueRegion."""
-from typing import List, Dict, Sequence
+from typing import Sequence
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -37,45 +37,45 @@ class UniqueRegion(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Sequence[Cell]:
+    def extract(cls, board: Board, yaml: dict) -> Sequence[Cell]:
         """Extract cells from YAML configuration for the unique region.
 
         Args:
             board (Board): The board associated with this region.
-            yaml (Dict): The YAML configuration containing cell data for the unique region.
+            yaml (dict): The YAML configuration containing cell data for the unique region.
 
         Returns:
-            List[Item]: A list of cell items for the unique region.
+            list[Item]: A list of cell items for the unique region.
         """
         return [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in yaml['UniqueRegion'].split(',')]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a UniqueRegion instance from YAML configuration.
 
         Args:
             board (Board): The board associated with this region.
-            yaml (Dict): The YAML configuration containing cell data for the unique region.
+            yaml (dict): The YAML configuration containing cell data for the unique region.
 
         Returns:
             Item: A new UniqueRegion instance.
         """
         return UniqueRegion(board, UniqueRegion.extract(board, yaml))
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Get the list of glyphs associated with this unique region.
 
         Returns:
-            List[Glyph]: A list of glyphs for the unique region.
+            list[Glyph]: A list of glyphs for the unique region.
         """
         return []
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Retrieve the rules associated with this unique region.
 
         Returns:
-            List[Rule]: A list of rules indicating the uniqueness constraint in this region.
+            list[Rule]: A list of rules indicating the uniqueness constraint in this region.
         """
         return [
             Rule(
@@ -102,20 +102,20 @@ class UniqueRegion(Region):
         """
         self.add_unique_constraint(solver)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the UniqueRegion instance to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the UniqueRegion.
+            dict: A dictionary representation of the UniqueRegion.
         """
         cell_str = ",".join([f"{cell.row}{cell.column}" for cell in self.cells])
         return {self.__class__.__name__: f"{cell_str}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get CSS styles for the unique region.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the UniqueRegion.
+            dict: A dictionary containing CSS styles for the UniqueRegion.
         """
         return {
             '.UniqueRegion': {

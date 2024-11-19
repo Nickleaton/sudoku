@@ -1,5 +1,5 @@
 """VectorList."""
-from typing import List, Optional, Iterator
+from typing import Iterator
 
 from src.utils.coord import Coord
 from src.utils.coord_list import CoordList
@@ -15,14 +15,14 @@ class VectorList:
     """Represents a list of Vectors, providing various operations to manage and manipulate them.
 
     Attributes:
-        items (List[Vector]): List of Vector objects.
+        items (list[Vector]): list of Vector objects.
     """
 
-    def __init__(self, items: List[Vector]):
+    def __init__(self, items: list[Vector]):
         """Initialize the VectorList with a list of Vectors.
 
         Args:
-            items (List[Vector]): A list of Vector instances to initialize the VectorList.
+            items (list[Vector]): A list of Vector instances to initialize the VectorList.
         """
         self.items = items
 
@@ -114,7 +114,7 @@ class VectorList:
         Returns:
             VectorList: A new VectorList of merged vectors.
         """
-        merged_items: List[Vector] = []
+        merged_items: list[Vector] = []
 
         for vector in self.items:
             merged = False  # Track if a merge occurred
@@ -128,14 +128,14 @@ class VectorList:
 
         return VectorList(sorted(merged_items))
 
-    def find(self, coord: Coord) -> Optional[Coord]:
+    def find(self, coord: Coord) ->Coord | None:
         """Find the endpoint of a vector that starts or ends at a given coordinate.
 
         Args:
             coord (Coord): The coordinate to search for.
 
         Returns:
-            Optional[Coord]: The corresponding endpoint if found, or None if not.
+            Coord | None: The corresponding endpoint if found, or None if not.
         """
         for item in self.items:
             if item.start == coord:

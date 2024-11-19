@@ -1,5 +1,4 @@
 """FixedPair."""
-from typing import List, tuple, Dict, Optional
 
 from pulp import LpElement
 
@@ -48,12 +47,12 @@ class FixedPair(Pair):
         return CellPairEqualValueParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the fixed pair information from a YAML dictionary.
 
         Args:
             board (Board): The board this pair belongs to.
-            yaml (Dict): The dictionary containing the pair's configuration.
+            yaml (dict): The dictionary containing the pair's configuration.
 
         Returns:
             tuple: A tuple containing the row and column coordinates of the two cells, and the fixed value.
@@ -69,12 +68,12 @@ class FixedPair(Pair):
         return r1, c1, r2, c2, value
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a FixedPair from a YAML dictionary.
 
         Args:
             board (Board): The board to associate the pair with.
-            yaml (Dict): The dictionary containing the pair's configuration.
+            yaml (dict): The dictionary containing the pair's configuration.
 
         Returns:
             Item: The created FixedPair item.
@@ -100,11 +99,11 @@ class FixedPair(Pair):
         """
         return ""
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the graphical representation of the FixedPair as a circle glyph.
 
         Returns:
-            List[Glyph]: A list containing the glyph for visualizing the FixedPair.
+            list[Glyph]: A list containing the glyph for visualizing the FixedPair.
         """
         return [
             CircleGlyph(
@@ -114,21 +113,21 @@ class FixedPair(Pair):
             )
         ]
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Return a dictionary representation of the FixedPair.
 
         Returns:
-            Dict: A dictionary with the FixedPair's row-column pairs and value.
+            dict: A dictionary with the FixedPair's row-column pairs and value.
         """
         return {
             self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}={self.value}"
         }
 
-    def target(self, solver: PulpSolver) -> Optional[LpElement]:
+    def target(self, solver: PulpSolver) -> LpElement | None:
         """Return the target constraint for the FixedPair, which is None.
 
         Returns:
-            Optional[LpElement]: None, as there is no specific target for the FixedPair.
+            LpElement | None: None, as there is no specific target for the FixedPair.
         """
         return None
 

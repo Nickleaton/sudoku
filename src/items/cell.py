@@ -1,6 +1,6 @@
 """Cell."""
 from itertools import product
-from typing import Dict, tuple, List, Optional, ClassVar
+from typing import ClassVar
 
 from pulp import lpSum
 
@@ -21,7 +21,7 @@ class CellException(SudokuException):
 class Cell(Item):
     """Represents a cell in a Sudoku board."""
 
-    cache: ClassVar[Dict[tuple[int, int], 'Cell']] = {}
+    cache: ClassVar[dict[tuple[int, int], 'Cell']] = {}
 
     @classmethod
     def clear(cls):
@@ -65,11 +65,11 @@ class Cell(Item):
         """
         return f"Cell({self.row}, {self.column})"
 
-    def marked_book(self) -> Optional[BookKeeping]:
+    def marked_book(self) -> BookKeeping | None:
         """Return the bookkeeping instance for the cell.
 
         Returns:
-            Optional[BookKeeping]: The BookKeeping instance for tracking digit possibilities.
+            BookKeeping | None: The BookKeeping instance for tracking digit possibilities.
         """
         return self.book
 
@@ -83,28 +83,28 @@ class Cell(Item):
         return '.'
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules associated with the cell.
 
         Returns:
-            List[Rule]: A list of Rule instances.
+            list[Rule]: A list of Rule instances.
         """
         return []
 
     @staticmethod
-    def cells() -> List['Cell']:
+    def cells() -> list['Cell']:
         """Return all cached cells.
 
         Returns:
-            List[Cell]: A list of all cached Cell instances.
+            list[Cell]: A list of all cached Cell instances.
         """
         return list(Cell.cache.values())
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the glyph representation of the cell.
 
         Returns:
-            List[Glyph]: A list containing the CellGlyph for the cell.
+            list[Glyph]: A list containing the CellGlyph for the cell.
         """
         return [CellGlyph('Cell', Coord(self.row, self.column))]
 
@@ -138,12 +138,12 @@ class Cell(Item):
             Cell.make(board, row, column)
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Coord:
+    def extract(cls, board: Board, yaml: dict) -> Coord:
         """Extract coordinates from a YAML representation.
 
         Args:
             board (Board): The board the coordinates belong to.
-            yaml (Dict): A dictionary containing coordinate data.
+            yaml (dict): A dictionary containing coordinate data.
 
         Returns:
             Coord: The extracted coordinate.
@@ -151,12 +151,12 @@ class Cell(Item):
         return Coord.create_from_int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a cell from YAML data.
 
         Args:
             board (Board): The board the cell belongs to.
-            yaml (Dict): A dictionary with cell data.
+            yaml (dict): A dictionary with cell data.
 
         Returns:
             Item: The created cell instance.
@@ -273,19 +273,19 @@ class Cell(Item):
                 name = f"Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}"
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the cell to a dictionary format.
 
         Returns:
-            Dict: A dictionary representation of the cell.
+            dict: A dictionary representation of the cell.
         """
         return {self.__class__.__name__: int(self.row_column_string)}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return CSS styling for the cell.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the cell.
+            dict: A dictionary containing CSS styles for the cell.
         """
         return {
             '.Cell': {

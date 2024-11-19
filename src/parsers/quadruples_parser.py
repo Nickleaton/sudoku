@@ -1,5 +1,4 @@
 """QuadruplesParser."""
-from typing import List
 
 from src.parsers.parser import Parser, ParserError
 from src.tokens.cell_token import CellToken
@@ -37,7 +36,7 @@ class QuadruplesParser(Parser):
 
             row: str = lhs[0]
             column: str = lhs[1]
-            choices: List[str] = list(rhs)
+            choices: list[str] = list(rhs)
             # Store results: left should be two digits, right can be digits or '?'.
             self.result = [int(row), int(column), rhs]
             self.answer = {

@@ -1,6 +1,4 @@
 """MagicSquare."""
-from typing import List, tuple, Dict
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import SquareGlyph
 from src.items.board import Board
@@ -79,11 +77,11 @@ class MagicSquare(Region):
         )
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the MagicSquare.
 
         Returns:
-            List[Rule]: A list of rules related to the MagicSquare.
+            list[Rule]: A list of rules related to the MagicSquare.
         """
         return [
             Rule(
@@ -94,11 +92,11 @@ class MagicSquare(Region):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing the MagicSquare.
 
         Returns:
-            List[Glyph]: A list of glyphs for the magic square cells.
+            list[Glyph]: A list of glyphs for the magic square cells.
         """
         return [
             SquareGlyph('MagicSquare', cell.coord, 1)
@@ -115,12 +113,12 @@ class MagicSquare(Region):
         return super().tags.union({'MagicSquare', 'Sum'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple[Coord, Coord]:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Coord, Coord]:
         """Extract the center and corner coordinates for the MagicSquare from YAML.
 
         Args:
             board (Board): The board to extract coordinates for.
-            yaml (Dict): The YAML configuration data.
+            yaml (dict): The YAML configuration data.
 
         Returns:
             tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
@@ -131,12 +129,12 @@ class MagicSquare(Region):
         return center, corner
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a MagicSquare item from the YAML configuration.
 
         Args:
             board (Board): The board to create the MagicSquare on.
-            yaml (Dict): The YAML configuration data.
+            yaml (dict): The YAML configuration data.
 
         Returns:
             Item: The created MagicSquare item.
@@ -169,21 +167,21 @@ class MagicSquare(Region):
         self.add_allowed_constraint(solver, self.odd_cells, [1, 3, 7, 9])
         self.add_allowed_constraint(solver, self.even_cells, [2, 4, 6, 8])
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the MagicSquare to a dictionary.
 
         Returns:
-            Dict: A dictionary representing the MagicSquare.
+            dict: A dictionary representing the MagicSquare.
         """
         return {
             self.__class__.__name__: f"{self.center.row}{self.center.column},{self.corner.row}{self.corner.column}"
         }
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get the CSS styles for rendering the MagicSquare.
 
         Returns:
-            Dict: A dictionary containing the CSS styles for the MagicSquare.
+            dict: A dictionary containing the CSS styles for the MagicSquare.
         """
         return {
             '.MagicSquare': {

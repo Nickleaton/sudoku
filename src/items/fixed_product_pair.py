@@ -1,5 +1,4 @@
 """FixedProductPair."""
-from typing import List, Dict, Optional
 
 from pulp import LpElement
 
@@ -16,11 +15,11 @@ class FixedProductPair(FixedPair):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rule associated with the fixed product pair constraint.
 
         Returns:
-            List[Rule]: A list containing the rule for the fixed product pair,
+            list[Rule]: A list containing the rule for the fixed product pair,
                         which explains that the product of the digits in the two cells is fixed.
         """
         return [
@@ -43,7 +42,7 @@ class FixedProductPair(FixedPair):
         """
         return super().tags.union({'Product'})
 
-    def target(self, solver: PulpSolver) -> Optional[LpElement]:
+    def target(self, solver: PulpSolver) -> LpElement | None:
         """Return the target constraint for the FixedProductPair.
 
         The constraint is the sum of the logarithms of the two cell values.
@@ -52,17 +51,17 @@ class FixedProductPair(FixedPair):
             solver (PulpSolver): The solver to use when generating the target.
 
         Returns:
-            Optional[LpElement]: The target constraint, which is the sum of the logarithms of the cell values.
+            LpElement | None:: The target constraint, which is the sum of the logarithms of the cell values.
         """
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
         x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)
         return x1 + x2
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for visualizing the FixedProductPair.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the FixedProductPair, with a red fill color and black stroke.
+            dict: A dictionary containing CSS styles for the FixedProductPair, with a red fill color and black stroke.
         """
         return {
             '.FixedProductPair': {

@@ -1,5 +1,5 @@
 """ThermometerLine."""
-from typing import Dict
+
 
 from src.items.line import Line
 
@@ -19,11 +19,11 @@ class ThermometerLine(Line):
         """
         return super().tags.union({'ThermometerLine', 'Comparison'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styling properties for rendering the Thermometer line.
 
         Returns:
-            Dict: A dictionary defining CSS properties for the Thermometer line.
+            dict: A dictionary defining CSS properties for the Thermometer line.
         """
         return {
             ".ThermometerLine": {

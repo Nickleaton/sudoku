@@ -1,6 +1,6 @@
 """Glyph."""
 import abc
-from typing import Type, set, Optional
+from typing import Type
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Marker
@@ -23,37 +23,37 @@ class Glyph:
         self.class_name = class_name
 
     @classmethod
-    def start_marker(cls) -> Optional[Marker]:
+    def start_marker(cls) -> Marker | None:
         """Return the starting marker for the glyph.
 
         Returns:
-            Optional[Marker]: The start marker element, or None if not applicable.
+            Marker | None: The start marker element, or None if not applicable.
         """
         return None
 
     @classmethod
-    def end_marker(cls) -> Optional[Marker]:
+    def end_marker(cls) -> Marker | None:
         """Return the ending marker for the glyph.
 
         Returns:
-            Optional[Marker]: The end marker element, or None if not applicable.
+            Marker | None: The end marker element, or None if not applicable.
         """
         return None
 
     @classmethod
-    def symbol(cls) -> Optional[Marker]:
+    def symbol(cls) -> Marker | None:
         """Return the symbol for the glyph.
 
         Returns:
-            Optional[Marker]: The symbol element, or None if not applicable.
+            Marker | None: The symbol element, or None if not applicable.
         """
         return None
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the glyph and return an SVG element.
 
         Returns:
-            Optional[BaseElement]: The drawn SVG element, or None if not drawn.
+            BaseElement | None: The drawn SVG element, or None if not drawn.
         """
         return None
 

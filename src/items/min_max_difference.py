@@ -1,6 +1,6 @@
 """MinMaxDifference."""
 import re
-from typing import List, Any, Dict
+from typing import Any
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
@@ -48,11 +48,11 @@ class MinMaxDifference(FirstN):
         )
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the MinMaxDifference frame.
 
         Returns:
-            List[Rule]: A list containing the rules.
+            list[Rule]: A list containing the rules.
         """
         return [
             Rule(
@@ -63,11 +63,11 @@ class MinMaxDifference(FirstN):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing the MinMaxDifference frame.
 
         Returns:
-            List[Glyph]: A list containing the glyphs for this frame.
+            list[Glyph]: A list containing the glyphs for this frame.
         """
         return [
             TextGlyph(
@@ -88,12 +88,12 @@ class MinMaxDifference(FirstN):
         return super().tags.union({'Comparison', 'MinMaxDifference', 'Minimum', 'Maximum', 'Difference'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the side, index, and total from the YAML configuration.
 
         Args:
             board (Board): The board the configuration is for.
-            yaml (Dict): The YAML configuration data.
+            yaml (dict): The YAML configuration data.
 
         Returns:
             tuple: A tuple containing the side, index, and total.
@@ -109,12 +109,12 @@ class MinMaxDifference(FirstN):
         return side, offset, total
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a MinMaxDifference frame from the YAML configuration.
 
         Args:
             board (Board): The board to create the frame on.
-            yaml (Dict): The YAML configuration data.
+            yaml (dict): The YAML configuration data.
 
         Returns:
             Item: The created MinMaxDifference item.
@@ -133,19 +133,19 @@ class MinMaxDifference(FirstN):
         maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
         solver.model += Formulations.abs(solver.model, mini, maxi, self.board.maximum_digit) == self.total, self.name
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the MinMaxDifference frame to a dictionary representation.
 
         Returns:
-            Dict: The dictionary representation of the object.
+            dict: The dictionary representation of the object.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get the CSS styles for rendering the MinMaxDifference frame.
 
         Returns:
-            Dict: The dictionary containing CSS styles.
+            dict: The dictionary containing CSS styles.
         """
         return {
             ".MinMaxDifferenceTextForeground": {

@@ -13,8 +13,8 @@ class TestCreateBoardCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(source=self.path, target='config')
-        requirements.execute(self.problem)
+        self.prerequisites = LoadConfigCommand(source=self.path, target='config')
+        self.prerequisites.execute(self.problem)
         self.command = CreateBoardCommand()
         self.requirements = ['config']
         self.target = "board"

@@ -1,6 +1,4 @@
 """SumArrowLine."""
-from typing import List, Dict
-
 from pulp import lpSum
 
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
@@ -20,11 +18,11 @@ class SumArrowLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules for the SumArrowLine.
 
         Returns:
-            List[Rule]: A list of Rule objects specifying the arrow's summing requirement.
+            list[Rule]: A list of Rule objects specifying the arrow's summing requirement.
         """
         return [
             Rule(
@@ -34,11 +32,11 @@ class SumArrowLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create a visual representation of the SumArrowLine.
 
         Returns:
-            List[Glyph]: A list containing an `ArrowLineGlyph` for rendering.
+            list[Glyph]: A list containing an `ArrowLineGlyph` for rendering.
         """
         return [ArrowLineGlyph('Arrow', [cell.coord for cell in self.cells])]
 
@@ -51,11 +49,11 @@ class SumArrowLine(Line):
         """
         return super().tags.union({'Arrow', 'Sum'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styling properties for rendering SumArrowLine.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.SumArrowLine` and its start and end points.
+            dict: A dictionary defining CSS properties for `.SumArrowLine` and its start and end points.
         """
         return {
             '.SumArrowLine': {
@@ -90,7 +88,7 @@ class SumArrowLine(Line):
             return
 
         # Optimize by constraining cells based on box regions
-        regions: Dict[int, List[Cell]] = {}
+        regions: dict[int, list[Cell]] = {}
         for i in range(1, len(self.cells)):
             box = self.board.box_index(self.cells[i].row, self.cells[i].column)
             if box not in regions:

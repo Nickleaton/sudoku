@@ -1,5 +1,4 @@
 """RowIndexer."""
-from typing import list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph

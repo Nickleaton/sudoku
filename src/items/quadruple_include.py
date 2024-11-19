@@ -1,6 +1,6 @@
 """QuadrupleInclude."""
 import re
-from typing import List, Dict, Any
+from typing import Any
 
 from pulp import lpSum
 
@@ -19,12 +19,12 @@ class QuadrupleInclude(QuadrupleBase):
     """
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the position and digits from the YAML configuration.
 
         Args:
             board (Board): The board to extract the quadruple data for.
-            yaml (Dict): The YAML data containing the quadruple information.
+            yaml (dict): The YAML data containing the quadruple information.
 
         Returns:
             tuple: A tuple containing a `Coord` object for the position and a string of digits.
@@ -37,11 +37,11 @@ class QuadrupleInclude(QuadrupleBase):
         return Coord(int(row_str), int(column_str)), digits
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules associated with this quadruple.
 
         Returns:
-            List[Rule]: A list containing the rule for this quadruple.
+            list[Rule]: A list containing the rule for this quadruple.
         """
         return [Rule('QuadrupleInclude', 3, 'Digits appearing must appear in cells adjacent to the circle')]
 
@@ -67,11 +67,11 @@ class QuadrupleInclude(QuadrupleBase):
             )
             solver.model += digit_sum >= 1, f"{self.name}_{digit}"
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the Quadruple glyphs.
 
         Returns:
-            Dict: A dictionary defining the CSS styles for the quadruple glyph.
+            dict: A dictionary defining the CSS styles for the quadruple glyph.
         """
         return {
             ".QuadrupleIncludeCircle": {

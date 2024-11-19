@@ -1,5 +1,5 @@
 """ColumnIndexer."""
-from typing import list
+
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph

@@ -1,6 +1,5 @@
 """FixedSumPair."""
 from math import ceil, log10
-from typing import List, Dict
 
 from pulp import LpElement
 
@@ -15,11 +14,11 @@ class FixedRatioPair(VariablePair):
     """Represents a fixed ratio between two cells, where the digits in those cells have a fixed ratio."""
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rule associated with the fixed ratio pair constraint.
 
         Returns:
-            List[Rule]: A list containing the rule for the fixed ratio pair,
+            list[Rule]: A list containing the rule for the fixed ratio pair,
                         which explains that the ratio of the digits in the two cells is fixed,
                         though not necessarily an integer.
         """
@@ -64,11 +63,11 @@ class FixedRatioPair(VariablePair):
             limit
         )
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for visualizing the FixedRatioPair.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the FixedRatioPair, with a black fill and stroke.
+            dict: A dictionary containing CSS styles for the FixedRatioPair, with a black fill and stroke.
         """
         return {
             '.FixedRatioPair': {

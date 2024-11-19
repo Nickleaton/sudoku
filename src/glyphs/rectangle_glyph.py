@@ -1,5 +1,5 @@
 """RectangleGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
@@ -36,11 +36,11 @@ class RectangleGlyph(Glyph):
         self.ratio: float = ratio
         self.vertical: bool = vertical
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the rectangle based on the given position, size, and orientation.
 
         Returns:
-            Optional[BaseElement]: An SVG `Rect` element representing the rectangle.
+            BaseElement | None: An SVG `Rect` element representing the rectangle.
         """
         cell_size: int = 100
         if config.drawing is not None and config.drawing.cell_size is not None:

@@ -1,5 +1,5 @@
 """CellReference."""
-from typing import List, set, tuple, Optional, Dict, Type, Iterator
+from typing import Type, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -44,12 +44,12 @@ class CellReference(Item):
         return CellParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the row and column from the given YAML dictionary.
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml (Dict): The YAML dictionary containing cell data.
+            yaml (dict): The YAML dictionary containing cell data.
 
         Returns:
             tuple: A tuple containing the row and column as integers.
@@ -59,12 +59,12 @@ class CellReference(Item):
         return int(data[0]), int(data[1])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a CellReference instance from the given board and YAML data.
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml (Dict): The YAML dictionary containing cell data.
+            yaml (dict): The YAML dictionary containing cell data.
 
         Returns:
             Item: A new instance of CellReference.
@@ -72,11 +72,11 @@ class CellReference(Item):
         row, column = cls.extract(board, yaml)
         return cls(board, row, column)
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return an SVG representation of the cell.
 
         Returns:
-            Optional[Glyph]: Always returns None for CellReference.
+            Glyph | None: Always returns None for CellReference.
         """
         return None
 
@@ -88,20 +88,20 @@ class CellReference(Item):
         """
         return '.'
 
-    def flatten(self) -> List[Item]:
+    def flatten(self) -> list[Item]:
         """Flatten the item into a list of items.
 
         Returns:
-            List[Item]: A list containing the CellReference and its cell.
+            list[Item]: A list containing the CellReference and its cell.
         """
         return [self, self.cell]
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules associated with this item.
 
         Returns:
-            List[Rule]: An empty list since CellReference has no rules.
+            list[Rule]: An empty list since CellReference has no rules.
         """
         return []
 
@@ -141,11 +141,11 @@ class CellReference(Item):
         yield self
         yield self.cell
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the CellReference instance to a dictionary.
 
         Returns:
-            Dict: A dictionary representation of the CellReference.
+            dict: A dictionary representation of the CellReference.
         """
         return {self.__class__.__name__: int(self.cell.row_column_string)}
 

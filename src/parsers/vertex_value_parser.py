@@ -1,5 +1,4 @@
 """VertexValueParser."""
-from typing import List
 
 from src.parsers.parser import Parser, ParserError
 from src.tokens.cell_token import CellToken
@@ -30,7 +29,7 @@ class VertexValueParser(Parser):
 
         try:
             # Split the text at the equals sign to extract components.
-            parts: List[str] = text.split('=')
+            parts: list[str] = text.split('=')
             lhs: str = parts[0]
             rhs: str = parts[1]
 

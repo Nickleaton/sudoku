@@ -1,7 +1,7 @@
 """Config: A singleton class representing the configuration of an application."""
 import threading
 from pathlib import Path
-from typing import Any, Optional, Dict
+from typing import Any
 
 import oyaml as yaml
 from pydotted import pydot
@@ -29,7 +29,7 @@ class Config:
         ```
     """
 
-    __instance: Optional['Config'] = None
+    __instance: 'Config' | None = None
     __lock: threading.Lock = threading.Lock()
 
     def __new__(cls, config_file_path: Path = Path("config.yaml")) -> 'Config':
@@ -59,7 +59,7 @@ class Config:
             return
         self.__initialized = True
         self.config_file_path: Path
-        self.config: Optional[Dict[str, Any]] = None
+        self.config: dict[str, Any] | None = None
         self.reload()
 
     def reload(self):
@@ -97,7 +97,7 @@ class Config:
             return self.config[key]
         raise AttributeError(f"'Config' object has no attribute '{key}'")
 
-    def get_dict(self, name: str) -> Optional[Dict[str, Any]]:
+    def get_dict(self, name: str) -> dict[str, Any] | None:
         """Retrieve a dictionary from the configuration by its name.
 
         If the configuration has not been loaded yet, it will attempt to reload it.
@@ -107,7 +107,7 @@ class Config:
             name (str): The name of the configuration parameter to retrieve.
 
         Returns:
-            Optional[Dict[str, Any]]: The dictionary associated with the given name if it exists,
+            dict[str, Any] | None: The dictionary associated with the given name if it exists,
             or `None` if the key does not exist.
 
         Raises:

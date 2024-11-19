@@ -1,5 +1,5 @@
 """Rows."""
-from typing import Dict
+
 
 from src.items.board import Board
 from src.items.item import Item
@@ -23,13 +23,13 @@ class Rows(StandardRegionSet):
         super().__init__(board, [Row(board, i) for i in board.row_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Rows instance.
 
         Args:
             cls: The class itself (Rows).
             board (Board): The board to associate with the rows.
-            yaml (Dict): A dictionary containing YAML configuration (not used).
+            yaml (dict): A dictionary containing YAML configuration (not used).
 
         Returns:
             Item: An instance of Rows.

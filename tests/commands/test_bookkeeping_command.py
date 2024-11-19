@@ -15,12 +15,14 @@ class TestLinearProgramWithBookkeepingCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(self.path) \
-                       | CreateBoardCommand() \
-                       | CreateSolverCommand() \
-                       | CreateConstraintsCommand()
-        requirements.execute(self.problem)
+        self.prerequisites = LoadConfigCommand(self.path) \
+                             | CreateBoardCommand() \
+                             | CreateSolverCommand() \
+                             | CreateConstraintsCommand()
+        self.prerequisites.execute(self.problem)
         self.command = BookkeepingCommand()
+        self.requirements = ['config', 'board', 'solver', 'constraints']
+        self.target = "bookkeeping_unique"
 
     def test_command(self):
         """Test the execution of the BookkeepingCommand."""

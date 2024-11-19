@@ -1,6 +1,4 @@
 """Indexing."""
-from typing import List, Dict
-
 from src.items.board import Board
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
@@ -25,12 +23,12 @@ class Indexer(StandardRegion):
         return DigitsParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> int:
+    def extract(cls, board: Board, yaml: dict) -> int:
         """Extract the index from the provided YAML configuration.
 
         Args:
             board (Board): The board object on which the index will be applied.
-            yaml (Dict): The YAML configuration containing the index value.
+            yaml (dict): The YAML configuration containing the index value.
 
         Returns:
             int: The extracted index value from the YAML configuration.
@@ -38,12 +36,12 @@ class Indexer(StandardRegion):
         return int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an Indexer instance from the provided board and YAML data.
 
         Args:
             board (Board): The board on which the Indexer will operate.
-            yaml (Dict): The YAML configuration to extract the index from.
+            yaml (dict): The YAML configuration to extract the index from.
 
         Returns:
             Item: An instance of the Indexer class with the extracted index.
@@ -78,11 +76,11 @@ class Indexer(StandardRegion):
         return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return a list of rules associated with this Indexer.
 
         Returns:
-            List[Rule]: A list of Rule instances that describe the constraints
+            list[Rule]: A list of Rule instances that describe the constraints
             and logic related to the indexing region.
         """
         return [

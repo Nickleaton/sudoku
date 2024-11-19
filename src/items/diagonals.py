@@ -1,6 +1,4 @@
 """Diagonals."""
-from typing import Dict
-
 from src.items.board import Board
 from src.items.item import Item
 from src.items.region import Region
@@ -10,12 +8,12 @@ class Diagonal(Region):
     """Represents a diagonal region on a Sudoku board."""
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Diagonal instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board associated with this diagonal.
-            yaml (Dict): The YAML data to configure the diagonal (unused here).
+            yaml (dict): The YAML data to configure the diagonal (unused here).
 
         Returns:
             Item: A new instance of Diagonal.
@@ -30,19 +28,19 @@ class Diagonal(Region):
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Diagonal instance to a dictionary format.
 
         Returns:
-            Dict: A dictionary with the Diagonal class name as the key and None as the value.
+            dict: A dictionary with the Diagonal class name as the key and None as the value.
         """
         return {self.__class__.__name__: None}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Provide CSS styling for the diagonal region.
 
         Returns:
-            Dict: A dictionary with CSS properties for the diagonal, including stroke color and width.
+            dict: A dictionary with CSS properties for the diagonal, including stroke color and width.
         """
         return {
             ".Diagonal": {

@@ -1,5 +1,5 @@
 """ClonedRegion."""
-from typing import List, tuple, Dict, Type, set, Iterator
+from typing import Type, Iterator
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -13,21 +13,21 @@ from src.utils.sudoku_exception import SudokuException
 class ClonedRegion(Item):
     """Represents a cloned region constraint in a Sudoku variant."""
 
-    def __init__(self, board: Board, cells_a: List[Cell], cells_b: List[Cell]):
+    def __init__(self, board: Board, cells_a: list[Cell], cells_b: list[Cell]):
         """Initialize a ClonedRegion with two sets of cells that must have the same values.
 
         Args:
             board (Board): The Sudoku board instance.
-            cells_a (List[Cell]): The first set of cells in the cloned region.
-            cells_b (List[Cell]): The second set of cells in the cloned region.
+            cells_a (list[Cell]): The first set of cells in the cloned region.
+            cells_b (list[Cell]): The second set of cells in the cloned region.
         """
         super().__init__(board)
         if len(cells_a) != len(cells_b):
             raise SudokuException(
                 f"Length mismatch: cells_a has {len(cells_a)} elements, but cells_b has {len(cells_b)} elements."
             )
-        self.region_a: List[Cell] = cells_a
-        self.region_b: List[Cell] = cells_b
+        self.region_a: list[Cell] = cells_a
+        self.region_b: list[Cell] = cells_b
 
     def __repr__(self) -> str:
         """Provide a string representation of the ClonedRegion instance.
@@ -44,15 +44,15 @@ class ClonedRegion(Item):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple[List[Cell], List[Cell]]:
+    def extract(cls, board: Board, yaml: dict) -> tuple[list[Cell], list[Cell]]:
         """Extract two sets of cells from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration containing cell coordinates.
+            yaml (dict): The YAML configuration containing cell coordinates.
 
         Returns:
-            tuple[List[Cell], List[Cell]]: Two lists of cells representing the cloned regions.
+            tuple[list[Cell], list[Cell]]: Two lists of cells representing the cloned regions.
         """
         part_a = str(yaml[cls.__name__].split('=')[0])
         part_b = str(yaml[cls.__name__].split('=')[1])
@@ -61,12 +61,12 @@ class ClonedRegion(Item):
         return cells_a, cells_b
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a ClonedRegion from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration.
+            yaml (dict): The YAML configuration.
 
         Returns:
             Item: An instance of ClonedRegion.
@@ -74,11 +74,11 @@ class ClonedRegion(Item):
         cells_a, cells_b = ClonedRegion.extract(board, yaml)
         return ClonedRegion(board, cells_a, cells_b)
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Retrieve the glyphs for the cloned region.
 
         Returns:
-            List[Glyph]: An empty list, as this region has no specific glyphs.
+            list[Glyph]: An empty list, as this region has no specific glyphs.
         """
         return []
 
@@ -109,11 +109,11 @@ class ClonedRegion(Item):
             yield from item.walk()
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rule associated with the cloned region.
 
         Returns:
-            List[Rule]: A list containing the rule for cloned regions.
+            list[Rule]: A list containing the rule for cloned regions.
         """
         return [
             Rule(
@@ -145,21 +145,21 @@ class ClonedRegion(Item):
             value_2 = solver.values[cell_2.row][cell_2.column]
             solver.model += value_1 == value_2, name
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the cloned region to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the cloned region.
+            dict: A dictionary representation of the cloned region.
         """
         cell_str_a = ",".join([f"{cell.row}{cell.column}" for cell in self.region_a])
         cell_str_b = ",".join([f"{cell.row}{cell.column}" for cell in self.region_b])
         return {self.__class__.__name__: f"{cell_str_a}={cell_str_b}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styling for the cloned region glyphs.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the cloned region.
+            dict: A dictionary containing CSS styles for the cloned region.
         """
         return {
             '.ClonedRegion': {

@@ -1,5 +1,5 @@
 """Exclusion."""
-from typing import List, Any, Dict
+from typing import Any
 
 from pulp import lpSum
 
@@ -57,31 +57,31 @@ class Exclusion(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, '{digit_str}')"
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the Exclusion item.
 
         Returns:
-            List[Rule]: A list of rules for the Exclusion constraint.
+            list[Rule]: A list of rules for the Exclusion constraint.
         """
         return [Rule('Exclusion', 3, 'Digit(s) cannot appear in the cells adjacent to the circle')]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Return the glyph for visual representation of the Exclusion item.
 
         Returns:
-            List[Glyph]: A list containing a QuadrupleGlyph representing the Exclusion circle.
+            list[Glyph]: A list containing a QuadrupleGlyph representing the Exclusion circle.
         """
         return [
             QuadrupleGlyph(class_name="Exclusion", position=self.position, numbers=self.numbers)
         ]
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the position and digits from the YAML configuration.
 
         Args:
             board (Board): The board the item applies to.
-            yaml (Dict): The YAML data containing the Exclusion definition.
+            yaml (dict): The YAML data containing the Exclusion definition.
 
         Returns:
             tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as a string.
@@ -91,12 +91,12 @@ class Exclusion(Item):
         return position, digits
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an Exclusion item from the YAML data.
 
         Args:
             board (Board): The board the item applies to.
-            yaml (Dict): The YAML data containing the Exclusion definition.
+            yaml (dict): The YAML data containing the Exclusion definition.
 
         Returns:
             Item: An Exclusion item created from the YAML data.
@@ -128,19 +128,19 @@ class Exclusion(Item):
             )
             solver.model += digit_sum == 0, f"{self.name}_{digit}"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the Exclusion item to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the Exclusion item in YAML format.
+            dict: A dictionary representing the Exclusion item in YAML format.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for visual rendering of the Exclusion circle.
 
         Returns:
-            Dict: A dictionary containing CSS styles for the Exclusion circle and its digits.
+            dict: A dictionary containing CSS styles for the Exclusion circle and its digits.
         """
         return {
             ".ExclusionCircle": {

@@ -1,5 +1,5 @@
-"""Tag List."""
-from typing import List, Iterator
+"""TagList."""
+from typing import Iterator
 
 from src.utils.sudoku_exception import SudokuException
 from src.utils.tag import Tag
@@ -13,15 +13,15 @@ class TagList:
     """A list of Tags with methods for managing and sorting them.
 
     Attributes:
-        items (List[Tag]): The list of Tag instances.
+        items (list[Tag]): The list of Tag instances.
         n (int): Counter for tracking the number of operations or tags.
     """
 
-    def __init__(self, items: List[Tag]):
+    def __init__(self, items: list[Tag]):
         """Initialize a TagList instance with a list of Tags, sorted upon initialization.
 
         Args:
-            items (List[Tag]): A list of Tag instances.
+            items (list[Tag]): A list of Tag instances.
         """
         self.items = items
         self.sort()

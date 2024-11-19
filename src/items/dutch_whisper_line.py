@@ -1,5 +1,5 @@
 """DutchWhisperLine."""
-from typing import List, Sequence, Dict
+from typing import Sequence
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -27,11 +27,11 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         """Return a string representation of the instance."""
         return f"{self.__class__.__name__}({self.board!r}, {self.cells!r})"
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create a visual representation of the Dutch Whisper line.
 
         Returns:
-            List[Glyph]: A list containing a PolyLineGlyph for rendering the line.
+            list[Glyph]: A list containing a PolyLineGlyph for rendering the line.
         """
         return [PolyLineGlyph('DutchWhisperLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -44,11 +44,11 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         """
         return super().tags.union({'Dutch Whisper'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styling properties for rendering the Dutch Whisper line.
 
         Returns:
-            Dict: A dictionary defining CSS properties for the Dutch Whisper line.
+            dict: A dictionary defining CSS properties for the Dutch Whisper line.
         """
         return {
             '.DutchWhisperLine': {

@@ -1,5 +1,4 @@
 """AntiKing."""
-from typing import List, Dict
 
 from src.items.anti import Anti
 from src.items.board import Board
@@ -24,22 +23,22 @@ class AntiKing(Anti):
         """
         super().__init__(board, list(board.digit_range))
 
-    def offsets(self) -> List[Coord]:
+    def offsets(self) -> list[Coord]:
         """Return the possible move offsets for the Anti-King.
 
         Returns:
-            List[Coord]: A list of coordinates representing the King's move offsets.
+            list[Coord]: A list of coordinates representing the King's move offsets.
         """
         return Direction.kings()
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create an AntiKing instance.
 
         Args:
             cls: The class itself (AntiKing).
             board (Board): The board to associate with the AntiKing rule.
-            yaml (Dict): A dictionary containing YAML configuration (not used).
+            yaml (dict): A dictionary containing YAML configuration (not used).
 
         Returns:
             Item: An instance of AntiKing.
@@ -56,11 +55,11 @@ class AntiKing(Anti):
         return super().tags.union({'King'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with the AntiKing.
 
         Returns:
-            List[Rule]: A list of rules for the AntiKing, stating that
+            list[Rule]: A list of rules for the AntiKing, stating that
             identical digits cannot be separated by a King's move.
         """
         return [
@@ -75,10 +74,10 @@ class AntiKing(Anti):
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the AntiKing instance to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representation of the AntiKing instance.
+            dict: A dictionary representation of the AntiKing instance.
         """
         return {self.__class__.__name__: None}

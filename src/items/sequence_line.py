@@ -1,6 +1,4 @@
 """SequenceLine."""
-from typing import List, set, Dict
-
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph
@@ -19,11 +17,11 @@ class SequenceLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define rules specific to SequenceLine.
 
         Returns:
-            List[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing a single Rule object that specifies:
             - Digits along grey lines follow an arithmetic sequence.
         """
         return [
@@ -37,11 +35,11 @@ class SequenceLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate a graphical representation of the SequenceLine.
 
         Returns:
-            List[Glyph]: A list containing a `PolyLineGlyph` instance with
+            list[Glyph]: A list containing a `PolyLineGlyph` instance with
             cell coordinates for display as a sequence line.
         """
         return [PolyLineGlyph('SequenceLine', [cell.coord for cell in self.cells], False, False)]
@@ -78,11 +76,11 @@ class SequenceLine(Line):
             return 2
         return 1
 
-    def possible_digits(self) -> List[set[int]]:
+    def possible_digits(self) -> list[set[int]]:
         """Determine possible digits for each cell along the sequence.
 
         Returns:
-            List[set[int]]: A list of sets containing possible digits for each
+            list[set[int]]: A list of sets containing possible digits for each
             cell, based on the maximum digit and length of the sequence.
         """
         length = len(self.cells)
@@ -128,11 +126,11 @@ class SequenceLine(Line):
                     name = f"{self.name}_impossible_{i}_{d}"
                     solver.model += solver.choices[d][cell.row][cell.column] == 0, name
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styles for rendering the SequenceLine in the user interface.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.RenbanLine` to style
+            dict: A dictionary defining CSS properties for `.RenbanLine` to style
             this line as a sequence line.
         """
         return {

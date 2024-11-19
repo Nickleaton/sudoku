@@ -1,5 +1,4 @@
 """ThermometerGlyph."""
-from typing import List, Optional
 
 from svgwrite.container import Marker
 from svgwrite.shapes import Circle
@@ -11,21 +10,21 @@ from src.utils.coord import Coord
 class ThermometerGlyph(PolyLineGlyph):
     """A thermometer-like glyph that represents a polyline with a start marker."""
 
-    def __init__(self, class_name: str, coords: List[Coord]):
+    def __init__(self, class_name: str, coords: list[Coord]):
         """Initialize the ThermometerGlyph.
 
         Args:
             class_name (str): The CSS class name for styling the thermometer glyph.
-            coords (List[Coord]): The list of coordinates defining the polyline.
+            coords (list[Coord]): The list of coordinates defining the polyline.
         """
         super().__init__(class_name, coords, True, False)
 
     @classmethod
-    def start_marker(cls) -> Optional[Marker]:
+    def start_marker(cls) -> Marker | None:
         """Generate the start marker for the thermometer glyph.
 
         Returns:
-            Optional[Marker]: A Marker element representing the start of the thermometer.
+            Marker | None: A Marker element representing the start of the thermometer.
         """
         marker = Marker(
             insert=(50, 50),

@@ -1,5 +1,4 @@
 """Columns."""
-from typing import Dict
 
 from src.items.board import Board
 from src.items.column import Column
@@ -23,13 +22,13 @@ class Columns(StandardRegionSet):
         super().__init__(board, [Column(board, i) for i in board.column_range])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Columns instance.
 
         Args:
             cls: The class itself (Columns).
             board (Board): The board to associate with the columns.
-            yaml (Dict): A dictionary containing YAML configuration (not used).
+            yaml (dict): A dictionary containing YAML configuration (not used).
 
         Returns:
             Item: An instance of Columns.

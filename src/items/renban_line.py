@@ -1,6 +1,4 @@
 """RenbanLine."""
-from typing import List, set, Dict
-
 from pulp import LpVariable, LpInteger
 
 from src.glyphs.glyph import Glyph
@@ -17,11 +15,11 @@ class RenbanLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rules for the RenbanLine.
 
         Returns:
-            List[Rule]: A list of Rule objects specifying the Renban's digit requirements.
+            list[Rule]: A list of Rule objects specifying the Renban's digit requirements.
         """
         return [
             Rule(
@@ -31,11 +29,11 @@ class RenbanLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Create a visual representation of the RenbanLine.
 
         Returns:
-            List[Glyph]: A list containing a PolyLineGlyph for rendering.
+            list[Glyph]: A list containing a PolyLineGlyph for rendering.
         """
         return [PolyLineGlyph('RenbanLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -97,11 +95,11 @@ class RenbanLine(Line):
         # Add the mandatory digits to the constraints
         self.add_contains_constraint(solver, list(self.mandatory_digits(length)))
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styling properties for rendering RenbanLine.
 
         Returns:
-            Dict: A dictionary defining CSS properties for the RenbanLine.
+            dict: A dictionary defining CSS properties for the RenbanLine.
         """
         return {
             ".RenbanLine": {

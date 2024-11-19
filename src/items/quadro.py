@@ -1,6 +1,5 @@
 """Quadro."""
 from itertools import product
-from typing import list, dict
 
 from pulp import lpSum
 

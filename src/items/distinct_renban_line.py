@@ -1,5 +1,4 @@
 """DistinctRenbanLine."""
-from typing import list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -77,7 +76,7 @@ class DistinctRenbanLine(RenbanLine):
         """Convert a list of digits into a unique integer based on their powers.
 
         Args:
-            digits (List[int]): The list of digits to convert.
+            digits (list[int]): The list of digits to convert.
 
         Returns:
             int: A unique integer representing the sum of the powers of the digits.

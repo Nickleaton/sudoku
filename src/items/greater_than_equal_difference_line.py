@@ -1,5 +1,4 @@
 """GreaterThanEqualDifferenceLine."""
-from typing import list, Sequence, set
 
 from pulp import lpSum
 

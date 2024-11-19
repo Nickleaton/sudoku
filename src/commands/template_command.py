@@ -1,7 +1,7 @@
 """Command to produce an HTML file of the puzzle."""
 import logging
 from pathlib import Path
-from typing import Optional
+
 
 import jinja2
 from jinja2 import Template
@@ -25,7 +25,7 @@ class TemplateCommand(SimpleCommand):
         super().__init__()
         self.template_file: Path = Path(template) if isinstance(template, str) else template
         self.target: str = target
-        self.template: Optional[Template] = None
+        self.template: Template | None = None
 
     def precondition_check(self, problem: Problem) -> None:
         """Check the preconditions for the command.

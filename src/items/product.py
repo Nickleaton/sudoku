@@ -1,5 +1,5 @@
 """Product."""
-from typing import List, Any, Dict
+from typing import Any
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -48,13 +48,13 @@ class Product(Region):
         """
         return CellValueParser()
 
-    def get_cells(self) -> List[Cell]:
+    def get_cells(self) -> list[Cell]:
         """Return the list of cells associated with this product constraint.
 
         Since this method is intended to be overridden by subclasses, it currently returns an empty list.
 
         Returns:
-            List[Cell]: A list of cells associated with the product constraint.
+            list[Cell]: A list of cells associated with the product constraint.
         """
         return []
 
@@ -67,12 +67,12 @@ class Product(Region):
         return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, {self.product})"
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract the position and product value from the YAML configuration.
 
         Args:
             board (Board): The board to which the constraint applies.
-            yaml (Dict): The YAML configuration that defines the product constraint.
+            yaml (dict): The YAML configuration that defines the product constraint.
 
         Returns:
             tuple: A tuple containing the position (as a Coord) and the product (as an integer).
@@ -82,12 +82,12 @@ class Product(Region):
         return position, int(product)
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a new Product instance from the given board and YAML configuration.
 
         Args:
             board (Board): The board on which the product constraint is applied.
-            yaml (Dict): The YAML configuration that defines the product constraint.
+            yaml (dict): The YAML configuration that defines the product constraint.
 
         Returns:
             Item: A new Product instance.
@@ -105,11 +105,11 @@ class Product(Region):
         """
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Return a dictionary representation of the Product instance.
 
         Returns:
-            Dict: A dictionary where the key is the class name and the
+            dict: A dictionary where the key is the class name and the
                   value is a string representing the position and product.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={self.product}"}

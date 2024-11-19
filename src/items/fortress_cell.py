@@ -1,5 +1,4 @@
 """FortressCell."""
-from typing import Optional, list, dict
 
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
 from src.glyphs.glyph import Glyph
@@ -14,11 +13,11 @@ from src.utils.rule import Rule
 class FortressCell(SimpleCellReference):
     """Represents a fortress cell in a puzzle, where the digit must be greater than its orthogonal neighbors."""
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return an SVG representation of the FortressCell.
 
         Returns:
-            Optional[Glyph]: Always returns None for FortressCell.
+            Glyph | None: Always returns None for FortressCell.
         """
         return None
 
@@ -50,7 +49,7 @@ class FortressCell(SimpleCellReference):
         """Generate the glyphs associated with this FortressCell.
 
         Returns:
-            List[Glyph]: A list containing the FortressCellGlyph.
+            list[Glyph]: A list containing the FortressCellGlyph.
         """
         return [FortressCellGlyph('FortressCell', Coord(self.row, self.column))]
 

@@ -1,7 +1,6 @@
 """Class for 2D Points."""
 
 import math
-from typing import tuple
 
 CELL_SIZE = 100
 

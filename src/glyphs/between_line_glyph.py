@@ -1,5 +1,4 @@
 """BetweenLineGlyph."""
-from typing import List, Optional
 
 from svgwrite.container import Marker
 from svgwrite.shapes import Circle
@@ -15,7 +14,7 @@ class BetweenLineGlyph(PolyLineGlyph):
     are used to visually indicate the start and end points of the line.
     """
 
-    def __init__(self, class_name: str, coords: List[Coord]):
+    def __init__(self, class_name: str, coords: list[Coord]):
         """Initialize a BetweenLineGlyph instance.
 
         This constructor creates a line glyph with specified class name and coordinates.
@@ -23,7 +22,7 @@ class BetweenLineGlyph(PolyLineGlyph):
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            coords (List[Coord]): The coordinates of the line, represented as a list of `Coord` objects.
+            coords (list[Coord]): The coordinates of the line, represented as a list of `Coord` objects.
 
         Returns:
             None
@@ -31,7 +30,7 @@ class BetweenLineGlyph(PolyLineGlyph):
         super().__init__(class_name, coords, True, True)
 
     @classmethod
-    def start_marker(cls) -> Optional[Marker]:
+    def start_marker(cls) -> Marker | None:
         """Create and return the SVG marker for the start of the line.
 
         This method generates an SVG marker with a circular shape to represent the start
@@ -52,7 +51,7 @@ class BetweenLineGlyph(PolyLineGlyph):
         return marker
 
     @classmethod
-    def end_marker(cls) -> Optional[Marker]:
+    def end_marker(cls) -> Marker | None:
         """Create and return the SVG marker for the end of the line.
 
         This method generates an SVG marker with a circular shape to represent the end

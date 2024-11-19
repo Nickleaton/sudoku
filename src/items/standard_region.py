@@ -1,5 +1,4 @@
 """StandardRegion."""
-from typing import Dict
 
 from src.items.board import Board
 from src.items.item import Item
@@ -20,12 +19,12 @@ class StandardRegion(Region):
         self.index = index
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> int:
+    def extract(cls, board: Board, yaml: dict) -> int:
         """Extract the region index from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration.
+            yaml (dict): The YAML configuration.
 
         Returns:
             int: The index of the region.
@@ -33,12 +32,12 @@ class StandardRegion(Region):
         return int(yaml[cls.__name__])
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a StandardRegion instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration.
+            yaml (dict): The YAML configuration.
 
         Returns:
             Item: An instance of StandardRegion.
@@ -63,11 +62,11 @@ class StandardRegion(Region):
         """
         return super().tags.union({'Uniqueness', 'Standard set'})
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the standard region to a dictionary representation.
 
         Returns:
-            Dict: A dictionary representing the region.
+            dict: A dictionary representing the region.
         """
         return {self.__class__.__name__: self.index}
 

@@ -1,5 +1,5 @@
 """Line."""
-from typing import list, Sequence, dict
+from typing import Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -41,7 +41,7 @@ class Line(Region):
             yaml (dict): A dictionary containing the YAML data.
 
         Returns:
-            List[Cell]: A list of Cell instances extracted from the YAML data.
+            list[Cell]: A list of Cell instances extracted from the YAML data.
         """
         return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 

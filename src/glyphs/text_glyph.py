@@ -1,5 +1,5 @@
 """TextGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -27,11 +27,11 @@ class TextGlyph(Glyph):
         self.position = position
         self.text = text
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the text glyph element.
 
         Returns:
-            Optional[BaseElement]: A group containing the foreground and background text elements.
+            BaseElement | None: A group containing the foreground and background text elements.
         """
         group = Group()
 

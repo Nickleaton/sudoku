@@ -1,6 +1,5 @@
 """VariableRatioPair."""
 from math import ceil, log10
-from typing import list, dict
 
 from pulp import LpElement
 

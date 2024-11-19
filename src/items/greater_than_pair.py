@@ -1,5 +1,4 @@
 """GreaterThanPair."""
-from typing import List
 
 from src.items.pair import Pair
 from src.utils.rule import Rule
@@ -13,13 +12,13 @@ class GreaterThanPair(Pair):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the rules associated with this pair constraint.
 
         The rule states that where cells are separated by a chevron, the arrow points at the smaller digit.
 
         Returns:
-            List[Rule]: A list containing a single rule describing the constraint.
+            list[Rule]: A list containing a single rule describing the constraint.
         """
         return [
             Rule(

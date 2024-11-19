@@ -1,5 +1,4 @@
 """OddCell."""
-from typing import Optional, list, dict
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.odd_cell_glyph import OddCellGlyph
@@ -23,11 +22,11 @@ class OddCell(SimpleCellReference):
         """
         return digit % 2 == 1
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Return the SVG representation of the OddCell.
 
         Returns:
-            Optional[Glyph]: Returns None as the SVG representation is not available for OddCell.
+            Glyph | None: Returns None as the SVG representation is not available for OddCell.
         """
         return None
 
@@ -52,7 +51,7 @@ class OddCell(SimpleCellReference):
         """Return a list of Glyphs associated with OddCell.
 
         Returns:
-            List[Glyph]: A list containing the OddCellGlyph for this cell.
+            list[Glyph]: A list containing the OddCellGlyph for this cell.
         """
         return [OddCellGlyph('OddCell', Coord(self.row, self.column))]
 

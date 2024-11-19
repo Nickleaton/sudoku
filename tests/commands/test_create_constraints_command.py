@@ -14,10 +14,13 @@ class TestCreateConstraintsCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        requirements = LoadConfigCommand(self.path) \
+        self.prerequisites = LoadConfigCommand(self.path) \
                        | CreateBoardCommand()
-        requirements.execute(self.problem)
+        self.prerequisites.execute(self.problem)
         self.command = CreateConstraintsCommand()
+        self.requirements = ['config', 'board']
+        self.target = "target"
+
 
     @property
     def representation(self) -> str:

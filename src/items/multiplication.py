@@ -1,6 +1,6 @@
 """Multiplication."""
 from math import log10
-from typing import list, set
+
 
 from pulp import lpSum
 

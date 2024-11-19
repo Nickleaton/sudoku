@@ -1,5 +1,4 @@
 """SumPair."""
-from typing import list, dict
 
 from pulp import LpElement
 
@@ -50,7 +49,7 @@ class SumPair(Pair):
         """Define the CSS styles for rendering SumPair glyphs.
 
         Returns:
-            Dict: A dictionary of CSS properties.
+            dict: A dictionary of CSS properties.
         """
         return {
             '.FixedSumPair': {

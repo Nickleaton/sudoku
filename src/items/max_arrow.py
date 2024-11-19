@@ -1,6 +1,4 @@
 """MaxArrow."""
-from typing import List, Dict
-
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.glyphs.glyph import Glyph
 from src.items.line import Line
@@ -17,11 +15,11 @@ class MaxArrowLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define rules specific to MaxArrowLine.
 
         Returns:
-            List[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing a single Rule object that specifies:
             - The digit in the bulb is the maximum of the digits on the arrow.
         """
         return [
@@ -32,11 +30,11 @@ class MaxArrowLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate a graphical representation of the MaxArrowLine.
 
         Returns:
-            List[Glyph]: A list containing an `ArrowLineGlyph` instance with
+            list[Glyph]: A list containing an `ArrowLineGlyph` instance with
             cell coordinates for display as a maximum arrow line.
         """
         return [ArrowLineGlyph('MaxArrowLine', [cell.coord for cell in self.cells])]
@@ -51,11 +49,11 @@ class MaxArrowLine(Line):
         """
         return super().tags.union({'Arrow', 'MaxArrowLine'})
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styles for rendering the MaxArrowLine in the user interface.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.MaxArrowLine` to
+            dict: A dictionary defining CSS properties for `.MaxArrowLine` to
             style this line visually as a maximum arrow line.
         """
         return {

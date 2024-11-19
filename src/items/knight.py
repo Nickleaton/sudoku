@@ -1,5 +1,5 @@
 """Knight."""
-from typing import List, Any, Dict
+from typing import Any
 
 from pulp import lpSum
 
@@ -17,12 +17,12 @@ from src.utils.rule import Rule
 class Knight(ComposedItem):
     """Represents a constraint that enforces a knight's move rule on certain digits."""
 
-    def __init__(self, board: Board, digits: List[int]):
+    def __init__(self, board: Board, digits: list[int]):
         """Initialize the Knight constraint with the specified board and digits.
 
         Args:
             board (Board): The Sudoku board on which the constraint applies.
-            digits (List[int]): The digits to which the knight's move rule applies.
+            digits (list[int]): The digits to which the knight's move rule applies.
         """
         super().__init__(board, [])
         self.add_items([Cell.make(board, row, column) for row in board.row_range for column in board.column_range])
@@ -38,11 +38,11 @@ class Knight(ComposedItem):
         return DigitsParser()
 
     @staticmethod
-    def offsets() -> List[Coord]:
+    def offsets() -> list[Coord]:
         """Define the relative coordinates for knight's moves.
 
         Returns:
-            List[Coord]: List of offsets representing knight's moves.
+            list[Coord]: list of offsets representing knight's moves.
         """
         return [
             Coord(-1, -2),
@@ -65,25 +65,25 @@ class Knight(ComposedItem):
         return super().tags.union({'Knight'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract digits from YAML configuration.
 
         Args:
             board (Board): The Sudoku board for context.
-            yaml (Dict): The YAML configuration containing digits.
+            yaml (dict): The YAML configuration containing digits.
 
         Returns:
-            Any: List of digits extracted from the YAML configuration.
+            Any: list of digits extracted from the YAML configuration.
         """
         return [int(d) for d in yaml[cls.__name__].split(",")]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Knight constraint from YAML configuration.
 
         Args:
             board (Board): The board on which this constraint is created.
-            yaml (Dict): YAML configuration for the constraint.
+            yaml (dict): YAML configuration for the constraint.
 
         Returns:
             Item: The instantiated Knight constraint.
@@ -92,11 +92,11 @@ class Knight(ComposedItem):
         return Knight(board, digits)
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Return the list of rules enforced by this constraint.
 
         Returns:
-            List[Rule]: Rules indicating that each specified digit must be reachable
+            list[Rule]: Rules indicating that each specified digit must be reachable
                         by a knight's move from at least one identical digit.
         """
         return [
@@ -129,10 +129,10 @@ class Knight(ComposedItem):
                 possibles = lpSum([solver.choices[digit][i.row][i.column] for i in include])
                 solver.model += start <= possibles, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Serialize the Knight constraint to a dictionary format.
 
         Returns:
-            Dict: Dictionary representation of the constraint.
+            dict: Dictionary representation of the constraint.
         """
         return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}

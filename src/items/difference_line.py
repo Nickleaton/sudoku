@@ -1,5 +1,5 @@
 """DifferenceLine."""
-from typing import Sequence, List
+from typing import Sequence
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -11,7 +11,7 @@ class DifferenceLine(Line):
 
     Attributes:
         difference (int): The required difference between connected cells.
-        excluded (List[int]): A list of digits that are excluded from being placed
+        excluded (list[int]): A list of digits that are excluded from being placed
                               in the cells of the line.
     """
 
@@ -26,7 +26,7 @@ class DifferenceLine(Line):
         """
         super().__init__(board, cells)
         self.difference = difference
-        self.excluded: List[int] = []
+        self.excluded: list[int] = []
 
     @property
     def tags(self) -> set[str]:

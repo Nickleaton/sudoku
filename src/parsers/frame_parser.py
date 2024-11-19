@@ -1,5 +1,4 @@
 """FrameParser."""
-from typing import List, Optional
 
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
@@ -16,7 +15,7 @@ class FrameParser(Parser):
     an integer index, and a value after '='.
     """
 
-    result: Optional[List[int]] = None
+    result: list[int] | None = None
 
     def __init__(self):
         """Initialize FrameParser with a regex pattern.

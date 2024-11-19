@@ -1,5 +1,5 @@
 """CoordinateList."""
-from typing import List, Iterator
+from typing import Iterator
 
 from src.items.item import SudokuException
 from src.utils.coord import Coord
@@ -13,14 +13,14 @@ class CoordList:
     """A class to manage a list of Coord objects.
 
     Args:
-        items (List[Coord]): The list of Coord objects.
+        items (list[Coord]): The list of Coord objects.
     """
 
-    def __init__(self, items: List[Coord]):
+    def __init__(self, items: list[Coord]):
         """Initialize the CoordList with a sorted list of Coord objects.
 
         Args:
-            items (List[Coord]): The list of Coord objects to manage.
+            items (list[Coord]): The list of Coord objects to manage.
         """
         self.items = sorted(items)
 

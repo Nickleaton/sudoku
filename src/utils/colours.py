@@ -1,6 +1,4 @@
 """ColourSet."""
-from typing import List
-
 from src.utils.config import Config
 from src.utils.sudoku_exception import SudokuException
 
@@ -16,14 +14,14 @@ class ColourSet:
     """A utility class for managing and retrieving color sets."""
 
     @staticmethod
-    def colours(set_name: str) -> List[str]:
+    def colours(set_name: str) -> list[str]:
         """Retrieve a list of colors associated with a specific set name.
 
         Args:
             set_name (str): The name of the color set to retrieve.
 
         Returns:
-            List[str]: A list of color strings in the specified set.
+            list[str]: A list of color strings in the specified set.
         """
         colour_set = config.colours
         if colour_set is None or set_name not in colour_set:

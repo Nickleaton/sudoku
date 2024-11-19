@@ -1,6 +1,4 @@
 """VariableDifferencePair."""
-from typing import List, Dict
-
 from pulp import LpElement
 
 from src.items.variable_pair import VariablePair
@@ -14,11 +12,11 @@ class VariableDifferencePair(VariablePair):
     """Represents a pair of cells with a fixed difference indicated by a white dot."""
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the VariableDifferencePair.
 
         Returns:
-            List[Rule]: A list of rules describing the VariableDifferencePair constraints.
+            list[Rule]: A list of rules describing the VariableDifferencePair constraints.
         """
         return [
             Rule(
@@ -61,11 +59,11 @@ class VariableDifferencePair(VariablePair):
         v2 = solver.values[self.cell_2.row][self.cell_2.column]
         return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Define the CSS styles for rendering VariableDifferencePair glyphs.
 
         Returns:
-            Dict: A dictionary of CSS properties.
+            dict: A dictionary of CSS properties.
         """
         return {
             '.FixedDifferencePair': {

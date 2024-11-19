@@ -1,6 +1,5 @@
 """Side."""
 from enum import Enum
-from typing import Dict
 
 from src.items.board import Board
 from src.utils.coord import Coord
@@ -168,7 +167,7 @@ class Side(Enum):
         return f"Side.{self.name}"
 
 
-DIRECTION_MAP: Dict[tuple, Direction] = {
+DIRECTION_MAP: dict[tuple, Direction] = {
     (Side.TOP, Cyclic.CLOCKWISE): Direction.DOWN_RIGHT,
     (Side.RIGHT, Cyclic.CLOCKWISE): Direction.DOWN_LEFT,
     (Side.BOTTOM, Cyclic.CLOCKWISE): Direction.UP_LEFT,
@@ -179,7 +178,7 @@ DIRECTION_MAP: Dict[tuple, Direction] = {
     (Side.LEFT, Cyclic.ANTICLOCKWISE): Direction.DOWN_RIGHT,
 }
 
-ORDER_DIRECTION_MAP: Dict[tuple, Direction] = {
+ORDER_DIRECTION_MAP: dict[tuple, Direction] = {
     (Side.TOP, Order.INCREASING): Direction.DOWN,
     (Side.TOP, Order.DECREASING): Direction.UP,
     (Side.RIGHT, Order.INCREASING): Direction.LEFT,
@@ -190,7 +189,7 @@ ORDER_DIRECTION_MAP: Dict[tuple, Direction] = {
     (Side.LEFT, Order.DECREASING): Direction.LEFT,
 }
 
-ORDER_OFFSET_MAP: Dict[Side, Coord] = {
+ORDER_OFFSET_MAP: dict[Side, Coord] = {
     Side.TOP: Direction.DOWN.offset,
     Side.RIGHT: Direction.LEFT.offset,
     Side.BOTTOM: Direction.UP.offset,

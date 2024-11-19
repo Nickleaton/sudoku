@@ -1,6 +1,4 @@
 """DisjointGroup."""
-from typing import list, tuple
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion

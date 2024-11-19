@@ -1,5 +1,4 @@
 """PolyLineGlyph."""
-from typing import List, Optional
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Polyline
@@ -11,12 +10,12 @@ from src.utils.coord import Coord
 class PolyLineGlyph(Glyph):
     """Represents a polyline drawn through a list of coordinates, with optional markers at the start and end."""
 
-    def __init__(self, class_name: str, coords: List[Coord], start: bool, end: bool):
+    def __init__(self, class_name: str, coords: list[Coord], start: bool, end: bool):
         """Initialize the PolyLineGlyph.
 
         Args:
             class_name (str): The CSS class name for styling the polyline.
-            coords (List[Coord]): A list of coordinates that define the polyline.
+            coords (list[Coord]): A list of coordinates that define the polyline.
             start (bool): Whether to add a start marker at the beginning of the polyline.
             end (bool): Whether to add an end marker at the end of the polyline.
         """
@@ -25,11 +24,11 @@ class PolyLineGlyph(Glyph):
         self.start = start
         self.end = end
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the polyline with optional start and end markers.
 
         Returns:
-            Optional[BaseElement]: A Polyline element representing the polyline with its markers.
+            BaseElement | None: A Polyline element representing the polyline with its markers.
         """
         parameters = {
             'class_': self.class_name

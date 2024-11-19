@@ -1,5 +1,4 @@
 """Row."""
-from typing import List
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -34,11 +33,11 @@ class Row(StandardRegion):
         return DigitParser()
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with this row.
 
         Returns:
-            List[Rule]: A list of rules for ensuring unique digits in the row.
+            list[Rule]: A list of rules for ensuring unique digits in the row.
         """
         return [Rule('Row', 1, 'Digits in each row must be unique')]
 

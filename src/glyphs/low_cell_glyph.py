@@ -1,5 +1,5 @@
 """LowCellGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Symbol, Use
@@ -28,14 +28,14 @@ class LowCellGlyph(Glyph):
         self.coord = coord
 
     @classmethod
-    def symbol(cls) -> Optional[Symbol]:
+    def symbol(cls) -> Symbol | None:
         """Create and return the SVG symbol for the low cell glyph.
 
         The symbol is represented by a circle with a radius of 35
         centered at (50, 50).
 
         Returns:
-            Optional[Symbol]: The SVG symbol for the low cell glyph, or None.
+            Symbol | None: The SVG symbol for the low cell glyph, or None.
         """
         result = Symbol(
             viewBox="0 0 100 100",
@@ -45,11 +45,11 @@ class LowCellGlyph(Glyph):
         result.add(Circle(center=(50, 50), r=35))
         return result
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the low cell glyph by using the defined symbol and coordinates.
 
         Returns:
-            Optional[BaseElement]: The SVG use element that references the
+            BaseElement | None: The SVG use element that references the
             low cell symbol and positions it based on the coordinate.
         """
         return Use(href="#LowCell-symbol", insert=self.coord.point.coordinates, class_="LOwCell", height=100, width=100)

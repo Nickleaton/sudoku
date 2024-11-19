@@ -1,5 +1,4 @@
 """FixedDifferencePair."""
-from typing import List, Dict
 
 from pulp import LpElement
 
@@ -25,11 +24,11 @@ class FixedDifferencePair(FixedPair):
         return self.value
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Returns the rules associated with the FixedDifferencePair item.
 
         Returns:
-            List[Rule]: A list of rules that describe the fixed difference constraint between two cells.
+            list[Rule]: A list of rules that describe the fixed difference constraint between two cells.
         """
         return [
             Rule(
@@ -64,11 +63,11 @@ class FixedDifferencePair(FixedPair):
         v2 = solver.values[self.cell_2.row][self.cell_2.column]
         return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Return the CSS styles for rendering the FixedDifferencePair visually.
 
         Returns:
-            Dict: A dictionary containing the CSS styles for the FixedDifferencePair.
+            dict: A dictionary containing the CSS styles for the FixedDifferencePair.
         """
         return {
             '.FixedDifferencePair': {

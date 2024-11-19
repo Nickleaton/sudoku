@@ -1,5 +1,4 @@
 """VariableProductPair."""
-from typing import list, dict, Optional
 
 from pulp import LpElement
 
@@ -40,14 +39,14 @@ class VariableProductPair(VariablePair):
         """
         return super().tags.union({'Product'})
 
-    def target(self, solver: PulpSolver) -> Optional[LpElement]:
+    def target(self, solver: PulpSolver) -> LpElement |  None:
         """Calculate the target expression for the variable product pair.
 
         Args:
             solver (PulpSolver): The solver instance to use for variable constraints.
 
         Returns:
-            Optional[LpElement]: The expression representing the target constraints based
+            LpElement | None: The expression representing the target constraints based
                                  on the logarithm of cell values,or None if unable to calculate.
         """
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)

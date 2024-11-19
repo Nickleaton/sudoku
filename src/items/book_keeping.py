@@ -1,5 +1,4 @@
 """BookKeeping."""
-from typing import List
 from src.utils.sudoku_exception import SudokuException
 
 
@@ -117,21 +116,21 @@ class BookKeeping:
         """
         return f"{self.__class__.__name__}({self.maximum_digit!r})"
 
-    def set_possible(self, digits: List[int]) -> None:
+    def set_possible(self, digits: list[int]) -> None:
         """Set specific digits as possible, making others impossible.
 
         Args:
-            digits (List[int]): The list of digits to mark as possible.
+            digits (list[int]): The list of digits to mark as possible.
         """
         for digit in self.digit_range:
             if digit not in digits:
                 self[digit] = False
 
-    def set_impossible(self, digits: List[int]) -> None:
+    def set_impossible(self, digits: list[int]) -> None:
         """Set specific digits as impossible.
 
         Args:
-            digits (List[int]): The list of digits to mark as impossible.
+            digits (list[int]): The list of digits to mark as impossible.
         """
         for digit in self.digit_range:
             if digit in digits:

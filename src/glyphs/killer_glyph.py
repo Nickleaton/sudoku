@@ -1,5 +1,5 @@
 """KillerGlyph."""
-from typing import List, Optional, Dict, tuple, ClassVar
+from typing import ClassVar
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -19,14 +19,14 @@ class KillerGlyph(Glyph):
     size: float = config.drawing.cell_size / 2.0
     long_size: float = config.drawing.cell_size / 2.0 - offset
 
-    long_lines: ClassVar[Dict[int, Vector]] = {
+    long_lines: ClassVar[dict[int, Vector]] = {
         2: Vector(Coord(0, 0), Coord(0, 1)),
         4: Vector(Coord(0, 0), Coord(1, 0)),
         6: Vector(Coord(0, 1), Coord(1, 1)),
         8: Vector(Coord(1, 0), Coord(1, 1))
     }
 
-    short_lines: ClassVar[Dict[int, tuple[Point, Direction]]] = {
+    short_lines: ClassVar[dict[int, tuple[Point, Direction]]] = {
         12: (Point(-1, -1), Direction.UP),
         23: (Point(1, -1), Direction.UP),
         36: (Point(1, -1), Direction.RIGHT),
@@ -37,12 +37,12 @@ class KillerGlyph(Glyph):
         14: (Point(-1, -1), Direction.LEFT)
     }
 
-    def __init__(self, class_name: str, cells: List[Coord]):
+    def __init__(self, class_name: str, cells: list[Coord]):
         """Initialize the KillerGlyph with a class name and list of cell coordinates.
 
         Args:
             class_name (str): The class name for the glyph's SVG element.
-            cells (List[Coord]): A sorted list of coordinates representing the cells.
+            cells (list[Coord]): A sorted list of coordinates representing the cells.
         """
         super().__init__(class_name)
         self.cells = sorted(cells)
@@ -88,11 +88,11 @@ class KillerGlyph(Glyph):
         results.sort()
         return results
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Draw the glyph by generating the necessary SVG elements.
 
         Returns:
-            Optional[BaseElement]: A group of SVG elements representing the glyph.
+            BaseElement | None: A group of SVG elements representing the glyph.
         """
         group = Group()
         # TODO: Add drawing logic for merged vectors in the group.

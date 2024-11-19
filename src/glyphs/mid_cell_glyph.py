@@ -1,5 +1,5 @@
 """MidCellGlyph."""
-from typing import Optional
+
 
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
@@ -23,11 +23,11 @@ class MidCellGlyph(Glyph):
         self.percentage = 0.7
         self.size = Coord(1, 1) * self.percentage
 
-    def draw(self) -> Optional[BaseElement]:
+    def draw(self) -> BaseElement | None:
         """Create an SVG rectangle element representing the mid-cell glyph.
 
         Returns:
-            Optional[BaseElement]: The SVG rectangle element or None.
+            BaseElement | None: The SVG rectangle element or None.
         """
         top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)

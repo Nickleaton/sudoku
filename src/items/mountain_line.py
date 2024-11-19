@@ -1,6 +1,4 @@
 """MountainLine."""
-from typing import List, Dict
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.line import Line
@@ -16,11 +14,11 @@ class MountainLine(Line):
     """
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define rules specific to MountainLine.
 
         Returns:
-            List[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing a single Rule object that specifies:
             - Cells closer to the mountain peak have higher values.
         """
         return [
@@ -31,11 +29,11 @@ class MountainLine(Line):
             )
         ]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Generate a graphical representation of the MountainLine.
 
         Returns:
-            List[Glyph]: A list containing a `PolyLineGlyph` instance with
+            list[Glyph]: A list containing a `PolyLineGlyph` instance with
             cell coordinates for display as a mountain line.
         """
         return [PolyLineGlyph('MountainLine', [cell.coord for cell in self.cells], False, False)]
@@ -70,11 +68,11 @@ class MountainLine(Line):
             else:
                 solver.model += solver.values[c1.row][c1.column] <= solver.values[c2.row][c2.column] - 1, name
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """CSS styles for rendering the MountainLine in the user interface.
 
         Returns:
-            Dict: A dictionary defining CSS properties for `.MountainLine` to
+            dict: A dictionary defining CSS properties for `.MountainLine` to
             style this line as a mountain line.
         """
         return {

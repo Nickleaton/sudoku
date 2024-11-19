@@ -1,7 +1,7 @@
 """FPuzzlesLoader."""
 import json
 from pathlib import Path
-from typing import Optional, Any
+from typing import Any
 
 from src.items.board import Board
 from src.load_dump.loader import Loader, LoaderError
@@ -54,41 +54,41 @@ class FPuzzlesLoader(Loader):
         raise LoaderError(f"{self.size}x{self.size} board not handled")
 
     @property
-    def reference(self) -> Optional[str]:
+    def reference(self) -> str | None:
         """Fetch the puzzle reference URL from the JSON data, cast to a string if not None.
 
         Returns:
-            Optional[str]: URL reference for the puzzle, if available.
+            str | None: URL reference for the puzzle, if available.
         """
-        url: Optional[Any] = self.raw.get('data', {}).get('url')
+        url: Any | None = self.raw.get('data', {}).get('url')
         return str(url) if url is not None else None
 
     @property
-    def title(self) -> Optional[str]:
+    def title(self) -> str | None:
         """Fetch the puzzle title from the JSON data, cast to a string if not None.
 
         Returns:
-            Optional[str]: Title of the puzzle, if available.
+            str | None: Title of the puzzle, if available.
         """
-        title: Optional[Any] = self.raw.get('data', {}).get('title')
+        title: Any | None = self.raw.get('data', {}).get('title')
         return str(title) if title is not None else None
 
     @property
-    def author(self) -> Optional[str]:
+    def author(self) -> str | None:
         """Fetch the puzzle author from the JSON data, cast to a string if not None.
 
         Returns:
-            Optional[str]: Author of the puzzle, if available.
+            str | None: Author of the puzzle, if available.
         """
-        author: Optional[Any] = self.raw.get('data', {}).get('author')
+        author: Any | None = self.raw.get('data', {}).get('author')
         return str(author) if author is not None else None
 
     @property
-    def size(self) -> Optional[int]:
+    def size(self) -> int | None:
         """Fetch the puzzle board size from the JSON data, cast to an int if not None.
 
         Returns:
-            Optional[int]: Size of the puzzle board, if available.
+            int | None: Size of the puzzle board, if available.
         """
-        size: Optional[Any] = self.raw.get('data', {}).get('size')
+        size: Any | None = self.raw.get('data', {}).get('size')
         return int(size) if size is not None else None

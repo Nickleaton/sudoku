@@ -1,7 +1,6 @@
 """Known."""
-from typing import List, Any, Dict, Type
+from typing import Any, Type
 
-# Import statements for the required classes and types used in Known
 from src.items.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
@@ -16,7 +15,7 @@ from src.items.odd_cell import OddCell
 from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.known_parser import KnownParser
 
-CELL_TYPE_MAP: Dict[str, Type[SimpleCellReference]] = {
+CELL_TYPE_MAP: dict[str, Type[SimpleCellReference]] = {
     'f': FortressCell,
     'l': LowCell,
     'm': MidCell,
@@ -29,17 +28,17 @@ CELL_TYPE_MAP: Dict[str, Type[SimpleCellReference]] = {
 class Known(ComposedItem):
     """Represent a collection of cells with known characteristics on the board."""
 
-    def __init__(self, board: Board, rows: List[str]):
+    def __init__(self, board: Board, rows: list[str]):
         """Initialize the Known object with a board and a list of row data.
 
         Args:
             board (Board): The board instance associated with the Known cells.
-            rows (List[str]): A list of strings representing the rows of cells,
+            rows (list[str]): A list of strings representing the rows of cells,
                               where each character represents a cell type.
         """
         super().__init__(board, [])
         self.rows = rows
-        parts: List[CellReference] = []
+        parts: list[CellReference] = []
 
         for y, data in enumerate(self.rows):
             row = y + 1
@@ -84,26 +83,26 @@ class Known(ComposedItem):
         return KnownParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract a list of row strings from a YAML dictionary for Known.
 
         Args:
             board (Board): The board instance.
-            yaml (Dict): The YAML data to extract from.
+            yaml (dict): The YAML data to extract from.
 
         Returns:
             Any: A list of row strings extracted from the YAML data.
         """
-        result: List[str] = [y for y in yaml]
+        result: list[str] = [y for y in yaml]
         return result
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a Known instance from YAML data.
 
         Args:
             board (Board): The board instance.
-            yaml (Dict): The YAML data to create the Known instance from.
+            yaml (dict): The YAML data to create the Known instance from.
 
         Returns:
             Item: A new instance of Known initialized with the extracted rows.
@@ -111,11 +110,11 @@ class Known(ComposedItem):
         items = Known.extract(board, yaml[cls.__name__])
         return Known(board, items)
 
-    def line_str(self) -> List[str]:
+    def line_str(self) -> list[str]:
         """Return a list of row strings representing the board layout for Known items.
 
         Returns:
-            List[str]: A list of strings where each string represents a row of the board.
+            list[str]: A list of strings where each string represents a row of the board.
         """
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
 
@@ -137,10 +136,10 @@ class Known(ComposedItem):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
 
-    def to_dict(self) -> Dict[str, List[str]]:
+    def to_dict(self) -> dict[str, list[str]]:
         """Convert the Known instance into a dictionary format.
 
         Returns:
-            Dict[str, List[str]]: A dictionary representation of the Known instance with line_str as values.
+            dict[str, list[str]]: A dictionary representation of the Known instance with line_str as values.
         """
         return {self.__class__.__name__: self.line_str()}

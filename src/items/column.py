@@ -1,6 +1,4 @@
 """Column."""
-from typing import List
-
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
@@ -34,11 +32,11 @@ class Column(StandardRegion):
         return DigitParser()
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Define the rule associated with the column constraint.
 
         Returns:
-            List[Rule]: A list containing the uniqueness rule for columns.
+            list[Rule]: A list containing the uniqueness rule for columns.
         """
         return [Rule('Column', 1, 'Digits in each column must be unique')]
 

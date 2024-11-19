@@ -1,6 +1,5 @@
 """PencilMark."""
 import re
-from typing import Optional, List, Dict, tuple
 
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -13,23 +12,23 @@ from src.utils.sudoku_exception import SudokuException
 class PencilMarkCell(CellReference):
     """Represents a cell with pencil-marked digits in a Sudoku puzzle."""
 
-    def __init__(self, board: Board, row: int, column: int, digits: List[int]):
+    def __init__(self, board: Board, row: int, column: int, digits: list[int]):
         """Initialize a PencilMarkCell.
 
         Args:
             board (Board): The Sudoku board instance.
             row (int): The row index of the cell (1-based).
             column (int): The column index of the cell (1-based).
-            digits (List[int]): The list of pencil-marked digits for the cell.
+            digits (list[int]): The list of pencil-marked digits for the cell.
         """
         super().__init__(board, row, column)
         self.digits = digits
 
-    def svg(self) -> Optional[Glyph]:
+    def svg(self) -> Glyph | None:
         """Get the SVG representation for the pencil-marked cell.
 
         Returns:
-            Optional[Glyph]: Currently returns None as no SVG is generated.
+            Glyph | None: Currently returns None as no SVG is generated.
         """
         return None
 
@@ -43,27 +42,27 @@ class PencilMarkCell(CellReference):
         return super().tags.union({'PencilMark'})
 
     @property
-    def rules(self) -> List[Rule]:
+    def rules(self) -> list[Rule]:
         """Get the rules associated with the pencil-marked cell.
 
         Returns:
-            List[Rule]: A list of rules, including a restriction on the digits.
+            list[Rule]: A list of rules, including a restriction on the digits.
         """
         return [Rule("PencilMark", 1, "Digits restricted")]
 
-    def glyphs(self) -> List[Glyph]:
+    def glyphs(self) -> list[Glyph]:
         """Get the glyphs for the pencil-marked cell.
 
         Returns:
-            List[Glyph]: An empty list as no glyphs are associated.
+            list[Glyph]: An empty list as no glyphs are associated.
         """
         return []
 
-    def css(self) -> Dict:
+    def css(self) -> dict:
         """Get the CSS definitions for the pencil-marked cell.
 
         Returns:
-            Dict: A dictionary defining the CSS styles for the cell.
+            dict: A dictionary defining the CSS styles for the cell.
         """
         return {
             ".PencilMarkCell": {
@@ -79,21 +78,21 @@ class PencilMarkCell(CellReference):
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digits!r})"
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert the pencil-marked cell to a dictionary representation.
 
         Returns:
-            Dict: A dictionary containing the cell's row, column, and digits.
+            dict: A dictionary containing the cell's row, column, and digits.
         """
         return {self.__class__.__name__: f"{self.cell.row_column_string}={''.join([str(d) for d in self.digits])}"}
 
     @classmethod
-    def extract(cls, board: Board, yaml: Dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the parameters needed to create a PencilMarkCell from YAML data.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration for the cell.
+            yaml (dict): The YAML configuration for the cell.
 
         Returns:
             tuple: A tuple containing the row, column, and pencil-marked digits.
@@ -106,12 +105,12 @@ class PencilMarkCell(CellReference):
         return int(row_str), int(column_str), [int(s) for s in digits]
 
     @classmethod
-    def create(cls, board: Board, yaml: Dict) -> Item:
+    def create(cls, board: Board, yaml: dict) -> Item:
         """Create a PencilMarkCell from YAML data.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml (Dict): The YAML configuration for the cell.
+            yaml (dict): The YAML configuration for the cell.
 
         Returns:
             Item: An instance of PencilMarkCell.

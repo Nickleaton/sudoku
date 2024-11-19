@@ -13,7 +13,7 @@ class Answer:
 
         Args:
             board (Board): The board associated with this answer.
-            data (Optional[list[str]]): A list of strings representing the initial board configuration.
+            data (list[str] | None): A list of strings representing the initial board configuration.
         """
         self.board = board
         self.data: list[list[int]] = [
