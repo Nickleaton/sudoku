@@ -138,11 +138,11 @@ class Cell(Item):
             Cell.make(board, row, column)
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Coord:
+    def extract(cls, _: Board, yaml: dict) -> Coord:
         """Extract coordinates from a YAML representation.
 
         Args:
-            board (Board): The board the coordinates belong to.
+            _ (Board): The board the coordinates belong to.
             yaml (dict): A dictionary containing coordinate data.
 
         Returns:

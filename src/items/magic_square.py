@@ -113,11 +113,11 @@ class MagicSquare(Region):
         return super().tags.union({'MagicSquare', 'Sum'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> tuple[Coord, Coord]:
+    def extract(cls, _: Board, yaml: dict) -> tuple[Coord, Coord]:
         """Extract the center and corner coordinates for the MagicSquare from YAML.
 
         Args:
-            board (Board): The board to extract coordinates for.
+            _ (Board): The board to extract coordinates for.
             yaml (dict): The YAML configuration data.
 
         Returns:

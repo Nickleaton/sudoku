@@ -83,11 +83,11 @@ class Known(ComposedItem):
         return KnownParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> Any:
         """Extract a list of row strings from a YAML dictionary for Known.
 
         Args:
-            board (Board): The board instance.
+            _ (Board): The board instance.
             yaml (dict): The YAML data to extract from.
 
         Returns:

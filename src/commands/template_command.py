@@ -35,7 +35,7 @@ class TemplateCommand(SimpleCommand):
 
 
     def work(self, problem: Problem) -> None:
-        """Produce the Jinja2 template
+        """Produce the Jinja2 template.
 
         Create the template from the Jinja2 template string and store it in the problem
 

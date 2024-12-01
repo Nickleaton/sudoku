@@ -64,11 +64,11 @@ class Window(Region):
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Coord:
+    def extract(cls, _: Board, yaml: dict) -> Coord:
         """Extract the center coordinate from the YAML data.
 
         Args:
-            board (Board): The board to extract data for.
+            _ (Board): The board to extract data for.
             yaml (dict): The YAML data containing coordinates.
 
         Returns:

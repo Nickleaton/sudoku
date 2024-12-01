@@ -77,12 +77,11 @@ class Anti(ComposedItem):
         return super().tags.union({'Chess', 'Anti'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> Any:
         """Extract a list of digits from the YAML configuration.
 
         Args:
-            cls (type): The class that calls this method (used for extracting class-level data).
-            board (Board): The board object (not used in this method but required for interface).
+            _ (Board): The board object (not used in this method but required for interface).
             yaml (dict): The YAML configuration dictionary from which the digits are extracted.
 
         Returns:

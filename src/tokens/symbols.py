@@ -74,7 +74,7 @@ class DashToken(SymbolToken):
     """Represents a dash token."""
 
     def __init__(self):
-        """Initialize a dash token with pattern '-'."""
+        """Initialize a dash token with dash pattern."""
         super().__init__("-")
 
     def __repr__(self) -> str:

@@ -3,7 +3,7 @@ from typing import Any, Type
 
 
 class ParameterValueType:
-    """Represents a parameter with a key, value, and associated type.
+    """Represent a parameter with a key, value, and associated type.
 
     Attributes:
         key (str): The identifier for the parameter.
@@ -30,5 +30,5 @@ class ParameterValueType:
             raise TypeError(f"Parameter {key} must be of type {typ}")
 
     def __repr__(self):
-        """Returns a string representation of the ParameterValueType instance."""
+        """Return a string representation of the ParameterValueType instance."""
         return f"ParameterValueType(key={self.key!r}, value={self.value!r}, type={self.type!r})"

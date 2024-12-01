@@ -76,11 +76,11 @@ class Exclusion(Item):
         ]
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> Any:
         """Extract the position and digits from the YAML configuration.
 
         Args:
-            board (Board): The board the item applies to.
+            _ (Board): The board the item applies to.
             yaml (dict): The YAML data containing the Exclusion definition.
 
         Returns:

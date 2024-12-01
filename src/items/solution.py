@@ -63,11 +63,11 @@ class Solution(ComposedItem):
         return int(self.rows[row - 1][column - 1])
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> Any:
         """Extract solution rows from the given YAML dictionary.
 
         Args:
-            board (Board): The board associated with this solution.
+            _ (Board): The board associated with this solution.
             yaml (dict): The YAML dictionary containing solution data.
 
         Returns:

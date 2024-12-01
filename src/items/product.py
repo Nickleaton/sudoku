@@ -67,11 +67,11 @@ class Product(Region):
         return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, {self.product})"
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> Any:
         """Extract the position and product value from the YAML configuration.
 
         Args:
-            board (Board): The board to which the constraint applies.
+            _ (Board): The board to which the constraint applies.
             yaml (dict): The YAML configuration that defines the product constraint.
 
         Returns:

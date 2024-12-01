@@ -25,7 +25,7 @@ class ComposedGlyph(Glyph):
 
         Args:
             class_name (str): set the CSS class name for the composed glyph.
-            items (list[Glyph] | None], optional): Provide a list of `Glyph`
+            items (list[Glyph] | None): Provide a list of `Glyph`
                 objects to include in the composition. Default is an empty list.
         """
         super().__init__(class_name)

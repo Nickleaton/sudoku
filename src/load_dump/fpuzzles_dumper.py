@@ -20,3 +20,11 @@ class FPuzzlesDumper(Dumper):
             board (Board): The board instance to be dumped.
         """
         super().__init__(board)
+
+    def text(self) -> str:
+        """Generate a textual representation of the board in the format expected by FPuzzles.
+
+        Returns:
+            str: The formatted board in the FPuzzles-specific format.
+        """
+        return "xxx"

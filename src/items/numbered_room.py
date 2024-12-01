@@ -14,7 +14,7 @@ from src.utils.side import Side
 class NumberedRoom(Item):
     """Represents a numbered room that is associated with a clue and can be part of a sequence.
 
-    A numbered room represents a clue outside of the grid that gives the Xth digit in the row/column,
+    A numbered room represents a clue displayed outside the grid that gives the Xth digit in the row/column,
     seen from the side of the clue. The first digit in the row/column seen from the side of the clue
     is the starting point for determining which digit is referenced.
     """
@@ -64,11 +64,11 @@ class NumberedRoom(Item):
         return FrameParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> tuple:
+    def extract(cls, _: Board, yaml: dict) -> tuple:
         """Extract the side, index, and digit from the YAML configuration for the NumberedRoom.
 
         Args:
-            board (Board): The board associated with the item.
+            _ (Board): The board associated with the item.
             yaml (dict): The YAML configuration containing the NumberedRoom data.
 
         Returns:

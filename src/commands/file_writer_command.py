@@ -35,7 +35,7 @@ class FileWriterCommand(SimpleCommand):
         ]
 
     def work(self, problem: Problem) -> None:
-        """Write a file
+        """Write to a file.
 
         Args:
             problem (Problem): The problem to load the file and file name into.
@@ -48,4 +48,4 @@ class FileWriterCommand(SimpleCommand):
             with self.file_path.open(mode='w', encoding='utf-8') as file:
                 file.write(problem[self.source])
         except Exception as exc:
-            raise CommandException(f"Failed to write {str(self.file_path)}: {exc}") from exc
+            raise CommandException(f"Failed to write {self.file_path!s}: {exc}") from exc

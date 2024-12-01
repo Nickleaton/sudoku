@@ -65,11 +65,11 @@ class Knight(ComposedItem):
         return super().tags.union({'Knight'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> Any:
         """Extract digits from YAML configuration.
 
         Args:
-            board (Board): The Sudoku board for context.
+            _ (Board): The Sudoku board for context.
             yaml (dict): The YAML configuration containing digits.
 
         Returns:

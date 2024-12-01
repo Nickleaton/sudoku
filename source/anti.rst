@@ -48,11 +48,11 @@ YAML
 
 .. code-block:: yaml
 
-	Constraints:
-       - Antiknight:
+    Constraints:
+        - Antiknight:
        - Antiking:
        - AntiMonkey:
        - AntiQueen: 9
     
 It's possible to set digits in the constraint such as the AntiQueen above that only applies to the digit 9. 
-If no digits are specified it will assume it applie to all digits
+If no digits are specified it will assume it applies to all digits

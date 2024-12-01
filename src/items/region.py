@@ -111,11 +111,12 @@ class Region(ComposedItem):
             else:
                 solver.model += value1 >= value2 + 1, name
 
-    def add_allowed_constraint(self, solver: PulpSolver, cells: list[Cell], allowed: list[int]):
+    # noinspection PyMethodMayBeStatic
+    def add_allowed_constraint(self, _: PulpSolver, cells: list[Cell], allowed: list[int]):
         """Add constraints to restrict the allowed digits in specified cells.
 
         Args:
-            solver (PulpSolver): The solver to which the constraint is added.
+            _ (PulpSolver): The solver to which the constraint is added.
             cells (list[Cell]): list of cells to restrict.
             allowed (list[int]): list of allowed digits for the cells.
         """

@@ -14,7 +14,7 @@ class Angle:
         """Initialize an Angle instance.
 
         Args:
-            angle (float): The initial angle in degrees. It is normalized to [0, 360).
+            angle (float): The initial angle in degrees. It is normalized between 0 and  360.
         """
         self.angle = float(angle) % 360.0
 

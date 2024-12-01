@@ -107,11 +107,7 @@ class Command:
 
         Args:
             problem (Problem): The problem instance to operate on.
-
-        Raises:
-            NotImplementedError: If the method is not overridden in a child class.
         """
-        pass
 
     def execute(self, problem: Problem) -> None:
         """Execute the command, performing the specified action.
@@ -162,14 +158,29 @@ class Command:
 
     @staticmethod
     def get_string_representation(value: Any) -> str:
+        """Convert a value to its string representation.
+
+        Args:
+            value (Any): The value to be converted. Can be a string,
+                a `Path` object, or any other type.
+
+        Returns:
+            str: The string representation of the value. For strings,
+            it returns the string with quotes (e.g., `'value'`). For `Path`
+            objects, it converts them to a string and returns the quoted
+            representation. For all other types, it converts them to a
+            string before quoting.
+
+        """
         if isinstance(value, str):
             return repr(value)
         if isinstance(value, Path):
             return repr(str(value))
         return repr(str(value))
 
+
     def __repr__(self) -> str:
-        """Return a string representation of the command
+        """Return a string representation of the command.
 
         Returns:
             str: String representation of the object.
