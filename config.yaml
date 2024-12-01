@@ -21,7 +21,7 @@ logging:
     # Defines individual logging handlers, which specify where log messages should go.
     handlers:
         console:
-            # Uses a StreamHandler, which outputs log messages to a stream like stdout or stderr.
+            # Uses a StreamHandler, which output_types log messages to a stream like stdout or stderr.
             class: logging.StreamHandler
 
             # Defines the formatter for this handler, which controls the log message format.

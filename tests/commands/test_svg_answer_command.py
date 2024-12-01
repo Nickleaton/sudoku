@@ -9,7 +9,7 @@ from src.utils.coord import Coord
 from tests.commands.test_svg_command import TestSVGCommand
 
 
-class SVGTestAnswerCommand(TestSVGCommand):
+class TestSVGAnswerCommand(TestSVGCommand):
     """Test suite for SVGAnswerCommand class."""
 
     def setUp(self) -> None:
@@ -30,6 +30,7 @@ class SVGTestAnswerCommand(TestSVGCommand):
             ]
         )
         self.command = SVGAnswerCommand('svg')
+        self.representation = r"SVGAnswerCommand('svg', 'constraints', 'svg')"
 
     @property
     def in_select(self) -> Answer | None:

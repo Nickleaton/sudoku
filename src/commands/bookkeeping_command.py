@@ -1,7 +1,7 @@
 """BookkeepingCommand."""
 import logging
 
-from src.commands.command import CommandException
+from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -19,22 +19,14 @@ class BookkeepingCommand(SimpleCommand):
         super().__init__()
         self.constraints: str = constraints
         self.target: str = target
+        self.inputs: list[KeyType] = [
+            KeyType(self.constraints, str)
+        ]
+        self.outputs: list[KeyType] = [
+            KeyType(self.target, str)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check the preconditions for the command.
-
-        Args:
-            problem (Problem): The problem to check.
-
-        Raises:
-            CommandException: If the preconditions are not met.
-        """
-        if self.constraints not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.constraints} does not exist in the problem')
-        if self.target in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} already exists in the problem')
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Execute the bookkeeping operation.
 
         Args:
@@ -43,15 +35,7 @@ class BookkeepingCommand(SimpleCommand):
         Returns:
             None
         """
-        super().execute(problem)
+        super().work(problem)
         logging.info(f"Creating {self.target}")
         problem[self.constraints].bookkeeping()
         problem[self.target] = problem[self.constraints].bookkeeping_unique()
-
-    def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        Returns:
-            str: A string representation of the object.
-        """
-        return f"{self.__class__.__name__}({self.constraints!r}, {self.target!r})"

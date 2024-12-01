@@ -20,7 +20,7 @@ class Matrix:
 
     # pylint: disable=too-many-positional-arguments
     def __init__(self, name: str, a: int, b: int, c: int, d: int):
-        """Initialize a Matrix with given parameters.
+        """Initialize a Matrix with given parameter_types.
 
         Args:
             name (str): The name of the matrix.

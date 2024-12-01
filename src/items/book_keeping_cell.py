@@ -1,12 +1,12 @@
-"""BookKeeping."""
+"""BookKeepingCell."""
 from src.utils.sudoku_exception import SudokuException
 
 
-class BookKeeping:
+class BookKeepingCell:
     """Handles bookkeeping for possible values of digits in a puzzle."""
 
     def __init__(self, maximum_digit: int):
-        """Initialize a BookKeeping instance with a maximum digit limit.
+        """Initialize a BookKeepingCell instance with a maximum digit limit.
 
         Args:
             maximum_digit (int): The maximum digit to consider.
@@ -24,6 +24,8 @@ class BookKeeping:
         Returns:
             bool: True if the digit is possible, False otherwise.
         """
+        if digit -1 < 0 or digit > self.maximum_digit:
+            raise SudokuException(f"Invalid digit: {digit}.")
         return self.possibles[digit - 1]
 
     def __setitem__(self, digit: int, value: bool) -> None:
@@ -33,51 +35,53 @@ class BookKeeping:
             digit (int): The digit to set.
             value (bool): The value to set, indicating if the digit is possible.
         """
+        if digit - 1 < 0 or digit > self.maximum_digit:
+            raise SudokuException(f"Invalid digit: {digit}.")
         self.possibles[digit - 1] = value
 
-    def __and__(self, other) -> 'BookKeeping':
+    def __and__(self, other) -> 'BookKeepingCell':
         """Compute the logical AND of two BookKeeping instances.
 
         Args:
-            other (BookKeeping): Another BookKeeping instance.
+            other (BookKeepingCell): Another BookKeeping instance.
 
         Returns:
-            BookKeeping: A new instance with combined possibilities.
+            BookKeepingCell: A new instance with combined possibilities.
         """
-        if not isinstance(other, BookKeeping):
-            raise SudokuException(f"Expected an instance of BookKeeping, got {type(other)}.")
+        if not isinstance(other, BookKeepingCell):
+            raise SudokuException(f"Expected an instance of BookKeepingCell, got {type(other)}.")
         if self.maximum_digit != other.maximum_digit:
             raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
-        result = BookKeeping(self.maximum_digit)
+        result = BookKeepingCell(self.maximum_digit)
         for i in self.digit_range:
             result[i] = self[i] and other[i]
         return result
 
-    def __or__(self, other) -> 'BookKeeping':
+    def __or__(self, other) -> 'BookKeepingCell':
         """Compute the logical OR of two BookKeeping instances.
 
         Args:
-            other (BookKeeping): Another BookKeeping instance.
+            other (BookKeepingCell): Another BookKeeping instance.
 
         Returns:
-            BookKeeping: A new instance with combined possibilities.
+            BookKeepingCell: A new instance with combined possibilities.
         """
-        if not isinstance(other, BookKeeping):
-            raise SudokuException(f"Expected an instance of BookKeeping, got {type(other)}.")
+        if not isinstance(other, BookKeepingCell):
+            raise SudokuException(f"Expected an instance of BookKeepingCell, got {type(other)}.")
         if self.maximum_digit != other.maximum_digit:
             raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
-        result = BookKeeping(self.maximum_digit)
+        result = BookKeepingCell(self.maximum_digit)
         for i in self.digit_range:
             result[i] = self[i] or other[i]
         return result
 
-    def __invert__(self) -> 'BookKeeping':
+    def __invert__(self) -> 'BookKeepingCell':
         """Invert the possibilities in the instance.
 
         Returns:
-            BookKeeping: A new instance with inverted possibilities.
+            BookKeepingCell: A new instance with inverted possibilities.
         """
-        result = BookKeeping(self.maximum_digit)
+        result = BookKeepingCell(self.maximum_digit)
         for i in self.digit_range:
             result[i] = not self[i]
         return result
@@ -86,13 +90,13 @@ class BookKeeping:
         """Check if two BookKeeping instances are equal.
 
         Args:
-            other (BookKeeping): Another BookKeeping instance.
+            other (BookKeepingCell): Another BookKeeping instance.
 
         Returns:
             bool: True if both instances have identical possibilities, False otherwise.
         """
-        if not isinstance(other, BookKeeping):
-            raise SudokuException(f"Expected an instance of BookKeeping, got {type(other)}.")
+        if not isinstance(other, BookKeepingCell):
+            raise SudokuException(f"Expected an instance of BookKeepingCell, got {type(other)}.")
         if self.maximum_digit != other.maximum_digit:
             raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
         for i in self.digit_range:
@@ -115,6 +119,14 @@ class BookKeeping:
             str: A string showing the class name and maximum digit.
         """
         return f"{self.__class__.__name__}({self.maximum_digit!r})"
+
+    def __len__(self) -> int:
+        """Return the number of possible digits.
+
+        Returns:
+            int: The number of possible digits.
+        """
+        return sum(self.possibles)
 
     def set_possible(self, digits: list[int]) -> None:
         """Set specific digits as possible, making others impossible.

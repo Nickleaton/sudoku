@@ -16,7 +16,7 @@ class TestFrameParser(TestParser):
         self.example_format: str = '[TLBR]i=v'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
-                # Valid FrameParser format inputs
+                # Valid FrameParser format input_types
                 (
                     "T1=2",
                     ['T', 1, 2]
@@ -46,7 +46,7 @@ class TestFrameParser(TestParser):
             ]
         self.valid_input_answer: List[Tuple[str, Any]] = \
             [
-                # Valid FrameParser format inputs
+                # Valid FrameParser format input_types
                 (
                     "T1=2",
                     {'side': 'T', 'index': '1', 'value': '2'}
@@ -75,7 +75,7 @@ class TestFrameParser(TestParser):
             ]
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
-                # Valid FrameParser format inputs
+                # Valid FrameParser format input_types
                 ("T1=2", ['T', 1, 2]),
                 ("L3=10", ['L', 3, 10]),
                 ("B0=5", ['B', 0, 5]),
@@ -86,7 +86,7 @@ class TestFrameParser(TestParser):
             ]
         self.invalid_input: List[str] = \
             [
-                # Invalid inputs that should raise ParserError
+                # Invalid input_types that should raise ParserError
                 "X1=5",  # Invalid side (not T, L, B, or R)
                 "T1D=10",  # Extra character after '='
                 "T11=10",  # Invalid index (too long)

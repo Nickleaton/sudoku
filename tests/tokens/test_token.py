@@ -80,12 +80,12 @@ class TestToken(unittest.TestCase):
             self.assertFalse(self.token.match(text))
 
     def test_good(self):
-        """Test the matching of good inputs."""
+        """Test the matching of good input_types."""
         for text in self.good:
             self.assertTrue(self.token.match(text))
 
     def test_bad(self):
-        """Test the matching of bad inputs."""
+        """Test the matching of bad input_types."""
         for text in self.bad:
             self.assertFalse(self.token.match(text))
 

@@ -60,7 +60,7 @@ class KnownCell(CellReference):
 
         Args:
             board (Board): The board associated with this item.
-            yaml (dict): A YAML dictionary with the required parameters.
+            yaml (dict): A YAML dictionary with the required parameter_types.
 
         Returns:
             Item: An instance of KnownCell.

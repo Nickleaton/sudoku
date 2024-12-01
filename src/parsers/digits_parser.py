@@ -20,7 +20,7 @@ class DigitsParser(Parser):
     def parse(self, text: str) -> None:
         """Parse a comma-separated string of digits.
 
-        This method checks if the provided input string matches the expected
+        This method input_types if the provided input string matches the expected
         pattern of a comma-separated list of digits. If the input is valid,
         it processes the string to extract the digits and stores them in
         the result attribute as a list of integers.

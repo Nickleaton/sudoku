@@ -38,6 +38,7 @@ class TestPencilMarkCell(TestCellReference):
         """Return the configuration string for PencilMarkCell."""
         return "PencilMarkCell: 12=2468"
 
+    @property
     def has_rule(self) -> bool:
         """Return whether PencilMarkCell has an associated rule."""
         return True

@@ -12,6 +12,7 @@ class TestNullCommand(TestSimpleCommand):
         """Set up the test environment."""
         super().setUp()
         self.command = NullCommand()
+        self.representation = "NullCommand()"
 
 
 if __name__ == '__main__':  # pragma: no cover

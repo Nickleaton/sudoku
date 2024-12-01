@@ -88,7 +88,7 @@ class PencilMarkCell(CellReference):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple:
-        """Extract the parameters needed to create a PencilMarkCell from YAML data.
+        """Extract the parameter_types needed to create a PencilMarkCell from YAML data.
 
         Args:
             board (Board): The Sudoku board instance.

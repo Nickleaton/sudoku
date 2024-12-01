@@ -1,6 +1,5 @@
 """KillerTextGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
 from svgwrite.text import Text, TSpan
@@ -33,27 +32,27 @@ class KillerTextGlyph(Glyph):
         Returns:
             BaseElement | None: A group containing two text elements (background and foreground) or None.
         """
-        group = Group()
+        group: Group = Group()
         # Positioning the text with a small offset
         position = self.position.top_left + Coord(1, 1) * 0.05
 
         # Create background text element
-        text = Text("",
-                    transform=position.transform + " " + self.angle.transform,
-                    class_=self.class_name + "Background"
-                    )
-        span = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
-        text.add(span)
-        group.add(text)
+        background_text: Text = Text("",
+                          transform=position.transform + " " + self.angle.transform,
+                          class_=self.class_name + "Background"
+                          )
+        background_span: TSpan = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
+        background_text.add(background_span)
+        group.add(background_text)
 
         # Create foreground text element
-        text = Text("",
-                    transform=position.transform + " " + self.angle.transform,
-                    class_=self.class_name + "Foreground"
-                    )
-        span = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
-        text.add(span)
-        group.add(text)
+        foreground_text: Text = Text("",
+                          transform=position.transform + " " + self.angle.transform,
+                          class_=self.class_name + "Foreground"
+                          )
+        foreground_span: TSpan = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
+        foreground_text.add(foreground_span)
+        group.add(foreground_text)
 
         return group
 

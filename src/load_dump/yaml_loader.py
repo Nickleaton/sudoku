@@ -11,10 +11,10 @@ class YamlLoader(Loader):
     """A Loader subclass that loads board data from a YAML file."""
 
     def __init__(self, file_path: Path) -> None:
-        """Initialize the YamlLoader with the path to the YAML file and loads its contents.
+        """Initialize the YamlLoader with the config_file to the YAML file and loads its contents.
 
         Args:
-            file_path (Path): The path to the YAML file containing the board data.
+            file_path (Path): The config_file to the YAML file containing the board data.
         """
         super().__init__(file_path)
         with file_path.open(mode='r', encoding='utf-8') as file:

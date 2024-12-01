@@ -1,7 +1,9 @@
 """TestValidateConfigCommand."""
 import unittest
+from pathlib import Path
 
-from src.commands.problem import Problem
+from src.commands.file_reader_command import FileReaderCommand
+from src.commands.load_config_command import LoadConfigCommand
 from src.commands.validate_config_command import ValidateConfigCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 
@@ -15,33 +17,14 @@ class TestValidateConfigCommand(TestSimpleCommand):
         This method sets up the problem and prepares the command to be tested.
         """
         super().setUp()
-        # TODO change to load first the yaml, then validate
-        self.command = ValidateConfigCommand(self.path)
-        self.problem = Problem()
+        self.prerequisites = FileReaderCommand(file_name='config_file_name',
+                                               target='config_text',
+                                               file_path=Path('problems\\easy\\problem001.yaml')) \
+                             | LoadConfigCommand()
 
-    @property
-    def representation(self) -> str:
-        """Return the string representation of ValidateConfigCommand.
-
-        Returns:
-            str: The representation of the ValidateConfigCommand instance.
-        """
-        return r"ValidateConfigCommand('problems\\easy\\problem001.yaml', 'config_validation')"
-
-    def test_repr(self):
-        """Test the __repr__ method of ValidateConfigCommand.
-
-        This method checks if the string representation matches the expected value.
-        """
-        self.assertEqual(self.representation, repr(self.command))
-
-    def test_execute(self):
-        """Test the execute method of ValidateConfigCommand.
-
-        This method executes the command and prints the result of the config validation.
-        """
-        self.command.execute(self.problem)
-        print(self.problem.config_validation)
+        self.prerequisites.execute(self.problem)
+        self.command = ValidateConfigCommand()
+        self.representation = r"ValidateConfigCommand('config_text', 'config_validation')"
 
 
 if __name__ == '__main__':  # pragma: no cover

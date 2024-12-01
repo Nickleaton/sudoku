@@ -41,7 +41,7 @@ class TestParser(unittest.TestCase):
             self.assertEqual(self.parser.result, output)
 
     def test_invalid_input(self):
-        """Tests parsing invalid inputs raises ParserError."""
+        """Tests parsing invalid input_types raises ParserError."""
         for input_text in self.invalid_input:
             with self.assertRaises(ParserError) as _:
                 self.parser.parse(input_text)

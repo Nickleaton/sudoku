@@ -15,7 +15,7 @@ class TestCellValueParser(TestParser):
         self.representation: str = "CellValueParser()"
         self.example_format: str = 'rc=dd'
         self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid inputs for the Cell Value format
+            # Valid input_types for the Cell Value format
             (
                 "12=5",
                 [1, 2, 5]
@@ -38,7 +38,7 @@ class TestCellValueParser(TestParser):
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid inputs for the Cell Value format
+            # Valid input_types for the Cell Value format
             (
                 "12=5",
                 {'row': '1', 'column': '2', 'value': '5'}
@@ -61,7 +61,7 @@ class TestCellValueParser(TestParser):
             )
         ]
         self.invalid_input: List[str] = [
-            # Invalid inputs that should raise ParserError
+            # Invalid input_types that should raise ParserError
             "1=5",  # One digit on the left side
             "123=10",  # More than two digits on the left side
             "12=abc",  # Invalid value (not a digit)

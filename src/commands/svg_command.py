@@ -2,13 +2,15 @@
 import logging
 
 from defusedxml.minidom import parseString
+from xml.dom.minidom import Document
 from svgwrite import Drawing
 from svgwrite.container import Style
 
-from src.commands.command import CommandException
+from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.glyphs.glyph import Glyph
+from src.items.board import Board
 from src.items.item import Item
 from src.utils.config import Config
 
@@ -18,14 +20,25 @@ config = Config()
 class SVGCommand(SimpleCommand):
     """Base class for SVG output commands."""
 
-    def __init__(self, problem_field: str):
+    def __init__(self, board: str = 'board', constraints: str = 'constraints', target: str = 'svg'):
         """Initialize the SVGCommand.
 
         Args:
-            problem_field (str): The attribute of the problem that contains the root item to be drawn.
+            board (str): The attribute for the board
+            constraints (str): The attribute for the constraints
+            target (str): The attribute of the problem that contains the root item to be drawn.
         """
         super().__init__()
-        self.problem_field = problem_field
+        self.board = board
+        self.constraints = constraints
+        self.target = target
+        self.input_types: list[KeyType] = [
+            KeyType(board, Board),
+            KeyType(constraints, Item),
+        ]
+        self.output_types: list[KeyType] = [
+            KeyType(target, Document)
+        ]
 
     def select(self, item: Item | None) -> bool:
         """Select whether the given item is to be drawn.
@@ -43,28 +56,14 @@ class SVGCommand(SimpleCommand):
             return True
         return False
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check preconditions for the command.
-
-        Args:
-            problem (Problem): The problem to check.
-
-        Raises:
-            CommandException: If the preconditions are not met.
-        """
-        if problem.board is None:
-            raise CommandException(f'{self.__class__.__name__} - Board not built')
-        if problem.constraints is None:
-            raise CommandException(f'{self.__class__.__name__} - Constraints not built')
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Produce the SVG.
 
         Args:
             problem (Problem): The problem to produce the SVG for.
         """
-        super().execute(problem)
-        logging.info(f'Creating {self.problem_field}')
+        super().work(problem)
+        logging.info(f'Creating {self.target}')
 
         # Get the glyphs to draw
         glyphs: Glyph = problem.constraints.sorted_glyphs()
@@ -95,14 +94,4 @@ class SVGCommand(SimpleCommand):
 
         # Convert to xml
         elements = parseString(canvas.tostring())
-        problem[self.problem_field] = elements
-
-    def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        The string is of the form "SVGCommand(problem_field)". The representation is useful for debugging and logging.
-
-        Returns:
-            str: A string representation of the object.
-        """
-        return f"{self.__class__.__name__}({self.problem_field!r})"
+        problem[self.target] = elements

@@ -35,52 +35,52 @@ class AcceptanceTest(unittest.TestCase):
 
     @property
     def config_file_name(self) -> Optional[Path]:
-        # Return the path to the configuration file for the test
+        # Return the config_file to the configuration file for the test
         return Path("problems") / Path("easy") / Path(self.name + ".yaml")
 
     @property
     def log_file_name(self) -> Optional[Path]:
-        # Return the path to the log file for the test
+        # Return the config_file to the log file for the test
         return AcceptanceTest.DIRECTORY / self.name / "problem.log"
 
     @property
     def svg_file_name(self) -> Optional[Path]:
-        # Return the path to the SVG file for the test
+        # Return the config_file to the SVG file for the test
         return AcceptanceTest.DIRECTORY / self.name / "problem.svg"
 
     @property
     def html_file_name(self) -> Optional[Path]:
-        # Return the path to the HTML file for the test
+        # Return the config_file to the HTML file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("problem.html")
 
     @property
     def lp_file_name(self) -> Optional[Path]:
-        # Return the path to the LP file for the test
+        # Return the config_file to the LP file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("problem.lp")
 
     @property
     def solution_file_name(self) -> Optional[Path]:
-        # Return the path to the solution file for the test
+        # Return the config_file to the solution file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("solution.txt")
 
     @property
     def verify_filename(self) -> Optional[Path]:
-        # Return the path to the verification file for the test
+        # Return the config_file to the verification file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("verify.txt")
 
     @property
     def png_problem_filename(self) -> Optional[Path]:
-        # Return the path to the problem PNG file for the test
+        # Return the config_file to the problem PNG file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("problem.png")
 
     @property
     def png_solution_filename(self) -> Optional[Path]:
-        # Return the path to the solution PNG file for the test
+        # Return the config_file to the solution PNG file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("solution.png")
 
     @property
     def png_bookkeeping_filename(self) -> Optional[Path]:
-        # Return the path to the bookkeeping PNG file for the test
+        # Return the config_file to the bookkeeping PNG file for the test
         return AcceptanceTest.DIRECTORY / self.name / Path("bookkeeping.png")
 
     def run_acceptance_test(self):

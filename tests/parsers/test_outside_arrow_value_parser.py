@@ -15,7 +15,7 @@ class TestOutsideArrowValueParser(TestParser):
         self.representation: str = 'OutsideArrowValueParser()'
         self.example_format: str = "[TLBR]d=dd"
         self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid inputs for the Outside Arrow Value format
+            # Valid input_types for the Outside Arrow Value format
             (
                 "T0=5",
                 ['T', 0, 5]
@@ -46,7 +46,7 @@ class TestOutsideArrowValueParser(TestParser):
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid inputs for the Outside Arrow value format
+            # Valid input_types for the Outside Arrow value format
             (
                 "T0=5",
                 {'side': 'T', 'index': '0', 'value': '5'}
@@ -78,7 +78,7 @@ class TestOutsideArrowValueParser(TestParser):
         ]
 
         self.invalid_input: List[str] = [
-            # Invalid inputs that should raise ParserError
+            # Invalid input_types that should raise ParserError
             "A0=5",  # Invalid side character
             "L10=10",  # Invalid index (more than one digit)
             "T2=D",  # Invalid value (not a digit)

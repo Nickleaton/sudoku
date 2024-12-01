@@ -16,7 +16,7 @@ class TestDigitParser(TestParser):
         self.example_format: str = 'd'
         self.valid_input_result: List[Tuple[str, int]] = \
             [
-                # Valid single digit inputs
+                # Valid single digit input_types
                 ("0", [0]),
                 ("1", [1]),
                 ("2", [2]),
@@ -33,7 +33,7 @@ class TestDigitParser(TestParser):
             ]
         self.valid_input_answer: List[Tuple[str, Dict[str, str]]] = \
             [
-                # Valid single digit inputs
+                # Valid single digit input_types
                 ("0", {'digit': '0'}),
                 ("1", {'digit': '1'}),
                 ("2", {'digit': '2'}),
@@ -51,7 +51,7 @@ class TestDigitParser(TestParser):
 
         self.invalid_input: List[str] = \
             [
-                # Invalid inputs that should raise ParserError
+                # Invalid input_types that should raise ParserError
                 "10",  # More than one digit
                 "a",  # Non-digit character
                 " ",  # Empty input

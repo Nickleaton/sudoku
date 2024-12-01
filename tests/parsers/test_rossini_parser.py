@@ -15,7 +15,7 @@ class TestRossiniParser(TestParser):
         self.representation: str = "RossiniParser()"
         self.example_format: str = '[TLBR]d=[DIU]'
         self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid inputs for the Rossini format
+            # Valid input_types for the Rossini format
             (
                 "T0=D",
                 ['T', 0, 'D']
@@ -46,7 +46,7 @@ class TestRossiniParser(TestParser):
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid inputs for the Rossini format
+            # Valid input_types for the Rossini format
             (
                 "T0=D",
                 {'side': 'T', 'index': '0', 'direction': 'D'}
@@ -78,7 +78,7 @@ class TestRossiniParser(TestParser):
         ]
 
         self.invalid_input: List[str] = [
-            # Invalid inputs that should raise ParserError
+            # Invalid input_types that should raise ParserError
             "A0=D",  # Invalid side character
             "L10=I",  # Invalid digit (more than one)
             "T2=X",  # Invalid direction character

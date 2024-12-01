@@ -7,7 +7,7 @@ from pulp import lpSum
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
-from src.items.book_keeping import BookKeeping
+from src.items.book_keeping_cell import BookKeepingCell
 from src.items.item import Item, SudokuException
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -39,7 +39,7 @@ class Cell(Item):
         super().__init__(board)
         self.row = row
         self.column = column
-        self.book = BookKeeping(self.board.maximum_digit)
+        self.book = BookKeepingCell(self.board.maximum_digit)
 
     def __repr__(self) -> str:
         """Return a detailed string representation of the cell.
@@ -65,11 +65,11 @@ class Cell(Item):
         """
         return f"Cell({self.row}, {self.column})"
 
-    def marked_book(self) -> BookKeeping | None:
+    def marked_book(self) -> BookKeepingCell | None:
         """Return the bookkeeping instance for the cell.
 
         Returns:
-            BookKeeping | None: The BookKeeping instance for tracking digit possibilities.
+            BookKeepingCell | None: The BookKeeping instance for tracking digit possibilities.
         """
         return self.book
 

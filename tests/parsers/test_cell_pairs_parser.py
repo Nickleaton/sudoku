@@ -70,7 +70,7 @@ class TestCellPairsParser(TestParser):
             ]
         self.invalid_input: List[str] = \
             [
-                # Invalid inputs that should raise ParserError
+                # Invalid input_types that should raise ParserError
                 "123x56789",  # invalid due to non-digit character
                 "12-34-56",  # invalid due to extra '-'
                 "12,34,5x",  # invalid due to non-digit character

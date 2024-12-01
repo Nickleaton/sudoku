@@ -54,6 +54,7 @@ class TestSumPair(TestPair):
         """Return the 'inside' cell of SumPair."""
         return Cell.make(self.board, 1, 2)
 
+    @property
     def has_rule(self) -> bool:
         """Return whether SumPair has a rule."""
         return True

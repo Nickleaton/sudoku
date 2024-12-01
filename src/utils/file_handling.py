@@ -11,7 +11,7 @@ def is_writeable_file(file: Path) -> bool:
     Otherwise, return False.
 
     Args:
-        file (Path): The file path to check.
+        file (Path): The file config_file to check.
 
     Returns:
         bool: True if the file can be written to or created, False if not.
@@ -28,7 +28,7 @@ def is_readable_file(file: Path) -> bool:
     Otherwise, return False.
 
     Args:
-        file (Path): The file path to check.
+        file (Path): The file config_file to check.
 
     Returns:
         bool: True if the file can be read, False if not.

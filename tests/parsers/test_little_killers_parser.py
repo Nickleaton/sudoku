@@ -16,7 +16,7 @@ class TestLittleKillersParser(TestParser):
         self.example_format: str = '[TLBR]i=dd'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
-                # Valid Little Killers format inputs
+                # Valid Little Killers format input_types
                 (
                     "T1C=14",
                     ['T', 1, 'C', 14]
@@ -64,7 +64,7 @@ class TestLittleKillersParser(TestParser):
                 ),
             ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid Little Killers format inputs
+            # Valid Little Killers format input_types
             (
                 "T1C=14",
                 {'side': 'T', 'index': '1', 'direction': 'C', 'value': '14'}
@@ -114,7 +114,7 @@ class TestLittleKillersParser(TestParser):
 
         self.invalid_input: List[str] = \
             [
-                # Invalid inputs that should raise ParserError
+                # Invalid input_types that should raise ParserError
                 "X1C=5",  # Invalid side (not T, L, B, or R)
                 "T1D=10",  # Invalid direction (not C or A)
                 "T11C=10",  # Invalid index (out of range)

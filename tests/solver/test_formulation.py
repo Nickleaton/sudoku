@@ -48,7 +48,7 @@ class TestFormulation(unittest.TestCase):
             name (str): The base name of the LP file.
 
         Returns:
-            Path: The full path of the LP file.
+            Path: The full config_file of the LP file.
         """
         if name not in TestFormulation.lp_files:
             TestFormulation.lp_files[name] = 0
@@ -274,7 +274,7 @@ class TestFormulation(unittest.TestCase):
     def test_logical_and(self):
         """Tests the logical_and function with various input combinations.
 
-        The test cases cover all possible combinations of two binary inputs,
+        The test cases cover all possible combinations of two binary input_types,
         ensuring the function behaves correctly for all scenarios.
         """
         self.logical_and(0, 0, 0)

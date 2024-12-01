@@ -15,7 +15,7 @@ class TestVertexValueParser(TestParser):
         self.representation: str = 'VertexValueParser()'
         self.example_format: str = 'rc=dd'
         self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid inputs for the Vertex Value format
+            # Valid input_types for the Vertex Value format
             (
                 "12=123",
                 [1, 2, 123]
@@ -38,7 +38,7 @@ class TestVertexValueParser(TestParser):
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid inputs for the Vertex Value format
+            # Valid input_types for the Vertex Value format
             (
                 "12=123",
                 {'row': '1', 'column': '2', 'value': '123'}
@@ -62,7 +62,7 @@ class TestVertexValueParser(TestParser):
         ]
 
         self.invalid_input: List[str] = [
-            # Invalid inputs that should raise ParserError
+            # Invalid input_types that should raise ParserError
             "1=3",  # One digit on the left side
             "123=4",  # More than two digits on the left side
             "12=a",  # Invalid value (not a digit)

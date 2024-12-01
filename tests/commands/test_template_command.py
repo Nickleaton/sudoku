@@ -29,34 +29,10 @@ class TestTemplateCommand(TestSimpleCommand):
                              | CreateRulesCommand() \
                              | SVGProblemCommand('problem_svg')
         self.prerequisites.execute(self.problem)
-        self.command = TemplateCommand(template=Path('src\\html\\problem.html'), target='html')
+        self.command = TemplateCommand(template_file=Path('src\\html\\problem.html'), target='html')
         self.requirements = ['config', 'meta', 'board', 'constraints', 'rules', 'problem_svg']
         self.target = "html"
-
-    def test_command(self):
-        """Test the execution of TemplateCommand.
-
-        This method checks if the TemplateCommand correctly generates the HTML output
-        for the given problem.
-        """
-        self.command.execute(self.problem)
-        self.assertIsNotNone(self.problem.html)
-
-    @property
-    def representation(self):
-        """Return the string representation of the TemplateCommand.
-
-        Returns:
-            str: The representation of the TemplateCommand instance.
-        """
-        return "TemplateCommand('src\\\\html\\\\problem.html', 'html')"
-
-    def test_repr(self):
-        """Test the __repr__ method of TemplateCommand.
-
-        This method checks if the string representation matches the expected value.
-        """
-        self.assertEqual(self.representation, repr(self.command))
+        self.representation = r"TemplateCommand('problem.html', 'html')"
 
 
 if __name__ == '__main__':  # pragma: no cover

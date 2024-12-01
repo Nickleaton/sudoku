@@ -8,7 +8,7 @@ class TestSide(unittest.TestCase):
     """Test the Cyclic class."""
 
     def test_create(self):
-        """Test creating Cyclic instances from string inputs."""
+        """Test creating Cyclic instances from string input_types."""
         self.assertEqual(Cyclic.ANTICLOCKWISE, Cyclic.create("A"))
         self.assertEqual(Cyclic.CLOCKWISE, Cyclic.create("C"))
         with self.assertRaises(ValueError):

@@ -1,5 +1,7 @@
 """GreaterThanEqualDifferenceLine."""
 
+from typing import Sequence
+
 from pulp import lpSum
 
 from src.items.board import Board

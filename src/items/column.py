@@ -27,7 +27,7 @@ class Column(StandardRegion):
         """Get the parser for digits in the column.
 
         Returns:
-            DigitParser: A parser for digit inputs specific to columns.
+            DigitParser: A parser for digit input_types specific to columns.
         """
         return DigitParser()
 

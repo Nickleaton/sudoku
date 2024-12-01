@@ -53,6 +53,7 @@ class TestSumPair(TestVariablePair):
         """Return the expected set of classes for VariableSumPair."""
         return {Cell, Item, Pair, VariablePair, VariableSumPair, ComposedItem, Region}
 
+    @property
     def has_rule(self) -> bool:
         """Return whether VariableSumPair has a rule."""
         return True

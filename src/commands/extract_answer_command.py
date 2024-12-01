@@ -1,5 +1,7 @@
 """ExtractAnswerCommand."""
 from src.commands.command import CommandException, Command
+from src.commands.key_type import KeyType
+
 from src.commands.problem import Problem
 from src.solvers.answer import Answer
 from src.solvers.pulp_solver import Status
@@ -18,27 +20,16 @@ class ExtractAnswerCommand(Command):
         super().__init__()
         self.solver = solver
         self.target = target
+        self.inputs: list[KeyType] = [
+            KeyType(self.solver, str)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check preconditions before executing the command.
-
-        Ensures that a solver has been set in the problem and that the target
-        attribute does not already exist.
-
-        Args:
-            problem (Problem): The problem instance to check.
-
-        Raises:
-            CommandException: If no solver is set or if the target attribute
-                              already exists in the problem.
-        """
-        if problem[self.solver] is None:
-            raise CommandException("No solver has been set.")
-        if self.target in problem:
-            raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
+        self.outputs: list[KeyType] = [
+            KeyType(self.target, Answer)
+        ]
 
     # pylint: disable=loop-invariant-statement
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Extract the answer from the solver's results and stores it in the problem.
 
         If the solver's status is not optimal, the command will not store an answer.
@@ -59,11 +50,3 @@ class ExtractAnswerCommand(Command):
         for row in problem[self.solver].board.row_range:
             for column in problem[self.solver].board.column_range:
                 problem[self.target].set_value(row, column, int(problem[self.solver].values[row][column].varValue))
-
-    def __repr__(self) -> str:
-        """Return a string representation of the ExtractAnswerCommand instance.
-
-        Returns:
-            str: A string representation of the object.
-        """
-        return f"ExtractAnswerCommand({self.solver!r}, {self.target!r})"

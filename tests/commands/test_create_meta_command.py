@@ -1,7 +1,9 @@
 """TestCreateMetaCommand."""
 import unittest
+from pathlib import Path
 
 from src.commands.create_meta_command import CreateMetaCommand
+from src.commands.file_reader_command import FileReaderCommand
 from src.commands.load_config_command import LoadConfigCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 
@@ -12,27 +14,13 @@ class TestCreateMetaCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        self.prerequisites = LoadConfigCommand(self.path)
+        self.prerequisites = FileReaderCommand(file_name='config_file_name',
+                                               target='config_text',
+                                               file_path=Path('problems\\easy\\problem001.yaml')) \
+                             | LoadConfigCommand()
         self.prerequisites.execute(self.problem)
         self.command = CreateMetaCommand()
-        self.requirements = ['config']
-        self.target = "meta"
-
-    def test_command(self):
-        """Test the execute method of CreateMetaCommand."""
-        self.assertIn('config', self.problem)
-        self.assertNotIn('meta', self.problem)
-        self.command.execute(self.problem)
-        self.assertIn('meta', self.problem)
-
-    @property
-    def representation(self) -> str:
-        """Return the string representation of the CreateMetaCommand."""
-        return r"CreateMetaCommand('config', 'meta')"
-
-    def test_repr(self):
-        """Test the string representation of the command."""
-        self.assertEqual(self.representation, repr(self.command))
+        self.representation = r"CreateMetaCommand('config', 'meta')"
 
 
 if __name__ == '__main__':  # pragma: no cover

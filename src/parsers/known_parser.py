@@ -52,7 +52,7 @@ class KnownParser(Parser):
     def parse(self, text: str) -> None:
         """Parse the input string and store the result in the 'result' attribute.
 
-        This method checks if the input string matches the expected format and parses it accordingly.
+        This method input_types if the input string matches the expected format and parses it accordingly.
         It stores the parsed values in the `result` and `answer` attributes.
 
         Args:

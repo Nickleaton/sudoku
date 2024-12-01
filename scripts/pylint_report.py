@@ -195,13 +195,13 @@ class CustomJsonReporter(BaseReporter):
         self.messages = []
 
     def handle_message(self, msg):
-        """Manage message of different type and in the context of path."""
+        """Manage message of different type and in the context of config_file."""
         self.messages.append({"type": msg.category,
                               "module": msg.module,
                               "obj": msg.obj,
                               "line": msg.line,
                               "column": msg.column,
-                              "path": msg.path,
+                              "config_file": msg.path,
                               "symbol": msg.symbol,
                               "message": html.escape(msg.msg or "", quote=False),
                               "message-id": msg.msg_id})

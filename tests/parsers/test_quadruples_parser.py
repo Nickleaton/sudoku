@@ -15,7 +15,7 @@ class TestQuadruplesParser(TestParser):
         self.representation: str = "QuadruplesParser()"
         self.example_format: str = 'rc=dd??'
         self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid quadruples format inputs
+            # Valid quadruples format input_types
             (
                 "12=123",
                 [1, 2, '123']
@@ -54,7 +54,7 @@ class TestQuadruplesParser(TestParser):
             ),  # Longer right side is valid
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid quadruples format inputs
+            # Valid quadruples format input_types
             (
                 "12=123",
                 {'row': '1', 'column': '2', 'values': ['1', '2', '3']}
@@ -94,7 +94,7 @@ class TestQuadruplesParser(TestParser):
         ]
 
         self.invalid_input: List[str] = [
-            # Invalid inputs that should raise ParserError
+            # Invalid input_types that should raise ParserError
             "123=456",  # More than two digits on the left
             "12=4a",  # Non-digit character on the right
             "1=23",  # Less than two digits on the left

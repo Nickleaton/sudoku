@@ -70,7 +70,7 @@ class TestCellParser(TestParser):
             ]
         self.invalid_input: List[str] = \
             [
-                # Invalid inputs that should raise ParserError
+                # Invalid input_types that should raise ParserError
                 "1",  # Only one digit
                 "123",  # More than two digits
                 "a2",  # Non-digit character

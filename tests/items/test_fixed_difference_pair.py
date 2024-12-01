@@ -55,6 +55,7 @@ class TestFixedDifferencePair(TestFixedPair):
         """Return the expected classes that the FixedDifferencePair should belong to."""
         return {Cell, Item, Pair, FixedPair, FixedDifferencePair, ComposedItem, Region}
 
+    @property
     def has_rule(self) -> bool:
         """Return True if the FixedDifferencePair has a rule, otherwise False."""
         return True

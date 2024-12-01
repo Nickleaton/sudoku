@@ -102,7 +102,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         """Save the puzzle model in LP (Linear Programming) format.
 
         Args:
-            filename (Path | str): The path or name of the file to save the LP format.
+            filename (Path | str): The config_file or name of the file to save the LP format.
         """
         super().save_lp(filename)
         if isinstance(filename, Path):
@@ -114,7 +114,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         """Save the puzzle model in MPS (Mathematical Programming System) format.
 
         Args:
-            filename (Path | str): The path or name of the file to save the MPS format.
+            filename (Path | str): The config_file or name of the file to save the MPS format.
         """
         super().save_mps(filename)
         if isinstance(filename, Path):

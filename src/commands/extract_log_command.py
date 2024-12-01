@@ -1,5 +1,7 @@
 """ExtractLogCommand."""
-from src.commands.command import Command, CommandException
+from src.commands.command import Command
+from src.commands.key_type import KeyType
+
 from src.commands.problem import Problem
 
 
@@ -16,26 +18,14 @@ class ExtractLogCommand(Command):
         super().__init__()
         self.solver = solver
         self.target = target
+        self.inputs: list[KeyType] = [
+            KeyType(self.solver, str)
+        ]
+        self.outputs: list[KeyType] = [
+            KeyType(self.target, str)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check preconditions before executing the command.
-
-        Ensures that the specified solver exists in the problem and that
-        the target attribute does not already exist.
-
-        Args:
-            problem (Problem): The problem instance to check.
-
-        Raises:
-            CommandException: If the solver is not found or if the target
-                              attribute already exists in the problem.
-        """
-        if self.solver not in problem:
-            raise CommandException(f"{self.__class__.__name__} - {self.solver} not in problem")
-        if self.target in problem:
-            raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Extract the log from the solver and stores it in the problem.
 
         Args:

@@ -1,10 +1,14 @@
 """CreateConstraintsCommand."""
 import logging
 
-from src.commands.command import CommandException
+import pydotted
+
+from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.items.board import Board
 from src.items.constraints import Constraints
+from src.items.item import Item
 
 
 class CreateConstraintsCommand(SimpleCommand):
@@ -22,24 +26,15 @@ class CreateConstraintsCommand(SimpleCommand):
         self.config: str = config
         self.board: str = board
         self.target: str = target
+        self.input_types: list[KeyType] = [
+            KeyType(config, pydotted.pydot),
+            KeyType(board, Board)
+        ]
+        self.output_types: list[KeyType] = [
+            KeyType(target, Item)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check if the necessary conditions are met before executing the command.
-
-        Args:
-            problem (Problem): The problem instance to check conditions on.
-
-        Raises:
-            CommandException: If the configuration, board, or target constraints do not meet required conditions.
-        """
-        if self.config not in problem:
-            raise CommandException(f"{self.__class__.__name__} - '{self.config}' configuration missing in problem")
-        if self.board not in problem:
-            raise CommandException(f"{self.__class__.__name__} - '{self.board}' board not defined in problem")
-        if self.target in problem:
-            raise CommandException(f"{self.__class__.__name__} - '{self.target}' already exists in the problem")
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Execute the command to create constraints.
 
         Args:
@@ -48,15 +43,9 @@ class CreateConstraintsCommand(SimpleCommand):
         Returns:
             None
         """
-        super().execute(problem)
+        super().work(problem)
         logging.info(f"Creating {self.target}")
-        problem[self.target] = Constraints.create(problem[self.board],
-                                                  {'Constraints': problem[self.config]['Constraints']})
-
-    def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        Returns:
-            str: A string representation showing configuration, board, and target.
-        """
-        return f"{type(self).__name__}({self.config!r}, {self.board!r}, {self.target!r})"
+        problem[self.target] = Constraints.create(
+            problem[self.board],
+            {'Constraints': problem[self.config]['Constraints']}
+        )

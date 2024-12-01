@@ -85,7 +85,7 @@ class LittleKiller(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[int, int, Cyclic, Side]:
-        """Extract the parameters for creating a LittleKiller region from the YAML input.
+        """Extract the parameter_types for creating a LittleKiller region from the YAML input.
 
         Args:
             board (Board): The board being used.

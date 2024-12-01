@@ -12,6 +12,7 @@ class TestSVGProblemCommand(TestSVGCommand):
         """Set up the test environment for SVGProblemCommand."""
         super().setUp()
         self.command = SVGProblemCommand('svg')
+        self.representation = r"SVGPencilMarkCommand('svg', 'constraints', 'svg')"
 
 
 if __name__ == '__main__':  # pragma: no cover

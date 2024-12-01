@@ -26,14 +26,14 @@ class Solver:
         """Save the puzzle in LP (Linear Programming) format.
 
         Args:
-            filename (Path | str): The file path or name where the LP format will be saved.
+            filename (Path | str): The file config_file or name where the LP format will be saved.
         """
 
     def save_mps(self, filename: Path | str) -> None:
         """Save the puzzle in MPS (Mathematical Programming System) format.
 
         Args:
-            filename (Path | str): The file path or name where the MPS format will be saved.
+            filename (Path | str): The file config_file or name where the MPS format will be saved.
         """
 
     def solve(self) -> None:

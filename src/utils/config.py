@@ -1,7 +1,7 @@
 """Config: A singleton class representing the configuration of an application."""
 import threading
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import oyaml as yaml
 from pydotted import pydot
@@ -11,7 +11,7 @@ class Config:
     """A singleton class representing the configuration of an application.
 
     Attributes:
-        config_file_path (Path): The path to the YAML configuration file.
+        config_file_path (Path): The config_file to the YAML configuration file.
         config (pydot): A nested dictionary representing the configuration read from the YAML file.
 
     Examples:
@@ -29,14 +29,14 @@ class Config:
         ```
     """
 
-    __instance: 'Config' | None = None
+    __instance: Optional['Config'] = None
     __lock: threading.Lock = threading.Lock()
 
     def __new__(cls, config_file_path: Path = Path("config.yaml")) -> 'Config':
         """Create a new instance of the `Config` class if one doesn't already exist.
 
         Args:
-            config_file_path (Path): The path to the YAML configuration file.
+            config_file_path (Path): The config_file to the YAML configuration file.
 
         Returns:
             Config: The singleton instance of the `Config` class.

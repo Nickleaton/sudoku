@@ -22,7 +22,7 @@ class Consecutive1Glyph(RectangleGlyph):
 
         Determine the orientation of the rectangle based on the relative
         positions of the `first` and `second` coordinates. Pass the necessary
-        parameters to the parent `RectangleGlyph` class.
+        parameter_types to the parent `RectangleGlyph` class.
 
         Args:
             class_name (str): set the CSS class name for the rectangle.

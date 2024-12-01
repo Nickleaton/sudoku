@@ -8,7 +8,7 @@ from sortedcontainers import SortedDict
 from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
-from src.items.book_keeping import BookKeeping
+from src.items.book_keeping_cell import BookKeepingCell
 from src.parsers.none_parser import NoneParser
 from src.parsers.parser import Parser
 from src.solvers.pulp_solver import PulpSolver
@@ -264,11 +264,11 @@ class Item:
                 continue
             item.add_bookkeeping_constraint(solver)
 
-    def marked_book(self) -> BookKeeping | None:
+    def marked_book(self) -> BookKeepingCell | None:
         """Return the bookkeeping object for this item, or None.
 
         Returns:
-            BookKeeping | None: The bookkeeping object, or None.
+            BookKeepingCell | None: The bookkeeping object, or None.
         """
         return None
 
@@ -279,9 +279,9 @@ class Item:
         Returns:
             bool: True if all marked books are unique, False otherwise.
         """
-        marked_books: list[BookKeeping] = []
+        marked_books: list[BookKeepingCell] = []
         for item in self.walk():
-            marked_book: BookKeeping | None = item.marked_book()
+            marked_book: BookKeepingCell | None = item.marked_book()
             if marked_book is not None:
                 marked_books.append(marked_book)
         return all(marked_book.is_unique() for marked_book in marked_books)

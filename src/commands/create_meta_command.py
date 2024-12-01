@@ -1,7 +1,9 @@
 """CreateMetaCommand."""
 import logging
 
-from src.commands.command import CommandException
+import pydotted
+
+from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -19,26 +21,14 @@ class CreateMetaCommand(SimpleCommand):
         super().__init__()
         self.source: str = source
         self.target: str = target
+        self.input_types: list[KeyType] = [
+            KeyType(source, pydotted.pydot)
+        ]
+        self.output_types: list[KeyType] = [
+            KeyType(target, pydotted.pydot)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check preconditions for command execution.
-
-        Ensures that the source attribute exists in the problem and the target attribute
-        does not already exist.
-
-        Args:
-            problem (Problem): The problem instance to check.
-
-        Raises:
-            CommandException: If the source attribute is missing or the target attribute
-                              already exists in the problem.
-        """
-        if self.source not in problem:
-            raise CommandException(f"{self.__class__.__name__} - {self.source} not loaded")
-        if self.target in problem:
-            raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Create the metadata field in the problem.
 
         Logs a message indicating that the command is being processed and creates a new
@@ -47,14 +37,6 @@ class CreateMetaCommand(SimpleCommand):
         Args:
             problem (Problem): The problem instance to create the metadata in.
         """
-        super().execute(problem)
+        super().work(problem)
         logging.info(f"Creating {self.target}")
         problem[self.target] = problem[self.source]['Board']
-
-    def __repr__(self) -> str:
-        """Return a string representation of the CreateMetaCommand instance.
-
-        Returns:
-            str: A string representation of the object.
-        """
-        return f"{self.__class__.__name__}({self.source!r}, {self.target!r})"

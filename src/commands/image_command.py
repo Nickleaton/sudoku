@@ -7,9 +7,10 @@ from reportlab.graphics import renderPM
 from svglib.svglib import svg2rlg
 
 from src.commands.command import CommandException
+from src.commands.key_type import KeyType
+
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.utils.file_handling import is_writeable_file
 
 
 class ImageFormat(Enum):
@@ -58,25 +59,17 @@ class ImageCommand(SimpleCommand):
             ValueError: If the target has an unsupported suffix.
         """
         super().__init__()
-        self.target: Path = Path(target) if isinstance(target, str) else target
         self.source: str = source
+        self.target: Path = Path(target) if isinstance(target, str) else target
         self.image_format: ImageFormat = ImageFormat.from_suffix(self.target.suffix)
+        self.inputs: list[KeyType] = [
+            KeyType(source, str),
+        ]
+        self.outputs: list[KeyType] = [
+            KeyType(target, Path)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check the preconditions for the command.
-
-        Args:
-            problem (Problem): The problem to check.
-
-        Raises:
-            CommandException: If the preconditions are not met.
-        """
-        if self.source not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.source} not in problem')
-        if not is_writeable_file(self.target):
-            raise CommandException(f'{self.__class__.__name__} - {self.target} is not writeable')
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Write the image to a file.
 
         The image is written to the file specified in `target`. The image format
@@ -93,7 +86,7 @@ class ImageCommand(SimpleCommand):
         Raises:
             CommandException: If the image cannot be written for any reason.
         """
-        super().execute(problem)
+        super().work(problem)
         logging.info(f"Creating {self.target}")
         try:
             if self.image_format == ImageFormat.SVG:
@@ -108,13 +101,3 @@ class ImageCommand(SimpleCommand):
         except OSError as exc:
             raise CommandException(f"Failed to write to {self.target}: {exc}") from exc
 
-    def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        The string is of the form "ImageCommand(problem_field, file)". The
-        representation is useful for debugging and logging.
-
-        Returns:
-            str: A string representation of the object.
-        """
-        return f"{self.__class__.__name__}({self.source!r}, {self.target!r})"

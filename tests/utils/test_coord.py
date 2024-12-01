@@ -128,7 +128,7 @@ class TestCoord(unittest.TestCase):
         return len(errors)
 
     def test_validate(self):
-        """Test the validation of various YAML inputs."""
+        """Test the validation of various YAML input_types."""
         self.assertEqual(0, TestCoord.check_yaml([1, 1]))
         self.assertEqual(1, TestCoord.check_yaml([1, 2, 3]))
         self.assertEqual(1, TestCoord.check_yaml("xxx"))

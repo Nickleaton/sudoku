@@ -34,21 +34,21 @@ class TestSolutionParser(TestParser):
         ]
 
     def test_parse_valid_input(self):
-        """Tests parsing of valid inputs."""
+        """Tests parsing of valid input_types."""
         for text, expected in self.valid_input_result:
             with self.subTest(text=text):
                 self.parser.parse(text)
                 self.assertEqual(self.parser.result, expected)
 
     def test_parse_valid_answer(self):
-        """Tests parsing of valid inputs."""
+        """Tests parsing of valid input_types."""
         for text, expected in self.valid_input_answer:
             with self.subTest(text=text):
                 self.parser.parse(text)
                 self.assertEqual(self.parser.answer, expected)
 
     def test_parse_invalid_input(self):
-        """Tests that invalid inputs raise ParserError."""
+        """Tests that invalid input_types raise ParserError."""
         for text in self.invalid_input:
             with self.subTest(text=text):
                 with self.assertRaises(ParserError):

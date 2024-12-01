@@ -4,7 +4,8 @@ from tempfile import NamedTemporaryFile
 
 import orloge
 
-from src.commands.command import CommandException, Command
+from src.commands.command import Command
+from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 
 
@@ -22,21 +23,14 @@ class AnalyseLogFileCommand(Command):
         self.log: str = log
         self.target: str = target
 
-    def precondition_check(self, problem: Problem):
-        """Check if the necessary conditions are met before executing the command.
+        self.inputs: list[KeyType] = [
+            KeyType(log, str)
+        ]
+        self.outputs: list[KeyType] = [
+            KeyType(target, str)
+        ]
 
-        Args:
-            problem (Problem): The problem instance to check for preconditions.
-
-        Raises:
-            CommandException: If no solver is set in the problem or if the target key already exists in the problem.
-        """
-        if problem.solver is None:
-            raise CommandException("No solver has been set.")
-        if self.target in problem:
-            raise CommandException(f"{self.__class__.__name__} - {self.target} already in problem")
-
-    def execute(self, problem: Problem):
+    def work(self, problem: Problem) -> None:
         """Execute the command to analyze the solver's log file.
 
         Args:
@@ -57,11 +51,3 @@ class AnalyseLogFileCommand(Command):
         finally:
             # Delete the temp file
             log_path.unlink(missing_ok=True)
-
-    def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        Returns:
-            str: A string representation of the AnalyseLogFileCommand instance, showing log and target keys.
-        """
-        return f"ExtractAnswerCommand({self.log!r}, {self.target!r})"

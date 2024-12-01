@@ -58,6 +58,7 @@ class TestVariableProductPair(TestVariablePair):
         """Return the expected set of classes for VariableProductPair."""
         return {Cell, Item, Pair, VariablePair, VariableProductPair, ComposedItem, Region}
 
+    @property
     def has_rule(self) -> bool:
         """Return whether VariableProductPair has a rule."""
         return True

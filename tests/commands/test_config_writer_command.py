@@ -17,19 +17,18 @@ class TestConfigWriterCommand(TestSimpleCommand):
         super().setUp()
         self.prerequisites = LoadConfigCommand(self.path)
         self.prerequisites.execute(self.problem)
-        self.output_path = Path("c:\\temp\\test.yaml")
+        self.output_path = Path("output/tests/test.yaml")
         self.command = ConfigWriterCommand(source='config', target=self.output_path)
         self.requirements = ['config']
         self.target = self.output_path
+        self.representation = r"ConfigWriterCommand('config', 'output\\tests\\test.yaml')"
 
-    @property
-    def representation(self) -> str:
-        """Return the string representation of the ConfigWriterCommand."""
-        return "ConfigWriterCommand('config', 'c:\\\\temp\\\\test.yaml')"
-
-    def test_repr(self):
-        """Test the __repr__ method of the ConfigWriterCommand."""
-        self.assertEqual(self.representation, repr(self.command))
+    def tearDown(self):
+        """Clean up the test environment."""
+        super().tearDown()
+        if self.output_path.exists() and self.output_path.is_file():
+            logging.info(f"Deleting file {self.output_path}")
+            self.output_path.unlink()
 
     def test_execute(self):
         """Test the execute method of the ConfigWriterCommand."""
@@ -46,12 +45,6 @@ class TestConfigWriterCommand(TestSimpleCommand):
         loader = LoadConfigCommand(self.output_path)
         loader.execute(problem2)
         self.assertEqual(self.problem.config, problem2.config)
-
-    def tearDown(self):
-        """Clean up the test environment."""
-        if self.output_path.exists() and self.output_path.is_file():
-            logging.info(f"Deleting file {self.output_path}")
-            self.output_path.unlink()
 
 
 if __name__ == '__main__':  # pragma: no cover

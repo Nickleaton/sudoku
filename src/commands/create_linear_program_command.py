@@ -1,11 +1,15 @@
 """Produce the text in LP format for the problem."""
 import logging
 
-from src.commands.command import CommandException
+import pydotted
+
+from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.solvers.solver import Solver
 from src.utils.temporary_file import TemporaryFile
-
+from src.items.board import Board
+from src.items.item import Item
 
 class CreateLinearProgramCommand(SimpleCommand):
     """Produce the LP version of the problem."""
@@ -32,28 +36,17 @@ class CreateLinearProgramCommand(SimpleCommand):
         self.constraints: str = constraints
         self.solver: str = solver
         self.target: str = target
+        self.input_types = [
+            KeyType(self.config, pydotted.pydot),
+            KeyType(self.board, Board),
+            KeyType(self.constraints, Item),
+            KeyType(self.solver, Solver)
+        ]
+        self.output_types = [
+            KeyType(self.target, str)
+        ]
 
-    def precondition_check(self, problem: Problem) -> None:
-        """Check the preconditions for the command.
-
-        Args:
-            problem (Problem): The problem to check.
-
-        Raises:
-            CommandException: If any required field is missing or if the target field already exists.
-        """
-        if self.config not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.config} not loaded')
-        if self.board not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.board} not built')
-        if self.constraints not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.constraints} not built')
-        if self.solver not in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.solver} not built')
-        if self.target in problem:
-            raise CommandException(f'{self.__class__.__name__} - {self.target} already in problem')
-
-    def execute(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:
         """Produce the LP version of the problem.
 
         Logs a message indicating that the command is being processed. Creates a new LP solver
@@ -63,24 +56,9 @@ class CreateLinearProgramCommand(SimpleCommand):
         Args:
             problem (Problem): The problem instance to create the LP version of.
         """
-        super().execute(problem)
+        super().work(problem)
         logging.info(f"Creating {self.target}")
         with TemporaryFile() as tf:
             problem[self.solver].save_lp(str(tf.path))
             with tf.path.open(mode='r', encoding='utf-8') as f:
                 problem[self.target] = f.read()
-
-    def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        Returns:
-            str: A string representation showing board, config, constraints, solver, and target.
-        """
-        return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.config!r}, "
-            f"{self.constraints!r}, "
-            f"{self.solver!r}, "
-            f"{self.target!r})"
-        )

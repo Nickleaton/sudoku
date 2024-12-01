@@ -29,7 +29,7 @@ class TemporaryFile:
                     f.write("Hello World")
         """
         if not isinstance(config.temporary_directory, (str, Path)):
-            raise ValueError("Temporary directory must be a valid path string or Path object")
+            raise ValueError("Temporary directory must be a valid config_file string or Path object")
 
         directory: Path = config.temporary_directory if isinstance(config.temporary_directory, Path) else Path(
             config.temporary_directory)
@@ -43,10 +43,10 @@ class TemporaryFile:
 
     @property
     def path(self) -> Path:
-        """Get the path of the temporary file.
+        """Get the config_file of the temporary file.
 
         Returns:
-            Path: The path of the temporary file.
+            Path: The config_file of the temporary file.
         """
         return self._path
 

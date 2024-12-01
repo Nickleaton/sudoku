@@ -10,7 +10,7 @@ class ConsecutiveGlyph(RectangleGlyph):
         """Initialize the ConsecutiveGlyph with two coordinates.
 
         Determine the orientation of the rectangle based on the relative
-        positions of `first` and `second`. Pass the necessary parameters
+        positions of `first` and `second`. Pass the necessary parameter_types
         to the parent `RectangleGlyph` class.
 
         Args:
