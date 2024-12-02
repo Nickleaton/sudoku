@@ -13,8 +13,6 @@ class YamlDumper(Dumper):
         board (Board): The board instance to be dumped.
     """
 
-
-
     def __init__(self, board: Board):
         """Initialize the YamlDumper with a board instance.
 
@@ -24,4 +22,5 @@ class YamlDumper(Dumper):
         super().__init__(board)
 
     def text(self) -> str:
-        pass
+        """Return text for the dumper."""
+        return ""

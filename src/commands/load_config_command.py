@@ -21,8 +21,8 @@ class LoadConfigCommand(SimpleCommand):
         """Initialize LoadConfigCommand.
 
         Args:
-            config_text (str): Name of string containing the config in the problem.
-            config_name (str): The name of the variable to store the parsed config in the problem.
+            source (str): Name of string containing the config in the problem.
+            target (str): The name of the variable to store the parsed config in the problem.
         """
         super().__init__()
         self.source: str = source

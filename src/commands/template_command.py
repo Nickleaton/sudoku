@@ -27,7 +27,7 @@ class TemplateCommand(SimpleCommand):
 
 
         self.inputs: list[KeyType] = [
-            KeyType(self.template_file.name, str)
+            KeyType(self.template_raw, str)
         ]
         self.outputs: list[KeyType] = [
             KeyType(self.target, Template)

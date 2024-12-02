@@ -49,4 +49,4 @@ class FileReaderCommand(SimpleCommand):
             with self.file_path.open(mode='r', encoding='utf-8') as file:
                 problem[self.target] = file.read()
         except Exception as exc:
-            raise CommandException(f"Failed to load {self.source}: {exc}") from exc
+            raise CommandException(f"Failed to load {self.file_path}: {exc}") from exc

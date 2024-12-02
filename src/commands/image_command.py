@@ -8,7 +8,6 @@ from svglib.svglib import svg2rlg
 
 from src.commands.command import CommandException
 from src.commands.key_type import KeyType
-
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -48,25 +47,25 @@ class ImageFormat(Enum):
 class ImageCommand(SimpleCommand):
     """Command to produce images."""
 
-    def __init__(self, source: str, target: Path | str) -> None:
+    def __init__(self, source: str, target: str) -> None:
         """Initialize an ImageCommand.
 
         Args:
             source (str): The attribute of the problem to write out.
-            target (Path | str): The name of the file to write to.
+            target (Path): the attribute to add to the problem.
 
         Raises:
             ValueError: If the target has an unsupported suffix.
         """
         super().__init__()
         self.source: str = source
-        self.target: Path = Path(target) if isinstance(target, str) else target
+        self.target: str = target
         self.image_format: ImageFormat = ImageFormat.from_suffix(self.target.suffix)
         self.inputs: list[KeyType] = [
             KeyType(source, str),
         ]
         self.outputs: list[KeyType] = [
-            KeyType(target, Path)
+            KeyType(target, str)
         ]
 
     def work(self, problem: Problem) -> None:
@@ -100,4 +99,3 @@ class ImageCommand(SimpleCommand):
                 renderPM.drawToFile(drawing, self.target.name, fmt=self.image_format.name)
         except OSError as exc:
             raise CommandException(f"Failed to write to {self.target}: {exc}") from exc
-
