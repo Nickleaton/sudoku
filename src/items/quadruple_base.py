@@ -69,7 +69,9 @@ class QuadrupleBase(Item):
             tuple: A tuple containing a `Coord` object for the position and a string of digits.
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
-        match = regex.match(yaml[cls.__name__])
+        # TODO replace with proper handling
+        text: str = next(iter(yaml.values()))
+        match = regex.match(text)
         if match is None:
             raise SudokuException("Match is None, expected a valid match.")
         row_str, column_str, digits = match.groups()
