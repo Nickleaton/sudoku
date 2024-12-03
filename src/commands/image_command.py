@@ -6,8 +6,11 @@ from pathlib import Path
 from reportlab.graphics import renderPM
 from svglib.svglib import svg2rlg
 
+from xml.dom.minidom import Document
+
 from src.commands.command import CommandException
 from src.commands.key_type import KeyType
+from src.commands.parameter_value_type import ParameterValueType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -47,7 +50,7 @@ class ImageFormat(Enum):
 class ImageCommand(SimpleCommand):
     """Command to produce images."""
 
-    def __init__(self, source: str, target: str) -> None:
+    def __init__(self, image_format_name: str,  image_format: ImageFormat, source: str, target: str) -> None:
         """Initialize an ImageCommand.
 
         Args:
@@ -60,11 +63,15 @@ class ImageCommand(SimpleCommand):
         super().__init__()
         self.source: str = source
         self.target: str = target
-        self.image_format: ImageFormat = ImageFormat.from_suffix(self.target.suffix)
-        self.inputs: list[KeyType] = [
-            KeyType(source, str),
+        self.image_format_name: str = image_format_name
+        self.image_format: ImageFormat = image_format
+        self.parameters: list[ParameterValueType] = [
+            ParameterValueType(image_format_name, image_format, ImageFormat)
         ]
-        self.outputs: list[KeyType] = [
+        self.input_types: list[KeyType] = [
+            KeyType(source, Document),
+        ]
+        self.output_types: list[KeyType] = [
             KeyType(target, str)
         ]
 
@@ -90,12 +97,8 @@ class ImageCommand(SimpleCommand):
         try:
             if self.image_format == ImageFormat.SVG:
                 # Handle SVG which is just pretty print out as XML
-                with self.target.open(mode='wb', encoding='utf-8') as f:
-                    text: str = str(problem[self.source].toprettyxml(indent="  "))
-                    f.write(text.encode('utf-8'))
+                problem[self.target] = str(problem[self.source].toprettyxml(indent="  "))
             else:
-                # For other formats, use renderPM to convert the XML to the specified format
-                drawing = svg2rlg(problem[self.source])
-                renderPM.drawToFile(drawing, self.target.name, fmt=self.image_format.name)
+                raise CommandException(f"Unsupported image format: {self.image_format}")
         except OSError as exc:
             raise CommandException(f"Failed to write to {self.target}: {exc}") from exc

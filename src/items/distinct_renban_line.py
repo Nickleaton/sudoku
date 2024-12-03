@@ -57,7 +57,7 @@ class DistinctRenbanLine(RenbanLine):
         Returns:
             int: The power of 2 corresponding to the given digit.
         """
-        return 2 ** (digit - 1)
+        return int(2 ** (digit - 1))
 
     @staticmethod
     def power_str(power: int) -> str:

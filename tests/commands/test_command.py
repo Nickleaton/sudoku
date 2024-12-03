@@ -179,8 +179,6 @@ class TestCommand(unittest.TestCase):
         """Test the __repr__ method of the Command class."""
         if self.command is None:
             return
-        print (self.representation)
-        print (repr(self.command))
         self.assertEqual(self.representation, repr(self.command))
 
     def test_parameter_type_mismatch(self):

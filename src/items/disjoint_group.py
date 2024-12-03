@@ -1,4 +1,6 @@
 """DisjointGroup."""
+from typing import ClassVar
+
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
@@ -12,7 +14,7 @@ class DisjointGroup(StandardRegion):
 
     # Offsets for the cells in the disjoint group
     # TODO Move and think about a multiply by scalar
-    offsets: tuple[tuple[int, int]] = (
+    offsets: ClassVar[list[tuple[int, int]]] = [
         (0, 0),
         (0, 3),
         (0, 6),
@@ -22,7 +24,7 @@ class DisjointGroup(StandardRegion):
         (6, 0),
         (6, 3),
         (6, 6)
-    )
+    ]
 
     def __init__(self, board: Board, index: int):
         """Initialize a DisjointGroup.

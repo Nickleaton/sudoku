@@ -51,9 +51,9 @@ class Mote(Region):
         Returns:
             tuple[int, list[Item]]: The total sum and the list of cells.
         """
-        parts = yaml[cls.__name__].split("=")
-        total = int(parts[0].strip())
-        cells = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')]
+        parts: list[str] = yaml[cls.__name__].split("=")
+        total: int = int(parts[0].strip())
+        cells:list [Item] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')]
         return total, cells
 
     @classmethod
