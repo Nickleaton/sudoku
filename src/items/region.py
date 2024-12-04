@@ -37,6 +37,10 @@ class Region(ComposedItem):
         """
         return cls(board)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def cells(self) -> list[Cell]:
         """Return the list of cells in the region.

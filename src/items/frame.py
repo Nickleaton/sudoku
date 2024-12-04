@@ -90,6 +90,10 @@ class Frame(FirstN):
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraint for the frame to the solver."""
         self.add_total_constraint(solver, self.total)

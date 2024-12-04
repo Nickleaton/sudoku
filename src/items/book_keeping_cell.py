@@ -24,7 +24,7 @@ class BookKeepingCell:
         Returns:
             bool: True if the digit is possible, False otherwise.
         """
-        if digit -1 < 0 or digit > self.maximum_digit:
+        if digit - 1 < 0 or digit > self.maximum_digit:
             raise SudokuException(f"Invalid digit: {digit}.")
         return self.possibles[digit - 1]
 

@@ -1,6 +1,5 @@
 """Boxes."""
 
-
 from src.items.board import Board
 from src.items.box import Box
 from src.items.item import Item
@@ -41,6 +40,10 @@ class Boxes(StandardRegionSet):
             Item: An instance of Boxes.
         """
         return Boxes(board)
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
         """Return a string representation of the Boxes instance.

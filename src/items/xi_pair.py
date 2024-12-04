@@ -1,6 +1,5 @@
 """XiPair."""
 
-
 from src.items.sum_pair import SumPair
 
 

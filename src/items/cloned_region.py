@@ -74,6 +74,10 @@ class ClonedRegion(Item):
         cells_a, cells_b = ClonedRegion.extract(board, yaml)
         return ClonedRegion(board, cells_a, cells_b)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Retrieve the glyphs for the cloned region.
 

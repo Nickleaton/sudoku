@@ -164,6 +164,10 @@ class Cell(Item):
         coord: Coord = Cell.extract(board, yaml)
         return cls(board, int(coord.row), int(coord.column))
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def valid(self) -> bool:
         """Check if the cell is valid on the board.

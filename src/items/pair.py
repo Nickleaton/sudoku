@@ -1,6 +1,5 @@
 """Pair."""
 
-
 from src.glyphs.edge_text_glyph import EdgeTextGlyph
 from src.glyphs.glyph import Glyph
 from src.items.board import Board
@@ -78,6 +77,10 @@ class Pair(Region):
         """
         c1, c2 = cls.extract(board, yaml)
         return cls(board, c1, c2)
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
 
     @property
     def rules(self) -> list[Rule]:

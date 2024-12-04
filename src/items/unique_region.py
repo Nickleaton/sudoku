@@ -62,6 +62,10 @@ class UniqueRegion(Region):
         """
         return UniqueRegion(board, UniqueRegion.extract(board, yaml))
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Get the list of glyphs associated with this unique region.
 

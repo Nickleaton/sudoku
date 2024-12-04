@@ -91,6 +91,10 @@ class QuadrupleBase(Item):
         position, numbers = QuadrupleBase.extract(board, yaml)
         return cls(board, position, numbers)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Generate glyphs for the visual representation of the Quadruple.
 

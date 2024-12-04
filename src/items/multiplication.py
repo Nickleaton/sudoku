@@ -1,7 +1,6 @@
 """Multiplication."""
 from math import log10
 
-
 from pulp import lpSum
 
 from src.items.board import Board

@@ -49,6 +49,10 @@ class Indexer(StandardRegion):
         index = cls.extract(board, yaml)
         return cls(board, index)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @staticmethod
     def variant() -> str:
         """Return the variant type associated with this Indexer.

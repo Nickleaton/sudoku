@@ -1,6 +1,5 @@
 """StandardRegionSet."""
 
-
 from src.items.region_set import RegionSet
 
 

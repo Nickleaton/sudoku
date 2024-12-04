@@ -122,6 +122,10 @@ class MinMaxSum(FirstN):
         side, index, total = MinMaxSum.extract(board, yaml)
         return cls(board, side, index, total)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraint for the MinMaxSum frame to the solver.
 

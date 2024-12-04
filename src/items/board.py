@@ -200,6 +200,10 @@ class Board:
             author
         )
 
+    @classmethod
+    def create2(cls, name: str, yaml_data: dict) -> 'Board':
+        return cls.create(board, yaml_data)
+
     def to_dict(self) -> dict:
         """Convert the Board attributes to a dictionary format for YAML serialization.
 

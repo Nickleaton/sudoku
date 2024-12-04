@@ -130,6 +130,10 @@ class Rossini(FirstN):
         side, index, order = Rossini.extract(board, yaml)
         return cls(board, side, index, order)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the Rossini constraint to the given solver.
 

@@ -53,7 +53,7 @@ class Mote(Region):
         """
         parts: list[str] = yaml[cls.__name__].split("=")
         total: int = int(parts[0].strip())
-        cells:list [Item] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')]
+        cells: list[Item] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')]
         return total, cells
 
     @classmethod
@@ -69,6 +69,10 @@ class Mote(Region):
         """
         total, cells = Mote.extract(board, yaml)
         return Mote(board, total, cells)
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
         """Retrieve the list of glyphs representing the MOTE.

@@ -1,6 +1,5 @@
 """ColumnIndexer."""
 
-
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph
 from src.items.board import Board

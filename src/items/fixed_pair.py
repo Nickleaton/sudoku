@@ -81,6 +81,10 @@ class FixedPair(Pair):
         r1, c1, r2, c2, value = cls.extract(board, yaml)
         return cls(board, Cell(board, r1, c1), Cell(board, r2, c2), value)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def tags(self) -> set[str]:
         """Return the tags associated with the FixedPair item.

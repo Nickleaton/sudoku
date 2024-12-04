@@ -68,3 +68,7 @@ class Constraints(ComposedItem):
 
         # Return the populated Constraints instance
         return result
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)

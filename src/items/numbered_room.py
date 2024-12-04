@@ -94,6 +94,10 @@ class NumberedRoom(Item):
         side, offset, digit = cls.extract(board, yaml)
         return cls(board, side, offset, digit)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the NumberedRoom.
 

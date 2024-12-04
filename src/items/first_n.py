@@ -88,6 +88,10 @@ class FirstN(Region):
         side, index, count = FirstN.extract(board, yaml)
         return cls(board, side, index, count)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def to_dict(self) -> dict:
         """Convert the FirstN region to a dictionary representation.
 

@@ -91,6 +91,10 @@ class Window(Region):
         coord: Coord = Window.extract(board, yaml)
         return cls(board, coord)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def __repr__(self) -> str:
         """Return a string representation of the Window instance.
 

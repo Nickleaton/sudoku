@@ -68,6 +68,10 @@ class KnownCell(CellReference):
         row, column, digit = KnownCell.extract(board, yaml)
         return cls(board, row, column, digit)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Return a list of SVG glyphs for this item.
 

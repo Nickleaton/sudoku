@@ -91,6 +91,10 @@ class AntiQueens(Anti):
         lst = cls.extract(board, yaml)
         return cls(board, lst)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> 'AntiQueens':
+        return cls.create(board, yaml_data)
+
     def __repr__(self) -> str:
         """Return a string representation of the AntiQueens instance.
 

@@ -95,6 +95,10 @@ class Product(Region):
         position, product = cls.extract(board, yaml)
         return cls(board, position, product)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the product constraint to the solver model.
 

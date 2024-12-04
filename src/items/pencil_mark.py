@@ -118,6 +118,10 @@ class PencilMarkCell(CellReference):
         row, column, digits = cls.extract(board, yaml)
         return cls(board, row, column, digits)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def bookkeeping(self) -> None:
         """Update the bookkeeping for the cell to reflect its pencil-marked digits.
 

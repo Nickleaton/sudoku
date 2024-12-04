@@ -70,6 +70,10 @@ class VariablePair(Pair):
         c1, c2, var_name = cls.extract(board, yaml)
         return cls(board, c1, c2, var_name)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def tags(self) -> set[str]:
         """Get the tags associated with the VariablePair."""

@@ -67,6 +67,10 @@ class AntiMonkey(Anti):
         """
         return AntiMonkey(board)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def rules(self) -> list[Rule]:
         """Return the rules associated with the AntiMonkey.

@@ -70,7 +70,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
         Returns:
             Set: A set of regions (Box, Row, Column) that the cell is part of.
         """
-        regions: set= set(cell.top.regions())
+        regions: set = set(cell.top.regions())
         result: set = set()
         for r in regions:
             if isinstance(r, (Box, Column, Row)):

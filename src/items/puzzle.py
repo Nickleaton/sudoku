@@ -43,6 +43,10 @@ class Puzzle(Item):
         ) if 'Constraints' in yaml else None
         return Puzzle(parsed_board, solution, constraints)  # Pass the parsed_board
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def __repr__(self) -> str:
         """Provide a string representation of the Puzzle instance.
 

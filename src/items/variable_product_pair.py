@@ -39,7 +39,7 @@ class VariableProductPair(VariablePair):
         """
         return super().tags.union({'Product'})
 
-    def target(self, solver: PulpSolver) -> LpElement |  None:
+    def target(self, solver: PulpSolver) -> LpElement | None:
         """Calculate the target expression for the variable product pair.
 
         Args:

@@ -1,5 +1,5 @@
 """Anti."""
-from typing import  Sequence, Any
+from typing import Sequence, Any
 
 from src.items.board import Board
 from src.items.cell import Cell
@@ -103,6 +103,10 @@ class Anti(ComposedItem):
         """
         lst = cls.extract(board, yaml)
         return cls(board, lst)
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
         """Return a string representation of the Anti object.

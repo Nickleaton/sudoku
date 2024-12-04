@@ -90,6 +90,10 @@ class Sandwich(Item):
         side, offset, total = cls.extract(board, yaml)
         return cls(board, side, offset, total)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Return a list of glyphs associated with this sandwich.
 

@@ -45,6 +45,10 @@ class AntiKing(Anti):
         """
         return AntiKing(board)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def tags(self) -> set[str]:
         """Return the tags associated with the AntiKing rule.

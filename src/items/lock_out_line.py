@@ -1,6 +1,5 @@
 """LockOutLine."""
 
-
 from src.items.line import Line
 from src.utils.rule import Rule
 

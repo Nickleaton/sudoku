@@ -1,6 +1,5 @@
 """XPair."""
 
-
 from src.items.sum_pair import SumPair
 from src.solvers.pulp_solver import PulpSolver
 

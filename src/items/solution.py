@@ -89,6 +89,10 @@ class Solution(ComposedItem):
         items = Solution.extract(board, yaml)
         return Solution(board, items)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> 'Solution':
+        return cls.create(board, yaml_data)
+
     def line_str(self) -> list[str]:
         """Return a list of row strings representing the board layout for known items.
 

@@ -51,6 +51,18 @@ class TestItem(unittest.TestCase):
         self.assertIsInstance(self.item, self.clazz)
         self.assertEqual(self.representation, repr(item))
 
+    def test_create2(self) -> None:
+        """Test creating an Item instance from a configuration string."""
+        config = yaml.load(self.config, Loader=yaml.SafeLoader)
+        if self.item.__class__.__name__ == 'Item':
+            return
+        item = Item.create2(self.board, config)
+        self.assertIsNotNone(item)
+        self.assertIsInstance(item, self.clazz)
+        self.assertIsInstance(self.item, self.clazz)
+        self.assertEqual(self.representation, repr(item))
+
+
     def test_name(self) -> None:
         """Test that the item has a valid name."""
         self.assertIsNotNone(self.item.name)

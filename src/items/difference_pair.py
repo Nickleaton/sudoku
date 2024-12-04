@@ -63,6 +63,10 @@ class DifferencePair(Pair):
         cell_1, cell_2, digits = cls.extract(board, yaml)
         return cls(board, cell_1, cell_2, digits)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def rules(self) -> list[Rule]:
         """Retrieve the rules for the difference pair.

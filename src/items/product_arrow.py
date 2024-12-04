@@ -1,6 +1,5 @@
 """ProductArrow."""
 
-
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.glyphs.glyph import Glyph
 from src.items.line import Line

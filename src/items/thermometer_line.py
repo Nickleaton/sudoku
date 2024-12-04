@@ -1,6 +1,5 @@
 """ThermometerLine."""
 
-
 from src.items.line import Line
 
 

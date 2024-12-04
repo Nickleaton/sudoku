@@ -69,6 +69,10 @@ class Killer(Region):
         total, cells = cls.extract(board, yaml)
         return Killer(board, total, cells)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def glyphs(self) -> list[Glyph]:
         """Return the glyphs for the Killer cage.
 

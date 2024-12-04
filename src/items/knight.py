@@ -91,6 +91,10 @@ class Knight(ComposedItem):
         digits = Knight.extract(board, yaml)
         return Knight(board, digits)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     @property
     def rules(self) -> list[Rule]:
         """Return the list of rules enforced by this constraint.

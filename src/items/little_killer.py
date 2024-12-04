@@ -1,6 +1,5 @@
 """LittleKiller."""
 
-
 from pulp import lpSum
 
 from src.glyphs.arrow_glyph import ArrowGlyph
@@ -114,6 +113,10 @@ class LittleKiller(Region):
         """
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
         """Return a list of glyphs representing the LittleKiller region.

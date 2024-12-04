@@ -115,6 +115,10 @@ class Outside(FirstN):
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraint to the solver for the Outside item.
 

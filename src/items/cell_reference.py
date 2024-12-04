@@ -72,6 +72,10 @@ class CellReference(Item):
         row, column = cls.extract(board, yaml)
         return cls(board, row, column)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def svg(self) -> Glyph | None:
         """Return an SVG representation of the cell.
 

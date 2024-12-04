@@ -45,6 +45,10 @@ class StandardRegion(Region):
         index = cls.extract(board, yaml)
         return cls(board, index)
 
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        return cls.create(board, yaml_data)
+
     def __repr__(self) -> str:
         """Return a string representation of the StandardRegion.
 

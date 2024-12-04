@@ -116,6 +116,30 @@ class Item:
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 
+    @classmethod
+    def create2(cls, board: Board, yaml: dict) -> 'Item':
+        """Create an instance of the item from a YAML dictionary.
+
+        Args:
+            board (Board): The board this item belongs to.
+            yaml (dict): The YAML data to create the item.
+
+        Returns:
+            Item: The created instance of the item.
+
+        Raises:
+            SudokuException: If the YAML data is invalid or the class cannot be found.
+        """
+        if isinstance(yaml, str):
+            name = yaml
+        else:
+            name = next(iter(yaml.keys()))
+        if name not in cls.classes:
+            raise SudokuException(f"Unknown item class {name}")
+        print(f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
+        clazz = cls.classes[name]
+        return clazz.create2(board, yaml)
+
     @property
     def top(self) -> 'Item':
         """Get the top-most item in the hierarchy.
