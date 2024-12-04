@@ -24,7 +24,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
         """Set up the test case with a board and an instance of GreaterThanEqualDifferenceLine."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
-        self.item = GreaterThanEqualDifferenceLine(self.board, cells, 9)
+        self.item = GreaterThanEqualDifferenceLine(self.board, cells, 5)
         self.size = 5
 
     @property
@@ -53,7 +53,8 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
-            "]"
+            "], "
+            "5"
             ")"
         )
 

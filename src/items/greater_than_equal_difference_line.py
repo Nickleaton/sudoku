@@ -18,7 +18,7 @@ from src.utils.rule import Rule
 class GreaterThanEqualDifferenceLine(DifferenceLine):
     """Enforces a minimum difference between adjacent cells in a line."""
 
-    def __init__(self, board: Board, cells: Sequence[Cell], difference: int = 0):
+    def __init__(self, board: Board, cells: Sequence[Cell], difference: int = 5):
         """Initialize the GreaterThanEqualDifferenceLine.
 
         Args:
@@ -33,7 +33,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
 
     def __repr__(self) -> str:
         """Return a string representation of the instance."""
-        return f"{self.__class__.__name__}({self.board!r}, {self.cells!r}, {self.difference})"
+        return f"{self.__class__.__name__}({self.board!r}, {self.cells!r}, {self.difference!r})"
 
     @property
     def rules(self) -> list[Rule]:

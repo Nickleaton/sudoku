@@ -65,6 +65,11 @@ class TestItem(unittest.TestCase):
         """Test the string representation of the Item instance."""
         if self.representation != repr(self.item):
             print (f"{self.representation} != {self.item!r}")
+        print()
+        print()
+        print(self.representation)
+        print(repr(self.item))
+        print()
         self.assertEqual(self.representation, repr(self.item))
 
     @property
