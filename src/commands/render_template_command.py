@@ -1,38 +1,32 @@
 """LoadTemplateCommand."""
-import logging
-from pathlib import Path
 
-import jinja2
 from jinja2 import Template
 
 from src.commands.key_type import KeyType
-
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
 
-class TemplateCommand(SimpleCommand):
+class RenderTemplateCommand(SimpleCommand):
     """Render the problem using a Jinja2 template."""
 
-    def __init__(self, template_raw: str, target: str):
+    def __init__(self, template_name: str, target: str):
         """Create the command.
 
         Args:
-            template_raw (str): Name of the Jinja2 template string to use for generating the HTML.
+            template_name (str): Name of the Jinja2 template string to use for generating the HTML.
             target (str): Name of the field in the problem that will contain the template
         """
         super().__init__()
-        self.template_raw: str = template_raw
+        self.template_name: str = template_name
         self.target: str = target
 
-
-        self.inputs: list[KeyType] = [
-            KeyType(self.template_raw, str)
+        self.input_types: list[KeyType] = [
+            KeyType(self.template_name, Template)
         ]
-        self.outputs: list[KeyType] = [
-            KeyType(self.target, Template)
+        self.output_types: list[KeyType] = [
+            KeyType(self.target, str)
         ]
-
 
     def work(self, problem: Problem) -> None:
         """Produce the Jinja2 template.
@@ -45,5 +39,4 @@ class TemplateCommand(SimpleCommand):
         Returns:
             None
         """
-        problem[self.target] = jinja2.Template(problem[self.template_raw])
-
+        problem[self.target] = problem[self.template_name].render(problem)
