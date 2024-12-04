@@ -1,8 +1,9 @@
-"""ConfigWriterCommand."""
+"""YamlToStringCommand."""
 import logging
 from pathlib import Path
 
 import oyaml as yaml
+import pydotted
 
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
@@ -12,31 +13,28 @@ from src.commands.simple_command import SimpleCommand
 yaml.add_representer(type(None), lambda self, _: self.represent_scalar('tag:yaml.org,2002:null', ''))
 
 
-class ConfigWriterCommand(SimpleCommand):
+class YamlToStringCommand(SimpleCommand):
     """Write configuration data to a YAML file."""
 
-    def __init__(self, source: str = 'config', target: Path | str = 'dump_config.yaml') -> None:
-        """Initialize a ConfigWriterCommand instance.
+    def __init__(self, source: str = 'config', target: str = 'config_out') -> None:
+        """Initialize a YamlToStringCommand instance.
 
         Args:
             source (str): The attribute of the problem containing the configuration data.
-            target (Path): The config_file or filename to write the configuration to.
+            target (str): The part of problem to write the yaml string to.
         """
         super().__init__()
         self.source: str = source
-        self.target: Path = Path(target) if isinstance(target, str) else target
-        self.inputs: list[KeyType] = [
-            KeyType(self.source, str)
+        self.target: str = target
+        self.input_types: list[KeyType] = [
+            KeyType(self.source, pydotted.pydot)
         ]
-        self.outputs: list[KeyType] = [
+        self.output_types: list[KeyType] = [
             KeyType(str(self.target), str)
         ]
 
     def work(self, problem: Problem) -> None:
-        """Write the configuration to the specified file in YAML format.
-
-        Retrieve the configuration from the problem field specified by `source`
-        and write it to the target file in YAML format.
+        """Write the configuration to the target string
 
         Args:
             problem (Problem): The problem instance containing the configuration data.
@@ -47,8 +45,4 @@ class ConfigWriterCommand(SimpleCommand):
         """
         super().work(problem)
         logging.info(f"Creating {self.target}")
-        try:
-            with self.target.open('w', encoding='utf-8') as file:
-                yaml.dump(problem[self.source].todict(), file, default_style=None)
-        except OSError as exc:
-            raise OSError(f"Failed to write to {self.target}: {exc}") from exc
+        problem[self.target] = yaml.dump(problem[self.source],  default_style=None)

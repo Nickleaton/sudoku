@@ -4,7 +4,7 @@ import src.commands.analyse_log_file_command
 import src.commands.bookkeeping_command
 import src.commands.command
 import src.commands.composed_command
-import src.commands.config_writer_command
+import src.commands.yaml_to_string_command
 import src.commands.create_board_command
 import src.commands.create_constraints_command
 import src.commands.create_linear_program_command

@@ -46,6 +46,9 @@ class FileWriterCommand(SimpleCommand):
         super().work(problem)
         try:
             with self.file_path.open(mode='w', encoding='utf-8') as file:
-                file.write(problem[self.source])
+                if isinstance(problem[self.source], str):
+                    file.write(problem[self.source])
+                else:
+                    raise CommandException("FileWriterCommand can only write strings.")
         except Exception as exc:
             raise CommandException(f"Failed to write {self.file_path!s}: {exc}") from exc
