@@ -1,11 +1,6 @@
 """Base class for all image producing classes."""
 import logging
 from enum import Enum
-from pathlib import Path
-
-from reportlab.graphics import renderPM
-from svglib.svglib import svg2rlg
-
 from xml.dom.minidom import Document
 
 from src.commands.command import CommandException
@@ -50,15 +45,17 @@ class ImageFormat(Enum):
 class ImageCommand(SimpleCommand):
     """Command to produce images."""
 
-    def __init__(self, image_format_name: str,  image_format: ImageFormat, source: str, target: str) -> None:
+    def __init__(self, image_format_name: str, image_format: ImageFormat, source: str, target: str) -> None:
         """Initialize an ImageCommand.
 
         Args:
-            source (str): The attribute of the problem to write out.
-            target (Path): the attribute to add to the problem.
+            image_format_name (str): The human-readable name of the image format.
+            image_format (ImageFormat): The image format.
+            source (str): The name of the problem attribute containing the image source.
+            target (str): The name of the problem attribute for storing the generated image.
 
         Raises:
-            ValueError: If the target has an unsupported suffix.
+            ValueError: If the target file has an unsupported suffix.
         """
         super().__init__()
         self.source: str = source

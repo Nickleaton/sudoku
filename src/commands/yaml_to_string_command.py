@@ -34,7 +34,7 @@ class YamlToStringCommand(SimpleCommand):
         ]
 
     def work(self, problem: Problem) -> None:
-        """Write the configuration to the target string
+        """Write the configuration to the target string.
 
         Args:
             problem (Problem): The problem instance containing the configuration data.
