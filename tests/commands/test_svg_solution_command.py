@@ -9,13 +9,14 @@ from src.utils.coord import Coord
 from tests.commands.test_svg_command import TestSVGCommand
 
 
-class SVGTestSolutionCommand(TestSVGCommand):
+class TestSVGSolutionCommand(TestSVGCommand):
     """Test suite for SVGSolutionCommand class."""
 
     def setUp(self):
         """Set up the test environment for SVGSolutionCommand."""
         super().setUp()
-        self.command = SVGSolutionCommand('svg')
+        self.command = SVGSolutionCommand()
+        self.representation = r"SVGSolutionCommand('board', 'constraints', 'svg')"
 
     @property
     def in_select(self):

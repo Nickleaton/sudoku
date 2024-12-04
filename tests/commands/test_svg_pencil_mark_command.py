@@ -11,8 +11,8 @@ class TestSVGPencilMarkCommand(TestSVGCommand):
     def setUp(self) -> None:
         """Set up the test environment for SVGPencilMarkCommand."""
         super().setUp()
-        self.command = SVGPencilMarkCommand('svg')
-        self.representation = r"SVGPencilMarkCommand('svg', 'constraints', 'svg')"
+        self.command = SVGPencilMarkCommand()
+        self.representation = r"SVGPencilMarkCommand('board', 'constraints', 'svg')"
 
 
 if __name__ == '__main__':  # pragma: no cover

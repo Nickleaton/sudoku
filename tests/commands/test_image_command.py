@@ -18,7 +18,6 @@ class TestImageCommand(TestSimpleCommand):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        self.problem = Problem()
         self.prerequisites = FileReaderCommand(file_name='config_file_name',
                                                target='config_text',
                                                file_path=Path('problems\\easy\\problem001.yaml')) \

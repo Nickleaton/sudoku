@@ -178,7 +178,6 @@ class Command:
             return repr(str(value))
         return repr(str(value))
 
-
     def __repr__(self) -> str:
         """Return a string representation of the command.
 
@@ -191,7 +190,6 @@ class Command:
             names.append(self.get_string_representation(param.value))
         names.extend([self.get_string_representation(key_type.key) for key_type in self.input_types])
         names.extend([self.get_string_representation(key_type.key) for key_type in self.output_types])
-
         result: str = self.__class__.__name__
         result += "("
         result += ", ".join(names)

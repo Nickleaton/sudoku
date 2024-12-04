@@ -29,8 +29,8 @@ class TestSVGAnswerCommand(TestSVGCommand):
                 "123456789"
             ]
         )
-        self.command = SVGAnswerCommand('svg')
-        self.representation = r"SVGAnswerCommand('svg', 'constraints', 'svg')"
+        self.command = SVGAnswerCommand()
+        self.representation = r"SVGAnswerCommand('board', 'constraints', 'svg')"
 
     @property
     def in_select(self) -> Answer | None:
