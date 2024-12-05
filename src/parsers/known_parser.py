@@ -53,7 +53,7 @@ class KnownParser(Parser):
         """Parse the input string and store the result in the 'result' attribute.
 
         This method input_types if the input string matches the expected format and parses it accordingly.
-        It stores the parsed values in the `result` and `answer` attributes.
+        It stores the parsed values in the `result` and `data` attributes.
 
         Args:
             text (str): The input string to be parsed, expected to follow the known value or restriction format.

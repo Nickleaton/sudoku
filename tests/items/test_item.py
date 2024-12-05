@@ -7,6 +7,7 @@ import oyaml as yaml
 from src.items.board import Board
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.sudoku_exception import SudokuException
 
 
 class TestItem(unittest.TestCase):
@@ -16,6 +17,26 @@ class TestItem(unittest.TestCase):
         """Set up the test case with a board and an Item instance."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Item(self.board)
+        self.good_yaml = []
+        self.bad_yaml = []
+
+    def test_good_yaml(self) -> None:
+        """Test that good YAML strings do not raise exceptions."""
+        for yaml_str in self.good_yaml:
+            with self.subTest(yaml=yaml_str):
+                try:
+                    config = yaml.safe_load(yaml_str)
+                    Item.create2(self.board, config)
+                except Exception as e:
+                    self.fail(f"Good YAML raised an exception: {e}")
+
+    def test_bad_yaml(self) -> None:
+        """Test that bad YAML strings raise exceptions."""
+        for yaml_str in self.bad_yaml:
+            with self.subTest(yaml=yaml_str):
+                with self.assertRaises(SudokuException):
+                    config = yaml.safe_load(yaml_str)
+                    Item.create2(self.board, config)
 
     @property
     def clazz(self):
@@ -62,6 +83,24 @@ class TestItem(unittest.TestCase):
         self.assertIsInstance(self.item, self.clazz)
         self.assertEqual(self.representation, repr(item))
 
+    def test_create_equals_create2(self) -> None:
+        """Test that create and create2 produce identical results."""
+        # Load the configuration
+        config = yaml.load(self.config, Loader=yaml.SafeLoader)
+
+        # Skip the test if the item class is the base Item class
+        if self.item.__class__.__name__ == 'Item':
+            return
+
+        # Create instances using both methods
+        item_create1 = Item.create(self.board, config)
+        item_create2 = Item.create2(self.board, config)
+
+        repr_create1 = repr(item_create1)
+        repr_create2 = repr(item_create2)
+
+        # Assert that both methods produce identical results
+        self.assertEqual(repr_create1, repr_create2)
 
     def test_name(self) -> None:
         """Test that the item has a valid name."""
@@ -76,7 +115,7 @@ class TestItem(unittest.TestCase):
     def test_repr(self):
         """Test the string representation of the Item instance."""
         if self.representation != repr(self.item):
-            print (f"{self.representation} != {self.item!r}")
+            print(f"{self.representation} != {self.item!r}")
         print()
         print()
         print(self.representation)

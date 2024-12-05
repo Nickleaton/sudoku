@@ -21,6 +21,17 @@ class TestLine(TestRegion):
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = self.clazz(self.board, cells)
         self.size = 3
+        self.good_yaml: List[str] = [
+            "Line: 12,21,22",  # Example of valid Line
+            "Line: 11,12,13",  # Another valid sequence
+            "Line: 31,32,33",  # Valid non-overlapping cells
+        ]
+        self.bad_yaml: List[str] = [
+            "Line:",  # Empty Line
+            "Line: 12,12",  # Duplicate cells
+            "Line: 11,13",  # Cells not connected by a king's move
+            "Line: 99,22",  # Invalid cell on the board
+        ]
 
     @property
     def clazz(self):

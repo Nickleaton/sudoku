@@ -6,7 +6,7 @@ from src.solvers.answer import Answer
 
 
 class SVGAnswerCommand(SVGCommand):
-    """Command to create an SVG drawing of the answer."""
+    """Command to create an SVG drawing of the data."""
 
     def select(self, item: Item | None) -> bool:
         """Determine if the item should be included in the output.

@@ -12,6 +12,7 @@ class TestComposed(TestItem):
     """Test suite for the ComposedItem class."""
 
     def setUp(self) -> None:
+        super().setUp()
         """Set up the Board and ComposedItem instance for testing."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = ComposedItem(self.board, [])

@@ -8,14 +8,14 @@ from src.solvers.pulp_solver import Status
 
 
 class ExtractAnswerCommand(Command):
-    """Command for extracting the answer from the solver's results."""
+    """Command for extracting the data from the solver's results."""
 
-    def __init__(self, solver: str = 'solver', target: str = 'answer'):
+    def __init__(self, solver: str = 'solver', target: str = 'data'):
         """Initialize an ExtractAnswerCommand instance.
 
         Args:
             solver (str): The attribute in the problem containing the solver.
-            target (str): The attribute name in the problem where the answer will be stored.
+            target (str): The attribute name in the problem where the data will be stored.
         """
         super().__init__()
         self.solver = solver
@@ -30,12 +30,12 @@ class ExtractAnswerCommand(Command):
 
     # pylint: disable=loop-invariant-statement
     def work(self, problem: Problem) -> None:
-        """Extract the answer from the solver's results and stores it in the problem.
+        """Extract the data from the solver's results and stores it in the problem.
 
-        If the solver's status is not optimal, the command will not store an answer.
+        If the solver's status is not optimal, the command will not store an data.
 
         Args:
-            problem (Problem): The problem instance from which to extract the answer.
+            problem (Problem): The problem instance from which to extract the data.
 
         Raises:
             CommandException: If no solver is set.

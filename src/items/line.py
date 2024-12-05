@@ -61,7 +61,27 @@ class Line(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        return cls.create(board, yaml_data)
+        """Create a Line instance from a YAML dictionary using the parser.
+
+        Args:
+            board (Board): The board associated with the line.
+            yaml_data (dict): A dictionary containing the YAML data.
+
+        Returns:
+            Item: A new instance of Line created from the YAML data.
+        """
+        # Retrieve the YAML string for this class name
+        cell_data = yaml_data[cls.__name__]
+
+        # Use the parser to parse the cell data
+        parser = cls.parser()
+        parser.parse(cell_data)
+
+        # Convert the parsed result into Cell instances
+        cells = [Cell.make(board, cell['row'], cell['column']) for cell in parser.answer]
+
+        # Create and return the Line instance
+        return cls(board, cells)
 
     def __repr__(self) -> str:
         """Return a string representation of this line.

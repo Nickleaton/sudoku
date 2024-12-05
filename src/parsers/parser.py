@@ -113,7 +113,7 @@ class Parser(Regex):
     def raise_error(self) -> None:
         """Raise a ParserError for invalid input.
 
-        This method resets the `result` and `answer` attributes to `None` and raises
+        This method resets the `result` and `data` attributes to `None` and raises
         a `ParserError` with a message indicating that the input was not valid.
 
         Raises:

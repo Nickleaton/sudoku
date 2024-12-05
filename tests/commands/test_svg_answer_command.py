@@ -34,7 +34,7 @@ class TestSVGAnswerCommand(TestSVGCommand):
 
     @property
     def in_select(self) -> Answer | None:
-        """Return the input answer for the command."""
+        """Return the input data for the command."""
         return self.problem.answer
 
     @property

@@ -15,6 +15,7 @@ class TestRegion(TestComposed):
     """Test suite for the Region class."""
 
     def setUp(self) -> None:
+        super().setUp()
         """Set up a test instance of Region with predefined cells."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.cells = [

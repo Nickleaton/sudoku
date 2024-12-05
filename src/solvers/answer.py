@@ -6,13 +6,13 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Answer:
-    """Represents the solution (answer) for a Sudoku board."""
+    """Represents the solution (data) for a Sudoku board."""
 
     def __init__(self, board: Board, data: list[str] | None = None):
         """Initialize the Answer object with a given board and optional data.
 
         Args:
-            board (Board): The board associated with this answer.
+            board (Board): The board associated with this data.
             data (list[str] | None): A list of strings representing the initial board configuration.
         """
         self.board = board
@@ -93,7 +93,7 @@ class Answer:
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> list[str]:
-        """Extract the answer data from a YAML dictionary.
+        """Extract the data data from a YAML dictionary.
 
         Args:
             _ (Board): The board object (unused here).
@@ -109,7 +109,7 @@ class Answer:
         """Create an Answer object from a board and YAML data.
 
         Args:
-            board (Board): The board associated with this answer.
+            board (Board): The board associated with this data.
             yaml (dict): A dictionary containing the board configuration.
 
         Returns:

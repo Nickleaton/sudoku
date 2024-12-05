@@ -90,7 +90,7 @@ class TestCellPairEqualValueParser(TestParser):
                 self.assertEqual(self.parser.result, expected_result)
 
     def test_answer_valid_input(self):
-        """Test generating the expected answer from valid input."""
+        """Test generating the expected data from valid input."""
         for input_str, expected_answer in self.valid_input_answer:
             with self.subTest(input_str=input_str):
                 self.parser.parse(input_str)
