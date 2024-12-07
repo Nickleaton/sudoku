@@ -1,22 +1,21 @@
-"""Angle management for geometric operations."""
+"""Angle."""
 import math
 
+FULL_CIRCLE_DEGREES = 360.0  # Constant representing a full circle in degrees
+TOLERANCE = 1e-9  # Tolerance for comparing angles
 
-class AngleException(Exception):
-    """Exception raised for errors in Angle operations."""
 
-
-class Angle:
-    # noinspection GrazieInspection
+class Angle:  # noqa: WPS214
     """Represents an angle with properties to manage degrees and radians."""
 
     def __init__(self, angle: float):
         """Initialize an Angle instance.
 
         Args:
-            angle (float): The initial angle in degrees. It is normalized between 0 and  360.
+            angle (float): The initial angle in degrees. It is normalized to [0, 360).
+
         """
-        self.angle = float(angle) % 360.0
+        self.angle = angle % FULL_CIRCLE_DEGREES
 
     @property
     def radians(self) -> float:
@@ -24,17 +23,19 @@ class Angle:
 
         Returns:
             float: The angle in radians.
+
         """
-        return self.angle * math.pi / 180.0
+        return math.radians(self.angle)
 
     @radians.setter
     def radians(self, radians: float) -> None:
         """Set the angle using radians.
 
         Args:
-            radians (float): The angle in radians.
+            radians (float): The angle in radians to set.
+
         """
-        self.angle = (radians * 180.0 / math.pi) % 360.0  # Normalize the angle in degrees
+        self.angle = math.degrees(radians) % FULL_CIRCLE_DEGREES
 
     @property
     def degrees(self) -> float:
@@ -42,6 +43,7 @@ class Angle:
 
         Returns:
             float: The angle in degrees.
+
         """
         return self.angle
 
@@ -50,27 +52,30 @@ class Angle:
         """Set the angle in degrees, normalized to [0, 360).
 
         Args:
-            degrees (float): The angle in degrees.
+            degrees (float): The angle in degrees to set.
+
         """
-        self.angle = degrees % 360.0
+        self.angle = degrees % FULL_CIRCLE_DEGREES
 
     @property
     def opposite(self) -> 'Angle':
         """Calculate the angle opposite to this one.
 
         Returns:
-            Angle: A new angle that is 180 degrees from the current one.
+            Angle: The opposite angle.
+
         """
-        return Angle(self.angle + 180.0)
+        return Angle(self.angle + FULL_CIRCLE_DEGREES / 2)
 
     @property
     def transform(self) -> str:
         """Generate an SVG transform string for rotation by this angle.
 
         Returns:
-            str: The SVG transform string, or an empty string if the angle is 0.
+            str: The SVG transform string.
+
         """
-        return "" if self.angle == 0.0 else f"rotate({self.angle})"
+        return f"rotate({self.angle})" if self.angle else ""
 
     def __add__(self, other: 'Angle') -> 'Angle':
         """Add this angle to another angle.
@@ -79,7 +84,8 @@ class Angle:
             other (Angle): The angle to add.
 
         Returns:
-            Angle: The resulting angle.
+            Angle: The resulting angle after addition.
+
         """
         return Angle(self.angle + other.angle)
 
@@ -90,73 +96,79 @@ class Angle:
             other (Angle): The angle to subtract.
 
         Returns:
-            Angle: The resulting angle.
+            Angle: The resulting angle after subtraction.
+
         """
         return Angle(self.angle - other.angle)
 
-    def __mul__(self, other: float) -> 'Angle':
+    def __mul__(self, scalar: float) -> 'Angle':
         """Multiply this angle by a scalar.
 
         Args:
-            other (float): The scalar to multiply by.
+            scalar (float): The scalar value to multiply the angle by.
 
         Returns:
-            Angle: The resulting angle.
+            Angle: The resulting angle after multiplication.
+
         """
-        return Angle(self.angle * other)
+        return Angle(self.angle * scalar)
 
     def __eq__(self, other: object) -> bool:
         """Check if this angle is equal to another angle.
 
         Args:
-            other (object): The angle to compare to.
+            other (object): The object to compare with.
 
         Returns:
-            bool: True if angles are equal.
+            bool: True if the angles are equal, otherwise False.
 
         Raises:
-            AngleException: If `other` is not an Angle.
+            TypeError: If `other` is not an instance of `Angle`.
+
         """
         if isinstance(other, Angle):
-            return math.isclose(self.angle, other.angle, abs_tol=1e-9)
-        raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
+            return math.isclose(self.angle, other.angle, abs_tol=TOLERANCE)
+        raise TypeError(f"Cannot compare {type(other).__name__} with Angle")
 
     def __lt__(self, other: object) -> bool:
         """Check if this angle is less than another angle.
 
         Args:
-            other (object): The angle to compare to.
+            other (object): The object to compare with.
 
         Returns:
-            bool: True if this angle is less.
+            bool: True if this angle is less than the other, otherwise False.
 
         Raises:
-            AngleException: If `other` is not an Angle.
+            TypeError: If `other` is not an instance of `Angle`.
+
         """
         if isinstance(other, Angle):
             return self.angle < other.angle
-        raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
+        raise TypeError(f"Cannot compare {type(other).__name__} with Angle")
 
     def __le__(self, other: object) -> bool:
         """Check if this angle is less than or equal to another angle.
 
         Args:
-            other (object): The angle to compare to.
+            other (object): The object to compare with.
 
         Returns:
-            bool: True if this angle is less than or equal.
+            bool: True if this angle is less than or equal to the other, otherwise False.
 
         Raises:
-            AngleException: If `other` is not an Angle.
+            TypeError: If `other` is not an instance of `Angle`.
+
         """
         if isinstance(other, Angle):
             return self.angle <= other.angle
-        raise AngleException(f"Cannot compare {type(other).__name__} with {self.__class__.__name__}")
+        raise TypeError(f"Cannot compare {type(other).__name__} with Angle")
 
     def __repr__(self) -> str:
         """Return string representation of the Angle.
 
         Returns:
-            str: The string representation of the angle.
+            str: A string representing the angle object.
+
         """
         return f"Angle({self.angle})"

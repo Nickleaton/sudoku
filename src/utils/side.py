@@ -1,5 +1,7 @@
 """Side."""
 from enum import Enum
+from types import MappingProxyType
+from typing import Mapping
 
 from src.items.board import Board
 from src.utils.coord import Coord
@@ -13,7 +15,7 @@ class SideException(SudokuException):
     """Handle exceptions in the Side Enum."""
 
 
-class Side(Enum):
+class Side(Enum):  # noqa: WPS214
     """Enum representing the sides of a board."""
 
     TOP = 'T'
@@ -103,12 +105,12 @@ class Side(Enum):
         """
         return self in {Side.TOP, Side.BOTTOM}
 
-    def marker(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
+    def marker(self, board: Board, index: int) -> Coord:
         """Get the marker coordinate for the side on the board.
 
         Args:
             board (Board): The board on which the marker is placed.
-            n (int): The index for the side.
+            index (int): The index for the side.
 
         Returns:
             Coord: The coordinate of the marker.
@@ -116,14 +118,14 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        return MARKER_COORDINATES[self](board, n)
+        return MARKER_COORDINATES[self](board, index)
 
-    def start_cell(self, board: Board, n: int) -> Coord:  # pylint: disable=too-many-return-statements
+    def start_cell(self, board: Board, index: int) -> Coord:
         """Get the starting cell coordinate for the side on the board.
 
         Args:
             board (Board): The board on which the starting cell is located.
-            n (int): The index for the side.
+            index (int): The index for the side.
 
         Returns:
             Coord: The coordinate of the starting cell.
@@ -131,15 +133,15 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        return START_CELL_COORDINATES[self](board, n)
+        return START_CELL_COORDINATES[self](board, index)
 
-    def start(self, board: Board, cyclic: Cyclic, n: int) -> Coord:  # pylint: disable=too-many-return-statements
+    def start(self, board: Board, cyclic: Cyclic, index: int) -> Coord:  # pylint: disable=too-many-return-statements
         """Get the starting coordinate for the side based on cyclic direction.
 
         Args:
             board (Board): The board on which the starting coordinate is located.
             cyclic (Cyclic): The cyclic order (CLOCKWISE or ANTICLOCKWISE).
-            n (int): The index for the side.
+            index (int): The index for the side.
 
         Returns:
             Coord: The starting coordinate.
@@ -147,7 +149,7 @@ class Side(Enum):
         Raises:
             SideException: If the combination is unknown.
         """
-        return START_COORDINATES[(self, cyclic)](board, n)
+        return START_COORDINATES[(self, cyclic)](board, index)
 
     @staticmethod
     def values() -> str:
@@ -167,7 +169,7 @@ class Side(Enum):
         return f"Side.{self.name}"
 
 
-DIRECTION_MAP: dict[tuple, Direction] = {
+DIRECTION_MAP: Mapping[tuple[Side, Cyclic], Direction] = MappingProxyType({
     (Side.TOP, Cyclic.CLOCKWISE): Direction.DOWN_RIGHT,
     (Side.RIGHT, Cyclic.CLOCKWISE): Direction.DOWN_LEFT,
     (Side.BOTTOM, Cyclic.CLOCKWISE): Direction.UP_LEFT,
@@ -176,9 +178,9 @@ DIRECTION_MAP: dict[tuple, Direction] = {
     (Side.RIGHT, Cyclic.ANTICLOCKWISE): Direction.UP_LEFT,
     (Side.BOTTOM, Cyclic.ANTICLOCKWISE): Direction.UP_RIGHT,
     (Side.LEFT, Cyclic.ANTICLOCKWISE): Direction.DOWN_RIGHT,
-}
+})
 
-ORDER_DIRECTION_MAP: dict[tuple, Direction] = {
+ORDER_DIRECTION_MAP: Mapping[tuple[Side, Order], Direction] = MappingProxyType({
     (Side.TOP, Order.INCREASING): Direction.DOWN,
     (Side.TOP, Order.DECREASING): Direction.UP,
     (Side.RIGHT, Order.INCREASING): Direction.LEFT,
@@ -187,37 +189,37 @@ ORDER_DIRECTION_MAP: dict[tuple, Direction] = {
     (Side.BOTTOM, Order.DECREASING): Direction.DOWN,
     (Side.LEFT, Order.INCREASING): Direction.RIGHT,
     (Side.LEFT, Order.DECREASING): Direction.LEFT,
-}
+})
 
-ORDER_OFFSET_MAP: dict[Side, Coord] = {
+ORDER_OFFSET_MAP: Mapping[Side, Coord] = MappingProxyType({
     Side.TOP: Direction.DOWN.offset,
     Side.RIGHT: Direction.LEFT.offset,
     Side.BOTTOM: Direction.UP.offset,
     Side.LEFT: Direction.RIGHT.offset,
-}
+})
 
 # Coordinate mappings for `marker` and `start_cell` to reduce repetitive code
 MARKER_COORDINATES = {
-    Side.TOP: lambda board, n: Coord(0, n),
-    Side.RIGHT: lambda board, n: Coord(n, board.board_rows + 1),
-    Side.BOTTOM: lambda board, n: Coord(board.board_columns + 1, n),
-    Side.LEFT: lambda board, n: Coord(n, 0),
+    Side.TOP: lambda board, index: Coord(0, index),
+    Side.RIGHT: lambda board, index: Coord(index, board.board_rows + 1),
+    Side.BOTTOM: lambda board, index: Coord(board.board_columns + 1, index),
+    Side.LEFT: lambda board, index: Coord(index, 0),
 }
 
 START_CELL_COORDINATES = {
-    Side.TOP: lambda board, n: Coord(1, n),
-    Side.RIGHT: lambda board, n: Coord(n, board.board_rows),
-    Side.BOTTOM: lambda board, n: Coord(board.board_columns, n),
-    Side.LEFT: lambda board, n: Coord(n, 1),
+    Side.TOP: lambda board, index: Coord(1, index),
+    Side.RIGHT: lambda board, index: Coord(index, board.board_rows),
+    Side.BOTTOM: lambda board, index: Coord(board.board_columns, index),
+    Side.LEFT: lambda board, index: Coord(index, 1),
 }
 
 START_COORDINATES = {
-    (Side.TOP, Cyclic.CLOCKWISE): lambda board, n: Coord(1, n + 1),
-    (Side.RIGHT, Cyclic.CLOCKWISE): lambda board, n: Coord(n + 1, board.board_columns),
-    (Side.BOTTOM, Cyclic.CLOCKWISE): lambda board, n: Coord(board.board_rows, n - 1),
-    (Side.LEFT, Cyclic.CLOCKWISE): lambda board, n: Coord(n - 1, 1),
-    (Side.TOP, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(1, n - 1),
-    (Side.RIGHT, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(n - 1, board.board_columns),
-    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(board.board_rows, n + 1),
-    (Side.LEFT, Cyclic.ANTICLOCKWISE): lambda board, n: Coord(n + 1, 1),
+    (Side.TOP, Cyclic.CLOCKWISE): lambda board, index: Coord(1, index + 1),
+    (Side.RIGHT, Cyclic.CLOCKWISE): lambda board, index: Coord(index + 1, board.board_columns),
+    (Side.BOTTOM, Cyclic.CLOCKWISE): lambda board, index: Coord(board.board_rows, index - 1),
+    (Side.LEFT, Cyclic.CLOCKWISE): lambda board, index: Coord(index - 1, 1),
+    (Side.TOP, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(1, index - 1),
+    (Side.RIGHT, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(index - 1, board.board_columns),
+    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(board.board_rows, index + 1),
+    (Side.LEFT, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(index + 1, 1),
 }

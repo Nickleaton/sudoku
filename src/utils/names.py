@@ -15,7 +15,7 @@ class Name:
         Returns:
             str: The converted snake_case string.
         """
-        return re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
+        return re.sub('(?<!^)(?=[A-Z])', '_', name).lower()
 
     @staticmethod
     def snake_to_camel(name: str) -> str:
