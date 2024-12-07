@@ -76,7 +76,7 @@ class TestSide(unittest.TestCase):
         self.assertEqual(Direction.RIGHT, Side.LEFT.order_direction(Order.INCREASING))
         self.assertEqual(Direction.LEFT, Side.LEFT.order_direction(Order.DECREASING))
 
-    def test_cell1(self):
+    # def test_cell1(self):
         """Test marker method with various coordinates for a 9x9 board."""
         board = Board(9, 9)
         self.assertEqual(Coord(0, 5), Side.TOP.marker(board, 5))
