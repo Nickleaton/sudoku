@@ -88,7 +88,7 @@
             <arg value="--html-report"/>
             <arg value="output/mypy"/>
             <arg value="src"/>
-<!--            <arg value="tests"/>-->
+            <!--            <arg value="tests"/>-->
         </exec>
     </target>
 
@@ -134,7 +134,7 @@
     </target>
 
     <target name="static.code.analysis"
-            depends="flake8, vulture, pydocstyle, radon, bandit, pylint, mypy, ruff"/>
+            depends="vulture, pydocstyle, radon, bandit, pylint, mypy, ruff"/>
 
     <target name="radon">
         <mkdir dir="output/radon"/>
@@ -209,24 +209,15 @@
         </exec>
     </target>
 
-    <target name="flake8" depends="flake8.src,flake8.tests"/>
 
-    <target name="flake8.src">
-        <mkdir dir="output/flake8"/>
-        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/src.txt">
-            <arg value="--max-line-length"/>
-            <arg value="120"/>
-            <arg value="src/"/>
+    <target name="a">
+        <mkdir dir="output/flake8/src/validators"/>
+        <exec executable="flake8" failonerror="false" taskname="flake8">
+            <arg value="--format=html"/>
+            <arg value="--htmldir=output/flake8/src/validators"/>
+            <arg value="src/validators"/>
         </exec>
     </target>
 
-    <target name="flake8.tests">
-        <mkdir dir="output/flake8"/>
-        <exec executable="flake8" failonerror="false" taskname="flake8" output="output/flake8/tests.txt">
-            <arg value="--max-line-length"/>
-            <arg value="120"/>
-            <arg value="src/"/>
-        </exec>
-    </target>
 
 </project>
