@@ -16,7 +16,7 @@ class TestMidCell(TestSimpleCellReference):
 
     def setUp(self) -> None:
         """Set up the test environment."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = MidCell(self.board, 1, 2)
         self.good = [4, 5, 6]
         self.bad = [1, 2, 3, 7, 8, 9]

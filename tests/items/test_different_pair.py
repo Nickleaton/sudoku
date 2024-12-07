@@ -17,7 +17,7 @@ class TestDifferencePair(TestPair):
 
     def setUp(self) -> None:
         """Set up the test environment, creating the board and the DifferencePair item."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), [1, 2])
         self.size = 2
 

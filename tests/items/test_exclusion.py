@@ -14,7 +14,7 @@ class TestExclusion(TestItem):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the Exclusion item."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Exclusion(self.board, Coord(2, 2), "12")
 
     @property

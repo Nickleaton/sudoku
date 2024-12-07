@@ -17,7 +17,7 @@ class TestBattenburg(TestItem):
 
         Initializes the board and Battenburg item at the given coordinate (2, 2).
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Battenburg(self.board, Coord(2, 2))
 
     @property

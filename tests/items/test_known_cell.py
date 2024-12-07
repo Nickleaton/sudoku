@@ -15,7 +15,7 @@ class TestKnownCell(TestCellReference):
 
     def setUp(self) -> None:
         """Set up the test case with a board and a KnownCell instance."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = KnownCell(self.board, 1, 2, 9)
 
     @property

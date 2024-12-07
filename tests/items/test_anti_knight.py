@@ -22,7 +22,7 @@ class TestAntiKnight(TestAnti):
 
         Initializes the board and AntiKnight item.
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = AntiKnight(self.board)
         self.size = 448
 

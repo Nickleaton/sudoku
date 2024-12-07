@@ -2,10 +2,10 @@
 import unittest
 from typing import Type
 
-from src.items.difference_pair import DifferencePair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
+from src.items.difference_pair import DifferencePair
 from src.items.item import Item
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.items.pair import Pair
@@ -18,7 +18,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
 
     def setUp(self) -> None:
         """Set up the test case, initializing the item and board for the LessThanEqualDifferencePair instance."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = LessThanEqualDifferencePair(
             self.board,
             Cell.make(self.board, 1, 2),

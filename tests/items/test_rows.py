@@ -21,6 +21,8 @@ class TestRows(TestStandardRegionSet):
 
     def setUp(self) -> None:
         """Set up the test environment for Rows."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Rows(self.board)
         self.size = 9

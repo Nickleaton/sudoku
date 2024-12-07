@@ -16,7 +16,7 @@ class TestPair(TestRegion):
 
     def setUp(self) -> None:
         """Set up the test environment for Pair."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Pair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 

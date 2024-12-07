@@ -16,6 +16,8 @@ class TestFortressCell(TestSimpleCellReference):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the FortressCell item."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = FortressCell(self.board, 1, 2)
         self.letter = 'f'

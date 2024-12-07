@@ -19,7 +19,7 @@ class TestXPair(TestSumPair):
 
     def setUp(self) -> None:
         """Set up the board and XPair item for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = XPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 

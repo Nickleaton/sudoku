@@ -20,6 +20,8 @@ class TestSolution(TestComposed):
 
     def setUp(self) -> None:
         """Set up the test environment for Solution."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.size = 81
         lines = [

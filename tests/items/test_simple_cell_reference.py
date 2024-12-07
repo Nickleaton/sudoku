@@ -16,6 +16,8 @@ class TestSimpleCellReference(TestCellReference):
 
     def setUp(self) -> None:
         """Set up the test environment."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = SimpleCellReference(self.board, 1, 2)
         self.letter = '.'

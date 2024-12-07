@@ -16,7 +16,7 @@ class TestNumberedRoom(TestItem):
 
     def setUp(self) -> None:
         """Set up the test environment for NumberedRoom."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = NumberedRoom(self.board, Side.TOP, 1, 9)
 
     @property

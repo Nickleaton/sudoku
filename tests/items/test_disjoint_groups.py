@@ -20,6 +20,8 @@ class TestDisjointGroups(TestStandardRegionSet):
 
     def setUp(self) -> None:
         """Set up the test environment, creating the board and the DisjointGroups item."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = DisjointGroups(self.board)
         self.size = 9

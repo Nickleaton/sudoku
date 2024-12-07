@@ -17,7 +17,6 @@ class TestEvenCell(TestSimpleCellReference):
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the EvenCell."""
         super().setUp()
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = EvenCell(self.board, 1, 2)
         self.good = [2, 4, 6, 8]
         self.bad = [1, 3, 5, 7, 9]

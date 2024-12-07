@@ -4,7 +4,6 @@ from typing import Type
 
 from src.items.anti_bltr import AntiBLTR
 from src.items.anti_diagonal import AntiDiagonal
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
@@ -21,7 +20,7 @@ class TestAntiBLTR(TestAntiDiagonal):
 
         Initializes the board and AntiBLTR item.
         """
-        self.board = Board(9, 9, 3, 3)
+        super().setUp()
         self.item = AntiBLTR(self.board)
         self.size = 9
 

@@ -3,13 +3,13 @@
 import unittest
 from typing import Type
 
-from src.items.sum_pair import SumPair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
+from src.items.sum_pair import SumPair
 from tests.items.test_pair import TestPair
 
 
@@ -18,7 +18,7 @@ class TestSumPair(TestPair):
 
     def setUp(self) -> None:
         """Set up the test environment for SumPair."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = SumPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 

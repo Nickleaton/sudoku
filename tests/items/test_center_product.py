@@ -18,7 +18,7 @@ class TestCenterProduct(TestProduct):
 
     def setUp(self) -> None:
         """Set up the Board and CenterProduct instance for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = CenterProduct(self.board, Coord(2, 2), 5)
         self.size = 4
 

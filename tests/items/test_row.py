@@ -18,6 +18,8 @@ class TestRow(TestStandardRegion):
 
     def setUp(self) -> None:
         """Set up the test environment for Row."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Row(self.board, 1)
         self.size = 9

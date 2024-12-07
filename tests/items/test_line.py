@@ -17,7 +17,6 @@ class TestLine(TestRegion):
     def setUp(self) -> None:
         """Set up the test case, initializing the item and board for the Line instance."""
         super().setUp()
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = self.clazz(self.board, cells)
         self.size = 3

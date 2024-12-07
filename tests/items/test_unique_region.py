@@ -17,7 +17,7 @@ class TestUniqueRegion(TestRegion):
 
     def setUp(self) -> None:
         """Set up the test case with a Board and UniqueRegion item."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.cells = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
         self.item = UniqueRegion(self.board, self.cells)
         self.size = 3

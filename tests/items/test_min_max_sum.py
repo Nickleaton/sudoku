@@ -18,7 +18,7 @@ class TestMinMaxSum(TestFirstN):
 
     def setUp(self) -> None:
         """Set up the test environment."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = MinMaxSum(self.board, Side.TOP, 1, 20)
         self.size = 3
 

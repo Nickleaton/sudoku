@@ -3,7 +3,6 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.indexing import Indexer
@@ -19,7 +18,8 @@ class TestRowIndexer(TestIndexer):
 
     def setUp(self) -> None:
         """Set up the test environment for RowIndexer."""
-        self.board = Board(9, 9, 3, 3)
+        super().setUp()
+
         self.item = RowIndexer(self.board, 1)
         self.size = 9
 

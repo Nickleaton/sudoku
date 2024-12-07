@@ -18,7 +18,7 @@ class TestLittleKiller1(TestRegion):
 
     def setUp(self) -> None:
         """Set up the test case, initializing the item and board for the LittleKiller instance (Case 1)."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 20)
         self.size = 6
 
@@ -58,7 +58,7 @@ class TestLittleKiller2(TestRegion):
 
     def setUp(self) -> None:
         """Set up the test case, initializing the item and board for the LittleKiller instance (Case 2)."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = LittleKiller(self.board, Side.RIGHT, Cyclic.CLOCKWISE, 3, 20)
         self.size = 6
 

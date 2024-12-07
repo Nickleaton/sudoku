@@ -18,7 +18,7 @@ class TestFixedDifferencePair(TestFixedPair):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the FixedDifferencePair item."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = FixedDifferencePair(
             self.board,
             Cell.make(self.board, 1, 2),

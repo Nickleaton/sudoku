@@ -18,8 +18,7 @@ class TestVIPair(TestSumPair):
 
     def setUp(self) -> None:
         """Set up the board and VIPair item for testing."""
-        # Initialize the board with dimensions 9x9 and block size 3x3
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         # Create a VIPair item with two cells
         self.item = VIPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         # Set the size of the pair to 2

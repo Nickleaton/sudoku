@@ -15,7 +15,7 @@ class TestPencilMarkCell(TestCellReference):
 
     def setUp(self) -> None:
         """Set up a test instance of PencilMarkCell."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = PencilMarkCell(self.board, 1, 2, [2, 4, 6, 8])
 
     @property

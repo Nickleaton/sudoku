@@ -20,7 +20,7 @@ class TestColumns(TestStandardRegionSet):
 
     def setUp(self) -> None:
         """Set up the Board and Columns instance for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Columns(self.board)
         self.size = 9
 

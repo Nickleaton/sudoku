@@ -17,6 +17,8 @@ class TestGirandola(TestSpecialRegion):
 
     def setUp(self) -> None:
         """Set up the test case with a board and an instance of Girandola."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Girandola(self.board)
         self.size = 9

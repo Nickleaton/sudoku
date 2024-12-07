@@ -18,7 +18,7 @@ class TestWindow(TestRegion):
 
     def setUp(self) -> None:
         """Set up the board and Window item for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Window(self.board, Coord(2, 2))
         self.size = 9
 

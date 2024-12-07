@@ -17,7 +17,7 @@ class TestBox(TestStandardRegion):
 
     def setUp(self) -> None:
         """Set up the Board and Box instance for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Box(self.board, 1)
         self.size = 9
 

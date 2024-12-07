@@ -2,11 +2,11 @@
 import unittest
 from typing import Type
 
-from src.items.fixed_difference_pair import FixedDifferencePair
-from src.items.fixed_pair import FixedPair
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
+from src.items.fixed_difference_pair import FixedDifferencePair
+from src.items.fixed_pair import FixedPair
 from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
 from src.items.pair import Pair
@@ -19,7 +19,7 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
 
     def setUp(self) -> None:
         """Set up the test case with a board and an instance of GreaterThanEqualDifferencePair."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = GreaterThanEqualDifferencePair(
             self.board,
             Cell.make(self.board, 1, 2),

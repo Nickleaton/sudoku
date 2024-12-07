@@ -17,6 +17,8 @@ class TestFixedPair(TestPair):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the FixedPair item."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = FixedPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 1)
         self.size = 2

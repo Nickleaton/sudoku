@@ -17,7 +17,7 @@ class TestMagicSquare(TestComposed):
 
     def setUp(self) -> None:
         """Set up the test environment for MagicSquare."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = MagicSquare(self.board, Coord(5, 5), Coord(1, 1))
         self.size = 9
 

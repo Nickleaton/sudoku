@@ -15,7 +15,7 @@ class TestKnight(TestComposed):
 
     def setUp(self) -> None:
         """Set up the test case with a board and a Knight instance."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Knight(self.board, [2, 4, 6, 8])
         self.size = 81
 

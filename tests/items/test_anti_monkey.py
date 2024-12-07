@@ -22,7 +22,7 @@ class TestAntiMonkey(TestAnti):
 
         Initializes the board and AntiMonkey item.
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         Cell.make_board(self.board)
         self.item = AntiMonkey(self.board)
         self.size = 384

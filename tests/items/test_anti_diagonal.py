@@ -3,7 +3,6 @@ import unittest
 from typing import Type
 
 from src.items.anti_diagonal import AntiDiagonal
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
@@ -20,7 +19,8 @@ class TestAntiDiagonal(TestDiagonal):
 
         Initializes the board and AntiDiagonal item.
         """
-        self.board = Board(9, 9, 3, 3)
+        super().setUp()
+
         self.item = AntiDiagonal(self.board)
         self.size = 0
 

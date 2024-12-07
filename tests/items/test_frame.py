@@ -18,6 +18,8 @@ class TestFrame(TestFirstN):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the Frame item."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Frame(self.board, Side.TOP, 1, 20)
         self.size = 3

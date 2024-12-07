@@ -20,7 +20,7 @@ class TestAsterix(TestSpecialRegion):
 
         Initializes the board and Asterix item with the default configuration.
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Asterix(self.board)
         self.size = 9
 

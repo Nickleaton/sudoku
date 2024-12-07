@@ -16,7 +16,7 @@ class TestLowCell(TestSimpleCellReference):
 
     def setUp(self) -> None:
         """Set up the test environment for LowCell."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = LowCell(self.board, 1, 2)
         self.good = [1, 2, 3]
         self.bad = [4, 5, 6, 7, 8, 9]

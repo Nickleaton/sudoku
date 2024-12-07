@@ -14,6 +14,8 @@ class TestQuadro(TestItem):
 
     def setUp(self) -> None:
         """Set up a test instance of Quadro."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Quadro(self.board)
 

@@ -14,6 +14,8 @@ class TestClonedRegion(TestItem):
 
     def setUp(self) -> None:
         """Set up the Board and ClonedRegion instance for testing."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.cells_1 = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
         self.cells_2 = [Cell(self.board, 9, 9), Cell(self.board, 9, 8), Cell(self.board, 9, 7)]

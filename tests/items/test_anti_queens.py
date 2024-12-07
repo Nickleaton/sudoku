@@ -22,7 +22,7 @@ class TestAntiQueens(TestAnti):
 
         Initializes the board and AntiQueens item with specified columns [8, 9].
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         Cell.make_board(self.board)
         self.item = AntiQueens(self.board, [8, 9])
         self.size = 816

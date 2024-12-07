@@ -3,7 +3,6 @@ import unittest
 from typing import Type
 
 from src.items.bltr import BLTR
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
@@ -18,7 +17,8 @@ class TestBLTR(TestStandardDiagonal):
 
     def setUp(self) -> None:
         """Set up the board and item for testing."""
-        self.board = Board(9, 9, 3, 3)
+        super().setUp()
+
         self.item = BLTR(self.board)
         self.size = 9
 

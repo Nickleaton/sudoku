@@ -18,6 +18,8 @@ class TestVPair(TestSumPair):
 
     def setUp(self) -> None:
         """Set up the board and VPair item for testing."""
+        super().setUp()
+
         # Initialize the board with dimensions 9x9 and block size 3x3
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         # Create a VPair item with two cells

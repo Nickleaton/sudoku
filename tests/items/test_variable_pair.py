@@ -5,10 +5,10 @@ from typing import Type
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
-from src.items.variable_pair import VariablePair
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
+from src.items.variable_pair import VariablePair
 from tests.items.test_pair import TestPair
 
 
@@ -17,6 +17,8 @@ class TestVariablePair(TestPair):
 
     def setUp(self) -> None:
         """Set up the board and VariablePair item for testing."""
+        super().setUp()
+
         # Initialize the board with dimensions 9x9 and block size 3x3
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         # Create a VariablePair item with two cells and a variable string

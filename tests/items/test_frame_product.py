@@ -18,7 +18,7 @@ class TestFrameProduct(TestFirstN):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the FrameProduct item."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = FrameProduct(self.board, Side.TOP, 1, 20)
         self.size = 3
 

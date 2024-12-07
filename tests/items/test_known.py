@@ -10,8 +10,8 @@ from src.items.even_cell import EvenCell
 from src.items.fortress_cell import FortressCell
 from src.items.high_cell import HighCell
 from src.items.item import Item
-from src.items.known_cell import KnownCell
 from src.items.known import Known
+from src.items.known_cell import KnownCell
 from src.items.low_cell import LowCell
 from src.items.mid_cell import MidCell
 from src.items.odd_cell import OddCell
@@ -24,7 +24,7 @@ class TestKnown(TestComposed):
 
     def setUp(self) -> None:
         """Set up the test case with a board and a Known instance."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.size = 26
         lines = [
             "8..4.6..3",

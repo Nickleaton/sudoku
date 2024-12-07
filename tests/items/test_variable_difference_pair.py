@@ -18,8 +18,7 @@ class TestVariableDifferencePair(TestVariablePair):
 
     def setUp(self) -> None:
         """Set up the board and VariableDifferencePair item for testing."""
-        # Initialize the board with dimensions 9x9 and block size 3x3
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         # Create a VariableDifferencePair item with two cells and a variable string
         self.item = VariableDifferencePair(
             self.board,

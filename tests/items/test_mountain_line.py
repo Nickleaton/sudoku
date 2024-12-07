@@ -2,12 +2,12 @@
 import unittest
 from typing import Type
 
-from src.items.mountain_line import MountainLine
 from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.line import Line
+from src.items.mountain_line import MountainLine
 from src.items.region import Region
 from tests.items.test_line import TestLine
 

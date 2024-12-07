@@ -22,7 +22,7 @@ class TestAntiKing(TestAnti):
 
         Initializes the board and AntiKing item.
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         Cell.make_board(self.board)
         self.item = AntiKing(self.board)
         self.size = 544

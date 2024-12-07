@@ -15,7 +15,7 @@ class TestRegionSet(TestComposed):
 
     def setUp(self) -> None:
         """Set up a test instance of RegionSet."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = RegionSet(self.board, [])
         self.size = 0
 

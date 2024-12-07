@@ -16,6 +16,8 @@ class TestStandardRegionSet(TestRegionSet):
 
     def setUp(self) -> None:
         """Set up the test environment for StandardRegionSet."""
+        super().setUp()
+
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = StandardRegionSet(self.board, [])
         self.size = 0

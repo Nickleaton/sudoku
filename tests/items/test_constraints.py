@@ -27,7 +27,7 @@ class TestConstraints(TestComposed):
 
     def setUp(self) -> None:
         """Set up the Board and Constraints instance for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = Constraints(self.board)
         self.item.add(Columns(self.board))
         self.item.add(Rows(self.board))

@@ -17,7 +17,7 @@ class TestKropkiPair(TestPair):
 
     def setUp(self) -> None:
         """Set up the test case with a board and a KropkiPair instance."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = KropkiPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 

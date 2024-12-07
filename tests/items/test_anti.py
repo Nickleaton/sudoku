@@ -3,7 +3,6 @@ import unittest
 from typing import Type, List
 
 from src.items.anti import Anti
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
@@ -18,7 +17,7 @@ class TestAnti(TestComposed):
 
         Initializes the board and Anti item with a list of digits.
         """
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         Cell.make_board(self.board)
         self.item = Anti(self.board, [1, 2, 3, 4, 5, 6, 7, 8, 9])
         self.size = 0

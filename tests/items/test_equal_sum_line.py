@@ -2,9 +2,9 @@
 import unittest
 from typing import Type
 
-from src.items.equal_sum_line import EqualSumLine
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
+from src.items.equal_sum_line import EqualSumLine
 from src.items.item import Item
 from src.items.line import Line
 from src.items.region import Region

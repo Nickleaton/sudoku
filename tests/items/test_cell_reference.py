@@ -14,7 +14,7 @@ class TestCellReference(TestItem):
 
     def setUp(self) -> None:
         """Set up the Board and CellReference instance for testing."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = CellReference(self.board, 1, 2)
 
     @property

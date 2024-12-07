@@ -16,7 +16,7 @@ class TestHighCell(TestSimpleCellReference):
 
     def setUp(self) -> None:
         """Set up the test case with a board and an instance of HighCell."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = HighCell(self.board, 1, 2)
         self.good = [7, 8, 9]
         self.bad = [1, 2, 3, 4, 5, 6]

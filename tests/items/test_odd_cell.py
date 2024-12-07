@@ -2,7 +2,6 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
@@ -16,7 +15,8 @@ class TestOdd(TestSimpleCellReference):
 
     def setUp(self) -> None:
         """Set up the test environment for OddCell."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
+
         self.item = OddCell(self.board, 1, 2)
         self.good = [1, 3, 5, 7, 9]
         self.bad = [2, 4, 6, 8]

@@ -17,7 +17,7 @@ class TestFirstN(TestRegion):
 
     def setUp(self) -> None:
         """Set up the test environment by creating a board and initializing the FirstN item."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         self.item = FirstN(board=self.board, side=Side.TOP, index=1, count=3)
         self.size = 3
 

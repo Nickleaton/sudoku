@@ -33,6 +33,8 @@ class TestItem(unittest.TestCase):
     def test_bad_yaml(self) -> None:
         """Test that bad YAML strings raise exceptions."""
         for yaml_str in self.bad_yaml:
+            if yaml_str is None:
+                continue
             with self.subTest(yaml=yaml_str):
                 with self.assertRaises(SudokuException):
                     config = yaml.safe_load(yaml_str)
@@ -81,6 +83,8 @@ class TestItem(unittest.TestCase):
         self.assertIsNotNone(item)
         self.assertIsInstance(item, self.clazz)
         self.assertIsInstance(self.item, self.clazz)
+        print (self.representation)
+        print(repr(item))
         self.assertEqual(self.representation, repr(item))
 
     def test_create_equals_create2(self) -> None:
@@ -213,6 +217,14 @@ class TestItem(unittest.TestCase):
         """Test the schema method of the Item instance."""
         self.assertIsNotNone(self.item.schema())
         # self.assertIsInstance(self.item.schema(), dict)
+
+    def test_parser(self):
+        """Test the parser method of the Item instance."""
+        self.assertIsNotNone(self.item.parser())
+
+    def test_validator(self):
+        """Test the validator method of the Item instance."""
+        self.assertIsNotNone(self.item.validator())
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -3,7 +3,6 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.diagonals import Diagonal
@@ -19,7 +18,8 @@ class TestTLBR(TestStandardDiagonal):
 
     def setUp(self) -> None:
         """Set up the test case with a Board and TLBR item."""
-        self.board = Board(9, 9, 3, 3)
+        super().setUp()
+
         self.item = TLBR(self.board)
         self.size = 9
 

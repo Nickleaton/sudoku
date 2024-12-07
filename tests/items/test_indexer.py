@@ -2,7 +2,6 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
 from src.items.composed_item import ComposedItem
 from src.items.indexing import Indexer
 from src.items.item import Item
@@ -16,7 +15,8 @@ class TestIndexer(TestStandardRegion):
 
     def setUp(self) -> None:
         """Set up the test case with a board and an instance of Indexer."""
-        self.board = Board(9, 9, 3, 3)
+        super().setUp()
+
         self.item = Indexer(self.board, 1)
         self.size = 0
 

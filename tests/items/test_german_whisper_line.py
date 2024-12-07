@@ -23,7 +23,7 @@ class TestGermanWhisperLine(TestGreaterThanEqualDifferenceLine):
 
     def setUp(self) -> None:
         """Set up the test environment."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        super().setUp()
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = GermanWhisperLine(self.board, cells)
         self.size = 5
