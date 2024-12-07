@@ -18,6 +18,6 @@ class TestDigitToken(TestSimpleToken):
         self.bad = ['A', 'B', 'C', 'D']
         self.group_count = 1
 
+
 if __name__ == "__main__":
     unittest.main()
-

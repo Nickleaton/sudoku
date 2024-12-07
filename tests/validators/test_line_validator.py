@@ -55,5 +55,6 @@ class TestLineValidator(TestValidator):
         errors = LineValidator.validate(self.board, self.invalid_cells_non_connected)
         self.assertTrue(any("king's move" in error for error in errors))
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

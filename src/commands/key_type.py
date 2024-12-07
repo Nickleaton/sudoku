@@ -24,4 +24,3 @@ class KeyType:
     def __repr__(self):
         """Return a string representation of the KeyType instance."""
         return f"KeyType(key={self.key!r}, type={self.type!r})"
-

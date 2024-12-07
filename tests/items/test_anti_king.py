@@ -4,7 +4,6 @@ from typing import Type, List
 
 from src.items.anti import Anti
 from src.items.anti_king import AntiKing
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_pair import DifferencePair

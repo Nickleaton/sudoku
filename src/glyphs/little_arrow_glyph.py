@@ -1,6 +1,5 @@
 """LittleArrowGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.text import Text, TSpan
 

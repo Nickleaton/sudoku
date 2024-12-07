@@ -1,6 +1,5 @@
 """QuadrupleGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
 from svgwrite.shapes import Circle

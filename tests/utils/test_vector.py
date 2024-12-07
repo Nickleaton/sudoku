@@ -1,6 +1,7 @@
 """TestVector."""
 
 import unittest
+
 from src.utils.coord import Coord
 from src.utils.direction import Direction
 from src.utils.vector import Vector, VectorException

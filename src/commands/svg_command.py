@@ -1,8 +1,8 @@
 """Create an SVG drawing of the problem."""
 import logging
+from xml.dom.minidom import Document
 
 from defusedxml.minidom import parseString
-from xml.dom.minidom import Document
 from svgwrite import Drawing
 from svgwrite.container import Style
 

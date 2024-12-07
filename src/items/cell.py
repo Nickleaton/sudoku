@@ -47,7 +47,7 @@ class Cell(Item):
         Returns:
             str: A string representation including board, row, and column.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.row!r}, {self.column!r})"
+        return f"{self.__class__.__name__}({self.board!r}, {int(self.row)}, {int(self.column)})"
 
     def __hash__(self):
         """Compute a unique hash for the cell based on row and column.

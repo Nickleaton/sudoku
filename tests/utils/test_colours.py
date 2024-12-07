@@ -80,7 +80,7 @@ class TestColourSet(unittest.TestCase):
         )
 
         # Write the SVG content to a file
-        with filename.open(mode= 'w', encoding='utf-8') as f:
+        with filename.open(mode='w', encoding='utf-8') as f:
             f.write(svg)
 
     def test_svg_generation(self):

@@ -7,7 +7,6 @@ from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.file_reader_command import FileReaderCommand
 from src.commands.image_command import ImageCommand, ImageFormat
 from src.commands.load_config_command import LoadConfigCommand
-from src.commands.problem import Problem
 from src.commands.svg_command import SVGCommand
 from tests.commands.test_simple_command import TestSimpleCommand
 

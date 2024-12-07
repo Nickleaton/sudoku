@@ -1,8 +1,10 @@
 """TestDirectionToken."""
 import unittest
+
 from src.tokens.direction_token import DirectionToken
 from src.utils.direction import Direction
 from tests.tokens.test_simple_token import TestSimpleToken
+
 
 class TestDirectionToken(TestSimpleToken):
     """Test cases for the DirectionToken class."""
@@ -36,6 +38,7 @@ class TestDirectionToken(TestSimpleToken):
         """Test that invalid tokens are rejected."""
         for token in self.bad:
             self.assertFalse(self.token.match(token), f"Token {token} should not match but did.")
+
 
 if __name__ == "__main__":
     unittest.main()

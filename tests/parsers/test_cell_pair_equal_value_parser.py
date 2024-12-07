@@ -1,6 +1,7 @@
 """TestCellPairEqualValueParser."""
 import unittest
 from typing import List, Tuple, Any
+
 from src.parsers.cell_pair_equal_value_parser import CellPairEqualValueParser
 from src.parsers.parser import ParserError
 from tests.parsers.test_parser import TestParser
@@ -103,6 +104,6 @@ class TestCellPairEqualValueParser(TestParser):
                 with self.assertRaises(ParserError):
                     self.parser.parse(input_str)
 
+
 if __name__ == "__main__":
     unittest.main()
-

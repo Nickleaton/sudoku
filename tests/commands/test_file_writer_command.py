@@ -28,5 +28,6 @@ class TestFileWriterCommand(TestSimpleCommand):
         with self.command.file_path.open('r') as f:
             self.assertEqual(f.read(), 'Hello World')
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

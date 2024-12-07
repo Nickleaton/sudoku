@@ -1,6 +1,5 @@
 """MidCellGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 

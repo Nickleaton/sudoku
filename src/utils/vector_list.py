@@ -128,7 +128,7 @@ class VectorList:
 
         return VectorList(sorted(merged_items))
 
-    def find(self, coord: Coord) ->Coord | None:
+    def find(self, coord: Coord) -> Coord | None:
         """Find the endpoint of a vector that starts or ends at a given coordinate.
 
         Args:

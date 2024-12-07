@@ -75,9 +75,9 @@ class TestDirection(unittest.TestCase):
     def test_orthogonals(self):
         """Test the orthogonal directions."""
         expected_orthogonals = [
-            Coord(-1, 0), # LEFT
-            Coord(0, 1),   # DOWN
-            Coord(1, 0),   # RIGHT
+            Coord(-1, 0),  # LEFT
+            Coord(0, 1),  # DOWN
+            Coord(1, 0),  # RIGHT
             Coord(0, -1)  # UP
         ]
         self.assertListEqual(Direction.orthogonals(), expected_orthogonals)
@@ -86,9 +86,9 @@ class TestDirection(unittest.TestCase):
         """Test the diagonal directions."""
         expected_diagonals = [
             Coord(-1, -1),  # UP_LEFT
-            Coord(-1, 1),   # UP_RIGHT
-            Coord(1, 1),    # DOWN_RIGHT
-            Coord(1, -1)    # DOWN_LEFT
+            Coord(-1, 1),  # UP_RIGHT
+            Coord(1, 1),  # DOWN_RIGHT
+            Coord(1, -1)  # DOWN_LEFT
         ]
         self.assertListEqual(Direction.diagonals(), expected_diagonals)
 
@@ -96,13 +96,13 @@ class TestDirection(unittest.TestCase):
         """Test the king movement directions."""
         expected_kings = [
             Coord(-1, -1),  # UP_LEFT
-            Coord(-1, 0),   # UP
-            Coord(-1, 1),   # UP_RIGHT
-            Coord(0, -1),   # LEFT
-            Coord(0, 1),    # RIGHT
-            Coord(1, -1),   # DOWN_LEFT
-            Coord(1, 0),    # DOWN
-            Coord(1, 1)     # DOWN_RIGHT
+            Coord(-1, 0),  # UP
+            Coord(-1, 1),  # UP_RIGHT
+            Coord(0, -1),  # LEFT
+            Coord(0, 1),  # RIGHT
+            Coord(1, -1),  # DOWN_LEFT
+            Coord(1, 0),  # DOWN
+            Coord(1, 1)  # DOWN_RIGHT
         ]
         self.assertListEqual(Direction.kings(), expected_kings)
 
@@ -118,8 +118,8 @@ class TestDirection(unittest.TestCase):
         """Test all directions except for the center."""
         expected_all_but_center = [
             Coord(-1, -1), Coord(-1, 0), Coord(-1, 1),  # UP_LEFT, UP, UP_RIGHT
-            Coord(0, -1), Coord(0, 1),                   # LEFT, RIGHT
-            Coord(1, -1), Coord(1, 0), Coord(1, 1)       # DOWN_LEFT, DOWN, DOWN_RIGHT
+            Coord(0, -1), Coord(0, 1),  # LEFT, RIGHT
+            Coord(1, -1), Coord(1, 0), Coord(1, 1)  # DOWN_LEFT, DOWN, DOWN_RIGHT
         ]
         self.assertListEqual(Direction.all_but_center(), expected_all_but_center)
 
@@ -127,8 +127,8 @@ class TestDirection(unittest.TestCase):
         """Test all directions including center."""
         expected_all = [
             Coord(-1, -1), Coord(-1, 0), Coord(-1, 1),  # UP_LEFT, UP, UP_RIGHT
-            Coord(0, -1), Coord(0, 0), Coord(0, 1),     # LEFT, CENTER, RIGHT
-            Coord(1, -1), Coord(1, 0), Coord(1, 1)      # DOWN_LEFT, DOWN, DOWN_RIGHT
+            Coord(0, -1), Coord(0, 0), Coord(0, 1),  # LEFT, CENTER, RIGHT
+            Coord(1, -1), Coord(1, 0), Coord(1, 1)  # DOWN_LEFT, DOWN, DOWN_RIGHT
         ]
         self.assertListEqual(Direction.all(), expected_all)
 

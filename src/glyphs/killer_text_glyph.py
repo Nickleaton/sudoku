@@ -38,18 +38,18 @@ class KillerTextGlyph(Glyph):
 
         # Create background text element
         background_text: Text = Text("",
-                          transform=position.transform + " " + self.angle.transform,
-                          class_=self.class_name + "Background"
-                          )
+                                     transform=position.transform + " " + self.angle.transform,
+                                     class_=self.class_name + "Background"
+                                     )
         background_span: TSpan = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
         background_text.add(background_span)
         group.add(background_text)
 
         # Create foreground text element
         foreground_text: Text = Text("",
-                          transform=position.transform + " " + self.angle.transform,
-                          class_=self.class_name + "Foreground"
-                          )
+                                     transform=position.transform + " " + self.angle.transform,
+                                     class_=self.class_name + "Foreground"
+                                     )
         foreground_span: TSpan = TSpan(self.text, alignment_baseline='central', text_anchor='middle')
         foreground_text.add(foreground_span)
         group.add(foreground_text)

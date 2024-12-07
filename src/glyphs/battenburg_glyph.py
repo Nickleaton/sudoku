@@ -1,6 +1,5 @@
 """BattenburgGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.container import Marker, Symbol, Use
 from svgwrite.shapes import Rect

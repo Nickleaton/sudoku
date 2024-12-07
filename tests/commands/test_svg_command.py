@@ -28,7 +28,6 @@ class TestSVGCommand(TestSimpleCommand):
         self.command = SVGCommand()
         self.representation = "SVGCommand('board', 'constraints', 'svg')"
 
-
     def test_in_select(self):
         """Tests the `select` method for the `in_select` item.
 
@@ -37,7 +36,6 @@ class TestSVGCommand(TestSimpleCommand):
         """
         if (select := self.in_select) is not None:
             self.assertTrue(self.command.select(select))
-
 
     def test_out_select(self):
         """Tests the `select` method for the `out_select` item.
@@ -48,7 +46,6 @@ class TestSVGCommand(TestSimpleCommand):
         if (select := self.out_select) is not None:
             self.assertFalse(self.command.select(select))
 
-
     @property
     def in_select(self) -> Item | None:
         """Gets an item that should be included in the output of the command.
@@ -57,7 +54,6 @@ class TestSVGCommand(TestSimpleCommand):
             Item | None: An item that should be included in the output, or `None`.
         """
         return None
-
 
     @property
     def out_select(self) -> Item | None:

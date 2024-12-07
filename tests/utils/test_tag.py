@@ -1,6 +1,7 @@
 """TestTag."""
 
 import unittest
+
 from src.utils.tag import Tag, TagException
 
 

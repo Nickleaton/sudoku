@@ -83,7 +83,7 @@ class TestItem(unittest.TestCase):
         self.assertIsNotNone(item)
         self.assertIsInstance(item, self.clazz)
         self.assertIsInstance(self.item, self.clazz)
-        print (self.representation)
+        print(self.representation)
         print(repr(item))
         self.assertEqual(self.representation, repr(item))
 

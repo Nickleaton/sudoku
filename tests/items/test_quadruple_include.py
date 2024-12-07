@@ -3,7 +3,6 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
 from src.items.item import Item
 from src.items.quadruple_base import QuadrupleBase
 from src.items.quadruple_include import QuadrupleInclude

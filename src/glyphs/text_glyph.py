@@ -1,6 +1,5 @@
 """TextGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
 from svgwrite.text import Text, TSpan

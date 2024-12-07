@@ -3,7 +3,6 @@ import unittest
 from pathlib import Path
 from typing import Type
 
-from src.items.board import Board
 from src.items.item import Item
 from src.items.numbered_room import NumberedRoom
 from src.solvers.pulp_solver import PulpSolver

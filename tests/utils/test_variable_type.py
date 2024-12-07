@@ -2,6 +2,7 @@
 
 import unittest
 from math import log10
+
 from src.utils.variable_type import VariableType
 
 

@@ -7,6 +7,8 @@ from src.items.item import Item
 from src.items.region import Region
 from src.parsers.cell_list_parser import CellListParser
 from src.utils.rule import Rule
+from src.validators.line_validator import LineValidator
+from src.validators.validator import Validator
 
 
 class Line(Region):
@@ -26,6 +28,15 @@ class Line(Region):
     def parser(cls) -> CellListParser:
         """Return a CellListParser instance for parsing cell lists."""
         return CellListParser()
+
+    @classmethod
+    def validator(cls) -> Validator:
+        """Return the validator for this item.
+
+        Returns:
+            Validator: The appropriate validator for this item.
+        """
+        return LineValidator()
 
     @classmethod
     def is_sequence(cls) -> bool:

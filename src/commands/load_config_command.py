@@ -1,11 +1,9 @@
 """Load Config File."""
-from pathlib import Path
 
 import oyaml as yaml
 from pydotted import pydot
 
 from src.commands.command import CommandException
-from src.commands.parameter_value_type import ParameterValueType
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -34,7 +32,6 @@ class LoadConfigCommand(SimpleCommand):
         self.output_types: list[KeyType] = [
             KeyType(target, pydot)
         ]
-
 
     def work(self, problem: Problem) -> None:
         """Load the configuration from the YAML file.

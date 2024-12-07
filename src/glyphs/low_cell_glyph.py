@@ -1,6 +1,5 @@
 """LowCellGlyph."""
 
-
 from svgwrite.base import BaseElement
 from svgwrite.container import Symbol, Use
 from svgwrite.shapes import Circle

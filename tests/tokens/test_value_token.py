@@ -18,4 +18,3 @@ class TestValueToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
-

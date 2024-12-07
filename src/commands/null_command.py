@@ -22,4 +22,3 @@ class NullCommand(SimpleCommand):
         """
         super().work(problem)
         logging.info("NullCommand executed.")
-

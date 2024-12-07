@@ -6,10 +6,11 @@ import pydotted
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.solvers.solver import Solver
-from src.utils.temporary_file import TemporaryFile
 from src.items.board import Board
 from src.items.item import Item
+from src.solvers.solver import Solver
+from src.utils.temporary_file import TemporaryFile
+
 
 class CreateLinearProgramCommand(SimpleCommand):
     """Produce the LP version of the problem."""

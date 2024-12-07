@@ -1,6 +1,5 @@
 """YamlToStringCommand."""
 import logging
-from pathlib import Path
 
 import oyaml as yaml
 import pydotted
@@ -45,4 +44,4 @@ class YamlToStringCommand(SimpleCommand):
         """
         super().work(problem)
         logging.info(f"Creating {self.target}")
-        problem[self.target] = yaml.dump(problem[self.source],  default_style=None)
+        problem[self.target] = yaml.dump(problem[self.source], default_style=None)

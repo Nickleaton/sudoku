@@ -1,7 +1,6 @@
 """Rules describing constraints."""
 
 
-
 class RuleException(Exception):
     """Exceptions for Rules."""
 

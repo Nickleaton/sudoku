@@ -1,8 +1,10 @@
 """TestCombinations."""
 import unittest
+
 from src.tokens.cell_token import CellToken
 from src.tokens.symbols import CommaToken
 from src.tokens.token import Token
+
 
 class TestCombinations(unittest.TestCase):
     """Test Combinations of Tokens."""
@@ -32,6 +34,7 @@ class TestCombinations(unittest.TestCase):
         """Test if an incorrectly formatted cell list returns False."""
         token: Token = CellToken() + CommaToken() + CellToken()
         self.assertFalse(token.match("11,,22"))
+
 
 if __name__ == '__main__':
     unittest.main()

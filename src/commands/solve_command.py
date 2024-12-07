@@ -4,8 +4,8 @@ import logging
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.solvers.solver import Solver
 from src.solvers.answer import Answer
+from src.solvers.solver import Solver
 
 
 class SolveCommand(SimpleCommand):
@@ -21,7 +21,7 @@ class SolveCommand(SimpleCommand):
         super().__init__()
         self.solver = solver
         self.target = target
-        self.input_types: list[KeyType] =[
+        self.input_types: list[KeyType] = [
             KeyType(self.solver, Solver)
         ]
         self.output_types: list[KeyType] = [

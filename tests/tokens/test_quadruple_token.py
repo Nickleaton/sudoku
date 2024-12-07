@@ -15,10 +15,9 @@ class TestQuadToken(TestSimpleToken):
         self.pattern = r"([\d?]+)"
         self.name = 'Quad'
         self.good = ['1234', '12', '1122', '?', '12?', '????']
-        self.bad = ['12345', 'X' ]
+        self.bad = ['12345', 'X']
         self.group_count = 1
 
 
 if __name__ == "__main__":
     unittest.main()
-

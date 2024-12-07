@@ -3,7 +3,6 @@ import unittest
 from typing import Type
 
 from src.items.battenburg import Battenburg
-from src.items.board import Board
 from src.items.item import Item
 from src.utils.coord import Coord
 from tests.items.test_item import TestItem

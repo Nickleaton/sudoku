@@ -1,6 +1,7 @@
 """TestTagList."""
 
 import unittest
+
 from src.utils.tag import Tag
 from src.utils.tag_list import TagList, TagListException
 

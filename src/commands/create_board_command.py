@@ -41,5 +41,3 @@ class CreateBoardCommand(SimpleCommand):
         super().work(problem)
         logging.info(f"Creating {self.target}")
         problem[self.target] = Board.create('Board', problem[self.source])
-
-

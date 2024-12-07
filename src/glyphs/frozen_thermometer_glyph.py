@@ -1,6 +1,5 @@
 """FrozenThermometerGlyph."""
 
-
 from svgwrite.container import Marker
 from svgwrite.shapes import Circle
 

@@ -21,4 +21,3 @@ class TestKnownToken(TestSimpleToken):
 
 if __name__ == "__main__":
     unittest.main()
-

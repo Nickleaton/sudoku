@@ -14,6 +14,7 @@ from src.parsers.parser import Parser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuException
+from src.validators.validator import Validator
 
 
 # pylint: disable=too-many-public-methods
@@ -80,6 +81,15 @@ class Item:
             Parser: The appropriate parser for this item.
         """
         return NoneParser()
+
+    @classmethod
+    def validator(cls) -> Validator:
+        """Return the validator for this item.
+
+        Returns:
+            Validator: The appropriate validator for this item.
+        """
+        return Validator()
 
     @classmethod
     def schema(cls) -> strictyaml.Validator | strictyaml.Optional:
