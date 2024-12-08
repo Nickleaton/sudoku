@@ -127,6 +127,31 @@ class Board:
         """
         return self.is_valid(int(coord.row), int(coord.column))
 
+    def is_valid_side_index(self, coord: Coord) -> bool:
+        """Check if the coordinate refers to a cell just outside the board boundary.
+
+        A valid side index is either on the rows 0 or `board_rows + 1` with columns
+        in range 0 to `board_columns + 1`, or on the columns 0 or `board_columns + 1`
+        with rows in range 0 to `board_rows + 1`.
+
+        Args:
+            coord (Coord): Coordinate to check.
+
+        Returns:
+            bool: True if the coordinate is just outside the boundary, False otherwise.
+        """
+        row, col = coord.row, coord.column
+
+        # Check if on the outer row boundary
+        if row in {0, self.board_rows + 1} and 0 <= col <= self.board_columns + 1:
+            return True
+
+        # Check if on the outer column boundary
+        if col in {0, self.board_columns + 1} and 0 <= row <= self.board_rows + 1:
+            return True
+
+        return False
+
     @classmethod
     def schema(cls) -> Validator:
         """Define the YAML schema for the board configuration.
