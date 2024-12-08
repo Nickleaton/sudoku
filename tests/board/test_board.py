@@ -1,7 +1,7 @@
 """TestBoard."""
 import unittest
 
-from src.items.board import Board
+from src.board.board import Board
 from src.utils.coord import Coord
 
 
@@ -75,6 +75,23 @@ class TestBoard(unittest.TestCase):
         self.assertFalse(self.board4x4.is_valid_coordinate(Coord(1, 0)))
         self.assertFalse(self.board4x4.is_valid_coordinate(Coord(9, 1)))
         self.assertFalse(self.board4x4.is_valid_coordinate(Coord(1, 9)))
+
+    def test_is_valid_side_index(self):
+        """Test the is_valid_side_index method with various coordinates."""
+        # Valid cases
+        self.assertTrue(self.is_valid_side_index(self.coord_class(0, 5)), "Expected True for (0, 5)")
+        self.assertTrue(self.is_valid_side_index(self.coord_class(10, 5)), "Expected True for (10, 5)")
+        self.assertTrue(self.is_valid_side_index(self.coord_class(5, 0)), "Expected True for (5, 0)")
+        self.assertTrue(self.is_valid_side_index(self.coord_class(5, 10)), "Expected True for (5, 10)")
+        self.assertTrue(self.is_valid_side_index(self.coord_class(0, 0)), "Expected True for (0, 0)")
+        self.assertTrue(self.is_valid_side_index(self.coord_class(10, 10)), "Expected True for (10, 10)")
+
+        # Invalid cases
+        self.assertFalse(self.is_valid_side_index(self.coord_class(5, 5)), "Expected False for (5, 5)")
+        self.assertFalse(self.is_valid_side_index(self.coord_class(-1, 5)), "Expected False for (-1, 5)")
+        self.assertFalse(self.is_valid_side_index(self.coord_class(11, 5)), "Expected False for (11, 5)")
+        self.assertFalse(self.is_valid_side_index(self.coord_class(5, -1)), "Expected False for (5, -1)")
+        self.assertFalse(self.is_valid_side_index(self.coord_class(5, 11)), "Expected False for (5, 11)")
 
 
 if __name__ == '__main__':  # pragma: no cover
