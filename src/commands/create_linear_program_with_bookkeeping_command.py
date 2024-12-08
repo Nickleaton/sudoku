@@ -3,10 +3,10 @@ import logging
 
 import pydotted
 
+from src.board.board import Board
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.items.board import Board
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.temporary_file import TemporaryFile

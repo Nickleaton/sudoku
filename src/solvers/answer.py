@@ -1,7 +1,7 @@
 """Answer class."""
 from itertools import product
 
-from src.items.board import Board
+from src.board.board import Board
 from src.utils.sudoku_exception import SudokuException
 
 

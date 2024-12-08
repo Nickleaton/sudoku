@@ -2,9 +2,9 @@
 import re
 from typing import Any
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.quadruple_glyph import QuadrupleGlyph
-from src.items.board import Board
 from src.items.item import Item
 from src.parsers.quadruples_parser import QuadruplesParser
 from src.utils.coord import Coord

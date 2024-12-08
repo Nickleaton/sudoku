@@ -1,7 +1,7 @@
 """AntiQueens."""
 
+from src.board.board import Board
 from src.items.anti import Anti
-from src.items.board import Board
 from src.parsers.digits_parser import DigitsParser
 from src.utils.coord import Coord
 from src.utils.rule import Rule

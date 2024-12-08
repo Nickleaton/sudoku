@@ -1,9 +1,9 @@
 """GermanWhisperLine."""
 from typing import Sequence
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
 from src.utils.rule import Rule

@@ -1,7 +1,7 @@
 """Anti."""
 from typing import Sequence, Any
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_pair import DifferencePair

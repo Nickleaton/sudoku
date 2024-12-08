@@ -1,8 +1,8 @@
 """ClonedRegion."""
 from typing import Type, Iterator
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver

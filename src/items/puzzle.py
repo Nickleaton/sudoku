@@ -1,6 +1,6 @@
 """Puzzle."""
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.constraints import Constraints
 from src.items.item import Item
 from src.items.solution import Solution

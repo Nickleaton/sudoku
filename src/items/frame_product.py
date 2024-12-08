@@ -3,9 +3,9 @@
 import re
 from typing import Any
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
-from src.items.board import Board
 from src.items.first_n import FirstN
 from src.items.item import Item
 from src.items.multiplication import Multiplication

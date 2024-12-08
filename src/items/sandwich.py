@@ -3,9 +3,9 @@ import re
 
 from pulp import LpVariable, LpInteger
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
-from src.items.board import Board
 from src.items.item import Item
 from src.parsers.frame_parser import FrameParser
 from src.solvers.pulp_solver import PulpSolver

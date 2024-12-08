@@ -1,9 +1,9 @@
 """ConsecutivePair."""
 import re
 
+from src.board.board import Board
 from src.glyphs.consecutive_glyph import ConsecutiveGlyph
 from src.glyphs.glyph import Glyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair

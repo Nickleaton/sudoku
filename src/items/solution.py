@@ -4,7 +4,7 @@ from typing import Any
 
 import strictyaml
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.known_cell import KnownCell

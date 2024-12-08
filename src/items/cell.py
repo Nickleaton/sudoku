@@ -4,10 +4,10 @@ from typing import ClassVar
 
 from pulp import lpSum
 
+from src.board.board import Board
+from src.board.book_keeping_cell import BookKeepingCell
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.glyph import Glyph
-from src.items.board import Board
-from src.items.book_keeping_cell import BookKeepingCell
 from src.items.item import Item, SudokuException
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord

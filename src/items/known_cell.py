@@ -1,9 +1,9 @@
 """KnownCell."""
 import re
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.known_glyph import KnownGlyph
-from src.items.board import Board
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.standard_region import StandardRegion

@@ -1,7 +1,7 @@
 """FirstN."""
 from typing import Any
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region

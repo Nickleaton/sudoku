@@ -3,7 +3,7 @@ from math import log10
 
 from pulp import lpSum
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.solvers.pulp_solver import PulpSolver
 

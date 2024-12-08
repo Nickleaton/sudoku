@@ -1,8 +1,8 @@
 """Mote."""
 from pulp import lpSum
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region

@@ -1,7 +1,7 @@
 """Tlbr."""
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.standard_diagonal import StandardDiagonal
 from src.utils.coord import Coord

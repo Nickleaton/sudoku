@@ -1,7 +1,7 @@
 """Known."""
 from typing import Any, Type
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.even_cell import EvenCell

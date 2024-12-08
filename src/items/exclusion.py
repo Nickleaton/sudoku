@@ -3,9 +3,9 @@ from typing import Any
 
 from pulp import lpSum
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.quadruple_glyph import QuadrupleGlyph
-from src.items.board import Board
 from src.items.item import Item
 from src.parsers.cell_value_parser import CellValueParser
 from src.solvers.pulp_solver import PulpSolver

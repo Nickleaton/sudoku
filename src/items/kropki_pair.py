@@ -3,9 +3,9 @@ from itertools import product
 
 from pulp import LpVariable, LpInteger, lpSum
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.kropki_glyph import KropkiGlyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.pair import Pair
 from src.solvers.pulp_solver import PulpSolver

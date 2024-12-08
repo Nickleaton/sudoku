@@ -1,5 +1,5 @@
 """Indexing."""
-from src.items.board import Board
+from src.board.board import Board
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.parsers.digits_parser import DigitsParser

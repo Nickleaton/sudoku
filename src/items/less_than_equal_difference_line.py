@@ -1,7 +1,7 @@
 """LessThanEqualDifferenceLine."""
 from typing import Sequence
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.items.line import Line

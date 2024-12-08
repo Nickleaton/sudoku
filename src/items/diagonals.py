@@ -1,5 +1,5 @@
 """Diagonals."""
-from src.items.board import Board
+from src.board.board import Board
 from src.items.item import Item
 from src.items.region import Region
 

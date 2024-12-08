@@ -1,6 +1,6 @@
 """Columns."""
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.column import Column
 from src.items.item import Item
 from src.items.standard_region_set import StandardRegionSet

@@ -5,10 +5,10 @@ from typing import Type, Iterator
 import strictyaml
 from sortedcontainers import SortedDict
 
+from src.board.board import Board
+from src.board.book_keeping_cell import BookKeepingCell
 from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
-from src.items.board import Board
-from src.items.book_keeping_cell import BookKeepingCell
 from src.parsers.none_parser import NoneParser
 from src.parsers.parser import Parser
 from src.solvers.pulp_solver import PulpSolver

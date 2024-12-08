@@ -1,8 +1,8 @@
 """RowIndexer."""
 
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.indexing import Indexer
 from src.solvers.pulp_solver import PulpSolver

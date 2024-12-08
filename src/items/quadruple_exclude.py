@@ -4,7 +4,7 @@ from typing import Any
 
 from pulp import lpSum
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.quadruple_base import QuadrupleBase
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord

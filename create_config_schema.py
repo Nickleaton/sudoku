@@ -3,7 +3,7 @@ import subprocess
 import strictyaml
 from strictyaml import Map, Seq, Optional, Str, Float, Int
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.item import Item
 from src.parsers.solution_parser import SolutionParser
 from src.utils.names import Name

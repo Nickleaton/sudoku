@@ -1,7 +1,7 @@
 """TlbrReflectingDiagonal."""
+from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
-from src.items.board import Board
 from src.items.cell import Cell
 from src.items.diagonals import Diagonal
 from src.solvers.pulp_solver import PulpSolver
