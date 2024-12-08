@@ -68,7 +68,7 @@ class Board:
         self.maximum_digit = max(self.board_rows, self.board_columns)
         self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
-        self.primes = [p for p in PRIMES if p in self.digit_range]
+        self.primes = [prime for prime in PRIMES if prime in self.digit_range]
         chunk_size: int = self.maximum_digit // 3
 
         self.levels = ['low', 'mid', 'high']
@@ -77,9 +77,9 @@ class Board:
         self.high = self.digit_range[chunk_size * 2:]
 
         self.modulos = [0, 1, 2]
-        self.mod0 = [d for d in self.digit_range if d % 3 == 0]
-        self.mod1 = [d for d in self.digit_range if d % 3 == 1]
-        self.mod2 = [d for d in self.digit_range if d % 3 == 2]
+        self.mod0 = [digit for digit in self.digit_range if digit % 3 == 0]
+        self.mod1 = [digit for digit in self.digit_range if digit % 3 == 1]
+        self.mod2 = [digit for digit in self.digit_range if digit % 3 == 2]
 
         # Boxes
         if box_rows == 0:
@@ -142,17 +142,13 @@ class Board:
         Returns:
             bool: True if the coordinate is just outside the boundary, False otherwise.
         """
-        row, col = coord.row, coord.column
+        is_outer_row = coord.row in {0, self.board_rows + 1}
+        is_column_in_range = 0 <= coord.column <= self.board_columns + 1
 
-        # Check if on the outer row boundary
-        if row in {0, self.board_rows + 1} and 0 <= col <= self.board_columns + 1:
-            return True
+        is_outer_column = coord.column in {0, self.board_columns + 1}
+        is_row_in_range = 0 <= coord.row <= self.board_rows + 1
 
-        # Check if on the outer column boundary
-        if col in {0, self.board_columns + 1} and 0 <= row <= self.board_rows + 1:
-            return True
-
-        return False
+        return (is_outer_row and is_column_in_range) or (is_outer_column and is_row_in_range)
 
     def get_side_coordinate(self, side: Side, index: int) -> Coord:
         """Get the coordinate for a given side of the board and index.
@@ -168,22 +164,22 @@ class Board:
             ValueError: If the side is invalid or the index is out of range.
         """
         if side == Side.TOP:
-            if not (1 <= index <= self.board_columns):
+            if index < 1 or index > self.board_columns:
                 raise ValueError(f"Index {index} out of range for TOP side.")
             return Coord(0, index)
 
         elif side == Side.BOTTOM:
-            if not (1 <= index <= self.board_columns):
+            if index < 1 or index > self.board_columns:
                 raise ValueError(f"Index {index} out of range for BOTTOM side.")
             return Coord(self.board_rows + 1, index)
 
         elif side == Side.LEFT:
-            if not (1 <= index <= self.board_rows):
+            if index < 1 or index > self.board_rows:
                 raise ValueError(f"Index {index} out of range for LEFT side.")
             return Coord(index, 0)
 
         elif side == Side.RIGHT:
-            if not (1 <= index <= self.board_rows):
+            if index < 1 or index > self.board_rows:
                 raise ValueError(f"Index {index} out of range for RIGHT side.")
             return Coord(index, self.board_columns + 1)
 
@@ -209,11 +205,11 @@ class Board:
         )
 
     @staticmethod
-    def parse_xy(s: str) -> tuple[int, int]:
+    def parse_xy(text: str) -> tuple[int, int]:
         """Parse a string of the form 'NxM' into two integers.
 
         Args:
-            s (str): String representing dimensions, e.g., "9x9".
+            text (str): String representing dimensions, e.g., "9x9".
 
         Returns:
             tuple[int, int]: Parsed (row, column) dimensions.
@@ -221,12 +217,12 @@ class Board:
         Raises:
             AssertionError: If the input string does not match the expected format.
         """
-        regexp = re.compile("([1234567890]+)x([1234567890]+)")
-        match = regexp.match(s)
+        regexp = re.compile("([1234567890]+)x_coord([1234567890]+)")
+        match = regexp.match(text)
         if match is None:
             raise SudokuException("Match is None, expected a valid match.")
-        row_str, column_str = match.groups()
-        return int(row_str), int(column_str)
+        row_str, col_str = match.groups()
+        return int(row_str), int(col_str)
 
     @classmethod
     def create(cls, name: str, yaml_data: dict) -> 'Board':
@@ -239,19 +235,19 @@ class Board:
         Returns:
             Board: A new `Board` instance.
         """
-        y: dict = yaml_data[name]
+        data: dict = yaml_data[name]
         board_rows: int
         board_columns: int
-        board_rows, board_columns = Board.parse_xy(y['Board'])
+        board_rows, board_columns = Board.parse_xy(data['Board'])
         box_rows: int = 0
         box_columns: int = 0
-        if 'Box' in y:
-            box_rows, box_columns = Board.parse_xy(y['Box'])
+        if 'Box' in data:
+            box_rows, box_columns = Board.parse_xy(data['Box'])
 
-        reference: str | None = y.get('Reference')
-        video: str | None = y.get('Video')
-        title: str | None = y.get('Title')
-        author: str | None = y.get('Author')
+        reference: str | None = data.get('Reference')
+        video: str | None = data.get('Video')
+        title: str | None = data.get('Title')
+        author: str | None = data.get('Author')
         return Board(
             board_rows,
             board_columns,
@@ -274,9 +270,9 @@ class Board:
             dict[str, Any]: dictionary containing board configuration.
         """
         result: dict = {'Board': {}}
-        result['Board']['Board'] = f"{self.board_rows}x{self.board_columns}"
+        result['Board']['Board'] = f"{self.board_rows}x_coord{self.board_columns}"
         if self.box_rows is not None:
-            result['Board']['Box'] = f"{self.box_rows}x{self.box_columns}"
+            result['Board']['Box'] = f"{self.box_rows}x_coord{self.box_columns}"
         if self.reference is not None:
             result['Board']['Reference'] = self.reference
         if self.reference is not None:
