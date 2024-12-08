@@ -2,7 +2,7 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.fortress_cell import FortressCell

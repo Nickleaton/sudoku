@@ -2,7 +2,7 @@
 import unittest
 from typing import List
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.box import Box
 
 

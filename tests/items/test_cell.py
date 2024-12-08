@@ -3,7 +3,7 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell, CellException
 from src.items.item import Item
 from tests.items.test_item import TestItem

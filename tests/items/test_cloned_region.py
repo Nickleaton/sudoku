@@ -2,7 +2,7 @@
 import unittest
 from typing import Type
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.items.cloned_region import ClonedRegion
 from src.items.item import Item

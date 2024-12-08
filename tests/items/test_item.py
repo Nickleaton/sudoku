@@ -4,7 +4,7 @@ from typing import Type
 
 import oyaml as yaml
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.item import Item
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.sudoku_exception import SudokuException
