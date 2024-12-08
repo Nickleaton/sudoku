@@ -1,7 +1,7 @@
 """TestBookKeeping."""
 import unittest
 
-from src.items.book_keeping_cell import BookKeepingCell
+from src.board.book_keeping_cell import BookKeepingCell
 from src.utils.sudoku_exception import SudokuException
 
 
