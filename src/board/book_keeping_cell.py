@@ -2,7 +2,7 @@
 from src.utils.sudoku_exception import SudokuException
 
 
-class BookKeepingCell:
+class BookKeepingCell:  # noqa: WPS214
     """Handles bookkeeping for possible values of digits in a puzzle."""
 
     def __init__(self, maximum_digit: int):
@@ -13,66 +13,80 @@ class BookKeepingCell:
         """
         self.maximum_digit = maximum_digit
         self.digit_range = range(1, maximum_digit + 1)
-        self.possibles = [True] * self.maximum_digit
+        self.possibles = [True for _ in range(self.maximum_digit)]
 
     def __getitem__(self, digit: int) -> bool:
-        """Retrieve whether a digit is possible.
+        """Determine if a digit is possible.
 
         Args:
-            digit (int): The digit to check.
+            digit (int): The digit to be checked.
 
         Returns:
-            bool: True if the digit is possible, False otherwise.
+            bool: True if the digit is possible; False otherwise.
+
+        Raises:
+            SudokuException: If the digit is invalid (less than 1 or greater than the maximum allowed digit).
         """
         if digit - 1 < 0 or digit > self.maximum_digit:
             raise SudokuException(f"Invalid digit: {digit}.")
         return self.possibles[digit - 1]
 
     def __setitem__(self, digit: int, value: bool) -> None:
-        """Set the possibility of a digit.
+        """Set whether a digit is possible.
 
         Args:
-            digit (int): The digit to set.
-            value (bool): The value to set, indicating if the digit is possible.
+            digit (int): The digit to be updated.
+            value (bool): The value to be assigned, indicating if the digit is possible.
+
+        Raises:
+            SudokuException: If the digit is invalid (less than 1 or greater than the maximum allowed digit).
         """
         if digit - 1 < 0 or digit > self.maximum_digit:
             raise SudokuException(f"Invalid digit: {digit}.")
         self.possibles[digit - 1] = value
 
     def __and__(self, other) -> 'BookKeepingCell':
-        """Compute the logical AND of two BookKeeping instances.
+        """Compute the logical AND of two BookKeepingCell instances.
 
         Args:
-            other (BookKeepingCell): Another BookKeeping instance.
+            other (BookKeepingCell): Another BookKeepingCell instance to combine with.
 
         Returns:
-            BookKeepingCell: A new instance with combined possibilities.
+            BookKeepingCell: A new instance with the combined possibilities from both cells.
+
+        Raises:
+            SudokuException: If the other instance is not a BookKeepingCell
+                or if there is a mismatch in the maximum digit.
         """
         if not isinstance(other, BookKeepingCell):
             raise SudokuException(f"Expected an instance of BookKeepingCell, got {type(other)}.")
         if self.maximum_digit != other.maximum_digit:
             raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
         result = BookKeepingCell(self.maximum_digit)
-        for i in self.digit_range:
-            result[i] = self[i] and other[i]
+        for digit in self.digit_range:
+            result[digit] = self[digit] and other[digit]
         return result
 
     def __or__(self, other) -> 'BookKeepingCell':
-        """Compute the logical OR of two BookKeeping instances.
+        """Compute the logical OR of two BookKeepingCell instances.
 
         Args:
-            other (BookKeepingCell): Another BookKeeping instance.
+            other (BookKeepingCell): Another BookKeepingCell instance to combine with.
 
         Returns:
-            BookKeepingCell: A new instance with combined possibilities.
+            BookKeepingCell: A new instance with the combined possibilities from both cells.
+
+        Raises:
+            SudokuException: If the other instance is not a BookKeepingCell
+                or if there is a mismatch in the maximum digit.
         """
         if not isinstance(other, BookKeepingCell):
             raise SudokuException(f"Expected an instance of BookKeepingCell, got {type(other)}.")
         if self.maximum_digit != other.maximum_digit:
             raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
         result = BookKeepingCell(self.maximum_digit)
-        for i in self.digit_range:
-            result[i] = self[i] or other[i]
+        for digit in self.digit_range:
+            result[digit] = self[digit] or other[digit]
         return result
 
     def __invert__(self) -> 'BookKeepingCell':
@@ -82,25 +96,29 @@ class BookKeepingCell:
             BookKeepingCell: A new instance with inverted possibilities.
         """
         result = BookKeepingCell(self.maximum_digit)
-        for i in self.digit_range:
-            result[i] = not self[i]
+        for digit in self.digit_range:
+            result[digit] = not self[digit]
         return result
 
     def __eq__(self, other) -> bool:
-        """Check if two BookKeeping instances are equal.
+        """Check if two BookKeepingCell instances are equal.
 
         Args:
-            other (BookKeepingCell): Another BookKeeping instance.
+            other (BookKeepingCell): Another BookKeepingCell instance to compare.
 
         Returns:
-            bool: True if both instances have identical possibilities, False otherwise.
+            bool: True if both instances have identical possibilities; False otherwise.
+
+        Raises:
+            SudokuException: If the other instance is not a BookKeepingCell
+                or if there is a mismatch in the maximum digit.
         """
         if not isinstance(other, BookKeepingCell):
             raise SudokuException(f"Expected an instance of BookKeepingCell, got {type(other)}.")
         if self.maximum_digit != other.maximum_digit:
             raise SudokuException(f"Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.")
-        for i in self.digit_range:
-            if self[i] != other[i]:
+        for digit in self.digit_range:
+            if self[digit] != other[digit]:
                 return False
         return True
 
@@ -110,7 +128,8 @@ class BookKeepingCell:
         Returns:
             str: A string where possible digits are displayed, others as spaces.
         """
-        return "".join([str(i) if self[i] else ' ' for i in self.digit_range])
+        digits: list[str] = [str(digit) if self[digit] else ' ' for digit in self.digit_range]
+        return "".join(digits)
 
     def __repr__(self):
         """Return a detailed string representation of the instance.
