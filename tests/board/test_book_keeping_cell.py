@@ -37,7 +37,7 @@ class TestBookKeepingCell(unittest.TestCase):
         self.assertTrue(book.is_possible(2))
 
     def test_set_minimum(self):
-        """Test setting the minimum possible value for BookKeepingCell."""
+        """Test setting the minimum possible number for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_minimum(5)
         self.assertFalse(book.is_possible(1))
@@ -45,7 +45,7 @@ class TestBookKeepingCell(unittest.TestCase):
         self.assertTrue(book.is_possible(9))
 
     def test_set_maximum(self):
-        """Test setting the maximum possible value for BookKeepingCell."""
+        """Test setting the maximum possible number for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_maximum(5)
         self.assertTrue(book.is_possible(5))
@@ -60,7 +60,7 @@ class TestBookKeepingCell(unittest.TestCase):
         self.assertFalse(book.is_possible(9))
 
     def test_fixed(self):
-        """Test whether the BookKeepingCell is fixed (only one possible value)."""
+        """Test whether the BookKeepingCell is fixed (only one possible number)."""
         book = BookKeepingCell(9)
         self.assertFalse(book.fixed())
         book.set_possible([1])
@@ -140,7 +140,7 @@ class TestBookKeepingCell(unittest.TestCase):
             book[0] = True
 
     def test_unique(self):
-        """Test whether the BookKeepingCell object represents a unique value."""
+        """Test whether the BookKeepingCell object represents a unique number."""
         book = BookKeepingCell(9)
         self.assertFalse(book.is_unique())
         book.set_minimum(5)
@@ -159,7 +159,7 @@ class TestBookKeepingCell(unittest.TestCase):
             _ = book == "invalid"
 
     def test_large_bookkeeping(self):
-        """Test behavior with a large maximum_digit value."""
+        """Test behavior with a large maximum_digit number."""
         book = BookKeepingCell(1000)
         self.assertEqual(len(book), 1000)
         book.set_range(500, 600)
