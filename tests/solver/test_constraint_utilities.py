@@ -1,7 +1,7 @@
 """Test ConstraintUtilities class for logical operations."""
 import unittest
 
-from src.items.board import Board
+from src.board.board import Board
 from src.items.cell import Cell
 from src.solvers.constraint_utilities import ConstraintUtilities
 from src.solvers.pulp_solver import PulpSolver

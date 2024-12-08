@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-from src.items.board import Board
+from src.board.board import Board
 
 
 class LoaderError(Exception):

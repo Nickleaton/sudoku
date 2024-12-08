@@ -1,5 +1,5 @@
 """FPuzzlesDumper."""
-from src.items.board import Board
+from src.board.board import Board
 from src.load_dump.dumper import Dumper
 
 

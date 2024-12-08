@@ -3,7 +3,7 @@ from pathlib import Path
 
 import oyaml as yaml
 
-from src.items.board import Board
+from src.board.board import Board
 from src.load_dump.loader import Loader
 
 

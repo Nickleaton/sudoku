@@ -2,7 +2,7 @@
 import math
 import unittest
 
-from src.utils.angle import Angle, AngleException
+from src.utils.angle import Angle
 
 
 class TestAngle(unittest.TestCase):
@@ -92,11 +92,11 @@ class TestAngle(unittest.TestCase):
         self.assertGreater(beta, theta)
 
         # Test invalid comparison
-        with self.assertRaises(AngleException):
+        with self.assertRaises(TypeError):
             _ = theta == "xxx"
-        with self.assertRaises(AngleException):
+        with self.assertRaises(TypeError):
             _ = theta < "xxx"
-        with self.assertRaises(AngleException):
+        with self.assertRaises(TypeError):
             _ = theta <= "xxx"
 
     def test_edge_case(self):

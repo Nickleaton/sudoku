@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from src.items.board import Board
+from src.board.board import Board
 from src.load_dump.loader import Loader, LoaderError
 
 

@@ -1,7 +1,7 @@
 """Dumper."""
 from abc import ABC, abstractmethod
 
-from src.items.board import Board
+from src.board.board import Board
 
 
 class Dumper(ABC):

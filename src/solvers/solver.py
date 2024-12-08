@@ -1,7 +1,7 @@
 """Solver Class."""
 from pathlib import Path
 
-from src.items.board import Board
+from src.board.board import Board
 from src.solvers.answer import Answer
 
 

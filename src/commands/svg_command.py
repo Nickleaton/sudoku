@@ -6,11 +6,11 @@ from defusedxml.minidom import parseString
 from svgwrite import Drawing
 from svgwrite.container import Style
 
+from src.board.board import Board
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.glyphs.glyph import Glyph
-from src.items.board import Board
 from src.items.item import Item
 from src.utils.config import Config
 

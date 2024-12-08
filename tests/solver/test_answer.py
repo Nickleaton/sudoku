@@ -1,7 +1,7 @@
 """Test Answer class for Sudoku board functionality."""
 import unittest
 
-from src.items.board import Board
+from src.board.board import Board
 from src.solvers.answer import Answer
 from src.utils.sudoku_exception import SudokuException
 
