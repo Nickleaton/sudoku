@@ -1,7 +1,7 @@
 """TestBoard6x6."""
 import unittest
 
-from src.items.board import Board
+from src.board.board import Board
 from src.utils.coord import Coord
 
 

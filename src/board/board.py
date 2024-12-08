@@ -7,7 +7,9 @@ import strictyaml
 from strictyaml import Validator
 
 from src.utils.coord import Coord
+from src.utils.cyclic import Cyclic
 from src.utils.functions import PRIMES
+from src.utils.side import Side
 from src.utils.sudoku_exception import SudokuException
 
 
@@ -151,6 +153,42 @@ class Board:
             return True
 
         return False
+
+    def get_side_coordinate(self, side: Side, index: int) -> Coord:
+        """Get the coordinate for a given side of the board and index.
+
+        Args:
+            side (Side): The side of the board (TOP, BOTTOM, LEFT, RIGHT).
+            index (int): The index along the side (1-based for rows/columns).
+
+        Returns:
+            Coord: The coordinate representing the position on the board's boundary.
+
+        Raises:
+            ValueError: If the side is invalid or the index is out of range.
+        """
+        if side == Side.TOP:
+            if not (1 <= index <= self.board_columns):
+                raise ValueError(f"Index {index} out of range for TOP side.")
+            return Coord(0, index)
+
+        elif side == Side.BOTTOM:
+            if not (1 <= index <= self.board_columns):
+                raise ValueError(f"Index {index} out of range for BOTTOM side.")
+            return Coord(self.board_rows + 1, index)
+
+        elif side == Side.LEFT:
+            if not (1 <= index <= self.board_rows):
+                raise ValueError(f"Index {index} out of range for LEFT side.")
+            return Coord(index, 0)
+
+        elif side == Side.RIGHT:
+            if not (1 <= index <= self.board_rows):
+                raise ValueError(f"Index {index} out of range for RIGHT side.")
+            return Coord(index, self.board_columns + 1)
+
+        # Raise error for invalid side
+        raise ValueError(f"Invalid side: {side}")
 
     @classmethod
     def schema(cls) -> Validator:
@@ -297,3 +335,74 @@ class Board:
             str: A string of digits available on the board.
         """
         return "".join([str(digit) for digit in self.digit_range])
+
+    def marker(self, side: Side, index: int) -> Coord:
+        """Get the marker coordinate for a side on the board.
+
+        Args:
+            side (Side): The side of the board.
+            index (int): The index for the side.
+
+        Returns:
+            Coord: The coordinate of the marker.
+        """
+        if side == Side.TOP:
+            return Coord(0, index)
+        if side == Side.RIGHT:
+            return Coord(index, self.board_rows + 1)
+        if side == Side.BOTTOM:
+            return Coord(self.board_columns + 1, index)
+        if side == Side.LEFT:
+            return Coord(index, 0)
+        raise ValueError(f"Invalid side: {side}")
+
+    def start_cell(self, side: Side, index: int) -> Coord:
+        """Get the starting cell coordinate for a side on the board.
+
+        Args:
+            side (Side): The side of the board.
+            index (int): The index for the side.
+
+        Returns:
+            Coord: The coordinate of the starting cell.
+        """
+        if side == Side.TOP:
+            return Coord(1, index)
+        if side == Side.RIGHT:
+            return Coord(index, self.board_rows)
+        if side == Side.BOTTOM:
+            return Coord(self.board_columns, index)
+        if side == Side.LEFT:
+            return Coord(index, 1)
+        raise ValueError(f"Invalid side: {side}")
+
+    def start(self, side: Side, cyclic: Cyclic, index: int) -> Coord:
+        """Get the starting coordinate for a side based on cyclic direction.
+
+        Args:
+            side (Side): The side of the board.
+            cyclic (Cyclic): The cyclic order (CLOCKWISE or ANTICLOCKWISE).
+            index (int): The index for the side.
+
+        Returns:
+            Coord: The starting coordinate.
+        """
+        if side == Side.TOP and cyclic == Cyclic.CLOCKWISE:
+            return Coord(1, index + 1)
+        if side == Side.RIGHT and cyclic == Cyclic.CLOCKWISE:
+            return Coord(index + 1, self.board_columns)
+        if side == Side.BOTTOM and cyclic == Cyclic.CLOCKWISE:
+            return Coord(self.board_rows, index - 1)
+        if side == Side.LEFT and cyclic == Cyclic.CLOCKWISE:
+            return Coord(index - 1, 1)
+
+        if side == Side.TOP and cyclic == Cyclic.ANTICLOCKWISE:
+            return Coord(1, index - 1)
+        if side == Side.RIGHT and cyclic == Cyclic.ANTICLOCKWISE:
+            return Coord(index - 1, self.board_columns)
+        if side == Side.BOTTOM and cyclic == Cyclic.ANTICLOCKWISE:
+            return Coord(self.board_rows, index + 1)
+        if side == Side.LEFT and cyclic == Cyclic.ANTICLOCKWISE:
+            return Coord(index + 1, 1)
+
+        raise ValueError(f"Invalid combination of side and cyclic: {side}, {cyclic}")

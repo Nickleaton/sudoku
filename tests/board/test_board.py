@@ -1,8 +1,9 @@
-"""TestBoard."""
 import unittest
 
 from src.board.board import Board
 from src.utils.coord import Coord
+from src.utils.cyclic import Cyclic  # Import the Cyclic class
+from src.utils.side import Side  # Import the Side class
 
 
 class TestBoard(unittest.TestCase):
@@ -79,20 +80,53 @@ class TestBoard(unittest.TestCase):
     def test_is_valid_side_index(self):
         """Test the is_valid_side_index method with various coordinates."""
         # Valid cases
-        self.assertTrue(self.is_valid_side_index(self.coord_class(0, 5)), "Expected True for (0, 5)")
-        self.assertTrue(self.is_valid_side_index(self.coord_class(10, 5)), "Expected True for (10, 5)")
-        self.assertTrue(self.is_valid_side_index(self.coord_class(5, 0)), "Expected True for (5, 0)")
-        self.assertTrue(self.is_valid_side_index(self.coord_class(5, 10)), "Expected True for (5, 10)")
-        self.assertTrue(self.is_valid_side_index(self.coord_class(0, 0)), "Expected True for (0, 0)")
-        self.assertTrue(self.is_valid_side_index(self.coord_class(10, 10)), "Expected True for (10, 10)")
+        self.assertTrue(self.board9x9_no_boxes.is_valid_side_index(Coord(0, 5)))
+        self.assertTrue(self.board9x9_no_boxes.is_valid_side_index(Coord(10, 5)))
+        self.assertTrue(self.board9x9_no_boxes.is_valid_side_index(Coord(5, 0)))
+        self.assertTrue(self.board9x9_no_boxes.is_valid_side_index(Coord(5, 10)))
+        self.assertTrue(self.board9x9_no_boxes.is_valid_side_index(Coord(0, 0)))
+        self.assertTrue(self.board9x9_no_boxes.is_valid_side_index(Coord(10, 10)))
 
         # Invalid cases
-        self.assertFalse(self.is_valid_side_index(self.coord_class(5, 5)), "Expected False for (5, 5)")
-        self.assertFalse(self.is_valid_side_index(self.coord_class(-1, 5)), "Expected False for (-1, 5)")
-        self.assertFalse(self.is_valid_side_index(self.coord_class(11, 5)), "Expected False for (11, 5)")
-        self.assertFalse(self.is_valid_side_index(self.coord_class(5, -1)), "Expected False for (5, -1)")
-        self.assertFalse(self.is_valid_side_index(self.coord_class(5, 11)), "Expected False for (5, 11)")
+        self.assertFalse(self.board9x9_no_boxes.is_valid_side_index(Coord(5, 5)))
+        self.assertFalse(self.board9x9_no_boxes.is_valid_side_index(Coord(-1, 5)))
+        self.assertFalse(self.board9x9_no_boxes.is_valid_side_index(Coord(11, 5)))
+        self.assertFalse(self.board9x9_no_boxes.is_valid_side_index(Coord(5, -1)))
+        self.assertFalse(self.board9x9_no_boxes.is_valid_side_index(Coord(5, 11)))
 
+    def test_get_side_coordinate(self):
+        """Test the get_side_coordinate method with valid and invalid inputs."""
+        # Valid cases
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.TOP, 5), Coord(0, 5))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.BOTTOM, 5), Coord(10, 5))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.LEFT, 5), Coord(5, 0))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.RIGHT, 5), Coord(5, 10))
 
-if __name__ == '__main__':  # pragma: no cover
-    unittest.main()
+        # Invalid index cases
+        with self.assertRaises(ValueError):
+            self.board9x9_no_boxes.get_side_coordinate(Side.TOP, 0)
+        with self.assertRaises(ValueError):
+            self.board9x9_no_boxes.get_side_coordinate(Side.BOTTOM, 10)
+        with self.assertRaises(ValueError):
+            self.board9x9_no_boxes.get_side_coordinate(Side.LEFT, 0)
+        with self.assertRaises(ValueError):
+            self.board9x9_no_boxes.get_side_coordinate(Side.RIGHT, 10)
+
+    def test_marker_edge_cases(self):
+        """Test marker method with edge cases on the board."""
+        board = Board(9, 9)
+        self.assertEqual(Coord(0, 0), board.marker(Side.TOP, 0))
+        self.assertEqual(Coord(10, 9), board.marker(Side.BOTTOM, 9))
+
+    def test_start_cell_edge_cases(self):
+        """Test start_cell method with edge cases on the board."""
+        board = Board(9, 9)
+        self.assertEqual(Coord(1, 9), board.start_cell(Side.TOP, 9))
+        self.assertEqual(Coord(9, 1), board.start_cell(Side.BOTTOM, 1))
+
+    def test_start_clockwise(self):
+        """Test start method with CLOCKWISE rotation for various board sizes."""
+        self.assertEqual(Coord(1, 6), self.board9x9_no_boxes.start(Side.TOP, Cyclic.CLOCKWISE, 5))
+        self.assertEqual(Coord(6, 9), self.board9x9_no_boxes.start(Side.RIGHT, Cyclic.CLOCKWISE, 5))
+        self.assertEqual(Coord(9, 4), self.board9x9_no_boxes.start(Side.BOTTOM, Cyclic.CLOCKWISE, 5))
+        self.assertEqual(Coord(4, 1), self.board9x9_no_boxes.start(Side.LEFT, Cyclic.CLOCKWISE, 5))

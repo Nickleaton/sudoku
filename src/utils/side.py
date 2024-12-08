@@ -3,16 +3,10 @@ from enum import Enum
 from types import MappingProxyType
 from typing import Mapping
 
-from src.items.board import Board
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.direction import Direction
 from src.utils.order import Order
-from src.utils.sudoku_exception import SudokuException
-
-
-class SideException(SudokuException):
-    """Handle exceptions in the Side Enum."""
 
 
 class Side(Enum):  # noqa: WPS214
@@ -33,6 +27,8 @@ class Side(Enum):  # noqa: WPS214
         Returns:
             Side: The corresponding Side enum.
         """
+        if not Side.valid(letter):
+            raise ValueError(f"Invalid side letter: {letter}")
         return Side(letter)
 
     @staticmethod
@@ -105,52 +101,6 @@ class Side(Enum):  # noqa: WPS214
         """
         return self in {Side.TOP, Side.BOTTOM}
 
-    def marker(self, board: Board, index: int) -> Coord:
-        """Get the marker coordinate for the side on the board.
-
-        Args:
-            board (Board): The board on which the marker is placed.
-            index (int): The index for the side.
-
-        Returns:
-            Coord: The coordinate of the marker.
-
-        Raises:
-            SideException: If the combination is unknown.
-        """
-        return MARKER_COORDINATES[self](board, index)
-
-    def start_cell(self, board: Board, index: int) -> Coord:
-        """Get the starting cell coordinate for the side on the board.
-
-        Args:
-            board (Board): The board on which the starting cell is located.
-            index (int): The index for the side.
-
-        Returns:
-            Coord: The coordinate of the starting cell.
-
-        Raises:
-            SideException: If the combination is unknown.
-        """
-        return START_CELL_COORDINATES[self](board, index)
-
-    def start(self, board: Board, cyclic: Cyclic, index: int) -> Coord:  # pylint: disable=too-many-return-statements
-        """Get the starting coordinate for the side based on cyclic direction.
-
-        Args:
-            board (Board): The board on which the starting coordinate is located.
-            cyclic (Cyclic): The cyclic order (CLOCKWISE or ANTICLOCKWISE).
-            index (int): The index for the side.
-
-        Returns:
-            Coord: The starting coordinate.
-
-        Raises:
-            SideException: If the combination is unknown.
-        """
-        return START_COORDINATES[(self, cyclic)](board, index)
-
     @staticmethod
     def values() -> str:
         """Get the string representation of all side values.
@@ -197,29 +147,3 @@ ORDER_OFFSET_MAP: Mapping[Side, Coord] = MappingProxyType({
     Side.BOTTOM: Direction.UP.offset,
     Side.LEFT: Direction.RIGHT.offset,
 })
-
-# Coordinate mappings for `marker` and `start_cell` to reduce repetitive code
-MARKER_COORDINATES = {
-    Side.TOP: lambda board, index: Coord(0, index),
-    Side.RIGHT: lambda board, index: Coord(index, board.board_rows + 1),
-    Side.BOTTOM: lambda board, index: Coord(board.board_columns + 1, index),
-    Side.LEFT: lambda board, index: Coord(index, 0),
-}
-
-START_CELL_COORDINATES = {
-    Side.TOP: lambda board, index: Coord(1, index),
-    Side.RIGHT: lambda board, index: Coord(index, board.board_rows),
-    Side.BOTTOM: lambda board, index: Coord(board.board_columns, index),
-    Side.LEFT: lambda board, index: Coord(index, 1),
-}
-
-START_COORDINATES = {
-    (Side.TOP, Cyclic.CLOCKWISE): lambda board, index: Coord(1, index + 1),
-    (Side.RIGHT, Cyclic.CLOCKWISE): lambda board, index: Coord(index + 1, board.board_columns),
-    (Side.BOTTOM, Cyclic.CLOCKWISE): lambda board, index: Coord(board.board_rows, index - 1),
-    (Side.LEFT, Cyclic.CLOCKWISE): lambda board, index: Coord(index - 1, 1),
-    (Side.TOP, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(1, index - 1),
-    (Side.RIGHT, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(index - 1, board.board_columns),
-    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(board.board_rows, index + 1),
-    (Side.LEFT, Cyclic.ANTICLOCKWISE): lambda board, index: Coord(index + 1, 1),
-}
