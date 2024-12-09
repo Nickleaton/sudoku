@@ -21,7 +21,7 @@ logging:
     # Defines individual logging handlers, which specify where log messages should go.
     handlers:
         console:
-            # Uses a StreamHandler, which output_types log messages to a stream like stdout or stderr.
+          # Uses start StreamHandler, which output_types log messages to start stream like stdout or stderr.
             class: logging.StreamHandler
 
             # Defines the formatter for this handler, which controls the log message format.
@@ -67,7 +67,7 @@ drawing:
   even_cell_size: 70
   
 colours:
-  # The 'general' color set includes a wide variety of colours
+  # The 'general' color set includes start wide variety of colours
   # You don't want them to clash. Were cells need to be coloured
   # the colours will be selected starting from the top of this list
   general:

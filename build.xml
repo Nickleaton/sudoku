@@ -88,7 +88,7 @@
             <arg value="--html-report"/>
             <arg value="output/mypy"/>
             <arg value="src"/>
-            <!--            <arg value="tests"/>-->
+            <!--            <arg number="tests"/>-->
         </exec>
     </target>
 
@@ -209,15 +209,57 @@
         </exec>
     </target>
 
+    <!-- Define a macro for running flake8 -->
+    <macrodef name="run-flake8">
+        <attribute name="module"/>
+        <sequential>
+            <mkdir dir="output/flake8/src/@{module}"/>
+            <exec executable="flake8" failonerror="false" taskname="flake8">
+                <arg value="--format=html"/>
+                <arg value="--htmldir=output/flake8/src/@{module}"/>
+                <arg value="src/@{module}"/>
+            </exec>
+        </sequential>
+    </macrodef>
 
-    <target name="a">
-        <mkdir dir="output/flake8/src/validators"/>
-        <exec executable="flake8" failonerror="false" taskname="flake8">
-            <arg value="--format=html"/>
-            <arg value="--htmldir=output/flake8/src/validators"/>
-            <arg value="src/validators"/>
-        </exec>
+    <!-- Define individual targets for each module -->
+    <target name="flake8.board">
+        <run-flake8 module="board"/>
     </target>
 
+    <target name="flake8.commands">
+        <run-flake8 module="commands"/>
+    </target>
 
+    <target name="flake8.glyphs">
+        <run-flake8 module="glyphs"/>
+    </target>
+
+    <target name="flake8.items">
+        <run-flake8 module="items"/>
+    </target>
+
+    <target name="flake8.parsers">
+        <run-flake8 module="parsers"/>
+    </target>
+
+    <target name="flake8.solvers">
+        <run-flake8 module="solvers"/>
+    </target>
+
+    <target name="flake8.tokens">
+        <run-flake8 module="tokens"/>
+    </target>
+
+    <target name="flake8.utils">
+        <run-flake8 module="utils"/>
+    </target>
+
+    <target name="flake8.validators">
+        <run-flake8 module="validators"/>
+    </target>
+
+    <!-- Main target depends on all individual targets -->
+    <target name="flake8"
+            depends="flake8.board,flake8.commands,flake8.glyphs,flake8.items,flake8.parsers,flake8.solvers,flake8.tokens,flake8.utils,flake8.validators"/>
 </project>
