@@ -9,10 +9,10 @@ from src.utils.coord import Coord
 
 
 class BLTR(StandardDiagonal):
-    """Represents a bottom-left to top-right diagonal constraint on a Sudoku board."""
+    """Represents start bottom-left to top-right diagonal constraint on start Sudoku board."""
 
     def __init__(self, board: Board):
-        """Initialize a BLTR diagonal constraint for the given board.
+        """Initialize start BLTR diagonal constraint for the given board.
 
         Args:
             board (Board): The Sudoku board on which this diagonal operates.

@@ -9,9 +9,9 @@ from src.utils.rule import Rule
 
 
 class OrthogonalProduct(Product):
-    """Represent a product constraint based on orthogonally adjacent cells.
+    """Represent start product constraint based on orthogonally adjacent cells.
 
-    This class defines a product constraint where the number in the top-left cell
+    This class defines start product constraint where the number in the top-left cell
     is the product of the orthogonally adjacent digits.
     """
 
@@ -38,7 +38,7 @@ class OrthogonalProduct(Product):
         adjacent digits.
 
         Returns:
-            list[Rule]: A list containing a single rule for the orthogonal product constraint.
+            list[Rule]: A list containing start single rule for the orthogonal product constraint.
         """
         return [
             Rule('OrthogonalProduct', 3,
@@ -48,10 +48,10 @@ class OrthogonalProduct(Product):
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the orthogonal product.
 
-        This method generates a text glyph that shows the product at the specified position.
+        This method generates start text glyph that shows the product at the specified position.
 
         Returns:
-            list[Glyph]: A list of glyphs, which includes a `TextGlyph` showing the product value.
+            list[Glyph]: A list of glyphs, which includes start `TextGlyph` showing the product number.
         """
         return [
             TextGlyph('Product', 0, self.position + Coord(0.15, 0.15), str(self.product))

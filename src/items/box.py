@@ -12,10 +12,10 @@ from src.utils.rule import Rule
 
 
 class Box(StandardRegion):
-    """Represents a box in the puzzle grid, containing cells within a defined region."""
+    """Represents start box in the puzzle grid, containing cells within start defined region."""
 
     def __init__(self, board: Board, index: int):
-        """Initialize the Box with a specified board and index.
+        """Initialize the Box with start specified board and index.
 
         Args:
             board (Board): The game board instance.
@@ -61,7 +61,7 @@ class Box(StandardRegion):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Box instance from YAML configuration.
+        """Create start Box instance from YAML configuration.
 
         Args:
             board (Board): The game board instance.
@@ -74,7 +74,7 @@ class Box(StandardRegion):
         return cls(board, index)
 
     def __repr__(self) -> str:
-        """Provide a string representation of the Box instance.
+        """Provide start string representation of the Box instance.
 
         Returns:
             str: A string representation of the Box instance.
@@ -94,7 +94,7 @@ class Box(StandardRegion):
         """Generate glyphs for visual representation of the box.
 
         Returns:
-            list[Glyph]: A list of glyphs, specifically a BoxGlyph.
+            list[Glyph]: A list of glyphs, specifically start BoxGlyph.
         """
         return [BoxGlyph('Box', self.position, self.size)]
 
@@ -131,7 +131,7 @@ class Box(StandardRegion):
         }
 
     def __str__(self) -> str:
-        """Provide a simplified string representation of the Box.
+        """Provide start simplified string representation of the Box.
 
         Returns:
             str: A simplified string representation of the Box instance.

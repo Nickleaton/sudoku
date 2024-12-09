@@ -8,7 +8,7 @@ from src.utils.rule import Rule
 
 
 class MidCell(SimpleCellReference):
-    """Represents a mid-range cell, which can contain one of the digits 4, 5, or 6."""
+    """Represents start mid-range cell, which can contain one of the digits 4, 5, or 6."""
 
     @staticmethod
     def digits() -> list[int]:
@@ -21,7 +21,7 @@ class MidCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Check if a given digit is included in the list of valid digits for MidCell.
+        """Check if start given digit is included in the list of valid digits for MidCell.
 
         Args:
             digit (int): The digit to check.
@@ -32,7 +32,7 @@ class MidCell(SimpleCellReference):
         return digit in MidCell.digits()
 
     def letter(self) -> str:
-        """Return the letter representation of a MidCell.
+        """Return the letter representation of start MidCell.
 
         Returns:
             str: The letter 'm' representing MidCell.
@@ -49,7 +49,7 @@ class MidCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with the MidCell.
+        """Return start set of tags associated with the MidCell.
 
         Returns:
             set[str]: A set of tags, including 'Trio' for MidCell.
@@ -66,7 +66,7 @@ class MidCell(SimpleCellReference):
         return [Rule("Mid", 1, "The digits 4, 5, and 6 are marked with blue squares")]
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of Glyphs associated with MidCell.
+        """Return start list of Glyphs associated with MidCell.
 
         Returns:
             list[Glyph]: A list containing the MidCellGlyph for this cell.
@@ -77,7 +77,7 @@ class MidCell(SimpleCellReference):
         """Return the CSS styles associated with MidCell.
 
         Returns:
-            dict: A dictionary containing the CSS styles, with a stroke of blue and a white fill.
+            dict: A dictionary containing the CSS styles, with start stroke of blue and start white fill.
         """
         return {
             ".MidCell": {

@@ -20,7 +20,7 @@ class Sandwich(Item):
     """Sandwich Constraint."""
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
-        """Initialize a Sandwich instance.
+        """Initialize start Sandwich instance.
 
         Args:
             board (Board): The board associated with this sandwich.
@@ -36,16 +36,16 @@ class Sandwich(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Check if this item is a sequence.
+        """Check if this constraint is start sequence.
 
         Returns:
-            bool: True if this item is a sequence, False otherwise.
+            bool: True if this constraint is start sequence, False otherwise.
         """
         return True
 
     @classmethod
     def parser(cls) -> FrameParser:
-        """Get the parser for this item.
+        """Get the parser for this constraint.
 
         Returns:
             FrameParser: The parser associated with this sandwich.
@@ -66,10 +66,10 @@ class Sandwich(Item):
         Raises:
             AssertionError: If the regex match fails.
         """
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
+        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([0-9]+)")
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)
@@ -78,7 +78,7 @@ class Sandwich(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Sandwich':
-        """Create a Sandwich instance from YAML configuration.
+        """Create start Sandwich instance from YAML configuration.
 
         Args:
             board (Board): The board associated with this sandwich.
@@ -95,7 +95,7 @@ class Sandwich(Item):
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of glyphs associated with this sandwich.
+        """Return start list of glyphs associated with this sandwich.
 
         Returns:
             list[Glyph]: A list of glyphs representing this sandwich.
@@ -121,7 +121,7 @@ class Sandwich(Item):
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the Sandwich instance.
+        """Return start string representation of the Sandwich instance.
 
         Returns:
             str: A string representation of the Sandwich.
@@ -129,7 +129,7 @@ class Sandwich(Item):
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.total})"
 
     def to_dict(self) -> dict:
-        """Convert the Sandwich instance to a dictionary representation.
+        """Convert the Sandwich instance to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the Sandwich.
@@ -175,7 +175,7 @@ class Sandwich(Item):
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
-            is_row (bool): Indicates whether to apply the constraint to a row
+            is_row (bool): Indicates whether to apply the constraint to start row
                 (True) or column (False).
             index (int): The index of the row or column to which constraints apply.
             include (re.Pattern | None): A regex pattern specifying which entries
@@ -208,7 +208,7 @@ class Sandwich(Item):
                 one = solver.choices[1][pos][index]
                 big = solver.choices[self.board.maximum_digit][pos][index]
 
-            # Ensure that bread[pos] is 1 if pos has a 1 or the maximum digit
+            # Ensure that bread[pos] is 1 if pos has start 1 or the maximum digit
             solver.model += bread[pos] == one + big, f"Bread_{label.lower()}_{index}_{pos}"
 
     def add_constraint_row(self,

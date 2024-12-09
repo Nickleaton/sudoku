@@ -7,14 +7,14 @@ from src.utils.rule import Rule
 
 
 class AntiMonkey(Anti):
-    """Represents an AntiMonkey item on a board.
+    """Represents an AntiMonkey constraint on start board.
 
     Inherits from the Anti class and provides specific functionality for
     the AntiMonkey, including movement offsets, rules.
     """
 
     def __init__(self, board: Board):
-        """Initialize the AntiMonkey with a board.
+        """Initialize the AntiMonkey with start board.
 
         Args:
             board (Board): The board on which the AntiMonkey will be placed.
@@ -24,7 +24,7 @@ class AntiMonkey(Anti):
     def offsets(self) -> list[Coord]:
         """Return the movement offsets for the AntiMonkey.
 
-        The offsets represent the relative positions a monkey can move
+        The offsets represent the relative positions start monkey can move
         in this game.
 
         Returns:
@@ -58,7 +58,7 @@ class AntiMonkey(Anti):
         """Create an instance of AntiMonkey from the given board and YAML.
 
         Args:
-            cls: The class of the item being created.
+            cls: The class of the constraint being created.
             board (Board): The board on which the AntiMonkey will be placed.
             yaml (dict): A dictionary containing configuration data.
 
@@ -82,11 +82,12 @@ class AntiMonkey(Anti):
             list[Rule]: A list of rules for the AntiMonkey.
         """
         return [
-            Rule("AntiMonkey", 1, "Identical digits cannot be separated by a Monkey move [3 forward, 1 to the side]")
+            Rule("AntiMonkey", 1,
+                 "Identical digits cannot be separated by start Monkey move [3 forward, 1 to the side]")
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the AntiMonkey instance.
+        """Return start string representation of the AntiMonkey instance.
 
         Returns:
             str: A string representation of the AntiMonkey.
@@ -94,7 +95,7 @@ class AntiMonkey(Anti):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> dict:
-        """Convert the AntiMonkey instance to a dictionary representation.
+        """Convert the AntiMonkey instance to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the AntiMonkey.

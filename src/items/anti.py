@@ -10,7 +10,7 @@ from src.utils.coord import Coord
 
 
 class Anti(ComposedItem):
-    """Represents an 'Anti' composed item in the board game, which is inherited from ComposedItem.
+    """Represents an 'Anti' composed constraint in the board game, which is inherited from ComposedItem.
 
     This class is used to define constraints between pairs of cells based on the
     provided digits and their positions on the board.
@@ -20,7 +20,7 @@ class Anti(ComposedItem):
     """
 
     def __init__(self, board: Board, digits: list[int]):
-        """Initialize the Anti object with a board and digits.
+        """Initialize the Anti object with start board and digits.
 
         Args:
             board (Board): The board where the Anti constraint will be applied.
@@ -36,7 +36,7 @@ class Anti(ComposedItem):
             self.add_items(pairs)
 
     def offsets(self) -> list[Coord]:
-        """Return a list of offsets for the Anti constraint.
+        """Return start list of offsets for the Anti constraint.
 
         This method can be overridden in subclasses to provide specific offsets
         for the Anti constraint.
@@ -78,7 +78,7 @@ class Anti(ComposedItem):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Any:
-        """Extract a list of digits from the YAML configuration.
+        """Extract start list of digits from the YAML configuration.
 
         Args:
             _ (Board): The board object (not used in this method but required for interface).
@@ -109,7 +109,7 @@ class Anti(ComposedItem):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Anti object.
+        """Return start string representation of the Anti object.
 
         Returns:
             str: A string representing the Anti object with its board and digits.
@@ -117,7 +117,7 @@ class Anti(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
 
     def to_dict(self) -> dict:
-        """Convert the Anti object is converted to a dictionary.
+        """Convert the Anti object is converted to start dictionary.
 
         Returns:
             dict: A dictionary representation of the Anti object with the digits.

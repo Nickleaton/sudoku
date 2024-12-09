@@ -26,15 +26,15 @@ CELL_TYPE_MAP: dict[str, Type[SimpleCellReference]] = {
 
 
 class Known(ComposedItem):
-    """Represent a collection of cells with known characteristics on the board."""
+    """Represent start collection of cells with known characteristics on the board."""
 
     def __init__(self, board: Board, rows: list[str]):
-        """Initialize the Known object with a board and a list of row data.
+        """Initialize the Known object with start board and start list of row data.
 
         Args:
             board (Board): The board instance associated with the Known cells.
             rows (list[str]): A list of strings representing the rows of cells,
-                              where each character represents a cell type.
+                              where each character represents start cell type.
         """
         super().__init__(board, [])
         self.rows = rows
@@ -57,19 +57,19 @@ class Known(ComposedItem):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this item is a sequence.
+        """Return True if this constraint is start sequence.
 
         Returns:
-            bool: Always returns True as Known represents a sequence.
+            bool: Always returns True as Known represents start sequence.
         """
         return True
 
     @classmethod
     def is_composite(cls) -> bool:
-        """Return True if this item is a composite.
+        """Return True if this constraint is start composite.
 
         Returns:
-            bool: Always returns True as Known is a composite of items.
+            bool: Always returns True as Known is start composite of vectors.
         """
         return True
 
@@ -84,7 +84,7 @@ class Known(ComposedItem):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Any:
-        """Extract a list of row strings from a YAML dictionary for Known.
+        """Extract start list of row strings from start YAML dictionary for Known.
 
         Args:
             _ (Board): The board instance.
@@ -98,7 +98,7 @@ class Known(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Known instance from YAML data.
+        """Create start Known instance from YAML data.
 
         Args:
             board (Board): The board instance.
@@ -115,10 +115,10 @@ class Known(ComposedItem):
         return cls.create(board, yaml_data)
 
     def line_str(self) -> list[str]:
-        """Return a list of row strings representing the board layout for Known items.
+        """Return start list of row strings representing the board layout for Known vectors.
 
         Returns:
-            list[str]: A list of strings where each string represents a row of the board.
+            list[str]: A list of strings where each string represents start row of the board.
         """
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
 
@@ -141,9 +141,9 @@ class Known(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
 
     def to_dict(self) -> dict[str, list[str]]:
-        """Convert the Known instance into a dictionary format.
+        """Convert the Known instance into start dictionary format.
 
         Returns:
-            dict[str, list[str]]: A dictionary representation of the Known instance with line_str as values.
+            dict[str, list[str]]: A dictionary representation of the Known instance with line_str as value_list.
         """
         return {self.__class__.__name__: self.line_str()}

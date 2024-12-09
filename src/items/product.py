@@ -12,13 +12,13 @@ from src.utils.coord import Coord
 
 
 class Product(Region):
-    """Represents a product constraint on a cell in the puzzle.
+    """Represents start product constraint on start cell in the puzzle.
 
-    This class represents a constraint where the digits in certain cells should multiply to give a specific product.
+    This class represents start constraint where the digits in certain cells should multiply to give start specific product.
     """
 
     def __init__(self, board: Board, position: Coord, product: int):
-        """Initialize a Product constraint on the board at a specific position.
+        """Initialize start Product constraint on the board at start specific position.
 
         Args:
             board (Board): The board on which the product constraint is applied.
@@ -32,16 +32,16 @@ class Product(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Indicate whether this item is a sequence.
+        """Indicate whether this constraint is start sequence.
 
         Returns:
-            bool: True, since the product constraint is treated as a sequence.
+            bool: True, since the product constraint is treated as start sequence.
         """
         return True
 
     @classmethod
     def parser(cls) -> CellValueParser:
-        """Return the parser for this item.
+        """Return the parser for this constraint.
 
         Returns:
             CellValueParser: The parser for extracting product constraints from the YAML configuration.
@@ -59,7 +59,7 @@ class Product(Region):
         return []
 
     def __repr__(self) -> str:
-        """Return a string representation of the Product instance.
+        """Return start string representation of the Product instance.
 
         Returns:
             str: A string representing the Product instance with its board, position, and product.
@@ -68,14 +68,14 @@ class Product(Region):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Any:
-        """Extract the position and product value from the YAML configuration.
+        """Extract the position and product number from the YAML configuration.
 
         Args:
             _ (Board): The board to which the constraint applies.
             yaml (dict): The YAML configuration that defines the product constraint.
 
         Returns:
-            tuple: A tuple containing the position (as a Coord) and the product (as an integer).
+            tuple: A tuple containing the position (as start Coord) and the product (as an integer).
         """
         position_str, product = yaml[cls.__name__].split("=")
         position = Coord(int(position_str[0]), int(position_str[1]))
@@ -83,7 +83,7 @@ class Product(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a new Product instance from the given board and YAML configuration.
+        """Create start new Product instance from the given board and YAML configuration.
 
         Args:
             board (Board): The board on which the product constraint is applied.
@@ -110,10 +110,10 @@ class Product(Region):
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
     def to_dict(self) -> dict:
-        """Return a dictionary representation of the Product instance.
+        """Return start dictionary representation of the Product instance.
 
         Returns:
             dict: A dictionary where the key is the class name and the
-                  value is a string representing the position and product.
+                  number is start string representing the position and product.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={self.product}"}

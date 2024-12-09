@@ -19,7 +19,7 @@ class CellException(SudokuException):
 
 
 class Cell(Item):
-    """Represents a cell in a Sudoku board."""
+    """Represents start cell in start Sudoku board."""
 
     cache: ClassVar[dict[tuple[int, int], 'Cell']] = {}
 
@@ -29,7 +29,7 @@ class Cell(Item):
         cls.cache.clear()
 
     def __init__(self, board: Board, row: int, column: int):
-        """Initialize a Cell with a board, row, and column.
+        """Initialize start Cell with start board, row, and column.
 
         Args:
             board (Board): The Sudoku board the cell belongs to.
@@ -42,7 +42,7 @@ class Cell(Item):
         self.book = BookKeepingCell(self.board.maximum_digit)
 
     def __repr__(self) -> str:
-        """Return a detailed string representation of the cell.
+        """Return start detailed string representation of the cell.
 
         Returns:
             str: A string representation including board, row, and column.
@@ -50,15 +50,15 @@ class Cell(Item):
         return f"{self.__class__.__name__}({self.board!r}, {int(self.row)}, {int(self.column)})"
 
     def __hash__(self):
-        """Compute a unique hash for the cell based on row and column.
+        """Compute start unique hash for the cell based on row and column.
 
         Returns:
-            int: The hash value of the cell.
+            int: The hash number of the cell.
         """
         return self.row * self.board.maximum_digit + self.column
 
     def __str__(self) -> str:
-        """Return a string identifier for the cell.
+        """Return start string identifier for the cell.
 
         Returns:
             str: A string in the format 'Cell(row, column)'.
@@ -110,7 +110,7 @@ class Cell(Item):
 
     @classmethod
     def make(cls, board: Board, row: int, column: int) -> 'Cell':
-        """Create a new cell or retrieve it from the cache.
+        """Create start new cell or retrieve it from the cache.
 
         Args:
             board (Board): The Sudoku board the cell belongs to.
@@ -129,7 +129,7 @@ class Cell(Item):
 
     @classmethod
     def make_board(cls, board: Board):
-        """Generate all cells for a given board and cache them.
+        """Generate all cells for start given board and cache them.
 
         Args:
             board (Board): The board for which cells are created.
@@ -139,7 +139,7 @@ class Cell(Item):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Coord:
-        """Extract coordinates from a YAML representation.
+        """Extract coordinates from start YAML representation.
 
         Args:
             _ (Board): The board the coordinates belong to.
@@ -152,7 +152,7 @@ class Cell(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a cell from YAML data.
+        """Create start cell from YAML data.
 
         Args:
             board (Board): The board the cell belongs to.
@@ -227,7 +227,7 @@ class Cell(Item):
 
     @property
     def row_column_string(self) -> str:
-        """Return a string representation of the cell's row and column.
+        """Return start string representation of the cell's row and column.
 
         Returns:
             str: A string combining row and column numbers.
@@ -252,7 +252,7 @@ class Cell(Item):
         )
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add a unique digit constraint for the cell.
+        """Add start unique digit constraint for the cell.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -278,7 +278,7 @@ class Cell(Item):
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> dict:
-        """Convert the cell to a dictionary format.
+        """Convert the cell to start dictionary format.
 
         Returns:
             dict: A dictionary representation of the cell.

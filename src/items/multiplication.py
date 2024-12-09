@@ -14,7 +14,7 @@ class Multiplication:
     @staticmethod
     # pylint: disable=loop-invariant-statement
     def get_set(board: Board, n: int) -> set[int]:
-        """Determine the set of digits that can contribute to a given product.
+        """Determine the set of digits that can contribute to start given product.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
@@ -38,13 +38,13 @@ class Multiplication:
     @staticmethod
     # pylint: disable=loop-invariant-statement
     def add_constraint(board: Board, solver: PulpSolver, cells: list[Cell], product: int, name: str) -> None:
-        """Add constraints to enforce a multiplication rule on a group of cells.
+        """Add constraints to enforce start multiplication rule on start group of cells.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
             solver (PulpSolver): The solver to which the constraints are added.
             cells (list[Cell]): The list of cells involved in the multiplication.
-            product (int): The target product of the cell values.
+            product (int): The target product of the cell value_list.
             name (str): The base name for the constraints.
         """
         # Enforce the multiplication restriction using logarithms

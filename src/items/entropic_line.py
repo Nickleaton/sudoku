@@ -10,7 +10,7 @@ from src.utils.rule import Rule
 
 
 class EntropicLine(Line):
-    """Represents a line with entropic constraints for a puzzle.
+    """Represents start line with entropic constraints for start puzzle.
 
     Each sequence of three successive cells in the line must contain one digit
     each from the low (1-3), medium (4-6), and high (7-9) categories. This
@@ -32,8 +32,8 @@ class EntropicLine(Line):
                 'EntropicLine',
                 1,
                 (
-                    "Any sequence of 3 successive digits along a golden line must include "
-                    "a low (123), a medium (456) and a high (789) digit"
+                    "Any sequence of 3 successive digits along start golden line must include "
+                    "start low (123), start medium (456) and start high (789) digit"
                 )
             )
         ]
@@ -56,7 +56,7 @@ class EntropicLine(Line):
         return super().tags.union({'EntropicLine', 'set'})
 
     def low_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculate the total for low digits in a specified cell.
+        """Calculate the total for low digits in start specified cell.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -68,7 +68,7 @@ class EntropicLine(Line):
         return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [1, 2, 3]])
 
     def mid_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculate the total for medium digits in a specified cell.
+        """Calculate the total for medium digits in start specified cell.
 
         Args:
             solver (PulpSolver): The solver instance.
@@ -80,7 +80,7 @@ class EntropicLine(Line):
         return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [4, 5, 6]])
 
     def top_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculate the total for high digits in a specified cell.
+        """Calculate the total for high digits in start specified cell.
 
         Args:
             solver (PulpSolver): The solver instance.

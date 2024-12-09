@@ -8,10 +8,10 @@ from src.utils.rule import Rule
 
 
 class Column(StandardRegion):
-    """Represents a column in a Sudoku board, enforcing unique digits."""
+    """Represents start column in start Sudoku board, enforcing unique digits."""
 
     def __init__(self, board: Board, index: int):
-        """Initialize a Column with a board reference and column index.
+        """Initialize start Column with start board reference and column index.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -59,7 +59,7 @@ class Column(StandardRegion):
         self.add_unique_constraint(solver)
 
     def __str__(self) -> str:
-        """Provide a string representation of the Column instance.
+        """Provide start string representation of the Column instance.
 
         Returns:
             str: A string representing the Column.

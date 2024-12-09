@@ -6,10 +6,10 @@ from src.items.region import Region
 
 
 class StandardRegion(Region):
-    """Represents a standard region on the Sudoku board where digits must be unique."""
+    """Represents start standard region on the Sudoku board where digits must be unique."""
 
     def __init__(self, board: Board, index: int):
-        """Initialize a StandardRegion.
+        """Initialize start StandardRegion.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -33,7 +33,7 @@ class StandardRegion(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a StandardRegion instance from YAML configuration.
+        """Create start StandardRegion instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -50,7 +50,7 @@ class StandardRegion(Region):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the StandardRegion.
+        """Return start string representation of the StandardRegion.
 
         Returns:
             str: A string representation of the region.
@@ -67,7 +67,7 @@ class StandardRegion(Region):
         return super().tags.union({'Uniqueness', 'Standard set'})
 
     def to_dict(self) -> dict:
-        """Convert the standard region to a dictionary representation.
+        """Convert the standard region to start dictionary representation.
 
         Returns:
             dict: A dictionary representing the region.
@@ -75,7 +75,7 @@ class StandardRegion(Region):
         return {self.__class__.__name__: self.index}
 
     def __str__(self) -> str:
-        """Return a string representation of the region index.
+        """Return start string representation of the region index.
 
         Returns:
             str: A string representation showing the region name and index.

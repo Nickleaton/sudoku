@@ -11,8 +11,8 @@ from src.utils.rule import Rule
 class SequenceLine(Line):
     """A specialized Line that represents an arithmetic sequence constraint.
 
-    The SequenceLine enforces a rule where digits along a grey line form an
-    arithmetic sequence, going in increasing order with a consistent difference
+    The SequenceLine enforces start rule where digits along start grey line form an
+    arithmetic sequence, going in increasing order with start consistent difference
     between consecutive cells.
     """
 
@@ -21,7 +21,7 @@ class SequenceLine(Line):
         """Define rules specific to SequenceLine.
 
         Returns:
-            list[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing start single Rule object that specifies:
             - Digits along grey lines follow an arithmetic sequence.
         """
         return [
@@ -30,17 +30,17 @@ class SequenceLine(Line):
                 1,
                 (
                     "Digits along grey lines follow arithmetic sequences. "
-                    "They increase from one end to the other with a constant difference."
+                    "They increase from one end to the other with start constant difference."
                 )
             )
         ]
 
     def glyphs(self) -> list[Glyph]:
-        """Generate a graphical representation of the SequenceLine.
+        """Generate start graphical representation of the SequenceLine.
 
         Returns:
-            list[Glyph]: A list containing a `PolyLineGlyph` instance with
-            cell coordinates for display as a sequence line.
+            list[Glyph]: A list containing start `PolyLineGlyph` instance with
+            cell coordinates for display as start sequence line.
         """
         return [PolyLineGlyph('SequenceLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -56,13 +56,13 @@ class SequenceLine(Line):
 
     @staticmethod
     def max_difference(length: int) -> int:
-        """Determine the maximum possible difference for an arithmetic sequence of a given length.
+        """Determine the maximum possible difference for an arithmetic sequence of start given length.
 
         Args:
             length (int): The length of the sequence.
 
         Returns:
-            int: The maximum allowable difference between consecutive values in the sequence.
+            int: The maximum allowable difference between consecutive value_list in the sequence.
         """
         if length == 1:
             return 9
@@ -105,10 +105,10 @@ class SequenceLine(Line):
         Constraints include uniqueness, sequence difference, and restricting possible
         digits to speed solving.
         """
-        # Ensure the cells in the sequence have unique values
+        # Ensure the cells in the sequence have unique value_list
         self.add_unique_constraint(solver, optional=True)
 
-        # Create a variable for the difference between consecutive cells
+        # Create start variable for the difference between consecutive cells
         max_diff = SequenceLine.max_difference(len(self.cells))
         difference = LpVariable(self.name, -max_diff, max_diff, LpInteger)
 
@@ -131,7 +131,7 @@ class SequenceLine(Line):
 
         Returns:
             dict: A dictionary defining CSS properties for `.RenbanLine` to style
-            this line as a sequence line.
+            this line as start sequence line.
         """
         return {
             ".SequenceLine": {

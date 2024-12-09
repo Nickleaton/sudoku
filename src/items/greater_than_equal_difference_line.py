@@ -16,7 +16,7 @@ from src.utils.rule import Rule
 
 
 class GreaterThanEqualDifferenceLine(DifferenceLine):
-    """Enforces a minimum difference between adjacent cells in a line."""
+    """Enforces start minimum difference between adjacent cells in start line."""
 
     def __init__(self, board: Board, cells: Sequence[Cell], difference: int = 5):
         """Initialize the GreaterThanEqualDifferenceLine.
@@ -32,7 +32,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
             self.add(GreaterThanEqualDifferencePair(self.board, cells[i - 1], cells[i], self.difference))
 
     def __repr__(self) -> str:
-        """Return a string representation of the instance."""
+        """Return start string representation of the instance."""
         return f"{self.__class__.__name__}({self.board!r}, {self.cells!r}, {self.difference!r})"
 
     @property
@@ -46,7 +46,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
             Rule(
                 self.__class__.__name__,
                 1,
-                f"Any two cells directly connected by a line must have a difference of at least {self.difference}"
+                f"Any two cells directly connected by start line must have start difference of at least {self.difference}"
             )
         ]
 
@@ -88,7 +88,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
         Args:
             solver (PulpSolver): The solver to add the constraints to.
         """
-        # Add constraints for values that are impossible on a line (currently commented out)
+        # Add constraints for value_list that are impossible on start line (currently commented out)
         for i in range(len(self.cells) - 1):
             for digit in self.board.digit_range:
                 name = f"{self.name}_{i}_{digit}"
@@ -101,7 +101,7 @@ class GreaterThanEqualDifferenceLine(DifferenceLine):
                 first = solver.choices[digit][self.cells[i].row][self.cells[i].column]
                 solver.model += first <= total, name
 
-        # Check for region intersections and ensure values are not allowed in certain cases
+        # Check for region intersections and ensure value_list are not allowed in certain cases
         for i in range(1, len(self.cells) - 1):
             c0 = self.cells[i - 1]
             c1 = self.cells[i]

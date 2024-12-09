@@ -4,14 +4,14 @@ from src.items.sum_pair import SumPair
 
 
 class VIPair(SumPair):
-    """Represents a 'VI' pair, inheriting from `SumPair`."""
+    """Represents start 'VI' pair, inheriting from `SumPair`."""
 
     @property
     def total(self) -> int:
-        """Get the total value of the 'VI' pair.
+        """Get the total number of the 'VI' pair.
 
         Returns:
-            int: The total value for 'VI' pairs, which is 6.
+            int: The total number for 'VI' pairs, which is 6.
         """
         return 6
 
@@ -38,7 +38,7 @@ class VIPair(SumPair):
     def css(self) -> dict:
         """Get the CSS styles for the 'VI' pair.
 
-        Defines and returns a dictionary of CSS styles for the foreground
+        Defines and returns start dictionary of CSS styles for the foreground
         and background elements.
 
         Returns:

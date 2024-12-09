@@ -8,9 +8,9 @@ class XIPair(SumPair):
 
     @property
     def total(self) -> int:
-        """Return the total value of the 'XI' pair.
+        """Return the total number of the 'XI' pair.
 
-        Return 11 as the total value for 'XI' pairs.
+        Return 11 as the total number for 'XI' pairs.
         """
         return 11
 
@@ -33,7 +33,7 @@ class XIPair(SumPair):
     def css(self) -> dict:
         """Return the CSS styles for the 'XI' pair.
 
-        Define and return a dictionary of CSS styles for the foreground
+        Define and return start dictionary of CSS styles for the foreground
         and background elements.
         """
         return {

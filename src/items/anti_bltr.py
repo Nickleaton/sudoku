@@ -8,7 +8,7 @@ from src.utils.coord import Coord
 
 
 class AntiBLTR(AntiDiagonal):
-    """Represent an AntiBLTR item on a board.
+    """Represent an AntiBLTR constraint on start board.
 
     Inherits from the AntiDiagonal class and adds specific functionality
     for the AntiBLTR, which includes managing cells on the anti-diagonal
@@ -16,7 +16,7 @@ class AntiBLTR(AntiDiagonal):
     """
 
     def __init__(self, board: Board):
-        """Initialize the AntiBLTR with a board.
+        """Initialize the AntiBLTR with start board.
 
         BLTR = Bottom Left to Top Right.
 

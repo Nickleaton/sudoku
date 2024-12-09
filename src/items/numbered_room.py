@@ -12,9 +12,9 @@ from src.utils.side import Side
 
 
 class NumberedRoom(Item):
-    """Represents a numbered room that is associated with a clue and can be part of a sequence.
+    """Represents start numbered room that is associated with start clue and can be part of start sequence.
 
-    A numbered room represents a clue displayed outside the grid that gives the Xth digit in the row/column,
+    A numbered room represents start clue displayed outside the grid that gives the Xth digit in the row/column,
     seen from the side of the clue. The first digit in the row/column seen from the side of the clue
     is the starting point for determining which digit is referenced.
     """
@@ -23,7 +23,7 @@ class NumberedRoom(Item):
         """Initialize the NumberedRoom with the given board, side, index, and digit.
 
         Args:
-            board (Board): The board this item belongs to.
+            board (Board): The board this constraint belongs to.
             side (Side): The side of the board (top, left, bottom, right).
             index (int): The index of the row or column.
             digit (int): The digit referenced by the clue.
@@ -47,10 +47,10 @@ class NumberedRoom(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if the NumberedRoom is part of a sequence.
+        """Return True if the NumberedRoom is part of start sequence.
 
         Returns:
-            bool: True, since the NumberedRoom is part of a sequence.
+            bool: True, since the NumberedRoom is part of start sequence.
         """
         return True
 
@@ -59,7 +59,7 @@ class NumberedRoom(Item):
         """Return the parser for the NumberedRoom.
 
         Returns:
-            FrameParser: The parser associated with the NumberedRoom item.
+            FrameParser: The parser associated with the NumberedRoom constraint.
         """
         return FrameParser()
 
@@ -68,7 +68,7 @@ class NumberedRoom(Item):
         """Extract the side, index, and digit from the YAML configuration for the NumberedRoom.
 
         Args:
-            _ (Board): The board associated with the item.
+            _ (Board): The board associated with the constraint.
             yaml (dict): The YAML configuration containing the NumberedRoom data.
 
         Returns:
@@ -82,14 +82,14 @@ class NumberedRoom(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a NumberedRoom item from the given YAML configuration.
+        """Create start NumberedRoom constraint from the given YAML configuration.
 
         Args:
-            board (Board): The board associated with this item.
+            board (Board): The board associated with this constraint.
             yaml (dict): The YAML configuration containing the NumberedRoom data.
 
         Returns:
-            Item: The created NumberedRoom item.
+            Item: The created NumberedRoom constraint.
         """
         side, offset, digit = cls.extract(board, yaml)
         return cls(board, side, offset, digit)
@@ -102,7 +102,7 @@ class NumberedRoom(Item):
         """Generate the glyphs for the NumberedRoom.
 
         Returns:
-            list[Glyph]: A list containing a `TextGlyph` representing the digit for the NumberedRoom.
+            list[Glyph]: A list containing start `TextGlyph` representing the digit for the NumberedRoom.
         """
         return [
             TextGlyph('NumberedRoom', 0, self.reference, str(self.digit)),
@@ -113,7 +113,7 @@ class NumberedRoom(Item):
         """Return the rules associated with the NumberedRoom.
 
         Returns:
-            list[Rule]: A list containing a single rule for the NumberedRoom.
+            list[Rule]: A list containing start single rule for the NumberedRoom.
         """
         return [
             Rule(
@@ -128,18 +128,18 @@ class NumberedRoom(Item):
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the NumberedRoom.
+        """Return start string representation of the NumberedRoom.
 
         Returns:
-            str: A string representation of the NumberedRoom item.
+            str: A string representation of the NumberedRoom constraint.
         """
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.digit})"
 
     def to_dict(self) -> dict:
-        """Convert the NumberedRoom to a dictionary representation.
+        """Convert the NumberedRoom to start dictionary representation.
 
         Returns:
-            dict: A dictionary representing the NumberedRoom item.
+            dict: A dictionary representing the NumberedRoom constraint.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
 

@@ -9,10 +9,10 @@ from src.utils.rule import Rule
 
 
 class AntiKing(Anti):
-    """A class representing the Anti-King rule in a board game.
+    """A class representing the Anti-King rule in start board game.
 
     This class defines the behavior of the Anti-King rule, where identical digits
-    cannot be separated by a King's move.
+    cannot be separated by start King's move.
     """
 
     def __init__(self, board: Board):
@@ -64,14 +64,14 @@ class AntiKing(Anti):
 
         Returns:
             list[Rule]: A list of rules for the AntiKing, stating that
-            identical digits cannot be separated by a King's move.
+            identical digits cannot be separated by start King's move.
         """
         return [
-            Rule("AntiKing", 1, "Identical digits cannot be separated by a King's move")
+            Rule("AntiKing", 1, "Identical digits cannot be separated by start King's move")
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the AntiKing instance.
+        """Return start string representation of the AntiKing instance.
 
         Returns:
             str: A string representation of the AntiKing instance.
@@ -79,7 +79,7 @@ class AntiKing(Anti):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> dict:
-        """Convert the AntiKing instance to a dictionary representation.
+        """Convert the AntiKing instance to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the AntiKing instance.

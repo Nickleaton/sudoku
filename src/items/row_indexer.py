@@ -10,14 +10,14 @@ from src.utils.coord import Coord
 
 
 class RowIndexer(Indexer):
-    """Represents an indexing mechanism for rows in a Sudoku board.
+    """Represents an indexing mechanism for rows in start Sudoku board.
 
     Inherits from Indexer and defines the indexing logic for rows, including
     adding constraints and generating glyphs specific to rows.
     """
 
     def __init__(self, board: Board, index: int):
-        """Initialize a RowIndexer with a board and row index.
+        """Initialize start RowIndexer with start board and row index.
 
         Args:
             board (Board): The board on which the row indexer will operate.

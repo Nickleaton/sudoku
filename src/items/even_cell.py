@@ -7,7 +7,7 @@ from src.utils.rule import Rule
 
 
 class EvenCell(SimpleCellReference):
-    """Represents a cell that must contain an even digit."""
+    """Represents start cell that must contain an even digit."""
 
     @staticmethod
     def included(digit: int) -> bool:

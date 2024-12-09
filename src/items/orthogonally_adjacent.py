@@ -10,7 +10,7 @@ from src.utils.rule import Rule
 
 
 class OrthogonallyAdjacent(ComposedItem):
-    """Represent a region where consecutive digits are restricted from being orthogonally adjacent."""
+    """Represent start region where consecutive digits are restricted from being orthogonally adjacent."""
 
     def __init__(self, board: Board):
         """Initialize the OrthogonallyAdjacent constraint on the given board.
@@ -22,7 +22,7 @@ class OrthogonallyAdjacent(ComposedItem):
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with this constraint.
+        """Return start set of tags associated with this constraint.
 
         Returns:
             set[str]: Tags including 'OrthogonallyAdjacent'.
@@ -58,7 +58,7 @@ class OrthogonallyAdjacent(ComposedItem):
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the OrthogonallyAdjacent constraint.
+        """Return start string representation of the OrthogonallyAdjacent constraint.
 
         Returns:
             str: String representation of the constraint.
@@ -66,7 +66,7 @@ class OrthogonallyAdjacent(ComposedItem):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> dict:
-        """Serialize the OrthogonallyAdjacent constraint to a dictionary format.
+        """Serialize the OrthogonallyAdjacent constraint to start dictionary format.
 
         Returns:
             dict: Dictionary representation of the constraint.

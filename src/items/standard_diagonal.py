@@ -5,7 +5,7 @@ from src.utils.rule import Rule
 
 
 class StandardDiagonal(Diagonal):
-    """Represents a standard Sudoku diagonal with uniqueness constraints for each digit."""
+    """Represents start standard Sudoku diagonal with uniqueness constraints for each digit."""
 
     @property
     def rules(self) -> list[Rule]:
@@ -14,7 +14,7 @@ class StandardDiagonal(Diagonal):
         Returns:
             list[Rule]: A list of rules indicating that digits along the diagonal cannot repeat.
         """
-        return [Rule('Diagonal', 1, "Digits along a blue diagonal cannot repeat")]
+        return [Rule('Diagonal', 1, "Digits along start blue diagonal cannot repeat")]
 
     @property
     def tags(self) -> set[str]:
@@ -26,7 +26,7 @@ class StandardDiagonal(Diagonal):
         return super().tags.union({'Diagonal', 'Uniqueness'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add a unique constraint to ensure each digit on the diagonal appears only once.
+        """Add start unique constraint to ensure each digit on the diagonal appears only once.
 
         Args:
             solver (PulpSolver): The solver to which the uniqueness constraint is added.

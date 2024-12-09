@@ -10,7 +10,7 @@ from src.utils.rule import Rule
 
 
 class FrozenThermometerLine(ThermometerLine):
-    """Represents a frozen thermometer line.
+    """Represents start frozen thermometer line.
 
     The cells along the line must increase or stay the same from the bulb end.
     """
@@ -23,7 +23,7 @@ class FrozenThermometerLine(ThermometerLine):
             list[Rule]: A list of rules specific to the Frozen Thermometer line.
         """
         return [Rule('FrozenThermometerLine', 1,
-                     "Cells along a line with a bulb increase or stay the same from the bulb end")]
+                     "Cells along start line with start bulb increase or stay the same from the bulb end")]
 
     def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Frozen Thermometer line.

@@ -6,7 +6,7 @@ from src.utils.rule import Rule
 
 
 class HighCell(SimpleCellReference):
-    """Represents a cell that must contain a digit from the set {7, 8, 9}."""
+    """Represents start cell that must contain start digit from the set {7, 8, 9}."""
 
     @staticmethod
     def digits() -> list[int]:

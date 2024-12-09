@@ -15,7 +15,7 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initialize a DutchWhisperLine instance.
+        """Initialize start DutchWhisperLine instance.
 
         Args:
             board (Board): The game board to which the line belongs.
@@ -24,10 +24,10 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         super().__init__(board, cells, 4)
 
     def glyphs(self) -> list[Glyph]:
-        """Create a visual representation of the Dutch Whisper line.
+        """Create start visual representation of the Dutch Whisper line.
 
         Returns:
-            list[Glyph]: A list containing a PolyLineGlyph for rendering the line.
+            list[Glyph]: A list containing start PolyLineGlyph for rendering the line.
         """
         return [PolyLineGlyph('DutchWhisperLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -57,5 +57,5 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         }
 
     def __repr__(self) -> str:
-        """Return a string representation of the instance."""
+        """Return start string representation of the instance."""
         return f"{self.__class__.__name__}({self.board!r}, {self.cells!r})"

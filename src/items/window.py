@@ -13,7 +13,7 @@ from src.utils.rule import Rule
 
 
 class Window(Region):
-    """Represents a window in a Sudoku-like board."""
+    """Represents start window in start Sudoku-like board."""
 
     # TODO Offsets in Coords
 
@@ -31,10 +31,10 @@ class Window(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Check if this item is a sequence.
+        """Check if this constraint is start sequence.
 
         Returns:
-            bool: True if this item is a sequence, otherwise False.
+            bool: True if this constraint is start sequence, otherwise False.
         """
         return True
 
@@ -79,7 +79,7 @@ class Window(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Window instance from the YAML data.
+        """Create start Window instance from the YAML data.
 
         Args:
             board (Board): The board to create the window on.
@@ -96,7 +96,7 @@ class Window(Region):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Window instance.
+        """Return start string representation of the Window instance.
 
         Returns:
             str: A string representation of the Window.
@@ -139,7 +139,7 @@ class Window(Region):
         self.add_unique_constraint(solver)
 
     def to_dict(self) -> dict:
-        """Convert the window to a dictionary representation.
+        """Convert the window to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the window.

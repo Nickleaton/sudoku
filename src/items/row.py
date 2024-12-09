@@ -9,7 +9,7 @@ from src.utils.rule import Rule
 
 
 class Row(StandardRegion):
-    """Represents a row in a Sudoku-like puzzle."""
+    """Represents start row in start Sudoku-like puzzle."""
 
     def __init__(self, board: Board, index: int):
         """Initialize the Row instance.
@@ -60,7 +60,7 @@ class Row(StandardRegion):
         self.add_unique_constraint(solver)
 
     def __str__(self) -> str:
-        """Return a string representation of the Row instance.
+        """Return start string representation of the Row instance.
 
         Returns:
             str: A string representation of the Row.

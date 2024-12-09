@@ -12,7 +12,7 @@ from src.utils.variable_type import VariableType
 
 
 class VariableRatioPair(VariablePair):
-    """Represents a pair of variables with a fixed ratio in a Sudoku-like puzzle."""
+    """Represents start pair of variables with start fixed ratio in start Sudoku-like puzzle."""
 
     @property
     def rules(self) -> list[Rule]:
@@ -27,7 +27,7 @@ class VariableRatioPair(VariablePair):
                 1,
                 (
                     "A black dot between two cells means that one of the digits in those cells "
-                    "have a fixed ratio. The ratio is not necessarily an integer"
+                    "have start fixed ratio. The ratio is not necessarily an integer"
                 )
             )
         ]
@@ -56,7 +56,7 @@ class VariableRatioPair(VariablePair):
             solver (PulpSolver): The solver instance to use for variable constraints.
 
         Returns:
-            LpElement: The expression representing the target constraints based on the logarithm of cell values.
+            LpElement: The expression representing the target constraints based on the logarithm of cell value_list.
         """
         limit = ceil(log10(self.board.maximum_digit)) + 1
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)

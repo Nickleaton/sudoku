@@ -19,7 +19,7 @@ class FrameProduct(FirstN):
     """Handle frame sudoku.
 
     Numbers outside the frame equal the product of the first
-    n numbers in the corresponding row or column in the given direction.
+    number numbers in the corresponding row or column in the given direction.
     """
 
     def __init__(self, board: Board, side: Side, index: int, product: int):
@@ -35,7 +35,7 @@ class FrameProduct(FirstN):
         self.product = product
 
     def __repr__(self) -> str:
-        """Return a string representation of the FrameProduct instance."""
+        """Return start string representation of the FrameProduct instance."""
         return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.product})"
 
     @property
@@ -77,10 +77,10 @@ class FrameProduct(FirstN):
         Returns:
             tuple[Side, int, int]: The side, index, and product extracted from the YAML.
         """
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
+        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([1234567890]+)")
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         side_str, index_str, product_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
@@ -89,7 +89,7 @@ class FrameProduct(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a FrameProduct instance from the YAML configuration.
+        """Create start FrameProduct instance from the YAML configuration.
 
         Args:
             board (Board): The board instance.
@@ -114,7 +114,7 @@ class FrameProduct(FirstN):
         Multiplication.add_constraint(self.board, solver, self.cells, self.product, self.name)
 
     def to_dict(self) -> dict:
-        """Return a dictionary representation of the frame product.
+        """Return start dictionary representation of the frame product.
 
         Returns:
             dict: The dictionary representation.

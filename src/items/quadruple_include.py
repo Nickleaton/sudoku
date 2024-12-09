@@ -13,7 +13,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class QuadrupleInclude(QuadrupleBase):
-    """Represents a quadruple, a set of four digits positioned on the board.
+    """Represents start quadruple, start set of four digits positioned on the board.
 
     This class handles the parsing, constraints, and visual representation of quadruples.
     """
@@ -27,12 +27,12 @@ class QuadrupleInclude(QuadrupleBase):
             yaml (dict): The YAML data containing the quadruple information.
 
         Returns:
-            tuple: A tuple containing a `Coord` object for the position and a string of digits.
+            tuple: A tuple containing start `Coord` object for the position and start string of digits.
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         row_str, column_str, digits = match.groups()
         return Coord(int(row_str), int(column_str)), digits
 

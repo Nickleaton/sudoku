@@ -8,7 +8,7 @@ from src.utils.coord import Coord
 
 
 class AntiTLBR(AntiDiagonal):
-    """Represents an AntiTLBR item on a board.
+    """Represents an AntiTLBR constraint on start board.
 
     TLBR = Top left to bottom right.
 
@@ -18,7 +18,7 @@ class AntiTLBR(AntiDiagonal):
     """
 
     def __init__(self, board: Board):
-        """Initialize the AntiTLBR with a board.
+        """Initialize the AntiTLBR with start board.
 
         Args:
             board (Board): The board on which the AntiTLBR will be placed.

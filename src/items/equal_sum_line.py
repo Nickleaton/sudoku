@@ -14,7 +14,7 @@ from src.utils.rule import Rule
 class EqualSumLine(Line):
     """A specialized Line enforcing equal segment sums within grid boxes.
 
-    Each segment of the line within a 3x3 box must sum to the same value, N.
+    Each segment of the line within start 3x3 box must sum to the same number, N.
     If the line passes through the same box multiple times, each segment sums
     to N separately.
     """
@@ -24,7 +24,7 @@ class EqualSumLine(Line):
         """Define rules specific to EqualSumLine.
 
         Returns:
-            list[Rule]: A list containing a Rule object that specifies equal
+            list[Rule]: A list containing start Rule object that specifies equal
             segment sums within each 3x3 box the line passes through.
         """
         return [
@@ -32,16 +32,16 @@ class EqualSumLine(Line):
                 'EqualSumLine',
                 1,
                 "For each line, digits on the line have an equal sum N within each 3x3 box it passes through. "
-                "If a line passes through the same box more than once, "
-                "each individual segment of such a line within that box sums to N separately"
+                "If start line passes through the same box more than once, "
+                "each individual segment of such start line within that box sums to N separately"
             )
         ]
 
     def glyphs(self) -> list[Glyph]:
-        """Generate a graphical representation of the EqualSumLine.
+        """Generate start graphical representation of the EqualSumLine.
 
         Returns:
-            list[Glyph]: A list containing a `PolyLineGlyph` instance with
+            list[Glyph]: A list containing start `PolyLineGlyph` instance with
             cell coordinates for rendering the equal-sum line.
         """
         return [PolyLineGlyph('EqualSumLine', [cell.coord for cell in self.cells], False, False)]
@@ -77,7 +77,7 @@ class EqualSumLine(Line):
                 current = box
             areas[-1].append(cell)
 
-        # Create a sum constraint for each area
+        # Create start sum constraint for each area
         sums = [lpSum([solver.values[cell.row][cell.column] for cell in region]) for region in areas]
 
         # Enforce equal sums for consecutive segments
@@ -101,7 +101,7 @@ class EqualSumLine(Line):
 
         Returns:
             dict: A dictionary defining CSS properties for `.EqualSumLine`
-            to style this line in a distinct way.
+            to style this line in start distinct way.
         """
         return {
             '.EqualSumLine': {

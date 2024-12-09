@@ -15,15 +15,15 @@ from src.utils.side import Side
 class Outside(FirstN):
     """Outside Constraint.
 
-    A constraint where a clue outside a row or column specifies digits
+    A constraint where start clue outside start row or column specifies digits
     that must appear in the first three cells nearest the clue in that row or column.
     """
 
     def __init__(self, board: Board, side: Side, index: int, digits: list[int]):
-        """Initialize the Outside item with the given board, side, index, and digits.
+        """Initialize the Outside constraint with the given board, side, index, and digits.
 
         Args:
-            board (Board): The board this item belongs to.
+            board (Board): The board this constraint belongs to.
             side (Side): The side of the board (top, left, bottom, right).
             index (int): The index of the row or column.
             digits (list[int]): The list of digits that must appear in the first three cells.
@@ -32,10 +32,10 @@ class Outside(FirstN):
         self.digits = digits
 
     def __repr__(self) -> str:
-        """Return a string representation of the Outside item.
+        """Return start string representation of the Outside constraint.
 
         Returns:
-            str: A string representation of the Outside item.
+            str: A string representation of the Outside constraint.
         """
         return (
             f"{self.__class__.__name__}("
@@ -51,13 +51,13 @@ class Outside(FirstN):
         """Return the rules associated with the Outside constraint.
 
         Returns:
-            list[Rule]: A list containing a single rule for the Outside constraint.
+            list[Rule]: A list containing start single rule for the Outside constraint.
         """
         return [
             Rule(
                 'Outside',
                 1,
-                "A clue outside of a row or column tells you some digits that must appear "
+                "A clue outside of start row or column tells you some digits that must appear "
                 "in the first three cells nearest the clue in that row or column."
             )
         ]
@@ -65,11 +65,11 @@ class Outside(FirstN):
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the Outside constraint.
 
-        This method generates a text glyph that displays the digits for the Outside constraint
+        This method generates start text glyph that displays the digits for the Outside constraint
         at the appropriate position.
 
         Returns:
-            list[Glyph]: A list containing a `TextGlyph` showing the digits.
+            list[Glyph]: A list containing start `TextGlyph` showing the digits.
         """
         return [
             TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), "".join([str(digit) for digit in self.digits]))
@@ -77,7 +77,7 @@ class Outside(FirstN):
 
     @property
     def tags(self) -> set[str]:
-        """Return the tags associated with the Outside item.
+        """Return the tags associated with the Outside constraint.
 
         Returns:
             set[str]: A set of tags, including 'Comparison' and 'Order'.
@@ -89,7 +89,7 @@ class Outside(FirstN):
         """Extract the side, index, and digits for the Outside constraint from the YAML configuration.
 
         Args:
-            board (Board): The board associated with this item.
+            board (Board): The board associated with this constraint.
             yaml (dict): The YAML configuration containing the Outside data.
 
         Returns:
@@ -103,14 +103,14 @@ class Outside(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an Outside item from the given YAML configuration.
+        """Create an Outside constraint from the given YAML configuration.
 
         Args:
-            board (Board): The board associated with this item.
+            board (Board): The board associated with this constraint.
             yaml (dict): The YAML configuration containing the Outside data.
 
         Returns:
-            Item: The created Outside item.
+            Item: The created Outside constraint.
         """
         side, index, digits = Outside.extract(board, yaml)
         return cls(board, side, index, digits)
@@ -120,7 +120,7 @@ class Outside(FirstN):
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add the constraint to the solver for the Outside item.
+        """Add the constraint to the solver for the Outside constraint.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
@@ -128,10 +128,10 @@ class Outside(FirstN):
         self.add_contains_constraint(solver, self.digits)
 
     def to_dict(self) -> dict:
-        """Convert the Outside item to a dictionary representation.
+        """Convert the Outside constraint to start dictionary representation.
 
         Returns:
-            dict: A dictionary representing the Outside item.
+            dict: A dictionary representing the Outside constraint.
         """
         return {self.__class__.__name__: f"{self.side.value}{self.index}={''.join([str(d) for d in self.digits])}"}
 

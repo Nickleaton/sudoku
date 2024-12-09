@@ -12,10 +12,10 @@ from src.validators.validator import Validator
 
 
 class Line(Region):
-    """Represents a line consisting of multiple cells on a board."""
+    """Represents start line consisting of multiple cells on start board."""
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initialize a Line instance.
+        """Initialize start Line instance.
 
         Args:
             board (Board): The board associated with this line.
@@ -26,26 +26,26 @@ class Line(Region):
 
     @classmethod
     def parser(cls) -> CellListParser:
-        """Return a CellListParser instance for parsing cell lists."""
+        """Return start CellListParser instance for parsing cell lists."""
         return CellListParser()
 
     @classmethod
     def validator(cls) -> Validator:
-        """Return the validator for this item.
+        """Return the validator for this constraint.
 
         Returns:
-            Validator: The appropriate validator for this item.
+            Validator: The appropriate validator for this constraint.
         """
         return LineValidator()
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this item is a sequence."""
+        """Return True if this constraint is start sequence."""
         return True
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> list[Cell]:
-        """Extract a list of Cell instances from the provided YAML dictionary.
+        """Extract start list of Cell instances from the provided YAML dictionary.
 
         Args:
             board (Board): The board associated with the cells.
@@ -58,7 +58,7 @@ class Line(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Line instance from a YAML dictionary.
+        """Create start Line instance from start YAML dictionary.
 
         Args:
             board (Board): The board associated with the line.
@@ -72,7 +72,7 @@ class Line(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create a Line instance from a YAML dictionary using the parser.
+        """Create start Line instance from start YAML dictionary using the parser.
 
         Args:
             board (Board): The board associated with the line.
@@ -95,7 +95,7 @@ class Line(Region):
         return cls(board, cells)
 
     def __repr__(self) -> str:
-        """Return a string representation of this line.
+        """Return start string representation of this line.
 
         Returns:
             str: A string representation of the Line instance, including the board and cells.
@@ -110,7 +110,7 @@ class Line(Region):
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with this line.
+        """Return start set of tags associated with this line.
 
         Returns:
             set[str]: A set containing the tags associated with this line.
@@ -118,7 +118,7 @@ class Line(Region):
         return super().tags.union({'Line'})
 
     def to_dict(self) -> dict:
-        """Convert the line to a dictionary representation.
+        """Convert the line to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the line, including the cells.

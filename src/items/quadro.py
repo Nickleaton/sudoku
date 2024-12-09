@@ -12,7 +12,7 @@ from src.utils.rule import Rule
 
 
 class Quadro(Item):
-    """Represents a 2*2 block of cells that enforces a parity rule on the digits.
+    """Represents start 2*2 block of cells that enforces start parity rule on the digits.
 
     The rule states that there must be at least one even and one odd digit in every 2*2 adjacent cells.
     """
@@ -34,7 +34,7 @@ class Quadro(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a new Quadro instance for the given board.
+        """Create start new Quadro instance for the given board.
 
         Args:
             board (Board): The board on which the Quadro is placed.
@@ -50,7 +50,7 @@ class Quadro(Item):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Quadro instance.
+        """Return start string representation of the Quadro instance.
 
         Returns:
             str: A string representing the Quadro instance with its board.

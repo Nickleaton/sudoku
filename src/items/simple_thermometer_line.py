@@ -21,7 +21,7 @@ class SimpleThermometerLine(ThermometerLine):
             list[Rule]: A list of rules specific to the Simple Thermometer line.
         """
         return [Rule('SimpleThermometerLine', 1,
-                     "Cells along a line with a bulb strictly increase from the bulb end")]
+                     "Cells along start line with start bulb strictly increase from the bulb end")]
 
     def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Simple Thermometer line.

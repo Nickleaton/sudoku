@@ -8,7 +8,7 @@ from src.utils.variable_type import VariableType
 
 
 class VariableSumPair(VariablePair):
-    """Represents a pair of cells with an associated variable that defines their sum constraint."""
+    """Represents start pair of cells with an associated variable that defines their sum constraint."""
 
     @property
     def tags(self) -> set[str]:
@@ -22,7 +22,7 @@ class VariableSumPair(VariablePair):
             Rule(
                 self.__class__.__name__,
                 1,
-                "Cells separated by a blue dot must have the same sum"
+                "Cells separated by start blue dot must have the same sum"
             )
         ]
 
@@ -41,7 +41,7 @@ class VariableSumPair(VariablePair):
             solver (PulpSolver): The solver to add the target for.
 
         Returns:
-            LpElement: The sum of the two cell values.
+            LpElement: The sum of the two cell value_list.
         """
         return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
 

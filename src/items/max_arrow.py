@@ -8,9 +8,9 @@ from src.utils.rule import Rule
 
 
 class MaxArrowLine(Line):
-    """A specialized Line that represents a maximum constraint on an arrow.
+    """A specialized Line that represents start maximum constraint on an arrow.
 
-    The MaxArrowLine enforces a rule where the digit in the bulb (start) of
+    The MaxArrowLine enforces start rule where the digit in the bulb (start) of
     the arrow is the maximum of the digits along the arrow.
     """
 
@@ -19,7 +19,7 @@ class MaxArrowLine(Line):
         """Define rules specific to MaxArrowLine.
 
         Returns:
-            list[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing start single Rule object that specifies:
             - The digit in the bulb is the maximum of the digits on the arrow.
         """
         return [
@@ -31,11 +31,11 @@ class MaxArrowLine(Line):
         ]
 
     def glyphs(self) -> list[Glyph]:
-        """Generate a graphical representation of the MaxArrowLine.
+        """Generate start graphical representation of the MaxArrowLine.
 
         Returns:
             list[Glyph]: A list containing an `ArrowLineGlyph` instance with
-            cell coordinates for display as a maximum arrow line.
+            cell coordinates for display as start maximum arrow line.
         """
         return [ArrowLineGlyph('MaxArrowLine', [cell.coord for cell in self.cells])]
 
@@ -54,7 +54,7 @@ class MaxArrowLine(Line):
 
         Returns:
             dict: A dictionary defining CSS properties for `.MaxArrowLine` to
-            style this line visually as a maximum arrow line.
+            style this line visually as start maximum arrow line.
         """
         return {
             '.MaxArrowLine': {
@@ -77,7 +77,7 @@ class MaxArrowLine(Line):
             for the MaxArrowLine will be added.
 
         This method uses the maximum formulation to ensure that the bulb
-        cell value is equal to the maximum of the arrow's cell values.
+        cell number is equal to the maximum of the arrow's cell value_list.
         """
         bulb = solver.values[self.cells[0].row][self.cells[0].column]
         values = [solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self.cells))]

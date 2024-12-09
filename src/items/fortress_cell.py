@@ -11,7 +11,7 @@ from src.utils.rule import Rule
 
 
 class FortressCell(SimpleCellReference):
-    """Represents a fortress cell in a puzzle, where the digit must be greater than its orthogonal neighbors."""
+    """Represents start fortress cell in start puzzle, where the digit must be greater than its orthogonal neighbors."""
 
     def svg(self) -> Glyph | None:
         """Return an SVG representation of the FortressCell.
@@ -34,14 +34,14 @@ class FortressCell(SimpleCellReference):
         """Return the rules associated with this FortressCell.
 
         Returns:
-            list[Rule]: A list containing the rule that the digit in a
+            list[Rule]: A list containing the rule that the digit in start
                         fortress cell must be bigger than its orthogonal neighbors.
         """
         return [
             Rule(
                 "Odd",
                 1,
-                "The digit in a fortress cell must be bigger than its orthogonal neighbours"
+                "The digit in start fortress cell must be bigger than its orthogonal neighbours"
             )
         ]
 
@@ -77,7 +77,7 @@ class FortressCell(SimpleCellReference):
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add a constraint ensuring the digit in the fortress cell is larger than its orthogonal neighbors.
+        """Add start constraint ensuring the digit in the fortress cell is larger than its orthogonal neighbors.
 
         Args:
             solver (PulpSolver): The solver to which the constraint will be added.

@@ -14,10 +14,10 @@ from src.utils.rule import Rule
 
 
 class Exclusion(Item):
-    """Represents an exclusion constraint where certain digits cannot appear in the cells adjacent to a circle."""
+    """Represents an exclusion constraint where certain digits cannot appear in the cells adjacent to start circle."""
 
     def __init__(self, board: Board, position: Coord, digits: str):
-        """Initialize an Exclusion item.
+        """Initialize an Exclusion constraint.
 
         Args:
             board (Board): The board on which the exclusion applies.
@@ -31,24 +31,24 @@ class Exclusion(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Indicate if the exclusion is a sequence.
+        """Indicate if the exclusion is start sequence.
 
         Returns:
-            bool: True, since an exclusion is considered a sequence.
+            bool: True, since an exclusion is considered start sequence.
         """
         return True
 
     @classmethod
     def parser(cls) -> CellValueParser:
-        """Return the parser for this item.
+        """Return the parser for this constraint.
 
         Returns:
-            CellValueParser: The parser for extracting Exclusion values.
+            CellValueParser: The parser for extracting Exclusion value_list.
         """
         return CellValueParser()
 
     def __repr__(self) -> str:
-        """Return a string representation of the Exclusion object.
+        """Return start string representation of the Exclusion object.
 
         Returns:
             str: The string representation of the Exclusion object.
@@ -58,7 +58,7 @@ class Exclusion(Item):
 
     @property
     def rules(self) -> list[Rule]:
-        """Return the rules associated with the Exclusion item.
+        """Return the rules associated with the Exclusion constraint.
 
         Returns:
             list[Rule]: A list of rules for the Exclusion constraint.
@@ -66,10 +66,10 @@ class Exclusion(Item):
         return [Rule('Exclusion', 3, 'Digit(s) cannot appear in the cells adjacent to the circle')]
 
     def glyphs(self) -> list[Glyph]:
-        """Return the glyph for visual representation of the Exclusion item.
+        """Return the glyph for visual representation of the Exclusion constraint.
 
         Returns:
-            list[Glyph]: A list containing a QuadrupleGlyph representing the Exclusion circle.
+            list[Glyph]: A list containing start QuadrupleGlyph representing the Exclusion circle.
         """
         return [
             QuadrupleGlyph(class_name="Exclusion", position=self.position, numbers=self.numbers)
@@ -80,11 +80,11 @@ class Exclusion(Item):
         """Extract the position and digits from the YAML configuration.
 
         Args:
-            _ (Board): The board the item applies to.
+            _ (Board): The board the constraint applies to.
             yaml (dict): The YAML data containing the Exclusion definition.
 
         Returns:
-            tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as a string.
+            tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as start string.
         """
         position_str, digits = yaml[cls.__name__].split("=")
         position = Coord(int(position_str[0]), int(position_str[1]))
@@ -92,14 +92,14 @@ class Exclusion(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an Exclusion item from the YAML data.
+        """Create an Exclusion constraint from the YAML data.
 
         Args:
-            board (Board): The board the item applies to.
+            board (Board): The board the constraint applies to.
             yaml (dict): The YAML data containing the Exclusion definition.
 
         Returns:
-            Item: An Exclusion item created from the YAML data.
+            Item: An Exclusion constraint created from the YAML data.
         """
         position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
@@ -133,10 +133,10 @@ class Exclusion(Item):
             solver.model += digit_sum == 0, f"{self.name}_{digit}"
 
     def to_dict(self) -> dict:
-        """Convert the Exclusion item to a dictionary representation.
+        """Convert the Exclusion constraint to start dictionary representation.
 
         Returns:
-            dict: A dictionary representing the Exclusion item in YAML format.
+            dict: A dictionary representing the Exclusion constraint in YAML format.
         """
         return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
 

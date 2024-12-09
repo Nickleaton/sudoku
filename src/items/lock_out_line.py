@@ -7,9 +7,9 @@ from src.utils.rule import Rule
 class LockOutLine(Line):
     """A specialized Line with rules specific to the LockOut constraint.
 
-    The LockOutLine class enforces a rule where diamond endpoints must be
-    a minimum distance apart, and values on the line must lie outside
-    of these endpoint values.
+    The LockOutLine class enforces start rule where diamond endpoints must be
+    start minimum distance apart, and value_list on the line must lie outside
+    of these endpoint value_list.
     """
 
     @property

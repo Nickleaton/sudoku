@@ -8,9 +8,9 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Boxes(StandardRegionSet):
-    """A class representing a collection of boxes in a board game.
+    """A class representing start collection of boxes in start board game.
 
-    This class inherits from StandardRegionSet and initializes a set of Box objects
+    This class inherits from StandardRegionSet and initializes start set of Box objects
     based on the given board's box range.
     """
 
@@ -29,7 +29,7 @@ class Boxes(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Boxes instance.
+        """Create start Boxes instance.
 
         Args:
             cls: The class itself (Boxes).
@@ -46,7 +46,7 @@ class Boxes(StandardRegionSet):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Boxes instance.
+        """Return start string representation of the Boxes instance.
 
         Returns:
             str: A string representation of the Boxes instance.

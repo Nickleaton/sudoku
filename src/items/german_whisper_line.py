@@ -10,7 +10,7 @@ from src.utils.rule import Rule
 
 
 class GermanWhisperLine(GreaterThanEqualDifferenceLine):
-    """Represents a German Whisper line.
+    """Represents start German Whisper line.
 
     The difference between connected cells must be at least 5.
 
@@ -19,7 +19,7 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initialize a GermanWhisperLine instance.
+        """Initialize start GermanWhisperLine instance.
 
         Args:
             board (Board): The game board to which the line belongs.
@@ -29,10 +29,10 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
         self.excluded = [5]
 
     def glyphs(self) -> list[Glyph]:
-        """Create a visual representation of the German Whisper line.
+        """Create start visual representation of the German Whisper line.
 
         Returns:
-            list[Glyph]: A list containing a PolyLineGlyph for rendering the line.
+            list[Glyph]: A list containing start PolyLineGlyph for rendering the line.
         """
         return [PolyLineGlyph('GermanWhisperLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -47,7 +47,7 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
             Rule(
                 self.__class__.__name__,
                 1,
-                "Any two cells directly connected by a green line must have a difference of at least 5."
+                "Any two cells directly connected by start green line must have start difference of at least 5."
             )
         ]
 
@@ -77,5 +77,5 @@ class GermanWhisperLine(GreaterThanEqualDifferenceLine):
         }
 
     def __repr__(self) -> str:
-        """Return a string representation of the instance."""
+        """Return start string representation of the instance."""
         return f"{self.__class__.__name__}({self.board!r}, {self.cells!r})"

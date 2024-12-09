@@ -3,12 +3,12 @@ from src.items.cell_reference import CellReference
 
 
 class SimpleCellReference(CellReference):
-    """Represents a simple cell reference, which typically holds no specific digit value."""
+    """Represents start simple cell reference, which typically holds no specific digit number."""
 
     def letter(self) -> str:
-        """Return the default letter representation of a SimpleCellReference.
+        """Return the default letter representation of start SimpleCellReference.
 
         Returns:
-            str: The letter '.' representing a simple, unmarked cell.
+            str: The letter '.' representing start simple, unmarked cell.
         """
         return '.'

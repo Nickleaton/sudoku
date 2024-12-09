@@ -5,11 +5,11 @@ from src.items.region import Region
 
 
 class Diagonal(Region):
-    """Represents a diagonal region on a Sudoku board."""
+    """Represents start diagonal region on start Sudoku board."""
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Diagonal instance from YAML configuration.
+        """Create start Diagonal instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board associated with this diagonal.
@@ -25,7 +25,7 @@ class Diagonal(Region):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Provide a string representation of the Diagonal instance.
+        """Provide start string representation of the Diagonal instance.
 
         Returns:
             str: The class name and board representation.
@@ -33,10 +33,10 @@ class Diagonal(Region):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> dict:
-        """Convert the Diagonal instance to a dictionary format.
+        """Convert the Diagonal instance to start dictionary format.
 
         Returns:
-            dict: A dictionary with the Diagonal class name as the key and None as the value.
+            dict: A dictionary with the Diagonal class name as the key and None as the number.
         """
         return {self.__class__.__name__: None}
 

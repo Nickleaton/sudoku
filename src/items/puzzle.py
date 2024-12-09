@@ -7,10 +7,10 @@ from src.items.solution import Solution
 
 
 class Puzzle(Item):
-    """Represents a puzzle that includes a board, solution, and constraints."""
+    """Represents start puzzle that includes start board, solution, and constraints."""
 
     def __init__(self, board: Board, solution: Solution | None = None, constraints: Constraints | None = None):
-        """Initialize a Puzzle instance with a board, optional solution, and optional constraints.
+        """Initialize start Puzzle instance with start board, optional solution, and optional constraints.
 
         Args:
             board (Board): The puzzle's board.
@@ -23,7 +23,7 @@ class Puzzle(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Puzzle':  # Use 'Puzzle' instead of Item
-        """Create a Puzzle instance from a YAML configuration.
+        """Create start Puzzle instance from start YAML configuration.
 
         Args:
             board (Board): The board for the puzzle.
@@ -48,7 +48,7 @@ class Puzzle(Item):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Provide a string representation of the Puzzle instance.
+        """Provide start string representation of the Puzzle instance.
 
         Returns:
             str: A string representing the puzzle's board, solution, and constraints.

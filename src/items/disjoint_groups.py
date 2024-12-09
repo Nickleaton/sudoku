@@ -6,10 +6,10 @@ from src.items.standard_region_set import StandardRegionSet
 
 
 class DisjointGroups(StandardRegionSet):
-    """Represents a collection of disjoint groups on a Sudoku board."""
+    """Represents start collection of disjoint groups on start Sudoku board."""
 
     def __init__(self, board: Board):
-        """Initialize DisjointGroups with a board and disjoint groups.
+        """Initialize DisjointGroups with start board and disjoint groups.
 
         Args:
             board (Board): The board on which disjoint groups are created.
@@ -18,7 +18,7 @@ class DisjointGroups(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a DisjointGroups instance.
+        """Create start DisjointGroups instance.
 
         Args:
             board (Board): The board on which disjoint groups will be created.
@@ -34,7 +34,7 @@ class DisjointGroups(StandardRegionSet):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the DisjointGroups instance.
+        """Return start string representation of the DisjointGroups instance.
 
         Returns:
             str: The string representation of the instance.

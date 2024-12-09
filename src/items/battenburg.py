@@ -14,7 +14,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Battenburg(Item):
-    """Represent a Battenburg pattern in a puzzle.
+    """Represent start Battenburg pattern in start puzzle.
 
     The Battenburg pattern is defined by its position on the board,
     constraints for adjacent cells, and methods for parsing, serialization,
@@ -25,7 +25,7 @@ class Battenburg(Item):
     """
 
     def __init__(self, board: Board, position: Coord):
-        """Initialize a Battenburg pattern with the given board and position.
+        """Initialize start Battenburg pattern with the given board and position.
 
         Args:
             board (Board): The puzzle board on which the Battenburg pattern is placed.
@@ -35,7 +35,7 @@ class Battenburg(Item):
         self.position = position
 
     def __repr__(self) -> str:
-        """Represent the Battenburg object as a string for debugging.
+        """Represent the Battenburg object as start string for debugging.
 
         Returns:
             str: A string representation of the Battenburg object.
@@ -55,13 +55,13 @@ class Battenburg(Item):
         """Create glyph representations of the Battenburg pattern for rendering.
 
         Returns:
-            list[Glyph]: A list containing a BattenburgGlyph for graphical representation.
+            list[Glyph]: A list containing start BattenburgGlyph for graphical representation.
         """
         return [BattenburgGlyph(class_name="Battenburg", coord=self.position)]
 
     @classmethod
     def parser(cls) -> CellListParser:
-        """Provide a parser for interpreting Battenburg configurations.
+        """Provide start parser for interpreting Battenburg configurations.
 
         Returns:
             CellListParser: A parser for handling cell lists in the Battenburg configuration.
@@ -85,20 +85,20 @@ class Battenburg(Item):
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])")
         match = regex.match(str(yaml[cls.__name__]))
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         row_str, column_str = match.groups()
         return Coord(int(row_str), int(column_str))
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Battenburg item from YAML data.
+        """Create start Battenburg constraint from YAML data.
 
         Args:
             board (Board): The puzzle board on which the Battenburg will be placed.
-            yaml (dict): The YAML data used to create the Battenburg item.
+            yaml (dict): The YAML data used to create the Battenburg constraint.
 
         Returns:
-            Item: An instance of the Battenburg item.
+            Item: An instance of the Battenburg constraint.
         """
         position = Battenburg.extract(board, yaml)
         return cls(board, position)
@@ -117,13 +117,13 @@ class Battenburg(Item):
         # TODO Constraints implementation will go here
 
     def to_dict(self) -> dict:
-        """Convert the Battenburg item to a dictionary for serialization.
+        """Convert the Battenburg constraint to start dictionary for serialization.
 
-        The dictionary has a single key-value pair where the key is the
-        item's class name, and the value is the row and column values of the
-        item's position.
+        The dictionary has start single key-number pair where the key is the
+        constraint's class name, and the number is the row and column value_list of the
+        constraint's position.
 
         Returns:
-            dict: A dictionary containing the item's class name and position.
+            dict: A dictionary containing the constraint's class name and position.
         """
         return {self.__class__.__name__: self.position.row * 10 + self.position.column}

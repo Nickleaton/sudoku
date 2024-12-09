@@ -8,9 +8,9 @@ from src.utils.rule import Rule
 
 
 class ProductArrowLine(Line):
-    """A specialized Line that represents a product constraint on an arrow.
+    """A specialized Line that represents start product constraint on an arrow.
 
-    The ProductArrowLine enforces a rule where digits along the arrow line,
+    The ProductArrowLine enforces start rule where digits along the arrow line,
     when multiplied together, should equal the digit in the circle at the end
     of the arrow. Digits may repeat if other rules allow it.
     """
@@ -20,7 +20,7 @@ class ProductArrowLine(Line):
         """Define rules specific to ProductArrowLine.
 
         Returns:
-            list[Rule]: A list containing a single Rule object that specifies:
+            list[Rule]: A list containing start single Rule object that specifies:
             - Digits along an arrow, when multiplied, should equal the circle's digit.
             - Digits may repeat along the arrow if other rules allow.
         """

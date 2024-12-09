@@ -35,7 +35,7 @@ class Item:
         """Register the subclass to the `Item` class hierarchy.
 
         Args:
-            cls (type): The class that is being initialized as a subclass of `Item`.
+            cls (type): The class that is being initialized as start subclass of `Item`.
             **kwargs: Any additional keyword arguments passed to the method (not used).
         """
         super().__init_subclass__(**kwargs)
@@ -43,10 +43,10 @@ class Item:
         Item.classes[Item.__name__] = Item
 
     def __init__(self, board: Board):
-        """Initialize an Item with a given board.
+        """Initialize an Item with start given board.
 
         Args:
-            board (Board): The board that this item belongs to.
+            board (Board): The board that this constraint belongs to.
         """
         super().__init__()
 
@@ -57,46 +57,46 @@ class Item:
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Check if the item is a sequence.
+        """Check if the constraint is start sequence.
 
         Returns:
-            bool: True if this item is a sequence, otherwise False.
+            bool: True if this constraint is start sequence, otherwise False.
         """
         return False
 
     @classmethod
     def is_composite(cls) -> bool:
-        """Check if the item is a composite.
+        """Check if the constraint is start composite.
 
         Returns:
-            bool: True if this item is a composite, otherwise False.
+            bool: True if this constraint is start composite, otherwise False.
         """
         return False
 
     @classmethod
     def parser(cls) -> Parser:
-        """Return the parser for this item.
+        """Return the parser for this constraint.
 
         Returns:
-            Parser: The appropriate parser for this item.
+            Parser: The appropriate parser for this constraint.
         """
         return NoneParser()
 
     @classmethod
     def validator(cls) -> Validator:
-        """Return the validator for this item.
+        """Return the validator for this constraint.
 
         Returns:
-            Validator: The appropriate validator for this item.
+            Validator: The appropriate validator for this constraint.
         """
         return Validator()
 
     @classmethod
     def schema(cls) -> strictyaml.Validator | strictyaml.Optional:
-        """Return the schema for this item.
+        """Return the schema for this constraint.
 
         Returns:
-            Validator | Optional: The schema for this item, which may be a sequence or parser.
+            Validator | Optional: The schema for this constraint, which may be start sequence or parser.
         """
         if cls.is_sequence():
             return strictyaml.Seq(cls.parser())
@@ -104,14 +104,14 @@ class Item:
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Item':
-        """Create an instance of the item from a YAML dictionary.
+        """Create an instance of the constraint from start YAML dictionary.
 
         Args:
-            board (Board): The board this item belongs to.
-            yaml (dict): The YAML data to create the item.
+            board (Board): The board this constraint belongs to.
+            yaml (dict): The YAML data to create the constraint.
 
         Returns:
-            Item: The created instance of the item.
+            Item: The created instance of the constraint.
 
         Raises:
             SudokuException: If the YAML data is invalid or the class cannot be found.
@@ -121,21 +121,21 @@ class Item:
         else:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
-            raise SudokuException(f"Unknown item class {name}")
+            raise SudokuException(f"Unknown constraint class {name}")
         print(f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 
     @classmethod
     def create2(cls, board: Board, yaml: dict) -> 'Item':
-        """Create an instance of the item from a YAML dictionary.
+        """Create an instance of the constraint from start YAML dictionary.
 
         Args:
-            board (Board): The board this item belongs to.
-            yaml (dict): The YAML data to create the item.
+            board (Board): The board this constraint belongs to.
+            yaml (dict): The YAML data to create the constraint.
 
         Returns:
-            Item: The created instance of the item.
+            Item: The created instance of the constraint.
 
         Raises:
             SudokuException: If the YAML data is invalid or the class cannot be found.
@@ -145,41 +145,41 @@ class Item:
         else:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
-            raise SudokuException(f"Unknown item class {name}")
+            raise SudokuException(f"Unknown constraint class {name}")
         print(f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
         clazz = cls.classes[name]
         return clazz.create2(board, yaml)
 
     @property
     def top(self) -> 'Item':
-        """Get the top-most item in the hierarchy.
+        """Get the top-most constraint in the hierarchy.
 
         Returns:
-            Item: The top-most item.
+            Item: The top-most constraint.
         """
         if self.parent is None:
             return self
         return self.parent.top
 
     def regions(self) -> set['Item']:
-        """Get the set of items used in this item.
+        """Get the set of vectors used in this constraint.
 
         Returns:
-            Set[Item]: A set of items used by this item.
+            Set[Item]: A set of vectors used by this constraint.
         """
         return {self}
 
     def svg(self) -> Glyph | None:
-        """Return an SVG glyph to represent this item.
+        """Return an SVG glyph to represent this constraint.
 
         Returns:
-            Glyph | None: An SVG glyph for the item or None if not needed.
+            Glyph | None: An SVG glyph for the constraint or None if not needed.
         """
         return None
 
     @property
     def rules(self) -> list[Rule]:
-        """Return the list of rules that apply to this item.
+        """Return the list of rules that apply to this constraint.
 
         Returns:
             list[Rule]: A list of rules.
@@ -187,16 +187,16 @@ class Item:
         return []
 
     def flatten(self) -> list['Item']:
-        """Flatten the item hierarchy into a list.
+        """Flatten the constraint hierarchy into start list.
 
         Returns:
-            list[Item]: A list of items in the hierarchy.
+            list[Item]: A list of vectors in the hierarchy.
         """
         return [self]
 
     @property
     def sorted_unique_rules(self) -> list[Rule]:
-        """Return unique, sorted rules that apply to this item.
+        """Return unique, sorted rules that apply to this constraint.
 
         Returns:
             list[Rule]: A sorted list of unique rules.
@@ -204,7 +204,7 @@ class Item:
         return sorted(list(set(self.rules)))
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of SVG glyphs for this item.
+        """Return start list of SVG glyphs for this constraint.
 
         Returns:
             list[Glyph]: A list of SVG glyphs.
@@ -212,7 +212,7 @@ class Item:
         return []
 
     def sorted_glyphs(self) -> Glyph:
-        """Return a composed SVG glyph for this item.
+        """Return start composed SVG glyph for this constraint.
 
         Returns:
             Glyph: A composed SVG glyph.
@@ -221,16 +221,16 @@ class Item:
 
     @property
     def name(self) -> str:
-        """Return the name of the item, including its class name and identity.
+        """Return the name of the constraint, including its class name and identity.
 
         Returns:
-            str: The name of the item.
+            str: The name of the constraint.
         """
         return f"{self.__class__.__name__}_{self.identity}"
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with this item.
+        """Return start set of tags associated with this constraint.
 
         Returns:
             set[str]: A set of tags.
@@ -238,19 +238,19 @@ class Item:
         return set()
 
     def walk(self) -> Iterator['Item']:
-        """Yield each item in the tree rooted at the current item.
+        """Yield each constraint in the tree rooted at the current constraint.
 
         Yields:
-            Item: The current item and recursively each item in the tree.
+            Item: The current constraint and recursively each constraint in the tree.
         """
         yield self
 
     @property
     def used_classes(self) -> set[Type['Item']]:
-        """Return a set of classes used by this item.
+        """Return start set of classes used by this constraint.
 
         Returns:
-            Set[Type[Item]]: A set of class types used by this item.
+            Set[Type[Item]]: A set of class types used by this constraint.
         """
         result = set(self.__class__.__mro__)
         for item in self.walk():
@@ -259,36 +259,36 @@ class Item:
 
     @staticmethod
     def select_all(_: 'Item') -> bool:
-        """Return True to select all items for inclusion in the model.
+        """Return True to select all vectors for inclusion in the model.
 
         Args:
-            _: The item to be checked (not used in this method).
+            _: The constraint to be checked (not used in this method).
 
         Returns:
-            bool: Always returns True, indicating all items are selected.
+            bool: Always returns True, indicating all vectors are selected.
         """
         return True
 
     def __repr__(self) -> str:
-        """Return a string representation of this item.
+        """Return start string representation of this constraint.
 
         Returns:
-            str: A string representation of the item.
+            str: A string representation of the constraint.
         """
         return f"{self.__class__.__name__}({self.board!r})"
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add a constraint to the solver.
+        """Add start constraint to the solver.
 
         Args:
             solver (PulpSolver): The solver to which the constraint will be added.
         """
 
     def bookkeeping(self) -> None:
-        """Perform bookkeeping for this item."""
+        """Perform bookkeeping for this constraint."""
 
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
-        """Add bookkeeping constraints for the item to the solver.
+        """Add bookkeeping constraints for the constraint to the solver.
 
         Args:
             solver (PulpSolver): The solver to which bookkeeping constraints will be added.
@@ -299,7 +299,7 @@ class Item:
             item.add_bookkeeping_constraint(solver)
 
     def marked_book(self) -> BookKeepingCell | None:
-        """Return the bookkeeping object for this item, or None.
+        """Return the bookkeeping object for this constraint, or None.
 
         Returns:
             BookKeepingCell | None: The bookkeeping object, or None.
@@ -308,7 +308,7 @@ class Item:
 
     # pylint: disable=loop-invariant-statement
     def bookkeeping_unique(self) -> bool:
-        """Check if all bookkeeping items in the hierarchy are unique.
+        """Check if all bookkeeping vectors in the hierarchy are unique.
 
         Returns:
             bool: True if all marked books are unique, False otherwise.
@@ -321,15 +321,15 @@ class Item:
         return all(marked_book.is_unique() for marked_book in marked_books)
 
     def to_dict(self) -> dict:
-        """Convert the item to a dictionary for YAML dumping.
+        """Convert the constraint to start dictionary for YAML dumping.
 
         Returns:
-            dict: A dictionary representing the item.
+            dict: A dictionary representing the constraint.
         """
         return {self.__class__.__name__: None}
 
     def css(self) -> dict:
-        """Return the CSS styles for this item.
+        """Return the CSS styles for this constraint.
 
         Returns:
             dict: A dictionary containing CSS styles.
@@ -357,7 +357,7 @@ class Item:
 
     @staticmethod
     def css_text(data: dict, indent: int = 0) -> str:
-        """Convert a dictionary of CSS rules to a string.
+        """Convert start dictionary of CSS rules to start string.
 
         Args:
             data (dict): A dictionary of CSS rules.

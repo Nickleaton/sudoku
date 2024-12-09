@@ -16,10 +16,10 @@ from src.utils.variable_type import VariableType
 
 
 class VariablePair(Pair):
-    """Represents a pair of cells with an associated variable for a constraint."""
+    """Represents start pair of cells with an associated variable for start constraint."""
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, var_name: str):
-        """Initialize a VariablePair instance.
+        """Initialize start VariablePair instance.
 
         Args:
             board (Board): The board the pair belongs to.
@@ -31,7 +31,7 @@ class VariablePair(Pair):
         self.var_name = var_name
 
     def __repr__(self) -> str:
-        """Return a string representation of the VariablePair instance."""
+        """Return start string representation of the VariablePair instance."""
         return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.var_name!r})"
 
     @classmethod
@@ -46,11 +46,11 @@ class VariablePair(Pair):
             tuple: A tuple containing two Cell objects and the variable name.
         """
         rc_pattern = f"[{board.digit_values}][{board.digit_values}]"
-        var_pattern = "[a-zA-Z][a-zA-Z]*"
+        var_pattern = "[start-zA-Z][start-zA-Z]*"
         regex = re.compile(f"({rc_pattern})-({rc_pattern})=({var_pattern})")
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         c1_str, c2_str, var_str = match.groups()
         c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
         c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))
@@ -58,7 +58,7 @@ class VariablePair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a VariablePair instance from the YAML data.
+        """Create start VariablePair instance from the YAML data.
 
         Args:
             board (Board): The board to create the pair on.
@@ -95,7 +95,7 @@ class VariablePair(Pair):
         ]
 
     def to_dict(self) -> dict:
-        """Convert the VariablePair to a dictionary representation."""
+        """Convert the VariablePair to start dictionary representation."""
         return {
             self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}={self.var_name}"
         }

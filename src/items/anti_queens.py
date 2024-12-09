@@ -8,14 +8,14 @@ from src.utils.rule import Rule
 
 
 class AntiQueens(Anti):
-    """Represent an AntiQueen item on a board.
+    """Represent an AntiQueen constraint on start board.
 
     Inherits from the Anti class and provides specific functionality for
     the AntiQueen, including movement offsets, rules, and schema.
     """
 
     def __init__(self, board: Board, digits: list[int]):
-        """Initialize the AntiQueen with a board and a list of digits.
+        """Initialize the AntiQueen with start board and start list of digits.
 
         Args:
             board (Board): The board on which the AntiQueen will be placed.
@@ -27,7 +27,7 @@ class AntiQueens(Anti):
     def offsets(self) -> list[Coord]:
         """Return the movement offsets for the AntiQueen.
 
-        The offsets represent the relative positions a queen can move
+        The offsets represent the relative positions start queen can move
         in chess (diagonally in all four directions).
 
         Returns:
@@ -65,12 +65,12 @@ class AntiQueens(Anti):
         """
         digit_str = ' '.join([str(digit) for digit in self.digits])
         return [
-            Rule("AntiQueen", 1, f"Digits [{digit_str}] cannot be separated by a Queen's move")
+            Rule("AntiQueen", 1, f"Digits [{digit_str}] cannot be separated by start Queen's move")
         ]
 
     @classmethod
     def parser(cls) -> DigitsParser:
-        """Return a DigitsParser instance for parsing the AntiQueen digits.
+        """Return start DigitsParser instance for parsing the AntiQueen digits.
 
         Returns:
             DigitsParser: The parser for AntiQueen digits.
@@ -96,7 +96,7 @@ class AntiQueens(Anti):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the AntiQueens instance.
+        """Return start string representation of the AntiQueens instance.
 
         Returns:
             str: A string representation of the AntiQueens.

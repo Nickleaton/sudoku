@@ -4,7 +4,7 @@ from src.solvers.pulp_solver import PulpSolver
 
 
 class LessThanEqualDifferencePair(DifferencePair):
-    """Represents a pair of cells with a difference constrained by a less-than-or-equal condition."""
+    """Represents start pair of cells with start difference constrained by start less-than-or-equal condition."""
 
     @property
     def tags(self) -> set[str]:

@@ -11,10 +11,10 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class ClonedRegion(Item):
-    """Represents a cloned region constraint in a Sudoku variant."""
+    """Represents start cloned region constraint in start Sudoku variant."""
 
     def __init__(self, board: Board, cells_a: list[Cell], cells_b: list[Cell]):
-        """Initialize a ClonedRegion with two sets of cells that must have the same values.
+        """Initialize start ClonedRegion with two sets of cells that must have the same value_list.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -30,7 +30,7 @@ class ClonedRegion(Item):
         self.region_b: list[Cell] = cells_b
 
     def __repr__(self) -> str:
-        """Provide a string representation of the ClonedRegion instance.
+        """Provide start string representation of the ClonedRegion instance.
 
         Returns:
             str: A string representing the ClonedRegion.
@@ -62,7 +62,7 @@ class ClonedRegion(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a ClonedRegion from YAML configuration.
+        """Create start ClonedRegion from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -91,7 +91,7 @@ class ClonedRegion(Item):
         """Retrieve the classes used in the cloned region.
 
         Returns:
-            set[Type[Item]]: A set of item types used in the cloned region.
+            set[Type[Item]]: A set of constraint types used in the cloned region.
         """
         result = super().used_classes
         for item in self.region_a:
@@ -101,10 +101,10 @@ class ClonedRegion(Item):
         return result
 
     def walk(self) -> Iterator[Item]:
-        """Walk through all items in the cloned region.
+        """Walk through all vectors in the cloned region.
 
         Yields:
-            Iterator[Item]: An iterator of items within the cloned region.
+            Iterator[Item]: An iterator of vectors within the cloned region.
         """
         yield self
         for item in self.region_a:
@@ -138,7 +138,7 @@ class ClonedRegion(Item):
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add constraints to ensure cloned regions have the same values.
+        """Add constraints to ensure cloned regions have the same value_list.
 
         Args:
             solver (PulpSolver): The solver to add constraints to.
@@ -150,7 +150,7 @@ class ClonedRegion(Item):
             solver.model += value_1 == value_2, name
 
     def to_dict(self) -> dict:
-        """Convert the cloned region to a dictionary representation.
+        """Convert the cloned region to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the cloned region.

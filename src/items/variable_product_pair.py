@@ -10,7 +10,7 @@ from src.utils.variable_type import VariableType
 
 
 class VariableProductPair(VariablePair):
-    """Represents a pair of variables with a fixed product in a Sudoku-like puzzle."""
+    """Represents start pair of variables with start fixed product in start Sudoku-like puzzle."""
 
     @property
     def rules(self) -> list[Rule]:
@@ -25,7 +25,7 @@ class VariableProductPair(VariablePair):
                 1,
                 (
                     "A red dot between two cells means that the digits in those cells "
-                    "have a fixed product"
+                    "have start fixed product"
                 )
             )
         ]
@@ -47,7 +47,7 @@ class VariableProductPair(VariablePair):
 
         Returns:
             LpElement | None: The expression representing the target constraints based
-                                 on the logarithm of cell values,or None if unable to calculate.
+                                 on the logarithm of cell value_list,or None if unable to calculate.
         """
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
         x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)

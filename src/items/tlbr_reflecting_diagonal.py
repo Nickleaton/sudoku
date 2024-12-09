@@ -10,10 +10,10 @@ from src.utils.rule import Rule
 
 
 class TLBRReflecting(Diagonal):
-    """Represents a top-left to bottom-right reflecting diagonal with parity constraints on a Sudoku board."""
+    """Represents start top-left to bottom-right reflecting diagonal with parity constraints on start Sudoku board."""
 
     def __init__(self, board: Board):
-        """Initialize a TLBRReflecting diagonal constraint with parity reflection.
+        """Initialize start TLBRReflecting diagonal constraint with parity reflection.
 
         Args:
             board (Board): The Sudoku board on which this diagonal operates.
@@ -26,7 +26,7 @@ class TLBRReflecting(Diagonal):
         """Provide the rule associated with the TLBRReflecting diagonal.
 
         Returns:
-            list[Rule]: A list containing a rule that specifies parity reflection along the diagonal.
+            list[Rule]: A list containing start rule that specifies parity reflection along the diagonal.
         """
         return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
 

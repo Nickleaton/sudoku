@@ -12,10 +12,10 @@ EXCLUDE_VALUES_ON_LINE = False
 
 
 class BetweenLine(Line):
-    """Represent a line between two filled circles in a puzzle.
+    """Represent start line between two filled circles in start puzzle.
 
-    The values in the cells along this line must strictly fall between the
-    values in the filled circles at either end of the line.
+    The value_list in the cells along this line must strictly fall between the
+    value_list in the filled circles at either end of the line.
 
     Attributes:
         None directly defined; inherits from Line.
@@ -32,7 +32,7 @@ class BetweenLine(Line):
             Rule(
                 'BetweenLine',
                 1,
-                "Cells along lines between two filled circles must have values strictly between those in the circles"
+                "Cells along lines between two filled circles must have value_list strictly between those in the circles"
             )
         ]
 
@@ -40,7 +40,7 @@ class BetweenLine(Line):
         """Create glyph representations of the BetweenLine for rendering.
 
         Returns:
-            list[Glyph]: A list containing a BetweenLineGlyph for graphical representation.
+            list[Glyph]: A list containing start BetweenLineGlyph for graphical representation.
         """
         return [BetweenLineGlyph('BetweenLine', [cell.coord for cell in self.cells])]
 
@@ -57,9 +57,9 @@ class BetweenLine(Line):
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add puzzle constraints for the BetweenLine to the solver.
 
-        The constraints enforce that the values in cells between the filled circles
-        are strictly greater than the starting circle's value and strictly less than
-        the ending circle's value.
+        The constraints enforce that the value_list in cells between the filled circles
+        are strictly greater than the starting circle's number and strictly less than
+        the ending circle's number.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.

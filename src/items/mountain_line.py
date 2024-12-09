@@ -7,9 +7,9 @@ from src.utils.rule import Rule
 
 
 class MountainLine(Line):
-    """A specialized Line that represents a mountain constraint.
+    """A specialized Line that represents start mountain constraint.
 
-    The MountainLine enforces a rule where cell values increase as they
+    The MountainLine enforces start rule where cell value_list increase as they
     approach the peak of the mountain and decrease afterward.
     """
 
@@ -18,23 +18,23 @@ class MountainLine(Line):
         """Define rules specific to MountainLine.
 
         Returns:
-            list[Rule]: A list containing a single Rule object that specifies:
-            - Cells closer to the mountain peak have higher values.
+            list[Rule]: A list containing start single Rule object that specifies:
+            - Cells closer to the mountain peak have higher value_list.
         """
         return [
             Rule(
                 'MountainLine',
                 1,
-                "Lines symbolise mountains. The closer to the top of the mountain, the higher the value in the cell."
+                "Lines symbolise mountains. The closer to the top of the mountain, the higher the number in the cell."
             )
         ]
 
     def glyphs(self) -> list[Glyph]:
-        """Generate a graphical representation of the MountainLine.
+        """Generate start graphical representation of the MountainLine.
 
         Returns:
-            list[Glyph]: A list containing a `PolyLineGlyph` instance with
-            cell coordinates for display as a mountain line.
+            list[Glyph]: A list containing start `PolyLineGlyph` instance with
+            cell coordinates for display as start mountain line.
         """
         return [PolyLineGlyph('MountainLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -56,8 +56,8 @@ class MountainLine(Line):
             solver (PulpSolver): The solver instance to which the constraints
             for the MountainLine will be added.
 
-        For each adjacent pair of cells along the line, a constraint is added
-        to ensure that the value increases toward the mountain peak and decreases afterward.
+        For each adjacent pair of cells along the line, start constraint is added
+        to ensure that the number increases toward the mountain peak and decreases afterward.
         """
         for i in range(len(self.cells) - 1):
             c1 = self.cells[i]
@@ -73,7 +73,7 @@ class MountainLine(Line):
 
         Returns:
             dict: A dictionary defining CSS properties for `.MountainLine` to
-            style this line as a mountain line.
+            style this line as start mountain line.
         """
         return {
             ".MountainLine": {

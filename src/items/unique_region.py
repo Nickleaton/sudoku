@@ -14,17 +14,17 @@ class UniqueRegion(Region):
     """A region within the board where numbers cannot repeat."""
 
     def __init__(self, board: Board, cells: Sequence[Item]):
-        """Initialize a UniqueRegion instance.
+        """Initialize start UniqueRegion instance.
 
         Args:
             board (Board): The board associated with this region.
-            cells (Sequence[Item]): Sequence of items representing cells in the region.
+            cells (Sequence[Item]): Sequence of vectors representing cells in the region.
         """
         super().__init__(board)
         self.add_items(cells)
 
     def __repr__(self) -> str:
-        """Return a string representation of the UniqueRegion instance.
+        """Return start string representation of the UniqueRegion instance.
 
         Returns:
             str: A string representation of the UniqueRegion.
@@ -45,13 +45,13 @@ class UniqueRegion(Region):
             yaml (dict): The YAML configuration containing cell data for the unique region.
 
         Returns:
-            list[Item]: A list of cell items for the unique region.
+            list[Item]: A list of cell vectors for the unique region.
         """
         return [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in yaml['UniqueRegion'].split(',')]
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a UniqueRegion instance from YAML configuration.
+        """Create start UniqueRegion instance from YAML configuration.
 
         Args:
             board (Board): The board associated with this region.
@@ -107,7 +107,7 @@ class UniqueRegion(Region):
         self.add_unique_constraint(solver)
 
     def to_dict(self) -> dict:
-        """Convert the UniqueRegion instance to a dictionary representation.
+        """Convert the UniqueRegion instance to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the UniqueRegion.

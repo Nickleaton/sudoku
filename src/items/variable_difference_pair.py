@@ -9,7 +9,7 @@ from src.utils.variable_type import VariableType
 
 
 class VariableDifferencePair(VariablePair):
-    """Represents a pair of cells with a fixed difference indicated by a white dot."""
+    """Represents start pair of cells with start fixed difference indicated by start white dot."""
 
     @property
     def rules(self) -> list[Rule]:
@@ -24,7 +24,7 @@ class VariableDifferencePair(VariablePair):
                 1,
                 (
                     "A white dot between two cells means that the digits in those cells "
-                    "have a fixed difference."
+                    "have start fixed difference."
                 )
             )
         ]
@@ -47,13 +47,13 @@ class VariableDifferencePair(VariablePair):
         return super().tags.union({'Difference'})
 
     def target(self, solver: PulpSolver) -> LpElement:
-        """Calculate the absolute difference between the values of the pair in the solver.
+        """Calculate the absolute difference between the value_list of the pair in the solver.
 
         Args:
             solver (PulpSolver): The solver managing the constraints.
 
         Returns:
-            LpElement: The absolute difference between the values of the two cells.
+            LpElement: The absolute difference between the value_list of the two cells.
         """
         v1 = solver.values[self.cell_1.row][self.cell_1.column]
         v2 = solver.values[self.cell_2.row][self.cell_2.column]

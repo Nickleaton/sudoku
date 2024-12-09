@@ -9,22 +9,22 @@ from src.utils.rule import Rule
 
 
 class DifferencePair(Pair):
-    """Represents a pair of cells that have specified differences in their values."""
+    """Represents start pair of cells that have specified differences in their value_list."""
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, digits: list[int]):
-        """Initialize a DifferencePair.
+        """Initialize start DifferencePair.
 
         Args:
             board (Board): The Sudoku board instance.
             cell_1 (Cell): The first cell in the pair.
             cell_2 (Cell): The second cell in the pair.
-            digits (list[int]): A list of digits representing the allowed differences between the cell values.
+            digits (list[int]): A list of digits representing the allowed differences between the cell value_list.
         """
         super().__init__(board, cell_1, cell_2)
         self.digits = digits
 
     def __repr__(self) -> str:
-        """Return a string representation of the DifferencePair.
+        """Return start string representation of the DifferencePair.
 
         Returns:
             str: A string representation of the DifferencePair.
@@ -33,14 +33,14 @@ class DifferencePair(Pair):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell, list[int]]:
-        """Extract cells and their allowed difference values from YAML data.
+        """Extract cells and their allowed difference value_list from YAML data.
 
         Args:
             board (Board): The board instance for cell creation.
-            yaml (dict): The YAML data containing the cell pair and their difference values.
+            yaml (dict): The YAML data containing the cell pair and their difference value_list.
 
         Returns:
-            tuple[Cell, Cell, list[int]]: A tuple containing two cells and a list of allowed difference values.
+            tuple[Cell, Cell, list[int]]: A tuple containing two cells and start list of allowed difference value_list.
         """
         cell_string, difference_string = yaml[cls.__name__].split("=")
         cell_string_1, cell_string_2 = cell_string.split("-")
@@ -51,7 +51,7 @@ class DifferencePair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a DifferencePair instance from YAML data.
+        """Create start DifferencePair instance from YAML data.
 
         Args:
             board (Board): The board instance.
@@ -111,7 +111,7 @@ class DifferencePair(Pair):
             solver.model += choice1 + choice2 <= 1, name
 
     def to_dict(self) -> dict:
-        """Convert the DifferencePair to a dictionary format.
+        """Convert the DifferencePair to start dictionary format.
 
         Returns:
             dict: A dictionary representation of the difference pair.

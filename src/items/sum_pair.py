@@ -8,7 +8,7 @@ from src.utils.rule import Rule
 
 
 class SumPair(Pair):
-    """Represents a pair of cells where their values must sum to a fixed target."""
+    """Represents start pair of cells where their value_list must sum to start fixed target."""
 
     @property
     def tags(self) -> set[str]:
@@ -30,7 +30,7 @@ class SumPair(Pair):
             Rule(
                 self.__class__.__name__,
                 1,
-                "Cells separated by a blue dot must have a sum"
+                "Cells separated by start blue dot must have start sum"
             )
         ]
 
@@ -41,7 +41,7 @@ class SumPair(Pair):
             solver (PulpSolver): The solver managing the constraints.
 
         Returns:
-            LpElement: The sum of the values of the two cells.
+            LpElement: The sum of the value_list of the two cells.
         """
         return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
 

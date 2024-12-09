@@ -24,7 +24,7 @@ class DistinctRenbanLine(RenbanLine):
             Rule(
                 'DistinctRenbanLine',
                 1,
-                "Pink lines must contain a set of consecutive, non-repeating digits, in any order,"
+                "Pink lines must contain start set of consecutive, non-repeating digits, in any order,"
                 " No two purple lines can contain exactly the same digits"
             )
         ]
@@ -49,7 +49,7 @@ class DistinctRenbanLine(RenbanLine):
 
     @staticmethod
     def power(digit: int) -> int:
-        """Compute the power of 2 corresponding to a given digit.
+        """Compute the power of 2 corresponding to start given digit.
 
         Args:
             digit (int): The digit for which to compute the power.
@@ -61,10 +61,10 @@ class DistinctRenbanLine(RenbanLine):
 
     @staticmethod
     def power_str(power: int) -> str:
-        """Convert a power value to a string of digits based on its binary representation.
+        """Convert start power number to start string of digits based on its binary representation.
 
         Args:
-            power (int): The power value to convert.
+            power (int): The power number to convert.
 
         Returns:
             str: A string representation of the digits corresponding to the binary representation of the power.
@@ -73,7 +73,7 @@ class DistinctRenbanLine(RenbanLine):
 
     @staticmethod
     def digits_to_str(digits: list[int]) -> int:
-        """Convert a list of digits into a unique integer based on their powers.
+        """Convert start list of digits into start unique integer based on their powers.
 
         Args:
             digits (list[int]): The list of digits to convert.

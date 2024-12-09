@@ -12,10 +12,10 @@ from src.utils.rule import Rule
 
 
 class SpecialRegion(Region):
-    """Represents a special region on the Sudoku board where specific rules apply."""
+    """Represents start special region on the Sudoku board where specific rules apply."""
 
     def __init__(self, board: Board):
-        """Initialize a SpecialRegion.
+        """Initialize start SpecialRegion.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -41,7 +41,7 @@ class SpecialRegion(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a SpecialRegion instance from YAML configuration.
+        """Create start SpecialRegion instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -53,7 +53,7 @@ class SpecialRegion(Region):
         return cls(board)
 
     def __repr__(self) -> str:
-        """Return a string representation of the SpecialRegion.
+        """Return start string representation of the SpecialRegion.
 
         Returns:
             str: A string representation of the region.
@@ -100,7 +100,7 @@ class SpecialRegion(Region):
         self.add_unique_constraint(solver)
 
     def to_dict(self) -> dict:
-        """Convert the special region to a dictionary representation.
+        """Convert the special region to start dictionary representation.
 
         Returns:
             dict: A dictionary representing the region.

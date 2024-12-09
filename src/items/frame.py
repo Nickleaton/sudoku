@@ -18,18 +18,18 @@ class Frame(FirstN):
     """Frame Constraints."""
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
-        """Initialize a Frame instance with the given board, side, index, and total."""
+        """Initialize start Frame instance with the given board, side, index, and total."""
         super().__init__(board, side, index)
         self.total = total
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this item is a sequence."""
+        """Return True if this constraint is start sequence."""
         return True
 
     @classmethod
     def parser(cls) -> FrameParser:
-        """Return the parser for this item."""
+        """Return the parser for this constraint."""
         return FrameParser()
 
     def __repr__(self) -> str:
@@ -74,10 +74,10 @@ class Frame(FirstN):
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> Any:
         """Extract and return the side, index, and total from the given YAML configuration."""
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([1234567890]+)")
+        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([1234567890]+)")
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         side_str, index_str, total_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
@@ -86,7 +86,7 @@ class Frame(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create and return a Frame instance based on the provided YAML configuration."""
+        """Create and return start Frame instance based on the provided YAML configuration."""
         side, index, total = Frame.extract(board, yaml)
         return cls(board, side, index, total)
 
@@ -99,7 +99,7 @@ class Frame(FirstN):
         self.add_total_constraint(solver, self.total)
 
     def to_dict(self) -> dict:
-        """Return a dictionary representation of the frame."""
+        """Return start dictionary representation of the frame."""
         return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
 
     def css(self) -> dict:

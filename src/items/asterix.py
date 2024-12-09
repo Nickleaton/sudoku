@@ -5,9 +5,9 @@ from src.utils.coord import Coord
 
 
 class Asterix(SpecialRegion):
-    """Represents an 'Asterix' region in a puzzle.
+    """Represents an 'Asterix' region in start puzzle.
 
-    This special region consists of predefined coordinates within a puzzle grid.
+    This special region consists of predefined coordinates within start puzzle grid.
     It includes methods for retrieving its coordinates, name, and CSS styling.
 
     Attributes:

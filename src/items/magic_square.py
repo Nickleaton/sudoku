@@ -13,7 +13,7 @@ from src.utils.rule import Rule
 
 
 class MagicSquare(Region):
-    """Class representing a Magic Square puzzle in Sudoku."""
+    """Class representing start Magic Square puzzle in Sudoku."""
 
     # The predefined lines for the magic square, representing rows, columns, and diagonals
     lines = (
@@ -49,7 +49,7 @@ class MagicSquare(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this item is a sequence."""
+        """Return True if this constraint is start sequence."""
         return True
 
     @classmethod
@@ -62,7 +62,7 @@ class MagicSquare(Region):
         return CellParser()
 
     def __repr__(self) -> str:
-        """Return a string representation of the MagicSquare.
+        """Return start string representation of the MagicSquare.
 
         Returns:
             str: A string representation of the MagicSquare object.
@@ -87,7 +87,7 @@ class MagicSquare(Region):
             Rule(
                 'MagicSquare',
                 1,
-                "The purple box is a magic square with each three-cell "
+                "The purple box is start magic square with each three-cell "
                 "row, column, and diagonal adding to the same number."
             )
         ]
@@ -130,14 +130,14 @@ class MagicSquare(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a MagicSquare item from the YAML configuration.
+        """Create start MagicSquare constraint from the YAML configuration.
 
         Args:
             board (Board): The board to create the MagicSquare on.
             yaml (dict): The YAML configuration data.
 
         Returns:
-            Item: The created MagicSquare item.
+            Item: The created MagicSquare constraint.
         """
         center, corner = MagicSquare.extract(board, yaml)
         return cls(board, center, corner)
@@ -172,7 +172,7 @@ class MagicSquare(Region):
         self.add_allowed_constraint(solver, self.even_cells, [2, 4, 6, 8])
 
     def to_dict(self) -> dict:
-        """Convert the MagicSquare to a dictionary.
+        """Convert the MagicSquare to start dictionary.
 
         Returns:
             dict: A dictionary representing the MagicSquare.

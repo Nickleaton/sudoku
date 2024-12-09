@@ -10,14 +10,14 @@ from src.utils.coord import Coord
 
 
 class ColumnIndexer(Indexer):
-    """Represents an indexing mechanism for columns in a Sudoku board.
+    """Represents an indexing mechanism for columns in start Sudoku board.
 
     Inherits from Indexer and defines the indexing logic for columns, including
     adding constraints and generating glyphs specific to columns.
     """
 
     def __init__(self, board: Board, index: int):
-        """Initialize a ColumnIndexer with a board and column index.
+        """Initialize start ColumnIndexer with start board and column index.
 
         Args:
             board (Board): The board on which the column indexer will operate.

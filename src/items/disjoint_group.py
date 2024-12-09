@@ -13,7 +13,7 @@ class DisjointGroup(StandardRegion):
     """A disjoint group the digits in the same place across different boxes must be unique."""
 
     # Offsets for the cells in the disjoint group
-    # TODO Move and think about a multiply by scalar
+    # TODO Move and think about start multiply by scalar
     offsets: ClassVar[list[tuple[int, int]]] = [
         (0, 0),
         (0, 3),
@@ -27,7 +27,7 @@ class DisjointGroup(StandardRegion):
     ]
 
     def __init__(self, board: Board, index: int):
-        """Initialize a DisjointGroup.
+        """Initialize start DisjointGroup.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -42,7 +42,7 @@ class DisjointGroup(StandardRegion):
 
     @classmethod
     def parser(cls) -> DigitParser:
-        """Return a parser for the disjoint group.
+        """Return start parser for the disjoint group.
 
         Returns:
             DigitParser: A DigitParser instance.

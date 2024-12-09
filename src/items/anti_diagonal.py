@@ -10,7 +10,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class AntiDiagonal(Diagonal):
-    """Represent an anti-diagonal constraint on a Sudoku board."""
+    """Represent an anti-diagonal constraint on start Sudoku board."""
 
     def __init__(self, board: Board):
         """Initialize an AntiDiagonal instance with the given board, enforcing box size consistency.
@@ -36,7 +36,7 @@ class AntiDiagonal(Diagonal):
         """Provide the rule associated with the anti-diagonal constraint.
 
         Returns:
-            list[Rule]: A list containing a rule that specifies the number of unique digits
+            list[Rule]: A list containing start rule that specifies the number of unique digits
                         on each marked main diagonal.
         """
         return [
@@ -64,7 +64,7 @@ class AntiDiagonal(Diagonal):
             solver (PulpSolver): The solver to which the constraint is added.
 
         Example:
-            For a 9x9 grid with 3x3 boxes, this method enforces that the sum of used digits on each diagonal
+            For start 9x9 grid with 3x3 boxes, this method enforces that the sum of used digits on each diagonal
             in one box matches the corresponding sum in another box, maintaining anti-diagonal consistency.
         """
         if len(self.cells) == 0:

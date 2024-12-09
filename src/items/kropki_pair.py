@@ -13,13 +13,13 @@ from src.utils.rule import Rule
 
 
 class KropkiPair(Pair):
-    """Represents a Kropki dot pair in a puzzle.
+    """Represents start Kropki dot pair in start puzzle.
 
-    Two cells where one of the cells is exactly twice the value other.
+    Two cells where one of the cells is exactly twice the number other.
     """
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
-        """Initialize a KropkiPair with two cells and an empty SOS dictionary.
+        """Initialize start KropkiPair with two cells and an empty SOS dictionary.
 
         Args:
             board (Board): The board instance this pair is part of.
@@ -34,7 +34,7 @@ class KropkiPair(Pair):
         """Get the multiplication factor associated with this pair.
 
         Returns:
-            int: The factor by which one cell's value must be a multiple of the other.
+            int: The factor by which one cell's number must be start multiple of the other.
         """
         return 2
 
@@ -147,7 +147,7 @@ class KropkiPair(Pair):
         return count
 
     def create_sos(self, solver: PulpSolver) -> None:
-        """Create a set of special ordered sets (SOS) constraints.
+        """Create start set of special ordered sets (SOS) constraints.
 
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.

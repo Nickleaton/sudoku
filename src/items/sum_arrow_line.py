@@ -14,7 +14,7 @@ class SumArrowLine(Line):
     """Represents an arrow line where digits along the line must sum to the digit at the starting (circle) cell.
 
     Digits on the arrow are allowed to repeat, and the total sum of digits
-    along the arrow equals the value in the initial cell.
+    along the arrow equals the number in the initial cell.
     """
 
     @property
@@ -33,7 +33,7 @@ class SumArrowLine(Line):
         ]
 
     def glyphs(self) -> list[Glyph]:
-        """Create a visual representation of the SumArrowLine.
+        """Create start visual representation of the SumArrowLine.
 
         Returns:
             list[Glyph]: A list containing an `ArrowLineGlyph` for rendering.
@@ -70,12 +70,12 @@ class SumArrowLine(Line):
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Constrain the cells along the arrow so they sum to the value in the starting cell.
+        """Constrain the cells along the arrow so they sum to the number in the starting cell.
 
         Args:
             solver (PulpSolver): The Pulp solver instance to which constraints will be added.
         """
-        # Sum constraint: the sum of arrow cells must equal the starting cell value
+        # Sum constraint: the sum of arrow cells must equal the starting cell number
         total = lpSum([solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self))])
         solver.model += total == solver.values[self.cells[0].row][self.cells[0].column], self.name
 
@@ -99,14 +99,14 @@ class SumArrowLine(Line):
         total = sum(Functions.triangular(len(v)) for v in regions.values())
         solver.model += solver.values[self.cells[0].row][self.cells[0].column] >= total, f"{self.name}_head"
 
-        # Further restrictions based on digit values
+        # Further restrictions based on digit value_list
         for digit in self.board.digit_range:
             if digit >= total:
                 continue
             choice = solver.choices[digit][self.cells[0].row][self.cells[0].column]
             solver.model += choice == 0, f"{self.name}_{digit}_head"
 
-        # Restrict possible values in tail cells
+        # Restrict possible value_list in tail cells
         for i in range(1, len(self.cells)):
             for digit in self.board.digit_range:
                 if digit <= self.board.maximum_digit - total + 1:

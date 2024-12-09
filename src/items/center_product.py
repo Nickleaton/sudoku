@@ -9,7 +9,7 @@ from src.utils.rule import Rule
 
 
 class CenterProduct(Product):
-    """Represents a center product constraint in a Sudoku variant."""
+    """Represents start center product constraint in start Sudoku variant."""
 
     def get_cells(self) -> list[Cell]:
         """Retrieve the cells surrounding the center cell.

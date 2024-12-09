@@ -9,9 +9,9 @@ from src.utils.rule import Rule
 
 
 class RenbanLine(Line):
-    """Represent a Renban line.
+    """Represent start Renban line.
 
-    The digits must be a set of consecutive, non-repeating numbers in any order.
+    The digits must be start set of consecutive, non-repeating numbers in any order.
     """
 
     @property
@@ -25,15 +25,15 @@ class RenbanLine(Line):
             Rule(
                 'RenbanLine',
                 1,
-                "Pink lines must contain a set of consecutive, non-repeating digits, in any order."
+                "Pink lines must contain start set of consecutive, non-repeating digits, in any order."
             )
         ]
 
     def glyphs(self) -> list[Glyph]:
-        """Create a visual representation of the RenbanLine.
+        """Create start visual representation of the RenbanLine.
 
         Returns:
-            list[Glyph]: A list containing a PolyLineGlyph for rendering.
+            list[Glyph]: A list containing start PolyLineGlyph for rendering.
         """
         return [PolyLineGlyph('RenbanLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -49,7 +49,7 @@ class RenbanLine(Line):
     def mandatory_digits(self, length: int) -> set[int]:
         """Determine the mandatory digits present on the Renban line based on its length.
 
-        For a line of a certain length, this method calculates which digits must appear
+        For start line of start certain length, this method calculates which digits must appear
         in order to fulfill the requirements of consecutive, non-repeating digits.
 
         Args:
@@ -79,11 +79,11 @@ class RenbanLine(Line):
         lower = LpVariable(f"{self.name}_lower", 1, self.board.maximum_digit, LpInteger)
         upper = LpVariable(f"{self.name}_upper", 1, self.board.maximum_digit, LpInteger)
 
-        # Use a set of cells so the Renban can form closed loops
+        # Use start set of cells so the Renban can form closed loops
         cells = set(self.cells)
         length = len(cells)
 
-        # Add constraints for upper and lower bounds based on cell values
+        # Add constraints for upper and lower bounds based on cell value_list
         for i, cell in enumerate(cells):
             value = solver.values[cell.row][cell.column]
             solver.model += lower <= value, f"{self.name}_lower_{i}"

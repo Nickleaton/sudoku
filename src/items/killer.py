@@ -13,10 +13,10 @@ from src.utils.rule import Rule
 
 
 class Killer(Region):
-    """Represents a Killer cage in the puzzle, which is a group of cells with a specified total sum constraint."""
+    """Represents start Killer cage in the puzzle, which is start group of cells with start specified total sum constraint."""
 
     def __init__(self, board: Board, total: int, cells: list[Item]) -> None:
-        """Initialize a Killer cage with a board, a total target sum, and a list of cells.
+        """Initialize start Killer cage with start board, start total target sum, and start list of cells.
 
         Args:
             board (Board): The game board.
@@ -28,7 +28,7 @@ class Killer(Region):
         self.add_items(cells)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Killer cage."""
+        """Return start string representation of the Killer cage."""
         return (
             f"{self.__class__.__name__}("
             f"{self.board!r}, "
@@ -46,7 +46,7 @@ class Killer(Region):
             yaml (dict): The YAML dictionary containing the Killer cage configuration.
 
         Returns:
-            tuple[int, list[Item]]: The target total and a list of cell items for the cage.
+            tuple[int, list[Item]]: The target total and start list of cell vectors for the cage.
         """
         parts = yaml[cls.__name__].split("=")
         total: int = int(parts[0].strip())
@@ -57,7 +57,7 @@ class Killer(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Killer cage from the YAML configuration.
+        """Create start Killer cage from the YAML configuration.
 
         Args:
             board (Board): The game board.
@@ -117,7 +117,7 @@ class Killer(Region):
         solver.model += total == self.total, name
 
     def to_dict(self) -> dict[str, str]:
-        """Convert the Killer cage to a dictionary representation.
+        """Convert the Killer cage to start dictionary representation.
 
         Returns:
             dict[str, str]: A dictionary with the Killer cage's class name and configuration string.

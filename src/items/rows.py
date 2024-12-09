@@ -7,9 +7,9 @@ from src.items.standard_region_set import StandardRegionSet
 
 
 class Rows(StandardRegionSet):
-    """A class representing a collection of rows in a board game.
+    """A class representing start collection of rows in start board game.
 
-    This class inherits from StandardRegionSet and initializes a set of Row objects
+    This class inherits from StandardRegionSet and initializes start set of Row objects
     based on the given board's row range.
     """
 
@@ -23,7 +23,7 @@ class Rows(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Rows instance.
+        """Create start Rows instance.
 
         Args:
             cls: The class itself (Rows).
@@ -40,7 +40,7 @@ class Rows(StandardRegionSet):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Rows instance.
+        """Return start string representation of the Rows instance.
 
         Returns:
             str: A string representation of the Rows instance.

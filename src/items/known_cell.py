@@ -12,7 +12,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class KnownCell(CellReference):
-    """Represent a given cell in the board with a specified digit.
+    """Represent start given cell in the board with start specified digit.
 
     Attributes:
         digit (int): The digit assigned to this cell.
@@ -20,7 +20,7 @@ class KnownCell(CellReference):
     """
 
     def __init__(self, board: Board, row: int, column: int, digit: int, prefix=None):
-        """Initialize a KnownCell instance.
+        """Initialize start KnownCell instance.
 
         Args:
             board (Board): The board associated with this cell.
@@ -38,11 +38,11 @@ class KnownCell(CellReference):
         """Extract the row, column, and digit from the given YAML string.
 
         Args:
-            board (Board): The board this item is attached to.
+            board (Board): The board this constraint is attached to.
             yaml (dict): The given YAML string.
 
         Returns:
-            tuple[int, int, int]: A tuple containing row, column, and digit values.
+            tuple[int, int, int]: A tuple containing row, column, and digit value_list.
 
         Raises:
             AssertionError: If the input format does not match the expected regex pattern.
@@ -50,16 +50,16 @@ class KnownCell(CellReference):
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         row_str, column_string, digit_str = match.groups()
         return int(row_str), int(column_string), int(digit_str)
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an instance of KnownCell from a YAML dictionary.
+        """Create an instance of KnownCell from start YAML dictionary.
 
         Args:
-            board (Board): The board associated with this item.
+            board (Board): The board associated with this constraint.
             yaml (dict): A YAML dictionary with the required parameter_types.
 
         Returns:
@@ -73,15 +73,15 @@ class KnownCell(CellReference):
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of SVG glyphs for this item.
+        """Return start list of SVG glyphs for this constraint.
 
         Returns:
-            list[Glyph]: A list containing a KnownGlyph for this cell.
+            list[Glyph]: A list containing start KnownGlyph for this cell.
         """
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
     def __repr__(self) -> str:
-        """Return a string representation of this item.
+        """Return start string representation of this constraint.
 
         Returns:
             str: A string representation of this KnownCell instance.
@@ -89,10 +89,10 @@ class KnownCell(CellReference):
         return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})"
 
     def to_dict(self) -> dict:
-        """Convert the item to a dictionary for serialization.
+        """Convert the constraint to start dictionary for serialization.
 
         Returns:
-            dict: A dictionary with the class name as the key and cell information as the value.
+            dict: A dictionary with the class name as the key and cell information as the number.
         """
         return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
 

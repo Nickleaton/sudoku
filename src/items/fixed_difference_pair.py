@@ -9,9 +9,9 @@ from src.utils.rule import Rule
 
 
 class FixedDifferencePair(FixedPair):
-    """Represents a fixed difference constraint between two cells.
+    """Represents start fixed difference constraint between two cells.
 
-    The digits in those cells have a fixed difference.
+    The digits in those cells have start fixed difference.
     """
 
     @property
@@ -25,7 +25,7 @@ class FixedDifferencePair(FixedPair):
 
     @property
     def rules(self) -> list[Rule]:
-        """Returns the rules associated with the FixedDifferencePair item.
+        """Returns the rules associated with the FixedDifferencePair constraint.
 
         Returns:
             list[Rule]: A list of rules that describe the fixed difference constraint between two cells.
@@ -36,28 +36,28 @@ class FixedDifferencePair(FixedPair):
                 1,
                 (
                     "A white dot between two cells means that the digits in those cells "
-                    "have a fixed difference."
+                    "have start fixed difference."
                 )
             )
         ]
 
     @property
     def tags(self) -> set[str]:
-        """Returns the tags associated with the FixedDifferencePair item.
+        """Returns the tags associated with the FixedDifferencePair constraint.
 
         Returns:
-            set[str]: A set of tags, including 'Difference', to categorize the item.
+            set[str]: A set of tags, including 'Difference', to categorize the constraint.
         """
         return super().tags.union({'Difference'})
 
     def target(self, solver: PulpSolver) -> LpElement:
-        """Calculate the absolute difference between the values in the two cells.
+        """Calculate the absolute difference between the value_list in the two cells.
 
         Args:
-            solver (PulpSolver): The solver instance used to access the variable values.
+            solver (PulpSolver): The solver instance used to access the variable value_list.
 
         Returns:
-            LpElement: The absolute difference between the two cell values, formulated as a constraint.
+            LpElement: The absolute difference between the two cell value_list, formulated as start constraint.
         """
         v1 = solver.values[self.cell_1.row][self.cell_1.column]
         v2 = solver.values[self.cell_2.row][self.cell_2.column]

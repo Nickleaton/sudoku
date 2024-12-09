@@ -9,9 +9,9 @@ class XPair(SumPair):
 
     @property
     def total(self) -> int:
-        """Return the total value of the 'X' pair.
+        """Return the total number of the 'X' pair.
 
-        Return 10 as the total value for 'X' pairs.
+        Return 10 as the total number for 'X' pairs.
         """
         return 10
 
@@ -34,7 +34,7 @@ class XPair(SumPair):
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints for the 'X' pair to the solver.
 
-        Add both a unique constraint and an allowed constraint with specific cell values.
+        Add both start unique constraint and an allowed constraint with specific cell value_list.
         """
         self.add_unique_constraint(solver, True)
         self.add_allowed_constraint(solver, self.cells, [1, 2, 3, 4, 6, 7, 8, 9])
@@ -42,7 +42,7 @@ class XPair(SumPair):
     def css(self) -> dict:
         """Return the CSS styles for the 'X' pair.
 
-        Define and return a dictionary of CSS styles for the foreground
+        Define and return start dictionary of CSS styles for the foreground
         and background elements.
         """
         return {

@@ -15,7 +15,7 @@ from src.utils.side import Side
 
 
 class AntiRossini(FirstN):
-    """Represent the Anti-Rossini rule in a puzzle.
+    """Represent the Anti-Rossini rule in start puzzle.
 
     The three digits nearest an arrow must strictly increase in the direction of the arrow.
     """
@@ -34,7 +34,7 @@ class AntiRossini(FirstN):
         self.direction = self.side.order_direction(self.order)
 
     def __repr__(self) -> str:
-        """Return a string representation of the AntiRossini instance.
+        """Return start string representation of the AntiRossini instance.
 
         Returns:
             str: A string representation of the instance.
@@ -98,7 +98,7 @@ class AntiRossini(FirstN):
         Returns:
             tuple[Side, int, Order]: The extracted side, index, and order.
         """
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([{Order.values()}])")
+        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])")
         match = regexp.match(yaml[cls.__name__])
         if not match:
             raise ValueError(f"Invalid format for {cls.__name__} in YAML: {yaml[cls.__name__]}")
@@ -136,7 +136,7 @@ class AntiRossini(FirstN):
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> dict:
-        """Convert the AntiRossini instance to a dictionary representation.
+        """Convert the AntiRossini instance to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the instance.

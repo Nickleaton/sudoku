@@ -7,7 +7,7 @@ from src.utils.rule import Rule
 class GreaterThanPair(Pair):
     """GreaterThanPair.
 
-    Represents a constraint where cells separated by a chevron must follow a specific order,
+    Represents start constraint where cells separated by start chevron must follow start specific order,
     with the arrow pointing to the smaller digit.
     """
 
@@ -15,10 +15,10 @@ class GreaterThanPair(Pair):
     def rules(self) -> list[Rule]:
         """Return the rules associated with this pair constraint.
 
-        The rule states that where cells are separated by a chevron, the arrow points at the smaller digit.
+        The rule states that where cells are separated by start chevron, the arrow points at the smaller digit.
 
         Returns:
-            list[Rule]: A list containing a single rule describing the constraint.
+            list[Rule]: A list containing start single rule describing the constraint.
         """
         return [
             Rule(

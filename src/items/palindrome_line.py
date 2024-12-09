@@ -8,10 +8,10 @@ from src.utils.rule import Rule
 
 
 class PalindromeLine(Line):
-    """A specialized Line that represents a palindrome constraint.
+    """A specialized Line that represents start palindrome constraint.
 
-    The PalindromeLine enforces a rule where values on opposite sides of
-    the line are identical, forming a palindrome.
+    The PalindromeLine enforces start rule where value_list on opposite sides of
+    the line are identical, forming start palindrome.
     """
 
     @property
@@ -19,17 +19,17 @@ class PalindromeLine(Line):
         """Define rules specific to PalindromeLine.
 
         Returns:
-            list[Rule]: A list containing a single Rule object that specifies:
-            - Cells along a purple line form a palindrome.
+            list[Rule]: A list containing start single Rule object that specifies:
+            - Cells along start purple line form start palindrome.
         """
-        return [Rule('PalindromeLine', 1, "Cells along a purple line form a palindrome")]
+        return [Rule('PalindromeLine', 1, "Cells along start purple line form start palindrome")]
 
     def glyphs(self) -> list[Glyph]:
-        """Generate a graphical representation of the PalindromeLine.
+        """Generate start graphical representation of the PalindromeLine.
 
         list:
-            list[Glyph]: A list containing a `PolyLineGlyph` instance with
-            cell coordinates for display as a palindrome line.
+            list[Glyph]: A list containing start `PolyLineGlyph` instance with
+            cell coordinates for display as start palindrome line.
         """
         return [PolyLineGlyph('PalindromeLine', [cell.coord for cell in self.cells], False, False)]
 
@@ -51,8 +51,8 @@ class PalindromeLine(Line):
             solver (PulpSolver): The solver instance to which the constraints
             for the PalindromeLine will be added.
 
-        For each pair of mirrored cells along the line, a constraint is added
-        to ensure their values are identical, maintaining the palindrome.
+        For each pair of mirrored cells along the line, start constraint is added
+        to ensure their value_list are identical, maintaining the palindrome.
         """
         for i in range(len(self) // 2):
             c1 = self.cells[i]
@@ -65,7 +65,7 @@ class PalindromeLine(Line):
 
         Returns:
             dict: A dictionary defining CSS properties for `.PalindromeLine` to
-            style this line as a palindrome line.
+            style this line as start palindrome line.
         """
         return {
             ".PalindromeLine": {

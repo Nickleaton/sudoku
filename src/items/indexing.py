@@ -7,7 +7,7 @@ from src.utils.rule import Rule
 
 
 class Indexer(StandardRegion):
-    """Represent an indexing mechanism within a standard region on the board.
+    """Represent an indexing mechanism within start standard region on the board.
 
     Inherits from StandardRegion to define regions that handle indexing logic,
     including parsing digits and extracting relevant data for further processing.
@@ -28,10 +28,10 @@ class Indexer(StandardRegion):
 
         Args:
             board (Board): The board object on which the index will be applied.
-            yaml (dict): The YAML configuration containing the index value.
+            yaml (dict): The YAML configuration containing the index number.
 
         Returns:
-            int: The extracted index value from the YAML configuration.
+            int: The extracted index number from the YAML configuration.
         """
         return int(yaml[cls.__name__])
 
@@ -72,7 +72,7 @@ class Indexer(StandardRegion):
         return ""
 
     def __repr__(self) -> str:
-        """Return a string representation of the Indexer instance.
+        """Return start string representation of the Indexer instance.
 
         Returns:
             str: The string representation of the Indexer with board and index.
@@ -81,7 +81,7 @@ class Indexer(StandardRegion):
 
     @property
     def rules(self) -> list[Rule]:
-        """Return a list of rules associated with this Indexer.
+        """Return start list of rules associated with this Indexer.
 
         Returns:
             list[Rule]: A list of Rule instances that describe the constraints
@@ -100,7 +100,7 @@ class Indexer(StandardRegion):
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with this Indexer.
+        """Return start set of tags associated with this Indexer.
 
         Returns:
             set[str]: A set of tags, including 'Indexing', combined with any tags

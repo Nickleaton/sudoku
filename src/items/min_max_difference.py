@@ -17,24 +17,24 @@ from src.utils.sudoku_exception import SudokuException
 class MinMaxDifference(FirstN):
     """Handle frame sudoku.
 
-    Numbers outside the frame equal the difference of the minimum and maximum values in the first three cells
+    Numbers outside the frame equal the difference of the minimum and maximum value_list in the first three cells
     corresponding row or column in the given direction.
     """
 
     def __init__(self, board: Board, side: Side, index: int, total: int):
-        """Initialize a MinMaxDifference frame.
+        """Initialize start MinMaxDifference frame.
 
         Args:
             board (Board): The board where the frame is located.
             side (Side): The side where the total is to go.
             index (int): The row or column of the total.
-            total (int): The difference of the minimum and maximum values.
+            total (int): The difference of the minimum and maximum value_list.
         """
         super().__init__(board, side, index)
         self.total = total
 
     def __repr__(self) -> str:
-        """Return a string representation of the MinMaxDifference frame.
+        """Return start string representation of the MinMaxDifference frame.
 
         Returns:
             str: A string representation of the object.
@@ -98,10 +98,10 @@ class MinMaxDifference(FirstN):
         Returns:
             tuple: A tuple containing the side, index, and total.
         """
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([0-9]+)")
+        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([0-9]+)")
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)
@@ -110,14 +110,14 @@ class MinMaxDifference(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a MinMaxDifference frame from the YAML configuration.
+        """Create start MinMaxDifference frame from the YAML configuration.
 
         Args:
             board (Board): The board to create the frame on.
             yaml (dict): The YAML configuration data.
 
         Returns:
-            Item: The created MinMaxDifference item.
+            Item: The created MinMaxDifference constraint.
         """
         side, index, total = MinMaxDifference.extract(board, yaml)
         return cls(board, side, index, total)
@@ -138,7 +138,7 @@ class MinMaxDifference(FirstN):
         solver.model += Formulations.abs(solver.model, mini, maxi, self.board.maximum_digit) == self.total, self.name
 
     def to_dict(self) -> dict:
-        """Convert the MinMaxDifference frame to a dictionary representation.
+        """Convert the MinMaxDifference frame to start dictionary representation.
 
         Returns:
             dict: The dictionary representation of the object.

@@ -12,13 +12,13 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class QuadrupleBase(Item):
-    """Represents a quadruple, a set of four digits positioned on the board.
+    """Represents start quadruple, start set of four digits positioned on the board.
 
     This class handles the parsing, constraints, and visual representation of quadruples.
     """
 
     def __init__(self, board: Board, position: Coord, digits: str):
-        """Initialize a Quadruple instance with a position and digits.
+        """Initialize start Quadruple instance with start position and digits.
 
         Args:
             board (Board): The board on which the quadruple is placed.
@@ -32,16 +32,16 @@ class QuadrupleBase(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return whether this item represents a sequence.
+        """Return whether this constraint represents start sequence.
 
         Returns:
-            bool: True, since a quadruple is a sequence of digits.
+            bool: True, since start quadruple is start sequence of digits.
         """
         return True
 
     @classmethod
     def parser(cls) -> QuadruplesParser:
-        """Return the parser associated with this item.
+        """Return the parser associated with this constraint.
 
         Returns:
             QuadruplesParser: A parser for quadruples.
@@ -49,7 +49,7 @@ class QuadrupleBase(Item):
         return QuadruplesParser()
 
     def __repr__(self) -> str:
-        """Return a string representation of the Quadruple instance.
+        """Return start string representation of the Quadruple instance.
 
         Returns:
             str: A string representing the Quadruple instance with board, position, and digits.
@@ -66,20 +66,20 @@ class QuadrupleBase(Item):
             yaml (dict): The YAML data containing the quadruple information.
 
         Returns:
-            tuple: A tuple containing a `Coord` object for the position and a string of digits.
+            tuple: A tuple containing start `Coord` object for the position and start string of digits.
         """
         regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
         # TODO replace with proper handling
         text: str = next(iter(yaml.values()))
         match = regex.match(text)
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         row_str, column_str, digits = match.groups()
         return Coord(int(row_str), int(column_str)), list(digits)
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a new Quadruple instance from the YAML configuration.
+        """Create start new Quadruple instance from the YAML configuration.
 
         Args:
             board (Board): The board on which the quadruple will be placed.
@@ -106,7 +106,7 @@ class QuadrupleBase(Item):
         ]
 
     def to_dict(self) -> dict:
-        """Convert the Quadruple to a dictionary representation.
+        """Convert the Quadruple to start dictionary representation.
 
         Returns:
             dict: A dictionary containing the position and digits of the quadruple.

@@ -16,10 +16,10 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Rossini(FirstN):
-    """Represents the Rossini constraint for a puzzle."""
+    """Represents the Rossini constraint for start puzzle."""
 
     def __init__(self, board: Board, side: Side, index: int, order: Order):
-        """Initialize a Rossini object.
+        """Initialize start Rossini object.
 
         Args:
             board (Board): The puzzle board.
@@ -33,16 +33,16 @@ class Rossini(FirstN):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this item is a sequence."""
+        """Return True if this constraint is start sequence."""
         return True
 
     @classmethod
     def parser(cls) -> RossiniParser:
-        """Return the parser for this item."""
+        """Return the parser for this constraint."""
         return RossiniParser()
 
     def __repr__(self) -> str:
-        """Return a string representation of the Rossini object.
+        """Return start string representation of the Rossini object.
 
         Returns:
             str: The string representation.
@@ -61,7 +61,7 @@ class Rossini(FirstN):
         """Define the rule for the Rossini constraint.
 
         Returns:
-            list[Rule]: A list containing a single rule for the Rossini constraint.
+            list[Rule]: A list containing start single rule for the Rossini constraint.
         """
         return [
             Rule(
@@ -106,10 +106,10 @@ class Rossini(FirstN):
         Returns:
             Any: The extracted side, index, and order.
         """
-        regexp = re.compile(f"([{Side.values()}])([{board.digit_values}])=([{Order.values()}])")
+        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])")
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         side_str, index_str, order_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
@@ -118,7 +118,7 @@ class Rossini(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Rossini object from extracted YAML data.
+        """Create start Rossini object from extracted YAML data.
 
         Args:
             board (Board): The puzzle board.
@@ -143,7 +143,7 @@ class Rossini(FirstN):
         self.add_sequence_constraint(solver, self.order)
 
     def to_dict(self) -> dict:
-        """Convert the Rossini object to a dictionary representation.
+        """Convert the Rossini object to start dictionary representation.
 
         Returns:
             dict: The dictionary representation of the Rossini object.

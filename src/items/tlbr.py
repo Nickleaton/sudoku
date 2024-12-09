@@ -8,10 +8,10 @@ from src.utils.coord import Coord
 
 
 class TLBR(StandardDiagonal):
-    """Represents a top-left to bottom-right diagonal constraint on a Sudoku board."""
+    """Represents start top-left to bottom-right diagonal constraint on start Sudoku board."""
 
     def __init__(self, board: Board):
-        """Initialize a TLBR diagonal constraint for the given board.
+        """Initialize start TLBR diagonal constraint for the given board.
 
         Args:
             board (Board): The Sudoku board on which this diagonal operates.

@@ -8,14 +8,14 @@ from src.utils.rule import Rule
 
 
 class AntiKnight(Anti):
-    """Represents an AntiKnight item on a board.
+    """Represents an AntiKnight constraint on start board.
 
     Inherits from the Anti class and provides specific functionality for
     the AntiKnight, including movement offsets, rules
     """
 
     def __init__(self, board: Board):
-        """Initialize the AntiKnight with a board.
+        """Initialize the AntiKnight with start board.
 
         Args:
             board (Board): The board on which the AntiKnight will be placed.
@@ -25,7 +25,7 @@ class AntiKnight(Anti):
     def offsets(self) -> list[Coord]:
         """Return the movement offsets for the AntiKnight.
 
-        The offsets represent the relative positions a knight can move
+        The offsets represent the relative positions start knight can move
         in chess.
 
         Returns:
@@ -59,7 +59,7 @@ class AntiKnight(Anti):
         """Create an instance of AntiKnight from the given board and YAML.
 
         Args:
-            cls: The class of the item being created.
+            cls: The class of the constraint being created.
             board (Board): The board on which the AntiKnight will be placed.
             yaml (dict): A dictionary containing configuration data.
 
@@ -83,11 +83,11 @@ class AntiKnight(Anti):
             list[Rule]: A list of rules for the AntiKnight.
         """
         return [
-            Rule("AntiKnight", 1, "Identical digits cannot be separated by a knight's move")
+            Rule("AntiKnight", 1, "Identical digits cannot be separated by start knight's move")
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the AntiKnight instance.
+        """Return start string representation of the AntiKnight instance.
 
         Returns:
             str: A string representation of the AntiKnight.
@@ -95,7 +95,7 @@ class AntiKnight(Anti):
         return f"{self.__class__.__name__}({self.board!r})"
 
     def to_dict(self) -> dict:
-        """Convert the AntiKnight instance to a dictionary representation.
+        """Convert the AntiKnight instance to start dictionary representation.
 
         Returns:
             dict: A dictionary representation of the AntiKnight.

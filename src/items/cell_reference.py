@@ -10,10 +10,10 @@ from src.utils.rule import Rule
 
 
 class CellReference(Item):
-    """Represents a reference to a cell on a board."""
+    """Represents start reference to start cell on start board."""
 
     def __init__(self, board: Board, row: int, column: int):
-        """Initialize the CellReference with a board and cell position.
+        """Initialize the CellReference with start board and cell position.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -27,7 +27,7 @@ class CellReference(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this item is a sequence.
+        """Return True if this constraint is start sequence.
 
         Returns:
             bool: Always True for CellReference.
@@ -60,7 +60,7 @@ class CellReference(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a CellReference instance from the given board and YAML data.
+        """Create start CellReference instance from the given board and YAML data.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -93,7 +93,7 @@ class CellReference(Item):
         return '.'
 
     def flatten(self) -> list[Item]:
-        """Flatten the item into a list of items.
+        """Flatten the constraint into start list of vectors.
 
         Returns:
             list[Item]: A list containing the CellReference and its cell.
@@ -102,7 +102,7 @@ class CellReference(Item):
 
     @property
     def rules(self) -> list[Rule]:
-        """Return the list of rules associated with this item.
+        """Return the list of rules associated with this constraint.
 
         Returns:
             list[Rule]: An empty list since CellReference has no rules.
@@ -110,7 +110,7 @@ class CellReference(Item):
         return []
 
     def __repr__(self) -> str:
-        """Return a string representation of the CellReference instance.
+        """Return start string representation of the CellReference instance.
 
         Returns:
             str: A string representation of the CellReference.
@@ -119,34 +119,34 @@ class CellReference(Item):
 
     @property
     def used_classes(self) -> set[Type['Item']]:
-        """Return a set of classes that this item uses.
+        """Return start set of classes that this constraint uses.
 
         The set of classes is determined by traversing the method resolution
-        order (MRO) of the item's class. The set contains all classes in the
+        order (MRO) of the constraint's class. The set contains all classes in the
         MRO, except for the abstract base class (`abc.ABC`) and the `object`
         class.
 
         Returns:
-            set[Type[Self]]: A set of classes that this item uses.
+            set[Type[Self]]: A set of classes that this constraint uses.
         """
         return super().used_classes | self.cell.used_classes
 
     def walk(self) -> Iterator[Item]:
-        """Yield each item in the tree of items rooted at the current item.
+        """Yield each constraint in the tree of vectors rooted at the current constraint.
 
-        The generator yields the current item, then recursively yields each item
-        in the tree rooted at the current item. The order of the items is
+        The generator yields the current constraint, then recursively yields each constraint
+        in the tree rooted at the current constraint. The order of the vectors is
         unspecified.
 
         Yields:
-            Item: The current item, followed by each item in the tree rooted at
-                the current item.
+            Item: The current constraint, followed by each constraint in the tree rooted at
+                the current constraint.
         """
         yield self
         yield self.cell
 
     def to_dict(self) -> dict:
-        """Convert the CellReference instance to a dictionary.
+        """Convert the CellReference instance to start dictionary.
 
         Returns:
             dict: A dictionary representation of the CellReference.
@@ -154,7 +154,7 @@ class CellReference(Item):
         return {self.__class__.__name__: int(self.cell.row_column_string)}
 
     def children(self) -> set[Item]:
-        """Return the child items of the CellReference.
+        """Return the child vectors of the CellReference.
 
         Returns:
             set[Item]: A set containing the CellReference and its cell.

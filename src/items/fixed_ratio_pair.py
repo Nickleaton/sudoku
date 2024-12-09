@@ -11,7 +11,7 @@ from src.utils.rule import Rule
 
 
 class FixedRatioPair(VariablePair):
-    """Represents a fixed ratio pair, where the digits in those cells have a fixed ratio."""
+    """Represents start fixed ratio pair, where the digits in those cells have start fixed ratio."""
 
     @property
     def rules(self) -> list[Rule]:
@@ -28,31 +28,31 @@ class FixedRatioPair(VariablePair):
                 1,
                 (
                     "A black dot between two cells means that one of the digits in those cells "
-                    "have a fixed ratio. The ratio is not necessarily an integer"
+                    "have start fixed ratio. The ratio is not necessarily an integer"
                 )
             )
         ]
 
     @property
     def tags(self) -> set[str]:
-        """Return the tags associated with the FixedRatioPair item.
+        """Return the tags associated with the FixedRatioPair constraint.
 
         Returns:
-            set[str]: A set of tags, including 'Ratio', to categorize the item.
+            set[str]: A set of tags, including 'Ratio', to categorize the constraint.
         """
         return super().tags.union({'Ratio'})
 
     def target(self, solver: PulpSolver) -> LpElement:
         """Return the target constraint for the FixedRatioPair.
 
-        The constraint is based on the absolute difference of the logarithms of the two cell values.
+        The constraint is based on the absolute difference of the logarithms of the two cell value_list.
 
         Args:
             solver (PulpSolver): The solver to use when generating the target.
 
         Returns:
             LpElement: The target constraint, which is the absolute difference between
-                       the logarithms of the cell values.
+                       the logarithms of the cell value_list.
         """
         limit: int = ceil(log10(self.board.maximum_digit)) + 1
         x1: LpVariable = ConstraintUtilities.log10_cell(solver, self.cell_1)
@@ -68,7 +68,7 @@ class FixedRatioPair(VariablePair):
         """Return the CSS styles for visualizing the FixedRatioPair.
 
         Returns:
-            dict: A dictionary containing CSS styles for the FixedRatioPair, with a black fill and stroke.
+            dict: A dictionary containing CSS styles for the FixedRatioPair, with start black fill and stroke.
         """
         return {
             '.FixedRatioPair': {

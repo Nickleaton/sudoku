@@ -8,7 +8,7 @@ from src.utils.rule import Rule
 
 
 class LowCell(SimpleCellReference):
-    """Represents a low cell, which can contain one of the digits 1, 2, or 3."""
+    """Represents start low cell, which can contain one of the digits 1, 2, or 3."""
 
     @staticmethod
     def digits() -> list[int]:
@@ -21,7 +21,7 @@ class LowCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Check if a given digit is included in the list of valid digits for LowCell.
+        """Check if start given digit is included in the list of valid digits for LowCell.
 
         Args:
             digit (int): The digit to check.
@@ -32,7 +32,7 @@ class LowCell(SimpleCellReference):
         return digit in LowCell.digits()
 
     def letter(self) -> str:
-        """Return the letter representation of a LowCell.
+        """Return the letter representation of start LowCell.
 
         Returns:
             str: The letter 'l' representing LowCell.
@@ -49,7 +49,7 @@ class LowCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with the LowCell.
+        """Return start set of tags associated with the LowCell.
 
         Returns:
             set[str]: A set of tags, including 'Trio' for LowCell.
@@ -66,7 +66,7 @@ class LowCell(SimpleCellReference):
         return [Rule("Low", 1, "The digits 1, 2, and 3 are marked with orange circles")]
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of Glyphs associated with LowCell.
+        """Return start list of Glyphs associated with LowCell.
 
         Returns:
             list[Glyph]: A list containing the LowCellGlyph for this cell.
@@ -77,7 +77,7 @@ class LowCell(SimpleCellReference):
         """Return the CSS styles associated with LowCell.
 
         Returns:
-            dict: A dictionary containing the CSS styles, with a stroke of orange and a white fill.
+            dict: A dictionary containing the CSS styles, with start stroke of orange and start white fill.
         """
         return {
             ".LowCell": {

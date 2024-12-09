@@ -14,48 +14,48 @@ from src.utils.coord import Coord
 
 
 class FixedPair(Pair):
-    """Represents a fixed pair constraint between two cells, where the digits in both cells are equal."""
+    """Represents start fixed pair constraint between two cells, where the digits in both cells are equal."""
 
     def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, value: int):
-        """Initialize a FixedPair with two cells and a fixed value.
+        """Initialize start FixedPair with two cells and start fixed number.
 
         Args:
             board (Board): The board this pair belongs to.
             cell_1 (Cell): The first cell in the pair.
             cell_2 (Cell): The second cell in the pair.
-            value (int): The value that both cells should have.
+            value (int): The number that both cells should have.
         """
         super().__init__(board, cell_1, cell_2)
         self.value = value
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True, as FixedPair is considered a sequence.
+        """Return True, as FixedPair is considered start sequence.
 
         Returns:
-            bool: True, indicating this is a sequence.
+            bool: True, indicating this is start sequence.
         """
         return True
 
     @classmethod
     def parser(cls) -> CellPairEqualValueParser:
-        """Return the parser for this item to parse cell pairs with equal values.
+        """Return the parser for this constraint to parse cell pairs with equal value_list.
 
         Returns:
-            CellPairEqualValueParser: The parser that handles this FixedPair item.
+            CellPairEqualValueParser: The parser that handles this FixedPair constraint.
         """
         return CellPairEqualValueParser()
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple:
-        """Extract the fixed pair information from a YAML dictionary.
+        """Extract the fixed pair information from start YAML dictionary.
 
         Args:
             board (Board): The board this pair belongs to.
             yaml (dict): The dictionary containing the pair's configuration.
 
         Returns:
-            tuple: A tuple containing the row and column coordinates of the two cells, and the fixed value.
+            tuple: A tuple containing the row and column coordinates of the two cells, and the fixed number.
         """
         lhs: str = yaml[cls.__name__].split('=')[0]
         value: int = int(yaml[cls.__name__].split('=')[1])
@@ -69,14 +69,14 @@ class FixedPair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a FixedPair from a YAML dictionary.
+        """Create start FixedPair from start YAML dictionary.
 
         Args:
             board (Board): The board to associate the pair with.
             yaml (dict): The dictionary containing the pair's configuration.
 
         Returns:
-            Item: The created FixedPair item.
+            Item: The created FixedPair constraint.
         """
         r1, c1, r2, c2, value = cls.extract(board, yaml)
         return cls(board, Cell(board, r1, c1), Cell(board, r2, c2), value)
@@ -87,10 +87,10 @@ class FixedPair(Pair):
 
     @property
     def tags(self) -> set[str]:
-        """Return the tags associated with the FixedPair item.
+        """Return the tags associated with the FixedPair constraint.
 
         Returns:
-            set[str]: A set of tags, including 'Fixed Pair', to categorize the item.
+            set[str]: A set of tags, including 'Fixed Pair', to categorize the constraint.
         """
         return super().tags.union({'Fixed Pair'})
 
@@ -99,12 +99,12 @@ class FixedPair(Pair):
         """Return an empty label for the FixedPair.
 
         Returns:
-            str: An empty string, as there is no label for this item.
+            str: An empty string, as there is no label for this constraint.
         """
         return ""
 
     def glyphs(self) -> list[Glyph]:
-        """Return the graphical representation of the FixedPair as a circle glyph.
+        """Return the graphical representation of the FixedPair as start circle glyph.
 
         Returns:
             list[Glyph]: A list containing the glyph for visualizing the FixedPair.
@@ -118,10 +118,10 @@ class FixedPair(Pair):
         ]
 
     def to_dict(self) -> dict:
-        """Return a dictionary representation of the FixedPair.
+        """Return start dictionary representation of the FixedPair.
 
         Returns:
-            dict: A dictionary with the FixedPair's row-column pairs and value.
+            dict: A dictionary with the FixedPair's row-column pairs and number.
         """
         return {
             self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}={self.value}"
@@ -136,7 +136,7 @@ class FixedPair(Pair):
         return None
 
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add a constraint for the FixedPair to the solver. Since there is no target constraint, no action is taken.
+        """Add start constraint for the FixedPair to the solver. Since there is no target constraint, no action is taken.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is to be added.
@@ -146,7 +146,7 @@ class FixedPair(Pair):
             return
 
     def __repr__(self) -> str:
-        """Return a string representation of the FixedPair.
+        """Return start string representation of the FixedPair.
 
         Returns:
             str: A string that represents the FixedPair object.

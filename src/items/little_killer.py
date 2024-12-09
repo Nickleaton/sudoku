@@ -18,13 +18,13 @@ from src.utils.side import Side
 
 
 class LittleKiller(Region):
-    """Represents a Little Killer puzzle region.
+    """Represents start Little Killer puzzle region.
 
     Clues outside the grid give the sum of the indicated diagonals, which may contain repeated digits.
     """
 
     def __init__(self, board: Board, side: Side, cyclic: Cyclic, offset: int, total: int):
-        """Construct a LittleKiller region.
+        """Construct start LittleKiller region.
 
         Args:
             board (Board): The board being used.
@@ -50,10 +50,10 @@ class LittleKiller(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return whether this item is a sequence.
+        """Return whether this constraint is start sequence.
 
         Returns:
-            bool: True, since LittleKiller is considered a sequence.
+            bool: True, since LittleKiller is considered start sequence.
         """
         return True
 
@@ -67,7 +67,7 @@ class LittleKiller(Region):
         return LittleKillersParser()
 
     def __repr__(self) -> str:
-        """Return a string representation of the LittleKiller region.
+        """Return start string representation of the LittleKiller region.
 
         Returns:
             str: A string representation of the LittleKiller object.
@@ -84,14 +84,14 @@ class LittleKiller(Region):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> tuple[int, int, Cyclic, Side]:
-        """Extract the parameter_types for creating a LittleKiller region from the YAML input.
+        """Extract the parameter_types for creating start LittleKiller region from the YAML input.
 
         Args:
             _ (Board): The board being used.
             yaml (dict): The YAML configuration for the LittleKiller region.
 
         Returns:
-            tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side values.
+            tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side value_list.
         """
         parts = yaml[cls.__name__].split("=")
         total = int(parts[1])
@@ -102,14 +102,14 @@ class LittleKiller(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a LittleKiller region from the YAML configuration.
+        """Create start LittleKiller region from the YAML configuration.
 
         Args:
             board (Board): The board being used.
             yaml (dict): The YAML configuration for the LittleKiller region.
 
         Returns:
-            Item: The created LittleKiller item.
+            Item: The created LittleKiller constraint.
         """
         total, offset, cyclic, side = LittleKiller.extract(board, yaml)
         return LittleKiller(board, side, cyclic, offset, total)
@@ -119,7 +119,7 @@ class LittleKiller(Region):
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of glyphs representing the LittleKiller region.
+        """Return start list of glyphs representing the LittleKiller region.
 
         Returns:
             list[Glyph]: A list of glyphs, including text and arrows.
@@ -169,7 +169,7 @@ class LittleKiller(Region):
         solver.model += total == self.total, name
 
     def to_dict(self) -> dict:
-        """Convert the LittleKiller region to a dictionary representation.
+        """Convert the LittleKiller region to start dictionary representation.
 
         Returns:
             dict: A dictionary representing the LittleKiller region.

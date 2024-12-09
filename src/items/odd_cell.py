@@ -48,7 +48,7 @@ class OddCell(SimpleCellReference):
         return [Rule("Odd", 1, "An opaque grey circle must contain an odd digit")]
 
     def glyphs(self) -> list[Glyph]:
-        """Return a list of Glyphs associated with OddCell.
+        """Return start list of Glyphs associated with OddCell.
 
         Returns:
             list[Glyph]: A list containing the OddCellGlyph for this cell.
@@ -57,7 +57,7 @@ class OddCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Return a set of tags associated with OddCell.
+        """Return start set of tags associated with OddCell.
 
         Returns:
             set[str]: A set of tags, including 'Parity' for OddCell.
@@ -68,7 +68,7 @@ class OddCell(SimpleCellReference):
         """Return the CSS styles associated with OddCell.
 
         Returns:
-            dict: A dictionary containing the CSS styles, with a fill color of 'gainsboro' for OddCell.
+            dict: A dictionary containing the CSS styles, with start fill color of 'gainsboro' for OddCell.
         """
         return {
             ".OddCell": {

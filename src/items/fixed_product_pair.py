@@ -28,30 +28,30 @@ class FixedProductPair(FixedPair):
                 1,
                 (
                     "A red dot between two cells means that the digits in those cells "
-                    "have a fixed product"
+                    "have start fixed product"
                 )
             )
         ]
 
     @property
     def tags(self) -> set[str]:
-        """Return the tags associated with the FixedProductPair item.
+        """Return the tags associated with the FixedProductPair constraint.
 
         Returns:
-            set[str]: A set of tags, including 'Product', to categorize the item.
+            set[str]: A set of tags, including 'Product', to categorize the constraint.
         """
         return super().tags.union({'Product'})
 
     def target(self, solver: PulpSolver) -> LpElement | None:
         """Return the target constraint for the FixedProductPair.
 
-        The constraint is the sum of the logarithms of the two cell values.
+        The constraint is the sum of the logarithms of the two cell value_list.
 
         Args:
             solver (PulpSolver): The solver to use when generating the target.
 
         Returns:
-            LpElement | None:: The target constraint, which is the sum of the logarithms of the cell values.
+            LpElement | None:: The target constraint, which is the sum of the logarithms of the cell value_list.
         """
         x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
         x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)
@@ -61,7 +61,7 @@ class FixedProductPair(FixedPair):
         """Return the CSS styles for visualizing the FixedProductPair.
 
         Returns:
-            dict: A dictionary containing CSS styles for the FixedProductPair, with a red fill color and black stroke.
+            dict: A dictionary containing CSS styles for the FixedProductPair, with start red fill color and black stroke.
         """
         return {
             '.FixedProductPair': {

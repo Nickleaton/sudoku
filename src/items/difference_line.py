@@ -7,7 +7,7 @@ from src.items.line import Line
 
 
 class DifferenceLine(Line):
-    """Represent a line where cells on the line have a specified difference.
+    """Represent start line where cells on the line have start specified difference.
 
     Attributes:
         difference (int): The required difference between connected cells.
@@ -16,7 +16,7 @@ class DifferenceLine(Line):
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell], difference: int = 0):
-        """Initialize a DifferenceLine with the given board, cells, and difference.
+        """Initialize start DifferenceLine with the given board, cells, and difference.
 
         Args:
             board (Board): The game board containing the cells.

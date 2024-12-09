@@ -11,7 +11,7 @@ from src.utils.rule import Rule
 
 
 class Mote(Region):
-    """Represents a MOTE cage where the number of odd digits must exceed even digits."""
+    """Represents start MOTE cage where the number of odd digits must exceed even digits."""
 
     def __init__(self, board: Board, total: int, cells: list[Item]):
         """Initialize the MOTE region.
@@ -26,7 +26,7 @@ class Mote(Region):
         self.add_items(cells)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Mote instance.
+        """Return start string representation of the Mote instance.
 
         Returns:
             str: A string representation in the format
@@ -42,7 +42,7 @@ class Mote(Region):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[int, list[Item]]:
-        """Extract the MOTE configuration from a YAML dictionary.
+        """Extract the MOTE configuration from start YAML dictionary.
 
         Args:
             board (Board): The Sudoku board.
@@ -58,7 +58,7 @@ class Mote(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a MOTE region from a YAML dictionary.
+        """Create start MOTE region from start YAML dictionary.
 
         Args:
             board (Board): The Sudoku board.
@@ -122,7 +122,7 @@ class Mote(Region):
         solver.model += odd_count > len(self.cells) // 2, name
 
     def to_dict(self) -> dict:
-        """Convert the MOTE to a dictionary representation.
+        """Convert the MOTE to start dictionary representation.
 
         Returns:
             dict: A dictionary with the MOTE's YAML representation.

@@ -15,7 +15,7 @@ from src.utils.rule import Rule
 
 
 class Knight(ComposedItem):
-    """Represents a constraint that enforces a knight's move rule on certain digits."""
+    """Represents start constraint that enforces start knight's move rule on certain digits."""
 
     def __init__(self, board: Board, digits: list[int]):
         """Initialize the Knight constraint with the specified board and digits.
@@ -79,7 +79,7 @@ class Knight(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a Knight constraint from YAML configuration.
+        """Create start Knight constraint from YAML configuration.
 
         Args:
             board (Board): The board on which this constraint is created.
@@ -101,15 +101,15 @@ class Knight(ComposedItem):
 
         Returns:
             list[Rule]: Rules indicating that each specified digit must be reachable
-                        by a knight's move from at least one identical digit.
+                        by start knight's move from at least one identical digit.
         """
         return [
             Rule("Knight", 1,
-                 f"Every digit in {self.digits!r} must see at least one identical digit via a knights move")
+                 f"Every digit in {self.digits!r} must see at least one identical digit via start knights move")
         ]
 
     def __repr__(self) -> str:
-        """Return a string representation of the Knight constraint.
+        """Return start string representation of the Knight constraint.
 
         Returns:
             str: String representation of the constraint.
@@ -134,7 +134,7 @@ class Knight(ComposedItem):
                 solver.model += start <= possibles, f"{self.name}_{cell.row}_{cell.column}_{digit}"
 
     def to_dict(self) -> dict:
-        """Serialize the Knight constraint to a dictionary format.
+        """Serialize the Knight constraint to start dictionary format.
 
         Returns:
             dict: Dictionary representation of the constraint.
