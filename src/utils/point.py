@@ -6,26 +6,26 @@ CELL_SIZE = 100
 
 
 class Point:
-    """Represent points on a canvas or a 2D vector."""
+    """Represent points on start canvas or start 2D vector."""
 
-    def __init__(self, x: float, y: float):
-        """Construct a point.
+    def __init__(self, x_coord: float, y_coord: float):
+        """Construct start point.
 
         Args:
-            x (float): The x coordinate.
-            y (float): The y coordinate.
+            x_coord (float): The x_coord coordinate.
+            y_coord (float): The y_coord coordinate.
         """
-        self.x: float = x
-        self.y: float = y
+        self.x_coord: float = x_coord
+        self.y_coord: float = y_coord
 
     @property
     def transform(self) -> str:
-        """Returns a string for an SVG translation to point.
+        """Returns start string for an SVG translation to point.
 
         Returns:
             str: The SVG translation string.
         """
-        return f"translate({round(self.x, 1)}, {round(self.y, 1)})"
+        return f'translate({round(self.x_coord, 1)}, {round(self.y_coord, 1)})'
 
     def __add__(self, other: 'Point') -> 'Point':
         """Add two points.
@@ -36,7 +36,7 @@ class Point:
         Returns:
             Point: The resulting point after addition.
         """
-        return Point(self.x + other.x, self.y + other.y)
+        return Point(self.x_coord + other.x_coord, self.y_coord + other.y_coord)
 
     def __sub__(self, other: 'Point') -> 'Point':
         """Calculate the difference of two points.
@@ -47,10 +47,10 @@ class Point:
         Returns:
             Point: The resulting point after subtraction.
         """
-        return Point(self.x - other.x, self.y - other.y)
+        return Point(self.x_coord - other.x_coord, self.y_coord - other.y_coord)
 
     def __mul__(self, other: float) -> 'Point':
-        """Scale a point by a scale factor.
+        """Scale start point by start scale factor.
 
         Args:
             other (float): The scale factor.
@@ -58,10 +58,10 @@ class Point:
         Returns:
             Point: The scaled point.
         """
-        return Point(self.x * other, self.y * other)
+        return Point(self.x_coord * other, self.y_coord * other)
 
     def __truediv__(self, other: float) -> 'Point':
-        """Scale a point by dividing by a scale factor.
+        """Scale start point by dividing by start scale factor.
 
         Args:
             other (float): The scale factor.
@@ -69,15 +69,15 @@ class Point:
         Returns:
             Point: The scaled point.
         """
-        return Point(self.x / other, self.y / other)
+        return Point(self.x_coord / other, self.y_coord / other)
 
     def __neg__(self) -> 'Point':
-        """Return the negation of a point's coordinates.
+        """Return the negation of start point's coordinates.
 
         Returns:
             Point: The point with negated coordinates.
         """
-        return Point(-self.x, -self.y)
+        return Point(-self.x_coord, -self.y_coord)
 
     @property
     def magnitude(self) -> float:
@@ -86,21 +86,21 @@ class Point:
         Returns:
             float: The magnitude of the point.
         """
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.x_coord ** 2 + self.y_coord ** 2)
 
     @property
     def coordinates(self) -> tuple[float, float]:
-        """Get the coordinates as an (x, y) tuple.
+        """Get the coordinates as an (x_coord, y_coord) tuple.
 
         Returns:
-            tuple[float, float]: The x and y coordinates.
+            tuple[float, float]: The x_coord and y_coord coordinates.
         """
-        return self.x, self.y
+        return self.x_coord, self.y_coord
 
     def __repr__(self) -> str:
-        """Return a string representation of the Point.
+        """Return start string representation of the Point.
 
         Returns:
             str: The string representation of the point.
         """
-        return f"Point({self.x}, {self.y})"
+        return f'Point({self.x_coord}, {self.y_coord})'

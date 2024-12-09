@@ -12,27 +12,23 @@ class Matrix:
 
     Attributes:
         name (str): The name of the matrix.
-        a (int): The element in the first row, first column of the matrix.
-        b (int): The element in the first row, second column of the matrix.
-        c (int): The element in the second row, first column of the matrix.
-        d (int): The element in the second row, second column of the matrix.
+        matrix (list[list[int]]): A 2x2 matrix represented as a list of lists.
     """
 
-    def __init__(self, name: str, a: int, b: int, c: int, d: int) -> None:  # noqa WPS211
-        """Initialize a Matrix with given parameter types.
+    def __init__(self, name: str, matrix: list[list[int]]) -> None:
+        """Initialize a Matrix with a given name and 2x2 matrix.
 
         Args:
             name (str): The name of the matrix.
-            a (int): The element in the first row, first column.
-            b (int): The element in the first row, second column.
-            c (int): The element in the second row, first column.
-            d (int): The element in the second row, second column.
+            matrix (list[list[int]]): A 2x2 matrix represented as a list of lists.
+
+        Raises:
+            ValueError: If the provided matrix is not 2x2.
         """
+        if len(matrix) != 2 or len(matrix[0]) != 2 or len(matrix[1]) != 2:
+            raise ValueError('Matrix must be 2x2')
         self.name: str = name
-        self.a: int = a
-        self.b: int = b
-        self.c: int = c
-        self.d: int = d
+        self.matrix: list[list[int]] = matrix
 
     def compose(self, other: 'Matrix') -> 'Matrix':
         """Compose this matrix with another matrix using matrix multiplication.
@@ -43,12 +39,19 @@ class Matrix:
         Returns:
             Matrix: The resulting matrix after composition.
         """
+        result_matrix = [
+            [
+                self.matrix[0][0] * other.matrix[0][0] + self.matrix[0][1] * other.matrix[1][0],  # Element [0][0]
+                self.matrix[0][0] * other.matrix[0][1] + self.matrix[0][1] * other.matrix[1][1],  # Element [0][1]
+            ],
+            [
+                self.matrix[1][0] * other.matrix[0][0] + self.matrix[1][1] * other.matrix[1][0],  # Element [1][0]
+                self.matrix[1][0] * other.matrix[0][1] + self.matrix[1][1] * other.matrix[1][1],  # Element [1][1]
+            ],
+        ]
         return Matrix(
-            f"{self.name} | {other.name}",
-            self.a * other.a + self.b * other.c,
-            self.a * other.b + self.b * other.d,
-            self.c * other.a + self.d * other.c,
-            self.c * other.b + self.d * other.d,
+            f'{self.name} | {other.name}',
+            result_matrix,
         )
 
     def transform(self, other: Coord) -> Coord:
@@ -61,8 +64,8 @@ class Matrix:
             Coord: The resulting transformed coordinate.
         """
         return Coord(
-            self.a * other.row + self.b * other.column,
-            self.c * other.row + self.d * other.column,
+            self.matrix[0][0] * other.row + self.matrix[0][1] * other.column,
+            self.matrix[1][0] * other.row + self.matrix[1][1] * other.column,
         )
 
     def __eq__(self, other: object) -> bool:
@@ -78,35 +81,35 @@ class Matrix:
             MatrixException: If the comparison is attempted with a non-matrix object.
         """
         if isinstance(other, Matrix):
-            return self.a == other.a and self.b == other.b and self.c == other.c and self.d == other.d
-        raise MatrixException(f"Cannot compare {other.__class__.__name__} with {self.__class__.__name__}")
+            return self.matrix == other.matrix
+        raise MatrixException(f'Cannot compare {other.__class__.__name__} with {self.__class__.__name__}')
 
     def __hash__(self) -> int:
-        """Return a hash of the matrix based on its elements.
+        """Return the hash of the matrix based on its elements.
 
         Returns:
-            int: The hash value for the matrix.
+            int: The hash number for the matrix.
         """
-        return hash((self.a, self.b, self.c, self.d))
+        return hash(tuple(tuple(row) for row in self.matrix))
 
     def __repr__(self) -> str:
-        """Return a string representation of the matrix.
+        """Return the string representation of the matrix.
 
         Returns:
             str: A string representing the matrix object.
         """
-        return f"{self.__class__.__name__}('{self.name}', {self.a}, {self.b}, {self.c}, {self.d})"
+        return f'{self.__class__.__name__}({self.name!r}, {self.matrix!r})'
 
 
 # Predefined matrix transformations
-ROTATE_000: Matrix = Matrix('ROTATE_000', 1, 0, 0, 1)
-ROTATE_090: Matrix = Matrix('ROTATE_090', 0, -1, 1, 0)
-ROTATE_180: Matrix = Matrix('ROTATE_180', -1, 0, 0, -1)
-ROTATE_270: Matrix = Matrix('ROTATE_270', 0, 1, -1, 0)
-FLIP_HORIZONTAL: Matrix = Matrix('FLIP_HORIZONTAL', -1, 0, 0, 1)
-FLIP_VERTICAL: Matrix = Matrix('FLIP_VERTICAL', 1, 0, 0, -1)
+ROTATE000: Matrix = Matrix('ROTATE000', [[1, 0], [0, 1]])
+ROTATE090: Matrix = Matrix('ROTATE090', [[0, -1], [1, 0]])
+ROTATE180: Matrix = Matrix('ROTATE180', [[-1, 0], [0, -1]])
+ROTATE270: Matrix = Matrix('ROTATE270', [[0, 1], [-1, 0]])
+FLIP_HORIZONTAL: Matrix = Matrix('FLIP_HORIZONTAL', [[-1, 0], [0, 1]])
+FLIP_VERTICAL: Matrix = Matrix('FLIP_VERTICAL', [[1, 0], [0, -1]])
 
 # Rotations, flips, and composed transforms
-ROTATIONS: tuple[Matrix, Matrix, Matrix, Matrix] = (ROTATE_000, ROTATE_090, ROTATE_180, ROTATE_270)
-FLIPS: tuple[Matrix, Matrix, Matrix] = (ROTATE_000, FLIP_VERTICAL, FLIP_HORIZONTAL)
-TRANSFORMS: tuple[Matrix, ...] = tuple(r.compose(f) for r in ROTATIONS for f in FLIPS)
+ROTATIONS: tuple[Matrix, Matrix, Matrix, Matrix] = (ROTATE000, ROTATE090, ROTATE180, ROTATE270)
+FLIPS: tuple[Matrix, Matrix, Matrix] = (ROTATE000, FLIP_VERTICAL, FLIP_HORIZONTAL)
+TRANSFORMS: tuple[Matrix, ...] = tuple(rotate.compose(flip) for rotate in ROTATIONS for flip in FLIPS)

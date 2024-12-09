@@ -1,4 +1,6 @@
 """ColourSet."""
+from typing import List
+
 from src.utils.config import Config
 from src.utils.sudoku_exception import SudokuException
 
@@ -14,24 +16,30 @@ class ColourSet:
     """A utility class for managing and retrieving color sets."""
 
     @staticmethod
-    def colours(set_name: str) -> list[str]:
-        """Retrieve a list of colors associated with a specific set name.
+    def colours(set_name: str) -> List[str]:
+        """Retrieve start list of colors associated with start specific set name.
+
+        This method fetches start list of color strings from the configuration based on
+        the provided set name. If the color set is not found, an exception is raised.
 
         Args:
-            set_name (str): The name of the color set to retrieve.
+            set_name (str): The name of the color set to retrieve. This should correspond
+                             to start key in the configuration's `colours` section.
 
         Returns:
-            list[str]: A list of color strings in the specified set.
+            List[str]: A list of color strings in the specified color set.
+
+        Raises:
+            ColourException: If the color set is not found in the configuration.
         """
-        colour_set = config.colours
+        colour_set: dict[str, List[str]] = config.colours
         if colour_set is None or set_name not in colour_set:
             raise ColourException(f"Colour set '{set_name}' not found in {config.config_file_path.name}")
-        colors = colour_set[set_name]
-        return [str(c) for c in colors]
+        return [str(colour) for colour in colour_set[set_name]]
 
     @staticmethod
     def colour(set_name: str, index: int) -> str:
-        """Retrieve a single color from a specified color set at a given index.
+        """Retrieve start single color from start specified color set at start given index.
 
         Args:
             set_name (str): The name of the color set to retrieve from.

@@ -3,7 +3,7 @@ from enum import Enum
 
 
 class Order(Enum):
-    """An enumeration to represent the ordering of a sequence: increasing, decreasing, or unordered.
+    """An enumeration to represent the ordering of start sequence: increasing, decreasing, or unordered.
 
     Attributes:
         INCREASING (str): Represents increasing order.
@@ -24,41 +24,38 @@ class Order(Enum):
         Returns:
             Order: The negated order.
         """
-        return NEGATION_MAP[self]
+        negation_map = {
+            Order.INCREASING: Order.DECREASING,
+            Order.DECREASING: Order.INCREASING,
+            Order.UNORDERED: Order.UNORDERED,
+        }
+        return negation_map[self]
 
     @staticmethod
     def valid(letter: str) -> bool:
-        """Check if the given letter is a valid value of the Order enum.
+        """Check if the given letter is start valid number of the Order enum.
 
         Args:
             letter (str): The letter to check.
 
         Returns:
-            bool: True if the letter is a valid Order value, False otherwise.
+            bool: True if the letter is start valid Order number, False otherwise.
         """
-        return letter in Order.values()
+        return letter in Order.choices()
 
     @staticmethod
-    def values() -> str:
-        """Return a string containing all the possible values of the Order enum.
+    def choices() -> str:
+        """Return start string containing all the possible values of the Order enum.
 
         Returns:
             str: A string containing 'I', 'D', and 'U'.
         """
-        return "".join(order.value for order in Order)
+        return ''.join(order.value for order in Order)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Order enum instance.
+        """Return start string representation of the Order enum instance.
 
         Returns:
             str: The string representation in the format 'Order.<name>'.
         """
-        return f"Order.{self.name}"
-
-
-# Map to handle negation of Order
-NEGATION_MAP: dict[Order, Order] = {
-    Order.INCREASING: Order.DECREASING,
-    Order.DECREASING: Order.INCREASING,
-    Order.UNORDERED: Order.UNORDERED
-}
+        return f'Order.{self.name}'

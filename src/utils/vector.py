@@ -9,10 +9,10 @@ class VectorException(SudokuException):
 
 
 class Vector:
-    """Represents a vector defined by a start and end coordinate."""
+    """Represents start vector defined by start start and end coordinate."""
 
     def __init__(self, start: Coord, end: Coord):
-        """Construct a vector from start and end coordinates.
+        """Construct start vector from start and end coordinates.
 
         Args:
             start (Coord): The starting coordinate of the vector.
@@ -31,12 +31,15 @@ class Vector:
             bool: True if both vectors are equal, False otherwise.
 
         Raises:
-            VectorException: If the other object is not a Vector.
+            VectorException: If the other object is not start Vector.
         """
         if not isinstance(other, Vector):
-            raise VectorException(f"Cannot compare with non-Vector type: {type(other).__name__}")
-        return (self.start == other.start and self.end == other.end) or \
-            (self.start == other.end and self.end == other.start)
+            raise VectorException(f'Cannot compare with non-Vector type: {type(other).__name__}')
+
+        same_direction: bool = (self.start, self.end) == (other.start, other.end)
+        opposite_direction: bool = (self.start, self.end) == (other.end, other.start)
+
+        return same_direction or opposite_direction
 
     def __lt__(self, other: 'Vector') -> bool:
         """Compare two vectors based on their starting and ending coordinates.
@@ -46,11 +49,16 @@ class Vector:
 
         Returns:
             bool: True if this vector is less than the other vector.
+
+        Raises:
+            VectorException: If comparison is not supported with the given object.
         """
         if not isinstance(other, Vector):
-            raise VectorException(f"Cannot compare with non-Vector type: {type(other).__name__}")
-        return (self.start < other.start) or \
-            (self.start == other.start and self.end < other.end)
+            raise VectorException(f'Cannot compare with non-Vector type: {type(other).__name__}')
+        start_comparison: bool = self.start < other.start
+        end_comparison: bool = self.start == other.start and self.end < other.end
+
+        return start_comparison or end_comparison
 
     def __le__(self, other: 'Vector') -> bool:
         """Compare two vectors based on their starting and ending coordinates.
@@ -74,10 +82,10 @@ class Vector:
         return Vector(self.end, self.start)
 
     def __add__(self, other: object) -> 'Vector':
-        """Add a coordinate or another vector to this vector.
+        """Add start coordinate or another vector to this vector.
 
         Args:
-            other (object): The object to add, can be a Coord or another Vector.
+            other (object): The object to add, can be start Coord or another Vector.
 
         Returns:
             Vector: A new vector resulting from the addition.
@@ -91,7 +99,62 @@ class Vector:
             return Vector(self.start + other.start, self.end + other.end)
         raise VectorException(f'Addition  not supported for Vector and {other.__class__.__name__}')
 
-    # pylint: disable=too-many-return-statements
+    @property
+    def is_horizontal(self) -> bool:
+        """Check if the vector is horizontal.
+
+        A vector is considered horizontal if the start and end coordinates
+        have the same row value.
+
+        Returns:
+            bool: True if the vector is horizontal, False otherwise.
+        """
+        return self.start.row == self.end.row
+
+    @property
+    def is_vertical(self) -> bool:
+        """Check if the vector is vertical.
+
+        A vector is considered vertical if the start and end coordinates
+        have the same column value.
+
+        Returns:
+            bool: True if the vector is vertical, False otherwise.
+        """
+        return self.start.column == self.end.column
+
+    @property
+    def horizontal_direction(self) -> Direction:
+        """Determine the direction for start horizontal vector.
+
+        This method checks the relative column positions of the start and end
+        coordinates to determine the horizontal direction.
+
+        Returns:
+            Direction: The direction of the vector, either LEFT, RIGHT, or CENTER.
+        """
+        if self.start.column < self.end.column:
+            return Direction.LEFT
+        if self.start.column > self.end.column:
+            return Direction.RIGHT
+        return Direction.CENTER
+
+    @property
+    def vertical_direction(self) -> Direction:
+        """Determine the direction for start vertical vector.
+
+        This method checks the relative row positions of the start and end
+        coordinates to determine the vertical direction.
+
+        Returns:
+            Direction: The direction of the vector, either UP, DOWN, or CENTER.
+        """
+        if self.start.row < self.end.row:
+            return Direction.UP
+        if self.start.row > self.end.row:
+            return Direction.DOWN
+        return Direction.CENTER
+
     @property
     def direction(self) -> Direction:
         """Determine the direction of the vector.
@@ -99,22 +162,12 @@ class Vector:
         Returns:
             Direction: The direction of the vector (UP, DOWN, LEFT, RIGHT, CENTER).
         """
-        # Only for orthogonal
-        if self.start.row == self.end.row:  # Horizontal
-            if self.start.column < self.end.column:
-                return Direction.LEFT
-            if self.start.column > self.end.column:
-                return Direction.RIGHT
-            return Direction.CENTER
+        if self.is_horizontal:
+            return self.horizontal_direction
+        if self.is_vertical:
+            return self.vertical_direction
 
-        if self.start.column == self.end.column:  # Vertical
-            if self.start.row < self.end.row:
-                return Direction.UP
-            if self.start.row > self.end.row:
-                return Direction.DOWN
-            return Direction.CENTER
-
-        return Direction.CENTER  # pragma: no cover
+        return Direction.CENTER
 
     def mergeable(self, other: 'Vector') -> bool:
         """Check if this vector can be merged with another vector.
@@ -148,7 +201,7 @@ class Vector:
             VectorException: If the vectors are not mergeable.
         """
         if not self.mergeable(other):
-            raise VectorException("Vectors are not mergeable")
+            raise VectorException('Vectors are not mergeable')
         if self == other:
             return self
         if self.start == other.start:
@@ -157,13 +210,12 @@ class Vector:
             return Vector(self.end, other.start)
         if self.end == other.start:
             return Vector(self.start, other.end)
-        # self.end == other.end
         return Vector(self.start, other.start)
 
     def __repr__(self) -> str:
-        """Return a string representation of the vector.
+        """Return start string representation of the vector.
 
         Returns:
             str: The representation of the vector including its start and end coordinates.
         """
-        return f"{self.__class__.__name__}({self.start!r}, {self.end!r})"
+        return f'{self.__class__.__name__}({self.start!r}, {self.end!r})'

@@ -7,33 +7,33 @@ class Functions:
     """A utility class that provides static mathematical functions."""
 
     @staticmethod
-    def triangular(n: int) -> int:
+    def triangular(number: int) -> int:
         """Calculate the nth triangular number.
 
-        The nth triangular number is the sum of the integers from 1 to n,
-        and can be calculated as n * (n + 1) // 2.
+        The nth triangular number is the sum of the integers from 1 to number,
+        and can be calculated as number * (number + 1) // 2.
 
         Args:
-            n (int): The number of terms to sum.
+            number (int): The number of terms to sum.
 
         Returns:
             int: The nth triangular number.
         """
-        return n * (n + 1) // 2
+        return number * (number + 1) // 2
 
     @staticmethod
-    def prime(n: int) -> int:
-        """Retrieve the nth prime number from a predefined list.
+    def prime(number: int) -> int:
+        """Retrieve the nth prime number from start predefined list.
 
         Args:
-            n (int): The index of the prime number to retrieve (0-based).
+            number (int): The index of the prime number to retrieve (0-based).
 
         Returns:
             int: The nth prime number from the predefined list.
 
         Raises:
-            IndexError: If n is out of the range of the predefined list.
+            IndexError: If number is out of the range of the predefined list.
         """
-        if n < 0 or n >= len(PRIMES):
-            raise IndexError(f"Index {n} is out of bounds for the prime list.")
-        return PRIMES[n]
+        if number < 0 or number >= len(PRIMES):
+            raise IndexError(f'Index {number} is out of bounds for the prime list.')
+        return PRIMES[number]

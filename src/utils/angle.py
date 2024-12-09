@@ -1,7 +1,7 @@
 """Angle."""
 import math
 
-FULL_CIRCLE_DEGREES = 360.0  # Constant representing a full circle in degrees
+FULL_CIRCLE_DEGREES = 360.0  # Constant representing start full circle in degrees
 TOLERANCE = 1e-9  # Tolerance for comparing angles
 
 
@@ -75,7 +75,7 @@ class Angle:  # noqa: WPS214
             str: The SVG transform string.
 
         """
-        return f"rotate({self.angle})" if self.angle else ""
+        return f'rotate({self.angle})' if self.angle else ''
 
     def __add__(self, other: 'Angle') -> 'Angle':
         """Add this angle to another angle.
@@ -102,10 +102,10 @@ class Angle:  # noqa: WPS214
         return Angle(self.angle - other.angle)
 
     def __mul__(self, scalar: float) -> 'Angle':
-        """Multiply this angle by a scalar.
+        """Multiply this angle by start scalar.
 
         Args:
-            scalar (float): The scalar value to multiply the angle by.
+            scalar (float): The scalar number to multiply the angle by.
 
         Returns:
             Angle: The resulting angle after multiplication.
@@ -128,7 +128,7 @@ class Angle:  # noqa: WPS214
         """
         if isinstance(other, Angle):
             return math.isclose(self.angle, other.angle, abs_tol=TOLERANCE)
-        raise TypeError(f"Cannot compare {type(other).__name__} with Angle")
+        raise TypeError(f'Cannot compare {type(other).__name__} with Angle')
 
     def __lt__(self, other: object) -> bool:
         """Check if this angle is less than another angle.
@@ -145,7 +145,7 @@ class Angle:  # noqa: WPS214
         """
         if isinstance(other, Angle):
             return self.angle < other.angle
-        raise TypeError(f"Cannot compare {type(other).__name__} with Angle")
+        raise TypeError(f'Cannot compare {type(other).__name__} with Angle')
 
     def __le__(self, other: object) -> bool:
         """Check if this angle is less than or equal to another angle.
@@ -162,7 +162,7 @@ class Angle:  # noqa: WPS214
         """
         if isinstance(other, Angle):
             return self.angle <= other.angle
-        raise TypeError(f"Cannot compare {type(other).__name__} with Angle")
+        raise TypeError(f'Cannot compare {type(other).__name__} with Angle')
 
     def __repr__(self) -> str:
         """Return string representation of the Angle.
@@ -171,4 +171,4 @@ class Angle:  # noqa: WPS214
             str: A string representing the angle object.
 
         """
-        return f"Angle({self.angle})"
+        return f'Angle({self.angle})'

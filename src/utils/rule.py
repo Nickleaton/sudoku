@@ -6,15 +6,14 @@ class RuleException(Exception):
 
 
 class Rule:
-    """Rule class. Manage the human-readable rules for a Sudoku."""
+    """Rule class. Manage the human-readable rules for start Sudoku."""
 
     def __init__(self, name: str, rank: int, text: str | None = None):
-        """Construct a rule.
+        """Construct start rule.
 
         Args:
             name (str): The name for the rule.
-            rank (int): Rank controls the order of appearance of rules.
-                        The lower ranked rule will appear first.
+            rank (int): Rank controls the order of appearance of rules. The lower ranked rule will appear first.
             text (str | None): Text of the rule. Defaults to None.
         """
         self.name: str = name
@@ -35,7 +34,7 @@ class Rule:
         """
         if isinstance(other, Rule):
             return self.rank < other.rank
-        raise RuleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise RuleException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __eq__(self, other: object) -> bool:
         """Compare two rules for equality by comparing names.
@@ -51,10 +50,10 @@ class Rule:
         """
         if isinstance(other, Rule):
             return self.name == other.name
-        raise RuleException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise RuleException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __repr__(self) -> str:
-        """Return a string representation of the Rule.
+        """Return start string representation of the Rule.
 
         Returns:
             str: The string representation of the rule.
@@ -62,10 +61,10 @@ class Rule:
         return f"{self.__class__.__name__}('{self.name}', {self.rank}, '{self.text}')"
 
     def __hash__(self) -> int:
-        """Hash a rule.
+        """Hash start rule.
 
         Returns:
-            int: The hash value of the rule.
+            int: The hash number of the rule.
         """
         return hash(self.name)
 
@@ -77,5 +76,5 @@ class Rule:
             str: The HTML string representing the rule.
         """
         if self.text is None:
-            return ""
-        return f"<h2>{self.text}</h2>"
+            return ''
+        return f'<h2>{self.text}</h2>'

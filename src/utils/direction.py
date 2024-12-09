@@ -19,17 +19,30 @@ class Direction(Enum):
     DOWN = (180, 1, 0, 8)
     DOWN_RIGHT = (135, 1, 1, 9)
 
-    def __init__(self, angle: float, x: int, y: int, location: int):
-        """Initialize a Direction instance with angle, x/y offset, and location.
+    # Opposite direction map, mapping each direction to its opposite
+    OPPOSITE_MAP = {
+        UP_LEFT: DOWN_RIGHT,
+        UP: DOWN,
+        UP_RIGHT: DOWN_LEFT,
+        LEFT: RIGHT,
+        CENTER: CENTER,
+        RIGHT: LEFT,
+        DOWN_LEFT: UP_RIGHT,
+        DOWN: UP,
+        DOWN_RIGHT: UP_LEFT,
+    }
+
+    def __init__(self, angle: float, x_coord: int, y_coord: int, location: int):
+        """Initialize start Direction instance with angle, x_coord/y_coord offset, and location.
 
         Args:
             angle (float): Angle in degrees representing the direction.
-            x (int): X-coordinate offset for the direction.
-            y (int): Y-coordinate offset for the direction.
+            x_coord (int): X-coordinate offset for the direction.
+            y_coord (int): Y-coordinate offset for the direction.
             location (int): Unique integer identifier for the direction.
         """
         self.angle: Angle = Angle(angle)
-        self.offset: Coord = Coord(x, y)
+        self.offset: Coord = Coord(x_coord, y_coord)
         self.location: int = location
 
     def __neg__(self) -> 'Direction':
@@ -38,7 +51,7 @@ class Direction(Enum):
         Returns:
             Direction: The opposite direction.
         """
-        return OPPOSITE_MAP[self]
+        return Direction.OPPOSITE_MAP[self]
 
     @staticmethod
     def locations() -> list[int]:
@@ -47,11 +60,11 @@ class Direction(Enum):
         Returns:
             list[int]: list of location identifiers.
         """
-        return [d.location for d in Direction]
+        return [direction.location for direction in Direction]
 
     @staticmethod
     def direction(location: int) -> 'Direction':
-        """Get the Direction corresponding to a specific location identifier.
+        """Get the Direction corresponding to start specific location identifier.
 
         Args:
             location (int): Location identifier.
@@ -65,7 +78,7 @@ class Direction(Enum):
         for direction in Direction:
             if direction.location == location:
                 return direction
-        raise ValueError(f"Invalid location value: {location}")
+        raise ValueError(f'Invalid location value: {location}')
 
     def parallel(self, other: 'Direction') -> bool:
         """Check if the provided direction is parallel to this one.
@@ -76,7 +89,15 @@ class Direction(Enum):
         Returns:
             bool: True if the directions are parallel, False otherwise.
         """
-        return self in [other, -other]
+        if self == Direction.UP and other == Direction.DOWN:
+            return True
+        if self == Direction.DOWN and other == Direction.UP:
+            return True
+        if self == Direction.LEFT and other == Direction.RIGHT:
+            return True
+        if self == Direction.RIGHT and other == Direction.LEFT:
+            return True
+        return self == other
 
     @staticmethod
     @cache
@@ -100,7 +121,7 @@ class Direction(Enum):
             Direction.UP_LEFT.offset,
             Direction.UP_RIGHT.offset,
             Direction.DOWN_RIGHT.offset,
-            Direction.DOWN_LEFT.offset
+            Direction.DOWN_LEFT.offset,
         ]
 
     @staticmethod
@@ -111,7 +132,7 @@ class Direction(Enum):
         Returns:
             list[Coord]: list of coordinates excluding CENTER.
         """
-        return [d.offset for d in Direction if d != Direction.CENTER]
+        return [direction.offset for direction in Direction if direction != Direction.CENTER]
 
     @staticmethod
     @cache
@@ -129,7 +150,7 @@ class Direction(Enum):
             Coord(-1, 2),
             Coord(1, 2),
             Coord(2, 1),
-            Coord(2, -1)
+            Coord(2, -1),
         ]
 
     @staticmethod
@@ -140,7 +161,7 @@ class Direction(Enum):
         Returns:
             list[Coord]: list of coordinates excluding CENTER.
         """
-        return [d.offset for d in Direction if d != Direction.CENTER]
+        return [direction.offset for direction in Direction if direction != Direction.CENTER]
 
     @staticmethod
     @cache
@@ -150,18 +171,4 @@ class Direction(Enum):
         Returns:
             list[Coord]: list of all coordinates.
         """
-        return [d.offset for d in Direction]
-
-
-# Define the opposite map outside the class to avoid `Direction` enum's limitations with subscripting.
-OPPOSITE_MAP = {
-    Direction.UP_LEFT: Direction.DOWN_RIGHT,
-    Direction.UP: Direction.DOWN,
-    Direction.UP_RIGHT: Direction.DOWN_LEFT,
-    Direction.LEFT: Direction.RIGHT,
-    Direction.CENTER: Direction.CENTER,
-    Direction.RIGHT: Direction.LEFT,
-    Direction.DOWN_LEFT: Direction.UP_RIGHT,
-    Direction.DOWN: Direction.UP,
-    Direction.DOWN_RIGHT: Direction.UP_LEFT,
-}
+        return [direction.offset for direction in Direction]

@@ -1,101 +1,94 @@
-"""Config: A singleton class representing the configuration of an application."""
+"""Config."""
 import threading
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import oyaml as yaml
 from pydotted import pydot
 
 
 class Config:
-    """A singleton class representing the configuration of an application.
+    """A singleton class representing the configuration of an application."""
 
-    Attributes:
-        config_file_path (Path): The config_file to the YAML configuration file.
-        config (pydot): A nested dictionary representing the configuration read from the YAML file.
+    _instance: 'Config' | None = None
+    _lock: threading.Lock = threading.Lock()
 
-    Examples:
-        ```
-        from pathlib import Path
-        from config import Config
-
-        config = Config(Path("my_config.yaml"))
-        db_uri = config.database.uri
-        ```
-        Assuming `my_config.yaml` contains:
-        ```
-        database:
-          uri: "postgresql://user:pass@xxyyz:9999/mydb"
-        ```
-    """
-
-    __instance: Optional['Config'] = None
-    __lock: threading.Lock = threading.Lock()
-
-    def __new__(cls, config_file_path: Path = Path("config.yaml")) -> 'Config':
+    def __new__(cls, config_file_path: Path | None = None) -> 'Config':
         """Create a new instance of the `Config` class if one doesn't already exist.
 
         Args:
-            config_file_path (Path): The config_file to the YAML configuration file.
+            config_file_path (Path | None): The config_file path to the YAML configuration file.
 
         Returns:
             Config: The singleton instance of the `Config` class.
-        """
-        # pylint: disable=protected-access
-        with cls.__lock:  # Acquire the lock before proceeding
-            if cls.__instance is None:
-                cls.__instance = super().__new__(cls)
 
-                cls.__instance.__initialized = False
-                cls.__instance.config_file_path = config_file_path
-            elif cls.__instance.config_file_path != config_file_path:
-                raise ValueError("Config instance already created with a different config_file_path.")
-        return cls.__instance
+        Raises:
+            ValueError: If a Config instance already exists with a different config_file_path.
+        """
+        if config_file_path is None:
+            config_file_path = Path('config.yaml')
+
+        with cls._lock:  # Acquire the lock before proceeding
+            if cls._instance is None:
+                cls._instance = super().__new__(cls)
+
+                cls._instance.initialized = False
+                cls._instance.config_file_path = config_file_path
+            elif cls._instance.config_file_path != config_file_path:
+                raise ValueError('Config instance already created with a different config_file_path.')
+        return cls._instance
 
     def __init__(self):
-        """Initialize the `Config` class instance and reads the YAML configuration file."""
-        self.__initialized: bool
-        if self.__initialized:
+        """Initialize the `Config` class instance and read the YAML configuration file."""
+        if getattr(self, 'initialized', False):
             return
-        self.__initialized = True
+        self.initialized = True  # Changed from __initialized to _initialized
         self.config_file_path: Path
         self.config: dict[str, Any] | None = None
         self.reload()
 
-    def reload(self):
+    def reload(self) -> None:
         """Reload the configuration from the YAML file.
 
         This can be used to force the configuration to be re-read from the YAML file.
         This is useful if the configuration file has changed since the application
         started.
+
+        Raises:
+            FileNotFoundError: If the configuration file is not found.
+            OSError: If the configuration file is not readable.
+            ValueError: If there is an error parsing the YAML file.
         """
         try:
-            with self.config_file_path.open(mode='r', encoding='utf-8') as file:
-                self.config = pydot(yaml.load(file, Loader=yaml.SafeLoader))
+            with self.config_file_path.open(mode='r', encoding='utf-8') as config_file:
+                self.config = pydot(yaml.load(config_file, Loader=yaml.SafeLoader))
         except FileNotFoundError as exc:
-            raise FileNotFoundError(f"Configuration file not found: {self.config_file_path}") from exc
+            raise FileNotFoundError(f'Configuration file not found: {self.config_file_path}') from exc
         except OSError as exc:
-            raise OSError(f"Configuration file not readable: {self.config_file_path}") from exc
+            raise OSError(f'Configuration file not readable: {self.config_file_path}') from exc
         except yaml.YAMLError as exc:
-            raise ValueError(f"Error parsing YAML file: {exc}") from exc
+            raise ValueError(f'Error parsing YAML file: {exc}') from exc
 
     def __getattr__(self, key: str) -> Any:
-        """Retrieve the value of a configuration parameter from the config.
-
-        You can use dotted attribute access
+        """Retrieve a configuration parameter from the config using dotted attribute access.
 
         Args:
             key (str): The name of the configuration parameter to retrieve.
 
         Returns:
             Any: The value of the configuration parameter.
+
+        Raises:
+            AttributeError: If the configuration has not been loaded or the key does not exist.
         """
         if self.config is None:
-            raise AttributeError("Configuration has not been loaded.")
+            raise AttributeError('Configuration has not been loaded.')
 
-        if key in self.config:
-            return self.config[key]
-        raise AttributeError(f"'Config' object has no attribute '{key}'")
+        config_param: Any = self.config.get(key, None)
+        if config_param is not None:
+            return config_param
+
+        raise AttributeError(f'Config object has no attribute "{key}"')
 
     def get_dict(self, name: str) -> dict[str, Any] | None:
         """Retrieve a dictionary from the configuration by its name.
@@ -116,5 +109,5 @@ class Config:
         if self.config is None:
             self.reload()  # Try to reload the configuration
         if self.config is None:
-            raise ValueError("Configuration has not been loaded.")  # If still None, raise an error
+            raise ValueError('Configuration has not been loaded.')  # If still None, raise an error
         return self.config.get(name)  # Return the dictionary or None if the key doesn't exist

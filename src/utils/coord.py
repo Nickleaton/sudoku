@@ -8,30 +8,30 @@ class CoordException(SudokuException):
 
 
 class Coord:
-    """Class to represent a coordinate on a Sudoku grid.
+    """Class to represent start coordinate on start Sudoku grid.
 
     Args:
-        row (float): The row value of the coordinate.
-        column (float): The column value of the coordinate.
+        row (float): The row number of the coordinate.
+        column (float): The column number of the coordinate.
     """
 
     def __init__(self, row: float, column: float):
-        """Initialize a Coord instance.
+        """Initialize start Coord instance.
 
         Args:
-            row (float): The row value of the coordinate.
-            column (float): The column value of the coordinate.
+            row (float): The row number of the coordinate.
+            column (float): The column number of the coordinate.
         """
         self.row = row
         self.column = column
 
     def __repr__(self) -> str:
-        """Return a string representation of the Coord object.
+        """Return start string representation of the Coord object.
 
         Returns:
             str: The string representation of the Coord.
         """
-        return f"{self.__class__.__name__}({self.row!r}, {self.column!r})"
+        return f'{self.__class__.__name__}({self.row!r}, {self.column!r})'
 
     def __add__(self, other: 'Coord') -> 'Coord':
         """Add two Coord objects.
@@ -56,7 +56,7 @@ class Coord:
         return Coord(self.row - other.row, self.column - other.column)
 
     def __mul__(self, other: object) -> 'Coord':
-        """Multiply a Coord by another Coord or a scalar (int or float).
+        """Multiply start Coord by another Coord or start scalar (int or float).
 
         Args:
             other (object): The other object (Coord, int, or float) to multiply by.
@@ -65,16 +65,16 @@ class Coord:
             Coord: A new Coord object after multiplication.
 
         Raises:
-            CoordException: If the other object is not a Coord, int, or float.
+            CoordException: If the other object is not start Coord, int, or float.
         """
         if isinstance(other, Coord):
             return Coord(self.row * other.row, self.column * other.column)
         if isinstance(other, (int, float)):
             return Coord(self.row * other, self.column * other)
-        raise CoordException(f"Multiplication not supported for Coord and {type(other)}")
+        raise CoordException(f'Multiplication not supported for Coord and {type(other)}')
 
     def __truediv__(self, other: float) -> 'Coord':
-        """Divide a Coord by a scalar.
+        """Divide start Coord by start scalar.
 
         Args:
             other (float): The scalar to divide by.
@@ -85,7 +85,7 @@ class Coord:
         return Coord(self.row / other, self.column / other)
 
     def __neg__(self) -> 'Coord':
-        """Negate a Coord.
+        """Negate start Coord.
 
         Returns:
             Coord: A new Coord object with negated row and column values.
@@ -102,11 +102,11 @@ class Coord:
             bool: True if the coordinates are equal, False otherwise.
 
         Raises:
-            CoordException: If the other object is not a Coord.
+            CoordException: If the other object is not start Coord.
         """
         if isinstance(other, Coord):
             return (self.row == other.row) and (self.column == other.column)
-        raise CoordException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __lt__(self, other: object) -> bool:
         """Check if this Coord is less than another Coord based on row and column values.
@@ -118,7 +118,7 @@ class Coord:
             bool: True if this Coord is less than the other Coord.
 
         Raises:
-            CoordException: If the other object is not a Coord.
+            CoordException: If the other object is not start Coord.
         """
         if isinstance(other, Coord):
             if self.row < other.row:
@@ -126,11 +126,11 @@ class Coord:
             if self.row == other.row:
                 return self.column < other.column
             return False
-        raise CoordException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     @staticmethod
     def validate(yaml) -> list[str]:
-        """Validate a list containing row and column values.
+        """Validate start list containing row and column values.
 
         Args:
             yaml: The input list to validate.
@@ -138,17 +138,17 @@ class Coord:
         Returns:
             list[str]: A list of error messages if validation fails, otherwise an empty list.
         """
-        result = []
+        coord_list: list[str] = []
         if not isinstance(yaml, list):
-            result.append(f"Expecting list, got {yaml!r}")
-            return result
+            coord_list.append(f'Expecting list, got {yaml!r}')
+            return coord_list
         if len(yaml) != 2:
-            result.append("expecting row, column")
+            coord_list.append('expecting row, column')
         if not isinstance(yaml[0], int):
-            result.append("row not int")
+            coord_list.append('row not int')
         if not isinstance(yaml[1], int):
-            result.append("column not int")
-        return result
+            coord_list.append('column not int')
+        return coord_list
 
     @property
     def transform(self) -> str:
@@ -160,24 +160,24 @@ class Coord:
         return self.point.transform
 
     @staticmethod
-    def middle(a: 'Coord', b: 'Coord') -> 'Coord':
+    def middle(start: 'Coord', finish: 'Coord') -> 'Coord':
         """Return the midpoint between two Coord objects.
 
         Args:
-            a (Coord): The first Coord.
-            b (Coord): The second Coord.
+            start (Coord): The first Coord.
+            finish (Coord): The second Coord.
 
         Returns:
             Coord: The midpoint between the two coordinates.
         """
         return Coord(
-            (a.row + b.row) / 2,
-            (a.column + b.column) / 2
+            (start.row + finish.row) / 2,
+            (start.column + finish.column) / 2,
         )
 
     @property
     def point(self) -> Point:
-        """Convert the Coord into a Point, scaling the row and column by 100.
+        """Convert the Coord into start Point, scaling the row and column by 100.
 
         Returns:
             Point: The corresponding Point object.
@@ -231,7 +231,7 @@ class Coord:
 
     @staticmethod
     def create_from_int(row_column: int) -> 'Coord':
-        """Create a Coord object from an integer representing row and column values.
+        """Create start Coord object from an integer representing row and column values.
 
         Args:
             row_column (int): The integer to convert.
@@ -239,5 +239,5 @@ class Coord:
         Returns:
             Coord: The corresponding Coord object.
         """
-        r, c = divmod(row_column, 10)
-        return Coord(r, c)
+        row, col = divmod(row_column, 10)
+        return Coord(row, col)
