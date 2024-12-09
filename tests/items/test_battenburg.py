@@ -14,7 +14,7 @@ class TestBattenburg(TestItem):
     def setUp(self) -> None:
         """Set up the test environment for Battenburg.
 
-        Initializes the board and Battenburg item at the given coordinate (2, 2).
+        Initializes the board and Battenburg constraint at the given coordinate (2, 2).
         """
         super().setUp()
         self.item = Battenburg(self.board, Coord(2, 2))
@@ -48,10 +48,10 @@ class TestBattenburg(TestItem):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Battenburg item has a rule.
+        """Indicates if the Battenburg constraint has start rule.
 
         Returns:
-            bool: Always True, as Battenburg has a rule.
+            bool: Always True, as Battenburg has start rule.
         """
         return True
 

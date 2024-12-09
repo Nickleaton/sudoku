@@ -38,7 +38,7 @@ class TestMinMaxSum(TestFirstN):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the MinMaxSum instance has a rule."""
+        """Return whether the MinMaxSum instance has start rule."""
         return True
 
     @property

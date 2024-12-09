@@ -2,21 +2,21 @@
 # import unittest
 # from typing import Type
 #
-# from src.items.board import Board
-# from src.items.cell import Cell
-# from src.items.composed_item import ComposedItem
-# from src.items.difference_pair import DifferencePair
-# from src.items.item import Item
-# from src.items.pair import Pair
-# from src.items.region import Region
-# from tests.items.test_variable_pair import TestVariablePair
+# from src.vectors.board import Board
+# from src.vectors.cell import Cell
+# from src.vectors.composed_item import ComposedItem
+# from src.vectors.difference_pair import DifferencePair
+# from src.vectors.constraint import Item
+# from src.vectors.pair import Pair
+# from src.vectors.region import Region
+# from tests.vectors.test_variable_pair import TestVariablePair
 #
 #
 # class TestDifferencePair(TestVariablePair):
 #
 #     def setUp(self) -> None:
 #         self.board = Board(9, 9, 3, 3, None, None, None, None)
-#         self.item = DifferencePair(
+#         self.constraint = DifferencePair(
 #             self.board,
 #             Cell.make(self.board, 1, 2),
 #             Cell.make(self.board, 1, 3),

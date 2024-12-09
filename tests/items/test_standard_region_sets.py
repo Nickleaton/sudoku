@@ -44,7 +44,7 @@ class TestStandardRegionSet(TestRegionSet):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the StandardRegionSet has a rule."""
+        """Return whether the StandardRegionSet has start rule."""
         return False
 
 

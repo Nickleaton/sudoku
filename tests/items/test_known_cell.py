@@ -13,7 +13,7 @@ class TestKnownCell(TestCellReference):
     """Test suite for the KnownCell class, inheriting from TestCellReference."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and a KnownCell instance."""
+        """Set up the test case with start board and start KnownCell instance."""
         super().setUp()
         self.item = KnownCell(self.board, 1, 2, 9)
 
@@ -24,7 +24,7 @@ class TestKnownCell(TestCellReference):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the KnownCell instance."""
+        """Return start string representation of the KnownCell instance."""
         return ("KnownCell("
                 "Board(9, 9, 3, 3, None, None, None, None), "
                 "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
@@ -39,7 +39,7 @@ class TestKnownCell(TestCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the KnownCell instance has a rule."""
+        """Return whether the KnownCell instance has start rule."""
         return False
 
     @property

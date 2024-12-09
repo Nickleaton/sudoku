@@ -38,7 +38,7 @@ class TestOrthogonalProduct(TestProduct):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the OrthogonalProduct instance has a rule."""
+        """Return whether the OrthogonalProduct instance has start rule."""
         return True
 
     @property

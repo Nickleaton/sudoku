@@ -26,7 +26,7 @@ class TestEqualSum(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the EqualSumLine has a rule."""
+        """Return whether the EqualSumLine has start rule."""
         return True
 
     @property

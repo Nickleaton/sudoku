@@ -12,7 +12,7 @@ class TestExclusion(TestItem):
     """Test suite for the Exclusion class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the Exclusion item."""
+        """Set up the test environment by creating start board and initializing the Exclusion constraint."""
         super().setUp()
         self.item = Exclusion(self.board, Coord(2, 2), "12")
 
@@ -23,7 +23,7 @@ class TestExclusion(TestItem):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Exclusion instance."""
+        """Return start string representation of the Exclusion instance."""
         return "Exclusion(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), '12')"
 
     @property
@@ -33,7 +33,7 @@ class TestExclusion(TestItem):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Exclusion has a rule."""
+        """Return whether the Exclusion has start rule."""
         return True
 
     @property

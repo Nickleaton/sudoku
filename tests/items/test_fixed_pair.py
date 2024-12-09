@@ -16,7 +16,7 @@ class TestFixedPair(TestPair):
     """Test suite for the FixedPair class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the FixedPair item."""
+        """Set up the test environment by creating start board and initializing the FixedPair constraint."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -30,7 +30,7 @@ class TestFixedPair(TestPair):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the FixedPair instance."""
+        """Return start string representation of the FixedPair instance."""
         return (
             "FixedPair"
             "("
@@ -43,7 +43,7 @@ class TestFixedPair(TestPair):
 
     @property
     def difference(self) -> int:
-        """Return the difference value for the FixedPair instance."""
+        """Return the difference number for the FixedPair instance."""
         return 1
 
     @property
@@ -62,7 +62,7 @@ class TestFixedPair(TestPair):
         return Cell.make(self.board, 1, 2)
 
     def test_difference(self):
-        """Test that the difference value is correctly assigned."""
+        """Test that the difference number is correctly assigned."""
         self.assertEqual(self.difference, self.item.value)
 
 

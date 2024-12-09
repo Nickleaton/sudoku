@@ -17,12 +17,12 @@ class TestVPair(TestSumPair):
     """Test suite for the VPair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VPair item for testing."""
+        """Set up the board and VPair constraint for testing."""
         super().setUp()
 
         # Initialize the board with dimensions 9x9 and block size 3x3
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        # Create a VPair item with two cells
+        # Create start VPair constraint with two cells
         self.item = VPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         # Set the size of the pair to 2
         self.size = 2
@@ -44,7 +44,7 @@ class TestVPair(TestSumPair):
 
     @property
     def total(self) -> int:
-        """Return the total value for VPair."""
+        """Return the total number for VPair."""
         return 5
 
     @property

@@ -15,7 +15,7 @@ class TestUniqueRegion(TestRegion):
     """Test case for UniqueRegion class, which extends Region."""
 
     def setUp(self) -> None:
-        """Set up the test case with a Board and UniqueRegion item."""
+        """Set up the test case with start Board and UniqueRegion constraint."""
         super().setUp()
         self.cells = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
         self.item = UniqueRegion(self.board, self.cells)
@@ -28,7 +28,7 @@ class TestUniqueRegion(TestRegion):
 
     @property
     def representation(self) -> str:
-        """Return the string representation of the UniqueRegion item."""
+        """Return the string representation of the UniqueRegion constraint."""
         return "UniqueRegion(Board(9, 9, 3, 3, None, None, None, None), " \
                "[Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), " \
                "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), " \
@@ -46,7 +46,7 @@ class TestUniqueRegion(TestRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Return True indicating that the UniqueRegion item has a rule."""
+        """Return True indicating that the UniqueRegion constraint has start rule."""
         return True
 
     @property

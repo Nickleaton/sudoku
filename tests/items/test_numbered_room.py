@@ -35,7 +35,7 @@ class TestNumberedRoom(TestItem):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the NumberedRoom instance has a rule."""
+        """Return whether the NumberedRoom instance has start rule."""
         return True
 
     @property
@@ -44,7 +44,7 @@ class TestNumberedRoom(TestItem):
         return {Item, NumberedRoom}
 
     def test_add_constraint(self) -> None:
-        """Test adding a constraint to the NumberedRoom instance."""
+        """Test adding start constraint to the NumberedRoom instance."""
         numbered_rooms = [
             NumberedRoom(self.board, Side.TOP, 1, 9),
             NumberedRoom(self.board, Side.RIGHT, 1, 9),

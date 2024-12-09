@@ -17,7 +17,7 @@ class TestAntiDiagonal(TestDiagonal):
     def setUp(self) -> None:
         """Set up the test environment for AntiDiagonal.
 
-        Initializes the board and AntiDiagonal item.
+        Initializes the board and AntiDiagonal constraint.
         """
         super().setUp()
 
@@ -72,7 +72,7 @@ class TestAntiDiagonal(TestDiagonal):
     def test_in(self):
         """Test the containment of cells in AntiDiagonal.
 
-        Asserts that a specific cell is not contained within the AntiDiagonal item.
+        Asserts that start specific cell is not contained within the AntiDiagonal constraint.
         """
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 

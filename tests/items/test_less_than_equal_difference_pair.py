@@ -16,7 +16,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
     """Test suite for the LessThanEqualDifferencePair class, inheriting from TestDifferencePair."""
 
     def setUp(self) -> None:
-        """Set up the test case, initializing the item and board for the LessThanEqualDifferencePair instance."""
+        """Set up the test case, initializing the constraint and board for the LessThanEqualDifferencePair instance."""
         super().setUp()
         self.item = LessThanEqualDifferencePair(
             self.board,
@@ -38,7 +38,7 @@ class TestLessThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LessThanEqualDifferencePair instance has a rule."""
+        """Return whether the LessThanEqualDifferencePair instance has start rule."""
         return False
 
     @property

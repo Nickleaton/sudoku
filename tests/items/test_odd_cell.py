@@ -44,7 +44,7 @@ class TestOdd(TestSimpleCellReference):
         return "OddCell: 12"
 
     def test_included(self):
-        """Test that the OddCell includes the correct values."""
+        """Test that the OddCell includes the correct value_list."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:
@@ -52,7 +52,7 @@ class TestOdd(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the OddCell instance has a rule."""
+        """Return whether the OddCell instance has start rule."""
         return True
 
     @property

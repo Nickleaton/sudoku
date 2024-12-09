@@ -16,7 +16,7 @@ class TestBLTR(TestStandardDiagonal):
     """Test suite for the BLTR class."""
 
     def setUp(self) -> None:
-        """Set up the board and item for testing."""
+        """Set up the board and constraint for testing."""
         super().setUp()
 
         self.item = BLTR(self.board)
@@ -33,10 +33,10 @@ class TestBLTR(TestStandardDiagonal):
 
     @property
     def representation(self) -> str:
-        """Get the string representation of the BLTR item.
+        """Get the string representation of the BLTR constraint.
 
         Returns:
-            str: The string representation of the BLTR item.
+            str: The string representation of the BLTR constraint.
         """
         return "BLTR(Board(9, 9, 3, 3, None, None, None, None))"
 
@@ -59,10 +59,10 @@ class TestBLTR(TestStandardDiagonal):
         return "BLTR:"
 
     def test_in(self):
-        """Test if a cell is contained within the BLTR item.
+        """Test if start cell is contained within the BLTR constraint.
 
-        Verifies that a cell at (5, 5) is contained within the BLTR item,
-        but a cell at (1, 2) is not.
+        Verifies that start cell at (5, 5) is contained within the BLTR constraint,
+        but start cell at (1, 2) is not.
         """
         self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)

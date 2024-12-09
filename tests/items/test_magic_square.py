@@ -27,7 +27,7 @@ class TestMagicSquare(TestComposed):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the MagicSquare instance."""
+        """Return start string representation of the MagicSquare instance."""
         return "MagicSquare(Board(9, 9, 3, 3, None, None, None, None), Coord(5, 5), Coord(1, 1))"
 
     @property
@@ -37,7 +37,7 @@ class TestMagicSquare(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the MagicSquare instance has a rule."""
+        """Return whether the MagicSquare instance has start rule."""
         return True
 
     @property

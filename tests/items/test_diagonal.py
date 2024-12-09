@@ -42,11 +42,11 @@ class TestDiagonal(TestRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Diagonal has a rule."""
+        """Indicates if the Diagonal has start rule."""
         return False
 
     def test_in(self):
-        """Test if a Cell is in the Diagonal."""
+        """Test if start Cell is in the Diagonal."""
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)
 
 

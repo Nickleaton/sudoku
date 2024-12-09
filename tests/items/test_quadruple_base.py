@@ -14,7 +14,7 @@ class TestQuadrupleBase(TestItem):
     """Test suite for the QuadrupleBase class."""
 
     def setUp(self) -> None:
-        """Set up a test instance of QuadrupleBase."""
+        """Set up start test instance of QuadrupleBase."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)

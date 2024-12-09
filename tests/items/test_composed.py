@@ -26,7 +26,7 @@ class TestComposed(TestItem):
         self.assertEqual(self.size, len(self.item.items))
 
     def test_iteration(self):
-        """Test the iteration over the items in the ComposedItem."""
+        """Test the iteration over the vectors in the ComposedItem."""
         count = 0
         for _ in self.item:
             count += 1
@@ -44,7 +44,7 @@ class TestComposed(TestItem):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the ComposedItem has a rule."""
+        """Indicates if the ComposedItem has start rule."""
         return False
 
     @property
@@ -53,14 +53,14 @@ class TestComposed(TestItem):
         return {Item, ComposedItem}
 
     def test_top(self):
-        """Test getting the top item of the ComposedItem."""
+        """Test getting the top constraint of the ComposedItem."""
         child = Item(self.board)
         self.item.add(child)
         self.assertEqual(self.item, self.item.top)
         self.assertEqual(self.item, child.top)
 
     def test_flatten(self) -> None:
-        """Test flattening the ComposedItem and its child items."""
+        """Test flattening the ComposedItem and its child vectors."""
         expected = [self.item]
         for item in self.item.items:
             expected.extend(item.flatten())

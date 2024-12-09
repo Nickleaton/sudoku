@@ -40,7 +40,7 @@ class TestStandardRegion(TestRegion):
 
     @property
     def str_representation(self) -> str:
-        """Return the string representation of the item."""
+        """Return the string representation of the constraint."""
         return f"{self.item.__class__.__name__}(1)"
 
     @property

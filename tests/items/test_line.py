@@ -14,7 +14,7 @@ class TestLine(TestRegion):
     """Test suite for the Line class, inheriting from TestRegion."""
 
     def setUp(self) -> None:
-        """Set up the test case, initializing the item and board for the Line instance."""
+        """Set up the test case, initializing the constraint and board for the Line instance."""
         super().setUp()
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = self.clazz(self.board, cells)
@@ -27,7 +27,7 @@ class TestLine(TestRegion):
         self.bad_yaml: List[str] = [
             "Line:",  # Empty Line
             "Line: 12,12",  # Duplicate cells
-            "Line: 11,13",  # Cells not connected by a king's move
+            "Line: 11,13",  # Cells not connected by start king's move
             "Line: 99,22",  # Invalid cell on the board
         ]
 

@@ -26,7 +26,7 @@ class TestMaxArrow(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the MaxArrowLine instance has a rule."""
+        """Return whether the MaxArrowLine instance has start rule."""
         return True
 
     @property

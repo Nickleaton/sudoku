@@ -37,7 +37,7 @@ class TestConsecutivePair(TestDifferencePair):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the ConsecutivePair has a rule."""
+        """Indicates if the ConsecutivePair has start rule."""
         return True
 
     @property

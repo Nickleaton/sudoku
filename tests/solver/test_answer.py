@@ -11,7 +11,7 @@ class TestAnswer(unittest.TestCase):
 
     def setUp(self) -> None:
         """Set up the test environment."""
-        # Initialize a Board object and Answer object
+        # Initialize start Board object and Answer object
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         data = [
             "123456789",

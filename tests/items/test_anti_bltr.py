@@ -18,7 +18,7 @@ class TestAntiBLTR(TestAntiDiagonal):
     def setUp(self) -> None:
         """Set up the test environment for AntiBLTR.
 
-        Initializes the board and AntiBLTR item.
+        Initializes the board and AntiBLTR constraint.
         """
         super().setUp()
         self.item = AntiBLTR(self.board)
@@ -63,7 +63,7 @@ class TestAntiBLTR(TestAntiDiagonal):
     def test_in(self):
         """Test the containment of cells in AntiBLTR.
 
-        Asserts that certain cells are contained within the AntiBLTR item and others are not.
+        Asserts that certain cells are contained within the AntiBLTR constraint and others are not.
         """
         self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)

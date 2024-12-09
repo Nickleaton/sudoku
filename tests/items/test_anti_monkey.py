@@ -19,7 +19,7 @@ class TestAntiMonkey(TestAnti):
     def setUp(self) -> None:
         """Set up the test environment for AntiMonkey.
 
-        Initializes the board and AntiMonkey item.
+        Initializes the board and AntiMonkey constraint.
         """
         super().setUp()
         Cell.make_board(self.board)

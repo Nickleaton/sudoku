@@ -19,7 +19,7 @@ class TestDisjointGroups(TestStandardRegionSet):
     """Test suite for the DisjointGroups class."""
 
     def setUp(self) -> None:
-        """Set up the test environment, creating the board and the DisjointGroups item."""
+        """Set up the test environment, creating the board and the DisjointGroups constraint."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -38,7 +38,7 @@ class TestDisjointGroups(TestStandardRegionSet):
 
     @property
     def representation(self) -> str:
-        """Return the string representation of the DisjointGroups item."""
+        """Return the string representation of the DisjointGroups constraint."""
         return "DisjointGroups(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
@@ -49,7 +49,7 @@ class TestDisjointGroups(TestStandardRegionSet):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the DisjointGroups has a rule."""
+        """Return whether the DisjointGroups has start rule."""
         return True
 
 

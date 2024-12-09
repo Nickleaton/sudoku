@@ -28,7 +28,7 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the LowCell instance."""
+        """Return start string representation of the LowCell instance."""
         return (
             "LowCell(Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
@@ -40,7 +40,7 @@ class TestLowCell(TestSimpleCellReference):
         return "LowCell: 12"
 
     def test_included(self):
-        """Test the included method for LowCell with good and bad values."""
+        """Test the included method for LowCell with good and bad value_list."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:
@@ -48,7 +48,7 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LowCell instance has a rule."""
+        """Return whether the LowCell instance has start rule."""
         return True
 
     @property

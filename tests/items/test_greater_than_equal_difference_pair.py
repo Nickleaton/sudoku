@@ -17,7 +17,7 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
     """Test suite for the GreaterThanEqualDifferencePair class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an instance of GreaterThanEqualDifferencePair."""
+        """Set up the test case with start board and an instance of GreaterThanEqualDifferencePair."""
         super().setUp()
         self.item = GreaterThanEqualDifferencePair(
             self.board,
@@ -44,12 +44,12 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def difference(self) -> int:
-        """Return the difference value for the GreaterThanEqualDifferencePair."""
+        """Return the difference number for the GreaterThanEqualDifferencePair."""
         return 1
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the GreaterThanEqualDifferencePair instance."""
+        """Return start string representation of the GreaterThanEqualDifferencePair instance."""
         return (
             "GreaterThanEqualDifferencePair"
             "("

@@ -18,7 +18,7 @@ class TestOrthogonallyAdjacent(TestComposed):
 
     @property
     def size(self):
-        """Return the size of the OrthogonallyAdjacent item."""
+        """Return the size of the OrthogonallyAdjacent constraint."""
         return 0
 
     @property
@@ -43,7 +43,7 @@ class TestOrthogonallyAdjacent(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the OrthogonallyAdjacent instance has a rule."""
+        """Return whether the OrthogonallyAdjacent instance has start rule."""
         return True
 
 

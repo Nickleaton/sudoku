@@ -27,7 +27,7 @@ class TestSumArrowLine1(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the SumArrowLine has a rule."""
+        """Return whether the SumArrowLine has start rule."""
         return True
 
     @property
@@ -58,7 +58,7 @@ class TestSumArrowLine2(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the SumArrowLine has a rule."""
+        """Return whether the SumArrowLine has start rule."""
         return True
 
     @property

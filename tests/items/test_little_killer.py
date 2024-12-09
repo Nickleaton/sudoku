@@ -16,7 +16,7 @@ class TestLittleKiller1(TestRegion):
     """Test suite for the LittleKiller class (Case 1)."""
 
     def setUp(self) -> None:
-        """Set up the test case, initializing the item and board for the LittleKiller instance (Case 1)."""
+        """Set up the test case, initializing the constraint and board for the LittleKiller instance (Case 1)."""
         super().setUp()
         self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 20)
         self.size = 6
@@ -43,7 +43,7 @@ class TestLittleKiller1(TestRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LittleKiller instance has a rule (Case 1)."""
+        """Return whether the LittleKiller instance has start rule (Case 1)."""
         return True
 
     @property
@@ -56,7 +56,7 @@ class TestLittleKiller2(TestRegion):
     """Test suite for the LittleKiller class (Case 2)."""
 
     def setUp(self) -> None:
-        """Set up the test case, initializing the item and board for the LittleKiller instance (Case 2)."""
+        """Set up the test case, initializing the constraint and board for the LittleKiller instance (Case 2)."""
         super().setUp()
         self.item = LittleKiller(self.board, Side.RIGHT, Cyclic.CLOCKWISE, 3, 20)
         self.size = 6
@@ -83,7 +83,7 @@ class TestLittleKiller2(TestRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LittleKiller instance has a rule (Case 2)."""
+        """Return whether the LittleKiller instance has start rule (Case 2)."""
         return True
 
     @property

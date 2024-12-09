@@ -13,7 +13,7 @@ from tests.items.test_orthogonal_product import TestProduct
 
 
 class TestCenterProduct(TestProduct):
-    """Test suite for the CenterProduct item in the Board."""
+    """Test suite for the CenterProduct constraint in the Board."""
 
     def setUp(self) -> None:
         """Set up the Board and CenterProduct instance for testing."""
@@ -28,22 +28,22 @@ class TestCenterProduct(TestProduct):
 
     @property
     def representation(self) -> str:
-        """Return the string representation for the CenterProduct item."""
+        """Return the string representation for the CenterProduct constraint."""
         return "CenterProduct(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), 5)"
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the CenterProduct item."""
+        """Return the configuration string for the CenterProduct constraint."""
         return "CenterProduct: 22=5"
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the CenterProduct has a rule."""
+        """Indicates if the CenterProduct has start rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the CenterProduct item should belong to."""
+        """Return the expected classes that the CenterProduct constraint should belong to."""
         return {Cell, CenterProduct, ComposedItem, Item, Product, Region}
 
 

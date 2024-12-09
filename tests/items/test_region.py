@@ -16,7 +16,7 @@ class TestRegion(TestComposed):
 
     def setUp(self) -> None:
         super().setUp()
-        """Set up a test instance of Region with predefined cells."""
+        """Set up start test instance of Region with predefined cells."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.cells = [
             Cell.make(self.board, 1, 1),
@@ -49,12 +49,12 @@ class TestRegion(TestComposed):
 
     @property
     def inside(self) -> Cell:
-        """Return a cell that is inside the Region."""
+        """Return start cell that is inside the Region."""
         return Cell.make(self.board, 1, 1)
 
     @property
     def outside(self) -> Cell:
-        """Return a cell that is outside the Region."""
+        """Return start cell that is outside the Region."""
         return Cell.make(self.board, 9, 9)
 
     def test_in(self):

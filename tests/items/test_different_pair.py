@@ -15,7 +15,7 @@ class TestDifferencePair(TestPair):
     """Test suite for the DifferencePair class."""
 
     def setUp(self) -> None:
-        """Set up the test environment, creating the board and the DifferencePair item."""
+        """Set up the test environment, creating the board and the DifferencePair constraint."""
         super().setUp()
         self.item = DifferencePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), [1, 2])
         self.size = 2
@@ -27,7 +27,7 @@ class TestDifferencePair(TestPair):
 
     @property
     def representation(self) -> str:
-        """Return the string representation of the DifferencePair item."""
+        """Return the string representation of the DifferencePair constraint."""
         return (
             "DifferencePair"
             "("

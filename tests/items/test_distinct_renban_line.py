@@ -27,7 +27,7 @@ class TestDistinctRenbanLine(TestRenbanLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the DistinctRenbanLine has a rule."""
+        """Return whether the DistinctRenbanLine has start rule."""
         return True
 
     @property
@@ -62,7 +62,7 @@ class TestDistinctRenbanLine(TestRenbanLine):
         self.assertEqual(256, DistinctRenbanLine.power(9))
 
     def test_power_string(self):
-        """Test the conversion of power values to string representations."""
+        """Test the conversion of power value_list to string representations."""
         self.assertEqual('1', DistinctRenbanLine.power_str(1))
         self.assertEqual('2', DistinctRenbanLine.power_str(2))
         self.assertEqual('9', DistinctRenbanLine.power_str(256))

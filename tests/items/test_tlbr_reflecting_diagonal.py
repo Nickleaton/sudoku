@@ -16,7 +16,7 @@ class TestTLBRReflecting(TestDiagonal):
     """Test case for TLBRReflecting class, which extends Diagonal."""
 
     def setUp(self) -> None:
-        """Set up the test case with a Board and TLBRReflecting item."""
+        """Set up the test case with start Board and TLBRReflecting constraint."""
         super().setUp()
 
         self.item = TLBRReflecting(self.board)
@@ -29,12 +29,12 @@ class TestTLBRReflecting(TestDiagonal):
 
     @property
     def has_rule(self) -> bool:
-        """Return True indicating that the TLBRReflecting item has a rule."""
+        """Return True indicating that the TLBRReflecting constraint has start rule."""
         return True
 
     @property
     def representation(self) -> str:
-        """Return the string representation of the TLBRReflecting item."""
+        """Return the string representation of the TLBRReflecting constraint."""
         return "TLBRReflecting(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property

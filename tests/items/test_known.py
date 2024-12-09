@@ -22,7 +22,7 @@ class TestKnown(TestComposed):
     """Test suite for the Known class, inheriting from TestComposed."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and a Known instance."""
+        """Set up the test case with start board and start Known instance."""
         super().setUp()
         self.size = 26
         lines = [
@@ -61,7 +61,7 @@ class TestKnown(TestComposed):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Known instance."""
+        """Return start string representation of the Known instance."""
         return (
             "Known(Board(9, 9, 3, 3, None, None, None, None), "
             "["
@@ -80,7 +80,7 @@ class TestKnown(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Known instance has a rule."""
+        """Return whether the Known instance has start rule."""
         return True
 
     @property

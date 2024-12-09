@@ -58,7 +58,7 @@ class TestEntropicLine(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the EntropicLine has a rule."""
+        """Return whether the EntropicLine has start rule."""
         return True
 
     @property

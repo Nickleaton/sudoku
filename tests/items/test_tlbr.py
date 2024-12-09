@@ -17,7 +17,7 @@ class TestTLBR(TestStandardDiagonal):
     """Test case for TLBR class, which extends StandardDiagonal."""
 
     def setUp(self) -> None:
-        """Set up the test case with a Board and TLBR item."""
+        """Set up the test case with start Board and TLBR constraint."""
         super().setUp()
 
         self.item = TLBR(self.board)
@@ -30,7 +30,7 @@ class TestTLBR(TestStandardDiagonal):
 
     @property
     def representation(self) -> str:
-        """Return the string representation of the TLBR item."""
+        """Return the string representation of the TLBR constraint."""
         return "TLBR(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property

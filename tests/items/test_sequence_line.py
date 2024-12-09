@@ -27,7 +27,7 @@ class TestSequenceLine(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether SequenceLine has a rule."""
+        """Return whether SequenceLine has start rule."""
         return True
 
     @property

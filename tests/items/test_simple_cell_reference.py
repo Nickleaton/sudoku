@@ -24,7 +24,7 @@ class TestSimpleCellReference(TestCellReference):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the SimpleCellReference item."""
+        """Return start string representation of the SimpleCellReference constraint."""
         return (
             "SimpleCellReference"
             "("

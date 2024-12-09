@@ -19,7 +19,7 @@ class TestAntiKnight(TestAnti):
     def setUp(self) -> None:
         """Set up the test environment for AntiKnight.
 
-        Initializes the board and AntiKnight item.
+        Initializes the board and AntiKnight constraint.
         """
         super().setUp()
         self.item = AntiKnight(self.board)

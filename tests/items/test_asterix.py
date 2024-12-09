@@ -17,7 +17,7 @@ class TestAsterix(TestSpecialRegion):
     def setUp(self) -> None:
         """Set up the test environment for Asterix.
 
-        Initializes the board and Asterix item with the default configuration.
+        Initializes the board and Asterix constraint with the default configuration.
         """
         super().setUp()
         self.item = Asterix(self.board)
@@ -52,10 +52,10 @@ class TestAsterix(TestSpecialRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Asterix item has a rule.
+        """Indicates if the Asterix constraint has start rule.
 
         Returns:
-            bool: Always True, as Asterix has a rule.
+            bool: Always True, as Asterix has start rule.
         """
         return True
 
@@ -69,9 +69,9 @@ class TestAsterix(TestSpecialRegion):
         return {Item, ComposedItem, Cell, Region, Asterix, SpecialRegion}
 
     def test_in(self):
-        """Test the inclusion of cells in the Asterix item.
+        """Test the inclusion of cells in the Asterix constraint.
 
-        Asserts that a specific cell is included and another is not.
+        Asserts that start specific cell is included and another is not.
         """
         self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 9, 9), self.item)

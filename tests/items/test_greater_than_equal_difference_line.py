@@ -20,7 +20,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
     """Test suite for the GreaterThanEqualDifferenceLine class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an instance of GreaterThanEqualDifferenceLine."""
+        """Set up the test case with start board and an instance of GreaterThanEqualDifferenceLine."""
         super().setUp()
         cells = [Cell.make(self.board, 1, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3)]
         self.item = GreaterThanEqualDifferenceLine(self.board, cells, 5)
@@ -43,7 +43,7 @@ class TestGreaterThanEqualDifferenceLine(TestLine):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the GreaterThanEqualDifferenceLine instance."""
+        """Return start string representation of the GreaterThanEqualDifferenceLine instance."""
         return (
             "GreaterThanEqualDifferenceLine"
             "("

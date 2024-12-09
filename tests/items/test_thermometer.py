@@ -27,7 +27,7 @@ class TestThermometerLine(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether ThermometerLine has a rule."""
+        """Return whether ThermometerLine has start rule."""
         return False
 
     @property

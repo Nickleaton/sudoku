@@ -16,7 +16,7 @@ class TestGirandola(TestSpecialRegion):
     """Test suite for the Girandola class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an instance of Girandola."""
+        """Set up the test case with start board and an instance of Girandola."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -35,7 +35,7 @@ class TestGirandola(TestSpecialRegion):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Girandola instance."""
+        """Return start string representation of the Girandola instance."""
         return "Girandola(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property

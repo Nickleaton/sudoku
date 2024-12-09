@@ -13,7 +13,7 @@ class TestPencilMarkCell(TestCellReference):
     """Test suite for the PencilMarkCell class."""
 
     def setUp(self) -> None:
-        """Set up a test instance of PencilMarkCell."""
+        """Set up start test instance of PencilMarkCell."""
         super().setUp()
         self.item = PencilMarkCell(self.board, 1, 2, [2, 4, 6, 8])
 

@@ -15,7 +15,7 @@ class TestFirstN(TestRegion):
     """Test suite for the FirstN class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the FirstN item."""
+        """Set up the test environment by creating start board and initializing the FirstN constraint."""
         super().setUp()
         self.item = FirstN(board=self.board, side=Side.TOP, index=1, count=3)
         self.size = 3
@@ -27,7 +27,7 @@ class TestFirstN(TestRegion):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the FirstN instance."""
+        """Return start string representation of the FirstN instance."""
         return "FirstN(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, 3)"
 
     @property

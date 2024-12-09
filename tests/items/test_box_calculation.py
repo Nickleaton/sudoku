@@ -7,7 +7,7 @@ from src.items.box import Box
 
 
 class TestBoxCalculation(unittest.TestCase):
-    """Test suite for box calculations in a Board."""
+    """Test suite for box calculations in start Board."""
 
     def check(self, n: int, width: int, height: int, expected: List) -> None:
         """Check the start row and column of each box."""
@@ -20,7 +20,7 @@ class TestBoxCalculation(unittest.TestCase):
             self.assertEqual(column, column_start)
 
     def test_9_9_3_3(self):
-        """Test box calculations for a 9x9 grid with 3x3 sub-grids."""
+        """Test box calculations for start 9x9 grid with 3x3 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 4, 1],
@@ -63,7 +63,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(8, 4, 2, expected)
 
     def test_6_6_2_3(self):
-        """Test box calculations for a 6x6 grid with 2x3 sub-grids."""
+        """Test box calculations for start 6x6 grid with 2x3 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 3, 1],
@@ -75,7 +75,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(6, 2, 3, expected)
 
     def test_6_6_3_2(self):
-        """Test box calculations for a 6x6 grid with 3x2 sub-grids."""
+        """Test box calculations for start 6x6 grid with 3x2 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 4, 1],
@@ -87,7 +87,7 @@ class TestBoxCalculation(unittest.TestCase):
         self.check(6, 3, 2, expected)
 
     def test_4_4_2_2(self):
-        """Test box calculations for a 4x4 grid with 2x2 sub-grids."""
+        """Test box calculations for start 4x4 grid with 2x2 sub-grids."""
         expected = [
             [1, 1, 1],
             [2, 3, 1],

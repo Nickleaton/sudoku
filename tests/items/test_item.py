@@ -14,7 +14,7 @@ class TestItem(unittest.TestCase):
     """Test suite for the Item class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an Item instance."""
+        """Set up the test case with start board and an Item instance."""
         self.board = Board(9, 9, 3, 3, None, None, None, None)
         self.item = Item(self.board)
         self.good_yaml = []
@@ -46,15 +46,15 @@ class TestItem(unittest.TestCase):
         return Item
 
     def test_clazz(self):
-        """Test that the class of the item matches the expected class."""
+        """Test that the class of the constraint matches the expected class."""
         self.assertEqual(self.item.__class__, self.clazz)
 
     def test_top(self):
-        """Test that the top item of the item is itself."""
+        """Test that the top constraint of the constraint is itself."""
         self.assertEqual(self.item.top, self.item)
 
     def test_register(self):
-        """Test that the item is properly registered in the Item classes registry."""
+        """Test that the constraint is properly registered in the Item classes registry."""
         self.assertIn(self.item.__class__.__name__, Item.classes)
         self.assertEqual(Item.classes[self.item.__class__.__name__], self.item.__class__)
 
@@ -64,7 +64,7 @@ class TestItem(unittest.TestCase):
         return "Item:"
 
     def test_create(self) -> None:
-        """Test creating an Item instance from a configuration string."""
+        """Test creating an Item instance from start configuration string."""
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         if self.item.__class__.__name__ == 'Item':
             return
@@ -75,7 +75,7 @@ class TestItem(unittest.TestCase):
         self.assertEqual(self.representation, repr(item))
 
     def test_create2(self) -> None:
-        """Test creating an Item instance from a configuration string."""
+        """Test creating an Item instance from start configuration string."""
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         if self.item.__class__.__name__ == 'Item':
             return
@@ -92,7 +92,7 @@ class TestItem(unittest.TestCase):
         # Load the configuration
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
 
-        # Skip the test if the item class is the base Item class
+        # Skip the test if the constraint class is the base Item class
         if self.item.__class__.__name__ == 'Item':
             return
 
@@ -107,13 +107,13 @@ class TestItem(unittest.TestCase):
         self.assertEqual(repr_create1, repr_create2)
 
     def test_name(self) -> None:
-        """Test that the item has a valid name."""
+        """Test that the constraint has start valid name."""
         self.assertIsNotNone(self.item.name)
         self.assertTrue(self.item.name.startswith(f"{self.clazz.__name__}_"))
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Item instance."""
+        """Return start string representation of the Item instance."""
         return f"Item({self.board!r})"
 
     def test_repr(self):
@@ -142,16 +142,16 @@ class TestItem(unittest.TestCase):
         self.assertIsNone(self.item.svg())
 
     def test_tags(self):
-        """Test that the Item instance has a set of tags."""
+        """Test that the Item instance has start set of tags."""
         self.assertIsInstance(self.item.tags, set)
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the item has a rule."""
+        """Return whether the constraint has start rule."""
         return False
 
     def test_rules(self) -> None:
-        """Test the sorting and unique rules of the item."""
+        """Test the sorting and unique rules of the constraint."""
         self.assertIsNotNone(self.item.sorted_unique_rules)
         if self.has_rule:
             self.assertGreaterEqual(len(self.item.sorted_unique_rules), 1)
@@ -165,7 +165,7 @@ class TestItem(unittest.TestCase):
         self.assertLessEqual(len(sorted_unique), len(rules))
 
     def test_glyphs(self):
-        """Test that the glyphs method returns a list."""
+        """Test that the glyphs method returns start list."""
         self.assertIsInstance(self.item.glyphs(), list)
 
     @property
@@ -192,7 +192,7 @@ class TestItem(unittest.TestCase):
         self.assertGreaterEqual(count, 1)
 
     def test_add_constraint(self) -> None:
-        """Test adding a constraint to the Item."""
+        """Test adding start constraint to the Item."""
         solver = PulpSolver(self.board, 'test')
         self.item.add_constraint(solver)
 
@@ -216,7 +216,7 @@ class TestItem(unittest.TestCase):
     def test_schema(self) -> None:
         """Test the schema method of the Item instance."""
         self.assertIsNotNone(self.item.schema())
-        # self.assertIsInstance(self.item.schema(), dict)
+        # self.assertIsInstance(self.constraint.schema(), dict)
 
     def test_parser(self):
         """Test the parser method of the Item instance."""

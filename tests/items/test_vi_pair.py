@@ -16,9 +16,9 @@ class TestVIPair(TestSumPair):
     """Test suite for the VIPair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VIPair item for testing."""
+        """Set up the board and VIPair constraint for testing."""
         super().setUp()
-        # Create a VIPair item with two cells
+        # Create start VIPair constraint with two cells
         self.item = VIPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         # Set the size of the pair to 2
         self.size = 2
@@ -35,12 +35,12 @@ class TestVIPair(TestSumPair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether VIPair has a rule."""
+        """Return whether VIPair has start rule."""
         return True
 
     @property
     def total(self) -> int:
-        """Return the total value of VIPair."""
+        """Return the total number of VIPair."""
         return 6
 
     @property

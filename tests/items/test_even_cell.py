@@ -14,7 +14,7 @@ class TestEvenCell(TestSimpleCellReference):
     """Test suite for the EvenCell class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the EvenCell."""
+        """Set up the test environment by creating start board and initializing the EvenCell."""
         super().setUp()
         self.item = EvenCell(self.board, 1, 2)
         self.good = [2, 4, 6, 8]
@@ -28,7 +28,7 @@ class TestEvenCell(TestSimpleCellReference):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the EvenCell instance."""
+        """Return start string representation of the EvenCell instance."""
         return (
             "EvenCell(Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
@@ -48,7 +48,7 @@ class TestEvenCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the EvenCell has a rule."""
+        """Return whether the EvenCell has start rule."""
         return True
 
     @property

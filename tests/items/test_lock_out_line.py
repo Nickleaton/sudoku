@@ -26,7 +26,7 @@ class TestLockOutLine(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LockOutLine instance has a rule."""
+        """Return whether the LockOutLine instance has start rule."""
         return True
 
     @property

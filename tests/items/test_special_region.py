@@ -36,7 +36,7 @@ class TestSpecialRegion(TestRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the SpecialRegion has a rule."""
+        """Return whether the SpecialRegion has start rule."""
         return True
 
     @property

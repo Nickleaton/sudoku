@@ -15,7 +15,7 @@ class TestFortressCell(TestSimpleCellReference):
     """Test suite for the FortressCell class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the FortressCell item."""
+        """Set up the test environment by creating start board and initializing the FortressCell constraint."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -29,7 +29,7 @@ class TestFortressCell(TestSimpleCellReference):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the FortressCell instance."""
+        """Return start string representation of the FortressCell instance."""
         return (
             "FortressCell("
             "Board(9, 9, 3, 3, None, None, None, None), "

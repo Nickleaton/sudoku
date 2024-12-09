@@ -13,7 +13,7 @@ class TestQuadro(TestItem):
     """Test suite for the Quadro class."""
 
     def setUp(self) -> None:
-        """Set up a test instance of Quadro."""
+        """Set up start test instance of Quadro."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)

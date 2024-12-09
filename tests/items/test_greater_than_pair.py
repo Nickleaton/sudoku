@@ -16,7 +16,7 @@ class TestGreaterThanPair(TestPair):
     """Test suite for the GreaterThanPair class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an instance of GreaterThanPair."""
+        """Set up the test case with start board and an instance of GreaterThanPair."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -40,7 +40,7 @@ class TestGreaterThanPair(TestPair):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the GreaterThanPair instance."""
+        """Return start string representation of the GreaterThanPair instance."""
         return (
             "GreaterThanPair("
             "Board(9, 9, 3, 3, None, None, None, None), "

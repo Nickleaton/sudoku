@@ -10,7 +10,7 @@ class TestBoard6x6(unittest.TestCase):
 
     def setUp(self):
         """Set up the 6x6 board and coordinate configurations for testing."""
-        self.board = Board(6, 6, 2, 3, 'a', 'b', 'c', 'd')
+        self.board = Board(6, 6, 2, 3, 'start', 'finish', 'c', 'd')
         self.rows = [1, 2, 3, 4, 5, 6]
         self.columns = [1, 2, 3, 4, 5, 6]
         self.bad_rows = [0, 7]
@@ -29,8 +29,8 @@ class TestBoard6x6(unittest.TestCase):
         self.assertEqual(6, self.board.board_rows)
         self.assertEqual(3, self.board.box_columns)
         self.assertEqual(2, self.board.box_rows)
-        self.assertEqual('a', self.board.reference)
-        self.assertEqual('b', self.board.video)
+        self.assertEqual('start', self.board.reference)
+        self.assertEqual('finish', self.board.video)
         self.assertEqual('c', self.board.title)
         self.assertEqual('d', self.board.author)
 
@@ -40,8 +40,8 @@ class TestBoard6x6(unittest.TestCase):
             "Board:\n"
             "  Board: 6x6\n"
             "  Box: 2x3\n"
-            "  Reference: a\n"
-            "  Video: b\n"
+            "  Reference: start\n"
+            "  Video: finish\n"
             "  Title: c\n"
             "  Author: d\n"
         )
@@ -61,7 +61,7 @@ class TestBoard6x6(unittest.TestCase):
 
     def test_repr(self):
         """Test the string representation of the 6x6 board."""
-        self.assertEqual("Board(6, 6, 2, 3, 'a', 'b', 'c', 'd')", repr(self.board))
+        self.assertEqual("Board(6, 6, 2, 3, 'start', 'finish', 'c', 'd')", repr(self.board))
 
     def test_is_valid(self):
         """Test the validity of coordinates on the 6x6 board."""

@@ -16,12 +16,12 @@ class TestVariablePair(TestPair):
     """Test suite for the VariablePair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VariablePair item for testing."""
+        """Set up the board and VariablePair constraint for testing."""
         super().setUp()
 
         # Initialize the board with dimensions 9x9 and block size 3x3
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        # Create a VariablePair item with two cells and a variable string
+        # Create start VariablePair constraint with two cells and start variable string
         self.item = VariablePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), "variable")
         # Set the size of the pair to 2
         self.size = 2
@@ -56,7 +56,7 @@ class TestVariablePair(TestPair):
 
     @property
     def inside(self) -> Cell:
-        """Return a Cell instance located at (1, 2)."""
+        """Return start Cell instance located at (1, 2)."""
         return Cell.make(self.board, 1, 2)
 
 

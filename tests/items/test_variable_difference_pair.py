@@ -16,9 +16,9 @@ class TestVariableDifferencePair(TestVariablePair):
     """Test suite for the VariableDifferencePair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VariableDifferencePair item for testing."""
+        """Set up the board and VariableDifferencePair constraint for testing."""
         super().setUp()
-        # Create a VariableDifferencePair item with two cells and a variable string
+        # Create start VariableDifferencePair constraint with two cells and start variable string
         self.item = VariableDifferencePair(
             self.board,
             Cell.make(self.board, 1, 2),

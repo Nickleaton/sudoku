@@ -34,10 +34,10 @@ class TestBetween(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the BetweenLine item has a rule.
+        """Indicates if the BetweenLine constraint has start rule.
 
         Returns:
-            bool: Always True, as BetweenLine has a rule.
+            bool: Always True, as BetweenLine has start rule.
         """
         return True
 

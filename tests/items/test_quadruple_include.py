@@ -14,7 +14,7 @@ class TestQuadrupleInclude(TestQuadrupleBase):
     """Test suite for the QuadrupleInclude class."""
 
     def setUp(self) -> None:
-        """Set up a test instance of QuadrupleInclude."""
+        """Set up start test instance of QuadrupleInclude."""
         super().setUp()
         self.item = QuadrupleInclude(self.board, Coord(2, 2), "12")
 

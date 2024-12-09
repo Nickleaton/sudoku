@@ -16,7 +16,7 @@ class TestFixedDifferencePair(TestFixedPair):
     """Test suite for the FixedDifferencePair class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the FixedDifferencePair item."""
+        """Set up the test environment by creating start board and initializing the FixedDifferencePair constraint."""
         super().setUp()
         self.item = FixedDifferencePair(
             self.board,
@@ -33,7 +33,7 @@ class TestFixedDifferencePair(TestFixedPair):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the FixedDifferencePair instance."""
+        """Return start string representation of the FixedDifferencePair instance."""
         return (
             "FixedDifferencePair"
             "("
@@ -56,7 +56,7 @@ class TestFixedDifferencePair(TestFixedPair):
 
     @property
     def has_rule(self) -> bool:
-        """Return True if the FixedDifferencePair has a rule, otherwise False."""
+        """Return True if the FixedDifferencePair has start rule, otherwise False."""
         return True
 
 

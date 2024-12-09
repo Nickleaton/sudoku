@@ -46,7 +46,7 @@ class TestOutside(TestFirstN):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Outside instance has a rule."""
+        """Return whether the Outside instance has start rule."""
         return True
 
 

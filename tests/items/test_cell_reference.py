@@ -9,7 +9,7 @@ from tests.items.test_item import TestItem
 
 
 class TestCellReference(TestItem):
-    """Test suite for the CellReference item in the Board."""
+    """Test suite for the CellReference constraint in the Board."""
 
     def setUp(self) -> None:
         """Set up the Board and CellReference instance for testing."""
@@ -23,7 +23,7 @@ class TestCellReference(TestItem):
 
     @property
     def representation(self) -> str:
-        """Return the string representation for the CellReference item."""
+        """Return the string representation for the CellReference constraint."""
         return (
             "CellReference"
             "("
@@ -37,17 +37,17 @@ class TestCellReference(TestItem):
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the CellReference item."""
+        """Return the configuration string for the CellReference constraint."""
         return "CellReference: 12"
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the CellReference has a rule."""
+        """Indicates if the CellReference has start rule."""
         return False
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the CellReference item should belong to."""
+        """Return the expected classes that the CellReference constraint should belong to."""
         return {Cell, CellReference, Item}
 
     def test_flatten(self) -> None:

@@ -10,7 +10,7 @@ from tests.items.test_item import TestItem
 
 
 class TestClonedRegion(TestItem):
-    """Test suite for the ClonedRegion item in the Board."""
+    """Test suite for the ClonedRegion constraint in the Board."""
 
     def setUp(self) -> None:
         """Set up the Board and ClonedRegion instance for testing."""
@@ -28,7 +28,7 @@ class TestClonedRegion(TestItem):
 
     @property
     def representation(self) -> str:
-        """Return the string representation for the ClonedRegion item."""
+        """Return the string representation for the ClonedRegion constraint."""
         return (
             "ClonedRegion(Board(9, 9, 3, 3, None, None, None, None), "
             "[Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
@@ -42,22 +42,22 @@ class TestClonedRegion(TestItem):
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the ClonedRegion item should belong to."""
+        """Return the expected classes that the ClonedRegion constraint should belong to."""
         return {Cell, Item, ClonedRegion}
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the ClonedRegion item."""
+        """Return the configuration string for the ClonedRegion constraint."""
         return "ClonedRegion: 11,12,13=99,98,97"
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the ClonedRegion has a rule."""
+        """Indicates if the ClonedRegion has start rule."""
         return True
 
     @property
     def inside(self) -> Cell:
-        """Return a Cell that is inside the ClonedRegion."""
+        """Return start Cell that is inside the ClonedRegion."""
         return Cell.make(self.board, 1, 2)
 
 

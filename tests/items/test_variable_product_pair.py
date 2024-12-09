@@ -16,9 +16,9 @@ class TestVariableProductPair(TestVariablePair):
     """Test suite for the VariableProductPair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VariableProductPair item for testing."""
+        """Set up the board and VariableProductPair constraint for testing."""
         super().setUp()
-        # Create a VariableProductPair item with two cells and a variable string
+        # Create start VariableProductPair constraint with two cells and start variable string
         self.item = VariableProductPair(
             self.board,
             Cell.make(self.board, 1, 2),
@@ -58,7 +58,7 @@ class TestVariableProductPair(TestVariablePair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether VariableProductPair has a rule."""
+        """Return whether VariableProductPair has start rule."""
         return True
 
 

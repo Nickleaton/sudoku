@@ -16,7 +16,7 @@ class TestProduct(TestRegion):
     """Test suite for the Product class."""
 
     def setUp(self) -> None:
-        """Set up a test instance of Product."""
+        """Set up start test instance of Product."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)

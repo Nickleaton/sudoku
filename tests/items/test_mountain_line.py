@@ -48,7 +48,7 @@ class TestMountain(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the MountainLine instance has a rule."""
+        """Return whether the MountainLine instance has start rule."""
         return True
 
     @property

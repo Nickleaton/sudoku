@@ -17,7 +17,7 @@ class TestFrame(TestFirstN):
     """Test suite for the Frame class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the Frame item."""
+        """Set up the test environment by creating start board and initializing the Frame constraint."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -31,7 +31,7 @@ class TestFrame(TestFirstN):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Frame instance."""
+        """Return start string representation of the Frame instance."""
         return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
 
     @property

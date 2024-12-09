@@ -15,7 +15,7 @@ class TestKropkiPair(TestPair):
     """Test suite for the KropkiPair class, inheriting from TestPair."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and a KropkiPair instance."""
+        """Set up the test case with start board and start KropkiPair instance."""
         super().setUp()
         self.item = KropkiPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
@@ -32,12 +32,12 @@ class TestKropkiPair(TestPair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the KropkiPair instance has a rule."""
+        """Return whether the KropkiPair instance has start rule."""
         return True
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the KropkiPair instance."""
+        """Return start string representation of the KropkiPair instance."""
         return (
             "KropkiPair("
             "Board(9, 9, 3, 3, None, None, None, None), "

@@ -13,7 +13,7 @@ from tests.items.test_indexer import TestIndexer
 
 
 class TestColumnIndexer(TestIndexer):
-    """Test suite for the ColumnIndexer item in the Board."""
+    """Test suite for the ColumnIndexer constraint in the Board."""
 
     def setUp(self) -> None:
         """Set up the Board and ColumnIndexer instance for testing."""
@@ -29,22 +29,22 @@ class TestColumnIndexer(TestIndexer):
 
     @property
     def representation(self) -> str:
-        """Return the string representation for the ColumnIndexer item."""
+        """Return the string representation for the ColumnIndexer constraint."""
         return "ColumnIndexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the ColumnIndexer item should belong to."""
+        """Return the expected classes that the ColumnIndexer constraint should belong to."""
         return {Cell, ColumnIndexer, ComposedItem, Indexer, Item, Region, StandardRegion}
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the ColumnIndexer item."""
+        """Return the configuration string for the ColumnIndexer constraint."""
         return "ColumnIndexer: 1"
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the ColumnIndexer has a rule."""
+        """Indicates if the ColumnIndexer has start rule."""
         return True
 
 

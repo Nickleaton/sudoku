@@ -79,7 +79,7 @@ class TestSolution(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Solution has a rule."""
+        """Return whether the Solution has start rule."""
         return False
 
     @property

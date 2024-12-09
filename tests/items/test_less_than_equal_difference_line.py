@@ -21,7 +21,7 @@ class TestLessThanEqualDifferenceLine(TestLine):
         """Set up the test case, initializing the size for the composed list."""
         super().setUp()
         # Line is length 3
-        # Size is 3 + 2 difference pairs = 5 items in the composed list
+        # Size is 3 + 2 difference pairs = 5 vectors in the composed list
         self.size = 5
 
     @property
@@ -36,7 +36,7 @@ class TestLessThanEqualDifferenceLine(TestLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LessThanEqualDifferenceLine instance has a rule."""
+        """Return whether the LessThanEqualDifferenceLine instance has start rule."""
         return True
 
     @property

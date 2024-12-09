@@ -16,9 +16,9 @@ class TestSumPair(TestVariablePair):
     """Test suite for the VariableSumPair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VariableSumPair item for testing."""
+        """Set up the board and VariableSumPair constraint for testing."""
         super().setUp()
-        # Create a VariableSumPair item with two cells and a variable string
+        # Create start VariableSumPair constraint with two cells and start variable string
         self.item = VariableSumPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), "variable")
         # Set the size of the pair to 2
         self.size = 2
@@ -53,7 +53,7 @@ class TestSumPair(TestVariablePair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether VariableSumPair has a rule."""
+        """Return whether VariableSumPair has start rule."""
         return True
 
 

@@ -14,7 +14,7 @@ class TestHighCell(TestSimpleCellReference):
     """Test suite for the HighCell class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an instance of HighCell."""
+        """Set up the test case with start board and an instance of HighCell."""
         super().setUp()
         self.item = HighCell(self.board, 1, 2)
         self.good = [7, 8, 9]
@@ -28,7 +28,7 @@ class TestHighCell(TestSimpleCellReference):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the HighCell instance."""
+        """Return start string representation of the HighCell instance."""
         return (
             "HighCell(Board(9, 9, 3, 3, None, None, None, None), "
             "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
@@ -40,7 +40,7 @@ class TestHighCell(TestSimpleCellReference):
         return "HighCell: 12"
 
     def test_included(self):
-        """Test if values are correctly included or excluded by the HighCell."""
+        """Test if value_list are correctly included or excluded by the HighCell."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:

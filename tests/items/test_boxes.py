@@ -15,7 +15,7 @@ from tests.items.test_standard_region_sets import TestStandardRegionSet
 
 
 class TestBoxes(TestStandardRegionSet):
-    """Test suite for the Boxes item in the Board."""
+    """Test suite for the Boxes constraint in the Board."""
 
     def setUp(self) -> None:
         """Set up the Board and Boxes instance for testing."""
@@ -30,23 +30,23 @@ class TestBoxes(TestStandardRegionSet):
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the Boxes item."""
+        """Return the configuration string for the Boxes constraint."""
         return "Boxes:"
 
     @property
     def representation(self) -> str:
-        """Return the string representation for the Boxes item."""
+        """Return the string representation for the Boxes constraint."""
         return "Boxes(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the Boxes item should belong to."""
+        """Return the expected classes that the Boxes constraint should belong to."""
         return {Item, ComposedItem, Cell, StandardRegion, Region, Box, Boxes, StandardRegion, RegionSet,
                 StandardRegionSet}
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Boxes have a rule associated with them."""
+        """Return whether the Boxes have start rule associated with them."""
         return True
 
 

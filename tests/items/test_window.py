@@ -16,7 +16,7 @@ class TestWindow(TestRegion):
     """Test suite for the Window class."""
 
     def setUp(self) -> None:
-        """Set up the board and Window item for testing."""
+        """Set up the board and Window constraint for testing."""
         super().setUp()
         self.item = Window(self.board, Coord(2, 2))
         self.size = 9
@@ -38,7 +38,7 @@ class TestWindow(TestRegion):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether Window has a rule."""
+        """Return whether Window has start rule."""
         return True
 
     @property

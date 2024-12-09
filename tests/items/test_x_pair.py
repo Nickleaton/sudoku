@@ -17,7 +17,7 @@ class TestXPair(TestSumPair):
     """Test suite for the XPair class."""
 
     def setUp(self) -> None:
-        """Set up the board and XPair item for testing."""
+        """Set up the board and XPair constraint for testing."""
         super().setUp()
         self.item = XPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
@@ -34,12 +34,12 @@ class TestXPair(TestSumPair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether XPair has a rule."""
+        """Return whether XPair has start rule."""
         return True
 
     @property
     def total(self) -> int:
-        """Return the total value for the XPair."""
+        """Return the total number for the XPair."""
         return 10
 
     @property

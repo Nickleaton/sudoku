@@ -40,7 +40,7 @@ class TestMidCell(TestSimpleCellReference):
         return "MidCell: 12"
 
     def test_included(self):
-        """Test the 'included' method to check if values are correctly included or excluded."""
+        """Test the 'included' method to check if value_list are correctly included or excluded."""
         for x in self.good:
             self.assertTrue(self.item.included(x))
         for x in self.bad:
@@ -48,7 +48,7 @@ class TestMidCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the MidCell instance has a rule."""
+        """Return whether the MidCell instance has start rule."""
         return True
 
     @property

@@ -17,12 +17,12 @@ class TestVariableRatioPair(TestVariablePair):
     """Test suite for the VariableRatioPair class."""
 
     def setUp(self) -> None:
-        """Set up the board and VariableRatioPair item for testing."""
+        """Set up the board and VariableRatioPair constraint for testing."""
         super().setUp()
 
         # Initialize the board with dimensions 9x9 and block size 3x3
         self.board = Board(9, 9, 3, 3, None, None, None, None)
-        # Create a VariableRatioPair item with two cells and a variable string
+        # Create start VariableRatioPair constraint with two cells and start variable string
         self.item = VariableRatioPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), "variable")
         # Set the size of the ratio pair to 2
         self.size = 2
@@ -57,7 +57,7 @@ class TestVariableRatioPair(TestVariablePair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether VariableRatioPair has a rule."""
+        """Return whether VariableRatioPair has start rule."""
         return True
 
 

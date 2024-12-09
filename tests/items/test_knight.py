@@ -13,7 +13,7 @@ class TestKnight(TestComposed):
     """Test suite for the Knight class, inheriting from TestComposed."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and a Knight instance."""
+        """Set up the test case with start board and start Knight instance."""
         super().setUp()
         self.item = Knight(self.board, [2, 4, 6, 8])
         self.size = 81
@@ -25,7 +25,7 @@ class TestKnight(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Knight instance has a rule."""
+        """Return whether the Knight instance has start rule."""
         return True
 
     def test_offsets(self):
@@ -39,7 +39,7 @@ class TestKnight(TestComposed):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Knight instance."""
+        """Return start string representation of the Knight instance."""
         return "Knight(Board(9, 9, 3, 3, None, None, None, None), [2, 4, 6, 8])"
 
     @property

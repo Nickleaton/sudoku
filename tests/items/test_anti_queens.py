@@ -19,7 +19,7 @@ class TestAntiQueens(TestAnti):
     def setUp(self) -> None:
         """Set up the test environment for AntiQueens.
 
-        Initializes the board and AntiQueens item with specified columns [8, 9].
+        Initializes the board and AntiQueens constraint with specified columns [8, 9].
         """
         super().setUp()
         Cell.make_board(self.board)

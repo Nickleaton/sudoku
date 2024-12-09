@@ -19,7 +19,7 @@ class TestAntiKing(TestAnti):
     def setUp(self) -> None:
         """Set up the test environment for AntiKing.
 
-        Initializes the board and AntiKing item.
+        Initializes the board and AntiKing constraint.
         """
         super().setUp()
         Cell.make_board(self.board)

@@ -44,7 +44,7 @@ class TestStandardDiagonal(TestDiagonal):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the StandardDiagonal has a rule."""
+        """Return whether the StandardDiagonal has start rule."""
         return True
 
     def test_in(self):

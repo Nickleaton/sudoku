@@ -17,7 +17,7 @@ class TestFixedProductPair(TestFixedPair):
     """Test suite for the FixedProductPair class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating a board and initializing the FixedProductPair item."""
+        """Set up the test environment by creating start board and initializing the FixedProductPair constraint."""
         super().setUp()
 
         self.board = Board(9, 9, 3, 3, None, None, None, None)
@@ -32,7 +32,7 @@ class TestFixedProductPair(TestFixedPair):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the FixedProductPair instance."""
+        """Return start string representation of the FixedProductPair instance."""
         return (
             "FixedProductPair"
             "("

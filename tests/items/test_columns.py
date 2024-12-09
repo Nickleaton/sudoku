@@ -15,7 +15,7 @@ from tests.items.test_rows import TestStandardRegionSet
 
 
 class TestColumns(TestStandardRegionSet):
-    """Test suite for the Columns item in the Board."""
+    """Test suite for the Columns constraint in the Board."""
 
     def setUp(self) -> None:
         """Set up the Board and Columns instance for testing."""
@@ -30,23 +30,23 @@ class TestColumns(TestStandardRegionSet):
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the Columns item."""
+        """Return the configuration string for the Columns constraint."""
         return "Columns:"
 
     @property
     def representation(self) -> str:
-        """Return the string representation for the Columns item."""
+        """Return the string representation for the Columns constraint."""
         return "Columns(Board(9, 9, 3, 3, None, None, None, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the Columns item should belong to."""
+        """Return the expected classes that the Columns constraint should belong to."""
         return {Item, ComposedItem, Cell, StandardRegion, Region, Column, Columns, StandardRegion, RegionSet,
                 StandardRegionSet}
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Columns item has a rule."""
+        """Indicates if the Columns constraint has start rule."""
         return True
 
 

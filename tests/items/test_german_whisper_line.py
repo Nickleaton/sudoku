@@ -54,7 +54,7 @@ class TestGermanWhisperLine(TestGreaterThanEqualDifferenceLine):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the GermanWhisperLine has a rule."""
+        """Return whether the GermanWhisperLine has start rule."""
         return True
 
     @property

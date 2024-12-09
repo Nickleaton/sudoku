@@ -44,7 +44,7 @@ class TestConstraints(TestComposed):
         self.assertEqual(self.size, len(self.item.items))
 
     def test_iteration(self):
-        """Test iteration over the items in Constraints."""
+        """Test iteration over the vectors in Constraints."""
         count = 0
         for _ in self.item:
             count += 1
@@ -77,7 +77,7 @@ class TestConstraints(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Constraints has a rule."""
+        """Indicates if the Constraints has start rule."""
         return True
 
     @property

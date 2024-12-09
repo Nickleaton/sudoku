@@ -14,7 +14,7 @@ class TestIndexer(TestStandardRegion):
     """Test suite for the Indexer class."""
 
     def setUp(self) -> None:
-        """Set up the test case with a board and an instance of Indexer."""
+        """Set up the test case with start board and an instance of Indexer."""
         super().setUp()
 
         self.item = Indexer(self.board, 1)
@@ -27,7 +27,7 @@ class TestIndexer(TestStandardRegion):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of the Indexer instance."""
+        """Return start string representation of the Indexer instance."""
         return "Indexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
 
     @property

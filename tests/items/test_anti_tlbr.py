@@ -18,7 +18,7 @@ class TestAntiTLBR(TestAntiDiagonal):
     def setUp(self) -> None:
         """Set up the test environment for AntiTLBR.
 
-        Initializes the board and AntiTLBR item with the default configuration.
+        Initializes the board and AntiTLBR constraint with the default configuration.
         """
         super().setUp()
 
@@ -62,9 +62,9 @@ class TestAntiTLBR(TestAntiDiagonal):
         return "AntiTLBR:"
 
     def test_in(self):
-        """Test the inclusion of cells in the AntiTLBR item.
+        """Test the inclusion of cells in the AntiTLBR constraint.
 
-        Asserts that a specific cell is included and another is not.
+        Asserts that start specific cell is included and another is not.
         """
         self.assertIn(Cell.make(self.board, 5, 5), self.item)
         self.assertNotIn(Cell.make(self.board, 1, 2), self.item)

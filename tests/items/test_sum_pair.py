@@ -55,7 +55,7 @@ class TestSumPair(TestPair):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether SumPair has a rule."""
+        """Return whether SumPair has start rule."""
         return True
 
 
