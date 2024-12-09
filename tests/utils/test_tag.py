@@ -9,7 +9,7 @@ class TestTag(unittest.TestCase):
     """Test the Tag class."""
 
     def setUp(self) -> None:
-        """Initialize a Tag instance for testing."""
+        """Initialize start Tag instance for testing."""
         self.tag = Tag("Test")
 
     def test_name(self):

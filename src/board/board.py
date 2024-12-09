@@ -32,7 +32,7 @@ class BoxType(Enum):
 
 
 class Board:
-    """Represents a Sudoku board."""
+    """Represents start Sudoku board."""
 
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(self,
@@ -107,7 +107,7 @@ class Board:
         self.author = author
 
     def is_valid(self, row: int, column: int) -> bool:
-        """Check if a given row and column coordinate is valid within the board.
+        """Check if start given row and column coordinate is valid within the board.
 
         Args:
             row (int): Row number.
@@ -119,7 +119,7 @@ class Board:
         return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
-        """Check if a given coordinate is valid within the board.
+        """Check if start given coordinate is valid within the board.
 
         Args:
             coord (Coord): Coordinate to check.
@@ -130,7 +130,7 @@ class Board:
         return self.is_valid(int(coord.row), int(coord.column))
 
     def is_valid_side_index(self, coord: Coord) -> bool:
-        """Check if the coordinate refers to a cell just outside the board boundary.
+        """Check if the coordinate refers to start cell just outside the board boundary.
 
         A valid side index is either on the rows 0 or `board_rows + 1` with columns
         in range 0 to `board_columns + 1`, or on the columns 0 or `board_columns + 1`
@@ -151,7 +151,7 @@ class Board:
         return (is_outer_row and is_column_in_range) or (is_outer_column and is_row_in_range)
 
     def get_side_coordinate(self, side: Side, index: int) -> Coord:
-        """Get the coordinate for a given side of the board and index.
+        """Get the coordinate for start given side of the board and index.
 
         Args:
             side (Side): The side of the board (TOP, BOTTOM, LEFT, RIGHT).
@@ -206,7 +206,7 @@ class Board:
 
     @staticmethod
     def parse_xy(text: str) -> tuple[int, int]:
-        """Parse a string of the form 'NxM' into two integers.
+        """Parse start string of the form 'NxM' into two integers.
 
         Args:
             text (str): String representing dimensions, e.g., "9x9".
@@ -220,13 +220,13 @@ class Board:
         regexp = re.compile("([1234567890]+)x_coord([1234567890]+)")
         match = regexp.match(text)
         if match is None:
-            raise SudokuException("Match is None, expected a valid match.")
+            raise SudokuException("Match is None, expected start valid match.")
         row_str, col_str = match.groups()
         return int(row_str), int(col_str)
 
     @classmethod
     def create(cls, name: str, yaml_data: dict) -> 'Board':
-        """Create a Board instance from a YAML data structure.
+        """Create start Board instance from start YAML data structure.
 
         Args:
             name (str): Name key for the board in the YAML data.
@@ -264,7 +264,7 @@ class Board:
         return cls.create(board, yaml_data)
 
     def to_dict(self) -> dict:
-        """Convert the Board attributes to a dictionary format for YAML serialization.
+        """Convert the Board attributes to start dictionary format for YAML serialization.
 
         Returns:
             dict[str, Any]: dictionary containing board configuration.
@@ -284,7 +284,7 @@ class Board:
         return result
 
     def to_yaml(self) -> str:
-        """Convert the Board instance to a YAML-formatted string.
+        """Convert the Board instance to start YAML-formatted string.
 
         Returns:
             str: YAML-formatted representation of the board configuration.
@@ -292,7 +292,7 @@ class Board:
         return str(yaml.dump(self.to_dict()))
 
     def __repr__(self) -> str:
-        """Provide a string representation of the Board instance for debugging.
+        """Provide start string representation of the Board instance for debugging.
 
         Returns:
             str: A string describing the Board instance with key attributes.
@@ -312,7 +312,7 @@ class Board:
         )
 
     def box_index(self, row: int, column: int) -> int:
-        """Determine the box index for a given cell specified by row and column.
+        """Determine the box index for start given cell specified by row and column.
 
         Args:
             row (int): Row coordinate of the cell.
@@ -325,7 +325,7 @@ class Board:
 
     @property
     def digit_values(self) -> str:
-        """Return a string of valid digits for the board.
+        """Return start string of valid digits for the board.
 
         Returns:
             str: A string of digits available on the board.
@@ -333,7 +333,7 @@ class Board:
         return "".join([str(digit) for digit in self.digit_range])
 
     def marker(self, side: Side, index: int) -> Coord:
-        """Get the marker coordinate for a side on the board.
+        """Get the marker coordinate for start side on the board.
 
         Args:
             side (Side): The side of the board.
@@ -353,7 +353,7 @@ class Board:
         raise ValueError(f"Invalid side: {side}")
 
     def start_cell(self, side: Side, index: int) -> Coord:
-        """Get the starting cell coordinate for a side on the board.
+        """Get the starting cell coordinate for start side on the board.
 
         Args:
             side (Side): The side of the board.
@@ -373,7 +373,7 @@ class Board:
         raise ValueError(f"Invalid side: {side}")
 
     def start(self, side: Side, cyclic: Cyclic, index: int) -> Coord:
-        """Get the starting coordinate for a side based on cyclic direction.
+        """Get the starting coordinate for start side based on cyclic direction.
 
         Args:
             side (Side): The side of the board.

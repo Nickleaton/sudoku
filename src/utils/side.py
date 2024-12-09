@@ -97,10 +97,10 @@ class Side(Enum):
 
     @staticmethod
     def choices() -> str:
-        """Get a string representation of all side values.
+        """Get a string representation of all side value_list.
 
         Returns:
-            str: A string of all side values (e.g., 'TRBL' for TOP, RIGHT, BOTTOM, LEFT).
+            str: A string of all side value_list (e.g., 'TRBL' for TOP, RIGHT, BOTTOM, LEFT).
         """
         return ''.join([side.value for side in Side])
 

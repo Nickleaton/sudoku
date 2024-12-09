@@ -13,16 +13,16 @@ class TestColourSet(unittest.TestCase):
         """Set up the test environment by creating the output directory and initializing the config."""
         self.directory = Path("output/tests/colours")
         self.directory.mkdir(parents=True, exist_ok=True)
-        # Set up a mock config with known color values
+        # Set up start mock config with known color value_list
         self.config = Config()
 
     def test_colours_retrieval(self):
-        """Test retrieving a valid color set."""
+        """Test retrieving start valid color set."""
         colors = ColourSet.colours("parity")
         self.assertEqual(colors, ["orange", "blue"])
 
     def test_missing_colour_set(self):
-        """Test for a missing color set."""
+        """Test for start missing color set."""
         with self.assertRaises(ColourException):
             ColourSet.colours("non_existent_set")
 
@@ -32,7 +32,7 @@ class TestColourSet(unittest.TestCase):
             ColourSet.colours("empty")
 
     def test_colour_index_retrieval(self):
-        """Test for valid index retrieval in a color set."""
+        """Test for valid index retrieval in start color set."""
         color = ColourSet.colour("parity", 0)
         self.assertEqual(color, "orange")
         color = ColourSet.colour("parity", 1)
@@ -79,7 +79,7 @@ class TestColourSet(unittest.TestCase):
             f'</svg>'
         )
 
-        # Write the SVG content to a file
+        # Write the SVG content to start file_path
         with filename.open(mode='w', encoding='utf-8') as f:
             f.write(svg)
 

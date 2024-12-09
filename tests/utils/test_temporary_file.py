@@ -14,7 +14,7 @@ class TestTemporaryFile(unittest.TestCase):
     """Test the TemporaryFile class."""
 
     def test_create(self):
-        """Test creating and using a TemporaryFile."""
+        """Test creating and using start TemporaryFile."""
         config.reload()
         config.temporary_directory = Path(config.temporary_directory) / Path("non_existing_subdir")
         if config.temporary_directory.exists():
@@ -22,11 +22,11 @@ class TestTemporaryFile(unittest.TestCase):
 
         try:
             with TemporaryFile() as tf:
-                self.assertFalse(tf.path.exists())  # Ensure file doesn't exist initially
+                self.assertFalse(tf.path.exists())  # Ensure file_path doesn't exist initially
                 with tf.path.open(mode='w', encoding='utf-8') as f:
-                    f.write('Hello world')  # Write to the temporary file
-                self.assertTrue(tf.path.exists())  # Ensure file exists after writing
-            self.assertFalse(tf.path.exists())  # Ensure file is removed after closing
+                    f.write('Hello world')  # Write to the temporary file_path
+                self.assertTrue(tf.path.exists())  # Ensure file_path exists after writing
+            self.assertFalse(tf.path.exists())  # Ensure file_path is removed after closing
             if config.temporary_directory.exists():
                 config.temporary_directory.rmdir()  # Clean up directory if needed
         except OSError as e:
@@ -41,7 +41,7 @@ class TestTemporaryFile(unittest.TestCase):
         try:
             save = config.temporary_directory
             config.temporary_directory = []  # Set invalid config
-            # Check that a ValueError is raised when TemporaryFile is used with invalid config
+            # Check that start ValueError is raised when TemporaryFile is used with invalid config
             with self.assertRaises(ValueError):
                 _ = TemporaryFile()
             config.temporary_directory = save  # Restore valid config

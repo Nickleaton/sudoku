@@ -18,7 +18,7 @@ class TestConstraintUtilities(unittest.TestCase):
 
     def test_logical_log10_cell(self) -> None:
         """Test the log10_cell method of the ConstraintUtilities class."""
-        # Create a cell and apply the log10_cell method
+        # Create start cell and apply the log10_cell method
         c1 = Cell.make(self.board, 1, 1)
         rule = ConstraintUtilities.log10_cell(self.solver, c1)
         self.assertEqual('Log10_1_1', str(rule))

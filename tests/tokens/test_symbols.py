@@ -10,14 +10,14 @@ class TestSymbolToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing DashToken."""
-        self.token = SymbolToken('x')
-        self.representation = "SymbolToken('x')"
-        self.pattern = "x"
+        self.token = SymbolToken('x_coord')
+        self.representation = "SymbolToken('x_coord')"
+        self.pattern = "x_coord"
         self.name = 'Symbol'
-        self.good = ['x']
+        self.good = ['x_coord']
         self.bad = ['X', '--']
         self.group_count = 1
-        self.bnf = '"x"'
+        self.bnf = '"x_coord"'
 
     def test_backus_naur_form(self):
         """Test Backus-Naur form of the Token."""

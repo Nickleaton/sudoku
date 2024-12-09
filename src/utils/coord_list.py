@@ -82,7 +82,7 @@ class CoordList:
             coord (Coord): The Coord object to add.
 
         Raises:
-            CoordListException: If the item is not of type Coord.
+            CoordListException: If the constraint is not of type Coord.
         """
         if not isinstance(coord, Coord):
             raise CoordListException(f'Item must be of type {Coord.__name__}.')

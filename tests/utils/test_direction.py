@@ -46,7 +46,7 @@ class TestDirection(unittest.TestCase):
         self.assertListEqual(sorted(Direction.kings()), sorted(Direction.diagonals() + Direction.orthogonals()))
 
     def test_value(self):
-        """Test if direction location matches expected value."""
+        """Test if direction location matches expected number."""
         for location in Direction.locations():
             direction = Direction.direction(location)
             self.assertEqual(location, direction.location)

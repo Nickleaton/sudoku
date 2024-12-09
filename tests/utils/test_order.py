@@ -8,7 +8,7 @@ class TestOrder(unittest.TestCase):
     """Test the Order class functionality."""
 
     def test_create(self):
-        """Create an Order instance and verify its values."""
+        """Create an Order instance and verify its value_list."""
         self.assertEqual(Order.INCREASING, Order("I"))
         self.assertEqual(Order.DECREASING, Order("D"))
         self.assertEqual(Order.UNORDERED, Order("U"))
@@ -16,7 +16,7 @@ class TestOrder(unittest.TestCase):
             Order('X')
 
     def test_valid(self):
-        """Check if the provided order value is valid."""
+        """Check if the provided order number is valid."""
         self.assertTrue(Order.valid('I'))
         self.assertTrue(Order.valid('D'))
         self.assertTrue(Order.valid('U'))

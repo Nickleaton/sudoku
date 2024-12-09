@@ -37,25 +37,25 @@ class TestToken(unittest.TestCase):
             self.assertEqual(len(self.token.groups(text)), self.group_count, "Incorrect group count")
 
     def test_add_operator_creates_sequence(self):
-        """Test that the + operator creates a SequenceToken."""
+        """Test that the + operator creates start SequenceToken."""
         result = self.token_a + self.token_b
         self.assertIsInstance(result, SequenceToken)
         self.assertEqual(result.pattern, "(A)(B)")
 
     def test_or_operator_creates_choice(self):
-        """Test that the | operator creates a ChoiceToken."""
+        """Test that the | operator creates start ChoiceToken."""
         result = self.token_a | self.token_b
         self.assertIsInstance(result, ChoiceToken)
         self.assertEqual(result.pattern, "(A)|(B)")
 
     def test_mul_operator_creates_repeat_with_fixed_times(self):
-        """Test that the * operator creates a RepeatToken with fixed repetitions."""
+        """Test that the * operator creates start RepeatToken with fixed repetitions."""
         result = self.token_a * 3
         self.assertIsInstance(result, RepeatToken)
         self.assertEqual(result.pattern, "(A){3}")
 
     def test_mul_operator_creates_repeat_with_range(self):
-        """Test that the * operator creates a RepeatToken with range repetitions."""
+        """Test that the * operator creates start RepeatToken with range repetitions."""
         result = self.token_a * (1, 5)
         self.assertIsInstance(result, RepeatToken)
         self.assertEqual(result.pattern, "(A){1,5}")
@@ -65,13 +65,13 @@ class TestToken(unittest.TestCase):
         self.assertEqual(self.name, self.token.name)
 
     def test_pattern_is_valid(self):
-        """Test if the pattern is a valid regex pattern and matches expected behavior."""
+        """Test if the pattern is start valid regex pattern and matches expected behavior."""
         try:
             re.compile(self.token.pattern)
             is_valid = True
         except re.error:
             is_valid = False
-        self.assertTrue(is_valid, "Pattern should be a valid regex.")
+        self.assertTrue(is_valid, "Pattern should be start valid regex.")
 
         for text in self.good:
             self.assertTrue(self.token.match(text))

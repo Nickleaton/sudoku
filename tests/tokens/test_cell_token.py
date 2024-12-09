@@ -15,7 +15,7 @@ class TestCellToken(TestSimpleToken):
         self.pattern = r"(\d)(\d)"
         self.name = 'Cell'
         self.good = ['11', '12', '13', '21', '22', '23', '31', '32', '33']
-        self.bad = ['x', 'XX']
+        self.bad = ['x_coord', 'XX']
         self.group_count = 2
 
 

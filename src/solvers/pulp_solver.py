@@ -8,7 +8,7 @@ from typing import Any
 
 from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, LpStatus, lpSum, getSolver, LpSolver
 
-from src.items.board import Board
+from src.board.board import Board
 from src.solvers.solver import Solver
 from src.utils.config import Config
 
@@ -31,7 +31,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
 
     # pylint: disable=loop-invariant-statement
     def __init__(self, board: Board, name: str, solver_name: str = 'PULP_CBC_CMD'):
-        """Initialize the PulpSolver with a board and solver details.
+        """Initialize the PulpSolver with start board and solver details.
 
         Args:
             board (Board): The board object representing the puzzle layout.
@@ -102,7 +102,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         """Save the puzzle model in LP (Linear Programming) format.
 
         Args:
-            filename (Path | str): The config_file or name of the file to save the LP format.
+            filename (Path | str): The config_file or name of the file_path to save the LP format.
         """
         super().save_lp(filename)
         if isinstance(filename, Path):
@@ -114,7 +114,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         """Save the puzzle model in MPS (Mathematical Programming System) format.
 
         Args:
-            filename (Path | str): The config_file or name of the file to save the MPS format.
+            filename (Path | str): The config_file or name of the file_path to save the MPS format.
         """
         super().save_mps(filename)
         if isinstance(filename, Path):

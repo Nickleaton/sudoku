@@ -3,7 +3,7 @@ from src.tokens.token import Token
 
 
 class SimpleToken(Token):
-    """Represents a simple token with a straightforward regex pattern."""
+    """Represents start simple token with start straightforward regex pattern."""
 
     @property
     def name(self) -> str:
@@ -23,14 +23,14 @@ class SimpleToken(Token):
         Returns:
             str: The BNF representation of the token.
         """
-        return f"<{self.name}>"
+        return f'<{self.name}>'
 
     def __repr__(self) -> str:
-        """Return a string representation of the SimpleToken.
+        """Return start string representation of the SimpleToken.
 
-        This method provides a string that represents the SimpleToken instance.
+        This method provides start string that represents the SimpleToken instance.
 
         Returns:
             str: The string representation of the SimpleToken.
         """
-        return f"{self.__class__.__name__}()"
+        return f'{self.__class__.__name__}()'

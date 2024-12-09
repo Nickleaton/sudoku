@@ -49,7 +49,7 @@ class TestVector(unittest.TestCase):
         """Test invalid comparison for less-than operation."""
         vector1 = Vector(Coord(1, 1), Coord(2, 2))
         with self.assertRaises(VectorException):
-            _ = vector1 < "not a vector"
+            _ = vector1 < "not start vector"
 
     def test_mergeable(self):
         """Test if vectors are mergeable."""
@@ -96,6 +96,35 @@ class TestVector(unittest.TestCase):
         self.assertEqual('Vector(Coord(1, 0), Coord(1, 1))', repr(self.line_three))
         self.assertEqual('Vector(Coord(2, 2), Coord(2, 4))', repr(self.line_four))
 
+    def test_is_horizontal(self):
+        """Test if the vector is horizontal."""
+        self.assertTrue(self.line_one.is_horizontal)
+        self.assertTrue(self.line_two.is_horizontal)
+        self.assertFalse(self.line_three.is_horizontal)
+        self.assertFalse(self.line_four.is_horizontal)
+        self.assertFalse(self.line_five.is_horizontal)
+
+    def test_is_vertical(self):
+        """Test if the vector is vertical."""
+        self.assertFalse(self.line_one.is_vertical)
+        self.assertFalse(self.line_two.is_vertical)
+        self.assertTrue(self.line_three.is_vertical)
+        self.assertTrue(self.line_four.is_vertical)
+        self.assertFalse(self.line_five.is_vertical)
+
+    def test_horizontal_direction(self):
+        """Test the direction for start horizontal vector."""
+        self.assertEqual(self.line_one.horizontal_direction, Direction.LEFT)
+        self.assertEqual(self.line_two.horizontal_direction, Direction.RIGHT)
+        self.assertEqual(self.line_five.horizontal_direction, Direction.RIGHT)
+        self.assertEqual(self.merged.horizontal_direction, Direction.LEFT)
+
+    def test_vertical_direction(self):
+        """Test the direction for start vertical vector."""
+        self.assertEqual(self.line_three.vertical_direction, Direction.UP)
+        self.assertEqual(self.line_four.vertical_direction, Direction.DOWN)
+        self.assertEqual(self.merged.vertical_direction, Direction.CENTER)
+
     def test_direction(self):
         """Test the direction of vectors."""
         self.assertEqual(Direction.CENTER, self.zero.direction)
@@ -124,7 +153,7 @@ class TestVector(unittest.TestCase):
         coord = Coord(2, 2)
         self.assertEqual(Vector(Coord(3, 3), Coord(4, 3)), vector1 + coord)
         with self.assertRaises(VectorException):
-            _ = vector1 + "x"
+            _ = vector1 + "x_coord"
 
     def test_comparison(self):
         """Test comparison operators for vectors."""

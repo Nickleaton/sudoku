@@ -32,7 +32,7 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(1, cell.column)
 
     def test_mul(self):
-        """Test multiplying a Coord instance by a scalar or another Coord."""
+        """Test multiplying start Coord instance by start scalar or another Coord."""
         cell = Coord(1, 2) * 2.0
         self.assertEqual(2, cell.row)
         self.assertEqual(4, cell.column)
@@ -44,13 +44,13 @@ class TestCoord(unittest.TestCase):
             _ = cell1 * "number"
 
     def test_truediv(self):
-        """Test dividing a Coord instance by a scalar."""
+        """Test dividing start Coord instance by start scalar."""
         cell = Coord(2, 4) / 2.0
         self.assertEqual(1, cell.row)
         self.assertEqual(2, cell.column)
 
     def test_neg(self):
-        """Test negating a Coord instance."""
+        """Test negating start Coord instance."""
         cell = -Coord(1, -2)
         self.assertEqual(-1, cell.row)
         self.assertEqual(2, cell.column)
@@ -76,19 +76,19 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(1.5, coord.column)
 
     def test_point(self):
-        """Test the point representation of a Coord instance."""
+        """Test the point representation of start Coord instance."""
         cell = Coord(1, 2)
-        self.assertEqual(100, cell.point.y)
-        self.assertEqual(200, cell.point.x)
+        self.assertEqual(100, cell.point.y_coord)
+        self.assertEqual(200, cell.point.x_coord)
 
     def test_center(self):
-        """Test the center point of a Coord instance."""
+        """Test the center point of start Coord instance."""
         cell = Coord(1, 1)
         self.assertEqual(1.5, cell.center.row)
         self.assertEqual(1.5, cell.center.column)
 
     def test_corners(self):
-        """Test the corner points of a Coord instance."""
+        """Test the corner points of start Coord instance."""
         cell = Coord(1, 1)
         self.assertEqual(1, cell.top_right.row)
         self.assertEqual(2, cell.top_right.column)
@@ -100,7 +100,7 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(1, cell.bottom_left.column)
 
     def test_repr(self):
-        """Test the string representation of a Coord instance."""
+        """Test the string representation of start Coord instance."""
         cell = Coord(1, 2)
         self.assertEqual("Coord(1, 2)", str(cell))
 
@@ -132,8 +132,8 @@ class TestCoord(unittest.TestCase):
         self.assertEqual(0, TestCoord.check_yaml([1, 1]))
         self.assertEqual(1, TestCoord.check_yaml([1, 2, 3]))
         self.assertEqual(1, TestCoord.check_yaml("xxx"))
-        self.assertEqual(1, TestCoord.check_yaml(['x', 1]))
-        self.assertEqual(1, TestCoord.check_yaml([1, 'y']))
+        self.assertEqual(1, TestCoord.check_yaml(['x_coord', 1]))
+        self.assertEqual(1, TestCoord.check_yaml([1, 'y_coord']))
 
 
 if __name__ == '__main__':

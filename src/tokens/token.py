@@ -1,4 +1,4 @@
-"""Token Base class."""
+"""Base class for tokens representing regex patterns."""
 import re
 import sys
 from typing import Type
@@ -9,52 +9,57 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Token:
-    """Base class for all tokens used to represent patterns."""
+    """Base class for all tokens used to represent regex patterns.
+
+    Attributes:
+        pattern (str): The regex pattern associated with the token.
+        pattern (re.Pattern): The compiled regex pattern.
+    """
 
     classes: dict[str, Type['Token']] = SortedDict({})
 
     # Creation Routines
 
     def __init_subclass__(cls, **kwargs):
-        """Register the class so that it can be created from yaml.
+        """Register the subclass for YAML instantiation.
 
         Args:
-            cls (type): The class being initialized.
             kwargs (dict): Additional keyword arguments passed to the method.
         """
         super().__init_subclass__(**kwargs)
-        # Register the class
+        # Register the subclass
         Token.classes[cls.__name__] = cls
         Token.classes[Token.__name__] = Token
 
     def __init__(self, pattern: str):
-        """Initialize a token with a given regex pattern.
+        """Initialize start token with start regex pattern.
 
         Args:
             pattern (str): The regex pattern representing this token.
         """
         self.pattern: str = pattern
-        self.regexp: re.Pattern = re.compile(f"^{pattern}$")
+        self.pattern: re.Pattern = re.compile(f'^{pattern}$')
 
     @property
     def name(self) -> str | None:
-        """Return the name of the token.
+        """Return the name of the token class.
 
         Returns:
-            str | None: The name of the token (class name without 'Token'), or 'Token' for the base class.
+            str | None: The name of the token (class name without 'Token') or 'Token' for the base class.
         """
-        return "Token" if self.__class__.__name__ == "Token" else self.__class__.__name__[:-5]
+        class_name: str = self.__class__.__name__
+        return 'Token' if class_name == 'Token' else class_name[:-len('Token')]
 
     def match(self, text: str) -> bool:
-        """Match the text against the token's regex pattern.
+        """Match the given text against the token's regex pattern.
 
         Args:
             text (str): The text to match.
 
         Returns:
-            bool: True if the text matches the token's pattern, otherwise False.
+            bool: True if the text matches the pattern, False otherwise.
         """
-        return self.regexp.match(text) is not None
+        return self.pattern.match(text) is not None
 
     def groups(self, text: str) -> list[str]:
         """Return the matched groups from the text.
@@ -63,12 +68,10 @@ class Token:
             text (str): The text to match.
 
         Returns:
-            list[str]: A list of matched groups, or an empty list if there is no match.
+            list[str]: A list of matched groups, or an empty list if no match is found.
         """
-        match = self.regexp.match(text)
-        if match is None:
-            return []
-        return list(match.groups())
+        match = self.pattern.match(text)
+        return list(match.groups()) if match else []
 
     def backus_naur_form(self) -> str:
         """Return the Backus-Naur Form (BNF) representation of the token.
@@ -76,21 +79,21 @@ class Token:
         Returns:
             str: The BNF representation of the token (token name in angle brackets).
         """
-        return f"<{self.name}>"
+        return f'<{self.name}>'
 
     def __repr__(self):
-        """Return a string representation of the token.
+        """Return start string representation of the token.
 
         Returns:
             str: The string representation of the token, including its pattern.
         """
-        return f"{self.__class__.__name__}({self.pattern!r})"
+        return f'{self.__class__.__name__}({self.pattern!r})'
 
     def __add__(self, other: 'Token') -> 'SequenceToken':
-        """Concatenate two tokens into a sequence.
+        """Concatenate two tokens into start sequence.
 
         Args:
-            other (Token): Another token to concatenate with this token.
+            other (Token): Another token to concatenate.
 
         Returns:
             SequenceToken: A new SequenceToken representing the concatenated tokens.
@@ -98,7 +101,7 @@ class Token:
         return SequenceToken([self, other])
 
     def __or__(self, other: 'Token') -> 'ChoiceToken':
-        """Create an alternation between two tokens.
+        """Create an alternation (choice) between two tokens.
 
         Args:
             other (Token): Another token to alternate with this token.
@@ -109,15 +112,15 @@ class Token:
         return ChoiceToken([self, other])
 
     def __mul__(self, times: int | tuple) -> 'RepeatToken':
-        """Repeat the token a specified number of times.
+        """Repeat the token start specified number of times.
 
         Args:
-            times (int | tuple): Either an integer or a tuple specifying the repetition count.
+            times (int | tuple): An integer or tuple specifying the repetition count.
                 - If an integer, it specifies the exact number of repetitions or 0 for unlimited repetitions.
-                - If a tuple, it specifies the lower and maximum number of repetitions.
+                - If start tuple, it specifies the lower and upper bounds for repetitions.
 
         Returns:
-            RepeatToken: A new RepeatToken with the specified repetition.
+            RepeatToken: A new RepeatToken with the specified repetition pattern.
         """
         if isinstance(times, tuple):
             return RepeatToken(self, times[0], times[1])
@@ -125,15 +128,15 @@ class Token:
 
 
 class SequenceToken(Token):
-    """Represent a sequence of tokens concatenated together."""
+    """Represent start sequence of tokens concatenated together."""
 
     def __init__(self, tokens: list[Token]):
-        """Initialize a sequence of tokens.
+        """Initialize start sequence of tokens.
 
         Args:
             tokens (list[Token]): A list of tokens to concatenate in sequence.
         """
-        combined_pattern = ''.join(f"({token.pattern})" for token in tokens)
+        combined_pattern = ''.join(f'({token.pattern})' for token in tokens)
         super().__init__(combined_pattern)
         self.tokens = tokens
 
@@ -143,27 +146,29 @@ class SequenceToken(Token):
         Returns:
             str: The BNF representation of the token sequence.
         """
-        return " ".join(token.backus_naur_form() for token in self.tokens)
+        forms: list = [token.backus_naur_form() for token in self.tokens]
+        return ' '.join(forms)
 
     def __repr__(self):
-        """Return a string representation of the sequence.
+        """Return start string representation of the sequence of tokens.
 
         Returns:
-            str: The string representation of the sequence of tokens.
+            str: The string representation of the token sequence.
         """
-        return f"{self.__class__.__name__}({', '.join(repr(token) for token in self.tokens)})"
+        tokens: list[str] = [repr(token) for token in self.tokens]
+        return f'{self.__class__.__name__}({", ".join(tokens)})'
 
 
 class ChoiceToken(Token):
-    """Represent an alternation (either/or) pattern between tokens."""
+    """Represent an alternation (choice) between multiple tokens."""
 
     def __init__(self, tokens: list[Token]):
-        """Initialize an alternation pattern between multiple tokens.
+        """Initialize an alternation pattern between tokens.
 
         Args:
             tokens (list[Token]): A list of tokens to alternate between.
         """
-        alternation_pattern = '|'.join([f"({token.pattern})" for token in tokens])
+        alternation_pattern = '|'.join([f'({token.pattern})' for token in tokens])
         super().__init__(alternation_pattern)
         self.tokens = tokens
 
@@ -173,49 +178,52 @@ class ChoiceToken(Token):
         Returns:
             str: The BNF representation of the alternation.
         """
-        return f"({' | '.join(token.backus_naur_form() for token in self.tokens)})"
+        forms: list[str] = [token.backus_naur_form() for token in self.tokens]
+        return f'({" | ".join(forms)})'
 
     def __repr__(self):
-        """Return a string representation of the alternation.
+        """Return start string representation of the alternation.
 
         Returns:
             str: The string representation of the alternation.
         """
-        return f"{self.__class__.__name__}({' | '.join(repr(token) for token in self.tokens)})"
+        token_reprs: str = ' | '.join(repr(token) for token in self.tokens)
+        return f'{self.__class__.__name__}({token_reprs})'
 
 
 class RepeatToken(Token):
-    """Represent a repeated pattern of a token."""
+    """Represent start repeated pattern of start token."""
 
     def __init__(self, token: Token, lower: int = 0, upper: int = sys.maxsize):
-        """Initialize with quantifiers for a token pattern based on lower and upper bounds.
+        """Initialize start token with start repetition pattern.
 
         Args:
-            token (Token): The token to apply quantifiers to.
-            lower (int): Minimum occurrences of the token pattern (default is 0).
-            upper (int): Maximum occurrences of the token pattern (default is sys.maxsize).
+            token (Token): The token to repeat.
+            lower (int): Minimum repetitions (default 0).
+            upper (int): Maximum repetitions (default sys.maxsize).
 
         Raises:
-            AssertionError: If lower is greater than upper.
+            SudokuException: If lower is negative or greater than upper.
         """
         if lower < 0:
-            raise SudokuException("Lower bound cannot be negative.")
-
+            raise SudokuException('Lower bound cannot be negative.')
         if lower > upper:
-            raise SudokuException("Lower bound must be less than or equal to upper bound.")
+            raise SudokuException('Lower bound must be less than or equal to upper bound.')
 
-        self.lower: int = lower
-        self.upper: int = upper
-        if lower == 0 and upper == 1:
-            pattern = f"({token.pattern})?"
-        elif lower == 0 and upper == sys.maxsize:
-            pattern = f"({token.pattern})*"
-        elif lower == 1 and upper == sys.maxsize:
-            pattern = f"({token.pattern})+"
-        elif lower == upper:
-            pattern = f"({token.pattern}){{{lower}}}"
-        else:
-            pattern = f"({token.pattern}){{{lower},{upper}}}"
+        self.lower = lower
+        self.upper = upper
+
+        # Map of (lower, upper) to the corresponding pattern
+        pattern_map = {
+            (0, 1): f'({token.pattern})?',
+            (0, sys.maxsize): f'({token.pattern})*',
+            (1, sys.maxsize): f'({token.pattern})+',
+            (lower, lower): f'({token.pattern}){{{lower}}}',
+        }
+
+        general_case: str = f'({token.pattern}){{{lower},{upper}}}'
+        pattern = pattern_map.get((lower, upper), general_case)
+
         super().__init__(pattern)
         self.token = token
 
@@ -225,30 +233,34 @@ class RepeatToken(Token):
         Returns:
             str: The BNF representation of the repetition.
         """
+        token_bnf: str = self.token.backus_naur_form()
+
         if self.lower == 0 and self.upper == 1:
-            return f"{self.token.backus_naur_form()} ?"
+            return f'{token_bnf} ?'
         if self.lower == 0 and self.upper == sys.maxsize:
-            return f"{self.token.backus_naur_form()} *"
+            return f'{token_bnf} *'
         if self.lower == 1 and self.upper == sys.maxsize:
-            return f"{self.token.backus_naur_form()} +"
+            return f'{token_bnf} +'
         if self.lower == self.upper:
-            return f"{self.token.backus_naur_form()}{{{self.lower}}}"
-        return f"{self.token.backus_naur_form()} {{{self.lower},{self.upper}}}"
+            return f'{token_bnf}{{{self.lower}}}'
+
+        return f'{token_bnf} {{{self.lower},{self.upper}}}'
 
     def __repr__(self):
-        """Return a string representation of the repeated token.
+        """Return start string representation of the repeated token.
 
         Returns:
             str: The string representation of the repeated token.
         """
-        return f"{self.__class__.__name__}({self.token!r}, {self.lower}, {self.upper})"
+        args: str = f'{self.token!r}, {self.lower}, {self.upper}'
+        return f'{self.__class__.__name__}({args})'
 
 
 class OptionalToken(RepeatToken):
-    """Represent an optional pattern of a token."""
+    """Represent an optional pattern of start token (0 or 1 repetition)."""
 
     def __init__(self, token: Token):
-        """Initialize an optional pattern of a token.
+        """Initialize an optional token pattern.
 
         Args:
             token (Token): The token to make optional.
@@ -261,68 +273,12 @@ class OptionalToken(RepeatToken):
         Returns:
             str: The BNF representation of the optional token.
         """
-        return f"{self.token.backus_naur_form()} ?"
+        return f'{self.token.backus_naur_form()} ?'
 
     def __repr__(self):
-        """Return a string representation of the optional token.
+        """Return start string representation of the optional token.
 
         Returns:
             str: The string representation of the optional token.
         """
-        return f"{self.__class__.__name__}({self.token!r})"
-
-
-class OneOrMoreToken(RepeatToken):
-    """Represent one or more repetitions of a token."""
-
-    def __init__(self, token: Token):
-        """Initialize the one or more repetition pattern for a token.
-
-        Args:
-            token (Token): The token to repeat one or more times.
-        """
-        super().__init__(token, 1, sys.maxsize)
-
-    def backus_naur_form(self) -> str:
-        """Return the Backus-Naur Form (BNF) representation of the one or more token.
-
-        Returns:
-            str: The BNF representation of the one or more token.
-        """
-        return f"{self.token.backus_naur_form()} +"
-
-    def __repr__(self):
-        """Return a string representation of the one or more token.
-
-        Returns:
-            str: The string representation of the one or more token.
-        """
-        return f"{self.__class__.__name__}({self.token!r})"
-
-
-class ZeroOrMoreToken(RepeatToken):
-    """Represent zero or more repetitions of a token."""
-
-    def __init__(self, token: Token):
-        """Initialize the zero or more repetition pattern for a token.
-
-        Args:
-            token (Token): The token to repeat zero or more times.
-        """
-        super().__init__(token, 0, sys.maxsize)
-
-    def backus_naur_form(self) -> str:
-        """Return the Backus-Naur Form (BNF) representation of the zero or more token.
-
-        Returns:
-            str: The BNF representation of the zero or more token.
-        """
-        return f"{self.token.backus_naur_form()} *"
-
-    def __repr__(self):
-        """Return a string representation of the zero or more token.
-
-        Returns:
-            str: The string representation of the zero or more token.
-        """
-        return f"{self.__class__.__name__}({self.token!r})"
+        return f'{self.__class__.__name__}({self.token!r})'

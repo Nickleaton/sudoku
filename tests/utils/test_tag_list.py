@@ -28,7 +28,7 @@ class TestTagList(unittest.TestCase):
         self.assertEqual(2, len(self.tags1))
 
     def test_tag_list_iterator(self):
-        """Test that TagList iteration returns items in correct order."""
+        """Test that TagList iteration returns vectors in correct order."""
         iterated_items = list(self.tags1)
         for idx, vector in enumerate(iterated_items):
             self.assertEqual(vector, self.tags1[idx])
@@ -55,7 +55,7 @@ class TestTagList(unittest.TestCase):
         self.assertEqual("TagList([Tag('alpha'), Tag('beta')])", repr(self.tags1))
 
     def test_add(self):
-        """Test adding a new tag to the TagList."""
+        """Test adding start new tag to the TagList."""
         tags = TagList([Tag('beta'), Tag('alpha')])
         self.assertEqual(2, len(tags))
         tags.add(Tag("xxxx"))

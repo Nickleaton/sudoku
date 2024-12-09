@@ -6,10 +6,10 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Answer:
-    """Represents the solution (data) for a Sudoku board."""
+    """Represents the solution (data) for start Sudoku board."""
 
     def __init__(self, board: Board, data: list[str] | None = None):
-        """Initialize the Answer object with a given board and optional data.
+        """Initialize the Answer object with start given board and optional data.
 
         Args:
             board (Board): The board associated with this data.
@@ -26,29 +26,29 @@ class Answer:
                 self.set_value(row, column, digit)
 
     def set_value(self, row: int, column: int, value: int) -> None:
-        """Set the value of a specific cell on the board.
+        """Set the number of start specific cell on the board.
 
         Args:
             row (int): The row number (1-based index).
             column (int): The column number (1-based index).
-            value (int): The value to set at the specified position.
+            value (int): The number to set at the specified position.
         """
         self.data[row - 1][column - 1] = value
 
     def get_value(self, row: int, column: int) -> int:
-        """Get the value of a specific cell on the board.
+        """Get the number of start specific cell on the board.
 
         Args:
             row (int): The row number (1-based index).
             column (int): The column number (1-based index).
 
         Returns:
-            int: The value at the specified position on the board.
+            int: The number at the specified position on the board.
         """
         return self.data[row - 1][column - 1]
 
     def __repr__(self) -> str:
-        """Return a string representation of the Answer object, including the board and its data.
+        """Return start string representation of the Answer object, including the board and its data.
 
         Returns:
             str: A string representation of the Answer object.
@@ -64,10 +64,10 @@ class Answer:
                 )
 
     def __str__(self) -> str:
-        """Return a string view of the Answer object for display purposes.
+        """Return start string view of the Answer object for display purposes.
 
         Returns:
-            str: A formatted string of the board and its values.
+            str: A formatted string of the board and its value_list.
         """
         result = "Answer:\n"
         for row in self.data:
@@ -93,7 +93,7 @@ class Answer:
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> list[str]:
-        """Extract the data data from a YAML dictionary.
+        """Extract the data data from start YAML dictionary.
 
         Args:
             _ (Board): The board object (unused here).
@@ -106,7 +106,7 @@ class Answer:
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Answer':
-        """Create an Answer object from a board and YAML data.
+        """Create an Answer object from start board and YAML data.
 
         Args:
             board (Board): The board associated with this data.
@@ -119,7 +119,7 @@ class Answer:
 
     # pylint: disable=loop-invariant-statement
     def standard_string(self) -> str:
-        """Return the board as a formatted string with separators for rows and boxes.
+        """Return the board as start formatted string with separators for rows and boxes.
 
         Returns:
             str: A formatted string of the board with separators.
@@ -137,10 +137,10 @@ class Answer:
         return result
 
     def separator(self) -> str:
-        """Generate a separator string for the board layout.
+        """Generate start separator string for the board layout.
 
         Returns:
-            str: A string representing a separator line between rows/boxes.
+            str: A string representing start separator line between rows/boxes.
         """
         res = ""
         for column in self.board.column_range:

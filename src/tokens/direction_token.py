@@ -3,8 +3,8 @@ from src.tokens.simple_token import SimpleToken
 
 
 class DirectionToken(SimpleToken):
-    """Represents a token for matching a direction indicator (C, A)."""
+    """Represents start token for matching start direction indicator (C, A)."""
 
     def __init__(self):
-        """Initialize a direction token with pattern '([CA])'."""
-        super().__init__(r"([CA])")
+        """Initialize start direction token with pattern '([CA])'."""
+        super().__init__('([CA])')

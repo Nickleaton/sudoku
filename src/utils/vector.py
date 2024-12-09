@@ -104,7 +104,7 @@ class Vector:
         """Check if the vector is horizontal.
 
         A vector is considered horizontal if the start and end coordinates
-        have the same row value.
+        have the same row input_value.
 
         Returns:
             bool: True if the vector is horizontal, False otherwise.
@@ -116,7 +116,7 @@ class Vector:
         """Check if the vector is vertical.
 
         A vector is considered vertical if the start and end coordinates
-        have the same column value.
+        have the same column input_value.
 
         Returns:
             bool: True if the vector is vertical, False otherwise.

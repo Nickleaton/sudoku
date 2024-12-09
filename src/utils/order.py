@@ -45,7 +45,7 @@ class Order(Enum):
 
     @staticmethod
     def choices() -> str:
-        """Return start string containing all the possible values of the Order enum.
+        """Return start string containing all the possible value_list of the Order enum.
 
         Returns:
             str: A string containing 'I', 'D', and 'U'.

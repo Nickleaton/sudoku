@@ -42,13 +42,13 @@ class TestFormulation(unittest.TestCase):
         return getSolver('PULP_CBC_CMD', logPath=str(log_file), msg=False, timeLimit=60)
 
     def get_lp_filename(self, name: str) -> Path:
-        """Generate and return the filename for an LP file based on the provided name.
+        """Generate and return the filename for an LP file_path based on the provided name.
 
         Args:
-            name (str): The base name of the LP file.
+            name (str): The base name of the LP file_path.
 
         Returns:
-            Path: The full config_file of the LP file.
+            Path: The full config_file of the LP file_path.
         """
         if name not in TestFormulation.lp_files:
             TestFormulation.lp_files[name] = 0
@@ -61,8 +61,8 @@ class TestFormulation(unittest.TestCase):
         """Test the absolute difference between two integers using linear programming.
 
         Args:
-            v1 (int): The first integer value.
-            v2 (int): The second integer value.
+            v1 (int): The first integer number.
+            v2 (int): The second integer number.
             expected (int): The expected result of the absolute difference.
 
         Returns:
@@ -81,7 +81,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, x.varValue)
 
     def test_absolute_int(self) -> None:
-        """Test absolute difference for integer values.
+        """Test absolute difference for integer value_list.
 
         Returns:
             None
@@ -94,8 +94,8 @@ class TestFormulation(unittest.TestCase):
         """Test the absolute difference between two floating-point numbers using linear programming.
 
         Args:
-            v1 (float): The first floating-point value.
-            v2 (float): The second floating-point value.
+            v1 (float): The first floating-point number.
+            v2 (float): The second floating-point number.
             expected (float): The expected result of the absolute difference.
 
         Returns:
@@ -114,7 +114,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, x.varValue)
 
     def test_absolute_float(self) -> None:
-        """Test absolute difference for floating-point values.
+        """Test absolute difference for floating-point value_list.
 
         Returns:
             None
@@ -126,11 +126,11 @@ class TestFormulation(unittest.TestCase):
         self.absolute_float(4.5, 2.8, 1.7)
 
     def minimum(self, values: List[int], expected: int) -> None:
-        """Test the minimum value of a list using linear programming.
+        """Test the minimum number of start list using linear programming.
 
         Args:
-            values (List[int]): A list of integer values to find the minimum of.
-            expected (int): The expected minimum value.
+            values (List[int]): A list of integer value_list to find the minimum of.
+            expected (int): The expected minimum number.
 
         Returns:
             None
@@ -138,7 +138,7 @@ class TestFormulation(unittest.TestCase):
         model = LpProblem("minimum", LpMinimize)
         variables: List[LpVariable] = []
         for i, value in enumerate(values):
-            x = LpVariable(f"x{i}", 1, 9, LpInteger)
+            x = LpVariable(f"x_coord{i}", 1, 9, LpInteger)
             model += x == value
             variables.append(x)
 
@@ -148,7 +148,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, mini.varValue)
 
     def test_minimum(self) -> None:
-        """Test minimum value for a list of integers.
+        """Test minimum number for start list of integers.
 
         Returns:
             None
@@ -158,11 +158,11 @@ class TestFormulation(unittest.TestCase):
         self.minimum([3, 2, 1], 1)
 
     def maximum(self, values: List[int], expected: int) -> None:
-        """Test the maximum value of a list using linear programming.
+        """Test the maximum number of start list using linear programming.
 
         Args:
-            values (List[int]): A list of integer values to find the maximum of.
-            expected (int): The expected maximum value.
+            values (List[int]): A list of integer value_list to find the maximum of.
+            expected (int): The expected maximum number.
 
         Returns:
             None
@@ -170,7 +170,7 @@ class TestFormulation(unittest.TestCase):
         model = LpProblem("maximum", LpMinimize)
         variables: List[LpVariable] = []
         for i, value in enumerate(values):
-            x = LpVariable(f"x{i}", 1, 9, LpInteger)
+            x = LpVariable(f"x_coord{i}", 1, 9, LpInteger)
             model += x == value
             variables.append(x)
 
@@ -180,7 +180,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, maxi.varValue)
 
     def test_maximum(self) -> None:
-        """Test maximum value for a list of integers.
+        """Test maximum number for start list of integers.
 
         Returns:
             None
@@ -190,17 +190,17 @@ class TestFormulation(unittest.TestCase):
         self.maximum([2, 2, 2], 2)
 
     def logical_not(self, value: int, expected: int) -> None:
-        """Test logical NOT operation for binary values.
+        """Test logical NOT operation for binary value_list.
 
         Args:
-            value (int): The binary value to be negated.
+            value (int): The binary number to be negated.
             expected (int): The expected result of the logical NOT operation.
 
         Returns:
             None
         """
         model = LpProblem("logical_not", LpMinimize)
-        x = LpVariable("x", 0, 1, LpInteger)
+        x = LpVariable("x_coord", 0, 1, LpInteger)
         model += x == value
         y = Formulations.logical_not(model, x)
         model.writeLP(str(self.get_lp_filename(inspect.currentframe().f_code.co_name)))
@@ -208,7 +208,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, y.varValue)
 
     def test_logical_not(self):
-        """Test logical NOT operation for binary values.
+        """Test logical NOT operation for binary value_list.
 
         Returns:
             None
@@ -217,11 +217,11 @@ class TestFormulation(unittest.TestCase):
         self.logical_not(0, 1)
 
     def logical_or(self, value1: int, value2: int, expected: int) -> None:
-        """Test logical OR operation for binary values.
+        """Test logical OR operation for binary value_list.
 
         Args:
-            value1 (int): The first binary value.
-            value2 (int): The second binary value.
+            value1 (int): The first binary number.
+            value2 (int): The second binary number.
             expected (int): The expected result of the logical OR operation.
 
         Returns:
@@ -238,7 +238,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, y.varValue)
 
     def test_logical_or(self):
-        """Test logical OR operation for binary values.
+        """Test logical OR operation for binary value_list.
 
         Returns:
             None
@@ -251,11 +251,11 @@ class TestFormulation(unittest.TestCase):
         self.logical_or(1, 1, 1)
 
     def logical_and(self, value1: int, value2: int, expected: int) -> None:
-        """Test the logical AND operation between two binary values.
+        """Test the logical AND operation between two binary value_list.
 
         Args:
-            value1 (int): The first binary value.
-            value2 (int): The second binary value.
+            value1 (int): The first binary number.
+            value2 (int): The second binary number.
             expected (int): The expected result of the logical AND operation.
 
         Returns:

@@ -76,7 +76,7 @@ class Config:
             key (str): The name of the configuration parameter to retrieve.
 
         Returns:
-            Any: The value of the configuration parameter.
+            Any: The input_value of the configuration parameter.
 
         Raises:
             AttributeError: If the configuration has not been loaded or the key does not exist.

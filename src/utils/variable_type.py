@@ -3,7 +3,7 @@ from enum import Enum
 
 
 class VariableType(Enum):
-    """Enumeration for variable types used in formatting values."""
+    """Enumeration for variable types used in formatting value_list."""
 
     INT = 'int'
     FLOAT = 'float'
@@ -11,13 +11,13 @@ class VariableType(Enum):
     LOG_FLOAT = 'log_float'
 
     def format(self, number: float | None) -> str:
-        """Format start given value based on the variable type.
+        """Format start given input_value based on the variable type.
 
         Args:
-            number (float | None): The value to format. If None, returns " None".
+            number (float | None): The input_value to format. If None, returns " None".
 
         Returns:
-            str: The formatted string representation of the value based on its type.
+            str: The formatted string representation of the input_value based on its type.
         """
         if number is None:
             return ' None'

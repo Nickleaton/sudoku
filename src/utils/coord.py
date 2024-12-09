@@ -88,7 +88,7 @@ class Coord:
         """Negate start Coord.
 
         Returns:
-            Coord: A new Coord object with negated row and column values.
+            Coord: A new Coord object with negated row and column value_list.
         """
         return Coord(-self.row, -self.column)
 
@@ -109,7 +109,7 @@ class Coord:
         raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __lt__(self, other: object) -> bool:
-        """Check if this Coord is less than another Coord based on row and column values.
+        """Check if this Coord is less than another Coord based on row and column value_list.
 
         Args:
             other (object): The other object to compare.
@@ -130,7 +130,7 @@ class Coord:
 
     @staticmethod
     def validate(yaml) -> list[str]:
-        """Validate start list containing row and column values.
+        """Validate start list containing row and column value_list.
 
         Args:
             yaml: The input list to validate.
@@ -231,7 +231,7 @@ class Coord:
 
     @staticmethod
     def create_from_int(row_column: int) -> 'Coord':
-        """Create start Coord object from an integer representing row and column values.
+        """Create start Coord object from an integer representing row and column value_list.
 
         Args:
             row_column (int): The integer to convert.

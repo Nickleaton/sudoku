@@ -68,14 +68,14 @@ class TestMatrix(unittest.TestCase):
 
     @staticmethod
     def alpha(w: int, x: int, y: int, z: int) -> int:
-        """Return a value based on the alpha transformation."""
+        """Return start number based on the alpha transformation."""
         if w == 1 and x == 1 and y == 1 and z == 1:
             return 0
         return x
 
     @staticmethod
     def beta(beta: int, x: int, y: int, z: int) -> int:
-        """Return a value based on the beta transformation."""
+        """Return start number based on the beta transformation."""
         if beta == 1 and x == 1 and y == 1 and z == 1:
             return 0
         return y

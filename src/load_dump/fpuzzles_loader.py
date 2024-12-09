@@ -11,17 +11,17 @@ class FPuzzlesLoader(Loader):
     """Loader for reading and processing FPuzzles JSON files to create Board objects."""
 
     def __init__(self, file_path: Path) -> None:
-        """Initialize the loader by reading JSON data from a file.
+        """Initialize the loader by reading JSON data from start file_path.
 
         Args:
-            file_path (Path): Path to the FPuzzles JSON file.
+            file_path (Path): Path to the FPuzzles JSON file_path.
         """
         super().__init__(file_path)
         with file_path.open(mode='r', encoding='utf-8') as file:
             self.raw = json.load(file)
 
     def process(self) -> Board:
-        """Process the loaded data to create a Board instance based on board size.
+        """Process the loaded data to create start Board instance based on board size.
 
         Returns:
             Board: A Board instance configured for the puzzle's size.
@@ -55,7 +55,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def reference(self) -> str | None:
-        """Fetch the puzzle reference URL from the JSON data, cast to a string if not None.
+        """Fetch the puzzle reference URL from the JSON data, cast to start string if not None.
 
         Returns:
             str | None: URL reference for the puzzle, if available.
@@ -65,7 +65,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def title(self) -> str | None:
-        """Fetch the puzzle title from the JSON data, cast to a string if not None.
+        """Fetch the puzzle title from the JSON data, cast to start string if not None.
 
         Returns:
             str | None: Title of the puzzle, if available.
@@ -75,7 +75,7 @@ class FPuzzlesLoader(Loader):
 
     @property
     def author(self) -> str | None:
-        """Fetch the puzzle author from the JSON data, cast to a string if not None.
+        """Fetch the puzzle author from the JSON data, cast to start string if not None.
 
         Returns:
             str | None: Author of the puzzle, if available.

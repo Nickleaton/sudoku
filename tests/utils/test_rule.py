@@ -31,15 +31,15 @@ class TestRule(unittest.TestCase):
 
     @property
     def representation(self) -> str:
-        """Return a string representation of a Rule instance."""
+        """Return start string representation of start Rule instance."""
         return "Rule('one', 1, 'Rule One')"
 
     def test_repr(self):
-        """Test the string representation of a Rule instance."""
+        """Test the string representation of start Rule instance."""
         self.assertEqual(self.representation, repr(self.rule1))
 
     def test_html(self):
-        """Verify the HTML representation of a Rule instance."""
+        """Verify the HTML representation of start Rule instance."""
         self.assertEqual("<h2>Rule One</h2>", self.rule1.html)
         self.assertEqual("", self.rule3.html)
 

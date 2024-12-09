@@ -24,7 +24,7 @@ class TestSide(unittest.TestCase):
             Side.create("X")
 
     def test_valid(self):
-        """Test if valid side values return True."""
+        """Test if valid side value_list return True."""
         self.assertTrue(Side.valid('T'))
         self.assertTrue(Side.valid('R'))
         self.assertTrue(Side.valid('B'))
@@ -38,12 +38,12 @@ class TestSide(unittest.TestCase):
         self.assertFalse(Side.LEFT.vertical)
 
     def test_values(self):
-        """Check that all possible Side values are returned."""
-        self.assertEqual("TRBL", Side.values())
+        """Check that all possible Side value_list are returned."""
+        self.assertEqual("TRBL", Side.choices())
 
 
     def test_direction(self):
-        """Test direction calculation based on Cyclic values."""
+        """Test direction calculation based on Cyclic value_list."""
         self.assertEqual(Direction.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
         self.assertEqual(Direction.DOWN_LEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))
         self.assertEqual(Direction.UP_LEFT, Side.BOTTOM.direction(Cyclic.CLOCKWISE))

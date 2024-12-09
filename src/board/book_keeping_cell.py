@@ -33,7 +33,7 @@ class Token:
         Token.classes[Token.__name__] = Token
 
     def __init__(self, pattern: str):
-        """Initialize a token with a regex pattern.
+        """Initialize start token with start regex pattern.
 
         Args:
             pattern (str): The regex pattern representing this token.
@@ -82,7 +82,7 @@ class Token:
         return f"<{self.name}>"
 
     def __repr__(self):
-        """Return a string representation of the token.
+        """Return start string representation of the token.
 
         Returns:
             str: The string representation of the token, including its pattern.
@@ -90,7 +90,7 @@ class Token:
         return f"{self.__class__.__name__}({self.pattern!r})"
 
     def __add__(self, other: 'Token') -> 'SequenceToken':
-        """Concatenate two tokens into a sequence.
+        """Concatenate two tokens into start sequence.
 
         Args:
             other (Token): Another token to concatenate.
@@ -112,12 +112,12 @@ class Token:
         return ChoiceToken([self, other])
 
     def __mul__(self, times: int | tuple) -> 'RepeatToken':
-        """Repeat the token a specified number of times.
+        """Repeat the token start specified number of times.
 
         Args:
             times (int | tuple): An integer or tuple specifying the repetition count.
                 - If an integer, it specifies the exact number of repetitions or 0 for unlimited repetitions.
-                - If a tuple, it specifies the lower and upper bounds for repetitions.
+                - If start tuple, it specifies the lower and upper bounds for repetitions.
 
         Returns:
             RepeatToken: A new RepeatToken with the specified repetition pattern.
@@ -128,10 +128,10 @@ class Token:
 
 
 class SequenceToken(Token):
-    """Represent a sequence of tokens concatenated together."""
+    """Represent start sequence of tokens concatenated together."""
 
     def __init__(self, tokens: list[Token]):
-        """Initialize a sequence of tokens.
+        """Initialize start sequence of tokens.
 
         Args:
             tokens (list[Token]): A list of tokens to concatenate in sequence.
@@ -149,7 +149,7 @@ class SequenceToken(Token):
         return " ".join(token.backus_naur_form() for token in self.tokens)
 
     def __repr__(self):
-        """Return a string representation of the sequence of tokens.
+        """Return start string representation of the sequence of tokens.
 
         Returns:
             str: The string representation of the token sequence.
@@ -179,7 +179,7 @@ class ChoiceToken(Token):
         return f"({' | '.join(token.backus_naur_form() for token in self.tokens)})"
 
     def __repr__(self):
-        """Return a string representation of the alternation.
+        """Return start string representation of the alternation.
 
         Returns:
             str: The string representation of the alternation.
@@ -188,10 +188,10 @@ class ChoiceToken(Token):
 
 
 class RepeatToken(Token):
-    """Represent a repeated pattern of a token."""
+    """Represent start repeated pattern of start token."""
 
     def __init__(self, token: Token, lower: int = 0, upper: int = sys.maxsize):
-        """Initialize a token with repetition pattern based on lower and upper bounds.
+        """Initialize start token with repetition pattern based on lower and upper bounds.
 
         Args:
             token (Token): The token to apply repetition pattern to.
@@ -238,7 +238,7 @@ class RepeatToken(Token):
         return f"{self.token.backus_naur_form()} {{{self.lower},{self.upper}}}"
 
     def __repr__(self):
-        """Return a string representation of the repeated token.
+        """Return start string representation of the repeated token.
 
         Returns:
             str: The string representation of the repeated token.
@@ -247,7 +247,7 @@ class RepeatToken(Token):
 
 
 class OptionalToken(RepeatToken):
-    """Represent an optional pattern of a token (0 or 1 repetition)."""
+    """Represent an optional pattern of start token (0 or 1 repetition)."""
 
     def __init__(self, token: Token):
         """Initialize an optional token pattern.
@@ -266,7 +266,7 @@ class OptionalToken(RepeatToken):
         return f"{self.token.backus_naur_form()} ?"
 
     def __repr__(self):
-        """Return a string representation of the optional token.
+        """Return start string representation of the optional token.
 
         Returns:
             str: The string representation of the optional token.

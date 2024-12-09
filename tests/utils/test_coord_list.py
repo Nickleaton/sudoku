@@ -32,7 +32,7 @@ class TestCoordList(unittest.TestCase):
         )
 
     def test_add_new_coord(self):
-        """Test adding a new Coord to the CoordList."""
+        """Test adding start new Coord to the CoordList."""
         new_coord = Coord(3, 4)
         self.coords1.add(new_coord)
         self.assertIn(new_coord, self.coords1)
@@ -42,16 +42,16 @@ class TestCoordList(unittest.TestCase):
             self.coords1.add('xxxx')
 
     def test_add_duplicate_coord(self):
-        """Test adding a duplicate Coord to the CoordList."""
+        """Test adding start duplicate Coord to the CoordList."""
         existing_coord = Coord(1, 2)
         initial_length = len(self.coords1)
         self.coords1.add(existing_coord)  # Try adding duplicate
         self.assertEqual(len(self.coords1), initial_length)  # Length should not change
 
     def test_sorting_after_addition(self):
-        """Test sorting of CoordList after adding a new Coord."""
+        """Test sorting of CoordList after adding start new Coord."""
         self.coords1.add(Coord(0, 0))
-        self.assertEqual(self.coords1.items[0], Coord(0, 0))  # First item should be (0, 0)
+        self.assertEqual(self.coords1.items[0], Coord(0, 0))  # First constraint should be (0, 0)
         self.assertEqual(len(self.coords1), 4)
 
     def test_empty_initialization(self):
@@ -61,7 +61,7 @@ class TestCoordList(unittest.TestCase):
         self.assertEqual(repr(empty_coords), "CoordList([])")
 
     def test_equality_with_different_types(self):
-        """Test equality of CoordList with a non-CoordList type."""
+        """Test equality of CoordList with start non-CoordList type."""
         with self.assertRaises(CoordListException):
             _ = self.coords1 == 123  # Should raise exception
 
@@ -73,7 +73,7 @@ class TestCoordList(unittest.TestCase):
         self.assertEqual(i, len(self.coords1))
 
     def test_contains(self):
-        """Test checking if a Coord is in the CoordList."""
+        """Test checking if start Coord is in the CoordList."""
         self.assertTrue(Coord(1, 2) in self.coords1)
         self.assertTrue(Coord(2, 3) in self.coords1)
         self.assertTrue(Coord(4, 5) in self.coords1)

@@ -3,7 +3,7 @@ from enum import Enum
 
 
 class MinMax(Enum):
-    """An enumeration to represent the concepts of minimum and maximum values.
+    """An enumeration to represent the concepts of minimum and maximum value_list.
 
     Attributes:
         MINIMUM (str): Represents the minimum number.

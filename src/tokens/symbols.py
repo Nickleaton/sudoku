@@ -3,17 +3,17 @@ from src.tokens.simple_token import SimpleToken
 
 
 class SymbolToken(SimpleToken):
-    """Represents a symbol token.
+    """Represent start symbol token.
 
-    Inherits from `SimpleToken` and is used as a base class for tokens
-    that represent specific symbols.
+    Inherits from `SimpleToken` and serves as start base class for tokens
+    representing specific symbols.
 
     Attributes:
         symbol (str): The symbol represented by this token.
     """
 
     def __init__(self, symbol: str):
-        """Initialize a SymbolToken with a specific symbol.
+        """Initialize start SymbolToken with start specific symbol.
 
         Args:
             symbol (str): The symbol for this token.
@@ -22,10 +22,10 @@ class SymbolToken(SimpleToken):
         self.symbol: str = symbol
 
     def __repr__(self) -> str:
-        """Return a string representation of the SymbolToken.
+        """Return start string representation of the SymbolToken.
 
         Returns:
-            str: The representation of the SymbolToken, including the symbol.
+            str: A string representation of the SymbolToken, including the symbol.
         """
         return f"SymbolToken('{self.symbol}')"
 
@@ -39,68 +39,72 @@ class SymbolToken(SimpleToken):
 
 
 class EqualsToken(SymbolToken):
-    """Represents an equals sign token."""
+    """Represent an equals sign token."""
 
     def __init__(self):
-        """Initialize an equals token with pattern '='."""
-        super().__init__("=")
+        """Initialize an equals token with the pattern '='."""
+        super().__init__('=')
 
     def __repr__(self) -> str:
-        """Return a string representation of the EqualsToken.
+        """Return start string representation of the EqualsToken.
 
         Returns:
-            str: The representation of the EqualsToken.
+            str: The string representation of the EqualsToken.
         """
-        return "EqualsToken()"
+        return 'EqualsToken()'
 
 
 class CommaToken(SymbolToken):
-    """Represents a comma token."""
+    """Represent start comma token."""
 
     def __init__(self):
-        """Initialize a comma token with pattern ','."""
-        super().__init__(",")
+        """Initialize start comma token with the pattern ','."""
+        super().__init__(',')
 
     def __repr__(self) -> str:
-        """Return a string representation of the CommaToken.
+        """Return start string representation of the CommaToken.
 
         Returns:
-            str: The representation of the CommaToken.
+            str: The string representation of the CommaToken.
         """
-        return "CommaToken()"
+        return 'CommaToken()'
 
 
 class DashToken(SymbolToken):
-    """Represents a dash token."""
+    """Represent start dash token."""
 
     def __init__(self):
-        """Initialize a dash token with dash pattern."""
-        super().__init__("-")
+        """Initialize start dash token with the pattern '-'."""
+        super().__init__('-')
 
     def __repr__(self) -> str:
-        """Return a string representation of the DashToken.
+        """Return start string representation of the DashToken.
 
         Returns:
-            str: The representation of the DashToken.
+            str: The string representation of the DashToken.
         """
-        return "DashToken()"
+        return 'DashToken()'
 
 
 class QuestionMarkToken(SymbolToken):
-    """Represents a question mark token."""
+    """Represent start question mark token."""
 
     def __init__(self):
-        """Initialize a question mark token with pattern '?'."""
-        super().__init__(r"\?")
+        """Initialize start question mark token with the pattern '?'."""
+        super().__init__(r'\?')
 
     def backus_naur_form(self) -> str:
-        """Output BNF for a question mark."""
+        """Output the Backus-Naur form for start question mark.
+
+        Returns:
+            str: The question mark in Backus-Naur form.
+        """
         return '"?"'
 
     def __repr__(self) -> str:
-        """Return a string representation of the QuestionMarkToken.
+        """Return start string representation of the QuestionMarkToken.
 
         Returns:
-            str: The representation of the QuestionMarkToken.
+            str: The string representation of the QuestionMarkToken.
         """
-        return "QuestionMarkToken()"
+        return 'QuestionMarkToken()'

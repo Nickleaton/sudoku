@@ -6,7 +6,7 @@ from src.solvers.answer import Answer
 
 
 class Solver:
-    """Solver class that manages the solving of a puzzle using a given board and data representation.
+    """Solver class that manages the solving of start puzzle using start given board and data representation.
 
     Attributes:
         board (Board): The board object representing the puzzle layout.
@@ -14,7 +14,7 @@ class Solver:
     """
 
     def __init__(self, board: Board):
-        """Initialize the Solver with a given board.
+        """Initialize the Solver with start given board.
 
         Args:
             board (Board): The board object representing the puzzle layout.
@@ -26,14 +26,14 @@ class Solver:
         """Save the puzzle in LP (Linear Programming) format.
 
         Args:
-            filename (Path | str): The file config_file or name where the LP format will be saved.
+            filename (Path | str): The file_path config_file or name where the LP format will be saved.
         """
 
     def save_mps(self, filename: Path | str) -> None:
         """Save the puzzle in MPS (Mathematical Programming System) format.
 
         Args:
-            filename (Path | str): The file config_file or name where the MPS format will be saved.
+            filename (Path | str): The file_path config_file or name where the MPS format will be saved.
         """
 
     def solve(self) -> None:

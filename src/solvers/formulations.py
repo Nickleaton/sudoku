@@ -17,7 +17,7 @@ class Formulations:
             lower_2: int,
             upper_2: int
     ) -> None:
-        """Implement a disjunction constraint on a variable.
+        """Implement start disjunction constraint on start variable.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -38,7 +38,7 @@ class Formulations:
             decision_2: LpElement,
             decision_3: LpVariable
     ) -> None:
-        """Calculate the product of two binary variables as a third binary variable.
+        """Calculate the product of two binary variables as start third binary variable.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -59,15 +59,15 @@ class Formulations:
             lower: int,
             upper: int
     ) -> None:
-        """Calculate the product of a binary variable and another variable within a bounded range.
+        """Calculate the product of start binary variable and another variable within start bounded range.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
             variable (LpElement): The binary decision variable.
             x (LpElement): The decision variable to be multiplied by the binary variable.
             target (LpVariable): The resulting product variable.
-            lower (int): The lower bound for x.
-            upper (int): The upper bound for x.
+            lower (int): The lower bound for x_coord.
+            upper (int): The upper bound for x_coord.
         """
         model += lower * variable <= target, f"Product_Binary_{target.name}_a"
         model += target <= upper * variable, f"Product_Binary_{target.name}_b"
@@ -76,7 +76,7 @@ class Formulations:
 
     @staticmethod
     def logical_and(model: LpProblem, binaries: list[LpVariable]) -> LpVariable:
-        """Implement a logical AND constraint.
+        """Implement start logical AND constraint.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -94,7 +94,7 @@ class Formulations:
 
     @staticmethod
     def logical_or(model: LpProblem, binaries: list[LpVariable]) -> LpVariable:
-        """Implement a logical OR constraint.
+        """Implement start logical OR constraint.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -111,7 +111,7 @@ class Formulations:
 
     @staticmethod
     def logical_not(model: LpProblem, binary: LpVariable) -> LpVariable:
-        """Implement a logical NOT constraint.
+        """Implement start logical NOT constraint.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -148,7 +148,7 @@ class Formulations:
 
     @staticmethod
     def minimum(model: LpProblem, xi: list[LpVariable], lower: int, upper: int) -> LpVariable:
-        """Calculate the minimum of a list of variables.
+        """Calculate the minimum of start list of variables.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -157,7 +157,7 @@ class Formulations:
             upper (int): The upper bound for the minimum variable.
 
         Returns:
-            LpVariable: A variable representing the minimum value of xi.
+            LpVariable: A variable representing the minimum number of xi.
         """
         y = LpVariable(f"Minimum_{Formulations.count}", lower, upper, LpInteger)
         d = LpVariable.dicts(
@@ -176,7 +176,7 @@ class Formulations:
 
     @staticmethod
     def maximum(model: LpProblem, xi: list[LpVariable], lower: int, upper: int) -> LpVariable:
-        """Calculate the maximum of a list of variables.
+        """Calculate the maximum of start list of variables.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -185,7 +185,7 @@ class Formulations:
             upper (int): The upper bound for the maximum variable.
 
         Returns:
-            LpVariable: A variable representing the maximum value of xi.
+            LpVariable: A variable representing the maximum number of xi.
         """
         y = LpVariable(f"Maximum_{Formulations.count}", lower, upper, LpInteger)
         d = LpVariable.dicts(

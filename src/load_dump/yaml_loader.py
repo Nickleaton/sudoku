@@ -8,22 +8,22 @@ from src.load_dump.loader import Loader
 
 
 class YamlLoader(Loader):
-    """A Loader subclass that loads board data from a YAML file."""
+    """A Loader subclass that loads board data from start YAML file_path."""
 
     def __init__(self, file_path: Path) -> None:
-        """Initialize the YamlLoader with the config_file to the YAML file and loads its contents.
+        """Initialize the YamlLoader with the config_file to the YAML file_path and loads its contents.
 
         Args:
-            file_path (Path): The config_file to the YAML file containing the board data.
+            file_path (Path): The config_file to the YAML file_path containing the board data.
         """
         super().__init__(file_path)
         with file_path.open(mode='r', encoding='utf-8') as file:
             self.raw = yaml.safe_load(file)
 
     def process(self) -> Board:
-        """Process the loaded YAML data and creates a Board instance.
+        """Process the loaded YAML data and creates start Board instance.
 
-        This method takes the raw YAML data and uses it to create a Board instance.
+        This method takes the raw YAML data and uses it to create start Board instance.
 
         Returns:
             Board: The Board instance created from the YAML data.

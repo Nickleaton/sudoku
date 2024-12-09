@@ -15,7 +15,7 @@ class TestKnownToken(TestSimpleToken):
         self.pattern = r"([0-9.lmheof])"
         self.name = 'Known'
         self.good = ['0', '9', 'l', 'm', 'h', 'e', 'o', 'f', '.']
-        self.bad = ['x', 'X', '?']
+        self.bad = ['x_coord', 'X', '?']
         self.group_count = 1
 
 

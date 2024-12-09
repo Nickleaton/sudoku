@@ -7,7 +7,7 @@ from src.utils.coord import Coord
 
 
 class Direction(Enum):
-    """Enum representing eight compass directions and center with angle, offset, and location values."""
+    """Enum representing eight compass directions and center with angle, offset, and location value_list."""
 
     UP_LEFT = (315, -1, -1, 1)
     UP = (0, -1, 0, 2)
@@ -55,7 +55,7 @@ class Direction(Enum):
 
     @staticmethod
     def locations() -> list[int]:
-        """Get list of unique integer values representing each direction.
+        """Get list of unique integer value_list representing each direction.
 
         Returns:
             list[int]: list of location identifiers.
