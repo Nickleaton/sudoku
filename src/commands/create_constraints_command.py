@@ -1,6 +1,4 @@
 """CreateConstraintsCommand."""
-import logging
-
 import pydotted
 
 from src.board.board import Board
@@ -28,10 +26,10 @@ class CreateConstraintsCommand(SimpleCommand):
         self.target: str = target
         self.input_types: list[KeyType] = [
             KeyType(config, pydotted.pydot),
-            KeyType(board, Board)
+            KeyType(board, Board),
         ]
         self.output_types: list[KeyType] = [
-            KeyType(target, Item)
+            KeyType(target, Item),
         ]
 
     def work(self, problem: Problem) -> None:
@@ -39,13 +37,9 @@ class CreateConstraintsCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem instance where constraints will be created and added.
-
-        Returns:
-            None
         """
         super().work(problem)
-        logging.info(f"Creating {self.target}")
         problem[self.target] = Constraints.create(
             problem[self.board],
-            {'Constraints': problem[self.config]['Constraints']}
+            {'Constraints': problem[self.config]['Constraints']},
         )

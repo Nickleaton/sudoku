@@ -3,32 +3,35 @@ from typing import Any, Type
 
 
 class ParameterValueType:
-    """Represent a parameter with a key, value, and associated type.
+    """Represent a start parameter with a key, associated value, and expected type.
 
     Attributes:
         key (str): The identifier for the parameter.
-        value (Any): The value associated with the parameter.
-        type (Type): The expected data type for the value.
+        parameter_value (Any): The value associated with the parameter.
+        typ (Type): The expected data type for the value.
     """
 
-    def __init__(self, key: str, value: Any, typ: Type):
+    def __init__(self, key: str, parameter_value: Any, typ: Type):
         """Initialize a ParameterValueType instance.
 
         Args:
             key (str): The name or identifier for the parameter.
-            value (Any): The value associated with the parameter.
+            parameter_value (Any): The value associated with the parameter.
             typ (Type): The expected data type for the parameter.
 
         Raises:
-            TypeError: Raised if the value does not match the specified type,
-                unless the type is `Any`.
+            TypeError: If the value does not match the specified type, unless the type is `Any`.
         """
         self.key: str = key
-        self.value: Any = value
+        self.parameter_value: Any = parameter_value
         self.type: Type = typ
-        if typ is not Any and not isinstance(value, typ):
-            raise TypeError(f"Parameter {key} must be of type {typ}")
+        if typ is not Any and not isinstance(parameter_value, typ):
+            raise TypeError(f'Parameter {key} must be of type {typ}')
 
     def __repr__(self):
-        """Return a string representation of the ParameterValueType instance."""
-        return f"ParameterValueType(key={self.key!r}, value={self.value!r}, type={self.type!r})"
+        """Return the string representation of the ParameterValueType instance.
+
+        Returns:
+            str: A string representing the ParameterValueType instance.
+        """
+        return f'ParameterValueType(key={self.key!r}, number={self.parameter_value!r}, type={self.type!r})'

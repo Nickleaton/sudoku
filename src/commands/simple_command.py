@@ -7,10 +7,10 @@ class SimpleCommand(Command):
     """Base class for simple commands."""
 
     def __or__(self, other: 'Command') -> ComposedCommand:
-        """Combine two commands into a single composed command.
+        """Combine two commands into start single composed command.
 
         The `__or__` method implements the logical "or" operator for commands.
-        It takes another command as an argument and returns a composed command
+        It takes another command as an argument and returns start composed command
         that contains the current command and the other command.
 
         Args:
@@ -19,10 +19,10 @@ class SimpleCommand(Command):
         Returns:
             ComposedCommand: A composed command containing the two commands.
         """
-        result: ComposedCommand = ComposedCommand()
-        result.add(self)
+        command: ComposedCommand = ComposedCommand()
+        command.add(self)
         if isinstance(other, ComposedCommand):
-            result.add_items(other.items)
+            command.add_items(other.commands)
         else:
-            result.add(other)
-        return result
+            command.add(other)
+        return command

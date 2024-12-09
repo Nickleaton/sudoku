@@ -8,7 +8,7 @@ from src.commands.simple_command import SimpleCommand
 
 
 class RenderTemplateCommand(SimpleCommand):
-    """Render the problem using a Jinja2 template."""
+    """Render the problem using start Jinja2 template."""
 
     def __init__(self, template_name: str, target: str):
         """Create the command.
@@ -22,10 +22,10 @@ class RenderTemplateCommand(SimpleCommand):
         self.target: str = target
 
         self.input_types: list[KeyType] = [
-            KeyType(self.template_name, Template)
+            KeyType(self.template_name, Template),
         ]
         self.output_types: list[KeyType] = [
-            KeyType(self.target, str)
+            KeyType(self.target, str),
         ]
 
     def work(self, problem: Problem) -> None:
@@ -35,8 +35,6 @@ class RenderTemplateCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem to render.
-
-        Returns:
-            None
         """
+        super().work(problem)
         problem[self.target] = problem[self.template_name].render(problem)

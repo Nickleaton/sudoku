@@ -22,10 +22,10 @@ class CreateTemplateCommand(SimpleCommand):
         self.target: str = target
 
         self.input_types: list[KeyType] = [
-            KeyType(source, str)
+            KeyType(source, str),
         ]
         self.output_types: list[KeyType] = [
-            KeyType(target, Template)
+            KeyType(target, Template),
         ]
 
     def work(self, problem: Problem) -> None:
@@ -35,8 +35,6 @@ class CreateTemplateCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem to render.
-
-        Returns:
-            None
         """
+        super().work(problem)
         problem[self.target] = Template(problem[self.source])

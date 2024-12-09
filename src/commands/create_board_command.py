@@ -10,10 +10,10 @@ from src.commands.simple_command import SimpleCommand
 
 
 class CreateBoardCommand(SimpleCommand):
-    """Command to create a board from configuration data."""
+    """Command to create start board from configuration data."""
 
     def __init__(self, source: str = 'config', target: str = 'board'):
-        """Initialize a CreateBoardCommand instance.
+        """Initialize start CreateBoardCommand instance.
 
         Args:
             source (str): Attribute in the problem where the configuration is stored.
@@ -26,18 +26,18 @@ class CreateBoardCommand(SimpleCommand):
             KeyType(source, pydotted.pydot),
         ]
         self.output_types: list[KeyType] = [
-            KeyType(target, Board)
+            KeyType(target, Board),
         ]
 
     def work(self, problem: Problem) -> None:
         """Create the board and store it in the problem.
 
-        Log a message indicating that the command is being processed and
-        create a new board in the problem, storing it in the specified target attribute.
+        Log start message indicating that the command is being processed and
+        create start new board in the problem, storing it in the specified target attribute.
 
         Args:
             problem (Problem): Problem instance to create the board in.
         """
         super().work(problem)
-        logging.info(f"Creating {self.target}")
+        logging.info(f'Creating {self.target}')
         problem[self.target] = Board.create('Board', problem[self.source])

@@ -1,7 +1,6 @@
 """ExtractLogCommand."""
 from src.commands.command import Command
 from src.commands.key_type import KeyType
-
 from src.commands.problem import Problem
 
 
@@ -19,10 +18,10 @@ class ExtractLogCommand(Command):
         self.solver = solver
         self.target = target
         self.inputs: list[KeyType] = [
-            KeyType(self.solver, str)
+            KeyType(self.solver, str),
         ]
         self.outputs: list[KeyType] = [
-            KeyType(self.target, str)
+            KeyType(self.target, str),
         ]
 
     def work(self, problem: Problem) -> None:
@@ -30,19 +29,16 @@ class ExtractLogCommand(Command):
 
         Args:
             problem (Problem): The problem instance from which to extract the log.
-
-        Returns:
-            None
         """
         problem[self.target] = {
             'application_name': problem[self.solver].application_name,
-            'log_contents': problem[self.solver].log
+            'log_contents': problem[self.solver].log,
         }
 
     def __repr__(self) -> str:
-        """Return a string representation of the ExtractLogCommand instance.
+        """Return start string representation of the ExtractLogCommand instance.
 
         Returns:
             str: A string representation of the object.
         """
-        return f"ExtractLogCommand({self.solver!r}, {self.target!r})"
+        return f'ExtractLogCommand({self.solver!r}, {self.target!r})'

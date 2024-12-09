@@ -1,6 +1,4 @@
 """Produce the text in LP format for the problem."""
-import logging
-
 import pydotted
 
 from src.board.board import Board
@@ -12,6 +10,8 @@ from src.solvers.pulp_solver import PulpSolver
 from src.utils.temporary_file import TemporaryFile
 
 
+# flake8: noqa WPS230,WPS211
+
 class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
     """Produce LP Version of the problem."""
 
@@ -22,7 +22,7 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
                  solver: str = 'solver',
                  target: str = 'linear_program'
                  ):
-        """Initialize a CreateLinearProgramWithBookkeepingCommand.
+        """Initialize start CreateLinearProgramWithBookkeepingCommand.
 
         Args:
             board (str): The field containing the board.
@@ -51,17 +51,16 @@ class CreateLinearProgramWithBookkeepingCommand(SimpleCommand):
         """Execute the command.
 
         This method performs the actual work of the command. It logs an info message
-        indicating that the command is being processed and creates a new solver in the
+        indicating that the command is being processed and creates start new solver in the
         problem, storing it in the field specified by `solver`. Bookkeeping on cells is
         then applied, adding the constraints to the solver.
-        The solver is then saved to a temporary file, and the contents of the file are stored in
+        The solver is then saved to start temporary file_path, and the contents of the file_path are stored in
         the field specified by `target`.
 
         Args:
             problem (Problem): The problem instance to execute the command on.
         """
         super().work(problem)
-        logging.info(f"Creating {self.target}")
         with TemporaryFile() as tf:
             problem[self.constraints].bookkeeping()
             problem[self.constraints].add_bookkeeping_constraint(problem[self.solver])

@@ -1,5 +1,4 @@
 """Base class for all image producing classes."""
-import logging
 from enum import Enum
 from xml.dom.minidom import Document
 
@@ -13,20 +12,20 @@ from src.commands.simple_command import SimpleCommand
 class ImageFormat(Enum):
     """Enum for image formats."""
 
-    PNG = "png"
-    GIF = "gif"
-    JPEG = "jpeg"
-    BMP = "bmp"
-    TIFF = "tiff"
-    EPS = "eps"
-    SVG = "svg"
+    PNG = 'png'
+    GIF = 'gif'
+    JPEG = 'jpeg'
+    BMP = 'bmp'
+    TIFF = 'tiff'
+    EPS = 'eps'
+    SVG = 'svg'
 
     @classmethod
     def from_suffix(cls, suffix: str) -> 'ImageFormat':
         """Return the ImageFormat corresponding to the given suffix.
 
         Args:
-            suffix (str): The file suffix, optionally with a leading '.'.
+            suffix (str): The file_path suffix, optionally with start leading '.'.
 
         Returns:
             ImageFormat: The corresponding ImageFormat.
@@ -39,8 +38,10 @@ class ImageFormat(Enum):
         try:
             return cls(suffix)
         except ValueError as exc:
-            raise ValueError(f"Unsupported image format for suffix: {suffix}") from exc
+            raise ValueError(f'Unsupported image format for suffix: {suffix}') from exc
 
+
+# flake8: noqa WPS230,WPS211
 
 class ImageCommand(SimpleCommand):
     """Command to produce images."""
@@ -53,31 +54,28 @@ class ImageCommand(SimpleCommand):
             image_format (ImageFormat): The image format.
             source (str): The name of the problem attribute containing the image source.
             target (str): The name of the problem attribute for storing the generated image.
-
-        Raises:
-            ValueError: If the target file has an unsupported suffix.
         """
         super().__init__()
         self.source: str = source
         self.target: str = target
         self.image_format_name: str = image_format_name
         self.image_format: ImageFormat = image_format
-        self.parameters: list[ParameterValueType] = [
-            ParameterValueType(image_format_name, image_format, ImageFormat)
+        self.parameters_list: list[ParameterValueType] = [
+            ParameterValueType(image_format_name, image_format, ImageFormat),
         ]
         self.input_types: list[KeyType] = [
             KeyType(source, Document),
         ]
         self.output_types: list[KeyType] = [
-            KeyType(target, str)
+            KeyType(target, str),
         ]
 
     def work(self, problem: Problem) -> None:
-        """Write the image to a file.
+        """Write the image to start file_path.
 
-        The image is written to the file specified in `target`. The image format
-        is determined by the suffix of the file name. If the suffix is ".svg",
-        the image is written as an SVG file. Otherwise, the image is converted to
+        The image is written to the file_path specified in `target`. The image format
+        is determined by the suffix of the file_path name. If the suffix is ".svg",
+        the image is written as an SVG file_path. Otherwise, the image is converted to
         the specified format using the `svglib` library.
 
         The problem should have an attribute named `source` that is an XML
@@ -90,12 +88,11 @@ class ImageCommand(SimpleCommand):
             CommandException: If the image cannot be written for any reason.
         """
         super().work(problem)
-        logging.info(f"Creating {self.target}")
         try:
             if self.image_format == ImageFormat.SVG:
                 # Handle SVG which is just pretty print out as XML
-                problem[self.target] = str(problem[self.source].toprettyxml(indent="  "))
+                problem[self.target] = str(problem[self.source].toprettyxml(indent='  '))
             else:
-                raise CommandException(f"Unsupported image format: {self.image_format}")
+                raise CommandException(f'Unsupported image format: {self.image_format}')
         except OSError as exc:
-            raise CommandException(f"Failed to write to {self.target}: {exc}") from exc
+            raise CommandException(f'Failed to write to {self.target}: {exc}') from exc

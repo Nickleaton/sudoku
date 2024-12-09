@@ -1,14 +1,14 @@
-"""KeyType."""
+"""KeyType module."""
 
 from typing import Type
 
 
 class KeyType:
-    """Represent a key with an associated data type.
+    """Represents a key with an associated data type.
 
     Attributes:
         key (str): The name or identifier for the key.
-        type (Type): The expected data type for the value associated with the key.
+        type (Type): The expected data type associated with the key.
     """
 
     def __init__(self, key: str, typ: Type):
@@ -16,11 +16,15 @@ class KeyType:
 
         Args:
             key (str): The name or identifier for the key.
-            typ (Type): The expected data type for the value associated with the key.
+            typ (Type): The expected data type associated with the key.
         """
         self.key: str = key
         self.type: Type = typ
 
     def __repr__(self):
-        """Return a string representation of the KeyType instance."""
-        return f"KeyType(key={self.key!r}, type={self.type!r})"
+        """Generate a string representation of the KeyType instance.
+
+        Returns:
+            str: A string in the format "KeyType(key='key', type='type')".
+        """
+        return f'KeyType(key={self.key!r}, type={self.type!r})'

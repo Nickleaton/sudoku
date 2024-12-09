@@ -1,4 +1,4 @@
-"""Produce the text in LP format for the problem."""
+"""CreateLinearProgramCommand."""
 import logging
 
 import pydotted
@@ -12,6 +12,8 @@ from src.solvers.solver import Solver
 from src.utils.temporary_file import TemporaryFile
 
 
+# flake8: noqa WPS230,WPS211
+
 class CreateLinearProgramCommand(SimpleCommand):
     """Produce the LP version of the problem."""
 
@@ -20,7 +22,7 @@ class CreateLinearProgramCommand(SimpleCommand):
                  config: str = 'config',
                  constraints: str = 'constraints',
                  solver: str = 'solver',
-                 target: str = 'linear_program'
+                 target: str = 'linear_program',
                  ):
         """Initialize CreateLinearProgramCommand.
 
@@ -41,16 +43,16 @@ class CreateLinearProgramCommand(SimpleCommand):
             KeyType(self.config, pydotted.pydot),
             KeyType(self.board, Board),
             KeyType(self.constraints, Item),
-            KeyType(self.solver, Solver)
+            KeyType(self.solver, Solver),
         ]
         self.output_types = [
-            KeyType(self.target, str)
+            KeyType(self.target, str),
         ]
 
     def work(self, problem: Problem) -> None:
         """Produce the LP version of the problem.
 
-        Logs a message indicating that the command is being processed. Creates a new LP solver
+        Logs start message indicating that the command is being processed. Creates a new LP solver
         in the problem, stores it in the field specified by `self.solver`, and saves the LP output
         to a temporary file. The text of that file is then stored in the field specified by `self.target`.
 
@@ -58,8 +60,8 @@ class CreateLinearProgramCommand(SimpleCommand):
             problem (Problem): The problem instance to create the LP version of.
         """
         super().work(problem)
-        logging.info(f"Creating {self.target}")
+        logging.info(f'Creating {self.target}')
         with TemporaryFile() as tf:
             problem[self.solver].save_lp(str(tf.path))
-            with tf.path.open(mode='r', encoding='utf-8') as f:
-                problem[self.target] = f.read()
+            with tf.path.open(mode='r', encoding='utf-8') as lp_file:
+                problem[self.target] = lp_file.read()

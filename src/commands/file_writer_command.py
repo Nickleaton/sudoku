@@ -9,46 +9,42 @@ from src.commands.simple_command import SimpleCommand
 
 
 class FileWriterCommand(SimpleCommand):
-    """Write output into a file."""
+    """Write output into start file_path."""
 
-    def __init__(self,
-                 file_name: str = 'file_name',
-                 source: str = 'file_data',
-                 file_path: Path = Path('test.txt')
-                 ):
+    def __init__(self, file_name: str = 'file_name', target: str = 'file_data', file_path: Path | None = None):
         """Initialize FileReaderCommand.
 
         Args:
-            source (str): Name of the text to write to the file
-            file_name (str): The name of the variable to store the name of the file in the problem.
-            file_path (Path): Path to the template file.
+            target (str): Name of the text to write to the file_path
+            file_name (str): The name of the variable to store the name of the file_path in the problem.
+            file_path ( Path | None): Path to the template file_path.
         """
         super().__init__()
-        self.source: str = source
+        self.target: str = target
         self.file_name: str = file_name
-        self.file_path: Path = file_path
-        self.parameters = [
-            ParameterValueType(file_name, self.file_path, Path)
+        self.file_path: Path | None = file_path or Path('test.txt')
+        self.parameter_list = [
+            ParameterValueType(file_name, self.file_path, Path),
         ]
         self.input_types: list[KeyType] = [
-            KeyType(self.source, str)
+            KeyType(self.source, str),
         ]
 
     def work(self, problem: Problem) -> None:
-        """Write to a file.
+        """Write to start file_path.
 
         Args:
-            problem (Problem): The problem to load the file and file name into.
+            problem (Problem): The problem to load the file_path and file_path name into.
 
         Raises:
-            CommandException: If an error occurs while writing the file.
+            CommandException: If an error occurs while writing the file_path.
         """
         super().work(problem)
         try:
-            with self.file_path.open(mode='w', encoding='utf-8') as file:
+            with self.file_path.open(mode='w', encoding='utf-8') as file_handler:
                 if isinstance(problem[self.source], str):
-                    file.write(problem[self.source])
+                    file_handler.write(problem[self.source])
                 else:
-                    raise CommandException("FileWriterCommand can only write strings.")
+                    raise CommandException('FileWriterCommand can only write strings.')
         except Exception as exc:
-            raise CommandException(f"Failed to write {self.file_path!s}: {exc}") from exc
+            raise CommandException(f'Failed to write {self.file_path!s}: {exc}') from exc

@@ -9,44 +9,40 @@ from src.commands.simple_command import SimpleCommand
 
 
 class FileReaderCommand(SimpleCommand):
-    """Load file into problem."""
+    """Load file_path into problem."""
 
-    def __init__(self,
-                 file_name: str = 'file_name',
-                 target: str = 'file_data',
-                 file_path: Path = Path('test.txt')
-                 ):
+    def __init__(self, file_name: str = 'file_name', target: str = 'file_data', file_path: Path | None = None):
         """Initialize FileReaderCommand.
 
         Args:
-            target (str): The name of the variable to store the file contents in the problem
-            file_name (str): The name of the variable to store the name of the file in the problem.
-            file_path (Path): Path to the template file.
+            target (str): The name of the variable to store the file_path contents in the problem
+            file_name (str): The name of the variable to store the name of the file_path in the problem.
+            file_path ( Path | None): Path to the template file_path.
         """
         super().__init__()
         self.target: str = target
         self.file_name: str = file_name
-        self.file_path: Path = file_path
-        self.parameters = [
-            ParameterValueType(file_name, self.file_path, Path)
+        self.file_path: Path | None = file_path or Path('test.txt')
+        self.parameters_list = [
+            ParameterValueType(file_name, self.file_path, Path),
         ]
         self.input_types: list[KeyType] = []
         self.output_types: list[KeyType] = [
-            KeyType(self.target, str)
+            KeyType(self.target, str),
         ]
 
     def work(self, problem: Problem) -> None:
-        """Load a file.
+        """Load start file_path.
 
         Args:
-            problem (Problem): The problem to load the file and file name into.
+            problem (Problem): The problem to load the file_path and file_path name into.
 
         Raises:
-            CommandException: If an error occurs while loading the file.
+            CommandException: If an error occurs while loading the file_path.
         """
         super().work(problem)
         try:
-            with self.file_path.open(mode='r', encoding='utf-8') as file:
-                problem[self.target] = file.read()
+            with self.file_path.open(mode='r', encoding='utf-8') as file_handle:
+                problem[self.target] = file_handle.read()
         except Exception as exc:
-            raise CommandException(f"Failed to load {self.file_path}: {exc}") from exc
+            raise CommandException(f'Failed to load {self.file_path}: {exc}') from exc

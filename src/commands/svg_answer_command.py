@@ -8,13 +8,13 @@ from src.solvers.answer import Answer
 class SVGAnswerCommand(SVGCommand):
     """Command to create an SVG drawing of the data."""
 
-    def select(self, item: Item | None) -> bool:
-        """Determine if the item should be included in the output.
+    def select(self, constraint: Item | None) -> bool:
+        """Determine if the constraint should be included in the output.
 
         Args:
-            item (Item | None): The item to check for inclusion.
+            constraint (Item | None): The constraint to check for inclusion.
 
         Returns:
-            bool: True if the item is to be displayed; otherwise, False.
+            bool: True if the constraint is to be displayed; otherwise, False.
         """
-        return isinstance(item, Answer)
+        return isinstance(constraint, Answer)

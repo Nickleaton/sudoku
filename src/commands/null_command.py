@@ -1,4 +1,5 @@
-"""NullCommand."""
+"""NullCommand module."""
+
 import logging
 
 from src.commands.problem import Problem
@@ -6,19 +7,16 @@ from src.commands.simple_command import SimpleCommand
 
 
 class NullCommand(SimpleCommand):
-    """A command that does nothing, used as a placeholder."""
+    """A command that performs no action, used as a placeholder."""
 
     def work(self, problem: Problem) -> None:
-        """Execute the command.
+        """Log a message indicating the command execution.
 
-        This method logs an info message indicating that the command is being processed.
-        As this is a NullCommand, it does not perform any other action.
+        Executes the `NullCommand`, which logs an informational message.
+        This command serves as a placeholder and does not alter the problem.
 
         Args:
-            problem (Problem): The problem to execute the command on.
-
-        Returns:
-            None
+            problem (Problem): The problem instance on which the command is executed.
         """
         super().work(problem)
-        logging.info("NullCommand executed.")
+        logging.info('NullCommand executed.')

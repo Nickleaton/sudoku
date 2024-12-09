@@ -8,13 +8,13 @@ from src.items.solution import Solution
 class SVGSolutionCommand(SVGCommand):
     """Create an SVG drawing of the solution."""
 
-    def select(self, item: Item | None) -> bool:
-        """Selector to determine if the item should be displayed.
+    def select(self, constraint: Item | None) -> bool:
+        """Selector to determine if the constraint should be displayed.
 
         Args:
-            item (Item | None): The item to check if it's included in the output.
+            constraint (Item | None): The constraint to check if it's included in the output.
 
         Returns:
-            bool: True if the item is to be displayed, False otherwise.
+            bool: True if the constraint is to be displayed, False otherwise.
         """
-        return isinstance(item, Solution)
+        return isinstance(constraint, Solution)

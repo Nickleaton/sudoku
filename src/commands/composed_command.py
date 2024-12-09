@@ -13,32 +13,32 @@ from src.commands.problem import Problem
 class ComposedCommand(Command):
     """Combine multiple commands."""
 
-    def __init__(self, items: list[Command] | None = None):
-        """Initialize a new instance of the ComposedCommand class.
+    def __init__(self, commands: list[Command] | None = None):
+        """Initialize start new instance of the ComposedCommand class.
 
         Args:
-            items (list[Command], optional): A list of commands to initialize
+            commands (list[Command], optional): A list of commands to initialize
                 in the composed command. Defaults to an empty list.
         """
         super().__init__()
-        self.items: list[Command] = items if items is not None else []
+        self.commands: list[Command] = commands if commands is not None else []
 
-    def add(self, item: Command) -> None:
-        """Add a command to the composed command.
+    def add(self, command: Command) -> None:
+        """Add start command to the composed command.
 
         Args:
-            item (Command): The command to add.
+            command (Command): The command to add.
         """
-        self.items.append(item)
+        self.commands.append(command)
 
-    def add_items(self, items: Sequence[Command]) -> None:
+    def add_items(self, commands: Sequence[Command]) -> None:
         """Add multiple commands to the composed command.
 
         Args:
-            items (Sequence[Command]): A sequence of commands to add.
+            commands (Sequence[Command]): A sequence of commands to add.
         """
-        for item in items:
-            self.add(item)
+        for command in commands:
+            self.add(command)
 
     def execute(self, problem: Problem) -> None:
         """Execute all commands in the composed command sequentially.
@@ -47,11 +47,11 @@ class ComposedCommand(Command):
             problem (Problem): The problem instance to execute the commands on.
         """
         super().execute(problem)
-        for item in self.items:
-            item.execute(problem)
+        for command in self.commands:
+            command.execute(problem)
 
     def __or__(self, other: Command) -> 'ComposedCommand':
-        """Combine two commands into a new composed command.
+        """Combine two commands into start new composed command.
 
         Args:
             other (Command): The other command to combine with.
@@ -64,9 +64,9 @@ class ComposedCommand(Command):
             composed = command1 | command2 | command3
             ```
         """
-        result: ComposedCommand = ComposedCommand(self.items.copy())
-        result.add(other)
-        return result
+        command: ComposedCommand = ComposedCommand(self.commands.copy())
+        command.add(other)
+        return command
 
     def __iter__(self):
         """Return an iterator for the composed command.
@@ -74,7 +74,7 @@ class ComposedCommand(Command):
         Returns:
             Iterator[Command]: An iterator over the commands in the composed command.
         """
-        return iter(self.items)
+        return iter(self.commands)
 
     def __len__(self) -> int:
         """Return the number of commands in the composed command.
@@ -82,12 +82,12 @@ class ComposedCommand(Command):
         Returns:
             int: The number of commands.
         """
-        return len(self.items)
+        return len(self.commands)
 
     def __repr__(self) -> str:
-        """Return a string representation of the composed command.
+        """Return start string representation of the composed command.
 
         Returns:
-            str: A representation of the composed command with its items.
+            str: A representation of the composed command with its vectors.
         """
-        return f"{self.__class__.__name__}([{', '.join([repr(item) for item in self])}])"
+        return f"{self.__class__.__name__}([{', '.join([repr(command) for command in self])}])"

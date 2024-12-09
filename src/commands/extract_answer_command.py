@@ -1,7 +1,6 @@
 """ExtractAnswerCommand."""
-from src.commands.command import CommandException, Command
+from src.commands.command import Command, CommandException
 from src.commands.key_type import KeyType
-
 from src.commands.problem import Problem
 from src.solvers.answer import Answer
 from src.solvers.pulp_solver import Status
@@ -10,7 +9,7 @@ from src.solvers.pulp_solver import Status
 class ExtractAnswerCommand(Command):
     """Command for extracting the data from the solver's results."""
 
-    def __init__(self, solver: str = 'solver', target: str = 'data'):
+    def __init__(self, solver: str = 'solver', target: str = 'answer'):
         """Initialize an ExtractAnswerCommand instance.
 
         Args:
@@ -21,18 +20,17 @@ class ExtractAnswerCommand(Command):
         self.solver = solver
         self.target = target
         self.inputs: list[KeyType] = [
-            KeyType(self.solver, str)
+            KeyType(self.solver, str),
         ]
 
         self.outputs: list[KeyType] = [
-            KeyType(self.target, Answer)
+            KeyType(self.target, Answer),
         ]
 
-    # pylint: disable=loop-invariant-statement
     def work(self, problem: Problem) -> None:
-        """Extract the data from the solver's results and stores it in the problem.
+        """Extract the data from the solver's results and store it in the problem.
 
-        If the solver's status is not optimal, the command will not store an data.
+        If the solver's status is not optimal, the command will not store any data.
 
         Args:
             problem (Problem): The problem instance from which to extract the data.
@@ -40,13 +38,18 @@ class ExtractAnswerCommand(Command):
         Raises:
             CommandException: If no solver is set.
         """
-        if problem[self.solver] is None:
-            raise CommandException("No solver has been set.")
+        solver = problem.get(self.solver)
 
-        if problem[self.solver].status != Status.OPTIMAL:
+        if solver is None:
+            raise CommandException('No solver has been set.')
+
+        if solver.status != Status.OPTIMAL:
             return
 
-        problem[self.target] = Answer(problem[self.solver].board)
-        for row in problem[self.solver].board.row_range:
-            for column in problem[self.solver].board.column_range:
-                problem[self.target].set_value(row, column, int(problem[self.solver].values[row][column].varValue))
+        board = solver.board
+        problem[self.target] = Answer(board)
+
+        for row in board.row_range:
+            for column in board.column_range:
+                solver_choice = solver.choices[row][column]
+                problem[self.target].set_value(row, column, int(solver_choice.varValue))

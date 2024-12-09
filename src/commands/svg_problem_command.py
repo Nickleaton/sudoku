@@ -9,13 +9,13 @@ from src.solvers.answer import Answer
 class SVGProblemCommand(SVGCommand):
     """Create an SVG drawing of the problem."""
 
-    def select(self, item: Item | None) -> bool:
-        """Selector to determine if the item should be displayed.
+    def select(self, constraint: Item | None) -> bool:
+        """Selector to determine if the constraint should be displayed.
 
         Args:
-            item (Item | None): The item to check if it's included in the output.
+            constraint (Item | None): The constraint to check if it's included in the output.
 
         Returns:
-            bool: True if the item is to be displayed, False otherwise.
+            bool: True if the constraint is to be displayed, False otherwise.
         """
-        return not isinstance(item, Solution) and not isinstance(item, Answer)
+        return not isinstance(constraint, Solution) and not isinstance(constraint, Answer)

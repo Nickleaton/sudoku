@@ -12,10 +12,7 @@ from src.commands.simple_command import SimpleCommand
 class LoadConfigCommand(SimpleCommand):
     """Load Config into the problem."""
 
-    def __init__(self,
-                 source: str = 'config_text',
-                 target: str = 'config',
-                 ):
+    def __init__(self, source: str = 'config_text', target: str = 'config'):
         """Initialize LoadConfigCommand.
 
         Args:
@@ -27,14 +24,14 @@ class LoadConfigCommand(SimpleCommand):
         self.target: str = target
 
         self.input_types: list[KeyType] = [
-            KeyType(source, str)
+            KeyType(source, str),
         ]
         self.output_types: list[KeyType] = [
-            KeyType(target, pydot)
+            KeyType(target, pydot),
         ]
 
     def work(self, problem: Problem) -> None:
-        """Load the configuration from the YAML file.
+        """Load the configuration from the YAML file_path.
 
         Args:
             problem (Problem): The problem to load the config into.
@@ -44,7 +41,6 @@ class LoadConfigCommand(SimpleCommand):
         """
         super().work(problem)
         try:
-            config_data = yaml.safe_load(problem[self.source])
-            problem[self.target] = pydot(config_data)
+            problem[self.target] = pydot(yaml.safe_load(problem[self.source]))
         except Exception as exc:
-            raise CommandException(f"Failed to load {self.source}: {exc}") from exc
+            raise CommandException(f'Failed to load {self.source}: {exc}') from exc

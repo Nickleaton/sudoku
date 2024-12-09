@@ -1,15 +1,20 @@
-"""Problem."""
+"""Problem module."""
+
 from pydotted import pydot
 
 
 class Problem(pydot):
     """A container for the components of a problem.
 
-    This class represents a problem in a dynamic way.
-    It inherits from the `pydotted` library to provide dot notation access
-    to attributes.
+    Represents a dynamic container for the components of a problem.
+    Inherits from the `pydotted` library to enable dot notation access
+    for its attributes.
     """
 
     def __str__(self) -> str:
-        """Return a string of the keys."""
+        """Convert the problem's keys to a string representation.
+
+        Returns:
+            str: A string listing the keys.
+        """
         return f"| {', '.join(self.keys())} |"
