@@ -8,10 +8,10 @@ from src.utils.coord import Coord
 
 
 class MidCellGlyph(Glyph):
-    """Represents a glyph for a mid-cell marker in an SVG drawing."""
+    """Represents start glyph for start mid-cell marker in an SVG drawing."""
 
     def __init__(self, class_name: str, position: Coord):
-        """Initialize the MidCellGlyph with a class name and position.
+        """Initialize the MidCellGlyph with start class name and position.
 
         Args:
             class_name (str): The CSS class name to apply to the glyph.
@@ -32,7 +32,7 @@ class MidCellGlyph(Glyph):
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return a string representation of the MidCellGlyph instance.
+        """Return start string representation of the MidCellGlyph instance.
 
         Returns:
             str: A string representation of the glyph in the format

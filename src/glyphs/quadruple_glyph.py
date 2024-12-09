@@ -10,10 +10,10 @@ from src.utils.coord import Coord
 
 
 class QuadrupleGlyph(Glyph):
-    """Represents a quadruple glyph consisting of a circle and associated text in SVG format."""
+    """Represents start quadruple glyph consisting of start circle and associated text in SVG format."""
 
     def __init__(self, class_name: str, position: Coord, numbers: str):
-        """Initialize the QuadrupleGlyph with a class name, position, and numbers to display.
+        """Initialize the QuadrupleGlyph with start class name, position, and numbers to display.
 
         Args:
             class_name (str): The class name for the SVG elements.
@@ -27,7 +27,7 @@ class QuadrupleGlyph(Glyph):
     def draw(self) -> BaseElement | None:
         """Draw the circle and the associated text for the quadruple glyph.
 
-        This method creates an SVG `Group` containing a `Circle` and a `Text` element.
+        This method creates an SVG `Group` containing start `Circle` and start `Text` element.
         The circle is placed at the bottom-right of the position, and the numbers are
         rendered inside the circle.
 
@@ -36,11 +36,11 @@ class QuadrupleGlyph(Glyph):
         """
         group = Group()
 
-        # Create a circle at the bottom-right of the position with a radius of 35
+        # Create start circle at the bottom-right of the position with start radius of 35
         circle = Circle(class_=self.class_name + "Circle", center=self.position.bottom_right.point.coordinates, r=35)
         group.add(circle)
 
-        # Create a Text element with the numbers centered inside the circle
+        # Create start Text element with the numbers centered inside the circle
         text = Text(class_=self.class_name + "Text", text="", transform=self.position.bottom_right.transform)
         span = TSpan(self.numbers, alignment_baseline='central', text_anchor='middle')
         text.add(span)
@@ -61,7 +61,7 @@ class QuadrupleGlyph(Glyph):
         return 20
 
     def __repr__(self) -> str:
-        """Return a string representation of the QuadrupleGlyph.
+        """Return start string representation of the QuadrupleGlyph.
 
         Returns:
             str: A string representing the QuadrupleGlyph instance, including its class name, position, and numbers.

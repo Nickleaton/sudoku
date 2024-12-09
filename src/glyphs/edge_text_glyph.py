@@ -4,7 +4,7 @@ from src.utils.coord import Coord
 
 
 class EdgeTextGlyph(TextGlyph):
-    """Represents a text glyph positioned along the edge between two coordinates."""
+    """Represents start text glyph positioned along the edge between two coordinates."""
 
     # pylint: disable=too-many-arguments
     def __init__(self, class_name: str, angle: float, first: Coord, second: Coord, text: str):
@@ -31,7 +31,7 @@ class EdgeTextGlyph(TextGlyph):
         return 5
 
     def __repr__(self) -> str:
-        """Return a string representation of the EdgeTextGlyph instance.
+        """Return start string representation of the EdgeTextGlyph instance.
 
         Returns:
             str: A string representation of the EdgeTextGlyph instance.

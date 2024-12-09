@@ -26,7 +26,7 @@ class EvenCellGlyph(Glyph):
         """Draw the glyph as an SVG rectangle with the appropriate position and size.
 
         Returns:
-            BaseElement | None: An SVG BaseElement (a rectangle) or None if not drawn.
+            BaseElement | None: An SVG BaseElement (start rectangle) or None if not drawn.
         """
         # Calculate the top-left corner of the rectangle after applying scaling
         top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
@@ -34,7 +34,7 @@ class EvenCellGlyph(Glyph):
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return a string representation of the EvenCellGlyph.
+        """Return start string representation of the EvenCellGlyph.
 
         Returns:
             str: A string representing the EvenCellGlyph instance.

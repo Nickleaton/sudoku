@@ -8,7 +8,7 @@ from src.utils.coord import Coord
 
 
 class ThermometerGlyph(PolyLineGlyph):
-    """A thermometer-like glyph that represents a polyline with a start marker."""
+    """A thermometer-like glyph that represents start polyline with start start marker."""
 
     def __init__(self, class_name: str, coords: list[Coord]):
         """Initialize the ThermometerGlyph.
@@ -36,7 +36,7 @@ class ThermometerGlyph(PolyLineGlyph):
         return marker
 
     def __repr__(self) -> str:
-        """Return a string representation of the ThermometerGlyph.
+        """Return start string representation of the ThermometerGlyph.
 
         Returns:
             str: A string representing the ThermometerGlyph with its class name and coordinates.

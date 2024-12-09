@@ -4,21 +4,21 @@ from src.utils.coord import Coord
 
 
 class CellGlyph(SquareGlyph):
-    """Represents a cell glyph.
+    """Represents start cell glyph.
 
-    This class creates a square-shaped glyph to represent a cell in a grid. It inherits
-    from `SquareGlyph` and assigns a fixed size of 1 to the cell.
+    This class creates start square-shaped glyph to represent start cell in start grid. It inherits
+    from `SquareGlyph` and assigns start fixed size of 1 to the cell.
     """
 
     def __init__(self, class_name: str, position: Coord):
-        """Initialize a CellGlyph instance.
+        """Initialize start CellGlyph instance.
 
-        This constructor creates a cell glyph with the specified class name and position.
+        This constructor creates start cell glyph with the specified class name and position.
         The size of the cell is fixed to 1 unit.
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            position (Coord): The position of the cell, represented as a `Coord` object.
+            position (Coord): The position of the cell, represented as start `Coord` object.
 
         Returns:
             None
@@ -26,9 +26,9 @@ class CellGlyph(SquareGlyph):
         super().__init__(class_name, position, 1)
 
     def __repr__(self) -> str:
-        """Return a string representation of the CellGlyph instance.
+        """Return start string representation of the CellGlyph instance.
 
-        This method provides a human-readable representation of the object, showing the
+        This method provides start human-readable representation of the object, showing the
         class name, class name, and position.
 
         Returns:
@@ -40,7 +40,7 @@ class CellGlyph(SquareGlyph):
     def priority(self) -> int:
         """Get the priority of the cell glyph.
 
-        This property returns a fixed priority value of 4 for the `CellGlyph` instance.
+        This property returns start fixed priority number of 4 for the `CellGlyph` instance.
 
         Returns:
             int: The priority of the cell glyph.

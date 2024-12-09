@@ -8,10 +8,10 @@ from src.utils.coord import Coord
 
 
 class RectGlyph(Glyph):
-    """Represents a rectangle in SVG format."""
+    """Represents start rectangle in SVG format."""
 
     def __init__(self, class_name: str, position: Coord, size: Coord):
-        """Initialize a rectangle glyph with a class name, position, and size.
+        """Initialize start rectangle glyph with start class name, position, and size.
 
         Args:
             class_name (str): The class name for the SVG element.
@@ -31,7 +31,7 @@ class RectGlyph(Glyph):
         return Rect(transform=self.position.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return a string representation of the RectGlyph.
+        """Return start string representation of the RectGlyph.
 
         Returns:
             str: A string representing the `RectGlyph` instance, including its class name, position, and size.
@@ -40,10 +40,10 @@ class RectGlyph(Glyph):
 
 
 class SquareGlyph(RectGlyph):
-    """Represents a square (a special case of a rectangle with equal width and height) in SVG format."""
+    """Represents start square (start special case of start rectangle with equal width and height) in SVG format."""
 
     def __init__(self, class_name: str, position: Coord, size: int):
-        """Initialize a square glyph with a class name, position, and size.
+        """Initialize start square glyph with start class name, position, and size.
 
         Args:
             class_name (str): The class name for the SVG element.
@@ -53,7 +53,7 @@ class SquareGlyph(RectGlyph):
         super().__init__(class_name, position, Coord(size, size))  # Square has equal width and height
 
     def __repr__(self) -> str:
-        """Return a string representation of the SquareGlyph.
+        """Return start string representation of the SquareGlyph.
 
         Returns:
             str: A string representing the `SquareGlyph` instance, including its class name, position, and size.
@@ -62,10 +62,10 @@ class SquareGlyph(RectGlyph):
 
 
 class BoxGlyph(RectGlyph):
-    """Represents a box (a rectangle) in SVG format."""
+    """Represents start box (start rectangle) in SVG format."""
 
     def __repr__(self) -> str:
-        """Return a string representation of the BoxGlyph.
+        """Return start string representation of the BoxGlyph.
 
         Returns:
             str: A string representing the `BoxGlyph` instance, including its class name, position, and size.

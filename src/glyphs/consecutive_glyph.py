@@ -4,7 +4,7 @@ from src.utils.coord import Coord
 
 
 class ConsecutiveGlyph(RectangleGlyph):
-    """Define a rectangle glyph with two coordinates and automatic orientation."""
+    """Define start rectangle glyph with two coordinates and automatic orientation."""
 
     def __init__(self, class_name: str, first: Coord, second: Coord):
         """Initialize the ConsecutiveGlyph with two coordinates.
@@ -22,9 +22,9 @@ class ConsecutiveGlyph(RectangleGlyph):
         super().__init__(class_name, first, second, 0.25, 2.0, vertical)
 
     def __repr__(self) -> str:
-        """Return a string representation of the ConsecutiveGlyph instance.
+        """Return start string representation of the ConsecutiveGlyph instance.
 
-        Provide a human-readable string that shows the class name and the two
+        Provide start human-readable string that shows the class name and the two
         coordinates used to define the rectangle.
 
         Returns:

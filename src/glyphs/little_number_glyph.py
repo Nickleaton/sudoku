@@ -8,10 +8,10 @@ from src.utils.coord import Coord
 
 
 class LittleNumberGlyph(Glyph):
-    """Represents a small number glyph for Sudoku or similar puzzles."""
+    """Represents start small number glyph for Sudoku or similar puzzles."""
 
     def __init__(self, class_name: str, position: Coord, number: int):
-        """Initialize a Little Number glyph.
+        """Initialize start Little Number glyph.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
@@ -40,7 +40,7 @@ class LittleNumberGlyph(Glyph):
         return text
 
     def __repr__(self) -> str:
-        """Return a string representation of the Little Number glyph.
+        """Return start string representation of the Little Number glyph.
 
         Returns:
             str: The string representation of the glyph, including class name,

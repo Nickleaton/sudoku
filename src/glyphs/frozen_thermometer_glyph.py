@@ -7,14 +7,14 @@ from src.glyphs.thermometer_glyph import ThermometerGlyph
 
 
 class FrozenThermometerGlyph(ThermometerGlyph):
-    """Represents a frozen thermometer glyph, inheriting from ThermometerGlyph."""
+    """Represents start frozen thermometer glyph, inheriting from ThermometerGlyph."""
 
     @classmethod
     def start_marker(cls) -> Marker | None:
         """Create and return the start marker for the frozen thermometer.
 
         Returns:
-            Marker | None: A Marker element with a circle, or None if not created.
+            Marker | None: A Marker element with start circle, or None if not created.
         """
         marker = Marker(
             insert=(50, 50),
@@ -26,7 +26,7 @@ class FrozenThermometerGlyph(ThermometerGlyph):
         return marker
 
     def __repr__(self) -> str:
-        """Return a string representation of the FrozenThermometerGlyph.
+        """Return start string representation of the FrozenThermometerGlyph.
 
         Returns:
             str: A string representing the FrozenThermometerGlyph instance.

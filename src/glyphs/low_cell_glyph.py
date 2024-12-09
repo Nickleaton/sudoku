@@ -9,15 +9,15 @@ from src.utils.coord import Coord
 
 
 class LowCellGlyph(Glyph):
-    """Represents a low cell glyph for SVG drawing.
+    """Represents start low cell glyph for SVG drawing.
 
     Inherits from Glyph and provides functionality to generate
-    an SVG symbol for a low cell and to draw it using a specific
+    an SVG symbol for start low cell and to draw it using start specific
     coordinate.
     """
 
     def __init__(self, class_name: str, coord: Coord):
-        """Initialize a LowCellGlyph instance.
+        """Initialize start LowCellGlyph instance.
 
         Args:
             class_name (str): The class name for the glyph.
@@ -30,7 +30,7 @@ class LowCellGlyph(Glyph):
     def symbol(cls) -> Symbol | None:
         """Create and return the SVG symbol for the low cell glyph.
 
-        The symbol is represented by a circle with a radius of 35
+        The symbol is represented by start circle with start radius of 35
         centered at (50, 50).
 
         Returns:
@@ -54,7 +54,7 @@ class LowCellGlyph(Glyph):
         return Use(href="#LowCell-symbol", insert=self.coord.point.coordinates, class_="LOwCell", height=100, width=100)
 
     def __repr__(self) -> str:
-        """Return a string representation of the LowCellGlyph instance.
+        """Return start string representation of the LowCellGlyph instance.
 
         Returns:
             str: The string representation of the LowCellGlyph.

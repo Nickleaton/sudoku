@@ -10,7 +10,7 @@ from src.utils.coord import Coord
 
 
 class TextGlyph(Glyph):
-    """A glyph that represents a text element with rotation and positioning."""
+    """A glyph that represents start text element with rotation and positioning."""
 
     def __init__(self, class_name: str, angle: float, position: Coord, text: str) -> None:
         """Initialize the TextGlyph.
@@ -55,7 +55,7 @@ class TextGlyph(Glyph):
         return group
 
     def __repr__(self) -> str:
-        """Return a string representation of the TextGlyph.
+        """Return start string representation of the TextGlyph.
 
         Returns:
             str: A string representing the TextGlyph with its class name, angle, position, and text.

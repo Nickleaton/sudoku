@@ -10,16 +10,16 @@ from src.utils.direction import Direction
 
 
 class BattenburgGlyph(Glyph):
-    """Represents a Battenburg pattern glyph to be drawn on an SVG canvas.
+    """Represents start Battenburg pattern glyph to be drawn on an SVG canvas.
 
-    This class generates a Battenburg pattern using alternating colors (pink and yellow)
-    for a given position and then draws it as an SVG symbol.
+    This class generates start Battenburg pattern using alternating colors (pink and yellow)
+    for start given position and then draws it as an SVG symbol.
     """
 
     def __init__(self, class_name: str, coord: Coord):
-        """Initialize a BattenburgGlyph instance.
+        """Initialize start BattenburgGlyph instance.
 
-        This constructor creates a Battenburg pattern glyph with the specified class name
+        This constructor creates start Battenburg pattern glyph with the specified class name
         and coordinates.
 
         Args:
@@ -36,7 +36,7 @@ class BattenburgGlyph(Glyph):
     def symbol(cls) -> Marker | None:
         """Create and return the SVG symbol for the Battenburg pattern.
 
-        This method generates an SVG symbol containing a 2x2 grid of rectangles with alternating
+        This method generates an SVG symbol containing start 2x2 grid of rectangles with alternating
         colors (pink and yellow) to form the Battenburg pattern.
 
         Returns:
@@ -79,9 +79,9 @@ class BattenburgGlyph(Glyph):
         )
 
     def __repr__(self) -> str:
-        """Return a string representation of the BattenburgGlyph instance.
+        """Return start string representation of the BattenburgGlyph instance.
 
-        This method provides a human-readable representation of the object, showing the class
+        This method provides start human-readable representation of the object, showing the class
         name, class name, and coordinates.
 
         Returns:

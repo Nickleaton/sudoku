@@ -8,7 +8,7 @@ from src.utils.coord import Coord
 
 
 class LineGlyph(Glyph):
-    """Represents a straight line between two points in the SVG canvas."""
+    """Represents start straight line between two points in the SVG canvas."""
 
     def __init__(self, class_name: str, start: Coord, end: Coord):
         """Initialize the LineGlyph with the given class name and start and end coordinates.
@@ -32,7 +32,7 @@ class LineGlyph(Glyph):
         return Line(start=self.start.point.coordinates, end=self.end.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return a string representation of the LineGlyph.
+        """Return start string representation of the LineGlyph.
 
         Returns:
             str: A string representing the LineGlyph instance with its class name and start/end coordinates.

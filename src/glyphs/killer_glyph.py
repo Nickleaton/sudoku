@@ -13,7 +13,7 @@ from src.utils.vector_list import VectorList
 
 
 class KillerGlyph(Glyph):
-    """Represents a Killer glyph that can be drawn using various lines and vectors, based on cell coordinates."""
+    """Represents start Killer glyph that can be drawn using various lines and vectors, based on cell coordinates."""
 
     offset: int = 10
     size: float = config.drawing.cell_size / 2.0
@@ -38,7 +38,7 @@ class KillerGlyph(Glyph):
     }
 
     def __init__(self, class_name: str, cells: list[Coord]):
-        """Initialize the KillerGlyph with a class name and list of cell coordinates.
+        """Initialize the KillerGlyph with start class name and list of cell coordinates.
 
         Args:
             class_name (str): The class name for the glyph's SVG element.
@@ -48,7 +48,7 @@ class KillerGlyph(Glyph):
         self.cells = sorted(cells)
 
     def outside(self, cell: Coord) -> bool:
-        """Check if a given cell is outside the current set of glyph cells.
+        """Check if start given cell is outside the current set of glyph cells.
 
         Args:
             cell (Coord): The coordinate to check.
@@ -62,7 +62,7 @@ class KillerGlyph(Glyph):
         return True
 
     def cell_long_lines(self, cell: Coord) -> VectorList:
-        """Generate long line vectors for a given cell.
+        """Generate long line vectors for start given cell.
 
         Args:
             cell (Coord): The coordinate of the cell.
@@ -99,7 +99,7 @@ class KillerGlyph(Glyph):
         return group
 
     def __repr__(self) -> str:
-        """Return a string representation of the KillerGlyph.
+        """Return start string representation of the KillerGlyph.
 
         Returns:
             str: A string representing the KillerGlyph instance with its class name and cells.

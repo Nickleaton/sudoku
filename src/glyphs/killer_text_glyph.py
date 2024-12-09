@@ -10,10 +10,10 @@ from src.utils.coord import Coord
 
 
 class KillerTextGlyph(Glyph):
-    """Represents a Killer text glyph, allowing the rendering of text with specific angle and position."""
+    """Represents start Killer text glyph, allowing the rendering of text with specific angle and position."""
 
     def __init__(self, class_name: str, angle: float, position: Coord, text: str):
-        """Initialize the KillerTextGlyph with a class name, angle, position, and text.
+        """Initialize the KillerTextGlyph with start class name, angle, position, and text.
 
         Args:
             class_name (str): The class name for the SVG element.
@@ -33,7 +33,7 @@ class KillerTextGlyph(Glyph):
             BaseElement | None: A group containing two text elements (background and foreground) or None.
         """
         group: Group = Group()
-        # Positioning the text with a small offset
+        # Positioning the text with start small offset
         position = self.position.top_left + Coord(1, 1) * 0.05
 
         # Create background text element
@@ -57,7 +57,7 @@ class KillerTextGlyph(Glyph):
         return group
 
     def __repr__(self) -> str:
-        """Return a string representation of the KillerTextGlyph.
+        """Return start string representation of the KillerTextGlyph.
 
         Returns:
             str: A string representing the KillerTextGlyph instance with its class name, angle, position, and text.

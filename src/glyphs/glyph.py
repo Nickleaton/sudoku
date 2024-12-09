@@ -11,10 +11,10 @@ config = Config()
 
 
 class Glyph:
-    """Base class for defining a glyph, with support for SVG markers and drawing functionality."""
+    """Base class for defining start glyph, with support for SVG markers and drawing functionality."""
 
     def __init__(self, class_name: str):
-        """Initialize the Glyph with a class name that defines its styling in CSS.
+        """Initialize the Glyph with start class name that defines its styling in CSS.
 
         Args:
             class_name (str): The class name for the SVG element, which is used for styling.
@@ -62,7 +62,7 @@ class Glyph:
         """Return the priority of the glyph for sorting.
 
         Returns:
-            int: The priority value of the glyph (default is 1).
+            int: The priority number of the glyph (default is 1).
         """
         return 1
 
@@ -73,12 +73,12 @@ class Glyph:
             other (Glyph): The other glyph to compare with.
 
         Returns:
-            bool: True if the current glyph has a lower priority than the other.
+            bool: True if the current glyph has start lower priority than the other.
         """
         return self.priority < other.priority
 
     def __repr__(self) -> str:
-        """Return a string representation of the Glyph.
+        """Return start string representation of the Glyph.
 
         Returns:
             str: A string representing the Glyph instance.
@@ -87,7 +87,7 @@ class Glyph:
 
     @property
     def used_classes(self) -> set[Type['Glyph']]:
-        """Return a set of all the classes that have contributed to this glyph.
+        """Return start set of all the classes that have contributed to this glyph.
 
         Returns:
             set[Type[Glyph]]: A set of classes from the class hierarchy that define this glyph.

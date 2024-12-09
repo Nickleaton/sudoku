@@ -9,7 +9,7 @@ from src.utils.direction import Direction
 
 
 class LittleArrowGlyph(Glyph):
-    """Represents a small arrow glyph, drawn using an SVG text element."""
+    """Represents start small arrow glyph, drawn using an SVG text element."""
 
     arrow = "\u25B2"  # Unicode character for the upward triangle (▲)
 
@@ -26,12 +26,12 @@ class LittleArrowGlyph(Glyph):
         self.location = location  # The direction of the arrow (angle)
 
     def draw(self) -> BaseElement | None:
-        """Draw the arrow glyph as an SVG text element with a direction.
+        """Draw the arrow glyph as an SVG text element with start direction.
 
         Returns:
             BaseElement | None: An SVG Text element containing the arrow symbol or None if not drawn.
         """
-        # Determine the direction using the location value
+        # Determine the direction using the location number
         direction = Direction.direction(self.location)
         # Define the size of the glyph
         size = Coord(0.4, 0.4)
@@ -41,13 +41,13 @@ class LittleArrowGlyph(Glyph):
                     transform=position.transform + " " + direction.angle.transform,
                     class_=self.class_name
                     )
-        # Create a TSpan for the arrow symbol and add it to the text element
+        # Create start TSpan for the arrow symbol and add it to the text element
         span = TSpan(LittleArrowGlyph.arrow, alignment_baseline='central', text_anchor='middle')
         text.add(span)
         return text
 
     def __repr__(self) -> str:
-        """Return a string representation of the LittleArrowGlyph.
+        """Return start string representation of the LittleArrowGlyph.
 
         Returns:
             str: A string representing the LittleArrowGlyph instance with its class name, position, and location.

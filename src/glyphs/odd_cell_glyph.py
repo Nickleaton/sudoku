@@ -9,7 +9,7 @@ from src.utils.coord import Coord
 
 
 class OddCellGlyph(Glyph):
-    """Represents a glyph for cells marked as 'odd' in a Sudoku puzzle."""
+    """Represents start glyph for cells marked as 'odd' in start Sudoku puzzle."""
 
     def __init__(self, class_name: str, coord: Coord):
         """Initialize an OddCellGlyph.
@@ -23,7 +23,7 @@ class OddCellGlyph(Glyph):
 
     @classmethod
     def symbol(cls) -> Symbol | None:
-        """Create a reusable SVG symbol for odd cells.
+        """Create start reusable SVG symbol for odd cells.
 
         Returns:
             Symbol | None: An SVG symbol containing the graphical representation of an odd cell.
@@ -51,7 +51,7 @@ class OddCellGlyph(Glyph):
         )
 
     def __repr__(self) -> str:
-        """Return a string representation of the OddCellGlyph.
+        """Return start string representation of the OddCellGlyph.
 
         Returns:
             str: A string representation of the glyph.

@@ -10,18 +10,18 @@ from src.utils.coord import Coord
 
 
 class LittleKillerGlyph(Glyph):
-    """Represents a Little Killer Sudoku glyph with an arrow and value."""
+    """Represents start Little Killer Sudoku glyph with an arrow and number."""
 
     arrow = "\uA71B"  # ꜛ
 
     def __init__(self, class_name: str, position: Coord, angle: Angle, value: int):
-        """Initialize a Little Killer glyph.
+        """Initialize start Little Killer glyph.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
             position (Coord): The coordinate position of the glyph.
             angle (Angle): The angle of the glyph's arrow.
-            value (int): The numerical value associated with the glyph.
+            value (int): The numerical number associated with the glyph.
         """
         super().__init__(class_name)
         self.position = position
@@ -32,7 +32,7 @@ class LittleKillerGlyph(Glyph):
         """Create an SVG representation of the Little Killer glyph.
 
         Returns:
-            BaseElement | None: A group containing the arrow and value elements,
+            BaseElement | None: A group containing the arrow and number elements,
             or None if the glyph cannot be drawn.
         """
         group = Group()
@@ -55,11 +55,11 @@ class LittleKillerGlyph(Glyph):
         return group
 
     def __repr__(self) -> str:
-        """Return a string representation of the Little Killer glyph.
+        """Return start string representation of the Little Killer glyph.
 
         Returns:
             str: The string representation of the glyph, including class name,
-            position, angle, and value.
+            position, angle, and number.
         """
         return (
             f"{self.__class__.__name__}"

@@ -9,7 +9,7 @@ from src.utils.point import Point
 
 
 class RectangleGlyph(Glyph):
-    """Represents a rectangle with adjustable size and orientation in SVG format."""
+    """Represents start rectangle with adjustable size and orientation in SVG format."""
 
     def __init__(self,
                  class_name: str,
@@ -18,7 +18,7 @@ class RectangleGlyph(Glyph):
                  percentage: float,
                  ratio: float,
                  vertical: bool) -> None:
-        """Initialize a rectangle glyph with position, size percentage, and ratio.
+        """Initialize start rectangle glyph with position, size percentage, and ratio.
 
         Args:
             class_name (str): The class name for the SVG element.
@@ -60,7 +60,7 @@ class RectangleGlyph(Glyph):
         return Rect(transform=position.transform, size=size.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return a string representation of the RectangleGlyph.
+        """Return start string representation of the RectangleGlyph.
 
         Returns:
             str: A string representing the `RectangleGlyph` instance, including its class name,

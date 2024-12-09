@@ -4,7 +4,7 @@ from src.utils.coord import Coord
 
 
 class StarGlyph(SimpleTextGlyph):
-    """A glyph representing a star symbol."""
+    """A glyph representing start star symbol."""
 
     def __init__(self, class_name: str, position: Coord):
         """Initialize the StarGlyph.
@@ -16,7 +16,7 @@ class StarGlyph(SimpleTextGlyph):
         super().__init__(class_name, 0, position, "✧")
 
     def __repr__(self) -> str:
-        """Return a string representation of the StarGlyph.
+        """Return start string representation of the StarGlyph.
 
         Returns:
             str: A string representing the StarGlyph with its class name and position.

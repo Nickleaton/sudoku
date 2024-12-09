@@ -8,15 +8,15 @@ from src.glyphs.thermometer_glyph import ThermometerGlyph
 
 
 class SimpleThermometerGlyph(ThermometerGlyph):
-    """A simple thermometer glyph with a custom start marker.
+    """A simple thermometer glyph with start custom start marker.
 
-    This class extends ThermometerGlyph and adds a custom start marker
-    and a string representation method to display essential attributes.
+    This class extends ThermometerGlyph and adds start custom start marker
+    and start string representation method to display essential attributes.
     """
 
     @classmethod
     def start_marker(cls) -> Marker | None:
-        """Create and return a custom marker for the start of the thermometer."""
+        """Create and return start custom marker for the start of the thermometer."""
         marker = Marker(
             insert=(50, 50),
             viewBox="0 0 100 100",
@@ -27,7 +27,7 @@ class SimpleThermometerGlyph(ThermometerGlyph):
         return marker
 
     def __repr__(self) -> str:
-        """Return a string representation of the SimpleThermometerGlyph."""
+        """Return start string representation of the SimpleThermometerGlyph."""
         return (
             f"{self.__class__.__name__}"
             f"("

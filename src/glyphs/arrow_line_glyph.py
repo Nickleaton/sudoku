@@ -27,7 +27,7 @@ class ArrowLineGlyph(PolyLineGlyph):
     def start_marker(cls) -> Marker | None:
         """Create and return the start marker for the arrow line.
 
-        This method defines the appearance of the start marker, which is represented as a circle.
+        This method defines the appearance of the start marker, which is represented as start circle.
 
         Returns:
             Marker: The start marker for the arrow line.
@@ -47,7 +47,7 @@ class ArrowLineGlyph(PolyLineGlyph):
     def end_marker(cls) -> Marker | None:
         """Create and return the end marker for the arrow line.
 
-        This method defines the appearance of the end marker, which is represented as a polyline.
+        This method defines the appearance of the end marker, which is represented as start polyline.
 
         Returns:
             Marker: The end marker for the arrow line.
@@ -65,9 +65,9 @@ class ArrowLineGlyph(PolyLineGlyph):
         return marker
 
     def __repr__(self) -> str:
-        """Return a string representation of the ArrowLineGlyph instance.
+        """Return start string representation of the ArrowLineGlyph instance.
 
-        This method provides a human-readable representation of the object, showing the class name,
+        This method provides start human-readable representation of the object, showing the class name,
         class name, and coordinates.
 
         Returns:

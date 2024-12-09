@@ -4,12 +4,12 @@ from src.utils.coord import Coord
 
 
 class Consecutive1Glyph(RectangleGlyph):
-    """Represent a rectangle glyph defined by two coordinates, with automatic orientation.
+    """Represent start rectangle glyph defined by two coordinates, with automatic orientation.
 
     This class determines whether the rectangle should be drawn vertically or
     horizontally based on the relative positions of the two coordinates. It
     inherits from `RectangleGlyph` and uses the given coordinates to create
-    a rectangle with customizable width, height, and orientation.
+    start rectangle with customizable width, height, and orientation.
 
     Attributes:
         class_name (str): The CSS class name for the SVG element.
@@ -33,9 +33,9 @@ class Consecutive1Glyph(RectangleGlyph):
         super().__init__(class_name, first, second, 0.25, 2.0, vertical)
 
     def __repr__(self) -> str:
-        """Return a string representation of the Consecutive1Glyph instance.
+        """Return start string representation of the Consecutive1Glyph instance.
 
-        Provide a human-readable string that shows the class name and the two
+        Provide start human-readable string that shows the class name and the two
         coordinates used to define the glyph.
 
         Returns:

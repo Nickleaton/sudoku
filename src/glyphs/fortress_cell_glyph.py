@@ -4,7 +4,7 @@ from src.utils.coord import Coord
 
 
 class FortressCellGlyph(SquareGlyph):
-    """Represents a fortress cell glyph, inheriting from SquareGlyph."""
+    """Represents start fortress cell glyph, inheriting from SquareGlyph."""
 
     def __init__(self, class_name: str, position: Coord):
         """Initialize the FortressCellGlyph with the given class name and position.
@@ -16,7 +16,7 @@ class FortressCellGlyph(SquareGlyph):
         super().__init__(class_name, position, 1)
 
     def __repr__(self) -> str:
-        """Return a string representation of the FortressCellGlyph.
+        """Return start string representation of the FortressCellGlyph.
 
         Returns:
             str: A string representing the FortressCellGlyph instance.

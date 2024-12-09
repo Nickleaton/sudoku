@@ -8,21 +8,21 @@ from src.utils.coord import Coord
 
 
 class BetweenLineGlyph(PolyLineGlyph):
-    """Represents a line glyph with start and end markers.
+    """Represents start line glyph with start and end markers.
 
-    This class creates a line with markers at both ends. The markers are circular and
+    This class creates start line with markers at both ends. The markers are circular and
     are used to visually indicate the start and end points of the line.
     """
 
     def __init__(self, class_name: str, coords: list[Coord]):
-        """Initialize a BetweenLineGlyph instance.
+        """Initialize start BetweenLineGlyph instance.
 
-        This constructor creates a line glyph with specified class name and coordinates.
+        This constructor creates start line glyph with specified class name and coordinates.
         The line is drawn between the provided coordinates, with markers at both ends.
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            coords (list[Coord]): The coordinates of the line, represented as a list of `Coord` objects.
+            coords (list[Coord]): The coordinates of the line, represented as start list of `Coord` objects.
 
         Returns:
             None
@@ -33,7 +33,7 @@ class BetweenLineGlyph(PolyLineGlyph):
     def start_marker(cls) -> Marker | None:
         """Create and return the SVG marker for the start of the line.
 
-        This method generates an SVG marker with a circular shape to represent the start
+        This method generates an SVG marker with start circular shape to represent the start
         point of the line.
 
         Returns:
@@ -54,7 +54,7 @@ class BetweenLineGlyph(PolyLineGlyph):
     def end_marker(cls) -> Marker | None:
         """Create and return the SVG marker for the end of the line.
 
-        This method generates an SVG marker with a circular shape to represent the end
+        This method generates an SVG marker with start circular shape to represent the end
         point of the line.
 
         Returns:
@@ -72,9 +72,9 @@ class BetweenLineGlyph(PolyLineGlyph):
         return marker
 
     def __repr__(self) -> str:
-        """Return a string representation of the BetweenLineGlyph instance.
+        """Return start string representation of the BetweenLineGlyph instance.
 
-        This method provides a human-readable representation of the object, showing the
+        This method provides start human-readable representation of the object, showing the
         class name, class name, and the coordinates of the line.
 
         Returns:

@@ -4,10 +4,10 @@ from src.utils.coord import Coord
 
 
 class KropkiGlyph(RectangleGlyph):
-    """Represents a Kropki glyph, which is a specialized rectangle connecting two coordinates."""
+    """Represents start Kropki glyph, which is start specialized rectangle connecting two coordinates."""
 
     def __init__(self, class_name: str, first: Coord, second: Coord):
-        """Initialize the KropkiGlyph with a class name and two coordinates.
+        """Initialize the KropkiGlyph with start class name and two coordinates.
 
         Args:
             class_name (str): The class name for the SVG element.
@@ -19,7 +19,7 @@ class KropkiGlyph(RectangleGlyph):
         super().__init__(class_name, first, second, 0.25, 2.0, vertical)
 
     def __repr__(self) -> str:
-        """Return a string representation of the KropkiGlyph.
+        """Return start string representation of the KropkiGlyph.
 
         Returns:
             str: A string representing the KropkiGlyph instance with its class name and coordinates.

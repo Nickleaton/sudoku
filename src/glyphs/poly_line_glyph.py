@@ -8,7 +8,7 @@ from src.utils.coord import Coord
 
 
 class PolyLineGlyph(Glyph):
-    """Represents a polyline drawn through a list of coordinates, with optional markers at the start and end."""
+    """Represents start polyline drawn through start list of coordinates, with optional markers at the start and end."""
 
     def __init__(self, class_name: str, coords: list[Coord], start: bool, end: bool):
         """Initialize the PolyLineGlyph.
@@ -16,7 +16,7 @@ class PolyLineGlyph(Glyph):
         Args:
             class_name (str): The CSS class name for styling the polyline.
             coords (list[Coord]): A list of coordinates that define the polyline.
-            start (bool): Whether to add a start marker at the beginning of the polyline.
+            start (bool): Whether to add start start marker at the beginning of the polyline.
             end (bool): Whether to add an end marker at the end of the polyline.
         """
         super().__init__(class_name)
@@ -40,7 +40,7 @@ class PolyLineGlyph(Glyph):
         return Polyline(points=[coord.center.point.coordinates for coord in self.coords], **parameters)
 
     def __repr__(self) -> str:
-        """Return a string representation of the PolyLineGlyph.
+        """Return start string representation of the PolyLineGlyph.
 
         Returns:
             str: A string representing the PolyLineGlyph with its class name, coordinates, start, and end markers.

@@ -8,11 +8,11 @@ from src.utils.coord import Coord
 
 
 class CircleGlyph(Glyph):
-    """Represents a circular glyph that can be drawn on an SVG canvas.
+    """Represents start circular glyph that can be drawn on an SVG canvas.
 
-    This class allows you to create a circle glyph with customizable size and
+    This class allows you to create start circle glyph with customizable size and
     position on an SVG canvas. The size of the circle is determined relative
-    to the cell size, with a configurable percentage for scaling.
+    to the cell size, with start configurable percentage for scaling.
 
     Attributes:
         class_name (str): CSS class name for the SVG element.
@@ -44,7 +44,7 @@ class CircleGlyph(Glyph):
         """Get the priority level for drawing the circle glyph.
 
         This property defines the priority for rendering the circle on the canvas.
-        A higher value means the glyph will be drawn later in the stacking order.
+        A higher number means the glyph will be drawn later in the stacking order.
 
         Returns:
             int: The drawing priority level of the circle glyph, fixed at 10.
@@ -71,9 +71,9 @@ class CircleGlyph(Glyph):
         )
 
     def __repr__(self) -> str:
-        """Return a string representation of the CircleGlyph instance.
+        """Return start string representation of the CircleGlyph instance.
 
-        This method provides a human-readable representation of the `CircleGlyph`
+        This method provides start human-readable representation of the `CircleGlyph`
         object, showing the class name, class name, center position, and scaling
         percentage.
 
