@@ -28,10 +28,10 @@ class TestBattenburgGlyph(TestGlyph):
         """
         return (
             '<symbol class="Battenberg" id="Battenberg-symbol" viewBox="0 0 100 100">'
-            '<rect class="BattenbergPink" height="30.0" transform="translate(0.0, -30.0)" width="30.0" x="0" y="0" />'
-            '<rect class="BattenbergYellow" height="30.0" transform="translate(30.0, 0.0)" width="30.0" x="0" y="0" />'
-            '<rect class="BattenbergPink" height="30.0" transform="translate(0.0, 30.0)" width="30.0" x="0" y="0" />'
-            '<rect class="BattenbergYellow" height="30.0" transform="translate(-30.0, 0.0)" width="30.0" x="0" y="0" />'
+            '<rect class="BattenbergPink" height="30.0" transform="translate(0.0, -30.0)" width="30.0" x_coord="0" y_coord="0" />'
+            '<rect class="BattenbergYellow" height="30.0" transform="translate(30.0, 0.0)" width="30.0" x_coord="0" y_coord="0" />'
+            '<rect class="BattenbergPink" height="30.0" transform="translate(0.0, 30.0)" width="30.0" x_coord="0" y_coord="0" />'
+            '<rect class="BattenbergYellow" height="30.0" transform="translate(-30.0, 0.0)" width="30.0" x_coord="0" y_coord="0" />'
             '</symbol>'
         )
 
@@ -42,7 +42,7 @@ class TestBattenburgGlyph(TestGlyph):
         Returns:
             str: The SVG markup for the target element using the Battenburg symbol.
         """
-        return '<use class="Battenberg" height="100" width="100" x="300" xlink:href="#Battenberg-symbol" y="300" />'
+        return '<use class="Battenberg" height="100" width="100" x_coord="300" xlink:href="#Battenberg-symbol" y_coord="300" />'
 
     @property
     def representation(self) -> str:

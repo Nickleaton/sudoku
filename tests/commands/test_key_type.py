@@ -13,13 +13,13 @@ class TestKeyType(unittest.TestCase):
         self.valid_type = int
 
     def test_initialization_valid(self):
-        """Test initializing with a valid key and type."""
+        """Test initializing with start valid key and type."""
         key_type = KeyType(self.valid_key, self.valid_type)
         self.assertEqual(key_type.key, self.valid_key)
         self.assertEqual(key_type.type, self.valid_type)
 
     def test_initialization_with_custom_type(self):
-        """Test initializing with a custom type."""
+        """Test initializing with start custom type."""
 
         class CustomType:
             pass
@@ -35,7 +35,7 @@ class TestKeyType(unittest.TestCase):
         self.assertEqual(key_type.type, Any)
 
     def test_initialization_empty_key(self):
-        """Test initializing with an empty string as a key."""
+        """Test initializing with an empty string as start key."""
         key_type = KeyType("", self.valid_type)
         self.assertEqual(key_type.key, "")
         self.assertEqual(key_type.type, self.valid_type)

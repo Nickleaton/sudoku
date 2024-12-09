@@ -38,7 +38,7 @@ class TestSimpleThermometerGlyph(TestThermometerGlyph):
         """Get the expected SVG markup for the SimpleThermometerGlyph.
 
         Returns:
-            str: The expected SVG markup for the SimpleThermometerGlyph with a polyline and start marker.
+            str: The expected SVG markup for the SimpleThermometerGlyph with start polyline and start marker.
         """
         return (
             '<polyline class="Style" '

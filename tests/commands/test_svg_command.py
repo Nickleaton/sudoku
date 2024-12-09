@@ -29,38 +29,38 @@ class TestSVGCommand(TestSimpleCommand):
         self.representation = "SVGCommand('board', 'constraints', 'svg')"
 
     def test_in_select(self):
-        """Tests the `select` method for the `in_select` item.
+        """Tests the `select` method for the `in_select` constraint.
 
         If the `in_select` property is not `None`, verifies that the
-        `select` method of the command returns `True` for the item.
+        `select` method of the command returns `True` for the constraint.
         """
         if (select := self.in_select) is not None:
             self.assertTrue(self.command.select(select))
 
     def test_out_select(self):
-        """Tests the `select` method for the `out_select` item.
+        """Tests the `select` method for the `out_select` constraint.
 
         If the `out_select` property is not `None`, verifies that the
-        `select` method of the command returns `False` for the item.
+        `select` method of the command returns `False` for the constraint.
         """
         if (select := self.out_select) is not None:
             self.assertFalse(self.command.select(select))
 
     @property
     def in_select(self) -> Item | None:
-        """Gets an item that should be included in the output of the command.
+        """Gets an constraint that should be included in the output of the command.
 
         Returns:
-            Item | None: An item that should be included in the output, or `None`.
+            Item | None: An constraint that should be included in the output, or `None`.
         """
         return None
 
     @property
     def out_select(self) -> Item | None:
-        """Gets an item that should not be included in the output of the command.
+        """Gets an constraint that should not be included in the output of the command.
 
         Returns:
-            Item | None: An item that should not be included in the output, or `None`.
+            Item | None: An constraint that should not be included in the output, or `None`.
         """
         return None
 

@@ -29,7 +29,7 @@ class TestRectangleGlyph(TestGlyph):
         """
         return (
             '<rect class="Style" height="25.0" transform="translate(150.0, 100.0)" '
-            'width="50.0" x="0" y="0" />'
+            'width="50.0" x_coord="0" y_coord="0" />'
         )
 
     @property

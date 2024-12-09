@@ -48,34 +48,34 @@ class TestCommand(unittest.TestCase):
 
     def test_set_parameters(self):
         """Test the set_parameters method of the Command class."""
-        # Define parameters to be set in the problem
-        self.command.parameters = [
+        # Define parameter_list to be set in the problem
+        self.command.parameters_list = [
             ParameterValueType("param1", "test", str),
             ParameterValueType("param2", 99, int),
             ParameterValueType("param3", Path("test.txt"), Path),
         ]
 
         # Ensure the problem does not initially contain these keys
-        for param in self.command.parameters:
+        for param in self.command.parameters_list:
             self.assertNotIn(param.key, self.problem)
 
         # Call set_parameters
-        self.command.set_parameters(self.problem)
+        self.command.apply_parameters(self.problem)
 
-        # Check that parameters were set with their default values
+        # Check that parameter_list were set with their default value_list
         self.assertEqual(self.problem["param1"], "test")
         self.assertEqual(self.problem["param2"], 99)
         self.assertEqual(self.problem["param3"], Path("test.txt"))
 
     def test_validate_parameters_exists(self):
-        """Test the validate_parameters method for parameters that must exist."""
-        # Define parameters expected in the problem
+        """Test the validate_parameters method for parameter_list that must exist."""
+        # Define parameter_list expected in the problem
         parameters = [
             ParameterValueType("param1", "text", str),
             ParameterValueType("param2", 99, int),
         ]
 
-        # Populate the problem with valid parameters
+        # Populate the problem with valid parameter_list
         self.problem["param1"] = "some text"
         self.problem["param2"] = 42
 
@@ -85,7 +85,7 @@ class TestCommand(unittest.TestCase):
         except CommandException as e:
             self.fail(f"validate_parameters (exists) raised CommandException unexpectedly: {e}")
 
-        # Test with a missing key
+        # Test with start missing key
         del self.problem["param1"]  # Remove one key
         with self.assertRaises(CommandException) as context:
             self.command.validate_parameters(self.problem, parameters, check_exists=True)
@@ -98,8 +98,8 @@ class TestCommand(unittest.TestCase):
         self.assertIn("'param1' is of the wrong type", str(context.exception))
 
     def test_validate_parameters_not_exists(self):
-        """Test the validate_parameters method for parameters that must not exist."""
-        # Define parameters that should not exist in the problem
+        """Test the validate_parameters method for parameter_list that must not exist."""
+        # Define parameter_list that should not exist in the problem
         parameters = [
             ParameterValueType("param1", "text", str),
             ParameterValueType("param2", 99, int),
@@ -122,14 +122,14 @@ class TestCommand(unittest.TestCase):
         self.assertIn("'param1' already exists in the problem", str(context.exception))
 
     def test_validate_values_exists(self):
-        """Test the validate_values method for values that must exist."""
-        # Define expected values in the problem
+        """Test the validate_values method for value_list that must exist."""
+        # Define expected value_list in the problem
         values = [
             KeyType("value1", str),
             KeyType("value2", int),
         ]
 
-        # Populate the problem with valid values
+        # Populate the problem with valid value_list
         self.problem["value1"] = "some text"
         self.problem["value2"] = 42
 
@@ -139,7 +139,7 @@ class TestCommand(unittest.TestCase):
         except CommandException as e:
             self.fail(f"validate_values (exists) raised CommandException unexpectedly: {e}")
 
-        # Test with a missing key
+        # Test with start missing key
         del self.problem["value1"]  # Remove one key
         with self.assertRaises(CommandException) as context:
             self.command.validate_values(self.problem, values, check_exists=True)
@@ -152,8 +152,8 @@ class TestCommand(unittest.TestCase):
         self.assertIn("'value1' is of the wrong type", str(context.exception))
 
     def test_validate_values_not_exists(self):
-        """Test the validate_values method for values that must not exist."""
-        # Define expected output values
+        """Test the validate_values method for value_list that must not exist."""
+        # Define expected output value_list
         values = [
             KeyType("value1", str),
             KeyType("value2", int),
@@ -182,7 +182,7 @@ class TestCommand(unittest.TestCase):
         self.assertEqual(self.representation, repr(self.command))
 
     def test_parameter_type_mismatch(self):
-        """Test if a TypeError is raised when a parameter type is mismatched."""
+        """Test if start TypeError is raised when start parameter type is mismatched."""
         with self.assertRaises(TypeError):
             ParameterValueType("param1", "string_value", int)
 

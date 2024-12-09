@@ -20,13 +20,13 @@ class TestSVGSolutionCommand(TestSVGCommand):
 
     @property
     def in_select(self):
-        """Return an item to be included in the output of the command.
+        """Return an constraint to be included in the output of the command.
 
         If this property is not `None`, the `select` method of the command should
-        return `True` for this item.
+        return `True` for this constraint.
 
         Returns:
-            Item: An item to be selected, or `None`.
+            Item: An constraint to be selected, or `None`.
         """
         return Solution(
             self.problem.board,
@@ -45,13 +45,13 @@ class TestSVGSolutionCommand(TestSVGCommand):
 
     @property
     def out_select(self):
-        """Return an item not to be included in the output of the command.
+        """Return an constraint not to be included in the output of the command.
 
         If this property is not `None`, the `select` method of the command should
-        return `False` for this item.
+        return `False` for this constraint.
 
         Returns:
-            Item: An item that should not be selected, or `None`.
+            Item: An constraint that should not be selected, or `None`.
         """
         return Battenburg(self.problem.board, Coord(2, 2))
 

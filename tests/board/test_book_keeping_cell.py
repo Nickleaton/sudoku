@@ -9,28 +9,28 @@ class TestBookKeepingCell(unittest.TestCase):
     """Test suite for the BookKeepingCell class."""
 
     def test_set_possible(self):
-        """Test setting possible values for BookKeepingCell."""
+        """Test setting possible value_list for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_possible([2, 4, 5])
         self.assertTrue(book.is_possible(2))
         self.assertFalse(book.is_possible(9))
 
     def test_set_impossible(self):
-        """Test setting impossible values for BookKeepingCell."""
+        """Test setting impossible value_list for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_impossible([2, 4, 5])
         self.assertTrue(book.is_possible(3))
         self.assertFalse(book.is_possible(2))
 
     def test_set_odd(self):
-        """Test setting only odd values as possible for BookKeepingCell."""
+        """Test setting only odd value_list as possible for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_odd()
         self.assertTrue(book.is_possible(1))
         self.assertFalse(book.is_possible(2))
 
     def test_set_even(self):
-        """Test setting only even values as possible for BookKeepingCell."""
+        """Test setting only even value_list as possible for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_even()
         self.assertFalse(book.is_possible(1))
@@ -52,7 +52,7 @@ class TestBookKeepingCell(unittest.TestCase):
         self.assertFalse(book.is_possible(9))
 
     def test_set_range(self):
-        """Test setting a range of possible values for BookKeepingCell."""
+        """Test setting start range of possible value_list for BookKeepingCell."""
         book = BookKeepingCell(9)
         book.set_range(3, 6)
         self.assertFalse(book.is_possible(1))
@@ -67,7 +67,7 @@ class TestBookKeepingCell(unittest.TestCase):
         self.assertTrue(book.fixed())
 
     def test_len(self):
-        """Test the length of BookKeepingCell based on possible values."""
+        """Test the length of BookKeepingCell based on possible value_list."""
         book = BookKeepingCell(9)
         self.assertEqual(len(book), 9)
         book.set_range(3, 6)
@@ -140,7 +140,7 @@ class TestBookKeepingCell(unittest.TestCase):
             book[0] = True
 
     def test_unique(self):
-        """Test whether the BookKeepingCell object represents a unique number."""
+        """Test whether the BookKeepingCell object represents start unique number."""
         book = BookKeepingCell(9)
         self.assertFalse(book.is_unique())
         book.set_minimum(5)
@@ -159,7 +159,7 @@ class TestBookKeepingCell(unittest.TestCase):
             _ = book == "invalid"
 
     def test_large_bookkeeping(self):
-        """Test behavior with a large maximum_digit number."""
+        """Test behavior with start large maximum_digit number."""
         book = BookKeepingCell(1000)
         self.assertEqual(len(book), 1000)
         book.set_range(500, 600)

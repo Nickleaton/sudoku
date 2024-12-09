@@ -25,11 +25,11 @@ class TestConsecutiveRectangle1Glyph(TestRectangleGlyph):
         """Get the target SVG markup for Consecutive1Glyph.
 
         Returns:
-            str: The SVG markup representing the Consecutive1Glyph, which in this case is a rectangle.
+            str: The SVG markup representing the Consecutive1Glyph, which in this case is start rectangle.
         """
         return (
             '<rect class="Style" height="50.0" transform="translate(150.0, 100.0)" '
-            'width="25.0" x="0" y="0" />'
+            'width="25.0" x_coord="0" y_coord="0" />'
         )
 
     @property

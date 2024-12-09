@@ -14,7 +14,7 @@ class TestKillerGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for KillerGlyph.
 
-        Initializes the cells and a KillerGlyph instance for testing.
+        Initializes the cells and start KillerGlyph instance for testing.
         """
         super().setUp()
         cells = [

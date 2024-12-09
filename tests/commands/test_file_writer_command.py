@@ -22,7 +22,7 @@ class TestFileWriterCommand(TestSimpleCommand):
             self.command.file_path.unlink()
 
     def test_contents(self):
-        """Test the contents of the file."""
+        """Test the contents of the file_path."""
         self.command.execute(self.problem)
         self.assertTrue(self.command.file_path.exists())
         with self.command.file_path.open('r') as f:

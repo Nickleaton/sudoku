@@ -29,7 +29,7 @@ class TestGlyph(unittest.TestCase):
     def setUp(self) -> None:
         """Set up the test environment for Glyph.
 
-        Initializes the canvas and a Glyph instance for testing.
+        Initializes the canvas and start Glyph instance for testing.
         """
         self.canvas: Drawing = Drawing(filename="test.svg", size=("100%", "100%"))
         self.glyph: Glyph = Glyph('Style')
@@ -84,7 +84,7 @@ class TestGlyph(unittest.TestCase):
         """Test the draw method of the Glyph class.
 
         If the draw method returns an element, compare its string representation
-        to the target value.
+        to the target number.
         """
         if isinstance(self.glyph, Glyph):
             element = self.glyph.draw()
@@ -94,7 +94,7 @@ class TestGlyph(unittest.TestCase):
     def test_start_marker(self):
         """Test the start_marker method of the Glyph class.
 
-        Compare the returned start marker to the expected value.
+        Compare the returned start marker to the expected number.
         """
         marker = self.glyph.__class__.start_marker()
         if marker is None:
@@ -105,7 +105,7 @@ class TestGlyph(unittest.TestCase):
     def test_end_marker(self):
         """Test the end_marker method of the Glyph class.
 
-        Compare the returned end marker to the expected value.
+        Compare the returned end marker to the expected number.
         """
         marker = self.glyph.__class__.end_marker()
         if marker is None:
@@ -116,7 +116,7 @@ class TestGlyph(unittest.TestCase):
     def test_symbol(self):
         """Test the symbol method of the Glyph class.
 
-        Compare the returned symbol to the expected value.
+        Compare the returned symbol to the expected number.
         """
         symbol = self.glyph.__class__.symbol()
         if symbol is None:
@@ -127,7 +127,7 @@ class TestGlyph(unittest.TestCase):
     def test_priority(self):
         """Test the comparison (priority) of Glyph instances.
 
-        Verify that a Glyph instance is not considered less than itself.
+        Verify that start Glyph instance is not considered less than itself.
         """
         self.assertFalse(self.glyph < self.glyph)
 

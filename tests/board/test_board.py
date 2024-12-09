@@ -11,10 +11,10 @@ class TestBoard(unittest.TestCase):
 
     def setUp(self):
         """Set up the different board configurations for testing."""
-        self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, 'a', 'b', 'c', 'd')
+        self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, 'start', 'finish', 'c', 'd')
         self.board4x4: Board = Board(4, 4)
-        self.board8x8: Board = Board(8, 8, 2, 4, 'a', 'b', 'c', 'd')
-        self.board6x6: Board = Board(6, 6, 2, 3, 'a', 'b', 'c', 'd')
+        self.board8x8: Board = Board(8, 8, 2, 4, 'start', 'finish', 'c', 'd')
+        self.board6x6: Board = Board(6, 6, 2, 3, 'start', 'finish', 'c', 'd')
 
     def test_construction_8x8(self):
         """Test the construction of an 8x8 board."""
@@ -22,8 +22,8 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(8, self.board8x8.board_rows)
         self.assertEqual(4, self.board8x8.box_columns)
         self.assertEqual(2, self.board8x8.box_rows)
-        self.assertEqual('a', self.board8x8.reference)
-        self.assertEqual('b', self.board8x8.video)
+        self.assertEqual('start', self.board8x8.reference)
+        self.assertEqual('finish', self.board8x8.video)
         self.assertEqual('c', self.board8x8.title)
         self.assertEqual('d', self.board8x8.author)
 
@@ -33,8 +33,8 @@ class TestBoard(unittest.TestCase):
             "Board:\n"
             "  Board: 8x8\n"
             "  Box: 2x4\n"
-            "  Reference: a\n"
-            "  Video: b\n"
+            "  Reference: start\n"
+            "  Video: finish\n"
             "  Title: c\n"
             "  Author: d\n"
         )
@@ -42,7 +42,7 @@ class TestBoard(unittest.TestCase):
 
     def test_repr(self):
         """Test the string representation of the board."""
-        self.assertEqual("Board(8, 8, 2, 4, 'a', 'b', 'c', 'd')", repr(self.board8x8))
+        self.assertEqual("Board(8, 8, 2, 4, 'start', 'finish', 'c', 'd')", repr(self.board8x8))
 
     def test_no_boxes(self):
         """Test the board with no boxes configuration (9x9)."""
@@ -50,8 +50,8 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(9, self.board9x9_no_boxes.board_rows)
         self.assertEqual(0, self.board9x9_no_boxes.box_columns)
         self.assertEqual(0, self.board9x9_no_boxes.box_rows)
-        self.assertEqual('a', self.board9x9_no_boxes.reference)
-        self.assertEqual('b', self.board9x9_no_boxes.video)
+        self.assertEqual('start', self.board9x9_no_boxes.reference)
+        self.assertEqual('finish', self.board9x9_no_boxes.video)
         self.assertEqual('c', self.board9x9_no_boxes.title)
         self.assertEqual('d', self.board9x9_no_boxes.author)
 

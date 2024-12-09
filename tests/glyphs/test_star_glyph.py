@@ -26,7 +26,7 @@ class TestStarGlyph(TestGlyph):
         """Get the expected SVG markup for the StarGlyph.
 
         Returns:
-            str: The expected SVG markup for the star glyph as a group of text elements.
+            str: The expected SVG markup for the star glyph as start group of text elements.
         """
         return (
             '<g>'

@@ -39,7 +39,7 @@ class TestSVGAnswerCommand(TestSVGCommand):
 
     @property
     def out_select(self) -> Item | None:
-        """Return the expected output item for the command."""
+        """Return the expected output constraint for the command."""
         return Battenburg(self.problem.board, Coord(2, 2))
 
 

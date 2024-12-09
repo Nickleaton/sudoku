@@ -16,7 +16,7 @@ class TestKnownGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for KnownGlyph.
 
-        Initializes the style, coordinates, and value for the KnownGlyph.
+        Initializes the style, coordinates, and number for the KnownGlyph.
         """
         super().setUp()
         self.glyph = KnownGlyph('Style', Coord(1, 1), 1)

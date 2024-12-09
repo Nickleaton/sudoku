@@ -14,7 +14,7 @@ class TestQuadrupleGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for QuadrupleGlyph.
 
-        Initializes the style, coordinates, and value ('1234') for the QuadrupleGlyph.
+        Initializes the style, coordinates, and number ('1234') for the QuadrupleGlyph.
         """
         super().setUp()
         self.glyph = QuadrupleGlyph("Style", Coord(2, 2), "1234")
@@ -24,7 +24,7 @@ class TestQuadrupleGlyph(TestGlyph):
         """Get the expected SVG markup for the QuadrupleGlyph.
 
         Returns:
-            str: The expected SVG markup for the QuadrupleGlyph, including a circle and text elements.
+            str: The expected SVG markup for the QuadrupleGlyph, including start circle and text elements.
         """
         return (
             '<g>'
@@ -40,7 +40,7 @@ class TestQuadrupleGlyph(TestGlyph):
         """Get the string representation of the QuadrupleGlyph instance.
 
         Returns:
-            str: The string representation of the QuadrupleGlyph with style, coordinates, and value.
+            str: The string representation of the QuadrupleGlyph with style, coordinates, and number.
         """
         return "QuadrupleGlyph('Style', Coord(2, 2), '1234')"
 
