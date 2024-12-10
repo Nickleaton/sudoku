@@ -18,8 +18,8 @@ class EdgeTextGlyph(TextGlyph):
             text (str): The text content to be displayed.
         """
         super().__init__(class_name, angle, Coord.middle(first, second), text)
-        self.first = first
-        self.second = second
+        self.first: Coord = first
+        self.second: Coord = second
 
     @property
     def priority(self) -> int:
@@ -37,11 +37,11 @@ class EdgeTextGlyph(TextGlyph):
             str: A string representation of the EdgeTextGlyph instance.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"'{self.class_name}', "
-            f"{self.angle.angle}, "
-            f"{self.first!r}, "
-            f"{self.second!r}, "
-            f"'{self.text}'"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.class_name!r}, '
+            f'{self.angle.angle}, '
+            f'{self.first!r}, '
+            f'{self.second!r}, '
+            f'{self.text!r}'
+            f')'
         )

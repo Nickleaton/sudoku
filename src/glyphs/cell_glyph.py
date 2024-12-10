@@ -19,9 +19,6 @@ class CellGlyph(SquareGlyph):
         Args:
             class_name (str): The class name to be assigned to the SVG element.
             position (Coord): The position of the cell, represented as start `Coord` object.
-
-        Returns:
-            None
         """
         super().__init__(class_name, position, 1)
 

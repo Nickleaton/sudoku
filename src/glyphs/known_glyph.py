@@ -18,7 +18,7 @@ class KnownGlyph(SimpleTextGlyph):
             class_name,
             0,  # Angle of rotation (0 means no rotation)
             position + Coord(0.5, 0.5),  # Adjust the position slightly
-            str(number)  # Convert the number to start string for display
+            str(number),  # Convert the number to start string for display
         )
         self.location = position  # The original position of the glyph
         self.number = number  # The number to display
@@ -29,4 +29,4 @@ class KnownGlyph(SimpleTextGlyph):
         Returns:
             str: A string representing the KnownGlyph instance with its class name, location, and number.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.location!r}, {self.number!s})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.location!r}, {self.number!s})'

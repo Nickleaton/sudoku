@@ -29,11 +29,7 @@ class CircleGlyph(Glyph):
         Args:
             class_name (str): CSS class name for styling the circle.
             center (Coord): The center point of the circle on the canvas.
-            percentage (float): Scale factor for the circle's radius relative
-                                 to the cell size.
-
-        Returns:
-            None
+            percentage (float): Scale factor for the circle's radius relative to the cell size.
         """
         super().__init__(class_name)
         self.center: Coord = center
@@ -67,7 +63,7 @@ class CircleGlyph(Glyph):
         return Circle(
             transform=self.center.point.transform,
             r=self.percentage * cell_size,
-            class_=self.class_name
+            class_=self.class_name,
         )
 
     def __repr__(self) -> str:

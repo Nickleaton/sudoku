@@ -1,5 +1,4 @@
 """RectangleGlyph."""
-
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 
@@ -9,7 +8,7 @@ from src.utils.point import Point
 
 
 class RectangleGlyph(Glyph):
-    """Represents start rectangle with adjustable size and orientation in SVG format."""
+    """Represents a rectangle with adjustable size and orientation in SVG format."""
 
     def __init__(self,
                  class_name: str,
@@ -17,8 +16,9 @@ class RectangleGlyph(Glyph):
                  second: Coord,
                  percentage: float,
                  ratio: float,
-                 vertical: bool) -> None:
-        """Initialize start rectangle glyph with position, size percentage, and ratio.
+                 vertical: bool,
+                 ) -> None:
+        """Initialize the rectangle glyph with position, size percentage, and ratio.
 
         Args:
             class_name (str): The class name for the SVG element.
@@ -42,36 +42,41 @@ class RectangleGlyph(Glyph):
             BaseElement | None: An SVG `Rect` element representing the rectangle.
         """
         cell_size: int = 100
-        if config.drawing is not None and config.drawing.cell_size is not None:
+        if config.drawing and config.drawing.cell_size:
             cell_size = int(config.drawing.cell_size)
 
         # Calculate the rectangle's size based on the percentage and ratio
-        if self.vertical:
-            size = Point(cell_size * self.percentage * self.ratio,
-                         cell_size * self.percentage)
-        else:
-            size = Point(cell_size * self.percentage,
-                         cell_size * self.percentage * self.ratio)
+        size = (
+            Point(
+                cell_size * self.percentage * self.ratio,
+                cell_size * self.percentage,
+            )
+            if self.vertical
+            else Point(
+                cell_size * self.percentage,
+                cell_size * self.percentage * self.ratio,
+            )
+        )
 
         # Position the rectangle in the middle of the first and second coordinates
-        position = Coord.middle(self.first, self.second)
+        position: Coord = Coord.middle(self.first, self.second)
 
         # Return the rectangle as an SVG `Rect` element
-        return Rect(transform=position.transform, size=size.coordinates, class_=self.class_name)
+        return Rect(
+            transform=position.transform,
+            size=size.coordinates,
+            class_=self.class_name,
+        )
 
     def __repr__(self) -> str:
-        """Return start string representation of the RectangleGlyph.
+        """Return the string representation of the RectangleGlyph.
 
         Returns:
             str: A string representing the `RectangleGlyph` instance, including its class name,
             position, size, and orientation.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"'{self.class_name}', "
-            f"{self.first!r}, "
-            f"{self.second!r}, "
-            f"{self.percentage!r}, "
-            f"{self.ratio!r}, "
-            f"{self.vertical!r})"
+            f'{self.__class__.__name__}('
+            f'{self.class_name!r}, {self.first!r}, {self.second!r}, '
+            f'{self.percentage!r}, {self.ratio!r}, {self.vertical!r})'
         )

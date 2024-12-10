@@ -38,4 +38,4 @@ class MidCellGlyph(Glyph):
             str: A string representation of the glyph in the format
                 MidCellGlyph('<class_name>', <position>).
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.position!r})'

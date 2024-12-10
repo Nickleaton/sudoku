@@ -36,13 +36,13 @@ class LowCellGlyph(Glyph):
         Returns:
             Symbol | None: The SVG symbol for the low cell glyph, or None.
         """
-        result = Symbol(
-            viewBox="0 0 100 100",
-            id_="LowCell-symbol",
-            class_="LowCell"
+        symbol: Symbol = Symbol(
+            viewBox='0 0 100 100',
+            id_='LowCell-symbol',
+            class_='LowCell',
         )
-        result.add(Circle(center=(50, 50), r=35))
-        return result
+        symbol.add(Circle(center=(50, 50), r=35))
+        return symbol
 
     def draw(self) -> BaseElement | None:
         """Draw the low cell glyph by using the defined symbol and coordinates.
@@ -51,7 +51,7 @@ class LowCellGlyph(Glyph):
             BaseElement | None: The SVG use element that references the
             low cell symbol and positions it based on the coordinate.
         """
-        return Use(href="#LowCell-symbol", insert=self.coord.point.coordinates, class_="LOwCell", height=100, width=100)
+        return Use(href='#LowCell-symbol', insert=self.coord.point.coordinates, class_='LowCell', height=100, width=100)
 
     def __repr__(self) -> str:
         """Return start string representation of the LowCellGlyph instance.
@@ -59,4 +59,4 @@ class LowCellGlyph(Glyph):
         Returns:
             str: The string representation of the LowCellGlyph.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.coord!r})'

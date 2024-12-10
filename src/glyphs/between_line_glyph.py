@@ -23,11 +23,8 @@ class BetweenLineGlyph(PolyLineGlyph):
         Args:
             class_name (str): The class name to be assigned to the SVG element.
             coords (list[Coord]): The coordinates of the line, represented as start list of `Coord` objects.
-
-        Returns:
-            None
         """
-        super().__init__(class_name, coords, True, True)
+        super().__init__(class_name, coords, start=True, end=True)
 
     @classmethod
     def start_marker(cls) -> Marker | None:
@@ -43,9 +40,9 @@ class BetweenLineGlyph(PolyLineGlyph):
         marker = Marker(
             insert=(50, 50),
             size=(35, 35),
-            viewBox="0 0 100 100",
-            id_="Between-start",
-            class_="Between BetweenStart"
+            viewBox='0 0 100 100',
+            id_='Between-start',
+            class_='Between BetweenStart',
         )
         marker.add(Circle(center=(50, 50), r=35))
         return marker
@@ -64,9 +61,9 @@ class BetweenLineGlyph(PolyLineGlyph):
         marker = Marker(
             insert=(50, 50),
             size=(35, 35),
-            viewBox="0 0 100 100",
-            id_="Between-end",
-            class_="Between BetweenEnd"
+            viewBox='0 0 100 100',
+            id_='Between-end',
+            class_='Between BetweenEnd',
         )
         marker.add(Circle(center=(50, 50), r=35))
         return marker
@@ -81,9 +78,9 @@ class BetweenLineGlyph(PolyLineGlyph):
             str: A string representation of the BetweenLineGlyph instance.
         """
         return (
-            f"{self.__class__.__name__}"
-            f"("
-            f"'{self.class_name}', "
-            f"[{', '.join([repr(coord) for coord in self.coords])}]"
-            f")"
+            f'{self.__class__.__name__}'
+            f'('
+            f'{self.class_name!r}, '
+            f'{self.coords!r}'
+            f')'
         )

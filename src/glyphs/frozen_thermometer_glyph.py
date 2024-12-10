@@ -18,9 +18,9 @@ class FrozenThermometerGlyph(ThermometerGlyph):
         """
         marker = Marker(
             insert=(50, 50),
-            viewBox="0 0 100 100",
-            id_="FrozenThermometer-start",
-            class_="FrozenThermometer FrozenThermometerStart"
+            viewBox='0 0 100 100',
+            id_='FrozenThermometer-start',
+            class_='FrozenThermometer FrozenThermometerStart',
         )
         marker.add(Circle(center=(50, 50), r=30))
         return marker
@@ -32,9 +32,9 @@ class FrozenThermometerGlyph(ThermometerGlyph):
             str: A string representing the FrozenThermometerGlyph instance.
         """
         return (
-            f"{self.__class__.__name__}"
-            f"("
-            f"'{self.class_name}', "
-            f"[{', '.join([repr(coord) for coord in self.coords])}]"
-            f")"
+            f'{self.__class__.__name__}'
+            f'('
+            f'{self.class_name!r}, '
+            f'[{", ".join([repr(coord) for coord in self.coords])}]'
+            f')'
         )

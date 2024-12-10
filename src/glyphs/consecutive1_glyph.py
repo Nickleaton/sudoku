@@ -41,4 +41,4 @@ class Consecutive1Glyph(RectangleGlyph):
         Returns:
             str: A string representation of the Consecutive1Glyph instance.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.first!s}, {self.second!s})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.first!s}, {self.second!s})'

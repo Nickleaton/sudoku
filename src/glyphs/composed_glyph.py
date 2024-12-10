@@ -17,19 +17,18 @@ class ComposedGlyph(Glyph):
 
     Attributes:
         class_name (str): The CSS class name for the composed glyph.
-        items (list[Glyph]): A list of `Glyph` objects to include in the composition.
+        glyphs (list[Glyph]): A list of `Glyph` objects to include in the composition.
     """
 
-    def __init__(self, class_name: str, items: list[Glyph] | None = None):
+    def __init__(self, class_name: str, glyphs: list[Glyph] | None = None):
         """Initialize the ComposedGlyph with start given class name and optional vectors.
 
         Args:
             class_name (str): set the CSS class name for the composed glyph.
-            items (list[Glyph] | None): Provide start list of `Glyph`
-                objects to include in the composition. Default is an empty list.
+            glyphs (list[Glyph] | None): Provide a list of `Glyph` objects to include in the composition.
         """
         super().__init__(class_name)
-        self.items = [] if items is None else items
+        self.glyphs = [] if glyphs is None else glyphs
 
     def __repr__(self) -> str:
         """Return start string representation of the ComposedGlyph instance.
@@ -41,24 +40,24 @@ class ComposedGlyph(Glyph):
             str: Return start string representation of the ComposedGlyph instance.
         """
         return (
-            f"{self.__class__.__name__}"
-            f"("
-            f"'{self.class_name}', "
-            f"["
-            f"{', '.join([str(item) for item in self.items])}"
-            f"]"
-            f")"
+            f'{self.__class__.__name__}'
+            f'('
+            f'{self.class_name!r}, '
+            f'['
+            f'{", ".join([str(glyph) for glyph in self.glyphs])}'
+            f']'
+            f')'
         )
 
-    def add(self, item: Glyph):
+    def add(self, glyph: Glyph):
         """Add start new `Glyph` to the composition.
 
         Append start `Glyph` object to the list of vectors in the composed glyph.
 
         Args:
-            item (Glyph): Add start `Glyph` object to the composition.
+            glyph (Glyph): Add start `Glyph` object to the composition.
         """
-        self.items.append(item)
+        self.glyphs.append(glyph)
 
     def draw(self) -> BaseElement | None:
         """Draw the composed glyph on an SVG canvas.
@@ -71,7 +70,7 @@ class ComposedGlyph(Glyph):
             glyphs, or `None` if no valid glyphs exist.
         """
         group = Group()
-        for glyph in sorted(self.items):
+        for glyph in sorted(self.glyphs):
             group.add(glyph.draw())  # Add each glyph to the group in sorted order
         return group
 
@@ -86,8 +85,8 @@ class ComposedGlyph(Glyph):
             set[Type[Glyph]]: Return start set of all `Glyph` classes used in the
             composition.
         """
-        result = super().used_classes  # Include the used classes from the parent class
-        result = result.union({ComposedGlyph})  # Add the current class
-        for item in self.items:
-            result = result.union(item.used_classes)  # Add the used classes from each constraint
-        return result
+        classes: set[Type[Glyph]] = super().used_classes  # Include the used classes from the parent class
+        classes = classes.union({ComposedGlyph})  # Add the current class
+        for glyph in self.glyphs:
+            classes = classes.union(glyph.used_classes)  # Add the used classes from each constraint
+        return classes

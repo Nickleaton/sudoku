@@ -1,7 +1,7 @@
 """BattenburgGlyph."""
 
 from svgwrite.base import BaseElement
-from svgwrite.container import Marker, Symbol, Use
+from svgwrite.container import Symbol, Use
 from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
@@ -25,40 +25,38 @@ class BattenburgGlyph(Glyph):
         Args:
             class_name (str): The class name to be assigned to the SVG element.
             coord (Coord): The coordinates of the Battenburg pattern.
-
-        Returns:
-            None
         """
         super().__init__(class_name)
         self.coord = coord
 
     @classmethod
-    def symbol(cls) -> Marker | None:
-        """Create and return the SVG symbol for the Battenburg pattern.
+    def symbol(cls) -> Symbol:
+        """Create and returns the SVG symbol for the Battenburg pattern.
 
-        This method generates an SVG symbol containing start 2x2 grid of rectangles with alternating
+        This method generates an SVG symbol containing a 2x2 grid of rectangles with alternating
         colors (pink and yellow) to form the Battenburg pattern.
 
         Returns:
-            Marker: The SVG symbol for the Battenburg pattern.
-            None: If the symbol cannot be created.
+            Symbol: The SVG symbol for the Battenburg pattern.
         """
-        result = Symbol(
-            viewBox="0 0 100 100",
-            id_="Battenberg-symbol",
-            class_="Battenberg"
+        symbol: Symbol = Symbol(
+            viewBox='0 0 100 100',
+            id_='Battenburg-symbol',
+            class_='Battenburg',
         )
-        percentage = 0.3
-        # Add alternating colored rectangles to form the Battenburg pattern
-        for i, position in enumerate([(d * percentage).point for d in Direction.orthogonals()]):
-            result.add(
-                Rect(
-                    transform=position.transform,
-                    size=Coord(percentage, percentage).point.coordinates,
-                    class_="Battenberg" + ("Pink" if i % 2 == 0 else "Yellow")
-                )
+        percentage: float = 0.5  # Each square will take 50% of the width and height.
+
+        # Add alternating colored rectangles to form the Battenburg pattern.
+        for index, direction in enumerate(Direction.orthogonals()):
+            position: Coord = direction * percentage
+            rect: Rect = Rect(
+                insert=position.point.coordinates,
+                size=Coord(percentage, percentage).point.coordinates,
+                class_=f"Battenburg{'Pink' if index % 2 == 0 else 'Yellow'}",
             )
-        return result
+            symbol.add(rect)
+
+        return symbol
 
     def draw(self) -> BaseElement | None:
         """Draw the Battenburg pattern on an SVG canvas.
@@ -71,11 +69,11 @@ class BattenburgGlyph(Glyph):
             None: If the element cannot be created.
         """
         return Use(
-            href="#Battenberg-symbol",
+            href='#Battenberg-symbol',
             insert=self.coord.point.coordinates,
-            class_="Battenberg",
+            class_='Battenberg',
             height=100,
-            width=100
+            width=100,
         )
 
     def __repr__(self) -> str:
@@ -87,4 +85,4 @@ class BattenburgGlyph(Glyph):
         Returns:
             str: A string representation of the BattenburgGlyph instance.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.coord!r})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.coord!r})'

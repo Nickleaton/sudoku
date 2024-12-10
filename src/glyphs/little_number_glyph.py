@@ -29,13 +29,14 @@ class LittleNumberGlyph(Glyph):
             BaseElement | None: An SVG `Text` element displaying the number,
             or None if the glyph cannot be drawn.
         """
-        size = Coord(0.35, 0.35)
-        position = self.position + size
-        text = Text("",
-                    transform=position.transform,
-                    class_=self.class_name
-                    )
-        span = TSpan(str(self.number), alignment_baseline='central', text_anchor='middle')
+        size: Coord = Coord(0.35, 0.35)
+        position: Coord = self.position + size
+        text: Text = Text(
+            '',
+            transform=position.transform,
+            class_=self.class_name,
+        )
+        span: TSpan = TSpan(str(self.number), alignment_baseline='central', text_anchor='middle')
         text.add(span)
         return text
 
@@ -46,4 +47,4 @@ class LittleNumberGlyph(Glyph):
             str: The string representation of the glyph, including class name,
             position, and number.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r}, {self.number!r})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.position!r}, {self.number!r})'

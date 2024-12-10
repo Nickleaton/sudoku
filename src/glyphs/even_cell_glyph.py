@@ -39,4 +39,4 @@ class EvenCellGlyph(Glyph):
         Returns:
             str: A string representing the EvenCellGlyph instance.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.position!r})'
