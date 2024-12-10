@@ -3,12 +3,12 @@ from typing import Any, Type
 
 
 class ParameterValueType:
-    """Represent a start parameter with a key, associated value, and expected type.
+    """Represent a start parameter with a key, associated input_value, and expected type.
 
     Attributes:
         key (str): The identifier for the parameter.
-        parameter_value (Any): The value associated with the parameter.
-        typ (Type): The expected data type for the value.
+        parameter_value (Any): The input_value associated with the parameter.
+        typ (Type): The expected data type for the input_value.
     """
 
     def __init__(self, key: str, parameter_value: Any, typ: Type):
@@ -16,11 +16,11 @@ class ParameterValueType:
 
         Args:
             key (str): The name or identifier for the parameter.
-            parameter_value (Any): The value associated with the parameter.
+            parameter_value (Any): The input_value associated with the parameter.
             typ (Type): The expected data type for the parameter.
 
         Raises:
-            TypeError: If the value does not match the specified type, unless the type is `Any`.
+            TypeError: If the input_value does not match the specified type, unless the type is `Any`.
         """
         self.key: str = key
         self.parameter_value: Any = parameter_value

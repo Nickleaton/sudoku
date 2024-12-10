@@ -86,15 +86,15 @@ class Command:
 
     @staticmethod
     def validate_single_value(problem: Problem, value_item: KeyType, check_exists: bool) -> None:
-        """Validate a single value based on its existence and type in the problem.
+        """Validate a single input_value based on its existence and type in the problem.
 
         Args:
             problem (Problem): The problem instance to validate.
-            value_item (KeyType): The value to validate.
-            check_exists (bool): If True, ensures the value exists; if False, ensures it does not.
+            value_item (KeyType): The input_value to validate.
+            check_exists (bool): If True, ensures the input_value exists; if False, ensures it does not.
 
         Raises:
-            CommandException: If the value is missing or already exists in the problem,
+            CommandException: If the input_value is missing or already exists in the problem,
                               or if its type does not match the expected type.
         """
         exists: bool = value_item.key in problem
@@ -206,13 +206,13 @@ class Command:
 
     @staticmethod
     def get_string_representation(input_value: Any) -> str:
-        """Convert a value to its string representation.
+        """Convert a input_value to its string representation.
 
         Args:
-            input_value (Any): The value to be converted. Can be a string, a `Path` object, or another type.
+            input_value (Any): The input_value to be converted. Can be a string, a `Path` object, or another type.
 
         Returns:
-            str: The string representation of the value.
+            str: The string representation of the input_value.
         """
         if isinstance(input_value, str):
             return repr(input_value)

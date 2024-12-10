@@ -18,13 +18,13 @@ class VectorList:
         vectors (List[Vector]): List of Vector objects.
     """
 
-    def __init__(self, vectors: List[Vector]) -> None:
-        """Initialize the VectorList with start list of Vectors.
+    def __init__(self, vectors: list[Vector] | None = None) -> None:
+        """Initialize the VectorList with a list of Vectors, or an empty list if None is provided.
 
         Args:
-            vectors (List[Vector]): A list of Vector instances to initialize the VectorList.
+            vectors (Optional[List[Vector]]): A optional list of Vector instances to initialize the VectorList.
         """
-        self.vectors: List[Vector] = vectors
+        self.vectors: List[Vector] = vectors if vectors is not None else []
 
     def __iter__(self) -> Iterator[Vector]:
         """Return an iterator over the VectorList.
@@ -87,6 +87,15 @@ class VectorList:
         if not isinstance(other, VectorList):
             raise VectorListException(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
         return self.vectors == other.vectors
+
+    def extend(self, other: VectorList) -> None:
+        """extend a Vector to the VectorList.
+
+        Args:
+            other (VectorList): The Vectors to add.
+        """
+        for vector in other.vectors:
+            self.vectors.append(vector)
 
     def __add__(self, other: object) -> 'VectorList':
         """Merge the current VectorList with another VectorList.
