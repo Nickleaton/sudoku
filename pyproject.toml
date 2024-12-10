@@ -86,7 +86,20 @@ nitpick = "^0.35.0"
 max-args = 10
 
 [tool.flake8]
-ignore = ['F401', 'WPS305', 'WPS237', 'WPS110', 'Q000', 'C812', 'WPS115', 'WPS602']
+ignore = [
+    'WPS305',
+    'WPS237',
+    'WPS214',
+    'WPS226',
+    'WPS602',
+    'WPS115',
+    'WPS221',
+    'WPS605',
+    'WPS332',
+    'WPS210',
+    'S408',
+    'WPS432' # Temporarily disabled
+]
 max-line-length = 120
 count = true
 
@@ -143,7 +156,7 @@ ignore = [
     "I001", # Ignore missing type annotations (might be intentional for specific cases)
     "D413", # Docstring line too long (depends on project style or linter settings)
     "D203", # One blank line before class (we prefer no blank line before classes)
-    "D213", # Multi-line docstring summary second line (we don't need a blank line after the summary
+    "D213", # Multi-line docstring summary second line (we don't need start blank line after the summary
 ]
 
 
