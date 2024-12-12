@@ -1,9 +1,8 @@
 """Matrix for 2x2 transformations."""
 from src.utils.coord import Coord
-from src.utils.sudoku_exception import SudokuException
 
 
-class MatrixException(SudokuException):
+class MatrixException(Exception):
     """Custom exception for errors related to Matrix operations."""
 
 

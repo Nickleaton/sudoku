@@ -52,7 +52,7 @@ class TestTagList(unittest.TestCase):
 
     def test_repr(self):
         """Verify the string representation of the TagList."""
-        self.assertEqual("TagList([Tag('alpha'), Tag('beta')])", repr(self.tags1))
+        self.assertEqual('TagList([Tag("alpha"), Tag("beta")])', repr(self.tags1))
 
     def test_add(self):
         """Test adding start new tag to the TagList."""

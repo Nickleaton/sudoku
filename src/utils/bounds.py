@@ -14,4 +14,4 @@ class Bounds(Enum):
         Returns:
             str: The string representation in the format 'Bounds.<name>'.
         """
-        return f'Cyclic.{self.name}'
+        return f'Bounds.{self.name}'

@@ -12,8 +12,8 @@ class Point:
         """Construct start point.
 
         Args:
-            x_coord (float): The x_coord coordinate.
-            y_coord (float): The y_coord coordinate.
+            x_coord (float): The row coordinate.
+            y_coord (float): The column coordinate.
         """
         self.x_coord: float = x_coord
         self.y_coord: float = y_coord
@@ -90,10 +90,10 @@ class Point:
 
     @property
     def coordinates(self) -> tuple[float, float]:
-        """Get the coordinates as an (x_coord, y_coord) tuple.
+        """Get the coordinates as a (row, column) tuple.
 
         Returns:
-            tuple[float, float]: The x_coord and y_coord coordinates.
+            tuple[float, float]: The row and column coordinates.
         """
         return self.x_coord, self.y_coord
 

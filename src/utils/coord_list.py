@@ -1,11 +1,10 @@
 """CoordinateList."""
-from typing import Iterator, List
+from typing import Iterator
 
-from src.items.item import SudokuException
 from src.utils.coord import Coord
 
 
-class CoordListException(SudokuException):
+class CoordListException(Exception):
     """Custom exception for CoordList operations."""
 
 
@@ -13,16 +12,28 @@ class CoordList:
     """A class to manage start list of Coord objects.
 
     Args:
-        coordinates (List[Coord]): The list of Coord objects.
+        coordinates (list[Coord]): The list of Coord objects.
     """
 
-    def __init__(self, coordinates: List[Coord]) -> None:
+    def __init__(self, coordinates: list[Coord]) -> None:
         """Initialize the CoordList with start sorted list of Coord objects.
 
         Args:
-            coordinates (List[Coord]): The list of Coord objects to manage.
+            coordinates (list[Coord]): The list of Coord objects to manage.
         """
-        self.coordinates: List[Coord] = sorted(coordinates)
+        self.coordinates: list[Coord] = sorted(coordinates)
+
+    def __getitem__(self, index_or_slice: int | slice) -> Coord | list[Coord]:
+        """Get a Coord object or a sublist of Coord objects by index or slice.
+
+        Args:
+            index_or_slice (int | slice): The index or slice to retrieve.
+
+        Returns:
+            Coord | list[Coord]: A single Coord object if an index is provided,
+            or a list of Coord objects if a slice is provided.
+        """
+        return self.coordinates[index_or_slice]
 
     def __iter__(self) -> Iterator[Coord]:
         """Initialize the iterator for the CoordList.

@@ -31,6 +31,25 @@ class TestCoordList(unittest.TestCase):
             ]
         )
 
+    def test_getitem(self):
+        """Test __getitem__ for both index and slice."""
+        # Test index access
+        self.assertEqual(self.coords1[0], Coord(1, 2))  # First element
+        self.assertEqual(self.coords1[1], Coord(2, 3))  # Second element
+        self.assertEqual(self.coords1[2], Coord(4, 5))  # Third element
+
+        # Test slicing
+        sliced_coords = self.coords1[0:2]  # First two elements
+        self.assertEqual(sliced_coords, [Coord(1, 2), Coord(2, 3)])
+        self.assertIsInstance(sliced_coords, list)
+
+        # Test out-of-bounds index
+        with self.assertRaises(IndexError):
+            _ = self.coords1[10]
+
+        # Test empty slice
+        self.assertEqual(self.coords1[3:], [])
+
     def test_add_new_coord(self):
         """Test adding start new Coord to the CoordList."""
         new_coord = Coord(3, 4)
@@ -51,7 +70,7 @@ class TestCoordList(unittest.TestCase):
     def test_sorting_after_addition(self):
         """Test sorting of CoordList after adding start new Coord."""
         self.coords1.add(Coord(0, 0))
-        self.assertEqual(self.coords1.items[0], Coord(0, 0))  # First constraint should be (0, 0)
+        self.assertEqual(self.coords1[0], Coord(0, 0))  # First constraint should be (0, 0)
         self.assertEqual(len(self.coords1), 4)
 
     def test_empty_initialization(self):

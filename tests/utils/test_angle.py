@@ -34,7 +34,7 @@ class TestAngle(unittest.TestCase):
         theta = Angle(45.0)
         self.assertEqual(Angle(90.0), theta + theta)
 
-        # Test addition with normalization (360 degrees)
+        # Test addition with normalization (360 angle_degree)
         theta = Angle(350.0)
         self.assertEqual(Angle(30.0), theta + Angle(40.0))
 
@@ -57,7 +57,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(360.0), theta * 2.0)  # Should normalize to 0
 
     def test_opposite(self):
-        """Test opposite angle (should add 180 degrees)."""
+        """Test opposite angle (should add 180 angle_degree)."""
         theta = Angle(10)
         self.assertEqual(Angle(190.0), theta.opposite)
 
@@ -110,11 +110,11 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle(359.9999), theta)
 
     def test_degrees_property(self):
-        """Test getting and setting degrees and normalization."""
+        """Test getting and setting angle_degree and normalization."""
         theta = Angle(45.0)
         self.assertEqual(theta.degrees, 45.0)
 
-        # Set angle using degrees
+        # Set angle using angle_degree
         theta.degrees = 90.0
         self.assertEqual(theta.degrees, 90.0)
 
@@ -127,19 +127,19 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(theta.degrees, 315.0)
 
     def test_radians_property(self):
-        """Test getting and setting radians and normalization."""
+        """Test getting and setting angle_radian and normalization."""
         theta = Angle(45.0)
         self.assertAlmostEqual(theta.radians, math.radians(45.0), places=6)
 
-        # Set angle using radians
+        # Set angle using angle_radian
         theta.radians = math.radians(90.0)
         self.assertAlmostEqual(theta.radians, math.radians(90.0), places=6)
 
-        # Test normalization by setting radians
+        # Test normalization by setting angle_radian
         theta.radians = math.radians(720.0)
         self.assertAlmostEqual(theta.radians, 0.0, places=6)
 
-        # Test negative angle normalization by setting radians
+        # Test negative angle normalization by setting angle_radian
         theta.radians = math.radians(-45.0)
         self.assertAlmostEqual(theta.radians, math.radians(315.0), places=6)
 

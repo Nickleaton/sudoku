@@ -3,7 +3,7 @@ import unittest
 
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.order import Order
 from src.utils.side import Side
 
@@ -44,25 +44,25 @@ class TestSide(unittest.TestCase):
 
     def test_direction(self):
         """Test direction calculation based on Cyclic value_list."""
-        self.assertEqual(Direction.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.DOWN_LEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.UP_LEFT, Side.BOTTOM.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.UP_RIGHT, Side.LEFT.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Direction.DOWN_LEFT, Side.TOP.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Direction.UP_LEFT, Side.RIGHT.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Direction.UP_RIGHT, Side.BOTTOM.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Direction.DOWN_RIGHT, Side.LEFT.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Moves.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Moves.DOWN_LEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Moves.UP_LEFT, Side.BOTTOM.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Moves.UP_RIGHT, Side.LEFT.direction(Cyclic.CLOCKWISE))
+        self.assertEqual(Moves.DOWN_LEFT, Side.TOP.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Moves.UP_LEFT, Side.RIGHT.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Moves.UP_RIGHT, Side.BOTTOM.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Moves.DOWN_RIGHT, Side.LEFT.direction(Cyclic.ANTICLOCKWISE))
 
     def test_order_direction(self):
         """Verify order direction for different Side and Order combinations."""
-        self.assertEqual(Direction.DOWN, Side.TOP.order_direction(Order.INCREASING))
-        self.assertEqual(Direction.UP, Side.TOP.order_direction(Order.DECREASING))
-        self.assertEqual(Direction.LEFT, Side.RIGHT.order_direction(Order.INCREASING))
-        self.assertEqual(Direction.RIGHT, Side.RIGHT.order_direction(Order.DECREASING))
-        self.assertEqual(Direction.UP, Side.BOTTOM.order_direction(Order.INCREASING))
-        self.assertEqual(Direction.DOWN, Side.BOTTOM.order_direction(Order.DECREASING))
-        self.assertEqual(Direction.RIGHT, Side.LEFT.order_direction(Order.INCREASING))
-        self.assertEqual(Direction.LEFT, Side.LEFT.order_direction(Order.DECREASING))
+        self.assertEqual(Moves.DOWN, Side.TOP.order_direction(Order.INCREASING))
+        self.assertEqual(Moves.UP, Side.TOP.order_direction(Order.DECREASING))
+        self.assertEqual(Moves.LEFT, Side.RIGHT.order_direction(Order.INCREASING))
+        self.assertEqual(Moves.RIGHT, Side.RIGHT.order_direction(Order.DECREASING))
+        self.assertEqual(Moves.UP, Side.BOTTOM.order_direction(Order.INCREASING))
+        self.assertEqual(Moves.DOWN, Side.BOTTOM.order_direction(Order.DECREASING))
+        self.assertEqual(Moves.RIGHT, Side.LEFT.order_direction(Order.INCREASING))
+        self.assertEqual(Moves.LEFT, Side.LEFT.order_direction(Order.DECREASING))
 
     def test_repr(self):
         """Verify string representation of each Side."""

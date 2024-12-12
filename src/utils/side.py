@@ -1,16 +1,16 @@
 """Side."""
 
-from enum import Enum
+from enum import StrEnum
 from types import MappingProxyType
 from typing import Mapping
 
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.order import Order
 
 
-class Side(Enum):
+class Side(StrEnum):
     """Enum representing the sides of a starting board (TOP, RIGHT, BOTTOM, LEFT)."""
 
     TOP = 'T'
@@ -32,7 +32,7 @@ class Side(Enum):
             ValueError: If the letter does not correspond to a valid side.
         """
         if not Side.valid(letter):
-            raise ValueError(f'Invalid side letter: {letter}')
+            raise ValueError(f'Invalid side letter: {letter}. Valid options are: {Side.choices()}')
         return Side(letter)
 
     @staticmethod
@@ -45,27 +45,27 @@ class Side(Enum):
         Returns:
             bool: True if the letter is valid, False otherwise.
         """
-        return letter in Side.__members__
+        return letter in {side.value for side in Side}
 
-    def direction(self, cyclic: Cyclic) -> Direction:
+    def direction(self, cyclic: Cyclic) -> Coord:
         """Get the direction corresponding to the side and cyclic order.
 
         Args:
             cyclic (Cyclic): The cyclic order (CLOCKWISE or ANTICLOCKWISE).
 
         Returns:
-            Direction: The direction corresponding to the side and cyclic order.
+            Coord: The direction corresponding to the side and cyclic order.
         """
         return DIRECTION_MAP[(self, cyclic)]
 
-    def order_direction(self, order: Order) -> Direction:
+    def order_direction(self, order: Order) -> Coord:
         """Get the direction based on the side and order (INCREASING or DECREASING).
 
         Args:
             order (Order): The order (INCREASING or DECREASING).
 
         Returns:
-            Direction: The direction corresponding to the side and order.
+            Coord: The direction corresponding to the side and order.
         """
         return ORDER_DIRECTION_MAP[(self, order)]
 
@@ -102,7 +102,7 @@ class Side(Enum):
         Returns:
             str: A string of all side value_list (e.g., 'TRBL' for TOP, RIGHT, BOTTOM, LEFT).
         """
-        return ''.join([side.value for side in Side])
+        return ''.join(side.value for side in Side)
 
     def __repr__(self) -> str:
         """Return the string representation of the Side.
@@ -114,31 +114,31 @@ class Side(Enum):
 
 
 # Mappings for directions, orders, and offsets.
-DIRECTION_MAP: Mapping[tuple[Side, Cyclic], Direction] = MappingProxyType({
-    (Side.TOP, Cyclic.CLOCKWISE): Direction.DOWN_RIGHT,
-    (Side.RIGHT, Cyclic.CLOCKWISE): Direction.DOWN_LEFT,
-    (Side.BOTTOM, Cyclic.CLOCKWISE): Direction.UP_LEFT,
-    (Side.LEFT, Cyclic.CLOCKWISE): Direction.UP_RIGHT,
-    (Side.TOP, Cyclic.ANTICLOCKWISE): Direction.DOWN_LEFT,
-    (Side.RIGHT, Cyclic.ANTICLOCKWISE): Direction.UP_LEFT,
-    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): Direction.UP_RIGHT,
-    (Side.LEFT, Cyclic.ANTICLOCKWISE): Direction.DOWN_RIGHT,
+DIRECTION_MAP: Mapping[tuple[Side, Cyclic], Coord] = MappingProxyType({
+    (Side.TOP, Cyclic.CLOCKWISE): Moves.DOWN_RIGHT,
+    (Side.RIGHT, Cyclic.CLOCKWISE): Moves.DOWN_LEFT,
+    (Side.BOTTOM, Cyclic.CLOCKWISE): Moves.UP_LEFT,
+    (Side.LEFT, Cyclic.CLOCKWISE): Moves.UP_RIGHT,
+    (Side.TOP, Cyclic.ANTICLOCKWISE): Moves.DOWN_LEFT,
+    (Side.RIGHT, Cyclic.ANTICLOCKWISE): Moves.UP_LEFT,
+    (Side.BOTTOM, Cyclic.ANTICLOCKWISE): Moves.UP_RIGHT,
+    (Side.LEFT, Cyclic.ANTICLOCKWISE): Moves.DOWN_RIGHT,
 })
 
-ORDER_DIRECTION_MAP: Mapping[tuple[Side, Order], Direction] = MappingProxyType({
-    (Side.TOP, Order.INCREASING): Direction.DOWN,
-    (Side.TOP, Order.DECREASING): Direction.UP,
-    (Side.RIGHT, Order.INCREASING): Direction.LEFT,
-    (Side.RIGHT, Order.DECREASING): Direction.RIGHT,
-    (Side.BOTTOM, Order.INCREASING): Direction.UP,
-    (Side.BOTTOM, Order.DECREASING): Direction.DOWN,
-    (Side.LEFT, Order.INCREASING): Direction.RIGHT,
-    (Side.LEFT, Order.DECREASING): Direction.LEFT,
+ORDER_DIRECTION_MAP: Mapping[tuple[Side, Order], Coord] = MappingProxyType({
+    (Side.TOP, Order.INCREASING): Moves.DOWN,
+    (Side.TOP, Order.DECREASING): Moves.UP,
+    (Side.RIGHT, Order.INCREASING): Moves.LEFT,
+    (Side.RIGHT, Order.DECREASING): Moves.RIGHT,
+    (Side.BOTTOM, Order.INCREASING): Moves.UP,
+    (Side.BOTTOM, Order.DECREASING): Moves.DOWN,
+    (Side.LEFT, Order.INCREASING): Moves.RIGHT,
+    (Side.LEFT, Order.DECREASING): Moves.LEFT,
 })
 
 ORDER_OFFSET_MAP: Mapping[Side, Coord] = MappingProxyType({
-    Side.TOP: Direction.DOWN.offset,
-    Side.RIGHT: Direction.LEFT.offset,
-    Side.BOTTOM: Direction.UP.offset,
-    Side.LEFT: Direction.RIGHT.offset,
+    Side.TOP: Moves.DOWN,
+    Side.RIGHT: Moves.LEFT,
+    Side.BOTTOM: Moves.UP,
+    Side.LEFT: Moves.RIGHT,
 })

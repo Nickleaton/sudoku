@@ -1,7 +1,7 @@
 """Config."""
 import threading
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import oyaml as yaml
 from pydotted import pydot
@@ -10,7 +10,7 @@ from pydotted import pydot
 class Config:
     """A singleton class representing the configuration of an application."""
 
-    _instance: 'Config' | None = None
+    _instance: Optional['Config'] = None
     _lock: threading.Lock = threading.Lock()
 
     def __new__(cls, config_file_path: Path | None = None) -> 'Config':

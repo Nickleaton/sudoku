@@ -62,9 +62,10 @@ class TemporaryFile:
             _exc_val: BaseException | None,
             _exc_tb: TracebackType | None,
     ) -> None:
-        """Exit the runtime context and remove the temporary file_path.
+        """Exit the runtime context and remove the temporary file path.
 
-        This method is called when leaving the context manager. It
-        deletes the temporary file_path if it exists.
+        This method is called when leaving the context manager. It deletes
+        the temporary file if it exists. The `missing_ok` flag ensures that
+        no error is raised if the file is already removed.
         """
         self._path.unlink(missing_ok=True)

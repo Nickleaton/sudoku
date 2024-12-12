@@ -1,10 +1,8 @@
 """Vector."""
 from src.utils.coord import Coord
-from src.utils.direction import Direction
-from src.utils.sudoku_exception import SudokuException
 
 
-class VectorException(SudokuException):
+class VectorException(Exception):
     """Exception raised for errors related to Vector operations."""
 
 
@@ -109,7 +107,7 @@ class Vector:
         Returns:
             bool: True if the vector is horizontal, False otherwise.
         """
-        return self.start.row == self.end.row
+        return self.start.column == self.end.column
 
     @property
     def is_vertical(self) -> bool:
@@ -121,53 +119,16 @@ class Vector:
         Returns:
             bool: True if the vector is vertical, False otherwise.
         """
-        return self.start.column == self.end.column
+        return self.start.row == self.end.row
 
     @property
-    def horizontal_direction(self) -> Direction:
-        """Determine the direction for start horizontal vector.
-
-        This method checks the relative column positions of the start and end
-        coordinates to determine the horizontal direction.
-
-        Returns:
-            Direction: The direction of the vector, either LEFT, RIGHT, or CENTER.
-        """
-        if self.start.column < self.end.column:
-            return Direction.LEFT
-        if self.start.column > self.end.column:
-            return Direction.RIGHT
-        return Direction.CENTER
-
-    @property
-    def vertical_direction(self) -> Direction:
-        """Determine the direction for start vertical vector.
-
-        This method checks the relative row positions of the start and end
-        coordinates to determine the vertical direction.
-
-        Returns:
-            Direction: The direction of the vector, either UP, DOWN, or CENTER.
-        """
-        if self.start.row < self.end.row:
-            return Direction.UP
-        if self.start.row > self.end.row:
-            return Direction.DOWN
-        return Direction.CENTER
-
-    @property
-    def direction(self) -> Direction:
+    def direction(self) -> Coord:
         """Determine the direction of the vector.
 
         Returns:
-            Direction: The direction of the vector (UP, DOWN, LEFT, RIGHT, CENTER).
+            Coord: The direction of the vector (UP, DOWN, LEFT, RIGHT, CENTER).
         """
-        if self.is_horizontal:
-            return self.horizontal_direction
-        if self.is_vertical:
-            return self.vertical_direction
-
-        return Direction.CENTER
+        return Coord(self.end.row - self.start.row, self.end.column - self.start.column)
 
     def mergeable(self, other: 'Vector') -> bool:
         """Check if this vector can be merged with another vector.

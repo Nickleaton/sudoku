@@ -3,11 +3,10 @@ from typing import Iterator, List
 
 from src.utils.coord import Coord
 from src.utils.coord_list import CoordList
-from src.utils.sudoku_exception import SudokuException
 from src.utils.vector import Vector
 
 
-class VectorListException(SudokuException):
+class VectorListException(Exception):
     """Exception raised when handling errors in VectorList operations."""
 
 
@@ -88,8 +87,8 @@ class VectorList:
             raise VectorListException(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
         return self.vectors == other.vectors
 
-    def extend(self, other: VectorList) -> None:
-        """extend a Vector to the VectorList.
+    def extend(self, other: 'VectorList') -> None:
+        """Extend a Vector to the VectorList.
 
         Args:
             other (VectorList): The Vectors to add.

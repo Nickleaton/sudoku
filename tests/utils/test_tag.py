@@ -18,7 +18,7 @@ class TestTag(unittest.TestCase):
 
     def test_repr(self):
         """Check that the repr() method returns the correct string representation."""
-        self.assertEqual("Tag('Test')", repr(self.tag))
+        self.assertEqual('Tag("Test")', repr(self.tag))
 
     def test_eq(self):
         """Test equality comparison between Tag instances."""

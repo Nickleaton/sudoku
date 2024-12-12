@@ -1,11 +1,10 @@
 """TagList."""
 from typing import Iterator
 
-from src.utils.sudoku_exception import SudokuException
 from src.utils.tag import Tag
 
 
-class TagListException(SudokuException):
+class TagListException(Exception):
     """Exception raised for errors related to TagList operations."""
 
 

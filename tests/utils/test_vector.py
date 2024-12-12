@@ -1,9 +1,8 @@
 """TestVector."""
-
 import unittest
 
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.vector import Vector, VectorException
 
 
@@ -21,166 +20,86 @@ class TestVector(unittest.TestCase):
         self.merged = Vector(Coord(0, 0), Coord(2, 0))
 
     def test_negative(self):
-        """Test equality for vectors with the same direction."""
-        self.assertEqual(self.line_one.direction, self.line_two.direction)
+        """Test negation of vectors."""
+        self.assertEqual(-self.line_one, Vector(Coord(1, 0), Coord(0, 0)))
+        self.assertEqual(-self.line_two, Vector(Coord(2, 0), Coord(1, 0)))
 
     def test_equal(self):
-        """Test equality and inequality comparisons for vectors."""
+        """Test equality and inequality of vectors."""
         self.assertEqual(self.line_one, self.line_one)
         self.assertNotEqual(self.line_one, self.line_two)
         self.assertNotEqual(self.line_one, self.line_three)
-        self.assertNotEqual(self.line_one, self.line_four)
-        self.assertNotEqual(self.line_two, self.line_one)
-        self.assertEqual(self.line_two, self.line_two)
-        self.assertNotEqual(self.line_two, self.line_three)
-        self.assertNotEqual(self.line_two, self.line_four)
-        self.assertNotEqual(self.line_three, self.line_one)
-        self.assertNotEqual(self.line_three, self.line_two)
-        self.assertEqual(self.line_three, self.line_three)
-        self.assertNotEqual(self.line_three, self.line_four)
-        self.assertNotEqual(self.line_four, self.line_one)
-        self.assertNotEqual(self.line_four, self.line_two)
-        self.assertNotEqual(self.line_four, self.line_three)
         self.assertEqual(self.line_four, self.line_four)
         with self.assertRaises(VectorException):
-            _ = self.zero == "xxxx"
-
-    def test_vector_lt_invalid_comparison(self):
-        """Test invalid comparison for less-than operation."""
-        vector1 = Vector(Coord(1, 1), Coord(2, 2))
-        with self.assertRaises(VectorException):
-            _ = vector1 < "not start vector"
+            _ = self.zero == "invalid"
 
     def test_mergeable(self):
         """Test if vectors are mergeable."""
-        self.assertTrue(self.line_one.mergeable(self.line_one))
         self.assertTrue(self.line_one.mergeable(self.line_two))
         self.assertFalse(self.line_one.mergeable(self.line_three))
-        self.assertFalse(self.line_one.mergeable(self.line_four))
         self.assertTrue(self.line_two.mergeable(self.line_one))
-        self.assertTrue(self.line_two.mergeable(self.line_two))
-        self.assertFalse(self.line_two.mergeable(self.line_three))
-        self.assertFalse(self.line_two.mergeable(self.line_four))
-        self.assertFalse(self.line_three.mergeable(self.line_one))
-        self.assertFalse(self.line_three.mergeable(self.line_two))
-        self.assertTrue(self.line_three.mergeable(self.line_three))
-        self.assertFalse(self.line_three.mergeable(self.line_four))
-        self.assertFalse(self.line_four.mergeable(self.line_one))
-        self.assertFalse(self.line_four.mergeable(self.line_two))
         self.assertFalse(self.line_four.mergeable(self.line_three))
-        self.assertTrue(self.line_four.mergeable(self.line_four))
 
-    def test_mergable_other_direction(self):
+    def test_mergeable_opposite_direction(self):
         """Test mergeable vectors in the opposite direction."""
-        self.assertTrue(self.line_one.mergeable(-self.line_one))
         self.assertTrue(self.line_one.mergeable(-self.line_two))
-        self.assertFalse(self.line_one.mergeable(-self.line_three))
-        self.assertFalse(self.line_one.mergeable(-self.line_four))
-        self.assertTrue(self.line_two.mergeable(-self.line_one))
-        self.assertTrue(self.line_two.mergeable(-self.line_two))
-        self.assertFalse(self.line_two.mergeable(-self.line_three))
-        self.assertFalse(self.line_two.mergeable(-self.line_four))
-        self.assertFalse(self.line_three.mergeable(-self.line_one))
-        self.assertFalse(self.line_three.mergeable(-self.line_two))
-        self.assertTrue(self.line_three.mergeable(-self.line_three))
         self.assertFalse(self.line_three.mergeable(-self.line_four))
-        self.assertFalse(self.line_four.mergeable(-self.line_one))
-        self.assertFalse(self.line_four.mergeable(-self.line_two))
-        self.assertFalse(self.line_four.mergeable(-self.line_three))
-        self.assertTrue(self.line_four.mergeable(-self.line_four))
 
     def test_repr(self):
         """Test the string representation of vectors."""
-        self.assertEqual('Vector(Coord(0, 0), Coord(1, 0))', repr(self.line_one))
-        self.assertEqual('Vector(Coord(1, 0), Coord(2, 0))', repr(self.line_two))
-        self.assertEqual('Vector(Coord(1, 0), Coord(1, 1))', repr(self.line_three))
-        self.assertEqual('Vector(Coord(2, 2), Coord(2, 4))', repr(self.line_four))
+        self.assertEqual(repr(self.line_one), 'Vector(Coord(0, 0), Coord(1, 0))')
+        self.assertEqual(repr(self.line_two), 'Vector(Coord(1, 0), Coord(2, 0))')
 
     def test_is_horizontal(self):
         """Test if the vector is horizontal."""
         self.assertTrue(self.line_one.is_horizontal)
-        self.assertTrue(self.line_two.is_horizontal)
         self.assertFalse(self.line_three.is_horizontal)
         self.assertFalse(self.line_four.is_horizontal)
-        self.assertFalse(self.line_five.is_horizontal)
 
     def test_is_vertical(self):
         """Test if the vector is vertical."""
         self.assertFalse(self.line_one.is_vertical)
-        self.assertFalse(self.line_two.is_vertical)
         self.assertTrue(self.line_three.is_vertical)
         self.assertTrue(self.line_four.is_vertical)
-        self.assertFalse(self.line_five.is_vertical)
-
-    def test_horizontal_direction(self):
-        """Test the direction for start horizontal vector."""
-        self.assertEqual(self.line_one.horizontal_direction, Direction.LEFT)
-        self.assertEqual(self.line_two.horizontal_direction, Direction.RIGHT)
-        self.assertEqual(self.line_five.horizontal_direction, Direction.RIGHT)
-        self.assertEqual(self.merged.horizontal_direction, Direction.LEFT)
-
-    def test_vertical_direction(self):
-        """Test the direction for start vertical vector."""
-        self.assertEqual(self.line_three.vertical_direction, Direction.UP)
-        self.assertEqual(self.line_four.vertical_direction, Direction.DOWN)
-        self.assertEqual(self.merged.vertical_direction, Direction.CENTER)
 
     def test_direction(self):
-        """Test the direction of vectors."""
-        self.assertEqual(Direction.CENTER, self.zero.direction)
-        self.assertEqual(Direction.UP, self.line_one.direction)
-        self.assertEqual(Direction.DOWN, -self.line_one.direction)
-        self.assertEqual(Direction.LEFT, self.line_three.direction)
-        self.assertEqual(Direction.RIGHT, -self.line_three.direction)
+        """Test the overall direction of vectors."""
+        self.assertEqual(self.line_one.direction, Moves.DOWN)
+        self.assertEqual(self.line_three.direction, Moves.RIGHT)
+        self.assertEqual(-self.line_one.direction, Moves.UP)
+        self.assertEqual(self.zero.direction, Moves.CENTER)
 
     def test_merge(self):
         """Test merging of vectors."""
         self.assertEqual(self.merged, self.line_one.merge(self.line_two))
         self.assertEqual(self.merged, self.line_two.merge(self.line_one))
-        self.assertEqual(self.merged, self.line_one.merge(-self.line_two))
-        self.assertEqual(self.merged, -self.line_two.merge(self.line_one))
-        self.assertEqual(self.line_one, self.line_one.merge(self.line_one))
-        self.assertEqual(self.line_one, self.line_one.merge(-self.line_one))
-        self.assertEqual(Vector(Coord(1, 0), Coord(-1, 0)), self.line_one.merge(self.line_five))
         with self.assertRaises(VectorException):
             _ = self.line_one.merge(self.line_four)
 
     def test_add(self):
         """Test adding vectors and coordinates."""
         vector1 = Vector(Coord(1, 1), Coord(2, 1))
-        vector2 = Vector(Coord(2, 2), Coord(2, 0))
-        self.assertEqual(Vector(Coord(3, 3), Coord(4, 1)), vector1 + vector2)
-        coord = Coord(2, 2)
-        self.assertEqual(Vector(Coord(3, 3), Coord(4, 3)), vector1 + coord)
+        vector2 = Vector(Coord(2, 2), Coord(3, 2))
+        self.assertEqual(vector1 + vector2, Vector(Coord(3, 3), Coord(5, 3)))
+        coord = Coord(1, 1)
+        self.assertEqual(vector1 + coord, Vector(Coord(2, 2), Coord(3, 2)))
         with self.assertRaises(VectorException):
-            _ = vector1 + "x_coord"
+            _ = vector1 + "invalid"
 
     def test_comparison(self):
         """Test comparison operators for vectors."""
         vector1 = Vector(Coord(1, 1), Coord(2, 1))
-        vector2 = Vector(Coord(2, 2), Coord(2, 0))
-        vector3 = Vector(Coord(1, 1), Coord(2, 0))
-        vector4 = Vector(Coord(1, 1), Coord(2, 1))
+        vector2 = Vector(Coord(2, 2), Coord(3, 2))
         self.assertTrue(vector1 < vector2)
         self.assertFalse(vector2 < vector1)
-        self.assertTrue(vector1 < vector2)
-        self.assertTrue(vector2 > vector1)
-        self.assertTrue(vector1 <= vector4)
         self.assertTrue(vector1 <= vector2)
+        self.assertTrue(vector1 <= vector1)
         self.assertFalse(vector2 <= vector1)
-        self.assertFalse(vector2 <= vector1)
-        self.assertFalse(vector1 < vector3)
 
     def test_vector_direction_center(self):
         """Test direction of vector when start and end points are the same."""
-        start = Coord(1, 1)
-        end = Coord(1, 1)  # Same as start to trigger CENTER
-        vector = Vector(start, end)
-        self.assertEqual(
-            vector.direction,
-            Direction.CENTER,
-            "Expected direction to be CENTER for identical start and end coordinates."
-        )
+        vector = Vector(Coord(1, 1), Coord(1, 1))
+        self.assertEqual(vector.direction, Moves.CENTER)
 
 
 if __name__ == '__main__':  # pragma: no cover

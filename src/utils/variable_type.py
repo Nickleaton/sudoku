@@ -1,9 +1,9 @@
-"""Enum for the type of variable."""
+"""Enum for the type of value_variable."""
 from enum import Enum
 
 
 class VariableType(Enum):
-    """Enumeration for variable types used in formatting value_list."""
+    """Enumeration for value_variable types used in formatting value_list."""
 
     INT = 'int'
     FLOAT = 'float'
@@ -11,7 +11,7 @@ class VariableType(Enum):
     LOG_FLOAT = 'log_float'
 
     def format(self, number: float | None) -> str:
-        """Format start given input_value based on the variable type.
+        """Format start given input_value based on the value_variable type.
 
         Args:
             number (float | None): The input_value to format. If None, returns " None".

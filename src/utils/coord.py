@@ -1,9 +1,12 @@
 """Coordinate."""
-from src.utils.point import Point
-from src.utils.sudoku_exception import SudokuException
+from typing import List
+
+from src.utils.angle import Angle
+
+TOLERANCE: float = 1e-6
 
 
-class CoordException(SudokuException):
+class CoordException(Exception):
     """Custom exception for Coord operations."""
 
 
@@ -15,15 +18,16 @@ class Coord:
         column (float): The column number of the coordinate.
     """
 
-    def __init__(self, row: float, column: float):
+    def __init__(self, row: float, column: float) -> None:
         """Initialize start Coord instance.
 
         Args:
             row (float): The row number of the coordinate.
             column (float): The column number of the coordinate.
         """
-        self.row = row
-        self.column = column
+        self.row: float = row
+        self.column: float = column
+        self.angle: Angle = Angle.create_from_x_y(self.column, self.row)
 
     def __repr__(self) -> str:
         """Return start string representation of the Coord object.
@@ -93,19 +97,20 @@ class Coord:
         return Coord(-self.row, -self.column)
 
     def __eq__(self, other: object) -> bool:
-        """Check if two Coord objects are equal.
+        """Check equality of two Coord objects with tolerance for comparison.
 
         Args:
             other (object): The other object to compare.
 
         Returns:
-            bool: True if the coordinates are equal, False otherwise.
+            bool: True if the coordinates are equal (within tolerance), False otherwise.
 
         Raises:
-            CoordException: If the other object is not start Coord.
+            CoordException: If the other object is not a Coord.
         """
         if isinstance(other, Coord):
-            return (self.row == other.row) and (self.column == other.column)
+            # Compare the row and column with tolerance
+            return abs(self.row - other.row) < TOLERANCE and abs(self.column - other.column) < TOLERANCE
         raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __lt__(self, other: object) -> bool:
@@ -128,17 +133,28 @@ class Coord:
             return False
         raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
+    def parallel(self, other: 'Coord') -> bool:
+        """Check if the current coordinate's angle is parallel to another coordinate's angle.
+
+        Args:
+            other (Coord): The other coordinate to compare against.
+
+        Returns:
+            bool: True if the angles of the two coordinates are parallel, False otherwise.
+        """
+        return self.angle.parallel(other.angle)
+
     @staticmethod
-    def validate(yaml) -> list[str]:
+    def validate(yaml: object) -> List[str]:
         """Validate start list containing row and column value_list.
 
         Args:
             yaml: The input list to validate.
 
         Returns:
-            list[str]: A list of error messages if validation fails, otherwise an empty list.
+            List[str]: A list of error messages if validation fails, otherwise an empty list.
         """
-        coord_list: list[str] = []
+        coord_list: List[str] = []
         if not isinstance(yaml, list):
             coord_list.append(f'Expecting list, got {yaml!r}')
             return coord_list
@@ -174,15 +190,6 @@ class Coord:
             (start.row + finish.row) / 2,
             (start.column + finish.column) / 2,
         )
-
-    @property
-    def point(self) -> Point:
-        """Convert the Coord into start Point, scaling the row and column by 100.
-
-        Returns:
-            Point: The corresponding Point object.
-        """
-        return Point(self.column * 100, self.row * 100)
 
     @property
     def top_left(self) -> 'Coord':
@@ -241,3 +248,27 @@ class Coord:
         """
         row, col = divmod(row_column, 10)
         return Coord(row, col)
+
+    @classmethod
+    def check_line(cls, coord: 'Coord') -> bool:
+        """Check if the given coordinate is in the same line (row or column).
+
+        Args:
+            coord (Coord): The Coord to compare.
+
+        Returns:
+            bool: True if the coordinate is in the same row or column, False otherwise.
+        """
+        return cls.row == coord.row or cls.column == coord.column
+
+    @classmethod
+    def is_inside(cls, coord: 'Coord') -> bool:
+        """Check if the given coordinate is inside a defined area.
+
+        Args:
+            coord (Coord): The Coord to check.
+
+        Returns:
+            bool: True if the coordinate is inside, False otherwise.
+        """
+        return cls.check_line(coord)

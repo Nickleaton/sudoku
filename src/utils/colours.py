@@ -2,13 +2,12 @@
 from typing import List
 
 from src.utils.config import Config
-from src.utils.sudoku_exception import SudokuException
 
 # Initialize the configuration object to access color settings
 config: Config = Config()
 
 
-class ColourException(SudokuException):
+class ColourException(Exception):
     """An exception raised when an invalid colour is provided."""
 
 
