@@ -10,13 +10,15 @@ class TestCellToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing CellToken."""
+        super().setUp()
         self.token = CellToken()
         self.representation = "CellToken()"
         self.pattern = r"(\d)(\d)"
         self.name = 'Cell'
         self.good = ['11', '12', '13', '21', '22', '23', '31', '32', '33']
-        self.bad = ['x_coord', 'XX']
+        self.bad = ['row', 'XX']
         self.group_count = 2
+        self.backus_naur = '<Cell>'
 
 
 if __name__ == "__main__":

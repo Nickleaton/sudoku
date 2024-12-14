@@ -11,6 +11,7 @@ class TestToken(unittest.TestCase):
 
     def setUp(self):
         """Set up example tokens for testing."""
+        super
         self.token = Token(r"A")
         self.token_a = Token(r"A")
         self.token_b = Token(r"B")

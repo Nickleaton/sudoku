@@ -10,11 +10,16 @@ class TestValueToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing QuadrupleToken."""
+        super().setUp()
         self.token = ValueToken()
-        self.representation = "ValueToken()"
-        self.pattern = r"(\d+)"
+        self.representation = 'ValueToken()'
+        self.pattern = r'(\d+)'
+        self.good = ['1', '99']
+        self.bad = ['X']
         self.name = 'Value'
+        self.group_count = 1
+        self.backus_naur = '<Value>'
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

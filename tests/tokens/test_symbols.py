@@ -10,18 +10,14 @@ class TestSymbolToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing DashToken."""
-        self.token = SymbolToken('x_coord')
-        self.representation = "SymbolToken('x_coord')"
-        self.pattern = "x_coord"
+        super().setUp()
+        self.token = SymbolToken('row')
+        self.representation = "SymbolToken('row')"
+        self.pattern = "row"
         self.name = 'Symbol'
-        self.good = ['x_coord']
+        self.good = ['row']
         self.bad = ['X', '--']
-        self.group_count = 1
-        self.bnf = '"x_coord"'
-
-    def test_backus_naur_form(self):
-        """Test Backus-Naur form of the Token."""
-        self.assertEqual(self.bnf, self.token.backus_naur_form())
+        self.backus_naur = '"row"'
 
 
 class TestCommaToken(TestSymbolToken):
@@ -29,14 +25,14 @@ class TestCommaToken(TestSymbolToken):
 
     def setUp(self):
         """Set up example tokens specific for testing CommaToken."""
+        super().setUp()
         self.token = CommaToken()
         self.representation = "CommaToken()"
         self.pattern = r","
         self.name = 'Comma'
         self.good = [',']
         self.bad = ['X', ',,']
-        self.group_count = 1
-        self.bnf = '","'
+        self.backus_naur = '","'
 
 
 class TestDashToken(TestSymbolToken):
@@ -44,14 +40,14 @@ class TestDashToken(TestSymbolToken):
 
     def setUp(self):
         """Set up example tokens specific for testing DashToken."""
+        super().setUp()
         self.token = DashToken()
         self.representation = "DashToken()"
         self.pattern = r"-"
         self.name = 'Dash'
         self.good = ['-']
         self.bad = ['X', '--']
-        self.group_count = 1
-        self.bnf = '"-"'
+        self.backus_naur = '"-"'
 
 
 class TestEqualsToken(TestSymbolToken):
@@ -59,14 +55,14 @@ class TestEqualsToken(TestSymbolToken):
 
     def setUp(self):
         """Set up example tokens specific for testing EqualsToken."""
+        super().setUp()
         self.token = EqualsToken()
         self.representation = "EqualsToken()"
         self.pattern = r"="
         self.name = 'Equals'
         self.good = ['=']
         self.bad = ['X', '==']
-        self.group_count = 1
-        self.bnf = '"="'
+        self.backus_naur = '"="'
 
 
 class TestQuestionMarkToken(TestSymbolToken):
@@ -74,14 +70,14 @@ class TestQuestionMarkToken(TestSymbolToken):
 
     def setUp(self):
         """Set up example tokens specific for testing EqualsToken."""
+        super().setUp()
         self.token = QuestionMarkToken()
         self.representation = "QuestionMarkToken()"
         self.pattern = r"\?"
         self.name = 'QuestionMark'
         self.good = ['?']
         self.bad = ['X', '==']
-        self.group_count = 1
-        self.bnf = r'"?"'
+        self.backus_naur = r'"?"'
 
 
 if __name__ == "__main__":

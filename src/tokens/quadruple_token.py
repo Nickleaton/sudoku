@@ -7,4 +7,4 @@ class QuadrupleToken(SimpleToken):
 
     def __init__(self):
         """Initialize start quad token with start pattern of digits and question marks."""
-        super().__init__(r'([\d?]+)')
+        super().__init__(r'([\d?]{0,4})')

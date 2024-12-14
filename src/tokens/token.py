@@ -38,7 +38,7 @@ class Token:
             pattern (str): The regex pattern representing this token.
         """
         self.pattern: str = pattern
-        self.pattern: re.Pattern = re.compile(f'^{pattern}$')
+        self.compiled_pattern: re.Pattern = re.compile(f'^{pattern}$')
 
     @property
     def name(self) -> str | None:
@@ -59,7 +59,7 @@ class Token:
         Returns:
             bool: True if the text matches the pattern, False otherwise.
         """
-        return self.pattern.match(text) is not None
+        return self.compiled_pattern.match(text) is not None
 
     def groups(self, text: str) -> list[str]:
         """Return the matched groups from the text.
@@ -70,7 +70,7 @@ class Token:
         Returns:
             list[str]: A list of matched groups, or an empty list if no match is found.
         """
-        match = self.pattern.match(text)
+        match = self.compiled_pattern.match(text)
         return list(match.groups()) if match else []
 
     def backus_naur_form(self) -> str:
@@ -280,5 +280,61 @@ class OptionalToken(RepeatToken):
 
         Returns:
             str: The string representation of the optional token.
+        """
+        return f'{self.__class__.__name__}({self.token!r})'
+
+
+class OneOrMoreToken(RepeatToken):
+    """Represent one or more repetitions of a token."""
+
+    def __init__(self, token: Token):
+        """Initialize the one or more repetition pattern for a token.
+
+        Args:
+            token (Token): The token to repeat one or more times.
+        """
+        super().__init__(token, 1, sys.maxsize)
+
+    def backus_naur_form(self) -> str:
+        """Return the Backus-Naur Form (BNF) representation of the one or more token.
+
+        Returns:
+            str: The BNF representation of the one or more token.
+        """
+        return f'{self.token.backus_naur_form()} +'
+
+    def __repr__(self):
+        """Return a string representation of the one or more token.
+
+        Returns:
+            str: The string representation of the one or more token.
+        """
+        return f'{self.__class__.__name__}({self.token!r})'
+
+
+class ZeroOrMoreToken(RepeatToken):
+    """Represent zero or more repetitions of a token."""
+
+    def __init__(self, token: Token):
+        """Initialize the zero or more repetition pattern for a token.
+
+        Args:
+            token (Token): The token to repeat zero or more times.
+        """
+        super().__init__(token, 0, sys.maxsize)
+
+    def backus_naur_form(self) -> str:
+        """Return the Backus-Naur Form (BNF) representation of the zero or more token.
+
+        Returns:
+            str: The BNF representation of the zero or more token.
+        """
+        return f'{self.token.backus_naur_form()} *'
+
+    def __repr__(self):
+        """Return a string representation of the zero or more token.
+
+        Returns:
+            str: The string representation of the zero or more token.
         """
         return f'{self.__class__.__name__}({self.token!r})'

@@ -10,13 +10,15 @@ class TestKnownToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing KnownToken."""
+        super().setUp()
         self.token = KnownToken()
         self.representation = "KnownToken()"
         self.pattern = r"([0-9.lmheof])"
         self.name = 'Known'
         self.good = ['0', '9', 'l', 'm', 'h', 'e', 'o', 'f', '.']
-        self.bad = ['x_coord', 'X', '?']
+        self.bad = ['row', 'X', '?']
         self.group_count = 1
+        self.backus_naur = '<Known>'
 
 
 if __name__ == "__main__":

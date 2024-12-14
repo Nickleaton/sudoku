@@ -10,6 +10,7 @@ class TestSideToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing SideToken."""
+        super().setUp()
         self.token = SideToken()  # Example SideToken
         self.representation = "SideToken()"
         self.pattern = r"([TLBR])"
@@ -17,6 +18,7 @@ class TestSideToken(TestSimpleToken):
         self.good = ['T', 'L', 'B', 'R']
         self.bad = ['X']
         self.group_count = 1
+        self.backus_naur = '<Side>'
 
 
 if __name__ == "__main__":

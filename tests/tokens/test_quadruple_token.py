@@ -10,13 +10,15 @@ class TestQuadToken(TestSimpleToken):
 
     def setUp(self):
         """Set up example tokens specific for testing QuadrupleToken."""
+        super().setUp()
         self.token = QuadrupleToken()
-        self.representation = "QuadrupleToken()"
-        self.pattern = r"([\d?]+)"
-        self.name = 'Quad'
+        self.representation = 'QuadrupleToken()'
+        self.pattern = r'([\d?]{0,4})'
+        self.name = 'Quadruple'
         self.good = ['1234', '12', '1122', '?', '12?', '????']
         self.bad = ['12345', 'X']
         self.group_count = 1
+        self.backus_naur = '<Quadruple>'
 
 
 if __name__ == "__main__":
