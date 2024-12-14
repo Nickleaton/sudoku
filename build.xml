@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <project name="Sudoku" default="info">
-    <target name="info">
-        <echo>Hello World - Sudoku!</echo>
-    </target>
+
+
+    <property name="generate.schema" location="scripts/generate_config_schema.py"/>
+    <property name="schema" value="src/schema/config_schema.py"/>
+
+
     <target name="build" depends="install,update,pylint,mypy">
         <echo>Build</echo>
     </target>
@@ -213,53 +216,65 @@
     <macrodef name="run-flake8">
         <attribute name="module"/>
         <sequential>
-            <mkdir dir="output/flake8/src/@{module}"/>
+            <mkdir dir="output/flake8/@{module}"/>
             <exec executable="flake8" failonerror="false" taskname="flake8">
                 <arg value="--format=html"/>
-                <arg value="--htmldir=output/flake8/src/@{module}"/>
-                <arg value="src/@{module}"/>
+                <arg value="--htmldir=output/flake8/@{module}"/>
+                <arg value="@{module}"/>
             </exec>
         </sequential>
     </macrodef>
 
     <!-- Define individual targets for each module -->
-    <target name="flake8.board">
-        <run-flake8 module="board"/>
+    <target name="flake8.src.board">
+        <run-flake8 module="src/board"/>
     </target>
 
-    <target name="flake8.commands">
-        <run-flake8 module="commands"/>
+    <target name="flake8.src.commands">
+        <run-flake8 module="src/commands"/>
     </target>
 
-    <target name="flake8.glyphs">
-        <run-flake8 module="glyphs"/>
+    <target name="flake8.src.glyphs">
+        <run-flake8 module="src/glyphs"/>
     </target>
 
-    <target name="flake8.items">
-        <run-flake8 module="items"/>
+    <target name="flake8.src.items">
+        <run-flake8 module="src/items"/>
     </target>
 
-    <target name="flake8.parsers">
-        <run-flake8 module="parsers"/>
+    <target name="flake8.src.parsers">
+        <run-flake8 module="src/parsers"/>
     </target>
 
-    <target name="flake8.solvers">
-        <run-flake8 module="solvers"/>
+    <target name="flake8.src.solvers">
+        <run-flake8 module="src/solvers"/>
     </target>
 
-    <target name="flake8.tokens">
-        <run-flake8 module="tokens"/>
+    <target name="flake8.src.tokens">
+        <run-flake8 module="src/tokens"/>
     </target>
 
-    <target name="flake8.utils">
-        <run-flake8 module="utils"/>
+    <target name="flake8.src.utils">
+        <run-flake8 module="src/utils"/>
     </target>
 
-    <target name="flake8.validators">
-        <run-flake8 module="validators"/>
+    <target name="flake8.src.validators">
+        <run-flake8 module="src/validators"/>
     </target>
 
-    <!-- Main target depends on all individual targets -->
     <target name="flake8"
-            depends="flake8.board,flake8.commands,flake8.glyphs,flake8.items,flake8.parsers,flake8.solvers,flake8.tokens,flake8.utils,flake8.validators"/>
+            depends="flake8.src.board,flake8.src.commands,flake8.src.glyphs,flake8.src.items,flake8.src.parsers,flake8.src.solvers,flake8.src.tokens,flake8.src.utils,flake8.src.validators"/>
+    <!-- Main target depends on all individual targets -->
+    <target name="flake8.src">
+        <run-flake8 module="src"/>
+    </target>
+
+    <target name="generate.schema">
+        <exec executable="python" failonerror="true">
+            <env key="PYTHONPATH" value="${basedir}"/>
+            <arg value="${generate.schema}"/>
+            <arg value="${schema}"/>
+        </exec>
+    </target>
+
 </project>
