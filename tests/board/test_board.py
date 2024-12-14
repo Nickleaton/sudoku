@@ -11,21 +11,71 @@ class TestBoard(unittest.TestCase):
 
     def setUp(self):
         """Set up the different board configurations for testing."""
-        self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, 'start', 'finish', 'c', 'd')
-        self.board4x4: Board = Board(4, 4)
-        self.board8x8: Board = Board(8, 8, 2, 4, 'start', 'finish', 'c', 'd')
-        self.board6x6: Board = Board(6, 6, 2, 3, 'start', 'finish', 'c', 'd')
+        tags = {'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}
+        self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, tags=tags)
+        self.board9x9: Board = Board(9, 9, 3, 3, tags=tags)
+        self.board4x4: Board = Board(4, 4, tags=tags)
+        self.board8x8: Board = Board(8, 8, 2, 4, tags=tags)
+        self.board6x6: Board = Board(6, 6, 2, 3, tags=tags)
+        # Define the expected map for a 4x4 board
+        self.expected_map = {
+            # Top row
+            (Side.TOP, Cyclic.CLOCKWISE, 0): Coord(1, 1),
+            (Side.TOP, Cyclic.CLOCKWISE, 1): Coord(1, 2),
+            (Side.TOP, Cyclic.CLOCKWISE, 2): Coord(1, 3),
+            (Side.TOP, Cyclic.CLOCKWISE, 3): Coord(1, 4),
+            (Side.TOP, Cyclic.ANTICLOCKWISE, 0): Coord(1, -1),
+            (Side.TOP, Cyclic.ANTICLOCKWISE, 1): Coord(1, 0),
+            (Side.TOP, Cyclic.ANTICLOCKWISE, 2): Coord(1, 1),
+            (Side.TOP, Cyclic.ANTICLOCKWISE, 3): Coord(1, 2),
+
+            # Bottom row
+            (Side.BOTTOM, Cyclic.CLOCKWISE, 0): Coord(4, -1),
+            (Side.BOTTOM, Cyclic.CLOCKWISE, 1): Coord(4, 0),
+            (Side.BOTTOM, Cyclic.CLOCKWISE, 2): Coord(4, 1),
+            (Side.BOTTOM, Cyclic.CLOCKWISE, 3): Coord(4, 2),
+            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 0): Coord(4, 1),
+            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 1): Coord(4, 2),
+            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 2): Coord(4, 3),
+            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 3): Coord(4, 4),
+
+            # Left column
+            (Side.LEFT, Cyclic.CLOCKWISE, 0): Coord(-1, 1),
+            (Side.LEFT, Cyclic.CLOCKWISE, 1): Coord(0, 1),
+            (Side.LEFT, Cyclic.CLOCKWISE, 2): Coord(1, 1),
+            (Side.LEFT, Cyclic.CLOCKWISE, 3): Coord(2, 1),
+            (Side.LEFT, Cyclic.ANTICLOCKWISE, 0): Coord(1, 1),
+            (Side.LEFT, Cyclic.ANTICLOCKWISE, 1): Coord(2, 1),
+            (Side.LEFT, Cyclic.ANTICLOCKWISE, 2): Coord(3, 1),
+            (Side.LEFT, Cyclic.ANTICLOCKWISE, 3): Coord(4, 1),
+
+            # Right column
+            (Side.RIGHT, Cyclic.CLOCKWISE, 0): Coord(1, 4),
+            (Side.RIGHT, Cyclic.CLOCKWISE, 1): Coord(2, 4),
+            (Side.RIGHT, Cyclic.CLOCKWISE, 2): Coord(3, 4),
+            (Side.RIGHT, Cyclic.CLOCKWISE, 3): Coord(4, 4),
+            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 0): Coord(-1, 4),
+            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 1): Coord(0, 4),
+            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 2): Coord(1, 4),
+            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 3): Coord(2, 4),
+        }
+
+    def test_side_direction(self):
+        for key, expected_coord in self.expected_map.items():
+            print(key, expected_coord)
+            self.assertEqual(
+                self.board4x4.side_cyclic_map[key],
+                expected_coord,
+                f"Mismatch for {key}: {self.board4x4.side_cyclic_map[key]} != {expected_coord}",
+            )
+        self.assertNotIn(self.board4x4.side_cyclic_map, (Side.RIGHT, Cyclic.CLOCKWISE, 8))
 
     def test_construction_8x8(self):
-        """Test the construction of an 8x8 board."""
+        """Test the construction of a 8x8 board."""
         self.assertEqual(8, self.board8x8.board_columns)
         self.assertEqual(8, self.board8x8.board_rows)
         self.assertEqual(4, self.board8x8.box_columns)
         self.assertEqual(2, self.board8x8.box_rows)
-        self.assertEqual('start', self.board8x8.reference)
-        self.assertEqual('finish', self.board8x8.video)
-        self.assertEqual('c', self.board8x8.title)
-        self.assertEqual('d', self.board8x8.author)
 
     def test_yaml(self):
         """Test the YAML representation of the board."""
@@ -33,16 +83,18 @@ class TestBoard(unittest.TestCase):
             "Board:\n"
             "  Board: 8x8\n"
             "  Box: 2x4\n"
-            "  Reference: start\n"
-            "  Video: finish\n"
-            "  Title: c\n"
-            "  Author: d\n"
+            "  Tags:\n"
+            "    Reference: start\n"
+            "    Video: finish\n"
+            "    Title: c\n"
+            "    Author: d\n"
         )
         self.assertEqual(yaml_string, self.board8x8.to_yaml())
 
     def test_repr(self):
         """Test the string representation of the board."""
-        self.assertEqual("Board(8, 8, 2, 4, 'start', 'finish', 'c', 'd')", repr(self.board8x8))
+        tag_str: str = "{'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}"
+        self.assertEqual(f'Board(8, 8, 2, 4, {tag_str})', repr(self.board8x8))
 
     def test_no_boxes(self):
         """Test the board with no boxes configuration (9x9)."""
@@ -50,10 +102,6 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(9, self.board9x9_no_boxes.board_rows)
         self.assertEqual(0, self.board9x9_no_boxes.box_columns)
         self.assertEqual(0, self.board9x9_no_boxes.box_rows)
-        self.assertEqual('start', self.board9x9_no_boxes.reference)
-        self.assertEqual('finish', self.board9x9_no_boxes.video)
-        self.assertEqual('c', self.board9x9_no_boxes.title)
-        self.assertEqual('d', self.board9x9_no_boxes.author)
 
     def test_is_valid(self):
         """Test the validity of coordinates on the board."""
@@ -123,10 +171,3 @@ class TestBoard(unittest.TestCase):
         board = Board(9, 9)
         self.assertEqual(Coord(1, 9), board.start_cell(Side.TOP, 9))
         self.assertEqual(Coord(9, 1), board.start_cell(Side.BOTTOM, 1))
-
-    def test_start_clockwise(self):
-        """Test start method with CLOCKWISE rotation for various board sizes."""
-        self.assertEqual(Coord(1, 6), self.board9x9_no_boxes.start(Side.TOP, Cyclic.CLOCKWISE, 5))
-        self.assertEqual(Coord(6, 9), self.board9x9_no_boxes.start(Side.RIGHT, Cyclic.CLOCKWISE, 5))
-        self.assertEqual(Coord(9, 4), self.board9x9_no_boxes.start(Side.BOTTOM, Cyclic.CLOCKWISE, 5))
-        self.assertEqual(Coord(4, 1), self.board9x9_no_boxes.start(Side.LEFT, Cyclic.CLOCKWISE, 5))

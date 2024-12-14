@@ -14,72 +14,94 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class BoardType(Enum):
-    """Types of boards."""
+    """Types of boards.
 
-    B9X9 = "9x9"
-    B4X4 = "4x4"
-    B6X6 = "6x6"
-    B8X8 = "8x8"
+    This enum defines the available board types.
+    """
+
+    B9X9 = '9x9'
+    B4X4 = '4x4'
+    B6X6 = '6x6'
+    B8X8 = '8x8'
 
 
 class BoxType(Enum):
-    """Types of boxes."""
+    """Types of boxes.
 
-    B3X3 = "3x3"
-    B2X3 = "2x3"
-    B3X2 = "3x2"
-    B2X2 = "2x2"
+    This enum defines the available box types for Sudoku grids.
+    """
+
+    B3X3 = '3x3'
+    B2X3 = '2x3'
+    B3X2 = '3x2'
+    B2X2 = '2x2'
 
 
 class Board:
-    """Represents start Sudoku board."""
+    """Represents the starting Sudoku board.
+
+    This class represents a Sudoku board with configurable dimensions,
+    box sizes, and optional metadata. It supports various validation checks
+    and operations to manage the board and its cells.
+
+    Attributes:
+        board_rows (int): Number of rows in the board.
+        board_columns (int): Number of columns in the board.
+        box_rows (int): Number of rows in each box.
+        box_columns (int): Number of columns in each box.
+        reference (str | None): URL reference for the puzzle.
+        video (str | None): Link to a video related to the puzzle.
+        title (str | None): Title of the puzzle.
+        author (str | None): Author of the puzzle.
+    """
 
     # pylint: disable=too-many-arguments, too-many-instance-attributes
-    def __init__(self,
-                 board_rows: int,
-                 board_columns: int,
-                 box_rows: int = 0,
-                 box_columns: int = 0,
-                 reference: str | None = None,
-                 video: str | None = None,
-                 title: str | None = None,
-                 author: str | None = None
-                 ):
-        """Initialize the Board with rows, columns, box dimensions, and optional metadata.
+    def __init__(
+            self,
+            board_rows: int,
+            board_columns: int,
+            box_rows: int = 0,
+            box_columns: int = 0,
+            tags: dict | None = None,
+    ):
+        """Initialize the Board with dimensions, box size, and optional metadata.
 
         Args:
             board_rows (int): Number of rows in the board.
             board_columns (int): Number of columns in the board.
-            box_rows (int, optional): Number of rows in each box. Defaults to 0.
-            box_columns (int, optional): Number of columns in each box. Defaults to 0.
-            reference (str | None, optional): Reference URL for the puzzle, if available. Defaults to None.
-            video (str | None, optional): Video link related to the puzzle, if available. Defaults to None.
-            title (str | None, optional): Title of the puzzle, if available. Defaults to None.
-            author (str | None, optional): Author of the puzzle, if available. Defaults to None.
+            box_rows (int): Number of rows in each box. Defaults to 0 (no boxes).
+            box_columns (int): Number of columns in each box. Defaults to 0 (no boxes).
+            tags (dict | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
+
+        Raises:
+            SudokuException: If the board dimensions are not divisible by the box dimensions.
         """
-        # Rows
+        # Rows and Columns
         self.board_rows = board_rows
-        self.row_range = list(range(1, self.board_rows + 1))
-        # Columns
         self.board_columns = board_columns
+        self.row_range = list(range(1, self.board_rows + 1))
         self.column_range = list(range(1, self.board_columns + 1))
+
         # Digits
         self.minimum_digit = 1
         self.maximum_digit = max(self.board_rows, self.board_columns)
         self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
         self.primes = [prime for prime in PRIMES if prime in self.digit_range]
-        chunk_size: int = self.maximum_digit // 3
 
+        # Digit Levels
+        chunk_size: int = self.maximum_digit // 3
         self.levels = ['low', 'mid', 'high']
         self.low = self.digit_range[:chunk_size]
         self.mid = self.digit_range[chunk_size:chunk_size * 2]
         self.high = self.digit_range[chunk_size * 2:]
 
+        # Modulo Buckets
         self.modulos = [0, 1, 2]
-        self.mod0 = [digit for digit in self.digit_range if digit % 3 == 0]
-        self.mod1 = [digit for digit in self.digit_range if digit % 3 == 1]
-        self.mod2 = [digit for digit in self.digit_range if digit % 3 == 2]
+        self.mod_buckets = {
+            mod: [digit for digit in self.digit_range if digit % 3 == mod]
+            for mod in self.modulos
+        }
 
         # Boxes
         if box_rows == 0:
@@ -88,33 +110,68 @@ class Board:
             self.box_count = 0
             self.box_range = None
         else:
-            if board_rows % box_rows != 0:
+            if board_rows % box_rows != 0 or board_columns % box_columns != 0:
                 raise SudokuException(
-                    f"Board rows ({board_rows}) must be divisible by box rows ({box_rows})."
-                )
-            if board_columns % box_columns != 0:
-                raise SudokuException(
-                    f"Board columns ({board_columns}) must be divisible by box columns ({box_columns})."
+                    f'Board dimensions ({board_rows}x{board_columns}) '
+                    f'must be divisible by box dimensions ({box_rows}x{box_columns}).',
                 )
             self.box_rows = box_rows
             self.box_columns = box_columns
             self.box_count = (board_rows // box_rows) * (board_columns // box_columns)
             self.box_range = list(range(1, self.box_count + 1))
-        # meta data
-        self.reference = reference
-        self.video = video
-        self.title = title
-        self.author = author
+
+        # Metadata
+        self.tags: dict = tags
+
+        # Cyclic Map
+
+        self.side_cyclic_map: dict[tuple[Side, Cyclic, int], Coord] = self.generate_cyclic_map()
+
+    def generate_cyclic_map(self) -> dict[tuple[Side, Cyclic, int], Coord]:
+        """
+        Generate a cyclic map for a board with cyclic connections along each side.
+
+        The map contains the following entries:
+        - Top row: connects left and right sides in both clockwise and anticlockwise directions.
+        - Bottom row: connects left and right sides in both clockwise and anticlockwise directions.
+        - Left column: connects top and bottom sides in both clockwise and anticlockwise directions.
+        - Right column: connects top and bottom sides in both clockwise and anticlockwise directions.
+
+        Returns:
+            dict: A dictionary where the keys are tuples of (Side, Cyclic, int) and the values are Coord objects
+            representing the corresponding board coordinates.
+        """
+        scm: dict[tuple[Side, Cyclic, int], Coord] = {}
+
+        # Top and bottom row connections (left-right)
+        for row in range(self.board_rows):
+            # Left side (clockwise and anticlockwise)
+            scm[(Side.LEFT, Cyclic.CLOCKWISE, row)] = Coord(row - 1, 1)
+            scm[(Side.LEFT, Cyclic.ANTICLOCKWISE, row)] = Coord(row + 1, 1)
+            # Right side (clockwise and anticlockwise)
+            scm[(Side.RIGHT, Cyclic.CLOCKWISE, row)] = Coord(row + 1, self.board_columns)
+            scm[(Side.RIGHT, Cyclic.ANTICLOCKWISE, row)] = Coord(row - 1, self.board_columns)
+
+        # Top and bottom column connections (top-bottom)
+        for column in range(self.board_columns):
+            # Top side (clockwise and anticlockwise)
+            scm[(Side.TOP, Cyclic.CLOCKWISE, column)] = Coord(1, column + 1)
+            scm[(Side.TOP, Cyclic.ANTICLOCKWISE, column)] = Coord(1, column - 1)
+            # Bottom side (clockwise and anticlockwise)
+            scm[(Side.BOTTOM, Cyclic.CLOCKWISE, column)] = Coord(self.board_rows, column - 1)
+            scm[(Side.BOTTOM, Cyclic.ANTICLOCKWISE, column)] = Coord(self.board_rows, column + 1)
+
+        return scm
 
     def is_valid(self, row: int, column: int) -> bool:
-        """Check if start given row and column coordinate is valid within the board.
+        """Check if the given row and column coordinate is valid within the board.
 
         Args:
             row (int): Row number.
             column (int): Column number.
 
         Returns:
-            bool: True if the coordinate is within bounds, False otherwise.
+            bool: True if the coordinates are within bounds, False otherwise.
         """
         return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
 
@@ -130,11 +187,7 @@ class Board:
         return self.is_valid(int(coord.row), int(coord.column))
 
     def is_valid_side_index(self, coord: Coord) -> bool:
-        """Check if the coordinate refers to start cell just outside the board boundary.
-
-        A valid side index is either on the rows 0 or `board_rows + 1` with columns
-        in range 0 to `board_columns + 1`, or on the columns 0 or `board_columns + 1`
-        with rows in range 0 to `board_rows + 1`.
+        """Check if the coordinate refers to a cell just outside the board boundary.
 
         Args:
             coord (Coord): Coordinate to check.
@@ -151,7 +204,7 @@ class Board:
         return (is_outer_row and is_column_in_range) or (is_outer_column and is_row_in_range)
 
     def get_side_coordinate(self, side: Side, index: int) -> Coord:
-        """Get the coordinate for start given side of the board and index.
+        """Get the coordinate for the given side of the board and index.
 
         Args:
             side (Side): The side of the board (TOP, BOTTOM, LEFT, RIGHT).
@@ -165,26 +218,26 @@ class Board:
         """
         if side == Side.TOP:
             if index < 1 or index > self.board_columns:
-                raise ValueError(f"Index {index} out of range for TOP side.")
+                raise ValueError(f'Index {index} out of range for TOP side.')
             return Coord(0, index)
 
         elif side == Side.BOTTOM:
             if index < 1 or index > self.board_columns:
-                raise ValueError(f"Index {index} out of range for BOTTOM side.")
+                raise ValueError(f'Index {index} out of range for BOTTOM side.')
             return Coord(self.board_rows + 1, index)
 
         elif side == Side.LEFT:
             if index < 1 or index > self.board_rows:
-                raise ValueError(f"Index {index} out of range for LEFT side.")
+                raise ValueError(f'Index {index} out of range for LEFT side.')
             return Coord(index, 0)
 
         elif side == Side.RIGHT:
             if index < 1 or index > self.board_rows:
-                raise ValueError(f"Index {index} out of range for RIGHT side.")
+                raise ValueError(f'Index {index} out of range for RIGHT side.')
             return Coord(index, self.board_columns + 1)
 
         # Raise error for invalid side
-        raise ValueError(f"Invalid side: {side}")
+        raise ValueError(f'Invalid side: {side}')
 
     @classmethod
     def schema(cls) -> Validator:
@@ -197,16 +250,13 @@ class Board:
             {
                 'Board': strictyaml.Str(),
                 strictyaml.Optional('Box'): strictyaml.Str(),
-                strictyaml.Optional('Video'): strictyaml.Str(),
-                strictyaml.Optional('Reference'): strictyaml.Str(),
-                strictyaml.Optional('Author'): strictyaml.Str(),
-                strictyaml.Optional('Title'): strictyaml.Str()
-            }
+                strictyaml.Optional('Tags'): strictyaml.Map({strictyaml.Str(): strictyaml.Str()}),
+            },
         )
 
     @staticmethod
     def parse_xy(text: str) -> tuple[int, int]:
-        """Parse start string of the form 'NxM' into two integers.
+        """Parse a string of the form 'NxM' into two integers.
 
         Args:
             text (str): String representing dimensions, e.g., "9x9".
@@ -215,76 +265,69 @@ class Board:
             tuple[int, int]: Parsed (row, column) dimensions.
 
         Raises:
-            AssertionError: If the input string does not match the expected format.
+            SudokuException: If the string format is invalid.
         """
-        regexp = re.compile("([1234567890]+)x_coord([1234567890]+)")
+        regexp = re.compile('([1234567890]+)row([1234567890]+)')
         match = regexp.match(text)
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
-        row_str, col_str = match.groups()
-        return int(row_str), int(col_str)
+            raise SudokuException(f'Invalid format: {text}. Expected "NxM".')
+        return int(match.group(1)), int(match.group(2))
 
     @classmethod
     def create(cls, name: str, yaml_data: dict) -> 'Board':
-        """Create start Board instance from start YAML data structure.
+        """Create start Board instance from start YAML input_data structure.
 
         Args:
-            name (str): Name key for the board in the YAML data.
-            yaml_data (dict[str, Any]): YAML data dictionary containing board configuration.
+            name (str): Name key for the board in the YAML input_data.
+            yaml_data (dict): YAML input_data dictionary containing board configuration.
 
         Returns:
             Board: A new `Board` instance.
         """
-        data: dict = yaml_data[name]
+        board_data: dict = yaml_data[name]
         board_rows: int
         board_columns: int
-        board_rows, board_columns = Board.parse_xy(data['Board'])
+        board_rows, board_columns = Board.parse_xy(board_data['Board'])
         box_rows: int = 0
         box_columns: int = 0
-        if 'Box' in data:
-            box_rows, box_columns = Board.parse_xy(data['Box'])
-
-        reference: str | None = data.get('Reference')
-        video: str | None = data.get('Video')
-        title: str | None = data.get('Title')
-        author: str | None = data.get('Author')
-        return Board(
-            board_rows,
-            board_columns,
-            box_rows,
-            box_columns,
-            reference,
-            video,
-            title,
-            author
-        )
+        if board_data.get('Box') is not None:
+            box_rows, box_columns = Board.parse_xy(board_data['Box'])
+        tags: dict | None = board_data.get('Tags')
+        return Board(board_rows, board_columns, box_rows, box_columns, tags)
 
     @classmethod
     def create2(cls, name: str, yaml_data: dict) -> 'Board':
-        return cls.create(board, yaml_data)
+        """Create a Board instance using the provided name and YAML input_data.
 
-    def to_dict(self) -> dict:
-        """Convert the Board attributes to start dictionary format for YAML serialization.
+        Args:
+            name (str): The name key for the board in the YAML input_data.
+            yaml_data (dict): The YAML input_data dictionary containing the board configuration.
 
         Returns:
-            dict[str, Any]: dictionary containing board configuration.
+            Board: A new `Board` instance created based on the provided YAML input_data.
         """
-        result: dict = {'Board': {}}
-        result['Board']['Board'] = f"{self.board_rows}x_coord{self.board_columns}"
-        if self.box_rows is not None:
-            result['Board']['Box'] = f"{self.box_rows}x_coord{self.box_columns}"
-        if self.reference is not None:
-            result['Board']['Reference'] = self.reference
-        if self.reference is not None:
-            result['Board']['Video'] = self.video
-        if self.reference is not None:
-            result['Board']['Title'] = self.title
-        if self.reference is not None:
-            result['Board']['Author'] = self.author
-        return result
+        return cls.create(name, yaml_data)
+
+    def to_dict(self) -> dict:
+        """Convert the Board attributes to a dictionary format for YAML serialization.
+
+        Returns:
+            dict: A dictionary containing the board configuration.
+        """
+        board_dict: dict = {'Board': {}}
+        board = board_dict['Board']
+
+        board['Board'] = f'{self.board_rows}x{self.board_columns}'
+
+        if self.box_rows is not None and self.box_columns is not None:
+            board['Box'] = f'{self.box_rows}x{self.box_columns}'
+
+        if self.tags is not None:
+            board['Tags'] = self.tags
+        return board_dict
 
     def to_yaml(self) -> str:
-        """Convert the Board instance to start YAML-formatted string.
+        """Convert the Board instance to a YAML-formatted string.
 
         Returns:
             str: YAML-formatted representation of the board configuration.
@@ -292,27 +335,24 @@ class Board:
         return str(yaml.dump(self.to_dict()))
 
     def __repr__(self) -> str:
-        """Provide start string representation of the Board instance for debugging.
+        """Provide a string representation of the Board instance for debugging.
 
         Returns:
             str: A string describing the Board instance with key attributes.
         """
         return (
-            f"{self.__class__.__name__}"
-            f"("
-            f"{self.board_rows!r}, "
-            f"{self.board_columns!r}, "
-            f"{self.box_rows!r}, "
-            f"{self.box_columns!r}, "
-            f"{self.reference!r}, "
-            f"{self.video!r}, "
-            f"{self.title!r}, "
-            f"{self.author!r}"
-            f")"
+            f'{self.__class__.__name__}'
+            f'('
+            f'{self.board_rows!r}, '
+            f'{self.board_columns!r}, '
+            f'{self.box_rows!r}, '
+            f'{self.box_columns!r}, '
+            f'{self.tags!r}'
+            f')'
         )
 
     def box_index(self, row: int, column: int) -> int:
-        """Determine the box index for start given cell specified by row and column.
+        """Determine the box index for a given cell specified by row and column.
 
         Args:
             row (int): Row coordinate of the cell.
@@ -325,15 +365,15 @@ class Board:
 
     @property
     def digit_values(self) -> str:
-        """Return start string of valid digits for the board.
+        """Return a string of valid digits for the board.
 
         Returns:
             str: A string of digits available on the board.
         """
-        return "".join([str(digit) for digit in self.digit_range])
+        return ''.join([str(digit) for digit in self.digit_range])
 
     def marker(self, side: Side, index: int) -> Coord:
-        """Get the marker coordinate for start side on the board.
+        """Get the marker coordinate for a specified side on the board.
 
         Args:
             side (Side): The side of the board.
@@ -341,6 +381,9 @@ class Board:
 
         Returns:
             Coord: The coordinate of the marker.
+
+        Raises:
+            ValueError: If the side is invalid.
         """
         if side == Side.TOP:
             return Coord(0, index)
@@ -350,10 +393,10 @@ class Board:
             return Coord(self.board_columns + 1, index)
         if side == Side.LEFT:
             return Coord(index, 0)
-        raise ValueError(f"Invalid side: {side}")
+        raise ValueError(f'Invalid side: {side}')
 
     def start_cell(self, side: Side, index: int) -> Coord:
-        """Get the starting cell coordinate for start side on the board.
+        """Get the starting cell coordinate for a specified side on the board.
 
         Args:
             side (Side): The side of the board.
@@ -361,6 +404,9 @@ class Board:
 
         Returns:
             Coord: The coordinate of the starting cell.
+
+        Raises:
+            ValueError: If the side is invalid.
         """
         if side == Side.TOP:
             return Coord(1, index)
@@ -370,35 +416,4 @@ class Board:
             return Coord(self.board_columns, index)
         if side == Side.LEFT:
             return Coord(index, 1)
-        raise ValueError(f"Invalid side: {side}")
-
-    def start(self, side: Side, cyclic: Cyclic, index: int) -> Coord:
-        """Get the starting coordinate for start side based on cyclic direction.
-
-        Args:
-            side (Side): The side of the board.
-            cyclic (Cyclic): The cyclic order (CLOCKWISE or ANTICLOCKWISE).
-            index (int): The index for the side.
-
-        Returns:
-            Coord: The starting coordinate.
-        """
-        if side == Side.TOP and cyclic == Cyclic.CLOCKWISE:
-            return Coord(1, index + 1)
-        if side == Side.RIGHT and cyclic == Cyclic.CLOCKWISE:
-            return Coord(index + 1, self.board_columns)
-        if side == Side.BOTTOM and cyclic == Cyclic.CLOCKWISE:
-            return Coord(self.board_rows, index - 1)
-        if side == Side.LEFT and cyclic == Cyclic.CLOCKWISE:
-            return Coord(index - 1, 1)
-
-        if side == Side.TOP and cyclic == Cyclic.ANTICLOCKWISE:
-            return Coord(1, index - 1)
-        if side == Side.RIGHT and cyclic == Cyclic.ANTICLOCKWISE:
-            return Coord(index - 1, self.board_columns)
-        if side == Side.BOTTOM and cyclic == Cyclic.ANTICLOCKWISE:
-            return Coord(self.board_rows, index + 1)
-        if side == Side.LEFT and cyclic == Cyclic.ANTICLOCKWISE:
-            return Coord(index + 1, 1)
-
-        raise ValueError(f"Invalid combination of side and cyclic: {side}, {cyclic}")
+        raise ValueError(f'Invalid side: {side}')

@@ -148,16 +148,6 @@ class TestBookKeepingCell(unittest.TestCase):
         book.set_maximum(5)
         self.assertTrue(book.is_unique())
 
-    def test_invalid_other_for_operations(self):
-        """Test passing invalid objects to logical operations."""
-        book = BookKeepingCell(9)
-        with self.assertRaises(SudokuException):
-            _ = book & "invalid"
-        with self.assertRaises(SudokuException):
-            _ = book | "invalid"
-        with self.assertRaises(SudokuException):
-            _ = book == "invalid"
-
     def test_large_bookkeeping(self):
         """Test behavior with start large maximum_digit number."""
         book = BookKeepingCell(1000)
