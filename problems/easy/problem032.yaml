@@ -1,10 +1,11 @@
 Board:
-  Title: Supernova - The Best Quad Sudoku Ever
-  Author: Nahileon
-  Video: https://www.youtube.com/watch?v=GWu9pM4JtpQ&ab_channel=CrackingTheCryptic
-  Reference: https://app.crackingthecryptic.com/sudoku/MF3rQB3Tgr
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Supernova - The Best Quad Sudoku Ever
+    Author: Nahileon
+    Video: https://www.youtube.com/watch?v=GWu9pM4JtpQ&ab_channel=CrackingTheCryptic
+    Reference: https://app.crackingthecryptic.com/sudoku/MF3rQB3Tgr
 Constraints:
   Columns:
   Rows:

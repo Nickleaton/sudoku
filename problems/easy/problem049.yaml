@@ -1,8 +1,9 @@
 Board:
-  Title: Arto Inkala
-  Reference: https://www.sudokuwiki.org/
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Arto Inkala
+    Reference: https://www.sudokuwiki.org/
 Constraints:
   Columns:
   Rows:

@@ -1,10 +1,11 @@
 Board:
-  Title: Boundaries
-  Author: Josh Johnson
-  Video: https://www.youtube.com/watch?v=U2ER6QCYn1E&ab_channel=zetamathdoespuzzles
-  Reference: https://sudokupad.app/4u0atuniiv
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Boundaries
+    Author: Josh Johnson
+    Video: https://www.youtube.com/watch?v=U2ER6QCYn1E&ab_channel=zetamathdoespuzzles
+    Reference: https://sudokupad.app/4u0atuniiv
 Constraints:
   Columns:
   Rows:

@@ -1,10 +1,11 @@
 Board:
-  Title:  RenbanLine Quadruples Sudoku
-  Author: Clover
-  Reference:  https://app.crackingthecryptic.com/sudoku/3qG93JFb6M
-  Video: https://tinyurl.com/wh33cukv
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: RenbanLine Quadruples Sudoku
+    Author: Clover
+    Reference: https://app.crackingthecryptic.com/sudoku/3qG93JFb6M
+    Video: https://tinyurl.com/wh33cukv
 Constraints:
   Columns:
   Rows:

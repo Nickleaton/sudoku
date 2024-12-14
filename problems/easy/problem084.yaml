@@ -1,10 +1,11 @@
 Board:
-  Title: SimpleThermometer Sudoku
-  Author: Clover
-  Reference: https://app.crackingthecryptic.com/sudoku/B4Gb6RMDmf
-  Video: https://tinyurl.com/wh33cukv
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: SimpleThermometer Sudoku
+    Author: Clover
+    Reference: https://app.crackingthecryptic.com/sudoku/B4Gb6RMDmf
+    Video: https://tinyurl.com/wh33cukv
 Constraints:
   Columns:
   Rows:

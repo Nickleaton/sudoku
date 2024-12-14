@@ -1,8 +1,9 @@
 Board:
-  Title: Easter Monster
-  Reference: https://www.sudokuwiki.org/
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Easter Monster
+    Reference: https://www.sudokuwiki.org/
 Constraints:
   Columns:
   Rows:

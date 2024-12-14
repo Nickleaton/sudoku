@@ -1,9 +1,10 @@
 Board:
-  Title: March 28, 2022, Outside
-  Author: Clover
-  Reference: https://tinyurl.com/y79xndab
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: March 28, 2022, Outside
+    Author: Clover
+    Reference: https://tinyurl.com/y79xndab
 Constraints:
   Columns:
   Rows:

@@ -1,11 +1,11 @@
 Board:
-  Title: Numbered Rooms
-  Author: Lizzy01
-  Video: https://www.youtube.com/watch?v=6hEUMb7DKB4&ab_channel=CrackingTheCryptic
-  Reference: https://app.crackingthecryptic.com/sudoku/tMHDPtqHgG
   Board: 9x9
   Box: 3x3
-
+  Tags:
+    Title: Numbered Rooms
+    Author: Lizzy01
+    Video: https://www.youtube.com/watch?v=6hEUMb7DKB4&ab_channel=CrackingTheCryptic
+    Reference: https://app.crackingthecryptic.com/sudoku/tMHDPtqHgG
 Constraints:
   Columns:
   Rows:

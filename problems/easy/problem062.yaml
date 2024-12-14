@@ -1,24 +1,24 @@
 Board:
-  Title: Product Frame Sudoku
-  Reference: https://rohanrao.blogspot.com/2009/01/rules-of-product-frame-sudoku.html
-  Author: Rohan Rao
   Board: 9x9
   Box: 3x3
-
+  Tags:
+    Title: Product Frame Sudoku
+    Reference: https://rohanrao.blogspot.com/2009/01/rules-of-product-frame-sudoku.html
+    Author: Rohan Rao
 Constraints:
   Columns:
   Rows:
   Boxes:
   Known:
-      - .........
-      - .........
-      - ..1...4..
-      - ...5.3...
-      - ....6....
-      - ...1.7...
-      - ..8...3..
-      - .........
-      - .........
+    - .........
+    - .........
+    - ..1...4..
+    - ...5.3...
+    - ....6....
+    - ...1.7...
+    - ..8...3..
+    - .........
+    - .........
   FrameProduct:
     - T1=30
     - T2=336
@@ -61,12 +61,12 @@ Constraints:
     - L9=54
 
 Solution:
-    - 564732918
-    - 389416725
-    - 271859436
-    - 642583197
-    - 197264583
-    - 835197264
-    - 428671359
-    - 753928641
-    - 916345872
+  - 564732918
+  - 389416725
+  - 271859436
+  - 642583197
+  - 197264583
+  - 835197264
+  - 428671359
+  - 753928641
+  - 916345872

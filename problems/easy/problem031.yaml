@@ -1,10 +1,11 @@
 Board:
-  Title: That's 3 in the Corner
-  Author: Epsalon
-  Video: https://www.youtube.com/watch?v=iLMNlaVFQkE&ab_channel=CrackingTheCryptic
-  Reference: https://app.crackingthecryptic.com/sudoku/27FLhTPrhL
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: That's 3 in the Corner
+    Author: Epsalon
+    Video: https://www.youtube.com/watch?v=iLMNlaVFQkE&ab_channel=CrackingTheCryptic
+    Reference: https://app.crackingthecryptic.com/sudoku/27FLhTPrhL
 Constraints:
   Columns:
   Rows:

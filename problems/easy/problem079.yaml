@@ -1,9 +1,10 @@
 Board:
-  Title: Min Max Difference
-  Author: Rajesh Kumar
-  Reference: https://www.funwithpuzzles.com/2016/05/minmax-difference-sudoku.html
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Min Max Difference
+    Author: Rajesh Kumar
+    Reference: https://www.funwithpuzzles.com/2016/05/minmax-difference-sudoku.html
 Constraints:
   Columns:
   Rows:

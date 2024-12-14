@@ -1,10 +1,11 @@
 Board:
-  Title: Thermo Sudoku
-  Author: Clover
-  Reference: https://app.crackingthecryptic.com/sudoku/8mbQn8HFH9
-  Video: https://tinyurl.com/2mdfrdcf
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Thermo Sudoku
+    Author: Clover
+    Reference: https://app.crackingthecryptic.com/sudoku/8mbQn8HFH9
+    Video: https://tinyurl.com/2mdfrdcf
 Constraints:
   Columns:
   Rows:

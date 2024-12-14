@@ -1,7 +1,10 @@
 Board:
-  Reference: https://ctcbook.com/gh001/
+
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Problem 003
+    Reference: https://ctcbook.com/gh001/
 Constraints:
   Columns:
   Rows:

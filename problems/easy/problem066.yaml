@@ -1,11 +1,11 @@
 Board:
-  Title: Four flashes of Enlightenment
-  Author: Mile Lemaic
-  Video: https://www.youtube.com/watch?v=bSFzEh0V_m8&ab_channel=CrackingTheCryptic
-  Reference: https://app.crackingthecryptic.com/sudoku/rJqFpfNPFq
   Board: 9x9
   Box: 3x3
-
+  Tags:
+    Title: Four flashes of Enlightenment
+    Author: Mile Lemaic
+    Video: https://www.youtube.com/watch?v=bSFzEh0V_m8&ab_channel=CrackingTheCryptic
+    Reference: https://app.crackingthecryptic.com/sudoku/rJqFpfNPFq
 Constraints:
   Columns:
   Rows:

@@ -1,8 +1,9 @@
 Board:
-  Title: Asterix Sudoku
-  Reference: https://tinyurl.com/vxc7rn5f
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Asterix Sudoku
+    Reference: https://tinyurl.com/vxc7rn5f
 Constraints:
   Columns:
   Rows:

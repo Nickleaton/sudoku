@@ -1,10 +1,11 @@
 Board:
-  Title: Equal Sums
-  Author: Rangsk
-  Reference: https://tinyurl.com/2p8sx3r4
-  Video: https://www.youtube.com/watch?v=6VQyDdhJK1Q&ab_channel=Rangsk
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Equal Sums
+    Author: Rangsk
+    Reference: https://tinyurl.com/2p8sx3r4
+    Video: https://www.youtube.com/watch?v=6VQyDdhJK1Q&ab_channel=Rangsk
 Constraints:
   Columns:
   Rows:

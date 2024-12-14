@@ -1,9 +1,10 @@
 Board:
-  Title: Girandola Sudoku
-  Video: https://www.youtube.com/watch?v=7x9eiA1wyO4&ab_channel=StevenScott
-  Reference: https://f-puzzles.com/?id=yyg683mg
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Girandola Sudoku
+    Video: https://www.youtube.com/watch?v=7x9eiA1wyO4&ab_channel=StevenScott
+    Reference: https://f-puzzles.com/?id=yyg683mg
 Constraints:
   Columns:
   Rows:

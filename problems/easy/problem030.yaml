@@ -1,10 +1,11 @@
 Board:
-  Title: Aug 23 2021 Rossini Sudoku
-  Author: Sam Cappleman-Lunes
-  Video: https://www.youtube.com/watch?v=7sWnbrADeWo&ab_channel=CrackingTheCryptic
-  Reference: https://tinyurl.com/yckk6sjs
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Aug 23 2021 Rossini Sudoku
+    Author: Sam Cappleman-Lunes
+    Video: https://www.youtube.com/watch?v=7sWnbrADeWo&ab_channel=CrackingTheCryptic
+    Reference: https://tinyurl.com/yckk6sjs
 Constraints:
   Columns:
   Rows:

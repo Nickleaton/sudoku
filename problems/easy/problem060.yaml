@@ -1,9 +1,10 @@
 Board:
-  Title: Product Sudoku
-  Reference: https://nrich.maths.org/4903
-  Author: Henry Kwok
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Product Sudoku
+    Reference: https://nrich.maths.org/4903
+    Author: Henry Kwok
 Constraints:
   Columns:
   Rows:

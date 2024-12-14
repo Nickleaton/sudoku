@@ -1,10 +1,11 @@
 Board:
-  Title: Dutch Whispers
-  Author: Aad van de Wetering
-  Reference: https://app.crackingthecryptic.com/sudoku/PMBb4hP3mm
-  Video: https://www.youtube.com/watch?v=6pAQYHf42Ik&ab_channel=CrackingTheCryptic
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Dutch Whispers
+    Author: Aad van de Wetering
+    Reference: https://app.crackingthecryptic.com/sudoku/PMBb4hP3mm
+    Video: https://www.youtube.com/watch?v=6pAQYHf42Ik&ab_channel=CrackingTheCryptic
 Constraints:
   Columns:
   Rows:

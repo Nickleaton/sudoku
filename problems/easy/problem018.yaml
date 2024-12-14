@@ -1,9 +1,10 @@
 Board:
-  Title: Slow Thermo
-  Author: Kithyane
-  Video: https://www.youtube.com/watch?v=wfN_vAbVoX8&ab_channel=SudoKanard
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Slow Thermo
+    Author: Kithyane
+    Video: https://www.youtube.com/watch?v=wfN_vAbVoX8&ab_channel=SudoKanard
 Constraints:
   Columns:
   Rows:

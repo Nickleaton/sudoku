@@ -1,10 +1,11 @@
 Board:
-  Title: 159 Sudoku
-  Author: World Sudoku Cup 2
-  Video: https://www.youtube.com/watch?v=J0OVDew3Hg4&ab_channel=CrackingTheCryptic
-  Reference: https://cracking-the-cryptic.web.app/sudoku/8rrr3nrDqF
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: 159 Sudoku
+    Author: World Sudoku Cup 2
+    Video: https://www.youtube.com/watch?v=J0OVDew3Hg4&ab_channel=CrackingTheCryptic
+    Reference: https://cracking-the-cryptic.web.app/sudoku/8rrr3nrDqF
 Constraints:
   Columns:
   Rows:

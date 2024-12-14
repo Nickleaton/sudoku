@@ -1,10 +1,11 @@
 Board:
-  Title: Sandwich Sudoku
-  Author: Isaac Resnikoff
-  Video: https://www.youtube.com/watch?v=BnsD0-nBNlk&ab_channel=CrackingTheCryptic
-  Reference: https://cracking-the-cryptic.web.app/sudoku/LN7qpPB43L
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Sandwich Sudoku
+    Author: Isaac Resnikoff
+    Video: https://www.youtube.com/watch?v=BnsD0-nBNlk&ab_channel=CrackingTheCryptic
+    Reference: https://cracking-the-cryptic.web.app/sudoku/LN7qpPB43L
 Constraints:
   Columns:
   Rows:

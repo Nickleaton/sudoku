@@ -1,8 +1,9 @@
 Board:
-  Title: Sequences
-  Reference: https://wscwpc2018.cz/wp-content/uploads/2018/10/WSC_2018_instruction_booklet_v5.pdf
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Sequences
+    Reference: https://wscwpc2018.cz/wp-content/uploads/2018/10/WSC_2018_instruction_booklet_v5.pdf
 Constraints:
   Columns:
   Rows:

@@ -1,9 +1,10 @@
 Board:
-  Title: Exclusion
-  Author: Rajesh Kumar
-  Reference: https://www.funwithpuzzles.com/2018/07/exclusion-sudoku-puzzle.html
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Exclusion
+    Author: Rajesh Kumar
+    Reference: https://www.funwithpuzzles.com/2018/07/exclusion-sudoku-puzzle.html
 Constraints:
   Columns:
   Rows:

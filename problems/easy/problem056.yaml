@@ -1,8 +1,9 @@
 Board:
-  Title: MountainLine Sudoku
-  Reference: https://www.funwithpuzzles.com/2018/05/mountain-sudoku-puzzle.html
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: MountainLine Sudoku
+    Reference: https://www.funwithpuzzles.com/2018/05/mountain-sudoku-puzzle.html
 Constraints:
   Columns:
   Rows:
