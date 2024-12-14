@@ -11,7 +11,7 @@ class TestVectorList(unittest.TestCase):
     """Test suite for the VectorList class."""
 
     def setUp(self) -> None:
-        """Initialize test data."""
+        """Initialize test input_data."""
         self.vectors1 = VectorList(
             [
                 Vector(Coord(1, 2), Coord(2, 3)),
