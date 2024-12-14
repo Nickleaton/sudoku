@@ -14,7 +14,7 @@ def load_modules(package_name: str, subpackage: str | None = None) -> None:
     Raises:
         ModuleNotFoundError: If the specified package or subpackage is not found.
     """
-    full_package_name: str | None = f'{package_name}.{subpackage}' if subpackage else package_name
+    full_package_name: str = f'{package_name}.{subpackage}' if subpackage else package_name
 
     try:
         package = importlib.import_module(full_package_name)
