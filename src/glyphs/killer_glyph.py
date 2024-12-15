@@ -7,7 +7,7 @@ from svgwrite.container import Group
 
 from src.glyphs.glyph import Glyph, config
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.point import Point
 from src.utils.vector import Vector
 from src.utils.vector_list import VectorList
@@ -27,15 +27,15 @@ class KillerGlyph(Glyph):
         8: Vector(Coord(1, 0), Coord(1, 1)),
     }
 
-    short_lines: ClassVar[dict[int, tuple[Point, Direction]]] = {
-        12: (Point(-1, -1), Direction.UP),
-        23: (Point(1, -1), Direction.UP),
-        36: (Point(1, -1), Direction.RIGHT),
-        69: (Point(1, 1), Direction.RIGHT),
-        89: (Point(1, 1), Direction.DOWN),
-        78: (Point(-1, 1), Direction.DOWN),
-        47: (Point(-1, 1), Direction.LEFT),
-        14: (Point(-1, -1), Direction.LEFT),
+    short_lines: ClassVar[dict[int, tuple[Point, Coord]]] = {
+        12: (Point(-1, -1), Moves.UP),
+        23: (Point(1, -1), Moves.UP),
+        36: (Point(1, -1), Moves.RIGHT),
+        69: (Point(1, 1), Moves.RIGHT),
+        89: (Point(1, 1), Moves.DOWN),
+        78: (Point(-1, 1), Moves.DOWN),
+        47: (Point(-1, 1), Moves.LEFT),
+        14: (Point(-1, -1), Moves.LEFT),
     }
 
     def __init__(self, class_name: str, cells: list[Coord]):
@@ -73,7 +73,7 @@ class KillerGlyph(Glyph):
         """
         vectors: list[Vector] = []
         for location, vector in KillerGlyph.long_lines.items():
-            if self.outside(cell + Direction(location).offset):
+            if self.outside(cell + Coord.directions()[location].offset):
                 vectors.append(vector + cell)
         return VectorList(vectors)
 

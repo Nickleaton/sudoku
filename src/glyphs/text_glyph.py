@@ -22,7 +22,7 @@ class TextGlyph(Glyph):
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
-            angle (float): The angle (in degrees) to rotate the text.
+            angle (float): The angle (in angle_degree) to rotate the text.
             position (Coord): The coordinate on the canvas where the text will be placed.
             text (str): The actual text content to be displayed in the glyph.
         """

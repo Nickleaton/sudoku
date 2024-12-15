@@ -18,7 +18,7 @@ class ArrowGlyph(Glyph):
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            angle (float): The angle of the arrow in degrees.
+            angle (float): The angle of the arrow in angle_degree.
             position (Coord): The position of the arrow, represented as a `Coord` object.
         """
         super().__init__(class_name)

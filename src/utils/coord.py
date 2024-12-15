@@ -2,6 +2,7 @@
 from typing import List
 
 from src.utils.angle import Angle
+from src.utils.point import Point
 
 TOLERANCE: float = 1e-6
 
@@ -272,3 +273,13 @@ class Coord:
             bool: True if the coordinate is inside, False otherwise.
         """
         return cls.check_line(coord)
+
+    # TODO - needs to be move out of Coord for dependency reasons
+    @property
+    def point(self) -> Point:
+        """Convert the Coord into a Point, scaling the row and column by 100.
+
+        Returns:
+            Point: The corresponding Point object.
+        """
+        return Point(self.column * 100, self.row * 100)

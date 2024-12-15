@@ -16,7 +16,7 @@ class KillerTextGlyph(Glyph):
 
         Args:
             class_name (str): The class name for the SVG element.
-            angle (float): The rotation angle for the text in degrees.
+            angle (float): The rotation angle for the text in angle_degree.
             position (Coord): The position of the text in coordinates.
             text (str): The text content to be displayed.
         """

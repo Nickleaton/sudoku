@@ -6,7 +6,7 @@ from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 
 
 class BattenburgGlyph(Glyph):
@@ -47,7 +47,7 @@ class BattenburgGlyph(Glyph):
         percentage: float = 0.5  # Each square will take 50% of the width and height.
 
         # Add alternating colored rectangles to form the Battenburg pattern.
-        for index, direction in enumerate(Direction.orthogonals()):
+        for index, direction in enumerate(Moves.orthogonals()):
             position: Coord = direction * percentage
             rect: Rect = Rect(
                 insert=position.point.coordinates,

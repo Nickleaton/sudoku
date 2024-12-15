@@ -23,39 +23,39 @@ class Glyph:
         self.class_name = class_name
 
     @classmethod
-    def start_marker(cls) -> Marker | None:
+    def start_marker(cls) -> Marker | None:  # noqa: WPS324
         """Return the starting marker for the glyph.
 
         Returns:
             Marker | None: The start marker element, or None if not applicable.
         """
-        return None
+        return None  # noqa: WPS324
 
     @classmethod
-    def end_marker(cls) -> Marker | None:
+    def end_marker(cls) -> Marker | None:  # noqa: WPS324
         """Return the ending marker for the glyph.
 
         Returns:
             Marker | None: The end marker element, or None if not applicable.
         """
-        return None
+        return None  # noqa: WPS324
 
     @classmethod
-    def symbol(cls) -> Marker | None:
+    def symbol(cls) -> Marker | None:  # noqa: WPS324
         """Return the symbol for the glyph.
 
         Returns:
             Marker | None: The symbol element, or None if not applicable.
         """
-        return None
+        return None  # noqa: WPS324
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement | None:  # noqa: WPS324
         """Draw the glyph and return an SVG element.
 
         Returns:
             BaseElement | None: The drawn SVG element, or None if not drawn.
         """
-        return None
+        return None  # noqa: WPS324
 
     @property
     def priority(self) -> int:

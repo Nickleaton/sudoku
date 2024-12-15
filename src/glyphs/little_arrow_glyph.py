@@ -5,7 +5,6 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.coord import Coord
-from src.utils.direction import Direction
 
 
 class LittleArrowGlyph(Glyph):
@@ -32,7 +31,7 @@ class LittleArrowGlyph(Glyph):
             BaseElement | None: An SVG Text element containing the arrow symbol or None if not drawn.
         """
         # Determine the direction using the location number
-        direction: Direction = Direction.direction(self.location)
+        direction: Coord = Coord.directions()[self.location]
         # Define the size of the glyph
         size: Coord = Coord(0.4, 0.4)
         position: Coord = self.position + size  # Adjust position by the size of the arrow
