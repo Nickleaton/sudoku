@@ -1,106 +1,119 @@
-from xml.dom.minidom import parseString, Document
+"""PrettyXML."""
+from typing import Optional
+from xml.dom.minidom import Document
+
+from defusedxml.minidom import parseString  # Secure XML parsing
 
 
 class PrettyXML:
-    """
-    A class to handle XML strings and provide their DOM and pretty-printed formats.
-    """
+    """Handles XML strings, their DOM representation, and formatted output."""
 
-    def __init__(self):
+    def __init__(self, indent: str = '  '):
         """
-        Initializes the PrettyXML class.
-
-        Attributes:
-            _raw_string (str): The original, unformatted XML string.
-            _dom (xml.dom.minidom.Document | None): The DOM object representing the XML.
-            _pretty_string (str): The formatted, pretty-printed XML string.
-        """
-        self._raw_string = ''
-        self._dom = None
-        self._pretty_string = ''
-
-    def _update_from_raw(self) -> None:
-        """
-        Parses the raw XML string and updates the DOM and pretty-printed string.
-
-        Raises:
-            ValueError: If the raw XML string is invalid.
-        """
-        try:
-            self._dom = parseString(self._raw_string)
-            self._pretty_string = self._dom.toprettyxml(indent='  ')
-        except Exception as e:
-            raise ValueError(f'Invalid XML string: {e}')
-
-    def _update_from_dom(self) -> None:
-        """
-        Updates the raw string and pretty-printed string from the DOM.
-
-        Raises:
-            ValueError: If the DOM object is not set.
-        """
-        if self._dom is None:
-            raise ValueError('DOM is not set')
-        self._raw_string = self._dom.toxml()
-        self._pretty_string = self._dom.toprettyxml(indent='  ')
-
-    @property
-    def raw_string(self) -> str:
-        """
-        Gets the raw XML string.
-
-        Returns:
-            str: The original, unformatted XML string.
-        """
-        return self._raw_string
-
-    @raw_string.setter
-    def raw_string(self, value: str) -> None:
-        """
-        Sets the raw XML string and updates the DOM and pretty-printed string.
+        Initialize the PrettyXML class.
 
         Args:
-            value (str): The new raw XML string.
-
-        Raises:
-            ValueError: If the input XML string is invalid.
+            indent (str): Indentation used for pretty-printing XML.
         """
-        self._raw_string = value
-        self._update_from_raw()
+        self._indent: str = indent
+        self._raw_string: str = ''
+        self._dom: Optional[Document] = None
+        self._pretty_string: str = ''
 
-    @property
-    def dom(self) -> Document:
+    def update_from_raw(self) -> None:
+        """Parse raw XML string and update the DOM and pretty-printed string."""
+        self._dom = parseString(self._raw_string)
+        self._pretty_string = self._dom.toprettyxml(indent=self._indent)
+
+    def update_from_dom(self) -> None:
         """
-        Gets the DOM representation of the XML string.
-
-        Returns:
-            xml.dom.minidom.Document: The DOM object representing the XML.
+        Update the raw XML string and the pretty-printed XML string from the DOM.
 
         Raises:
             ValueError: If the DOM is not initialized.
         """
+        if not self._dom:
+            raise ValueError('DOM is not initialized')
+        self._raw_string = self._dom.toxml()
+        self._pretty_string = self._dom.toprettyxml(indent=self._indent)
+
+    @property
+    def raw_string(self) -> str:
+        """
+        Get the raw XML string.
+
+        Returns:
+            str: The unformatted XML string.
+        """
+        return self._raw_string
+
+    @raw_string.setter
+    def raw_string(self, xml_input: str) -> None:
+        """
+        Set a new raw XML string and update the DOM.
+
+        Args:
+            xml_input (str): The raw XML string to set.
+
+        Raises:
+            ValueError: If the input XML string is invalid.
+        """
+        self._raw_string = xml_input
+        try:
+            self.update_from_raw()
+        except Exception as error:
+            raise ValueError(f'Invalid XML string: {error}') from error
+
+    @property
+    def dom(self) -> Document:
+        """
+        Get the DOM representation of the XML string.
+
+        Returns:
+            Document: The DOM object for the XML.
+
+        Raises:
+            ValueError: If the DOM is not initialized.
+        """
+        if not self._dom:
+            raise ValueError('DOM is not initialized')
         return self._dom
 
     @dom.setter
-    def dom(self, value: Document) -> None:
+    def dom(self, document: Document) -> None:
         """
-        Sets the DOM and updates the raw XML string and pretty-printed string.
+        Set a new DOM and update the XML string.
 
         Args:
-            value (xml.dom.minidom.Document): The new DOM object.
+            document (Document): A new DOM object to set.
 
         Raises:
-            ValueError: If the DOM is not set or invalid.
+            ValueError: If the input is not a valid DOM object.
         """
-        self._dom = value
-        self._update_from_dom()
+        if not isinstance(document, Document):
+            raise ValueError('Provided DOM must be an instance of xml.dom.minidom.Document')
+        self._dom = document
+        self.update_from_dom()
 
     @property
     def pretty_string(self) -> str:
         """
-        Gets the pretty-printed version of the XML string.
+        Get the pretty-printed XML string.
 
         Returns:
-            str: The formatted XML string with indentation.
+            str: The formatted XML string.
         """
         return self._pretty_string
+
+    def reload(self) -> None:
+        """Reparse the raw XML string to refresh the DOM and pretty string."""
+        self.update_from_raw()
+
+    def __str__(self) -> str:
+        """
+        Convert the object to its pretty-printed XML string.
+
+        Returns:
+            str: The pretty-printed XML string.
+        """
+        return self.pretty_string
