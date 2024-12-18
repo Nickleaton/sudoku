@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.glyph import Glyph
 from src.glyphs.little_killer_glyph import LittleKillerGlyph
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -18,7 +18,7 @@ class TestLittleKillerGlyph(TestGlyph):
         Initializes the style, position, angle, and number for the LittleKillerGlyph.
         """
         super().setUp()
-        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Direction.DOWN_RIGHT.angle, 20)
+        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Moves.DOWN_RIGHT.angle, 20)
 
     @property
     def target(self) -> str:
@@ -29,12 +29,12 @@ class TestLittleKillerGlyph(TestGlyph):
         """
         return (
             '<g>'
-            '<text class="Style" transform="translate(50.0, 50.0)">'
-            '<tspan alignment-baseline="central" text-anchor="middle">20</tspan>'
-            '</text>'
-            '<text class="Style" transform="translate(50.0, 50.0) rotate(135.0)">'
-            '<tspan alignment-baseline="central" text-anchor="middle">ꜛ</tspan>'
-            '</text>'
+            '    <text class="Style" transform="translate(50.0, 50.0)">'
+            '        <tspan alignment-baseline="central" text-anchor="middle">20</tspan>'
+            '    </text>'
+            '    <text class="Style" transform="translate(50.0, 50.0) rotate(315.0)">'
+            '        <tspan alignment-baseline="central" text-anchor="middle">ꜛ</tspan>'
+            '    </text>'
             '</g>'
         )
 
@@ -45,7 +45,7 @@ class TestLittleKillerGlyph(TestGlyph):
         Returns:
             str: The string representation of the LittleKillerGlyph.
         """
-        return "LittleKillerGlyph('Style', Coord(0, 0), Angle(135.0), 20)"
+        return "LittleKillerGlyph('Style', Coord(0, 0), Angle(315.0), 20)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

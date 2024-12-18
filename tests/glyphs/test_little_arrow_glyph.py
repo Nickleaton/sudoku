@@ -27,7 +27,7 @@ class TestLittleArrowGlyph(TestGlyph):
             str: The expected target SVG markup for the LittleArrowGlyph.
         """
         return (
-            '<text class="Style" transform="translate(140.0, 140.0) rotate(315.0)">'
+            '<text class="Style" transform="translate(140.0, 140.0) ">'
             '<tspan alignment-baseline="central" text-anchor="middle">▲</tspan>'
             '</text>'
         )

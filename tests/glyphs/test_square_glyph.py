@@ -26,7 +26,7 @@ class TestSquareGlyph(TestGlyph):
         Returns:
             str: The expected SVG markup for the square glyph as start rectangle element.
         """
-        return '<rect class="Style" height="5000" transform="translate(1000, 1000)" width="5000" x_coord="0" y_coord="0" />'
+        return '<rect class="Style" height="5000" transform="translate(1000, 1000)" width="5000" x="0" y="0" />'
 
     @property
     def representation(self) -> str:

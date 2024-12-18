@@ -11,13 +11,13 @@ class RectangleGlyph(Glyph):
     """Represents a rectangle with adjustable size and orientation in SVG format."""
 
     def __init__(
-            self,
-            class_name: str,
-            first: Coord,
-            second: Coord,
-            percentage: float,
-            ratio: float,
-            vertical: bool,
+        self,
+        class_name: str,
+        first: Coord,
+        second: Coord,
+        percentage: float,
+        ratio: float,
+        vertical: bool,
     ) -> None:
         """Initialize the rectangle glyph with position, size percentage, and ratio.
 

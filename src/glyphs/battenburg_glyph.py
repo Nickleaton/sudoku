@@ -44,7 +44,7 @@ class BattenburgGlyph(Glyph):
             id_='Battenburg-symbol',
             class_='Battenburg',
         )
-        percentage: float = 0.5  # Each square will take 50% of the width and height.
+        percentage: float = 0.3
 
         # Add alternating colored rectangles to form the Battenburg pattern.
         for index, direction in enumerate(Moves.orthogonals()):
@@ -69,9 +69,9 @@ class BattenburgGlyph(Glyph):
             None: If the element cannot be created.
         """
         return Use(
-            href='#Battenberg-symbol',
+            href='#Battenburg-symbol',
             insert=self.coord.point.coordinates,
-            class_='Battenberg',
+            class_='Battenburg',
             height=100,
             width=100,
         )

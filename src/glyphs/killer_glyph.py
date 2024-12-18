@@ -73,7 +73,7 @@ class KillerGlyph(Glyph):
         """
         vectors: list[Vector] = []
         for location, vector in KillerGlyph.long_lines.items():
-            if self.outside(cell + Coord.directions()[location].offset):
+            if self.outside(cell + Moves.directions()[location].offset):
                 vectors.append(vector + cell)
         return VectorList(vectors)
 

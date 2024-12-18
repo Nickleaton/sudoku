@@ -29,7 +29,7 @@ class TestFortressCellGlyph(TestSquareGlyph):
         """
         return (
             '<rect class="Style" height="100" '
-            'transform="translate(100, 100)" width="100" x_coord="0" y_coord="0" />'
+            'transform="translate(100, 100)" width="100" x="0" y="0" />'
         )
 
     @property

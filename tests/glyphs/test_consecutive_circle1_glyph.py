@@ -27,7 +27,7 @@ class TestConsecutiveCircle1Glyph(TestCircleGlyph):
         Returns:
             str: The SVG markup representing the Consecutive1Glyph, which in this case is start rectangle.
         """
-        return '<rect class="Style" height="50.0" transform="translate(150.0, 100.0)" width="25.0" x_coord="0" y_coord="0" />'
+        return '<rect class="Style" height="50.0" transform="translate(150.0, 100.0)" width="25.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:

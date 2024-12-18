@@ -6,6 +6,7 @@ from svgwrite import Drawing
 
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
+from src.utils.pretty_print_xml import pretty_print_xml
 
 COLOURS = [
     "Red",
@@ -83,13 +84,15 @@ class TestGlyph(unittest.TestCase):
     def test_draw(self) -> None:
         """Test the draw method of the Glyph class.
 
-        If the draw method returns an element, compare its string representation
-        to the target number.
+        If the draw method returns an element, compare its pretty XML string
+        to the pretty-printed target value.
         """
         if isinstance(self.glyph, Glyph):
             element = self.glyph.draw()
             if element is not None:
-                self.assertEqual(self.target, element.tostring())
+                actual: str = pretty_print_xml(element.tostring())
+                expected: str = pretty_print_xml(self.target)
+                self.assertEqual(expected, actual)
 
     def test_start_marker(self):
         """Test the start_marker method of the Glyph class.
@@ -122,7 +125,7 @@ class TestGlyph(unittest.TestCase):
         if symbol is None:
             self.assertEqual(self.symbol, "")
         else:
-            self.assertEqual(self.symbol, symbol.tostring())
+            self.assertEqual(pretty_print_xml(self.symbol), pretty_print_xml(symbol.tostring()))
 
     def test_priority(self):
         """Test the comparison (priority) of Glyph instances.
