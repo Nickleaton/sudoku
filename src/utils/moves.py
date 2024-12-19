@@ -96,4 +96,18 @@ class Moves:
         Returns:
             List[Coord]: A list of `Coord` instances representing the current 'square'
         """
-        return [Moves.CENTER, Moves.UP_RIGHT, Moves.DOWN, Moves.DOWN_RIGHT]
+        return [Moves.CENTER, Moves.RIGHT, Moves.DOWN, Moves.DOWN_RIGHT]
+
+    @staticmethod
+    @cache
+    def monkeys() -> List[Coord]:
+        return [
+            Coord(-1, -3),
+            Coord(1, -3),
+            Coord(-3, -1),
+            Coord(-3, 1),
+            Coord(-1, 3),
+            Coord(1, 3),
+            Coord(3, 1),
+            Coord(3, -1)
+        ]

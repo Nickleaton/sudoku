@@ -118,6 +118,20 @@ class TestMoves(unittest.TestCase):
         ]
         self.assertEqual(Moves.square(), expected)
 
+    def test_monkeys(self):
+        """Test the monkeys method to return the correct list of coordinates."""
+        expected = [
+            Coord(-1, -3),
+            Coord(1, -3),
+            Coord(-3, -1),
+            Coord(-3, 1),
+            Coord(-1, 3),
+            Coord(1, 3),
+            Coord(3, 1),
+            Coord(3, -1)
+        ]
+        self.assertEqual(Moves.monkeys(), expected)
+
 
 if __name__ == "__main__":
     unittest.main()
