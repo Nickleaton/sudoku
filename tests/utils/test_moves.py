@@ -109,6 +109,15 @@ class TestMoves(unittest.TestCase):
         ]
         self.assertEqual(Moves.all(), expected)
 
+    def test_square(self):
+        expected = [
+            Coord(0, 0),
+            Coord(0, 1),
+            Coord(1, 0),
+            Coord(1, 1),
+        ]
+        self.assertEqual(Moves.square(), expected)
+
 
 if __name__ == "__main__":
     unittest.main()

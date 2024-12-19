@@ -87,3 +87,13 @@ class Moves:
             List[Coord]: A list of `Coord` instances representing all directions including CENTER.
         """
         return Moves.directions() + [Moves.CENTER]
+
+    @staticmethod
+    @cache
+    def square() -> List[Coord]:
+        """Get square offsets.
+
+        Returns:
+            List[Coord]: A list of `Coord` instances representing the current 'square'
+        """
+        return [Moves.CENTER, Moves.UP_RIGHT, Moves.DOWN, Moves.DOWN_RIGHT]
