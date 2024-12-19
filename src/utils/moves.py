@@ -101,6 +101,11 @@ class Moves:
     @staticmethod
     @cache
     def monkeys() -> List[Coord]:
+        """Get monkey offsets.
+
+        Returns:
+            List[Coord]: Monkey moves.
+        """
         return [
             Coord(-1, -3),
             Coord(1, -3),
@@ -109,5 +114,25 @@ class Moves:
             Coord(-1, 3),
             Coord(1, 3),
             Coord(3, 1),
-            Coord(3, -1)
+            Coord(3, -1),
+        ]
+
+    @staticmethod
+    @cache
+    def girandola() -> List[Coord]:
+        """Get girandola offsets.
+
+        Returns:
+            List[Coord]: Girandola moves.
+        """
+        return [
+            Coord(1, 1),
+            Coord(1, 9),
+            Coord(2, 5),
+            Coord(5, 2),
+            Coord(5, 5),
+            Coord(5, 8),
+            Coord(8, 5),
+            Coord(9, 1),
+            Coord(9, 9),
         ]

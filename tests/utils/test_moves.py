@@ -132,6 +132,20 @@ class TestMoves(unittest.TestCase):
         ]
         self.assertEqual(Moves.monkeys(), expected)
 
+    def test_girandola(self):
+        """Test the girandola method to return the correct list of coordinates."""
+        expected = [
+            Coord(1, 1),
+            Coord(1, 9),
+            Coord(2, 5),
+            Coord(5, 2),
+            Coord(5, 5),
+            Coord(5, 8),
+            Coord(8, 5),
+            Coord(9, 1),
+            Coord(9, 9),
+        ]
+        self.assertEqual(Moves.girandola(), expected)
 
 if __name__ == "__main__":
     unittest.main()
