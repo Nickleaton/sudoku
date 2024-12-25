@@ -13,9 +13,9 @@ class TestKnownToken(TestSimpleToken):
         super().setUp()
         self.token = KnownToken()
         self.representation = "KnownToken()"
-        self.pattern = r"([0-9.lmheof])"
+        self.pattern = r"([0-9.lmheofs])"
         self.name = 'Known'
-        self.good = ['0', '9', 'l', 'm', 'h', 'e', 'o', 'f', '.']
+        self.good = ['0', '9', 'l', 'm', 'h', 'e', 'o', 'f', '.', 's']
         self.bad = ['row', 'X', '?']
         self.group_count = 1
         self.backus_naur = '<Known>'

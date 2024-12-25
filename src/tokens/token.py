@@ -50,6 +50,24 @@ class Token:
         class_name: str = self.__class__.__name__
         return 'Token' if class_name == 'Token' else class_name[:-len('Token')]
 
+    @property
+    def description(self) -> str:
+        """Get the description of the ValueToken.
+
+        Returns:
+            str: A description of the ValueToken's purpose and behavior.
+        """
+        return ''
+
+    @property
+    def example(self) -> str:
+        """Get an example of a value matched by the ValueToken.
+
+        Returns:
+            str: An example string that the ValueToken would match.
+        """
+        return ''
+
     def match(self, text: str) -> bool:
         """Match the given text against the token's regex pattern.
 
@@ -80,6 +98,31 @@ class Token:
             str: The BNF representation of the token (token name in angle brackets).
         """
         return f'<{self.name}>'
+
+    def to_dict(self) -> dict:
+        """Convert the Token attributes to a dictionary format
+
+        Returns:
+            dict: A dictionary containing the token configuration.
+        """
+        return {
+            'name': self.name,
+            'pattern': self.pattern,
+            'description': self.description,
+            'example': self.example,
+            'backus_naur_form': self.backus_naur_form
+        }
+
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return True
 
     def __repr__(self):
         """Return start string representation of the token.

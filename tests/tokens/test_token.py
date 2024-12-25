@@ -11,7 +11,7 @@ class TestToken(unittest.TestCase):
 
     def setUp(self):
         """Set up example tokens for testing."""
-        super
+        super().setUp()
         self.token = Token(r"A")
         self.token_a = Token(r"A")
         self.token_b = Token(r"B")
@@ -97,6 +97,32 @@ class TestToken(unittest.TestCase):
     def test_pattern(self):
         """Test that the pattern is correct."""
         self.assertEqual(self.token.pattern, self.pattern)
+
+    def test_description(self):
+        """Test that the description is correct."""
+        self.assertIsInstance(self.token.description, str)
+        if self.token.is_abstract:
+            self.assertEqual(len(self.token.description), 0)
+        else:
+            self.assertGreater(len(self.token.description), 0)
+
+    def test_example(self):
+        """Test that the example is correct."""
+        self.assertIsInstance(self.token.example, str)
+        if self.token.is_abstract:
+            self.assertEqual(len(self.token.example), 0)
+        else:
+            self.assertGreater(len(self.token.example), 0)
+
+    def test_to_dict(self):
+        """Test that the to_dict method returns a dictionary."""
+        dct: dict = self.token.to_dict()
+        self.assertIsInstance(dct, dict)
+        self.assertIn('pattern', dct)
+        self.assertIn('name', dct)
+        self.assertIn('description', dct)
+        self.assertIn('example', dct)
+        self.assertIn('backus_naur_form', dct)
 
 
 class TestSequenceToken(TestToken):

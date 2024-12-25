@@ -37,6 +37,28 @@ class SymbolToken(SimpleToken):
         """
         return f'"{self.symbol}"'
 
+    @property
+    def description(self) -> str:
+        """Get the description of the SymbolToken.
+
+        Returns:
+            str: A description of the SymbolToken's purpose and behavior.
+        """
+        if self.__class__ != SymbolToken:
+            return f'Matches a symbol {self.symbol!r}.'
+        return super().description
+
+    @property
+    def example(self) -> str:
+        """Get an example of a value matched by the SymbolToken.
+
+        Returns:
+            str: An example string that the SymbolToken would match.
+        """
+        if self.__class__ != SymbolToken:
+            return self.symbol
+        return super().example
+
 
 class EqualsToken(SymbolToken):
     """Represent an equals sign token."""
@@ -52,6 +74,17 @@ class EqualsToken(SymbolToken):
             str: The string representation of the EqualsToken.
         """
         return 'EqualsToken()'
+
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return False
 
 
 class CommaToken(SymbolToken):
@@ -69,6 +102,17 @@ class CommaToken(SymbolToken):
         """
         return 'CommaToken()'
 
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return False
+
 
 class DashToken(SymbolToken):
     """Represent start dash token."""
@@ -84,6 +128,17 @@ class DashToken(SymbolToken):
             str: The string representation of the DashToken.
         """
         return 'DashToken()'
+
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return False
 
 
 class QuestionMarkToken(SymbolToken):
@@ -108,3 +163,14 @@ class QuestionMarkToken(SymbolToken):
             str: The string representation of the QuestionMarkToken.
         """
         return 'QuestionMarkToken()'
+
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return False
