@@ -3,8 +3,8 @@ import re
 from enum import Enum
 
 import oyaml as yaml
-import strictyaml
-from strictyaml import Validator
+from sortedcontainers import SortedDict
+from strictyaml import Map, Optional, Str, Validator
 
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
@@ -19,10 +19,10 @@ class BoardType(Enum):
     This enum defines the available board types.
     """
 
-    B9X9 = '9x9'
-    B4X4 = '4x4'
-    B6X6 = '6x6'
-    B8X8 = '8x8'
+    b9x9 = '9x9'
+    b4x4 = '4x4'
+    b6x6 = '6x6'
+    b8x8 = '8x8'
 
 
 class BoxType(Enum):
@@ -31,10 +31,10 @@ class BoxType(Enum):
     This enum defines the available box types for Sudoku grids.
     """
 
-    B3X3 = '3x3'
-    B2X3 = '2x3'
-    B3X2 = '3x2'
-    B2X2 = '2x2'
+    b3x3 = '3x3'
+    b2x3 = '2x3'
+    b3x2 = '3x2'
+    b2x2 = '2x2'
 
 
 class Board:
@@ -57,12 +57,12 @@ class Board:
 
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(
-            self,
-            board_rows: int,
-            board_columns: int,
-            box_rows: int = 0,
-            box_columns: int = 0,
-            tags: dict | None = None,
+        self,
+        board_rows: int,
+        board_columns: int,
+        box_rows: int = 0,
+        box_columns: int = 0,
+        tags: dict | None = None,
     ):
         """Initialize the Board with dimensions, box size, and optional metadata.
 
@@ -121,7 +121,7 @@ class Board:
             self.box_range = list(range(1, self.box_count + 1))
 
         # Metadata
-        self.tags: dict = tags
+        self.tags: dict[str, str] | None = tags
 
         # Cyclic Map
 
@@ -138,7 +138,7 @@ class Board:
         - Right column: connects top and bottom sides in both clockwise and anticlockwise directions.
 
         Returns:
-            dict: A dictionary where the keys are tuples of (Side, Cyclic, int) and the values are Coord objects
+            dict: A dictionary where the keys are tuples of (Side, Cyclic, integer) and the values are Coord objects
             representing the corresponding board coordinates.
         """
         scm: dict[tuple[Side, Cyclic, int], Coord] = {}
@@ -146,20 +146,20 @@ class Board:
         # Top and bottom row connections (left-right)
         for row in range(self.board_rows):
             # Left side (clockwise and anticlockwise)
-            scm[(Side.LEFT, Cyclic.CLOCKWISE, row)] = Coord(row - 1, 1)
-            scm[(Side.LEFT, Cyclic.ANTICLOCKWISE, row)] = Coord(row + 1, 1)
+            scm[(Side.left, Cyclic.clockwise, row)] = Coord(row - 1, 1)
+            scm[(Side.left, Cyclic.anticlockwise, row)] = Coord(row + 1, 1)
             # Right side (clockwise and anticlockwise)
-            scm[(Side.RIGHT, Cyclic.CLOCKWISE, row)] = Coord(row + 1, self.board_columns)
-            scm[(Side.RIGHT, Cyclic.ANTICLOCKWISE, row)] = Coord(row - 1, self.board_columns)
+            scm[(Side.right, Cyclic.clockwise, row)] = Coord(row + 1, self.board_columns)
+            scm[(Side.right, Cyclic.anticlockwise, row)] = Coord(row - 1, self.board_columns)
 
         # Top and bottom column connections (top-bottom)
         for column in range(self.board_columns):
             # Top side (clockwise and anticlockwise)
-            scm[(Side.TOP, Cyclic.CLOCKWISE, column)] = Coord(1, column + 1)
-            scm[(Side.TOP, Cyclic.ANTICLOCKWISE, column)] = Coord(1, column - 1)
+            scm[(Side.top, Cyclic.clockwise, column)] = Coord(1, column + 1)
+            scm[(Side.top, Cyclic.anticlockwise, column)] = Coord(1, column - 1)
             # Bottom side (clockwise and anticlockwise)
-            scm[(Side.BOTTOM, Cyclic.CLOCKWISE, column)] = Coord(self.board_rows, column - 1)
-            scm[(Side.BOTTOM, Cyclic.ANTICLOCKWISE, column)] = Coord(self.board_rows, column + 1)
+            scm[(Side.bottom, Cyclic.clockwise, column)] = Coord(self.board_rows, column - 1)
+            scm[(Side.bottom, Cyclic.anticlockwise, column)] = Coord(self.board_rows, column + 1)
 
         return scm
 
@@ -207,7 +207,7 @@ class Board:
         """Get the coordinate for the given side of the board and index.
 
         Args:
-            side (Side): The side of the board (TOP, BOTTOM, LEFT, RIGHT).
+            side (Side): The side of the board (top, bottom, left, right).
             index (int): The index along the side (1-based for rows/columns).
 
         Returns:
@@ -216,24 +216,24 @@ class Board:
         Raises:
             ValueError: If the side is invalid or the index is out of range.
         """
-        if side == Side.TOP:
+        if side == Side.top:
             if index < 1 or index > self.board_columns:
-                raise ValueError(f'Index {index} out of range for TOP side.')
+                raise ValueError(f'Index {index} out of range for top side.')
             return Coord(0, index)
 
-        elif side == Side.BOTTOM:
+        elif side == Side.bottom:
             if index < 1 or index > self.board_columns:
-                raise ValueError(f'Index {index} out of range for BOTTOM side.')
+                raise ValueError(f'Index {index} out of range for bottom side.')
             return Coord(self.board_rows + 1, index)
 
-        elif side == Side.LEFT:
+        elif side == Side.left:
             if index < 1 or index > self.board_rows:
-                raise ValueError(f'Index {index} out of range for LEFT side.')
+                raise ValueError(f'Index {index} out of range for left side.')
             return Coord(index, 0)
 
-        elif side == Side.RIGHT:
+        elif side == Side.right:
             if index < 1 or index > self.board_rows:
-                raise ValueError(f'Index {index} out of range for RIGHT side.')
+                raise ValueError(f'Index {index} out of range for right side.')
             return Coord(index, self.board_columns + 1)
 
         # Raise error for invalid side
@@ -246,11 +246,11 @@ class Board:
         Returns:
             Validator: A `strictyaml` validator for the board configuration.
         """
-        return strictyaml.Map(
+        return Map(
             {
-                'Board': strictyaml.Str(),
-                strictyaml.Optional('Box'): strictyaml.Str(),
-                strictyaml.Optional('Tags'): strictyaml.Map({strictyaml.Str(): strictyaml.Str()}),
+                'Board': Str(),
+                Optional('Box'): Str(),
+                Optional('Tags'): Map({Str(): Str()}),
             },
         )
 
@@ -292,7 +292,7 @@ class Board:
         box_columns: int = 0
         if board_data.get('Box') is not None:
             box_rows, box_columns = Board.parse_xy(board_data['Box'])
-        tags: dict | None = board_data.get('Tags')
+        tags: dict | None = SortedDict(board_data.get('Tags'))
         return Board(board_rows, board_columns, box_rows, box_columns, tags)
 
     @classmethod
@@ -323,7 +323,7 @@ class Board:
             board['Box'] = f'{self.box_rows}x{self.box_columns}'
 
         if self.tags is not None:
-            board['Tags'] = self.tags
+            board['Tags'] = SortedDict(self.tags)
         return board_dict
 
     def to_yaml(self) -> str:
@@ -385,13 +385,13 @@ class Board:
         Raises:
             ValueError: If the side is invalid.
         """
-        if side == Side.TOP:
+        if side == Side.top:
             return Coord(0, index)
-        if side == Side.RIGHT:
+        if side == Side.right:
             return Coord(index, self.board_rows + 1)
-        if side == Side.BOTTOM:
+        if side == Side.bottom:
             return Coord(self.board_columns + 1, index)
-        if side == Side.LEFT:
+        if side == Side.left:
             return Coord(index, 0)
         raise ValueError(f'Invalid side: {side}')
 
@@ -408,12 +408,12 @@ class Board:
         Raises:
             ValueError: If the side is invalid.
         """
-        if side == Side.TOP:
+        if side == Side.top:
             return Coord(1, index)
-        if side == Side.RIGHT:
+        if side == Side.right:
             return Coord(index, self.board_rows)
-        if side == Side.BOTTOM:
+        if side == Side.bottom:
             return Coord(self.board_columns, index)
-        if side == Side.LEFT:
+        if side == Side.left:
             return Coord(index, 1)
         raise ValueError(f'Invalid side: {side}')
