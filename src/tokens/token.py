@@ -16,11 +16,11 @@ class Token:
         pattern (re.Pattern): The compiled regex pattern.
     """
 
-    classes: dict[str, Type['Token']] = SortedDict({})
+    classes: dict[str, Type['Token']] = SortedDict()
 
     # Creation Routines
 
-    def __init_subclass__(cls, **kwargs):
+    def __init_subclass__(cls, **kwargs) -> None:
         """Register the subclass for YAML instantiation.
 
         Args:
@@ -31,7 +31,7 @@ class Token:
         Token.classes[cls.__name__] = cls
         Token.classes[Token.__name__] = Token
 
-    def __init__(self, pattern: str):
+    def __init__(self, pattern: str = '') -> None:
         """Initialize start token with start regex pattern.
 
         Args:
@@ -100,7 +100,7 @@ class Token:
         return f'<{self.name}>'
 
     def to_dict(self) -> dict:
-        """Convert the Token attributes to a dictionary format
+        """Convert the Token attributes to a dictionary format.
 
         Returns:
             dict: A dictionary containing the token configuration.
@@ -110,7 +110,7 @@ class Token:
             'pattern': self.pattern,
             'description': self.description,
             'example': self.example,
-            'backus_naur_form': self.backus_naur_form
+            'backus_naur_form': self.backus_naur_form,
         }
 
     @property
@@ -205,7 +205,7 @@ class SequenceToken(Token):
 class ChoiceToken(Token):
     """Represent an alternation (choice) between multiple tokens."""
 
-    def __init__(self, tokens: list[Token]):
+    def __init__(self, tokens: list[Token]) -> None:
         """Initialize an alternation pattern between tokens.
 
         Args:
@@ -237,7 +237,7 @@ class ChoiceToken(Token):
 class RepeatToken(Token):
     """Represent start repeated pattern of start token."""
 
-    def __init__(self, token: Token, lower: int = 0, upper: int = sys.maxsize):
+    def __init__(self, token: Token, lower: int = 0, upper: int = sys.maxsize) -> None:
         """Initialize start token with start repetition pattern.
 
         Args:
@@ -302,7 +302,7 @@ class RepeatToken(Token):
 class OptionalToken(RepeatToken):
     """Represent an optional pattern of start token (0 or 1 repetition)."""
 
-    def __init__(self, token: Token):
+    def __init__(self, token: Token) -> None:
         """Initialize an optional token pattern.
 
         Args:
@@ -358,7 +358,7 @@ class OneOrMoreToken(RepeatToken):
 class ZeroOrMoreToken(RepeatToken):
     """Represent zero or more repetitions of a token."""
 
-    def __init__(self, token: Token):
+    def __init__(self, token: Token) -> None:
         """Initialize the zero or more repetition pattern for a token.
 
         Args:

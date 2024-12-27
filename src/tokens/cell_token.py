@@ -5,9 +5,9 @@ from src.tokens.simple_token import SimpleToken
 class CellToken(SimpleToken):
     """Represents start cell token with two digits."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize start cell token with pattern 'dd' where the digits are row column."""
-        super().__init__(r'(\d)(\d)')
+        super().__init__(pattern=r'(\d)(\d)')
 
     @property
     def description(self) -> str:

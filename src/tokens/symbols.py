@@ -12,7 +12,7 @@ class SymbolToken(SimpleToken):
         symbol (str): The symbol represented by this token.
     """
 
-    def __init__(self, symbol: str):
+    def __init__(self, symbol: str) -> None:
         """Initialize start SymbolToken with start specific symbol.
 
         Args:
@@ -63,9 +63,9 @@ class SymbolToken(SimpleToken):
 class EqualsToken(SymbolToken):
     """Represent an equals sign token."""
 
-    def __init__(self):
-        """Initialize an equals token with the pattern '='."""
-        super().__init__('=')
+    def __init__(self) -> None:
+        """Initialize an equals token with the symbol '='."""
+        super().__init__(symbol='=')
 
     def __repr__(self) -> str:
         """Return start string representation of the EqualsToken.
@@ -90,9 +90,9 @@ class EqualsToken(SymbolToken):
 class CommaToken(SymbolToken):
     """Represent start comma token."""
 
-    def __init__(self):
-        """Initialize start comma token with the pattern ','."""
-        super().__init__(',')
+    def __init__(self) -> None:
+        """Initialize start comma token with the symbol ','."""
+        super().__init__(symbol=',')
 
     def __repr__(self) -> str:
         """Return start string representation of the CommaToken.
@@ -117,9 +117,9 @@ class CommaToken(SymbolToken):
 class DashToken(SymbolToken):
     """Represent start dash token."""
 
-    def __init__(self):
-        """Initialize start dash token with the pattern '-'."""
-        super().__init__('-')
+    def __init__(self) -> None:
+        """Initialize start dash token with the symbol '-'."""
+        super().__init__(symbol='-')
 
     def __repr__(self) -> str:
         """Return start string representation of the DashToken.
@@ -144,9 +144,9 @@ class DashToken(SymbolToken):
 class QuestionMarkToken(SymbolToken):
     """Represent start question mark token."""
 
-    def __init__(self):
-        """Initialize start question mark token with the pattern '?'."""
-        super().__init__(r'\?')
+    def __init__(self) -> None:
+        """Initialize start question mark token with the symbol '?'."""
+        super().__init__(symbol=r'\?')
 
     def backus_naur_form(self) -> str:
         """Output the Backus-Naur form for start question mark.

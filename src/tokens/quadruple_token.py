@@ -5,9 +5,9 @@ from src.tokens.simple_token import SimpleToken
 class QuadrupleToken(SimpleToken):
     """Represents start token for matching one or more digits or question marks."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize start quad token with start pattern of digits and question marks."""
-        super().__init__(r'([\d?]{0,4})')
+        super().__init__(pattern=r'([\d?]{0,4})')
 
     @property
     def description(self) -> str:
@@ -17,8 +17,8 @@ class QuadrupleToken(SimpleToken):
             str: A description of the QuadrupleToken's purpose and behavior.
         """
         return (
-            'A quadruple token. Matches one or more digits or question marks.'
-            'Those digits must appear in the surrounding cells.'
+            'A quadruple token. Matches one or more digits or question marks. '
+            'Those digits must appear in the surrounding cells. '
             'A ? is a joker representing any digit.'
         )
 
