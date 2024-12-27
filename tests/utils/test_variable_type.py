@@ -11,18 +11,18 @@ class TestVariableType(unittest.TestCase):
 
     def test_format(self):
         """Test formatting of different VariableTypes."""
-        self.assertEqual(VariableType.INT.format(1), "    1")  # Test INT format
-        self.assertEqual(VariableType.LOG_INTEGER.format(log10(9)), "    9")  # Test LOG_INTEGER format
-        self.assertEqual(VariableType.FLOAT.format(5.6), "5.600")  # Test FLOAT format
-        self.assertEqual(VariableType.LOG_FLOAT.format(log10(2.5)), "2.500")  # Test LOG_FLOAT format
-        self.assertEqual(VariableType.INT.format(None), ' None')  # Test INT format with None
+        self.assertEqual(VariableType.integer_number.format(1), "    1")  # Test integer format
+        self.assertEqual(VariableType.log_integer.format(log10(9)), "    9")  # Test log_integer format
+        self.assertEqual(VariableType.float_number.format(5.6), "5.600")  # Test float format
+        self.assertEqual(VariableType.log_float.format(log10(2.5)), "2.500")  # Test log_float format
+        self.assertEqual(VariableType.integer_number.format(None), ' None')  # Test integer format with None
 
     def test_repr(self):
         """Test the string representation of VariableTypes."""
-        self.assertEqual("VariableType.INT", repr(VariableType.INT))  # Check repr for INT
-        self.assertEqual("VariableType.LOG_INTEGER", repr(VariableType.LOG_INTEGER))  # Check repr for LOG_INTEGER
-        self.assertEqual("VariableType.FLOAT", repr(VariableType.FLOAT))  # Check repr for FLOAT
-        self.assertEqual("VariableType.LOG_FLOAT", repr(VariableType.LOG_FLOAT))  # Check repr for LOG_FLOAT
+        self.assertEqual("VariableType.integer_number", repr(VariableType.integer_number))  # Check repr for integer
+        self.assertEqual("VariableType.log_integer", repr(VariableType.log_integer))  # Check repr for log_integer
+        self.assertEqual("VariableType.float_number", repr(VariableType.float_number))  # Check repr for float
+        self.assertEqual("VariableType.log_float", repr(VariableType.log_float))  # Check repr for log_float
 
 
 if __name__ == '__main__':  # pragma: no cover

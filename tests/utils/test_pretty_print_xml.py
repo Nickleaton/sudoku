@@ -40,11 +40,11 @@ class TestPrettyPrintXML(unittest.TestCase):
 
     def test_nested_xml(self):
         """Test pretty printing of a nested XML structure."""
-        nested_xml = '<root><parent><child>value</child></parent></root>'
+        nested_xml = '<root><parent><child>target_value</child></parent></root>'
         expected = (
             '<root>\n'
             '  <parent>\n'
-            '    <child>value</child>\n'
+            '    <child>target_value</child>\n'
             '  </parent>\n'
             '</root>'
         )

@@ -1,7 +1,8 @@
 """PrettyPrintXML function."""
 
+from xml.dom.minidom import Document, Element, parseString
+
 from defusedxml.ElementTree import fromstring, tostring
-from defusedxml.minidom import Document, Element, parseString
 
 
 def pretty_print_xml(xml_string: str) -> str:

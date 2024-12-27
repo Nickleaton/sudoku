@@ -13,10 +13,10 @@ class TestSide(unittest.TestCase):
 
     def test_create(self):
         """Verify creation of valid Side instances."""
-        self.assertEqual(Side.TOP, Side.create("T"))
-        self.assertEqual(Side.RIGHT, Side.create("R"))
-        self.assertEqual(Side.BOTTOM, Side.create("B"))
-        self.assertEqual(Side.LEFT, Side.create("L"))
+        self.assertEqual(Side.top, Side.create("T"))
+        self.assertEqual(Side.right, Side.create("R"))
+        self.assertEqual(Side.bottom, Side.create("B"))
+        self.assertEqual(Side.left, Side.create("L"))
 
     def test_invalid(self):
         """Ensure ValueError is raised for invalid Side input."""
@@ -32,10 +32,10 @@ class TestSide(unittest.TestCase):
 
     def test_horizontal_vertical_boundaries(self):
         """Verify horizontal and vertical properties of sides."""
-        self.assertTrue(Side.TOP.vertical)
-        self.assertFalse(Side.TOP.horizontal)
-        self.assertTrue(Side.LEFT.horizontal)
-        self.assertFalse(Side.LEFT.vertical)
+        self.assertTrue(Side.top.vertical)
+        self.assertFalse(Side.top.horizontal)
+        self.assertTrue(Side.left.horizontal)
+        self.assertFalse(Side.left.vertical)
 
     def test_values(self):
         """Check that all possible Side value_list are returned."""
@@ -44,53 +44,53 @@ class TestSide(unittest.TestCase):
 
     def test_direction(self):
         """Test direction calculation based on Cyclic value_list."""
-        self.assertEqual(Moves.DOWN_RIGHT, Side.TOP.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Moves.DOWN_LEFT, Side.RIGHT.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Moves.UP_LEFT, Side.BOTTOM.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Moves.UP_RIGHT, Side.LEFT.direction(Cyclic.CLOCKWISE))
-        self.assertEqual(Moves.DOWN_LEFT, Side.TOP.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Moves.UP_LEFT, Side.RIGHT.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Moves.UP_RIGHT, Side.BOTTOM.direction(Cyclic.ANTICLOCKWISE))
-        self.assertEqual(Moves.DOWN_RIGHT, Side.LEFT.direction(Cyclic.ANTICLOCKWISE))
+        self.assertEqual(Moves.down_right, Side.top.direction(Cyclic.clockwise))
+        self.assertEqual(Moves.down_left, Side.right.direction(Cyclic.clockwise))
+        self.assertEqual(Moves.up_left, Side.bottom.direction(Cyclic.clockwise))
+        self.assertEqual(Moves.up_right, Side.left.direction(Cyclic.clockwise))
+        self.assertEqual(Moves.down_left, Side.top.direction(Cyclic.anticlockwise))
+        self.assertEqual(Moves.up_left, Side.right.direction(Cyclic.anticlockwise))
+        self.assertEqual(Moves.up_right, Side.bottom.direction(Cyclic.anticlockwise))
+        self.assertEqual(Moves.down_right, Side.left.direction(Cyclic.anticlockwise))
 
     def test_order_direction(self):
         """Verify order direction for different Side and Order combinations."""
-        self.assertEqual(Moves.DOWN, Side.TOP.order_direction(Order.INCREASING))
-        self.assertEqual(Moves.UP, Side.TOP.order_direction(Order.DECREASING))
-        self.assertEqual(Moves.LEFT, Side.RIGHT.order_direction(Order.INCREASING))
-        self.assertEqual(Moves.RIGHT, Side.RIGHT.order_direction(Order.DECREASING))
-        self.assertEqual(Moves.UP, Side.BOTTOM.order_direction(Order.INCREASING))
-        self.assertEqual(Moves.DOWN, Side.BOTTOM.order_direction(Order.DECREASING))
-        self.assertEqual(Moves.RIGHT, Side.LEFT.order_direction(Order.INCREASING))
-        self.assertEqual(Moves.LEFT, Side.LEFT.order_direction(Order.DECREASING))
+        self.assertEqual(Moves.down, Side.top.order_direction(Order.increasing))
+        self.assertEqual(Moves.up, Side.top.order_direction(Order.decreasing))
+        self.assertEqual(Moves.left, Side.right.order_direction(Order.increasing))
+        self.assertEqual(Moves.right, Side.right.order_direction(Order.decreasing))
+        self.assertEqual(Moves.up, Side.bottom.order_direction(Order.increasing))
+        self.assertEqual(Moves.down, Side.bottom.order_direction(Order.decreasing))
+        self.assertEqual(Moves.right, Side.left.order_direction(Order.increasing))
+        self.assertEqual(Moves.left, Side.left.order_direction(Order.decreasing))
 
     def test_repr(self):
         """Verify string representation of each Side."""
-        self.assertEqual('Side.TOP', repr(Side.TOP))
-        self.assertEqual('Side.RIGHT', repr(Side.RIGHT))
-        self.assertEqual('Side.BOTTOM', repr(Side.BOTTOM))
-        self.assertEqual('Side.LEFT', repr(Side.LEFT))
+        self.assertEqual('Side.top', repr(Side.top))
+        self.assertEqual('Side.right', repr(Side.right))
+        self.assertEqual('Side.bottom', repr(Side.bottom))
+        self.assertEqual('Side.left', repr(Side.left))
 
     def test_vertical(self):
         """Test vertical property for each Side."""
-        self.assertTrue(Side.TOP.vertical)
-        self.assertTrue(Side.BOTTOM.vertical)
-        self.assertFalse(Side.LEFT.vertical)
-        self.assertFalse(Side.RIGHT.vertical)
+        self.assertTrue(Side.top.vertical)
+        self.assertTrue(Side.bottom.vertical)
+        self.assertFalse(Side.left.vertical)
+        self.assertFalse(Side.right.vertical)
 
     def test_horizontal(self):
         """Test horizontal property for each Side."""
-        self.assertFalse(Side.TOP.horizontal)
-        self.assertFalse(Side.BOTTOM.horizontal)
-        self.assertTrue(Side.LEFT.horizontal)
-        self.assertTrue(Side.RIGHT.horizontal)
+        self.assertFalse(Side.top.horizontal)
+        self.assertFalse(Side.bottom.horizontal)
+        self.assertTrue(Side.left.horizontal)
+        self.assertTrue(Side.right.horizontal)
 
     def test_order_offset(self):
         """Test order offset for each Side."""
-        self.assertEqual(Coord(1, 0), Side.TOP.order_offset())
-        self.assertEqual(Coord(0, -1), Side.RIGHT.order_offset())
-        self.assertEqual(Coord(-1, 0), Side.BOTTOM.order_offset())
-        self.assertEqual(Coord(0, 1), Side.LEFT.order_offset())
+        self.assertEqual(Coord(1, 0), Side.top.order_offset())
+        self.assertEqual(Coord(0, -1), Side.right.order_offset())
+        self.assertEqual(Coord(-1, 0), Side.bottom.order_offset())
+        self.assertEqual(Coord(0, 1), Side.left.order_offset())
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -64,10 +64,10 @@ class TestVector(unittest.TestCase):
 
     def test_direction(self):
         """Test the overall direction of vectors."""
-        self.assertEqual(self.line_one.direction, Moves.DOWN)
-        self.assertEqual(self.line_three.direction, Moves.RIGHT)
-        self.assertEqual(-self.line_one.direction, Moves.UP)
-        self.assertEqual(self.zero.direction, Moves.CENTER)
+        self.assertEqual(self.line_one.direction, Moves.down)
+        self.assertEqual(self.line_three.direction, Moves.right)
+        self.assertEqual(-self.line_one.direction, Moves.up)
+        self.assertEqual(self.zero.direction, Moves.center)
 
     def test_merge(self):
         """Test merging of vectors."""
@@ -99,7 +99,7 @@ class TestVector(unittest.TestCase):
     def test_vector_direction_center(self):
         """Test direction of vector when start and end points are the same."""
         vector = Vector(Coord(1, 1), Coord(1, 1))
-        self.assertEqual(vector.direction, Moves.CENTER)
+        self.assertEqual(vector.direction, Moves.center)
 
 
 if __name__ == '__main__':  # pragma: no cover

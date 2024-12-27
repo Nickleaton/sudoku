@@ -9,9 +9,9 @@ class TestOrder(unittest.TestCase):
 
     def test_create(self):
         """Create an Order instance and verify its value_list."""
-        self.assertEqual(Order.INCREASING, Order("I"))
-        self.assertEqual(Order.DECREASING, Order("D"))
-        self.assertEqual(Order.UNORDERED, Order("U"))
+        self.assertEqual(Order.increasing, Order("I"))
+        self.assertEqual(Order.decreasing, Order("D"))
+        self.assertEqual(Order.unordered, Order("U"))
         with self.assertRaises(ValueError):
             Order('X')
 
@@ -24,15 +24,15 @@ class TestOrder(unittest.TestCase):
 
     def test_repr(self):
         """Verify the string representation of Order instances."""
-        self.assertEqual('Order.INCREASING', repr(Order.INCREASING))
-        self.assertEqual('Order.DECREASING', repr(Order.DECREASING))
-        self.assertEqual('Order.UNORDERED', repr(Order.UNORDERED))
+        self.assertEqual('Order.increasing', repr(Order.increasing))
+        self.assertEqual('Order.decreasing', repr(Order.decreasing))
+        self.assertEqual('Order.unordered', repr(Order.unordered))
 
     def test_negate(self):
         """Negate Order instances and check the results."""
-        self.assertEqual(Order.INCREASING, - Order.DECREASING)
-        self.assertEqual(Order.DECREASING, - Order.INCREASING)
-        self.assertEqual(Order.UNORDERED, - Order.UNORDERED)
+        self.assertEqual(Order.increasing, - Order.decreasing)
+        self.assertEqual(Order.decreasing, - Order.increasing)
+        self.assertEqual(Order.unordered, - Order.unordered)
 
 
 if __name__ == '__main__':

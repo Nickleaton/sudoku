@@ -9,8 +9,8 @@ class TestMinMax(unittest.TestCase):
 
     def test_repr(self):
         """Check the string representation of MinMax constants."""
-        self.assertEqual('MinMax.MINIMUM', repr(MinMax.MINIMUM))
-        self.assertEqual('MinMax.MAXIMUM', repr(MinMax.MAXIMUM))
+        self.assertEqual('MinMax.minimum', repr(MinMax.minimum))
+        self.assertEqual('MinMax.maximum', repr(MinMax.maximum))
 
 
 if __name__ == '__main__':  # pragma: no cover

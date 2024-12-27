@@ -9,15 +9,15 @@ class TestSide(unittest.TestCase):
 
     def test_create(self):
         """Test creating Cyclic instances from string input_types."""
-        self.assertEqual(Cyclic.ANTICLOCKWISE, Cyclic.create("A"))
-        self.assertEqual(Cyclic.CLOCKWISE, Cyclic.create("C"))
+        self.assertEqual(Cyclic.anticlockwise, Cyclic.create("A"))
+        self.assertEqual(Cyclic.clockwise, Cyclic.create("C"))
         with self.assertRaises(ValueError):
             Cyclic.create('X')
 
     def test_repr(self):
         """Test the string representation of Cyclic instances."""
-        self.assertEqual('Cyclic.CLOCKWISE', repr(Cyclic.CLOCKWISE))
-        self.assertEqual('Cyclic.ANTICLOCKWISE', repr(Cyclic.ANTICLOCKWISE))
+        self.assertEqual('Cyclic.clockwise', repr(Cyclic.clockwise))
+        self.assertEqual('Cyclic.anticlockwise', repr(Cyclic.anticlockwise))
 
 
 if __name__ == '__main__':  # pragma: no cover

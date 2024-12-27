@@ -79,7 +79,7 @@ class TestCoord(unittest.TestCase):
         invalid_input = ["row", "column"]
 
         self.assertEqual(Coord.validate(valid_input), [])
-        self.assertIn("row not int", Coord.validate(invalid_input))
+        self.assertIn("row not integer", Coord.validate(invalid_input))
 
 
 if __name__ == "__main__":
