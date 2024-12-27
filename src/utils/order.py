@@ -6,28 +6,28 @@ class Order(Enum):
     """An enumeration to represent the ordering of start sequence: increasing, decreasing, or unordered.
 
     Attributes:
-        INCREASING (str): Represents increasing order.
-        DECREASING (str): Represents decreasing order.
-        UNORDERED (str): Represents no specific order.
+        increasing (str): Represents increasing order.
+        decreasing (str): Represents decreasing order.
+        unordered (str): Represents no specific order.
     """
 
-    INCREASING = 'I'
-    DECREASING = 'D'
-    UNORDERED = 'U'
+    increasing = 'I'
+    decreasing = 'D'
+    unordered = 'U'
 
     def __neg__(self) -> 'Order':
         """Return the opposite of the current ordering.
 
-        INCREASING becomes DECREASING, and vice versa.
-        UNORDERED remains the same.
+        increasing becomes decreasing, and vice versa.
+        unordered remains the same.
 
         Returns:
             Order: The negated order.
         """
         negation_map = {
-            Order.INCREASING: Order.DECREASING,
-            Order.DECREASING: Order.INCREASING,
-            Order.UNORDERED: Order.UNORDERED,
+            Order.increasing: Order.decreasing,
+            Order.decreasing: Order.increasing,
+            Order.unordered: Order.unordered,
         }
         return negation_map[self]
 

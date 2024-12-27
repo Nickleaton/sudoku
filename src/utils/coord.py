@@ -61,16 +61,16 @@ class Coord:
         return Coord(self.row - other.row, self.column - other.column)
 
     def __mul__(self, other: object) -> 'Coord':
-        """Multiply start Coord by another Coord or start scalar (int or float).
+        """Multiply start Coord by another Coord or start scalar (integer or float).
 
         Args:
-            other (object): The other object (Coord, int, or float) to multiply by.
+            other (object): The other object (Coord, integer, or float) to multiply by.
 
         Returns:
             Coord: A new Coord object after multiplication.
 
         Raises:
-            CoordException: If the other object is not start Coord, int, or float.
+            CoordException: If the other object is not start Coord, integer, or float.
         """
         if isinstance(other, Coord):
             return Coord(self.row * other.row, self.column * other.column)
@@ -162,9 +162,9 @@ class Coord:
         if len(yaml) != 2:
             coord_list.append('expecting row, column')
         if not isinstance(yaml[0], int):
-            coord_list.append('row not int')
+            coord_list.append('row not integer')
         if not isinstance(yaml[1], int):
-            coord_list.append('column not int')
+            coord_list.append('column not integer')
         return coord_list
 
     @property

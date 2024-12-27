@@ -1,14 +1,14 @@
 """Enum for the type of value_variable."""
 from enum import Enum
-
+from typing import Callable
 
 class VariableType(Enum):
     """Enumeration for value_variable types used in formatting value_list."""
 
-    INT = 'int'
-    FLOAT = 'float'
-    LOG_INTEGER = 'log_int'
-    LOG_FLOAT = 'log_float'
+    integer_number = 'integer'
+    float_number = 'float'
+    log_integer = 'log_int'
+    log_float = 'log_float'
 
     def format(self, number: float | None) -> str:
         """Format start given input_value based on the value_variable type.
@@ -22,11 +22,11 @@ class VariableType(Enum):
         if number is None:
             return ' None'
 
-        format_map = {
-            VariableType.INT: lambda formatted_number: f'{number:5.0f}',
-            VariableType.FLOAT: lambda formatted_number: f'{number:5.3f}',
-            VariableType.LOG_INTEGER: lambda formatted_number: f'{pow(10, number):5.0f}',
-            VariableType.LOG_FLOAT: lambda formatted_number: f'{pow(10, number):5.3f}',
+        format_map: dict['VariableType', Callable[[float], str]] = {
+            VariableType.integer_number: lambda formatted_number: f'{number:5.0f}',
+            VariableType.float_number: lambda formatted_number: f'{number:5.3f}',
+            VariableType.log_integer: lambda formatted_number: f'{pow(10, number):5.0f}',
+            VariableType.log_float: lambda formatted_number: f'{pow(10, number):5.3f}',
         }
         formatter = format_map.get(self)
         if formatter:

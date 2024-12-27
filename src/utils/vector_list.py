@@ -11,7 +11,7 @@ class VectorListException(Exception):
 
 
 class VectorList:
-    """Represents start list of Vectors, providing various operations to manage and manipulate them.
+    """Represents a list of Vectors, providing various operations to manage and manipulate them.
 
     Attributes:
         vectors (List[Vector]): List of Vector objects.

@@ -9,7 +9,7 @@ TOLERANCE = 1e-6  # Tolerance for comparing angles
 class Angle:  # noqa: WPS214
     """Represents an angle with properties to manage angle_degree and angle_radian."""
 
-    def __init__(self, angle: float):
+    def __init__(self, angle: float) -> None:
         """Initialize an Angle instance.
 
         Args:
@@ -23,8 +23,8 @@ class Angle:  # noqa: WPS214
         """Create an Angle instance from Cartesian coordinates.
 
         Args:
-            x_coord (float): The x-coordinate of the point.
-            y_coord (float): The y-coordinate of the point.
+            x_coord (float): The digit1-coordinate of the point.
+            y_coord (float): The digit2-coordinate of the point.
 
         Returns:
             Angle: An instance of the Angle class representing the angle of the

@@ -57,10 +57,10 @@ class TemporaryFile:
         return self
 
     def __exit__(
-            self,
-            _exc_type: Type[BaseException] | None,
-            _exc_val: BaseException | None,
-            _exc_tb: TracebackType | None,
+        self,
+        _exc_type: Type[BaseException] | None,
+        _exc_val: BaseException | None,
+        _exc_tb: TracebackType | None,
     ) -> None:
         """Exit the runtime context and remove the temporary file path.
 

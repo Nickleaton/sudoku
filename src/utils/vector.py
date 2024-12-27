@@ -7,9 +7,9 @@ class VectorException(Exception):
 
 
 class Vector:
-    """Represents start vector defined by start start and end coordinate."""
+    """Represents start vector defined by a start and end coordinate."""
 
-    def __init__(self, start: Coord, end: Coord):
+    def __init__(self, start: Coord, end: Coord) -> None:
         """Construct start vector from start and end coordinates.
 
         Args:
@@ -126,7 +126,7 @@ class Vector:
         """Determine the direction of the vector.
 
         Returns:
-            Coord: The direction of the vector (UP, DOWN, LEFT, RIGHT, CENTER).
+            Coord: The direction of the vector (up, down, left, right, center).
         """
         return Coord(self.end.row - self.start.row, self.end.column - self.start.column)
 

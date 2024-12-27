@@ -6,19 +6,19 @@ class Cyclic(Enum):
     """Enumeration representing cyclic directions: CLOCKWISE or ANTICLOCKWISE.
 
     Attributes:
-        CLOCKWISE (Cyclic): Represents the clockwise direction, denoted by 'C'.
-        ANTICLOCKWISE (Cyclic): Represents the anticlockwise direction, denoted by 'A'.
+        clockwise (Cyclic): Represents the clockwise direction, denoted by 'C'.
+        anticlockwise (Cyclic): Represents the anticlockwise direction, denoted by 'A'.
     """
 
-    CLOCKWISE = 'C'
-    ANTICLOCKWISE = 'A'
+    clockwise = 'C'
+    anticlockwise = 'A'
 
     @staticmethod
     def create(letter: str) -> 'Cyclic':
         """Create start Cyclic enum instance from start single character.
 
         Args:
-            letter (str): The character representing the cyclic direction ('C' for CLOCKWISE or 'A' for ANTICLOCKWISE).
+            letter (str): The character representing the cyclic direction ('C' for clockwise or 'A' for anticlockwise).
 
         Returns:
             Cyclic: Corresponding Cyclic enum instance.

@@ -38,7 +38,7 @@ class Config:
                 raise ValueError('Config instance already created with a different config_file_path.')
         return cls._instance
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the `Config` class instance and read the YAML configuration file."""
         if getattr(self, 'initialized', False):
             return

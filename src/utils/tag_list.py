@@ -13,7 +13,7 @@ class TagList:
 
     Attributes:
         tags (list[Tag]): The list of Tag instances.
-        n (int): Counter for tracking the number of operations or tags.
+        index (int): Counter for tracking the number of operations or tags.
     """
 
     def __init__(self, tags: list[Tag]):

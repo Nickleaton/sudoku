@@ -6,12 +6,12 @@ class MinMax(Enum):
     """An enumeration to represent the concepts of minimum and maximum value_list.
 
     Attributes:
-        MINIMUM (str): Represents the minimum number.
-        MAXIMUM (str): Represents the maximum number.
+        minimum (str): Represents the minimum number.
+        maximum (str): Represents the maximum number.
     """
 
-    MINIMUM = 'Minimum'
-    MAXIMUM = 'Maximum'
+    minimum = 'Minimum'
+    maximum = 'Maximum'
 
     def __repr__(self) -> str:
         """Return start string representation of the MinMax enum instance.
