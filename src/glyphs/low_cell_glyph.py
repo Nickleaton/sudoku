@@ -5,7 +5,10 @@ from svgwrite.container import Symbol, Use
 from svgwrite.shapes import Circle
 
 from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class LowCellGlyph(Glyph):
@@ -37,11 +40,19 @@ class LowCellGlyph(Glyph):
             Symbol | None: The SVG symbol for the low cell glyph, or None.
         """
         symbol: Symbol = Symbol(
-            viewBox='0 0 100 100',
+            viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
             id_='LowCell-symbol',
             class_='LowCell',
         )
-        symbol.add(Circle(center=(50, 50), r=35))
+        symbol.add(
+            Circle(
+                center=(
+                    config.graphics.half_cell_size,
+                    config.graphics.half_cell_size,
+                ),
+                r=config.graphics.cell_size * config.graphics.low_cell_percentage,
+            ),
+        )
         return symbol
 
     def draw(self) -> BaseElement | None:

@@ -4,7 +4,10 @@ from svgwrite.container import Marker
 from svgwrite.shapes import Circle
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class ThermometerGlyph(PolyLineGlyph):
@@ -26,13 +29,18 @@ class ThermometerGlyph(PolyLineGlyph):
         Returns:
             Marker | None: A Marker element representing the start of the thermometer.
         """
-        marker = Marker(
-            insert=(50, 50),
-            viewBox='0 0 100 100',
-            id_='Thermometer-start',
-            class_='Thermometer ThermometerStart',
+        marker: Marker = Marker(
+            insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+            viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
+            id_=f'{cls.__name__}-start',
+            class_=f'{cls.__name__}Start',
         )
-        marker.add(Circle(center=(50, 50), r=30))
+        marker.add(
+            Circle(
+                center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+                r=config.graphics.cell_size * config.graphics.thermo_head_percentage,
+            ),
+        )
         return marker
 
     def __repr__(self) -> str:

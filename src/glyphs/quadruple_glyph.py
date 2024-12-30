@@ -5,7 +5,10 @@ from svgwrite.shapes import Circle
 from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class QuadrupleGlyph(Glyph):
@@ -39,7 +42,7 @@ class QuadrupleGlyph(Glyph):
         circle: Circle = Circle(
             class_=f'{self.class_name}Circle',
             center=self.position.bottom_right.point.coordinates,
-            r=35,
+            r=config.graphics.cell_size * config.graphics.quadruple_circle_percentage,
         )
         group.add(circle)
 
@@ -59,9 +62,9 @@ class QuadrupleGlyph(Glyph):
         The higher the number, the higher the priority.
 
         Returns:
-            int: The priority of the glyph, set to 20.
+            int: The priority of the glyph, set to 20. (see config)
         """
-        return 20
+        return config.graphics.quadruple_priority
 
     def __repr__(self) -> str:
         """Return string representation of the QuadrupleGlyph.

@@ -5,20 +5,23 @@ from typing import ClassVar
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
 
-from src.glyphs.glyph import Glyph, config
+from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
 from src.utils.moves import Moves
 from src.utils.point import Point
 from src.utils.vector import Vector
 from src.utils.vector_list import VectorList
 
+config = Config()
+
 
 class KillerGlyph(Glyph):
     """Represents a Killer glyph that can be drawn using various lines and vectors, based on cell coordinates."""
 
     offset: int = 10
-    size: float = config.drawing.cell_size / 2.0
-    long_size: float = config.drawing.cell_size / 2.0 - offset
+    size: float = config.drawing.cell_size * config.graphics.middle_percentage
+    long_size: float = config.drawing.cell_size * config.graphics.middle_percentage - offset
 
     long_lines: ClassVar[dict[int, Vector]] = {
         2: Vector(Coord(0, 0), Coord(0, 1)),
@@ -28,14 +31,14 @@ class KillerGlyph(Glyph):
     }
 
     short_lines: ClassVar[dict[int, tuple[Point, Coord]]] = {
-        12: (Point(-1, -1), Moves.UP),
-        23: (Point(1, -1), Moves.UP),
-        36: (Point(1, -1), Moves.RIGHT),
-        69: (Point(1, 1), Moves.RIGHT),
-        89: (Point(1, 1), Moves.DOWN),
-        78: (Point(-1, 1), Moves.DOWN),
-        47: (Point(-1, 1), Moves.LEFT),
-        14: (Point(-1, -1), Moves.LEFT),
+        12: (Point(-1, -1), Moves.up),
+        23: (Point(1, -1), Moves.up),
+        36: (Point(1, -1), Moves.right),
+        69: (Point(1, 1), Moves.right),
+        89: (Point(1, 1), Moves.down),
+        78: (Point(-1, 1), Moves.down),
+        47: (Point(-1, 1), Moves.left),
+        14: (Point(-1, -1), Moves.left),
     }
 
     def __init__(self, class_name: str, cells: list[Coord]):

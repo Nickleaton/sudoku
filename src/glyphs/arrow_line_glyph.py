@@ -3,7 +3,10 @@ from svgwrite.container import Marker
 from svgwrite.shapes import Circle, Polyline
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class ArrowLineGlyph(PolyLineGlyph):
@@ -30,14 +33,20 @@ class ArrowLineGlyph(PolyLineGlyph):
             Marker: The start marker for the arrow line.
             None: If the marker cannot be created.
         """
+        circle_size: int = config.graphics.cell_size * config.graphics.arrow_head_percentage
         marker = Marker(
-            insert=(50, 50),
-            size=(35, 35),
-            viewBox='0 0 100 100',
-            id_='Arrow-start',
-            class_='Arrow ArrowStart',
+            insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+            size=(circle_size, circle_size),
+            viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
+            id_=f'{cls.__name__}-start',
+            class_=f'{cls.__name__}Start',
         )
-        marker.add(Circle(center=(50, 50), r=35))
+        marker.add(
+            Circle(
+                center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+                r=config.graphics.cell_size * config.graphics.arrow_head_percentage,
+            ),
+        )
         return marker
 
     @classmethod
@@ -50,15 +59,16 @@ class ArrowLineGlyph(PolyLineGlyph):
             Marker: The end marker for the arrow line.
             None: If the marker cannot be created.
         """
+        size: int = config.graphics.cell_size * config.graphics.arrow_pointer_precentage
         marker = Marker(
-            insert=(20, 20),
-            size=(20, 20),
-            viewBox='0 0 50 50',
-            id_='Arrow-end',
-            class_='Arrow ArrowEnd',
+            insert=(size, size),
+            size=(size, size),
+            viewBox=f'0 0 {config.graphics.half_cell_size} {config.graphics.half_cell_size}',
+            id_=f'{cls.__name__}-end',
+            class_=f'{cls.__name__}End',
             orient='auto',
         )
-        marker.add(Polyline(points=[(0, 0), (20, 20), (0, 40)]))
+        marker.add(Polyline(points=[(0, 0), (size, size), (0, size + size)]))
         return marker
 
     def __repr__(self) -> str:

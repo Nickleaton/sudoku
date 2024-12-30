@@ -4,7 +4,10 @@ from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class EvenCellGlyph(Glyph):
@@ -19,8 +22,7 @@ class EvenCellGlyph(Glyph):
         """
         super().__init__(class_name)
         self.position = position  # The position of the glyph
-        self.percentage = 0.7  # Scaling factor for the size of the glyph
-        self.size = Coord(1, 1) * self.percentage  # Scaled size of the glyph
+        self.size = Coord(1, 1) * config.graphics.even_cell_percentage
 
     def draw(self) -> BaseElement | None:
         """Draw the glyph as an SVG rectangle with the appropriate position and size.
@@ -29,7 +31,7 @@ class EvenCellGlyph(Glyph):
             BaseElement | None: An SVG BaseElement (start rectangle) or None if not drawn.
         """
         # Calculate the top-left corner of the rectangle after applying scaling
-        top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
+        top_left = self.position + Coord(1, 1) * config.graphics.even_cell_inset_percentage
         # Return an SVG rectangle element
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 

@@ -5,7 +5,10 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class LittleKillerGlyph(Glyph):
@@ -36,8 +39,11 @@ class LittleKillerGlyph(Glyph):
         """
         group: Group = Group()
         # Positioning the text slightly offset
-        adjusted_position: Coord = (self.position + Coord(0.28, 0.28)).center
-
+        offset: Coord = Coord(
+            config.graphics.little_killer_offset_percentage,
+            config.graphics.little_killer_offset_percentage,
+        )
+        adjusted_position: Coord = (self.position + offset).center
         # Create number text element
         number_text: Text = Text(
             '',

@@ -4,8 +4,11 @@ from svgwrite.base import BaseElement
 from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
 from src.utils.moves import Moves
+
+config: Config = Config()
 
 
 class LittleArrowGlyph(Glyph):
@@ -34,7 +37,7 @@ class LittleArrowGlyph(Glyph):
         # Determine the direction using the location number
         direction: Coord = Moves.directions()[self.location]
         # Define the size of the glyph
-        size: Coord = Coord(0.4, 0.4)
+        size: Coord = Coord(config.graphics.little_arrow_percentage, config.graphics.little_arrow_percentage)
         position: Coord = self.position + size  # Adjust position by the size of the arrow
         # Create an SVG Text element to represent the arrow
         text: Text = Text('', transform=f'{position.transform} {direction.angle.transform}', class_=self.class_name)

@@ -1,6 +1,9 @@
 """ConsecutiveGlyph."""
 from src.glyphs.rectangle_glyph import RectangleGlyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class ConsecutiveGlyph(RectangleGlyph):
@@ -19,7 +22,14 @@ class ConsecutiveGlyph(RectangleGlyph):
             second (Coord): The second coordinate for the rectangle's position.
         """
         vertical = first.column > second.column if first.row == second.row else first.row < second.row
-        super().__init__(class_name, first, second, 0.25, 2.0, vertical)
+        super().__init__(
+            class_name,
+            first,
+            second,
+            config.graphics.consecutive_glyph_percentage,
+            config.graphics.consequtive_glyph_ratio,
+            vertical,
+        )
 
     def __repr__(self) -> str:
         """Return start string representation of the ConsecutiveGlyph instance.

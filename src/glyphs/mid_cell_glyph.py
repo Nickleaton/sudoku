@@ -4,7 +4,10 @@ from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class MidCellGlyph(Glyph):
@@ -28,7 +31,7 @@ class MidCellGlyph(Glyph):
         Returns:
             BaseElement | None: The SVG rectangle element or None.
         """
-        top_left = self.position + Coord(1, 1) * (1.0 - self.percentage) / 2.0
+        top_left = self.position + Coord(1, 1) * config.graphics.mid_cell_percentage
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:

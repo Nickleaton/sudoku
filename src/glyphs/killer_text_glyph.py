@@ -5,7 +5,10 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class KillerTextGlyph(Glyph):
@@ -34,7 +37,7 @@ class KillerTextGlyph(Glyph):
         group: Group = Group()
 
         # Apply a small offset to the text position
-        position: Coord = self.position.top_left + Coord(1, 1) * 0.05
+        position: Coord = self.position.top_left + Coord(1, 1) * config.graphics.killer_text_offset_percentage
         transform = f'{position.transform} {self.angle.transform}'
 
         # Create background text element

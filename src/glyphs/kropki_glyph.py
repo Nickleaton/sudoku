@@ -1,6 +1,9 @@
 """KropkiGlyph."""
 from src.glyphs.rectangle_glyph import RectangleGlyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config = Config()
 
 
 class KropkiGlyph(RectangleGlyph):
@@ -16,7 +19,14 @@ class KropkiGlyph(RectangleGlyph):
         """
         # Determine if the glyph is vertical or horizontal based on the coordinates
         vertical = first.column > second.column if first.row == second.row else first.row < second.row
-        super().__init__(class_name, first, second, 0.25, 2.0, vertical)
+        super().__init__(
+            class_name,
+            first,
+            second,
+            config.graphics.kropki_dot_percentage,
+            config.graphics.kropki_dot_ratio,
+            vertical,
+        )
 
     def __repr__(self) -> str:
         """Return start string representation of the KropkiGlyph.

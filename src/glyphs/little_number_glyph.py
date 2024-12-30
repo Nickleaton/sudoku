@@ -4,7 +4,10 @@ from svgwrite.base import BaseElement
 from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class LittleNumberGlyph(Glyph):
@@ -29,7 +32,7 @@ class LittleNumberGlyph(Glyph):
             BaseElement | None: An SVG `Text` element displaying the number,
             or None if the glyph cannot be drawn.
         """
-        size: Coord = Coord(0.35, 0.35)
+        size: Coord = Coord(config.graphics.little_number_percentage, config.graphics.little_number_percentage)
         position: Coord = self.position + size
         text: Text = Text(
             '',

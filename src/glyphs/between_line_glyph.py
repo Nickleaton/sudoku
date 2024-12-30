@@ -4,7 +4,10 @@ from svgwrite.container import Marker
 from svgwrite.shapes import Circle
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
+from src.utils.config import Config
 from src.utils.coord import Coord
+
+config: Config = Config()
 
 
 class BetweenLineGlyph(PolyLineGlyph):
@@ -37,14 +40,16 @@ class BetweenLineGlyph(PolyLineGlyph):
             Marker: The SVG marker for the start of the line.
             None: If the marker cannot be created.
         """
+        circle_size: int = config.graphics.between_line_circle_percentage * config.graphics.cell_size
         marker = Marker(
-            insert=(50, 50),
-            size=(35, 35),
-            viewBox='0 0 100 100',
+            insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+            size=(circle_size, circle_size),
+            viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
             id_='Between-start',
             class_='Between BetweenStart',
         )
-        marker.add(Circle(center=(50, 50), r=35))
+
+        marker.add(Circle(center=(config.graphics.half_cell_size, config.graphics.half_cell_size), r=circle_size))
         return marker
 
     @classmethod
@@ -58,14 +63,15 @@ class BetweenLineGlyph(PolyLineGlyph):
             Marker: The SVG marker for the end of the line.
             None: If the marker cannot be created.
         """
+        circle_size: int = config.graphics.between_line_circle_percentage * config.graphics.cell_size
         marker = Marker(
-            insert=(50, 50),
-            size=(35, 35),
-            viewBox='0 0 100 100',
+            insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+            size=(circle_size, circle_size),
+            viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
             id_='Between-end',
             class_='Between BetweenEnd',
         )
-        marker.add(Circle(center=(50, 50), r=35))
+        marker.add(Circle(center=(config.graphics.half_cell_size, config.graphics.half_cell_size), r=circle_size))
         return marker
 
     def __repr__(self) -> str:
