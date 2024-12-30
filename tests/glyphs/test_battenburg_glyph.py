@@ -28,10 +28,10 @@ class TestBattenburgGlyph(TestGlyph):
         """
         return (
             '<symbol class="Battenburg" id="Battenburg-symbol" viewBox="0 0 100 100">'
-            '  <rect class="BattenburgPink" height="30.0" width="30.0" x="-30.0" y="0.0"/>'
-            '  <rect class="BattenburgYellow" height="30.0" width="30.0" x="30.0" y="0.0"/>'
-            '  <rect class="BattenburgPink" height="30.0" width="30.0" x="0.0" y="-30.0"/>'
-            '  <rect class="BattenburgYellow" height="30.0" width="30.0" x="0.0" y="30.0"/>'
+            '  <rect class="BattenburgPink" height="30.0" width="30.0" digit1="-30.0" digit2="0.0"/>'
+            '  <rect class="BattenburgYellow" height="30.0" width="30.0" digit1="30.0" digit2="0.0"/>'
+            '  <rect class="BattenburgPink" height="30.0" width="30.0" digit1="0.0" digit2="-30.0"/>'
+            '  <rect class="BattenburgYellow" height="30.0" width="30.0" digit1="0.0" digit2="30.0"/>'
             '</symbol>'
         )
 

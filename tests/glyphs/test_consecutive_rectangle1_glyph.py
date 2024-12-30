@@ -29,7 +29,7 @@ class TestConsecutiveRectangle1Glyph(TestRectangleGlyph):
         """
         return (
             '<rect class="Style" height="50.0" transform="translate(150.0, 100.0)" '
-            'width="25.0" x="0" y="0" />'
+            'width="25.0" digit1="0" digit2="0" />'
         )
 
     @property

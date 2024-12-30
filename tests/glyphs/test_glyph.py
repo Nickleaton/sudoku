@@ -85,7 +85,7 @@ class TestGlyph(unittest.TestCase):
         """Test the draw method of the Glyph class.
 
         If the draw method returns an element, compare its pretty XML string
-        to the pretty-printed target value.
+        to the pretty-printed target target_value.
         """
         if isinstance(self.glyph, Glyph):
             element = self.glyph.draw()

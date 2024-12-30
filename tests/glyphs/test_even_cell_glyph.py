@@ -26,7 +26,7 @@ class TestEvenCellGlyph(TestSquareGlyph):
         Returns:
             str: The SVG markup representing the EvenCellGlyph.
         """
-        return '<rect class="Style" height="70.0" transform="translate(115.0, 115.0)" width="70.0" x="0" y="0" />'
+        return '<rect class="Style" height="70.0" transform="translate(115.0, 115.0)" width="70.0" digit1="0" digit2="0" />'
 
     @property
     def representation(self) -> str:

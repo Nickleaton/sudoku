@@ -18,7 +18,7 @@ class TestLittleKillerGlyph(TestGlyph):
         Initializes the style, position, angle, and number for the LittleKillerGlyph.
         """
         super().setUp()
-        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Moves.DOWN_RIGHT.angle, 20)
+        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Moves.down_right.angle, 20)
 
     @property
     def target(self) -> str:
