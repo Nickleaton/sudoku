@@ -2,6 +2,7 @@
 from enum import Enum
 from typing import Callable
 
+
 class VariableType(Enum):
     """Enumeration for value_variable types used in formatting value_list."""
 
