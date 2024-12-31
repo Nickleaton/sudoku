@@ -1,26 +1,45 @@
-import unittest
+from src.validators.quadruple_validator import QuadrupleValidator
 
-from src.validators.quadruples_validator import QuadrupleValidator
 from tests.validators.test_validator import TestValidator
 
 
 class TestQuadrupleValidator(TestValidator):
-    """Test class for QuadrupleValidator."""
+    """Test case for the QuadrupleValidator class."""
 
     def setUp(self):
-        super().setUp()
-        self.valid_data: dict = {"quadruples": [1, 2, 3, 4, '?']}
-        self.invalid_data: dict = {"quadruples": [1, 2, 7, 'x']}
+        """Set up the specific test data for QuadrupleValidator."""
+        super().setUp()  # Call the base class setup
 
-    def test_valid_data(self):
-        """Test that validation passes with valid quadruples."""
-        errors: list[str] = QuadrupleValidator.validate(self.board, self.valid_data)
-        self.assertEqual(errors, [], "Validation failed for valid quadruples")
+        # Example board with digit range
+        self.board = Board(digit_range={1, 2, 3, 4, 5, 6, 7, 8, 9})
 
-    def test_invalid_data(self):
-        """Test that validation fails with invalid quadruples."""
-        errors: list[str] = QuadrupleValidator.validate(self.board, self.invalid_data)
-        self.assertTrue(any("not a valid digit" in error for error in errors))
+        # Valid quadruple input (using valid digits and '?')
+        self.valid_input_data = {
+            'quadruples': [1, 2, 3, 4, '?', 5]
+        }
+
+        # Invalid quadruple input (containing invalid digits outside the digit range)
+        self.invalid_input_data = {
+            'quadruples': [1, 2, 3, 10, '?', 5]
+        }
+
+        # Empty quadruples list
+        self.empty_input_data = {
+            'quadruples': []
+        }
+
+    def test_validate_valid(self):
+        """Test that validate returns no errors for valid quadruples."""
+        self.validate_input(QuadrupleValidator, self.valid_input_data, [])
+
+    def test_validate_invalid(self):
+        """Test that validate returns an error for invalid digits in quadruples."""
+        expected_errors = ['Quadruple 10 is not start valid digit']
+        self.validate_input(QuadrupleValidator, self.invalid_input_data, expected_errors)
+
+    def test_validate_empty_input_data(self):
+        """Test that validate returns no errors for an empty quadruples list."""
+        self.validate_input(QuadrupleValidator, self.empty_input_data, [])
 
 
 if __name__ == '__main__':

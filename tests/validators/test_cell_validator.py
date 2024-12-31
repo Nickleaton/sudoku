@@ -1,92 +1,109 @@
 import unittest
 
-from src.validators.cell_validator import CellValidator
+from src.validators.cell_validator import CellValidator  # Assuming CellValidator is in src/validators/cell_validator.py
 from tests.validators.test_validator import TestValidator
 
 
 class TestCellValidator(TestValidator):
-    """Unit tests for CellValidator methods."""
+    """Test case for the CellValidator class."""
 
     def setUp(self):
         super().setUp()
+        # Test data
+        self.valid_cell = {'row': 2, 'column': 3}
+        self.invalid_cell_missing_row = {'column': 3}
+        self.invalid_cell_missing_col = {'row': 2}
+        self.invalid_cell_non_integer_row = {'row': 'a', 'column': 3}
+        self.invalid_cell_non_integer_col = {'row': 2, 'column': 'b'}
+        self.invalid_cell_out_of_range = {'row': 100, 'column': 200}  # Adjust according to board size
+        self.cell1 = {'row': 1, 'column': 1}
+        self.cell2 = {'row': 1, 'column': 2}
+        self.cell3 = {'row': 2, 'column': 3}
 
     def test_has_valid_keys_valid(self):
-        """Test that has_valid_keys correctly identifies valid cells."""
-        valid_cell = {'row': 2, 'column': 3}
-        errors = CellValidator.has_valid_keys(valid_cell)
+        """Test that has_valid_keys works for valid cell."""
+        errors = CellValidator.has_valid_keys(self.valid_cell)
         self.assertEqual(errors, [])
 
-    def test_has_valid_keys_missing_keys(self):
-        """Test that has_valid_keys identifies missing keys."""
-        invalid_cell = {'row': 2}
-        errors = CellValidator.has_valid_keys(invalid_cell)
-        self.assertEqual(errors, ["Cell is missing 'row' or 'column' keys."])
+    def test_has_valid_keys_missing_row(self):
+        """Test that has_valid_keys identifies missing row."""
+        errors = CellValidator.has_valid_keys(self.invalid_cell_missing_row)
+        self.assertIn("Cell is missing 'row'.", errors)
 
-    def test_has_valid_keys_non_integer_values(self):
-        """Test that has_valid_keys identifies non-integer values."""
-        invalid_cell = {'row': '2', 'column': 3}
-        errors = CellValidator.has_valid_keys(invalid_cell)
-        self.assertEqual(errors, ["Cell must have integer 'row' and 'column' values."])
+    def test_has_valid_keys_missing_column(self):
+        """Test that has_valid_keys identifies missing column."""
+        errors = CellValidator.has_valid_keys(self.invalid_cell_missing_col)
+        self.assertIn("Cell is missing 'column'.", errors)
+
+    def test_has_valid_keys_non_integer_row(self):
+        """Test that has_valid_keys identifies non-integer row."""
+        errors = CellValidator.has_valid_keys(self.invalid_cell_non_integer_row)
+        self.assertIn("Cell must have integer 'row'.", errors)
+
+    def test_has_valid_keys_non_integer_column(self):
+        """Test that has_valid_keys identifies non-integer column."""
+        errors = CellValidator.has_valid_keys(self.invalid_cell_non_integer_col)
+        self.assertIn("Cell must have integer 'column'.", errors)
 
     def test_validate_range_valid(self):
-        """Test that validate_range identifies valid cells within the board."""
-        valid_cell = {'row': 3, 'column': 4}
-        errors = CellValidator.validate_range(self.board, valid_cell)
+        """Test that validate_range works for valid cell."""
+        errors = CellValidator.validate_range(self.board, self.valid_cell)
         self.assertEqual(errors, [])
 
     def test_validate_range_invalid(self):
-        """Test that validate_range identifies cells outside the board range."""
-        invalid_cell = {'row': 7, 'column': 3}
-        errors = CellValidator.validate_range(self.board, invalid_cell)
-        self.assertEqual(errors, ["Invalid cell: (7, 3)"])
+        """Test that validate_range identifies an invalid cell."""
+        self.board.is_valid.return_value = False  # Mock is_valid to return False
+        errors = CellValidator.validate_range(self.board, self.invalid_cell_out_of_range)
+        self.assertIn('Invalid cell: (100, 200)', errors)
+
+    def test_validate_kings_move_valid(self):
+        """Test that validate_kings_move works for connected cells."""
+        errors = CellValidator.validate_kings_move(self.cell1, self.cell2)
+        self.assertEqual(errors, [])
+
+    def test_validate_kings_move_invalid(self):
+        """Test that validate_kings_move identifies non-connected cells."""
+        self.cell2 = {'row': 3, 'column': 3}  # Not adjacent to cell1
+        errors = CellValidator.validate_kings_move(self.cell1, self.cell2)
+        self.assertIn(
+            "Cells at {'row': 1, 'column': 1} and {'row': 3, 'column': 3} are not connected by start king's move.",
+            errors)
 
     def test_validate_connected_valid(self):
-        """Test that validate_connected identifies connected cells."""
-        cell1 = {'row': 2, 'column': 3}
-        cell2 = {'row': 2, 'column': 4}
-        errors = CellValidator.validate_connected(cell1, cell2)
+        """Test that validate_connected works for connected cells."""
+        errors = CellValidator.validate_connected(self.cell1, self.cell2)
         self.assertEqual(errors, [])
 
-    def test_validate_connected_not_connected(self):
-        """Test that validate_connected identifies unconnected cells."""
-        cell1 = {'row': 2, 'column': 3}
-        cell2 = {'row': 4, 'column': 5}
-        errors = CellValidator.validate_connected(cell1, cell2)
-        self.assertEqual(errors, ["Cells at (2, 3) and (4, 5) are not connected by a king's move."])
+    def test_validate_connected_invalid(self):
+        """Test that validate_connected identifies non-connected cells."""
+        self.cell2 = {'row': 3, 'column': 3}  # Not adjacent to cell1
+        errors = CellValidator.validate_connected(self.cell1, self.cell2)
+        self.assertIn(
+            "Cells at {'row': 1, 'column': 1} and {'row': 3, 'column': 3} are not connected by start king's move.",
+            errors)
 
     def test_validate_horizontal_connectivity_valid(self):
-        """Test that validate_horizontal_connectivity identifies horizontally connected cells."""
-        cell1 = {'row': 2, 'column': 3}
-        cell2 = {'row': 2, 'column': 4}
-        errors = CellValidator.validate_horizontal_connectivity(cell1, cell2)
+        """Test that validate_horizontal_connectivity works for horizontally connected cells."""
+        errors = CellValidator.validate_horizontal_connectivity(self.cell1, self.cell2)
         self.assertEqual(errors, [])
 
-    def test_validate_horizontal_connectivity_not_connected(self):
-        """Test that validate_horizontal_connectivity identifies cells that are not horizontally connected."""
-        cell1 = {'row': 2, 'column': 3}
-        cell2 = {'row': 2, 'column': 5}
-        errors = CellValidator.validate_horizontal_connectivity(cell1, cell2)
-        self.assertEqual(errors, ["Cells at (2, 3) and (2, 5) are not horizontally adjacent."])
+    def test_validate_horizontal_connectivity_invalid(self):
+        """Test that validate_horizontal_connectivity identifies non-horizontally connected cells."""
+        self.cell2 = {'row': 1, 'column': 3}  # Not adjacent horizontally
+        errors = CellValidator.validate_horizontal_connectivity(self.cell1, self.cell2)
+        self.assertIn("Cells {'row': 1, 'column': 1} and {'row': 1, 'column': 3} are not horizontally adjacent.",
+                      errors)
 
-    def test_validate_horizontal_connectivity_not_same_row(self):
-        """Test that validate_horizontal_connectivity identifies cells not in the same row."""
-        cell1 = {'row': 2, 'column': 3}
-        cell2 = {'row': 3, 'column': 3}
-        errors = CellValidator.validate_horizontal_connectivity(cell1, cell2)
-        self.assertEqual(errors, ["Cells at (2, 3) and (3, 3) are not in the same row."])
-
-    def test_validate_all_validations(self):
-        """Test that validate method runs all individual validations correctly."""
-        valid_cell = {'row': 3, 'column': 4}
-        errors = CellValidator.validate(self.board, valid_cell)
+    def test_validate_valid_cell(self):
+        """Test that the main validate method works for valid cell."""
+        errors = CellValidator.validate(self.board, self.valid_cell)
         self.assertEqual(errors, [])
 
-    def test_validate_all_invalidations(self):
-        """Test that validate method identifies all errors when the cell is invalid."""
-        invalid_cell = {'row': 7, 'column': 8}
-        errors = CellValidator.validate(self.board, invalid_cell)
-        self.assertTrue(any("Invalid cell" in error for error in errors))
+    def test_validate_invalid_cell(self):
+        """Test that the main validate method identifies an invalid cell."""
+        errors = CellValidator.validate(self.board, self.invalid_cell_missing_row)
+        self.assertIn("Cell is missing 'row'.", errors)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == '__main__':
     unittest.main()

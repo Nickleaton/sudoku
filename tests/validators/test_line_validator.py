@@ -1,60 +1,67 @@
-import unittest
-
-from src.validators.line_validator import LineValidator
+from src.validators.line_validator import LineValidator  # Assuming LineValidator is in src/validators/line_validator.py
 from tests.validators.test_validator import TestValidator
 
-
 class TestLineValidator(TestValidator):
+    """Test case for the LineValidator class."""
 
     def setUp(self):
-        super().setUp()
-        """Set up common test data for the LineValidator."""
-        # Set up some valid cells for testing
-        self.valid_cells = [
+        """Set up the specific test data for LineValidator."""
+        super().setUp()  # Call the base class setup
+
+        # Specific test data for LineValidator
+        self.valid_input_data = [
+            {'row': 1, 'column': 1},  # Cell 1
+            {'row': 2, 'column': 1},  # Cell 2, valid king's move (vertical)
+            {'row': 2, 'column': 2},  # Cell 3, valid king's move (diagonal)
+            {'row': 3, 'column': 2},  # Cell 4, valid king's move (vertical)
+            {'row': 3, 'column': 3},  # Cell 5, valid king's move (diagonal)
+        ]
+        self.invalid_range_input_data = [
+            {'row': 0, 'column': 1},  # Row 0, out of range
+            {'row': 2, 'column': 2},
+            {'row': 7, 'column': 3},  # Row 7, out of range
+        ]
+        self.duplicate_cells_input_data = [
             {'row': 1, 'column': 1},
             {'row': 2, 'column': 1},
-            {'row': 3, 'column': 1}
+            {'row': 2, 'column': 1},  # Duplicate cell
+            {'row': 3, 'column': 2},
         ]
-        # Set up some invalid cells for testing
-        self.invalid_cells_empty = []
-        self.invalid_cells_duplicate = [
+        self.invalid_connection_input_data = [
             {'row': 1, 'column': 1},
-            {'row': 1, 'column': 1}
+            {'row': 3, 'column': 3},  # Not a king's move
+            {'row': 2, 'column': 2},
         ]
-        self.invalid_cells_out_of_range = [
-            {'row': -1, 'column': 1},  # Invalid row
-            {'row': 3, 'column': 100}  # Invalid column
-        ]
-        self.invalid_cells_non_connected = [
-            {'row': 1, 'column': 1},
-            {'row': 3, 'column': 1},  # Not a king's move away
-        ]
+        self.empty_input_data = []
 
-    def test_validate_valid_cells(self):
-        """Test LineValidator with valid cells."""
-        errors = LineValidator.validate(self.board, self.valid_cells)
-        self.assertEqual(errors, [], "Validation failed for valid cells")
+    def test_validate_valid(self):
+        """Test that validate returns no errors for valid cell sequence."""
+        self.validate_input(LineValidator, self.valid_input_data, [])
 
-    def test_validate_empty_cells(self):
-        """Test LineValidator with empty data."""
-        errors = LineValidator.validate(self.board, self.invalid_cells_empty)
-        self.assertIn("The data cannot be empty.", errors)
+    def test_validate_invalid_range(self):
+        """Test that validate returns errors for out-of-range cells."""
+        expected_errors = [
+            "Cell {'row': 0, 'column': 1} is out of range.",
+            "Cell {'row': 7, 'column': 3} is out of range."
+        ]
+        self.validate_input(LineValidator, self.invalid_range_input_data, expected_errors)
 
     def test_validate_duplicate_cells(self):
-        """Test LineValidator with duplicate cells."""
-        errors = LineValidator.validate(self.board, self.invalid_cells_duplicate)
-        self.assertIn("Duplicate cell found: (1, 1)", errors)
+        """Test that validate returns an error for duplicate cells."""
+        expected_errors = ["Duplicate cell found: (2, 1)"]
+        self.validate_input(LineValidator, self.duplicate_cells_input_data, expected_errors)
 
-    def test_validate_out_of_range_cells(self):
-        """Test LineValidator with out-of-range cells."""
-        errors = LineValidator.validate(self.board, self.invalid_cells_out_of_range)
-        self.assertTrue(any("Invalid cell" in error for error in errors))
+    def test_validate_invalid_connections(self):
+        """Test that validate returns an error for invalid connections between cells."""
+        expected_errors = [
+            "Cells are not connected by a king's move: {'row': 1, 'column': 1} and {'row': 3, 'column': 3}"
+        ]
+        self.validate_input(LineValidator, self.invalid_connection_input_data, expected_errors)
 
-    def test_validate_non_connected_cells(self):
-        """Test LineValidator with non-connected cells (not a king's move)."""
-        errors = LineValidator.validate(self.board, self.invalid_cells_non_connected)
-        self.assertTrue(any("king's move" in error for error in errors))
+    def test_validate_empty_input_data(self):
+        """Test that validate returns an error for empty input data."""
+        self.validate_input(LineValidator, self.empty_input_data, ['The input_data cannot be empty.'])
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == '__main__':
     unittest.main()
