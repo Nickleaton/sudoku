@@ -20,44 +20,44 @@ class TestBoard(unittest.TestCase):
         # Define the expected map for a 4x4 board
         self.expected_map = {
             # Top row
-            (Side.TOP, Cyclic.CLOCKWISE, 0): Coord(1, 1),
-            (Side.TOP, Cyclic.CLOCKWISE, 1): Coord(1, 2),
-            (Side.TOP, Cyclic.CLOCKWISE, 2): Coord(1, 3),
-            (Side.TOP, Cyclic.CLOCKWISE, 3): Coord(1, 4),
-            (Side.TOP, Cyclic.ANTICLOCKWISE, 0): Coord(1, -1),
-            (Side.TOP, Cyclic.ANTICLOCKWISE, 1): Coord(1, 0),
-            (Side.TOP, Cyclic.ANTICLOCKWISE, 2): Coord(1, 1),
-            (Side.TOP, Cyclic.ANTICLOCKWISE, 3): Coord(1, 2),
+            (Side.top, Cyclic.clockwise, 0): Coord(1, 1),
+            (Side.top, Cyclic.clockwise, 1): Coord(1, 2),
+            (Side.top, Cyclic.clockwise, 2): Coord(1, 3),
+            (Side.top, Cyclic.clockwise, 3): Coord(1, 4),
+            (Side.top, Cyclic.anticlockwise, 0): Coord(1, -1),
+            (Side.top, Cyclic.anticlockwise, 1): Coord(1, 0),
+            (Side.top, Cyclic.anticlockwise, 2): Coord(1, 1),
+            (Side.top, Cyclic.anticlockwise, 3): Coord(1, 2),
 
             # Bottom row
-            (Side.BOTTOM, Cyclic.CLOCKWISE, 0): Coord(4, -1),
-            (Side.BOTTOM, Cyclic.CLOCKWISE, 1): Coord(4, 0),
-            (Side.BOTTOM, Cyclic.CLOCKWISE, 2): Coord(4, 1),
-            (Side.BOTTOM, Cyclic.CLOCKWISE, 3): Coord(4, 2),
-            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 0): Coord(4, 1),
-            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 1): Coord(4, 2),
-            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 2): Coord(4, 3),
-            (Side.BOTTOM, Cyclic.ANTICLOCKWISE, 3): Coord(4, 4),
+            (Side.bottom, Cyclic.clockwise, 0): Coord(4, -1),
+            (Side.bottom, Cyclic.clockwise, 1): Coord(4, 0),
+            (Side.bottom, Cyclic.clockwise, 2): Coord(4, 1),
+            (Side.bottom, Cyclic.clockwise, 3): Coord(4, 2),
+            (Side.bottom, Cyclic.anticlockwise, 0): Coord(4, 1),
+            (Side.bottom, Cyclic.anticlockwise, 1): Coord(4, 2),
+            (Side.bottom, Cyclic.anticlockwise, 2): Coord(4, 3),
+            (Side.bottom, Cyclic.anticlockwise, 3): Coord(4, 4),
 
             # Left column
-            (Side.LEFT, Cyclic.CLOCKWISE, 0): Coord(-1, 1),
-            (Side.LEFT, Cyclic.CLOCKWISE, 1): Coord(0, 1),
-            (Side.LEFT, Cyclic.CLOCKWISE, 2): Coord(1, 1),
-            (Side.LEFT, Cyclic.CLOCKWISE, 3): Coord(2, 1),
-            (Side.LEFT, Cyclic.ANTICLOCKWISE, 0): Coord(1, 1),
-            (Side.LEFT, Cyclic.ANTICLOCKWISE, 1): Coord(2, 1),
-            (Side.LEFT, Cyclic.ANTICLOCKWISE, 2): Coord(3, 1),
-            (Side.LEFT, Cyclic.ANTICLOCKWISE, 3): Coord(4, 1),
+            (Side.left, Cyclic.clockwise, 0): Coord(-1, 1),
+            (Side.left, Cyclic.clockwise, 1): Coord(0, 1),
+            (Side.left, Cyclic.clockwise, 2): Coord(1, 1),
+            (Side.left, Cyclic.clockwise, 3): Coord(2, 1),
+            (Side.left, Cyclic.anticlockwise, 0): Coord(1, 1),
+            (Side.left, Cyclic.anticlockwise, 1): Coord(2, 1),
+            (Side.left, Cyclic.anticlockwise, 2): Coord(3, 1),
+            (Side.left, Cyclic.anticlockwise, 3): Coord(4, 1),
 
             # Right column
-            (Side.RIGHT, Cyclic.CLOCKWISE, 0): Coord(1, 4),
-            (Side.RIGHT, Cyclic.CLOCKWISE, 1): Coord(2, 4),
-            (Side.RIGHT, Cyclic.CLOCKWISE, 2): Coord(3, 4),
-            (Side.RIGHT, Cyclic.CLOCKWISE, 3): Coord(4, 4),
-            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 0): Coord(-1, 4),
-            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 1): Coord(0, 4),
-            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 2): Coord(1, 4),
-            (Side.RIGHT, Cyclic.ANTICLOCKWISE, 3): Coord(2, 4),
+            (Side.right, Cyclic.clockwise, 0): Coord(1, 4),
+            (Side.right, Cyclic.clockwise, 1): Coord(2, 4),
+            (Side.right, Cyclic.clockwise, 2): Coord(3, 4),
+            (Side.right, Cyclic.clockwise, 3): Coord(4, 4),
+            (Side.right, Cyclic.anticlockwise, 0): Coord(-1, 4),
+            (Side.right, Cyclic.anticlockwise, 1): Coord(0, 4),
+            (Side.right, Cyclic.anticlockwise, 2): Coord(1, 4),
+            (Side.right, Cyclic.anticlockwise, 3): Coord(2, 4),
         }
 
     def test_side_direction(self):
@@ -68,7 +68,7 @@ class TestBoard(unittest.TestCase):
                 expected_coord,
                 f"Mismatch for {key}: {self.board4x4.side_cyclic_map[key]} != {expected_coord}",
             )
-        self.assertNotIn(self.board4x4.side_cyclic_map, (Side.RIGHT, Cyclic.CLOCKWISE, 8))
+        self.assertNotIn(self.board4x4.side_cyclic_map, (Side.right, Cyclic.clockwise, 8))
 
     def test_construction_8x8(self):
         """Test the construction of a 8x8 board."""
@@ -145,29 +145,29 @@ class TestBoard(unittest.TestCase):
     def test_get_side_coordinate(self):
         """Test the get_side_coordinate method with valid and invalid inputs."""
         # Valid cases
-        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.TOP, 5), Coord(0, 5))
-        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.BOTTOM, 5), Coord(10, 5))
-        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.LEFT, 5), Coord(5, 0))
-        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.RIGHT, 5), Coord(5, 10))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.top, 5), Coord(0, 5))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.bottom, 5), Coord(10, 5))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.left, 5), Coord(5, 0))
+        self.assertEqual(self.board9x9_no_boxes.get_side_coordinate(Side.right, 5), Coord(5, 10))
 
         # Invalid index cases
         with self.assertRaises(ValueError):
-            self.board9x9_no_boxes.get_side_coordinate(Side.TOP, 0)
+            self.board9x9_no_boxes.get_side_coordinate(Side.top, 0)
         with self.assertRaises(ValueError):
-            self.board9x9_no_boxes.get_side_coordinate(Side.BOTTOM, 10)
+            self.board9x9_no_boxes.get_side_coordinate(Side.bottom, 10)
         with self.assertRaises(ValueError):
-            self.board9x9_no_boxes.get_side_coordinate(Side.LEFT, 0)
+            self.board9x9_no_boxes.get_side_coordinate(Side.left, 0)
         with self.assertRaises(ValueError):
-            self.board9x9_no_boxes.get_side_coordinate(Side.RIGHT, 10)
+            self.board9x9_no_boxes.get_side_coordinate(Side.right, 10)
 
     def test_marker_edge_cases(self):
         """Test marker method with edge cases on the board."""
         board = Board(9, 9)
-        self.assertEqual(Coord(0, 0), board.marker(Side.TOP, 0))
-        self.assertEqual(Coord(10, 9), board.marker(Side.BOTTOM, 9))
+        self.assertEqual(Coord(0, 0), board.marker(Side.top, 0))
+        self.assertEqual(Coord(10, 9), board.marker(Side.bottom, 9))
 
     def test_start_cell_edge_cases(self):
         """Test start_cell method with edge cases on the board."""
         board = Board(9, 9)
-        self.assertEqual(Coord(1, 9), board.start_cell(Side.TOP, 9))
-        self.assertEqual(Coord(9, 1), board.start_cell(Side.BOTTOM, 1))
+        self.assertEqual(Coord(1, 9), board.start_cell(Side.top, 9))
+        self.assertEqual(Coord(9, 1), board.start_cell(Side.bottom, 1))

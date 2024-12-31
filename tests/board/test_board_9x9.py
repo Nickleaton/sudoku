@@ -1,45 +1,45 @@
-"""TestBoard6x6."""
+"""TestBoard9x9."""
 import unittest
 
 from src.board.board import Board
 from src.utils.coord import Coord
 
 
-class TestBoard6x6(unittest.TestCase):
-    """Test suite for the 6x6 Board class."""
+class TestBoard9x9(unittest.TestCase):
+    """Test suite for the 9x9 Board class."""
 
     def setUp(self):
-        """Set up the 6x6 board and coordinate configurations for testing."""
-        self.board = Board(6, 6, 2, 3, 'start', 'finish', 'c', 'd')
-        self.rows = [1, 2, 3, 4, 5, 6]
-        self.columns = [1, 2, 3, 4, 5, 6]
-        self.bad_rows = [0, 7]
-        self.bad_columns = [0, 7]
+        """Set up the 9x9 board and coordinate configurations for testing."""
+        self.board = Board(9, 9, 3, 3)
+        self.rows = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.columns = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.bad_rows = [0, 10]
+        self.bad_columns = [0, 10]
 
     @staticmethod
     def get_box_number(row: int, col: int) -> int:
         """Calculate the box number based on the row and column indices."""
-        box_row = (row - 1) // 2  # Divide by 2 for rows
+        box_row = (row - 1) // 3  # Divide by 3 for rows
         box_col = (col - 1) // 3  # Divide by 3 for columns
-        return box_row * 2 + box_col + 1
+        return box_row * 3 + box_col + 1
 
     def test_construction(self):
-        """Test the construction of the 6x6 board."""
-        self.assertEqual(6, self.board.board_columns)
-        self.assertEqual(6, self.board.board_rows)
+        """Test the construction of the 9x9 board."""
+        self.assertEqual(9, self.board.board_columns)
+        self.assertEqual(9, self.board.board_rows)
         self.assertEqual(3, self.board.box_columns)
-        self.assertEqual(2, self.board.box_rows)
+        self.assertEqual(3, self.board.box_rows)
         self.assertEqual('start', self.board.reference)
         self.assertEqual('finish', self.board.video)
         self.assertEqual('c', self.board.title)
         self.assertEqual('d', self.board.author)
 
     def test_yaml(self):
-        """Test the YAML representation of the 6x6 board."""
+        """Test the YAML representation of the 9x9 board."""
         yaml_string = (
             "Board:\n"
-            "  Board: 6x6\n"
-            "  Box: 2x3\n"
+            "  Board: 9x9\n"
+            "  Box: 3x3\n"
             "  Reference: start\n"
             "  Video: finish\n"
             "  Title: c\n"
@@ -49,22 +49,22 @@ class TestBoard6x6(unittest.TestCase):
 
     def test_high_mid_low(self):
         """Test the high, mid, and low rows of the board."""
-        self.assertListEqual(self.board.low, [1, 2])
-        self.assertListEqual(self.board.mid, [3, 4])
-        self.assertListEqual(self.board.high, [5, 6])
+        self.assertListEqual(self.board.low, [1, 2, 3])
+        self.assertListEqual(self.board.mid, [4, 5, 6])
+        self.assertListEqual(self.board.high, [7, 8, 9])
 
     def test_modulo(self):
         """Test the modulo distribution of the columns on the board."""
-        self.assertEqual(self.board.mod0, [3, 6])
-        self.assertEqual(self.board.mod1, [1, 4])
-        self.assertEqual(self.board.mod2, [2, 5])
+        self.assertEqual(self.board.mod0, [3, 6, 9])
+        self.assertEqual(self.board.mod1, [1, 4, 7])
+        self.assertEqual(self.board.mod2, [2, 5, 8])
 
     def test_repr(self):
-        """Test the string representation of the 6x6 board."""
-        self.assertEqual("Board(6, 6, 2, 3, 'start', 'finish', 'c', 'd')", repr(self.board))
+        """Test the string representation of the 9x9 board."""
+        self.assertEqual("Board(9, 9, 3, 3, 'start', 'finish', 'c', 'd')", repr(self.board))
 
     def test_is_valid(self):
-        """Test the validity of coordinates on the 6x6 board."""
+        """Test the validity of coordinates on the 9x9 board."""
         for row in self.rows:
             for column in self.columns:
                 self.assertTrue(self.board.is_valid(row, column))
@@ -73,7 +73,7 @@ class TestBoard6x6(unittest.TestCase):
                 self.assertFalse(self.board.is_valid(row, column))
 
     def test_is_valid_coord(self):
-        """Test the validity of coordinate objects on the 6x6 board."""
+        """Test the validity of coordinate objects on the 9x9 board."""
         for row in self.rows:
             for column in self.columns:
                 self.assertTrue(self.board.is_valid_coordinate(Coord(row, column)))
@@ -82,14 +82,14 @@ class TestBoard6x6(unittest.TestCase):
                 self.assertFalse(self.board.is_valid_coordinate(Coord(row, column)))
 
     def test_box_index(self):
-        """Test the box index calculation for given coordinates on the 6x6 board."""
+        """Test the box index calculation for given coordinates on the 9x9 board."""
         for row in self.rows:
             for column in self.columns:
-                self.assertEqual(TestBoard6x6.get_box_number(row, column), self.board.box_index(row, column))
+                self.assertEqual(TestBoard9x9.get_box_number(row, column), self.board.box_index(row, column))
 
     def test_prime(self):
-        """Test the prime number list generated by the 6x6 board."""
-        self.assertEqual([2, 3, 5], self.board.primes)
+        """Test the prime number list generated by the 9x9 board."""
+        self.assertEqual([2, 3, 5, 7], self.board.primes)
 
 
 if __name__ == '__main__':  # pragma: no cover
