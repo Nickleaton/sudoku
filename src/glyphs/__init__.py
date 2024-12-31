@@ -1,1 +1,1 @@
-"""Glyph Package."""
+"""Glyph Module."""
