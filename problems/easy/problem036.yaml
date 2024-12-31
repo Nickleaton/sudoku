@@ -1,10 +1,12 @@
 Board:
-  Title: Magic Square Sudoku
-  Author: Aad van de Wetering
-  Video: https://www.youtube.com/watch?v=hAyZ9K2EBF0&ab_channel=CrackingTheCryptic
-  Reference: https://cracking-the-cryptic.web.app/sudoku/2QM8JHJ4HB
+
   Board: 9x9
   Box: 3x3
+  Tags:
+    Video: https://www.youtube.com/watch?v=hAyZ9K2EBF0&ab_channel=CrackingTheCryptic
+    Reference: https://cracking-the-cryptic.web.app/sudoku/2QM8JHJ4HB
+    Title: Magic Square Sudoku
+    Author: Aad van de Wetering
 Constraints:
   Columns:
   Rows:
@@ -23,8 +25,8 @@ Constraints:
     - .........
     - ........2
   MagicSquare:
-    - 55,66
-    - 11,22
+    - 55
+    - 11
 Solution:
   - 843567219
   - 275913846

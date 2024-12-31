@@ -10,7 +10,7 @@ Constraints:
   Columns:
   Rows:
   Boxes:
-  Quadruple:
+  QuadrupleInclude:
     - 16=2
     - 18=123
     - 22=1289

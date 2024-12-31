@@ -1,10 +1,11 @@
 Board:
-  Title: Between Sudoku
-  Author: Cristoph Seeliger
-  Video: https://www.youtube.com/watch?v=E4yFULT49a4&ab_channel=CrackingTheCryptic
-  Reference: https://cracking-the-cryptic.web.app/sudoku/hP46qg8QMp
   Board: 9x9
   Box: 3x3
+  Tags:
+    Title: Between Sudoku
+    Author: Cristoph Seeliger
+    Video: https://www.youtube.com/watch?v=E4yFULT49a4&ab_channel=CrackingTheCryptic
+    Reference: https://cracking-the-cryptic.web.app/sudoku/hP46qg8QMp
 Constraints:
   Columns:
   Rows:
@@ -20,12 +21,12 @@ Constraints:
     - ....6....
     - 7.......1
   BetweenLine:
-    - 51, 41, 31, 22, 13, 14, 15
-    - 15, 16, 17, 28, 39, 49, 59
-    - 26, 37, 48
-    - 51, 61, 71, 82, 93, 94, 95
-    - 59, 69, 79, 88, 97, 96, 95
-    - 62, 73, 84
+    - 51,41,31,22,13,14,15
+    - 15,16,17,28,39,49,59
+    - 26,37,48
+    - 51,61,71,82,93,94,95
+    - 59,69,79,88,97,96,95
+    - 62,73,84
 Solution:
   - 123476598
   - 947158362

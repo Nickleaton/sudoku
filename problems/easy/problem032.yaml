@@ -10,8 +10,8 @@ Constraints:
   Columns:
   Rows:
   Boxes:
-  Knight: 2, 4, 6, 8
-  Quadruple:
+  Knight: 2,4,6,8
+  QuadrupleInclude:
     - 11=23
     - 22=5
     - 33=89
@@ -24,7 +24,6 @@ Constraints:
     - 66=12
     - 77=25
     - 88=8
-
 Solution:
   - 196284735
   - 325967841
