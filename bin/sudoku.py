@@ -36,7 +36,7 @@ def parser() -> ArgumentParser:
     )
     parser.add_argument(
         '--problem',
-        help='yaml file(s) containing the problem',
+        help='yaml file_path(s) containing the problem',
         dest='problems',
         action='append',
         nargs='+'

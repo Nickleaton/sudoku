@@ -6,7 +6,7 @@
     <property name="schema" value="src/schema/config_schema.py"/>
 
 
-    <target name="build" depends="install,update,pylint,mypy">
+    <target name="build" depends="install,update,pylint,mypy,ruff,flake8">
         <echo>Build</echo>
     </target>
     <target name="install">
