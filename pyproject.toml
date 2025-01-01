@@ -82,33 +82,46 @@ wemake-python-styleguide = "^0.19.2"
 nitpick = "^0.35.0"
 
 
-[tool.ruff.lint.pylint]
-max-args = 10
 
 [tool.flake8]
 ignore = [
-    'WPS305',
-    'WPS237',
-    'WPS214',
-    'WPS226',
-    'WPS602',
-    'WPS115',
-    'WPS221',
-    'WPS605',
-    'WPS332',
-    'WPS210',
-    'S408',
-    'WPS432' # Temporarily disabled
+    # Actual Ignores
+
+    'WPS305', # Found 'f' string
+    'WPS237', # Found a too complex `f` string
+    'WPS214', # Found too many methods
+    'WPS602', # Found using `@staticmethod`
+    'WPS332', # Allow Walrus Operator
+
+    # Temporary ignores
+
+    'WPS324', # Found inconsistent `return` statement
+    'WPS210', # Found too many local variables
+    'WPS201', # Found module with too many imports
+    'WPS221', # Found line with high Jones Complexity
+
+    'WPS605', #  Found method without arguments:
+    'WPS230', # Found too many public instance attributes
+    'WPS226', # Found string literal over-use
+    'H601', # class has low cohesion
+    'WPS326', # Found implicit string concatenation
+    'DUO107', # insecure use of XML modules, prefer "defusedxml"
+    'S408', # Using Document to parse untrusted XML input_data
 ]
+
+per-file-ignores = """
+        src/schema/config_schema.py: C812 WPS204
+    """
 max-line-length = 120
+max-arguments = 8
+max-annotation-complexity = 4
 count = true
-
-
+max-tuple-unpack-length = 5
 
 [tool.coverage.run]
 branch = true
 
-[tool.coverage.report]
+[ztool.coverage.report]
 directory = "output/coverage"
 
 [tool.mypy]
@@ -126,8 +139,6 @@ exclude = [
 addopts = "--cov=sudoku --cov-report=xml --cov-report=term-missing"
 testpaths = ["tests"]
 
-[tool.ruff]
-
 # Same as Black.
 line-length = 120
 indent-width = 4
@@ -135,7 +146,9 @@ indent-width = 4
 # Assume Python 3.8
 target-version = "py38"
 
-[tool.ruff.lint]
+[tool.ruff]
+
+line-length = 120
 
 select = [
     "B", # bugbear
@@ -157,6 +170,7 @@ ignore = [
     "D413", # Docstring line too long (depends on project style or linter settings)
     "D203", # One blank line before class (we prefer no blank line before classes)
     "D213", # Multi-line docstring summary second line (we don't need start blank line after the summary
+    "RUF100", # Unused noqa
 ]
 
 

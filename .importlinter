@@ -1,0 +1,11 @@
+[importlinter]
+root_package=src
+include_external_packages=True
+
+[importlinter:contract:1]
+name=Utils Independence Contract
+type=forbidden
+source_modules =
+    src.utils
+forbidden_modules =
+    <all-other>

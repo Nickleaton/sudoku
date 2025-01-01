@@ -1,0 +1,55 @@
+Token
+
+Has a documentation property
+
+Produce a page, with all the tokens
+
+:ref: _reference_label:
+
+Page Tokens.rst
+
+For each Token:
+
+    Name:
+
+    Description
+
+    Pattern
+
+    Example
+
+For each Parser
+
+    Name
+
+    Description
+
+    BNF
+
+    Example
+
+    Usage
+
+        List of Constraints that use the parser
+
+
+For each constraint
+
+    Name
+
+    Description
+
+    Mathematics
+
+    Example
+
+        Yaml
+
+        Good Yaml Solution
+
+        Bad Yaml Solution
+
+
+
+
+

@@ -1,40 +1,40 @@
 statistic_database: test.db
 
 logging:
-    # Required version of the logging configuration schema. '1' is the default.
-    version: 1
+  # Required version of the logging configuration schema. '1' is the default.
+  version: 1
 
-    # When True, disables all existing loggers not explicitly defined in this config.
-    # Setting to False allows existing loggers to remain active.
-    disable_existing_loggers: False
+  # When True, disables all existing loggers not explicitly defined in this config.
+  # Setting to False allows existing loggers to remain active.
+  disable_existing_loggers: False
 
-    # Configuration for the root logger, which affects all log messages globally.
-    root:
-        # Sets the logging level for the root logger.
-        # This example sets it to DEBUG, so all DEBUG level messages and above will be logged.
-        level: DEBUG
+  # Configuration for the root logger, which affects all log messages globally.
+  root:
+    # Sets the logging level for the root logger.
+    # This example sets it to DEBUG, so all DEBUG level messages and above will be logged.
+    level: DEBUG
 
-        # Specifies the handlers that the root logger will use.
-        # In this case, it sends all log messages to the 'console' handler.
-        handlers: [console]
+    # Specifies the handlers that the root logger will use.
+    # In this case, it sends all log messages to the 'console' handler.
+    handlers: [ console ]
 
-    # Defines individual logging handlers, which specify where log messages should go.
-    handlers:
-        console:
-          # Uses start StreamHandler, which output_types log messages to start stream like stdout or stderr.
-            class: logging.StreamHandler
+  # Defines individual logging handlers, which specify where log messages should go.
+  handlers:
+    console:
+      # Uses start StreamHandler, which output_types log messages to start stream like stdout or stderr.
+      class: logging.StreamHandler
 
-            # Defines the formatter for this handler, which controls the log message format.
-            formatter: simple
+      # Defines the formatter for this handler, which controls the log message format.
+      formatter: simple
 
-            # Directs output to standard output (stdout).
-            stream: ext://sys.stdout
+      # Directs output to standard output (stdout).
+      stream: ext://sys.stdout
 
-    # Defines individual formatters, which control the structure of log messages.
-    formatters:
-        simple:
-            # Sets the format for log messages, including timestamp, logger name, level, and message.
-            format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  # Defines individual formatters, which control the structure of log messages.
+  formatters:
+    simple:
+      # Sets the format for log messages, including timestamp, logger name, level, and message.
+      format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
 
 
@@ -65,7 +65,7 @@ drawing:
   kropki_radius: 10
   consecutive_radius: 10
   even_cell_size: 70
-  
+
 colours:
   # The 'general' color set includes start wide variety of colours
   # You don't want them to clash. Were cells need to be coloured
@@ -88,7 +88,7 @@ colours:
     - steelblue
     - olive
 
-  # Entropic colouring
+  # Entropy colouring
   high_mid_low:
     - orange   # High
     - green    # Mid
@@ -98,3 +98,30 @@ colours:
   parity:
     - orange   # Odd
     - blue     # Even
+
+
+graphics:
+  small_circle_percentage: 0.15
+  arrow_head_percentage: 0.9
+  arrow_pointer_percentage: 0.2
+  middle_percentage: 0.5
+  kropki_dot_percentage: 0.25
+  kropki_dot_ratio: 2.0
+  little_arrow_percentage: 0.4
+  between_line_circle_percentage: 0.35
+  little_number_percentage: 0.35
+  cell_size: 100
+  half_cell_size: 50
+  thermo_head_percentage: 0.3
+  odd_cell_percentage: 0.35
+  even_cell_inset_percentage: 0.15
+  quadruple_circle_percentage: 0.35
+  quadruple_priority: 20
+  killer_text_offset_percentage: 0.05
+  little_killer_offset_percentage: 0.28
+  mid_cell_percentage: 0.15
+  low_cell_percentage: 0.35
+  consecutive_glyph_ratio: 2.0
+  consecutive_glyph_percentage: 0.25
+
+css_indent_count: 4
