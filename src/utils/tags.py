@@ -3,9 +3,7 @@ from pydotted import pydot
 
 class Tags(pydot):
     def __init__(self, data: dict):
-        # Convert first-level keys to lowercase
-        lower_case_data = {k.lower(): v for k, v in data.items()}
-        super().__init__(lower_case_data)
+        super().__init__(data)
 
     def __eq__(self, other):
         if not isinstance(other, Tags):

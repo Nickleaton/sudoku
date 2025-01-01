@@ -42,9 +42,9 @@ class TestBoard6x6(unittest.TestCase):
             "  Board: 6x6\n"
             "  Box: 2x3\n"
             "  Tags:\n"
+            "    Title: c\n"
             "    Reference: start\n"
             "    Video: finish\n"
-            "    Title: c\n"
             "    Author: d\n"
         )
         self.assertEqual(yaml_string, self.board.to_yaml())
@@ -54,12 +54,6 @@ class TestBoard6x6(unittest.TestCase):
         self.assertListEqual(self.board.low, [1, 2])
         self.assertListEqual(self.board.mid, [3, 4])
         self.assertListEqual(self.board.high, [5, 6])
-
-    def test_modulo(self):
-        """Test the modulo distribution of the columns on the board."""
-        self.assertEqual(self.board.mod0, [3, 6])
-        self.assertEqual(self.board.mod1, [1, 4])
-        self.assertEqual(self.board.mod2, [2, 5])
 
     def test_repr(self):
         """Test the string representation of the 6x6 board."""

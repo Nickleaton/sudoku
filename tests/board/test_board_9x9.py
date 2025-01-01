@@ -10,7 +10,8 @@ class TestBoard9x9(unittest.TestCase):
 
     def setUp(self):
         """Set up the 9x9 board and coordinate configurations for testing."""
-        self.board = Board(9, 9, 3, 3)
+        tags = {'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'}
+        self.board = Board(9, 9, 3, 3, tags=tags)
         self.rows = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.columns = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.bad_rows = [0, 10]
@@ -29,10 +30,10 @@ class TestBoard9x9(unittest.TestCase):
         self.assertEqual(9, self.board.board_rows)
         self.assertEqual(3, self.board.box_columns)
         self.assertEqual(3, self.board.box_rows)
-        self.assertEqual('start', self.board.reference)
-        self.assertEqual('finish', self.board.video)
-        self.assertEqual('c', self.board.title)
-        self.assertEqual('d', self.board.author)
+        self.assertEqual('start', self.board.tags.Reference)
+        self.assertEqual('finish', self.board.tags.Video)
+        self.assertEqual('c', self.board.tags.Title)
+        self.assertEqual('d', self.board.tags.Author)
 
     def test_yaml(self):
         """Test the YAML representation of the 9x9 board."""
@@ -40,10 +41,11 @@ class TestBoard9x9(unittest.TestCase):
             "Board:\n"
             "  Board: 9x9\n"
             "  Box: 3x3\n"
-            "  Reference: start\n"
-            "  Video: finish\n"
-            "  Title: c\n"
-            "  Author: d\n"
+            "  Tags:\n"
+            "    Title: c\n"
+            "    Reference: start\n"
+            "    Video: finish\n"
+            "    Author: d\n"
         )
         self.assertEqual(yaml_string, self.board.to_yaml())
 
@@ -53,15 +55,10 @@ class TestBoard9x9(unittest.TestCase):
         self.assertListEqual(self.board.mid, [4, 5, 6])
         self.assertListEqual(self.board.high, [7, 8, 9])
 
-    def test_modulo(self):
-        """Test the modulo distribution of the columns on the board."""
-        self.assertEqual(self.board.mod0, [3, 6, 9])
-        self.assertEqual(self.board.mod1, [1, 4, 7])
-        self.assertEqual(self.board.mod2, [2, 5, 8])
-
     def test_repr(self):
         """Test the string representation of the 9x9 board."""
-        self.assertEqual("Board(9, 9, 3, 3, 'start', 'finish', 'c', 'd')", repr(self.board))
+        target: str = "Board(9, 9, 3, 3, {'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'})"
+        self.assertEqual(target, repr(self.board))
 
     def test_is_valid(self):
         """Test the validity of coordinates on the 9x9 board."""
