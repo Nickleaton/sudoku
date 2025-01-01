@@ -30,8 +30,8 @@ class TestEvenCell(TestSimpleCellReference):
     def representation(self) -> str:
         """Return start string representation of the EvenCell instance."""
         return (
-            "EvenCell(Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+            "EvenCell(Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2))"
         )
 
     @property

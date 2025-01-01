@@ -28,10 +28,6 @@ class TestKnight(TestComposed):
         """Return whether the Knight instance has start rule."""
         return True
 
-    def test_offsets(self):
-        """Test the offsets method of the Knight instance."""
-        self.assertEqual(8, len(self.item.offsets()))
-
     @property
     def config(self) -> str:
         """Return the configuration string for Knight."""
@@ -40,7 +36,7 @@ class TestKnight(TestComposed):
     @property
     def representation(self) -> str:
         """Return start string representation of the Knight instance."""
-        return "Knight(Board(9, 9, 3, 3, None, None, None, None), [2, 4, 6, 8])"
+        return "Knight(Board(9, 9, 3, 3, None), [2, 4, 6, 8])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

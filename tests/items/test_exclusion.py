@@ -24,7 +24,7 @@ class TestExclusion(TestItem):
     @property
     def representation(self) -> str:
         """Return start string representation of the Exclusion instance."""
-        return "Exclusion(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), '12')"
+        return "Exclusion(Board(9, 9, 3, 3, None), Coord(2, 2), '12')"
 
     @property
     def config(self) -> str:

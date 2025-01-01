@@ -30,8 +30,8 @@ class TestHighCell(TestSimpleCellReference):
     def representation(self) -> str:
         """Return start string representation of the HighCell instance."""
         return (
-            "HighCell(Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2))"
+            "HighCell(Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2))"
         )
 
     @property

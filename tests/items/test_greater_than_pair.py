@@ -19,7 +19,7 @@ class TestGreaterThanPair(TestPair):
         """Set up the test case with start board and an instance of GreaterThanPair."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = GreaterThanPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 
@@ -43,9 +43,9 @@ class TestGreaterThanPair(TestPair):
         """Return start string representation of the GreaterThanPair instance."""
         return (
             "GreaterThanPair("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3)"
             ")"
         )
 

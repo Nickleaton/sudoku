@@ -40,9 +40,9 @@ class TestKropkiPair(TestPair):
         """Return start string representation of the KropkiPair instance."""
         return (
             "KropkiPair("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3)"
             ")"
         )
 

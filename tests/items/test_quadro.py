@@ -16,7 +16,7 @@ class TestQuadro(TestItem):
         """Set up start test instance of Quadro."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = Quadro(self.board)
 
     @property
@@ -27,7 +27,7 @@ class TestQuadro(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation of Quadro."""
-        return "Quadro(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Quadro(Board(9, 9, 3, 3, None))"
 
     @property
     def config(self) -> str:

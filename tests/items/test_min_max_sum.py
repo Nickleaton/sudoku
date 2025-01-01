@@ -18,7 +18,7 @@ class TestMinMaxSum(TestFirstN):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        self.item = MinMaxSum(self.board, Side.TOP, 1, 20)
+        self.item = MinMaxSum(self.board, Side.top, 1, 20)
         self.size = 3
 
     @property
@@ -29,7 +29,7 @@ class TestMinMaxSum(TestFirstN):
     @property
     def representation(self) -> str:
         """Return the string representation of the MinMaxSum instance."""
-        return "MinMaxSum(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
+        return "MinMaxSum(Board(9, 9, 3, 3, None), Side.top, 20)"
 
     @property
     def config(self) -> str:

@@ -26,7 +26,7 @@ class TestCell(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation of the Cell constraint."""
-        return "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2)"
+        return "Cell(Board(9, 9, 3, 3, None), 1, 2)"
 
     @property
     def str_representation(self) -> str:

@@ -23,8 +23,8 @@ class TestParameterValueType(unittest.TestCase):
     def test_initialization_type_mismatch(self):
         """Test initialization fails when number does not match type."""
         with self.assertRaises(TypeError) as context:
-            ParameterValueType(self.valid_key, "not an int", self.valid_type)
-        self.assertIn("Parameter test_key must be of type <class 'int'>", str(context.exception))
+            ParameterValueType(self.valid_key, "not an integer", self.valid_type)
+        self.assertIn("Parameter test_key must be of type <class 'integer'>", str(context.exception))
 
     def test_initialization_with_any_type(self):
         """Test initializing with the Any type (accepts any number)."""

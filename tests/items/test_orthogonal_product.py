@@ -29,7 +29,7 @@ class TestOrthogonalProduct(TestProduct):
     @property
     def representation(self) -> str:
         """Return the string representation of the OrthogonalProduct instance."""
-        return "OrthogonalProduct(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), 5)"
+        return "OrthogonalProduct(Board(9, 9, 3, 3, None), Coord(2, 2), 5)"
 
     @property
     def config(self) -> str:

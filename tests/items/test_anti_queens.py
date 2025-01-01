@@ -43,22 +43,13 @@ class TestAntiQueens(TestAnti):
         self.assertEqual(36, len(self.item.offsets()))
 
     @property
-    def config(self) -> str:
-        """Get the configuration string for AntiQueens.
-
-        Returns:
-            str: The configuration string for AntiQueens.
-        """
-        return "AntiQueens: 8, 9"
-
-    @property
     def representation(self) -> str:
         """Get the string representation of the AntiQueens instance.
 
         Returns:
             str: The string representation of the AntiQueens object.
         """
-        return "AntiQueens(Board(9, 9, 3, 3, None, None, None, None), [8, 9])"
+        return "AntiQueens(Board(9, 9, 3, 3, None), [8, 9])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -68,6 +59,15 @@ class TestAntiQueens(TestAnti):
             set[Type[Item]]: A set containing the expected classes.
         """
         return {Anti, AntiQueens, Cell, ComposedItem, DifferencePair, Item, Pair, Region}
+
+    @property
+    def config(self) -> str:
+        """Get the configuration string for AntiQueens.
+
+        Returns:
+            str: The configuration string for AntiQueens.
+        """
+        return "AntiQueens: 8, 9"
 
     @property
     def pair_output(self) -> List:

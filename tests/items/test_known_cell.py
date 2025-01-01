@@ -26,8 +26,8 @@ class TestKnownCell(TestCellReference):
     def representation(self) -> str:
         """Return start string representation of the KnownCell instance."""
         return ("KnownCell("
-                "Board(9, 9, 3, 3, None, None, None, None), "
-                "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
+                "Board(9, 9, 3, 3, None), "
+                "Cell(Board(9, 9, 3, 3, None), 1, 2), "
                 "9"
                 ")"
                 )

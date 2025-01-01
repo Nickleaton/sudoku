@@ -19,7 +19,7 @@ class TestFixedPair(TestPair):
         """Set up the test environment by creating start board and initializing the FixedPair constraint."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = FixedPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 1)
         self.size = 2
 
@@ -34,9 +34,9 @@ class TestFixedPair(TestPair):
         return (
             "FixedPair"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3), "
             "1"
             ")"
         )
@@ -63,7 +63,7 @@ class TestFixedPair(TestPair):
 
     def test_difference(self):
         """Test that the difference number is correctly assigned."""
-        self.assertEqual(self.difference, self.item.value)
+        self.assertEqual(self.difference, self.item.target_value)
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -18,10 +18,12 @@ class TestMountain(TestLine):
     def setUp(self) -> None:
         """Set up the test environment for MountainLine."""
         # Needs separate create from TestLine because of shape
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         cells = [Cell.make(self.board, 2, 1), Cell.make(self.board, 1, 2), Cell.make(self.board, 2, 3)]
         self.item = self.clazz(self.board, cells)
         self.size = 3
+        self.good_yaml = []
+        self.bad_yaml = []
 
     @property
     def clazz(self):
@@ -37,11 +39,11 @@ class TestMountain(TestLine):
     def representation(self) -> str:
         """Return the string representation of the MountainLine instance."""
         return (
-            f"{self.clazz.__name__}(Board(9, 9, 3, 3, None, None, None, None), "
+            f"{self.clazz.__name__}(Board(9, 9, 3, 3, None), "
             f"["
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 2, 1), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 2, 3)"
+            f"Cell(Board(9, 9, 3, 3, None), 2, 1), "
+            f"Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            f"Cell(Board(9, 9, 3, 3, None), 2, 3)"
             f"]"
             f")"
         )

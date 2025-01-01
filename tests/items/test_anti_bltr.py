@@ -40,7 +40,7 @@ class TestAntiBLTR(TestAntiDiagonal):
         Returns:
             str: The string representation of the AntiBLTR object.
         """
-        return "AntiBLTR(Board(9, 9, 3, 3, None, None, None, None))"
+        return "AntiBLTR(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

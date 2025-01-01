@@ -54,7 +54,7 @@ class TestAnti(TestComposed):
         Returns:
             str: The string representation of the Anti object.
         """
-        return "Anti(Board(9, 9, 3, 3, None, None, None, None), [1, 2, 3, 4, 5, 6, 7, 8, 9])"
+        return "Anti(Board(9, 9, 3, 3, None), [1, 2, 3, 4, 5, 6, 7, 8, 9])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -82,7 +82,7 @@ class TestAnti(TestComposed):
         """
         result = []
         for pair in self.item.pairs(Cell.make(self.board, 1, 1), self.item.digits):
-            result.append([pair.cell_2.row, pair.cell_2.column])
+            result.append([pair.cell2.row, pair.cell2.column])
 
         self.assertListEqual(sorted(self.pair_output), sorted(result))
 

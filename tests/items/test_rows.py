@@ -23,7 +23,7 @@ class TestRows(TestStandardRegionSet):
         """Set up the test environment for Rows."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = Rows(self.board)
         self.size = 9
 
@@ -40,7 +40,7 @@ class TestRows(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of the Rows instance."""
-        return "Rows(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Rows(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

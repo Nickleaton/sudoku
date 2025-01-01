@@ -18,8 +18,9 @@ class TestSumPair(TestVariablePair):
     def setUp(self) -> None:
         """Set up the board and VariableSumPair constraint for testing."""
         super().setUp()
-        # Create start VariableSumPair constraint with two cells and start variable string
-        self.item = VariableSumPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), "variable")
+        # Create start VariableSumPair constraint with two cells and start value_variable string
+        self.item = VariableSumPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3),
+                                    "value_variable")
         # Set the size of the pair to 2
         self.size = 2
 
@@ -34,17 +35,17 @@ class TestSumPair(TestVariablePair):
         return (
             "VariableSumPair"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
-            "'variable'"
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3), "
+            "'value_variable'"
             ")"
         )
 
     @property
     def config(self) -> str:
         """Return the configuration string for VariableSumPair."""
-        return "VariableSumPair: 12-13=variable"
+        return "VariableSumPair: 12-13=value_variable"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

@@ -36,7 +36,7 @@ class TestBoxes(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation for the Boxes constraint."""
-        return "Boxes(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Boxes(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

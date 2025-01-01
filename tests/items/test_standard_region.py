@@ -19,7 +19,7 @@ class TestStandardRegion(TestRegion):
         """Set up the test environment for StandardRegion."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = StandardRegion(self.board, 1)
         self.size = 0
 
@@ -36,7 +36,7 @@ class TestStandardRegion(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of StandardRegion."""
-        return "StandardRegion(Board(9, 9, 3, 3, None, None, None, None), 1)"
+        return "StandardRegion(Board(9, 9, 3, 3, None), 1)"
 
     @property
     def str_representation(self) -> str:

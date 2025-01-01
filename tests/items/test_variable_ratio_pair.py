@@ -21,9 +21,10 @@ class TestVariableRatioPair(TestVariablePair):
         super().setUp()
 
         # Initialize the board with dimensions 9x9 and block size 3x3
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
-        # Create start VariableRatioPair constraint with two cells and start variable string
-        self.item = VariableRatioPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), "variable")
+        self.board = Board(9, 9, 3, 3)
+        # Create start VariableRatioPair constraint with two cells and start value_variable string
+        self.item = VariableRatioPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3),
+                                      "value_variable")
         # Set the size of the ratio pair to 2
         self.size = 2
 
@@ -38,17 +39,17 @@ class TestVariableRatioPair(TestVariablePair):
         return (
             "VariableRatioPair"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
-            "'variable'"
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3), "
+            "'value_variable'"
             ")"
         )
 
     @property
     def config(self) -> str:
         """Return the configuration string for VariableRatioPair."""
-        return "VariableRatioPair: 12-13=variable"
+        return "VariableRatioPair: 12-13=value_variable"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

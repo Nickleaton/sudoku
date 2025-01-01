@@ -41,7 +41,7 @@ class TestConstraints(TestComposed):
 
     def test_construction(self):
         """Test the construction of the Constraints instance."""
-        self.assertEqual(self.size, len(self.item.items))
+        self.assertEqual(self.size, len(self.item.components))
 
     def test_iteration(self):
         """Test iteration over the vectors in Constraints."""
@@ -54,12 +54,12 @@ class TestConstraints(TestComposed):
     def representation(self) -> str:
         """Return the string representation for the Constraints."""
         return (
-            "Constraints(Board(9, 9, 3, 3, None, None, None, None), "
+            "Constraints(Board(9, 9, 3, 3, None), "
             "["
-            "Columns(Board(9, 9, 3, 3, None, None, None, None)), "
-            "Rows(Board(9, 9, 3, 3, None, None, None, None)), "
-            "Boxes(Board(9, 9, 3, 3, None, None, None, None)), "
-            "ColumnIndexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
+            "Columns(Board(9, 9, 3, 3, None)), "
+            "Rows(Board(9, 9, 3, 3, None)), "
+            "Boxes(Board(9, 9, 3, 3, None)), "
+            "ColumnIndexer(Board(9, 9, 3, 3, None), 1)"
             "]"
             ")"
         )

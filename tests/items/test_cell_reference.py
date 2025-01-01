@@ -27,8 +27,8 @@ class TestCellReference(TestItem):
         return (
             "CellReference"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), "
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), "
             "1, "
             "2"
             ")"

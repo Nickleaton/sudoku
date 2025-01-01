@@ -18,7 +18,7 @@ class TestLittleKiller1(TestRegion):
     def setUp(self) -> None:
         """Set up the test case, initializing the constraint and board for the LittleKiller instance (Case 1)."""
         super().setUp()
-        self.item = LittleKiller(self.board, Side.TOP, Cyclic.CLOCKWISE, 3, 20)
+        self.item = LittleKiller(self.board, Side.top, Cyclic.clockwise, 3, 20)
         self.size = 6
 
     @property
@@ -29,7 +29,7 @@ class TestLittleKiller1(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the LittleKiller instance (Case 1)."""
-        return "LittleKiller(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, Cyclic.CLOCKWISE, 3, 20)"
+        return "LittleKiller(Board(9, 9, 3, 3, None), Side.top, Cyclic.clockwise, 3, 20)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -58,7 +58,7 @@ class TestLittleKiller2(TestRegion):
     def setUp(self) -> None:
         """Set up the test case, initializing the constraint and board for the LittleKiller instance (Case 2)."""
         super().setUp()
-        self.item = LittleKiller(self.board, Side.RIGHT, Cyclic.CLOCKWISE, 3, 20)
+        self.item = LittleKiller(self.board, Side.right, Cyclic.clockwise, 3, 20)
         self.size = 6
 
     @property
@@ -69,7 +69,7 @@ class TestLittleKiller2(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the LittleKiller instance (Case 2)."""
-        return "LittleKiller(Board(9, 9, 3, 3, None, None, None, None), Side.RIGHT, Cyclic.CLOCKWISE, 3, 20)"
+        return "LittleKiller(Board(9, 9, 3, 3, None), Side.right, Cyclic.clockwise, 3, 20)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

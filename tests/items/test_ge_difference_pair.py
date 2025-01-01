@@ -2,22 +2,23 @@
 import unittest
 from typing import Type
 
+from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
+
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.fixed_difference_pair import FixedDifferencePair
 from src.items.fixed_pair import FixedPair
-from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
 from tests.items.test_different_pair import TestDifferencePair
 
 
-class TestGreaterThanEqualDifferencePair(TestDifferencePair):
-    """Test suite for the GreaterThanEqualDifferencePair class."""
+class TestGEDifferencePair(TestDifferencePair):
+    """Test suite for the GEDifferencePair class."""
 
     def setUp(self) -> None:
-        """Set up the test case with start board and an instance of GreaterThanEqualDifferencePair."""
+        """Set up the test case with start board and an instance of GEDifferencePair."""
         super().setUp()
         self.item = GreaterThanEqualDifferencePair(
             self.board,
@@ -29,40 +30,40 @@ class TestGreaterThanEqualDifferencePair(TestDifferencePair):
 
     @property
     def clazz(self):
-        """Return the GreaterThanEqualDifferencePair class."""
+        """Return the GEDifferencePair class."""
         return GreaterThanEqualDifferencePair
 
     @property
     def config(self) -> str:
-        """Return the configuration string for GreaterThanEqualDifferencePair."""
-        return "GreaterThanEqualDifferencePair: 12-13=1"
+        """Return the configuration string for GEDifferencePair."""
+        return "GEDifferencePair: 12-13=1"
 
     @property
     def has_rule(self) -> bool:
-        """Return True to indicate the rule is present for GreaterThanEqualDifferencePair."""
+        """Return True to indicate the rule is present for GEDifferencePair."""
         return True
 
     @property
     def difference(self) -> int:
-        """Return the difference number for the GreaterThanEqualDifferencePair."""
+        """Return the difference number for the GEDifferencePair."""
         return 1
 
     @property
     def representation(self) -> str:
-        """Return start string representation of the GreaterThanEqualDifferencePair instance."""
+        """Return start string representation of the GEDifferencePair instance."""
         return (
-            "GreaterThanEqualDifferencePair"
+            "GEDifferencePair"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3), "
             "1"
             ")"
         )
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the GreaterThanEqualDifferencePair should belong to."""
+        """Return the expected classes that the GEDifferencePair should belong to."""
         return {Cell, FixedDifferencePair, FixedPair, Item, Pair, GreaterThanEqualDifferencePair, ComposedItem, Region}
 
     def test_difference(self):

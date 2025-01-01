@@ -35,7 +35,7 @@ class TestBattenburg(TestItem):
         Returns:
             str: The string representation of the Battenburg object.
         """
-        return "Battenburg(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2))"
+        return "Battenburg(Board(9, 9, 3, 3, None), Coord(2, 2))"
 
     @property
     def config(self) -> str:

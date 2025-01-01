@@ -20,8 +20,8 @@ class TestOutside(TestFirstN):
         """Set up the test environment for Outside."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Outside(self.board, Side.TOP, 1, [1, 2, 3])
+        self.board = Board(9, 9, 3, 3)
+        self.item = Outside(self.board, Side.top, 1, [1, 2, 3])
         self.size = 3
 
     @property
@@ -32,7 +32,7 @@ class TestOutside(TestFirstN):
     @property
     def representation(self) -> str:
         """Return the string representation of the Outside instance."""
-        return "Outside(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, [1, 2, 3])"
+        return "Outside(Board(9, 9, 3, 3, None), Side.top, 1, [1, 2, 3])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

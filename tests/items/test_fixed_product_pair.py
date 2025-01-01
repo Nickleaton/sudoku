@@ -20,7 +20,7 @@ class TestFixedProductPair(TestFixedPair):
         """Set up the test environment by creating start board and initializing the FixedProductPair constraint."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = FixedProductPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3), 1)
         self.size = 2
 
@@ -36,9 +36,9 @@ class TestFixedProductPair(TestFixedPair):
         return (
             "FixedProductPair"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3), "
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3), "
             "1"
             ")"
         )

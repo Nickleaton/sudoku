@@ -17,7 +17,7 @@ class TestQuadrupleBase(TestItem):
         """Set up start test instance of QuadrupleBase."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = QuadrupleBase(self.board, Coord(2, 2), "12")
 
     @property
@@ -28,7 +28,7 @@ class TestQuadrupleBase(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation of QuadrupleBase."""
-        return "QuadrupleBase(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), '12')"
+        return "QuadrupleBase(Board(9, 9, 3, 3, None), Coord(2, 2), '12')"
 
     @property
     def config(self) -> str:

@@ -70,8 +70,8 @@ class TestFormulation(unittest.TestCase):
         """
         model = LpProblem("absolute_int", LpMinimize)
         x = LpVariable("minimum", 0, 9, LpInteger)
-        x1 = LpVariable("x1", 1, 9, LpInteger)
-        x2 = LpVariable("x2", 1, 9, LpInteger)
+        x1 = LpVariable("value1", 1, 9, LpInteger)
+        x2 = LpVariable("value2", 1, 9, LpInteger)
 
         model += x1 == v1
         model += x2 == v2
@@ -103,8 +103,8 @@ class TestFormulation(unittest.TestCase):
         """
         model = LpProblem("absolute_float", LpMinimize)
         x = LpVariable("minimum", 0, 9, LpContinuous)
-        x1 = LpVariable("x1", 1, 9, LpContinuous)
-        x2 = LpVariable("x2", 1, 9, LpContinuous)
+        x1 = LpVariable("value1", 1, 9, LpContinuous)
+        x2 = LpVariable("value2", 1, 9, LpContinuous)
 
         model += x1 == v1
         model += x2 == v2
@@ -138,7 +138,7 @@ class TestFormulation(unittest.TestCase):
         model = LpProblem("minimum", LpMinimize)
         variables: List[LpVariable] = []
         for i, value in enumerate(values):
-            x = LpVariable(f"x_coord{i}", 1, 9, LpInteger)
+            x = LpVariable(f"row{i}", 1, 9, LpInteger)
             model += x == value
             variables.append(x)
 
@@ -170,7 +170,7 @@ class TestFormulation(unittest.TestCase):
         model = LpProblem("maximum", LpMinimize)
         variables: List[LpVariable] = []
         for i, value in enumerate(values):
-            x = LpVariable(f"x_coord{i}", 1, 9, LpInteger)
+            x = LpVariable(f"row{i}", 1, 9, LpInteger)
             model += x == value
             variables.append(x)
 
@@ -190,17 +190,17 @@ class TestFormulation(unittest.TestCase):
         self.maximum([2, 2, 2], 2)
 
     def logical_not(self, value: int, expected: int) -> None:
-        """Test logical NOT operation for binary value_list.
+        """Test logical NOT operation for binary_variable value_list.
 
         Args:
-            value (int): The binary number to be negated.
+            value (int): The binary_variable number to be negated.
             expected (int): The expected result of the logical NOT operation.
 
         Returns:
             None
         """
         model = LpProblem("logical_not", LpMinimize)
-        x = LpVariable("x_coord", 0, 1, LpInteger)
+        x = LpVariable("row", 0, 1, LpInteger)
         model += x == value
         y = Formulations.logical_not(model, x)
         model.writeLP(str(self.get_lp_filename(inspect.currentframe().f_code.co_name)))
@@ -208,7 +208,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, y.varValue)
 
     def test_logical_not(self):
-        """Test logical NOT operation for binary value_list.
+        """Test logical NOT operation for binary_variable value_list.
 
         Returns:
             None
@@ -217,19 +217,19 @@ class TestFormulation(unittest.TestCase):
         self.logical_not(0, 1)
 
     def logical_or(self, value1: int, value2: int, expected: int) -> None:
-        """Test logical OR operation for binary value_list.
+        """Test logical OR operation for binary_variable value_list.
 
         Args:
-            value1 (int): The first binary number.
-            value2 (int): The second binary number.
+            value1 (int): The first binary_variable number.
+            value2 (int): The second binary_variable number.
             expected (int): The expected result of the logical OR operation.
 
         Returns:
             None
         """
         model = LpProblem("logical_or", LpMinimize)
-        x1 = LpVariable("x1", 0, 1, LpInteger)
-        x2 = LpVariable("x2", 0, 1, LpInteger)
+        x1 = LpVariable("value1", 0, 1, LpInteger)
+        x2 = LpVariable("value2", 0, 1, LpInteger)
         model += x1 == value1
         model += x2 == value2
         y = Formulations.logical_or(model, [x1, x2])
@@ -238,7 +238,7 @@ class TestFormulation(unittest.TestCase):
         self.assertEqual(expected, y.varValue)
 
     def test_logical_or(self):
-        """Test logical OR operation for binary value_list.
+        """Test logical OR operation for binary_variable value_list.
 
         Returns:
             None
@@ -251,19 +251,19 @@ class TestFormulation(unittest.TestCase):
         self.logical_or(1, 1, 1)
 
     def logical_and(self, value1: int, value2: int, expected: int) -> None:
-        """Test the logical AND operation between two binary value_list.
+        """Test the logical AND operation between two binary_variable value_list.
 
         Args:
-            value1 (int): The first binary number.
-            value2 (int): The second binary number.
+            value1 (int): The first binary_variable number.
+            value2 (int): The second binary_variable number.
             expected (int): The expected result of the logical AND operation.
 
         Returns:
             None
         """
         model = LpProblem("logical_and", LpMinimize)
-        x1 = LpVariable("x1", 0, 1, LpInteger)
-        x2 = LpVariable("x2", 0, 1, LpInteger)
+        x1 = LpVariable("value1", 0, 1, LpInteger)
+        x2 = LpVariable("value2", 0, 1, LpInteger)
         model += x1 == value1
         model += x2 == value2
         y = Formulations.logical_and(model, [x1, x2])
@@ -274,7 +274,7 @@ class TestFormulation(unittest.TestCase):
     def test_logical_and(self):
         """Tests the logical_and function with various input combinations.
 
-        The test cases cover all possible combinations of two binary input_types,
+        The test cases cover all possible combinations of two binary_variable input_types,
         ensuring the function behaves correctly for all scenarios.
         """
         self.logical_and(0, 0, 0)

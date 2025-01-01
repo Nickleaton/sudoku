@@ -48,7 +48,7 @@ class TestAsterix(TestSpecialRegion):
         Returns:
             str: The string representation of the Asterix object.
         """
-        return "Asterix(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Asterix(Board(9, 9, 3, 3, None))"
 
     @property
     def has_rule(self) -> bool:

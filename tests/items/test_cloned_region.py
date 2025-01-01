@@ -16,7 +16,7 @@ class TestClonedRegion(TestItem):
         """Set up the Board and ClonedRegion instance for testing."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.cells_1 = [Cell(self.board, 1, 1), Cell(self.board, 1, 2), Cell(self.board, 1, 3)]
         self.cells_2 = [Cell(self.board, 9, 9), Cell(self.board, 9, 8), Cell(self.board, 9, 7)]
         self.item = ClonedRegion(self.board, self.cells_1, self.cells_2)
@@ -30,13 +30,13 @@ class TestClonedRegion(TestItem):
     def representation(self) -> str:
         """Return the string representation for the ClonedRegion constraint."""
         return (
-            "ClonedRegion(Board(9, 9, 3, 3, None, None, None, None), "
-            "[Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)], "
-            "[Cell(Board(9, 9, 3, 3, None, None, None, None), 9, 9), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 9, 8), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 9, 7)]"
+            "ClonedRegion(Board(9, 9, 3, 3, None), "
+            "[Cell(Board(9, 9, 3, 3, None), 1, 1), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3)], "
+            "[Cell(Board(9, 9, 3, 3, None), 9, 9), "
+            "Cell(Board(9, 9, 3, 3, None), 9, 8), "
+            "Cell(Board(9, 9, 3, 3, None), 9, 7)]"
             ")"
         )
 

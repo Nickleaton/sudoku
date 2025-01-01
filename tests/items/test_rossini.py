@@ -20,7 +20,7 @@ class TestRossini(TestRegion):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-        self.item = Rossini(self.board, Side.TOP, 1, Order.INCREASING)
+        self.item = Rossini(self.board, Side.top, 1, Order.increasing)
         self.size = 3
 
     @property
@@ -31,7 +31,7 @@ class TestRossini(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the Rossini instance."""
-        return "Rossini(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, Order.INCREASING)"
+        return "Rossini(Board(9, 9, 3, 3, None), Side.top, 1, Order.increasing)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

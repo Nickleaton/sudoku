@@ -28,7 +28,7 @@ class TestMagicSquare(TestComposed):
     @property
     def representation(self) -> str:
         """Return start string representation of the MagicSquare instance."""
-        return "MagicSquare(Board(9, 9, 3, 3, None, None, None, None), Coord(5, 5), Coord(1, 1))"
+        return "MagicSquare(Board(9, 9, 3, 3, None), Coord(5, 5), Coord(1, 1))"
 
     @property
     def config(self) -> str:

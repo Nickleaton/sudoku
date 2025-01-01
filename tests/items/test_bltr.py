@@ -38,7 +38,7 @@ class TestBLTR(TestStandardDiagonal):
         Returns:
             str: The string representation of the BLTR constraint.
         """
-        return "BLTR(Board(9, 9, 3, 3, None, None, None, None))"
+        return "BLTR(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

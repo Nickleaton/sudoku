@@ -29,7 +29,7 @@ class TestCenterProduct(TestProduct):
     @property
     def representation(self) -> str:
         """Return the string representation for the CenterProduct constraint."""
-        return "CenterProduct(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), 5)"
+        return "CenterProduct(Board(9, 9, 3, 3, None), Coord(2, 2), 5)"
 
     @property
     def config(self) -> str:

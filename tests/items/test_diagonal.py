@@ -28,7 +28,7 @@ class TestDiagonal(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation for the Diagonal."""
-        return "Diagonal(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Diagonal(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

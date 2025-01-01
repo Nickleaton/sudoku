@@ -21,7 +21,7 @@ class TestVPair(TestSumPair):
         super().setUp()
 
         # Initialize the board with dimensions 9x9 and block size 3x3
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         # Create start VPair constraint with two cells
         self.item = VPair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         # Set the size of the pair to 2
@@ -53,9 +53,9 @@ class TestVPair(TestSumPair):
         return (
             "VPair"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3)"
             ")"
         )
 

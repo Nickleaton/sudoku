@@ -15,11 +15,7 @@ class TestOrthogonallyAdjacent(TestComposed):
         """Set up the test environment for OrthogonallyAdjacent."""
         super().setUp()
         self.item = OrthogonallyAdjacent(self.board)
-
-    @property
-    def size(self):
-        """Return the size of the OrthogonallyAdjacent constraint."""
-        return 0
+        self.size = 0
 
     @property
     def clazz(self):
@@ -29,7 +25,7 @@ class TestOrthogonallyAdjacent(TestComposed):
     @property
     def representation(self) -> str:
         """Return the string representation of the OrthogonallyAdjacent instance."""
-        return "OrthogonallyAdjacent(Board(9, 9, 3, 3, None, None, None, None))"
+        return "OrthogonallyAdjacent(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

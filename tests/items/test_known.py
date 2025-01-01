@@ -63,7 +63,7 @@ class TestKnown(TestComposed):
     def representation(self) -> str:
         """Return start string representation of the Known instance."""
         return (
-            "Known(Board(9, 9, 3, 3, None, None, None, None), "
+            "Known(Board(9, 9, 3, 3, None), "
             "["
             "'8..4.6..3', "
             "'o.9....2.', "
@@ -105,10 +105,10 @@ class TestKnown(TestComposed):
     def test_flatten(self) -> None:
         """Test the flatten method of the Known instance."""
         expected = [self.item]
-        for item in self.item.items:
-            if isinstance(item, CellReference):
-                expected.append(item)
-                expected.append(item.cell)
+        for component in self.item.components:
+            if isinstance(component, CellReference):
+                expected.append(component)
+                expected.append(component.cell)
         self.assertListEqual(expected, self.item.flatten())
 
 

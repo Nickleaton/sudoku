@@ -31,7 +31,7 @@ class TestRegionSet(TestComposed):
     @property
     def representation(self) -> str:
         """Return the string representation of RegionSet."""
-        return "RegionSet(Board(9, 9, 3, 3, None, None, None, None), [])"
+        return "RegionSet(Board(9, 9, 3, 3, None), [])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

@@ -18,7 +18,7 @@ class TestStandardRegionSet(TestRegionSet):
         """Set up the test environment for StandardRegionSet."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = StandardRegionSet(self.board, [])
         self.size = 0
 
@@ -35,7 +35,7 @@ class TestStandardRegionSet(TestRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of StandardRegionSet."""
-        return "StandardRegionSet(Board(9, 9, 3, 3, None, None, None, None), [])"
+        return "StandardRegionSet(Board(9, 9, 3, 3, None), [])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

@@ -12,7 +12,7 @@ class TestAnswer(unittest.TestCase):
     def setUp(self) -> None:
         """Set up the test environment."""
         # Initialize start Board object and Answer object
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         data = [
             "123456789",
             "123456789",
@@ -43,7 +43,7 @@ class TestAnswer(unittest.TestCase):
         """Return the string representation of the Answer object."""
         return (
             "Answer("
-            "Board(9, 9, 3, 3, None, None, None, None),"
+            "Board(9, 9, 3, 3, None),"
             "["
             "'123456789', "
             "'123456789', "
@@ -65,12 +65,12 @@ class TestAnswer(unittest.TestCase):
 
     def test_set_get(self):
         """Test the get_value and set_value methods of the Answer class."""
-        self.assertEqual(1, self.item.get_value(1, 1))
-        self.assertEqual(9, self.item.get_value(9, 9))
-        self.item.set_value(1, 1, 8)
-        self.item.set_value(9, 9, 8)
-        self.assertEqual(8, self.item.get_value(1, 1))
-        self.assertEqual(8, self.item.get_value(9, 9))
+        self.assertEqual(1, self.item[1, 1])
+        self.assertEqual(9, self.item[9, 9])
+        self.item[1, 1] = 8
+        self.item[9, 9] = 8
+        self.assertEqual(8, self.item[1, 1])
+        self.assertEqual(8, self.item[9, 9])
 
     def test_equality(self):
         """Test equality and inequality comparisons for Answer objects."""

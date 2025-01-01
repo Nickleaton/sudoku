@@ -16,7 +16,7 @@ class TestNumberedRoom(TestItem):
     def setUp(self) -> None:
         """Set up the test environment for NumberedRoom."""
         super().setUp()
-        self.item = NumberedRoom(self.board, Side.TOP, 1, 9)
+        self.item = NumberedRoom(self.board, Side.top, 1, 9)
 
     @property
     def clazz(self):
@@ -26,7 +26,7 @@ class TestNumberedRoom(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation of the NumberedRoom instance."""
-        return "NumberedRoom(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 1, 9)"
+        return "NumberedRoom(Board(9, 9, 3, 3, None), Side.top, 1, 9)"
 
     @property
     def config(self) -> str:
@@ -46,10 +46,10 @@ class TestNumberedRoom(TestItem):
     def test_add_constraint(self) -> None:
         """Test adding start constraint to the NumberedRoom instance."""
         numbered_rooms = [
-            NumberedRoom(self.board, Side.TOP, 1, 9),
-            NumberedRoom(self.board, Side.RIGHT, 1, 9),
-            NumberedRoom(self.board, Side.BOTTOM, 1, 9),
-            NumberedRoom(self.board, Side.LEFT, 1, 9)
+            NumberedRoom(self.board, Side.top, 1, 9),
+            NumberedRoom(self.board, Side.right, 1, 9),
+            NumberedRoom(self.board, Side.bottom, 1, 9),
+            NumberedRoom(self.board, Side.left, 1, 9)
         ]
         for room in numbered_rooms:
             log_path = Path("output\\logs\\tests")

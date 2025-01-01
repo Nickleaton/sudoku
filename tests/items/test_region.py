@@ -17,14 +17,14 @@ class TestRegion(TestComposed):
     def setUp(self) -> None:
         super().setUp()
         """Set up start test instance of Region with predefined cells."""
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.cells = [
             Cell.make(self.board, 1, 1),
             Cell.make(self.board, 1, 2),
             Cell.make(self.board, 1, 3),
         ]
         self.item = Region(self.board)
-        self.item.add_items(self.cells)
+        self.item.add_components(self.cells)
         self.size = 3
 
     @property
@@ -40,7 +40,7 @@ class TestRegion(TestComposed):
     @property
     def representation(self) -> str:
         """Return the string representation of Region."""
-        return "Region(Board(9, 9, 3, 3, None, None, None, None))"
+        return "Region(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

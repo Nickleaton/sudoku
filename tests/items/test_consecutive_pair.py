@@ -2,13 +2,14 @@
 import unittest
 from typing import Optional, Type
 
+from src.items.less_than_equal_difference_pair import LEDifferencePair
+
 from src.board.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.consecutive_pair import ConsecutivePair
 from src.items.difference_pair import DifferencePair
 from src.items.item import Item
-from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.items.pair import Pair
 from src.items.region import Region
 from tests.items.test_different_pair import TestDifferencePair
@@ -21,7 +22,7 @@ class TestConsecutivePair(TestDifferencePair):
         """Set up the Board and ConsecutivePair instance for testing."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = ConsecutivePair(self.board, Cell.make(self.board, 1, 2), Cell.make(self.board, 1, 3))
         self.size = 2
 
@@ -45,9 +46,9 @@ class TestConsecutivePair(TestDifferencePair):
         """Return the string representation for the ConsecutivePair."""
         return (
             "ConsecutivePair("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 3)"
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 3)"
             ")"
         )
 
@@ -59,7 +60,7 @@ class TestConsecutivePair(TestDifferencePair):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes that the ConsecutivePair should belong to."""
-        return {Cell, ComposedItem, ConsecutivePair, DifferencePair, Item, LessThanEqualDifferencePair, Pair, Region}
+        return {Cell, ComposedItem, ConsecutivePair, DifferencePair, Item, LEDifferencePair, Pair, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

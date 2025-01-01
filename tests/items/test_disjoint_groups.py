@@ -22,7 +22,7 @@ class TestDisjointGroups(TestStandardRegionSet):
         """Set up the test environment, creating the board and the DisjointGroups constraint."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = DisjointGroups(self.board)
         self.size = 9
 
@@ -39,7 +39,7 @@ class TestDisjointGroups(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of the DisjointGroups constraint."""
-        return "DisjointGroups(Board(9, 9, 3, 3, None, None, None, None))"
+        return "DisjointGroups(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

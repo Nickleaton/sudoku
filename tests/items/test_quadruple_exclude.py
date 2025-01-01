@@ -26,7 +26,7 @@ class TestQuadrupleExclude(TestQuadrupleBase):
     @property
     def representation(self) -> str:
         """Return the string representation of QuadrupleExclude."""
-        return "QuadrupleExclude(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2), '12')"
+        return "QuadrupleExclude(Board(9, 9, 3, 3, None), Coord(2, 2), '12')"
 
     @property
     def config(self) -> str:

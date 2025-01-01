@@ -28,7 +28,7 @@ class TestIndexer(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return start string representation of the Indexer instance."""
-        return "Indexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
+        return "Indexer(Board(9, 9, 3, 3, None), 1)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

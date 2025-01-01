@@ -2,20 +2,21 @@
 import unittest
 from typing import Type
 
+from src.items.less_than_equal_difference_line import LessThanEqualDifferenceLine
+from src.items.less_than_equal_difference_pair import LEDifferencePair
+
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_pair import DifferencePair
 from src.items.item import Item
-from src.items.less_than_equal_difference_line import LessThanEqualDifferenceLine
-from src.items.less_than_equal_difference_pair import LessThanEqualDifferencePair
 from src.items.line import Line
 from src.items.pair import Pair
 from src.items.region import Region
 from tests.items.test_line import TestLine
 
 
-class TestLessThanEqualDifferenceLine(TestLine):
-    """Test suite for the LessThanEqualDifferenceLine class, inheriting from TestLine."""
+class TestLEDifferenceLine(TestLine):
+    """Test suite for the LEDifferenceLine class, inheriting from TestLine."""
 
     def setUp(self) -> None:
         """Set up the test case, initializing the size for the composed list."""
@@ -26,29 +27,29 @@ class TestLessThanEqualDifferenceLine(TestLine):
 
     @property
     def clazz(self):
-        """Return the LessThanEqualDifferenceLine class."""
+        """Return the LEDifferenceLine class."""
         return LessThanEqualDifferenceLine
 
     @property
     def config(self) -> str:
-        """Return the configuration string for LessThanEqualDifferenceLine."""
-        return "LessThanEqualDifferenceLine: 11, 12, 13"
+        """Return the configuration string for LEDifferenceLine."""
+        return "LEDifferenceLine: 11, 12, 13"
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LessThanEqualDifferenceLine instance has start rule."""
+        """Return whether the LEDifferenceLine instance has start rule."""
         return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
-        """Return the expected classes that the LessThanEqualDifferenceLine instance should belong to."""
+        """Return the expected classes that the LEDifferenceLine instance should belong to."""
         return {
             Cell,
             ComposedItem,
             DifferencePair,
             Item,
             LessThanEqualDifferenceLine,
-            LessThanEqualDifferencePair,
+            LEDifferencePair,
             Line,
             Pair,
             Region

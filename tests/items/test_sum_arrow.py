@@ -70,10 +70,10 @@ class TestSumArrowLine2(TestLine):
     def representation(self) -> str:
         """Return the string representation of SumArrowLine."""
         return (
-            f"{self.clazz.__name__}(Board(9, 9, 3, 3, None, None, None, None), "
+            f"{self.clazz.__name__}(Board(9, 9, 3, 3, None), "
             f"["
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 1), "
-            f"Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2)"
+            f"Cell(Board(9, 9, 3, 3, None), 1, 1), "
+            f"Cell(Board(9, 9, 3, 3, None), 1, 2)"
             f"]"
             f")"
         )

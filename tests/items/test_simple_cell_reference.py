@@ -18,7 +18,7 @@ class TestSimpleCellReference(TestCellReference):
         """Set up the test environment."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = SimpleCellReference(self.board, 1, 2)
         self.letter = '.'
 
@@ -28,8 +28,8 @@ class TestSimpleCellReference(TestCellReference):
         return (
             "SimpleCellReference"
             "("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), "
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), "
             "1, "
             "2"
             ")"

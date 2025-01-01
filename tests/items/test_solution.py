@@ -22,7 +22,7 @@ class TestSolution(TestComposed):
         """Set up the test environment for Solution."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.size = 81
         lines = [
             "123456789",
@@ -62,7 +62,7 @@ class TestSolution(TestComposed):
     def representation(self) -> str:
         """Return the string representation of the Solution."""
         return (
-            "Solution(Board(9, 9, 3, 3, None, None, None, None), "
+            "Solution(Board(9, 9, 3, 3, None), "
             "["
             "'123456789', "
             "'123456789', "

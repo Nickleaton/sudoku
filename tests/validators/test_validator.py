@@ -10,30 +10,33 @@ class TestValidator(unittest.TestCase):
     def setUp(self):
         """Set up the board and test data for each test."""
         self.board = Board(6, 6, 2, 3, {})
-        self.valid_input_data = {
-            'key1': 'value1',
-            'key2': 'value2'
+        self.valid_data = {
+            'Good': {
+                'key1': 'value1',
+                'key2': 'value2'
+            },
         }
-        self.invalid_input_data = {
-            'key1': 'value1'
-            # Missing 'key2'
+        self.invalid_data = {
+            'MissingKey': {
+                'key1': 'value1'
+            }
         }
         self.required_keys = ['key1', 'key2']
+        self.representation = 'Validator()'
 
-    def test_validate_keys_valid(self):
-        """Test that validate_keys returns no errors for valid keys."""
-        errors = Validator.validate_keys(self.valid_input_data, self.required_keys)
-        self.assertEqual(errors, [], "Expected no validation errors for valid keys.")
+    def test_repr(self):
+        """Test the string representation of the Validator class."""
+        self.assertEqual('Validator()', repr(Validator()))
 
-    def test_validate_keys_missing_key(self):
-        """Test that validate_keys returns an error for missing required key."""
-        errors = Validator.validate_keys(self.invalid_input_data, self.required_keys)
-        self.assertIn('Missing key: "key2"', errors, "Expected error for missing 'key2'.")
+    def test_good(self):
+        for name, input_data in self.valid_data.items():
+            errors = Validator.validate(self.board, input_data)
+            self.assertEqual(errors, [], f"Expected no validation errors for {name}.")
 
-    def test_validate_no_errors(self):
-        """Test the base validate method returns no errors by default."""
-        errors = Validator.validate(self.board, self.valid_input_data)
-        self.assertEqual(errors, [], "Expected no validation errors by default.")
+    def test_bad(self):
+        for name, input_data in self.invalid_data.items():
+            errors = Validator.validate(self.board, input_data)
+            self.assertNotEqual(errors, [], f"Expected validation errors for {name}.")
 
 
 if __name__ == '__main__':

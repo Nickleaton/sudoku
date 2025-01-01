@@ -18,7 +18,7 @@ class TestFortressCell(TestSimpleCellReference):
         """Set up the test environment by creating start board and initializing the FortressCell constraint."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = FortressCell(self.board, 1, 2)
         self.letter = 'f'
 
@@ -32,8 +32,8 @@ class TestFortressCell(TestSimpleCellReference):
         """Return start string representation of the FortressCell instance."""
         return (
             "FortressCell("
-            "Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), "
+            "Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), "
             "1, "
             "2"
             ")"

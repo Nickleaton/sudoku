@@ -31,7 +31,7 @@ class TestTLBR(TestStandardDiagonal):
     @property
     def representation(self) -> str:
         """Return the string representation of the TLBR constraint."""
-        return "TLBR(Board(9, 9, 3, 3, None, None, None, None))"
+        return "TLBR(Board(9, 9, 3, 3, None))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

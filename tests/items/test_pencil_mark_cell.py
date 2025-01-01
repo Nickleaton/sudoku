@@ -26,8 +26,8 @@ class TestPencilMarkCell(TestCellReference):
     def representation(self) -> str:
         """Return the string representation of PencilMarkCell."""
         return (
-            "PencilMarkCell(Board(9, 9, 3, 3, None, None, None, None), "
-            "Cell(Board(9, 9, 3, 3, None, None, None, None), 1, 2), "
+            "PencilMarkCell(Board(9, 9, 3, 3, None), "
+            "Cell(Board(9, 9, 3, 3, None), 1, 2), "
             "[2, 4, 6, 8]"
             ")"
         )

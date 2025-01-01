@@ -20,8 +20,8 @@ class TestFrame(TestFirstN):
         """Set up the test environment by creating start board and initializing the Frame constraint."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
-        self.item = Frame(self.board, Side.TOP, 1, 20)
+        self.board = Board(9, 9, 3, 3)
+        self.item = Frame(self.board, Side.top, 1, 20)
         self.size = 3
 
     @property
@@ -32,7 +32,7 @@ class TestFrame(TestFirstN):
     @property
     def representation(self) -> str:
         """Return start string representation of the Frame instance."""
-        return "Frame(Board(9, 9, 3, 3, None, None, None, None), Side.TOP, 20)"
+        return "Frame(Board(9, 9, 3, 3, None), Side.top, 20)"
 
     @property
     def config(self) -> str:

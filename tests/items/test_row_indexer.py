@@ -31,7 +31,7 @@ class TestRowIndexer(TestIndexer):
     @property
     def representation(self) -> str:
         """Return the string representation of the RowIndexer instance."""
-        return "RowIndexer(Board(9, 9, 3, 3, None, None, None, None), 1)"
+        return "RowIndexer(Board(9, 9, 3, 3, None), 1)"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

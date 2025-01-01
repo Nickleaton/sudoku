@@ -34,7 +34,7 @@ class TestWindow(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the Window."""
-        return "Window(Board(9, 9, 3, 3, None, None, None, None), Coord(2, 2))"
+        return "Window(Board(9, 9, 3, 3, None), Coord(2, 2))"
 
     @property
     def has_rule(self) -> bool:

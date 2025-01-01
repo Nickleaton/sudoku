@@ -23,7 +23,7 @@ class TestComposed(TestItem):
 
     def test_construction(self):
         """Test the construction of the ComposedItem."""
-        self.assertEqual(self.size, len(self.item.items))
+        self.assertEqual(self.size, len(self.item.components))
 
     def test_iteration(self):
         """Test the iteration over the vectors in the ComposedItem."""
@@ -40,7 +40,7 @@ class TestComposed(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation for the ComposedItem."""
-        return "ComposedItem(Board(9, 9, 3, 3, None, None, None, None), [])"
+        return "ComposedItem(Board(9, 9, 3, 3, None), [])"
 
     @property
     def has_rule(self) -> bool:
@@ -62,7 +62,7 @@ class TestComposed(TestItem):
     def test_flatten(self) -> None:
         """Test flattening the ComposedItem and its child vectors."""
         expected = [self.item]
-        for item in self.item.items:
+        for item in self.item.components:
             expected.extend(item.flatten())
         self.assertListEqual(expected, self.item.flatten())
 

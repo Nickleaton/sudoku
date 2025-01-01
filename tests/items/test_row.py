@@ -20,7 +20,7 @@ class TestRow(TestStandardRegion):
         """Set up the test environment for Row."""
         super().setUp()
 
-        self.board = Board(9, 9, 3, 3, None, None, None, None)
+        self.board = Board(9, 9, 3, 3)
         self.item = Row(self.board, 1)
         self.size = 9
 
@@ -37,7 +37,7 @@ class TestRow(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the Row instance."""
-        return "Row(Board(9, 9, 3, 3, None, None, None, None), 1)"
+        return "Row(Board(9, 9, 3, 3, None), 1)"
 
     @property
     def has_rule(self) -> bool:
