@@ -9,7 +9,7 @@ class TestValidatorModule(TestValidator):
     """Test case for the Validator class."""
 
     def setUp(self):
-        """Set up the board and test data for each test."""
+        """Set up the board and test input_data for each test."""
         super().setUp()  # Call the setup of the base TestValidator class
         self.board = Board(6, 6, 2, 3, {})  # Example board setup
         self.valid_input_data = {
@@ -19,7 +19,7 @@ class TestValidatorModule(TestValidator):
             'digits': [1, 2, 10]  # 10 is outside the valid range (assuming board.digit_range doesn't contain 10)
         }
         self.missing_digits_data = {
-            'other_key': 'value'
+            'other_key': 'integer_value'
         }
 
     def test_validate_valid(self):

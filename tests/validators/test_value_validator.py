@@ -6,18 +6,18 @@ class TestValueValidator(TestValidator):
     """Test case for the ValueValidator class."""
 
     def setUp(self):
-        """Set up the specific test data for ValueValidator."""
+        """Set up the specific test input_data for ValueValidator."""
         super().setUp()  # Call the base class setup
 
         # Example board (this can be mocked if necessary)
         self.board = Board(digit_range={1, 2, 3, 4, 5, 6, 7, 8, 9})
 
-        # Valid input data (where 'number' is an integer)
+        # Valid input input_data (where 'number' is an integer)
         self.valid_input_data = {
             'number': 5
         }
 
-        # Invalid input data (where 'number' is a string, not an integer)
+        # Invalid input input_data (where 'number' is a string, not an integer)
         self.invalid_input_data = {
             'number': 'five'
         }

@@ -14,31 +14,31 @@ class TestPoint(unittest.TestCase):
         self.assertEqual(2, point.y_coord)
 
     def test_add(self):
-        """Add two Point instances and check the result."""
+        """Add two Point instances and check the parsed_data."""
         point = Point(1, 2) + Point(2, 3)
         self.assertEqual(3, point.x_coord)
         self.assertEqual(5, point.y_coord)
 
     def test_sub(self):
-        """Subtract two Point instances and check the result."""
+        """Subtract two Point instances and check the parsed_data."""
         point = Point(2, 3) - Point(1, 2)
         self.assertEqual(1, point.x_coord)
         self.assertEqual(1, point.y_coord)
 
     def test_mul(self):
-        """Multiply start Point instance by start scalar and check the result."""
+        """Multiply start Point instance by start scalar and check the parsed_data."""
         point = Point(1, 2) * 2.0
         self.assertEqual(2, point.x_coord)
         self.assertEqual(4, point.y_coord)
 
     def test_truediv(self):
-        """Divide start Point instance by start scalar and check the result."""
+        """Divide start Point instance by start scalar and check the parsed_data."""
         point = Point(2, 4) / 2.0
         self.assertEqual(1, point.x_coord)
         self.assertEqual(2, point.y_coord)
 
     def test_neg(self):
-        """Negate start Point instance and check the result."""
+        """Negate start Point instance and check the parsed_data."""
         point = -Point(1, -2)
         self.assertEqual(-1, point.x_coord)
         self.assertEqual(2, point.y_coord)
@@ -49,12 +49,12 @@ class TestPoint(unittest.TestCase):
         self.assertEqual(5, point.magnitude)
 
     def test_transform(self):
-        """Apply start transformation to start Point instance and check the result."""
+        """Apply start transformation to start Point instance and check the parsed_data."""
         point = Point(1, 2)
         self.assertEqual("translate(1, 2)", point.transform)
 
     def test_coordinates(self):
-        """Get the coordinates of start Point instance and verify the result."""
+        """Get the coordinates of start Point instance and verify the parsed_data."""
         point = Point(1, 2)
         self.assertEqual((1, 2), point.coordinates)
 

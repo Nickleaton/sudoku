@@ -4,8 +4,7 @@ import pkgutil
 
 
 def load_modules(package_name: str, subpackage: str | None = None) -> None:
-    """
-    Dynamically loads all modules within the specified package or subpackage.
+    """Dynamically loads all modules within the specified package or subpackage.
 
     Args:
         package_name (str): The name of the package to load modules from.

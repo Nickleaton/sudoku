@@ -6,8 +6,7 @@ from defusedxml.ElementTree import fromstring, tostring
 
 
 def pretty_print_xml(xml_string: str) -> str:
-    """
-    Convert a string into XML and pretty-prints it without the XML declaration.
+    """Convert a string into XML and pretty-prints it without the XML declaration.
 
     Args:
         xml_string (str): The input string representing XML.

@@ -23,7 +23,7 @@ class VariableType(Enum):
         if number is None:
             return ' None'
 
-        format_map: dict['VariableType', Callable[[float], str]] = {
+        format_map: dict[VariableType, Callable[[float], str]] = {
             VariableType.integer_number: lambda formatted_number: f'{number:5.0f}',
             VariableType.float_number: lambda formatted_number: f'{number:5.3f}',
             VariableType.log_integer: lambda formatted_number: f'{pow(10, number):5.0f}',

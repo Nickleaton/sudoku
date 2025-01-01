@@ -6,7 +6,7 @@ class TestPillValidator(TestValidator):
     """Test case for the PillValidator class."""
 
     def setUp(self):
-        """Set up the specific test data for PillValidator."""
+        """Set up the specific test input_data for PillValidator."""
         super().setUp()  # Call the base class setup
 
         # Valid input for Pill constraint (same row, unique, connected horizontally)
@@ -16,21 +16,21 @@ class TestPillValidator(TestValidator):
             {'row': 1, 'column': 4}
         ]
 
-        # Invalid input data for cells in different rows (same row condition fails)
+        # Invalid input input_data for cells in different rows (same row condition fails)
         self.invalid_row_input_data = [
             {'row': 1, 'column': 2},
             {'row': 2, 'column': 3},
             {'row': 1, 'column': 4}
         ]
 
-        # Invalid input data for duplicate cells
+        # Invalid input input_data for duplicate cells
         self.invalid_duplicate_input_data = [
             {'row': 1, 'column': 2},
             {'row': 1, 'column': 2},
             {'row': 1, 'column': 4}
         ]
 
-        # Invalid input data for non-horizontal (not connected) cells
+        # Invalid input input_data for non-horizontal (not connected) cells
         self.invalid_horizontal_input_data = [
             {'row': 1, 'column': 2},
             {'row': 1, 'column': 4},

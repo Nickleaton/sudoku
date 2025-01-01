@@ -5,10 +5,10 @@ class TestLineValidator(TestValidator):
     """Test case for the LineValidator class."""
 
     def setUp(self):
-        """Set up the specific test data for LineValidator."""
+        """Set up the specific test input_data for LineValidator."""
         super().setUp()  # Call the base class setup
 
-        # Specific test data for LineValidator
+        # Specific test input_data for LineValidator
         self.valid_input_data = [
             {'row': 1, 'column': 1},  # Cell 1
             {'row': 2, 'column': 1},  # Cell 2, valid king's move (vertical)
@@ -59,7 +59,7 @@ class TestLineValidator(TestValidator):
         self.validate_input(LineValidator, self.invalid_connection_input_data, expected_errors)
 
     def test_validate_empty_input_data(self):
-        """Test that validate returns an error for empty input data."""
+        """Test that validate returns an error for empty input input_data."""
         self.validate_input(LineValidator, self.empty_input_data, ['The input_data cannot be empty.'])
 
 

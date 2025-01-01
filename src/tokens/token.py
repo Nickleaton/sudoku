@@ -61,7 +61,7 @@ class Token:
 
     @property
     def example(self) -> str:
-        """Get an example of a value matched by the ValueToken.
+        """Get an example of a integer_value matched by the ValueToken.
 
         Returns:
             str: An example string that the ValueToken would match.

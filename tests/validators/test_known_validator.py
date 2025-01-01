@@ -10,7 +10,7 @@ class TestKnownValidator(TestValidator):
 
     def setUp(self):
         super().setUp()
-        """Set up the board and test data for each test."""
+        """Set up the board and test input_data for each test."""
         self.valid_input_data = {
             'Known': [
                 '123456',  # Row 1
@@ -32,16 +32,16 @@ class TestKnownValidator(TestValidator):
             ]
         }
         self.missing_known_data = {
-            'SomeOtherKey': 'value'
+            'SomeOtherKey': 'integer_value'
         }
 
     def test_validate_valid(self):
-        """Test that validate returns no errors for valid 'Known' data."""
+        """Test that validate returns no errors for valid 'Known' input_data."""
         errors = KnownValidator.validate(self.board, self.valid_input_data)
-        self.assertEqual(errors, [], "Expected no validation errors for valid 'Known' data.")
+        self.assertEqual(errors, [], "Expected no validation errors for valid 'Known' input_data.")
 
     def test_validate_invalid_character(self):
-        """Test that validate returns an error for an invalid character in the 'Known' data."""
+        """Test that validate returns an error for an invalid character in the 'Known' input_data."""
         errors = KnownValidator.validate(self.board, self.invalid_input_data)
         self.assertIn("Invalid digit/type 'X' at row 1, column 6", errors, "Expected error for invalid character 'X'.")
 
@@ -78,7 +78,7 @@ class TestKnownValidator(TestValidator):
                       "Expected error for row length mismatch.")
 
     def test_validate_missing_known_key(self):
-        """Test that validate returns an error for missing 'Known' key in input data."""
+        """Test that validate returns an error for missing 'Known' key in input input_data."""
         errors = KnownValidator.validate(self.board, self.missing_known_data)
         self.assertIn("Missing key 'Known' in the input_data.", errors, "Expected error for missing 'Known' key.")
 

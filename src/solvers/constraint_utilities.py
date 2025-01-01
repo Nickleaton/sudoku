@@ -1,44 +1,58 @@
 """Constraint Utilities."""
-from math import log10, ceil
+from math import ceil  # noqa: I001
+from math import log10  # noqa: I001
 from typing import ClassVar
 
-from pulp import lpSum, LpVariable, LpContinuous
+from pulp import LpContinuous  # noqa: I001
+from pulp import LpVariable  # noqa: I001
+from pulp import lpSum  # noqa: I001
 
 from src.items.cell import Cell
 from src.solvers.pulp_solver import PulpSolver
 
 
-# pylint: disable=too-few-public-methods
 class ConstraintUtilities:
     """Utility class for managing constraints in the PulpSolver."""
 
     variables: ClassVar[dict[str, LpVariable]] = {}
 
     @staticmethod
+    def total_expression(solver: PulpSolver, cell: Cell) -> lpSum:
+        """Build the total expression for the log10 integer_value of a cell.
+
+        Args:
+            solver (PulpSolver): The solver instance.
+            cell (Cell): The cell for which the expression is built.
+
+        Returns:
+            lpSum: The linear expression representing the log10 integer_value of the cell.
+        """
+        return lpSum(log10(digit) * solver.choices[digit][cell.row][cell.column] for digit in solver.board.digit_range)
+
+    @staticmethod
     def log10_cell(solver: PulpSolver, cell: Cell) -> LpVariable:
-        """Create start log10 variable for start given cell in the solver.
+        """Create or retrieve the log10 integer_value variable for a given cell in the solver.
 
         Args:
             solver (PulpSolver): The solver instance to which the variable belongs.
-            cell (Cell): The cell for which the log10 variable is created.
+            cell (Cell): The cell for which the log10 integer_value variable is created.
 
         Returns:
-            LpVariable: The log10 variable for the specified cell.
+            LpVariable: The log10 integer_value variable for the specified cell.
         """
-        name = f"Log10_{cell.row}_{cell.column}"
-
-        if name in ConstraintUtilities.variables:
-            return ConstraintUtilities.variables[name]
-
+        name: str = f'log10_{cell.row}_{cell.column}'
+        # Return the variable if it already exists
+        log_value: LpVariable = ConstraintUtilities.variables.get(name)
+        if log_value is not None:
+            return log_value
+        # Define the limit for the variable's integer_value
         limit = ceil(log10(solver.board.maximum_digit)) + 1
-        variable = LpVariable(name, 0, limit, LpContinuous)
-
-        # Create the total expression for the variable
-        total = lpSum(log10(digit) * solver.choices[digit][cell.row][cell.column]
-                      for digit in solver.board.digit_range)
-
-        # Add constraint to the model
-        solver.model += variable == total, name
-
-        ConstraintUtilities.variables[name] = variable
-        return variable
+        # Create the variable
+        log_value: LpVariable = LpVariable(name, 0, limit, LpContinuous)
+        # Build the total expression for the variable
+        total_expression = ConstraintUtilities.total_expression(solver, cell)
+        # Add the constraint to the solver's model
+        solver.model += log_value == total_expression, name
+        # Cache the variable and return it
+        ConstraintUtilities.variables[name] = log_value
+        return log_value

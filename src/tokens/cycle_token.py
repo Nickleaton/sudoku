@@ -20,7 +20,7 @@ class CycleToken(SimpleToken):
 
     @property
     def example(self) -> str:
-        """Get an example of a value matched by the CycleToken.
+        """Get an example of a integer_value matched by the CycleToken.
 
         Returns:
             str: An example string that the CycleToken would match.

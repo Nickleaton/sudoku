@@ -8,7 +8,7 @@ class TestValidator(unittest.TestCase):
     """Test case for the Validator class."""
 
     def setUp(self):
-        """Set up the board and test data for each test."""
+        """Set up the board and test input_data for each test."""
         self.board = Board(6, 6, 2, 3, {})
         self.valid_data = {
             'Good': {

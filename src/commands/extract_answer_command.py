@@ -52,4 +52,4 @@ class ExtractAnswerCommand(Command):
         for row in board.row_range:
             for column in board.column_range:
                 solver_choice = solver.choices[row][column]
-                problem[self.target].set_value(row, column, int(solver_choice.varValue))
+                problem[self.target][row, column] = int(solver_choice.varValue)

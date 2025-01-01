@@ -7,7 +7,7 @@ class TestQuadrupleValidator(TestValidator):
     """Test case for the QuadrupleValidator class."""
 
     def setUp(self):
-        """Set up the specific test data for QuadrupleValidator."""
+        """Set up the specific test input_data for QuadrupleValidator."""
         super().setUp()  # Call the base class setup
 
         # Example board with digit range

@@ -63,7 +63,7 @@ class TestFormulation(unittest.TestCase):
         Args:
             v1 (int): The first integer number.
             v2 (int): The second integer number.
-            expected (int): The expected result of the absolute difference.
+            expected (int): The expected parsed_data of the absolute difference.
 
         Returns:
             None
@@ -96,7 +96,7 @@ class TestFormulation(unittest.TestCase):
         Args:
             v1 (float): The first floating-point number.
             v2 (float): The second floating-point number.
-            expected (float): The expected result of the absolute difference.
+            expected (float): The expected parsed_data of the absolute difference.
 
         Returns:
             None
@@ -194,7 +194,7 @@ class TestFormulation(unittest.TestCase):
 
         Args:
             value (int): The binary_variable number to be negated.
-            expected (int): The expected result of the logical NOT operation.
+            expected (int): The expected parsed_data of the logical NOT operation.
 
         Returns:
             None
@@ -222,7 +222,7 @@ class TestFormulation(unittest.TestCase):
         Args:
             value1 (int): The first binary_variable number.
             value2 (int): The second binary_variable number.
-            expected (int): The expected result of the logical OR operation.
+            expected (int): The expected parsed_data of the logical OR operation.
 
         Returns:
             None
@@ -256,7 +256,7 @@ class TestFormulation(unittest.TestCase):
         Args:
             value1 (int): The first binary_variable number.
             value2 (int): The second binary_variable number.
-            expected (int): The expected result of the logical AND operation.
+            expected (int): The expected parsed_data of the logical AND operation.
 
         Returns:
             None

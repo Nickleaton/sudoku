@@ -1,5 +1,4 @@
 """FPuzzlesDumper."""
-from src.board.board import Board
 from src.load_dump.dumper import Dumper
 
 
@@ -13,18 +12,10 @@ class FPuzzlesDumper(Dumper):
         board (Board): The board instance to be dumped.
     """
 
-    def __init__(self, board: Board):
-        """Initialize the FPuzzlesDumper with start board instance.
-
-        Args:
-            board (Board): The board instance to be dumped.
-        """
-        super().__init__(board)
-
     def text(self) -> str:
         """Generate start textual representation of the board in the format expected by FPuzzles.
 
         Returns:
             str: The formatted board in the FPuzzles-specific format.
         """
-        return "xxx"
+        return 'xxx'

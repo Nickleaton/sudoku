@@ -7,8 +7,7 @@ class Validator:
 
     @staticmethod
     def validate(board: Board, input_data: dict) -> list[str]:
-        """
-        Validate the provided input_data against the board's digit range.
+        """Validate the provided input_data against the board's digit range.
 
         Args:
             board (Board): The board instance containing the valid digit range.

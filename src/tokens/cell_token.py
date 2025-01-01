@@ -20,7 +20,7 @@ class CellToken(SimpleToken):
 
     @property
     def example(self) -> str:
-        """Get an example of a value matched by the CellToken.
+        """Get an example of a integer_value matched by the CellToken.
 
         Returns:
             str: An example string that the CellToken would match.

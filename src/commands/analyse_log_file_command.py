@@ -18,7 +18,7 @@ class AnalyseLogFileCommand(Command):
 
         Args:
             log (str): The key in the problem where log input_data is stored. Defaults to 'log'.
-            target (str): The key in the problem to store the analysis result. Defaults to 'log_analysis'.
+            target (str): The key in the problem to store the analysis parsed_data. Defaults to 'log_analysis'.
         """
         super().__init__()
         self.log: str = log
@@ -47,7 +47,7 @@ class AnalyseLogFileCommand(Command):
         return log_path
 
     def analyze_log_file(self, problem: Problem, log_path: Path, application_name: str) -> None:
-        """Analyze the log file and update the problem with the analysis result.
+        """Analyze the log file and update the problem with the analysis parsed_data.
 
         Args:
             problem (Problem): The problem instance containing the log input_data.

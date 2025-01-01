@@ -8,10 +8,10 @@ from src.validators.value_validator import ValueValidator
 class LittleKillerValidator(Validator):
     """Validator for the Little Killer Sudoku constraints."""
 
-    required_keys = ['side', 'index', 'direction', 'number']
+    required_keys: tuple[str, str, str, str] = ('side', 'index', 'direction', 'number')
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list[str]:
+    def validate(board: Board, input_data: dict[str, str]) -> list[str]:
         """Validate the Little Killer constraint input_data.
 
         This method performs several checks:
@@ -21,7 +21,7 @@ class LittleKillerValidator(Validator):
 
         Args:
             board (Board): The Sudoku board that the constraint applies to.
-            input_data (dict): A dictionary containing the constraint input_data to be validated.
+            input_data (dict[str, str]): A dictionary containing the constraint input_data to be validated.
 
         Returns:
             list[str]: A list of error messages, or an empty list if the input_data is valid.
@@ -39,6 +39,6 @@ class LittleKillerValidator(Validator):
         if index < 0 or index > board.rows + 1:
             errors.append(f"Invalid index: {input_data['index']}")
 
-        # Use the ValueValidator to validate the values in the input_data
+        # Use the ValueValidator to validate the cell_values in the input_data
         errors.extend(ValueValidator().validate(board, input_data))
         return errors

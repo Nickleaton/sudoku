@@ -9,7 +9,7 @@ class TestCellValidator(TestValidator):
 
     def setUp(self):
         super().setUp()
-        # Test data
+        # Test input_data
         self.valid_cell = {'row': 2, 'column': 3}
         self.invalid_cell_missing_row = {'column': 3}
         self.invalid_cell_missing_col = {'row': 2}

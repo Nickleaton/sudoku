@@ -6,7 +6,7 @@ class TestLittleKillerValidator(TestValidator):
     """Test case for the LittleKillerValidator class."""
 
     def setUp(self):
-        """Set up the specific test data for LittleKillerValidator."""
+        """Set up the specific test input_data for LittleKillerValidator."""
         super().setUp()  # Call the base class setup
 
         # Valid input for LittleKiller constraint
@@ -17,7 +17,7 @@ class TestLittleKillerValidator(TestValidator):
             'number': 15
         }
 
-        # Invalid input data for missing required keys
+        # Invalid input input_data for missing required keys
         self.invalid_keys_input_data = {
             'side': 'T',
             'index': 2
@@ -32,7 +32,7 @@ class TestLittleKillerValidator(TestValidator):
             'number': 15
         }
 
-        # Valid data but invalid number for the ValueValidator (assuming it checks numbers)
+        # Valid input_data but invalid number for the ValueValidator (assuming it checks numbers)
         self.invalid_value_input_data = {
             'side': 'T',
             'index': 2,
@@ -61,9 +61,9 @@ class TestLittleKillerValidator(TestValidator):
         self.validate_input(LittleKillerValidator, self.invalid_index_input_data, expected_errors)
 
     def test_validate_invalid_value(self):
-        """Test that validate returns an error for invalid value according to ValueValidator."""
+        """Test that validate returns an error for invalid integer_value according to ValueValidator."""
         expected_errors = [
-            "Invalid value: 999"  # Assuming this message comes from the ValueValidator
+            "Invalid integer_value: 999"  # Assuming this message comes from the ValueValidator
         ]
         self.validate_input(LittleKillerValidator, self.invalid_value_input_data, expected_errors)
 

@@ -6,11 +6,11 @@ from src.solvers.answer import Answer
 
 
 class Solver:
-    """Solver class that manages the solving of start puzzle using start given board and data representation.
+    """Solver class that manages the solving of start puzzle using start given board and input_data representation.
 
     Attributes:
         board (Board): The board object representing the puzzle layout.
-        answer (Answer): The data object that will store and process the solution.
+        answer (Answer): The input_data object that will store and process the solution.
     """
 
     def __init__(self, board: Board):
@@ -37,4 +37,4 @@ class Solver:
         """
 
     def solve(self) -> None:
-        """Solve the puzzle using the defined board and data objects."""
+        """Solve the puzzle using the defined board and input_data objects."""
