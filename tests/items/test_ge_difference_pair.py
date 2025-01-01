@@ -2,12 +2,11 @@
 import unittest
 from typing import Type
 
-from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
-
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.fixed_difference_pair import FixedDifferencePair
 from src.items.fixed_pair import FixedPair
+from src.items.ge_difference_pair import GEDifferencePair
 from src.items.item import Item
 from src.items.pair import Pair
 from src.items.region import Region
@@ -20,7 +19,7 @@ class TestGEDifferencePair(TestDifferencePair):
     def setUp(self) -> None:
         """Set up the test case with start board and an instance of GEDifferencePair."""
         super().setUp()
-        self.item = GreaterThanEqualDifferencePair(
+        self.item = GEDifferencePair(
             self.board,
             Cell.make(self.board, 1, 2),
             Cell.make(self.board, 1, 3),
@@ -31,7 +30,7 @@ class TestGEDifferencePair(TestDifferencePair):
     @property
     def clazz(self):
         """Return the GEDifferencePair class."""
-        return GreaterThanEqualDifferencePair
+        return GEDifferencePair
 
     @property
     def config(self) -> str:
@@ -64,7 +63,7 @@ class TestGEDifferencePair(TestDifferencePair):
     @property
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes that the GEDifferencePair should belong to."""
-        return {Cell, FixedDifferencePair, FixedPair, Item, Pair, GreaterThanEqualDifferencePair, ComposedItem, Region}
+        return {Cell, FixedDifferencePair, FixedPair, Item, Pair, GEDifferencePair, ComposedItem, Region}
 
     def test_difference(self):
         """Test that the difference is correctly calculated."""

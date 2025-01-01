@@ -2,23 +2,22 @@
 import unittest
 from typing import Type
 
-from src.items.greater_than_equal_difference_line import GEDifferenceLine
-from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
-from tests.items.test_greater_than_equal_difference_line import TestGreaterThanEqualDifferenceLine
-
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
 from src.items.fixed_difference_pair import FixedDifferencePair
 from src.items.fixed_pair import FixedPair
+from src.items.ge_difference_line import GEDifferenceLine
+from src.items.ge_difference_pair import GEDifferencePair
 from src.items.german_whisper_line import GermanWhisperLine
 from src.items.item import Item
 from src.items.line import Line
 from src.items.pair import Pair
 from src.items.region import Region
+from tests.items.test_ge_difference_line import TestGEDifferenceLine
 
 
-class TestGermanWhisperLine(TestGreaterThanEqualDifferenceLine):
+class TestGermanWhisperLine(TestGEDifferenceLine):
     """Test suite for the GermanWhisperLine class."""
 
     def setUp(self) -> None:
@@ -62,7 +61,7 @@ class TestGermanWhisperLine(TestGreaterThanEqualDifferenceLine):
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes that the GermanWhisperLine should belong to."""
         return {Cell, ComposedItem, DifferenceLine, FixedDifferencePair, FixedPair, GermanWhisperLine,
-                GEDifferenceLine, GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
+                GEDifferenceLine, GEDifferencePair, Item, Line, Pair, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

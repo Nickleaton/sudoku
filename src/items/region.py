@@ -111,10 +111,10 @@ class Region(ComposedItem):
             solver (PulpSolver): The solver to which the constraint is added.
             order (Order): The sequence order (e.g., increasing or decreasing).
         """
-        for index, (cell1, cell2) in enumerate(zip(self.cells[:-1], self.cells[1:]), start=1):
-            value1 = solver.cell_values[self.cells[index - 1].row][self.cells[index - 1].column]
-            value2 = solver.cell_values[self.cells[index].row][self.cells[index].column]
-            name = f'{order.name}_{self.cells[index - 1].name}_{self.cells[index].name}'
+        for (cell1, cell2) in zip(self.cells[:-1], self.cells[1:]):
+            value1 = solver.cell_values[cell1.row][cell1.column]
+            value2 = solver.cell_values[cell2.row][cell2.column]
+            name = f'{order.name}_{cell1.name}_{cell2.name}'
             if order == Order.increasing:
                 solver.model += value1 + 1 <= value2, name
             else:

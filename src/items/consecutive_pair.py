@@ -1,13 +1,12 @@
 """ConsecutivePair."""
 import re
 
-from src.items.less_than_equal_difference_pair import LEDifferencePair
-
 from src.board.board import Board
 from src.glyphs.consecutive_glyph import ConsecutiveGlyph
 from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.item import Item
+from src.items.le_difference_pair import LEDifferencePair
 from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuException
 

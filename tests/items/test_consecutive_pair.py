@@ -2,14 +2,13 @@
 import unittest
 from typing import Optional, Type
 
-from src.items.less_than_equal_difference_pair import LEDifferencePair
-
 from src.board.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.consecutive_pair import ConsecutivePair
 from src.items.difference_pair import DifferencePair
 from src.items.item import Item
+from src.items.le_difference_pair import LEDifferencePair
 from src.items.pair import Pair
 from src.items.region import Region
 from tests.items.test_different_pair import TestDifferencePair

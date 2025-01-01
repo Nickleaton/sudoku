@@ -16,7 +16,7 @@ class ValueToken(SimpleToken):
         Returns:
             str: A description of the ValueToken's purpose and behavior.
         """
-        return 'A integer_value token. Matches one or more digits. This token is used for identifying numeric cell_values.'
+        return 'A integer_value token. Matches one or more digits. This token is used for numeric cell_values.'
 
     @property
     def example(self) -> str:

@@ -1,7 +1,7 @@
 """YamlLoader."""
 from pathlib import Path
 
-from oyaml import safe_load
+from oyaml import safe_load as yaml_safe_load
 
 from src.board.board import Board
 from src.load_dump.loader import Loader
@@ -18,7 +18,7 @@ class YamlLoader(Loader):
         """
         super().__init__(file_path)
         with file_path.open(mode='r', encoding='utf-8') as yaml_file:
-            self.raw = safe_load(yaml_file)
+            self.raw = yaml_safe_load(yaml_file)
 
     def process(self) -> Board:
         """Process the loaded YAML input_data and creates start Board instance.

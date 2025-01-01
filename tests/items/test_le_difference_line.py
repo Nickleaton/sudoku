@@ -2,13 +2,12 @@
 import unittest
 from typing import Type
 
-from src.items.less_than_equal_difference_line import LessThanEqualDifferenceLine
-from src.items.less_than_equal_difference_pair import LEDifferencePair
-
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_pair import DifferencePair
 from src.items.item import Item
+from src.items.le_difference_line import LEDifferenceLine
+from src.items.le_difference_pair import LEDifferencePair
 from src.items.line import Line
 from src.items.pair import Pair
 from src.items.region import Region
@@ -48,7 +47,7 @@ class TestLEDifferenceLine(TestLine):
             ComposedItem,
             DifferencePair,
             Item,
-            LessThanEqualDifferenceLine,
+            LEDifferenceLine,
             LEDifferencePair,
             Line,
             Pair,

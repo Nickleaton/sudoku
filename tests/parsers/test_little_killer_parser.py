@@ -2,8 +2,7 @@
 import unittest
 from typing import List, Tuple, Any
 
-from src.parsers.little_killers_parser import LittleKillerParser
-
+from src.parsers.little_killer_parser import LittleKillerParser
 from tests.parsers.test_parser import TestParser
 
 

@@ -2,14 +2,13 @@
 import unittest
 from typing import Type
 
-from src.items.greater_than_equal_difference_line import GEDifferenceLine
-from src.items.greater_than_equal_difference_pair import GreaterThanEqualDifferencePair
-
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.difference_line import DifferenceLine
 from src.items.fixed_difference_pair import FixedDifferencePair
 from src.items.fixed_pair import FixedPair
+from src.items.ge_difference_line import GEDifferenceLine
+from src.items.ge_difference_pair import GEDifferencePair
 from src.items.item import Item
 from src.items.line import Line
 from src.items.pair import Pair
@@ -62,7 +61,7 @@ class TestGEDifferenceLine(TestLine):
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes that the GEDifferenceLine should belong to."""
         return {Cell, ComposedItem, DifferenceLine, FixedDifferencePair, FixedPair, GEDifferenceLine,
-                GreaterThanEqualDifferencePair, Item, Line, Pair, Region}
+                GEDifferencePair, Item, Line, Pair, Region}
 
 
 if __name__ == '__main__':  # pragma: no cover

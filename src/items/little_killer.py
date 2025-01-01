@@ -1,7 +1,6 @@
 """LittleKiller."""
 
 from pulp import lpSum
-from src.parsers.little_killers_parser import LittleKillerParser
 
 from src.board.board import Board
 from src.glyphs.arrow_glyph import ArrowGlyph
@@ -10,6 +9,7 @@ from src.glyphs.text_glyph import TextGlyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
+from src.parsers.little_killer_parser import LittleKillerParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.config import Config
 from src.utils.coord import Coord

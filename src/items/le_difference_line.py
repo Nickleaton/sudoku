@@ -1,10 +1,9 @@
 """LEDifferenceLine."""
 from typing import Sequence
 
-from src.items.less_than_equal_difference_pair import LEDifferencePair
-
 from src.board.board import Board
 from src.items.cell import Cell
+from src.items.le_difference_pair import LEDifferencePair
 from src.items.line import Line
 from src.utils.rule import Rule
 
