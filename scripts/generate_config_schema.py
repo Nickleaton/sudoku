@@ -76,7 +76,7 @@ def replace_quotes_in_file(file_path: str) -> None:
     """Replaces double quotes (") with single quotes (') in a Python file.
 
     Reads the specified file, replaces all double quotes with single quotes, and
-    writes the result back to the file. Adjusts triple-quote strings to maintain
+    writes the parsed_data back to the file. Adjusts triple-quote strings to maintain
     proper syntax.
 
     Args:

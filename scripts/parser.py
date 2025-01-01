@@ -20,7 +20,7 @@ def parser() -> ArgumentParser:
         const="",
         default=None,
         dest="logfile",
-        help="Where to write the log file",
+        help="Where to write the log file_path",
         required=False
     )
     result.add_argument(
@@ -106,7 +106,7 @@ def parser() -> ArgumentParser:
     )
     result.add_argument(
         '--config',
-        help='YAML configuration file containing the problem.',
+        help='YAML configuration file_path containing the problem.',
         type=pathlib.Path,
         required=True
     )

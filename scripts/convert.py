@@ -36,7 +36,7 @@ def header(data: Dict) -> Dict:
         author = 'Unknown'
     elif author == '?':
         author = 'Unknown'
-    return {'Board': f'{board_x}x{board_y}', 'Boxes': f'{box_x}x{box_y}', 'Author': author}
+    return {'Board': f'{board_x}x_coord{board_y}', 'Boxes': f'{box_x}x_coord{box_y}', 'Author': author}
 
 
 def grid(data: Dict, size: int) -> Dict:
@@ -45,7 +45,7 @@ def grid(data: Dict, size: int) -> Dict:
         row = ""
         for y in range(size):
             cell = data['grid'][x][y]
-            row += '.' if cell.get('value') is None else str(cell.get('value'))
+            row += '.' if cell.get('number') is None else str(cell.get('number'))
         values.append(row)
     return {'Known': values}
 
@@ -212,8 +212,8 @@ def killercage(data: List) -> List:
     result = []
     for item in data:
         rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
-        if 'value' in item:
-            lhs = item['value']
+        if 'number' in item:
+            lhs = item['number']
             result.append({'Killer': f"{lhs}={rhs}"})
         else:
             result.append({'UniqueRegion': rhs})
@@ -230,7 +230,7 @@ def littlekillersum(data: List, n: int) -> List:
             x = c
         else:
             x = r
-        value = int(item['value'])
+        value = int(item['number'])
         result.append({'LittleKiller': f"{s}{x}{rot}={value}"})
     return result
 
@@ -280,7 +280,7 @@ def quadruple(data: Dict) -> List:
     for quad in data:
         row = quad['cells'][0][1]
         col = quad['cells'][0][3]
-        values = "".join([str(d) for d in quad['values']])
+        values = "".join([str(d) for d in quad['value_list']])
         result.append({'Quadruple': f"{row}{col}={values}"})
     return result
 
@@ -317,7 +317,7 @@ def sandwichsum(data: List, n: int) -> List:
     for item in data:
         r, c = rc(item['cell'])
         s = side(item['cell'], n)
-        value = int(item['value'])
+        value = int(item['number'])
         if s in ('T', 'B'):
             x = c
         else:
@@ -347,7 +347,7 @@ def xsum(data: List, n: int) -> List:
     for item in data:
         r, c = rc(item['cell'])
         s = side(item['cell'], n)
-        value = int(item['value'])
+        value = int(item['number'])
         if s in ('T', 'B'):
             x = c
         else:
@@ -363,9 +363,9 @@ def xv(data: List) -> List:
     for item in data:
         r1, c1 = rc(item['cells'][0])
         r2, c2 = rc(item['cells'][1])
-        if item['value'] == 'V':
+        if item['number'] == 'V':
             result.append({'VPair': f"{r1}{c1}-{r2}{c2}"})
-        elif item['value'] == 'X':
+        elif item['number'] == 'X':
             result.append({'XPair': f"{r1}{c1}-{r2}{c2}"})
     return result
 
@@ -375,7 +375,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
     out = {}
     with source_file.open() as s_file:
         data = json.load(s_file)
-    raw = data['data']
+    raw = data['input_data']
     n = raw['size']
     if n not in (6, 8, 9):
         logging.log(logging.ERROR, f"Unknown board size {n} {source_file}")
@@ -394,11 +394,11 @@ def convert(source_file: Path, destination_file: Path) -> bool:
             out['Constraints'].append(solution(raw, n))
 
         # if 'title' in raw:
-        #     out['Constraints'].append(title(raw['title'], n))
+        #     out['Constraints'].append(title(raw['title'], number))
         # if 'size' in raw:
-        #     out['Constraints'].append(size(raw['size'], n))
+        #     out['Constraints'].append(size(raw['size'], number))
         # if 'author' in raw:
-        #     out['Constraints'].append(author(raw['author'], n))
+        #     out['Constraints'].append(author(raw['author'], number))
 
         if 'antiking' in raw:
             out['Constraints'].append(antiking())
@@ -517,7 +517,7 @@ def main() -> None:
                 if convert(source_file, destination_file):
                     count += 1
         else:
-            logging.log(logging.ERROR, "Cannot convert directory to single file")
+            logging.log(logging.ERROR, "Cannot convert directory to single file_path")
             sys.exit(1)
     else:
         if destination.is_dir():

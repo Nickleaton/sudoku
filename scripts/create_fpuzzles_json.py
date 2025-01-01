@@ -18,7 +18,7 @@ def process_url(url: str, directory: Path) -> None:
     ident = original_qs['id'][0]
     filename = Path(directory) / Path(ident + ".json")
     if filename.exists():
-        logging.info(f"Skipping file {filename.name}")
+        logging.info(f"Skipping file_path {filename.name}")
         return
     driver = webdriver.Chrome()
     decompressor = lzstring.LZString()
@@ -28,14 +28,14 @@ def process_url(url: str, directory: Path) -> None:
     uncompressed = decompressor.decompressFromBase64(query['load'][0].replace(" ", "+"))
     data = json.loads(uncompressed)
 
-    all_data = {'url': url, 'data': data}
+    all_data = {'url': url, 'input_data': data}
     with filename.open('w') as file:
-        logging.info(f"Writing file {filename.name}")
+        logging.info(f"Writing file_path {filename.name}")
         file.write(json.dumps(all_data, sort_keys=True, indent=4))
 
 
 def get_parser() -> ArgumentParser:
-    result = ArgumentParser('create fpuzzles json', 'Down load json from an fpuzzles url file')
+    result = ArgumentParser('create fpuzzles json', 'Down load json from an fpuzzles url file_path')
     result.add_argument('-s', '--source')
     result.add_argument('-d', '--destination')
     result.add_argument('-v', '--verbose', action='store_true')
