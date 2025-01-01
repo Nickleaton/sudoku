@@ -2,17 +2,17 @@
 import unittest
 from typing import List, Tuple, Any
 
-from src.parsers.little_killers_parser import LittleKillersParser
+from src.parsers.little_killers_parser import LittleKillerParser
 from tests.parsers.test_parser import TestParser
 
 
 class TestLittleKillersParser(TestParser):
-    """Test case for the LittleKillersParser class."""
+    """Test case for the LittleKillerParser class."""
 
     def setUp(self):
-        """Set up the LittleKillersParser instance for testing."""
-        self.parser: LittleKillersParser = LittleKillersParser()
-        self.representation: str = 'LittleKillersParser()'
+        """Set up the LittleKillerParser instance for testing."""
+        self.parser: LittleKillerParser = LittleKillerParser()
+        self.representation: str = 'LittleKillerParser()'
         self.example_format: str = '[TLBR]i=dd'
         self.valid_input_result: List[Tuple[str, Any]] = \
             [
@@ -67,48 +67,48 @@ class TestLittleKillersParser(TestParser):
             # Valid Little Killers format input_types
             (
                 "T1C=14",
-                {'side': 'T', 'index': '1', 'direction': 'C', 'value': '14'}
+                {'side': 'T', 'index': '1', 'direction': 'C', 'number': '14'}
             ),
             (
                 "T1C=5",
-                {'side': 'T', 'index': '1', 'direction': 'C', 'value': '5'}
+                {'side': 'T', 'index': '1', 'direction': 'C', 'number': '5'}
             ),
             (
                 "L2A=10",
-                {'side': 'L', 'index': '2', 'direction': 'A', 'value': '10'}
+                {'side': 'L', 'index': '2', 'direction': 'A', 'number': '10'}
             ),
             (
                 "B3C=12",
-                {'side': 'B', 'index': '3', 'direction': 'C', 'value': '12'}
+                {'side': 'B', 'index': '3', 'direction': 'C', 'number': '12'}
             ),
             (
                 "R0A=0",
-                {'side': 'R', 'index': '0', 'direction': 'A', 'value': '0'}
+                {'side': 'R', 'index': '0', 'direction': 'A', 'number': '0'}
             ),
             (
                 "T9C=100",
-                {'side': 'T', 'index': '9', 'direction': 'C', 'value': '100'}
+                {'side': 'T', 'index': '9', 'direction': 'C', 'number': '100'}
             ),
             (
                 "L5A=50",
-                {'side': 'L', 'index': '5', 'direction': 'A', 'value': '50'}
+                {'side': 'L', 'index': '5', 'direction': 'A', 'number': '50'}
             ),
             (
                 "T0C=1",
-                {'side': 'T', 'index': '0', 'direction': 'C', 'value': '1'}
+                {'side': 'T', 'index': '0', 'direction': 'C', 'number': '1'}
             ),
             (
                 "R9A=999",
-                {'side': 'R', 'index': '9', 'direction': 'A', 'value': '999'}
+                {'side': 'R', 'index': '9', 'direction': 'A', 'number': '999'}
             ),
             (
                 "B4C=2000",
-                {'side': 'B', 'index': '4', 'direction': 'C', 'value': '2000'}
+                {'side': 'B', 'index': '4', 'direction': 'C', 'number': '2000'}
             ),
             # Valid input with spaces
             (
                 " L2 A = 5 ",
-                {'side': 'L', 'index': '2', 'direction': 'A', 'value': '5'}
+                {'side': 'L', 'index': '2', 'direction': 'A', 'number': '5'}
             ),
         ]
 
@@ -119,13 +119,13 @@ class TestLittleKillersParser(TestParser):
                 "T1D=10",  # Invalid direction (not C or A)
                 "T11C=10",  # Invalid index (out of range)
                 "B2=10",  # Missing direction
-                "T1C=abc",  # Non-integer value
+                "T1C=abc",  # Non-integer number
                 "C=5",  # Missing side and index
                 "T2C=5=10",  # Multiple '=' signs
                 "L2A=10x",  # Extra characters after valid input
-                " T2C= ",  # Empty value after '='
+                " T2C= ",  # Empty number after '='
                 "T1CA=5",  # Invalid format (wrong character sequence)
-                "L2A=10 20",  # Invalid due to extra value after '='
+                "L2A=10 20",  # Invalid due to extra number after '='
                 "   ",  # Whitespace only
             ]
 

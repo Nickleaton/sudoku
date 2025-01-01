@@ -28,9 +28,9 @@ class TestSolutionParser(TestParser):
             ("000000000", ['0', '0', '0', '0', '0', '0', '0', '0', '0']),
         ]
         self.invalid_input: List[str] = [
-            "12345678a",  # contains a non-numeric character
+            "12345678a",  # contains start non-numeric character
             "123 45678",  # contains whitespace
-            "12345678#",  # contains a special character
+            "12345678#",  # contains start special character
         ]
 
     def test_parse_valid_input(self):

@@ -18,7 +18,7 @@ class TestUnknownParser(TestParser):
         self.valid_input_answer: List[Tuple[str, Any]] = []
         self.invalid_input: List[str] = \
             [
-                "1, 2, a, 4",
+                "1, 2, start, 4",
                 ""
             ]
 

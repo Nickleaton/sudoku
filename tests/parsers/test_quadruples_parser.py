@@ -57,39 +57,39 @@ class TestQuadruplesParser(TestParser):
             # Valid quadruples format input_types
             (
                 "12=123",
-                {'row': '1', 'column': '2', 'values': ['1', '2', '3']}
+                {'row': '1', 'column': '2', 'value_list': ['1', '2', '3']}
             ),
             (
                 "01=456",
-                {'row': '0', 'column': '1', 'values': ['4', '5', '6']}
+                {'row': '0', 'column': '1', 'value_list': ['4', '5', '6']}
             ),
             (
                 "99=???",
-                {'row': '9', 'column': '9', 'values': ['?', '?', '?']}
+                {'row': '9', 'column': '9', 'value_list': ['?', '?', '?']}
             ),
             (
                 "30=10",
-                {'row': '3', 'column': '0', 'values': ['1', '0']}
+                {'row': '3', 'column': '0', 'value_list': ['1', '0']}
             ),
             (
                 "15=??",
-                {'row': '1', 'column': '5', 'values': ['?', '?']}
+                {'row': '1', 'column': '5', 'value_list': ['?', '?']}
             ),
             (
                 "23=2",
-                {'row': '2', 'column': '3', 'values': ['2']}
+                {'row': '2', 'column': '3', 'value_list': ['2']}
             ),
             (
                 "88=0",
-                {'row': '8', 'column': '8', 'values': ['0']}
+                {'row': '8', 'column': '8', 'value_list': ['0']}
             ),
             (
                 "77=??5",
-                {'row': '7', 'column': '7', 'values': ['?', '?', '5']}
+                {'row': '7', 'column': '7', 'value_list': ['?', '?', '5']}
             ),
             (
                 "22=12345",
-                {'row': '2', 'column': '2', 'values': ['1', '2', '3', '4', '5']}
+                {'row': '2', 'column': '2', 'value_list': ['1', '2', '3', '4', '5']}
             ),  # Longer right side is valid
         ]
 
@@ -102,7 +102,7 @@ class TestQuadruplesParser(TestParser):
             "=45",  # No left side
             "12=4 5",  # Invalid due to space on the right side
             "12=??=10",  # Multiple '=' signs
-            "x2=5",  # Non-digit character on the left
+            "value2=5",  # Non-digit character on the left
             "11=  ",  # Right side contains only spaces
             " 12=12",  # Leading space on left side
             "22 = 22",  # Spaces around the equals sign

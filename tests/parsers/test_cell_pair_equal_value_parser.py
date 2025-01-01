@@ -46,27 +46,27 @@ class TestCellPairEqualValueParser(TestParser):
             [
                 (
                     "51-61=5",
-                    {"row1": '5', "column1": '1', "row2": '6', "column2": '1', "value": '5'}
+                    {"row1": '5', "column1": '1', "row2": '6', "column2": '1', "number": '5'}
                 ),
                 (
                     "12-34=10",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "value": '10'}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "number": '10'}
                 ),
                 (
                     "31-32=7",
-                    {"row1": '3', "column1": '1', "row2": '3', "column2": '2', "value": '7'}
+                    {"row1": '3', "column1": '1', "row2": '3', "column2": '2', "number": '7'}
                 ),
                 (
                     " 12 - 34 = 15 ",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "value": '15'}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "number": '15'}
                 ),  # whitespace around '='
                 (
                     "12-34=5",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "value": '5'}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "number": '5'}
                 ),  # no spaces
                 (
                     " 12- 34 = 20 ",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "value": '20'}
+                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4', "number": '20'}
                 ),  # mixed spaces
             ]
         self.invalid_input: List[str] = \
@@ -80,7 +80,7 @@ class TestCellPairEqualValueParser(TestParser):
                 "-34=5",  # invalid due to missing first coordinate
                 "12-34, =5",  # trailing space after valid input should fail
                 "  -34=5",  # invalid due to missing first coordinate
-                "12-34=5x",  # invalid due to non-digit character in value
+                "12-34=5x",  # invalid due to non-digit character in number
             ]
 
     def test_parse_valid_input(self):
@@ -91,7 +91,7 @@ class TestCellPairEqualValueParser(TestParser):
                 self.assertEqual(self.parser.result, expected_result)
 
     def test_answer_valid_input(self):
-        """Test generating the expected data from valid input."""
+        """Test generating the expected input_data from valid input."""
         for input_str, expected_answer in self.valid_input_answer:
             with self.subTest(input_str=input_str):
                 self.parser.parse(input_str)

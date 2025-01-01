@@ -49,28 +49,28 @@ class TestFrameParser(TestParser):
                 # Valid FrameParser format input_types
                 (
                     "T1=2",
-                    {'side': 'T', 'index': '1', 'value': '2'}
+                    {'side': 'T', 'index': '1', 'number': '2'}
                 ),
                 (
                     "L3=10",
-                    {'side': 'L', 'index': '3', 'value': '10'}
+                    {'side': 'L', 'index': '3', 'number': '10'}
                 ),
                 (
                     "B0=5",
-                    {'side': 'B', 'index': '0', 'value': '5'}
+                    {'side': 'B', 'index': '0', 'number': '5'}
                 ),
                 (
                     "R9=99",
-                    {'side': 'R', 'index': '9', 'value': '99'}
+                    {'side': 'R', 'index': '9', 'number': '99'}
                 ),
                 (
                     "T2=123",
-                    {'side': 'T', 'index': '2', 'value': '123'}
+                    {'side': 'T', 'index': '2', 'number': '123'}
                 ),
                 # Valid input with spaces
                 (
                     " T 1 = 20 ",
-                    {'side': 'T', 'index': '1', 'value': '20'}
+                    {'side': 'T', 'index': '1', 'number': '20'}
                 ),
             ]
         self.valid_input_result: List[Tuple[str, Any]] = \
@@ -91,8 +91,8 @@ class TestFrameParser(TestParser):
                 "T1D=10",  # Extra character after '='
                 "T11=10",  # Invalid index (too long)
                 "B=10",  # Missing index
-                "T1=abc",  # Non-integer value
-                "T1=",  # Missing value after '='
+                "T1=abc",  # Non-integer number
+                "T1=",  # Missing number after '='
                 "T1==2",  # Multiple '=' signs
                 "L2=5x",  # Extra characters after valid input
                 "   ",  # Whitespace only

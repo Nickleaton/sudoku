@@ -35,17 +35,17 @@ class TestParser(unittest.TestCase):
         self.assertIsInstance(self.parser.regular_expression, re.Pattern)
 
     def test_parse_valid_input_result(self):
-        """Tests parsing a valid comma-separated list of digits."""
+        """Tests parsing start valid comma-separated list of digits."""
         for text, output in self.valid_input_result:
             self.parser.parse(text)
-            self.assertEqual(self.parser.result, output)
+            self.assertEqual(self.parser.parsed_data, output)
 
     def test_invalid_input(self):
         """Tests parsing invalid input_types raises ParserError."""
         for input_text in self.invalid_input:
             with self.assertRaises(ParserError) as _:
                 self.parser.parse(input_text)
-            self.assertIsNone(self.parser.result)
+            self.assertIsNone(self.parser.parsed_data)
 
     def test_repr(self):
         """Tests the __repr__ method."""
@@ -69,12 +69,12 @@ class TestParser(unittest.TestCase):
         """Test error cases."""
         with self.assertRaises(ParserError):
             self.parser.raise_error()
-        self.parser.result = 'xxx'
+        self.parser.parsed_data = 'xxx'
         self.parser.answer = 'xxx'
         try:
             self.parser.raise_error()
         except ParserError as e:
-            self.assertIsNone(self.parser.result)
+            self.assertIsNone(self.parser.parsed_data)
             self.assertIsNone(self.parser.answer)
             self.assertEqual(
                 str(e),

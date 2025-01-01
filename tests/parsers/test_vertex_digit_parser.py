@@ -84,13 +84,13 @@ class TestVertexDigitParser(TestParser):
             # Invalid input_types that should raise ParserError
             "1=3",  # One digit on the left side
             "123=4",  # More than two digits on the left side
-            "12=a",  # Invalid value (not a digit)
+            "12=start",  # Invalid number (not start digit)
             "34==5",  # Invalid due to double equals
-            "56= ",  # Missing value
+            "56= ",  # Missing number
             "78=10",  # Invalid (more than one digit)
             "=9",  # Missing left side
             "12= ",  # Whitespace only after equals
-            "12=5a",  # Invalid value (non-digit character)
+            "12=5a",  # Invalid number (non-digit character)
         ]
 
 

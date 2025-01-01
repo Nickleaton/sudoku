@@ -46,34 +46,34 @@ class TestOutsideArrowValueParser(TestParser):
             ),
         ]
         self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid input_types for the Outside Arrow value format
+            # Valid input_types for the Outside Arrow number format
             (
                 "T0=5",
-                {'side': 'T', 'index': '0', 'value': '5'}
+                {'side': 'T', 'index': '0', 'number': '5'}
             ),
             (
                 "L1=10",
-                {'side': 'L', 'index': '1', 'value': '10'}
+                {'side': 'L', 'index': '1', 'number': '10'}
             ),
             (
                 "B2=20",
-                {'side': 'B', 'index': '2', 'value': '20'}
+                {'side': 'B', 'index': '2', 'number': '20'}
             ),
             (
                 "R3=100",
-                {'side': 'R', 'index': '3', 'value': '100'}
+                {'side': 'R', 'index': '3', 'number': '100'}
             ),
             (
                 "T4=42",
-                {'side': 'T', 'index': '4', 'value': '42'}
+                {'side': 'T', 'index': '4', 'number': '42'}
             ),
             (
                 "B5=1",
-                {'side': 'B', 'index': '5', 'value': '1'}
+                {'side': 'B', 'index': '5', 'number': '1'}
             ),
             (
                 "R9=999",
-                {'side': 'R', 'index': '9', 'value': '999'}
+                {'side': 'R', 'index': '9', 'number': '999'}
             ),
         ]
 
@@ -81,14 +81,14 @@ class TestOutsideArrowValueParser(TestParser):
             # Invalid input_types that should raise ParserError
             "A0=5",  # Invalid side character
             "L10=10",  # Invalid index (more than one digit)
-            "T2=D",  # Invalid value (not a digit)
+            "T2=D",  # Invalid number (not start digit)
             "L3=I4",  # Invalid (non-digit after equals)
-            "B7=",  # Missing value
+            "B7=",  # Missing number
             "R=5",  # Missing index
             "=10",  # Missing side and index
             "T0==5",  # Invalid due to double equals
-            "T3=1a",  # Invalid value (non-digit character)
-            "B4=5,6",  # Invalid due to multiple values
+            "T3=1a",  # Invalid number (non-digit character)
+            "B4=5,6",  # Invalid due to multiple value_list
         ]
 
 

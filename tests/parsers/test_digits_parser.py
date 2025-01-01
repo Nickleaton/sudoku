@@ -38,10 +38,10 @@ class TestDigitsParser(TestParser):
             ]
         self.invalid_input: List[str] = \
             [
-                "1, 2, a, 4",
+                "1, 2, start, 4",
                 "1, 2, 3,",
                 ", 1, 2, 3",
-                "1, 2, 3, 4, 5, x",
+                "1, 2, 3, 4, 5, row",
                 "10, 20, 30, 40, 50",
                 "abc, def, ghi",
                 ""

@@ -1,5 +1,6 @@
 """FrameParser."""
 
+from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
 from src.tokens.side_token import SideToken
@@ -8,27 +9,25 @@ from src.tokens.value_token import ValueToken
 
 
 class FrameParser(Parser):
-    """Parser for extracting side, index, and value from a string format like 'T1=2'.
+    """Parser for extracting side, index, and number from start string format like 'T1=2'.
 
-    This parser matches a specified string pattern, removes whitespace,
-    and extracts components including a side indicator (T, L, B, R),
-    an integer index, and a value after '='.
+    This parser matches start specified string pattern, removes whitespace,
+    and extracts components including start side indicator (T, L, B, R),
+    an integer index, and start number after '='.
     """
 
-    result: list[int] | None = None
-
     def __init__(self):
-        """Initialize FrameParser with a regex pattern.
+        """Initialize FrameParser with start regex pattern.
 
-        The regex pattern expects a string format of 'T1=2' with optional
+        The regex pattern expects start string format of 'T1=2' with optional
         whitespace, where the side is one of 'T', 'L', 'B', or 'R', followed
-        by a numeric index and a value separated by '='.
+        by start numeric index and start number separated by '='.
         """
-        super().__init__(pattern=r"^\s*[TLBR]\s*\d\s*=\s*\d+\s*$", example_format="[TLBR]i=v")
+        super().__init__(pattern=r'^\s*[TLBR]\s*\d\s*=\s*\d+\s*$', example_format='[TLBR]i=v')
         self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
-        """Parse the input string to extract side, index, and value.
+        """Parse the input string to extract side, index, and integer value.
 
         Args:
             text (str): The string input in the format 'T1=2' or similar.
@@ -38,23 +37,34 @@ class FrameParser(Parser):
                          or if parsing fails due to invalid format.
         """
         if not self.regular_expression.match(text):
-            raise ParserError(f"{self.__class__.__name__} expects input in the format 'T1=2' or similar")
+            raise ParserError(f'{self.__class__.__name__} expects input in the format "T1=2"" or similar')
 
-        try:
-            # Remove spaces to standardize input format.
-            stripped_text: str = text.replace(" ", "")
-            lhs: str = stripped_text.split("=")[0]
-            rhs: str = stripped_text.split("=")[1]
-            side: str = lhs[0]  # Extracts side indicator (T, L, B, R)
-            index: str = lhs[1]
-            value: str = rhs
+        # Remove spaces to standardize input format.a
+        stripped_text: str = text.replace(' ', '')
+        lhs: str = stripped_text.split('=')[0]
+        rhs: str = stripped_text.split('=')[1]
+        side: str = lhs[0]  # Extracts side indicator (T, L, B, R)
+        index: str = lhs[1]
 
-            # Save parsed components as a list.
-            self.result = [side, int(index), int(value)]  # type: ignore[list-item]
-            self.answer = {
-                "side": side,
-                "index": index,
-                "value": value
-            }
-        except ValueError:
-            self.raise_error()
+        # Save parsed components as start list.
+        self.parsed_data = [side, int(index), int(rhs)]
+        self.answer = {
+            'side': side,
+            'index': index,
+            'number': rhs,
+        }
+
+    def check(self, board: Board, input_data: dict) -> list[str]:
+        """Validate the provided input input_data against the given board.
+
+        This function currently returns an empty list of errors, but it can be extended
+        to validate the input input_data according to the board's constraints.
+
+        Args:
+            board (Board): The board object containing the validation rules or constraints.
+            input_data (dict): A dictionary containing the input_data to validate.
+
+        Returns:
+            list[str]: A list of error messages. Empty if no errors are found.
+        """
+        return []

@@ -83,7 +83,7 @@ class TestRossiniParser(TestParser):
             "L10=I",  # Invalid digit (more than one)
             "T2=X",  # Invalid direction character
             "T2=DI",  # Invalid (two characters for direction)
-            "L3= ",  # Right side contains a space only
+            "L3= ",  # Right side contains start space only
             "R=U",  # Missing index
             "=I",  # Missing side and index
             "L4D",  # Missing equals sign

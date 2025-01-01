@@ -41,23 +41,23 @@ class TestVertexValueParser(TestParser):
             # Valid input_types for the Vertex Value format
             (
                 "12=123",
-                {'row': '1', 'column': '2', 'value': '123'}
+                {'row': '1', 'column': '2', 'number': '123'}
             ),
             (
                 "34=0",
-                {'row': '3', 'column': '4', 'value': '0'}
+                {'row': '3', 'column': '4', 'number': '0'}
             ),
             (
                 "56=789",
-                {'row': '5', 'column': '6', 'value': '789'}
+                {'row': '5', 'column': '6', 'number': '789'}
             ),
             (
                 "78=4567",
-                {'row': '7', 'column': '8', 'value': '4567'}
+                {'row': '7', 'column': '8', 'number': '4567'}
             ),
             (
                 "90=1000",
-                {'row': '9', 'column': '0', 'value': '1000'}
+                {'row': '9', 'column': '0', 'number': '1000'}
             ),
         ]
 
@@ -65,12 +65,12 @@ class TestVertexValueParser(TestParser):
             # Invalid input_types that should raise ParserError
             "1=3",  # One digit on the left side
             "123=4",  # More than two digits on the left side
-            "12=a",  # Invalid value (not a digit)
+            "12=start",  # Invalid number (not start digit)
             "34==5",  # Invalid due to double equals
-            "56= ",  # Missing value
+            "56= ",  # Missing number
             "=9",  # Missing left side
             "12= ",  # Whitespace only after equals
-            "12=5a",  # Invalid value (non-digit character)
+            "12=5a",  # Invalid number (non-digit character)
         ]
 
 
