@@ -1,12 +1,13 @@
-"""TestLittleKillersParser."""
+"""TestLittleKillerParser."""
 import unittest
 from typing import List, Tuple, Any
 
 from src.parsers.little_killers_parser import LittleKillerParser
+
 from tests.parsers.test_parser import TestParser
 
 
-class TestLittleKillersParser(TestParser):
+class TestLittleKillerParser(TestParser):
     """Test case for the LittleKillerParser class."""
 
     def setUp(self):
