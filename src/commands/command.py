@@ -30,7 +30,7 @@ class Command:
     """Base class for all commands implementing the Command pattern.
 
     Commands define specific behaviors through their `work` method and manage
-    inputs, outputs, and parameters dynamically.
+    inputs, outputs, and input_data dynamically.
     """
 
     def __init__(self) -> None:
@@ -40,10 +40,10 @@ class Command:
         self.output_types: list[KeyType] = []
 
     def apply_parameters(self, problem: Problem) -> None:
-        """Set parameters in the problem instance.
+        """Set input_data in the problem instance.
 
         Args:
-            problem (Problem): The problem where parameters are being set.
+            problem (Problem): The problem where input_data are being set.
         """
         for parameter_item in self.parameters_list:
             problem[parameter_item.key] = parameter_item.value
@@ -74,12 +74,12 @@ class Command:
 
     @staticmethod
     def validate_parameters(problem: Problem, parameters_list: list[ParameterValueType], check_exists: bool) -> None:
-        """Validate a list of parameters based on their existence and type in the problem.
+        """Validate a list of input_data based on their existence and type in the problem.
 
         Args:
             problem (Problem): The problem instance to validate.
-            parameters_list (list[ParameterValueType]): The list of parameters to validate.
-            check_exists (bool): If True, ensures the parameters exist; if False, ensures they do not.
+            parameters_list (list[ParameterValueType]): The list of input_data to validate.
+            check_exists (bool): If True, ensures the input_data exist; if False, ensures they do not.
         """
         for parameter_item in parameters_list:
             Command.validate_single_parameter(problem, parameter_item, check_exists)
@@ -110,12 +110,12 @@ class Command:
 
     @staticmethod
     def validate_values(problem: Problem, value_list: list[KeyType], check_exists: bool) -> None:
-        """Validate a list of values based on their existence and type in the problem.
+        """Validate a list of value_variables based on their existence and type in the problem.
 
         Args:
             problem (Problem): The problem instance to validate.
-            value_list (list[KeyType]): The list of values to validate.
-            check_exists (bool): If True, ensures the values exist; if False, ensures they do not.
+            value_list (list[KeyType]): The list of value_variables to validate.
+            check_exists (bool): If True, ensures the value_variables exist; if False, ensures they do not.
         """
         for value_item in value_list:
             Command.validate_single_value(problem, value_item, check_exists)
@@ -133,7 +133,7 @@ class Command:
         """Perform validation and setup before command execution.
 
         Args:
-            problem (Problem): The problem instance where parameters and inputs are validated and applied.
+            problem (Problem): The problem instance where input_data and inputs are validated and applied.
         """
         self.validate_parameters(problem, self.parameters_list, check_exists=False)
         self.apply_parameters(problem)
@@ -152,7 +152,7 @@ class Command:
     def execute(self, problem: Problem) -> None:
         """Execute the command, performing validation and the main action.
 
-        This method validates the parameters, inputs, and outputs, performs the core work of the command,
+        This method validates the input_data, inputs, and outputs, performs the core work of the command,
         and performs post-execution validation.
 
         Args:

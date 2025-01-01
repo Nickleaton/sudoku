@@ -16,7 +16,7 @@ class FileWriterCommand(SimpleCommand):
 
         Args:
             target (str): Name of the text to write to the file_path
-            file_name (str): The name of the variable to store the name of the file_path in the problem.
+            file_name (str): The name of the value_variable to store the name of the file_path in the problem.
             file_path ( Path | None): Path to the template file_path.
         """
         super().__init__()

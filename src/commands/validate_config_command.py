@@ -5,7 +5,7 @@ from strictyaml import YAMLValidationError, dirty_load
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.parsers.config_schema import problem_schema
+from src.schema.config_schema import problem_schema
 
 
 class ValidateConfigCommand(SimpleCommand):

@@ -17,7 +17,7 @@ class LoadConfigCommand(SimpleCommand):
 
         Args:
             source (str): Name of string containing the config in the problem.
-            target (str): The name of the variable to store the parsed config in the problem.
+            target (str): The name of the value_variable to store the parsed config in the problem.
         """
         super().__init__()
         self.source: str = source

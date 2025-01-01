@@ -10,7 +10,7 @@ from src.commands.simple_command import SimpleCommand
 
 
 class CreateBoardCommand(SimpleCommand):
-    """Command to create start board from configuration data."""
+    """Command to create start board from configuration input_data."""
 
     def __init__(self, source: str = 'config', target: str = 'board'):
         """Initialize start CreateBoardCommand instance.

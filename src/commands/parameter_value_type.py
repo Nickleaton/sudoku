@@ -8,7 +8,7 @@ class ParameterValueType:
     Attributes:
         key (str): The identifier for the parameter.
         parameter_value (Any): The input_value associated with the parameter.
-        typ (Type): The expected data type for the input_value.
+        typ (Type): The expected input_data type for the input_value.
     """
 
     def __init__(self, key: str, parameter_value: Any, typ: Type):
@@ -17,7 +17,7 @@ class ParameterValueType:
         Args:
             key (str): The name or identifier for the parameter.
             parameter_value (Any): The input_value associated with the parameter.
-            typ (Type): The expected data type for the parameter.
+            typ (Type): The expected input_data type for the parameter.
 
         Raises:
             TypeError: If the input_value does not match the specified type, unless the type is `Any`.

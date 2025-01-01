@@ -6,7 +6,7 @@ from src.solvers.answer import Answer
 
 
 class SVGAnswerCommand(SVGCommand):
-    """Command to create an SVG drawing of the data."""
+    """Command to create an SVG drawing of the input_data."""
 
     def select(self, constraint: Item | None) -> bool:
         """Determine if the constraint should be included in the output.

@@ -17,7 +17,7 @@ class AnalyseLogFileCommand(Command):
         """Initialize the AnalyseLogFileCommand.
 
         Args:
-            log (str): The key in the problem where log data is stored. Defaults to 'log'.
+            log (str): The key in the problem where log input_data is stored. Defaults to 'log'.
             target (str): The key in the problem to store the analysis result. Defaults to 'log_analysis'.
         """
         super().__init__()
@@ -50,9 +50,9 @@ class AnalyseLogFileCommand(Command):
         """Analyze the log file and update the problem with the analysis result.
 
         Args:
-            problem (Problem): The problem instance containing the log data.
+            problem (Problem): The problem instance containing the log input_data.
             log_path (Path): The path to the log file.
-            application_name (str): The application name from the log data.
+            application_name (str): The application name from the log input_data.
 
         Raises:
             CommandException: If an error occurs while analyzing the log file.
@@ -79,7 +79,7 @@ class AnalyseLogFileCommand(Command):
         """Execute the command to analyze the solver's log file.
 
         Args:
-            problem (Problem): The problem instance containing the log data.
+            problem (Problem): The problem instance containing the log input_data.
         """
         log_data: dict = problem[self.log]
         application_name: str = log_data['application_name']

@@ -75,7 +75,7 @@ class SVGCommand(SimpleCommand):
         )
 
         # Add CSS
-        canvas.add(Style(content=f'\n{Item.css_text(problem.constraints.css(), 0)}'))
+        canvas.add(Style(content=f'\n{Item.css_text(problem.constraints.css())}'))
 
         # Add elements
         for clz in problem.constraints.sorted_glyphs().used_classes:
