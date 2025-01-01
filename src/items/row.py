@@ -19,7 +19,7 @@ class Row(StandardRegion):
             index (int): The index of the row on the board.
         """
         super().__init__(board, index)
-        self.add_items([Cell.make(board, index, row) for row in board.row_range])
+        self.add_components([Cell.make(board, index, row) for row in board.row_range])
         self.strict = True
         self.unique = True
 
@@ -65,4 +65,4 @@ class Row(StandardRegion):
         Returns:
             str: A string representation of the Row.
         """
-        return f"{self.__class__.__name__}({self.index})"
+        return f'{self.__class__.__name__}({self.index})'

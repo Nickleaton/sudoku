@@ -1,5 +1,5 @@
 """ClonedRegion."""
-from typing import Type, Iterator
+from typing import Iterator, Type
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -11,36 +11,38 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class ClonedRegion(Item):
-    """Represents start cloned region constraint in start Sudoku variant."""
+    """Represents a cloned region constraint in a Sudoku variant."""
 
-    def __init__(self, board: Board, cells_a: list[Cell], cells_b: list[Cell]):
-        """Initialize start ClonedRegion with two sets of cells that must have the same value_list.
+    def __init__(self, board: Board, cells_a: list[Cell], cells_b: list[Cell]) -> None:
+        """Initialize ClonedRegion with two sets of cells that must have the same cell_values.
 
         Args:
             board (Board): The Sudoku board instance.
             cells_a (list[Cell]): The first set of cells in the cloned region.
             cells_b (list[Cell]): The second set of cells in the cloned region.
+
+        Raises:
+            SudokuException: If the length of `cells_a` does not match the length of `cells_b`.
         """
         super().__init__(board)
         if len(cells_a) != len(cells_b):
             raise SudokuException(
-                f"Length mismatch: cells_a has {len(cells_a)} elements, but cells_b has {len(cells_b)} elements."
+                f'Length mismatch: cells_a has {len(cells_a)} elements, but cells_b has {len(cells_b)} elements.',
             )
         self.region_a: list[Cell] = cells_a
         self.region_b: list[Cell] = cells_b
 
     def __repr__(self) -> str:
-        """Provide start string representation of the ClonedRegion instance.
+        """Provide string representation of the ClonedRegion instance.
 
         Returns:
             str: A string representing the ClonedRegion.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.region_a!r}, "
-            f"{self.region_b!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.region_a!r}, '
+            f'{self.region_b!r})'
         )
 
     @classmethod
@@ -62,7 +64,7 @@ class ClonedRegion(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start ClonedRegion from YAML configuration.
+        """Create a ClonedRegion from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -76,6 +78,15 @@ class ClonedRegion(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Alternative method to create a ClonedRegion from YAML input_data.
+
+        Args:
+            board (Board): The Sudoku board instance.
+            yaml_data (dict): The YAML input_data.
+
+        Returns:
+            Item: An instance of ClonedRegion.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -93,12 +104,12 @@ class ClonedRegion(Item):
         Returns:
             set[Type[Item]]: A set of constraint types used in the cloned region.
         """
-        result = super().used_classes
-        for item in self.region_a:
-            result |= item.used_classes
-        for item in self.region_b:
-            result |= item.used_classes
-        return result
+        used_classes_set = super().used_classes
+        for cell_a in self.region_a:
+            used_classes_set |= cell_a.used_classes
+        for cell_b in self.region_b:
+            used_classes_set |= cell_b.used_classes
+        return used_classes_set
 
     def walk(self) -> Iterator[Item]:
         """Walk through all vectors in the cloned region.
@@ -107,10 +118,10 @@ class ClonedRegion(Item):
             Iterator[Item]: An iterator of vectors within the cloned region.
         """
         yield self
-        for item in self.region_a:
-            yield from item.walk()
-        for item in self.region_b:
-            yield from item.walk()
+        for cell_a in self.region_a:
+            yield from cell_a.walk()
+        for cell_b in self.region_b:
+            yield from cell_b.walk()
 
     @property
     def rules(self) -> list[Rule]:
@@ -119,13 +130,10 @@ class ClonedRegion(Item):
         Returns:
             list[Rule]: A list containing the rule for cloned regions.
         """
-        return [
-            Rule(
-                "ClonedRegion",
-                1,
-                "The shaded areas are clones. They contain the same digits at the same locations."
-            )
-        ]
+        rule_description: str = (
+            'The shaded areas are clones. They contain the same digits at the same locations.'
+        )
+        return [Rule('ClonedRegion', 1, rule_description)]
 
     @property
     def tags(self) -> set[str]:
@@ -138,26 +146,28 @@ class ClonedRegion(Item):
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
-        """Add constraints to ensure cloned regions have the same value_list.
+        """Add constraints to ensure cloned regions have the same target_value.
 
         Args:
             solver (PulpSolver): The solver to add constraints to.
         """
-        for cell_1, cell_2 in zip(self.region_a, self.region_b):
-            name = f"{self.__class__.__name__}_{cell_1.row}{cell_1.column}_{cell_2.row}{cell_2.column}"
-            value_1 = solver.values[cell_1.row][cell_1.column]
-            value_2 = solver.values[cell_2.row][cell_2.column]
-            solver.model += value_1 == value_2, name
+        for first_cell, second_cell in zip(self.region_a, self.region_b):
+            first_str: str = f'{first_cell.row}{first_cell.column}'
+            second_str: str = f'{second_cell.row}{second_cell.column}'
+            constraint_name: str = f'{self.__class__.__name__}_{first_str}_{second_str}'
+            value_first = solver.cell_values[first_cell.row][first_cell.column]
+            value_second = solver.cell_values[second_cell.row][second_cell.column]
+            solver.model += value_first == value_second, constraint_name
 
     def to_dict(self) -> dict:
-        """Convert the cloned region to start dictionary representation.
+        """Convert the cloned region to a dictionary representation.
 
         Returns:
             dict: A dictionary representation of the cloned region.
         """
-        cell_str_a = ",".join([f"{cell.row}{cell.column}" for cell in self.region_a])
-        cell_str_b = ",".join([f"{cell.row}{cell.column}" for cell in self.region_b])
-        return {self.__class__.__name__: f"{cell_str_a}={cell_str_b}"}
+        cell_str_a: str = ','.join([f'{cell.row}{cell.column}' for cell in self.region_a])
+        cell_str_b: str = ','.join([f'{cell.row}{cell.column}' for cell in self.region_b])
+        return {self.__class__.__name__: f'{cell_str_a}={cell_str_b}'}
 
     def css(self) -> dict:
         """Return the CSS styling for the cloned region glyphs.
@@ -170,19 +180,19 @@ class ClonedRegion(Item):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 2,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.ClonedRegionForeground': {
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.ClonedRegionBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }

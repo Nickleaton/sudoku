@@ -16,11 +16,13 @@ class Constraints(ComposedItem):
             board (Board): The board to which these constraints apply.
         """
         super().__init__(board, [])
-        self._n = 0  # This could represent the number of constraints or similar purpose
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Constraints':
-        """Create start Constraints instance from YAML configuration.
+        """Create a Constraints instance from a YAML configuration.
+
+        This method processes the YAML configuration to create constraints
+        that are applied to the provided board.
 
         Args:
             board (Board): The board to which these constraints apply.
@@ -29,46 +31,112 @@ class Constraints(ComposedItem):
         Returns:
             Constraints: An instance of `Constraints` populated with the given configuration.
         """
-        # Instantiate the Constraints object that will hold all parsed constraints
-        result = cls(board)
+        constraints = cls(board)
 
-        # Check if the current class name is start key in the YAML configuration
-        # If not, skip processing as no relevant constraints are defined
-        if cls.__name__ in yaml:
-            # Extract the constraints data specific to this class from the YAML configuration
-            parts: dict | list = yaml[cls.__name__]
+        # Retrieve parts using .get() to avoid potential KeyError
+        parts: dict | list = yaml.get(cls.__name__, {})
 
-            # If `parts` is start dictionary, it represents start named set of constraints
-            if isinstance(parts, dict):
-                for key, value in parts.items():
-                    # Each key corresponds to start specific constraint type (subclass of Item)
-                    # Each number is start dictionary containing the constraint's configuration or `None`
-                    sub_yaml: dict = {} if value is None else value
+        if isinstance(parts, dict):
+            constraints = cls.process_dict_constraints(board, parts, constraints)
+        elif isinstance(parts, list):
+            constraints = cls.process_list_constraints(board, parts, constraints)
 
-                    # Retrieve the appropriate subclass from Item's registered classes
-                    # pylint: disable=loop-invariant-statement
-                    sub_class: Type[Item] = Item.classes[key]
-
-                    # If the subclass is composite (contains other constraints),
-                    # recursively create and add it as start composite constraint
-                    if sub_class.is_composite():
-                        result.add(sub_class.create(board, {key: sub_yaml}))
-                    elif isinstance(sub_yaml, list):
-                        # If the subclass expects multiple constraints, represented as start list,
-                        # create each constraint in the list as an individual constraint
-                        for data in sub_yaml:
-                            # Create each constraint constraint and add it to the result
-                            result.add(sub_class.create(board, {key: data}))
-
-            # If `parts` is start list, it represents multiple instances of start single constraint type
-            elif isinstance(parts, list):
-                for data in parts:
-                    # Use the generic Item class to create each constraint from the list
-                    result.add(Item.create(board, data))
-
-        # Return the populated Constraints instance
-        return result
+        return constraints
 
     @classmethod
-    def create2(cls, board: Board, yaml_data: dict) -> Item:
+    def process_dict_constraints(
+        cls,
+        board: Board,
+        parts: dict,
+        constraints: 'Constraints',
+    ) -> 'Constraints':
+        """Process constraints specified in the YAML dictionary.
+
+        This method handles the creation of constraints for each item defined
+        in the dictionary. Each key in the dictionary corresponds to a specific
+        constraint type.
+
+        Args:
+            board (Board): The board to which the constraints apply.
+            parts (dict): A dictionary where keys are constraint types and cell_values are their configurations.
+            constraints (Constraints): The Constraints instance to populate.
+
+        Returns:
+            Constraints: The updated Constraints instance with the added constraints.
+        """
+        for key, constraint_data in parts.items():
+            sub_yaml: dict = {} if constraint_data is None else constraint_data
+            sub_class: Type[Item] = Item.classes.get(key)
+            if sub_class.is_composite():
+                constraints.add(sub_class.create(board, {key: sub_yaml}))
+            elif isinstance(sub_yaml, list):
+                constraints = cls.process_list_sub_constraints(board, sub_yaml, sub_class, key, constraints)
+            else:
+                constraints.add(sub_class.create(board, {key: sub_yaml}))
+        return constraints
+
+    @classmethod
+    def process_list_constraints(
+        cls,
+        board: Board,
+        parts: list,
+        constraints: 'Constraints',
+    ) -> 'Constraints':
+        """Process a list of constraints.
+
+        This method creates a single instance of the constraint for each item
+        in the list and adds it to the `Constraints` instance.
+
+        Args:
+            board (Board): The board to which the constraints apply.
+            parts (list): A list of constraints to process.
+            constraints (Constraints): The Constraints instance to populate.
+
+        Returns:
+            Constraints: The updated Constraints instance with the added constraints.
+        """
+        for constraint_instance in parts:
+            constraints.add(Item.create(board, constraint_instance))
+        return constraints
+
+    @classmethod
+    def process_list_sub_constraints(
+        cls,
+        board: Board,
+        sub_yaml: list,
+        sub_class: Type[Item],
+        key: str,
+        constraints: 'Constraints',
+    ) -> 'Constraints':
+        """Process a list of sub-constraints.
+
+        This method handles cases where the constraint type is a composite and
+        contains a list of sub-constraints. Each sub-constraint is processed and added
+        to the `Constraints` instance.
+
+        Args:
+            board (Board): The board to which the constraints apply.
+            sub_yaml (list): A list of sub-constraints to process.
+            sub_class (Type[Item]): The subclass of `Item` representing the type of constraint.
+            key (str): The key used to identify the constraint type in the YAML configuration.
+            constraints (Constraints): The Constraints instance to populate.
+
+        Returns:
+            Constraints: The updated Constraints instance with the added sub-constraints.
+        """
+        for constraint_instance in sub_yaml:
+            constraints.add(sub_class.create(board, {key: constraint_instance}))
+        return constraints
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> 'Constraints':
+        """Create start Constraints instance from YAML configuration.
+
+        Args:
+            board (Board): The board to which these constraints apply.
+            yaml_data (dict): A dictionary containing the YAML configuration for the constraints.
+
+        Returns:
+            Constraints: An instance of `Constraints` populated with the given configuration.
+        """
         return cls.create(board, yaml_data)

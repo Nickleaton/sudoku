@@ -9,7 +9,7 @@ from src.utils.variable_type import VariableType
 
 
 class VariableDifferencePair(VariablePair):
-    """Represents start pair of cells with start fixed difference indicated by start white dot."""
+    """Represents a pair of cells with start fixed difference indicated by start white dot."""
 
     @property
     def rules(self) -> list[Rule]:
@@ -18,24 +18,17 @@ class VariableDifferencePair(VariablePair):
         Returns:
             list[Rule]: A list of rules describing the VariableDifferencePair constraints.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                (
-                    "A white dot between two cells means that the digits in those cells "
-                    "have start fixed difference."
-                )
-            )
-        ]
+        rule_text: str = """A white dot between two cells means that the digits in
+                         those cells have start fixed difference."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def variable_type(self) -> VariableType:
-        """Define the type of variable for this pair.
+        """Define the type of value_variable for this pair.
 
         Returns:
-            VariableType: The type of the variable, which is an integer.
+            VariableType: The type of the value_variable, which is an integer.
         """
-        return VariableType.INT
+        return VariableType.integer
 
     @property
     def tags(self) -> set[str]:
@@ -55,8 +48,8 @@ class VariableDifferencePair(VariablePair):
         Returns:
             LpElement: The absolute difference between the value_list of the two cells.
         """
-        v1 = solver.values[self.cell_1.row][self.cell_1.column]
-        v2 = solver.values[self.cell_2.row][self.cell_2.column]
+        v1 = solver.cell_values[self.cell1.row][self.cell1.column]
+        v2 = solver.cell_values[self.cell2.row][self.cell2.column]
         return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
 
     def css(self) -> dict:
@@ -69,6 +62,6 @@ class VariableDifferencePair(VariablePair):
             '.FixedDifferencePair': {
                 'fill': 'white',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

@@ -1,6 +1,5 @@
 """MinMaxDifference."""
 import re
-from typing import Any
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -21,7 +20,7 @@ class MinMaxDifference(FirstN):
     corresponding row or column in the given direction.
     """
 
-    def __init__(self, board: Board, side: Side, index: int, total: int):
+    def __init__(self, board: Board, side: Side, index: int, total: int) -> None:
         """Initialize start MinMaxDifference frame.
 
         Args:
@@ -31,7 +30,7 @@ class MinMaxDifference(FirstN):
             total (int): The difference of the minimum and maximum value_list.
         """
         super().__init__(board, side, index)
-        self.total = total
+        self.total: int = total
 
     def __repr__(self) -> str:
         """Return start string representation of the MinMaxDifference frame.
@@ -40,11 +39,11 @@ class MinMaxDifference(FirstN):
             str: A string representation of the object.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.side!r}, "
-            f"{self.total}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.side!r}, '
+            f'{self.total}'
+            f')'
         )
 
     @property
@@ -54,14 +53,11 @@ class MinMaxDifference(FirstN):
         Returns:
             list[Rule]: A list containing the rules.
         """
-        return [
-            Rule(
-                'MinMaxDifference',
-                1,
-                "Numbers outside the frame equal the difference of the minimum and maximum number in the "
-                "corresponding row or column in the given direction"
-            )
-        ]
+        rule_description: str = """
+            Numbers outside the frame equal the difference of the minimum and maximum number
+            in the corresponding row or column in the given direction
+        """
+        return [Rule('MinMaxDifference', 1, rule_description)]
 
     def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing the MinMaxDifference frame.
@@ -74,8 +70,8 @@ class MinMaxDifference(FirstN):
                 'MinMaxDifferenceText',
                 0,
                 self.side.marker(self.board, self.index).center,
-                str(self.total)
-            )
+                str(self.total),
+            ),
         ]
 
     @property
@@ -88,20 +84,23 @@ class MinMaxDifference(FirstN):
         return super().tags.union({'Comparison', 'MinMaxDifference', 'Minimum', 'Maximum', 'Difference'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Side, int, int]:
         """Extract the side, index, and total from the YAML configuration.
 
         Args:
             board (Board): The board the configuration is for.
-            yaml (dict): The YAML configuration data.
+            yaml (dict): The YAML configuration input_data.
 
         Returns:
             tuple: A tuple containing the side, index, and total.
+
+        Raises:
+            SudokuException: If no match is found in the YAML.
         """
-        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([0-9]+)")
+        regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([0-9]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)
@@ -114,7 +113,7 @@ class MinMaxDifference(FirstN):
 
         Args:
             board (Board): The board to create the frame on.
-            yaml (dict): The YAML configuration data.
+            yaml (dict): The YAML configuration input_data.
 
         Returns:
             Item: The created MinMaxDifference constraint.
@@ -124,6 +123,15 @@ class MinMaxDifference(FirstN):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start MinMaxDifference frame from the YAML configuration.
+
+        Args:
+            board (Board): The board to create the frame on.
+            yaml_data (dict): The YAML configuration input_data.
+
+        Returns:
+            Item: The created MinMaxDifference constraint.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -132,7 +140,7 @@ class MinMaxDifference(FirstN):
         Args:
             solver (PulpSolver): The solver to add the constraint to.
         """
-        xi = [solver.values[cell.row][cell.column] for cell in self.cells]
+        xi = [solver.cell_values[cell.row][cell.column] for cell in self.cells]
         mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
         maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
         solver.model += Formulations.abs(solver.model, mini, maxi, self.board.maximum_digit) == self.total, self.name
@@ -143,7 +151,7 @@ class MinMaxDifference(FirstN):
         Returns:
             dict: The dictionary representation of the object.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.index}={self.total}'}
 
     def css(self) -> dict:
         """Get the CSS styles for rendering the MinMaxDifference frame.
@@ -152,17 +160,17 @@ class MinMaxDifference(FirstN):
             dict: The dictionary containing CSS styles.
         """
         return {
-            ".MinMaxDifferenceTextForeground": {
-                "fill": "black",
-                "font-size": "30px",
-                "stroke": "black",
-                "stroke-width": 1
+            '.MinMaxDifferenceTextForeground': {
+                'fill': 'black',
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 1,
             },
-            ".MinMaxDifferenceTextBackground": {
-                "fill": "white",
-                "font-size": "30px",
-                "font-weight": "bolder",
-                "stroke": "white",
-                "stroke-width": 8
-            }
+            '.MinMaxDifferenceTextBackground': {
+                'fill': 'white',
+                'font-size': '30px',
+                'font-weight': 'bolder',
+                'stroke': 'white',
+                'stroke-width': 8,
+            },
         }

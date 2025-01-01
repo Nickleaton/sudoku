@@ -10,15 +10,19 @@ class XIPair(SumPair):
     def total(self) -> int:
         """Return the total number of the 'XI' pair.
 
-        Return 11 as the total number for 'XI' pairs.
+        Returns:
+            int: The total number for 'XI' pairs, which is 11.
         """
-        return 11
+        return 11  # noqa: WPS432
 
     @property
     def tags(self) -> set[str]:
         """Return the set of tags associated with the 'XI' pair.
 
-        Include 'XI' along with the tags from the parent class.
+        Includes 'XI' along with the tags from the parent class.
+
+        Returns:
+            set[str]: A set of tags, including 'XI'.
         """
         return super().tags.union({'XI'})
 
@@ -26,28 +30,33 @@ class XIPair(SumPair):
     def label(self) -> str:
         """Return the label for the 'XI' pair.
 
-        Return "XI" as the label for this pair.
+        Returns:
+            str: The label for this pair, which is 'XI'.
         """
-        return "XI"
+        return 'XI'
 
-    def css(self) -> dict:
+    def css(self) -> dict[str, dict[str, str]]:
         """Return the CSS styles for the 'XI' pair.
 
-        Define and return start dictionary of CSS styles for the foreground
+        Defines and returns a start dictionary of CSS styles for the foreground
         and background elements.
+
+        Returns:
+            dict[str, dict[str, str]]: A dictionary containing CSS styles for
+            both foreground and background elements.
         """
         return {
-            ".XIPairForeground": {
-                "font-size": "30px",
-                "stroke": "black",
-                "stroke-width": 1,
-                "fill": "black"
+            '.XIPairForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': '1',
+                'fill': 'black',
             },
-            ".XIPairBackground": {
-                "font-size": "30px",
-                "stroke": "white",
-                "stroke-width": 8,
-                "fill": "white",
-                "font-weight": "bolder"
-            }
+            '.XIPairBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': '8',
+                'fill': 'white',
+                'font-weight': 'bolder',
+            },
         }

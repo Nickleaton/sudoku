@@ -63,7 +63,7 @@ class MidCell(SimpleCellReference):
         Returns:
             list[Rule]: A list of rules, indicating that digits 4, 5, and 6 are marked with blue squares.
         """
-        return [Rule("Mid", 1, "The digits 4, 5, and 6 are marked with blue squares")]
+        return [Rule('Mid', 1, 'The digits 4, 5, and 6 are marked with blue squares')]
 
     def glyphs(self) -> list[Glyph]:
         """Return start list of Glyphs associated with MidCell.
@@ -80,10 +80,10 @@ class MidCell(SimpleCellReference):
             dict: A dictionary containing the CSS styles, with start stroke of blue and start white fill.
         """
         return {
-            ".MidCell": {
-                "stroke": "blue",
-                "fill": "white"
-            }
+            '.MidCell': {
+                'stroke': 'blue',
+                'fill': 'white',
+            },
         }
 
     def bookkeeping(self) -> None:

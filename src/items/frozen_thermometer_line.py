@@ -1,6 +1,6 @@
 """FrozenThermometerLine."""
-from src.glyphs.frozen_thermometer_glyph import FrozenThermometerGlyph
 from src.glyphs.glyph import Glyph
+from src.glyphs.thermometer_glyph import ThermometerGlyph
 from src.items.box import Box
 from src.items.column import Column
 from src.items.row import Row
@@ -22,8 +22,8 @@ class FrozenThermometerLine(ThermometerLine):
         Returns:
             list[Rule]: A list of rules specific to the Frozen Thermometer line.
         """
-        return [Rule('FrozenThermometerLine', 1,
-                     "Cells along start line with start bulb increase or stay the same from the bulb end")]
+        rule_text: str = 'Cells along start line with start bulb increase or stay the same from the bulb end'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Frozen Thermometer line.
@@ -31,9 +31,7 @@ class FrozenThermometerLine(ThermometerLine):
         Returns:
             list[Glyph]: A list of glyphs representing the Frozen Thermometer line.
         """
-        return [
-            FrozenThermometerGlyph('FrozenThermometerLine', [cell.coord for cell in self.cells])
-        ]
+        return [ThermometerGlyph(self.__class__.__name__, [cell.coord for cell in self.cells])]
 
     @property
     def tags(self) -> set[str]:
@@ -42,27 +40,23 @@ class FrozenThermometerLine(ThermometerLine):
         Returns:
             set[str]: A set of tags specific to the Frozen Thermometer line.
         """
-        return super().tags.union({'Frozen', 'FrozenThermometerLine'})
+        return super().tags.union({'Frozen', self.__class__.__name__})
 
-    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver for the Frozen Thermometer line.
 
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.
         """
-        for i in range(1, len(self.cells)):
-            cell_1 = self.cells[i - 1]
-            cell_2 = self.cells[i]
-
+        for cell1, cell2 in zip(self.cells[:-1], self.cells[1:]):
             unique = {Box, Row, Column}
-            region_1 = {region for region in cell_1.top.regions() if region.__class__ in unique}
-            region_2 = {region for region in cell_2.top.regions() if region.__class__ in unique}
+            region1 = {region for region in cell1.top.regions() if region.__class__ in unique}
+            region2 = {region for region in cell2.top.regions() if region.__class__ in unique}
 
-            name = f"{self.__class__.__name__}_rank_{cell_1.row}_{cell_1.column}_{cell_2.row}_{cell_2.column}"
-            lower = solver.values[cell_1.row][cell_1.column]
-            upper = solver.values[cell_2.row][cell_2.column]
-            if len(region_1.intersection(region_2)) == 0:
+            name = f'{self.__class__.__name__}_rank_{cell1.row}_{cell1.column}_{cell2.row}_{cell2.column}'
+            lower = solver.cell_values[cell1.row][cell1.column]
+            upper = solver.cell_values[cell2.row][cell2.column]
+            if region1.intersection(region2):
                 solver.model += lower <= upper, name
             else:
                 solver.model += lower + 1 <= upper, name
@@ -79,11 +73,11 @@ class FrozenThermometerLine(ThermometerLine):
                 'stroke-width': 20,
                 'stroke-linecap': 'round',
                 'stroke-linejoin': 'round',
-                'fill-opacity': 0
+                'fill-opacity': 0,
             },
             '.FrozenThermometerStart': {
                 'stroke': 'grey',
                 'fill': 'grey',
-                'stroke-width': 30
-            }
+                'stroke-width': 30,
+            },
         }

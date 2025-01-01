@@ -21,7 +21,7 @@ class SpecialRegion(Region):
             board (Board): The Sudoku board instance.
         """
         super().__init__(board)
-        self.add_items([Cell.make(board, int(coord.row), int(coord.column)) for coord in self.coords()])
+        self.add_components([Cell.make(board, int(coord.row), int(coord.column)) for coord in self.coords()])
 
     def region_name(self) -> str:
         """Get the name of the special region.
@@ -29,7 +29,7 @@ class SpecialRegion(Region):
         Returns:
             str: The name of the region.
         """
-        return ""
+        return ''
 
     def coords(self) -> list[Coord]:
         """Get the coordinates of the cells in the special region.
@@ -58,7 +58,7 @@ class SpecialRegion(Region):
         Returns:
             str: A string representation of the region.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'
 
     @property
     def rules(self) -> list[Rule]:

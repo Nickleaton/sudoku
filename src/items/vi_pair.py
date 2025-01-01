@@ -13,7 +13,7 @@ class VIPair(SumPair):
         Returns:
             int: The total number for 'VI' pairs, which is 6.
         """
-        return 6
+        return 6  # noqa: WPS432
 
     @property
     def tags(self) -> set[str]:
@@ -31,31 +31,32 @@ class VIPair(SumPair):
         """Get the label for the 'VI' pair.
 
         Returns:
-            str: The label for this pair, which is "VI".
+            str: The label for this pair, which is 'VI'.
         """
-        return "VI"
+        return 'VI'
 
-    def css(self) -> dict:
+    def css(self) -> dict[str, dict[str, str]]:
         """Get the CSS styles for the 'VI' pair.
 
-        Defines and returns start dictionary of CSS styles for the foreground
+        Defines and returns a start dictionary of CSS styles for the foreground
         and background elements.
 
         Returns:
-            dict: A dictionary containing CSS styles for the 'VI' pair.
+            dict[str, dict[str, str]]: A dictionary containing CSS styles for
+            the 'VI' pair.
         """
         return {
-            ".VIPairForeground": {
-                "font-size": "30px",
-                "stroke": "black",
-                "stroke-width": 1,
-                "fill": "black"
+            '.VIPairForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': '1',
+                'fill': 'black',
             },
-            ".VIPairBackground": {
-                "font-size": "30px",
-                "stroke": "white",
-                "stroke-width": 8,
-                "fill": "white",
-                "font-weight": "bolder"
-            }
+            '.VIPairBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': '8',
+                'fill': 'white',
+                'font-weight': 'bolder',
+            },
         }

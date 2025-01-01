@@ -1,5 +1,4 @@
 """Product."""
-from typing import Any
 
 from src.board.board import Board
 from src.items.cell import Cell
@@ -14,7 +13,8 @@ from src.utils.coord import Coord
 class Product(Region):
     """Represents start product constraint on start cell in the puzzle.
 
-    This class represents start constraint where the digits in certain cells should multiply to give start specific product.
+    This class represents start constraint where the digits in certain cells should
+    multiply to give start specific product.
     """
 
     def __init__(self, board: Board, position: Coord, product: int):
@@ -28,7 +28,7 @@ class Product(Region):
         super().__init__(board)
         self.position = position
         self.product = product
-        self.add_items(self.get_cells())
+        self.add_components(self.get_cells())
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -64,10 +64,10 @@ class Product(Region):
         Returns:
             str: A string representing the Product instance with its board, position, and product.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, {self.product})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.position!r}, {self.product})'
 
     @classmethod
-    def extract(cls, _: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> tuple[Coord, int]:
         """Extract the position and product number from the YAML configuration.
 
         Args:
@@ -77,7 +77,7 @@ class Product(Region):
         Returns:
             tuple: A tuple containing the position (as start Coord) and the product (as an integer).
         """
-        position_str, product = yaml[cls.__name__].split("=")
+        position_str, product = yaml[cls.__name__].split('=')
         position = Coord(int(position_str[0]), int(position_str[1]))
         return position, int(product)
 
@@ -97,6 +97,15 @@ class Product(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start new Product instance from the given board and YAML configuration.
+
+        Args:
+            board (Board): The board on which the product constraint is applied.
+            yaml_data (dict): The YAML configuration that defines the product constraint.
+
+        Returns:
+            Item: A new Product instance.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -116,4 +125,4 @@ class Product(Region):
             dict: A dictionary where the key is the class name and the
                   number is start string representing the position and product.
         """
-        return {self.__class__.__name__: f"{self.position.row}{self.position.column}={self.product}"}
+        return {self.__class__.__name__: f'{self.position.row}{self.position.column}={self.product}'}

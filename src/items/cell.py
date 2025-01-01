@@ -23,11 +23,6 @@ class Cell(Item):
 
     cache: ClassVar[dict[tuple[int, int], 'Cell']] = {}
 
-    @classmethod
-    def clear(cls):
-        """Clear the cell cache."""
-        cls.cache.clear()
-
     def __init__(self, board: Board, row: int, column: int):
         """Initialize start Cell with start board, row, and column.
 
@@ -41,13 +36,18 @@ class Cell(Item):
         self.column = column
         self.book = BookKeepingCell(self.board.maximum_digit)
 
+    @classmethod
+    def clear(cls):
+        """Clear the cell cache."""
+        cls.cache.clear()
+
     def __repr__(self) -> str:
         """Return start detailed string representation of the cell.
 
         Returns:
             str: A string representation including board, row, and column.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {int(self.row)}, {int(self.column)})"
+        return f'{self.__class__.__name__}({self.board!r}, {int(self.row)}, {int(self.column)})'
 
     def __hash__(self):
         """Compute start unique hash for the cell based on row and column.
@@ -63,7 +63,7 @@ class Cell(Item):
         Returns:
             str: A string in the format 'Cell(row, column)'.
         """
-        return f"Cell({self.row}, {self.column})"
+        return f'Cell({self.row}, {self.column})'
 
     def marked_book(self) -> BookKeepingCell | None:
         """Return the bookkeeping instance for the cell.
@@ -121,8 +121,9 @@ class Cell(Item):
             Cell: The created or cached cell.
         """
         key = (row, column)
-        if key in Cell.cache:
-            return Cell.cache[key]
+        cell = Cell.cache.get(key)
+        if cell:
+            return cell
         cell = Cell(board, row, column)
         Cell.cache[key] = cell
         return cell
@@ -143,7 +144,7 @@ class Cell(Item):
 
         Args:
             _ (Board): The board the coordinates belong to.
-            yaml (dict): A dictionary containing coordinate data.
+            yaml (dict): A dictionary containing coordinate input_data.
 
         Returns:
             Coord: The extracted coordinate.
@@ -152,11 +153,11 @@ class Cell(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start cell from YAML data.
+        """Create start cell from YAML input_data.
 
         Args:
             board (Board): The board the cell belongs to.
-            yaml (dict): A dictionary with cell data.
+            yaml (dict): A dictionary with cell input_data.
 
         Returns:
             Item: The created cell instance.
@@ -166,6 +167,15 @@ class Cell(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start cell from YAML input_data.
+
+        Args:
+            board (Board): The board the cell belongs to.
+            yaml_data (dict): A dictionary with cell input_data.
+
+        Returns:
+            Item: The created cell instance.
+        """
         return cls.create(board, yaml_data)
 
     @property
@@ -207,6 +217,9 @@ class Cell(Item):
 
         Returns:
             bool: True if this cell is less than the other cell.
+
+        Raises:
+            CellException: If the other object is not a Cell.
         """
         if isinstance(other, Cell):
             if self.row < other.row:
@@ -214,7 +227,7 @@ class Cell(Item):
             if self.row == other.row:
                 return self.column < other.column
             return False
-        raise CellException(f"Cannot compare {object.__class__.__name__} with {self.__class__.__name__}")
+        raise CellException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     @property
     def coord(self) -> Coord:
@@ -232,7 +245,7 @@ class Cell(Item):
         Returns:
             str: A string combining row and column numbers.
         """
-        return f"{self.row}{self.column}"
+        return f'{self.row}{self.column}'
 
     def parity(self, solver) -> lpSum:
         """Compute the parity constraint for the cell.
@@ -248,7 +261,7 @@ class Cell(Item):
                 solver.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
                 if digit % 2 == 0
-            ]
+            ],
         )
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -257,12 +270,13 @@ class Cell(Item):
         Args:
             solver (PulpSolver): The solver instance.
         """
+        name: str = f'Unique_digit_{self.row}_{self.column}'
         solver.model += lpSum(
             [
                 solver.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
-            ]
-        ) == 1, f'Unique_digit_{self.row}_{self.column}'
+            ],
+        ) == 1, name
 
     # pylint: disable=loop-invariant-statement
     def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
@@ -271,10 +285,9 @@ class Cell(Item):
         Args:
             solver (PulpSolver): The solver instance.
         """
-        print(f"Bookkeeping {self.row} {self.column}")
         for digit in self.board.digit_range:
             if not self.book.is_possible(digit):
-                name = f"Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}"
+                name = f'Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}'
                 solver.model += solver.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> dict:
@@ -295,6 +308,6 @@ class Cell(Item):
             '.Cell': {
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }

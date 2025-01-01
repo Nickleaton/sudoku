@@ -23,7 +23,7 @@ class Mote(Region):
         """
         super().__init__(board)
         self.total = total
-        self.add_items(cells)
+        self.add_components(cells)
 
     def __repr__(self) -> str:
         """Return start string representation of the Mote instance.
@@ -33,11 +33,11 @@ class Mote(Region):
                 Mote(board, total, cells).
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.total!r}, "
-            f"{self.cells!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.total!r}, '
+            f'{self.cells!r}'
+            f')'
         )
 
     @classmethod
@@ -51,7 +51,7 @@ class Mote(Region):
         Returns:
             tuple[int, list[Item]]: The total sum and the list of cells.
         """
-        parts: list[str] = yaml[cls.__name__].split("=")
+        parts: list[str] = yaml[cls.__name__].split('=')
         total: int = int(parts[0].strip())
         cells: list[Item] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')]
         return total, cells
@@ -72,6 +72,15 @@ class Mote(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start MOTE region from start YAML dictionary.
+
+        Args:
+            board (Board): The Sudoku board.
+            yaml_data (dict): The YAML configuration dictionary.
+
+        Returns:
+            Item: The created Mote instance.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -90,16 +99,9 @@ class Mote(Region):
         Returns:
             list[Rule]: A list containing the MOTE rule.
         """
-        return [
-            Rule(
-                "MOTE",
-                1,
-                (
-                    "More odd than even or MOTE cages. "
-                    "In each cage, the number of odd digits is strictly greater than the number of even digits."
-                )
-            )
-        ]
+        rule_text: str = """More odd than even or MOTE cages.
+                         In each cage, the number of odd digits is strictly greater than the number of even digits."""
+        return [Rule('MOTE', 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -117,8 +119,8 @@ class Mote(Region):
             solver (PulpSolver): The solver to which the constraints are added.
         """
         # TODO: Adjust the constraint for odd digit counts
-        odd_count = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
-        name = f"{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}"
+        odd_count = lpSum(solver.cell_values[cell.row][cell.column] for cell in self.cells)
+        name = f'{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}'
         solver.model += odd_count > len(self.cells) // 2, name
 
     def to_dict(self) -> dict:
@@ -127,8 +129,8 @@ class Mote(Region):
         Returns:
             dict: A dictionary with the MOTE's YAML representation.
         """
-        cell_str = ",".join([f"{cell.row}{cell.column}" for cell in self.cells])
-        return {self.__class__.__name__: f"{self.total}={cell_str}"}
+        cell_str = ','.join([f'{cell.row}{cell.column}' for cell in self.cells])
+        return {self.__class__.__name__: f'{self.total}={cell_str}'}
 
     def css(self) -> dict:
         """Retrieve the CSS styles associated with the MOTE.
@@ -141,19 +143,19 @@ class Mote(Region):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 2,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.MOTEForeground': {
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.MOTEBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }

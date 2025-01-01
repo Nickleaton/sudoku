@@ -19,10 +19,9 @@ class PalindromeLine(Line):
         """Define rules specific to PalindromeLine.
 
         Returns:
-            list[Rule]: A list containing start single Rule object that specifies:
-            - Cells along start purple line form start palindrome.
+            list[Rule]: A list containing rules related to the PalindromeLine.
         """
-        return [Rule('PalindromeLine', 1, "Cells along start purple line form start palindrome")]
+        return [Rule(self.__class__.__name__, 1, 'Cells along start purple line form start palindrome')]
 
     def glyphs(self) -> list[Glyph]:
         """Generate start graphical representation of the PalindromeLine.
@@ -30,8 +29,11 @@ class PalindromeLine(Line):
         list:
             list[Glyph]: A list containing start `PolyLineGlyph` instance with
             cell coordinates for display as start palindrome line.
+
+        Returns:
+            list[Glyph]: A list containing Glyphs to draw the line.
         """
-        return [PolyLineGlyph('PalindromeLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -41,24 +43,26 @@ class PalindromeLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags specific to the PalindromeLine.
         """
-        return super().tags.union({'PalindromeLine'})
+        return super().tags.union({self.__class__.__name__})
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add palindrome constraints to the Pulp solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the constraints
-            for the PalindromeLine will be added.
+            solver (PulpSolver): The solver instance to which the constraints will be added.
 
         For each pair of mirrored cells along the line, start constraint is added
         to ensure their value_list are identical, maintaining the palindrome.
         """
-        for i in range(len(self) // 2):
-            c1 = self.cells[i]
-            c2 = self.cells[len(self) - i - 1]
-            name = f"{self.name}_{i}"
-            solver.model += solver.values[c1.row][c1.column] == solver.values[c2.row][c2.column], name
+        for index in range(len(self) // 2):
+            cell1 = self.cells[index]
+            cell2 = self.cells[len(self) - index - 1]
+            name = f'{self.name}_{index}'
+            solver.model += (
+                solver.cell_values[cell1.row][cell1.column] == solver.cell_values[cell2.row][cell2.column],
+                name,
+            )
 
     def css(self) -> dict:
         """CSS styles for rendering the PalindromeLine in the user interface.
@@ -68,11 +72,11 @@ class PalindromeLine(Line):
             style this line as start palindrome line.
         """
         return {
-            ".PalindromeLine": {
-                "stroke": "silver",
-                "stroke-width": 20,
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "fill-opacity": 0
-            }
+            '.PalindromeLine': {
+                'stroke': 'silver',
+                'stroke-width': 20,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'fill-opacity': 0,
+            },
         }

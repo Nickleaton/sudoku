@@ -16,60 +16,53 @@ class VariableRatioPair(VariablePair):
 
     @property
     def rules(self) -> list[Rule]:
-        """Get the rules associated with this variable ratio pair.
+        """Get the rules associated with this value_variable ratio pair.
 
         Returns:
             list[Rule]: A list of rules describing the ratio constraints.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                (
-                    "A black dot between two cells means that one of the digits in those cells "
-                    "have start fixed ratio. The ratio is not necessarily an integer"
-                )
-            )
-        ]
+        rule_text: str = """A black dot between two cells means that one of the digits in those cells
+                         have start fixed ratio. The ratio is not necessarily an integer."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
-        """Get the tags associated with this variable ratio pair.
+        """Get the tags associated with this value_variable ratio pair.
 
         Returns:
-            set[str]: A set of tags for identifying this type of variable pair.
+            set[str]: A set of tags for identifying this type of value_variable pair.
         """
         return super().tags.union({'Ratio'})
 
     def variable_type(self) -> VariableType:
-        """Get the variable type for this variable ratio pair.
+        """Get the value_variable type for this value_variable ratio pair.
 
         Returns:
-            VariableType: The type of variable, which is LOG_FLOAT for this pair.
+            VariableType: The type of value_variable, which is log_float for this pair.
         """
-        return VariableType.LOG_FLOAT
+        return VariableType.log_float
 
     def target(self, solver: PulpSolver) -> LpElement:
-        """Calculate the target expression for the variable ratio pair.
+        """Calculate the target expression for the value_variable ratio pair.
 
         Args:
-            solver (PulpSolver): The solver instance to use for variable constraints.
+            solver (PulpSolver): The solver instance to use for value_variable constraints.
 
         Returns:
             LpElement: The expression representing the target constraints based on the logarithm of cell value_list.
         """
         limit = ceil(log10(self.board.maximum_digit)) + 1
-        x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
-        x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)
+        x1 = ConstraintUtilities.log10_cell(solver, self.cell1)
+        x2 = ConstraintUtilities.log10_cell(solver, self.cell2)
         return Formulations.abs(
             solver.model,
             x1,
             x2,
-            limit
+            limit,
         )
 
     def css(self) -> dict:
-        """Get the CSS styles for this variable ratio pair.
+        """Get the CSS styles for this value_variable ratio pair.
 
         Returns:
             dict: A dictionary containing CSS styles for visual representation.
@@ -78,6 +71,6 @@ class VariableRatioPair(VariablePair):
             '.FixedRatioPair': {
                 'fill': 'black',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

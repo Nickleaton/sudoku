@@ -21,18 +21,17 @@ class Boxes(StandardRegionSet):
             board (Board): The board that contains the boxes.
 
         Raises:
-            AssertionError: If the board's box_range is None.
+            SudokuException: If the board's box_range is None.
         """
         if board.box_range is None:
-            raise SudokuException("box_range cannot be None.")
-        super().__init__(board, [Box(board, i) for i in board.box_range])
+            raise SudokuException('box_range cannot be None.')
+        super().__init__(board, [Box(board, box) for box in board.box_range])
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
         """Create start Boxes instance.
 
         Args:
-            cls: The class itself (Boxes).
             board (Board): The board to associate with the boxes.
             yaml (dict): A dictionary containing YAML configuration (not used).
 
@@ -43,6 +42,15 @@ class Boxes(StandardRegionSet):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Boxes instance.
+
+        Args:
+            board (Board): The board to associate with the boxes.
+            yaml_data (dict): A dictionary containing YAML configuration (not used).
+
+        Returns:
+            Item: An instance of Boxes.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
@@ -51,4 +59,4 @@ class Boxes(StandardRegionSet):
         Returns:
             str: A string representation of the Boxes instance.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'

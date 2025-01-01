@@ -1,6 +1,5 @@
 """QuadrupleBase."""
 import re
-from typing import Any
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -28,7 +27,7 @@ class QuadrupleBase(Item):
         super().__init__(board)
         self.position = position
         self.digits = digits
-        self.numbers = "".join([str(d) for d in digits])
+        self.numbers = ''.join([str(digit) for digit in digits])
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -54,28 +53,31 @@ class QuadrupleBase(Item):
         Returns:
             str: A string representing the Quadruple instance with board, position, and digits.
         """
-        digit_str = "".join([str(digit) for digit in self.digits])
-        return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, '{digit_str}')"
+        digit_str = ''.join([str(digit) for digit in self.digits])
+        return f'{self.__class__.__name__}({self.board!r}, {self.position!r}, {digit_str!r})'
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Coord, str]:
         """Extract the position and digits from the YAML configuration.
 
         Args:
-            board (Board): The board to extract the quadruple data for.
-            yaml (dict): The YAML data containing the quadruple information.
+            board (Board): The board to extract the quadruple input_data for.
+            yaml (dict): The YAML input_data containing the quadruple information.
 
         Returns:
             tuple: A tuple containing start `Coord` object for the position and start string of digits.
+
+        Raises:
+            SudokuException: If no match is found in the YAML.
         """
-        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
+        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         # TODO replace with proper handling
         text: str = next(iter(yaml.values()))
         match = regex.match(text)
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         row_str, column_str, digits = match.groups()
-        return Coord(int(row_str), int(column_str)), list(digits)
+        return Coord(int(row_str), int(column_str)), digits
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
@@ -83,7 +85,7 @@ class QuadrupleBase(Item):
 
         Args:
             board (Board): The board on which the quadruple will be placed.
-            yaml (dict): The YAML data for the quadruple.
+            yaml (dict): The YAML input_data for the quadruple.
 
         Returns:
             Item: A new Quadruple instance.
@@ -93,6 +95,15 @@ class QuadrupleBase(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start new Quadruple instance from the YAML configuration.
+
+        Args:
+            board (Board): The board on which the quadruple will be placed.
+            yaml_data (dict): The YAML input_data for the quadruple.
+
+        Returns:
+            Item: A new Quadruple instance.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -102,7 +113,7 @@ class QuadrupleBase(Item):
             list[Glyph]: A list of glyphs representing the quadruple's position and digits.
         """
         return [
-            QuadrupleGlyph(class_name=self.__class__.__name__, position=self.position, numbers=self.numbers)
+            QuadrupleGlyph(class_name=self.__class__.__name__, position=self.position, numbers=self.numbers),
         ]
 
     def to_dict(self) -> dict:
@@ -111,7 +122,8 @@ class QuadrupleBase(Item):
         Returns:
             dict: A dictionary containing the position and digits of the quadruple.
         """
-        return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
+        digit_str: str = ''.join(self.digits)
+        return {self.__class__.__name__: f'{self.position.row}{self.position.column}={digit_str}'}
 
     def css(self) -> dict:
         """Return the CSS styling for the Quadruple glyphs.
@@ -120,14 +132,14 @@ class QuadrupleBase(Item):
             dict: A dictionary defining the CSS styles for the quadruple glyph.
         """
         return {
-            ".QuadrupleBaseCircle": {
-                "stroke-width": 2,
-                "stroke": "black",
-                "fill": "white"
+            '.QuadrupleBaseCircle': {
+                'stroke-width': 2,
+                'stroke': 'black',
+                'fill': 'white',
             },
-            ".QuadrupleBaseText": {
-                "stroke": "black",
-                "fill": "black",
-                "font-size": "30px"
-            }
+            '.QuadrupleBaseText': {
+                'stroke': 'black',
+                'fill': 'black',
+                'font-size': '30px',
+            },
         }

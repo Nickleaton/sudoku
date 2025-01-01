@@ -19,7 +19,7 @@ class TLBRReflecting(Diagonal):
             board (Board): The Sudoku board on which this diagonal operates.
         """
         super().__init__(board)
-        self.add_items([Cell.make(board, i, i) for i in board.row_range])
+        self.add_components([Cell.make(board, row, row) for row in board.row_range])
 
     @property
     def rules(self) -> list[Rule]:
@@ -28,7 +28,7 @@ class TLBRReflecting(Diagonal):
         Returns:
             list[Rule]: A list containing start rule that specifies parity reflection along the diagonal.
         """
-        return [Rule('TLBRReflecting', 1, "The marked diagonal reflects parity on each side.")]
+        return [Rule('TLBRReflecting', 1, 'The marked diagonal reflects parity on each side.')]
 
     def glyphs(self) -> list[Glyph]:
         """Generate the visual representation (glyph) for the reflecting diagonal.
@@ -37,7 +37,11 @@ class TLBRReflecting(Diagonal):
             list[Glyph]: A list containing the glyph for the TLBRReflecting diagonal.
         """
         return [
-            LineGlyph('TLBRReflecting', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))
+            LineGlyph(
+                'TLBRReflecting',
+                Coord(1, 1),
+                Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1),
+            ),
         ]
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -54,7 +58,7 @@ class TLBRReflecting(Diagonal):
             for column in self.board.column_range:
                 if row == column:
                     continue
-                name = f"{self.name}_{row}_{column}"
+                name = f'{self.name}_{row}_{column}'
                 c1 = Cell.make(self.board, row=row, column=column)
                 c2 = Cell.make(self.board, row=column, column=row)
                 # pylint: disable=loop-invariant-statement

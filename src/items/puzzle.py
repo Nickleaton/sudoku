@@ -32,19 +32,28 @@ class Puzzle(Item):
         Returns:
             Puzzle: An instance of `Puzzle` populated with the given configuration.
         """
-        parsed_board: Board = Board.create('Board', yaml)  # Change variable name to avoid redeclaration
+        parsed_board: Board = Board.create('Board', yaml)  # Change value_variable name to avoid redeclaration
         solution: Solution | None = Solution.create(
             parsed_board,
-            yaml['Solution']
+            yaml['Solution'],
         ) if 'Solution' in yaml else None
         constraints: Constraints | None = Constraints.create(
             parsed_board,
-            yaml['Constraints']
+            yaml['Constraints'],
         ) if 'Constraints' in yaml else None
         return Puzzle(parsed_board, solution, constraints)  # Pass the parsed_board
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Puzzle instance from start YAML configuration.
+
+        Args:
+            board (Board): The board for the puzzle.
+            yaml_data (dict): A dictionary containing the YAML configuration for the puzzle.
+
+        Returns:
+            Item: An instance of `Puzzle` populated with the given configuration.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
@@ -53,4 +62,4 @@ class Puzzle(Item):
         Returns:
             str: A string representing the puzzle's board, solution, and constraints.
         """
-        return f"Puzzle(board={self.board}, solution={self.solution}, constraints={self.constraints})"
+        return f'Puzzle(board={self.board}, solution={self.solution}, constraints={self.constraints})'

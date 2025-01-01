@@ -1,7 +1,8 @@
-"""Sandwich."""
+"""Sandwich Constraint."""
+
 import re
 
-from pulp import LpVariable, LpInteger
+from pulp import LpInteger, LpVariable
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -17,10 +18,15 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class Sandwich(Item):
-    """Sandwich Constraint."""
+    """Represents the Sandwich constraint in a Sudoku puzzle.
 
-    def __init__(self, board: Board, side: Side, index: int, total: int):
-        """Initialize start Sandwich instance.
+    The Sandwich constraint enforces that the sum of the digits between
+    the 1 and the maximum digit (9) in a row or column is equal to a specified total.
+    The 1 and 9 must be positioned on the ends, with other digits between them.
+    """
+
+    def __init__(self, board: Board, side: Side, index: int, total: int) -> None:
+        """Initialize a Sandwich constraint.
 
         Args:
             board (Board): The board associated with this sandwich.
@@ -36,40 +42,40 @@ class Sandwich(Item):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Check if this constraint is start sequence.
+        """Determine if this constraint is part of a sequence.
 
         Returns:
-            bool: True if this constraint is start sequence, False otherwise.
+            bool: True, as the Sandwich constraint is always considered a sequence.
         """
         return True
 
     @classmethod
     def parser(cls) -> FrameParser:
-        """Get the parser for this constraint.
+        """Provide the parser for this constraint.
 
         Returns:
-            FrameParser: The parser associated with this sandwich.
+            FrameParser: The parser used to parse the sandwich constraint from YAML.
         """
         return FrameParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> tuple:
-        """Extract side, index, and total from the provided YAML configuration.
+    def extract(cls, board: Board, yaml: dict) -> tuple[Side, int, int]:
+        """Extract the side, index, and total from the provided YAML configuration.
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml (dict): The YAML configuration containing the sandwich data.
+            yaml (dict): The YAML configuration containing the sandwich input input_data.
 
         Returns:
-            tuple[Side, int, int]: A tuple containing the side, index, and total.
+            tuple[Side, int, int]: A tuple containing the side, index, and total cell_values.
 
         Raises:
-            AssertionError: If the regex match fails.
+            SudokuException: If the YAML does not match the expected format.
         """
-        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([0-9]+)")
+        regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([0-9]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)
@@ -78,11 +84,11 @@ class Sandwich(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Sandwich':
-        """Create start Sandwich instance from YAML configuration.
+        """Create a Sandwich instance from the provided YAML configuration.
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml (dict): The YAML configuration containing the sandwich data.
+            yaml (dict): The YAML configuration containing the sandwich input input_data.
 
         Returns:
             Sandwich: A new instance of Sandwich.
@@ -92,13 +98,22 @@ class Sandwich(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create a Sandwich instance from YAML configuration, compatible with Item interface.
+
+        Args:
+            board (Board): The board associated with this sandwich.
+            yaml_data (dict): The YAML configuration containing the sandwich input input_data.
+
+        Returns:
+            Item: A new Sandwich instance.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
-        """Return start list of glyphs associated with this sandwich.
+        """Return a list of glyphs representing this sandwich.
 
         Returns:
-            list[Glyph]: A list of glyphs representing this sandwich.
+            list[Glyph]: A list of glyphs that represent this sandwich constraint.
         """
         return [TextGlyph('Sandwich', 0, self.position, str(self.total))]
 
@@ -107,97 +122,100 @@ class Sandwich(Item):
         """Retrieve the rules associated with this sandwich.
 
         Returns:
-            list[Rule]: A list of rules related to this sandwich.
+            list[Rule]: A list of rules related to the Sandwich constraint.
         """
-        return [
-            Rule(
-                'Sandwich',
-                1,
-                (
-                    'Clues outside of the grid give the sum of the digits sandwiched between the 1 and the 9 '
-                    'in that row/column '
-                )
-            )
-        ]
+        rule_text: str = """Clues outside of the grid give the sum of the digits sandwiched between the 1 and the 9
+                         in that row/column."""
+        return [Rule('Sandwich', 1, rule_text)]
 
     def __repr__(self) -> str:
-        """Return start string representation of the Sandwich instance.
+        """Return a string representation of the Sandwich instance.
 
         Returns:
-            str: A string representation of the Sandwich.
+            str: A string representation of the Sandwich instance.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.total})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.total})'
 
     def to_dict(self) -> dict:
-        """Convert the Sandwich instance to start dictionary representation.
+        """Convert the Sandwich instance to a dictionary representation.
 
         Returns:
             dict: A dictionary representation of the Sandwich.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.index}={self.total}'}
 
     def css(self) -> dict:
-        """Get CSS styles for the Sandwich.
+        """Return the CSS styles for displaying the Sandwich.
 
         Returns:
             dict: A dictionary containing CSS styles for the Sandwich.
         """
         return {
-            ".SandwichForeground": {
-                "font-size": "30px",
-                "stroke": "black",
-                "stroke-width": 1,
-                "fill": "black"
+            '.SandwichForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 1,
+                'fill': 'black',
             },
-            ".SandwichBackground": {
-                "font-size": "30px",
-                "stroke": "white",
-                "stroke-width": 8,
-                "fill": "white",
-                "font-weight": "bolder"
-            }
+            '.SandwichBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': 8,
+                'fill': 'white',
+                'font-weight': 'bolder',
+            },
         }
 
-    # pylint: disable=loop-invariant-statement
-    def add_constraint_rc(self,
-                          solver: PulpSolver,
-                          is_row: bool,
-                          index: int,
-                          include: re.Pattern | None = None,
-                          exclude: re.Pattern | None = None
-                          ) -> None:
-        """Add constraints for the sandwich in the specified row or column.
+    def add_constraint(self, solver: PulpSolver) -> None:
+        """Add the appropriate constraints for the Sandwich based on its side.
 
-        Sets up boolean variables indicating the positions of the digits 1 and the
-        maximum digit in the row or column to fulfill the sandwich constraint.
-        Patterns can be applied to specify inclusion or exclusion of
-        specific constraints.
+        Depending on whether the sandwich is horizontal or vertical, this method
+        adds the appropriate row or column constraint.
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
-            is_row (bool): Indicates whether to apply the constraint to start row
-                (True) or column (False).
-            index (int): The index of the row or column to which constraints apply.
-            include (re.Pattern | None): A regex pattern specifying which entries
-                to include in the constraint setup (if any).
-            exclude (re.Pattern | None): A regex pattern specifying which entries
-                to exclude from the constraint setup (if any).
         """
-        label = "Row" if is_row else "Column"
-        board_range = self.board.column_range if is_row else self.board.row_range
-        position_label = f"{label}_{index}"
+        if self.side.horizontal:
+            self.add_constraint_row(solver)
+        else:
+            self.add_constraint_column(solver, None, None)
 
-        # Set up boolean variables for positions containing 1 or the maximum digit
+    # TODO sort out the complexity later
+    # Move the variables out as well to be lazily created in
+
+    def add_constraint_rc(  # noqa: WPS231
+        self,
+        solver: PulpSolver,
+        is_row: bool,
+        index: int,
+        include: re.Pattern | None = None,
+        exclude: re.Pattern | None = None,
+    ) -> None:
+        """Add constraints for the Sandwich in the specified row or column.
+
+        This method adds constraints to the solver model, ensuring that the sandwich
+        condition holds true for the specified row or column.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints will be added.
+            is_row (bool): If True, applies the constraint to a row; if False, to a column.
+            index (int): The index of the row or column to which constraints apply.
+            include (re.Pattern | None): A regex pattern specifying which entries to include.
+            exclude (re.Pattern | None): A regex pattern specifying which entries to exclude.
+        """
+        label = 'Row' if is_row else 'Column'
+        board_range = self.board.column_range if is_row else self.board.row_range
+        position_label = f'{label}_{index}'
+
         bread = LpVariable.dict(
             position_label,
             board_range,
             0,
             Functions.triangular(self.board.maximum_digit),
-            LpInteger
+            LpInteger,
         )
 
         for pos in board_range:
-            # Check if the position matches the include or exclude pattern, if provided
             if (include and not include.match(str(pos))) or (exclude and exclude.match(str(pos))):
                 continue
 
@@ -208,49 +226,34 @@ class Sandwich(Item):
                 one = solver.choices[1][pos][index]
                 big = solver.choices[self.board.maximum_digit][pos][index]
 
-            # Ensure that bread[pos] is 1 if pos has start 1 or the maximum digit
-            solver.model += bread[pos] == one + big, f"Bread_{label.lower()}_{index}_{pos}"
+            solver.model += bread[pos] == one + big, f'Bread_{label.lower()}_{index}_{pos}'
 
-    def add_constraint_row(self,
-                           solver: PulpSolver,
-                           include: re.Pattern | None = None,
-                           exclude: re.Pattern | None = None
-                           ) -> None:
-        """Add constraints for the sandwich in the specified row.
-
-        Args:
-            solver (PulpSolver): The solver to which constraints will be added.
-            include (re.Pattern | None): A regex pattern specifying which columns
-                to include in the constraint setup (if any).
-            exclude (re.Pattern | None): A regex pattern specifying which columns
-                to exclude from the constraint setup (if any).
-        """
-        self.add_constraint_rc(solver, True, self.index, include, exclude)
-
-    def add_constraint_column(self,
-                              solver: PulpSolver,
-                              include: re.Pattern | None = None,
-                              exclude: re.Pattern | None = None
-                              ) -> None:
-        """Add constraints for the sandwich in the specified column.
+    def add_constraint_row(
+        self,
+        solver: PulpSolver,
+        include: re.Pattern | None = None,
+        exclude: re.Pattern | None = None,
+    ) -> None:
+        """Add constraints for the Sandwich in the specified row.
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
-            include (re.Pattern | None): A regex pattern specifying which columns
-                to include in the constraint setup (if any).
-            exclude (re.Pattern | None): A regex pattern specifying which columns
-                to exclude from the constraint setup (if any).
-
+            include (re.Pattern | None): A regex pattern specifying which columns to include.
+            exclude (re.Pattern | None): A regex pattern specifying which columns to exclude.
         """
-        self.add_constraint_rc(solver, False, self.index, include, exclude)
+        self.add_constraint_rc(solver=solver, is_row=True, index=self.index, include=include, exclude=exclude)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        """Add the appropriate constraints for the sandwich based on its orientation.
+    def add_constraint_column(
+        self,
+        solver: PulpSolver,
+        include: re.Pattern | None = None,
+        exclude: re.Pattern | None = None,
+    ) -> None:
+        """Add constraints for the Sandwich in the specified column.
 
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
+            include (re.Pattern | None): A regex pattern specifying which columns to include.
+            exclude (re.Pattern | None): A regex pattern specifying which columns to exclude.
         """
-        if self.side.horizontal:
-            self.add_constraint_row(solver)
-        else:
-            self.add_constraint_column(solver, None, None)
+        self.add_constraint_rc(solver=solver, is_row=False, index=self.index, include=include, exclude=exclude)

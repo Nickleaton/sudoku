@@ -39,6 +39,15 @@ class Region(ComposedItem):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Region from YAML configuration.
+
+        Args:
+            board (Board): The board on which this region will be created.
+            yaml_data (dict): The YAML configuration for this region.
+
+        Returns:
+            Item: The instantiated Region.
+        """
         return cls.create(board, yaml_data)
 
     @property
@@ -48,7 +57,7 @@ class Region(ComposedItem):
         Returns:
             list[Cell]: list of cells that belong to this region.
         """
-        return [item for item in self.items if isinstance(item, Cell)]
+        return [component for component in self.components if isinstance(component, Cell)]
 
     def __repr__(self) -> str:
         """Return start string representation of the region.
@@ -56,7 +65,7 @@ class Region(ComposedItem):
         Returns:
             str: String representation of the region.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'
 
     # pylint: disable=loop-invariant-statement
     def add_unique_constraint(self, solver: PulpSolver, optional: bool = False):
@@ -70,11 +79,10 @@ class Region(ComposedItem):
             total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in set(self.cells)])
             if optional:
                 # pylint: disable=loop-invariant-statement
-                solver.model += total <= 1, f"{self.name}_Unique_{digit}"
+                solver.model += total <= 1, f'{self.name}_Unique_{digit}'
             else:
-                solver.model += total == 1, f"{self.name}_Unique_{digit}"
+                solver.model += total == 1, f'{self.name}_Unique_{digit}'
 
-    # pylint: disable=loop-invariant-statement
     def add_total_constraint(self, solver: PulpSolver, total: int) -> None:
         """Add start constraint to enforce start total sum of cell value_list within the region.
 
@@ -82,10 +90,9 @@ class Region(ComposedItem):
             solver (PulpSolver): The solver to which the constraint is added.
             total (int): The required total sum for the value_list in the region.
         """
-        value = lpSum([solver.values[cell.row][cell.column] for cell in self.cells])
-        solver.model += value == total, f"Total_{self.name}"
+        region_value = lpSum([solver.cell_values[cell.row][cell.column] for cell in self.cells])
+        solver.model += region_value == total, f'Total_{self.name}'
 
-    # pylint: disable=loop-invariant-statement
     def add_contains_constraint(self, solver: PulpSolver, digits: list[int]):
         """Add constraints to ensure specified digits are present in the region.
 
@@ -95,22 +102,20 @@ class Region(ComposedItem):
         """
         for digit in digits:
             choice_total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
-            # pylint: disable=loop-invariant-statement
-            solver.model += choice_total == 1, f"{self.name}_Contains_{digit}"
+            solver.model += choice_total == 1, f'{self.name}_Contains_{digit}'
 
-    # pylint: disable=loop-invariant-statement
     def add_sequence_constraint(self, solver: PulpSolver, order: Order):
         """Add start sequence constraint to enforce an ordered sequence of value_list.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
-            order (Order): The sequence order (e.g., INCREASING or DECREASING).
+            order (Order): The sequence order (e.g., increasing or decreasing).
         """
-        for i in range(1, len(self)):
-            value1 = solver.values[self.cells[i - 1].row][self.cells[i - 1].column]
-            value2 = solver.values[self.cells[i].row][self.cells[i].column]
-            name = f"{order.name}_{self.cells[i - 1].name}_{self.cells[i].name}"
-            if order == Order.INCREASING:
+        for index, (cell1, cell2) in enumerate(zip(self.cells[:-1], self.cells[1:]), start=1):
+            value1 = solver.cell_values[self.cells[index - 1].row][self.cells[index - 1].column]
+            value2 = solver.cell_values[self.cells[index].row][self.cells[index].column]
+            name = f'{order.name}_{self.cells[index - 1].name}_{self.cells[index].name}'
+            if order == Order.increasing:
                 solver.model += value1 + 1 <= value2, name
             else:
                 solver.model += value1 >= value2 + 1, name
@@ -142,7 +147,7 @@ class Region(ComposedItem):
         Returns:
             Set[Type[Item]]: Set of classes utilized within the region.
         """
-        result = super().used_classes
+        class_set: set[Type[Item]] = super().used_classes
         for cell in self.cells:
-            result |= cell.used_classes
-        return result
+            class_set |= cell.used_classes
+        return class_set

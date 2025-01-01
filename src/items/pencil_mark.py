@@ -48,7 +48,7 @@ class PencilMarkCell(CellReference):
         Returns:
             list[Rule]: A list of rules, including start restriction on the digits.
         """
-        return [Rule("PencilMark", 1, "Digits restricted")]
+        return [Rule('PencilMark', 1, 'Digits restricted')]
 
     def glyphs(self) -> list[Glyph]:
         """Get the glyphs for the pencil-marked cell.
@@ -65,9 +65,9 @@ class PencilMarkCell(CellReference):
             dict: A dictionary defining the CSS styles for the cell.
         """
         return {
-            ".PencilMarkCell": {
-                "fill": "gainsboro"
-            }
+            '.PencilMarkCell': {
+                'fill': 'gainsboro',
+            },
         }
 
     def __repr__(self) -> str:
@@ -76,7 +76,7 @@ class PencilMarkCell(CellReference):
         Returns:
             str: A string representation of the pencil-marked cell.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digits!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digits!r})'
 
     def to_dict(self) -> dict:
         """Convert the pencil-marked cell to start dictionary representation.
@@ -84,11 +84,12 @@ class PencilMarkCell(CellReference):
         Returns:
             dict: A dictionary containing the cell's row, column, and digits.
         """
-        return {self.__class__.__name__: f"{self.cell.row_column_string}={''.join([str(d) for d in self.digits])}"}
+        digit_text: str = ''.join([str(digit) for digit in self.digits])
+        return {self.__class__.__name__: f'{self.cell.row_column_string}={digit_text}'}
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple:
-        """Extract the parameter_types needed to create start PencilMarkCell from YAML data.
+        """Extract the parameter_types needed to create start PencilMarkCell from YAML input_data.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -96,17 +97,20 @@ class PencilMarkCell(CellReference):
 
         Returns:
             tuple: A tuple containing the row, column, and pencil-marked digits.
+
+        Raises:
+            SudokuException: If no match is found in the YAML.
         """
-        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
+        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         row_str, column_str, digits = match.groups()
-        return int(row_str), int(column_str), [int(s) for s in digits]
+        return int(row_str), int(column_str), [int(digit) for digit in digits]
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start PencilMarkCell from YAML data.
+        """Create start PencilMarkCell from YAML input_data.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -120,6 +124,15 @@ class PencilMarkCell(CellReference):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start PencilMarkCell from YAML input_data.
+
+        Args:
+            board (Board): The Sudoku board instance.
+            yaml_data (dict): The YAML configuration for the cell.
+
+        Returns:
+            Item: An instance of PencilMarkCell.
+        """
         return cls.create(board, yaml_data)
 
     def bookkeeping(self) -> None:

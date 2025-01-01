@@ -4,7 +4,7 @@ from src.glyphs.text_glyph import TextGlyph
 from src.items.cell import Cell
 from src.items.product import Product
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
@@ -18,7 +18,7 @@ class CenterProduct(Product):
             list[Cell]: A list of four cells orthogonally adjacent to the center.
         """
         cells = []
-        for offset in Direction.orthogonals():
+        for offset in Moves.orthogonals():
             location = self.position + offset
             if self.board.is_valid_coordinate(location):
                 cells.append(Cell.make(self.board, int(location.row), int(location.column)))
@@ -31,9 +31,8 @@ class CenterProduct(Product):
         Returns:
             list[Rule]: A list containing the rule for center product.
         """
-        return [
-            Rule('CenterProduct', 3, 'The number is the product of the digits in the four surrounding cells')
-        ]
+        rule_text: str = 'The number is the product of the digits in the four surrounding cells'
+        return [Rule('CenterProduct', 3, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for displaying the center product.
@@ -42,7 +41,7 @@ class CenterProduct(Product):
             list[Glyph]: A list containing the TextGlyph for the center product.
         """
         return [
-            TextGlyph('CenterProduct', 0, self.position + Coord(1, 1), str(self.product))
+            TextGlyph('CenterProduct', 0, self.position + Coord(1, 1), str(self.product)),
         ]
 
     def css(self) -> dict:
@@ -56,13 +55,13 @@ class CenterProduct(Product):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.CenterProductBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }

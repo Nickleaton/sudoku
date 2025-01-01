@@ -1,6 +1,6 @@
 """BetweenLine."""
 
-from pulp import LpVariable, LpInteger
+from pulp import LpInteger, LpVariable
 
 from src.glyphs.between_line_glyph import BetweenLineGlyph
 from src.glyphs.glyph import Glyph
@@ -28,13 +28,9 @@ class BetweenLine(Line):
         Returns:
             list[Rule]: A list containing rules related to the BetweenLine.
         """
-        return [
-            Rule(
-                'BetweenLine',
-                1,
-                "Cells along lines between two filled circles must have value_list strictly between those in the circles"
-            )
-        ]
+        rule_text: str = """Cells along lines between two filled circles must have value_list strictly
+                            between those in the circles"""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Create glyph representations of the BetweenLine for rendering.
@@ -42,7 +38,7 @@ class BetweenLine(Line):
         Returns:
             list[Glyph]: A list containing start BetweenLineGlyph for graphical representation.
         """
-        return [BetweenLineGlyph('BetweenLine', [cell.coord for cell in self.cells])]
+        return [BetweenLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells])]
 
     @property
     def tags(self) -> set[str]:
@@ -51,7 +47,7 @@ class BetweenLine(Line):
         Returns:
             set[str]: A set of tags that categorize the BetweenLine.
         """
-        return super().tags.union({'BetweenLine', 'Comparison'})
+        return super().tags.union({self.__class__.__name__, 'Comparison'})
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -67,34 +63,34 @@ class BetweenLine(Line):
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]
-        start = solver.values[start_cell.row][start_cell.column]
+        start = solver.cell_values[start_cell.row][start_cell.column]
 
         end_cell = self.cells[-1]
-        end = solver.values[end_cell.row][end_cell.column]
+        end = solver.cell_values[end_cell.row][end_cell.column]
 
-        flag = LpVariable(f"{self.name}_increasing", 0, 1, LpInteger)
+        flag = LpVariable(f'{self.name}_increasing', 0, 1, LpInteger)
 
         for cell in self.cells[1:-1]:
-            value = solver.values[cell.row][cell.column]
+            cell_value = solver.cell_values[cell.row][cell.column]
 
             # Ascending constraints
-            label = f"{self.name}_after_ascending_{cell.row}_{cell.column}"
-            solver.model += start + 1 <= big_m * flag + value, label
+            label = f'{self.name}_after_ascending_{cell.row}_{cell.column}'
+            solver.model += start + 1 <= big_m * flag + cell_value, label
 
-            label = f"{self.name}_before_ascending_{cell.row}_{cell.column}"
-            solver.model += value + 1 <= big_m * flag + end, label
+            label = f'{self.name}_before_ascending_{cell.row}_{cell.column}'
+            solver.model += cell_value + 1 <= big_m * flag + end, label
 
             # Descending constraints
-            label = f"{self.name}_after_descending_{cell.row}_{cell.column}"
-            solver.model += start + big_m * (1 - flag) >= value + 1, label
+            label = f'{self.name}_after_descending_{cell.row}_{cell.column}'
+            solver.model += start + big_m * (1 - flag) >= cell_value + 1, label
 
-            label = f"{self.name}_before_descending_{cell.row}_{cell.column}"
-            solver.model += value + big_m * (1 - flag) >= end + 1, label
+            label = f'{self.name}_before_descending_{cell.row}_{cell.column}'
+            solver.model += cell_value + big_m * (1 - flag) >= end + 1, label
 
-            name = f"{self.name}_s_{1}_{cell.row}_{cell.column}"
+            name = f'{self.name}_s_{1}_{cell.row}_{cell.column}'
             solver.model += solver.choices[1][cell.row][cell.column] == 0, name
 
-            name = f"{self.name}_e_{1}_{cell.row}_{cell.column}"
+            name = f'{self.name}_e_{1}_{cell.row}_{cell.column}'
             solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
 
     def css(self) -> dict:
@@ -107,12 +103,12 @@ class BetweenLine(Line):
             '.BetweenLine': {
                 'stroke': 'grey',
                 'fill': 'white',
-                'stroke-width': 3
+                'stroke-width': 3,
             },
             '.BetweenStart': {
                 # Style for the start of the line can be added here
             },
             '.BetweenEnd': {
                 # Style for the end of the line can be added here
-            }
+            },
         }

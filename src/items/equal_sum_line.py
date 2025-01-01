@@ -1,5 +1,6 @@
 """EqualSumLine."""
 import sys
+from typing import Dict
 
 from pulp import lpSum
 
@@ -27,15 +28,11 @@ class EqualSumLine(Line):
             list[Rule]: A list containing start Rule object that specifies equal
             segment sums within each 3x3 box the line passes through.
         """
-        return [
-            Rule(
-                'EqualSumLine',
-                1,
-                "For each line, digits on the line have an equal sum N within each 3x3 box it passes through. "
-                "If start line passes through the same box more than once, "
-                "each individual segment of such start line within that box sums to N separately"
-            )
-        ]
+        rule_text: str = """For each line, digits on the line have an equal sum N within each 3x3 box it
+            passes through. If start line passes through the same box more than once,
+            each individual segment of such start line within that box sums to N separately.
+        """
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate start graphical representation of the EqualSumLine.
@@ -44,7 +41,7 @@ class EqualSumLine(Line):
             list[Glyph]: A list containing start `PolyLineGlyph` instance with
             cell coordinates for rendering the equal-sum line.
         """
-        return [PolyLineGlyph('EqualSumLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -54,9 +51,8 @@ class EqualSumLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags for EqualSumLine.
         """
-        return super().tags.union({'EqualSumLine', 'Sum'})
+        return super().tags.union({self.__class__.__name__, 'Sum'})
 
-    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add equal segment sum constraints to the Pulp solver.
 
@@ -64,39 +60,87 @@ class EqualSumLine(Line):
         (for each 3x3 box the line passes through) is the same.
 
         Args:
-            solver (PulpSolver): The solver instance to which constraints for
-            the EqualSumLine will be added.
+            solver (PulpSolver): The solver instance to which constraints for the EqualSumLine will be added.
         """
-        # Build areas: group cells by 3x3 boxes
-        areas: list[list[Cell]] = []
-        current = 0
+        box_areas: list[list[Cell]] = self.group_cells_by_box()
+        region_sums = EqualSumLine.calculate_region_sums(box_areas, solver)
+        self.add_equal_sum_constraints(region_sums, solver)
+        self.add_sum_bounds_constraints(box_areas, region_sums, solver)
+
+    def group_cells_by_box(self) -> list[list[Cell]]:
+        """Group cells into areas based on their 3x3 box.
+
+        Returns:
+            list[list[Cell]]: A list of cell groups, one for each 3x3 box.
+        """
+        box_areas: list[list[Cell]] = []
+        current_box_index: int = -1
         for cell in self.cells:
-            box = self.board.box_index(cell.row, cell.column)
-            if box != current:
-                areas.append([])
-                current = box
-            areas[-1].append(cell)
+            box_index: int = self.board.box_index(cell.row, cell.column)
+            if box_index != current_box_index:
+                box_areas.append([])
+                current_box_index = box_index
+            box_areas[-1].append(cell)
+        return box_areas
 
-        # Create start sum constraint for each area
-        sums = [lpSum([solver.values[cell.row][cell.column] for cell in region]) for region in areas]
+    @staticmethod
+    def calculate_region_sums(box_areas: list[list[Cell]], solver: PulpSolver) -> list:
+        """Calculate the sum of solver cell_values for each region.
 
-        # Enforce equal sums for consecutive segments
-        for i in range(len(areas)):
-            j = 0 if i == len(areas) - 1 else i + 1
-            solver.model += sums[i] == sums[j], f"{self.name}_{i}"
+        Args:
+            box_areas (list[list[Cell]]): Grouped cells by 3x3 box.
+            solver (PulpSolver): The solver instance containing cell cell_values.
 
-        # Set minimum and maximum sum constraints based on cell regions
-        minimum = 0
-        maximum = sys.maxsize
-        for region in areas:
-            minimum = max(minimum, sum([i + 1 for i in range(len(region))]))
-            maximum = min(maximum, sum([(self.board.maximum_digit - i) for i in range(len(region))]))
+        Returns:
+            list: A list of linear expressions representing the sum of cell_values in each region.
+        """
+        return [
+            lpSum(solver.cell_values[cell.row][cell.column] for cell in region)
+            for region in box_areas
+        ]
 
-        for i in range(len(areas)):
-            solver.model += sums[i] >= minimum, f"{self.name}_minimum_{i}"
-            solver.model += sums[i] <= maximum, f"{self.name}_maximum_{i}"
+    def add_equal_sum_constraints(self, region_sums: list, solver: PulpSolver) -> None:
+        """Add constraints to ensure all region sums are equal.
 
-    def css(self) -> dict:
+        Args:
+            region_sums (list): The sums of cell_values in each region.
+            solver (PulpSolver): The solver instance to which constraints will be added.
+        """
+        for region_idx, current_sum in enumerate(region_sums):
+            next_sum = region_sums[0] if region_idx == len(region_sums) - 1 else region_sums[region_idx + 1]
+            solver.model += current_sum == next_sum, f'{self.name}_equal_{region_idx}'
+
+    def add_sum_bounds_constraints(self, box_areas: list[list[Cell]], region_sums: list, solver: PulpSolver) -> None:
+        """Add minimum and maximum constraints for each region's sum.
+
+        Args:
+            box_areas (list[list[Cell]]): Grouped cells by 3x3 box.
+            region_sums (list): The sums of cell_values in each region.
+            solver (PulpSolver): The solver instance to which constraints will be added.
+        """
+        min_sum, max_sum = self.calculate_sum_bounds(box_areas)
+        for region_idx, region_sum in enumerate(region_sums):
+            solver.model += region_sum >= min_sum, f'{self.name}_min_{region_idx}'
+            solver.model += region_sum <= max_sum, f'{self.name}_max_{region_idx}'
+
+    def calculate_sum_bounds(self, box_areas: list[list[Cell]]) -> tuple[int, int]:
+        """Calculate the minimum and maximum possible sums for any region.
+
+        Args:
+            box_areas (list[list[Cell]]): Grouped cells by 3x3 box.
+
+        Returns:
+            tuple[int, int]: The minimum and maximum possible sums.
+        """
+        min_sum: int = 0
+        max_sum: int = sys.maxsize
+        for region in box_areas:
+            region_length: int = len(region)
+            min_sum = max(min_sum, sum(digit + 1 for digit in range(region_length)))
+            max_sum = min(max_sum, sum(self.board.maximum_digit - digit for digit in range(region_length)))
+        return min_sum, max_sum
+
+    def css(self) -> Dict[str, Dict[str, str]]:
         """CSS styles for rendering the EqualSumLine in the user interface.
 
         Returns:
@@ -109,6 +153,6 @@ class EqualSumLine(Line):
                 'stroke-width': 10,
                 'stroke-linecap': 'round',
                 'stroke-linejoin': 'round',
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }

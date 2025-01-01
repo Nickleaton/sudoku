@@ -14,7 +14,7 @@ class DisjointGroups(StandardRegionSet):
         Args:
             board (Board): The board on which disjoint groups are created.
         """
-        super().__init__(board, [DisjointGroup(board, i) for i in board.digit_range])
+        super().__init__(board, [DisjointGroup(board, digit) for digit in board.digit_range])
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
@@ -22,7 +22,7 @@ class DisjointGroups(StandardRegionSet):
 
         Args:
             board (Board): The board on which disjoint groups will be created.
-            yaml (dict): YAML configuration data, not used in this method.
+            yaml (dict): YAML configuration input_data, not used in this method.
 
         Returns:
             Item: An instance of DisjointGroups.
@@ -31,6 +31,15 @@ class DisjointGroups(StandardRegionSet):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start DisjointGroups instance.
+
+        Args:
+            board (Board): The board on which disjoint groups will be created.
+            yaml_data (dict): YAML configuration input_data, not used in this method.
+
+        Returns:
+            Item: An instance of DisjointGroups.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
@@ -39,4 +48,4 @@ class DisjointGroups(StandardRegionSet):
         Returns:
             str: The string representation of the instance.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'

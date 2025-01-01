@@ -20,14 +20,9 @@ class DistinctRenbanLine(RenbanLine):
         Returns:
             list[Rule]: A list of rules for the distinct Renban line.
         """
-        return [
-            Rule(
-                'DistinctRenbanLine',
-                1,
-                "Pink lines must contain start set of consecutive, non-repeating digits, in any order,"
-                " No two purple lines can contain exactly the same digits"
-            )
-        ]
+        rule_text: str = """Pink lines must contain start set of consecutive, non-repeating digits, in any order,
+                         No two purple lines can contain exactly the same digits."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for visual representation of the distinct Renban line.
@@ -35,7 +30,7 @@ class DistinctRenbanLine(RenbanLine):
         Returns:
             list[Glyph]: A list containing the PolyLineGlyph representing the distinct Renban line.
         """
-        return [PolyLineGlyph('DistinctRenbanLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -45,7 +40,7 @@ class DistinctRenbanLine(RenbanLine):
             set[str]: A set of tags for the distinct Renban line, including 'DistinctRenbanLine',
                       'RenbanLine', 'Adjacent', and 'Set'.
         """
-        return super().tags.union({'DistinctRenbanLine', 'RenbanLine', 'Adjacent', 'set'})
+        return super().tags.union({self.__class__.__name__, 'RenbanLine', 'Adjacent', 'set'})
 
     @staticmethod
     def power(digit: int) -> int:
@@ -61,7 +56,7 @@ class DistinctRenbanLine(RenbanLine):
 
     @staticmethod
     def power_str(power: int) -> str:
-        """Convert start power number to start string of digits based on its binary representation.
+        """Convert a power number to a string of digits based on its binary representation.
 
         Args:
             power (int): The power number to convert.
@@ -69,7 +64,7 @@ class DistinctRenbanLine(RenbanLine):
         Returns:
             str: A string representation of the digits corresponding to the binary representation of the power.
         """
-        return "".join([str(i + 1) for i, c in enumerate(f"{power:b}"[::-1]) if c == '1'])
+        return ''.join([str(index + 1) for index, bit in enumerate(f'{power:b}'[::-1]) if bit == '1'])
 
     @staticmethod
     def digits_to_str(digits: list[int]) -> int:
@@ -90,11 +85,11 @@ class DistinctRenbanLine(RenbanLine):
             dict: A dictionary containing the CSS properties for the distinct Renban line.
         """
         return {
-            '.DistinctRenbanLine': {
+            f'.{self.__class__.__name__}': {
                 'stroke': 'purple',
                 'stroke-width': 20,
                 'stroke-linecap': 'round',
                 'stroke-linejoin': 'round',
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }

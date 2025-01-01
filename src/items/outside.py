@@ -1,5 +1,4 @@
 """Outside."""
-from typing import Any
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -38,12 +37,12 @@ class Outside(FirstN):
             str: A string representation of the Outside constraint.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.side!r}, "
-            f"{self.index!r}, "
-            f"{self.digits!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.side!r}, '
+            f'{self.index!r}, '
+            f'{self.digits!r}'
+            f')'
         )
 
     @property
@@ -53,13 +52,14 @@ class Outside(FirstN):
         Returns:
             list[Rule]: A list containing start single rule for the Outside constraint.
         """
+        rule_text: str = """A clue outside of start row or column tells you some digits that must appear
+        in the first three cells nearest the clue in that row or column."""
         return [
             Rule(
                 'Outside',
                 1,
-                "A clue outside of start row or column tells you some digits that must appear "
-                "in the first three cells nearest the clue in that row or column."
-            )
+                rule_text,
+            ),
         ]
 
     def glyphs(self) -> list[Glyph]:
@@ -72,7 +72,12 @@ class Outside(FirstN):
             list[Glyph]: A list containing start `TextGlyph` showing the digits.
         """
         return [
-            TextGlyph('Outside', 0, self.reference + Coord(0.5, 0.5), "".join([str(digit) for digit in self.digits]))
+            TextGlyph(
+                'Outside',
+                0,
+                self.reference + Coord(0.5, 0.5),
+                ''.join([str(digit) for digit in self.digits]),
+            ),
         ]
 
     @property
@@ -85,20 +90,20 @@ class Outside(FirstN):
         return super().tags.union({'Comparison', 'Order'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> tuple:
         """Extract the side, index, and digits for the Outside constraint from the YAML configuration.
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml (dict): The YAML configuration containing the Outside data.
+            yaml (dict): The YAML configuration containing the Outside input_data.
 
         Returns:
             tuple: A tuple containing the side, index, and digits list.
         """
-        data = yaml['Outside']
-        side = Side.create(data[0])
-        index = int(data[1])
-        digits = [int(digit) for digit in data[3:]]
+        outside_data = yaml['Outside']
+        side = Side.create(outside_data[0])
+        index = int(outside_data[1])
+        digits = [int(digit) for digit in outside_data[3:]]
         return side, index, digits
 
     @classmethod
@@ -107,7 +112,7 @@ class Outside(FirstN):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml (dict): The YAML configuration containing the Outside data.
+            yaml (dict): The YAML configuration containing the Outside input_data.
 
         Returns:
             Item: The created Outside constraint.
@@ -117,6 +122,15 @@ class Outside(FirstN):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an Outside constraint from the given YAML configuration.
+
+        Args:
+            board (Board): The board associated with this constraint.
+            yaml_data (dict): The YAML configuration containing the Outside input_data.
+
+        Returns:
+            Item: The created Outside constraint.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -133,7 +147,9 @@ class Outside(FirstN):
         Returns:
             dict: A dictionary representing the Outside constraint.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={''.join([str(d) for d in self.digits])}"}
+        return {
+            self.__class__.__name__: f'{self.side.value}{self.index}={"".join([str(digit) for digit in self.digits])}',
+        }
 
     def css(self) -> dict:
         """Return the CSS styles associated with the Outside glyphs.
@@ -142,17 +158,17 @@ class Outside(FirstN):
             dict: A dictionary containing the CSS styles for the Outside glyphs.
         """
         return {
-            ".OutsideForeground": {
-                "font-size": "30px",
-                "stroke": "black",
-                "stroke-width": 1,
-                "fill": "black"
+            '.OutsideForeground': {
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 1,
+                'fill': 'black',
             },
-            ".OutsideBackground": {
-                "font-size": "30px",
-                "stroke": "white",
-                "stroke-width": 8,
-                "fill": "white",
-                "font-weight": "bolder"
-            }
+            '.OutsideBackground': {
+                'font-size': '30px',
+                'stroke': 'white',
+                'stroke-width': 8,
+                'fill': 'white',
+                'font-weight': 'bolder',
+            },
         }

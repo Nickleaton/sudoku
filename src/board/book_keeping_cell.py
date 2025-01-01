@@ -3,7 +3,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class BookKeepingCell:  # noqa: WPS214
-    """Handles bookkeeping for possible values of digits in a puzzle."""
+    """Handles bookkeeping for possible cell_values of digits in a puzzle."""
 
     def __init__(self, maximum_digit: int) -> None:
         """Initialize a BookKeepingCell instance with a maximum digit limit.

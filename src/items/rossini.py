@@ -33,12 +33,20 @@ class Rossini(FirstN):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this constraint is start sequence."""
+        """Indicate if this constraint is a sequence.
+
+        Returns:
+            bool: True if the constraint is a sequence, otherwise False.
+        """
         return True
 
     @classmethod
     def parser(cls) -> RossiniParser:
-        """Return the parser for this constraint."""
+        """Return the parser for this constraint.
+
+        Returns:
+            RossiniParser: An instance of the RossiniParser for this constraint.
+        """
         return RossiniParser()
 
     def __repr__(self) -> str:
@@ -48,12 +56,12 @@ class Rossini(FirstN):
             str: The string representation.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.side!r}, "
-            f"{self.index!r}, "
-            f"{self.order!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.side!r}, '
+            f'{self.index!r}, '
+            f'{self.order!r}'
+            f')'
         )
 
     @property
@@ -63,14 +71,9 @@ class Rossini(FirstN):
         Returns:
             list[Rule]: A list containing start single rule for the Rossini constraint.
         """
-        return [
-            Rule(
-                'Rossini',
-                1,
-                "If an arrow appears outside the grid, then the three digits nearest the arrow must "
-                "strictly increase in the direction of the arrow."
-            )
-        ]
+        rule_text: str = """If an arrow appears outside the grid, then the three digits nearest the arrow must
+                         strictly increase in the direction of the arrow."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Return the glyphs representing the Rossini constraint.
@@ -80,10 +83,10 @@ class Rossini(FirstN):
         """
         return [
             ArrowGlyph(
-                'Rossini',
+                self.__class__.__name__,
                 self.direction.angle.angle,
-                self.side.marker(self.board, self.index)
-            )
+                self.board.marker(self.side, self.index),
+            ),
         ]
 
     @property
@@ -97,19 +100,22 @@ class Rossini(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> Any:
-        """Extract Rossini constraint details from YAML data.
+        """Extract Rossini constraint details from YAML input_data.
 
         Args:
             board (Board): The puzzle board.
-            yaml (dict): The YAML data containing constraint information.
+            yaml (dict): The YAML input_data containing constraint information.
 
         Returns:
             Any: The extracted side, index, and order.
+
+        Raises:
+            SudokuException: If the YAML configuration does not match the expected format.
         """
-        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])")
+        regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         side_str, index_str, order_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)
@@ -118,11 +124,11 @@ class Rossini(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Rossini object from extracted YAML data.
+        """Create start Rossini object from extracted YAML input_data.
 
         Args:
             board (Board): The puzzle board.
-            yaml (dict): The YAML data containing constraint information.
+            yaml (dict): The YAML input_data containing constraint information.
 
         Returns:
             Item: The created Rossini object.
@@ -132,6 +138,15 @@ class Rossini(FirstN):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Rossini object from extracted YAML input_data.
+
+        Args:
+            board (Board): The puzzle board.
+            yaml_data (dict): The YAML input_data containing constraint information.
+
+        Returns:
+            Item: The created Rossini object.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -148,7 +163,7 @@ class Rossini(FirstN):
         Returns:
             dict: The dictionary representation of the Rossini object.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.index}={self.order.value}'}
 
     def css(self) -> dict:
         """Return the CSS style for displaying the Rossini constraint.
@@ -157,9 +172,9 @@ class Rossini(FirstN):
             dict: The CSS style.
         """
         return {
-            ".Rossini": {
-                "stroke": "black",
-                "fill": "black",
-                "font-size": "30px"
-            }
+            f'.{self.__class__.__name__}': {
+                'stroke': 'black',
+                'fill': 'black',
+                'font-size': '30px',
+            },
         }

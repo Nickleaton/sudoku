@@ -61,7 +61,7 @@ class HighCell(SimpleCellReference):
         Returns:
             list[Rule]: A list containing the rule that the digits 7, 8, and 9 are not marked.
         """
-        return [Rule("Low", 1, "The digits 7, 8 and 9 are not marked")]
+        return [Rule('Low', 1, 'The digits 7, 8 and 9 are not marked')]
 
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs associated with this HighCell.
@@ -70,7 +70,6 @@ class HighCell(SimpleCellReference):
             list[Glyph]: An empty list as no glyphs are associated with this HighCell.
         """
         return []
-        # return [HighCellGlyph('HighCell', Coord(self.row, self.column))]
 
     def css(self) -> dict:
         """Return the CSS styling for the HighCell.

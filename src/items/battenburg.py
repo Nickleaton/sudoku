@@ -1,6 +1,5 @@
 """Battenburg."""
 import re
-from typing import Any
 
 from src.board.board import Board
 from src.glyphs.battenburg_glyph import BattenburgGlyph
@@ -40,7 +39,7 @@ class Battenburg(Item):
         Returns:
             str: A string representation of the Battenburg object.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.position!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.position!r})'
 
     @property
     def rules(self) -> list[Rule]:
@@ -57,7 +56,7 @@ class Battenburg(Item):
         Returns:
             list[Glyph]: A list containing start BattenburgGlyph for graphical representation.
         """
-        return [BattenburgGlyph(class_name="Battenburg", coord=self.position)]
+        return [BattenburgGlyph(class_name='Battenburg', coord=self.position)]
 
     @classmethod
     def parser(cls) -> CellListParser:
@@ -69,33 +68,33 @@ class Battenburg(Item):
         return CellListParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
-        """Extract the position of the Battenburg pattern from YAML data.
+    def extract(cls, board: Board, yaml: dict) -> Coord:
+        """Extract the position of the Battenburg pattern from YAML input_data.
 
         Args:
             board (Board): The puzzle board, containing board constraints.
-            yaml (dict): The YAML data from which to extract the Battenburg's position.
+            yaml (dict): The YAML input_data from which to extract the Battenburg's position.
 
         Returns:
             Coord: The coordinate position of the Battenburg pattern.
 
         Raises:
-            AssertionError: If the regex pattern does not match the input YAML.
+            SudokuException: If the regex pattern does not match the input YAML.
         """
-        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])")
+        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])')
         match = regex.match(str(yaml[cls.__name__]))
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         row_str, column_str = match.groups()
         return Coord(int(row_str), int(column_str))
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Battenburg constraint from YAML data.
+        """Create start Battenburg constraint from YAML input_data.
 
         Args:
             board (Board): The puzzle board on which the Battenburg will be placed.
-            yaml (dict): The YAML data used to create the Battenburg constraint.
+            yaml (dict): The YAML input_data used to create the Battenburg constraint.
 
         Returns:
             Item: An instance of the Battenburg constraint.
@@ -105,6 +104,15 @@ class Battenburg(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Battenburg constraint from YAML input_data.
+
+        Args:
+            board (Board): The puzzle board on which the Battenburg will be placed.
+            yaml_data (dict): The YAML input_data used to create the Battenburg constraint.
+
+        Returns:
+            Item: An instance of the Battenburg constraint.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -113,7 +121,6 @@ class Battenburg(Item):
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.
         """
-        _ = (Coord(0, 0), Coord(0, 1), Coord(1, 0), Coord(1, 1))
         # TODO Constraints implementation will go here
 
     def to_dict(self) -> dict:

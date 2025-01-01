@@ -1,30 +1,16 @@
 """DisjointGroup."""
-from typing import ClassVar
 
 from src.board.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
 from src.parsers.digit_parser import DigitParser
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
 class DisjointGroup(StandardRegion):
     """A disjoint group the digits in the same place across different boxes must be unique."""
-
-    # Offsets for the cells in the disjoint group
-    # TODO Move and think about start multiply by scalar
-    offsets: ClassVar[list[tuple[int, int]]] = [
-        (0, 0),
-        (0, 3),
-        (0, 6),
-        (3, 0),
-        (3, 3),
-        (3, 6),
-        (6, 0),
-        (6, 3),
-        (6, 6)
-    ]
 
     def __init__(self, board: Board, index: int):
         """Initialize start DisjointGroup.
@@ -33,10 +19,14 @@ class DisjointGroup(StandardRegion):
             board (Board): The Sudoku board instance.
             index (int): The index of the disjoint group.
         """
-        r = (index - 1) // 3 + 1
-        c = (index - 1) % 3 + 1
+        row: int = (index - 1) // 3 + 1
+        col: int = (index - 1) % 3 + 1
         super().__init__(board, index)
-        self.add_items([Cell.make(board, r + ro, c + co) for ro, co in DisjointGroup.offsets])
+        self.add_components(
+            [
+                Cell.make(board, coordinate.row + row, coordinate.column + col) for coordinate in Moves.disjoint9x9()
+            ],
+        )
         self.strict = True
         self.unique = True
 

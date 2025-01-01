@@ -1,14 +1,15 @@
 """DutchWhisperLine."""
 from typing import Sequence
 
+from src.items.greater_than_equal_difference_line import GEDifferenceLine
+
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.items.cell import Cell
-from src.items.greater_than_equal_difference_line import GreaterThanEqualDifferenceLine
 
 
-class DutchWhisperLine(GreaterThanEqualDifferenceLine):
+class DutchWhisperLine(GEDifferenceLine):
     """Dutch Whisper line.
 
     The difference between connected cells must be at least 4.
@@ -29,7 +30,14 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         Returns:
             list[Glyph]: A list containing start PolyLineGlyph for rendering the line.
         """
-        return [PolyLineGlyph('DutchWhisperLine', [cell.coord for cell in self.cells], False, False)]
+        return [
+            PolyLineGlyph(
+                self.__class__.__name__,
+                [cell.coord for cell in self.cells],
+                start=False,
+                end=False,
+            ),
+        ]
 
     @property
     def tags(self) -> set[str]:
@@ -38,7 +46,7 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
         Returns:
             set[str]: Tags specific to Dutch Whisper lines, combined with inherited tags.
         """
-        return super().tags.union({'Dutch Whisper'})
+        return super().tags.union({self.__class__.__name__})
 
     def css(self) -> dict:
         """CSS styling properties for rendering the Dutch Whisper line.
@@ -52,10 +60,14 @@ class DutchWhisperLine(GreaterThanEqualDifferenceLine):
                 'stroke-width': 20,
                 'stroke-linecap': 'round',
                 'stroke-linejoin': 'round',
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }
 
     def __repr__(self) -> str:
-        """Return start string representation of the instance."""
-        return f"{self.__class__.__name__}({self.board!r}, {self.cells!r})"
+        """Return a string representation of the instance.
+
+        Returns:
+            str: A string representation of the instance,
+        """
+        return f'{self.__class__.__name__}({self.board!r}, {self.cells!r})'

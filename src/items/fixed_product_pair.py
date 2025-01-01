@@ -22,16 +22,9 @@ class FixedProductPair(FixedPair):
             list[Rule]: A list containing the rule for the fixed product pair,
                         which explains that the product of the digits in the two cells is fixed.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                (
-                    "A red dot between two cells means that the digits in those cells "
-                    "have start fixed product"
-                )
-            )
-        ]
+        rule_text: str = """A red dot between two cells means that the digits in those cells
+                          have a fixed product"""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -53,20 +46,20 @@ class FixedProductPair(FixedPair):
         Returns:
             LpElement | None:: The target constraint, which is the sum of the logarithms of the cell value_list.
         """
-        x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
-        x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)
+        x1 = ConstraintUtilities.log10_cell(solver, self.cell1)
+        x2 = ConstraintUtilities.log10_cell(solver, self.cell2)
         return x1 + x2
 
     def css(self) -> dict:
         """Return the CSS styles for visualizing the FixedProductPair.
 
         Returns:
-            dict: A dictionary containing CSS styles for the FixedProductPair, with start red fill color and black stroke.
+            dict: A dict containing CSS styles for the FixedProductPair, with start red fill color and black stroke.
         """
         return {
             '.FixedProductPair': {
                 'fill': 'red',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

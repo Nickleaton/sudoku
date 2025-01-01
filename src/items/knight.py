@@ -1,4 +1,5 @@
 """Knight."""
+from itertools import product
 from typing import Any
 
 from pulp import lpSum
@@ -9,8 +10,7 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.parsers.digits_parser import DigitsParser
 from src.solvers.pulp_solver import PulpSolver
-from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
@@ -25,7 +25,7 @@ class Knight(ComposedItem):
             digits (list[int]): The digits to which the knight's move rule applies.
         """
         super().__init__(board, [])
-        self.add_items([Cell.make(board, row, column) for row in board.row_range for column in board.column_range])
+        self.add_components([Cell.make(board, row, column) for row in board.row_range for column in board.column_range])
         self.digits = digits
 
     @classmethod
@@ -36,24 +36,6 @@ class Knight(ComposedItem):
             DigitsParser: A parser to extract digits from input.
         """
         return DigitsParser()
-
-    @staticmethod
-    def offsets() -> list[Coord]:
-        """Define the relative coordinates for knight's moves.
-
-        Returns:
-            list[Coord]: list of offsets representing knight's moves.
-        """
-        return [
-            Coord(-1, -2),
-            Coord(1, -2),
-            Coord(-2, -1),
-            Coord(-2, 1),
-            Coord(-1, 2),
-            Coord(1, 2),
-            Coord(2, 1),
-            Coord(2, -1)
-        ]
 
     @property
     def tags(self) -> set[str]:
@@ -75,7 +57,7 @@ class Knight(ComposedItem):
         Returns:
             Any: list of digits extracted from the YAML configuration.
         """
-        return [int(d) for d in yaml[cls.__name__].split(",")]
+        return [int(digit) for digit in yaml[cls.__name__].split(',')]
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
@@ -88,11 +70,19 @@ class Knight(ComposedItem):
         Returns:
             Item: The instantiated Knight constraint.
         """
-        digits = Knight.extract(board, yaml)
-        return Knight(board, digits)
+        return Knight(board, Knight.extract(board, yaml))
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Knight constraint from YAML configuration.
+
+        Args:
+            board (Board): The board on which this constraint is created.
+            yaml_data (dict): YAML configuration for the constraint.
+
+        Returns:
+            Item: The instantiated Knight constraint.
+        """
         return cls.create(board, yaml_data)
 
     @property
@@ -103,10 +93,8 @@ class Knight(ComposedItem):
             list[Rule]: Rules indicating that each specified digit must be reachable
                         by start knight's move from at least one identical digit.
         """
-        return [
-            Rule("Knight", 1,
-                 f"Every digit in {self.digits!r} must see at least one identical digit via start knights move")
-        ]
+        rules_text: str = f'Every digit in {self.digits!r} must see at least one identical digit via a knights move.'
+        return [Rule('Knight', 1, rules_text)]
 
     def __repr__(self) -> str:
         """Return start string representation of the Knight constraint.
@@ -114,24 +102,23 @@ class Knight(ComposedItem):
         Returns:
             str: String representation of the constraint.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.digits!r})'
 
-    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the knight constraint to the solver.
 
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
         """
-        for digit in self.digits:
-            for cell in self.cells:
-                include = []
-                for offset in Direction.knights():
-                    if self.board.is_valid_coordinate(cell.coord + offset):
-                        include.append(cell.coord + offset)
-                start = solver.choices[digit][cell.row][cell.column]
-                possibles = lpSum([solver.choices[digit][i.row][i.column] for i in include])
-                solver.model += start <= possibles, f"{self.name}_{cell.row}_{cell.column}_{digit}"
+        for digit, cell in product(self.digits, self.cells):
+            include: list[Cell] = [
+                cell.coord + offset
+                for offset in Moves.knights()
+                if self.board.is_valid_coordinate(cell.coord + offset)
+            ]
+            start = solver.choices[digit][cell.row][cell.column]
+            possibles = lpSum([solver.choices[digit][other.row][other.column] for other in include])
+            solver.model += start <= possibles, f'{self.name}_{cell.row}_{cell.column}_{digit}'
 
     def to_dict(self) -> dict:
         """Serialize the Knight constraint to start dictionary format.
@@ -139,4 +126,4 @@ class Knight(ComposedItem):
         Returns:
             dict: Dictionary representation of the constraint.
         """
-        return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}
+        return {self.__class__.__name__: ', '.join([str(digit) for digit in self.digits])}

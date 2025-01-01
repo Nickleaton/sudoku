@@ -19,14 +19,13 @@ class Columns(StandardRegionSet):
         Args:
             board (Board): The board that contains the columns.
         """
-        super().__init__(board, [Column(board, i) for i in board.column_range])
+        super().__init__(board, [Column(board, column) for column in board.column_range])
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
         """Create start Columns instance.
 
         Args:
-            cls: The class itself (Columns).
             board (Board): The board to associate with the columns.
             yaml (dict): A dictionary containing YAML configuration (not used).
 
@@ -37,6 +36,15 @@ class Columns(StandardRegionSet):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Columns instance.
+
+        Args:
+            board (Board): The board to associate with the columns.
+            yaml_data (dict): A dictionary containing YAML configuration (not used).
+
+        Returns:
+            Item: An instance of Columns.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
@@ -45,4 +53,4 @@ class Columns(StandardRegionSet):
         Returns:
             str: A string representation of the Columns instance.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'

@@ -1,10 +1,10 @@
-"""LessThanEqualDifferencePair."""
+"""LEDifferencePair."""
 from src.items.difference_pair import DifferencePair
 from src.solvers.pulp_solver import PulpSolver
 
 
-class LessThanEqualDifferencePair(DifferencePair):
-    """Represents start pair of cells with start difference constrained by start less-than-or-equal condition."""
+class LEDifferencePair(DifferencePair):
+    """Represents a pair of cells with start difference constrained by start less-than-or-equal condition."""
 
     @property
     def tags(self) -> set[str]:
@@ -13,7 +13,7 @@ class LessThanEqualDifferencePair(DifferencePair):
         Returns:
             set[str]: The set of tags, including 'LessThanEqualDifference'.
         """
-        return super().tags.union({'LessThanEqualDifference'})
+        return super().tags.union({'LEDifference'})
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver to enforce the less-than-or-equal difference condition.
@@ -21,11 +21,11 @@ class LessThanEqualDifferencePair(DifferencePair):
         Args:
             solver (PulpSolver): The solver to which the constraints are added.
         """
-        value1 = solver.values[self.cell_1.row][self.cell_1.column]
-        value2 = solver.values[self.cell_2.row][self.cell_2.column]
+        value1 = solver.cell_values[self.cell1.row][self.cell1.column]
+        value2 = solver.cell_values[self.cell2.row][self.cell2.column]
         diff = value1 - value2
-        solver.model += diff <= self.difference, f"{self.name}_upper"
-        solver.model += -diff <= self.difference, f"{self.name}_lower"
+        solver.model += diff <= self.difference, f'{self.name}_upper'
+        solver.model += diff >= -self.difference, f'{self.name}_lower'
 
     @property
     def difference(self) -> int:

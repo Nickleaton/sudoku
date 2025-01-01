@@ -25,7 +25,7 @@ class AntiBLTR(AntiDiagonal):
         """
         super().__init__(board)
         # Adds cells along the anti-diagonal from bottom-left to top-right
-        self.add_items([Cell.make(board, board.maximum_digit - i + 1, i) for i in board.row_range])
+        self.add_components([Cell.make(board, board.maximum_digit - row + 1, row) for row in board.row_range])
 
     def glyphs(self) -> list[Glyph]:
         """Return the glyphs associated with the AntiBLTR.
@@ -36,8 +36,9 @@ class AntiBLTR(AntiDiagonal):
             list[Glyph]: A list of glyphs representing the AntiBLTR.
         """
         return [
-            LineGlyph('Diagonal',
-                      Coord(self.board.maximum_digit + 1, 1),  # Starting coordinate of the diagonal
-                      Coord(1, self.board.maximum_digit + 1)  # Ending coordinate of the diagonal
-                      )
+            LineGlyph(
+                'Diagonal',
+                Coord(self.board.maximum_digit + 1, 1),
+                Coord(1, self.board.maximum_digit + 1),
+            ),
         ]

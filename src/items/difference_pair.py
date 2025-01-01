@@ -9,62 +9,73 @@ from src.utils.rule import Rule
 
 
 class DifferencePair(Pair):
-    """Represents start pair of cells that have specified differences in their value_list."""
+    """Represents a pair of cells that have specified differences in their value_list."""
 
-    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell, digits: list[int]):
+    def __init__(self, board: Board, cell1: Cell, cell2: Cell, digits: list[int]):
         """Initialize start DifferencePair.
 
         Args:
             board (Board): The Sudoku board instance.
-            cell_1 (Cell): The first cell in the pair.
-            cell_2 (Cell): The second cell in the pair.
+            cell1 (Cell): The first cell in the pair.
+            cell2 (Cell): The second cell in the pair.
             digits (list[int]): A list of digits representing the allowed differences between the cell value_list.
         """
-        super().__init__(board, cell_1, cell_2)
+        super().__init__(board, cell1, cell2)
         self.digits = digits
 
     def __repr__(self) -> str:
-        """Return start string representation of the DifferencePair.
+        """Return a string representation of the DifferencePair.
 
         Returns:
             str: A string representation of the DifferencePair.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r}, {self.digits!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.cell1!r}, {self.cell2!r}, {self.digits!r})'
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell, list[int]]:
-        """Extract cells and their allowed difference value_list from YAML data.
+        """Extract cells and their allowed difference value_list from YAML input_data.
 
         Args:
             board (Board): The board instance for cell creation.
-            yaml (dict): The YAML data containing the cell pair and their difference value_list.
+            yaml (dict): The YAML input_data containing the cell pair and their difference value_list.
 
         Returns:
             tuple[Cell, Cell, list[int]]: A tuple containing two cells and start list of allowed difference value_list.
         """
-        cell_string, difference_string = yaml[cls.__name__].split("=")
-        cell_string_1, cell_string_2 = cell_string.split("-")
-        cell_1 = Cell.make(board, int(cell_string_1[0]), int(cell_string_1[1]))
-        cell_2 = Cell.make(board, int(cell_string_2[0]), int(cell_string_2[1]))
-        digits = [int(d) for d in difference_string.split(",")]
-        return cell_1, cell_2, digits
+        cell_part: str = yaml[cls.__name__].split('=')[0]
+        difference_part = yaml[cls.__name__].split('=')[1]
+        text1: str = cell_part.split('-')[0]
+        text2: str = cell_part.split('-')[1]
+        cell1: Cell = Cell.make(board, int(text1[0]), int(text1[1]))
+        cell2: Cell = Cell.make(board, int(text2[0]), int(text2[1]))
+        digits = [int(digit) for digit in difference_part.split(',')]
+        return cell1, cell2, digits
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start DifferencePair instance from YAML data.
+        """Create a DifferencePair instance from YAML input_data.
 
         Args:
             board (Board): The board instance.
-            yaml (dict): The YAML data containing the cell pair and allowed differences.
+            yaml (dict): The YAML input_data containing the cell pair and allowed differences.
 
         Returns:
             Item: An instance of DifferencePair.
         """
-        cell_1, cell_2, digits = cls.extract(board, yaml)
-        return cls(board, cell_1, cell_2, digits)
+        cell1, cell2, digits = cls.extract(board, yaml)
+        return cls(board, cell1, cell2, digits)
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create a DifferencePair instance from YAML input_data.
+
+        Args:
+            board (Board): The board instance.
+            yaml_data (dict): The YAML input_data containing the cell pair and allowed differences.
+
+        Returns:
+            Item: An instance of DifferencePair.
+        """
         return cls.create(board, yaml_data)
 
     @property
@@ -93,20 +104,20 @@ class DifferencePair(Pair):
         """
         for digit in self.digits:
             name = (
-                f"{self.__class__.__name__}"
-                f"_"
-                f"{digit}"
-                f"_"
-                f"{self.cell_1.row}"
-                f"_"
-                f"{self.cell_1.column}"
-                f"_"
-                f"{self.cell_2.row}"
-                f"_"
-                f"{self.cell_2.column}"
+                f'{self.__class__.__name__}'
+                f'_'
+                f'{digit}'
+                f'_'
+                f'{self.cell1.row}'
+                f'_'
+                f'{self.cell1.column}'
+                f'_'
+                f'{self.cell2.row}'
+                f'_'
+                f'{self.cell2.column}'
             )
-            choice1 = solver.choices[int(digit)][self.cell_1.row][self.cell_1.column]
-            choice2 = solver.choices[int(digit)][self.cell_2.row][self.cell_2.column]
+            choice1 = solver.choices[int(digit)][self.cell1.row][self.cell1.column]
+            choice2 = solver.choices[int(digit)][self.cell2.row][self.cell2.column]
             # pylint: disable=loop-invariant-statement
             solver.model += choice1 + choice2 <= 1, name
 
@@ -119,10 +130,10 @@ class DifferencePair(Pair):
         return {
             self.__class__.__name__:
                 (
-                    f"{self.cell_1.row_column_string}"
-                    f"-"
-                    f"{self.cell_2.row_column_string}"
-                    f"="
-                    f"{','.join([str(d) for d in self.digits])}"
-                )
+                    f'{self.cell1.row_column_string}'
+                    f'-'
+                    f'{self.cell2.row_column_string}'
+                    f'='
+                    f'{",".join([str(digit) for digit in self.digits])}',
+                ),
         }

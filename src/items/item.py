@@ -1,9 +1,8 @@
 """Item."""
 
-from typing import Type, Iterator
+from typing import Iterator, Type
 
 import strictyaml
-from sortedcontainers import SortedDict
 
 from src.board.board import Board
 from src.board.book_keeping_cell import BookKeepingCell
@@ -12,13 +11,15 @@ from src.glyphs.glyph import Glyph
 from src.parsers.none_parser import NoneParser
 from src.parsers.parser import Parser
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.config import Config
 from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuException
 from src.validators.validator import Validator
 
+config = Config()
 
-# pylint: disable=too-many-public-methods
-class Item:
+
+class Item:  # noqa: WPS110
     """Top-level class for the Item hierarchy.
 
     Items generate the constraints, manage bookkeeping, and generate SVG for viewing problems and solutions.
@@ -26,7 +27,7 @@ class Item:
     """
 
     # Class Variables
-    classes: dict[str, Type['Item']] = SortedDict({})
+    classes: dict[str, Type['Item']] = {}
     counter: int = 0
 
     # Creation Routines
@@ -35,12 +36,11 @@ class Item:
         """Register the subclass to the `Item` class hierarchy.
 
         Args:
-            cls (type): The class that is being initialized as start subclass of `Item`.
-            **kwargs: Any additional keyword arguments passed to the method (not used).
+            kwargs: Any additional keyword arguments passed to the method (not used).
         """
         super().__init_subclass__(**kwargs)
         Item.classes[cls.__name__] = cls
-        Item.classes[Item.__name__] = Item
+        Item.classes['Item'] = Item
 
     def __init__(self, board: Board):
         """Initialize an Item with start given board.
@@ -49,6 +49,8 @@ class Item:
             board (Board): The board that this constraint belongs to.
         """
         super().__init__()
+        if Item.__name__ not in Item.classes:
+            Item.classes[Item.__name__] = Item
 
         self.board: Board = board
         self.parent: Item | None = None
@@ -108,21 +110,20 @@ class Item:
 
         Args:
             board (Board): The board this constraint belongs to.
-            yaml (dict): The YAML data to create the constraint.
+            yaml (dict): The YAML input_data to create the constraint.
 
         Returns:
             Item: The created instance of the constraint.
 
         Raises:
-            SudokuException: If the YAML data is invalid or the class cannot be found.
+            SudokuException: If the YAML input_data is invalid or the class cannot be found.
         """
         if isinstance(yaml, str):
             name = yaml
         else:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
-            raise SudokuException(f"Unknown constraint class {name}")
-        print(f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
+            raise SudokuException(f'Unknown constraint class {name}')
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 
@@ -132,21 +133,20 @@ class Item:
 
         Args:
             board (Board): The board this constraint belongs to.
-            yaml (dict): The YAML data to create the constraint.
+            yaml (dict): The YAML input_data to create the constraint.
 
         Returns:
             Item: The created instance of the constraint.
 
         Raises:
-            SudokuException: If the YAML data is invalid or the class cannot be found.
+            SudokuException: If the YAML input_data is invalid or the class cannot be found.
         """
         if isinstance(yaml, str):
             name = yaml
         else:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
-            raise SudokuException(f"Unknown constraint class {name}")
-        print(f"\n\nCreate {cls.__name__} {name} {yaml}\n\n")
+            raise SudokuException(f'Unknown constraint class {name}')
         clazz = cls.classes[name]
         return clazz.create2(board, yaml)
 
@@ -201,7 +201,7 @@ class Item:
         Returns:
             list[Rule]: A sorted list of unique rules.
         """
-        return sorted(list(set(self.rules)))
+        return list(set(self.rules))
 
     def glyphs(self) -> list[Glyph]:
         """Return start list of SVG glyphs for this constraint.
@@ -226,7 +226,7 @@ class Item:
         Returns:
             str: The name of the constraint.
         """
-        return f"{self.__class__.__name__}_{self.identity}"
+        return f'{self.__class__.__name__}_{self.identity}'
 
     @property
     def tags(self) -> set[str]:
@@ -246,16 +246,16 @@ class Item:
         yield self
 
     @property
-    def used_classes(self) -> set[Type['Item']]:
-        """Return start set of classes used by this constraint.
+    def used_classes(self) -> set[type['Item']]:
+        """Get the set of classes used by this constraint.
 
         Returns:
-            Set[Type[Item]]: A set of class types used by this constraint.
+            set[type[Item]]: A set of class types used by this constraint.
         """
-        result = set(self.__class__.__mro__)
-        for item in self.walk():
-            result |= set(item.__class__.__mro__)
-        return result.difference({object})
+        class_hierarchy: set[type[Item]] = set(self.__class__.__mro__)  # Classes in the MRO of the current object
+        for constraint in self.walk():
+            class_hierarchy |= set(constraint.__class__.__mro__)  # Add MRO of each item
+        return class_hierarchy.difference({object})  # Exclude the base 'object' class
 
     @staticmethod
     def select_all(_: 'Item') -> bool:
@@ -275,7 +275,7 @@ class Item:
         Returns:
             str: A string representation of the constraint.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add start constraint to the solver.
@@ -293,10 +293,10 @@ class Item:
         Args:
             solver (PulpSolver): The solver to which bookkeeping constraints will be added.
         """
-        for item in self.walk():
-            if item.__class__.__name__ != 'Cell':
+        for constraint in self.walk():
+            if constraint.__class__.__name__ != 'Cell':
                 continue
-            item.add_bookkeeping_constraint(solver)
+            constraint.add_bookkeeping_constraint(solver)
 
     def marked_book(self) -> BookKeepingCell | None:
         """Return the bookkeeping object for this constraint, or None.
@@ -314,8 +314,8 @@ class Item:
             bool: True if all marked books are unique, False otherwise.
         """
         marked_books: list[BookKeepingCell] = []
-        for item in self.walk():
-            marked_book: BookKeepingCell | None = item.marked_book()
+        for constraint in self.walk():
+            marked_book: BookKeepingCell | None = constraint.marked_book()
             if marked_book is not None:
                 marked_books.append(marked_book)
         return all(marked_book.is_unique() for marked_book in marked_books)
@@ -340,41 +340,42 @@ class Item:
                 'stroke': 'black',
                 'stroke-width': 8,
                 'fill': 'black',
-                'font-weight': 'bolder'
+                'font-weight': 'bolder',
             },
             '.TextGlyphBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
+                'font-weight': 'bolder',
             },
             'LittleNumber': {
                 'font-size': '20px',
                 'stroke': 'black',
-            }
+            },
         }
 
     @staticmethod
-    def css_text(data: dict, indent: int = 0) -> str:
-        """Convert start dictionary of CSS rules to start string.
+    def css_text(rules: dict[str, str | dict]) -> str:
+        """Convert a dictionary of CSS rules to a formatted CSS string.
 
         Args:
-            data (dict): A dictionary of CSS rules.
-            indent (int, optional): The number of spaces to indent each line. Defaults to 0.
+            rules (dict[str, str | dict]): A dictionary of CSS rules where keys are selectors or properties
+                                           and cell_values are either property cell_values or nested rule dictionaries.
 
         Returns:
-            str: A string representing the CSS rules.
+            str: A formatted CSS string representation of the rules.
         """
-        tab = '    '
-        result = ""
-        spacer: str = tab * indent
-        for k in sorted(data.keys()):
-            v = data[k]
-            if isinstance(v, dict):
-                result += f"{spacer}{k} {{\n"
-                result += Item.css_text(v, indent + 1)
-                result += f"{spacer}}}\n\n"
+        spacer: str = ' ' * config.css_indent_count
+        css_lines: list[str] = []  # List to collect CSS lines
+
+        sorted_rules = sorted(rules.items())  # Sort items upfront for clarity
+        for key, rule_value in sorted_rules:
+            if isinstance(rule_value, dict):
+                css_lines.append(f'{spacer}{key} {{')
+                css_lines.append(Item.css_text(rule_value))
+                css_lines.append(f'{spacer}}}\n')
             else:
-                result += f"{spacer}{k}: {v};\n"
-        return result
+                css_lines.append(f'{spacer}{key}: {rule_value};')
+
+        return '\n'.join(css_lines)

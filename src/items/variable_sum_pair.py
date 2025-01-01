@@ -8,34 +8,39 @@ from src.utils.variable_type import VariableType
 
 
 class VariableSumPair(VariablePair):
-    """Represents start pair of cells with an associated variable that defines their sum constraint."""
+    """Represents a pair of cells with an associated value_variable that defines their sum constraint."""
 
     @property
     def tags(self) -> set[str]:
-        """Get the tags associated with the VariableSumPair."""
+        """Get the tags associated with the VariableSumPair.
+
+        Returns:
+            set[str]: A set of tags associated with the `VariableSumPair`,
+            including 'Sum' and any tags from the superclass.
+        """
         return super().tags.union({'Sum'})
 
     @property
     def rules(self) -> list[Rule]:
-        """Define the rule for the VariableSumPair: cells must have the same sum."""
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                "Cells separated by start blue dot must have the same sum"
-            )
-        ]
-
-    def variable_type(self) -> VariableType:
-        """Return the variable type for the pair.
+        """Define the rules for the VariableSumPair.
 
         Returns:
-            VariableType: The type of the variable (integer).
+            list[Rule]: A list containing one `Rule` object. The rule specifies
+            that cells separated by a blue dot must have the same sum.
         """
-        return VariableType.INT
+        rule_text: str = 'Cells separated by start blue dot must have the same sum'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
+
+    def variable_type(self) -> VariableType:
+        """Return the value_variable type for the pair.
+
+        Returns:
+            VariableType: The type of the value_variable (integer).
+        """
+        return VariableType.integer
 
     def target(self, solver: PulpSolver) -> LpElement:
-        """Define the target variable for the sum of the two cells in the solver.
+        """Define the target value_variable for the sum of the two cells in the solver.
 
         Args:
             solver (PulpSolver): The solver to add the target for.
@@ -43,14 +48,22 @@ class VariableSumPair(VariablePair):
         Returns:
             LpElement: The sum of the two cell value_list.
         """
-        return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
+        lhs: LpElement = solver.cell_values[self.cell1.row][self.cell1.column]
+        rhs: LpElement = solver.cell_values[self.cell2.row][self.cell2.column]
+        return lhs + rhs
 
     def css(self) -> dict:
-        """Return the CSS styles for the VariableSumPair."""
+        """Get the CSS styles for the VariableSumPair.
+
+        Returns:
+            dict: A dictionary defining the CSS styles for the `VariableSumPair`.
+            The `.FixedSumPair` style specifies the fill color as cyan, stroke
+            width as 1, and stroke color as black.
+        """
         return {
             '.FixedSumPair': {
                 'fill': 'cyan',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

@@ -1,5 +1,5 @@
 """RenbanLine."""
-from pulp import LpVariable, LpInteger
+from pulp import LpInteger, LpVariable
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -21,13 +21,8 @@ class RenbanLine(Line):
         Returns:
             list[Rule]: A list of Rule objects specifying the Renban's digit requirements.
         """
-        return [
-            Rule(
-                'RenbanLine',
-                1,
-                "Pink lines must contain start set of consecutive, non-repeating digits, in any order."
-            )
-        ]
+        rule_text: str = 'Pink lines must contain start set of consecutive, non-repeating digits, in any order.'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Create start visual representation of the RenbanLine.
@@ -35,7 +30,7 @@ class RenbanLine(Line):
         Returns:
             list[Glyph]: A list containing start PolyLineGlyph for rendering.
         """
-        return [PolyLineGlyph('RenbanLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -44,7 +39,7 @@ class RenbanLine(Line):
         Returns:
             set[str]: Tags specific to RenbanLine, combined with inherited tags.
         """
-        return super().tags.union({'RenbanLine', 'Adjacent', 'set'})
+        return super().tags.union({self.__class__.__name__, 'Adjacent', 'set'})
 
     def mandatory_digits(self, length: int) -> set[int]:
         """Determine the mandatory digits present on the Renban line based on its length.
@@ -73,24 +68,24 @@ class RenbanLine(Line):
             solver (PulpSolver): The Pulp solver instance to which constraints will be added.
         """
         # Ensure uniqueness of digits on the line
-        self.add_unique_constraint(solver, True)
+        self.add_unique_constraint(solver, optional=True)
 
         # Create lower and upper bounds for the line
-        lower = LpVariable(f"{self.name}_lower", 1, self.board.maximum_digit, LpInteger)
-        upper = LpVariable(f"{self.name}_upper", 1, self.board.maximum_digit, LpInteger)
+        lower = LpVariable(f'{self.name}_lower', 1, self.board.maximum_digit, LpInteger)
+        upper = LpVariable(f'{self.name}_upper', 1, self.board.maximum_digit, LpInteger)
 
         # Use start set of cells so the Renban can form closed loops
         cells = set(self.cells)
         length = len(cells)
 
         # Add constraints for upper and lower bounds based on cell value_list
-        for i, cell in enumerate(cells):
-            value = solver.values[cell.row][cell.column]
-            solver.model += lower <= value, f"{self.name}_lower_{i}"
-            solver.model += upper >= value, f"{self.name}_upper_{i}"
+        for index, cell in enumerate(cells):
+            cell_value = solver.cell_values[cell.row][cell.column]
+            solver.model += lower <= cell_value, f'{self.name}_lower_{index}'
+            solver.model += upper >= cell_value, f'{self.name}_upper_{index}'
 
         # Set the difference constraint based on the line's length
-        solver.model += upper - lower == length - 1, f"{self.name}_range_{length - 1}"
+        solver.model += upper - lower == length - 1, f'{self.name}_range_{length - 1}'
 
         # Add the mandatory digits to the constraints
         self.add_contains_constraint(solver, list(self.mandatory_digits(length)))
@@ -102,11 +97,11 @@ class RenbanLine(Line):
             dict: A dictionary defining CSS properties for the RenbanLine.
         """
         return {
-            ".RenbanLine": {
-                "stroke": "purple",
-                "stroke-width": 20,
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "fill-opacity": 0
-            }
+            '.RenbanLine': {
+                'stroke': 'purple',
+                'stroke-width': 20,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'fill-opacity': 0,
+            },
         }

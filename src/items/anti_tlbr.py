@@ -25,7 +25,7 @@ class AntiTLBR(AntiDiagonal):
         """
         super().__init__(board)
         # Adds cells along the anti-diagonal from top-left to bottom-right
-        self.add_items([Cell.make(board, i, i) for i in board.row_range])
+        self.add_components([Cell.make(board, row, row) for row in board.row_range])
 
     def glyphs(self) -> list[Glyph]:
         """Return the glyphs associated with the AntiTLBR.
@@ -36,10 +36,9 @@ class AntiTLBR(AntiDiagonal):
             list[Glyph]: A list of glyphs representing the AntiTLBR.
         """
         return [
-            LineGlyph('Diagonal',
-                      # Starting coordinate of the diagonal
-                      Coord(1, 1),
-                      # Ending coordinate of the diagonal
-                      Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1)
-                      )
+            LineGlyph(
+                'Diagonal',
+                Coord(1, 1),
+                Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1),
+            ),
         ]

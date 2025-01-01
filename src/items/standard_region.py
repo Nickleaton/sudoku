@@ -47,15 +47,24 @@ class StandardRegion(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create and return a Standard Region instance based on the provided YAML configuration.
+
+        Args:
+            board (Board): The board instance.
+            yaml_data (dict): The YAML input_data containing the frame configuration.
+
+        Returns:
+            Item: A Frame instance created from the YAML configuration.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return start string representation of the StandardRegion.
+        """Return a string representation of the StandardRegion.
 
         Returns:
             str: A string representation of the region.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.index!r})'
 
     @property
     def tags(self) -> set[str]:
@@ -80,4 +89,4 @@ class StandardRegion(Region):
         Returns:
             str: A string representation showing the region name and index.
         """
-        return f"{self.__class__.__name__}({self.index})"
+        return f'{self.__class__.__name__}({self.index})'

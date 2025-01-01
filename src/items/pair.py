@@ -16,19 +16,19 @@ class Pair(Region):
     This class defines start pair of cells and provides the functionality for associating them in the puzzle.
     """
 
-    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
+    def __init__(self, board: Board, cell1: Cell, cell2: Cell):
         """Initialize start pair of cells on the board.
 
         Args:
             board (Board): The board on which the pair is defined.
-            cell_1 (Cell): The first cell in the pair.
-            cell_2 (Cell): The second cell in the pair.
+            cell1 (Cell): The first cell in the pair.
+            cell2 (Cell): The second cell in the pair.
         """
         super().__init__(board)
-        self.cell_1 = cell_1
-        self.cell_2 = cell_2
-        self.add(cell_1)
-        self.add(cell_2)
+        self.cell1 = cell1
+        self.cell2 = cell2
+        self.add(cell1)
+        self.add(cell2)
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -49,7 +49,7 @@ class Pair(Region):
         return CellPairsParser()
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> tuple:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell]:
         """Extract the pair of cells from the YAML configuration.
 
         Args:
@@ -59,10 +59,10 @@ class Pair(Region):
         Returns:
             tuple: A tuple containing the two cells in the pair.
         """
-        c1_str, c2_str = yaml[cls.__name__].split('-')
-        c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
-        c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))
-        return c1, c2
+        cell1_str, cell2_str = yaml[cls.__name__].split('-')
+        cell1: Cell = Cell.make(board, int(cell1_str[0]), int(cell1_str[1]))
+        cell2: Cell = Cell.make(board, int(cell2_str[0]), int(cell2_str[1]))
+        return cell1, cell2
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
@@ -75,11 +75,20 @@ class Pair(Region):
         Returns:
             Item: A new Pair instance.
         """
-        c1, c2 = cls.extract(board, yaml)
-        return cls(board, c1, c2)
+        cell1, cell2 = cls.extract(board, yaml)
+        return cls(board, cell1, cell2)
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start new Pair instance from the given board and YAML configuration.
+
+        Args:
+            board (Board): The board on which the pair is defined.
+            yaml_data (dict): The YAML configuration that defines the pair.
+
+        Returns:
+            Item: A new Pair instance.
+        """
         return cls.create(board, yaml_data)
 
     @property
@@ -107,7 +116,7 @@ class Pair(Region):
         Returns:
             str: An empty string, as labels are not set by default.
         """
-        return ""
+        return ''
 
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the pair.
@@ -117,15 +126,15 @@ class Pair(Region):
         Returns:
             list[Glyph]: A list of glyphs, or an empty list if no label is set.
         """
-        if self.label != "":
+        if self.label != '':
             return [
                 EdgeTextGlyph(
                     self.__class__.__name__,
                     0,
-                    self.cell_1.coord.center,
-                    self.cell_2.coord.center,
-                    self.label
-                )
+                    self.cell1.coord.center,
+                    self.cell2.coord.center,
+                    self.label,
+                ),
             ]
         return []
 
@@ -133,14 +142,14 @@ class Pair(Region):
         """Return start dictionary representation of the pair.
 
         Returns:
-            dict: A dictionary where the key is the class name and the number is start string representing the pair of cells.
+            dict: A dict where the key is the class name and the number is a string representing the pair of cells.
         """
-        return {self.__class__.__name__: f"{self.cell_1.row_column_string}-{self.cell_2.row_column_string}"}
+        return {self.__class__.__name__: f'{self.cell1.row_column_string}-{self.cell2.row_column_string}'}
 
     def __repr__(self) -> str:
         """Return start string representation of the Pair instance.
 
         Returns:
-            str: A string representing the Pair instance with its board, cell_1, and cell_2.
+            str: A string representing the Pair instance with its board, cell, and cell2.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell_1!r}, {self.cell_2!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.cell1!r}, {self.cell2!r})'

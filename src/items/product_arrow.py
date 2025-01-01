@@ -24,14 +24,9 @@ class ProductArrowLine(Line):
             - Digits along an arrow, when multiplied, should equal the circle's digit.
             - Digits may repeat along the arrow if other rules allow.
         """
-        return [
-            Rule(
-                'Arrow',
-                1,
-                "Digits along an arrow, when multiplied together will give the digit in its circle. "
-                "Digits may repeat along an arrow if allowed by other rules."
-            )
-        ]
+        rule_text: str = """Digits along an arrow, when multiplied together will give the digit in its circle.
+                          Digits may repeat along an arrow if allowed by other rules."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate graphical representation of the ProductArrowLine.
@@ -40,7 +35,7 @@ class ProductArrowLine(Line):
             list[Glyph]: A list containing an `ArrowLineGlyph` instance with
             cell coordinates for display as an arrow line.
         """
-        return [ArrowLineGlyph('Arrow', [cell.coord for cell in self.cells])]
+        return [ArrowLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells])]
 
     @property
     def tags(self) -> set[str]:
@@ -50,7 +45,7 @@ class ProductArrowLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags specific to the ProductArrowLine.
         """
-        return super().tags.union({'Arrow', 'Product'})
+        return super().tags.union({self.__class__.__name__, 'Product'})
 
     def css(self) -> dict:
         """CSS styles for rendering the ProductArrowLine in the user interface.
@@ -63,13 +58,13 @@ class ProductArrowLine(Line):
             '.Arrow': {
                 'stroke': 'grey',
                 'fill': 'white',
-                'stroke-width': 3
+                'stroke-width': 3,
             },
             '.ArrowStart': {
             },
             '.ArrowEnd': {
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }
 
     # TODO: Implement the constraint logic for the ProductArrowLine
@@ -77,8 +72,7 @@ class ProductArrowLine(Line):
         """Add product constraints to the Pulp solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the constraints
-            for the ProductArrowLine will be added.
+            solver (PulpSolver): The solver instance to which the constraints will be added.
 
         Note:
             This method is currently not implemented.

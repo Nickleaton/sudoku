@@ -45,7 +45,7 @@ class OddCell(SimpleCellReference):
         Returns:
             list[Rule]: A list of rules, indicating that an opaque grey circle must contain an odd digit.
         """
-        return [Rule("Odd", 1, "An opaque grey circle must contain an odd digit")]
+        return [Rule('Odd', 1, 'An opaque grey circle must contain an odd digit')]
 
     def glyphs(self) -> list[Glyph]:
         """Return start list of Glyphs associated with OddCell.
@@ -71,9 +71,9 @@ class OddCell(SimpleCellReference):
             dict: A dictionary containing the CSS styles, with start fill color of 'gainsboro' for OddCell.
         """
         return {
-            ".OddCell": {
-                "fill": "gainsboro"
-            }
+            '.OddCell': {
+                'fill': 'gainsboro',
+            },
         }
 
     def bookkeeping(self) -> None:

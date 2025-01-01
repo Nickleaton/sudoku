@@ -1,6 +1,6 @@
 """ComposedItem."""
 from itertools import chain
-from typing import Sequence, Iterator
+from typing import Any, Iterator, Sequence
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -13,16 +13,16 @@ from src.utils.rule import Rule
 class ComposedItem(Item):
     """Composed Items."""
 
-    def __init__(self, board: Board, items: Sequence[Item]):
+    def __init__(self, board: Board, components: Sequence[Item]):
         """Initialize start ComposedItem instance.
 
         Args:
             board (Board): The board associated with this composed constraint.
-            items (Sequence[Item]): A sequence of vectors to be included in this composed constraint.
+            components (Sequence[Item]): A sequence of vectors to be included in this composed constraint.
         """
         super().__init__(board)
-        self.items: list[Item] = []
-        self.add_items(items)
+        self.components: list[Item] = []
+        self.add_components(components)
 
     def regions(self) -> set['Item']:
         """Retrieve all regions associated with this composed constraint.
@@ -33,28 +33,28 @@ class ComposedItem(Item):
         Returns:
             set[Item]: A set of vectors representing all regions.
         """
-        result: set[Item] = {self}
-        for item in self.items:
-            result |= item.regions()
-        return result
+        aggregated_regions: set[Item] = {self}
+        for component in self.components:
+            aggregated_regions |= component.regions()
+        return aggregated_regions
 
-    def add(self, item: Item):
+    def add(self, component: Item) -> None:
         """Add start single constraint to the composed constraint and set its parent.
 
         Args:
-            item (Item): The constraint to be added to the composed constraint.
+            component (Item): The constraint to be added to the composed constraint.
         """
-        self.items.append(item)
-        item.parent = self
+        self.components.append(component)
+        component.parent = self
 
-    def add_items(self, items: Sequence[Item]):
+    def add_components(self, components: Sequence[Item]) -> None:
         """Add multiple vectors to the composed constraint.
 
         Args:
-            items (Sequence[Item]): A sequence of vectors to add.
+            components (Sequence[Item]): A sequence of vectors to add.
         """
-        for item in items:
-            self.add(item)
+        for component in components:
+            self.add(component)
 
     @property
     def cells(self) -> list[Cell]:
@@ -63,7 +63,7 @@ class ComposedItem(Item):
         Returns:
             list[Cell]: A list of cells.
         """
-        return [item for item in self.items if isinstance(item, Cell)]
+        return [element for element in self.components if isinstance(element, Cell)]
 
     @property
     def rules(self) -> list[Rule]:
@@ -74,10 +74,10 @@ class ComposedItem(Item):
         Returns:
             list[Rule]: A list of rules associated with the contained vectors.
         """
-        result = []
-        for item in self.items:
-            result.extend(item.rules)
-        return result
+        aggregated_rules: list[Rule] = []
+        for component in self.components:
+            aggregated_rules.extend(component.rules)
+        return aggregated_rules
 
     def flatten(self) -> list[Item]:
         """Flatten the constraint hierarchy into start single list.
@@ -88,10 +88,10 @@ class ComposedItem(Item):
         Returns:
             list[Item]: A flattened list of all vectors in the hierarchy.
         """
-        result: list[Item] = [self]
-        for item in self.items:
-            result.extend(item.flatten())
-        return result
+        flattened_items: list[Item] = [self]
+        for component in self.components:
+            flattened_items.extend(component.flatten())
+        return flattened_items
 
     def glyphs(self) -> list[Glyph]:
         """Return start list of glyphs associated with this constraint.
@@ -102,7 +102,7 @@ class ComposedItem(Item):
         Returns:
             list[Glyph]: A list of glyphs associated with this constraint.
         """
-        return list(chain.from_iterable(item.glyphs() for item in self.items))
+        return list(chain.from_iterable(component.glyphs() for component in self.components))
 
     @property
     def tags(self) -> set[str]:
@@ -112,10 +112,10 @@ class ComposedItem(Item):
             set[str]: A set of tags associated with the composed constraint and its
             contained vectors.
         """
-        result = super().tags
-        for item in self.items:
-            result = result.union(item.tags)
-        return result
+        combined_tags: set[str] = super().tags
+        for component in self.components:
+            combined_tags = combined_tags.union(component.tags)
+        return combined_tags
 
     def walk(self) -> Iterator[Item]:
         """Yield each constraint in the tree of vectors rooted at the current constraint.
@@ -129,8 +129,8 @@ class ComposedItem(Item):
             the current constraint.
         """
         yield self
-        for item in self.items:
-            yield from item.walk()
+        for component in self.components:
+            yield from component.walk()
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints to the solver for each constraint in the composed constraint.
@@ -138,21 +138,21 @@ class ComposedItem(Item):
         Args:
             solver (PulpSolver): The solver to which constraints will be added.
         """
-        for item in self.items:
-            item.add_constraint(solver)
+        for component in self.components:
+            component.add_constraint(solver)
 
     def bookkeeping(self) -> None:
         """Perform bookkeeping for each constraint in the composed constraint."""
-        for item in self.items:
-            item.bookkeeping()
+        for component in self.components:
+            component.bookkeeping()
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Item]:
         """Return an iterator for the contained vectors.
 
         Returns:
             Iterator[Item]: An iterator over the vectors in this composed constraint.
         """
-        return iter(self.items)
+        return iter(self.components)
 
     def __len__(self) -> int:
         """Return the number of vectors in the composed constraint.
@@ -160,15 +160,15 @@ class ComposedItem(Item):
         Returns:
             int: The number of vectors in this composed constraint.
         """
-        return len(self.items)
+        return len(self.components)
 
     @classmethod
-    def create(cls, board: Board, yaml: dict) -> Item:
+    def create(cls, board: Board, yaml: dict[str, Any]) -> Item:
         """Create start new ComposedItem instance.
 
         Args:
             board (Board): The board associated with the new composed constraint.
-            yaml (dict): The YAML configuration used to initialize the constraint.
+            yaml (dict[str, Any]): The YAML configuration used to initialize the constraint.
 
         Returns:
             Item: A new instance of ComposedItem.
@@ -176,7 +176,16 @@ class ComposedItem(Item):
         return cls(board, [])
 
     @classmethod
-    def create2(cls, board: Board, yaml_data: dict) -> Item:
+    def create2(cls, board: Board, yaml_data: dict[str, Any]) -> Item:
+        """Create start new ComposedItem instance.
+
+        Args:
+            board (Board): The board associated with the new composed constraint.
+            yaml_data (dict[str, Any]): The YAML configuration used to initialize the constraint.
+
+        Returns:
+            Item: A new instance of ComposedItem.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
@@ -185,26 +194,26 @@ class ComposedItem(Item):
         Returns:
             str: A string representation of the ComposedItem instance.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.items!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.components!r})'
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         """Convert the composed constraint and its contained vectors to start dictionary.
 
         Returns:
-            dict: A dictionary representation of the composed constraint.
+            dict[str, Any]: A dictionary representation of the composed constraint.
         """
-        if len(self.items) == 0:
+        if not self.components:
             return {self.__class__.__name__: None}
-        return {self.__class__.__name__: [item.to_dict() for item in self.items]}
+        return {self.__class__.__name__: [component.to_dict() for component in self.components]}
 
-    def css(self) -> dict:
+    def css(self) -> dict[str, Any]:
         """Collect CSS properties from this constraint and all contained vectors.
 
         Returns:
-            dict: A dictionary of CSS properties associated with the composed
+            dict[str, Any]: A dictionary of CSS properties associated with the composed
             constraint and its contained vectors.
         """
-        result = super().css()
-        for item in self.items:
-            result |= item.css()
-        return result
+        combined_css: dict[str, Any] = super().css()
+        for component in self.components:
+            combined_css |= component.css()
+        return combined_css

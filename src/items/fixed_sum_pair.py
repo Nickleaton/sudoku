@@ -22,16 +22,9 @@ class FixedRatioPair(VariablePair):
                         which explains that the ratio of the digits in the two cells is fixed,
                         though not necessarily an integer.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                (
-                    "A black dot between two cells means that one of the digits in those cells "
-                    "have start fixed ratio. The ratio is not necessarily an integer"
-                )
-            )
-        ]
+        rule_text: str = """A black dot between two cells means that one of the digits in those cells
+                        have start fixed ratio. The ratio is not necessarily an integer"""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -54,13 +47,13 @@ class FixedRatioPair(VariablePair):
             LpElement: The target constraint is the absolute difference between the logarithms of the cell value_list.
         """
         limit = ceil(log10(self.board.maximum_digit)) + 1
-        x1 = ConstraintUtilities.log10_cell(solver, self.cell_1)
-        x2 = ConstraintUtilities.log10_cell(solver, self.cell_2)
+        x1 = ConstraintUtilities.log10_cell(solver, self.cell1)
+        x2 = ConstraintUtilities.log10_cell(solver, self.cell2)
         return Formulations.abs(
             solver.model,
             x1,
             x2,
-            limit
+            limit,
         )
 
     def css(self) -> dict:
@@ -73,6 +66,6 @@ class FixedRatioPair(VariablePair):
             '.FixedRatioPair': {
                 'fill': 'black',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

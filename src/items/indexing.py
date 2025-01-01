@@ -10,7 +10,7 @@ class Indexer(StandardRegion):
     """Represent an indexing mechanism within start standard region on the board.
 
     Inherits from StandardRegion to define regions that handle indexing logic,
-    including parsing digits and extracting relevant data for further processing.
+    including parsing digits and extracting relevant input_data for further processing.
     """
 
     @classmethod
@@ -37,7 +37,7 @@ class Indexer(StandardRegion):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an Indexer instance from the provided board and YAML data.
+        """Create an Indexer instance from the provided board and YAML input_data.
 
         Args:
             board (Board): The board on which the Indexer will operate.
@@ -51,6 +51,15 @@ class Indexer(StandardRegion):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an Indexer instance from the provided board and YAML input_data.
+
+        Args:
+            board (Board): The board on which the Indexer will operate.
+            yaml_data (dict): The YAML configuration to extract the index from.
+
+        Returns:
+            Item: An instance of the Indexer class with the extracted index.
+        """
         return cls.create(board, yaml_data)
 
     @staticmethod
@@ -60,7 +69,7 @@ class Indexer(StandardRegion):
         Returns:
             str: An empty string, to be potentially overridden by subclasses.
         """
-        return ""
+        return ''
 
     @staticmethod
     def other_variant() -> str:
@@ -69,7 +78,7 @@ class Indexer(StandardRegion):
         Returns:
             str: An empty string, to be potentially overridden by subclasses.
         """
-        return ""
+        return ''
 
     def __repr__(self) -> str:
         """Return start string representation of the Indexer instance.
@@ -77,26 +86,21 @@ class Indexer(StandardRegion):
         Returns:
             str: The string representation of the Indexer with board and index.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.index!r})'
 
     @property
     def rules(self) -> list[Rule]:
-        """Return start list of rules associated with this Indexer.
+        """Return the list of rules associated with this Indexer.
 
         Returns:
             list[Rule]: A list of Rule instances that describe the constraints
             and logic related to the indexing region.
         """
-        return [
-            Rule(
-                f'{self.__class__.__name__}{self.index}',
-                1,
-                (
-                    f"Digits in {self.variant()} {self.index} indicate the {self.variant()} "
-                    f"in which the digit {self.index} appears in that {self.other_variant()}"
-                )
-            )
-        ]
+        rule_text: str = (
+            f'Digits in {self.variant()} {self.index} indicate the {self.variant()} '
+            f'in which the digit {self.index} appears in that {self.other_variant()}'
+        )
+        return [Rule(f'{self.__class__.__name__}{self.index}', 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:

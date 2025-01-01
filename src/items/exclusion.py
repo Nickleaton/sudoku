@@ -1,5 +1,4 @@
 """Exclusion."""
-from typing import Any
 
 from pulp import lpSum
 
@@ -10,6 +9,7 @@ from src.items.item import Item
 from src.parsers.cell_value_parser import CellValueParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
@@ -27,7 +27,7 @@ class Exclusion(Item):
         super().__init__(board)
         self.position = position
         self.digits = digits
-        self.numbers = "".join([str(d) for d in digits])
+        self.numbers = ''.join([str(digit) for digit in digits])
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -53,8 +53,8 @@ class Exclusion(Item):
         Returns:
             str: The string representation of the Exclusion object.
         """
-        digit_str = "".join([str(digit) for digit in self.digits])
-        return f"{self.__class__.__name__}({self.board!r}, {self.position!r}, '{digit_str}')"
+        digit_str = ''.join([str(digit) for digit in self.digits])
+        return f'{self.__class__.__name__}({self.board!r}, {self.position!r}, {digit_str!r})'
 
     @property
     def rules(self) -> list[Rule]:
@@ -72,40 +72,49 @@ class Exclusion(Item):
             list[Glyph]: A list containing start QuadrupleGlyph representing the Exclusion circle.
         """
         return [
-            QuadrupleGlyph(class_name="Exclusion", position=self.position, numbers=self.numbers)
+            QuadrupleGlyph(class_name='Exclusion', position=self.position, numbers=self.numbers),
         ]
 
     @classmethod
-    def extract(cls, _: Board, yaml: dict) -> Any:
+    def extract(cls, _: Board, yaml: dict) -> tuple[Coord, str]:
         """Extract the position and digits from the YAML configuration.
 
         Args:
             _ (Board): The board the constraint applies to.
-            yaml (dict): The YAML data containing the Exclusion definition.
+            yaml (dict): The YAML input_data containing the Exclusion definition.
 
         Returns:
             tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as start string.
         """
-        position_str, digits = yaml[cls.__name__].split("=")
-        position = Coord(int(position_str[0]), int(position_str[1]))
+        position_str, digits = yaml[cls.__name__].split('=')
+        position: Coord = Coord(int(position_str[0]), int(position_str[1]))
         return position, digits
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an Exclusion constraint from the YAML data.
+        """Create an Exclusion constraint from the YAML input_data.
 
         Args:
             board (Board): The board the constraint applies to.
-            yaml (dict): The YAML data containing the Exclusion definition.
+            yaml (dict): The YAML input_data containing the Exclusion definition.
 
         Returns:
-            Item: An Exclusion constraint created from the YAML data.
+            Item: An Exclusion constraint created from the YAML input_data.
         """
         position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an Exclusion constraint from the YAML input_data.
+
+        Args:
+            board (Board): The board the constraint applies to.
+            yaml_data (dict): The YAML input_data containing the Exclusion definition.
+
+        Returns:
+            Item: An Exclusion constraint created from the YAML input_data.
+        """
         return cls.create(board, yaml_data)
 
     # pylint: disable=loop-invariant-statement
@@ -117,20 +126,14 @@ class Exclusion(Item):
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
         """
-        offsets = (
-            Coord(0, 0),
-            Coord(0, 1),
-            Coord(1, 0),
-            Coord(1, 1)
-        )
         for digit in self.digits:
             digit_sum = lpSum(
                 [
                     solver.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
-                    for offset in offsets
-                ]
+                    for offset in Moves.square()
+                ],
             )
-            solver.model += digit_sum == 0, f"{self.name}_{digit}"
+            solver.model += digit_sum == 0, f'{self.name}_{digit}'
 
     def to_dict(self) -> dict:
         """Convert the Exclusion constraint to start dictionary representation.
@@ -138,7 +141,7 @@ class Exclusion(Item):
         Returns:
             dict: A dictionary representing the Exclusion constraint in YAML format.
         """
-        return {self.__class__.__name__: f"{self.position.row}{self.position.column}={''.join(self.digits)}"}
+        return {self.__class__.__name__: f'{self.position.row}{self.position.column}={"".join(self.digits)}'}
 
     def css(self) -> dict:
         """Return the CSS styles for visual rendering of the Exclusion circle.
@@ -147,14 +150,14 @@ class Exclusion(Item):
             dict: A dictionary containing CSS styles for the Exclusion circle and its digits.
         """
         return {
-            ".ExclusionCircle": {
-                "stroke-width": 2,
-                "stroke": "black",
-                "fill": "white"
+            '.ExclusionCircle': {
+                'stroke-width': 2,
+                'stroke': 'black',
+                'fill': 'white',
             },
-            ".ExclusionText": {
-                "stroke": "black",
-                "fill": "black",
-                "font-size": "30px"
-            }
+            '.ExclusionText': {
+                'stroke': 'black',
+                'fill': 'black',
+                'font-size': '30px',
+            },
         }

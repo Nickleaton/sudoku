@@ -1,5 +1,5 @@
 """Anti."""
-from typing import Sequence, Any
+from typing import Sequence
 
 from src.board.board import Board
 from src.items.cell import Cell
@@ -33,7 +33,7 @@ class Anti(ComposedItem):
         self.digits = digits
         for cell in Cell.cells():
             pairs = self.pairs(cell, digits)
-            self.add_items(pairs)
+            self.add_components(pairs)
 
     def offsets(self) -> list[Coord]:
         """Return start list of offsets for the Anti constraint.
@@ -46,24 +46,64 @@ class Anti(ComposedItem):
         """
         return []
 
-    def pairs(self, c1: Cell, digits: list[int]) -> Sequence[DifferencePair]:
+    def pairs(self, cell: Cell, digits: list[int]) -> Sequence[DifferencePair]:
         """Pairs of cells are generated based on the provided digits and offsets.
 
         Args:
-            c1 (Cell): The first cell to consider.
+            cell (Cell): The first cell to consider.
             digits (list[int]): The list of digits for which the pairs are generated.
 
         Returns:
             Sequence[DifferencePair]: A sequence of DifferencePair objects representing
             the valid pairs between cells c1 and other cells on the board.
         """
-        result = []
+        difference_pairs: list[DifferencePair] = []
         for offset in self.offsets():
-            if not self.board.is_valid(int(c1.row + offset.row), int(c1.column + offset.column)):
+            if not self.board.is_valid(int(cell.row + offset.row), int(cell.column + offset.column)):
                 continue
-            c2 = Cell.make(self.board, int(c1.row + offset.row), int(c1.column + offset.column))
-            result.append(DifferencePair(self.board, c1, c2, digits))
-        return result
+            other: Cell = Cell.make(self.board, int(cell.row + offset.row), int(cell.column + offset.column))
+            difference_pairs.append(DifferencePair(self.board, cell, other, digits))
+        return difference_pairs
+
+    @classmethod
+    def extract(cls, _: Board, yaml: dict) -> list[int]:
+        """Extract start list of digits from the YAML configuration.
+
+        Args:
+            _ (Board): The board object (not used in this method but required for interface).
+            yaml (dict): The YAML configuration dictionary from which the digits are extracted.
+
+        Returns:
+            list[int]: A list of integers representing the digits extracted from the YAML.
+        """
+        return [int(part) for part in str(yaml[cls.__name__]).split(', ')]
+
+    @classmethod
+    def create(cls, board: Board, yaml: dict) -> Item:
+        """Create an object from the given YAML.
+
+        Args:
+            board (Board): The board object where the Anti constraint will be applied.
+            yaml (dict): The YAML configuration dictionary containing the digits.
+
+        Returns:
+            Item: An instance of the Anti class with the parsed digits.
+        """
+        lst = cls.extract(board, yaml)
+        return cls(board, lst)
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an object from the given YAML.
+
+        Args:
+            board (Board): The board object where the Anti constraint will be applied.
+            yaml_data (dict): The YAML configuration dictionary containing the digits.
+
+        Returns:
+            Item: An instance of the Anti class with the parsed digits.
+        """
+        return cls.create(board, yaml_data)
 
     @property
     def tags(self) -> set[str]:
@@ -76,37 +116,13 @@ class Anti(ComposedItem):
         """
         return super().tags.union({'Chess', 'Anti'})
 
-    @classmethod
-    def extract(cls, _: Board, yaml: dict) -> Any:
-        """Extract start list of digits from the YAML configuration.
-
-        Args:
-            _ (Board): The board object (not used in this method but required for interface).
-            yaml (dict): The YAML configuration dictionary from which the digits are extracted.
+    def to_dict(self) -> dict:
+        """Convert the Anti object is converted to start dictionary.
 
         Returns:
-            Any: A list of integers representing the digits extracted from the YAML.
+            dict: A dictionary representation of the Anti object with the digits.
         """
-        return [int(part) for part in str(yaml[cls.__name__]).split(', ')]
-
-    @classmethod
-    def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an object from the given YAML.
-
-        Args:
-            cls (type): The class that calls this method (used for creating an instance of the class).
-            board (Board): The board object where the Anti constraint will be applied.
-            yaml (dict): The YAML configuration dictionary containing the digits.
-
-        Returns:
-            Item: An instance of the Anti class with the parsed digits.
-        """
-        lst = cls.extract(board, yaml)
-        return cls(board, lst)
-
-    @classmethod
-    def create2(cls, board: Board, yaml_data: dict) -> Item:
-        return cls.create(board, yaml_data)
+        return {self.__class__.__name__: ', '.join([str(digit) for digit in self.digits])}
 
     def __repr__(self) -> str:
         """Return start string representation of the Anti object.
@@ -114,12 +130,4 @@ class Anti(ComposedItem):
         Returns:
             str: A string representing the Anti object with its board and digits.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
-
-    def to_dict(self) -> dict:
-        """Convert the Anti object is converted to start dictionary.
-
-        Returns:
-            dict: A dictionary representation of the Anti object with the digits.
-        """
-        return {self.__class__.__name__: ", ".join([str(d) for d in self.digits])}
+        return f'{self.__class__.__name__}({self.board!r}, {self.digits!r})'

@@ -18,7 +18,7 @@ class Column(StandardRegion):
             index (int): The index of the column on the board.
         """
         super().__init__(board, index)
-        self.add_items([Cell.make(board, row, index) for row in board.column_range])
+        self.add_components([Cell.make(board, row, index) for row in board.column_range])
         self.strict = True
         self.unique = True
 
@@ -64,4 +64,4 @@ class Column(StandardRegion):
         Returns:
             str: A string representing the Column.
         """
-        return f"{self.__class__.__name__}({self.index})"
+        return f'{self.__class__.__name__}({self.index})'

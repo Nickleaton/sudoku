@@ -12,21 +12,25 @@ from src.validators.validator import Validator
 
 
 class Line(Region):
-    """Represents start line consisting of multiple cells on start board."""
+    """Represents a line consisting of multiple cells on a board."""
 
     def __init__(self, board: Board, cells: Sequence[Cell]):
-        """Initialize start Line instance.
+        """Initialize a Line instance.
 
         Args:
             board (Board): The board associated with this line.
             cells (Sequence[Cell]): A sequence of cells that make up this line.
         """
         super().__init__(board)
-        self.add_items(cells)
+        self.add_components(cells)
 
     @classmethod
     def parser(cls) -> CellListParser:
-        """Return start CellListParser instance for parsing cell lists."""
+        """Return a CellListParser instance for parsing cell lists.
+
+        Returns:
+            CellListParser: An instance for parsing cell lists.
+        """
         return CellListParser()
 
     @classmethod
@@ -40,77 +44,78 @@ class Line(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this constraint is start sequence."""
+        """Indicate whether this constraint is a sequence.
+
+        Returns:
+            bool: True if this constraint is a sequence.
+        """
         return True
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> list[Cell]:
-        """Extract start list of Cell instances from the provided YAML dictionary.
+        """Extract a list of Cell instances from the provided YAML dictionary.
 
         Args:
             board (Board): The board associated with the cells.
-            yaml (dict): A dictionary containing the YAML data.
+            yaml (dict): A dictionary containing the YAML input_data.
 
         Returns:
-            list[Cell]: A list of Cell instances extracted from the YAML data.
+            list[Cell]: A list of Cell instances extracted from the YAML input_data.
         """
         return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Line instance from start YAML dictionary.
+        """Create a Line instance from a YAML dictionary.
 
         Args:
             board (Board): The board associated with the line.
-            yaml (dict): A dictionary containing the YAML data.
+            yaml (dict): A dictionary containing the YAML input_data.
 
         Returns:
-            Item: A new instance of Line created from the YAML data.
+            Item: A new instance of Line created from the YAML input_data.
         """
         cells = cls.extract(board, yaml)
         return cls(board, cells)
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Line instance from start YAML dictionary using the parser.
+        """Create a Line instance from a YAML dictionary using the parser.
 
         Args:
             board (Board): The board associated with the line.
-            yaml_data (dict): A dictionary containing the YAML data.
+            yaml_data (dict): A dictionary containing the YAML input_data.
 
         Returns:
-            Item: A new instance of Line created from the YAML data.
+            Item: A new instance of Line created from the YAML input_data.
         """
-        # Retrieve the YAML string for this class name
         cell_data = yaml_data[cls.__name__]
-
-        # Use the parser to parse the cell data
         parser = cls.parser()
         parser.parse(cell_data)
-
-        # Convert the parsed result into Cell instances
         cells = [Cell.make(board, cell['row'], cell['column']) for cell in parser.answer]
-
-        # Create and return the Line instance
         return cls(board, cells)
 
     def __repr__(self) -> str:
-        """Return start string representation of this line.
+        """Return a string representation of this line.
 
         Returns:
             str: A string representation of the Line instance, including the board and cells.
         """
-        cell_str = ", ".join(repr(cell) for cell in self.cells)
-        return f"{self.__class__.__name__}({self.board!r}, [{cell_str}])"
+        cell_str = ', '.join(repr(cell) for cell in self.cells)
+        return f'{self.__class__.__name__}({self.board!r}, [{cell_str}])'
 
     @property
     def rules(self) -> list[Rule]:
-        """Return an empty list of rules associated with this line."""
+        """Return an empty list of rules associated with this line.
+
+        Returns:
+            list[Rule]: An empty list of rules.
+        """
         return []
 
     @property
     def tags(self) -> set[str]:
-        """Return start set of tags associated with this line.
+        """Return a set of tags associated with this line.
 
         Returns:
             set[str]: A set containing the tags associated with this line.
@@ -118,9 +123,9 @@ class Line(Region):
         return super().tags.union({'Line'})
 
     def to_dict(self) -> dict:
-        """Convert the line to start dictionary representation.
+        """Convert the line to a dictionary representation.
 
         Returns:
             dict: A dictionary representation of the line, including the cells.
         """
-        return {self.__class__.__name__: ", ".join([cell.row_column_string for cell in self.cells])}
+        return {self.__class__.__name__: ', '.join([cell.row_column_string for cell in self.cells])}

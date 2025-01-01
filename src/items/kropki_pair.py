@@ -1,7 +1,7 @@
 """KropkiPair."""
 from itertools import product
 
-from pulp import LpVariable, LpInteger, lpSum
+from pulp import LpInteger, LpVariable, lpSum
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -18,15 +18,15 @@ class KropkiPair(Pair):
     Two cells where one of the cells is exactly twice the number other.
     """
 
-    def __init__(self, board: Board, cell_1: Cell, cell_2: Cell):
+    def __init__(self, board: Board, cell1: Cell, cell2: Cell):
         """Initialize start KropkiPair with two cells and an empty SOS dictionary.
 
         Args:
             board (Board): The board instance this pair is part of.
-            cell_1 (Cell): The first cell in the pair.
-            cell_2 (Cell): The second cell in the pair.
+            cell1 (Cell): The first cell in the pair.
+            cell2 (Cell): The second cell in the pair.
         """
-        super().__init__(board, cell_1, cell_2)
+        super().__init__(board, cell1, cell2)
         self.sos: dict[int, LpVariable] = {}
 
     @property
@@ -45,7 +45,7 @@ class KropkiPair(Pair):
         Returns:
             str: The name of the factor.
         """
-        return "double"
+        return 'double'
 
     @property
     def rules(self) -> list[Rule]:
@@ -54,16 +54,10 @@ class KropkiPair(Pair):
         Returns:
             list[Rule]: A list of rules for the Kropki pair.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                (
-                    f"A black dot between two cells means that one of the digits in those cells "
-                    f"is exactly {self.factor_name} the other"
-                )
-            )
-        ]
+        rule_text: str = """A black dot between two cells means that one of the digits in those cells
+            is exactly {self.factor_name} the other.
+            """
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate glyph representations for the Kropki pair.
@@ -71,7 +65,7 @@ class KropkiPair(Pair):
         Returns:
             list[Glyph]: A list of glyphs representing the Kropki pair.
         """
-        return [KropkiGlyph(self.__class__.__name__, self.cell_1.coord.center, self.cell_2.coord.center)]
+        return [KropkiGlyph(self.__class__.__name__, self.cell1.coord.center, self.cell2.coord.center)]
 
     @property
     def tags(self) -> set[str]:
@@ -82,17 +76,17 @@ class KropkiPair(Pair):
         """
         return super().tags.union({'Kropki'})
 
-    def valid(self, x: int, y: int) -> bool:
+    def valid(self, digit1: int, digit2: int) -> bool:
         """Check if two digits conform to the Kropki pair rule.
 
         Args:
-            x (int): The first digit.
-            y (int): The second digit.
+            digit1 (int): The first digit.
+            digit2 (int): The second digit.
 
         Returns:
             bool: True if one of the digits is exactly `factor` times the other.
         """
-        return x == self.factor * y or self.factor * x == y
+        return digit1 == self.factor * digit2 or self.factor * digit1 == digit2
 
     def possible(self) -> set:
         """Determine possible digits that satisfy the Kropki pair rule.
@@ -101,10 +95,10 @@ class KropkiPair(Pair):
             set: A set of digits that satisfy the rule.
         """
         used = set({})
-        for x, y in product(self.board.digit_range, self.board.digit_range):
-            if self.valid(x, y):
-                used.add(x)
-                used.add(y)
+        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+            if self.valid(digit1, digit2):
+                used.add(digit1)
+                used.add(digit2)
         return used
 
     # pylint: disable=loop-invariant-statement
@@ -115,10 +109,10 @@ class KropkiPair(Pair):
             solver (PulpSolver): The solver instance to which constraints are added.
         """
         for digit in set(self.board.digit_range) - self.possible():
-            name = f"{self.name}_Impossible_kropki_pair_1_{digit}_{self.cell_1.row}_{self.cell_1.column}"
-            solver.model += solver.choices[digit][self.cell_1.row][self.cell_1.column] == 0, name
-            name = f"{self.name}_Impossible_kropki_pair_2_{digit}_{self.cell_2.row}_{self.cell_2.column}"
-            solver.model += solver.choices[digit][self.cell_2.row][self.cell_2.column] == 0, name
+            name = f'{self.name}_Impossible_kropki_pair_1_{digit}_{self.cell1.row}_{self.cell1.column}'
+            solver.model += solver.choices[digit][self.cell1.row][self.cell1.column] == 0, name
+            name = f'{self.name}_Impossible_kropki_pair_2_{digit}_{self.cell2.row}_{self.cell2.column}'
+            solver.model += solver.choices[digit][self.cell2.row][self.cell2.column] == 0, name
 
     # pylint: disable=loop-invariant-statement
     def add_implausible_constraint(self, solver: PulpSolver) -> None:
@@ -127,11 +121,11 @@ class KropkiPair(Pair):
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.
         """
-        for x, y in product(self.board.digit_range, self.board.digit_range):
-            choice1 = solver.choices[x][self.cell_1.row][self.cell_1.column]
-            choice2 = solver.choices[y][self.cell_2.row][self.cell_2.column]
-            if not self.valid(x, y):
-                solver.model += choice1 + choice2 <= 1, f"{self.name}_Implausible_{x}_{y}"
+        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+            choice1 = solver.choices[digit1][self.cell1.row][self.cell1.column]
+            choice2 = solver.choices[digit2][self.cell2.row][self.cell2.column]
+            if not self.valid(digit1, digit2):
+                solver.model += choice1 + choice2 <= 1, f'{self.name}_Implausible_{digit1}_{digit2}'
 
     @property
     def count(self) -> int:
@@ -141,8 +135,8 @@ class KropkiPair(Pair):
             int: The count of valid digit pairs.
         """
         count = 0
-        for x, y in product(self.board.digit_range, self.board.digit_range):
-            if self.valid(x, y):
+        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+            if self.valid(digit1, digit2):
                 count += 1
         return count
 
@@ -154,21 +148,23 @@ class KropkiPair(Pair):
         """
         sos_range = range(self.count)
         self.sos = LpVariable.dicts(self.name, sos_range, 0, 1, LpInteger)
-        solver.model += lpSum([self.sos[i] for i in sos_range]) == 1, f"{self.name}_SOS"
+        solver.model += lpSum([self.sos[indicator] for indicator in sos_range]) == 1, f'{self.name}_SOS'
 
-    def add_unique_constraints(self, solver: PulpSolver) -> None:
+    def add_unique_constraints(self, solver: PulpSolver, cell1: Cell, cell2: Cell) -> None:
         """Add constraints ensuring that valid pairs are uniquely enforced.
 
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.
+            cell1 (Cell): The first cell in the pair.
+            cell2 (Cell): The second cell in the pair.
         """
         count = 0
-        for x, y in product(self.board.digit_range, self.board.digit_range):
-            if not self.valid(x, y):
+        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+            if not self.valid(digit1, digit2):
                 continue
-            choice1 = solver.choices[x][self.cell_1.row][self.cell_1.column]
-            choice2 = solver.choices[y][self.cell_2.row][self.cell_2.column]
-            solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f"{self.name}_Valid_{x}_{y}"
+            choice1 = solver.choices[digit1][self.cell1.row][self.cell1.column]
+            choice2 = solver.choices[digit2][self.cell2.row][self.cell2.column]
+            solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f'{self.name}_Valid_{digit1}_{digit2}'
             count += 1
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -193,6 +189,6 @@ class KropkiPair(Pair):
                 'fill': 'black',
                 'stroke-width': 1,
                 'stroke': 'black',
-                'background': 'transparent'
-            }
+                'background': 'transparent',
+            },
         }

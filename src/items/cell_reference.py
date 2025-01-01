@@ -1,5 +1,5 @@
 """CellReference."""
-from typing import Type, Iterator
+from typing import Iterator, Type
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -49,22 +49,22 @@ class CellReference(Item):
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml (dict): The YAML dictionary containing cell data.
+            yaml (dict): The YAML dictionary containing cell input_data.
 
         Returns:
             tuple: A tuple containing the row and column as integers.
         """
-        data = yaml[cls.__name__]
-        data = str(data)
-        return int(data[0]), int(data[1])
+        # need str in case yaml treats the string as a number
+        yaml_data: str = str(yaml[cls.__name__])
+        return int(yaml_data[0]), int(yaml_data[1])
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start CellReference instance from the given board and YAML data.
+        """Create start CellReference instance from the given board and YAML input_data.
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml (dict): The YAML dictionary containing cell data.
+            yaml (dict): The YAML dictionary containing cell input_data.
 
         Returns:
             Item: A new instance of CellReference.
@@ -74,6 +74,15 @@ class CellReference(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start CellReference instance from the given board and YAML input_data.
+
+        Args:
+            board (Board): The board associated with this cell reference.
+            yaml_data (dict): The YAML dictionary containing cell input_data.
+
+        Returns:
+            Item: A new instance of CellReference.
+        """
         return cls.create(board, yaml_data)
 
     def svg(self) -> Glyph | None:
@@ -115,7 +124,7 @@ class CellReference(Item):
         Returns:
             str: A string representation of the CellReference.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.cell!r})'
 
     @property
     def used_classes(self) -> set[Type['Item']]:
@@ -134,16 +143,16 @@ class CellReference(Item):
     def walk(self) -> Iterator[Item]:
         """Yield each constraint in the tree of vectors rooted at the current constraint.
 
-        The generator yields the current constraint, then recursively yields each constraint
-        in the tree rooted at the current constraint. The order of the vectors is
-        unspecified.
+        This generator yields the current constraint, then recursively yields each constraint
+        in the tree rooted at the current constraint. The order of the constraints is unspecified.
 
         Yields:
             Item: The current constraint, followed by each constraint in the tree rooted at
-                the current constraint.
+                  the current constraint.
         """
         yield self
-        yield self.cell
+        if self.cell is not None:
+            yield self.cell
 
     def to_dict(self) -> dict:
         """Convert the CellReference instance to start dictionary.

@@ -20,16 +20,8 @@ class GreaterThanPair(Pair):
         Returns:
             list[Rule]: A list containing start single rule describing the constraint.
         """
-        return [
-            Rule(
-                "GreaterThanPair",
-                1,
-                (
-                    "Where cells are separated by chevron "
-                    "the arrow points at the smaller digit"
-                )
-            )
-        ]
+        rule_text: str = 'Where cells are separated by chevron the arrow points at the smaller digit'
+        return [Rule('GreaterThanPair', 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:

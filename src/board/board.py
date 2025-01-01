@@ -81,6 +81,12 @@ class Board:
         self.board_columns = board_columns
         self.row_range = list(range(1, self.board_rows + 1))
         self.column_range = list(range(1, self.board_columns + 1))
+        self.side_bounds: dict[Side, tuple[int, int]] = {
+            Side.top: (1, self.board_columns),
+            Side.bottom: (1, self.board_columns),
+            Side.left: (1, self.board_rows),
+            Side.right: (1, self.board_rows),
+        }
 
         # Digits
         self.minimum_digit = 1
@@ -128,8 +134,7 @@ class Board:
         self.side_cyclic_map: dict[tuple[Side, Cyclic, int], Coord] = self.generate_cyclic_map()
 
     def generate_cyclic_map(self) -> dict[tuple[Side, Cyclic, int], Coord]:
-        """
-        Generate a cyclic map for a board with cyclic connections along each side.
+        """Generate a cyclic map for a board with cyclic connections along each side.
 
         The map contains the following entries:
         - Top row: connects left and right sides in both clockwise and anticlockwise directions.
@@ -138,7 +143,7 @@ class Board:
         - Right column: connects top and bottom sides in both clockwise and anticlockwise directions.
 
         Returns:
-            dict: A dictionary where the keys are tuples of (Side, Cyclic, integer) and the values are Coord objects
+            dict: A dictionary where the keys are tuples of (Side, Cyclic, integer). The cell_values are Coord objects
             representing the corresponding board coordinates.
         """
         scm: dict[tuple[Side, Cyclic, int], Coord] = {}
@@ -216,28 +221,25 @@ class Board:
         Raises:
             ValueError: If the side is invalid or the index is out of range.
         """
+        if side not in self.side_bounds:
+            raise ValueError(f'Invalid side: {side}')
+
+        min_index, max_index = self.side_bounds[side]
+
+        if index < min_index or index > max_index:
+            raise ValueError(f'Index {index} out of range for {side.name} side.')
+
         if side == Side.top:
-            if index < 1 or index > self.board_columns:
-                raise ValueError(f'Index {index} out of range for top side.')
             return Coord(0, index)
-
-        elif side == Side.bottom:
-            if index < 1 or index > self.board_columns:
-                raise ValueError(f'Index {index} out of range for bottom side.')
+        if side == Side.bottom:
             return Coord(self.board_rows + 1, index)
-
-        elif side == Side.left:
-            if index < 1 or index > self.board_rows:
-                raise ValueError(f'Index {index} out of range for left side.')
+        if side == Side.left:
             return Coord(index, 0)
-
-        elif side == Side.right:
-            if index < 1 or index > self.board_rows:
-                raise ValueError(f'Index {index} out of range for right side.')
+        if side == Side.right:
             return Coord(index, self.board_columns + 1)
 
-        # Raise error for invalid side
-        raise ValueError(f'Invalid side: {side}')
+        # Should never reach here due to the initial side validation
+        raise ValueError(f'Unhandled side: {side}')
 
     @classmethod
     def schema(cls) -> Validator:
@@ -246,11 +248,13 @@ class Board:
         Returns:
             Validator: A `strictyaml` validator for the board configuration.
         """
+        valid_tags: list[str] = ['Title', 'Reference', 'Video', 'Author']
+        tag_schema: Map = Map({Optional(key): Str() for key in valid_tags})
         return Map(
             {
                 'Board': Str(),
                 Optional('Box'): Str(),
-                Optional('Tags'): Map({Str(): Str()}),
+                Optional('Tags'): tag_schema,
             },
         )
 

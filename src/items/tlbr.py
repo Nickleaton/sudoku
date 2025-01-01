@@ -17,7 +17,7 @@ class TLBR(StandardDiagonal):
             board (Board): The Sudoku board on which this diagonal operates.
         """
         super().__init__(board)
-        self.add_items([Cell.make(board, i, i) for i in board.row_range])
+        self.add_components([Cell.make(board, index, index) for index in board.row_range])
 
     def glyphs(self) -> list[Glyph]:
         """Generate the visual representation (glyph) for the diagonal.

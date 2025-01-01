@@ -21,7 +21,7 @@ class FixedDifferencePair(FixedPair):
         Returns:
             int: The fixed difference between the two cells.
         """
-        return self.value
+        return self.target_value
 
     @property
     def rules(self) -> list[Rule]:
@@ -30,16 +30,8 @@ class FixedDifferencePair(FixedPair):
         Returns:
             list[Rule]: A list of rules that describe the fixed difference constraint between two cells.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                (
-                    "A white dot between two cells means that the digits in those cells "
-                    "have start fixed difference."
-                )
-            )
-        ]
+        rule_text: str = 'A white dot between two cells means that the digits a fixed difference.'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -54,13 +46,13 @@ class FixedDifferencePair(FixedPair):
         """Calculate the absolute difference between the value_list in the two cells.
 
         Args:
-            solver (PulpSolver): The solver instance used to access the variable value_list.
+            solver (PulpSolver): The solver instance used to access the value_variable value_list.
 
         Returns:
             LpElement: The absolute difference between the two cell value_list, formulated as start constraint.
         """
-        v1 = solver.values[self.cell_1.row][self.cell_1.column]
-        v2 = solver.values[self.cell_2.row][self.cell_2.column]
+        v1 = solver.cell_values[self.cell1.row][self.cell1.column]
+        v2 = solver.cell_values[self.cell2.row][self.cell2.column]
         return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
 
     def css(self) -> dict:
@@ -73,6 +65,6 @@ class FixedDifferencePair(FixedPair):
             '.FixedDifferencePair': {
                 'fill': 'white',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

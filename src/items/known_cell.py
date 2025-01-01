@@ -16,7 +16,7 @@ class KnownCell(CellReference):
 
     Attributes:
         digit (int): The digit assigned to this cell.
-        prefix (str): The prefix used for the cell, defaults to "Known".
+        prefix (str): The prefix used for the cell, defaults to 'Known'.
     """
 
     def __init__(self, board: Board, row: int, column: int, digit: int, prefix=None):
@@ -27,11 +27,11 @@ class KnownCell(CellReference):
             row (int): The row index of the cell.
             column (int): The column index of the cell.
             digit (int): The digit assigned to the cell.
-            prefix (str, optional): The prefix used for the cell. Defaults to "Known".
+            prefix (str, optional): The prefix used for the cell. Defaults to 'Known'.
         """
         super().__init__(board, row, column)
         self.digit = int(digit)
-        self.prefix = "Known" if prefix is None else prefix
+        self.prefix = 'Known' if prefix is None else prefix
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[int, int, int]:
@@ -45,12 +45,12 @@ class KnownCell(CellReference):
             tuple[int, int, int]: A tuple containing row, column, and digit value_list.
 
         Raises:
-            AssertionError: If the input format does not match the expected regex pattern.
+            SudokuException: If the YAML input does not match the expected pattern.
         """
-        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
+        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         row_str, column_string, digit_str = match.groups()
         return int(row_str), int(column_string), int(digit_str)
 
@@ -70,6 +70,15 @@ class KnownCell(CellReference):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an instance of KnownCell from start YAML dictionary.
+
+        Args:
+            board (Board): The board associated with this constraint.
+            yaml_data (dict): A YAML dictionary with the required parameter_types.
+
+        Returns:
+            Item: An instance of KnownCell.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -86,7 +95,7 @@ class KnownCell(CellReference):
         Returns:
             str: A string representation of this KnownCell instance.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})'
 
     def to_dict(self) -> dict:
         """Convert the constraint to start dictionary for serialization.
@@ -94,7 +103,7 @@ class KnownCell(CellReference):
         Returns:
             dict: A dictionary with the class name as the key and cell information as the number.
         """
-        return {self.__class__.__name__: f"{self.row}{self.column}={self.digit}"}
+        return {self.__class__.__name__: f'{self.row}{self.column}={self.digit}'}
 
     def css(self) -> dict:
         """Return CSS properties for styling Known and Unknown cells.
@@ -103,42 +112,42 @@ class KnownCell(CellReference):
             dict: A dictionary of CSS properties.
         """
         return {
-            ".Known": {
+            '.Known': {
                 'font-size': '70px',
                 'fill': 'black',
                 'font-weight': '500',
-                'text-shadow': '-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white'
+                'text-shadow': '-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white',
             },
-            ".Unknown": {
+            '.Unknown': {
                 'font-size': '70px',
                 'fill': 'blue',
                 'font-weight': '500',
-                'text-shadow': '-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white'
+                'text-shadow': '-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white',
             },
-            ".KnownForeground": {
+            '.KnownForeground': {
                 'font-size': '70px',
                 'stroke': 'black',
-                'fill': 'black'
+                'fill': 'black',
             },
-            ".KnownBackground": {
+            '.KnownBackground': {
                 'font-size': '70px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
+                'font-weight': 'bolder',
             },
-            ".UnknownForeground": {
+            '.UnknownForeground': {
                 'font-size': '70px',
                 'stroke': 'blue',
-                'fill': 'blue'
+                'fill': 'blue',
             },
-            ".UnknownBackground": {
+            '.UnknownBackground': {
                 'font-size': '70px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }
 
     def bookkeeping(self) -> None:
@@ -146,17 +155,13 @@ class KnownCell(CellReference):
 
         Sets the cell to only the assigned digit and restricts the same digit
         in the row, column, and box of this cell.
-
-        Returns:
-            None
         """
         self.cell.book.set_possible([self.digit])
         standard_regions: list[StandardRegion] = [
-            region for region in self.cell.top.regions() if isinstance(region, StandardRegion)
+            region for region in self.cell.top.regions() if isinstance(region, StandardRegion) and self.cell in region
         ]
         for region in standard_regions:
-            if self.cell in region:
-                for cell in region.cells:
-                    if cell == self.cell:
-                        continue
-                    cell.book.set_impossible([self.digit])
+            for cell in region.cells:
+                if cell == self.cell:
+                    continue
+                cell.book.set_impossible([self.digit])

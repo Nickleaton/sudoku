@@ -13,7 +13,7 @@ from src.utils.rule import Rule
 
 
 class Killer(Region):
-    """Represents start Killer cage in the puzzle, which is start group of cells with start specified total sum constraint."""
+    """Represents start Killer cage in the puzzle."""
 
     def __init__(self, board: Board, total: int, cells: list[Item]) -> None:
         """Initialize start Killer cage with start board, start total target sum, and start list of cells.
@@ -25,16 +25,20 @@ class Killer(Region):
         """
         super().__init__(board)
         self.total: int = total
-        self.add_items(cells)
+        self.add_components(cells)
 
     def __repr__(self) -> str:
-        """Return start string representation of the Killer cage."""
+        """Generate a string representation of the Killer cage.
+
+        Returns:
+            str: A string in the format `KillerCage(board, total, cells)`,
+        """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.total!r}, "
-            f"{self.cells!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.total!r}, '
+            f'{self.cells!r}'
+            f')'
         )
 
     @classmethod
@@ -48,7 +52,7 @@ class Killer(Region):
         Returns:
             tuple[int, list[Item]]: The target total and start list of cell vectors for the cage.
         """
-        parts = yaml[cls.__name__].split("=")
+        parts = yaml[cls.__name__].split('=')
         total: int = int(parts[0].strip())
         cells: list[Item] = [
             Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')
@@ -71,6 +75,15 @@ class Killer(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Killer cage from the YAML configuration.
+
+        Args:
+            board (Board): The game board.
+            yaml_data (dict): The YAML dictionary containing the Killer cage configuration.
+
+        Returns:
+            Item: A Killer cage instance.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -89,13 +102,8 @@ class Killer(Region):
         Returns:
             list[Rule]: A list of rules that apply to the Killer cage.
         """
-        return [
-            Rule(
-                "Killer",
-                1,
-                "Numbers cannot repeat within cages. The cells total to the number in the top leftmost cell."
-            )
-        ]
+        rule_text: str = 'Numbers cannot repeat within cages. The cells total to the number in the top leftmost cell.'
+        return [Rule('Killer', 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -112,8 +120,8 @@ class Killer(Region):
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
         """
-        total = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
-        name = f"{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}"
+        total = lpSum(solver.cell_values[cell.row][cell.column] for cell in self.cells)
+        name = f'{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}'
         solver.model += total == self.total, name
 
     def to_dict(self) -> dict[str, str]:
@@ -122,8 +130,8 @@ class Killer(Region):
         Returns:
             dict[str, str]: A dictionary with the Killer cage's class name and configuration string.
         """
-        cell_str = ",".join([f"{cell.row}{cell.column}" for cell in self.cells])
-        return {self.__class__.__name__: f"{self.total}={cell_str}"}
+        cell_str = ','.join([f'{cell.row}{cell.column}' for cell in self.cells])
+        return {self.__class__.__name__: f'{self.total}={cell_str}'}
 
     def css(self) -> dict[str, dict[str, Any]]:
         """Return the CSS styles for rendering the Killer cage.
@@ -136,19 +144,19 @@ class Killer(Region):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 2,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.KillerForeground': {
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.KillerBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }

@@ -11,10 +11,13 @@ from src.items.item import Item
 from src.items.region import Region
 from src.parsers.little_killers_parser import LittleKillersParser
 from src.solvers.pulp_solver import PulpSolver
+from src.utils.config import Config
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.rule import Rule
 from src.utils.side import Side
+
+config = Config()
 
 
 class LittleKiller(Region):
@@ -38,14 +41,14 @@ class LittleKiller(Region):
         self.cyclic = cyclic
         self.offset = offset
         self.total = total
-        coord = side.start(board, cyclic, offset)
+        coord = board.start(side, cyclic, offset)
         self.direction = side.direction(cyclic)
         self.delta = self.direction.offset
         cells = []
         while board.is_valid_coordinate(coord):
             cells.append(Cell.make(board, int(coord.row), int(coord.column)))
             coord += self.delta
-        self.add_items(cells)
+        self.add_components(cells)
         self.reference = side.start(board, cyclic, offset) - self.delta
 
     @classmethod
@@ -59,7 +62,7 @@ class LittleKiller(Region):
 
     @classmethod
     def parser(cls) -> LittleKillersParser:
-        """Return the parser used to extract data for the LittleKiller region.
+        """Return the parser used to extract input_data for the LittleKiller region.
 
         Returns:
             LittleKillersParser: The parser for LittleKiller regions.
@@ -73,13 +76,13 @@ class LittleKiller(Region):
             str: A string representation of the LittleKiller object.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.side!r}, "
-            f"{self.cyclic!r}, "
-            f"{self.offset!r}, "
-            f"{self.total!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.side!r}, '
+            f'{self.cyclic!r}, '
+            f'{self.offset!r}, '
+            f'{self.total!r}'
+            f')'
         )
 
     @classmethod
@@ -93,7 +96,7 @@ class LittleKiller(Region):
         Returns:
             tuple[int, int, Cyclic, Side]: A tuple containing the total, offset, cyclic, and side value_list.
         """
-        parts = yaml[cls.__name__].split("=")
+        parts = yaml[cls.__name__].split('=')
         total = int(parts[1])
         offset = int(parts[0][1])
         cyclic = Cyclic.create(parts[0][-1])
@@ -116,6 +119,15 @@ class LittleKiller(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start LittleKiller region from the YAML configuration.
+
+        Args:
+            board (Board): The board being used.
+            yaml_data (dict): The YAML configuration for the LittleKiller region.
+
+        Returns:
+            Item: The created LittleKiller constraint.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -125,13 +137,22 @@ class LittleKiller(Region):
             list[Glyph]: A list of glyphs, including text and arrows.
         """
         delta2 = Coord(0, 0)
-        if self.side == Side.TOP:
+        if self.side == Side.top:
             delta2 = Coord(0, 1)
-        if self.side == Side.RIGHT:
+        if self.side == Side.right:
             delta2 = Coord(0, 1)
         return [
-            TextGlyph('LittleKiller', 0, self.reference + Coord(0.5, 0.5), str(self.total)),
-            ArrowGlyph('LittleKiller', self.direction.angle.angle, self.reference + (self.delta * 0.90) + delta2)
+            TextGlyph(
+                'LittleKiller',
+                0,
+                self.reference + Coord(0.5, 0.5),
+                str(self.total),
+            ),
+            ArrowGlyph(
+                'LittleKiller',
+                self.direction.angle.angle,
+                self.reference + (self.delta * config.graphics.arrow_head_percentage) + delta2,
+            ),
         ]
 
     @property
@@ -141,13 +162,9 @@ class LittleKiller(Region):
         Returns:
             list[Rule]: A list of rules defining the LittleKiller region's constraints.
         """
-        return [
-            Rule(
-                "LittleKiller",
-                1,
-                "Clues outside the grid give the sum of the indicated diagonals, which may contain repeated digits"
-            )
-        ]
+        rule_text: str = """Clues outside the grid give the sum of the indicated diagonals,
+                         which may contain repeated digits"""
+        return [Rule('LittleKiller', 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -164,8 +181,8 @@ class LittleKiller(Region):
         Args:
             solver (PulpSolver): The solver to add the constraint to.
         """
-        total = lpSum(solver.values[cell.row][cell.column] for cell in self.cells)
-        name = f"{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}"
+        total = lpSum(solver.cell_values[cell.row][cell.column] for cell in self.cells)
+        name = f'{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}'
         solver.model += total == self.total, name
 
     def to_dict(self) -> dict:
@@ -174,7 +191,7 @@ class LittleKiller(Region):
         Returns:
             dict: A dictionary representing the LittleKiller region.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.offset}{self.cyclic.value}={self.total}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.offset}{self.cyclic.value}={self.total}'}
 
     def css(self) -> dict:
         """Return the CSS styling for the LittleKiller region.
@@ -187,25 +204,25 @@ class LittleKiller(Region):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 2,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.LittleKillerForeground': {
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.LittleKillerBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
+                'font-weight': 'bolder',
             },
             '.LittleArrow': {
                 'font-size': '20px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
-            }
+                'fill': 'black',
+            },
         }

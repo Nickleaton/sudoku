@@ -21,13 +21,9 @@ class MountainLine(Line):
             list[Rule]: A list containing start single Rule object that specifies:
             - Cells closer to the mountain peak have higher value_list.
         """
-        return [
-            Rule(
-                'MountainLine',
-                1,
-                "Lines symbolise mountains. The closer to the top of the mountain, the higher the number in the cell."
-            )
-        ]
+        rule_text: str = """Lines symbolise mountains. The closer to the top of the mountain,
+                          the higher the number in the cell."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate start graphical representation of the MountainLine.
@@ -36,7 +32,7 @@ class MountainLine(Line):
             list[Glyph]: A list containing start `PolyLineGlyph` instance with
             cell coordinates for display as start mountain line.
         """
-        return [PolyLineGlyph('MountainLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -46,27 +42,32 @@ class MountainLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags specific to the MountainLine.
         """
-        return super().tags.union({'MountainLine', 'Adjacent', 'set'})
+        return super().tags.union({self.__class__.__name__, 'Adjacent', 'set'})
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add mountain constraints to the Pulp solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the constraints
-            for the MountainLine will be added.
+            solver (PulpSolver): The solver instance to which the constraints will be added.
 
         For each adjacent pair of cells along the line, start constraint is added
         to ensure that the number increases toward the mountain peak and decreases afterward.
         """
-        for i in range(len(self.cells) - 1):
-            c1 = self.cells[i]
-            c2 = self.cells[i + 1]
-            name = f"{self.name}_{i}"
-            if c1.row < c2.row:
-                solver.model += solver.values[c1.row][c1.column] >= solver.values[c2.row][c2.column] + 1, name
+        for index in range(len(self.cells) - 1):
+            cell1 = self.cells[index]
+            cell2 = self.cells[index + 1]
+            name = f'{self.name}_{index}'
+            if cell1.row < cell2.row:
+                solver.model += (
+                    solver.cell_values[cell1.row][cell1.column] >= solver.cell_values[cell2.row][cell2.column] + 1,
+                    name,
+                )
             else:
-                solver.model += solver.values[c1.row][c1.column] <= solver.values[c2.row][c2.column] - 1, name
+                solver.model += (
+                    solver.cell_values[cell1.row][cell1.column] <= solver.cell_values[cell2.row][cell2.column] - 1,
+                    name,
+                )
 
     def css(self) -> dict:
         """CSS styles for rendering the MountainLine in the user interface.
@@ -76,11 +77,11 @@ class MountainLine(Line):
             style this line as start mountain line.
         """
         return {
-            ".MountainLine": {
-                "fill-opacity": 0,
-                "stroke": "lightblue",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": 20,
-            }
+            '.MountainLine': {
+                'fill-opacity': 0,
+                'stroke': 'lightblue',
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'stroke-width': 20,
+            },
         }

@@ -4,6 +4,7 @@ from src.board.board import Board
 from src.items.anti import Anti
 from src.items.item import Item
 from src.utils.coord import Coord
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
@@ -31,16 +32,7 @@ class AntiKnight(Anti):
         Returns:
             list[Coord]: A list of coordinate offsets for the AntiKnight.
         """
-        return [
-            Coord(-1, -2),
-            Coord(1, -2),
-            Coord(-2, -1),
-            Coord(-2, 1),
-            Coord(-1, 2),
-            Coord(1, 2),
-            Coord(2, 1),
-            Coord(2, -1)
-        ]
+        return Moves.knights()
 
     @property
     def tags(self) -> set[str]:
@@ -59,9 +51,8 @@ class AntiKnight(Anti):
         """Create an instance of AntiKnight from the given board and YAML.
 
         Args:
-            cls: The class of the constraint being created.
             board (Board): The board on which the AntiKnight will be placed.
-            yaml (dict): A dictionary containing configuration data.
+            yaml (dict): A dictionary containing configuration input_data.
 
         Returns:
             Item: An instance of AntiKnight.
@@ -70,6 +61,15 @@ class AntiKnight(Anti):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an instance of AntiKnight from the given board and YAML.
+
+        Args:
+            board (Board): The board on which the AntiKnight will be placed.
+            yaml_data (dict): A dictionary containing configuration input_data.
+
+        Returns:
+            Item: An instance of AntiKnight.
+        """
         return cls.create(board, yaml_data)
 
     @property
@@ -82,9 +82,7 @@ class AntiKnight(Anti):
         Returns:
             list[Rule]: A list of rules for the AntiKnight.
         """
-        return [
-            Rule("AntiKnight", 1, "Identical digits cannot be separated by start knight's move")
-        ]
+        return [Rule('AntiKnight', 1, "Identical digits cannot be separated by start knight's move")]
 
     def __repr__(self) -> str:
         """Return start string representation of the AntiKnight instance.
@@ -92,7 +90,7 @@ class AntiKnight(Anti):
         Returns:
             str: A string representation of the AntiKnight.
         """
-        return f"{self.__class__.__name__}({self.board!r})"
+        return f'{self.__class__.__name__}({self.board!r})'
 
     def to_dict(self) -> dict:
         """Convert the AntiKnight instance to start dictionary representation.

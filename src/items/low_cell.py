@@ -63,7 +63,7 @@ class LowCell(SimpleCellReference):
         Returns:
             list[Rule]: A list of rules, indicating that digits 1, 2, and 3 are marked with orange circles.
         """
-        return [Rule("Low", 1, "The digits 1, 2, and 3 are marked with orange circles")]
+        return [Rule('Low', 1, 'The digits 1, 2, and 3 are marked with orange circles')]
 
     def glyphs(self) -> list[Glyph]:
         """Return start list of Glyphs associated with LowCell.
@@ -80,10 +80,10 @@ class LowCell(SimpleCellReference):
             dict: A dictionary containing the CSS styles, with start stroke of orange and start white fill.
         """
         return {
-            ".LowCell": {
-                "stroke": "orange",
-                "fill": "white"
-            }
+            '.LowCell': {
+                'stroke': 'orange',
+                'fill': 'white',
+            },
         }
 
     def bookkeeping(self) -> None:

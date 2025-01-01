@@ -9,25 +9,28 @@ from src.items.region import Region
 from src.parsers.cell_parser import CellParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
 class Window(Region):
     """Represents start window in start Sudoku-like board."""
 
-    # TODO Offsets in Coords
+    def __init__(self, board: Board, center: Coord):
+        """Initialize the Window instance.
 
-    offsets = (
-        Coord(-1, -1),
-        Coord(-1, 0),
-        Coord(-1, 1),
-        Coord(0, -1),
-        Coord(0, 0),
-        Coord(0, 1),
-        Coord(1, -1),
-        Coord(1, 0),
-        Coord(1, 1)
-    )
+        Args:
+            board (Board): The board on which the window exists.
+            center (Coord): The center coordinate of the window.
+        """
+        super().__init__(board)
+        self.center = center
+        self.add_components(
+            [
+                Cell.make(board, int((center + offset).row), int((center + offset).column))
+                for offset in Moves.all_moves()
+            ],
+        )
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -47,43 +50,27 @@ class Window(Region):
         """
         return CellParser()
 
-    def __init__(self, board: Board, center: Coord):
-        """Initialize the Window instance.
-
-        Args:
-            board (Board): The board on which the window exists.
-            center (Coord): The center coordinate of the window.
-        """
-        super().__init__(board)
-        self.center = center
-        self.add_items(
-            [
-                Cell.make(board, int((center + offset).row), int((center + offset).column))
-                for offset in Window.offsets
-            ]
-        )
-
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Coord:
-        """Extract the center coordinate from the YAML data.
+        """Extract the center coordinate from the YAML input_data.
 
         Args:
-            _ (Board): The board to extract data for.
-            yaml (dict): The YAML data containing coordinates.
+            _ (Board): The board to extract input_data for.
+            yaml (dict): The YAML input_data containing coordinates.
 
         Returns:
             Coord: The extracted coordinate.
         """
-        data = str(yaml[cls.__name__])
-        return Coord(int(data[0]), int(data[1]))
+        coord_str: str = str(yaml[cls.__name__])
+        return Coord(int(coord_str[0]), int(coord_str[1]))
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Window instance from the YAML data.
+        """Create start Window instance from the YAML input_data.
 
         Args:
             board (Board): The board to create the window on.
-            yaml (dict): The YAML data for the window.
+            yaml (dict): The YAML input_data for the window.
 
         Returns:
             Item: The created Window instance.
@@ -93,6 +80,15 @@ class Window(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Window instance from the YAML input_data.
+
+        Args:
+            board (Board): The board to create the window on.
+            yaml_data (dict): The YAML input_data for the window.
+
+        Returns:
+            Item: The created Window instance.
+        """
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
@@ -101,7 +97,7 @@ class Window(Region):
         Returns:
             str: A string representation of the Window.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.center!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.center!r})'
 
     @property
     def rules(self) -> list[Rule]:
@@ -154,6 +150,6 @@ class Window(Region):
         """
         return {
             '.Window': {
-                'fill': 'lightcyan'
-            }
+                'fill': 'lightcyan',
+            },
         }

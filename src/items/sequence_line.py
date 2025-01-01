@@ -1,5 +1,5 @@
 """SequenceLine."""
-from pulp import LpVariable, LpInteger
+from pulp import LpInteger, LpVariable
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -24,16 +24,9 @@ class SequenceLine(Line):
             list[Rule]: A list containing start single Rule object that specifies:
             - Digits along grey lines follow an arithmetic sequence.
         """
-        return [
-            Rule(
-                'SequenceLine',
-                1,
-                (
-                    "Digits along grey lines follow arithmetic sequences. "
-                    "They increase from one end to the other with start constant difference."
-                )
-            )
-        ]
+        rule_text: str = """Digits along grey lines follow arithmetic sequences.
+            They increase from one end to the other with start constant difference."""
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate start graphical representation of the SequenceLine.
@@ -42,7 +35,7 @@ class SequenceLine(Line):
             list[Glyph]: A list containing start `PolyLineGlyph` instance with
             cell coordinates for display as start sequence line.
         """
-        return [PolyLineGlyph('SequenceLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -52,8 +45,9 @@ class SequenceLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags specific to the SequenceLine.
         """
-        return super().tags.union({'SequenceLine', 'Difference'})
+        return super().tags.union({self.__class__.__name__, 'Difference'})
 
+    # TODO - make work with board or digits
     @staticmethod
     def max_difference(length: int) -> int:
         """Determine the maximum possible difference for an arithmetic sequence of start given length.
@@ -64,17 +58,14 @@ class SequenceLine(Line):
         Returns:
             int: The maximum allowable difference between consecutive value_list in the sequence.
         """
-        if length == 1:
-            return 9
-        if length == 2:
-            return 8
-        if length == 3:
-            return 3
-        if length == 4:
-            return 2
-        if length == 5:
-            return 2
-        return 1
+        differences = {
+            1: 9,
+            2: 8,
+            3: 3,
+            4: 2,
+            5: 2,
+        }
+        return differences.get(length, 1)
 
     def possible_digits(self) -> list[set[int]]:
         """Determine possible digits for each cell along the sequence.
@@ -87,44 +78,62 @@ class SequenceLine(Line):
         big_m = self.board.maximum_digit
 
         possible = []
-        for i in range(1, length + 1):
-            a = set(range(i, i + big_m - length + 1))
-            # pylint: disable=loop-invariant-statement
-            d = {big_m - x + 1 for x in range(i, i + big_m - length + 1)}
-            possible.append(a.union(d))
+        for sequence_index in range(1, length + 1):
+            current_range = set(range(sequence_index, sequence_index + big_m - length + 1))
+            digits = {
+                big_m - cell_index + 1
+                for cell_index in range(sequence_index, sequence_index + big_m - length + 1)
+            }
+            possible.append(current_range.union(digits))
         return possible
 
-    # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add arithmetic sequence constraints to the Pulp solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the constraints
-            for the SequenceLine will be added.
+            solver (PulpSolver): The solver instance to which the constraints for the SequenceLine will be added.
 
         Constraints include uniqueness, sequence difference, and restricting possible
         digits to speed solving.
         """
-        # Ensure the cells in the sequence have unique value_list
         self.add_unique_constraint(solver, optional=True)
+        difference = self.create_difference_variable()
+        self.add_consecutive_cell_constraints(solver, difference)
+        self.add_possible_digits_restrictions(solver)
 
-        # Create start variable for the difference between consecutive cells
+    def create_difference_variable(self) -> LpVariable:
+        """Create the variable that represents the difference between consecutive cells.
+
+        Returns:
+            LpVariable: The variable representing the difference between consecutive cells.
+        """
         max_diff = SequenceLine.max_difference(len(self.cells))
-        difference = LpVariable(self.name, -max_diff, max_diff, LpInteger)
+        return LpVariable(self.name, -max_diff, max_diff, LpInteger)
 
-        # Set the constraint for each consecutive pair of cells
-        for i in range(len(self.cells) - 1):
-            value1 = solver.values[self.cells[i].row][self.cells[i].column]
-            value2 = solver.values[self.cells[i + 1].row][self.cells[i + 1].column]
-            solver.model += value1 - value2 == difference, f"{self.name}_{i}"
+    def add_consecutive_cell_constraints(self, solver: PulpSolver, difference: LpVariable) -> None:
+        """Add constraints for the difference between consecutive cells.
 
-        # Restrict possible digits for each cell along the line
-        for i, possible in enumerate(self.possible_digits()):
-            for d in self.board.digit_range:
-                if d not in possible:
-                    cell = self.cells[i]
-                    name = f"{self.name}_impossible_{i}_{d}"
-                    solver.model += solver.choices[d][cell.row][cell.column] == 0, name
+        Args:
+            solver (PulpSolver): The solver to which the constraints are added.
+            difference (LpVariable): The variable that holds the difference between consecutive cells.
+        """
+        for index in range(len(self.cells) - 1):
+            value1 = solver.cell_values[self.cells[index].row][self.cells[index].column]
+            value2 = solver.cell_values[self.cells[index + 1].row][self.cells[index + 1].column]
+            solver.model += value1 - value2 == difference, f'{self.name}_{index}'
+
+    def add_possible_digits_restrictions(self, solver: PulpSolver) -> None:
+        """Restrict possible digits for each cell along the line.
+
+        Args:
+            solver (PulpSolver): The solver to which the restrictions are added.
+        """
+        for index, possible in enumerate(self.possible_digits()):
+            for digit in self.board.digit_range:
+                if digit not in possible:
+                    cell = self.cells[index]
+                    name = f'{self.name}_impossible_{index}_{digit}'
+                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
 
     def css(self) -> dict:
         """CSS styles for rendering the SequenceLine in the user interface.
@@ -134,11 +143,11 @@ class SequenceLine(Line):
             this line as start sequence line.
         """
         return {
-            ".SequenceLine": {
-                "stroke": "grey",
-                "stroke-width": 20,
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "fill-opacity": 0
-            }
+            '.SequenceLine': {
+                'stroke': 'grey',
+                'stroke-width': 20,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'fill-opacity': 0,
+            },
         }

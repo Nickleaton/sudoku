@@ -15,45 +15,78 @@ from src.items.odd_cell import OddCell
 from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.known_parser import KnownParser
 
-CELL_TYPE_MAP: dict[str, Type[SimpleCellReference]] = {
-    'f': FortressCell,
-    'l': LowCell,
-    'm': MidCell,
-    'h': HighCell,
-    'e': EvenCell,
-    'o': OddCell
-}
+CELL_TYPE_MAP: frozenset[tuple[str, Type[SimpleCellReference]]] = frozenset(
+    (
+        ('f', FortressCell),
+        ('l', LowCell),
+        ('m', MidCell),
+        ('h', HighCell),
+        ('e', EvenCell),
+        ('o', OddCell),
+    ),
+)
 
 
 class Known(ComposedItem):
     """Represent start collection of cells with known characteristics on the board."""
 
     def __init__(self, board: Board, rows: list[str]):
-        """Initialize the Known object with start board and start list of row data.
+        """Initialize the Known object with start board and start list of row input_data.
 
         Args:
             board (Board): The board instance associated with the Known cells.
-            rows (list[str]): A list of strings representing the rows of cells,
-                              where each character represents start cell type.
+            rows (list[str]): Strings representing the rows of cells, where each character represents start cell type.
         """
         super().__init__(board, [])
         self.rows = rows
         parts: list[CellReference] = []
+        for row_index, row_data in enumerate(self.rows):
+            parts.extend(Known.process_row(row_data, row_index + 1, board))
+        self.add_components(parts)
 
-        for y, data in enumerate(self.rows):
-            row = y + 1
-            for x, code in enumerate(data):
-                column = x + 1
-                if code == '.':
-                    continue
-                if code in CELL_TYPE_MAP:
-                    parts.append(CELL_TYPE_MAP[code](board, row, column))
-                elif code in '0123456789':
-                    parts.append(KnownCell(board, row, column, int(code)))
-                else:
-                    raise ValueError(f'Invalid cell type: {code}')
+    @staticmethod
+    def process_cell(board: Board, code: str, row: int, column: int) -> CellReference:
+        """Process a single cell and returns its corresponding CellReference.
 
-        self.add_items(parts)
+        Args:
+            board (Board): The board instance associated with the cells.
+            code (str): The character representing the cell type.
+            row (int): The row index (1-based).
+            column (int): The column index (1-based).
+
+        Returns:
+            CellReference: The created CellReference object.
+
+        Raises:
+            ValueError: If the cell type is invalid.
+        """
+        cell_class = CELL_TYPE_MAP.get(code)
+        if cell_class:
+            return cell_class(board, row, column)
+        if code.isdigit():
+            return KnownCell(board, row, column, int(code))
+        raise ValueError(f'Invalid cell type: {code}')
+
+    @staticmethod
+    def process_row(row_data: str, row: int, board: Board) -> list[CellReference]:
+        """Process a single row of cell input_data and return the corresponding CellReferences.
+
+        Args:
+            row_data (str): A string representing the row of cells, where each character represents a cell type.
+            row (int): The row index (1-based).
+            board (Board): The board instance associated with the cells.
+
+        Returns:
+            list[CellReference]: A list of CellReference objects created for the row.
+        """
+        parts: list[CellReference] = []
+
+        for column_index, code in enumerate(row_data):
+            column = column_index + 1
+            if code == '.':
+                continue
+            parts.append(Known.process_cell(board, code, row, column))
+        return parts
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -88,30 +121,37 @@ class Known(ComposedItem):
 
         Args:
             _ (Board): The board instance.
-            yaml (dict): The YAML data to extract from.
+            yaml (dict): The YAML input_data to extract from.
 
         Returns:
-            Any: A list of row strings extracted from the YAML data.
+            Any: A list of row strings extracted from the YAML input_data.
         """
-        result: list[str] = [y for y in yaml]
-        return result
+        return list(yaml)
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Known instance from YAML data.
+        """Create start Known instance from YAML input_data.
 
         Args:
             board (Board): The board instance.
-            yaml (dict): The YAML data to create the Known instance from.
+            yaml (dict): The YAML input_data to create the Known instance from.
 
         Returns:
             Item: A new instance of Known initialized with the extracted rows.
         """
-        items = Known.extract(board, yaml[cls.__name__])
-        return Known(board, items)
+        return Known(board, Known.extract(board, yaml[cls.__name__]))
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start Known instance from YAML input_data.
+
+        Args:
+            board (Board): The board instance.
+            yaml_data (dict): The YAML input_data to create the Known instance from.
+
+        Returns:
+            Item: A new instance of Known initialized with the extracted rows.
+        """
         return cls.create(board, yaml_data)
 
     def line_str(self) -> list[str]:
@@ -122,15 +162,15 @@ class Known(ComposedItem):
         """
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
 
-        for item in self:
-            if not isinstance(item, CellReference):
+        for cell_reference in self:
+            if not isinstance(cell_reference, CellReference):
                 continue
-            if isinstance(item, SimpleCellReference):
-                lines[item.row - 1][item.column - 1] = item.letter()
-            if isinstance(item, KnownCell):
-                lines[item.row - 1][item.column - 1] = str(item.digit)
+            if isinstance(cell_reference, SimpleCellReference):
+                lines[cell_reference.row - 1][cell_reference.column - 1] = cell_reference.letter()
+            if isinstance(cell_reference, KnownCell):
+                lines[cell_reference.row - 1][cell_reference.column - 1] = str(cell_reference.digit)
 
-        return ["".join(line) for line in lines]
+        return [''.join(line) for line in lines]
 
     def __repr__(self) -> str:
         """Return representation of the Known instance.
@@ -138,7 +178,7 @@ class Known(ComposedItem):
         Returns:
             str: A string representation of the Known instance.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.line_str()})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.line_str()})'
 
     def to_dict(self) -> dict[str, list[str]]:
         """Convert the Known instance into start dictionary format.

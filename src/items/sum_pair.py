@@ -8,7 +8,7 @@ from src.utils.rule import Rule
 
 
 class SumPair(Pair):
-    """Represents start pair of cells where their value_list must sum to start fixed target."""
+    """Represents a pair of cells where their value_list must sum to start fixed target."""
 
     @property
     def tags(self) -> set[str]:
@@ -26,13 +26,8 @@ class SumPair(Pair):
         Returns:
             list[Rule]: A list of rules describing the SumPair constraints.
         """
-        return [
-            Rule(
-                self.__class__.__name__,
-                1,
-                "Cells separated by start blue dot must have start sum"
-            )
-        ]
+        rule_text: str = 'Cells separated by start blue dot must have start sum'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def target(self, solver: PulpSolver) -> LpElement:
         """Calculate the target sum of the cell pair in the solver.
@@ -43,7 +38,9 @@ class SumPair(Pair):
         Returns:
             LpElement: The sum of the value_list of the two cells.
         """
-        return solver.values[self.cell_1.row][self.cell_1.column] + solver.values[self.cell_2.row][self.cell_2.column]
+        lhs: LpElement = solver.cell_values[self.cell1.row][self.cell1.column]
+        rhs: LpElement = solver.cell_values[self.cell2.row][self.cell2.column]
+        return lhs + rhs
 
     def css(self) -> dict:
         """Define the CSS styles for rendering SumPair glyphs.
@@ -55,6 +52,6 @@ class SumPair(Pair):
             '.FixedSumPair': {
                 'fill': 'cyan',
                 'stroke-width': 1,
-                'stroke': 'black'
-            }
+                'stroke': 'black',
+            },
         }

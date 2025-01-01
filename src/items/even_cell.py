@@ -53,7 +53,7 @@ class EvenCell(SimpleCellReference):
         Returns:
             list[Rule]: A list containing the rule that specifies an opaque grey square must contain an even digit.
         """
-        return [Rule("Odd", 1, "An opaque grey square must contain an even digit")]
+        return [Rule('Odd', 1, 'An opaque grey square must contain an even digit')]
 
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs associated with this EvenCell.
@@ -70,9 +70,9 @@ class EvenCell(SimpleCellReference):
             dict: A dictionary containing the CSS properties for the EvenCell.
         """
         return {
-            ".EvenCell": {
-                "fill": "gainsboro"
-            }
+            '.EvenCell': {
+                'fill': 'gainsboro',
+            },
         }
 
     def bookkeeping(self) -> None:

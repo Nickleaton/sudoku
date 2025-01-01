@@ -2,6 +2,7 @@
 
 from src.items.special_region import SpecialRegion
 from src.utils.coord import Coord
+from src.utils.moves import Moves
 
 
 class Asterix(SpecialRegion):
@@ -21,17 +22,7 @@ class Asterix(SpecialRegion):
             list[Coord]: A list of Coord objects representing each cell in the
             Asterix region.
         """
-        return [
-            Coord(2, 5),
-            Coord(3, 3),
-            Coord(3, 7),
-            Coord(5, 2),
-            Coord(5, 5),
-            Coord(5, 8),
-            Coord(7, 3),
-            Coord(7, 7),
-            Coord(8, 5)
-        ]
+        return Moves.asterix()
 
     def region_name(self) -> str:
         """Provide the name of the region.
@@ -50,6 +41,6 @@ class Asterix(SpecialRegion):
         return {
             '.Asterix': {
                 'stroke': 'orange',
-                'fill': 'orange'
-            }
+                'fill': 'orange',
+            },
         }

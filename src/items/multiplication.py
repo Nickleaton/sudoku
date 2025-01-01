@@ -1,4 +1,5 @@
 """Multiplication."""
+from itertools import product
 from math import log10
 
 from pulp import lpSum
@@ -12,39 +13,34 @@ class Multiplication:
     """Provides functionality for handling multiplication constraints in Sudoku puzzles."""
 
     @staticmethod
-    # pylint: disable=loop-invariant-statement
-    def get_set(board: Board, n: int) -> set[int]:
+    def get_set(board: Board, target: int) -> set[int]:
         """Determine the set of digits that can contribute to start given product.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
-            n (int): The target product.
+            target (int): The target product.
 
         Returns:
             set[int]: The set of digits that can contribute to the target product.
         """
         used: set[int] = set()
-        for a in board.digit_range:
-            for b in board.digit_range:
-                for c in board.digit_range:
-                    for d in board.digit_range:
-                        product: int = a * b * c * d
-                        if product == n:
-                            used.update({a, b, c, d})
-                        if product > n:
-                            break
+        for digit1, digit2, digit3, digit4 in product(board.digit_range, repeat=4):
+            product_value: int = digit1 * digit2 * digit3 * digit4
+            if product_value == target:
+                used.update({digit1, digit2, digit3, digit4})
+            if product_value > target:
+                break
         return used
 
     @staticmethod
-    # pylint: disable=loop-invariant-statement
-    def add_constraint(board: Board, solver: PulpSolver, cells: list[Cell], product: int, name: str) -> None:
+    def add_constraint(board: Board, solver: PulpSolver, cells: list[Cell], target: int, name: str) -> None:
         """Add constraints to enforce start multiplication rule on start group of cells.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
             solver (PulpSolver): The solver to which the constraints are added.
             cells (list[Cell]): The list of cells involved in the multiplication.
-            product (int): The target product of the cell value_list.
+            target (int): The target product of the cell value_list.
             name (str): The base name for the constraints.
         """
         # Enforce the multiplication restriction using logarithms
@@ -53,13 +49,12 @@ class Multiplication:
                 log10(digit) * solver.choices[digit][cell.row][cell.column]
                 for digit in board.digit_range
                 for cell in cells
-            ]
+            ],
         )
-        solver.model += log_product == log10(product), f"{name}_log_constraint"
+        solver.model += log_product == log10(product), f'{name}_log_constraint'
 
         # Restrict the possible choices for each cell
-        valid_digits = Multiplication.get_set(board, product)
-        for cell in cells:
-            for digit in board.digit_range:
-                if digit not in valid_digits:
-                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, f"{name}_{cell.name}_{digit}"
+        valid_digits = Multiplication.get_set(board, target)
+        for digit, cell in product(board.digit_range, cells):
+            if digit not in valid_digits:
+                solver.model += solver.choices[digit][cell.row][cell.column] == 0, f'{name}_{cell.name}_{digit}'

@@ -1,6 +1,5 @@
 """MinMaxSum."""
 import re
-from typing import Any
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -21,7 +20,7 @@ class MinMaxSum(FirstN):
     corresponding row or column in the given direction.
     """
 
-    def __init__(self, board: Board, side: Side, index: int, total: int):
+    def __init__(self, board: Board, side: Side, index: int, total: int) -> None:
         """Initialize start MinMaxSum frame.
 
         Args:
@@ -40,11 +39,11 @@ class MinMaxSum(FirstN):
             str: A string representation of the object.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.side!r}, "
-            f"{self.total}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.side!r}, '
+            f'{self.total}'
+            f')'
         )
 
     @property
@@ -54,14 +53,9 @@ class MinMaxSum(FirstN):
         Returns:
             list[Rule]: A list containing the rules.
         """
-        return [
-            Rule(
-                'MinMaxSum',
-                1,
-                "Numbers outside the frame equal the sum of the minimum and maximum number in the "
-                "corresponding row or column in the given direction"
-            )
-        ]
+        rule_text: str = """Numbers outside the frame equal the sum of the minimum and maximum number in the
+                         corresponding row or column in the given direction."""
+        return [Rule('MinMaxSum', 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing the MinMaxSum frame.
@@ -73,9 +67,9 @@ class MinMaxSum(FirstN):
             TextGlyph(
                 'MinMaxSumText',
                 0,
-                self.side.marker(self.board, self.index).center,
-                str(self.total)
-            )
+                self.board.marker(self.side, self.index).center,
+                str(self.total),
+            ),
         ]
 
     @property
@@ -88,20 +82,23 @@ class MinMaxSum(FirstN):
         return super().tags.union({'Comparison', 'MinMaxSum', 'Minimum', 'Maximum'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Side, int, int]:
         """Extract the side, index, and total from the YAML configuration.
 
         Args:
             board (Board): The board the configuration is for.
-            yaml (dict): The YAML configuration data.
+            yaml (dict): The YAML configuration input_data.
 
         Returns:
-            tuple: A tuple containing the side, index, and total.
+            tuple[Side, int, int]: A tuple containing the side, index, and total.
+
+        Raises:
+            SudokuException: If no match is found in the YAML.
         """
-        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([0-9]+)")
+        regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([0-9]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)
@@ -114,7 +111,7 @@ class MinMaxSum(FirstN):
 
         Args:
             board (Board): The board to create the frame on.
-            yaml (dict): The YAML configuration data.
+            yaml (dict): The YAML configuration input_data.
 
         Returns:
             Item: The created MinMaxSum constraint.
@@ -124,6 +121,15 @@ class MinMaxSum(FirstN):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start MinMaxSum frame from the YAML configuration.
+
+        Args:
+            board (Board): The board to create the frame on.
+            yaml_data (dict): The YAML configuration input_data.
+
+        Returns:
+            Item: The created MinMaxSum constraint.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -132,7 +138,7 @@ class MinMaxSum(FirstN):
         Args:
             solver (PulpSolver): The solver to add the constraint to.
         """
-        xi = [solver.values[cell.row][cell.column] for cell in self.cells]
+        xi = [solver.cell_values[cell.row][cell.column] for cell in self.cells]
         mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
         maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
         solver.model += mini + maxi == self.total, self.name
@@ -143,7 +149,7 @@ class MinMaxSum(FirstN):
         Returns:
             dict: The dictionary representation of the object.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.total}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.index}={self.total}'}
 
     def css(self) -> dict:
         """Get the CSS styles for rendering the MinMaxSum frame.
@@ -152,17 +158,17 @@ class MinMaxSum(FirstN):
             dict: The dictionary containing CSS styles.
         """
         return {
-            ".MinMaxSumTextForeground": {
-                "fill": "black",
-                "font-size": "30px",
-                "stroke": "black",
-                "stroke-width": 1
+            '.MinMaxSumTextForeground': {
+                'fill': 'black',
+                'font-size': '30px',
+                'stroke': 'black',
+                'stroke-width': 1,
             },
-            ".MinMaxSumTextBackground": {
-                "fill": "white",
-                "font-size": "30px",
-                "font-weight": "bolder",
-                "stroke": "white",
-                "stroke-width": 8
-            }
+            '.MinMaxSumTextBackground': {
+                'fill': 'white',
+                'font-size': '30px',
+                'font-weight': 'bolder',
+                'stroke': 'white',
+                'stroke-width': 8,
+            },
         }

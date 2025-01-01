@@ -21,7 +21,7 @@ class UniqueRegion(Region):
             cells (Sequence[Item]): Sequence of vectors representing cells in the region.
         """
         super().__init__(board)
-        self.add_items(cells)
+        self.add_components(cells)
 
     def __repr__(self) -> str:
         """Return start string representation of the UniqueRegion instance.
@@ -30,10 +30,10 @@ class UniqueRegion(Region):
             str: A string representation of the UniqueRegion.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.cells!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.cells!r}'
+            f')'
         )
 
     @classmethod
@@ -42,12 +42,12 @@ class UniqueRegion(Region):
 
         Args:
             board (Board): The board associated with this region.
-            yaml (dict): The YAML configuration containing cell data for the unique region.
+            yaml (dict): The YAML configuration containing cell input_data for the unique region.
 
         Returns:
             list[Item]: A list of cell vectors for the unique region.
         """
-        return [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in yaml['UniqueRegion'].split(',')]
+        return [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in yaml[cls.__name__].split(',')]
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
@@ -55,7 +55,7 @@ class UniqueRegion(Region):
 
         Args:
             board (Board): The board associated with this region.
-            yaml (dict): The YAML configuration containing cell data for the unique region.
+            yaml (dict): The YAML configuration containing cell input_data for the unique region.
 
         Returns:
             Item: A new UniqueRegion instance.
@@ -64,6 +64,15 @@ class UniqueRegion(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start UniqueRegion instance from YAML configuration.
+
+        Args:
+            board (Board): The board associated with this region.
+            yaml_data (dict): The YAML configuration containing cell input_data for the unique region.
+
+        Returns:
+            Item: A new UniqueRegion instance.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -81,13 +90,8 @@ class UniqueRegion(Region):
         Returns:
             list[Rule]: A list of rules indicating the uniqueness constraint in this region.
         """
-        return [
-            Rule(
-                "UniqueRegion",
-                1,
-                "Numbers cannot repeat within the Unique Region."
-            )
-        ]
+        rule_text: str = 'Numbers cannot repeat within the Unique Region.'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     @property
     def tags(self) -> set[str]:
@@ -96,7 +100,7 @@ class UniqueRegion(Region):
         Returns:
             set[str]: A set of tags for identifying the region.
         """
-        return super().tags.union({'UniqueRegion'})
+        return super().tags.union({self.__class__.__name__})
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the unique constraint for this region to the solver.
@@ -112,8 +116,8 @@ class UniqueRegion(Region):
         Returns:
             dict: A dictionary representation of the UniqueRegion.
         """
-        cell_str = ",".join([f"{cell.row}{cell.column}" for cell in self.cells])
-        return {self.__class__.__name__: f"{cell_str}"}
+        cell_str = ','.join([f'{cell.row}{cell.column}' for cell in self.cells])
+        return {self.__class__.__name__: f'{cell_str}'}
 
     def css(self) -> dict:
         """Get CSS styles for the unique region.
@@ -126,19 +130,19 @@ class UniqueRegion(Region):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 2,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.UniqueRegionForeground': {
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.UniqueRegionBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }

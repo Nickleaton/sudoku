@@ -14,7 +14,7 @@ class StandardDiagonal(Diagonal):
         Returns:
             list[Rule]: A list of rules indicating that digits along the diagonal cannot repeat.
         """
-        return [Rule('Diagonal', 1, "Digits along start blue diagonal cannot repeat")]
+        return [Rule('Diagonal', 1, 'Digits along start blue diagonal cannot repeat')]
 
     @property
     def tags(self) -> set[str]:

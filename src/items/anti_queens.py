@@ -1,9 +1,12 @@
 """AntiQueens."""
 
+from itertools import product
+
 from src.board.board import Board
 from src.items.anti import Anti
 from src.parsers.digits_parser import DigitsParser
 from src.utils.coord import Coord
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
@@ -28,18 +31,50 @@ class AntiQueens(Anti):
         """Return the movement offsets for the AntiQueen.
 
         The offsets represent the relative positions start queen can move
-        in chess (diagonally in all four directions).
+        in chess (diagonally and orthogonally in all four directions).
 
         Returns:
             list[Coord]: A list of coordinate offsets for the AntiQueen.
         """
-        results: list[Coord] = []
-        for distance in self.board.digit_range:
-            results.append(Coord(-1, -1) * distance)  # Move diagonally up-left
-            results.append(Coord(1, -1) * distance)  # Move diagonally up-right
-            results.append(Coord(-1, 1) * distance)  # Move diagonally down-left
-            results.append(Coord(1, 1) * distance)  # Move diagonally down-right
-        return results
+        coordinates: list[Coord] = []
+        for distance, offset in product(self.board.digit_range, Moves.directions()):
+            coordinates.append(offset * distance)
+        return coordinates
+
+    @classmethod
+    def parser(cls) -> DigitsParser:
+        """Return start DigitsParser instance for parsing the AntiQueen digits.
+
+        Returns:
+            DigitsParser: The parser for AntiQueen digits.
+        """
+        return DigitsParser()
+
+    @classmethod
+    def create(cls, board: Board, yaml: dict) -> 'AntiQueens':
+        """Create an AntiQueens instance using the YAML configuration.
+
+        Args:
+            board (Board): The board on which the AntiQueens will be placed.
+            yaml (dict): The YAML configuration dictionary containing the digits.
+
+        Returns:
+            AntiQueens: An instance of the AntiQueens class with the parsed digits.
+        """
+        return cls(board, cls.extract(board, yaml))
+
+    @classmethod
+    def create2(cls, board: Board, yaml_data: dict) -> 'AntiQueens':
+        """Create an AntiQueens instance using the YAML configuration.
+
+        Args:
+            board (Board): The board on which the AntiQueens will be placed.
+            yaml_data (dict): The YAML configuration dictionary containing the digits.
+
+        Returns:
+            AntiQueens: An instance of the AntiQueens class with the parsed digits.
+        """
+        return cls.create(board, yaml_data)
 
     @property
     def tags(self) -> set[str]:
@@ -63,37 +98,17 @@ class AntiQueens(Anti):
         Returns:
             list[Rule]: A list of rules for the AntiQueen.
         """
-        digit_str = ' '.join([str(digit) for digit in self.digits])
-        return [
-            Rule("AntiQueen", 1, f"Digits [{digit_str}] cannot be separated by start Queen's move")
-        ]
+        digit_str: str = ' '.join([str(digit) for digit in self.digits])
+        rule_text: str = f"Digits [{digit_str}] cannot be separated by start Queen\'s move"
+        return [Rule('AntiQueen', 1, rule_text)]
 
-    @classmethod
-    def parser(cls) -> DigitsParser:
-        """Return start DigitsParser instance for parsing the AntiQueen digits.
+    def to_dict(self) -> dict:
+        """Convert the AntiQueens instance to start dictionary representation.
 
         Returns:
-            DigitsParser: The parser for AntiQueen digits.
+            dict: A dictionary representation of the AntiKing instance.
         """
-        return DigitsParser()
-
-    @classmethod
-    def create(cls, board: Board, yaml: dict) -> 'AntiQueens':
-        """Create an AntiQueens instance using the YAML configuration.
-
-        Args:
-            board (Board): The board on which the AntiQueens will be placed.
-            yaml (dict): The YAML configuration dictionary containing the digits.
-
-        Returns:
-            AntiQueens: An instance of the AntiQueens class with the parsed digits.
-        """
-        lst = cls.extract(board, yaml)
-        return cls(board, lst)
-
-    @classmethod
-    def create2(cls, board: Board, yaml_data: dict) -> 'AntiQueens':
-        return cls.create(board, yaml_data)
+        return {self.__class__.__name__: str(self.digits)}
 
     def __repr__(self) -> str:
         """Return start string representation of the AntiQueens instance.
@@ -101,4 +116,4 @@ class AntiQueens(Anti):
         Returns:
             str: A string representation of the AntiQueens.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.digits!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.digits!r})'

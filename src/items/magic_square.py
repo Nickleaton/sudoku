@@ -8,12 +8,15 @@ from src.items.region import Region
 from src.parsers.cell_parser import CellParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
 class MagicSquare(Region):
     """Class representing start Magic Square puzzle in Sudoku."""
+
+    line_total: int = 15
+    square_total: int = 45
 
     # The predefined lines for the magic square, representing rows, columns, and diagonals
     lines = (
@@ -24,7 +27,7 @@ class MagicSquare(Region):
         [2, 5, 8],
         [3, 6, 9],
         [1, 5, 9],
-        [3, 5, 7]
+        [3, 5, 7],
     )
 
     def __init__(self, board: Board, center: Coord, corner: Coord):
@@ -36,9 +39,9 @@ class MagicSquare(Region):
             corner (Coord): The coordinate of the corner that defines the extent of the square.
         """
         super().__init__(board)
-        positions = [center + d * corner for d in Direction.all()]
-        cells = [Cell.make(board, int(p.row), int(p.column)) for p in positions]
-        self.add_items(cells)
+        positions = [center + offset * corner for offset in Moves.all_moves()]
+        cells = [Cell.make(board, int(positions.row), int(positions.column)) for positions in positions]
+        self.add_components(cells)
         self.center_cell = cells[4]
         self.odd_cells = [cells[0], cells[2], cells[6], cells[8]]
         self.even_cells = [cells[1], cells[3], cells[5], cells[7]]
@@ -49,7 +52,11 @@ class MagicSquare(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this constraint is start sequence."""
+        """Indicate if this constraint is a sequence.
+
+        Returns:
+            bool: True if the constraint is a sequence, otherwise False.
+        """
         return True
 
     @classmethod
@@ -57,7 +64,7 @@ class MagicSquare(Region):
         """Return the parser for the magic square.
 
         Returns:
-            CellParser: The parser for the magic square.
+            CellParser: An instance of the CellParser for the magic square.
         """
         return CellParser()
 
@@ -68,12 +75,12 @@ class MagicSquare(Region):
             str: A string representation of the MagicSquare object.
         """
         return (
-            f"{self.__class__.__name__}"
-            f"("
-            f"{self.board!r}, "
-            f"{self.center!r}, "
-            f"{self.corner!r}"
-            f")"
+            f'{self.__class__.__name__}'
+            f'('
+            f'{self.board!r}, '
+            f'{self.center!r}, '
+            f'{self.corner!r}'
+            f')'
         )
 
     @property
@@ -83,14 +90,9 @@ class MagicSquare(Region):
         Returns:
             list[Rule]: A list of rules related to the MagicSquare.
         """
-        return [
-            Rule(
-                'MagicSquare',
-                1,
-                "The purple box is start magic square with each three-cell "
-                "row, column, and diagonal adding to the same number."
-            )
-        ]
+        rule_text: str = """The purple box is start magic square with each three-cell
+                         row, column, and diagonal adding to the same number."""
+        return [Rule('MagicSquare', 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Get the glyphs representing the MagicSquare.
@@ -118,7 +120,7 @@ class MagicSquare(Region):
 
         Args:
             _ (Board): The board to extract coordinates for.
-            yaml (dict): The YAML configuration data.
+            yaml (dict): The YAML configuration input_data.
 
         Returns:
             tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
@@ -134,7 +136,7 @@ class MagicSquare(Region):
 
         Args:
             board (Board): The board to create the MagicSquare on.
-            yaml (dict): The YAML configuration data.
+            yaml (dict): The YAML configuration input_data.
 
         Returns:
             Item: The created MagicSquare constraint.
@@ -144,6 +146,15 @@ class MagicSquare(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start MagicSquare constraint from the YAML configuration.
+
+        Args:
+            board (Board): The board to create the MagicSquare on.
+            yaml_data (dict): The YAML configuration input_data.
+
+        Returns:
+            Item: The created MagicSquare constraint.
+        """
         return cls.create(board, yaml_data)
 
     # pylint: disable=loop-invariant-statement
@@ -153,19 +164,20 @@ class MagicSquare(Region):
         Args:
             solver (PulpSolver): The solver to add constraints to.
         """
-        solver.model += solver.values[self.center.row][self.center.column] == 5, f"{self.__class__.__name__}_center"
-        for i, line in enumerate(MagicSquare.lines):
+        name: str = f'{self.__class__.__name__}_center'
+        solver.model += solver.cell_values[self.center.row][self.center.column] == 5, name
+        for index, line in enumerate(MagicSquare.lines):
             cell1 = self.cells[line[0] - 1]
             cell2 = self.cells[line[1] - 1]
             cell3 = self.cells[line[2] - 1]
-            value1 = solver.values[cell1.row][cell1.column]
-            value2 = solver.values[cell2.row][cell2.column]
-            value3 = solver.values[cell3.row][cell3.column]
-            solver.model += value1 + value2 + value3 == 15, f"{self.__class__.__name__}_{i}"
+            value1 = solver.cell_values[cell1.row][cell1.column]
+            value2 = solver.cell_values[cell2.row][cell2.column]
+            value3 = solver.cell_values[cell3.row][cell3.column]
+            solver.model += value1 + value2 + value3 == MagicSquare.line_total, f'{self.__class__.__name__}_{index}'
         # cells must be unique
         self.add_unique_constraint(solver, self.strict)
         # cells must sum to 45
-        self.add_total_constraint(solver, 45)
+        self.add_total_constraint(solver, MagicSquare.square_total)
         # orthogonal cells are even
         self.add_allowed_constraint(solver, [self.center_cell], [5])
         self.add_allowed_constraint(solver, self.odd_cells, [1, 3, 7, 9])
@@ -178,7 +190,7 @@ class MagicSquare(Region):
             dict: A dictionary representing the MagicSquare.
         """
         return {
-            self.__class__.__name__: f"{self.center.row}{self.center.column},{self.corner.row}{self.corner.column}"
+            self.__class__.__name__: f'{self.center.row}{self.center.column},{self.corner.row}{self.corner.column}',
         }
 
     def css(self) -> dict:
@@ -189,6 +201,6 @@ class MagicSquare(Region):
         """
         return {
             '.MagicSquare': {
-                'fill': 'mediumpurple'
-            }
+                'fill': 'mediumpurple',
+            },
         }

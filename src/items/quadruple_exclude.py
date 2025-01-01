@@ -1,6 +1,5 @@
 """QuadrupleExclude."""
 import re
-from typing import Any
 
 from pulp import lpSum
 
@@ -8,6 +7,7 @@ from src.board.board import Board
 from src.items.quadruple_base import QuadrupleBase
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuException
 
@@ -19,20 +19,23 @@ class QuadrupleExclude(QuadrupleBase):
     """
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Coord, str]:
         """Extract the position and digits from the YAML configuration.
 
         Args:
-            board (Board): The board to extract the quadruple data for.
-            yaml (dict): The YAML data containing the quadruple information.
+            board (Board): The board to extract the quadruple input_data for.
+            yaml (dict): The YAML input_data containing the quadruple information.
 
         Returns:
             tuple: A tuple containing start `Coord` object for the position and start string of digits.
+
+        Raises:
+            SudokuException: If no match is found in the YAML.
         """
-        regex = re.compile(f"([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)")
+        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException("Match is None, expected start valid match.")
+            raise SudokuException('Match is None, expected start valid match.')
         row_str, column_str, digits = match.groups()
         return Coord(int(row_str), int(column_str)), digits
 
@@ -43,7 +46,8 @@ class QuadrupleExclude(QuadrupleBase):
         Returns:
             list[Rule]: A list containing the rule for this quadruple.
         """
-        return [Rule('QuadrupleExclude', 3, 'Digits appearing must not in the cells adjacent to the circle')]
+        rule_text: str = 'Digits appearing must not in the cells adjacent to the circle'
+        return [Rule('QuadrupleExclude', 3, rule_text)]
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -52,20 +56,14 @@ class QuadrupleExclude(QuadrupleBase):
         Args:
             solver (PulpSolver): The solver to which the constraints will be added.
         """
-        offsets = (
-            Coord(0, 0),
-            Coord(0, 1),
-            Coord(1, 0),
-            Coord(1, 1)
-        )
         for digit in self.digits:
             digit_sum = lpSum(
                 [
                     solver.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
-                    for offset in offsets
-                ]
+                    for offset in Moves.orthogonals()
+                ],
             )
-            solver.model += digit_sum == 0, f"{self.name}_{digit}"
+            solver.model += digit_sum == 0, f'{self.name}_{digit}'
 
     def css(self) -> dict:
         """Return the CSS styling for the Quadruple glyphs.
@@ -74,14 +72,14 @@ class QuadrupleExclude(QuadrupleBase):
             dict: A dictionary defining the CSS styles for the quadruple glyph.
         """
         return {
-            ".QuadrupleExcludeCircle": {
-                "stroke-width": 2,
-                "stroke": "black",
-                "fill": "lightpink"
+            '.QuadrupleExcludeCircle': {
+                'stroke-width': 2,
+                'stroke': 'black',
+                'fill': 'lightpink',
             },
-            ".QuadrupleExcludeText": {
-                "stroke": "black",
-                "fill": "black",
-                "font-size": "30px"
-            }
+            '.QuadrupleExcludeText': {
+                'stroke': 'black',
+                'fill': 'black',
+                'font-size': '30px',
+            },
         }

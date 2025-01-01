@@ -1,8 +1,11 @@
 """NumberedRoom."""
+from pulp import LpVariable
+
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
-from src.items.item import Item
+from src.items.item import Item  # noqa: I001
+from src.items.item import SudokuException  # noqa: I001
 from src.parsers.frame_parser import FrameParser
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
@@ -32,18 +35,8 @@ class NumberedRoom(Item):
         self.side = side
         self.index = index
         self.digit = digit
-        self.direction = side.direction(Cyclic.CLOCKWISE)
-        self.start_cell = side.start_cell(board, self.index)
-        if side == Side.TOP:
-            self.reference = self.start_cell - self.direction.offset + Coord(0.5, 1.5)
-        elif side == Side.RIGHT:
-            self.reference = self.start_cell - self.direction.offset + Coord(1.5, 0.5)
-        elif side == Side.BOTTOM:
-            self.reference = self.start_cell - self.direction.offset + Coord(0.5, -0.5)
-        elif side == Side.LEFT:
-            self.reference = self.start_cell - self.direction.offset + Coord(-0.5, 0.5)
-        else:  # pragma: no cover
-            raise Exception("Unexpected Side")
+        self.direction = side.direction(Cyclic.clockwise)
+        self.start_cell = board.start_cell(side, index)
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -69,12 +62,12 @@ class NumberedRoom(Item):
 
         Args:
             _ (Board): The board associated with the constraint.
-            yaml (dict): The YAML configuration containing the NumberedRoom data.
+            yaml (dict): The YAML configuration containing the NumberedRoom input_data.
 
         Returns:
             tuple: A tuple containing the side, index, and digit.
         """
-        parts = yaml[cls.__name__].split("=")
+        parts = yaml[cls.__name__].split('=')
         side = Side.create(parts[0][0])
         offset = int(parts[0][1])
         digit = int(parts[1])
@@ -86,7 +79,7 @@ class NumberedRoom(Item):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml (dict): The YAML configuration containing the NumberedRoom data.
+            yaml (dict): The YAML configuration containing the NumberedRoom input_data.
 
         Returns:
             Item: The created NumberedRoom constraint.
@@ -96,6 +89,15 @@ class NumberedRoom(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create start NumberedRoom constraint from the given YAML configuration.
+
+        Args:
+            board (Board): The board associated with this constraint.
+            yaml_data (dict): The YAML configuration containing the NumberedRoom input_data.
+
+        Returns:
+            Item: The created NumberedRoom constraint.
+        """
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
@@ -104,9 +106,8 @@ class NumberedRoom(Item):
         Returns:
             list[Glyph]: A list containing start `TextGlyph` representing the digit for the NumberedRoom.
         """
-        return [
-            TextGlyph('NumberedRoom', 0, self.reference, str(self.digit)),
-        ]
+        reference: Coord = self.start_cell.reference + Coord(0.5, 0.5)
+        return [TextGlyph('NumberedRoom', 0, reference, str(self.digit))]
 
     @property
     def rules(self) -> list[Rule]:
@@ -115,17 +116,11 @@ class NumberedRoom(Item):
         Returns:
             list[Rule]: A list containing start single rule for the NumberedRoom.
         """
-        return [
-            Rule(
-                'NumberedRoom',
-                1,
-                (
-                    'Clues outside of the grid equal the Xth digit in their row/column '
-                    'seen from the side of the clue, with X being the first digit in their '
-                    'row/column seen from the side of the clue'
-                )
-            )
-        ]
+        rule_text: str = """Clues outside of the grid equal the Xth digit in their row/column
+            seen from the side of the clue, with X being the first digit in their
+            row/column seen from the side of the clue.
+        """
+        return [Rule('NumberedRoom', 1, rule_text)]
 
     def __repr__(self) -> str:
         """Return start string representation of the NumberedRoom.
@@ -133,7 +128,7 @@ class NumberedRoom(Item):
         Returns:
             str: A string representation of the NumberedRoom constraint.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.digit})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.side!r}, {self.index}, {self.digit})'
 
     def to_dict(self) -> dict:
         """Convert the NumberedRoom to start dictionary representation.
@@ -141,9 +136,38 @@ class NumberedRoom(Item):
         Returns:
             dict: A dictionary representing the NumberedRoom constraint.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.digit}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.index}={self.digit}'}
 
-    # pylint: disable=loop-invariant-statement
+    # TODO - should this be here? Board is maybe more appropriate and return a Coord
+
+    def xth(self, solver: PulpSolver, digit: int) -> LpVariable:
+        """Get the xth coordinate based on the side of the NumberedRoom.
+
+        This method returns a coordinate from the solver's choices based on the side of
+        the NumberedRoom and the given digit.
+
+        Args:
+            solver (PulpSolver): The solver instance.
+            digit (int): The digit used to calculate the coordinate.
+
+        Returns:
+            LpVariable: The coordinate in the solver's choices array corresponding to the side and digit.
+
+        Raises:
+            SudokuException: If the side of the NumberedRoom is not valid.
+        """
+        match self.side:
+            case Side.left:
+                return solver.choices[self.digit][self.start_cell.row][digit]
+            case Side.right:
+                return solver.choices[self.digit][self.start_cell.row][self.board.board_columns - digit + 1]
+            case Side.top:
+                return solver.choices[self.digit][digit][self.start_cell.column]
+            case Side.bottom:
+                return solver.choices[self.digit][self.board.board_rows - digit + 1][self.start_cell.column]
+            case _:
+                raise SudokuException(f'Unexpected Side {self.side.name} encountered for NumberedRoom {self.name}')
+
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraints for the NumberedRoom to the solver.
 
@@ -153,28 +177,9 @@ class NumberedRoom(Item):
         Args:
             solver (PulpSolver): The solver to which the constraints are added.
         """
-        if self.side == Side.LEFT:
-            for d in self.board.digit_range:
-                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
-                xth = solver.choices[self.digit][self.start_cell.row][d]
-                solver.model += first == xth, f"{self.name}_{d}"
-        elif self.side == Side.RIGHT:
-            for d in self.board.digit_range:
-                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
-                xth = solver.choices[self.digit][self.start_cell.row][self.board.board_columns - d + 1]
-                solver.model += first == xth, f"{self.name}_{d}"
-        elif self.side == Side.TOP:
-            for d in self.board.digit_range:
-                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
-                xth = solver.choices[self.digit][d][self.start_cell.column]
-                solver.model += first == xth, f"{self.name}_{d}"
-        elif self.side == Side.BOTTOM:
-            for d in self.board.digit_range:
-                first = solver.choices[d][self.start_cell.row][self.start_cell.column]
-                xth = solver.choices[self.digit][self.board.board_rows - d + 1][self.start_cell.column]
-                solver.model += first == xth, f"{self.name}_{d}"
-        else:  # pragma: no cover
-            raise Exception(f"Unexpected Side {self.side.name}")
+        for digit in self.board.digit_range:
+            first = solver.choices[digit][self.start_cell.row][self.start_cell.column]
+            solver.model += first == self.xth(solver, digit), f'{self.name}_{digit}'
 
     def css(self) -> dict:
         """Return the CSS styles associated with the NumberedRoom glyphs.
@@ -187,13 +192,13 @@ class NumberedRoom(Item):
                 'font-size': '30px',
                 'stroke': 'black',
                 'stroke-width': 1,
-                'fill': 'black'
+                'fill': 'black',
             },
             '.NumberedRoomBackground': {
                 'font-size': '30px',
                 'stroke': 'white',
                 'stroke-width': 8,
                 'fill': 'white',
-                'font-weight': 'bolder'
-            }
+                'font-weight': 'bolder',
+            },
         }

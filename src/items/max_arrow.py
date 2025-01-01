@@ -20,15 +20,10 @@ class MaxArrowLine(Line):
 
         Returns:
             list[Rule]: A list containing start single Rule object that specifies:
-            - The digit in the bulb is the maximum of the digits on the arrow.
+            The digit in the bulb is the maximum of the digits on the arrow.
         """
-        return [
-            Rule(
-                'MaxArrowLine',
-                1,
-                "The digit in the bulb is the maximum of the digits on the arrow"
-            )
-        ]
+        rule_text: str = 'The digit in the bulb is the maximum of the digits on the arrow'
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate start graphical representation of the MaxArrowLine.
@@ -37,7 +32,7 @@ class MaxArrowLine(Line):
             list[Glyph]: A list containing an `ArrowLineGlyph` instance with
             cell coordinates for display as start maximum arrow line.
         """
-        return [ArrowLineGlyph('MaxArrowLine', [cell.coord for cell in self.cells])]
+        return [ArrowLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells])]
 
     @property
     def tags(self) -> set[str]:
@@ -47,7 +42,7 @@ class MaxArrowLine(Line):
             set[str]: A set of tags inherited from the parent `Line` class,
             combined with additional tags specific to the MaxArrowLine.
         """
-        return super().tags.union({'Arrow', 'MaxArrowLine'})
+        return super().tags.union({'Arrow', self.__class__.__name__})
 
     def css(self) -> dict:
         """CSS styles for rendering the MaxArrowLine in the user interface.
@@ -60,26 +55,28 @@ class MaxArrowLine(Line):
             '.MaxArrowLine': {
                 'stroke': 'grey',
                 'fill': 'white',
-                'stroke-width': 3
+                'stroke-width': 3,
             },
             '.MaxArrowStart': {
             },
             '.MaxArrowEnd': {
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add maximum constraints to the Pulp solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the constraints
-            for the MaxArrowLine will be added.
+            solver (PulpSolver): The solver instance to which the constraint for the MaxArrowLine will be added.
 
         This method uses the maximum formulation to ensure that the bulb
         cell number is equal to the maximum of the arrow's cell value_list.
         """
-        bulb = solver.values[self.cells[0].row][self.cells[0].column]
-        values = [solver.values[self.cells[i].row][self.cells[i].column] for i in range(1, len(self.cells))]
-        value = Formulations.maximum(solver.model, values, 1, self.board.maximum_digit)
-        solver.model += bulb == value, self.name
+        bulb = solver.cell_values[self.cells[0].row][self.cells[0].column]
+        cell_values = [
+            solver.cell_values[self.cells[index].row][self.cells[index].column]
+            for index in range(1, len(self.cells))
+        ]
+        cell_value = Formulations.maximum(solver.model, cell_values, 1, self.board.maximum_digit)
+        solver.model += bulb == cell_value, self.name

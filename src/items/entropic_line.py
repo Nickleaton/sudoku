@@ -1,12 +1,47 @@
 """EntropicLine."""
 
+from enum import Enum
+
 from pulp import LpAffineExpression, lpSum
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
+from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
+
+
+class Entropy(Enum):
+    """Enum representing the three entropy categories: low, mid, and high.
+
+    Each category corresponds to a set of digits:
+    - `low`: {1, 2, 3}
+    - `mid`: {4, 5, 6}
+    - `high`: {7, 8, 9}
+    """
+
+    low = 'low'
+    mid = 'mid'
+    high = 'high'
+
+    def digits(self) -> set[int]:
+        """Return the set of digits corresponding to the entropy category.
+
+        For each entropy category, a predefined set of digits is returned:
+        - `low`: {1, 2, 3}
+        - `mid`: {4, 5, 6}
+        - `high`: {7, 8, 9}
+
+        Returns:
+            set[int]: A set of digits belonging to the category.
+        """
+        entropy_digit_map = {
+            Entropy.low: {1, 2, 3},
+            Entropy.mid: {4, 5, 6},
+            Entropy.high: {7, 8, 9},
+        }
+        return entropy_digit_map[self]
 
 
 class EntropicLine(Line):
@@ -27,16 +62,10 @@ class EntropicLine(Line):
             list[Rule]: A list containing the entropic rule, enforcing that
             any three successive cells contain low, medium, and high digits.
         """
-        return [
-            Rule(
-                'EntropicLine',
-                1,
-                (
-                    "Any sequence of 3 successive digits along start golden line must include "
-                    "start low (123), start medium (456) and start high (789) digit"
-                )
-            )
-        ]
+        rule_text: str = """Any sequence of 3 successive digits along start golden line must include
+        start low (123), start medium (456) and start high (789) digit
+        """
+        return [Rule(self.__class__.__name__, 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Create glyph representations of the entropic line for rendering.
@@ -44,7 +73,7 @@ class EntropicLine(Line):
         Returns:
             list[Glyph]: A list of PolyLineGlyph objects representing the line.
         """
-        return [PolyLineGlyph('EntropicLine', [cell.coord for cell in self.cells], False, False)]
+        return [PolyLineGlyph(self.__class__.__name__, [cell.coord for cell in self.cells], start=False, end=False)]
 
     @property
     def tags(self) -> set[str]:
@@ -53,70 +82,74 @@ class EntropicLine(Line):
         Returns:
             set[str]: A set of tags identifying the entropic line.
         """
-        return super().tags.union({'EntropicLine', 'set'})
+        return super().tags.union({self.__class__.__name__, 'set'})
 
-    def low_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculate the total for low digits in start specified cell.
-
-        Args:
-            solver (PulpSolver): The solver instance.
-            n (int): The index of the cell in the line.
-
-        Returns:
-            LpAffineExpression: The sum of low digits (1, 2, 3) in the cell.
-        """
-        return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [1, 2, 3]])
-
-    def mid_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculate the total for medium digits in start specified cell.
+    @staticmethod
+    def total(cell: Cell, solver: PulpSolver, entropy: Entropy) -> LpAffineExpression:
+        """Calculate the total for the specified category in the given cell.
 
         Args:
+            cell (Cell): The cell to calculate the total for.
             solver (PulpSolver): The solver instance.
-            n (int): The index of the cell in the line.
+            entropy (Entropy): The category of digits (low, MID, high).
 
         Returns:
-            LpAffineExpression: The sum of medium digits (4, 5, 6) in the cell.
+            LpAffineExpression: The sum of the digits in the specified category.
         """
-        return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [4, 5, 6]])
-
-    def top_total(self, solver: PulpSolver, n: int) -> LpAffineExpression:
-        """Calculate the total for high digits in start specified cell.
-
-        Args:
-            solver (PulpSolver): The solver instance.
-            n (int): The index of the cell in the line.
-
-        Returns:
-            LpAffineExpression: The sum of high digits (7, 8, 9) in the cell.
-        """
-        return lpSum([solver.choices[digit][self.cells[n].row][self.cells[n].column] for digit in [7, 8, 9]])
+        return lpSum([solver.choices[digit][cell.row][cell.column] for digit in entropy.digits()])
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add constraints for entropic rules to the solver model.
 
         Enforces two constraints:
-        - No two successive cells along the line contain the same category
-          of digit (low, medium, or high).
-        - Every group of three cells in the line maintains the same entropic
-          distribution, with one cell in each group containing low, medium,
-          and high digits respectively.
+        No two successive cells along the line contain the same category
+        of digit (low, medium, or high).
+        Every group of three cells in the line maintains the same entropic
+        distribution, with one cell in each group containing low, medium,
+        and high digits respectively.
 
         Args:
             solver (PulpSolver): The solver to which constraints are added.
         """
-        # Prevent consecutive cells from containing the same category.
-        for i in range(len(self.cells) - 1):
-            pname = f"{self.cells[i].row}_{self.cells[i].column}_{self.cells[i + 1].row}_{self.cells[i + 1].column}"
-            solver.model += self.low_total(solver, i) + self.low_total(solver, i + 1) <= 1, f"{self.name}_a_low_{pname}"
-            solver.model += self.mid_total(solver, i) + self.mid_total(solver, i + 1) <= 1, f"{self.name}_a_mid_{pname}"
-            solver.model += self.top_total(solver, i) + self.top_total(solver, i + 1) <= 1, f"{self.name}_a_top_{pname}"
-        # Enforce every 3 cells to follow the same entropic pattern.
-        for i in range(len(self.cells) - 3):
-            pname = f"{self.cells[i].row}_{self.cells[i].column}_{self.cells[i + 3].row}_{self.cells[i + 3].column}"
-            solver.model += self.low_total(solver, i) == self.low_total(solver, i + 3), f"{self.name}_j_low_{pname}"
-            solver.model += self.mid_total(solver, i) == self.mid_total(solver, i + 3), f"{self.name}_j_mid_{pname}"
-            solver.model += self.top_total(solver, i) == self.top_total(solver, i + 3), f"{self.name}_j_top_{pname}"
+        self.add_neighbor_constraints(solver)
+        self.add_three_cell_constraints(solver)
+
+    def add_neighbor_constraints(self, solver: PulpSolver) -> None:
+        """Enforce that neighboring cells cannot have the same entropy.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints are added.
+        """
+        for index in range(len(self.cells) - 1):
+            cell0: Cell = self.cells[index]
+            cell1: Cell = self.cells[index + 1]
+            pname: str = f'{cell0.row}_{cell0.column}_{cell1.row}_{cell1.column}'
+
+            for entropy in Entropy:
+                constraint_name: str = f'{self.name}_a_{entropy.value}_{pname}'
+                solver.model += (
+                    EntropicLine.total(cell0, solver, entropy) + EntropicLine.total(cell1, solver, entropy) <= 1,
+                    constraint_name,
+                )
+
+    def add_three_cell_constraints(self, solver: PulpSolver) -> None:
+        """Enforce that every 3 cells have the same entropy.
+
+        Args:
+            solver (PulpSolver): The solver to which constraints are added.
+        """
+        for index in range(len(self.cells) - 3):
+            cell0: Cell = self.cells[index]
+            cell3: Cell = self.cells[index + 3]
+            pname: str = f'{cell0.row}_{cell0.column}_{cell3.row}_{cell3.column}'
+
+            for entropy in Entropy:
+                constraint_name: str = f'{self.name}_j_{entropy.value}_{pname}'
+                solver.model += (
+                    EntropicLine.total(cell0, solver, entropy) == EntropicLine.total(cell3, solver, entropy),
+                    constraint_name,
+                )
 
     def css(self) -> dict:
         """Define the CSS style for rendering the entropic line.
@@ -130,6 +163,6 @@ class EntropicLine(Line):
                 'stroke-width': 10,
                 'stroke-linecap': 'round',
                 'stroke-linejoin': 'round',
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }

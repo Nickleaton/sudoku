@@ -23,12 +23,12 @@ class Box(StandardRegion):
         """
         super().__init__(board, index)
         self.position = self.start()
-        self.add_items(
+        self.add_components(
             [
                 Cell.make(board, int(self.position.row + ro - 1), int(self.position.column + co - 1))
                 for ro in range(1, board.box_rows + 1)
                 for co in range(1, board.box_columns + 1)
-            ]
+            ],
         )
 
     @classmethod
@@ -46,9 +46,9 @@ class Box(StandardRegion):
         Returns:
             Coord: The starting coordinate of the box.
         """
-        r = ((self.index - 1) * self.board.box_rows) % self.board.maximum_digit + 1
-        c = ((self.index - 1) // self.board.box_columns) * self.board.box_columns + 1
-        return Coord(r, c)
+        row: int = ((self.index - 1) * self.board.box_rows) % self.board.maximum_digit + 1
+        col: int = ((self.index - 1) // self.board.box_columns) * self.board.box_columns + 1
+        return Coord(row, col)
 
     @property
     def size(self) -> Coord:
@@ -79,7 +79,7 @@ class Box(StandardRegion):
         Returns:
             str: A string representation of the Box instance.
         """
-        return f"{self.__class__.__name__}({self.board!r}, {self.index!r})"
+        return f'{self.__class__.__name__}({self.board!r}, {self.index!r})'
 
     @property
     def rules(self) -> list[Rule]:
@@ -123,11 +123,11 @@ class Box(StandardRegion):
             dict: A dictionary containing CSS properties for the box.
         """
         return {
-            ".Box": {
+            '.Box': {
                 'stroke': 'black',
                 'stroke-width': 3,
-                'fill-opacity': 0
-            }
+                'fill-opacity': 0,
+            },
         }
 
     def __str__(self) -> str:
@@ -136,4 +136,4 @@ class Box(StandardRegion):
         Returns:
             str: A simplified string representation of the Box instance.
         """
-        return f"{self.__class__.__name__}({self.index})"
+        return f'{self.__class__.__name__}({self.index})'

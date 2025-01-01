@@ -24,25 +24,25 @@ class RowIndexer(Indexer):
             index (int): The index of the row to be indexed.
         """
         super().__init__(board, index)
-        self.add_items([Cell.make(board, column, index) for column in board.column_range])
+        self.add_components([Cell.make(board, column, index) for column in board.column_range])
 
     @staticmethod
     def variant() -> str:
         """Return the variant type for rows.
 
         Returns:
-            str: "row", representing the row variant.
+            str: 'row', representing the row variant.
         """
-        return "row"
+        return 'row'
 
     @staticmethod
     def other_variant() -> str:
         """Return the other variant type for columns.
 
         Returns:
-            str: "column", representing the column variant.
+            str: 'column', representing the column variant.
         """
-        return "column"
+        return 'column'
 
     def glyphs(self) -> list[Glyph]:
         """Generate glyphs for visual representation of the RowIndexer.
@@ -76,7 +76,7 @@ class RowIndexer(Indexer):
             for digit in solver.board.digit_range:
                 indexer = solver.choices[digit][cell.row][cell.column]
                 indexed = solver.choices[cell.row][digit][cell.column]
-                solver.model += indexer == indexed, f"{self.name}_{cell.row}_{cell.column}_{digit}"
+                solver.model += indexer == indexed, f'{self.name}_{cell.row}_{cell.column}_{digit}'
 
     def css(self) -> dict:
         """Return the CSS styling for the RowIndexer glyph.
@@ -86,6 +86,6 @@ class RowIndexer(Indexer):
         """
         return {
             '.RowIndexer': {
-                'fill': 'pink'
-            }
+                'fill': 'pink',
+            },
         }

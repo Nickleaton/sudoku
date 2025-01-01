@@ -1,4 +1,5 @@
 """FortressCell."""
+from pulp import LpElement
 
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
 from src.glyphs.glyph import Glyph
@@ -6,7 +7,7 @@ from src.items.cell import Cell
 from src.items.simple_cell_reference import SimpleCellReference
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.coord import Coord
-from src.utils.direction import Direction
+from src.utils.moves import Moves
 from src.utils.rule import Rule
 
 
@@ -37,13 +38,8 @@ class FortressCell(SimpleCellReference):
             list[Rule]: A list containing the rule that the digit in start
                         fortress cell must be bigger than its orthogonal neighbors.
         """
-        return [
-            Rule(
-                "Odd",
-                1,
-                "The digit in start fortress cell must be bigger than its orthogonal neighbours"
-            )
-        ]
+        rule_text: str = 'The digit in the fortress cell must be bigger than its orthogonal neighbors.'
+        return [Rule('FortressCell', 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs associated with this FortressCell.
@@ -69,10 +65,10 @@ class FortressCell(SimpleCellReference):
             dict: A dictionary containing the CSS properties for the FortressCell.
         """
         return {
-            ".FortressCell": {
-                "stroke": "black",
-                "stroke-width": 3
-            }
+            '.FortressCell': {
+                'stroke': 'black',
+                'stroke-width': '3',
+            },
         }
 
     # pylint: disable=loop-invariant-statement
@@ -83,12 +79,14 @@ class FortressCell(SimpleCellReference):
             solver (PulpSolver): The solver to which the constraint will be added.
         """
         cell = Coord(self.row, self.column)
-        for offset in Direction.orthogonals():
+        for offset in Moves.orthogonals():
             other = cell + offset
             if not self.board.is_valid_coordinate(other):
                 continue
-            solver.model += solver.values[self.row][self.column] >= solver.values[other.row][
-                other.column] + 1, f"Fortress_{self.row}_{self.column}_{other.row}_{other.column}"
+            name: str = f'Fortress_{self.row}_{self.column}_{other.row}_{other.column}'
+            lhs: LpElement = solver.cell_values[self.row][self.column]
+            rhs: LpElement = solver.cell_values[other.row][other.column]
+            solver.model += lhs >= rhs + 1, name
 
     def bookkeeping(self) -> None:
         """Update the bookkeeping for the FortressCell.
@@ -98,7 +96,7 @@ class FortressCell(SimpleCellReference):
         digit = 1
         coord = Coord(self.row, self.column)
         cell = Cell.make(self.board, self.row, self.column)
-        for offset in Direction.orthogonals():
+        for offset in Moves.orthogonals():
             other = coord + offset
             if not self.board.is_valid_coordinate(other):
                 continue

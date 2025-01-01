@@ -1,6 +1,5 @@
 """AntiRossini."""
 import re
-from typing import Any
 
 from src.board.board import Board
 from src.glyphs.arrow_glyph import ArrowGlyph
@@ -40,12 +39,12 @@ class AntiRossini(FirstN):
             str: A string representation of the instance.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"{self.board!r}, "
-            f"{self.side!r}, "
-            f"{self.index!r}, "
-            f"{self.order!r}"
-            f")"
+            f'{self.__class__.__name__}('
+            f'{self.board!r}, '
+            f'{self.side!r}, '
+            f'{self.index!r}, '
+            f'{self.order!r}'
+            f')'
         )
 
     @property
@@ -55,14 +54,9 @@ class AntiRossini(FirstN):
         Returns:
             list[Rule]: The list of rules.
         """
-        return [
-            Rule(
-                'Rossini',
-                1,
-                "If an arrow appears outside the grid, then the three digits nearest the arrow must "
-                "strictly increase in the direction of the arrow."
-            )
-        ]
+        rule_text: str = """If an arrow appears outside the grid, then the three digits nearest the arrow must
+                         strictly increase in the direction of the arrow."""
+        return [Rule('Rossini', 1, rule_text)]
 
     def glyphs(self) -> list[Glyph]:
         """Generate glyphs for visual representation of the rule.
@@ -74,8 +68,8 @@ class AntiRossini(FirstN):
             ArrowGlyph(
                 'Rossini',
                 self.direction.angle.angle,
-                self.side.marker(self.board, self.index)
-            )
+                self.side.marker(self.board, self.index),
+            ),
         ]
 
     @property
@@ -88,7 +82,7 @@ class AntiRossini(FirstN):
         return super().tags.union({'Comparison', 'Rossini'})
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> Any:
+    def extract(cls, board: Board, yaml: dict) -> tuple[Side, int, Order]:
         """Extract the side, index, and order from the YAML configuration.
 
         Args:
@@ -97,11 +91,14 @@ class AntiRossini(FirstN):
 
         Returns:
             tuple[Side, int, Order]: The extracted side, index, and order.
+
+        Raises:
+            ValueError: If the YAML configuration does not match the expected format.
         """
-        regexp = re.compile(f"([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])")
+        regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])')
         match = regexp.match(yaml[cls.__name__])
         if not match:
-            raise ValueError(f"Invalid format for {cls.__name__} in YAML: {yaml[cls.__name__]}")
+            raise ValueError(f'Invalid format for {cls.__name__} in YAML: {yaml[cls.__name__]}')
 
         side_str, index_str, order_str = match.groups()
         side = Side.create(side_str)
@@ -125,6 +122,15 @@ class AntiRossini(FirstN):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
+        """Create an AntiRossini instance from the YAML configuration.
+
+        Args:
+            board (Board): The game board.
+            yaml_data (dict): The YAML dictionary containing the rule configuration.
+
+        Returns:
+            Item: An instance of the AntiRossini class.
+        """
         return cls.create(board, yaml_data)
 
     def add_constraint(self, solver: PulpSolver) -> None:
@@ -141,7 +147,7 @@ class AntiRossini(FirstN):
         Returns:
             dict: A dictionary representation of the instance.
         """
-        return {self.__class__.__name__: f"{self.side.value}{self.index}={self.order.value}"}
+        return {self.__class__.__name__: f'{self.side.value}{self.index}={self.order.value}'}
 
     def css(self) -> dict:
         """Return the CSS styling for this rule.
@@ -150,9 +156,9 @@ class AntiRossini(FirstN):
             dict: A dictionary containing CSS properties.
         """
         return {
-            ".Rossini": {
-                "stroke": "black",
-                "fill": "black",
-                "font-size": "30px"
-            }
+            '.Rossini': {
+                'stroke': 'black',
+                'fill': 'black',
+                'font-size': '30px',
+            },
         }
