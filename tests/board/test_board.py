@@ -11,7 +11,7 @@ class TestBoard(unittest.TestCase):
 
     def setUp(self):
         """Set up the different board configurations for testing."""
-        tags = {'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}
+        tags: dict[str, str] = {'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}
         self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, tags=tags)
         self.board9x9: Board = Board(9, 9, 3, 3, tags=tags)
         self.board4x4: Board = Board(4, 4, tags=tags)
@@ -171,3 +171,20 @@ class TestBoard(unittest.TestCase):
         board = Board(9, 9)
         self.assertEqual(Coord(1, 9), board.start_cell(Side.top, 9))
         self.assertEqual(Coord(9, 1), board.start_cell(Side.bottom, 1))
+
+    # def test_start_cell_with_cyclic(self):
+    #     board = Board(9, 9)
+    #     test_cases: list[tuple[Side, Cyclic, int, Coord]] = [
+    #         (Side.top, Cyclic.clockwise, 5, Coord(1, 6)),
+    #         (Side.top, Cyclic.anticlockwise, 5, Coord(1, 4)),
+    #         (Side.right, Cyclic.clockwise, 5, Coord(6, 9)),
+    #         (Side.right, Cyclic.anticlockwise, 5, Coord(4, 9)),
+    #         (Side.bottom, Cyclic.clockwise, 5, Coord(9, 4)),
+    #         (Side.bottom, Cyclic.anticlockwise, 5, Coord(9, 6)),
+    #         (Side.left, Cyclic.anticlockwise, 5, Coord(6, 1)),
+    #         (Side.left, Cyclic.clockwise, 5, Coord(4, 1)),
+    #     ]
+    #     # Iterate through test cases
+    #     for side, cyclic, index, expected in test_cases:
+    #         with self.subTest(side=side, cyclic=cyclic, index=index):
+    #             self.assertEqual(expected, board.start_cell_with_cyclic(side, cyclic, index))
