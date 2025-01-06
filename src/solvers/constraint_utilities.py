@@ -27,7 +27,8 @@ class ConstraintUtilities:
         Returns:
             lpSum: The linear expression representing the log10 integer_value of the cell.
         """
-        return lpSum(log10(digit) * solver.choices[digit][cell.row][cell.column] for digit in solver.board.digit_range)
+        return lpSum(
+            log10(digit) * solver.variables.choices[digit][cell.row][cell.column] for digit in solver.board.digit_range)
 
     @staticmethod
     def log10_cell(solver: PulpSolver, cell: Cell) -> LpVariable:

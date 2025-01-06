@@ -42,14 +42,15 @@ class DigitsParser(Parser):
         if not self.regular_expression.match(text):
             raise ParserError(f'{self.__class__.__name__} expects a comma-separated list of digits')
 
-        self.answer = [int(digit.strip()) for digit in text.split(',')]
+        self.answer = [digit.strip() for digit in text.split(',')]
+        self.parsed_data = [digit.strip() for digit in text.split(',')]
 
     def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the given board and input input_data.
+        """Validate the given board and input line.
 
         Args:
             board (Board): The board instance to validate against.
-            input_data (dict): The input input_data to validate.
+            input_data (dict): The input line to validate.
 
         Returns:
             list[str]: A list of validation error messages.

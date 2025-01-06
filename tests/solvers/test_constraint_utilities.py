@@ -21,7 +21,7 @@ class TestConstraintUtilities(unittest.TestCase):
         # Create start cell and apply the log10_cell method
         c1 = Cell.make(self.board, 1, 1)
         rule = ConstraintUtilities.log10_cell(self.solver, c1)
-        self.assertEqual('Log10_1_1', str(rule))
+        self.assertEqual('log10_1_1', str(rule))
 
 
 if __name__ == '__main__':  # pragma: no cover

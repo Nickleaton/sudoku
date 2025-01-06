@@ -49,12 +49,12 @@ class CellPairsParser(Parser):
 
         # Store the parsed cell data in a dictionary.
         self.answer = {
-            'cell': {'row': int(row1), 'column': int(col1)},
+            'cell1': {'row': int(row1), 'column': int(col1)},
             'cell2': {'row': int(row2), 'column': int(col2)},
         }
 
     def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the provided input_data against the given board.
+        """Validate the provided line against the given board.
 
         Args:
             board (Board): The board object containing the validation rules or constraints.

@@ -97,14 +97,14 @@ class Parser(Regex):
         """
 
     def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the provided input input_data against the given board.
+        """Validate the provided input line against the given board.
 
         This function currently returns an empty list of errors but can be extended
-        to validate the input input_data according to the board's constraints.
+        to validate the input line according to the board's constraints.
 
         Args:
             board (Board): The board object containing the validation rules or constraints.
-            input_data (dict): A dictionary containing the input_data to validate.
+            input_data (dict): A dictionary containing the line to validate.
 
         Returns:
             list[str]: A list of error messages. Empty if no errors are found.
@@ -115,7 +115,7 @@ class Parser(Regex):
     def validate_cell(board: Board, input_data: dict) -> list[str]:
         """Validate a cell's position on the board.
 
-        Checks if the row and column provided in the input_data are valid based on the
+        Checks if the row and column provided in the line are valid based on the
         board's constraints.
 
         Args:
@@ -167,7 +167,7 @@ class Parser(Regex):
     def raise_error(self) -> None:
         """Raise start ParserError for invalid input.
 
-        This method resets the `parsed_data` and `input_data` attributes to `None` and raises
+        This method resets the `parsed_data` and `line` attributes to `None` and raises
         start `ParserError` with start message indicating that the input was not valid.
 
         Raises:

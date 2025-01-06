@@ -38,7 +38,7 @@ class TestSolutionParser(TestParser):
         for text, expected in self.valid_input_result:
             with self.subTest(text=text):
                 self.parser.parse(text)
-                self.assertEqual(self.parser.result, expected)
+                self.assertEqual(self.parser.parsed_data, expected)
 
     def test_parse_valid_answer(self):
         """Tests parsing of valid input_types."""

@@ -37,14 +37,14 @@ class DigitParser(Parser):
         self.answer = {'digit': stripped_text[0]}
 
     def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the provided input_data against the given board.
+        """Validate the provided line against the given board.
 
-        Checks if the required "digits" key exists in the input_data and if all digits
-        in the input_data are within the valid range of digits defined by the board.
+        Checks if the required "digits" key exists in the line and if all digits
+        in the line are within the valid range of digits defined by the board.
 
         Args:
             board (Board): The board object containing the valid digit range.
-            input_data (dict): A dictionary containing the input_data to validate.
+            input_data (dict): A dictionary containing the line to validate.
 
         Returns:
             list[str]: A list of error messages, empty if no errors are found.

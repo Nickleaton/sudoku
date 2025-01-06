@@ -2,21 +2,17 @@
 import sys
 from enum import Enum
 from io import StringIO
-from itertools import product
 from pathlib import Path
-from typing import Any
 
-from pulp import LpInteger  # noqa: I001
 from pulp import LpMinimize  # noqa: I001
 from pulp import LpProblem  # noqa: I001
 from pulp import LpSolver  # noqa: I001
 from pulp import LpStatus  # noqa: I001
-from pulp import LpVariable  # noqa: I001
 from pulp import getSolver  # noqa: I001
-from pulp import lpSum  # noqa: I001
 
 from src.board.board import Board
 from src.solvers.solver import Solver
+from src.solvers.variables import Variables, Variable
 from src.utils.config import Config
 
 
@@ -54,56 +50,17 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.status: Status = Status.not_solved
         self.log: str | None = None
 
+        # TODO get the types of variables from the constraints
+        self.variables: Variables = Variables(board, [Variable.choice, Variable.value])
+
         self.model: LpProblem = LpProblem('Return Sudoku', LpMinimize)
         self.model += 0, 'DummyObjective'
 
-        self.variables: dict[Any, LpVariable] = {}
-        self.choices: dict[Any, LpVariable] = LpVariable.dicts(
-            name='Choice',
-            indices=(board.digit_range, board.row_range, board.column_range),
-            lowBound=0,
-            upBound=1,
-            cat=LpInteger,
-        )
-        self.cell_values: dict[Any, LpVariable] = LpVariable.dicts(
-            name='Values',
-            indices=(board.row_range, board.column_range),
-            lowBound=1,
-            upBound=board.maximum_digit,
-            cat=LpInteger,
-        )
-        self.parity: dict[Any, LpVariable] = LpVariable.dicts(
-            name='Parity',
-            indices=(board.row_range, board.column_range),
-            lowBound=0,
-            upBound=1,
-            cat=LpInteger,
-        )
-        self.levels: dict[Any, LpVariable] = LpVariable.dicts(
-            name='Low',
-            indices=(board.row_range, board.column_range, board.levels),
-            lowBound=0,
-            upBound=1,
-            cat=LpInteger,
-        )
-        self.modulos: dict[Any, LpVariable] = LpVariable.dicts(
-            name='Low',
-            indices=(board.row_range, board.column_range, board.modulos),
-            lowBound=0,
-            upBound=1,
-            cat=LpInteger,
-        )
-        self.prime: dict[Any, LpVariable] = LpVariable.dicts(
-            name='Low',
-            indices=(board.row_range, board.column_range, board.primes),
-            lowBound=0,
-            upBound=1,
-            cat=LpInteger,
-        )
+        # TODO move to a better place
 
-        for row, column in product(board.row_range, board.column_range):
-            total = lpSum(digit * self.choices[digit][row][column] for digit in self.board.digit_range)
-            self.model += total == self.cell_values[row][column], f'Unique_cell_{row}_{column}'
+        # for row, column in product(board.row_range, board.column_range):
+        #     total = lpSum(digit * self.variables.choices[digit][row][column] for digit in self.board.digit_range)
+        #     self.model += total == self.cell_values[row][column], f'Unique_cell_{row}_{column}'
 
     def save_lp(self, filename: Path | str) -> None:
         """Save the puzzle model in LP (Linear Programming) format.

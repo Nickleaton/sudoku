@@ -56,7 +56,7 @@ class KnownParser(Parser):
         """Parse the input string and store the parsed_data in the 'parsed_data' attribute.
 
         This method input_types if the input string matches the expected format and parses it accordingly.
-        It stores the parsed value_list in the `parsed_data` and `input_data` attributes.
+        It stores the parsed value_list in the `parsed_data` and `line` attributes.
 
         Args:
             text (str): The input string to be parsed, expected to follow the known number or restriction format.
@@ -79,11 +79,11 @@ class KnownParser(Parser):
             self.raise_error()
 
     def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the given board and input input_data.
+        """Validate the given board and input line.
 
         Args:
             board (Board): The board instance to validate against.
-            input_data (dict): The input input_data to validate.
+            input_data (dict): The input line to validate.
 
         Returns:
             list[str]: A list of validation error messages.

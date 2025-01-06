@@ -46,20 +46,20 @@ class CellPairEqualValueParser(Parser):
         c2: str = cell2_str[1]
         self.parsed_data = [int(r1), int(c1), int(r2), int(c2), int(rhs)]
         self.answer = {
-            'cell': {'row': r1, 'column': c1},
-            'cell2': {'row': r2, 'column': c2},
-            'number': rhs,
+            'cell1': {'row': int(r1), 'column': int(c1)},
+            'cell2': {'row': int(r2), 'column': int(c2)},
+            'number': int(rhs),
         }
 
     def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the provided input input_data against the given board.
+        """Validate the provided input line against the given board.
 
         This function currently returns an empty list of errors, but it can be extended
-        to validate the input input_data according to the board's constraints.
+        to validate the input line according to the board's constraints.
 
         Args:
             board (Board): The board object containing the validation rules or constraints.
-            input_data (dict): A dictionary containing the input_data to validate.
+            input_data (dict): A dictionary containing the line to validate.
 
         Returns:
             list[str]: A list of error messages. Empty if no errors are found.

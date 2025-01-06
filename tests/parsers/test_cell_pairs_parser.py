@@ -44,28 +44,28 @@ class TestCellPairsParser(TestParser):
         self.valid_input_answer = \
             [
                 (
-                    "51-61",
-                    {"row1": '5', "column1": '1', "row2": '6', "column2": '1'}
+                    '51-61',
+                    {'cell1': {'row': 5, 'column': 1}, 'cell2': {'row': 6, 'column': 1}}
                 ),
                 (
-                    "12-34",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
+                    '12-34',
+                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
                 ),
                 (
-                    "31-32",
-                    {"row1": '3', "column1": '1', "row2": '3', "column2": '2'}
+                    '31-32',
+                    {'cell1': {'row': 3, 'column': 1}, 'cell2': {'row': 3, 'column': 2}}
                 ),
                 (
-                    " 12 - 34 ",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
+                    ' 12 - 34 ',
+                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
                 ),  # whitespace around '-'
                 (
-                    "12-34",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
+                    '12-34',
+                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
                 ),  # no spaces
                 (
-                    " 12- 34 ",
-                    {"row1": '1', "column1": '2', "row2": '3', "column2": '4'}
+                    ' 12- 34 ',
+                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
                 ),  # mixed spaces
             ]
         self.invalid_input: List[str] = \
