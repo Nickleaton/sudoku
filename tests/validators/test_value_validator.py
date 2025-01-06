@@ -6,38 +6,18 @@ class TestValueValidator(TestValidator):
     """Test case for the ValueValidator class."""
 
     def setUp(self):
-        """Set up the specific test input_data for ValueValidator."""
+        """Set up the specific test line for ValueValidator."""
         super().setUp()  # Call the base class setup
-
-        # Example board (this can be mocked if necessary)
-        self.board = Board(digit_range={1, 2, 3, 4, 5, 6, 7, 8, 9})
-
-        # Valid input input_data (where 'number' is an integer)
-        self.valid_input_data = {
-            'number': 5
-        }
-
-        # Invalid input input_data (where 'number' is a string, not an integer)
-        self.invalid_input_data = {
-            'number': 'five'
-        }
-
-        # Missing 'number' key
-        self.missing_number_data = {}
-
-    def test_validate_valid(self):
-        """Test that validate returns no errors for valid 'number'."""
-        self.validate_input(ValueValidator, self.valid_input_data, [])
-
-    def test_validate_invalid(self):
-        """Test that validate returns an error for invalid 'number'."""
-        expected_errors = ['Value must be an integer']
-        self.validate_input(ValueValidator, self.invalid_input_data, expected_errors)
-
-    def test_validate_missing_number(self):
-        """Test that validate returns an error when 'number' is missing."""
-        expected_errors = ['Value must be an integer']
-        self.validate_input(ValueValidator, self.missing_number_data, expected_errors)
+        # Valid input line (where 'number' is an integer)
+        self.valid_data = [
+            {'Value': 5}
+        ]
+        self.invalid_data = [
+            {'Value': 'five'},
+            {'xxx': 5}
+        ]
+        self.representation = 'ValueValidator()'
+        self.validator = ValueValidator()
 
 
 if __name__ == '__main__':

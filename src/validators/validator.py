@@ -6,17 +6,17 @@ class Validator:
     """Base class for board validation.
 
     This class provides a base structure for validators that check
-    the validity of the start `Board` against some `input_data`. It can be extended
+    the validity of the start `Board` against some `line`. It can be extended
     by custom validators for specific types of validation.
     """
 
     @staticmethod
     def validate_keys(input_data: dict, required_keys: list) -> list:
-        """Validate the required keys in the input_data dictionary.
+        """Validate the required keys in the line dictionary.
 
         Args:
-            input_data (dict): The input_data dictionary to validate.
-            required_keys (list): The list of keys that must be present in the input_data.
+            input_data (dict): The line dictionary to validate.
+            required_keys (list): The list of keys that must be present in the line.
 
         Returns:
             list: A list of error messages if any required keys are missing.
@@ -25,7 +25,7 @@ class Validator:
 
     @staticmethod
     def validate(board: Board, input_data: dict) -> list:
-        """Validate the provided input_data dictionary against the board.
+        """Validate the provided line dictionary against the board.
 
         This method is intended to be overridden by subclasses to
         implement specific validation logic. By default, it returns
@@ -33,7 +33,7 @@ class Validator:
 
         Args:
             board (Board): The board to validate against.
-            input_data (dict): The input_data to validate.
+            input_data (dict): The line to validate.
 
         Returns:
             list: A list of error messages. If no validation errors

@@ -1,43 +1,45 @@
-"""PillValidator."""
+from typing import List
+
 from src.board.board import Board
-from src.validators.cell_validator import CellValidator
 from src.validators.line_validator import LineValidator
+from src.validators.validator import Validator
 
 
-class PillValidator(LineValidator):
-    """Validates start sequence of cells forming start 'pill' shape on the board.
+class PillValidator(Validator):
+    """Validates start sequence of cells forming a valid 'pill' shape on the board.
 
-    A 'pill' is start sequence of cells that are:
-        - Located in the same row.
-        - Unique (no repeated cells).
-        - Connected horizontally.
-
-    Inherits:
-        LineValidator: The base class that provides line validation for cells.
+    A 'pill' is a sequence of cells that:
+        - Are located in the same row or column.
+        - Are unique (no repeated cells).
+        - Are connected horizontally or vertically.
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list[str]:
-        """Validate that all cells in the sequence form start valid 'pill'.
+    def validate(board: Board, line: List[dict]) -> list[str]:
+        """Validate that all cells in the sequence form a valid 'pill'.
 
         The validation checks that:
-        - All cells are in the same row.
+        - All cells are in the same row or column.
         - All cells are unique.
-        - Cells are connected horizontally (i.e., adjacent cells in the sequence).
+        - Cells are connected horizontally or vertically. Diagonals or doglegs are not allowed.
 
         Args:
             board (Board): The board on which the validation is performed.
-            input_data (dict): A list of dictionaries containing cell coordinates to validate.
+            line (List[dict]): A list of dictionaries containing cell coordinates to validate.
+                Each dictionary must contain 'Row' and 'Column' keys with integer values.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
         """
         # Start by validating line-based constraints
-        errors: list[str] = LineValidator.validate(board, input_data)
-        # Validate horizontal connectivity using CellValidator's method
-        for index in range(len(input_data) - 1):
-            start = input_data[index]
-            finish = input_data[index + 1]
-            errors.extend(CellValidator.validate_horizontal_connectivity(start, finish))
+        errors: list[str] = LineValidator.validate(board, line)
+
+        # Validate row and column constraints for 'pill' shape
+        rows: set[int] = {cell['Row'] for cell in line}
+        columns: set[int] = {cell['Column'] for cell in line}
+
+        # Ensure cells are in the same row or column
+        if len(rows) > 1 and len(columns) > 1:
+            errors.append("Pill must be in the same row or column.")
 
         return errors

@@ -6,68 +6,95 @@ class TestLittleKillerValidator(TestValidator):
     """Test case for the LittleKillerValidator class."""
 
     def setUp(self):
-        """Set up the specific test input_data for LittleKillerValidator."""
+        """Set up the specific test line for LittleKillerValidator."""
         super().setUp()  # Call the base class setup
 
         # Valid input for LittleKiller constraint
-        self.valid_input_data = {
-            'side': 'T',
-            'index': 2,
-            'direction': 'C',
-            'number': 15
-        }
-
-        # Invalid input input_data for missing required keys
-        self.invalid_keys_input_data = {
-            'side': 'T',
-            'index': 2
-            # Missing 'direction' and 'number'
-        }
-
-        # Invalid index (out of range)
-        self.invalid_index_input_data = {
-            'side': 'T',
-            'index': 100,  # Out of range index
-            'direction': 'C',
-            'number': 15
-        }
-
-        # Valid input_data but invalid number for the ValueValidator (assuming it checks numbers)
-        self.invalid_value_input_data = {
-            'side': 'T',
-            'index': 2,
-            'direction': 'C',
-            'number': 999  # Assuming this is invalid according to ValueValidator
-        }
-
-        # Empty input_data (edge case)
-        self.empty_input_data = {}
-
-    def test_validate_valid(self):
-        """Test that validate returns no errors for valid input_data."""
-        self.validate_input(LittleKillerValidator, self.valid_input_data, [])
-
-    def test_validate_invalid_keys(self):
-        """Test that validate returns errors for missing required keys."""
-        expected_errors = [
-            "Missing required key: direction",
-            "Missing required key: number"
+        self.valid_data = [
+            {
+                'Side': 'T',
+                'Index': 2,
+                'Cyclic': 'C',
+                'Value': 15,
+            },
+            {
+                'Side': 'R',
+                'Index': 2,
+                'Cyclic': 'C',
+                'Value': 15,
+            },
+            {
+                'Side': 'L',
+                'Index': 2,
+                'Cyclic': 'C',
+                'Value': 15,
+            },
+            {
+                'Side': 'B',
+                'Index': 2,
+                'Cyclic': 'C',
+                'Value': 15,
+            },
+            {
+                'Side': 'T',
+                'Index': 3,
+                'Cyclic': 'A',
+                'Value': 15,
+            },
         ]
-        self.validate_input(LittleKillerValidator, self.invalid_keys_input_data, expected_errors)
 
-    def test_validate_invalid_index(self):
-        """Test that validate returns an error for out-of-range index."""
-        expected_errors = ["Invalid index: 100"]
-        self.validate_input(LittleKillerValidator, self.invalid_index_input_data, expected_errors)
-
-    def test_validate_invalid_value(self):
-        """Test that validate returns an error for invalid integer_value according to ValueValidator."""
-        expected_errors = [
-            "Invalid integer_value: 999"  # Assuming this message comes from the ValueValidator
+        # Invalid input line for missing required keys
+        self.invalid_data = [
+            {
+                'Index': 1,
+                'Cyclic': 'C',
+                'Value': 1
+            },
+            {
+                'Side': 'T',
+                'Cyclic': 'C',
+                'Value': 2
+            },
+            {
+                'Side': 'T',
+                'Index': 3,
+                'Value': 3
+            },
+            {
+                'Side': 'T',
+                'Index': 4,
+                'Cyclic': 'C',
+            },
+            {
+                'Side': 'X',
+                'Index': 6,
+                'Cyclic': 'C',
+                'Value': 5
+            },
+            {
+                'Side': 'T',
+                'Index': 2,
+                'Cyclic': 'X',
+                'Value': 6
+            },
+            {
+                'Side': 'T',
+                'Index': 12,
+                'Cyclic': 'C',
+                'Value': 7
+            },
+            {
+                'Side': 'T',
+                'Index': 'X',
+                'Cyclic': 'C',
+                'Value': 8
+            },
+            {
+                'Side': 'T',
+                'Index': 1,
+                'Cyclic': 'C',
+                'Value': 'X'
+            },
         ]
-        self.validate_input(LittleKillerValidator, self.invalid_value_input_data, expected_errors)
-
-    def test_validate_empty_input_data(self):
-        """Test that validate returns an error for empty input_data."""
-        expected_errors = ['The input_data cannot be empty.']
-        self.validate_input(LittleKillerValidator, self.empty_input_data, expected_errors)
+        self.representation = 'LittleKillerValidator()'
+        self.validator = LittleKillerValidator()

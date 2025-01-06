@@ -6,92 +6,89 @@ from src.validators.validator import Validator
 
 
 class LineValidator(Validator):
-    """Validator for start sequence of cells on the board.
+    """Validator for sequences of cells on the board.
 
-    This class extends the base `Validator` class and ensures that the given
-    sequence of cells is valid by checking the following conditions:
+    This class extends the base `Validator` class and ensures that the given sequence of cells is valid by
+    checking the following conditions:
     - All cells must be valid and within the board's range.
     - All cells must be unique.
-    - All cells must be connected by start king's move (i.e., each cell must be adjacent to the next cell,
-    including diagonals).
+    - All cells must be connected by a king's move (i.e., each cell must be adjacent to the next cell,
+      including diagonals).
 
     Inherits:
         Validator: The base class for creating custom validators.
     """
 
     @staticmethod
-    def validate_cells(board: Board, input_data: dict) -> list[str]:
-        """Validate the cells in the input_data list, checking for range, uniqueness, and key validity.
-
-        This method performs several checks on each cell in `input_data`, including:
-        - Ensuring the cell has valid keys (row and column).
-        - Checking that the cell's coordinates are within the board's valid range.
-        - Ensuring that no duplicate cells are present in the `input_data` list.
+    def validate_cells(board: Board, input_data: list[dict[str, int]]) -> list[str]:
+        """Validate the cells in the line list, checking for range, uniqueness, and key validity.
 
         Args:
             board (Board): The board to validate the cells against.
-            input_data (dict): A list of dictionaries, each representing start cell with 'row' and 'column' keys.
+            input_data (list[dict[str, int]]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
 
         Returns:
-            list[str]: The updated list of error messages.
+            list[str]: A list of error messages. An empty list if validation passes.
         """
         errors: list[str] = []
-        seen_cells: set[tuple[int, int]] = set()
+        validator: CellValidator = CellValidator()
         for cell in input_data:
-            # Validate cell keys, range, and uniqueness
-            errors.extend(CellValidator.has_valid_keys(cell))
-            errors.extend(CellValidator.validate_range(board, cell))
-            cell_tuple = (cell['row'], cell['column'])
-            if cell_tuple in seen_cells:
-                errors.append(f'Duplicate cell found: {cell_tuple:r}')
-            seen_cells.add(cell_tuple)
+            errors.extend(validator.validate(board, cell))
         return errors
 
     @staticmethod
-    def validate_connections(input_data: dict) -> list[str]:
-        """Validate that the cells in the sequence are connected by start king's move.
-
-        This method checks that each pair of consecutive cells in the `input_data` list are
-        connected by start king's move, meaning each cell is adjacent (horizontally, vertically,
-        or diagonally) to the next.
+    def validate_unique(line: list[dict[str, int]]) -> list[str]:
+        """Ensure that all cells in the line are unique.
 
         Args:
-            input_data (dict): A list of dictionaries, each representing start cell with 'row' and 'column' keys.
+            line (list[dict[str, int]]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
 
         Returns:
-            list[str]: The updated list of error messages.
+            list[str]: A list of error messages. An empty list if all cells are unique.
         """
         errors: list[str] = []
-        for index in range(len(input_data) - 1):
-            start = input_data[index]
-            finish = input_data[index + 1]
+        seen: set[tuple[int, int]] = set()
+        for cell in line:
+            coord = (cell['Row'], cell['Column'])
+            if coord in seen:
+                errors.append(f"Duplicate cell: {coord}")
+            seen.add(coord)
+        return errors
+
+    @staticmethod
+    def validate_connections(line: list[dict[str, int]]) -> list[str]:
+        """Validate that the cells in the sequence are connected by a king's move.
+
+        This method checks that each pair of consecutive cells in the `line` are connected by a king's move,
+        meaning each cell is adjacent (horizontally, vertically, or diagonally) to the next.
+
+        Args:
+            line (list[dict[str, int]]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
+
+        Returns:
+            list[str]: A list of error messages. An empty list if all cells are connected by a king's move.
+        """
+        errors: list[str] = []
+        for index in range(len(line) - 1):
+            start = line[index]
+            finish = line[index + 1]
             errors.extend(CellValidator.validate_connected(start, finish))
         return errors
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list[str]:
+    def validate(board: Board, line: list[dict[str, int]]) -> list[str]:
         """Validate that all cells in the sequence are valid, connected, and unique.
-
-        The method ensures that:
-            - All cells are within the board's range.
-            - All cells are unique.
-            - Cells are connected according to start king's move (each cell must be adjacent
-              to the next, either horizontally, vertically, or diagonally).
 
         Args:
             board (Board): The board on which the validation is performed, containing
                            the board's range and other constraints.
-            input_data (dict): A list of dictionaries, each representing start cell.
-                                Each dictionary must contain the keys 'row' and 'column'
-                                with integer value_list.
+            line (dict[str, int]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
 
         Returns:
-            list[str]: A list of error messages. An empty list is returned if the validation
-                       passes, and error messages are returned if any validation check fails.
+            list[str]: A list of error messages. An empty list if validation passes, otherwise a list of errors.
         """
-        if not input_data:
-            return ['The input_data cannot be empty.']
         errors: list[str] = []
-        errors.extend(LineValidator.validate_cells(board, input_data))
-        errors.extend(LineValidator.validate_connections(input_data))
+        errors.extend(LineValidator.validate_cells(board, line))
+        errors.extend(LineValidator.validate_connections(line))
+        errors.extend(LineValidator.validate_unique(line))
         return errors

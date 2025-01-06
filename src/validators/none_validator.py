@@ -5,10 +5,10 @@ from src.board.board import Board
 
 
 class NoneValidator(Validator):
-    """Validator to ensure that the input_data is None.
+    """Validator to ensure that the line is None.
 
-    This validator checks that the provided input_data is None and returns
-    an error message if the input_data is not None.
+    This validator checks that the provided line is None and returns
+    an error message if the line is not None.
 
     Attributes:
         None
@@ -27,6 +27,12 @@ class NoneValidator(Validator):
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
         """
-        if input_data:
-            return [f'Expecting None, got {input_data!r}']
+        errors: list[str] = []
+        if len(input_data) != 1:
+            errors.append(f'Expecting 1 key, got {len(input_data)} keys.')
+            return errors
+        _, value = list(input_data.items())[0]
+        if value is not None:
+            errors.append(f'Value must be None, got {value!r}.')
+            return errors
         return []

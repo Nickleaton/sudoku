@@ -1,6 +1,8 @@
 """LittleKillerValidator."""
 
 from src.board.board import Board
+from src.validators.cyclic_validator import CyclicValidator
+from src.validators.side_validator import SideValidator
 from src.validators.validator import Validator
 from src.validators.value_validator import ValueValidator
 
@@ -8,37 +10,49 @@ from src.validators.value_validator import ValueValidator
 class LittleKillerValidator(Validator):
     """Validator for the Little Killer Sudoku constraints."""
 
-    required_keys: tuple[str, str, str, str] = ('side', 'index', 'direction', 'number')
+    side_validator = SideValidator()
+    cyclic_validator = CyclicValidator()
+    value_validator = ValueValidator()
 
     @staticmethod
     def validate(board: Board, input_data: dict[str, str]) -> list[str]:
-        """Validate the Little Killer constraint input_data.
-
-        This method performs several checks:
-        1. It checks if all required keys are present in the `input_data` dictionary.
-        2. It validates that the `index` is within the valid range for the board.
-        3. It delegates digit validation to the `ValueValidator`.
+        """Validate the Little Killer constraint line.
 
         Args:
             board (Board): The Sudoku board that the constraint applies to.
-            input_data (dict[str, str]): A dictionary containing the constraint input_data to be validated.
+            input_data (dict[str, str]): A dictionary containing the constraint line to be validated.
 
         Returns:
-            list[str]: A list of error messages, or an empty list if the input_data is valid.
+            list[str]: A list of error messages, or an empty list if the line is valid.
                 Each string in the list corresponds to a specific validation failure.
         """
         errors: list[str] = []
 
-        # Validate required keys in the input_data
-        errors.extend(LittleKillerValidator.validate_keys(input_data, LittleKillerValidator.required_keys))
-        if errors:
+        if len(input_data) != 4:
+            errors.append(f"To few items {input_data!r}. Expecting 4")
+        if 'Side' not in input_data:
+            errors.append(f"Missing key: {input_data!r}.")
+        if 'Cyclic' not in input_data:
+            errors.append(f"Missing key: {input_data!r}.")
+        if 'Value' not in input_data:
+            errors.append(f"Missing key: {input_data!r}.")
+        if 'Index' not in input_data:
+            errors.append(f"Missing key: {input_data!r}.")
+        if len(errors) > 0:
             return errors
-
-        # Validate the 'index' field to ensure it's within the valid range
-        index = int(input_data['index'])
-        if index < 0 or index > board.rows + 1:
-            errors.append(f"Invalid index: {input_data['index']}")
-
-        # Use the ValueValidator to validate the cell_values in the input_data
-        errors.extend(ValueValidator().validate(board, input_data))
+        errors.extend(LittleKillerValidator.side_validator.validate(board, {'Side': input_data['Side']}))
+        errors.extend(LittleKillerValidator.cyclic_validator.validate(board, {'Cyclic': input_data['Cyclic']}))
+        errors.extend(LittleKillerValidator.value_validator.validate(board, {'Value': input_data['Value']}))
+        if len(errors) > 0:
+            return errors
+        if not isinstance(input_data['Index'], int):
+            errors.append(f"Index must be an integer {input_data['Index']}")
+            return errors
+        index: int = int(input_data['Index'])
+        if input_data['Side'] in ['T', 'B']:
+            if index < 0 or index > board.board_rows + 1:
+                errors.append(f"Invalid index: {input_data['Index']}")
+        else:
+            if index < 0 or index > board.board_columns + 1:
+                errors.append(f"Invalid index: {input_data['Index']}")
         return errors
