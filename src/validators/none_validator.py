@@ -31,8 +31,8 @@ class NoneValidator(Validator):
         if len(input_data) != 1:
             errors.append(f'Expecting 1 key, got {len(input_data)} keys.')
             return errors
-        _, value = list(input_data.items())[0]
-        if value is not None:
-            errors.append(f'Value must be None, got {value!r}.')
+        _, data_value = list(input_data.items())[0]
+        if data_value is not None:
+            errors.append(f'Data must be None, got {data_value!r}.')
             return errors
         return []

@@ -41,7 +41,7 @@ class CellValidator(Validator):
 
         Args:
             board (Board): The board on which the validation is performed.
-            input_data (dict[str, int]): The dictionary representing the cell, which must contain 'Row' and 'Column' keys.
+            input_data (dict[str, int]): The dictionary representing the cell.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
@@ -117,7 +117,7 @@ class CellValidator(Validator):
 
         Args:
             board (Board): The board on which the validation is performed.
-            input_data (dict[str, int]): The dictionary representing the cell, which must contain 'Row' and 'Column' keys.
+            input_data (dict[str, int]): The dictionary representing the cell.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.

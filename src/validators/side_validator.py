@@ -10,7 +10,7 @@ class SideValidator(Validator):
 
     @staticmethod
     def validate(board: Board, input_data: dict[str, str]) -> list[str]:
-        """Validate a Side
+        """Validate a Side.
 
         Args:
             board (Board): The Sudoku board that the constraint applies to.
@@ -23,15 +23,15 @@ class SideValidator(Validator):
         errors: list[str] = []
 
         if len(input_data) != 1:
-            errors.append(f"To many items {input_data!r}.")
+            errors.append(f'To many items {input_data!r}.')
             return errors
         if 'Side' not in input_data:
-            errors.append(f"Missing key: {input_data!r}.")
+            errors.append(f'Missing key: {input_data!r}.')
             return errors
         if not isinstance(input_data['Side'], str):
-            errors.append(f"Value must be a string {input_data!r}.")
+            errors.append(f'Value must be a string {input_data!r}.')
             return errors
-        if input_data['Side'] not in [member.value for member in Side]:
-            errors.append(f"Value must be a Side {input_data!r}.")
+        if input_data['Side'] not in {member.value for member in Side}:
+            errors.append(f'Value must be a Side {input_data!r}.')
             return errors
         return []

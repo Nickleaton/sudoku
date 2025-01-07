@@ -26,33 +26,25 @@ class LittleKillerValidator(Validator):
             list[str]: A list of error messages, or an empty list if the line is valid.
                 Each string in the list corresponds to a specific validation failure.
         """
-        errors: list[str] = []
+        required_keys = {'Side', 'Cyclic', 'Value', 'Index'}
+        missing_keys = required_keys - input_data.keys()
 
-        if len(input_data) != 4:
-            errors.append(f"To few items {input_data!r}. Expecting 4")
-        if 'Side' not in input_data:
-            errors.append(f"Missing key: {input_data!r}.")
-        if 'Cyclic' not in input_data:
-            errors.append(f"Missing key: {input_data!r}.")
-        if 'Value' not in input_data:
-            errors.append(f"Missing key: {input_data!r}.")
-        if 'Index' not in input_data:
-            errors.append(f"Missing key: {input_data!r}.")
-        if len(errors) > 0:
-            return errors
+        if missing_keys:
+            return [f"Missing keys: {', '.join(missing_keys)} in {input_data!r}."]
+
+        errors: list[str] = []
         errors.extend(LittleKillerValidator.side_validator.validate(board, {'Side': input_data['Side']}))
         errors.extend(LittleKillerValidator.cyclic_validator.validate(board, {'Cyclic': input_data['Cyclic']}))
         errors.extend(LittleKillerValidator.value_validator.validate(board, {'Value': input_data['Value']}))
-        if len(errors) > 0:
+
+        try:
+            index = int(input_data['Index'])
+        except ValueError:
+            errors.append(f"Index must be an integer: {input_data['Index']}")
             return errors
-        if not isinstance(input_data['Index'], int):
-            errors.append(f"Index must be an integer {input_data['Index']}")
-            return errors
-        index: int = int(input_data['Index'])
-        if input_data['Side'] in ['T', 'B']:
-            if index < 0 or index > board.board_rows + 1:
-                errors.append(f"Invalid index: {input_data['Index']}")
-        else:
-            if index < 0 or index > board.board_columns + 1:
-                errors.append(f"Invalid index: {input_data['Index']}")
+
+        max_index = board.board_rows + 1 if input_data['Side'] in {'T', 'B'} else board.board_columns + 1
+        if index < 0 or index > max_index:
+            errors.append(f"Invalid index: {index}. Must be between 0 and {max_index} for side {input_data['Side']}.")
+
         return errors

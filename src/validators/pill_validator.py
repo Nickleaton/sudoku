@@ -1,3 +1,4 @@
+"""PillValidator."""
 from typing import List
 
 from src.board.board import Board
@@ -26,7 +27,6 @@ class PillValidator(Validator):
         Args:
             board (Board): The board on which the validation is performed.
             line (List[dict]): A list of dictionaries containing cell coordinates to validate.
-                Each dictionary must contain 'Row' and 'Column' keys with integer values.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
@@ -40,6 +40,6 @@ class PillValidator(Validator):
 
         # Ensure cells are in the same row or column
         if len(rows) > 1 and len(columns) > 1:
-            errors.append("Pill must be in the same row or column.")
+            errors.append('Pill must be in the same row or column.')
 
         return errors

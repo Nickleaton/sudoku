@@ -12,8 +12,7 @@ class LineValidator(Validator):
     checking the following conditions:
     - All cells must be valid and within the board's range.
     - All cells must be unique.
-    - All cells must be connected by a king's move (i.e., each cell must be adjacent to the next cell,
-      including diagonals).
+    - All cells must be connected by a king's move.
 
     Inherits:
         Validator: The base class for creating custom validators.
@@ -25,7 +24,7 @@ class LineValidator(Validator):
 
         Args:
             board (Board): The board to validate the cells against.
-            input_data (list[dict[str, int]]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
+            input_data (list[dict[str, int]]): A list of dictionaries of cells.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
@@ -51,7 +50,7 @@ class LineValidator(Validator):
         for cell in line:
             coord = (cell['Row'], cell['Column'])
             if coord in seen:
-                errors.append(f"Duplicate cell: {coord}")
+                errors.append(f'Duplicate cell: {coord}')
             seen.add(coord)
         return errors
 
@@ -80,8 +79,7 @@ class LineValidator(Validator):
         """Validate that all cells in the sequence are valid, connected, and unique.
 
         Args:
-            board (Board): The board on which the validation is performed, containing
-                           the board's range and other constraints.
+            board (Board): The board on which the validation is performed.
             line (dict[str, int]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
 
         Returns:

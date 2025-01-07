@@ -1,6 +1,5 @@
 """Validator module."""
 from src.board.board import Board
-
 from src.validators.validator import Validator
 
 
@@ -29,7 +28,7 @@ class DigitsValidator(Validator):
                 errors.append(f'Invalid digit: {digit}. Valid range: {board.digit_range}')
             elif digit not in board.digit_range:
                 errors.append(f'Invalid digit: {digit}. Valid range: {board.digit_range}')
-        if len(errors) > 0:
+        if errors:
             return errors
         if len(digits) != len(set(digits)):
             errors.append('Digits must be unique')

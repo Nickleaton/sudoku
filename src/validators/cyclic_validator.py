@@ -10,7 +10,7 @@ class CyclicValidator(Validator):
 
     @staticmethod
     def validate(board: Board, input_data: dict[str, str]) -> list[str]:
-        """Validate a Cyclic
+        """Validate a Cyclic.
 
         Args:
             board (Board): The Sudoku board that the constraint applies to.
@@ -23,15 +23,15 @@ class CyclicValidator(Validator):
         errors: list[str] = []
 
         if len(input_data) != 1:
-            errors.append(f"To many items {input_data!r}.")
+            errors.append(f'To many items {input_data!r}.')
             return errors
         if 'Cyclic' not in input_data:
-            errors.append(f"Missing key: {input_data!r}.")
+            errors.append(f'Missing key: {input_data!r}.')
             return errors
         if not isinstance(input_data['Cyclic'], str):
-            errors.append(f"Value must be a string {input_data!r}.")
+            errors.append(f'Value must be a string {input_data!r}.')
             return errors
-        if input_data['Cyclic'] not in [member.value for member in Cyclic]:
-            errors.append(f"Value must be a Cyclic {input_data!r}.")
+        if input_data['Cyclic'] not in {member.value for member in Cyclic}:
+            errors.append(f'Value must be a Cyclic {input_data!r}.')
             return errors
         return []
