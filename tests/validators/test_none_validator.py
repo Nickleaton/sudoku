@@ -14,8 +14,8 @@ class TestNoneValidator(TestValidator):
             {'Columns': None}
         ]
         self.invalid_data = [
-            {'Columns': 'xxx'}
-
+            {'Columns': 'xxx'},
+            {'x': 'x', 'y': 'y'}
         ]
         self.representation = 'NoneValidator()'
         self.validator = NoneValidator()

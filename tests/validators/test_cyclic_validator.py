@@ -15,7 +15,8 @@ class TestCyclicValidator(TestValidator):
         self.invalid_data = [
             {'xxx': 'T'},
             {'Cyclic': 'X'},
-            {'x': 'x', 'y': 'y'}
+            {'x': 'x', 'y': 'y'},
+            {'Cyclic': 1}
         ]
         self.validator = CyclicValidator()
         self.representation = 'CyclicValidator()'

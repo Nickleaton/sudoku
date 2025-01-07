@@ -23,6 +23,34 @@ class TestCellValidator(TestValidator):
         self.representation = 'CellValidator()'
         self.validator = CellValidator()
 
+    def test_validate_horizontal_connectivity(self):
+        """Test validate_horizontal_connectivity method."""
+        cases = [
+            # Valid case: horizontally connected
+            {
+                'cell1': {'Row': 1, 'Column': 1},
+                'cell2': {'Row': 1, 'Column': 2},
+                'expected': []
+            },
+            # Invalid case: not in the same row
+            {
+                'cell1': {'Row': 1, 'Column': 1},
+                'cell2': {'Row': 2, 'Column': 1},
+                'expected': ["Cells {'Row': 1, 'Column': 1} and {'Row': 2, 'Column': 1} are not in the same row."]
+            },
+            # Invalid case: not horizontally adjacent
+            {
+                'cell1': {'Row': 1, 'Column': 1},
+                'cell2': {'Row': 1, 'Column': 3},
+                'expected': ["Cells {'Row': 1, 'Column': 1} and {'Row': 1, 'Column': 3} are not horizontally adjacent."]
+            },
+        ]
+
+        for case in cases:
+            with self.subTest(cell1=case['cell1'], cell2=case['cell2']):
+                errors = self.validator.validate_horizontal_connectivity(case['cell1'], case['cell2'])
+                self.assertEqual(errors, case['expected'])
+
 
 if __name__ == '__main__':
     unittest.main()

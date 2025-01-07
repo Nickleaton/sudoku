@@ -95,6 +95,18 @@ class TestLittleKillerValidator(TestValidator):
                 'Cyclic': 'C',
                 'Value': 'X'
             },
+            {
+                'Side': 'T',
+                'Index': 9,
+                'Cyclic': 'C',
+                'Value': 15,
+            },
+            {
+                'Side': 'L',
+                'Index': 9,
+                'Cyclic': 'C',
+                'Value': 15,
+            },
         ]
         self.representation = 'LittleKillerValidator()'
         self.validator = LittleKillerValidator()

@@ -54,12 +54,20 @@ class TestKnownValidator(TestValidator):
             {'Known': [
                 '123456',  # Row 1
                 '234561',  # Row 2
+            ],
+            },
+            {'Bad': [
+                '123456',
+                '234561',
+                '234561',
+                '234561',
+                '234561',
+                '234561'
             ]
             }
         ]
         self.representation = 'KnownValidator()'
         self.validator = KnownValidator()
-
 
 if __name__ == '__main__':
     unittest.main()

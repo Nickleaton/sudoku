@@ -21,6 +21,7 @@ class TestQuadrupleValidator(TestValidator):
             {'questions': [1, 2, 3, 4, 5]},
             {'quadruples': [1, 2, 3, 10, '?', 5]},
             {'quadruples': []},
+            {'quadruples': [0]},
             {'quadruples': [1, 2, 3, 4, 5]},
         ]
         self.validator = QuadrupleValidator()
