@@ -1,3 +1,4 @@
+"""Answer."""
 from src.board.board import Board
 
 
@@ -17,9 +18,9 @@ class Answer:
         self.board: Board = board
         self.digits: list[list[int]] = []
         if input_data is not None:
-            if len(input_data) != len(board.row_range) or any(
-                len(row) != len(board.column_range) for row in input_data
-            ):
+            wrong_row_size: bool = len(input_data) != board.board_rows
+            wrong_col_size: bool = any(len(row) != board.board_columns for row in input_data)
+            if wrong_col_size or wrong_row_size:
                 raise ValueError('Input data dimensions do not match the board size.')
 
             for row in board.row_range:
@@ -64,17 +65,12 @@ class Answer:
         Returns:
             str: A string representation of the Answer object.
         """
-        lines = [
-            "'" + ''.join([str(digit) for digit in self.digits[row - 1]]) + "'"
+        lines: list[str] = [
+            f"'{''.join([str(digit) for digit in self.digits[row - 1]])}'"
             for row in self.board.row_range
         ]
-        representation: str = 'Answer(\n'
-        representation += f'    {self.board!r},\n'
-        representation += f'    [\n    '
-        representation += ',\n    '.join(lines)
-        representation += f'    ]\n'
-        representation += ')'
-        return representation
+        string_line: str = ',\n    '.join(lines)
+        return f'Answer(\n    {self.board!r},\n    [\n    {string_line}\n    ]\n)'
 
     def __str__(self) -> str:
         """Return a string representation of the Answer object for display purposes.
@@ -126,25 +122,3 @@ class Answer:
             Answer: A newly created Answer object.
         """
         return Answer(board, Answer.extract(board, yaml))
-    #
-    # def standard_string(self) -> str:
-    #     """Return the board as a formatted string with separators for rows and boxes.
-    #
-    #     Returns:
-    #         str: A formatted string of the board with separators.
-    #     """
-    #     separator: str = '+'.join(['-' * (board * 2 + (box_cols - 1))] * (total_cols // box_cols))
-    #
-    # def line_separator(self) -> str:
-    #     """Generate a separator string for the board layout.
-    #
-    #     Returns:
-    #         str: A string representing a separator line between rows/boxes.
-    #     """
-    #     line_parts: list[str] = []
-    #     for column in self.board.column_range:
-    #         if (column - 1) % self.board.box_columns == 0:
-    #             line_parts.append('+-')
-    #         line_parts.append('--')
-    #     line_parts.append('+')
-    #     return ''.join(line_parts)
