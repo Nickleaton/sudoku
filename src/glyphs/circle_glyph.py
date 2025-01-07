@@ -58,8 +58,8 @@ class CircleGlyph(Glyph):
             otherwise `None` if no valid configuration is available.
         """
         cell_size: int = 100
-        if config.drawing is not None and config.drawing.cell_size is not None:
-            cell_size = int(config.drawing.cell_size)
+        if config.graphics is not None and config.graphics.cell_size is not None:
+            cell_size = int(config.graphics.cell_size)
         return Circle(
             transform=self.center.point.transform,
             r=self.percentage * cell_size,

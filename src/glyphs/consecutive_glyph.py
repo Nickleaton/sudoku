@@ -27,7 +27,7 @@ class ConsecutiveGlyph(RectangleGlyph):
             first,
             second,
             config.graphics.consecutive_glyph_percentage,
-            config.graphics.consequtive_glyph_ratio,
+            config.graphics.consecutive_glyph_ratio,
             vertical,
         )
 

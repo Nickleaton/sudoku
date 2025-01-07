@@ -42,9 +42,8 @@ class RectangleGlyph(Glyph):
         Returns:
             BaseElement | None: An SVG `Rect` element representing the rectangle.
         """
-        cell_size: int = 100
-        if config.drawing and config.drawing.cell_size:
-            cell_size = int(config.drawing.cell_size)
+
+        cell_size = config.graphics.cell_size
 
         # Calculate the rectangle's size based on the percentage and ratio
         size = (

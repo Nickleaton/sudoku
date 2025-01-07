@@ -20,8 +20,8 @@ class KillerGlyph(Glyph):
     """Represents a Killer glyph that can be drawn using various lines and vectors, based on cell coordinates."""
 
     offset: int = 10
-    size: float = config.drawing.cell_size * config.graphics.middle_percentage
-    long_size: float = config.drawing.cell_size * config.graphics.middle_percentage - offset
+    size: float = config.graphics.cell_size * config.graphics.middle_percentage
+    long_size: float = config.graphics.cell_size * config.graphics.middle_percentage - offset
 
     long_lines: ClassVar[dict[int, Vector]] = {
         2: Vector(Coord(0, 0), Coord(0, 1)),
