@@ -11,6 +11,7 @@ from src.utils.cyclic import Cyclic
 from src.utils.functions import PRIMES
 from src.utils.side import Side
 from src.utils.sudoku_exception import SudokuException
+from src.utils.tags import Tags
 
 
 class BoardType(Enum):
@@ -127,7 +128,7 @@ class Board:
             self.box_range = list(range(1, self.box_count + 1))
 
         # Metadata
-        self.tags: dict[str, str] | None = tags
+        self.tags: Tags | None = None if tags is None else Tags(tags)
 
         # Cyclic Map
 
@@ -271,7 +272,7 @@ class Board:
         Raises:
             SudokuException: If the string format is invalid.
         """
-        regexp = re.compile('([1234567890]+)row([1234567890]+)')
+        regexp = re.compile('([1234567890]+)x([1234567890]+)')
         match = regexp.match(text)
         if match is None:
             raise SudokuException(f'Invalid format: {text}. Expected "NxM".')
@@ -279,11 +280,11 @@ class Board:
 
     @classmethod
     def create(cls, name: str, yaml_data: dict) -> 'Board':
-        """Create start Board instance from start YAML input_data structure.
+        """Create start Board instance from start YAML line structure.
 
         Args:
-            name (str): Name key for the board in the YAML input_data.
-            yaml_data (dict): YAML input_data dictionary containing board configuration.
+            name (str): Name key for the board in the YAML line.
+            yaml_data (dict): YAML line dictionary containing board configuration.
 
         Returns:
             Board: A new `Board` instance.
@@ -301,14 +302,14 @@ class Board:
 
     @classmethod
     def create2(cls, name: str, yaml_data: dict) -> 'Board':
-        """Create a Board instance using the provided name and YAML input_data.
+        """Create a Board instance using the provided name and YAML line.
 
         Args:
-            name (str): The name key for the board in the YAML input_data.
-            yaml_data (dict): The YAML input_data dictionary containing the board configuration.
+            name (str): The name key for the board in the YAML line.
+            yaml_data (dict): The YAML line dictionary containing the board configuration.
 
         Returns:
-            Board: A new `Board` instance created based on the provided YAML input_data.
+            Board: A new `Board` instance created based on the provided YAML line.
         """
         return cls.create(name, yaml_data)
 
@@ -327,7 +328,7 @@ class Board:
             board['Box'] = f'{self.box_rows}x{self.box_columns}'
 
         if self.tags is not None:
-            board['Tags'] = SortedDict(self.tags)
+            board['Tags'] = dict(self.tags)
         return board_dict
 
     def to_yaml(self) -> str:
@@ -420,4 +421,27 @@ class Board:
             return Coord(self.board_columns, index)
         if side == Side.left:
             return Coord(index, 1)
+        raise ValueError(f'Invalid side: {side}')
+
+    def outside_cell(self, side: Side, index: int) -> Coord:
+        """Get the outside cell coordinate for a specified side on the board. Used by little killers.
+
+        Args:
+            side (Side): The side of the board.
+            index (int): The index for the side.
+
+        Returns:
+            Coord: The coordinate of the starting cell.
+
+        Raises:
+            ValueError: If the side is invalid.
+        """
+        if side == Side.top:
+            return Coord(0, index)
+        if side == Side.right:
+            return Coord(index, self.board_rows + 1)
+        if side == Side.bottom:
+            return Coord(self.board_columns + 1, index)
+        if side == Side.left:
+            return Coord(index, 0)
         raise ValueError(f'Invalid side: {side}')
