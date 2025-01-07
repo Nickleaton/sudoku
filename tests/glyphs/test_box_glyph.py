@@ -26,7 +26,7 @@ class TestBoxGlyph(TestSquareGlyph):
         Returns:
             str: The SVG markup for the BoxGlyph target element.
         """
-        return '<rect class="Style" height="300" transform="translate(100, 100)" width="300" digit1="0" digit2="0" />'
+        return '<rect class="Style" height="300" transform="translate(100, 100)" width="300" x="0" y="0" />'
 
     @property
     def representation(self) -> str:

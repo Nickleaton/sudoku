@@ -27,7 +27,7 @@ class TestCellGlyph(TestSquareGlyph):
         Returns:
             str: The SVG markup for the rectangle representing the CellGlyph.
         """
-        return '<rect class="Style" height="100" transform="translate(100, 100)" width="100" digit1="0" digit2="0" />'
+        return '<rect class="Style" height="100" transform="translate(100, 100)" width="100" x="0" y="0" />'
 
     @property
     def representation(self) -> str:

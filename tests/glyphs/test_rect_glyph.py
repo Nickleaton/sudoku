@@ -27,7 +27,7 @@ class TestRectGlyph(TestGlyph):
             str: The expected SVG markup for the RectGlyph, including start rectangle element
             with height, width, and transform attributes.
         """
-        return '<rect class="Style" height="100" transform="translate(100, 100)" width="200" digit1="0" digit2="0" />'
+        return '<rect class="Style" height="100" transform="translate(100, 100)" width="200" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
