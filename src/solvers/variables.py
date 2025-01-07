@@ -2,15 +2,15 @@
 from enum import IntEnum
 from typing import Any, Iterable
 
-from pulp import LpInteger
-from pulp import LpVariable
+from pulp import LpInteger  # noqa: I001
+from pulp import LpVariable  # noqa: I001
 from pydotted import pydot
 
 from src.board.board import Board
-from src.board.cell_types import EntropicType
-from src.board.cell_types import ModuloType
-from src.board.cell_types import ParityType
-from src.board.cell_types import PrimeType
+from src.board.cell_types import EntropicType  # noqa: I001
+from src.board.cell_types import ModuloType  # noqa: I001
+from src.board.cell_types import ParityType  # noqa: I001
+from src.board.cell_types import PrimeType  # noqa: I001
 from src.utils.variable_type import VariableType
 
 
@@ -131,6 +131,6 @@ class Variables(pydot):
             LpVariable: The created variable.
         """
         if name not in self.odds:
-            variable: LpVariable = LpVariable(name, cat=variable_type)
-            self.odds[name] = variable
+            new_variable: LpVariable = LpVariable(name, cat=variable_type)
+            self.odds[name] = new_variable
         return self.odds[name]
