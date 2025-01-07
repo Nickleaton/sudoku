@@ -17,7 +17,8 @@ class TestSideValidator(TestValidator):
         self.invalid_data = [
             {'xxx': 'T'},
             {'Side': 'X'},
-            {'x': 'x', 'y': 'y'}
+            {'x': 'x', 'y': 'y'},
+            {'Side': 9}
         ]
         self.validator = SideValidator()
         self.representation = 'SideValidator()'
