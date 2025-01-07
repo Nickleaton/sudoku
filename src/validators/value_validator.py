@@ -36,7 +36,7 @@ class ValueValidator(Validator):
             errors.append('No Key "Value"')
             return errors
         if len(input_data) != 1:
-            errors.append(f"To many items {intput_data!r}.")
+            errors.append(f"To many items {input_data!r}.")
             return errors
         data = input_data['Value']
         if not isinstance(data, int):

@@ -13,8 +13,10 @@ class TestValueValidator(TestValidator):
             {'Value': 5}
         ]
         self.invalid_data = [
-            {'Value': 'five'},
-            {'xxx': 5}
+            {'Value': 'five'},  # Not an integer
+            {'xxx': 5},  # Missing 'Value' key
+            {'Value': -5},  # Negative integer
+            {'Value': 5, 'Extra': 10},  # Too many items
         ]
         self.representation = 'ValueValidator()'
         self.validator = ValueValidator()
