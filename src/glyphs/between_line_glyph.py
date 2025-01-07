@@ -40,7 +40,7 @@ class BetweenLineGlyph(PolyLineGlyph):
             Marker: The SVG marker for the start of the line.
             None: If the marker cannot be created.
         """
-        circle_size: int = config.graphics.between_line_circle_percentage * config.graphics.cell_size
+        circle_size: int = int(config.graphics.between_line_circle_percentage * config.graphics.cell_size)
         marker = Marker(
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             size=(circle_size, circle_size),
@@ -63,7 +63,7 @@ class BetweenLineGlyph(PolyLineGlyph):
             Marker: The SVG marker for the end of the line.
             None: If the marker cannot be created.
         """
-        circle_size: int = config.graphics.between_line_circle_percentage * config.graphics.cell_size
+        circle_size: int = int(config.graphics.between_line_circle_percentage * config.graphics.cell_size)
         marker = Marker(
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             size=(circle_size, circle_size),

@@ -39,7 +39,7 @@ class OddCellGlyph(Glyph):
         symbol.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
-                r=config.graphics.cell_size * config.graphics.odd_cell_percentage,
+                r=int(config.graphics.cell_size * config.graphics.odd_cell_percentage),
             ),
         )
         return symbol

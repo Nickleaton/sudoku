@@ -42,7 +42,7 @@ class QuadrupleGlyph(Glyph):
         circle: Circle = Circle(
             class_=f'{self.class_name}Circle',
             center=self.position.bottom_right.point.coordinates,
-            r=config.graphics.cell_size * config.graphics.quadruple_circle_percentage,
+            r=int(config.graphics.cell_size * config.graphics.quadruple_circle_percentage),
         )
         group.add(circle)
 

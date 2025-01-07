@@ -33,18 +33,18 @@ class ArrowLineGlyph(PolyLineGlyph):
             Marker: The start marker for the arrow line.
             None: If the marker cannot be created.
         """
-        circle_size: int = config.graphics.cell_size * config.graphics.arrow_head_percentage
+        circle_size: int = int(config.graphics.cell_size * config.graphics.arrow_head_percentage)
         marker = Marker(
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             size=(circle_size, circle_size),
             viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
-            id_=f'{cls.__name__}-start',
+            id_=f'Arrow ArrowEnd-start',
             class_=f'{cls.__name__}Start',
         )
         marker.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
-                r=config.graphics.cell_size * config.graphics.arrow_head_percentage,
+                r=int(config.graphics.cell_size * config.graphics.arrow_head_percentage),
             ),
         )
         return marker
@@ -59,12 +59,12 @@ class ArrowLineGlyph(PolyLineGlyph):
             Marker: The end marker for the arrow line.
             None: If the marker cannot be created.
         """
-        size: int = config.graphics.cell_size * config.graphics.arrow_pointer_precentage
+        size: int = int(config.graphics.cell_size * config.graphics.arrow_pointer_percentage)
         marker = Marker(
             insert=(size, size),
             size=(size, size),
             viewBox=f'0 0 {config.graphics.half_cell_size} {config.graphics.half_cell_size}',
-            id_=f'{cls.__name__}-end',
+            id_=f'Arrow ArrowEnd-end',
             class_=f'{cls.__name__}End',
             orient='auto',
         )
