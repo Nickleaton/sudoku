@@ -55,16 +55,7 @@ templates:
 
 temporary_directory: c:/temp/sudoku
 
-drawing:
-  size: 25cm
-  cell_size: 100
-  killer_offset: 5
-  arrow_head_percentage: 0.3
-  thermo_head_percentage: 0.3
-  odd_cell_radius: 35
-  kropki_radius: 10
-  consecutive_radius: 10
-  even_cell_size: 70
+
 
 colours:
   # The 'general' color set includes start wide variety of colours
@@ -101,8 +92,9 @@ colours:
 
 
 graphics:
+  size: 25cm
   small_circle_percentage: 0.15
-  arrow_head_percentage: 0.9
+  arrow_head_percentage: 0.35
   arrow_pointer_percentage: 0.2
   middle_percentage: 0.5
   kropki_dot_percentage: 0.25
@@ -115,6 +107,7 @@ graphics:
   thermo_head_percentage: 0.3
   odd_cell_percentage: 0.35
   even_cell_inset_percentage: 0.15
+  even_cell_percentage: 0.7
   quadruple_circle_percentage: 0.35
   quadruple_priority: 20
   killer_text_offset_percentage: 0.05
@@ -123,5 +116,6 @@ graphics:
   low_cell_percentage: 0.35
   consecutive_glyph_ratio: 2.0
   consecutive_glyph_percentage: 0.25
+
 
 css_indent_count: 4

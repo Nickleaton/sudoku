@@ -33,40 +33,16 @@
     </target>
 
 
-    <target name="pytest" depends="pytest-unit-tests,pytest-acceptance-tests">
-        <echo>Pytest</echo>
-    </target>
-
-
-    <target name="pytest-acceptance-tests">
+    <target name="pytest">
         <mkdir dir="output/tests"/>
-        <mkdir dir="output/lp"/>
-        <mkdir dir="output/svg"/>
-        <exec executable="pytest" failonerror="false" taskname="pytest-acceptance-tests">
-            <arg value="tests/acceptance/run_acceptance_tests.py"/>
-            <arg value="--rootdir=src"/>
-            <arg value="--html=output/tests/acceptance-tests.html"/>
-        </exec>
-    </target>
-
-    <target name="pytest-unit-tests">
-        <mkdir dir="output/tests"/>
-        <exec executable="pytest" failonerror="false" taskname="pytest-unit-tests">
-            <arg value="tests"/>
-            <arg value="--rootdir=src"/>
-            <arg value="--html=output/tests/unit-tests.html"/>
-        </exec>
-    </target>
-
-    <target name="pytest-commands">
-        <mkdir dir="output/tests"/>
-        <mkdir dir="output/lp"/>
-        <mkdir dir="output/svg"/>
-        <echo>${basedir}</echo>
-        <exec executable="pytest" failonerror="false" taskname="pytest">
-            <arg value="tests.unit"/>
-            <arg value="--rootdir=./src"/>
-            <arg value="--html=output/tests/commands.html"/>
+        <exec executable="python" failonerror="false" taskname="pytest-unit-tests">
+            <!--            <env key="PYTHONPATH" path="${basedir}/src"/>-->
+            <arg value="-m"/>
+            <arg value="pytest"/>
+            <arg value="tests/"/>
+            <arg value="--html=output/tests/tests.html"/>
+            <arg value="--cov=src"/>
+            <arg value="--cov-report=html:output/coverage/html"/>
         </exec>
     </target>
 
