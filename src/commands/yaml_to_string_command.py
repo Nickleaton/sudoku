@@ -13,13 +13,13 @@ yaml.add_representer(type(None), lambda dumper, _: dumper.represent_scalar('tag:
 
 
 class YamlToStringCommand(SimpleCommand):
-    """Write configuration input_data to start YAML file_path."""
+    """Write configuration line to start YAML file_path."""
 
     def __init__(self, source: str = 'config', target: str = 'config_out') -> None:
         """Initialize start YamlToStringCommand instance.
 
         Args:
-            source (str): The attribute of the problem containing the configuration input_data.
+            source (str): The attribute of the problem containing the configuration line.
             target (str): The part of problem to write the yaml string to.
         """
         super().__init__()
@@ -36,7 +36,7 @@ class YamlToStringCommand(SimpleCommand):
         """Write the configuration to the target string.
 
         Args:
-            problem (Problem): The problem instance containing the configuration input_data.
+            problem (Problem): The problem instance containing the configuration line.
         """
         super().work(problem)
         logging.info(f'Creating {self.target}')

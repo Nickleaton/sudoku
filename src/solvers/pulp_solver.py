@@ -12,7 +12,7 @@ from pulp import getSolver  # noqa: I001
 
 from src.board.board import Board
 from src.solvers.solver import Solver
-from src.solvers.variables import Variables, Variable
+from src.solvers.variables import Variables, VariableSet
 from src.utils.config import Config
 
 
@@ -51,16 +51,10 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         self.log: str | None = None
 
         # TODO get the types of variables from the constraints
-        self.variables: Variables = Variables(board, [Variable.choice, Variable.value])
+        self.variables: Variables = Variables(board, [VariableSet.choice, VariableSet.number])
 
         self.model: LpProblem = LpProblem('Return Sudoku', LpMinimize)
         self.model += 0, 'DummyObjective'
-
-        # TODO move to a better place
-
-        # for row, column in product(board.row_range, board.column_range):
-        #     total = lpSum(digit * self.variables.choices[digit][row][column] for digit in self.board.digit_range)
-        #     self.model += total == self.cell_values[row][column], f'Unique_cell_{row}_{column}'
 
     def save_lp(self, filename: Path | str) -> None:
         """Save the puzzle model in LP (Linear Programming) format.

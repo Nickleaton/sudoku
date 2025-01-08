@@ -41,7 +41,10 @@ class CreateSolverCommand(SimpleCommand):
             problem (Problem): The problem instance where the solver will be created.
         """
         super().work(problem)
+        board: Board = problem[self.board]
+        tags: dict[str, str] = board.tags
+        title: str = 'Title' if 'title' not in tags else tags['title']
         problem[self.target] = PulpSolver(
             board=problem[self.board],
-            name=problem[self.board].title,
+            name=title,
         )

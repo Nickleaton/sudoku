@@ -38,8 +38,8 @@ class ArrowLineGlyph(PolyLineGlyph):
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             size=(circle_size, circle_size),
             viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
-            id_=f'Arrow-start',
-            class_=f'Arrow ArrowStart',
+            id_='Arrow-start',
+            class_='Arrow ArrowStart',
         )
         marker.add(
             Circle(
@@ -64,8 +64,8 @@ class ArrowLineGlyph(PolyLineGlyph):
             insert=(size, size),
             size=(size, size),
             viewBox=f'0 0 {config.graphics.half_cell_size} {config.graphics.half_cell_size}',
-            id_=f'Arrow-end',
-            class_=f'Arrow ArrowEnd',
+            id_='Arrow-end',
+            class_='Arrow ArrowEnd',
             orient='auto',
         )
         marker.add(Polyline(points=[(0, 0), (size, size), (0, size + size)]))

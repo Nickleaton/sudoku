@@ -20,7 +20,7 @@ def pretty_print_xml(xml_string: str) -> str:
         return f'Error parsing XML: {error}'
 
     raw_xml: str = tostring(root, encoding='unicode')  # Convert to string
-    parsed: Document = parseString(raw_xml)  # Pretty-print securely
+    parsed: Document = parseString(raw_xml)
     pretty_xml: str = parsed.toprettyxml(indent='  ', newl='\n')
 
     # Remove the XML declaration

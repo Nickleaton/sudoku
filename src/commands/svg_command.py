@@ -62,7 +62,7 @@ class SVGCommand(SimpleCommand):
         super().work(problem)
 
         # Build the viewBox string first
-        cell_size: int = config.drawing.cell_size
+        cell_size: int = config.graphics.cell_size
         rows: int = problem.board.board_rows + 2
         columns: int = problem.board.board_columns + 2
         view_box: str = f'0 0 {cell_size * rows} {cell_size * columns}'
@@ -70,7 +70,7 @@ class SVGCommand(SimpleCommand):
         # Directly use problem attributes and create canvas
         canvas: Drawing = Drawing(
             filename=f'{self.name}.svg',
-            size=(config.drawing.size, config.drawing.size),
+            size=(config.graphics.size, config.graphics.size),
             viewBox=view_box,
         )
 

@@ -142,10 +142,9 @@ class Formulations:
         Returns:
             LpVariable: A value_variable representing the absolute difference.
         """
-        indicator = LpVariable(f'Abs_Indicator_{Formulations.count}', 0, 1, LpInteger)
-        difference = LpVariable(f'Abs_Difference_{Formulations.count}', 0, upper, LpContinuous)
+        indicator: LpVariable = LpVariable(f'Abs_Indicator_{Formulations.count}', 0, 1, LpInteger)
+        difference: LpVariable = LpVariable(f'Abs_Difference_{Formulations.count}', 0, upper, LpContinuous)
         model += difference >= (value1 - value2), f'Abs_{Formulations.count}_a'
-        model += difference >= (value2 - value1), f'Abs_{Formulations.count}_c'
         model += difference >= (value2 - value1), f'Abs_{Formulations.count}_c'
         model += (difference - (value2 - value1)) <= 2 * upper * indicator, f'Abs_{Formulations.count}_d'
         Formulations.count += 1

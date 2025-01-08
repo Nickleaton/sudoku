@@ -4,11 +4,11 @@ from typing import Type
 
 
 class KeyType:
-    """Represents a key with an associated input_data type.
+    """Represents a key with an associated line type.
 
     Attributes:
         key (str): The name or identifier for the key.
-        type (Type): The expected input_data type associated with the key.
+        type (Type): The expected line type associated with the key.
     """
 
     def __init__(self, key: str, typ: Type):
@@ -16,7 +16,7 @@ class KeyType:
 
         Args:
             key (str): The name or identifier for the key.
-            typ (Type): The expected input_data type associated with the key.
+            typ (Type): The expected line type associated with the key.
         """
         self.key: str = key
         self.type: Type = typ

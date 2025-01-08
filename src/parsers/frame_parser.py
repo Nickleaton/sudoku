@@ -27,7 +27,7 @@ class FrameParser(Parser):
         self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
 
     def parse(self, text: str) -> None:
-        """Parse the input string to extract side, index, and integer value.
+        """Parse the input string to extract side, index, and integer number.
 
         Args:
             text (str): The string input in the format 'T1=2' or similar.

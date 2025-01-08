@@ -14,13 +14,23 @@ class Problem(pydot):
     """
 
     def __init__(self, problem_file: Path, output_directory: Path) -> None:
+        """Initialize a new instance of the Problem class.
+
+        Args:
+            problem_file (Path): The path to the problem file.
+            output_directory (Path): The path to the output directory.
+
+        Raises:
+            FileNotFoundError: If the problem file does not exist.
+            NotADirectoryError: If the output directory is not a directory.
+        """
         super().__init__()
         if not problem_file.exists():
-            raise FileNotFoundError(f"File {problem_file} does not exist")
+            raise FileNotFoundError(f'File {problem_file} does not exist')
         self.problem_file: Path = problem_file
         if output_directory.exists():
             if not output_directory.is_dir():
-                raise NotADirectoryError(f"Output directory {output_directory} is not a directory")
+                raise NotADirectoryError(f'Output directory {output_directory} is not a directory')
         self.output_directory: Path = output_directory
 
     def __str__(self) -> str:

@@ -30,7 +30,7 @@ class Command:
     """Base class for all commands implementing the Command pattern.
 
     Commands define specific behaviors through their `work` method and manage
-    inputs, outputs, and input_data dynamically.
+    inputs, outputs, and line dynamically.
     """
 
     def __init__(self) -> None:
@@ -40,13 +40,13 @@ class Command:
         self.output_types: list[KeyType] = []
 
     def apply_parameters(self, problem: Problem) -> None:
-        """Set input_data in the problem instance.
+        """Set line in the problem instance.
 
         Args:
-            problem (Problem): The problem where input_data are being set.
+            problem (Problem): The problem where line are being set.
         """
         for parameter_item in self.parameters_list:
-            problem[parameter_item.key] = parameter_item.value
+            problem[parameter_item.key] = parameter_item.parameter_value
 
     @staticmethod
     def validate_single_parameter(problem: Problem, parameter_item: ParameterValueType, check_exists: bool) -> None:
@@ -74,12 +74,12 @@ class Command:
 
     @staticmethod
     def validate_parameters(problem: Problem, parameters_list: list[ParameterValueType], check_exists: bool) -> None:
-        """Validate a list of input_data based on their existence and type in the problem.
+        """Validate a list of line based on their existence and type in the problem.
 
         Args:
             problem (Problem): The problem instance to validate.
-            parameters_list (list[ParameterValueType]): The list of input_data to validate.
-            check_exists (bool): If True, ensures the input_data exist; if False, ensures they do not.
+            parameters_list (list[ParameterValueType]): The list of line to validate.
+            check_exists (bool): If True, ensures the line exist; if False, ensures they do not.
         """
         for parameter_item in parameters_list:
             Command.validate_single_parameter(problem, parameter_item, check_exists)
@@ -133,7 +133,7 @@ class Command:
         """Perform validation and setup before command execution.
 
         Args:
-            problem (Problem): The problem instance where input_data and inputs are validated and applied.
+            problem (Problem): The problem instance where line and inputs are validated and applied.
         """
         self.validate_parameters(problem, self.parameters_list, check_exists=False)
         self.apply_parameters(problem)
@@ -152,7 +152,7 @@ class Command:
     def execute(self, problem: Problem) -> None:
         """Execute the command, performing validation and the main action.
 
-        This method validates the input_data, inputs, and outputs, performs the core work of the command,
+        This method validates the line, inputs, and outputs, performs the core work of the command,
         and performs post-execution validation.
 
         Args:
@@ -229,7 +229,7 @@ class Command:
         names: list[str] = []
         for parameter_item in self.parameters_list:
             names.append(self.get_string_representation(parameter_item.key))
-            names.append(self.get_string_representation(parameter_item.value))
+            names.append(self.get_string_representation(parameter_item.parameter_value))
         names.extend([self.get_string_representation(key_type.key) for key_type in self.input_types])
         names.extend([self.get_string_representation(key_type.key) for key_type in self.output_types])
 

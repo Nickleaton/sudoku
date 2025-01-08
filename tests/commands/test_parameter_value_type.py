@@ -17,7 +17,7 @@ class TestParameterValueType(unittest.TestCase):
         """Test initializing with valid key, number, and type."""
         param = ParameterValueType(self.valid_key, self.valid_value, self.valid_type)
         self.assertEqual(param.key, self.valid_key)
-        self.assertEqual(param.value, self.valid_value)
+        self.assertEqual(param.parameter_value, self.valid_value)
         self.assertEqual(param.type, self.valid_type)
 
     def test_initialization_type_mismatch(self):
@@ -30,7 +30,7 @@ class TestParameterValueType(unittest.TestCase):
         """Test initializing with the Any type (accepts any number)."""
         param = ParameterValueType(self.valid_key, "any number", Any)
         self.assertEqual(param.key, self.valid_key)
-        self.assertEqual(param.value, "any number")
+        self.assertEqual(param.parameter_value, "any number")
         self.assertEqual(param.type, Any)
 
     def test_initialization_with_custom_type(self):
@@ -41,13 +41,13 @@ class TestParameterValueType(unittest.TestCase):
 
         custom_value = CustomType()
         param = ParameterValueType("custom_key", custom_value, CustomType)
-        self.assertIsInstance(param.value, CustomType)
+        self.assertIsInstance(param.parameter_value, CustomType)
         self.assertEqual(param.type, CustomType)
 
     def test_type_check_on_edge_case(self):
         """Test initialization with start number on type edge cases."""
         param = ParameterValueType("key", 3.0, float)
-        self.assertEqual(param.value, 3.0)
+        self.assertEqual(param.parameter_value, 3.0)
         self.assertEqual(param.type, float)
 
     def test_repr(self):

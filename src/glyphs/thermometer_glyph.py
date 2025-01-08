@@ -32,8 +32,8 @@ class ThermometerGlyph(PolyLineGlyph):
         marker: Marker = Marker(
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
-            id_="Thermometer-start",
-            class_="Thermometer ThermometerStart"
+            id_='Thermometer-start',
+            class_='Thermometer ThermometerStart',
         )
         marker.add(
             Circle(

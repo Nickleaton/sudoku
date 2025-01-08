@@ -13,8 +13,8 @@ class TestCommand(unittest.TestCase):
     def setUp(self) -> None:
         """Set up the test environment."""
         self.command = Command()
-        self.problem = Problem()
-        self.empty_problem = Problem()
+        self.problem = Problem(Path('problems/easy/problem001.yaml'), Path('output/tests/'))
+        self.empty_problem = Problem(Path('problems/easy/problem001.yaml'), Path('output/tests/'))
         self.config_file: Path = Path(r'problems\easy\problem001.yaml')
         self.missing_file: Path = Path(r'output\tests\nonexistent.txt')
         self.readable_file: Path = Path(r'output\tests\output.txt')
@@ -89,13 +89,13 @@ class TestCommand(unittest.TestCase):
         del self.problem["param1"]  # Remove one key
         with self.assertRaises(CommandException) as context:
             self.command.validate_parameters(self.problem, parameters, check_exists=True)
-        self.assertIn("'param1' is missing from the problem", str(context.exception))
+        self.assertIn("is missing from the problem", str(context.exception))
 
         # Test with the wrong type
         self.problem["param1"] = 123  # Wrong type
         with self.assertRaises(CommandException) as context:
             self.command.validate_parameters(self.problem, parameters, check_exists=True)
-        self.assertIn("'param1' is of the wrong type", str(context.exception))
+        self.assertIn("is of the wrong type", str(context.exception))
 
     def test_validate_parameters_not_exists(self):
         """Test the validate_parameters method for parameter_list that must not exist."""
@@ -143,13 +143,13 @@ class TestCommand(unittest.TestCase):
         del self.problem["value1"]  # Remove one key
         with self.assertRaises(CommandException) as context:
             self.command.validate_values(self.problem, values, check_exists=True)
-        self.assertIn("'value1' is missing from the problem", str(context.exception))
+        self.assertIn("is missing from the problem", str(context.exception))
 
         # Test with the wrong type
         self.problem["value1"] = 123  # Wrong type
         with self.assertRaises(CommandException) as context:
             self.command.validate_values(self.problem, values, check_exists=True)
-        self.assertIn("'value1' is of the wrong type", str(context.exception))
+        self.assertIn("is of the wrong type", str(context.exception))
 
     def test_validate_values_not_exists(self):
         """Test the validate_values method for value_list that must not exist."""

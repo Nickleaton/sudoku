@@ -7,14 +7,14 @@ from src.solvers.pulp_solver import Status
 
 
 class ExtractAnswerCommand(Command):
-    """Command for extracting the input_data from the solver's results."""
+    """Command for extracting the line from the solver's results."""
 
     def __init__(self, solver: str = 'solver', target: str = 'answer'):
         """Initialize an ExtractAnswerCommand instance.
 
         Args:
             solver (str): The attribute in the problem containing the solver.
-            target (str): The attribute name in the problem where the input_data will be stored.
+            target (str): The attribute name in the problem where the line will be stored.
         """
         super().__init__()
         self.solver = solver
@@ -28,12 +28,12 @@ class ExtractAnswerCommand(Command):
         ]
 
     def work(self, problem: Problem) -> None:
-        """Extract the input_data from the solver's results and store it in the problem.
+        """Extract the line from the solver's results and store it in the problem.
 
-        If the solver's status is not optimal, the command will not store any input_data.
+        If the solver's status is not optimal, the command will not store any line.
 
         Args:
-            problem (Problem): The problem instance from which to extract the input_data.
+            problem (Problem): The problem instance from which to extract the line.
 
         Raises:
             CommandException: If no solver is set.
@@ -51,5 +51,5 @@ class ExtractAnswerCommand(Command):
 
         for row in board.row_range:
             for column in board.column_range:
-                solver_choice = solver.choices[row][column]
+                solver_choice = solver.variables.choices[row][column]
                 problem[self.target][row, column] = int(solver_choice.varValue)

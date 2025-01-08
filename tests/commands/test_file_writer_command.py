@@ -13,19 +13,21 @@ class TestFileWriterCommand(TestSimpleCommand):
         """Set up the test environment."""
         super().setUp()
         self.problem.file_data = 'Hello World'
-        self.command = FileWriterCommand(file_path=Path(r'output/tests/output.txt'))
-        self.representation = r"FileWriterCommand('file_name', 'output\\tests\\output.txt', 'file_data')"
+        self.command = FileWriterCommand('file_data', Path('output.txt'))
+        self.representation = f'FileWriterCommand({self.command.source!r}, {self.command.target!r})'
 
     def tearDown(self):
         """Clean up the test environment."""
-        if self.command.file_path.exists():
-            self.command.file_path.unlink()
+        target_file: Path = self.problem.output_directory / self.command.target
+        if target_file.exists():
+            target_file.unlink()
 
     def test_contents(self):
         """Test the contents of the file_path."""
+        target_file: Path = self.problem.output_directory / self.command.target
         self.command.execute(self.problem)
-        self.assertTrue(self.command.file_path.exists())
-        with self.command.file_path.open('r') as f:
+        self.assertTrue(target_file.exists())
+        with target_file.open('r') as f:
             self.assertEqual(f.read(), 'Hello World')
 
 

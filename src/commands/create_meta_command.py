@@ -13,7 +13,7 @@ class CreateMetaCommand(SimpleCommand):
         """Initialize start CreateMetaCommand instance.
 
         Args:
-            source (str): The attribute in the problem containing the configuration input_data. Defaults to 'config'.
+            source (str): The attribute in the problem containing the configuration line. Defaults to 'config'.
             target (str): The attribute name in the problem where metadata will be stored. Defaults to 'meta'.
         """
         super().__init__()

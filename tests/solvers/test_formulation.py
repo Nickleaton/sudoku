@@ -63,15 +63,14 @@ class TestFormulation(unittest.TestCase):
         Args:
             v1 (int): The first integer number.
             v2 (int): The second integer number.
-            expected (int): The expected parsed_data of the absolute difference.
-
+            expected (int): The largest expected difference
         Returns:
             None
         """
         model = LpProblem("absolute_int", LpMinimize)
-        x = LpVariable("minimum", 0, 9, LpInteger)
-        x1 = LpVariable("value1", 1, 9, LpInteger)
-        x2 = LpVariable("value2", 1, 9, LpInteger)
+        x: LpVariable = LpVariable("minimum", 0, 9, LpInteger)
+        x1: LpVariable = LpVariable("value1", 1, 9, LpInteger)
+        x2: LpVariable = LpVariable("value2", 1, 9, LpInteger)
 
         model += x1 == v1
         model += x2 == v2
@@ -96,15 +95,15 @@ class TestFormulation(unittest.TestCase):
         Args:
             v1 (float): The first floating-point number.
             v2 (float): The second floating-point number.
-            expected (float): The expected parsed_data of the absolute difference.
+            expected (float): The largest expected difference
 
         Returns:
             None
         """
-        model = LpProblem("absolute_float", LpMinimize)
-        x = LpVariable("minimum", 0, 9, LpContinuous)
-        x1 = LpVariable("value1", 1, 9, LpContinuous)
-        x2 = LpVariable("value2", 1, 9, LpContinuous)
+        model: LpProblem = LpProblem("absolute_float", LpMinimize)
+        x: LpVariable = LpVariable("minimum", 0, 9, LpContinuous)
+        x1: LpVariable = LpVariable("value1", 1, 9, LpContinuous)
+        x2: LpVariable = LpVariable("value2", 1, 9, LpContinuous)
 
         model += x1 == v1
         model += x2 == v2
