@@ -22,7 +22,7 @@ class DisjointGroups(StandardRegionSet):
 
         Args:
             board (Board): The board on which disjoint groups will be created.
-            yaml (dict): YAML configuration input_data, not used in this method.
+            yaml (dict): YAML configuration line, not used in this method.
 
         Returns:
             Item: An instance of DisjointGroups.
@@ -35,7 +35,7 @@ class DisjointGroups(StandardRegionSet):
 
         Args:
             board (Board): The board on which disjoint groups will be created.
-            yaml_data (dict): YAML configuration input_data, not used in this method.
+            yaml_data (dict): YAML configuration line, not used in this method.
 
         Returns:
             Item: An instance of DisjointGroups.

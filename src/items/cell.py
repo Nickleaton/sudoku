@@ -144,7 +144,7 @@ class Cell(Item):
 
         Args:
             _ (Board): The board the coordinates belong to.
-            yaml (dict): A dictionary containing coordinate input_data.
+            yaml (dict): A dictionary containing coordinate line.
 
         Returns:
             Coord: The extracted coordinate.
@@ -153,11 +153,11 @@ class Cell(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start cell from YAML input_data.
+        """Create start cell from YAML line.
 
         Args:
             board (Board): The board the cell belongs to.
-            yaml (dict): A dictionary with cell input_data.
+            yaml (dict): A dictionary with cell line.
 
         Returns:
             Item: The created cell instance.
@@ -167,11 +167,11 @@ class Cell(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start cell from YAML input_data.
+        """Create start cell from YAML line.
 
         Args:
             board (Board): The board the cell belongs to.
-            yaml_data (dict): A dictionary with cell input_data.
+            yaml_data (dict): A dictionary with cell line.
 
         Returns:
             Item: The created cell instance.
@@ -258,7 +258,7 @@ class Cell(Item):
         """
         return lpSum(
             [
-                solver.choices[digit][self.row][self.column]
+                solver.variables.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
                 if digit % 2 == 0
             ],
@@ -273,7 +273,7 @@ class Cell(Item):
         name: str = f'Unique_digit_{self.row}_{self.column}'
         solver.model += lpSum(
             [
-                solver.choices[digit][self.row][self.column]
+                solver.variables.choices[digit][self.row][self.column]
                 for digit in self.board.digit_range
             ],
         ) == 1, name
@@ -288,7 +288,7 @@ class Cell(Item):
         for digit in self.board.digit_range:
             if not self.book.is_possible(digit):
                 name = f'Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}'
-                solver.model += solver.choices[digit][self.row][self.column] == 0, name
+                solver.model += solver.variables.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> dict:
         """Convert the cell to start dictionary format.

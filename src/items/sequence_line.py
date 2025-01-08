@@ -118,8 +118,8 @@ class SequenceLine(Line):
             difference (LpVariable): The variable that holds the difference between consecutive cells.
         """
         for index in range(len(self.cells) - 1):
-            value1 = solver.cell_values[self.cells[index].row][self.cells[index].column]
-            value2 = solver.cell_values[self.cells[index + 1].row][self.cells[index + 1].column]
+            value1 = solver.variables.numbers[self.cells[index].row][self.cells[index].column]
+            value2 = solver.variables.numbers[self.cells[index + 1].row][self.cells[index + 1].column]
             solver.model += value1 - value2 == difference, f'{self.name}_{index}'
 
     def add_possible_digits_restrictions(self, solver: PulpSolver) -> None:
@@ -130,10 +130,11 @@ class SequenceLine(Line):
         """
         for index, possible in enumerate(self.possible_digits()):
             for digit in self.board.digit_range:
-                if digit not in possible:
-                    cell = self.cells[index]
-                    name = f'{self.name}_impossible_{index}_{digit}'
-                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
+                if digit in possible:
+                    continue
+                cell = self.cells[index]
+                name = f'{self.name}_impossible_{index}_{digit}'
+                solver.model += solver.variables.choices[digit][cell.row][cell.column] == 0, name
 
     def css(self) -> dict:
         """CSS styles for rendering the SequenceLine in the user interface.

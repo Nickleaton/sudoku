@@ -23,8 +23,8 @@ class QuadrupleExclude(QuadrupleBase):
         """Extract the position and digits from the YAML configuration.
 
         Args:
-            board (Board): The board to extract the quadruple input_data for.
-            yaml (dict): The YAML input_data containing the quadruple information.
+            board (Board): The board to extract the quadruple line for.
+            yaml (dict): The YAML line containing the quadruple information.
 
         Returns:
             tuple: A tuple containing start `Coord` object for the position and start string of digits.
@@ -59,7 +59,7 @@ class QuadrupleExclude(QuadrupleBase):
         for digit in self.digits:
             digit_sum = lpSum(
                 [
-                    solver.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
+                    solver.variables.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
                     for offset in Moves.orthogonals()
                 ],
             )

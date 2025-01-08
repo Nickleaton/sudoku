@@ -78,11 +78,11 @@ class ClonedRegion(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Alternative method to create a ClonedRegion from YAML input_data.
+        """Alternative method to create a ClonedRegion from YAML line.
 
         Args:
             board (Board): The Sudoku board instance.
-            yaml_data (dict): The YAML input_data.
+            yaml_data (dict): The YAML line.
 
         Returns:
             Item: An instance of ClonedRegion.
@@ -155,8 +155,8 @@ class ClonedRegion(Item):
             first_str: str = f'{first_cell.row}{first_cell.column}'
             second_str: str = f'{second_cell.row}{second_cell.column}'
             constraint_name: str = f'{self.__class__.__name__}_{first_str}_{second_str}'
-            value_first = solver.cell_values[first_cell.row][first_cell.column]
-            value_second = solver.cell_values[second_cell.row][second_cell.column]
+            value_first = solver.variables.numbers[first_cell.row][first_cell.column]
+            value_second = solver.variables.numbers[second_cell.row][second_cell.column]
             solver.model += value_first == value_second, constraint_name
 
     def to_dict(self) -> dict:

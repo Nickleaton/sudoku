@@ -76,7 +76,7 @@ class Region(ComposedItem):
             optional (bool): Whether the constraint is optional. Defaults to False.
         """
         for digit in self.board.digit_range:
-            total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in set(self.cells)])
+            total = lpSum([solver.variables.choices[digit][cell.row][cell.column] for cell in set(self.cells)])
             if optional:
                 # pylint: disable=loop-invariant-statement
                 solver.model += total <= 1, f'{self.name}_Unique_{digit}'
@@ -90,7 +90,7 @@ class Region(ComposedItem):
             solver (PulpSolver): The solver to which the constraint is added.
             total (int): The required total sum for the value_list in the region.
         """
-        region_value = lpSum([solver.cell_values[cell.row][cell.column] for cell in self.cells])
+        region_value = lpSum([solver.variables.numbers[cell.row][cell.column] for cell in self.cells])
         solver.model += region_value == total, f'Total_{self.name}'
 
     def add_contains_constraint(self, solver: PulpSolver, digits: list[int]):
@@ -101,7 +101,7 @@ class Region(ComposedItem):
             digits (list[int]): The digits that must be included in the region.
         """
         for digit in digits:
-            choice_total = lpSum([solver.choices[digit][cell.row][cell.column] for cell in self.cells])
+            choice_total = lpSum([solver.variables.choices[digit][cell.row][cell.column] for cell in self.cells])
             solver.model += choice_total == 1, f'{self.name}_Contains_{digit}'
 
     def add_sequence_constraint(self, solver: PulpSolver, order: Order):
@@ -112,8 +112,8 @@ class Region(ComposedItem):
             order (Order): The sequence order (e.g., increasing or decreasing).
         """
         for (cell1, cell2) in zip(self.cells[:-1], self.cells[1:]):
-            value1 = solver.cell_values[cell1.row][cell1.column]
-            value2 = solver.cell_values[cell2.row][cell2.column]
+            value1 = solver.variables.numbers[cell1.row][cell1.column]
+            value2 = solver.variables.numbers[cell2.row][cell2.column]
             name = f'{order.name}_{cell1.name}_{cell2.name}'
             if order == Order.increasing:
                 solver.model += value1 + 1 <= value2, name

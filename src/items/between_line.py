@@ -63,15 +63,15 @@ class BetweenLine(Line):
         big_m = solver.board.maximum_digit + 1
 
         start_cell = self.cells[0]
-        start = solver.cell_values[start_cell.row][start_cell.column]
+        start = solver.variables.numbers[start_cell.row][start_cell.column]
 
         end_cell = self.cells[-1]
-        end = solver.cell_values[end_cell.row][end_cell.column]
+        end = solver.variables.numbers[end_cell.row][end_cell.column]
 
         flag = LpVariable(f'{self.name}_increasing', 0, 1, LpInteger)
 
         for cell in self.cells[1:-1]:
-            cell_value = solver.cell_values[cell.row][cell.column]
+            cell_value = solver.variables.numbers[cell.row][cell.column]
 
             # Ascending constraints
             label = f'{self.name}_after_ascending_{cell.row}_{cell.column}'
@@ -88,10 +88,10 @@ class BetweenLine(Line):
             solver.model += cell_value + big_m * (1 - flag) >= end + 1, label
 
             name = f'{self.name}_s_{1}_{cell.row}_{cell.column}'
-            solver.model += solver.choices[1][cell.row][cell.column] == 0, name
+            solver.model += solver.variables.choices[1][cell.row][cell.column] == 0, name
 
             name = f'{self.name}_e_{1}_{cell.row}_{cell.column}'
-            solver.model += solver.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
+            solver.model += solver.variables.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
 
     def css(self) -> dict:
         """Define the CSS style for rendering the BetweenLine.

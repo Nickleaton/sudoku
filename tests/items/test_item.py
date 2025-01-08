@@ -122,11 +122,11 @@ class TestItem(unittest.TestCase):
         """Test the string representation of the Item instance."""
         if self.representation != repr(self.item):
             print(f"{self.representation} != {self.item!r}")
-        print()
-        print()
-        print(self.representation)
-        print(repr(self.item))
-        print()
+            print()
+            print()
+            print(self.representation)
+            print(repr(self.item))
+            print()
         self.assertEqual(self.representation, repr(self.item))
 
     @property
@@ -205,7 +205,8 @@ class TestItem(unittest.TestCase):
             item = self.item
         else:
             item = Item.create(self.board, config)
-        self.assertDictEqual(item.to_dict(), config)
+        dict_version: dict = item.to_dict()
+        self.assertDictEqual(dict_version, config)
 
     def test_css(self) -> None:
         """Test the css method of the Item instance."""

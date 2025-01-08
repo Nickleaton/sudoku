@@ -49,7 +49,7 @@ class CellReference(Item):
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml (dict): The YAML dictionary containing cell input_data.
+            yaml (dict): The YAML dictionary containing cell line.
 
         Returns:
             tuple: A tuple containing the row and column as integers.
@@ -60,11 +60,11 @@ class CellReference(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start CellReference instance from the given board and YAML input_data.
+        """Create start CellReference instance from the given board and YAML line.
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml (dict): The YAML dictionary containing cell input_data.
+            yaml (dict): The YAML dictionary containing cell line.
 
         Returns:
             Item: A new instance of CellReference.
@@ -74,11 +74,11 @@ class CellReference(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start CellReference instance from the given board and YAML input_data.
+        """Create start CellReference instance from the given board and YAML line.
 
         Args:
             board (Board): The board associated with this cell reference.
-            yaml_data (dict): The YAML dictionary containing cell input_data.
+            yaml_data (dict): The YAML dictionary containing cell line.
 
         Returns:
             Item: A new instance of CellReference.

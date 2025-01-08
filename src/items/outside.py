@@ -95,7 +95,7 @@ class Outside(FirstN):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml (dict): The YAML configuration containing the Outside input_data.
+            yaml (dict): The YAML configuration containing the Outside line.
 
         Returns:
             tuple: A tuple containing the side, index, and digits list.
@@ -112,7 +112,7 @@ class Outside(FirstN):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml (dict): The YAML configuration containing the Outside input_data.
+            yaml (dict): The YAML configuration containing the Outside line.
 
         Returns:
             Item: The created Outside constraint.
@@ -126,7 +126,7 @@ class Outside(FirstN):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml_data (dict): The YAML configuration containing the Outside input_data.
+            yaml_data (dict): The YAML configuration containing the Outside line.
 
         Returns:
             Item: The created Outside constraint.

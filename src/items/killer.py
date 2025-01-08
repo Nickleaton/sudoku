@@ -120,7 +120,7 @@ class Killer(Region):
         Args:
             solver (PulpSolver): The solver to which the constraint is added.
         """
-        total = lpSum(solver.cell_values[cell.row][cell.column] for cell in self.cells)
+        total = lpSum(solver.variables.numbers[cell.row][cell.column] for cell in self.cells)
         name = f'{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}'
         solver.model += total == self.total, name
 

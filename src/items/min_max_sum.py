@@ -87,7 +87,7 @@ class MinMaxSum(FirstN):
 
         Args:
             board (Board): The board the configuration is for.
-            yaml (dict): The YAML configuration input_data.
+            yaml (dict): The YAML configuration line.
 
         Returns:
             tuple[Side, int, int]: A tuple containing the side, index, and total.
@@ -111,7 +111,7 @@ class MinMaxSum(FirstN):
 
         Args:
             board (Board): The board to create the frame on.
-            yaml (dict): The YAML configuration input_data.
+            yaml (dict): The YAML configuration line.
 
         Returns:
             Item: The created MinMaxSum constraint.
@@ -125,7 +125,7 @@ class MinMaxSum(FirstN):
 
         Args:
             board (Board): The board to create the frame on.
-            yaml_data (dict): The YAML configuration input_data.
+            yaml_data (dict): The YAML configuration line.
 
         Returns:
             Item: The created MinMaxSum constraint.
@@ -138,7 +138,7 @@ class MinMaxSum(FirstN):
         Args:
             solver (PulpSolver): The solver to add the constraint to.
         """
-        xi = [solver.cell_values[cell.row][cell.column] for cell in self.cells]
+        xi = [solver.variables.numbers[cell.row][cell.column] for cell in self.cells]
         mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
         maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
         solver.model += mini + maxi == self.total, self.name

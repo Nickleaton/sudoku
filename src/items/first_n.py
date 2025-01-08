@@ -69,7 +69,7 @@ class FirstN(Region):
 
         Args:
             board (Board): The game board.
-            yaml (dict): A dictionary containing the YAML input_data.
+            yaml (dict): A dictionary containing the YAML line.
 
         Returns:
             tuple: A tuple containing the side, index, and count value_list.
@@ -82,11 +82,11 @@ class FirstN(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start FirstN region from the extracted YAML input_data.
+        """Create start FirstN region from the extracted YAML line.
 
         Args:
             board (Board): The game board.
-            yaml (dict): A dictionary containing the YAML input_data.
+            yaml (dict): A dictionary containing the YAML line.
 
         Returns:
             Item: A FirstN region object.
@@ -96,11 +96,11 @@ class FirstN(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start FirstN region from the extracted YAML input_data.
+        """Create start FirstN region from the extracted YAML line.
 
         Args:
             board (Board): The game board.
-            yaml_data (dict): A dictionary containing the YAML input_data.
+            yaml_data (dict): A dictionary containing the YAML line.
 
         Returns:
             Item: A FirstN region object.

@@ -13,7 +13,7 @@ class Diagonal(Region):
 
         Args:
             board (Board): The Sudoku board associated with this diagonal.
-            yaml (dict): The YAML input_data to configure the diagonal (unused here).
+            yaml (dict): The YAML line to configure the diagonal (unused here).
 
         Returns:
             Item: A new instance of Diagonal.
@@ -26,7 +26,7 @@ class Diagonal(Region):
 
         Args:
             board (Board): The Sudoku board associated with this diagonal.
-            yaml_data (dict): The YAML input_data to configure the diagonal (unused here).
+            yaml_data (dict): The YAML line to configure the diagonal (unused here).
 
         Returns:
             Item: A new instance of Diagonal.

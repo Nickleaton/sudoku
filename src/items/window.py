@@ -52,11 +52,11 @@ class Window(Region):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Coord:
-        """Extract the center coordinate from the YAML input_data.
+        """Extract the center coordinate from the YAML line.
 
         Args:
-            _ (Board): The board to extract input_data for.
-            yaml (dict): The YAML input_data containing coordinates.
+            _ (Board): The board to extract line for.
+            yaml (dict): The YAML line containing coordinates.
 
         Returns:
             Coord: The extracted coordinate.
@@ -66,11 +66,11 @@ class Window(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Window instance from the YAML input_data.
+        """Create start Window instance from the YAML line.
 
         Args:
             board (Board): The board to create the window on.
-            yaml (dict): The YAML input_data for the window.
+            yaml (dict): The YAML line for the window.
 
         Returns:
             Item: The created Window instance.
@@ -80,11 +80,11 @@ class Window(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Window instance from the YAML input_data.
+        """Create start Window instance from the YAML line.
 
         Args:
             board (Board): The board to create the window on.
-            yaml_data (dict): The YAML input_data for the window.
+            yaml_data (dict): The YAML line for the window.
 
         Returns:
             Item: The created Window instance.

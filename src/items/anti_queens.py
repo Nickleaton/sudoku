@@ -108,7 +108,7 @@ class AntiQueens(Anti):
         Returns:
             dict: A dictionary representation of the AntiKing instance.
         """
-        return {self.__class__.__name__: str(self.digits)}
+        return {self.__class__.__name__: ', '.join([str(digit) for digit in self.digits])}
 
     def __repr__(self) -> str:
         """Return start string representation of the AntiQueens instance.

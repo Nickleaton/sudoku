@@ -95,7 +95,7 @@ class EqualSumLine(Line):
             list: A list of linear expressions representing the sum of cell_values in each region.
         """
         return [
-            lpSum(solver.cell_values[cell.row][cell.column] for cell in region)
+            lpSum(solver.variables.numbers[cell.row][cell.column] for cell in region)
             for region in box_areas
         ]
 

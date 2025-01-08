@@ -1,4 +1,6 @@
 """Known."""
+from collections.abc import Mapping
+from types import MappingProxyType
 from typing import Any, Type
 
 from src.board.board import Board
@@ -15,15 +17,15 @@ from src.items.odd_cell import OddCell
 from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.known_parser import KnownParser
 
-CELL_TYPE_MAP: frozenset[tuple[str, Type[SimpleCellReference]]] = frozenset(
-    (
-        ('f', FortressCell),
-        ('l', LowCell),
-        ('m', MidCell),
-        ('h', HighCell),
-        ('e', EvenCell),
-        ('o', OddCell),
-    ),
+CELL_TYPE_MAP: Mapping[str, Type[SimpleCellReference]] = MappingProxyType(
+    {
+        'f': FortressCell,
+        'l': LowCell,
+        'm': MidCell,
+        'h': HighCell,
+        'e': EvenCell,
+        'o': OddCell,
+    },
 )
 
 
@@ -31,7 +33,7 @@ class Known(ComposedItem):
     """Represent start collection of cells with known characteristics on the board."""
 
     def __init__(self, board: Board, rows: list[str]):
-        """Initialize the Known object with start board and start list of row input_data.
+        """Initialize the Known object with start board and start list of row line.
 
         Args:
             board (Board): The board instance associated with the Known cells.
@@ -69,7 +71,7 @@ class Known(ComposedItem):
 
     @staticmethod
     def process_row(row_data: str, row: int, board: Board) -> list[CellReference]:
-        """Process a single row of cell input_data and return the corresponding CellReferences.
+        """Process a single row of cell line and return the corresponding CellReferences.
 
         Args:
             row_data (str): A string representing the row of cells, where each character represents a cell type.
@@ -121,20 +123,20 @@ class Known(ComposedItem):
 
         Args:
             _ (Board): The board instance.
-            yaml (dict): The YAML input_data to extract from.
+            yaml (dict): The YAML line to extract from.
 
         Returns:
-            Any: A list of row strings extracted from the YAML input_data.
+            Any: A list of row strings extracted from the YAML line.
         """
         return list(yaml)
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Known instance from YAML input_data.
+        """Create start Known instance from YAML line.
 
         Args:
             board (Board): The board instance.
-            yaml (dict): The YAML input_data to create the Known instance from.
+            yaml (dict): The YAML line to create the Known instance from.
 
         Returns:
             Item: A new instance of Known initialized with the extracted rows.
@@ -143,11 +145,11 @@ class Known(ComposedItem):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Known instance from YAML input_data.
+        """Create start Known instance from YAML line.
 
         Args:
             board (Board): The board instance.
-            yaml_data (dict): The YAML input_data to create the Known instance from.
+            yaml_data (dict): The YAML line to create the Known instance from.
 
         Returns:
             Item: A new instance of Known initialized with the extracted rows.

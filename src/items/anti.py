@@ -59,9 +59,11 @@ class Anti(ComposedItem):
         """
         difference_pairs: list[DifferencePair] = []
         for offset in self.offsets():
-            if not self.board.is_valid(int(cell.row + offset.row), int(cell.column + offset.column)):
+            row: int = int(cell.row + offset.row)
+            col: int = int(cell.column + offset.column)
+            if not self.board.is_valid(row, col):
                 continue
-            other: Cell = Cell.make(self.board, int(cell.row + offset.row), int(cell.column + offset.column))
+            other: Cell = Cell.make(self.board, row, col)
             difference_pairs.append(DifferencePair(self.board, cell, other, digits))
         return difference_pairs
 

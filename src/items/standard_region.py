@@ -51,7 +51,7 @@ class StandardRegion(Region):
 
         Args:
             board (Board): The board instance.
-            yaml_data (dict): The YAML input_data containing the frame configuration.
+            yaml_data (dict): The YAML line containing the frame configuration.
 
         Returns:
             Item: A Frame instance created from the YAML configuration.

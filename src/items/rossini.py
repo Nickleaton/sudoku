@@ -100,11 +100,11 @@ class Rossini(FirstN):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> Any:
-        """Extract Rossini constraint details from YAML input_data.
+        """Extract Rossini constraint details from YAML line.
 
         Args:
             board (Board): The puzzle board.
-            yaml (dict): The YAML input_data containing constraint information.
+            yaml (dict): The YAML line containing constraint information.
 
         Returns:
             Any: The extracted side, index, and order.
@@ -124,11 +124,11 @@ class Rossini(FirstN):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Rossini object from extracted YAML input_data.
+        """Create start Rossini object from extracted YAML line.
 
         Args:
             board (Board): The puzzle board.
-            yaml (dict): The YAML input_data containing constraint information.
+            yaml (dict): The YAML line containing constraint information.
 
         Returns:
             Item: The created Rossini object.
@@ -138,11 +138,11 @@ class Rossini(FirstN):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Rossini object from extracted YAML input_data.
+        """Create start Rossini object from extracted YAML line.
 
         Args:
             board (Board): The puzzle board.
-            yaml_data (dict): The YAML input_data containing constraint information.
+            yaml_data (dict): The YAML line containing constraint information.
 
         Returns:
             Item: The created Rossini object.

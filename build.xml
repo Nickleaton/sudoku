@@ -120,10 +120,12 @@
         <exec executable="radon.exe" failonerror="true" output="output/radon/cc.txt">
             <arg value="cc"/>
             <arg value="src"/>
+            <arg value="-nc"/>
         </exec>
         <exec executable="radon.exe" failonerror="true" output="output/radon/mi.txt">
             <arg value="mi"/>
             <arg value="src"/>
+            <arg value="-nc"/>
         </exec>
     </target>
 

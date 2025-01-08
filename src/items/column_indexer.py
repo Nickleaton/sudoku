@@ -64,8 +64,8 @@ class ColumnIndexer(Indexer):
         """
         for cell in self.cells:
             for digit in solver.board.digit_range:
-                indexer = solver.choices[digit][cell.row][cell.column]
-                indexed = solver.choices[cell.column][cell.row][digit]
+                indexer = solver.variables.choices[digit][cell.row][cell.column]
+                indexed = solver.variables.choices[cell.column][cell.row][digit]
                 solver.model += indexer == indexed, f'{self.name}_{cell.row}_{cell.column}_{digit}'
 
     def css(self) -> dict:

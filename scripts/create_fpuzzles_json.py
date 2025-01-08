@@ -28,7 +28,7 @@ def process_url(url: str, directory: Path) -> None:
     uncompressed = decompressor.decompressFromBase64(query['load'][0].replace(" ", "+"))
     data = json.loads(uncompressed)
 
-    all_data = {'url': url, 'input_data': data}
+    all_data = {'url': url, 'line': data}
     with filename.open('w') as file:
         logging.info(f"Writing file_path {filename.name}")
         file.write(json.dumps(all_data, sort_keys=True, indent=4))

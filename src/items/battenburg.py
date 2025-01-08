@@ -69,11 +69,11 @@ class Battenburg(Item):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> Coord:
-        """Extract the position of the Battenburg pattern from YAML input_data.
+        """Extract the position of the Battenburg pattern from YAML line.
 
         Args:
             board (Board): The puzzle board, containing board constraints.
-            yaml (dict): The YAML input_data from which to extract the Battenburg's position.
+            yaml (dict): The YAML line from which to extract the Battenburg's position.
 
         Returns:
             Coord: The coordinate position of the Battenburg pattern.
@@ -90,11 +90,11 @@ class Battenburg(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Battenburg constraint from YAML input_data.
+        """Create start Battenburg constraint from YAML line.
 
         Args:
             board (Board): The puzzle board on which the Battenburg will be placed.
-            yaml (dict): The YAML input_data used to create the Battenburg constraint.
+            yaml (dict): The YAML line used to create the Battenburg constraint.
 
         Returns:
             Item: An instance of the Battenburg constraint.
@@ -104,11 +104,11 @@ class Battenburg(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Battenburg constraint from YAML input_data.
+        """Create start Battenburg constraint from YAML line.
 
         Args:
             board (Board): The puzzle board on which the Battenburg will be placed.
-            yaml_data (dict): The YAML input_data used to create the Battenburg constraint.
+            yaml_data (dict): The YAML line used to create the Battenburg constraint.
 
         Returns:
             Item: An instance of the Battenburg constraint.

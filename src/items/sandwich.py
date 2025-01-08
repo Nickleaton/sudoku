@@ -64,7 +64,7 @@ class Sandwich(Item):
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml (dict): The YAML configuration containing the sandwich input input_data.
+            yaml (dict): The YAML configuration containing the sandwich input line.
 
         Returns:
             tuple[Side, int, int]: A tuple containing the side, index, and total cell_values.
@@ -88,7 +88,7 @@ class Sandwich(Item):
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml (dict): The YAML configuration containing the sandwich input input_data.
+            yaml (dict): The YAML configuration containing the sandwich input line.
 
         Returns:
             Sandwich: A new instance of Sandwich.
@@ -102,7 +102,7 @@ class Sandwich(Item):
 
         Args:
             board (Board): The board associated with this sandwich.
-            yaml_data (dict): The YAML configuration containing the sandwich input input_data.
+            yaml_data (dict): The YAML configuration containing the sandwich input line.
 
         Returns:
             Item: A new Sandwich instance.
@@ -220,11 +220,11 @@ class Sandwich(Item):
                 continue
 
             if is_row:
-                one = solver.choices[1][index][pos]
-                big = solver.choices[self.board.maximum_digit][index][pos]
+                one = solver.variables.choices[1][index][pos]
+                big = solver.variables.choices[self.board.maximum_digit][index][pos]
             else:
-                one = solver.choices[1][pos][index]
-                big = solver.choices[self.board.maximum_digit][pos][index]
+                one = solver.variables.choices[1][pos][index]
+                big = solver.variables.choices[self.board.maximum_digit][pos][index]
 
             solver.model += bread[pos] == one + big, f'Bread_{label.lower()}_{index}_{pos}'
 

@@ -3,7 +3,6 @@
 import unittest
 from typing import Type
 
-from src.board.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
@@ -17,7 +16,6 @@ class TestRegion(TestComposed):
     def setUp(self) -> None:
         super().setUp()
         """Set up start test instance of Region with predefined cells."""
-        self.board = Board(9, 9, 3, 3)
         self.cells = [
             Cell.make(self.board, 1, 1),
             Cell.make(self.board, 1, 2),

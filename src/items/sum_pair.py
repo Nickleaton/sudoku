@@ -38,8 +38,8 @@ class SumPair(Pair):
         Returns:
             LpElement: The sum of the value_list of the two cells.
         """
-        lhs: LpElement = solver.cell_values[self.cell1.row][self.cell1.column]
-        rhs: LpElement = solver.cell_values[self.cell2.row][self.cell2.column]
+        lhs: LpElement = solver.variables.numbers[self.cell1.row][self.cell1.column]
+        rhs: LpElement = solver.variables.numbers[self.cell2.row][self.cell2.column]
         return lhs + rhs
 
     def css(self) -> dict:

@@ -28,7 +28,7 @@ class VariableDifferencePair(VariablePair):
         Returns:
             VariableType: The type of the value_variable, which is an integer.
         """
-        return VariableType.integer
+        return VariableType.integer_number
 
     @property
     def tags(self) -> set[str]:
@@ -48,8 +48,8 @@ class VariableDifferencePair(VariablePair):
         Returns:
             LpElement: The absolute difference between the value_list of the two cells.
         """
-        v1 = solver.cell_values[self.cell1.row][self.cell1.column]
-        v2 = solver.cell_values[self.cell2.row][self.cell2.column]
+        v1 = solver.variables.numbers[self.cell1.row][self.cell1.column]
+        v2 = solver.variables.numbers[self.cell2.row][self.cell2.column]
         return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
 
     def css(self) -> dict:

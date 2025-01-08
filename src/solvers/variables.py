@@ -1,10 +1,9 @@
 """Variables module."""
 from enum import IntEnum
-from typing import Any, Iterable
+from typing import Iterable
 
 from pulp import LpInteger  # noqa: I001
 from pulp import LpVariable  # noqa: I001
-from pydotted import pydot
 
 from src.board.board import Board
 from src.board.cell_types import EntropicType  # noqa: I001
@@ -25,7 +24,7 @@ class VariableSet(IntEnum):
     prime = 5
 
 
-class Variables(pydot):
+class Variables:
     """Represents a collection of variables for a board.
 
     Attributes:
@@ -42,8 +41,13 @@ class Variables(pydot):
         """
         super().__init__()
         self.board: Board = board
-        self.variables: Iterable[VariableSet] = variables
         self.odds: dict[str, LpVariable] = {}
+        self.choices: dict[tuple[int, int, int], LpVariable] = {}
+        self.numbers: dict[tuple[int, int], LpVariable] = {}
+        self.parity: dict[tuple[int, int, ParityType], LpVariable] = {}
+        self.entropic: dict[tuple[int, int, EntropicType], LpVariable] = {}
+        self.modulo: dict[tuple[int, int, ModuloType], LpVariable] = {}
+        self.prime: dict[tuple[int, int, PrimeType], LpVariable] = {}
 
         for variable_type in variables:
             match variable_type:
@@ -62,7 +66,7 @@ class Variables(pydot):
 
     def add_choices(self) -> None:
         """Add choice variables to the board."""
-        self['choices']: dict[Any, LpVariable] = LpVariable.dicts(
+        self.choices = LpVariable.dicts(
             name='choices',
             indices=(self.board.digit_range, self.board.row_range, self.board.column_range),
             lowBound=0,
@@ -72,7 +76,7 @@ class Variables(pydot):
 
     def add_numbers(self) -> None:
         """Add number variables to the board."""
-        self['numbers']: dict[Any, LpVariable] = LpVariable.dicts(
+        self.numbers = LpVariable.dicts(
             name='numbers',
             indices=(self.board.row_range, self.board.column_range),
             lowBound=1,
@@ -82,7 +86,7 @@ class Variables(pydot):
 
     def add_parity(self) -> None:
         """Add parity variables to the board."""
-        self['parity']: dict[Any, LpVariable] = LpVariable.dicts(
+        self.parity = LpVariable.dicts(
             name='parity',
             indices=(self.board.row_range, self.board.column_range, list(ParityType)),
             lowBound=0,
@@ -92,7 +96,7 @@ class Variables(pydot):
 
     def add_entropic(self) -> None:
         """Add entropic variables to the board."""
-        self['entropic']: dict[Any, LpVariable] = LpVariable.dicts(
+        self.entropic = LpVariable.dicts(
             name='entropic',
             indices=(self.board.row_range, self.board.column_range, list(EntropicType)),
             lowBound=0,
@@ -102,7 +106,7 @@ class Variables(pydot):
 
     def add_modulo(self) -> None:
         """Add modulo variables to the board."""
-        self['modulo']: dict[Any, LpVariable] = LpVariable.dicts(
+        self.modulo = LpVariable.dicts(
             name='modulo',
             indices=(self.board.row_range, self.board.column_range, list(ModuloType)),
             lowBound=0,
@@ -112,7 +116,7 @@ class Variables(pydot):
 
     def add_prime(self) -> None:
         """Add prime variables to the board."""
-        self['prime']: dict[Any, LpVariable] = LpVariable.dicts(
+        self.prime = LpVariable.dicts(
             name='prime',
             indices=(self.board.row_range, self.board.column_range, list(PrimeType)),
             lowBound=0,

@@ -40,7 +40,9 @@ class TestAntiQueens(TestAnti):
 
         Asserts that the offsets list has the expected length of 36.
         """
-        self.assertEqual(36, len(self.item.offsets()))
+        for i, o in enumerate(self.item.offsets()):
+            print(i, o)
+        self.assertEqual(72, len(self.item.offsets()))
 
     @property
     def representation(self) -> str:

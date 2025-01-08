@@ -12,14 +12,14 @@ class DigitsValidator(Validator):
 
         Args:
             board (Board): The board instance containing the valid digit range.
-            input_data (dict): The line to validate, which includes start list of digits.
+            input_data (dict): The line to validate, which includes a list of digits.
 
         Returns:
             list[str]: A list of error messages. If no errors, the list will be empty.
         """
         errors: list[str] = []
         if 'digits' not in input_data:
-            errors.append('Missing key: "digits')
+            errors.append('Missing key: "digits"')
             return errors
 
         digits = input_data['digits']

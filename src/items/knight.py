@@ -116,8 +116,8 @@ class Knight(ComposedItem):
                 for offset in Moves.knights()
                 if self.board.is_valid_coordinate(cell.coord + offset)
             ]
-            start = solver.choices[digit][cell.row][cell.column]
-            possibles = lpSum([solver.choices[digit][other.row][other.column] for other in include])
+            start = solver.variables.choices[digit][cell.row][cell.column]
+            possibles = lpSum([solver.variables.choices[digit][other.row][other.column] for other in include])
             solver.model += start <= possibles, f'{self.name}_{cell.row}_{cell.column}_{digit}'
 
     def to_dict(self) -> dict:

@@ -61,8 +61,8 @@ class QuadrupleBase(Item):
         """Extract the position and digits from the YAML configuration.
 
         Args:
-            board (Board): The board to extract the quadruple input_data for.
-            yaml (dict): The YAML input_data containing the quadruple information.
+            board (Board): The board to extract the quadruple line for.
+            yaml (dict): The YAML line containing the quadruple information.
 
         Returns:
             tuple: A tuple containing start `Coord` object for the position and start string of digits.
@@ -85,7 +85,7 @@ class QuadrupleBase(Item):
 
         Args:
             board (Board): The board on which the quadruple will be placed.
-            yaml (dict): The YAML input_data for the quadruple.
+            yaml (dict): The YAML line for the quadruple.
 
         Returns:
             Item: A new Quadruple instance.
@@ -99,7 +99,7 @@ class QuadrupleBase(Item):
 
         Args:
             board (Board): The board on which the quadruple will be placed.
-            yaml_data (dict): The YAML input_data for the quadruple.
+            yaml_data (dict): The YAML line for the quadruple.
 
         Returns:
             Item: A new Quadruple instance.

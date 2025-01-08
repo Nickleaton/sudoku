@@ -1,6 +1,9 @@
 """MountainLine."""
+from pulp import LpVariable
+
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
+from src.items.cell import Cell
 from src.items.line import Line
 from src.solvers.pulp_solver import PulpSolver
 from src.utils.rule import Rule
@@ -55,19 +58,15 @@ class MountainLine(Line):
         to ensure that the number increases toward the mountain peak and decreases afterward.
         """
         for index in range(len(self.cells) - 1):
-            cell1 = self.cells[index]
-            cell2 = self.cells[index + 1]
-            name = f'{self.name}_{index}'
+            cell1: Cell = self.cells[index]
+            cell2: Cell = self.cells[index + 1]
+            name: str = f'{self.name}_{index}'
+            start: LpVariable = solver.variables.numbers[cell1.row][cell1.column]
+            finish: LpVariable = solver.variables.numbers[cell2.row][cell2.column]
             if cell1.row < cell2.row:
-                solver.model += (
-                    solver.cell_values[cell1.row][cell1.column] >= solver.cell_values[cell2.row][cell2.column] + 1,
-                    name,
-                )
+                solver.model += (start >= finish + 1, name)
             else:
-                solver.model += (
-                    solver.cell_values[cell1.row][cell1.column] <= solver.cell_values[cell2.row][cell2.column] - 1,
-                    name,
-                )
+                solver.model += (start <= finish - 1, name)
 
     def css(self) -> dict:
         """CSS styles for rendering the MountainLine in the user interface.

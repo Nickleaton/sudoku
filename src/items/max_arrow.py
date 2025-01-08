@@ -73,9 +73,9 @@ class MaxArrowLine(Line):
         This method uses the maximum formulation to ensure that the bulb
         cell number is equal to the maximum of the arrow's cell value_list.
         """
-        bulb = solver.cell_values[self.cells[0].row][self.cells[0].column]
+        bulb = solver.variables.numbers[self.cells[0].row][self.cells[0].column]
         cell_values = [
-            solver.cell_values[self.cells[index].row][self.cells[index].column]
+            solver.variables.numbers[self.cells[index].row][self.cells[index].column]
             for index in range(1, len(self.cells))
         ]
         cell_value = Formulations.maximum(solver.model, cell_values, 1, self.board.maximum_digit)

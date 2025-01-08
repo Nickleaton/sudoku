@@ -119,7 +119,7 @@ class Mote(Region):
             solver (PulpSolver): The solver to which the constraints are added.
         """
         # TODO: Adjust the constraint for odd digit counts
-        odd_count = lpSum(solver.cell_values[cell.row][cell.column] for cell in self.cells)
+        odd_count = lpSum(solver.variables.numbers[cell.row][cell.column] for cell in self.cells)
         name = f'{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}'
         solver.model += odd_count > len(self.cells) // 2, name
 

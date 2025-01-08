@@ -57,8 +57,8 @@ class SimpleThermometerLine(ThermometerLine):
             solver (PulpSolver): The solver instance to which the constraints are added.
         """
         for cell1, cell2 in zip(self.cells[:-1], self.cells[1:]):
-            cell1_value = solver.cell_values[cell1.row][cell1.column]
-            cell2_value = solver.cell_values[cell2.row][cell2.column]
+            cell1_value = solver.variables.numbers[cell1.row][cell1.column]
+            cell2_value = solver.variables.numbers[cell2.row][cell2.column]
             # C1 < C2 constraint
             name: str = f'{self.name}_rank_{cell1.row}_{cell1.column}_{cell2.row}_{cell2.column}'
             solver.model += cell1_value + 1 <= cell2_value, name
@@ -86,4 +86,5 @@ class SimpleThermometerLine(ThermometerLine):
         possible_digits = set(range(lower, upper + 1))
         for digit in self.board.digit_range:
             if digit not in possible_digits:
-                solver.model += solver.choices[digit][cell.row][cell.column] == 0, f'{self.name}_{cell.name}_{digit}'
+                name: str = f'{self.name}_{cell.name}_{digit}'
+                solver.model += solver.variables.choices[digit][cell.row][cell.column] == 0, name

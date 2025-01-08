@@ -43,11 +43,11 @@ class VariablePair(Pair):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell, str]:
-        """Extract the coordinates and value_variable name from the YAML input_data.
+        """Extract the coordinates and value_variable name from the YAML line.
 
         Args:
             board (Board): The board to extract coordinates for.
-            yaml (dict): The YAML input_data containing the pair definition.
+            yaml (dict): The YAML line containing the pair definition.
 
         Returns:
             Tuple[Cell, Cell, str]: A tuple containing two Cell objects and the value_variable name.
@@ -68,11 +68,11 @@ class VariablePair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start VariablePair instance from the YAML input_data.
+        """Create start VariablePair instance from the YAML line.
 
         Args:
             board (Board): The board to create the pair on.
-            yaml (dict): The YAML input_data containing the pair definition.
+            yaml (dict): The YAML line containing the pair definition.
 
         Returns:
             Item: A VariablePair instance.
@@ -82,11 +82,11 @@ class VariablePair(Pair):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start VariablePair instance from the YAML input_data (alternative method).
+        """Create start VariablePair instance from the YAML line (alternative method).
 
         Args:
             board (Board): The board to create the pair on.
-            yaml_data (dict): The YAML input_data containing the pair definition.
+            yaml_data (dict): The YAML line containing the pair definition.
 
         Returns:
             Item: A VariablePair instance.
@@ -100,7 +100,7 @@ class VariablePair(Pair):
         Returns:
             Set[str]: A set of tags associated with the VariablePair.
         """
-        return super().tags.union({'Variable Pair'})
+        return super().tags.union({'VariableSet Pair'})
 
     @property
     def label(self) -> str:
@@ -152,7 +152,7 @@ class VariablePair(Pair):
         Returns:
             VariableType: The type of the value_variable (integer).
         """
-        return VariableType.integer
+        return VariableType.integer_number
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraint for the VariablePair to the solver.
@@ -163,6 +163,5 @@ class VariablePair(Pair):
         target = self.target(solver)
         if target is None:
             return
-        if self.__class__.__name__ not in solver.variables:
-            solver.variables[self.__class__.__name__] = (LpVariable(self.__class__.__name__), self.variable_type())
-        solver.model += target == solver.variables[self.__class__.__name__][0], self.name
+        constraint_variable: LpVariable = solver.variables.add(self.__class__.__name__, self.variable_type())
+        solver.model += target == constraint_variable, self.name

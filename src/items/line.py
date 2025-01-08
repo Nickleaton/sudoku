@@ -57,10 +57,10 @@ class Line(Region):
 
         Args:
             board (Board): The board associated with the cells.
-            yaml (dict): A dictionary containing the YAML input_data.
+            yaml (dict): A dictionary containing the YAML line.
 
         Returns:
-            list[Cell]: A list of Cell instances extracted from the YAML input_data.
+            list[Cell]: A list of Cell instances extracted from the YAML line.
         """
         return [Cell.make(board, int(part.strip()[0]), int(part.strip()[1])) for part in yaml[cls.__name__].split(',')]
 
@@ -70,10 +70,10 @@ class Line(Region):
 
         Args:
             board (Board): The board associated with the line.
-            yaml (dict): A dictionary containing the YAML input_data.
+            yaml (dict): A dictionary containing the YAML line.
 
         Returns:
-            Item: A new instance of Line created from the YAML input_data.
+            Item: A new instance of Line created from the YAML line.
         """
         cells = cls.extract(board, yaml)
         return cls(board, cells)
@@ -84,10 +84,10 @@ class Line(Region):
 
         Args:
             board (Board): The board associated with the line.
-            yaml_data (dict): A dictionary containing the YAML input_data.
+            yaml_data (dict): A dictionary containing the YAML line.
 
         Returns:
-            Item: A new instance of Line created from the YAML input_data.
+            Item: A new instance of Line created from the YAML line.
         """
         cell_data = yaml_data[cls.__name__]
         parser = cls.parser()

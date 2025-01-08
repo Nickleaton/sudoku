@@ -37,7 +37,7 @@ class VariableSumPair(VariablePair):
         Returns:
             VariableType: The type of the value_variable (integer).
         """
-        return VariableType.integer
+        return VariableType.integer_number
 
     def target(self, solver: PulpSolver) -> LpElement:
         """Define the target value_variable for the sum of the two cells in the solver.
@@ -48,8 +48,8 @@ class VariableSumPair(VariablePair):
         Returns:
             LpElement: The sum of the two cell value_list.
         """
-        lhs: LpElement = solver.cell_values[self.cell1.row][self.cell1.column]
-        rhs: LpElement = solver.cell_values[self.cell2.row][self.cell2.column]
+        lhs: LpElement = solver.variables.numbers[self.cell1.row][self.cell1.column]
+        rhs: LpElement = solver.variables.numbers[self.cell2.row][self.cell2.column]
         return lhs + rhs
 
     def css(self) -> dict:

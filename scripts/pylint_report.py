@@ -100,7 +100,7 @@ def get_score_history(score_dir):
 
 
 def json2html(data):
-    """Generate start html file_path (based on :obj:`input_data`)."""
+    """Generate start html file_path (based on :obj:`line`)."""
     out = HTML_HEAD
     out += '<body>\n<h1><u>Pylint report</u></h1>\n'
 

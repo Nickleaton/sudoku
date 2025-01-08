@@ -81,7 +81,7 @@ class Exclusion(Item):
 
         Args:
             _ (Board): The board the constraint applies to.
-            yaml (dict): The YAML input_data containing the Exclusion definition.
+            yaml (dict): The YAML line containing the Exclusion definition.
 
         Returns:
             tuple[Coord, str]: A tuple containing the position (as Coord) and the digits as start string.
@@ -92,28 +92,28 @@ class Exclusion(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an Exclusion constraint from the YAML input_data.
+        """Create an Exclusion constraint from the YAML line.
 
         Args:
             board (Board): The board the constraint applies to.
-            yaml (dict): The YAML input_data containing the Exclusion definition.
+            yaml (dict): The YAML line containing the Exclusion definition.
 
         Returns:
-            Item: An Exclusion constraint created from the YAML input_data.
+            Item: An Exclusion constraint created from the YAML line.
         """
         position, numbers = Exclusion.extract(board, yaml)
         return cls(board, position, numbers)
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create an Exclusion constraint from the YAML input_data.
+        """Create an Exclusion constraint from the YAML line.
 
         Args:
             board (Board): The board the constraint applies to.
-            yaml_data (dict): The YAML input_data containing the Exclusion definition.
+            yaml_data (dict): The YAML line containing the Exclusion definition.
 
         Returns:
-            Item: An Exclusion constraint created from the YAML input_data.
+            Item: An Exclusion constraint created from the YAML line.
         """
         return cls.create(board, yaml_data)
 
@@ -129,7 +129,7 @@ class Exclusion(Item):
         for digit in self.digits:
             digit_sum = lpSum(
                 [
-                    solver.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
+                    solver.variables.choices[int(digit)][(self.position + offset).row][(self.position + offset).column]
                     for offset in Moves.square()
                 ],
             )

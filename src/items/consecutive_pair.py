@@ -35,11 +35,11 @@ class ConsecutivePair(LEDifferencePair):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell]:
-        """Extract cell coordinates from YAML input_data and create cell instances.
+        """Extract cell coordinates from YAML line and create cell instances.
 
         Args:
             board (Board): The board instance for cell creation.
-            yaml (dict): The YAML input_data containing cell pair information.
+            yaml (dict): The YAML line containing cell pair information.
 
         Returns:
             tuple[Cell, Cell]: A tuple of two cells representing the consecutive pair.
@@ -60,11 +60,11 @@ class ConsecutivePair(LEDifferencePair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start ConsecutivePair instance from YAML input_data.
+        """Create start ConsecutivePair instance from YAML line.
 
         Args:
             board (Board): The board instance.
-            yaml (dict): The YAML input_data containing cell information.
+            yaml (dict): The YAML line containing cell information.
 
         Returns:
             Item: An instance of ConsecutivePair.
@@ -74,11 +74,11 @@ class ConsecutivePair(LEDifferencePair):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start ConsecutivePair instance from YAML input_data.
+        """Create start ConsecutivePair instance from YAML line.
 
         Args:
             board (Board): The board instance.
-            yaml_data (dict): The YAML input_data containing cell information.
+            yaml_data (dict): The YAML line containing cell information.
 
         Returns:
             Item: An instance of ConsecutivePair.

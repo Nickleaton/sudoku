@@ -80,7 +80,7 @@ class RenbanLine(Line):
 
         # Add constraints for upper and lower bounds based on cell value_list
         for index, cell in enumerate(cells):
-            cell_value = solver.cell_values[cell.row][cell.column]
+            cell_value = solver.variables.numbers[cell.row][cell.column]
             solver.model += lower <= cell_value, f'{self.name}_lower_{index}'
             solver.model += upper >= cell_value, f'{self.name}_upper_{index}'
 

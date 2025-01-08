@@ -42,7 +42,7 @@ class UniqueRegion(Region):
 
         Args:
             board (Board): The board associated with this region.
-            yaml (dict): The YAML configuration containing cell input_data for the unique region.
+            yaml (dict): The YAML configuration containing cell line for the unique region.
 
         Returns:
             list[Item]: A list of cell vectors for the unique region.
@@ -55,7 +55,7 @@ class UniqueRegion(Region):
 
         Args:
             board (Board): The board associated with this region.
-            yaml (dict): The YAML configuration containing cell input_data for the unique region.
+            yaml (dict): The YAML configuration containing cell line for the unique region.
 
         Returns:
             Item: A new UniqueRegion instance.
@@ -68,7 +68,7 @@ class UniqueRegion(Region):
 
         Args:
             board (Board): The board associated with this region.
-            yaml_data (dict): The YAML configuration containing cell input_data for the unique region.
+            yaml_data (dict): The YAML configuration containing cell line for the unique region.
 
         Returns:
             Item: A new UniqueRegion instance.

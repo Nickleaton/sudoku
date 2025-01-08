@@ -54,8 +54,8 @@ class FrozenThermometerLine(ThermometerLine):
             region2 = {region for region in cell2.top.regions() if region.__class__ in unique}
 
             name = f'{self.__class__.__name__}_rank_{cell1.row}_{cell1.column}_{cell2.row}_{cell2.column}'
-            lower = solver.cell_values[cell1.row][cell1.column]
-            upper = solver.cell_values[cell2.row][cell2.column]
+            lower = solver.variables.numbers[cell1.row][cell1.column]
+            upper = solver.variables.numbers[cell2.row][cell2.column]
             if region1.intersection(region2):
                 solver.model += lower <= upper, name
             else:

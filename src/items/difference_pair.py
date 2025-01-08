@@ -33,11 +33,11 @@ class DifferencePair(Pair):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell, list[int]]:
-        """Extract cells and their allowed difference value_list from YAML input_data.
+        """Extract cells and their allowed difference value_list from YAML line.
 
         Args:
             board (Board): The board instance for cell creation.
-            yaml (dict): The YAML input_data containing the cell pair and their difference value_list.
+            yaml (dict): The YAML line containing the cell pair and their difference value_list.
 
         Returns:
             tuple[Cell, Cell, list[int]]: A tuple containing two cells and start list of allowed difference value_list.
@@ -53,11 +53,11 @@ class DifferencePair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create a DifferencePair instance from YAML input_data.
+        """Create a DifferencePair instance from YAML line.
 
         Args:
             board (Board): The board instance.
-            yaml (dict): The YAML input_data containing the cell pair and allowed differences.
+            yaml (dict): The YAML line containing the cell pair and allowed differences.
 
         Returns:
             Item: An instance of DifferencePair.
@@ -67,11 +67,11 @@ class DifferencePair(Pair):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create a DifferencePair instance from YAML input_data.
+        """Create a DifferencePair instance from YAML line.
 
         Args:
             board (Board): The board instance.
-            yaml_data (dict): The YAML input_data containing the cell pair and allowed differences.
+            yaml_data (dict): The YAML line containing the cell pair and allowed differences.
 
         Returns:
             Item: An instance of DifferencePair.
@@ -116,8 +116,8 @@ class DifferencePair(Pair):
                 f'_'
                 f'{self.cell2.column}'
             )
-            choice1 = solver.choices[int(digit)][self.cell1.row][self.cell1.column]
-            choice2 = solver.choices[int(digit)][self.cell2.row][self.cell2.column]
+            choice1 = solver.variables.choices[int(digit)][self.cell1.row][self.cell1.column]
+            choice2 = solver.variables.choices[int(digit)][self.cell2.row][self.cell2.column]
             # pylint: disable=loop-invariant-statement
             solver.model += choice1 + choice2 <= 1, name
 
@@ -134,6 +134,6 @@ class DifferencePair(Pair):
                     f'-'
                     f'{self.cell2.row_column_string}'
                     f'='
-                    f'{",".join([str(digit) for digit in self.digits])}',
+                    f'{",".join([str(digit) for digit in self.digits])}'
                 ),
         }

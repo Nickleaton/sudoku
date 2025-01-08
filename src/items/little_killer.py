@@ -37,19 +37,18 @@ class LittleKiller(Region):
             total (int): The total sum of the indicated diagonals.
         """
         super().__init__(board)
-        self.side = side
-        self.cyclic = cyclic
-        self.offset = offset
-        self.total = total
-        coord = board.start(side, cyclic, offset)
-        self.direction = side.direction(cyclic)
-        self.delta = self.direction.offset
+        self.side: Side = side
+        self.cyclic: Cyclic = cyclic
+        self.offset: int = offset
+        self.reference: Coord = board.outside_cell(side, offset)
+        self.direction: Coord = side.direction(cyclic)
+        self.total: int = total
+        coord: Coord = self.reference + self.direction
         cells = []
         while board.is_valid_coordinate(coord):
             cells.append(Cell.make(board, int(coord.row), int(coord.column)))
-            coord += self.delta
+            coord += self.direction
         self.add_components(cells)
-        self.reference = side.start(board, cyclic, offset) - self.delta
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -62,7 +61,7 @@ class LittleKiller(Region):
 
     @classmethod
     def parser(cls) -> LittleKillerParser:
-        """Return the parser used to extract input_data for the LittleKiller region.
+        """Return the parser used to extract line for the LittleKiller region.
 
         Returns:
             LittleKillerParser: The parser for LittleKiller regions.
@@ -181,7 +180,7 @@ class LittleKiller(Region):
         Args:
             solver (PulpSolver): The solver to add the constraint to.
         """
-        total = lpSum(solver.cell_values[cell.row][cell.column] for cell in self.cells)
+        total = lpSum(solver.variables.numbers[cell.row][cell.column] for cell in self.cells)
         name = f'{self.__class__.__name__}_{self.side.value}{self.offset}{self.cyclic.value}'
         solver.model += total == self.total, name
 

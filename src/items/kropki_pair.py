@@ -110,9 +110,9 @@ class KropkiPair(Pair):
         """
         for digit in set(self.board.digit_range) - self.possible():
             name = f'{self.name}_Impossible_kropki_pair_1_{digit}_{self.cell1.row}_{self.cell1.column}'
-            solver.model += solver.choices[digit][self.cell1.row][self.cell1.column] == 0, name
+            solver.model += solver.variables.choices[digit][self.cell1.row][self.cell1.column] == 0, name
             name = f'{self.name}_Impossible_kropki_pair_2_{digit}_{self.cell2.row}_{self.cell2.column}'
-            solver.model += solver.choices[digit][self.cell2.row][self.cell2.column] == 0, name
+            solver.model += solver.variables.choices[digit][self.cell2.row][self.cell2.column] == 0, name
 
     # pylint: disable=loop-invariant-statement
     def add_implausible_constraint(self, solver: PulpSolver) -> None:
@@ -122,8 +122,8 @@ class KropkiPair(Pair):
             solver (PulpSolver): The solver instance to which constraints are added.
         """
         for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
-            choice1 = solver.choices[digit1][self.cell1.row][self.cell1.column]
-            choice2 = solver.choices[digit2][self.cell2.row][self.cell2.column]
+            choice1 = solver.variables.choices[digit1][self.cell1.row][self.cell1.column]
+            choice2 = solver.variables.choices[digit2][self.cell2.row][self.cell2.column]
             if not self.valid(digit1, digit2):
                 solver.model += choice1 + choice2 <= 1, f'{self.name}_Implausible_{digit1}_{digit2}'
 
@@ -150,20 +150,18 @@ class KropkiPair(Pair):
         self.sos = LpVariable.dicts(self.name, sos_range, 0, 1, LpInteger)
         solver.model += lpSum([self.sos[indicator] for indicator in sos_range]) == 1, f'{self.name}_SOS'
 
-    def add_unique_constraints(self, solver: PulpSolver, cell1: Cell, cell2: Cell) -> None:
+    def add_unique_constraints(self, solver: PulpSolver) -> None:
         """Add constraints ensuring that valid pairs are uniquely enforced.
 
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.
-            cell1 (Cell): The first cell in the pair.
-            cell2 (Cell): The second cell in the pair.
         """
         count = 0
         for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
             if not self.valid(digit1, digit2):
                 continue
-            choice1 = solver.choices[digit1][self.cell1.row][self.cell1.column]
-            choice2 = solver.choices[digit2][self.cell2.row][self.cell2.column]
+            choice1 = solver.variables.choices[digit1][self.cell1.row][self.cell1.column]
+            choice2 = solver.variables.choices[digit2][self.cell2.row][self.cell2.column]
             solver.model += choice1 + choice2 + (1 - self.sos[count]) <= 2, f'{self.name}_Valid_{digit1}_{digit2}'
             count += 1
 

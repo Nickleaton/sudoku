@@ -51,8 +51,8 @@ class FixedDifferencePair(FixedPair):
         Returns:
             LpElement: The absolute difference between the two cell value_list, formulated as start constraint.
         """
-        v1 = solver.cell_values[self.cell1.row][self.cell1.column]
-        v2 = solver.cell_values[self.cell2.row][self.cell2.column]
+        v1 = solver.variables.numbers[self.cell1.row][self.cell1.column]
+        v2 = solver.variables.numbers[self.cell2.row][self.cell2.column]
         return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
 
     def css(self) -> dict:

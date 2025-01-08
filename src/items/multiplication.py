@@ -2,7 +2,8 @@
 from itertools import product
 from math import log10
 
-from pulp import lpSum
+from pulp import LpVariable  # noqa: I001
+from pulp import lpSum  # noqa: I001
 
 from src.board.board import Board
 from src.items.cell import Cell
@@ -46,7 +47,7 @@ class Multiplication:
         # Enforce the multiplication restriction using logarithms
         log_product = lpSum(
             [
-                log10(digit) * solver.choices[digit][cell.row][cell.column]
+                log10(digit) * solver.variables.choices[digit][cell.row][cell.column]
                 for digit in board.digit_range
                 for cell in cells
             ],
@@ -57,4 +58,6 @@ class Multiplication:
         valid_digits = Multiplication.get_set(board, target)
         for digit, cell in product(board.digit_range, cells):
             if digit not in valid_digits:
-                solver.model += solver.choices[digit][cell.row][cell.column] == 0, f'{name}_{cell.name}_{digit}'
+                choice: LpVariable = solver.variables.choices[digit][cell.row][cell.column]
+                name: str = f'{name}_{cell.name}_{digit}'
+                solver.model += choice == 0, name

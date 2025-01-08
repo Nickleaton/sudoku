@@ -52,7 +52,7 @@ class AntiKnight(Anti):
 
         Args:
             board (Board): The board on which the AntiKnight will be placed.
-            yaml (dict): A dictionary containing configuration input_data.
+            yaml (dict): A dictionary containing configuration line.
 
         Returns:
             Item: An instance of AntiKnight.
@@ -65,7 +65,7 @@ class AntiKnight(Anti):
 
         Args:
             board (Board): The board on which the AntiKnight will be placed.
-            yaml_data (dict): A dictionary containing configuration input_data.
+            yaml_data (dict): A dictionary containing configuration line.
 
         Returns:
             Item: An instance of AntiKnight.

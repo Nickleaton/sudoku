@@ -76,11 +76,11 @@ class AntiDiagonal(Diagonal):
 
         for cell_index, digit in product(range(self.count - 1), self.board.digit_range):
             first = lpSum(
-                solver.choices[digit][self.cells[cell_index_in_box].row][self.cells[cell_index_in_box].column]
+                solver.variables.choices[digit][self.cells[cell_index_in_box].row][self.cells[cell_index_in_box].column]
                 for cell_index_in_box in range(cell_index * self.size, (cell_index + 1) * self.size)
             )
             second = lpSum(
-                solver.choices[digit][self.cells[cell_index_in_box].row][self.cells[cell_index_in_box].column]
+                solver.variables.choices[digit][self.cells[cell_index_in_box].row][self.cells[cell_index_in_box].column]
                 for cell_index_in_box in range((cell_index + 1) * self.size, (cell_index + 2) * self.size)
             )
             solver.model += first == second, f'{self.name}_{cell_index + 1}_{digit}'

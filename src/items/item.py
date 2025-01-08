@@ -110,13 +110,13 @@ class Item:  # noqa: WPS110
 
         Args:
             board (Board): The board this constraint belongs to.
-            yaml (dict): The YAML input_data to create the constraint.
+            yaml (dict): The YAML line to create the constraint.
 
         Returns:
             Item: The created instance of the constraint.
 
         Raises:
-            SudokuException: If the YAML input_data is invalid or the class cannot be found.
+            SudokuException: If the YAML line is invalid or the class cannot be found.
         """
         if isinstance(yaml, str):
             name = yaml
@@ -133,13 +133,13 @@ class Item:  # noqa: WPS110
 
         Args:
             board (Board): The board this constraint belongs to.
-            yaml (dict): The YAML input_data to create the constraint.
+            yaml (dict): The YAML line to create the constraint.
 
         Returns:
             Item: The created instance of the constraint.
 
         Raises:
-            SudokuException: If the YAML input_data is invalid or the class cannot be found.
+            SudokuException: If the YAML line is invalid or the class cannot be found.
         """
         if isinstance(yaml, str):
             name = yaml

@@ -32,8 +32,8 @@ class GEDifferencePair(FixedDifferencePair):
         """
         big_m = self.board.maximum_digit + 1  # A large number greater than any possible cell number
         indicator = LpVariable(f'Indicator_{self.name}', 0, 1, LpInteger)  # Binary indicator value_variable
-        value1 = solver.cell_values[self.cell1.row][self.cell1.column]  # Value of the first cell
-        value2 = solver.cell_values[self.cell2.row][self.cell2.column]  # Value of the second cell
+        value1 = solver.variables.numbers[self.cell1.row][self.cell1.column]  # Value of the first cell
+        value2 = solver.variables.numbers[self.cell2.row][self.cell2.column]  # Value of the second cell
         difference = value1 - value2  # The difference between the two cell value_list
 
         # Upper bound constraint: difference must be at least the specified difference when the indicator is 1

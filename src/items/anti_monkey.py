@@ -48,7 +48,7 @@ class AntiMonkey(Anti):
 
         Args:
             board (Board): The board on which the AntiMonkey will be placed.
-            yaml (dict): A dictionary containing configuration input_data.
+            yaml (dict): A dictionary containing configuration line.
 
         Returns:
             Item: An instance of AntiMonkey.
@@ -61,7 +61,7 @@ class AntiMonkey(Anti):
 
         Args:
             board (Board): The board on which the AntiMonkey will be placed.
-            yaml_data (dict): A dictionary containing configuration input_data.
+            yaml_data (dict): A dictionary containing configuration line.
 
         Returns:
             Item: An instance of AntiMonkey.

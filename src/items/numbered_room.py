@@ -62,7 +62,7 @@ class NumberedRoom(Item):
 
         Args:
             _ (Board): The board associated with the constraint.
-            yaml (dict): The YAML configuration containing the NumberedRoom input_data.
+            yaml (dict): The YAML configuration containing the NumberedRoom line.
 
         Returns:
             tuple: A tuple containing the side, index, and digit.
@@ -79,7 +79,7 @@ class NumberedRoom(Item):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml (dict): The YAML configuration containing the NumberedRoom input_data.
+            yaml (dict): The YAML configuration containing the NumberedRoom line.
 
         Returns:
             Item: The created NumberedRoom constraint.
@@ -93,7 +93,7 @@ class NumberedRoom(Item):
 
         Args:
             board (Board): The board associated with this constraint.
-            yaml_data (dict): The YAML configuration containing the NumberedRoom input_data.
+            yaml_data (dict): The YAML configuration containing the NumberedRoom line.
 
         Returns:
             Item: The created NumberedRoom constraint.
@@ -158,13 +158,13 @@ class NumberedRoom(Item):
         """
         match self.side:
             case Side.left:
-                return solver.choices[self.digit][self.start_cell.row][digit]
+                return solver.variables.choices[self.digit][self.start_cell.row][digit]
             case Side.right:
-                return solver.choices[self.digit][self.start_cell.row][self.board.board_columns - digit + 1]
+                return solver.variables.choices[self.digit][self.start_cell.row][self.board.board_columns - digit + 1]
             case Side.top:
-                return solver.choices[self.digit][digit][self.start_cell.column]
+                return solver.variables.choices[self.digit][digit][self.start_cell.column]
             case Side.bottom:
-                return solver.choices[self.digit][self.board.board_rows - digit + 1][self.start_cell.column]
+                return solver.variables.choices[self.digit][self.board.board_rows - digit + 1][self.start_cell.column]
             case _:
                 raise SudokuException(f'Unexpected Side {self.side.name} encountered for NumberedRoom {self.name}')
 
@@ -178,7 +178,7 @@ class NumberedRoom(Item):
             solver (PulpSolver): The solver to which the constraints are added.
         """
         for digit in self.board.digit_range:
-            first = solver.choices[digit][self.start_cell.row][self.start_cell.column]
+            first = solver.variables.choices[digit][self.start_cell.row][self.start_cell.column]
             solver.model += first == self.xth(solver, digit), f'{self.name}_{digit}'
 
     def css(self) -> dict:

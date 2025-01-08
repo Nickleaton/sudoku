@@ -11,13 +11,13 @@ from src.utils.rule import Rule
 
 
 class Pair(Region):
-    """Represents start pair of cells that are linked together for start constraint.
+    """Represents a pair of cells that are linked together for start constraint.
 
-    This class defines start pair of cells and provides the functionality for associating them in the puzzle.
+    This class defines a pair of cells and provides the functionality for associating them in the puzzle.
     """
 
     def __init__(self, board: Board, cell1: Cell, cell2: Cell):
-        """Initialize start pair of cells on the board.
+        """Initialize a pair of cells on the board.
 
         Args:
             board (Board): The board on which the pair is defined.
@@ -32,10 +32,10 @@ class Pair(Region):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Indicate whether this constraint is start sequence.
+        """Indicate whether this constraint is a sequence.
 
         Returns:
-            bool: True, since the pair is treated as start sequence.
+            bool: True, since the pair is treated as a sequence.
         """
         return True
 
@@ -66,7 +66,7 @@ class Pair(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start new Pair instance from the given board and YAML configuration.
+        """Create a new Pair instance from the given board and YAML configuration.
 
         Args:
             board (Board): The board on which the pair is defined.
@@ -80,7 +80,7 @@ class Pair(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start new Pair instance from the given board and YAML configuration.
+        """Create a new Pair instance from the given board and YAML configuration.
 
         Args:
             board (Board): The board on which the pair is defined.
@@ -93,7 +93,7 @@ class Pair(Region):
 
     @property
     def rules(self) -> list[Rule]:
-        """Return start list of rules associated with the pair.
+        """Return a list of rules associated with the pair.
 
         Returns:
             list[Rule]: An empty list, as there are no specific rules defined for pairs.
@@ -121,7 +121,7 @@ class Pair(Region):
     def glyphs(self) -> list[Glyph]:
         """Generate the glyphs for the pair.
 
-        If start label is set, it returns start glyph representing the edge between the two cells with the label.
+        If a label is set, it returns a glyph representing the edge between the two cells with the label.
 
         Returns:
             list[Glyph]: A list of glyphs, or an empty list if no label is set.
@@ -139,7 +139,7 @@ class Pair(Region):
         return []
 
     def to_dict(self) -> dict:
-        """Return start dictionary representation of the pair.
+        """Return a dictionary representation of the pair.
 
         Returns:
             dict: A dict where the key is the class name and the number is a string representing the pair of cells.

@@ -84,8 +84,8 @@ class FortressCell(SimpleCellReference):
             if not self.board.is_valid_coordinate(other):
                 continue
             name: str = f'Fortress_{self.row}_{self.column}_{other.row}_{other.column}'
-            lhs: LpElement = solver.cell_values[self.row][self.column]
-            rhs: LpElement = solver.cell_values[other.row][other.column]
+            lhs: LpElement = solver.variables.numbers[self.row][self.column]
+            rhs: LpElement = solver.variables.numbers[other.row][other.column]
             solver.model += lhs >= rhs + 1, name
 
     def bookkeeping(self) -> None:

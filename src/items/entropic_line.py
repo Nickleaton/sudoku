@@ -96,7 +96,7 @@ class EntropicLine(Line):
         Returns:
             LpAffineExpression: The sum of the digits in the specified category.
         """
-        return lpSum([solver.choices[digit][cell.row][cell.column] for digit in entropy.digits()])
+        return lpSum([solver.variables.choices[digit][cell.row][cell.column] for digit in entropy.digits()])
 
     # pylint: disable=loop-invariant-statement
     def add_constraint(self, solver: PulpSolver) -> None:

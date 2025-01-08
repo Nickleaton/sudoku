@@ -60,7 +60,7 @@ class PalindromeLine(Line):
             cell2 = self.cells[len(self) - index - 1]
             name = f'{self.name}_{index}'
             solver.model += (
-                solver.cell_values[cell1.row][cell1.column] == solver.cell_values[cell2.row][cell2.column],
+                solver.variables.numbers[cell1.row][cell1.column] == solver.variables.numbers[cell2.row][cell2.column],
                 name,
             )
 

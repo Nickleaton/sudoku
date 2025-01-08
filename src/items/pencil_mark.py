@@ -89,7 +89,7 @@ class PencilMarkCell(CellReference):
 
     @classmethod
     def extract(cls, board: Board, yaml: dict) -> tuple:
-        """Extract the parameter_types needed to create start PencilMarkCell from YAML input_data.
+        """Extract the parameter_types needed to create start PencilMarkCell from YAML line.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -110,7 +110,7 @@ class PencilMarkCell(CellReference):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start PencilMarkCell from YAML input_data.
+        """Create start PencilMarkCell from YAML line.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -124,7 +124,7 @@ class PencilMarkCell(CellReference):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start PencilMarkCell from YAML input_data.
+        """Create start PencilMarkCell from YAML line.
 
         Args:
             board (Board): The Sudoku board instance.

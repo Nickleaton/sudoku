@@ -10,7 +10,7 @@ class Indexer(StandardRegion):
     """Represent an indexing mechanism within start standard region on the board.
 
     Inherits from StandardRegion to define regions that handle indexing logic,
-    including parsing digits and extracting relevant input_data for further processing.
+    including parsing digits and extracting relevant line for further processing.
     """
 
     @classmethod
@@ -37,7 +37,7 @@ class Indexer(StandardRegion):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an Indexer instance from the provided board and YAML input_data.
+        """Create an Indexer instance from the provided board and YAML line.
 
         Args:
             board (Board): The board on which the Indexer will operate.
@@ -51,7 +51,7 @@ class Indexer(StandardRegion):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create an Indexer instance from the provided board and YAML input_data.
+        """Create an Indexer instance from the provided board and YAML line.
 
         Args:
             board (Board): The board on which the Indexer will operate.

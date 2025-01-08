@@ -375,7 +375,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
     out = {}
     with source_file.open() as s_file:
         data = json.load(s_file)
-    raw = data['input_data']
+    raw = data['line']
     n = raw['size']
     if n not in (6, 8, 9):
         logging.log(logging.ERROR, f"Unknown board size {n} {source_file}")

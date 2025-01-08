@@ -17,7 +17,7 @@ class Solution(ComposedItem):
     """Represents a solution composed of known cells for start given board."""
 
     def __init__(self, board: Board, rows: list[str]):
-        """Initialize the Solution with start board and row input_data.
+        """Initialize the Solution with start board and row line.
 
         Args:
             board (Board): The board associated with this solution.
@@ -50,16 +50,25 @@ class Solution(ComposedItem):
         """
         return hash('Solution')
 
-    def get_value(self, row: int, column: int) -> int:
-        """Get the digit number at the specified row and column.
+    def __getitem__(self, key: tuple[int, int]) -> int:
+        """Get the digit number at the specified row and column using indexing.
 
         Args:
-            row (int): The row number (1-based).
-            column (int): The column number (1-based).
+            key (tuple[int, int]): A tuple containing the row (1-based) and column (1-based).
 
         Returns:
             int: The digit at the specified cell.
+
+        Raises:
+            ValueError: If the key is not a tuple or out of range.
         """
+        if not isinstance(key, tuple) or len(key) != 2:
+            raise ValueError('Key must be a tuple of (row, column).')
+
+        row, column = key
+        if row < 1 or row > len(self.rows) or column < 1 or column > len(self.rows[0]):
+            raise ValueError(f'Row or column out of range: row={row}, column={column}')
+
         return int(self.rows[row - 1][column - 1])
 
     @classmethod
@@ -68,7 +77,7 @@ class Solution(ComposedItem):
 
         Args:
             _ (Board): The board associated with this solution.
-            yaml (dict): The YAML dictionary containing solution input_data.
+            yaml (dict): The YAML dictionary containing solution line.
 
         Returns:
             Any: A list of lists representing the solution rows.
@@ -82,7 +91,7 @@ class Solution(ComposedItem):
 
         Args:
             board (Board): The board associated with this solution.
-            yaml (dict): The YAML dictionary containing solution input_data.
+            yaml (dict): The YAML dictionary containing solution line.
 
         Returns:
             Solution: A new Solution instance.
@@ -95,7 +104,7 @@ class Solution(ComposedItem):
 
         Args:
             board (Board): The board associated with this solution.
-            yaml_data (dict): The YAML dictionary containing solution input_data.
+            yaml_data (dict): The YAML dictionary containing solution line.
 
         Returns:
             Solution: A new Solution instance.

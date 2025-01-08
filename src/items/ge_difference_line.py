@@ -107,12 +107,12 @@ class GEDifferenceLine(DifferenceLine):
                 ]
                 total: LpAffineExpression = lpSum(
                     [
-                        solver.choices[cell_digit][self.cells[index + 1].row][self.cells[index + 1].column]
+                        solver.variables.choices[cell_digit][self.cells[index + 1].row][self.cells[index + 1].column]
                         for cell_digit in valid_cell_digits
                     ],
                 )
                 cell: Cell = self.cells[index]
-                first = solver.choices[digit][cell.row][cell.column]
+                first = solver.variables.choices[digit][cell.row][cell.column]
                 solver.model += first <= total, constraint_name
 
     def add_region_constraints(self, solver: PulpSolver) -> None:
@@ -135,4 +135,4 @@ class GEDifferenceLine(DifferenceLine):
                 for digit in (4, 6):
                     cell: Cell = self.cells[index]
                     name = f'{self.name}_{cell.name}_{digit}_not_allowed'
-                    solver.model += solver.choices[digit][cell.row][cell.column] == 0, name
+                    solver.model += solver.variables.choices[digit][cell.row][cell.column] == 0, name

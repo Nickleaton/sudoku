@@ -120,7 +120,7 @@ class MagicSquare(Region):
 
         Args:
             _ (Board): The board to extract coordinates for.
-            yaml (dict): The YAML configuration input_data.
+            yaml (dict): The YAML configuration line.
 
         Returns:
             tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
@@ -136,7 +136,7 @@ class MagicSquare(Region):
 
         Args:
             board (Board): The board to create the MagicSquare on.
-            yaml (dict): The YAML configuration input_data.
+            yaml (dict): The YAML configuration line.
 
         Returns:
             Item: The created MagicSquare constraint.
@@ -150,7 +150,7 @@ class MagicSquare(Region):
 
         Args:
             board (Board): The board to create the MagicSquare on.
-            yaml_data (dict): The YAML configuration input_data.
+            yaml_data (dict): The YAML configuration line.
 
         Returns:
             Item: The created MagicSquare constraint.
@@ -165,14 +165,14 @@ class MagicSquare(Region):
             solver (PulpSolver): The solver to add constraints to.
         """
         name: str = f'{self.__class__.__name__}_center'
-        solver.model += solver.cell_values[self.center.row][self.center.column] == 5, name
+        solver.model += solver.variables.numbers[self.center.row][self.center.column] == 5, name
         for index, line in enumerate(MagicSquare.lines):
             cell1 = self.cells[line[0] - 1]
             cell2 = self.cells[line[1] - 1]
             cell3 = self.cells[line[2] - 1]
-            value1 = solver.cell_values[cell1.row][cell1.column]
-            value2 = solver.cell_values[cell2.row][cell2.column]
-            value3 = solver.cell_values[cell3.row][cell3.column]
+            value1 = solver.variables.numbers[cell1.row][cell1.column]
+            value2 = solver.variables.numbers[cell2.row][cell2.column]
+            value3 = solver.variables.numbers[cell3.row][cell3.column]
             solver.model += value1 + value2 + value3 == MagicSquare.line_total, f'{self.__class__.__name__}_{index}'
         # cells must be unique
         self.add_unique_constraint(solver, self.strict)

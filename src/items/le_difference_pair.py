@@ -21,8 +21,8 @@ class LEDifferencePair(DifferencePair):
         Args:
             solver (PulpSolver): The solver to which the constraints are added.
         """
-        value1 = solver.cell_values[self.cell1.row][self.cell1.column]
-        value2 = solver.cell_values[self.cell2.row][self.cell2.column]
+        value1 = solver.variables.numbers[self.cell1.row][self.cell1.column]
+        value2 = solver.variables.numbers[self.cell2.row][self.cell2.column]
         diff = value1 - value2
         solver.model += diff <= self.difference, f'{self.name}_upper'
         solver.model += diff >= -self.difference, f'{self.name}_lower'
