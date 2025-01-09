@@ -12,7 +12,7 @@ class LinesValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that all cells in the sequence are valid, connected, and unique.
 
         Args:
@@ -23,7 +23,7 @@ class LinesValidator(Validator):
             list[str]: A list of error messages. An empty list if validation passes, otherwise a list of errors.
         """
         errors: list[str] = Validator.pre_validate(input_data, required_keys=None)
-        lines: list = list(input_data.values())
+        lines: list = list(dict(input_data).values())
         for arrow in lines:
             errors.extend(LineValidator.validate(board, arrow))
         return errors

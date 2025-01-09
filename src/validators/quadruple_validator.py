@@ -16,7 +16,7 @@ class QuadrupleValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that the quadruples in the line are valid digit.
 
         This method checks that each constraint in `line['quadruples']` is either start

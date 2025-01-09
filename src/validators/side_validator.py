@@ -9,7 +9,7 @@ class SideValidator(Validator):
     """Validator for a Side."""
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate a Side.
 
         Args:

@@ -15,7 +15,7 @@ class NoneValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Run all validations on start single cell.
 
         This method checks if the cell has valid keys and if it is within the board's range.
@@ -27,12 +27,11 @@ class NoneValidator(Validator):
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
         """
-        errors: list[str] = []
         if len(input_data) != 1:
-            errors.append(f'Expecting 1 key, got {len(input_data)} keys.')
-            return errors
-        _, data_value = list(input_data.items())[0]
+            return ['Expecting 1 key, got {len(input_data)} keys.']
+        if not isinstance(input_data, dict):
+            return ['Data must be a dictionary.']
+        data_value = next(iter(dict(input_data).values()))
         if data_value is not None:
-            errors.append(f'Data must be None, got {data_value!r}.')
-            return errors
+            return [f'Data must be None, got {data_value!r}.']
         return []

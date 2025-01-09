@@ -75,7 +75,7 @@ class LineValidator(Validator):
         return errors
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that all cells in the sequence are valid, connected, and unique.
 
         Args:

@@ -79,5 +79,5 @@ class CellValidator(Validator):
         errors: list[str] = Validator.pre_validate(input_data, {ROW: int, COL: int})
         if errors:
             return errors
-        errors.extend(CellValidator.validate_range(board, input_data))
+        errors.extend(CellValidator.validate_range(board, dict(input_data)))
         return errors

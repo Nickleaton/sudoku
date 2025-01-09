@@ -109,6 +109,7 @@ ignore = [
     'S408', # Using Document to parse untrusted XML line
 
     "S318", # Use of insecure XML parser
+    "DAR105", # DAR105: Parameter type malformed. See Validator where this is needed.
 ]
 
 per-file-ignores = """

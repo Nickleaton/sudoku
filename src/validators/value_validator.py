@@ -25,17 +25,12 @@ class ValueValidator(Validator):
             list[str]: A list of error messages. If the 'Value' is missing, not an integer,
             or negative, appropriate error messages are returned. Otherwise, an empty list.
         """
-        if not input_data:
-            return ["Cell cannot be empty."]
-        if not isinstance(input_data, dict):
-            return ["Value must be in a dictionary."]
-        if 'Value' not in input_data:
-            return ["Missing key: 'Value'."]
-        if len(input_data) != 1:
-            return [f"Too many items in input data: {input_data!r}. Expected only 'Value'."]
-        data_value = input_data['Value']
+        errors: list[str] = Validator.pre_validate(input_data, required_keys={'Value': int})
+        if errors:
+            return errors
+        data_value = dict(input_data)['Value']
         if not isinstance(data_value, int):
-            return [f"'Value' must be an integer, got {type(data_value).__name__}: {data_value!r}."]
+            return [f'Value must be an integer, got {type(data_value).__name__}: {data_value!r}.']
         if data_value < 0:
-            return [f"'Value' must be a positive integer, got {data_value!r}."]
+            return [f'Value must be a positive integer, got {data_value!r}.']
         return []

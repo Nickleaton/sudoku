@@ -22,9 +22,9 @@ class ArrowsValidator(Validator):
         Returns:
             list[str]: A list of error messages. An empty list if validation passes, otherwise a list of errors.
         """
-        errors: list[str] = Validator.pre_validate(input_data)
+        errors: list[str] = Validator.pre_validate(input_data, required_keys=None)
         if errors:
             return errors
-        for arrow in next(iter(input_data.values())):
+        for arrow in list(input_data):
             errors.extend(ArrowValidator.validate(board, arrow))
         return errors

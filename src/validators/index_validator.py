@@ -7,7 +7,7 @@ class IndexValidator(Validator):
     """Validator for the 'Index' key in input data."""
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate the 'Index' key in the input data.
 
         Args:

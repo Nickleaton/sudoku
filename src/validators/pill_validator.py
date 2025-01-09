@@ -1,9 +1,9 @@
 """PillValidator."""
 
 from src.board.board import Board
-from src.validators.cell_validator import ROW, COL
-from src.validators.line_validator import LineValidator
-from src.validators.validator import Validator
+from src.validators.cell_validator import ROW, COL  # noqa: I001
+from src.validators.line_validator import LineValidator  # noqa: I005
+from src.validators.validator import Validator  # noqa: I001
 
 
 class PillValidator(Validator):
@@ -16,7 +16,7 @@ class PillValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that all cells in the sequence form a valid 'pill'.
 
         The validation checks that:

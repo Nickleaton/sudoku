@@ -42,7 +42,7 @@ class KnownValidator(Validator):
         return errors
 
     @staticmethod
-    def validate(board: Board, input_data: dict | list) -> list:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate the 'Known' section in the YAML line.
 
         Args:

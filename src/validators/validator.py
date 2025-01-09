@@ -11,7 +11,10 @@ class Validator:
     """
 
     @staticmethod
-    def validate_keys(input_data: dict, required_keys: dict[str, type | tuple[type, ...]]) -> list:
+    def validate_keys(
+        input_data: dict,
+        required_keys: dict[str, type | tuple[type, ...]],
+    ) -> list:
         """Validate the required keys in the line dictionary.
 
         Args:
@@ -33,13 +36,15 @@ class Validator:
         return errors
 
     @staticmethod
-    def pre_validate(input_data: dict | list, required_keys: dict[str, type | tuple[type, ...]] | None) -> list:
-        """Validate the required keys in a dict or list
+    def pre_validate(
+        input_data: dict | list,
+        required_keys: dict[str, type | tuple[type, ...]] | None,
+    ) -> list:
+        """Validate the required keys in a dict or list.
 
         Args:
             input_data (dict | list): The line to validate.
-            required_keys (dict[str, type | tuple[type, ...]] | None): The list of keys that must be present
-            in the input_data. None means the input_data must be a list.
+            required_keys (dict[str, type | tuple[type, ...]] | None): The list of keys and types that must be present.
 
         Returns:
             list: A list of error messages if any required keys are missing.
