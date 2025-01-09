@@ -1,7 +1,7 @@
 """PillValidator."""
-from typing import List
 
 from src.board.board import Board
+from src.validators.cell_validator import ROW, COL
 from src.validators.line_validator import LineValidator
 from src.validators.validator import Validator
 
@@ -16,7 +16,7 @@ class PillValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, line: List[dict]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate that all cells in the sequence form a valid 'pill'.
 
         The validation checks that:
@@ -26,17 +26,22 @@ class PillValidator(Validator):
 
         Args:
             board (Board): The board on which the validation is performed.
-            line (List[dict]): A list of dictionaries containing cell coordinates to validate.
+            input_data (dict | list): A list of dictionaries containing cell coordinates to validate.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
         """
         # Start by validating line-based constraints
-        errors: list[str] = LineValidator.validate(board, line)
+        errors: list[str] = Validator.pre_validate(input_data, required_keys=None)
+        if errors:
+            return errors
 
+        line: list[dict[str, int]] = list(input_data)
+        # Validate line-based constraints
+        errors = LineValidator.validate(board, line)
         # Validate row and column constraints for 'pill' shape
-        rows: set[int] = {cell['Row'] for cell in line}
-        columns: set[int] = {cell['Column'] for cell in line}
+        rows: set[int] = {cell[ROW] for cell in line}
+        columns: set[int] = {cell[COL] for cell in line}
 
         # Ensure cells are in the same row or column
         if len(rows) > 1 and len(columns) > 1:

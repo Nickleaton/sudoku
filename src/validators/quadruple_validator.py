@@ -16,7 +16,7 @@ class QuadrupleValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate that the quadruples in the line are valid digit.
 
         This method checks that each constraint in `line['quadruples']` is either start
@@ -29,19 +29,17 @@ class QuadrupleValidator(Validator):
         Returns:
             list[str]: A list of error messages.
         """
-        errors: list[str] = []
-
-        if 'quadruples' not in input_data:
-            errors.append('Missing key: "quadruples"')
+        errors: list[str] = Validator.pre_validate(input_data, {'Quadruples': list})
+        if errors:
             return errors
-        length: int = len(input_data['quadruples'])
+        quads: list[str] = dict(input_data)['Quadruples']
+        length: int = len(quads)
         if length <= 0 or length > 4:
             errors.append('Needs 1 to 4 items"')
             return errors
-        for digit in input_data['quadruples']:
+        for digit in quads:
             if digit == '?':
                 continue
             if digit not in board.digit_range:
                 errors.append(f'Quadruple {digit} is not a valid digit')
-
         return errors

@@ -11,20 +11,50 @@ class Validator:
     """
 
     @staticmethod
-    def validate_keys(input_data: dict, required_keys: list) -> list:
+    def validate_keys(input_data: dict, required_keys: dict[str, type | tuple[type, ...]]) -> list:
         """Validate the required keys in the line dictionary.
 
         Args:
             input_data (dict): The line dictionary to validate.
-            required_keys (list): The list of keys that must be present in the line.
+            required_keys (dict[str, type | tuple[type, ...]]): The dict of keys that must be present and their types.
+
 
         Returns:
             list: A list of error messages if any required keys are missing.
         """
-        return [f'Missing key: "{key}"' for key in required_keys if key not in input_data]
+        if len(required_keys) != len(input_data):
+            return [f'Expecting {len(required_keys)} keys, got {len(input_data)} keys.']
+        errors: list[str] = []
+        for name, type_of_value in required_keys.items():
+            if name not in input_data:
+                errors.append(f'Missing key: "{name}"')
+            elif not isinstance(input_data[name], type_of_value):
+                errors.append(f'"{name}" must be a {type_of_value!r}')
+        return errors
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list:
+    def pre_validate(input_data: dict | list, required_keys: dict[str, type | tuple[type, ...]] | None) -> list:
+        """Validate the required keys in a dict or list
+
+        Args:
+            input_data (dict | list): The line to validate.
+            required_keys (dict[str, type | tuple[type, ...]] | None): The list of keys that must be present
+            in the input_data. None means the input_data must be a list.
+
+        Returns:
+            list: A list of error messages if any required keys are missing.
+        """
+        if required_keys is None:
+            if not isinstance(input_data, list):
+                return ['Data must be a list.']
+        else:
+            if not isinstance(input_data, dict):
+                return ['Data must be a dictionary.']
+            return Validator.validate_keys(input_data, required_keys)
+        return []
+
+    @staticmethod
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate the provided line dictionary against the board.
 
         This method is intended to be overridden by subclasses to

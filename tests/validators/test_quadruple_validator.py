@@ -9,20 +9,20 @@ class TestQuadrupleValidator(TestValidator):
         """Set up the specific test line for QuadrupleValidator."""
         super().setUp()
         self.valid_data = [
-            {'quadruples': [1, 2]},
-            {'quadruples': [1, 2, 3]},
-            {'quadruples': [1, 2, '?']},
-            {'quadruples': [1, 2, 2]},
-            {'quadruples': [1, 2, 3, '?']},
-            {'quadruples': [1, 2, 3, 4]},
+            {'Quadruples': [1, 2]},
+            {'Quadruples': [1, 2, 3]},
+            {'Quadruples': [1, 2, '?']},
+            {'Quadruples': [1, 2, 2]},
+            {'Quadruples': [1, 2, 3, '?']},
+            {'Quadruples': [1, 2, 3, 4]},
 
         ]
         self.invalid_data = [
-            {'questions': [1, 2, 3, 4, 5]},
-            {'quadruples': [1, 2, 3, 10, '?', 5]},
-            {'quadruples': []},
-            {'quadruples': [0]},
-            {'quadruples': [1, 2, 3, 4, 5]},
+            {'xxx': [1, 2, 3, 4, 5]},
+            {'Quadruples': [1, 2, 3, 10, '?', 5]},
+            {'Quadruples': []},
+            {'Quadruples': [0]},
+            {'Quadruples': [1, 2, 3, 4, 5]},
         ]
         self.validator = QuadrupleValidator()
         self.representation = 'QuadrupleValidator()'

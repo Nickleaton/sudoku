@@ -7,7 +7,7 @@ class IndexValidator(Validator):
     """Validator for the 'Index' key in input data."""
 
     @staticmethod
-    def validate(board: Board, input_data: dict[str, int | str]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate the 'Index' key in the input data.
 
         Args:
@@ -17,21 +17,12 @@ class IndexValidator(Validator):
         Returns:
             list[str]: A list of error messages, or an empty list if the input is valid.
         """
-        errors: list[str] = []
-
-        # Ensure the input contains only the 'Index' key
-        if len(input_data) != 1 or 'Index' not in input_data:
-            errors.append(f"Invalid input data: {input_data!r}. Expected a single 'Index' key.")
+        errors: list[str] = Validator.pre_validate(input_data, {'Index': int})
+        if errors:
             return errors
-
-        # Validate the 'Index' number
-        index = input_data['Index']
-        try:
-            index = int(index)
-        except (ValueError, TypeError):
-            errors.append(f"'Index' must be an integer, got {type(index).__name__}: {index!r}.")
-        else:
-            if index < 0:
-                errors.append(f"'Index' must be a non-negative integer, got {index!r}.")
-
-        return errors
+        index: str = dict(input_data)['Index']
+        if not isinstance(index, int):
+            return [f'Index must be a int {int!r}.']
+        if index < 0:
+            return [f'Index must be a non-negative int {index!r}.']
+        return []

@@ -31,47 +31,33 @@ class KnownValidator(Validator):
             list: A list of error messages. An empty list indicates the row is valid.
         """
         errors: list = []
-
-        # Check if the row length matches the board's column count
-        if not isinstance(row, str):
-            errors.append(f'Row {row_idx + 1} is not a string')
-            return errors
-
         if len(row) != board.board_columns:
             errors.append(f'Row {row_idx + 1} has {len(row)} columns, but the board has {board.board_columns} columns.')
-
         allowed: str = ''.join(sorted(allowed_characters))
         # Validate each character in the row
         for col_idx, char in enumerate(row):
             if char not in allowed_characters:
                 location: str = f'row {row_idx + 1}, column {col_idx + 1}'
                 errors.append(f'Invalid digit/type {char!r} at {location}. Allowed characters: {allowed}')
-
         return errors
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate the 'Known' section in the YAML line.
 
         Args:
             board (Board): The board instance to validate against.
-            input_data (dict): The YAML line containing the 'Known' key.
+            input_data (dict | list): The YAML line containing the 'Known' key.
 
         Returns:
             list[str]: A list of error messages. An empty list indicates that
             the validation was successful.
         """
-        errors: list[str] = []
-
-        # Check if 'Known' key exists in the line
-        if 'Known' not in input_data:
-            errors.append("Missing key 'Known' in the line.")
+        errors: list[str] = Validator.pre_validate(input_data, required_keys={'Known': list})
+        if errors:
             return errors
 
-        known_rows = input_data['Known']
-        if not isinstance(known_rows, list):
-            errors.append("'Known' must be a list of lists.")
-            return errors
+        known_rows: list[str] = dict(input_data)['Known']
 
         allowed_characters: set[str] = {'.'}
         allowed_characters |= {str(digit) for digit in board.digit_range}
@@ -80,10 +66,6 @@ class KnownValidator(Validator):
         # Check the number of rows matches the board
         if len(known_rows) != board.board_rows:
             errors.append(f'Number of rows {len(known_rows)} does not match the row count ({board.board_rows}).')
-
-        # Validate each row and its columns
         for row_idx, row in enumerate(known_rows):
-            # Check the number of columns matches the board
             errors.extend(KnownValidator.validate_row(allowed_characters, row, row_idx, board))
-
         return errors

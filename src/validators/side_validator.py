@@ -9,7 +9,7 @@ class SideValidator(Validator):
     """Validator for a Side."""
 
     @staticmethod
-    def validate(board: Board, input_data: dict[str, str]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate a Side.
 
         Args:
@@ -20,18 +20,12 @@ class SideValidator(Validator):
             list[str]: A list of error messages, or an empty list if the line is valid.
                 Each string in the list corresponds to a specific validation failure.
         """
-        errors: list[str] = []
-
-        if len(input_data) != 1:
-            errors.append(f'To many items {input_data!r}.')
+        errors: list[str] = Validator.pre_validate(input_data, {'Side': str})
+        if errors:
             return errors
-        if 'Side' not in input_data:
-            errors.append(f'Missing key: {input_data!r}.')
-            return errors
-        if not isinstance(input_data['Side'], str):
-            errors.append(f'Value must be a string {input_data!r}.')
-            return errors
-        if input_data['Side'] not in {member.value for member in Side}:
-            errors.append(f'Value must be a Side {input_data!r}.')
-            return errors
+        side: str = dict(input_data)['Side']
+        if not isinstance(side, str):
+            return [f'Value must be a string {input_data!r}.']
+        if side not in {member.value for member in Side}:
+            return [f'Value must be a Side {side!r}.']
         return []

@@ -12,7 +12,7 @@ class ArrowsValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that all cells in the sequence are valid, connected, and unique.
 
         Args:
@@ -22,7 +22,9 @@ class ArrowsValidator(Validator):
         Returns:
             list[str]: A list of error messages. An empty list if validation passes, otherwise a list of errors.
         """
-        errors: list[str] = []
+        errors: list[str] = Validator.pre_validate(input_data)
+        if errors:
+            return errors
         for arrow in next(iter(input_data.values())):
             errors.extend(ArrowValidator.validate(board, arrow))
         return errors

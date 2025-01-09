@@ -14,34 +14,28 @@ class ValueValidator(Validator):
     """
 
     @staticmethod
-    def validate(board: Board, input_data: dict[str, object]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that the 'Value' in the input data is a positive integer.
 
         Args:
             board (Board): The board to validate against (not used in this validator).
-            input_data (dict[str, object]): A dictionary containing the key 'Value' to validate.
+            input_data (dict | list): A dictionary containing the key 'Value' to validate.
 
         Returns:
             list[str]: A list of error messages. If the 'Value' is missing, not an integer,
             or negative, appropriate error messages are returned. Otherwise, an empty list.
         """
-        errors: list[str] = []
-
+        if not input_data:
+            return ["Cell cannot be empty."]
+        if not isinstance(input_data, dict):
+            return ["Value must be in a dictionary."]
         if 'Value' not in input_data:
-            errors.append("Missing key: 'Value'.")
-            return errors
-
+            return ["Missing key: 'Value'."]
         if len(input_data) != 1:
-            errors.append(f"Too many items in input data: {input_data!r}. Expected only 'Value'.")
-            return errors
-
+            return [f"Too many items in input data: {input_data!r}. Expected only 'Value'."]
         data_value = input_data['Value']
-
         if not isinstance(data_value, int):
-            errors.append(f"'Value' must be an integer, got {type(data_value).__name__}: {data_value!r}.")
-            return errors
-
+            return [f"'Value' must be an integer, got {type(data_value).__name__}: {data_value!r}."]
         if data_value < 0:
-            errors.append(f"'Value' must be a positive integer, got {data_value!r}.")
-
-        return errors
+            return [f"'Value' must be a positive integer, got {data_value!r}."]
+        return []

@@ -71,21 +71,24 @@ class LineValidator(Validator):
         for index in range(len(line) - 1):
             start = line[index]
             finish = line[index + 1]
-            errors.extend(CellValidator.validate_connected(start, finish))
+            errors.extend(CellValidator.validate_kings_move(start, finish))
         return errors
 
     @staticmethod
-    def validate(board: Board, line: list[dict[str, int]]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate that all cells in the sequence are valid, connected, and unique.
 
         Args:
             board (Board): The board on which the validation is performed.
-            line (dict[str, int]): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
+            input_data (dict | list): A list of dictionaries, each representing a cell with 'Row' and 'Column' keys.
 
         Returns:
             list[str]: A list of error messages. An empty list if validation passes, otherwise a list of errors.
         """
-        errors: list[str] = []
+        errors: list[str] = Validator.pre_validate(input_data, required_keys=None)
+        if errors:
+            return errors
+        line: list[dict[str, int]] = list(input_data)
         errors.extend(LineValidator.validate_cells(board, line))
         errors.extend(LineValidator.validate_connections(line))
         errors.extend(LineValidator.validate_unique(line))

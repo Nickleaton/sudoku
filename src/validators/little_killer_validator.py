@@ -10,12 +10,8 @@ from src.validators.value_validator import ValueValidator
 class LittleKillerValidator(Validator):
     """Validator for the Little Killer Sudoku constraints."""
 
-    side_validator = SideValidator()
-    cyclic_validator = CyclicValidator()
-    value_validator = ValueValidator()
-
     @staticmethod
-    def validate(board: Board, input_data: dict[str, str]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list:
         """Validate the Little Killer constraint line.
 
         Args:
@@ -26,25 +22,17 @@ class LittleKillerValidator(Validator):
             list[str]: A list of error messages, or an empty list if the line is valid.
                 Each string in the list corresponds to a specific validation failure.
         """
-        required_keys = {'Side', 'Cyclic', 'Value', 'Index'}
-        missing_keys = required_keys - input_data.keys()
-
-        if missing_keys:
-            return [f"Missing keys: {', '.join(missing_keys)} in {input_data!r}."]
-
-        errors: list[str] = []
-        errors.extend(LittleKillerValidator.side_validator.validate(board, {'Side': input_data['Side']}))
-        errors.extend(LittleKillerValidator.cyclic_validator.validate(board, {'Cyclic': input_data['Cyclic']}))
-        errors.extend(LittleKillerValidator.value_validator.validate(board, {'Value': input_data['Value']}))
-
-        try:
-            index = int(input_data['Index'])
-        except ValueError:
-            errors.append(f"Index must be an integer: {input_data['Index']}")
+        required_keys: dict[str, type | tuple[type, ...]] = {'Side': str, 'Cyclic': str, 'Value': int, 'Index': int}
+        errors: list[str] = Validator.pre_validate(input_data, required_keys)
+        if errors:
             return errors
-
-        max_index = board.board_rows + 1 if input_data['Side'] in {'T', 'B'} else board.board_columns + 1
+        values = dict(input_data)
+        errors.extend(SideValidator.validate(board, {'Side': values['Side']}))
+        errors.extend(CyclicValidator.validate(board, {'Cyclic': values['Cyclic']}))
+        errors.extend(ValueValidator.validate(board, {'Value': values['Value']}))
+        index: int = values['Index']
+        side: str = values['Side']
+        max_index = board.board_rows + 1 if side in {'T', 'B'} else board.board_columns + 1
         if index < 0 or index > max_index:
-            errors.append(f"Invalid index: {index}. Must be between 0 and {max_index} for side {input_data['Side']}.")
-
+            errors.append(f"Invalid index: {index}. Must be between 0 and {max_index} for side {side!r}.")
         return errors

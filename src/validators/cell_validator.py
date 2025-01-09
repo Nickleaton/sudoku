@@ -15,27 +15,6 @@ class CellValidator(Validator):
     """
 
     @staticmethod
-    def has_valid_keys(input_data: dict[str, int]) -> list[str]:
-        """Validate that the 'Row' and 'Column' keys are present and have integer values.
-
-        Args:
-            input_data (dict[str, int]): The dictionary representing a cell, which must contain 'Row' and 'Column' keys.
-
-        Returns:
-            list[str]: A list of error messages. An empty list if validation passes.
-        """
-        errors: list[str] = []
-        if ROW not in input_data:
-            errors.append(f'Cell is missing {ROW!r}.')
-        elif not isinstance(input_data[ROW], int):
-            errors.append(f'Cell must have integer {ROW!r}.')
-        if COL not in input_data:
-            errors.append(f'Cell is missing {COL!r}.')
-        elif not isinstance(input_data[COL], int):
-            errors.append(f'Cell must have integer {COL!r}.')
-        return errors
-
-    @staticmethod
     def validate_range(board: Board, input_data: dict[str, int]) -> list[str]:
         """Validate that the cell is within the valid range on the board.
 
@@ -46,14 +25,9 @@ class CellValidator(Validator):
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
         """
-        errors: list[str] = []
-        row, col = input_data[ROW], input_data[COL]
-        if not isinstance(row, int) or not isinstance(col, int):
-            errors.append(f'Cell must have integer {ROW!r} and {COL!r}.')
-            return errors
-        if not board.is_valid(row, col):
-            errors.append(f'Invalid cell: ({row}, {col})')
-        return errors
+        if not board.is_valid(input_data[ROW], input_data[COL]):
+            return [f'Invalid cell: ({input_data[ROW]}, {input_data[COL]})']
+        return []
 
     @staticmethod
     def validate_kings_move(cell1: dict[str, int], cell2: dict[str, int]) -> list[str]:
@@ -74,26 +48,6 @@ class CellValidator(Validator):
         return []
 
     @staticmethod
-    def validate_connected(cell1: dict[str, int], cell2: dict[str, int]) -> list[str]:
-        """Validate that two cells are connected by a king's move.
-
-        Args:
-            cell1 (dict[str, int]): The first cell dictionary with 'Row' and 'Column' keys.
-            cell2 (dict[str, int]): The second cell dictionary with 'Row' and 'Column' keys.
-
-        Returns:
-            list[str]: A list of error messages. An empty list if the cells are connected by a king's move,
-                       otherwise a list containing error messages.
-        """
-        errors: list[str] = []
-        errors.extend(CellValidator.has_valid_keys(cell1))
-        errors.extend(CellValidator.has_valid_keys(cell2))
-        if errors:
-            return errors
-        errors.extend(CellValidator.validate_kings_move(cell1, cell2))
-        return errors
-
-    @staticmethod
     def validate_horizontal_connectivity(cell1: dict[str, int], cell2: dict[str, int]) -> list[str]:
         """Validate if two cells are horizontally connected (same row, adjacent columns).
 
@@ -112,7 +66,7 @@ class CellValidator(Validator):
         return errors
 
     @staticmethod
-    def validate(board: Board, input_data: dict[str, int]) -> list[str]:
+    def validate(board: Board, input_data: dict | list) -> list[str]:
         """Run all validations on a single cell.
 
         Args:
@@ -122,8 +76,7 @@ class CellValidator(Validator):
         Returns:
             list[str]: A list of error messages. An empty list if validation passes.
         """
-        errors: list[str] = []
-        errors.extend(CellValidator.has_valid_keys(input_data))
+        errors: list[str] = Validator.pre_validate(input_data, {ROW: int, COL: int})
         if errors:
             return errors
         errors.extend(CellValidator.validate_range(board, input_data))

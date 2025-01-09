@@ -15,25 +15,25 @@ class TestLittleKillerValidator(TestValidator):
                 'Side': 'T',
                 'Index': 2,
                 'Cyclic': 'C',
-                'Value': 15,
+                'Value': 22,
             },
             {
                 'Side': 'R',
                 'Index': 2,
                 'Cyclic': 'C',
-                'Value': 15,
+                'Value': 1,
             },
             {
                 'Side': 'L',
                 'Index': 2,
                 'Cyclic': 'C',
-                'Value': 15,
+                'Value': 2,
             },
             {
                 'Side': 'B',
                 'Index': 2,
                 'Cyclic': 'C',
-                'Value': 15,
+                'Value': 3,
             },
             {
                 'Side': 'T',
@@ -44,7 +44,7 @@ class TestLittleKillerValidator(TestValidator):
         ]
 
         # Invalid input line for missing required keys
-        self.invalid_data = [
+        self.invalid_datax = [
             {
                 'Index': 1,
                 'Cyclic': 'C',
@@ -99,13 +99,13 @@ class TestLittleKillerValidator(TestValidator):
                 'Side': 'T',
                 'Index': 9,
                 'Cyclic': 'C',
-                'Value': 15,
+                'Value': 3,
             },
             {
                 'Side': 'L',
                 'Index': 9,
                 'Cyclic': 'C',
-                'Value': 15,
+                'Value': 2,
             },
         ]
         self.representation = 'LittleKillerValidator()'
