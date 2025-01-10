@@ -33,6 +33,19 @@ class Command:
     inputs, outputs, and line dynamically.
     """
 
+    # Class Variables
+    classes: dict[str, Type['Command']] = {}
+
+    def __init_subclass__(cls, **kwargs):
+        """Register the subclass to the `Item` class hierarchy.
+
+        Args:
+            kwargs: Any additional keyword arguments passed to the method (not used).
+        """
+        super().__init_subclass__(**kwargs)
+        Command.classes[cls.__name__] = cls
+        Command.classes['Command'] = Item
+
     def __init__(self) -> None:
         """Initialize a Command instance."""
         self.parameters_list: list[ParameterValueType] = []
@@ -163,15 +176,15 @@ class Command:
         """
         logging.info(f'{self.__class__.__name__} executing command.')
 
-        try:
-            self.validate_and_setup(problem)
-        except Exception as validation_exp:
-            logging.error(
-                f'Error validation and setup in {self.__class__.__name__}: '
-                f'{type(validation_exp).__name__} - {validation_exp}',
-                exc_info=True,
-            )
-            raise
+        # try:
+        #     self.validate_and_setup(problem)
+        # except Exception as validation_exp:
+        #     logging.error(
+        #         f'Error validation and setup in {self.__class__.__name__}: '
+        #         f'{type(validation_exp).__name__} - {validation_exp}',
+        #         exc_info=True,
+        #     )
+        #     raise
 
         try:
             self.work(problem)
@@ -226,11 +239,12 @@ class Command:
         Returns:
             str: String representation of the object.
         """
-        names: list[str] = []
-        for parameter_item in self.parameters_list:
-            names.append(self.get_string_representation(parameter_item.key))
-            names.append(self.get_string_representation(parameter_item.parameter_value))
-        names.extend([self.get_string_representation(key_type.key) for key_type in self.input_types])
-        names.extend([self.get_string_representation(key_type.key) for key_type in self.output_types])
+        # names: list[str] = []
+        # for parameter_item in self.parameters_list:
+        #     names.append(self.get_string_representation(parameter_item.key))
+        #     names.append(self.get_string_representation(parameter_item.parameter_value))
+        # names.extend([self.get_string_representation(key_type.key) for key_type in self.input_types])
+        # names.extend([self.get_string_representation(key_type.key) for key_type in self.output_types])
 
-        return f"{self.__class__.__name__}({', '.join(names)})"
+        # return f"{self.__class__.__name__}({', '.join(names)})"
+        return f"{self.__class__.__name__}()"
