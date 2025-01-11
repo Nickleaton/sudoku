@@ -3,6 +3,7 @@
 
 
     <property name="generate.schema" location="scripts/generate_config_schema.py"/>
+    <property name="generate.command.pydot" location="scripts/generate_command_pydot.py"/>
     <property name="schema" value="src/schema/config_schema.py"/>
 
 
@@ -252,6 +253,14 @@
             <env key="PYTHONPATH" value="${basedir}"/>
             <arg value="${generate.schema}"/>
             <arg value="${schema}"/>
+        </exec>
+    </target>
+
+    <target name="generate_command_pydot">
+        <exec executable="python" failonerror="true">
+            <env key="PYTHONPATH" value="${basedir}"/>
+            <arg value="${generate.command.pydot}"/>
+            <arg value="${basedir}/output/commands"/>
         </exec>
     </target>
 
