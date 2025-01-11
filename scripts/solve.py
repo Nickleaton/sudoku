@@ -3,6 +3,9 @@ import itertools
 import logging.config
 from pathlib import Path
 
+from src.commands.command import Command
+from src.commands.problem import Problem
+from src.commands.validate_config_command import ValidateConfigCommand
 from src.utils.config import Config
 
 config: Config = Config()
@@ -10,44 +13,45 @@ logging.config.dictConfig(Config().get_dict('logging'))
 logger = logging.getLogger("solve")
 
 
-def process_schema(input_file: Path, output_path: Path) -> None:
+def process_schema(problem: Problem) -> None:
     """Processes the schema command.
 
     Args:
-        input_file (Path): The input file path.
-        output_path (Path): The output directory path.
+        problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing schema for file: {input_file} with output: {output_path}")
+    logger.info(f"Processing schema for file: {problem.problem_file_name}")
+    command: Command = ValidateConfigCommand()
+    command.execute(problem=problem)
+    if problem.validation != "OK":
+        raise ValueError(problem.validation)
+    logger.info(f"Schema validation OK for file: {problem.problem_file_name}")
 
 
-def process_solve(input_file: Path, output_path: Path) -> None:
+def process_solve(problem: Problem) -> None:
     """Processes the solve command.
 
     Args:
-        input_file (Path): The input file path.
-        output_path (Path): The output directory path.
+        problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing solve for file: {input_file} with output: {output_path}")
+    logger.info(f"Processing solve for file: {problem.problem_file_name} with output: {problem.output_directory}")
 
 
-def process_validate(input_file: Path, output_path: Path) -> None:
+def process_validate(problem: Problem) -> None:
     """Processes the validate command.
 
     Args:
-        input_file (Path): The input file path.
-        output_path (Path): The output directory path.
+        problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing validate for file: {input_file} with output: {output_path}")
+    logger.info(f"Processing validate for file: {problem.problem_file_name} with output: {problem.output_directory}")
 
 
-def process_problem(input_file: Path, output_path: Path) -> None:
+def process_problem(problem: Problem) -> None:
     """Processes the problem command.
 
     Args:
-        input_file (Path): The input file path.
-        output_path (Path): The output directory path.
+        problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing problem for file: {input_file} with output: {output_path}")
+    logger.info(f"Processing problem for file: {problem.problem_file_name} with output: {problem.output_directory}")
 
 
 def process_command(command: str, input_file: Path, output_path: Path) -> None:
@@ -58,15 +62,16 @@ def process_command(command: str, input_file: Path, output_path: Path) -> None:
         input_file (Path): The input file path.
         output_path (Path): The output directory path.
     """
+    problem: Problem = Problem(input_file, output_path)
     match command:
         case 'schema':
-            process_schema(input_file, output_path)
+            process_schema(problem)
         case 'solve':
-            process_solve(input_file, output_path)
+            process_solve(problem)
         case 'validate':
-            process_validate(input_file, output_path)
+            process_validate(problem)
         case 'problem':
-            process_problem(input_file, output_path)
+            process_problem(problem)
         case _:
             logger.error(f"Unknown command: {command}")
 

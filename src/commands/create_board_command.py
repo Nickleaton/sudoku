@@ -1,10 +1,8 @@
 """CreateBoardCommand."""
-import logging
-
-import pydotted
 
 from src.board.board import Board
-from src.commands.key_type import KeyType
+from src.commands.command import CommandException
+from src.commands.create_config_command import CreateConfigCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -12,22 +10,11 @@ from src.commands.simple_command import SimpleCommand
 class CreateBoardCommand(SimpleCommand):
     """Command to create start board from configuration line."""
 
-    def __init__(self, source: str = 'config', target: str = 'board'):
-        """Initialize start CreateBoardCommand instance.
-
-        Args:
-            source (str): Attribute in the problem where the configuration is stored.
-            target (str): Attribute name in the problem where the board will be stored.
-        """
+    def __init__(self):
+        """Initialize start CreateBoardCommand instance."""
         super().__init__()
-        self.source = source
-        self.target = target
-        self.input_types: list[KeyType] = [
-            KeyType(source, pydotted.pydot),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(target, Board),
-        ]
+        self.add_preconditions([CreateConfigCommand])
+        self.target = 'board'
 
     def work(self, problem: Problem) -> None:
         """Create the board and store it in the problem.
@@ -37,7 +24,11 @@ class CreateBoardCommand(SimpleCommand):
 
         Args:
             problem (Problem): Problem instance to create the board in.
+
+        Raises:
+            CommandException: If the config is not created before creating the board.
         """
         super().work(problem)
-        logging.info(f'Creating {self.target}')
-        problem[self.target] = Board.create('Board', problem[self.source])
+        if problem.config is None:
+            raise CommandException(f'Config must be set before {self.name}.')
+        problem.board = Board.create('Board', problem.config)

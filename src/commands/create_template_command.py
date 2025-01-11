@@ -1,32 +1,25 @@
-"""CreateTemplateCommand."""
+"""LoadTemplateCommand."""
 
-from jinja2 import Template
+from abc import ABC
 
-from src.commands.key_type import KeyType
+from jinja2 import Environment, FileSystemLoader
+
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.utils.config import Config
+
+config = Config()
+
+env = Environment(loader=FileSystemLoader(config.temporary_directory), autoescape=True)
 
 
-class CreateTemplateCommand(SimpleCommand):
+class CreateTemplateCommand(SimpleCommand, ABC):
     """Create Template into the problem."""
 
-    def __init__(self, source: str, target: str):
-        """Create the command.
-
-        Args:
-            source (str): Name of the Jinja2 template string to use for generating the HTML.
-            target (str): Name of the field in the problem that will contain the template
-        """
+    def __init__(self):
+        """Create the command."""
         super().__init__()
-        self.source: str = source
-        self.target: str = target
-
-        self.input_types: list[KeyType] = [
-            KeyType(source, str),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(target, Template),
-        ]
+        self.template_name: str | None = None
 
     def work(self, problem: Problem) -> None:
         """Produce the Jinja2 template.
@@ -37,4 +30,24 @@ class CreateTemplateCommand(SimpleCommand):
             problem (Problem): The problem to render.
         """
         super().work(problem)
-        problem[self.target] = Template(problem[self.source])
+        setattr(problem, self.target, env.get_template(self.template_name))
+
+
+class CreateIndexTemplate(CreateTemplateCommand):
+    """Create Index Template into the problem."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.target = 'index_template'
+        self.template_name = 'index.html'
+
+
+class CreateProblemTemplate(CreateTemplateCommand):
+    """Create Problem Template into the problem."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.target = 'index_template'
+        self.template_name = 'problem.html'

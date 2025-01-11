@@ -2,7 +2,7 @@
 
 from strictyaml import YAMLValidationError, dirty_load
 
-from src.commands.key_type import KeyType
+from src.commands.create_config_command import CreateConfigCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.schema.config_schema import problem_schema
@@ -11,22 +11,11 @@ from src.schema.config_schema import problem_schema
 class ValidateConfigCommand(SimpleCommand):
     """Command to validate start configuration file_path against start schema."""
 
-    def __init__(self, source: str = 'config_text', target: str = 'config_validation'):
-        """Initialize the ValidateConfigCommand.
-
-        Args:
-            source (str): The name of the string in the problem to validate. Defaults to 'config'.
-            target (str): The target name to store validation results in the problem.
-        """
+    def __init__(self) -> None:
+        """Initialize start ValidateConfigCommand instance."""
         super().__init__()
-        self.source: str = source
-        self.target: str = target
-        self.input_types: list[KeyType] = [
-            KeyType(source, str),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(self.target, str),
-        ]
+        self.add_preconditions([CreateConfigCommand])
+        self.target = 'validation'
 
     def work(self, problem: Problem) -> None:
         """Execute the validation of the configuration file_path.
@@ -40,8 +29,8 @@ class ValidateConfigCommand(SimpleCommand):
         """
         super().work(problem)
         try:
-            dirty_load(problem[self.source], problem_schema)
+            dirty_load(problem.raw_config, problem_schema)
         except YAMLValidationError as exp:
-            problem[self.target] = str(exp)
+            problem.validation = str(exp)
             return
-        problem[self.target] = 'Passed validation'
+        problem.validation = 'OK'

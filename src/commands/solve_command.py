@@ -1,9 +1,7 @@
 """Base for different solvers."""
-from src.commands.key_type import KeyType
+from src.commands.create_linear_program_command import CreateLinearProgramCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.solvers.answer import Answer
-from src.solvers.solver import Solver
 
 
 class SolveCommand(SimpleCommand):
@@ -17,14 +15,8 @@ class SolveCommand(SimpleCommand):
             target (str): The field to store the solution in.
         """
         super().__init__()
-        self.solver = solver
-        self.target = target
-        self.input_types: list[KeyType] = [
-            KeyType(self.solver, Solver),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(self.target, Answer),
-        ]
+        self.add_preconditions([CreateLinearProgramCommand])
+        self.target = 'answer'
 
     def work(self, problem: Problem) -> None:
         """Solve the puzzle.
@@ -33,5 +25,6 @@ class SolveCommand(SimpleCommand):
             problem (Problem): The problem to solve.
         """
         super().work(problem)
-        problem[self.solver].solve()
-        problem[self.target] = problem[self.solver].answer
+        if problem.solver is not None:
+            problem.solver.solve()
+            problem.answer = problem.solver.answer

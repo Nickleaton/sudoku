@@ -1,15 +1,17 @@
 """SVGCommand."""
-from xml.dom.minidom import Document
+from abc import abstractmethod
 
 from defusedxml.minidom import parseString
 from svgwrite import Drawing
 from svgwrite.container import Style
 
-from src.board.board import Board
-from src.commands.key_type import KeyType
+from src.commands.create_board_command import CreateBoardCommand
+from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.items.item import Item
+from src.items.solution import Solution
+from src.solvers.answer import Answer
 from src.utils.config import Config
 
 config = Config()
@@ -18,39 +20,10 @@ config = Config()
 class SVGCommand(SimpleCommand):
     """Base class for SVG output commands."""
 
-    def __init__(self, board: str = 'board', constraints: str = 'constraints', target: str = 'svg'):
-        """Initialize the SVGCommand.
-
-        Args:
-            board (str): The attribute for the board
-            constraints (str): The attribute for the constraints
-            target (str): The attribute of the problem that contains the root constraint to be drawn.
-        """
+    def __init__(self):
+        """Initialize the SVGCommand."""
         super().__init__()
-        self.board = board
-        self.constraints = constraints
-        self.target = target
-        self.input_types: list[KeyType] = [
-            KeyType(board, Board),
-            KeyType(constraints, Item),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(target, Document),
-        ]
-
-    def select(self, constraint: Item | None) -> bool:
-        """Select whether the given constraint is to be drawn.
-
-        This method should be overridden in subclasses. The default behavior
-        is to draw start Cell, Boxes, Rows, or Columns.
-
-        Args:
-            constraint (Item | None): The constraint to be checked.
-
-        Returns:
-            bool: True if the constraint is to be drawn, False otherwise.
-        """
-        return bool(constraint)
+        self.add_preconditions([CreateBoardCommand, CreateConstraintsCommand])
 
     # pylint: disable=WPS210
     def work(self, problem: Problem) -> None:
@@ -90,4 +63,80 @@ class SVGCommand(SimpleCommand):
         canvas.add(problem.constraints.sorted_glyphs().draw())
 
         # Convert to XML and store in the problem
-        problem[self.target] = parseString(canvas.tostring())
+        setattr(problem, self.target, parseString(canvas.tostring()))
+
+    @abstractmethod
+    def select(self, constraint: Item | None) -> bool:
+        """Select whether the given constraint is to be drawn.
+
+        This method should be overridden in subclasses. The default behavior
+        is to draw start Cell, Boxes, Rows, or Columns.
+
+        Args:
+            constraint (Item | None): The constraint to be checked.
+
+        Returns:
+            bool: True if the constraint is to be drawn, False otherwise.
+        """
+
+
+class SVGPencilMarkCommand(SVGCommand):
+    """Create an SVG drawing of the problem."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.target = 'svg_pencil_mark'
+
+    def select(self, constraint: Item | None) -> bool:
+        """Selector to determine if the constraint should be displayed.
+
+        This method is start placeholder for future implementation.
+
+        Args:
+            constraint (Item | None): The constraint to check if it's included in the output.
+
+        Returns:
+            bool: True if the constraint is to be displayed, False otherwise.
+        """
+        return not isinstance(constraint, Solution)
+
+
+class SVGProblemCommand(SVGCommand):
+    """Create an SVG drawing of the problem."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.target = 'svg_problem'
+
+    def select(self, constraint: Item | None) -> bool:
+        """Selector to determine if the constraint should be displayed.
+
+        Args:
+            constraint (Item | None): The constraint to check if it's included in the output.
+
+        Returns:
+            bool: True if the constraint is to be displayed, False otherwise.
+        """
+        return not isinstance(constraint, Solution) and not isinstance(constraint, Answer)
+
+
+class SVGSolutionCommand(SVGCommand):
+    """Create an SVG drawing of the solution."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.target = 'svg_solution'
+
+    def select(self, constraint: Item | None) -> bool:
+        """Selector to determine if the constraint should be displayed.
+
+        Args:
+            constraint (Item | None): The constraint to check if it's included in the output.
+
+        Returns:
+            bool: True if the constraint is to be displayed, False otherwise.
+        """
+        return isinstance(constraint, Solution)

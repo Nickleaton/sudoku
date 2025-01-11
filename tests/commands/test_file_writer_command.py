@@ -14,7 +14,7 @@ class TestFileWriterCommand(TestSimpleCommand):
         super().setUp()
         self.problem.file_data = 'Hello World'
         self.command = FileWriterCommand('file_data', Path('output.txt'))
-        self.representation = f'FileWriterCommand({self.command.source!r}, {self.command.target!r})'
+        self.representation = 'FileWriterCommand()'
 
     def tearDown(self):
         """Clean up the test environment."""

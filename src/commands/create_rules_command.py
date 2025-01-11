@@ -1,29 +1,20 @@
 """CreateRulesCommand."""
-from src.commands.key_type import KeyType
+
+from src.commands.command import CommandException
+from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.items.item import Item
+from src.utils.rule import Rule
 
 
 class CreateRulesCommand(SimpleCommand):
     """Command for creating start list of rules in the problem instance."""
 
-    def __init__(self, constraints: str = 'constraints', target: str = 'rules'):
-        """Initialize start CreateRulesCommand instance.
-
-        Args:
-            constraints (str): The attribute in the problem containing constraints used to generate rules.
-            target (str): The attribute name in the problem where the generated rules will be stored.
-        """
+    def __init__(self):
+        """Initialize start CreateRulesCommand instance."""
         super().__init__()
-        self.constraints: str = constraints
-        self.target: str = target
-        self.input_types: list[KeyType] = [
-            KeyType(self.constraints, Item),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(self.target, list),
-        ]
+        self.add_preconditions([CreateConstraintsCommand])
+        self.target = 'rules'
 
     def work(self, problem: Problem) -> None:
         """Create start list of rules in the problem instance.
@@ -34,9 +25,15 @@ class CreateRulesCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem instance where the rules will be created.
+
+        Raises:
+            CommandException: If the board is not created.
         """
         super().work(problem)
-        problem[self.target] = [
-            {'name': rule.name, 'text': rule.text}
-            for rule in problem[self.constraints].sorted_unique_rules
+        if problem.constraints is None:
+            raise CommandException(f'Constrains must be created before {self.name}.')
+
+        problem.rules = [
+            Rule(name=rule.name, text=rule.text)  # Ensure compatibility with the expected Rule type
+            for rule in problem.constraints.sorted_unique_rules
         ]

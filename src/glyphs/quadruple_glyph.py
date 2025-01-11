@@ -64,7 +64,7 @@ class QuadrupleGlyph(Glyph):
         Returns:
             int: The priority of the glyph, set to 20. (see config)
         """
-        return config.graphics.quadruple_priority
+        return int(config.graphics.quadruple_priority)
 
     def __repr__(self) -> str:
         """Return string representation of the QuadrupleGlyph.

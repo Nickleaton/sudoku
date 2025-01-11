@@ -40,14 +40,14 @@ class CellPairEqualValueParser(Parser):
         rhs: str = stripped_text.split('=')[1]
         cell1_str: str = lhs.split('-')[0]
         cell2_str: str = lhs.split('-')[1]
-        r1: str = cell1_str[0]
-        c1: str = cell1_str[1]
-        r2: str = cell2_str[0]
-        c2: str = cell2_str[1]
-        self.parsed_data = [int(r1), int(c1), int(r2), int(c2), int(rhs)]
+        row1: str = cell1_str[0]
+        co1: str = cell1_str[1]
+        row2: str = cell2_str[0]
+        co2: str = cell2_str[1]
+        self.parsed_data = [int(row1), int(co1), int(row2), int(co2), int(rhs)]
         self.answer = {
-            'cell1': {'row': int(r1), 'column': int(c1)},
-            'cell2': {'row': int(r2), 'column': int(c2)},
+            'cell1': {'row': int(row1), 'column': int(co1)},
+            'cell2': {'row': int(row2), 'column': int(co2)},
             'number': int(rhs),
         }
 

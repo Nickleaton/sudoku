@@ -1,12 +1,13 @@
 """ExtractAnswerCommand."""
-from src.commands.command import Command, CommandException
-from src.commands.key_type import KeyType
+from src.commands.command import CommandException
 from src.commands.problem import Problem
+from src.commands.simple_command import SimpleCommand
+from src.commands.solve_command import SolveCommand
 from src.solvers.answer import Answer
 from src.solvers.pulp_solver import Status
 
 
-class ExtractAnswerCommand(Command):
+class ExtractAnswerCommand(SimpleCommand):
     """Command for extracting the line from the solver's results."""
 
     def __init__(self, solver: str = 'solver', target: str = 'answer'):
@@ -17,15 +18,8 @@ class ExtractAnswerCommand(Command):
             target (str): The attribute name in the problem where the line will be stored.
         """
         super().__init__()
-        self.solver = solver
-        self.target = target
-        self.inputs: list[KeyType] = [
-            KeyType(self.solver, str),
-        ]
-
-        self.outputs: list[KeyType] = [
-            KeyType(self.target, Answer),
-        ]
+        self.add_preconditions([SolveCommand])
+        self.target = 'answer'
 
     def work(self, problem: Problem) -> None:
         """Extract the line from the solver's results and store it in the problem.
@@ -47,9 +41,9 @@ class ExtractAnswerCommand(Command):
             return
 
         board = solver.board
-        problem[self.target] = Answer(board)
+        problem.answer = Answer(board)
 
         for row in board.row_range:
             for column in board.column_range:
                 solver_choice = solver.variables.choices[row][column]
-                problem[self.target][row, column] = int(solver_choice.varValue)
+                problem.answer[row, column] = int(solver_choice.varValue)

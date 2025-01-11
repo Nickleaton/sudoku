@@ -1,10 +1,10 @@
 """ExtractLogCommand."""
-from src.commands.command import Command
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
+from src.commands.simple_command import SimpleCommand
 
 
-class ExtractLogCommand(Command):
+class ExtractLogCommand(SimpleCommand):
     """Command for extracting the log from the solver's results."""
 
     def __init__(self, solver: str = 'solver', target: str = 'log'):

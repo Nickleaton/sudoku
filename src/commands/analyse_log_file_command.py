@@ -5,12 +5,13 @@ from tempfile import NamedTemporaryFile
 
 import orloge
 
-from src.commands.command import Command, CommandException
+from src.commands.command import CommandException
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
+from src.commands.simple_command import SimpleCommand
 
 
-class AnalyseLogFileCommand(Command):
+class AnalyseLogFileCommand(SimpleCommand):
     """Command to analyze the solver's log file_path and extract relevant information."""
 
     def __init__(self, log: str = 'log', target: str = 'log_analysis'):

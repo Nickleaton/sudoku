@@ -1,5 +1,5 @@
 """BookkeepingCommand."""
-from src.commands.key_type import KeyType
+from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -7,22 +7,10 @@ from src.commands.simple_command import SimpleCommand
 class BookkeepingCommand(SimpleCommand):
     """Command to handle bookkeeping of value_list for cells."""
 
-    def __init__(self, constraints: str = 'constraints', target: str = 'bookkeeping_unique'):
-        """Initialize the BookkeepingCommand.
-
-        Args:
-            constraints (str): The source attribute for the constraints.
-            target (str): The name of the attribute to store if the bookkeeping is unique.
-        """
+    def __init__(self):
+        """Initialize the BookkeepingCommand."""
         super().__init__()
-        self.constraints: str = constraints
-        self.target: str = target
-        self.inputs: list[KeyType] = [
-            KeyType(self.constraints, str),
-        ]
-        self.outputs: list[KeyType] = [
-            KeyType(self.target, str),
-        ]
+        self.add_preconditions([CreateConstraintsCommand])
 
     def work(self, problem: Problem) -> None:
         """Execute the bookkeeping operation.
@@ -31,5 +19,5 @@ class BookkeepingCommand(SimpleCommand):
             problem (Problem): The problem on which to perform bookkeeping.
         """
         super().work(problem)
-        problem[self.constraints].bookkeeping()
-        problem[self.target] = problem[self.constraints].bookkeeping_unique()
+        problem.constraints.bookkeeping()
+        problem.bookkeeping_unique = problem.constraints.bookkeeping_unique()

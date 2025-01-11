@@ -72,7 +72,7 @@ class Parser(Regex):
         self.pattern: str = pattern
         self.token: Token | None = None
         self.parsed_data: Any = None
-        self.answer: dict[str, str | list] | list | None = None
+        self.answer: dict[str, Any] | list | None = None
 
     def help(self) -> str:
         """Provide help or description for the parser.

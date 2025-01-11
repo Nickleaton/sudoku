@@ -3,12 +3,13 @@ import unittest
 from pathlib import Path
 from typing import Optional
 
+from src.commands.load_config_command import CreateConfigCommand
+
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.create_linear_program_command import CreateLinearProgramCommand
 from src.commands.create_rules_command import CreateRulesCommand
 from src.commands.create_solver_command import CreateSolverCommand
-from src.commands.load_config_command import LoadConfigCommand
 from src.commands.problem import Problem
 from src.commands.solve_command import SolveCommand
 from src.utils.config import Config
@@ -91,7 +92,7 @@ class AcceptanceTest(unittest.TestCase):
         self.html_file_name.unlink(missing_ok=True)
         problem = Problem()
         print(self.config_file_name)
-        command = LoadConfigCommand(source=self.config_file_name) \
+        command = CreateConfigCommand(source=self.config_file_name) \
                   | CreateBoardCommand() \
                   | CreateConstraintsCommand() \
                   | CreateRulesCommand() \

@@ -1,10 +1,7 @@
 """Base class for all image producing classes."""
 from enum import Enum
-from xml.dom.minidom import Document
 
 from src.commands.command import CommandException
-from src.commands.key_type import KeyType
-from src.commands.parameter_value_type import ParameterValueType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -46,7 +43,7 @@ class ImageFormat(Enum):
 class ImageCommand(SimpleCommand):
     """Command to produce images."""
 
-    def __init__(self, image_format_name: str, image_format: ImageFormat, source: str, target: str) -> None:
+    def __init__(self) -> None:
         """Initialize an ImageCommand.
 
         Args:
@@ -56,19 +53,6 @@ class ImageCommand(SimpleCommand):
             target (str): The name of the problem attribute for storing the generated image.
         """
         super().__init__()
-        self.source: str = source
-        self.target: str = target
-        self.image_format_name: str = image_format_name
-        self.image_format: ImageFormat = image_format
-        self.parameters_list: list[ParameterValueType] = [
-            ParameterValueType(image_format_name, image_format, ImageFormat),
-        ]
-        self.input_types: list[KeyType] = [
-            KeyType(source, Document),
-        ]
-        self.output_types: list[KeyType] = [
-            KeyType(target, str),
-        ]
 
     def work(self, problem: Problem) -> None:
         """Write the image to start file_path.
