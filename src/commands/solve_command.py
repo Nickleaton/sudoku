@@ -1,6 +1,6 @@
 """Base for different solvers."""
-from src.commands.create_linear_program_command import CreateLinearProgramCommand
-from src.commands.problem import Problem
+from src.commands.create_linear_program_command import CreateLinearProgramCommand  # noqa: 1001
+from src.commands.problem import Problem  # noqa: 1001
 from src.commands.simple_command import SimpleCommand
 
 

@@ -125,9 +125,10 @@ class MagicSquare(Region):
         Returns:
             tuple[Coord, Coord]: The center and corner coordinates for the MagicSquare.
         """
-        center, corner = yaml['MagicSquare'].split(',')
-        center = Coord(int(center[0]), int(center[1]))
-        corner = Coord(int(corner[0]), int(corner[1]))
+        row: int = yaml['MagicSquare'] // 10
+        col: int = yaml['MagicSquare'] % 10
+        center: Coord = Coord(row, col)
+        corner: Coord = center + Coord(1, 1)
         return center, corner
 
     @classmethod

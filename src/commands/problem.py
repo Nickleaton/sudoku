@@ -53,6 +53,8 @@ class Problem:
         self.svg_pencil_mark: Document | None = None
         self.answer: Answer | None = None
         self.validation: str | None = None
+        self.index_html: str | None = None
+        self.problem_html: str | None = None
 
     def __repr__(self) -> str:
         """Return a detailed string representation of the problem.

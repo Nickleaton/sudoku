@@ -5,10 +5,12 @@ from defusedxml.minidom import parseString
 from svgwrite import Drawing
 from svgwrite.container import Style
 
-from src.commands.create_board_command import CreateBoardCommand
 from src.commands.create_constraints_command import CreateConstraintsCommand
+from src.commands.extract_answer_command import ExtractAnswerCommand
+from src.commands.null_command import NullCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.commands.solve_command import SolveCommand
 from src.items.item import Item
 from src.items.solution import Solution
 from src.solvers.answer import Answer
@@ -20,12 +22,6 @@ config = Config()
 class SVGCommand(SimpleCommand):
     """Base class for SVG output commands."""
 
-    def __init__(self):
-        """Initialize the SVGCommand."""
-        super().__init__()
-        self.add_preconditions([CreateBoardCommand, CreateConstraintsCommand])
-
-    # pylint: disable=WPS210
     def work(self, problem: Problem) -> None:
         """Produce the SVG.
 
@@ -86,6 +82,7 @@ class SVGPencilMarkCommand(SVGCommand):
     def __init__(self):
         """Create the command."""
         super().__init__()
+        self.add_preconditions([NullCommand])
         self.target = 'svg_pencil_mark'
 
     def select(self, constraint: Item | None) -> bool:
@@ -108,6 +105,7 @@ class SVGProblemCommand(SVGCommand):
     def __init__(self):
         """Create the command."""
         super().__init__()
+        self.add_preconditions([CreateConstraintsCommand])
         self.target = 'svg_problem'
 
     def select(self, constraint: Item | None) -> bool:
@@ -128,6 +126,7 @@ class SVGSolutionCommand(SVGCommand):
     def __init__(self):
         """Create the command."""
         super().__init__()
+        self.add_preconditions([SolveCommand])
         self.target = 'svg_solution'
 
     def select(self, constraint: Item | None) -> bool:
@@ -140,3 +139,24 @@ class SVGSolutionCommand(SVGCommand):
             bool: True if the constraint is to be displayed, False otherwise.
         """
         return isinstance(constraint, Solution)
+
+
+class SVGAnswerCommand(SVGCommand):
+    """Command to create an SVG drawing of the line."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.add_preconditions([ExtractAnswerCommand])
+        self.target = 'answer'
+
+    def select(self, constraint: Item | None) -> bool:
+        """Determine if the constraint should be included in the output.
+
+        Args:
+            constraint (Item | None): The constraint to check for inclusion.
+
+        Returns:
+            bool: True if the constraint is to be displayed; otherwise, False.
+        """
+        return isinstance(constraint, Answer)

@@ -4,9 +4,12 @@ import logging.config
 from pathlib import Path
 
 from src.commands.command import Command
+from src.commands.create_constraints_command import CreateConstraintsCommand
+from src.commands.file_writer_command import SVGProblemWriterCommand
 from src.commands.problem import Problem
 from src.commands.validate_config_command import ValidateConfigCommand
 from src.utils.config import Config
+from src.utils.load_modules import load_modules
 
 config: Config = Config()
 logging.config.dictConfig(Config().get_dict('logging'))
@@ -52,6 +55,23 @@ def process_problem(problem: Problem) -> None:
         problem (Problem): The problem instance to process.
     """
     logger.info(f"Processing problem for file: {problem.problem_file_name} with output: {problem.output_directory}")
+    command: Command = SVGProblemWriterCommand()
+    command.execute(problem=problem)
+    logger.info(f"Processing problem complete for file: {problem.problem_file_name}")
+
+
+def process_lp(problem: Problem) -> None:
+    """Produce lp file
+
+    Args:
+        problem (Problem): The problem instance to process.
+    """
+    logger.info(f"Processing lp for file: {problem.problem_file_name} with output: {problem.output_directory}")
+    # command: Command = CreateLinearProgramCommand()
+
+    command = CreateConstraintsCommand()
+    command.execute(problem=problem)
+    logger.info(f"Processing lp complete for file: {problem.problem_file_name}")
 
 
 def process_command(command: str, input_file: Path, output_path: Path) -> None:
@@ -72,6 +92,8 @@ def process_command(command: str, input_file: Path, output_path: Path) -> None:
             process_validate(problem)
         case 'problem':
             process_problem(problem)
+        case 'lp':
+            process_lp(problem)
         case _:
             logger.error(f"Unknown command: {command}")
 
@@ -84,12 +106,15 @@ def process(commands: list[str], files_path: Path, output_path: Path) -> None:
         files_path (Path): List of input file paths.
         output_path (Path): The output directory path.
     """
-    if not output_path.exists():
-        logger.info(f"Creating output directory: {output_path}")
-        output_path.mkdir(parents=True)
     files: list[Path] = [files_path] if files_path.is_file() else [f for f in files_path.glob('*.yaml')]
+    files.sort()
     for file_name, command in itertools.product(files, commands):
-        process_command(command, file_name, output_path)
+        file_stem: Path = Path(file_name.name.removesuffix('.yaml'))
+        specific_output_path: Path = output_path / file_stem
+        if not specific_output_path.exists():
+            logger.info(f"Creating output directory: {specific_output_path}")
+            specific_output_path.mkdir(parents=True)
+        process_command(command, file_name, specific_output_path)
 
 
 def validate_args(input_path: Path, output_path: Path) -> None:
@@ -132,7 +157,7 @@ def get_parser() -> argparse.ArgumentParser:
     Returns:
         argparse.ArgumentParser: The configured argument parser.
     """
-    commands = ['schema', 'solve', 'validate', 'problem']
+    commands = ['schema', 'solve', 'validate', 'problem', 'lp']
 
     argument_parser = argparse.ArgumentParser(description='Process some commands.')
 
@@ -153,6 +178,7 @@ def get_parser() -> argparse.ArgumentParser:
 
 
 if __name__ == '__main__':
+    load_modules('src', 'items')
     parser = get_parser()
     args = parser.parse_args()
     try:

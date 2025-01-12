@@ -24,4 +24,4 @@ class CreateSolverCommand(SimpleCommand):
             problem (Problem): The problem instance where the solver will be created.
         """
         super().work(problem)
-        problem.solver = PulpSolver(board=problem.board, name="Problem")
+        problem.solver = PulpSolver(board=problem.board, name='Problem')
