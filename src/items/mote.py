@@ -2,6 +2,7 @@
 from pulp import lpSum
 
 from src.board.board import Board
+from src.board.cell_types import ParityType
 from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.item import Item
@@ -13,16 +14,14 @@ from src.utils.rule import Rule
 class Mote(Region):
     """Represents start MOTE cage where the number of odd digits must exceed even digits."""
 
-    def __init__(self, board: Board, total: int, cells: list[Item]):
+    def __init__(self, board: Board, cells: list[Item]):
         """Initialize the MOTE region.
 
         Args:
             board (Board): The Sudoku board.
-            total (int): The total sum for the MOTE cage.
             cells (list[Item]): The list of cells in the cage.
         """
         super().__init__(board)
-        self.total = total
         self.add_components(cells)
 
     def __repr__(self) -> str:
@@ -35,13 +34,12 @@ class Mote(Region):
         return (
             f'{self.__class__.__name__}('
             f'{self.board!r}, '
-            f'{self.total!r}, '
             f'{self.cells!r}'
             f')'
         )
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> tuple[int, list[Item]]:
+    def extract(cls, board: Board, yaml: dict) -> list[Cell]:
         """Extract the MOTE configuration from start YAML dictionary.
 
         Args:
@@ -49,12 +47,11 @@ class Mote(Region):
             yaml (dict): The YAML configuration dictionary.
 
         Returns:
-            tuple[int, list[Item]]: The total sum and the list of cells.
+            list[Cell]: The total sum and the list of cells.
         """
-        parts: list[str] = yaml[cls.__name__].split('=')
-        total: int = int(parts[0].strip())
-        cells: list[Item] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts[1].split(',')]
-        return total, cells
+        parts: list[str] = yaml[cls.__name__]
+        cells: list[Cell] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts.split(',')]
+        return cells
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
@@ -67,8 +64,8 @@ class Mote(Region):
         Returns:
             Item: The created Mote instance.
         """
-        total, cells = Mote.extract(board, yaml)
-        return Mote(board, total, cells)
+        cells: List[Cell] = Mote.extract(board, yaml)
+        return Mote(board, cells)
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
@@ -118,10 +115,13 @@ class Mote(Region):
         Args:
             solver (PulpSolver): The solver to which the constraints are added.
         """
-        # TODO: Adjust the constraint for odd digit counts
-        odd_count = lpSum(solver.variables.numbers[cell.row][cell.column] for cell in self.cells)
+        odd_count: lpSum = lpSum(
+            solver.variables.parity[(int(cell.row), int(cell.column), ParityType.odd)]
+            for cell in self.cells
+        )
+        half_count: int = len(self.cells) // 2
         name = f'{self.__class__.__name__}_{self.cells[0].row}{self.cells[0].column}'
-        solver.model += odd_count > len(self.cells) // 2, name
+        solver.model += odd_count > half_count, name
 
     def to_dict(self) -> dict:
         """Convert the MOTE to start dictionary representation.

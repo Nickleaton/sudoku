@@ -39,16 +39,16 @@ class MagicSquare(Region):
             corner (Coord): The coordinate of the corner that defines the extent of the square.
         """
         super().__init__(board)
-        positions = [center + offset * corner for offset in Moves.all_moves()]
-        cells = [Cell.make(board, int(positions.row), int(positions.column)) for positions in positions]
+        positions: list[Coord] = [center + offset * corner for offset in Moves.all_moves()]
+        cells: list[Cell] = [Cell.make(board, int(positions.row), int(positions.column)) for positions in positions]
         self.add_components(cells)
-        self.center_cell = cells[4]
-        self.odd_cells = [cells[0], cells[2], cells[6], cells[8]]
-        self.even_cells = [cells[1], cells[3], cells[5], cells[7]]
-        self.center = center
-        self.corner = corner
-        self.strict = True
-        self.unique = True
+        self.center_cell: Cell = cells[4]
+        self.odd_cells: list[Cell] = [cells[0], cells[2], cells[6], cells[8]]
+        self.even_cells: list[Cell] = [cells[1], cells[3], cells[5], cells[7]]
+        self.center: Coord = center
+        self.corner: Coord = corner
+        self.strict: bool = True
+        self.unique: bool = True
 
     @classmethod
     def is_sequence(cls) -> bool:
@@ -166,14 +166,14 @@ class MagicSquare(Region):
             solver (PulpSolver): The solver to add constraints to.
         """
         name: str = f'{self.__class__.__name__}_center'
-        solver.model += solver.variables.numbers[self.center.row][self.center.column] == 5, name
+        solver.model += solver.variables.numbers[self.center.int_tuple] == 5, name
         for index, line in enumerate(MagicSquare.lines):
             cell1 = self.cells[line[0] - 1]
             cell2 = self.cells[line[1] - 1]
             cell3 = self.cells[line[2] - 1]
-            value1 = solver.variables.numbers[cell1.row][cell1.column]
-            value2 = solver.variables.numbers[cell2.row][cell2.column]
-            value3 = solver.variables.numbers[cell3.row][cell3.column]
+            value1 = solver.variables.numbers[(cell1.row, cell1.column)]
+            value2 = solver.variables.numbers[(cell2.row, cell2.column)]
+            value3 = solver.variables.numbers[(cell3.row, cell3.column)]
             solver.model += value1 + value2 + value3 == MagicSquare.line_total, f'{self.__class__.__name__}_{index}'
         # cells must be unique
         self.add_unique_constraint(solver, self.strict)

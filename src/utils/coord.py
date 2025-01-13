@@ -283,3 +283,12 @@ class Coord:
             Point: The corresponding Point object.
         """
         return Point(self.column * 100, self.row * 100)
+
+    @property
+    def int_tuple(self) -> tuple[int, int]:
+        """Convert the Coord into a tuple of integers.
+
+        Returns:
+            tuple[int, int]: The corresponding tuple of integers.
+        """
+        return int(self.row), int(self.column)
