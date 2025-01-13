@@ -10,7 +10,10 @@ Constraints:
   Columns:
   Rows:
   Boxes:
-  ColumnIndexer: 1,5,9
+  ColumnIndexer:
+    - 1
+    - 5
+    - 9
   Known:
     - .....3.5.
     - .497.....
