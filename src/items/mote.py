@@ -14,7 +14,7 @@ from src.utils.rule import Rule
 class Mote(Region):
     """Represents start MOTE cage where the number of odd digits must exceed even digits."""
 
-    def __init__(self, board: Board, cells: list[Item]):
+    def __init__(self, board: Board, cells: list[Cell]):
         """Initialize the MOTE region.
 
         Args:
@@ -49,7 +49,7 @@ class Mote(Region):
         Returns:
             list[Cell]: The total sum and the list of cells.
         """
-        parts: list[str] = yaml[cls.__name__]
+        parts: str = yaml[cls.__name__]
         cells: list[Cell] = [Cell.make(board, int(rc.strip()[0]), int(rc.strip()[1])) for rc in parts.split(',')]
         return cells
 
@@ -64,8 +64,7 @@ class Mote(Region):
         Returns:
             Item: The created Mote instance.
         """
-        cells: List[Cell] = Mote.extract(board, yaml)
-        return Mote(board, cells)
+        return Mote(board, Mote.extract(board, yaml))
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
@@ -130,7 +129,7 @@ class Mote(Region):
             dict: A dictionary with the MOTE's YAML representation.
         """
         cell_str = ','.join([f'{cell.row}{cell.column}' for cell in self.cells])
-        return {self.__class__.__name__: f'{self.total}={cell_str}'}
+        return {self.__class__.__name__: f'{cell_str}'}
 
     def css(self) -> dict:
         """Retrieve the CSS styles associated with the MOTE.
