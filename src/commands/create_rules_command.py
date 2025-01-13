@@ -34,6 +34,6 @@ class CreateRulesCommand(SimpleCommand):
             raise CommandException(f'Constrains must be created before {self.name}.')
 
         problem.rules = [
-            Rule(name=rule.name, text=rule.text)  # Ensure compatibility with the expected Rule type
+            Rule(name=rule.name, text=rule.text, rank=rule.rank)
             for rule in problem.constraints.sorted_unique_rules
         ]

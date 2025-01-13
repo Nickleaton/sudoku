@@ -1,5 +1,6 @@
 """CreateLinearProgramCommand."""
 
+from src.commands.command import CommandException
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.create_solver_command import CreateSolverCommand
 from src.commands.problem import Problem
@@ -25,8 +26,13 @@ class CreateLinearProgramCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem instance to create the LP version of.
+
+        Raises:
+            CommandException: If the solver is not created.
         """
         super().work(problem)
+        if problem.solver is None:
+            raise CommandException(f'Solver must be created before {self.name}.')
         with TemporaryFile() as tf:
             problem.solver.save_lp(str(tf.path))
             with tf.path.open(mode='r', encoding='utf-8') as lp_file:

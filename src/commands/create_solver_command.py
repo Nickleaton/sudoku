@@ -1,4 +1,5 @@
 """CreateSolverCommand."""
+from src.commands.command import CommandException
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -22,6 +23,11 @@ class CreateSolverCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem instance where the solver will be created.
+
+        Raises:
+            CommandException: If the board is not created.
         """
         super().work(problem)
+        if problem.board is None:
+            raise CommandException('Board must be created.')
         problem.solver = PulpSolver(board=problem.board, name='Problem')

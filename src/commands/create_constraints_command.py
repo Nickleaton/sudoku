@@ -22,10 +22,13 @@ class CreateConstraintsCommand(SimpleCommand):
 
         Raises:
             CommandException: If the board is not created.
+            CommandException: If the config is not set.
         """
         super().work(problem)
         if problem.board is None:
-            raise CommandException(f'Board must be created before {self.name}.')
+            raise CommandException('Board must be created.')
+        if problem.config is None:
+            raise CommandException('Config must be set.')
         problem.constraints = Constraints.create(
             problem.board,
             {'Constraints': problem.config['Constraints']},

@@ -135,11 +135,11 @@ class LittleKiller(Region):
         Returns:
             list[Glyph]: A list of glyphs, including text and arrows.
         """
-        delta2 = Coord(0, 0)
+        delta = Coord(0, 0)
         if self.side == Side.top:
-            delta2 = Coord(0, 1)
+            delta = Coord(0, 1)
         if self.side == Side.right:
-            delta2 = Coord(0, 1)
+            delta = Coord(0, 1)
         return [
             TextGlyph(
                 'LittleKiller',
@@ -150,7 +150,7 @@ class LittleKiller(Region):
             ArrowGlyph(
                 'LittleKiller',
                 self.direction.angle.angle,
-                self.reference + (self.delta * config.graphics.arrow_head_percentage) + delta2,
+                self.reference + (delta * config.graphics.arrow_head_percentage) + delta,
             ),
         ]
 

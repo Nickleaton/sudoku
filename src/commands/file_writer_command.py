@@ -5,10 +5,10 @@ from xml.dom.minidom import Document
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.commands.svg_command import SVGAnswerCommand
-from src.commands.svg_command import SVGPencilMarkCommand
-from src.commands.svg_command import SVGProblemCommand
-from src.commands.svg_command import SVGSolutionCommand
+from src.commands.svg_command import SVGAnswerCommand  # noqa: I001
+from src.commands.svg_command import SVGPencilMarkCommand  # noqa: I001
+from src.commands.svg_command import SVGProblemCommand  # noqa: I001
+from src.commands.svg_command import SVGSolutionCommand  # noqa: I001
 
 
 class FileWriterCommand(SimpleCommand):
@@ -18,6 +18,7 @@ class FileWriterCommand(SimpleCommand):
         """Initialize FileWriterCommand."""
         super().__init__()
         self.target_file_path: Path | None = None
+        self.source: str | None = None
 
     def work(self, problem: Problem) -> None:
         """Write to start file_path.
@@ -28,18 +29,21 @@ class FileWriterCommand(SimpleCommand):
         Raises:
             CommandException: If an error occurs while writing the file_path.
             CommandException: If the target file_path is not set.
+            CommandException: If the source is not set.
         """
         super().work(problem)
         if self.target_file_path is None:
             raise CommandException(f'Target file_path is not set {self.name}.')
         target_file_path: Path = problem.output_directory / self.target_file_path
-        data = getattr(problem, self.source)
+        if self.source is None:
+            raise CommandException(f'Source is not set {self.name}.')
+        data_to_write = getattr(problem, self.source)
         try:
             with target_file_path.open(mode='w', encoding='utf-8') as file_handler:
-                if isinstance(data, str):
-                    file_handler.write(data)
-                if isinstance(data, Document):
-                    file_handler.write(data.toprettyxml(indent='  '))
+                if isinstance(data_to_write, str):
+                    file_handler.write(data_to_write)
+                if isinstance(data_to_write, Document):
+                    file_handler.write(data_to_write.toprettyxml(indent='  '))
         except Exception as exc:
             raise CommandException(f'Failed to write {target_file_path!s}: {exc}') from exc
 

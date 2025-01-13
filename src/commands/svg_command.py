@@ -5,6 +5,7 @@ from defusedxml.minidom import parseString
 from svgwrite import Drawing
 from svgwrite.container import Style
 
+from src.commands.command import CommandException
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.extract_answer_command import ExtractAnswerCommand
 from src.commands.null_command import NullCommand
@@ -27,8 +28,19 @@ class SVGCommand(SimpleCommand):
 
         Args:
             problem (Problem): The problem to produce the SVG for.
+
+        Raises:
+            CommandException: If the board is not created.
+            CommandException: If the constraints are not created.
+            CommandException: If the target is not set.
         """
         super().work(problem)
+        if problem.board is None:
+            raise CommandException(f'Board must be created.')
+        if problem.constraints is None:
+            raise CommandException(f'Constraints must be created.')
+        if self.target is None:
+            raise CommandException(f'Target is not set.')
 
         # Build the viewBox string first
         cell_size: int = config.graphics.cell_size
