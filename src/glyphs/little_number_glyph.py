@@ -32,7 +32,7 @@ class LittleNumberGlyph(Glyph):
             BaseElement | None: An SVG `Text` element displaying the number,
             or None if the glyph cannot be drawn.
         """
-        size: float = config.graphics.cell_size * config.graphics.little_number.percentage / 2.0
+        size: float = config.graphics.cell_size * config.graphics.little_number.percentage / 2.0  # noqa: WPS432
         size: Point = Point(1, 1) * size
         position: Point = self.position + size
         text: Text = Text(

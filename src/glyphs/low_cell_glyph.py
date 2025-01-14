@@ -19,15 +19,15 @@ class LowCellGlyph(Glyph):
     coordinate.
     """
 
-    def __init__(self, class_name: str, Point: Point):
+    def __init__(self, class_name: str, point: Point):
         """Initialize start LowCellGlyph instance.
 
         Args:
             class_name (str): The class name for the glyph.
-            Point (Point): The coordinate of the glyph.
+            point (Point): The coordinate of the glyph.
         """
         super().__init__(class_name)
-        self.Point = Point
+        self.point: Point = point
 
     @classmethod
     def symbol(cls) -> Symbol | None:

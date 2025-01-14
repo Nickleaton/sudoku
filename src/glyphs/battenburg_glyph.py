@@ -59,7 +59,7 @@ class BattenburgGlyph(Glyph):
             rect: Rect = Rect(
                 insert=position.coordinates,
                 size=Point(size, size).coordinates,
-                class_=f"Battenburg{colour_a if index % 2 == 0 else colour_b}",
+                class_=f'Battenburg{colour_a if index % 2 == 0 else colour_b}',
             )
             symbol.add(rect)
 
@@ -92,4 +92,4 @@ class BattenburgGlyph(Glyph):
         Returns:
             str: A string representation of the BattenburgGlyph instance.
         """
-        return f"{self.__class__.__name__}(class_name={self.class_name!r}, point={self.point!r})"
+        return f'{self.__class__.__name__}(class_name={self.class_name!r}, point={self.point!r})'

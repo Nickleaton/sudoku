@@ -36,7 +36,7 @@ class PolyLineGlyph(Glyph):
         markers: dict = {
             'class_': self.class_name,
         }
-        offset: Point = Point(1, 1) * config.graphics.cell_size / 2.0
+        # offset: Point = Point(1, 1) * config.graphics.cell_size / 2.0  # noqa: WPS432
         if self.start:
             markers['marker_start'] = f'url(#{self.class_name}-start)'
         if self.end:

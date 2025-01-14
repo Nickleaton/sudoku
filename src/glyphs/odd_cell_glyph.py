@@ -19,7 +19,7 @@ class OddCellGlyph(Glyph):
 
         Args:
             class_name (str): The CSS class name to style the glyph.
-            Point (Point): The coordinates of the glyph on the board.
+            point (Point): The coordinates of the glyph on the board.
         """
         super().__init__(class_name)
         self.point: Point = point
@@ -39,7 +39,7 @@ class OddCellGlyph(Glyph):
         symbol.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
-                r=int(config.graphics.cell_size * config.graphics.parity_cell.odd.size / 2.0),
+                r=int(config.graphics.cell_size * config.graphics.parity_cell.odd.size / 2.0),  # noqa: WPS432
             ),
         )
         return symbol

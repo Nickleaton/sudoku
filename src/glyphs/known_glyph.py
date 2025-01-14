@@ -17,7 +17,7 @@ class KnownGlyph(SimpleTextGlyph):
             position (Point): The position of the glyph in coordinates.
             number (int): The number to be displayed by the glyph.
         """
-        size: float = config.graphics.cell_size / 2.0
+        size: float = config.graphics.cell_size / 2.0  # noqa: WPS432
         super().__init__(
             class_name,
             0,  # Angle of rotation (0 means no rotation)

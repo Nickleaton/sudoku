@@ -83,5 +83,5 @@ class BetweenLineGlyph(PolyLineGlyph):
         Returns:
             str: A string representation of the BetweenLineGlyph instance.
         """
-        point_text: str = ", ".join([repr(point) for point in self.points])
+        point_text: str = ', '.join([repr(point) for point in self.points])
         return f'{self.__class__.__name__}({self.class_name!r}, [{point_text}])'

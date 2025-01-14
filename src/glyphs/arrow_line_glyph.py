@@ -84,6 +84,6 @@ class ArrowLineGlyph(PolyLineGlyph):
             f'{self.__class__.__name__}'
             f'('
             f'{self.class_name!r}, '
-            f'[{", ".join([repr(Point) for Point in self.points])}]'
+            f'[{", ".join([repr(point) for point in self.points])}]'
             f')'
         )
