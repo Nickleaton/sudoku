@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.glyphs.glyph import Glyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_square_glyph import TestSquareGlyph
 
 
@@ -17,7 +17,7 @@ class TestEvenCellGlyph(TestSquareGlyph):
         Initializes an instance of EvenCellGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = EvenCellGlyph('Style', Coord(1, 1))
+        self.glyph = EvenCellGlyph('Style', Point(100, 100))
 
     @property
     def target(self) -> str:
@@ -35,7 +35,7 @@ class TestEvenCellGlyph(TestSquareGlyph):
         Returns:
             str: The string representation of the EvenCellGlyph instance.
         """
-        return "EvenCellGlyph('Style', Coord(1, 1))"
+        return "EvenCellGlyph('Style', Point(100.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.arrow_glyph import ArrowGlyph
 from src.glyphs.glyph import Glyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -12,7 +12,7 @@ class TestArrowGlyph(TestGlyph):
 
     def setUp(self) -> None:
         super().setUp()
-        self.glyph = ArrowGlyph('Style', 90.0, Coord(0, 0))
+        self.glyph = ArrowGlyph('Style', 90.0, Point(0, 0))
 
     @property
     def start_marker(self) -> str:
@@ -29,13 +29,13 @@ class TestArrowGlyph(TestGlyph):
     @property
     def target(self):
         return (
-            '<text class="Style" transform="translate(0, 0) rotate(90.0)">'
+            '<text class="Style" transform="translate(0.0, 0.0) rotate(90.0)">'
             '<tspan alignment-baseline="central" text-anchor="middle">↑</tspan></text>'
         )
 
     @property
     def representation(self) -> str:
-        return "ArrowGlyph('Style', 90.0, Coord(0, 0))"
+        return "ArrowGlyph('Style', 90.0, Point(0.0, 0.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

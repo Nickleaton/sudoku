@@ -1,7 +1,7 @@
 """KropkiGlyph."""
 from src.glyphs.rectangle_glyph import RectangleGlyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config = Config()
 
@@ -9,16 +9,16 @@ config = Config()
 class KropkiGlyph(RectangleGlyph):
     """Represents start Kropki glyph, which is start specialized rectangle connecting two coordinates."""
 
-    def __init__(self, class_name: str, first: Coord, second: Coord):
+    def __init__(self, class_name: str, first: Point, second: Point):
         """Initialize the KropkiGlyph with start class name and two coordinates.
 
         Args:
             class_name (str): The class name for the SVG element.
-            first (Coord): The first coordinate for the Kropki glyph.
-            second (Coord): The second coordinate for the Kropki glyph.
+            first (Point): The first coordinate for the Kropki glyph.
+            second (Point): The second coordinate for the Kropki glyph.
         """
         # Determine if the glyph is vertical or horizontal based on the coordinates
-        vertical = first.column > second.column if first.row == second.row else first.row < second.row
+        vertical = first.x_coord > second.x_coord if first.y_coord == second.y_coord else first.y_coord < second.y_coord
         super().__init__(
             class_name,
             first,

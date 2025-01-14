@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph, SquareGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_square_glyph import TestSquareGlyph
 
 
@@ -18,7 +18,7 @@ class TestFortressCellGlyph(TestSquareGlyph):
         Initializes an instance of FortressCellGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = FortressCellGlyph('Style', Coord(1, 1))
+        self.glyph = FortressCellGlyph('Style', Point(100, 100))
 
     @property
     def target(self) -> str:
@@ -28,8 +28,8 @@ class TestFortressCellGlyph(TestSquareGlyph):
             str: The SVG markup representing the FortressCellGlyph.
         """
         return (
-            '<rect class="Style" height="100" '
-            'transform="translate(100, 100)" width="100" x="0" y="0" />'
+            '<rect class="Style" height="100.0" '
+            'transform="translate(100.0, 100.0)" width="100.0" x="0" y="0" />'
         )
 
     @property
@@ -39,7 +39,7 @@ class TestFortressCellGlyph(TestSquareGlyph):
         Returns:
             str: The string representation of the FortressCellGlyph instance.
         """
-        return "FortressCellGlyph('Style', Coord(1, 1))"
+        return "FortressCellGlyph('Style', Point(100.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

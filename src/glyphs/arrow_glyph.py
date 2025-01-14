@@ -5,7 +5,7 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 
 class ArrowGlyph(Glyph):
@@ -13,17 +13,17 @@ class ArrowGlyph(Glyph):
 
     arrow: str = '\u2191'  # Define the arrow symbol (↑)
 
-    def __init__(self, class_name: str, angle: float, position: Coord) -> None:
+    def __init__(self, class_name: str, angle: float, position: Point) -> None:
         """Initialize an ArrowGlyph instance.
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
             angle (float): The angle of the arrow in angle_degree.
-            position (Coord): The position of the arrow, represented as a `Coord` object.
+            position (Point): The position of the arrow, represented as a `Point` object.
         """
         super().__init__(class_name)
         self.angle: Angle = Angle(angle)  # Convert angle to an `Angle` object.
-        self.position: Coord = position
+        self.position: Point = position
 
     def draw(self) -> BaseElement | None:
         """Draws the arrow on an SVG canvas.

@@ -5,7 +5,7 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -13,17 +13,17 @@ config: Config = Config()
 class LittleNumberGlyph(Glyph):
     """Represents start small number glyph for Sudoku or similar puzzles."""
 
-    def __init__(self, class_name: str, position: Coord, number: int):
+    def __init__(self, class_name: str, position: Point, number: int):
         """Initialize start Little Number glyph.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
-            position (Coord): The coordinate position of the glyph.
+            position (Point): The coordinate position of the glyph.
             number (int): The number to display in the glyph.
         """
         super().__init__(class_name)
-        self.position = position
-        self.number = number
+        self.position: Point = position
+        self.number: int = number
 
     def draw(self) -> BaseElement | None:
         """Create an SVG representation of the Little Number glyph.
@@ -32,8 +32,9 @@ class LittleNumberGlyph(Glyph):
             BaseElement | None: An SVG `Text` element displaying the number,
             or None if the glyph cannot be drawn.
         """
-        size: Coord = Coord(config.graphics.little_number_percentage, config.graphics.little_number_percentage)
-        position: Coord = self.position + size
+        size: float = config.graphics.cell_size * config.graphics.little_number.percentage / 2.0
+        size: Point = Point(1, 1) * size
+        position: Point = self.position + size
         text: Text = Text(
             '',
             transform=position.transform,

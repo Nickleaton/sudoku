@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rectangle_glyph import RectangleGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestRectangleGlyph(TestGlyph):
         Initializes the style, coordinates, and dimensions for the RectangleGlyph.
         """
         super().setUp()
-        self.glyph = RectangleGlyph('Style', Coord(1, 1), Coord(1, 2), 0.25, 2, True)
+        self.glyph = RectangleGlyph('Style', Point(100.0, 100.0), Point(200.0, 100.0), 0.25, 2, True)
 
     @property
     def target(self) -> str:
@@ -39,7 +39,7 @@ class TestRectangleGlyph(TestGlyph):
         Returns:
             str: The string representation of the RectangleGlyph with style, coordinates, and dimensions.
         """
-        return "RectangleGlyph('Style', Coord(1, 1), Coord(1, 2), 0.25, 2, True)"
+        return "RectangleGlyph('Style', Point(100.0, 100.0), Point(200.0, 100.0), 0.25, 2, True)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

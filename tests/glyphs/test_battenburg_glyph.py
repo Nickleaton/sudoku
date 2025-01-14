@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.glyphs.glyph import Glyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestBattenburgGlyph(TestGlyph):
         Initializes an instance of BattenburgGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = BattenburgGlyph('Style', Coord(3, 3))
+        self.glyph = BattenburgGlyph('Style', Point(300, 300))
 
     @property
     def symbol(self) -> str:
@@ -51,7 +51,7 @@ class TestBattenburgGlyph(TestGlyph):
         Returns:
             str: The string representation of the BattenburgGlyph instance.
         """
-        return "BattenburgGlyph('Style', Coord(3, 3))"
+        return "BattenburgGlyph(class_name='Style', point=Point(300.0, 300.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

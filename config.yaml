@@ -99,23 +99,43 @@ graphics:
   middle_percentage: 0.5
   kropki_dot_percentage: 0.25
   kropki_dot_ratio: 2.0
-  little_arrow_percentage: 0.4
+  #  little_arrow_percentage: 0.4
   between_line_circle_percentage: 0.35
-  little_number_percentage: 0.35
+  #  little_number_percentage: 0.35
   cell_size: 100
   half_cell_size: 50
   thermo_head_percentage: 0.3
-  odd_cell_percentage: 0.35
-  even_cell_inset_percentage: 0.15
-  even_cell_percentage: 0.7
-  quadruple_circle_percentage: 0.35
-  quadruple_priority: 20
+  #  odd_cell_percentage: 0.35
+  #  even_cell_inset_percentage: 0.15
+  #  even_cell_percentage: 0.7
+  #  quadruple_circle_percentage: 0.35
+  #  quadruple_priority: 20
   killer_text_offset_percentage: 0.05
   little_killer_offset_percentage: 0.28
   mid_cell_percentage: 0.15
   low_cell_percentage: 0.35
   consecutive_glyph_ratio: 2.0
   consecutive_glyph_percentage: 0.25
+  quadruple:
+    priority: 20
+    percentage: 0.7
+  battenburg:
+    percentage: 0.3
+    colour_a: Pink
+    colour_b: Yellow
+  parity_cell:
+    even:
+      inset: 0.15
+      size: 0.7
+    odd:
+      size: 0.7
+  little_number:
+    percentage: 0.7
+  killer:
+    text:
+      offset_percentage: 0.05
+  little_arrow:
+    percentage: 0.4
 
 
 css_indent_count: 4

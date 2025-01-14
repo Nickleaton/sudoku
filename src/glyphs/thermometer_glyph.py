@@ -5,7 +5,7 @@ from svgwrite.shapes import Circle
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -13,14 +13,14 @@ config: Config = Config()
 class ThermometerGlyph(PolyLineGlyph):
     """A thermometer-like glyph that represents start polyline with a start marker."""
 
-    def __init__(self, class_name: str, coords: list[Coord]):
+    def __init__(self, class_name: str, points: list[Point]):
         """Initialize the ThermometerGlyph.
 
         Args:
             class_name (str): The CSS class name for styling the thermometer glyph.
-            coords (list[Coord]): The list of coordinates defining the polyline.
+            points (list[Point]): The list of coordinates defining the polyline.
         """
-        super().__init__(class_name, coords, start=True, end=False)
+        super().__init__(class_name, points, start=True, end=False)
 
     @classmethod
     def start_marker(cls) -> Marker | None:
@@ -53,6 +53,6 @@ class ThermometerGlyph(PolyLineGlyph):
             f'{self.__class__.__name__}'
             f'('
             f'{self.class_name!r}, '
-            f'[{", ".join([repr(coord) for coord in self.coords])}]'
+            f'[{", ".join([repr(point) for point in self.points])}]'
             f')'
         )

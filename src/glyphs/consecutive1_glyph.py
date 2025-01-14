@@ -1,7 +1,7 @@
 """Consecutive1Glyph."""
 from src.glyphs.rectangle_glyph import RectangleGlyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -16,11 +16,11 @@ class Consecutive1Glyph(RectangleGlyph):
 
     Attributes:
         class_name (str): The CSS class name for the SVG element.
-        first (Coord): The first coordinate to define the rectangle's position.
-        second (Coord): The second coordinate to define the rectangle's position.
+        first (Point): The first coordinate to define the rectangle's position.
+        second (Point): The second coordinate to define the rectangle's position.
     """
 
-    def __init__(self, class_name: str, first: Coord, second: Coord):
+    def __init__(self, class_name: str, first: Point, second: Point):
         """Initialize the Consecutive1Glyph with two coordinates.
 
         Determine the orientation of the rectangle based on the relative
@@ -29,10 +29,10 @@ class Consecutive1Glyph(RectangleGlyph):
 
         Args:
             class_name (str): set the CSS class name for the rectangle.
-            first (Coord): The first coordinate for the rectangle.
-            second (Coord): The second coordinate for the rectangle.
+            first (Point): The first coordinate for the rectangle.
+            second (Point): The second coordinate for the rectangle.
         """
-        vertical = first.column > second.column if first.row == second.row else first.row < second.row
+        vertical = first.x_coord > second.x_coord if first.y_coord == second.y_coord else first.y_coord < second.y_coord
         super().__init__(
             class_name,
             first,

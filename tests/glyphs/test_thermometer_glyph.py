@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.glyphs.thermometer_glyph import ThermometerGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_poly_line_glyph import TestPolyLineGlyph
 
 
@@ -18,7 +18,7 @@ class TestThermometerGlyph(TestPolyLineGlyph):
         Initializes the style and coordinates for the ThermometerGlyph.
         """
         super().setUp()
-        self.glyph = ThermometerGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])
+        self.glyph = ThermometerGlyph('Style', [Point(150, 150), Point(250, 150), Point(250, 250)])
 
     @property
     def start_marker(self) -> str:
@@ -52,7 +52,7 @@ class TestThermometerGlyph(TestPolyLineGlyph):
         Returns:
             str: The string representation of the ThermometerGlyph with style and coordinates.
         """
-        return "ThermometerGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])"
+        return "ThermometerGlyph('Style', [Point(150.0, 150.0), Point(250.0, 150.0), Point(250.0, 250.0)])"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

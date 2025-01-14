@@ -6,7 +6,7 @@ from svgwrite.shapes import Circle
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -14,15 +14,15 @@ config: Config = Config()
 class OddCellGlyph(Glyph):
     """Represents start glyph for cells marked as 'odd' in start Sudoku puzzle."""
 
-    def __init__(self, class_name: str, coord: Coord):
+    def __init__(self, class_name: str, point: Point):
         """Initialize an OddCellGlyph.
 
         Args:
             class_name (str): The CSS class name to style the glyph.
-            coord (Coord): The coordinates of the glyph on the board.
+            Point (Point): The coordinates of the glyph on the board.
         """
         super().__init__(class_name)
-        self.coord = coord
+        self.point: Point = point
 
     @classmethod
     def symbol(cls) -> Symbol | None:
@@ -39,7 +39,7 @@ class OddCellGlyph(Glyph):
         symbol.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
-                r=int(config.graphics.cell_size * config.graphics.odd_cell_percentage),
+                r=int(config.graphics.cell_size * config.graphics.parity_cell.odd.size / 2.0),
             ),
         )
         return symbol
@@ -52,10 +52,10 @@ class OddCellGlyph(Glyph):
         """
         return Use(
             href='#OddCell-symbol',
-            insert=self.coord.point.coordinates,
+            insert=self.point.coordinates,
             class_='OddCell',
-            height=100,
-            width=100,
+            height=config.graphics.cell_size,
+            width=config.graphics.cell_size,
         )
 
     def __repr__(self) -> str:
@@ -64,4 +64,4 @@ class OddCellGlyph(Glyph):
         Returns:
             str: A string representation of the glyph.
         """
-        return f'{self.__class__.__name__}({self.class_name!r}, {self.coord!r})'
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.point!r})'

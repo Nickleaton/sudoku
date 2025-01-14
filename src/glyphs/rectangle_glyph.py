@@ -3,7 +3,6 @@ from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph, config
-from src.utils.coord import Coord
 from src.utils.point import Point
 
 
@@ -13,8 +12,8 @@ class RectangleGlyph(Glyph):
     def __init__(
         self,
         class_name: str,
-        first: Coord,
-        second: Coord,
+        first: Point,
+        second: Point,
         percentage: float,
         ratio: float,
         vertical: bool,
@@ -23,15 +22,15 @@ class RectangleGlyph(Glyph):
 
         Args:
             class_name (str): The class name for the SVG element.
-            first (Coord): The first coordinate for positioning the rectangle.
-            second (Coord): The second coordinate for positioning the rectangle.
+            first (Point): The first coordinate for positioning the rectangle.
+            second (Point): The second coordinate for positioning the rectangle.
             percentage (float): The percentage of the cell size used for the rectangle's width and height.
             ratio (float): The ratio that affects the size in one direction (height/width or width/height).
             vertical (bool): A flag indicating whether the rectangle is vertical (True) or horizontal (False).
         """
         super().__init__(class_name)
-        self.first: Coord = first
-        self.second: Coord = second
+        self.first: Point = first
+        self.second: Point = second
         self.percentage: float = percentage
         self.ratio: float = ratio
         self.vertical: bool = vertical
@@ -58,7 +57,7 @@ class RectangleGlyph(Glyph):
         )
 
         # Position the rectangle in the middle of the first and second coordinates
-        position: Coord = Coord.middle(self.first, self.second)
+        position: Point = Point.middle(self.first, self.second)
 
         # Return the rectangle as an SVG `Rect` element
         return Rect(

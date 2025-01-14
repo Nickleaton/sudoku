@@ -6,7 +6,7 @@ from svgwrite.text import Text, TSpan
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -16,17 +16,17 @@ class LittleKillerGlyph(Glyph):
 
     arrow: str = '\uA71B'  # ꜛ
 
-    def __init__(self, class_name: str, position: Coord, angle: Angle, input_value: int) -> None:
+    def __init__(self, class_name: str, position: Point, angle: Angle, input_value: int) -> None:
         """Initialize the Little Killer glyph with class name, position, angle, and input_value.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
-            position (Coord): The coordinate position of the glyph.
+            position (Point): The coordinate position of the glyph.
             angle (Angle): The angle of the glyph's arrow.
             input_value (int): The numerical input_value associated with the glyph.
         """
         super().__init__(class_name)
-        self.position: Coord = position
+        self.position: Point = position
         self.angle: Angle = angle
         self.input_value: int = input_value
 
@@ -39,11 +39,11 @@ class LittleKillerGlyph(Glyph):
         """
         group: Group = Group()
         # Positioning the text slightly offset
-        offset: Coord = Coord(
+        offset: Point = Point(
             config.graphics.little_killer_offset_percentage,
             config.graphics.little_killer_offset_percentage,
         )
-        adjusted_position: Coord = (self.position + offset).center
+        adjusted_position: Point = (self.position + offset).center
         # Create number text element
         number_text: Text = Text(
             '',

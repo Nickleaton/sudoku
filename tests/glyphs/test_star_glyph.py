@@ -6,7 +6,7 @@ from src.glyphs.glyph import Glyph
 from src.glyphs.simple_text_glyph import SimpleTextGlyph
 from src.glyphs.star_glyph import StarGlyph
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -19,7 +19,7 @@ class TestStarGlyph(TestGlyph):
         Initializes the style and position for the StarGlyph.
         """
         super().setUp()
-        self.glyph = StarGlyph('Style', Coord(1, 1))
+        self.glyph = StarGlyph('Style', Point(1, 1))
 
     @property
     def target(self) -> str:
@@ -46,7 +46,7 @@ class TestStarGlyph(TestGlyph):
         Returns:
             str: The string representation of the StarGlyph with style and position.
         """
-        return "StarGlyph('Style', Coord(1, 1))"
+        return "StarGlyph('Style', Point(1, 1))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestLineGlyph(TestGlyph):
         Initializes the style, start coordinate, and end coordinate for the LineGlyph.
         """
         super().setUp()
-        self.glyph = LineGlyph("Style", Coord(0, 0), Coord(1, 2))
+        self.glyph = LineGlyph("Style", Point(0.0, 0.0), Point(200.0, 100.0))
 
     @property
     def target(self) -> str:
@@ -26,7 +26,7 @@ class TestLineGlyph(TestGlyph):
         Returns:
             str: The expected target SVG markup for the LineGlyph.
         """
-        return '<line class="Style" x1="0" x2="200" y1="0" y2="100" />'
+        return '<line class="Style" x1="0.0" x2="200.0" y1="0.0" y2="100.0" />'
 
     @property
     def representation(self) -> str:
@@ -35,7 +35,7 @@ class TestLineGlyph(TestGlyph):
         Returns:
             str: The string representation of the LineGlyph.
         """
-        return "LineGlyph('Style', Coord(0, 0), Coord(1, 2))"
+        return "LineGlyph('Style', Point(0.0, 0.0), Point(200.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

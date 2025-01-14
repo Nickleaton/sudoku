@@ -1,25 +1,25 @@
 """EdgeTextGlyph."""
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 
 class EdgeTextGlyph(TextGlyph):
     """Represents start text glyph positioned along the edge between two coordinates."""
 
     # pylint: disable=too-many-arguments
-    def __init__(self, class_name: str, angle: float, first: Coord, second: Coord, text: str):
+    def __init__(self, class_name: str, angle: float, first: Point, second: Point, text: str):
         """Initialize the EdgeTextGlyph instance.
 
         Args:
             class_name (str): The CSS class name for the text.
             angle (float): The rotation angle for the text.
-            first (Coord): The first coordinate for the edge.
-            second (Coord): The second coordinate for the edge.
+            first (Point): The first coordinate for the edge.
+            second (Point): The second coordinate for the edge.
             text (str): The text content to be displayed.
         """
-        super().__init__(class_name, angle, Coord.middle(first, second), text)
-        self.first: Coord = first
-        self.second: Coord = second
+        super().__init__(class_name, angle, Point.middle(first, second), text)
+        self.first: Point = first
+        self.second: Point = second
 
     @property
     def priority(self) -> int:

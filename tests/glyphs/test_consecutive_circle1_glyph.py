@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.consecutive1_glyph import Consecutive1Glyph
 from src.glyphs.glyph import Glyph
 from src.glyphs.rectangle_glyph import RectangleGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_circle_glyph import TestCircleGlyph
 
 
@@ -18,7 +18,7 @@ class TestConsecutiveCircle1Glyph(TestCircleGlyph):
         Initializes an instance of Consecutive1Glyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = Consecutive1Glyph('Style', Coord(1, 1), Coord(1, 2))
+        self.glyph = Consecutive1Glyph('Style', Point(100, 100), Point(200, 100))
 
     @property
     def target(self) -> str:
@@ -36,7 +36,7 @@ class TestConsecutiveCircle1Glyph(TestCircleGlyph):
         Returns:
             str: The string representation of the Consecutive1Glyph instance.
         """
-        return "Consecutive1Glyph('Style', Coord(1, 1), Coord(1, 2))"
+        return "Consecutive1Glyph('Style', Point(100.0, 100.0), Point(200.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

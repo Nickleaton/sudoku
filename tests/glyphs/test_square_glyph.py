@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import SquareGlyph, RectGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestSquareGlyph(TestGlyph):
         Initializes the style, position, and size for the SquareGlyph.
         """
         super().setUp()
-        self.glyph = SquareGlyph('Style', position=Coord(10, 10), size=50)
+        self.glyph = SquareGlyph('Style', position=Point(1000, 1000), size=5000)
 
     @property
     def target(self) -> str:
@@ -26,7 +26,7 @@ class TestSquareGlyph(TestGlyph):
         Returns:
             str: The expected SVG markup for the square glyph as start rectangle element.
         """
-        return '<rect class="Style" height="5000" transform="translate(1000, 1000)" width="5000" x="0" y="0" />'
+        return '<rect class="Style" height="5000.0" transform="translate(1000.0, 1000.0)" width="5000.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
@@ -35,7 +35,7 @@ class TestSquareGlyph(TestGlyph):
         Returns:
             str: The string representation of the SquareGlyph with style, position, and size.
         """
-        return "SquareGlyph('Style', Coord(10, 10), 50)"
+        return "SquareGlyph('Style', Point(1000.0, 1000.0), 5000.0)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

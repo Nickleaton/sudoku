@@ -4,7 +4,7 @@ from svgwrite.shapes import Circle, Polyline
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -12,16 +12,16 @@ config: Config = Config()
 class ArrowLineGlyph(PolyLineGlyph):
     """Represents an arrow line glyph with start and end markers."""
 
-    def __init__(self, class_name: str, coords: list[Coord]):
+    def __init__(self, class_name: str, points: list[Point]):
         """Initialize an ArrowLineGlyph instance.
 
         This constructor creates an arrow line glyph with the specified class name and coordinates.
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            coords (list[Coord]): A list of coordinates representing the points of the line.
+            points (list[Point]): A list of points representing the points of the line.
         """
-        super().__init__(class_name, coords, start=True, end=True)
+        super().__init__(class_name, points, start=True, end=True)
 
     @classmethod
     def start_marker(cls) -> Marker | None:
@@ -84,6 +84,6 @@ class ArrowLineGlyph(PolyLineGlyph):
             f'{self.__class__.__name__}'
             f'('
             f'{self.class_name!r}, '
-            f'[{", ".join([repr(coord) for coord in self.coords])}]'
+            f'[{", ".join([repr(Point) for Point in self.points])}]'
             f')'
         )

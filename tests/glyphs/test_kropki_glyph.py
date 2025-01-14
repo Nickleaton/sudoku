@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.glyph import Glyph
 from src.glyphs.kropki_glyph import KropkiGlyph
 from src.glyphs.rectangle_glyph import RectangleGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_circle_glyph import TestCircleGlyph
 
 
@@ -18,7 +18,7 @@ class TestKropkiGlyph(TestCircleGlyph):
         Initializes the style, start coordinate, and end coordinate for the KropkiGlyph.
         """
         super().setUp()
-        self.glyph = KropkiGlyph('Style', Coord(1, 1), Coord(1, 2))
+        self.glyph = KropkiGlyph('Style', Point(100, 100), Point(200, 100))
 
     @property
     def target(self):
@@ -36,7 +36,7 @@ class TestKropkiGlyph(TestCircleGlyph):
         Returns:
             str: The string representation of the KropkiGlyph.
         """
-        return "KropkiGlyph('Style', Coord(1, 1), Coord(1, 2))"
+        return "KropkiGlyph('Style', Point(100.0, 100.0), Point(200.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

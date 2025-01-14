@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.glyph import Glyph
 from src.glyphs.rect_glyph import RectGlyph, SquareGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_square_glyph import TestSquareGlyph
 
 
@@ -18,7 +18,7 @@ class TestCellGlyph(TestSquareGlyph):
         Initializes an instance of CellGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = CellGlyph('Style', Coord(1, 1))
+        self.glyph = CellGlyph('Style', Point(100.0, 100.0))
 
     @property
     def target(self) -> str:
@@ -27,7 +27,7 @@ class TestCellGlyph(TestSquareGlyph):
         Returns:
             str: The SVG markup for the rectangle representing the CellGlyph.
         """
-        return '<rect class="Style" height="100" transform="translate(100, 100)" width="100" x="0" y="0" />'
+        return '<rect class="Style" height="100.0" transform="translate(100.0, 100.0)" width="100.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
@@ -36,7 +36,7 @@ class TestCellGlyph(TestSquareGlyph):
         Returns:
             str: The string representation of the CellGlyph instance.
         """
-        return "CellGlyph('Style', Coord(1, 1))"
+        return "CellGlyph('Style', Point(100.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

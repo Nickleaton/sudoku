@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.little_arrow_glyph import LittleArrowGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestLittleArrowGlyph(TestGlyph):
         Initializes the style, position, and size for the LittleArrowGlyph.
         """
         super().setUp()
-        self.glyph = LittleArrowGlyph('Style', Coord(1, 1), 1)
+        self.glyph = LittleArrowGlyph('Style', Point(100.0, 100.0), 1)
 
     @property
     def target(self) -> str:
@@ -39,7 +39,7 @@ class TestLittleArrowGlyph(TestGlyph):
         Returns:
             str: The string representation of the LittleArrowGlyph.
         """
-        return "LittleArrowGlyph('Style', Coord(1, 1), 1)"
+        return "LittleArrowGlyph('Style', Point(100.0, 100.0), 1)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

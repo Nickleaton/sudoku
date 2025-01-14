@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.arrow_line_glyph import ArrowLineGlyph
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_poly_line_glyph import TestPolyLineGlyph
 
 
@@ -18,7 +18,10 @@ class TestArrowLineGlyph(TestPolyLineGlyph):
         Initializes an instance of ArrowLineGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = ArrowLineGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])
+        self.glyph = ArrowLineGlyph(
+            'Style',
+            [Point(150, 150), Point(250, 150), Point(250, 250)]
+        )
 
     @property
     def start_marker(self) -> str:
@@ -72,7 +75,7 @@ class TestArrowLineGlyph(TestPolyLineGlyph):
         Returns:
             str: The string representation of the ArrowLineGlyph instance.
         """
-        return "ArrowLineGlyph('Style', [Coord(1, 1), Coord(1, 2), Coord(2, 2)])"
+        return "ArrowLineGlyph('Style', [Point(150.0, 150.0), Point(250.0, 150.0), Point(250.0, 250.0)])"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

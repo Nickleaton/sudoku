@@ -5,8 +5,11 @@ from svgwrite.container import Symbol, Use
 from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
-from src.utils.coord import Coord
+from src.utils.config import Config
 from src.utils.moves import Moves
+from src.utils.point import Point
+
+config = Config()
 
 
 class BattenburgGlyph(Glyph):
@@ -16,7 +19,7 @@ class BattenburgGlyph(Glyph):
     for start given position and then draws it as an SVG symbol.
     """
 
-    def __init__(self, class_name: str, coord: Coord):
+    def __init__(self, class_name: str, point: Point):
         """Initialize start BattenburgGlyph instance.
 
         This constructor creates start Battenburg pattern glyph with the specified class name
@@ -24,10 +27,10 @@ class BattenburgGlyph(Glyph):
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            coord (Coord): The coordinates of the Battenburg pattern.
+            point (Point): The coordinates of the Battenburg pattern.
         """
         super().__init__(class_name)
-        self.coord = coord
+        self.point = point
 
     @classmethod
     def symbol(cls) -> Symbol:
@@ -40,19 +43,23 @@ class BattenburgGlyph(Glyph):
             Symbol: The SVG symbol for the Battenburg pattern.
         """
         symbol: Symbol = Symbol(
-            viewBox='0 0 100 100',
+            viewBox=f'0 0 {int(config.graphics.cell_size)} {int(config.graphics.cell_size)}',
             id_='Battenburg-symbol',
             class_='Battenburg',
         )
-        percentage: float = 0.3
+        percentage: float = config.graphics.battenburg.percentage
+        cell_size: float = config.graphics.cell_size
+        size: float = cell_size * percentage
+        colour_a: str = config.graphics.battenburg.colour_a
+        colour_b: str = config.graphics.battenburg.colour_b
 
         # Add alternating colored rectangles to form the Battenburg pattern.
         for index, direction in enumerate(Moves.orthogonals()):
-            position: Coord = direction * percentage
+            position: Point = Point.create_from_coord(direction) * percentage
             rect: Rect = Rect(
-                insert=position.point.coordinates,
-                size=Coord(percentage, percentage).point.coordinates,
-                class_=f"Battenburg{'Pink' if index % 2 == 0 else 'Yellow'}",
+                insert=position.coordinates,
+                size=Point(size, size).coordinates,
+                class_=f"Battenburg{colour_a if index % 2 == 0 else colour_b}",
             )
             symbol.add(rect)
 
@@ -70,10 +77,10 @@ class BattenburgGlyph(Glyph):
         """
         return Use(
             href='#Battenburg-symbol',
-            insert=self.coord.point.coordinates,
+            insert=self.point.coordinates,
             class_='Battenburg',
-            height=100,
-            width=100,
+            height=config.graphics.cell_size,
+            width=config.graphics.cell_size,
         )
 
     def __repr__(self) -> str:
@@ -85,4 +92,4 @@ class BattenburgGlyph(Glyph):
         Returns:
             str: A string representation of the BattenburgGlyph instance.
         """
-        return f'{self.__class__.__name__}({self.class_name!r}, {self.coord!r})'
+        return f"{self.__class__.__name__}(class_name={self.class_name!r}, point={self.point!r})"

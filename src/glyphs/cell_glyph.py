@@ -1,6 +1,9 @@
 """CellGlyph."""
 from src.glyphs.rect_glyph import SquareGlyph
-from src.utils.coord import Coord
+from src.utils.config import Config
+from src.utils.point import Point
+
+config: Config = Config()
 
 
 class CellGlyph(SquareGlyph):
@@ -10,7 +13,7 @@ class CellGlyph(SquareGlyph):
     from `SquareGlyph` and assigns start fixed size of 1 to the cell.
     """
 
-    def __init__(self, class_name: str, position: Coord):
+    def __init__(self, class_name: str, position: Point):
         """Initialize start CellGlyph instance.
 
         This constructor creates start cell glyph with the specified class name and position.
@@ -18,9 +21,9 @@ class CellGlyph(SquareGlyph):
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            position (Coord): The position of the cell, represented as start `Coord` object.
+            position (Point): The position of the cell, represented as start `Point` object.
         """
-        super().__init__(class_name, position, 1)
+        super().__init__(class_name, position, config.graphics.cell_size)
 
     def __repr__(self) -> str:
         """Return start string representation of the CellGlyph instance.

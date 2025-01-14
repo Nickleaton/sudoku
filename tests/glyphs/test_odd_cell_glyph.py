@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.odd_cell_glyph import OddCellGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_circle_glyph import TestCircleGlyph
 
 
@@ -17,7 +17,7 @@ class TestOddCellGlyph(TestCircleGlyph):
         Initializes the style and position for the OddCellGlyph.
         """
         super().setUp()
-        self.glyph = OddCellGlyph('Style', Coord(1, 1))
+        self.glyph = OddCellGlyph('Style', Point(100.0, 100.0))
 
     @property
     def symbol(self) -> str:
@@ -38,7 +38,7 @@ class TestOddCellGlyph(TestCircleGlyph):
         Returns:
             str: The expected target SVG markup for the OddCellGlyph.
         """
-        return '<use class="OddCell" height="100" width="100" row="100" xlink:href="#OddCell-symbol" column="100" />'
+        return '<use class="OddCell" height="100" width="100.0" row="100.0" xlink:href="#OddCell-symbol" column="100.0" />'
 
     @property
     def representation(self) -> str:
@@ -47,7 +47,7 @@ class TestOddCellGlyph(TestCircleGlyph):
         Returns:
             str: The string representation of the OddCellGlyph.
         """
-        return "OddCellGlyph('Style', Coord(1, 1))"
+        return "OddCellGlyph('Style', Point(100.0, 100.0))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

@@ -7,7 +7,6 @@ from svgwrite.container import Group
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
-from src.utils.coord import Coord
 from src.utils.moves import Moves
 from src.utils.point import Point
 from src.utils.vector import Vector
@@ -24,13 +23,13 @@ class KillerGlyph(Glyph):
     long_size: float = config.graphics.cell_size * config.graphics.middle_percentage - offset
 
     long_lines: ClassVar[dict[int, Vector]] = {
-        2: Vector(Coord(0, 0), Coord(0, 1)),
-        4: Vector(Coord(0, 0), Coord(1, 0)),
-        6: Vector(Coord(0, 1), Coord(1, 1)),
-        8: Vector(Coord(1, 0), Coord(1, 1)),
+        2: Vector(Point(0, 0), Point(0, 1)),
+        4: Vector(Point(0, 0), Point(1, 0)),
+        6: Vector(Point(0, 1), Point(1, 1)),
+        8: Vector(Point(1, 0), Point(1, 1)),
     }
 
-    short_lines: ClassVar[dict[int, tuple[Point, Coord]]] = {
+    short_lines: ClassVar[dict[int, tuple[Point, Point]]] = {
         12: (Point(-1, -1), Moves.up),
         23: (Point(1, -1), Moves.up),
         36: (Point(1, -1), Moves.right),
@@ -41,21 +40,21 @@ class KillerGlyph(Glyph):
         14: (Point(-1, -1), Moves.left),
     }
 
-    def __init__(self, class_name: str, cells: list[Coord]):
+    def __init__(self, class_name: str, cells: list[Point]):
         """Initialize the KillerGlyph with class name and list of cell coordinates.
 
         Args:
             class_name (str): The class name for the glyph's SVG element.
-            cells (List[Coord]): A sorted list of coordinates representing the cells.
+            cells (List[Point]): A sorted list of coordinates representing the cells.
         """
         super().__init__(class_name)
-        self.cells: list[Coord] = sorted(cells)
+        self.cells: list[Point] = sorted(cells)
 
-    def outside(self, start_cell: Coord) -> bool:
+    def outside(self, start_cell: Point) -> bool:
         """Check if the given cell is outside the current set of glyph cells.
 
         Args:
-            start_cell (Coord): The coordinate to check.
+            start_cell (Point): The coordinate to check.
 
         Returns:
             bool: True if the cell is outside, otherwise False.
@@ -65,11 +64,11 @@ class KillerGlyph(Glyph):
                 return False
         return True
 
-    def cell_long_lines(self, cell: Coord) -> VectorList:
+    def cell_long_lines(self, cell: Point) -> VectorList:
         """Generate long line vectors for the given cell.
 
         Args:
-            cell (Coord): The coordinate of the cell.
+            cell (Point): The coordinate of the cell.
 
         Returns:
             VectorList: A list of vectors representing long lines for the cell.

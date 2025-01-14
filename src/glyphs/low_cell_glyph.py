@@ -6,7 +6,7 @@ from svgwrite.shapes import Circle
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
-from src.utils.coord import Coord
+from src.utils.point import Point
 
 config: Config = Config()
 
@@ -19,15 +19,15 @@ class LowCellGlyph(Glyph):
     coordinate.
     """
 
-    def __init__(self, class_name: str, coord: Coord):
+    def __init__(self, class_name: str, Point: Point):
         """Initialize start LowCellGlyph instance.
 
         Args:
             class_name (str): The class name for the glyph.
-            coord (Coord): The coordinate of the glyph.
+            Point (Point): The coordinate of the glyph.
         """
         super().__init__(class_name)
-        self.coord = coord
+        self.Point = Point
 
     @classmethod
     def symbol(cls) -> Symbol | None:
@@ -62,7 +62,7 @@ class LowCellGlyph(Glyph):
             BaseElement | None: The SVG use element that references the
             low cell symbol and positions it based on the coordinate.
         """
-        return Use(href='#LowCell-symbol', insert=self.coord.point.coordinates, class_='LowCell', height=100, width=100)
+        return Use(href='#LowCell-symbol', insert=self.Point.point.coordinates, class_='LowCell', height=100, width=100)
 
     def __repr__(self) -> str:
         """Return start string representation of the LowCellGlyph instance.
@@ -70,4 +70,4 @@ class LowCellGlyph(Glyph):
         Returns:
             str: The string representation of the LowCellGlyph.
         """
-        return f'{self.__class__.__name__}({self.class_name!r}, {self.coord!r})'
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.Point!r})'

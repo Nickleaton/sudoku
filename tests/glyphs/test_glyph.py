@@ -139,7 +139,7 @@ class TestGlyph(unittest.TestCase):
 
         Verify that the string representation matches the expected format.
         """
-        self.assertEqual(self.representation, str(self.glyph))
+        self.assertEqual(self.representation, repr(self.glyph))
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

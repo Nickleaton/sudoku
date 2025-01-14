@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.coord import Coord
+from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestTextGlyph(TestGlyph):
         Initializes the style, rotation, position, and text content for the TextGlyph.
         """
         super().setUp()
-        self.glyph = TextGlyph('Style', 90, Coord(10, 10), "abcd")
+        self.glyph = TextGlyph('Style', 90, Point(1000, 1000), "abcd")
 
     @property
     def target(self) -> str:
@@ -28,10 +28,10 @@ class TestTextGlyph(TestGlyph):
         """
         return (
             '<g>'
-            '<text class="StyleBackground" transform="translate(1000, 1000) rotate(90.0)">'
+            '<text class="StyleBackground" transform="translate(1000.0, 1000.0) rotate(90.0)">'
             '<tspan alignment-baseline="central" text-anchor="middle">abcd</tspan>'
             '</text>'
-            '<text class="StyleForeground" transform="translate(1000, 1000) rotate(90.0)">'
+            '<text class="StyleForeground" transform="translate(1000.0, 1000.0) rotate(90.0)">'
             '<tspan alignment-baseline="central" text-anchor="middle">abcd</tspan>'
             '</text>'
             '</g>'
@@ -44,7 +44,7 @@ class TestTextGlyph(TestGlyph):
         Returns:
             str: The string representation of the TextGlyph with style, rotation, position, and content.
         """
-        return "TextGlyph('Style', 90.0, Coord(10, 10), 'abcd')"
+        return "TextGlyph('Style', 90.0, Point(1000.0, 1000.0), 'abcd')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
