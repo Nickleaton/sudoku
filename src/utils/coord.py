@@ -2,7 +2,6 @@
 from typing import List
 
 from src.utils.angle import Angle
-from src.utils.point import Point
 
 TOLERANCE: float = 1e-6
 
@@ -19,15 +18,15 @@ class Coord:
         column (float): The column number of the coordinate.
     """
 
-    def __init__(self, row: float, column: float) -> None:
+    def __init__(self, row: int, column: int) -> None:
         """Initialize start Coord instance.
 
         Args:
-            row (float): The row number of the coordinate.
-            column (float): The column number of the coordinate.
+            row (int): The row number of the coordinate.
+            column (int): The column number of the coordinate.
         """
-        self.row: float = row
-        self.column: float = column
+        self.row: int = row
+        self.column: int = column
         self.angle: Angle = Angle.create_from_x_y(self.column, self.row)
 
     def __repr__(self) -> str:
@@ -61,33 +60,22 @@ class Coord:
         return Coord(self.row - other.row, self.column - other.column)
 
     def __mul__(self, other: object) -> 'Coord':
-        """Multiply start Coord by another Coord or start scalar (integer or float).
+        """Multiply start Coord by another Coord or start scalar (integer).
 
         Args:
-            other (object): The other object (Coord, integer, or float) to multiply by.
+            other (object): The other object (Coord, integer) to multiply by.
 
         Returns:
             Coord: A new Coord object after multiplication.
 
         Raises:
-            CoordException: If the other object is not start Coord, integer, or float.
+            CoordException: If the other object is not start Coord, integer.
         """
         if isinstance(other, Coord):
             return Coord(self.row * other.row, self.column * other.column)
-        if isinstance(other, (int, float)):
+        if isinstance(other, int):
             return Coord(self.row * other, self.column * other)
         raise CoordException(f'Multiplication not supported for Coord and {type(other)}')
-
-    def __truediv__(self, other: float) -> 'Coord':
-        """Divide start Coord by start scalar.
-
-        Args:
-            other (float): The scalar to divide by.
-
-        Returns:
-            Coord: A new Coord object after division.
-        """
-        return Coord(self.row / other, self.column / other)
 
     def __neg__(self) -> 'Coord':
         """Negate start Coord.
@@ -111,7 +99,7 @@ class Coord:
         """
         if isinstance(other, Coord):
             # Compare the row and column with tolerance
-            return abs(self.row - other.row) < TOLERANCE and abs(self.column - other.column) < TOLERANCE
+            return self.row == other.row and self.column == other.column
         raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __lt__(self, other: object) -> bool:
@@ -168,31 +156,6 @@ class Coord:
         return coord_list
 
     @property
-    def transform(self) -> str:
-        """Return an SVG transform string for the point represented by this Coord.
-
-        Returns:
-            str: The SVG transform string.
-        """
-        return self.point.transform
-
-    @staticmethod
-    def middle(start: 'Coord', finish: 'Coord') -> 'Coord':
-        """Return the midpoint between two Coord objects.
-
-        Args:
-            start (Coord): The first Coord.
-            finish (Coord): The second Coord.
-
-        Returns:
-            Coord: The midpoint between the two coordinates.
-        """
-        return Coord(
-            (start.row + finish.row) / 2,
-            (start.column + finish.column) / 2,
-        )
-
-    @property
     def top_left(self) -> 'Coord':
         """Return the top-left corner of the cell that this Coord represents.
 
@@ -200,15 +163,6 @@ class Coord:
             Coord: The top-left corner coordinate.
         """
         return Coord(int(self.row), int(self.column))
-
-    @property
-    def center(self) -> 'Coord':
-        """Return the center point of the cell that this Coord represents.
-
-        Returns:
-            Coord: The center coordinate.
-        """
-        return self.top_left + Coord(0.5, 0.5)
 
     @property
     def bottom_right(self) -> 'Coord':
@@ -273,22 +227,3 @@ class Coord:
             bool: True if the coordinate is inside, False otherwise.
         """
         return cls.check_line(coord)
-
-    # TODO - needs to be move out of Coord for dependency reasons
-    @property
-    def point(self) -> Point:
-        """Convert the Coord into a Point, scaling the row and column by 100.
-
-        Returns:
-            Point: The corresponding Point object.
-        """
-        return Point(self.column * 100, self.row * 100)
-
-    @property
-    def int_tuple(self) -> tuple[int, int]:
-        """Convert the Coord into a tuple of integers.
-
-        Returns:
-            tuple[int, int]: The corresponding tuple of integers.
-        """
-        return int(self.row), int(self.column)
