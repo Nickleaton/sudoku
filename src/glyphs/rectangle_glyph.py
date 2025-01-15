@@ -2,8 +2,12 @@
 from svgwrite.base import BaseElement
 from svgwrite.shapes import Rect
 
-from src.glyphs.glyph import Glyph, config
+from src.glyphs.glyph import Glyph
+from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.point import Point
+
+config: Config = Config()
 
 
 class RectangleGlyph(Glyph):
@@ -12,31 +16,33 @@ class RectangleGlyph(Glyph):
     def __init__(
         self,
         class_name: str,
-        first: Point,
-        second: Point,
+        first_location: Coord,
+        second_location: Coord,
         percentage: float,
         ratio: float,
         vertical: bool,
     ) -> None:
-        """Initialize the rectangle glyph with position, size percentage, and ratio.
+        """Initialize the rectangle glyph with location, size percentage, and ratio.
 
         Args:
             class_name (str): The class name for the SVG element.
-            first (Point): The first coordinate for positioning the rectangle.
-            second (Point): The second coordinate for positioning the rectangle.
+            first_location (Coord): The first coordinate for positioning the rectangle.
+            second_location (Coord): The second coordinate for positioning the rectangle.
             percentage (float): The percentage of the cell size used for the rectangle's width and height.
             ratio (float): The ratio that affects the size in one direction (height/width or width/height).
             vertical (bool): A flag indicating whether the rectangle is vertical (True) or horizontal (False).
         """
         super().__init__(class_name)
-        self.first: Point = first
-        self.second: Point = second
+        self.first_location: Coord = first_location
+        self.second_location: Coord = second_location
+        self.first: Point = Point.create_from_coord(self.first_location)
+        self.second: Point = Point.create_from_coord(self.second_location)
         self.percentage: float = percentage
         self.ratio: float = ratio
         self.vertical: bool = vertical
 
     def draw(self) -> BaseElement | None:
-        """Draw the rectangle based on the given position, size, and orientation.
+        """Draw the rectangle based on the given location, size, and orientation.
 
         Returns:
             BaseElement | None: An SVG `Rect` element representing the rectangle.
@@ -71,10 +77,10 @@ class RectangleGlyph(Glyph):
 
         Returns:
             str: A string representing the `RectangleGlyph` instance, including its class name,
-            position, size, and orientation.
+            location, size, and orientation.
         """
         return (
             f'{self.__class__.__name__}('
-            f'{self.class_name!r}, {self.first!r}, {self.second!r}, '
+            f'{self.class_name!r}, {self.first_location!r}, {self.second_location!r}, '
             f'{self.percentage!r}, {self.ratio!r}, {self.vertical!r})'
         )

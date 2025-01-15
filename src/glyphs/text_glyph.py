@@ -6,6 +6,7 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
+from src.utils.coord import Coord
 from src.utils.point import Point
 
 
@@ -13,22 +14,23 @@ class TextGlyph(Glyph):
     """A glyph that represents a text element with rotation and positioning.
 
     This class is used to generate an SVG text glyph with a specified
-    rotation angle, position, and style, supporting both background and
+    rotation angle, location, and style, supporting both background and
     foreground layers.
     """
 
-    def __init__(self, class_name: str, angle: float, position: Point, text: str) -> None:
+    def __init__(self, class_name: str, angle: float, location: Coord, text: str) -> None:
         """Initialize the TextGlyph.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
             angle (float): The angle (in angle_degree) to rotate the text.
-            position (Point): The coordinate on the canvas where the text will be placed.
+            location (Coord): The coordinate on the canvas where the text will be placed.
             text (str): The actual text content to be displayed in the glyph.
         """
         super().__init__(class_name)
         self.angle: Angle = Angle(angle)
-        self.position: Point = position
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(location)
         self.text: str = text
 
     def draw(self) -> BaseElement | None:
@@ -79,11 +81,11 @@ class TextGlyph(Glyph):
     def __repr__(self) -> str:
         """Return a string representation of the TextGlyph.
 
-        Includes details about the class name, angle, position, and text content.
+        Includes details about the class name, angle, location, and text content.
 
         Returns:
             str: A formatted string representation of the TextGlyph.
         """
         return (
-            f'{self.__class__.__name__}({self.class_name!r}, {self.angle.angle}, {self.position!r}, {self.text!r})'
+            f'{self.__class__.__name__}({self.class_name!r}, {self.angle.angle}, {self.location!r}, {self.text!r})'
         )

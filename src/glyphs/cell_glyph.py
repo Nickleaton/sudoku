@@ -1,46 +1,46 @@
 """CellGlyph."""
-from src.glyphs.rect_glyph import SquareGlyph
+from src.glyphs.square_glyph import SquareGlyph
 from src.utils.config import Config
-from src.utils.point import Point
+from src.utils.coord import Coord
 
 config: Config = Config()
 
 
 class CellGlyph(SquareGlyph):
-    """Represents start cell glyph.
+    """Represents a cell glyph in a grid.
 
-    This class creates start square-shaped glyph to represent start cell in start grid. It inherits
-    from `SquareGlyph` and assigns start fixed size of 1 to the cell.
+    This class creates a square-shaped glyph to represent a cell in a grid. It inherits
+    from `SquareGlyph` and assigns a fixed size of 1 unit to the cell.
     """
 
-    def __init__(self, class_name: str, position: Point):
-        """Initialize start CellGlyph instance.
+    def __init__(self, class_name: str, location: Coord):
+        """Initialize a CellGlyph instance.
 
-        This constructor creates start cell glyph with the specified class name and position.
+        This constructor creates a cell glyph with the specified class name and location.
         The size of the cell is fixed to 1 unit.
 
         Args:
             class_name (str): The class name to be assigned to the SVG element.
-            position (Point): The position of the cell, represented as start `Point` object.
+            location (Coord): The location of the cell, represented as a `Coord` object.
         """
-        super().__init__(class_name, position, config.graphics.cell_size)
+        super().__init__(class_name, location, 1)
 
     def __repr__(self) -> str:
-        """Return start string representation of the CellGlyph instance.
+        """Return a string representation of the CellGlyph instance.
 
-        This method provides start human-readable representation of the object, showing the
-        class name, class name, and position.
+        This method provides a human-readable representation of the object, showing the
+        class name, class name, and location.
 
         Returns:
             str: A string representation of the CellGlyph instance.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.position!r})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.location!r})"
 
     @property
     def priority(self) -> int:
         """Get the priority of the cell glyph.
 
-        This property returns start fixed priority number of 4 for the `CellGlyph` instance.
+        This property returns a fixed priority number of 4 for the `CellGlyph` instance.
 
         Returns:
             int: The priority of the cell glyph.

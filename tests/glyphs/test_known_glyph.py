@@ -6,7 +6,7 @@ from src.glyphs.glyph import Glyph
 from src.glyphs.known_glyph import KnownGlyph
 from src.glyphs.simple_text_glyph import SimpleTextGlyph
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -19,7 +19,7 @@ class TestKnownGlyph(TestGlyph):
         Initializes the style, coordinates, and number for the KnownGlyph.
         """
         super().setUp()
-        self.glyph = KnownGlyph('Style', Point(100.0, 100.0), 1)
+        self.glyph = KnownGlyph('Style', Coord(1, 1), 1)
 
     @property
     def target(self):
@@ -46,7 +46,7 @@ class TestKnownGlyph(TestGlyph):
         Returns:
             str: The string representation of the KnownGlyph.
         """
-        return "KnownGlyph('Style', Point(100.0, 100.0), 1)"
+        return "KnownGlyph('Style', Coord(1, 1), 1)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

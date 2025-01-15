@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.circle_glyph import CircleGlyph
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 config = Config()
@@ -20,7 +20,7 @@ class TestCircleGlyph(TestGlyph):
         Initializes an instance of CircleGlyph with the given style, coordinates, and radius.
         """
         super().setUp()
-        self.glyph = CircleGlyph('Style', Point(1, 1) * config.graphics.cell_size, 0.5)
+        self.glyph = CircleGlyph('Style', Coord(1, 1), 0.5)
 
     @property
     def target(self) -> str:
@@ -38,7 +38,7 @@ class TestCircleGlyph(TestGlyph):
         Returns:
             str: The string representation of the CircleGlyph instance.
         """
-        return "CircleGlyph('Style', Point(100.0, 100.0), 0.5)"
+        return "CircleGlyph('Style', Coord(1, 1), 0.5)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

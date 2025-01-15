@@ -5,24 +5,26 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.point import Point
 
 config: Config = Config()
 
 
 class LittleNumberGlyph(Glyph):
-    """Represents start small number glyph for Sudoku or similar puzzles."""
+    """Represents start_location small number glyph for Sudoku or similar puzzles."""
 
-    def __init__(self, class_name: str, position: Point, number: int):
-        """Initialize start Little Number glyph.
+    def __init__(self, class_name: str, location: Coord, number: int):
+        """Initialize start_location Little Number glyph.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
-            position (Point): The coordinate position of the glyph.
+            location (Coord): The coordinate location of the glyph.
             number (int): The number to display in the glyph.
         """
         super().__init__(class_name)
-        self.position: Point = position
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(location)
         self.number: int = number
 
     def draw(self) -> BaseElement | None:
@@ -45,10 +47,10 @@ class LittleNumberGlyph(Glyph):
         return text
 
     def __repr__(self) -> str:
-        """Return start string representation of the Little Number glyph.
+        """Return start_location string representation of the Little Number glyph.
 
         Returns:
             str: The string representation of the glyph, including class name,
-            position, and number.
+            location, and number.
         """
-        return f'{self.__class__.__name__}({self.class_name!r}, {self.position!r}, {self.number!r})'
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.location!r}, {self.number!r})'

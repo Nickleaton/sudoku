@@ -15,22 +15,22 @@ class QuadrupleGlyph(Glyph):
     """Represents a quadruple glyph consisting of a circle and associated text in SVG format."""
 
     def __init__(self, class_name: str, position: Point, numbers: str) -> None:
-        """Initialize the QuadrupleGlyph with class name, position, and numbers to display.
+        """Initialize the QuadrupleGlyph with class name, location, and numbers to display.
 
         Args:
             class_name (str): The class name for the SVG elements.
-            position (Point): The position where the circle and text should be placed.
+            position (Point): The location where the circle and text should be placed.
             numbers (str): The text to display inside the circle.
         """
         super().__init__(class_name)
-        self.position: Point = position  # The position of the glyph
+        self.position: Point = position  # The location of the glyph
         self.numbers: str = numbers  # The numbers to be displayed inside the circle
 
     def draw(self) -> BaseElement | None:
         """Draw the circle and the associated text for the quadruple glyph.
 
         This method creates an SVG `Group` containing a `Circle` and a `Text` element.
-        The circle is placed at the bottom-right of the position, and the numbers are
+        The circle is placed at the bottom-right of the location, and the numbers are
         rendered inside the circle.
 
         Returns:
@@ -69,6 +69,6 @@ class QuadrupleGlyph(Glyph):
         """Return string representation of the QuadrupleGlyph.
 
         Returns:
-            str: A string representing the QuadrupleGlyph instance, including its class name, position, and numbers.
+            str: A string representing the QuadrupleGlyph instance, including its class name, location, and numbers.
         """
         return f'{self.__class__.__name__}({self.class_name!r}, {self.position!r}, {self.numbers!r})'

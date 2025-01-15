@@ -17,11 +17,11 @@ class LittleKillerGlyph(Glyph):
     arrow: str = '\uA71B'  # ꜛ
 
     def __init__(self, class_name: str, position: Point, angle: Angle, input_value: int) -> None:
-        """Initialize the Little Killer glyph with class name, position, angle, and input_value.
+        """Initialize the Little Killer glyph with class name, location, angle, and input_value.
 
         Args:
             class_name (str): The CSS class name for styling the glyph.
-            position (Point): The coordinate position of the glyph.
+            position (Point): The coordinate location of the glyph.
             angle (Angle): The angle of the glyph's arrow.
             input_value (int): The numerical input_value associated with the glyph.
         """
@@ -71,7 +71,7 @@ class LittleKillerGlyph(Glyph):
 
         Returns:
             str: The string representation of the glyph, including class name,
-            position, angle, and number.
+            location, angle, and number.
         """
         return (
             f'{self.__class__.__name__}('

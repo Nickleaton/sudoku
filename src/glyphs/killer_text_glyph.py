@@ -6,27 +6,29 @@ from svgwrite.text import Text, TSpan
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
 from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.point import Point
 
 config: Config = Config()
 
 
 class KillerTextGlyph(Glyph):
-    """Represents a Killer text glyph, allowing the rendering of text with specific angle and position."""
+    """Represents a Killer text glyph, allowing the rendering of text with specific angle and location."""
 
-    def __init__(self, class_name: str, angle: float, position: Point, text: str) -> None:
-        """Initialize the KillerTextGlyph with class name, angle, position, and text.
+    def __init__(self, class_name: str, angle: float, location: Coord, text: str) -> None:
+        """Initialize the KillerTextGlyph with class name, angle, location, and text.
 
         Args:
             class_name (str): The class name for the SVG element.
             angle (float): The rotation angle for the text in angle_degree.
-            position (Point): The position of the text in coordinates.
+            location (Coord): The location of the text in coordinates.
             text (str): The text content to be displayed.
         """
         super().__init__(class_name)
-        self.angle: Angle = Angle(angle)  # The angle of rotation for the text
-        self.position: Point = position  # The position of the text in coordinates
-        self.text: str = text  # The text content to display
+        self.angle: Angle = Angle(angle)
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(location)
+        self.text: str = text
 
     def draw(self) -> Group | None:
         """Draw the KillerTextGlyph as an SVG element, rendering the text with background and foreground.
@@ -36,7 +38,7 @@ class KillerTextGlyph(Glyph):
         """
         group: Group = Group()
 
-        # Apply a small offset to the text position
+        # Apply a small offset to the text location
         size: float = config.graphics.killer.text.offset_percentage * config.graphics.cell_size
         position: Point = self.position + Point(1, 1) * size
         transform = f'{position.transform} {self.angle.transform}'
@@ -67,8 +69,8 @@ class KillerTextGlyph(Glyph):
         """Return a string representation of the KillerTextGlyph.
 
         Returns:
-            str: A string representing the KillerTextGlyph instance with its class name, angle, position, and text.
+            str: A string representing the KillerTextGlyph instance with its class name, angle, location, and text.
         """
         return (
-            f'{self.__class__.__name__}({self.class_name!r}, {self.angle.angle}, {self.position!r}, {self.text!r})'
+            f'{self.__class__.__name__}({self.class_name!r}, {self.angle.angle}, {self.location!r}, {self.text!r})'
         )

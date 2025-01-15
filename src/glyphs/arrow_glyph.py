@@ -5,46 +5,46 @@ from svgwrite.text import Text, TSpan
 
 from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
+from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.point import Point
+
+config: Config = Config()
 
 
 class ArrowGlyph(Glyph):
     """Represents an arrow glyph to be drawn on an SVG canvas."""
 
-    arrow: str = '\u2191'  # Define the arrow symbol (↑)
+    arrow: str = '\u2191'  # Unicode arrow symbol (↑)
 
-    def __init__(self, class_name: str, angle: float, position: Point) -> None:
+    def __init__(self, class_name: str, angle: float, location: Coord) -> None:
         """Initialize an ArrowGlyph instance.
 
         Args:
-            class_name (str): The class name to be assigned to the SVG element.
-            angle (float): The angle of the arrow in angle_degree.
-            position (Point): The position of the arrow, represented as a `Point` object.
+            class_name (str): The CSS class name for the SVG element.
+            angle (float): The angle of the arrow in degrees.
+            location (Coord): The coordinate where the arrow will be drawn.
         """
         super().__init__(class_name)
         self.angle: Angle = Angle(angle)  # Convert angle to an `Angle` object.
-        self.position: Point = position
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(location) * config.graphics.cell_size
 
     def draw(self) -> BaseElement | None:
-        """Draws the arrow on an SVG canvas.
-
-        Creates and returns an SVG text element that represents the arrow, applying the specified
-        position and rotation (angle) transformations.
+        """Draw the arrow glyph as an SVG text element.
 
         Returns:
-            BaseElement | None: The SVG text element representing the arrow, or `None` if the
-            element cannot be created.
+            BaseElement | None: An SVG Text element with the arrow symbol, or None if the
+            location is invalid.
         """
-        # Combine transformations into a single formatted string.
+        if not self.location:  # Validate the location
+            return None
+
+        # Apply location and rotation transformations
         transform: str = f'{self.position.transform} {self.angle.transform}'
 
-        # Create the text element for the arrow with the applied transformations.
-        text: Text = Text(
-            '',
-            transform=transform,
-            class_=self.class_name,
-        )
-        # Create the span element for the arrow symbol itself.
+        # Create SVG text and span elements
+        text: Text = Text('', transform=transform, class_=self.class_name)
         span: TSpan = TSpan(
             ArrowGlyph.arrow,
             alignment_baseline='central',
@@ -56,13 +56,7 @@ class ArrowGlyph(Glyph):
     def __repr__(self) -> str:
         """Return a string representation of the ArrowGlyph instance.
 
-        This method provides a human-readable representation of the object, showing the class
-        name, class name, angle, and position.
-
         Returns:
-            str: A string representation of the ArrowGlyph instance.
+            str: A string representing the class name, angle, and location.
         """
-        return (
-            f'{self.__class__.__name__}'
-            f'({self.class_name!r}, {self.angle.angle!r}, {self.position!r})'
-        )
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.angle.angle!r}, {self.location!r})'

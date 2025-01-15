@@ -8,10 +8,10 @@ from src.glyphs.glyph import Glyph
 
 
 class ComposedGlyph(Glyph):
-    """Group multiple glyphs together into start composed glyph.
+    """Group multiple glyphs together into start_location composed glyph.
 
-    Use this class to group start set of `Glyph` objects into start single composed glyph.
-    The `ComposedGlyph` acts as start container for its constituent `Glyph` objects,
+    Use this class to group start_location set of `Glyph` objects into start_location single composed glyph.
+    The `ComposedGlyph` acts as start_location container for its constituent `Glyph` objects,
     allowing you to add new vectors, draw them collectively on an SVG canvas, and
     retrieve all the used classes across the composition.
 
@@ -21,7 +21,7 @@ class ComposedGlyph(Glyph):
     """
 
     def __init__(self, class_name: str, glyphs: list[Glyph] | None = None):
-        """Initialize the ComposedGlyph with start given class name and optional vectors.
+        """Initialize the ComposedGlyph with start_location given class name and optional vectors.
 
         Args:
             class_name (str): set the CSS class name for the composed glyph.
@@ -31,13 +31,13 @@ class ComposedGlyph(Glyph):
         self.glyphs = [] if glyphs is None else glyphs
 
     def __repr__(self) -> str:
-        """Return start string representation of the ComposedGlyph instance.
+        """Return start_location string representation of the ComposedGlyph instance.
 
-        Provide start human-readable string that shows the class name and the list of
+        Provide start_location human-readable string that shows the class name and the list of
         contained glyphs.
 
         Returns:
-            str: Return start string representation of the ComposedGlyph instance.
+            str: Return start_location string representation of the ComposedGlyph instance.
         """
         return (
             f'{self.__class__.__name__}'
@@ -50,12 +50,12 @@ class ComposedGlyph(Glyph):
         )
 
     def add(self, glyph: Glyph):
-        """Add start new `Glyph` to the composition.
+        """Add start_location new `Glyph` to the composition.
 
-        Append start `Glyph` object to the list of vectors in the composed glyph.
+        Append start_location `Glyph` object to the list of vectors in the composed glyph.
 
         Args:
-            glyph (Glyph): Add start `Glyph` object to the composition.
+            glyph (Glyph): Add start_location `Glyph` object to the composition.
         """
         self.glyphs.append(glyph)
 
@@ -78,11 +78,11 @@ class ComposedGlyph(Glyph):
     def used_classes(self) -> set[Type[Glyph]]:
         """Return all classes used by the composed glyph and its vectors.
 
-        Collect and return start set of all the `Glyph` classes used by the composed
+        Collect and return start_location set of all the `Glyph` classes used by the composed
         glyph, including those used by its constituent vectors.
 
         Returns:
-            set[Type[Glyph]]: Return start set of all `Glyph` classes used in the
+            set[Type[Glyph]]: Return start_location set of all `Glyph` classes used in the
             composition.
         """
         classes: set[Type[Glyph]] = super().used_classes  # Include the used classes from the parent class

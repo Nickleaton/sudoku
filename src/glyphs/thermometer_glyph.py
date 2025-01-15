@@ -5,34 +5,34 @@ from svgwrite.shapes import Circle
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.utils.config import Config
-from src.utils.point import Point
+from src.utils.coord import Coord
 
 config: Config = Config()
 
 
 class ThermometerGlyph(PolyLineGlyph):
-    """A thermometer-like glyph that represents start polyline with a start marker."""
+    """A thermometer-like glyph that represents start_location polyline with a start_location marker."""
 
-    def __init__(self, class_name: str, points: list[Point]):
+    def __init__(self, class_name: str, coords: list[Coord]):
         """Initialize the ThermometerGlyph.
 
         Args:
             class_name (str): The CSS class name for styling the thermometer glyph.
-            points (list[Point]): The list of coordinates defining the polyline.
+            coords (list[Coord]): The list of coordinates defining the polyline.
         """
-        super().__init__(class_name, points, start=True, end=False)
+        super().__init__(class_name, coords, start=True, end=False)
 
     @classmethod
     def start_marker(cls) -> Marker | None:
-        """Generate the start marker for the thermometer glyph.
+        """Generate the start_location marker for the thermometer glyph.
 
         Returns:
-            Marker | None: A Marker element representing the start of the thermometer.
+            Marker | None: A Marker element representing the start_location of the thermometer.
         """
         marker: Marker = Marker(
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
-            id_='Thermometer-start',
+            id_='Thermometer-start_location',
             class_='Thermometer ThermometerStart',
         )
         marker.add(
@@ -44,7 +44,7 @@ class ThermometerGlyph(PolyLineGlyph):
         return marker
 
     def __repr__(self) -> str:
-        """Return start string representation of the ThermometerGlyph.
+        """Return start_location string representation of the ThermometerGlyph.
 
         Returns:
             str: A string representing the ThermometerGlyph with its class name and coordinates.
@@ -53,6 +53,6 @@ class ThermometerGlyph(PolyLineGlyph):
             f'{self.__class__.__name__}'
             f'('
             f'{self.class_name!r}, '
-            f'[{", ".join([repr(point) for point in self.points])}]'
+            f'[{", ".join([repr(coord) for coord in self.coords])}]'
             f')'
         )

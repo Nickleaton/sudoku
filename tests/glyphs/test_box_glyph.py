@@ -2,49 +2,66 @@
 import unittest
 from typing import Type
 
+from src.glyphs.box_glyph import BoxGlyph
 from src.glyphs.glyph import Glyph
-from src.glyphs.rect_glyph import BoxGlyph, RectGlyph
-from src.utils.point import Point
-from tests.glyphs.test_square_glyph import TestSquareGlyph
+from src.glyphs.rect_glyph import RectGlyph
+from src.utils.coord import Coord
+from tests.glyphs.test_glyph import TestGlyph
 
 
-class TestBoxGlyph(TestSquareGlyph):
-    """Test suite for BoxGlyph class."""
+class TestBoxGlyph(TestGlyph):
+    """Test suite for the BoxGlyph class."""
 
     def setUp(self) -> None:
         """Set up the test environment for BoxGlyph.
 
-        Initializes an instance of BoxGlyph with the given style and coordinates.
+        Initializes the style, coordinates, and dimensions for the BoxGlyph.
         """
         super().setUp()
-        self.glyph = BoxGlyph('Style', Point(100, 100), Point(300, 300))
+        self.glyph = BoxGlyph('BoxStyle', Coord(3, 4), Coord(5, 6))
 
     @property
-    def target(self):
-        """Get the SVG markup for BoxGlyph target.
+    def target(self) -> str:
+        """Expected SVG markup for the BoxGlyph.
 
         Returns:
-            str: The SVG markup for the BoxGlyph target element.
+            str: The expected SVG markup for the BoxGlyph, including a rectangle
+            element with height, width, and transform attributes.
         """
-        return '<rect class="Style" height="300.0" transform="translate(100.0, 100.0)" width="300.0" x="0" y="0" />'
+        return '<rect class="BoxStyle" height="500.0" transform="translate(400.0, 300.0)" width="600.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
-        """Return the string representation of BoxGlyph.
+        """Expected string representation of the BoxGlyph instance.
 
         Returns:
-            str: The string representation of the BoxGlyph instance.
+            str: The string representation of the BoxGlyph with style, coordinates, and dimensions.
         """
-        return "BoxGlyph('Style', Point(100.0, 100.0), Point(300.0, 300.0))"
+        return "BoxGlyph('BoxStyle', Coord(3, 4), Coord(5, 6))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
-        """Get the expected set of classes that BoxGlyph should inherit from.
+        """Expected set of classes that BoxGlyph should inherit from.
 
         Returns:
             set[Type[Glyph]]: A set containing the expected classes.
         """
-        return {BoxGlyph, Glyph, RectGlyph}
+        return {Glyph, RectGlyph, BoxGlyph}
+
+    def test_svg_output(self) -> None:
+        """Test that the SVG output matches the expected markup."""
+        svg_element = self.glyph.draw()
+        self.assertIsNotNone(svg_element, "The draw method should return an SVG element.")
+        self.assertEqual(svg_element.tostring(), self.target)
+
+    def test_representation(self) -> None:
+        """Test the string representation of the BoxGlyph."""
+        self.assertEqual(repr(self.glyph), self.representation)
+
+    def test_inheritance(self) -> None:
+        """Test that BoxGlyph inherits from the expected classes."""
+        actual_classes = {cls for cls in self.glyph.__class__.__mro__ if issubclass(cls, Glyph)}
+        self.assertEqual(actual_classes, self.expected_classes)
 
 
 if __name__ == '__main__':  # pragma: no cover

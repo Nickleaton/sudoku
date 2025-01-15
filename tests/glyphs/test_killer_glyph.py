@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.killer_glyph import KillerGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -14,19 +14,19 @@ class TestKillerGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for KillerGlyph.
 
-        Initializes the cells and start KillerGlyph instance for testing.
+        Initializes the cells and start_location KillerGlyph instance for testing.
         """
         super().setUp()
         cells = [
-            Point(1, 3),
-            Point(2, 3),
-            Point(3, 1),
-            Point(3, 2),
-            Point(3, 3),
-            Point(4, 2),
-            Point(4, 3),
-            Point(4, 4),
-            Point(5, 4)
+            Coord(1, 3),
+            Coord(2, 3),
+            Coord(3, 1),
+            Coord(3, 2),
+            Coord(3, 3),
+            Coord(4, 2),
+            Coord(4, 3),
+            Coord(4, 4),
+            Coord(5, 4)
         ]
         self.glyph = KillerGlyph('Style', cells)
 
@@ -49,8 +49,8 @@ class TestKillerGlyph(TestGlyph):
         return (
             "KillerGlyph('Style', "
             "["
-            "Point(1, 3), Point(2, 3), Point(3, 1), Point(3, 2), Point(3, 3), "
-            "Point(4, 2), Point(4, 3), Point(4, 4), Point(5, 4)"
+            "Coord(1, 3), Coord(2, 3), Coord(3, 1), Coord(3, 2), Coord(3, 3), "
+            "Coord(4, 2), Coord(4, 3), Coord(4, 4), Coord(5, 4)"
             "]"
             ")"
         )

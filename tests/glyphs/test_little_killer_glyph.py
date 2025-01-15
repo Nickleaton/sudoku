@@ -15,7 +15,7 @@ class TestLittleKillerGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for LittleKillerGlyph.
 
-        Initializes the style, position, angle, and number for the LittleKillerGlyph.
+        Initializes the style, location, angle, and number for the LittleKillerGlyph.
         """
         super().setUp()
         self.glyph = LittleKillerGlyph('Style', Point(0, 0), Moves.down_right.angle, 20)

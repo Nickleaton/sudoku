@@ -1,16 +1,15 @@
-"""TestBetweenLineGlyph."""
 import unittest
 from typing import Type
 
 from src.glyphs.between_line_glyph import BetweenLineGlyph
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_poly_line_glyph import TestPolyLineGlyph
 
 
 class TestBetweenLineGlyph(TestPolyLineGlyph):
-    """Test suite for BetweenLineGlyph class."""
+    """Test suite for BetweenLineGlyph class, verifying SVG markers, polyline rendering, and class hierarchy."""
 
     def setUp(self) -> None:
         """Set up the test environment for BetweenLineGlyph.
@@ -18,30 +17,30 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
         Initializes an instance of BetweenLineGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = BetweenLineGlyph('Style', [Point(150, 150), Point(250, 150), Point(250, 250)])
+        self.glyph = BetweenLineGlyph('Style', [Coord(1, 1), Coord(2, 1), Coord(2, 2)])
 
     @property
     def start_marker(self) -> str:
-        """Get the start marker SVG markup for BetweenLineGlyph.
+        """Get the start_location marker SVG markup for BetweenLineGlyph.
 
         Returns:
-            str: The SVG markup for the start marker of the BetweenLineGlyph.
+            str: The SVG markup for the start_location marker of the BetweenLineGlyph.
         """
         return (
-            '<marker class="Between BetweenStart" id="Between-start" markerHeight="35" markerWidth="35" '
-            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+            '<marker class="Between BetweenStart" id="Between-start_location" markerHeight="35.0" markerWidth="35.0" '
+            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35.0" /></marker>'
         )
 
     @property
     def end_marker(self) -> str:
-        """Get the end marker SVG markup for BetweenLineGlyph.
+        """Get the end_location marker SVG markup for BetweenLineGlyph.
 
         Returns:
-            str: The SVG markup for the end marker of the BetweenLineGlyph.
+            str: The SVG markup for the end_location marker of the BetweenLineGlyph.
         """
         return (
-            '<marker class="Between BetweenEnd" id="Between-end" markerHeight="35" markerWidth="35" '
-            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" /></marker>'
+            '<marker class="Between BetweenEnd" id="Between-end_location" markerHeight="35.0" markerWidth="35.0" '
+            'refX="50" refY="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35.0" /></marker>'
         )
 
     @property
@@ -53,9 +52,9 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
         """
         return (
             '<polyline class="Style" '
-            'marker-end="url(#Style-end)" '
-            'marker-start="url(#Style-start)" '
-            'points="150.0,150.0 250.0,150.0 250.0,250.0" />'
+            'marker-end="url(#Style-end_location)" '
+            'marker-start="url(#Style-start_location)" '
+            'points="150.0,150.0 150.0,250.0 250.0,250.0" />'
         )
 
     @property
@@ -65,7 +64,7 @@ class TestBetweenLineGlyph(TestPolyLineGlyph):
         Returns:
             str: The string representation of the BetweenLineGlyph instance.
         """
-        return "BetweenLineGlyph('Style', [Point(150.0, 150.0), Point(250.0, 150.0), Point(250.0, 250.0)])"
+        return "BetweenLineGlyph('Style', [Coord(1, 1), Coord(2, 1), Coord(2, 2)])"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

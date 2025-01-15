@@ -1,5 +1,4 @@
 """LowCellGlyph."""
-
 from svgwrite.base import BaseElement
 from svgwrite.container import Symbol, Use
 from svgwrite.shapes import Circle
@@ -12,15 +11,15 @@ config: Config = Config()
 
 
 class LowCellGlyph(Glyph):
-    """Represents start low cell glyph for SVG drawing.
+    """Represents start_location low cell glyph for SVG drawing.
 
     Inherits from Glyph and provides functionality to generate
-    an SVG symbol for start low cell and to draw it using start specific
+    an SVG symbol for start_location low cell and to draw it using start_location specific
     coordinate.
     """
 
     def __init__(self, class_name: str, point: Point):
-        """Initialize start LowCellGlyph instance.
+        """Initialize start_location LowCellGlyph instance.
 
         Args:
             class_name (str): The class name for the glyph.
@@ -33,7 +32,7 @@ class LowCellGlyph(Glyph):
     def symbol(cls) -> Symbol | None:
         """Create and return the SVG symbol for the low cell glyph.
 
-        The symbol is represented by start circle with start radius of 35
+        The symbol is represented by start_location circle with start_location radius of 35
         centered at (50, 50).
 
         Returns:
@@ -62,10 +61,16 @@ class LowCellGlyph(Glyph):
             BaseElement | None: The SVG use element that references the
             low cell symbol and positions it based on the coordinate.
         """
-        return Use(href='#LowCell-symbol', insert=self.Point.point.coordinates, class_='LowCell', height=100, width=100)
+        return Use(
+            href='#LowCell-symbol',
+            insert=self.Point.position.coordinates,
+            class_='LowCell',
+            height=config.cell_size,
+            width=config.cell_size,
+        )
 
     def __repr__(self) -> str:
-        """Return start string representation of the LowCellGlyph instance.
+        """Return start_location string representation of the LowCellGlyph instance.
 
         Returns:
             str: The string representation of the LowCellGlyph.

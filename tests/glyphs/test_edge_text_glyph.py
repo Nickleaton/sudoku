@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.edge_text_glyph import EdgeTextGlyph
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -18,7 +18,7 @@ class TestEdgeTextGlyph(TestGlyph):
         Initializes an instance of EdgeTextGlyph with the given style, offset, and coordinates.
         """
         super().setUp()
-        self.glyph = EdgeTextGlyph('Style', 0, Point(100.0, 100.0), Point(200.0, 100.0), 'X')
+        self.glyph = EdgeTextGlyph('Style', 0, Coord(1, 1), Coord(2, 1), 'X')
 
     @property
     def target(self) -> str:
@@ -45,7 +45,7 @@ class TestEdgeTextGlyph(TestGlyph):
         Returns:
             str: The string representation of the EdgeTextGlyph instance.
         """
-        return "EdgeTextGlyph('Style', 0.0, Point(100.0, 100.0), Point(200.0, 100.0), 'X')"
+        return "EdgeTextGlyph('Style', 0.0, Coord(1, 1), Point(2, 1), 'X')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

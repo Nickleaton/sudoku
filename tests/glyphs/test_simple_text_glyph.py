@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.glyph import Glyph
 from src.glyphs.simple_text_glyph import SimpleTextGlyph
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -15,10 +15,10 @@ class TestSimpleTextGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for SimpleTextGlyph.
 
-        Initializes the style, position, and text for the SimpleTextGlyph.
+        Initializes the style, location, and text for the SimpleTextGlyph.
         """
         super().setUp()
-        self.glyph = SimpleTextGlyph('Style', 0, Point(100, 100), "X")
+        self.glyph = SimpleTextGlyph('Style', 0, Coord(1, 1), "X")
 
     @property
     def target(self) -> str:
@@ -43,9 +43,9 @@ class TestSimpleTextGlyph(TestGlyph):
         """Get the string representation of the SimpleTextGlyph instance.
 
         Returns:
-            str: The string representation of the SimpleTextGlyph with style, position, and text.
+            str: The string representation of the SimpleTextGlyph with style, location, and text.
         """
-        return "SimpleTextGlyph('Style', 0.0, Point(100.0, 100.0), 'X')"
+        return "SimpleTextGlyph('Style', 0.0, Coord(1, 1), 'X')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

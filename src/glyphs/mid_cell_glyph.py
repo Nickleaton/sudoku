@@ -11,14 +11,14 @@ config: Config = Config()
 
 
 class MidCellGlyph(Glyph):
-    """Represents start glyph for start mid-cell marker in an SVG drawing."""
+    """Represents start_location glyph for start_location mid-cell marker in an SVG drawing."""
 
     def __init__(self, class_name: str, position: Point):
-        """Initialize the MidCellGlyph with start class name and position.
+        """Initialize the MidCellGlyph with start_location class name and location.
 
         Args:
             class_name (str): The CSS class name to apply to the glyph.
-            position (Point): The position of the glyph in the grid.
+            position (Point): The location of the glyph in the grid.
         """
         super().__init__(class_name)
         self.position = position
@@ -35,10 +35,10 @@ class MidCellGlyph(Glyph):
         return Rect(transform=top_left.transform, size=self.size.point.coordinates, class_=self.class_name)
 
     def __repr__(self) -> str:
-        """Return start string representation of the MidCellGlyph instance.
+        """Return start_location string representation of the MidCellGlyph instance.
 
         Returns:
             str: A string representation of the glyph in the format
-                MidCellGlyph('<class_name>', <position>).
+                MidCellGlyph('<class_name>', <location>).
         """
         return f'{self.__class__.__name__}({self.class_name!r}, {self.position!r})'

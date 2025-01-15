@@ -24,7 +24,7 @@ class TestQuadrupleGlyph(TestGlyph):
         """Get the expected SVG markup for the QuadrupleGlyph.
 
         Returns:
-            str: The expected SVG markup for the QuadrupleGlyph, including start circle and text elements.
+            str: The expected SVG markup for the QuadrupleGlyph, including start_location circle and text elements.
         """
         return (
             '<g>'

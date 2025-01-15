@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -19,7 +19,7 @@ class TestPolyLineGlyph(TestGlyph):
         super().setUp()
         self.glyph = PolyLineGlyph(
             "Style",
-            [Point(50, 50), Point(250, 150), Point(350, 250)],
+            [Coord(0, 0), Coord(2, 1), Coord(3, 2)],
             False,
             False
         )
@@ -31,7 +31,7 @@ class TestPolyLineGlyph(TestGlyph):
         Returns:
             str: The expected polyline SVG markup.
         """
-        return '<polyline class="Style" points="50.0,50.0 250.0,150.0 350.0,250.0" />'
+        return '<polyline class="Style" points="50.0,50.0 150.0,250.0 250.0,350.0" />'
 
     @property
     def representation(self) -> str:
@@ -40,7 +40,7 @@ class TestPolyLineGlyph(TestGlyph):
         Returns:
             str: The string representation of the PolyLineGlyph.
         """
-        return "PolyLineGlyph('Style', [Point(50.0, 50.0), Point(250.0, 150.0), Point(350.0, 250.0)], False, False)"
+        return "PolyLineGlyph('Style', [Coord(0, 0), Coord(2, 1), Coord(3, 2)], False, False)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

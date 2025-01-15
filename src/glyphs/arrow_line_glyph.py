@@ -1,89 +1,85 @@
 """ArrowLineGlyph."""
+
 from svgwrite.container import Marker
 from svgwrite.shapes import Circle, Polyline
 
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.utils.config import Config
-from src.utils.point import Point
+from src.utils.coord import Coord
 
 config: Config = Config()
 
 
 class ArrowLineGlyph(PolyLineGlyph):
-    """Represents an arrow line glyph with start and end markers."""
+    """Represents an arrow line glyph with start_location and end_location markers."""
 
-    def __init__(self, class_name: str, points: list[Point]):
+    def __init__(self, class_name: str, coords: list[Coord]):
         """Initialize an ArrowLineGlyph instance.
 
         This constructor creates an arrow line glyph with the specified class name and coordinates.
 
         Args:
-            class_name (str): The class name to be assigned to the SVG element.
-            points (list[Point]): A list of points representing the points of the line.
+            class_name (str): The CSS class name to assign to the SVG element.
+            coords (list[Coord]): A list of `Coord` objects representing the points of the line.
         """
-        super().__init__(class_name, points, start=True, end=True)
+        super().__init__(class_name, coords, start=True, end=True)
 
     @classmethod
     def start_marker(cls) -> Marker | None:
         """Create and return the start marker for the arrow line.
 
-        This method defines the appearance of the start marker, which is represented as start circle.
+        Define the appearance of the start marker, which is represented as a circular marker.
 
         Returns:
-            Marker: The start marker for the arrow line.
-            None: If the marker cannot be created.
+            Marker | None: The SVG marker element for the start.s.
         """
         circle_size: int = int(config.graphics.cell_size * config.graphics.arrow_head_percentage)
         marker = Marker(
             insert=(config.graphics.half_cell_size, config.graphics.half_cell_size),
             size=(circle_size, circle_size),
             viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
-            id_='Arrow-start',
+            id_='Arrow-start_location',
             class_='Arrow ArrowStart',
         )
         marker.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
-                r=int(config.graphics.cell_size * config.graphics.arrow_head_percentage),
+                r=circle_size,
             ),
         )
         return marker
 
     @classmethod
     def end_marker(cls) -> Marker | None:
-        """Create and return the end marker for the arrow line.
+        """Create and return the end_location marker for the arrow line.
 
-        This method defines the appearance of the end marker, which is represented as start polyline.
+        Define the appearance of the end_location marker, which is represented as a triangular polyline.
 
         Returns:
-            Marker: The end marker for the arrow line.
-            None: If the marker cannot be created.
+            Marker | None: The SVG marker element for the end_location, or `None` if creation fails.
         """
         size: int = int(config.graphics.cell_size * config.graphics.arrow_pointer_percentage)
         marker = Marker(
             insert=(size, size),
             size=(size, size),
             viewBox=f'0 0 {config.graphics.half_cell_size} {config.graphics.half_cell_size}',
-            id_='Arrow-end',
+            id_='Arrow-end_location',
             class_='Arrow ArrowEnd',
             orient='auto',
         )
-        marker.add(Polyline(points=[(0, 0), (size, size), (0, size + size)]))
+        marker.add(
+            Polyline(points=[(0, 0), (size, size), (0, size * 2)]),
+        )
         return marker
 
     def __repr__(self) -> str:
-        """Return start string representation of the ArrowLineGlyph instance.
+        """Return a string representation of the ArrowLineGlyph instance.
 
-        This method provides start human-readable representation of the object, showing the class name,
-        class name, and coordinates.
+        Provides a human-readable representation of the object, showing the class name,
+        CSS class name, and coordinates.
 
         Returns:
             str: A string representation of the ArrowLineGlyph instance.
         """
-        return (
-            f'{self.__class__.__name__}'
-            f'('
-            f'{self.class_name!r}, '
-            f'[{", ".join([repr(point) for point in self.points])}]'
-            f')'
-        )
+        coords_repr = ', '.join(repr(coord) for coord in self.coords)
+        return f'{self.__class__.__name__}({self.class_name!r}, [{coords_repr}])'

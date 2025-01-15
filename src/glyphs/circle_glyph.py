@@ -1,77 +1,59 @@
 """CircleGlyph."""
 
-from svgwrite.base import BaseElement
 from svgwrite.shapes import Circle
 
 from src.glyphs.glyph import Glyph, config
+from src.utils.coord import Coord
 from src.utils.point import Point
 
 
 class CircleGlyph(Glyph):
-    """Represents start circular glyph that can be drawn on an SVG canvas.
+    """Represents a circular glyph that can be drawn on an SVG canvas."""
 
-    This class allows you to create start circle glyph with customizable size and
-    position on an SVG canvas. The size of the circle is determined relative
-    to the cell size, with start configurable percentage for scaling.
-
-    Attributes:
-        class_name (str): CSS class name for the SVG element.
-        center (Point): The center coordinate of the circle.
-        percentage (float): Scale factor for the radius relative to cell size.
-    """
-
-    def __init__(self, class_name: str, center: Point, percentage: float) -> None:
+    def __init__(self, class_name: str, location: Coord, percentage: float) -> None:
         """Initialize the CircleGlyph instance.
-
-        This constructor sets the class name, center point, and scaling percentage
-        for the circle's radius. It calls the parent constructor for the CSS class.
 
         Args:
             class_name (str): CSS class name for styling the circle.
-            center (Point): The center point of the circle on the canvas.
+            location (Coord): The center location of the circle on the canvas.
             percentage (float): Scale factor for the circle's radius relative to the cell size.
         """
         super().__init__(class_name)
-        self.center: Point = center
-        self.percentage: float = percentage
+        self.location = location
+        self.position = Point.create_from_coord(self.location)
+        self.percentage = percentage
 
     @property
     def priority(self) -> int:
-        """Get the priority level for drawing the circle glyph.
-
-        This property defines the priority for rendering the circle on the canvas.
-        A higher number means the glyph will be drawn later in the stacking order.
+        """Get the priority level for rendering the circle glyph.
 
         Returns:
-            int: The drawing priority level of the circle glyph, fixed at 10.
+            int: The priority level of the circle glyph, fixed at 10.
         """
         return 10
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> Circle:
         """Draw the circle glyph on an SVG canvas.
 
-        This method creates an SVG `Circle` element with the specified center and
-        radius, scaled by the `percentage` relative to the current cell size.
-
         Returns:
-            BaseElement | None: The SVG `Circle` element if drawing is possible,
-            otherwise `None` if no valid configuration is available.
+            Circle: The SVG Circle element if valid, otherwise `None`.
+
+        Raises:
+            ValueError: If the cell size is invalid.
         """
         cell_size = int(config.graphics.cell_size)
+        if cell_size <= 0:
+            raise ValueError(f'Invalid cell size: {cell_size}')
         return Circle(
-            transform=self.center.transform,
+            transform=self.position.transform,
             r=self.percentage * cell_size,
             class_=self.class_name,
         )
 
     def __repr__(self) -> str:
-        """Return start string representation of the CircleGlyph instance.
-
-        This method provides start human-readable representation of the `CircleGlyph`
-        object, showing the class name, class name, center position, and scaling
-        percentage.
+        """Return string representation of the CircleGlyph instance.
 
         Returns:
             str: A string representation of the CircleGlyph instance.
         """
-        return f"{self.__class__.__name__}('{self.class_name}', {self.center!r}, {self.percentage!r})"
+        return f"{self.__class__.__name__}('{self.class_name}', {self.location!r}, {self.percentage!r})"

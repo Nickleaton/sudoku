@@ -6,30 +6,34 @@ from svgwrite.shapes import Circle
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.point import Point
 
 config: Config = Config()
 
 
 class OddCellGlyph(Glyph):
-    """Represents start glyph for cells marked as 'odd' in start Sudoku puzzle."""
+    """Represents the glyph for 'odd' cells in a Sudoku puzzle, typically used for marking cells with odd values."""
 
-    def __init__(self, class_name: str, point: Point):
-        """Initialize an OddCellGlyph.
+    def __init__(self, class_name: str, location: Coord):
+        """Initialize an OddCellGlyph for representing an odd cell.
 
         Args:
-            class_name (str): The CSS class name to style the glyph.
-            point (Point): The coordinates of the glyph on the board.
+            class_name (str): The CSS class name to style the glyph (e.g., for SVG styling).
+            location (Coord): The coordinates (row and column) for the glyph on the board.
         """
         super().__init__(class_name)
-        self.point: Point = point
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(self.location)
 
     @classmethod
     def symbol(cls) -> Symbol | None:
-        """Create start reusable SVG symbol for odd cells.
+        """Create a reusable SVG symbol for odd cells.
+
+        The symbol consists of a circle with a radius based on the configuration.
 
         Returns:
-            Symbol | None: An SVG symbol containing the graphical representation of an odd cell.
+            Symbol | None: An SVG symbol for the odd cell, or None if there is an error.
         """
         symbol: Symbol = Symbol(
             viewBox=f'0 0 {config.graphics.cell_size} {config.graphics.cell_size}',
@@ -45,23 +49,23 @@ class OddCellGlyph(Glyph):
         return symbol
 
     def draw(self) -> BaseElement | None:
-        """Create an instance of the odd cell glyph.
+        """Draw the odd cell glyph on the board using the pre-defined symbol.
 
         Returns:
-            BaseElement | None: An SVG element using the odd cell symbol at the specified coordinates.
+            BaseElement | None: An SVG Use element that references the OddCell symbol at the specified position.
         """
         return Use(
             href='#OddCell-symbol',
-            insert=self.point.coordinates,
+            insert=self.position.coordinates,
             class_='OddCell',
             height=config.graphics.cell_size,
             width=config.graphics.cell_size,
         )
 
     def __repr__(self) -> str:
-        """Return start string representation of the OddCellGlyph.
+        """Return a string representation of the OddCellGlyph.
 
         Returns:
-            str: A string representation of the glyph.
+            str: A human-readable string representing the OddCellGlyph instance.
         """
-        return f'{self.__class__.__name__}({self.class_name!r}, {self.point!r})'
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.location!r})'

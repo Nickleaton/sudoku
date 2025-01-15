@@ -4,8 +4,9 @@ from typing import Type
 
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.glyph import Glyph
-from src.glyphs.rect_glyph import RectGlyph, SquareGlyph
-from src.utils.point import Point
+from src.glyphs.rect_glyph import RectGlyph
+from src.glyphs.square_glyph import SquareGlyph
+from src.utils.coord import Coord
 from tests.glyphs.test_square_glyph import TestSquareGlyph
 
 
@@ -18,7 +19,7 @@ class TestCellGlyph(TestSquareGlyph):
         Initializes an instance of CellGlyph with the given style and coordinates.
         """
         super().setUp()
-        self.glyph = CellGlyph('Style', Point(100.0, 100.0))
+        self.glyph = CellGlyph('Style', Coord(1, 1))
 
     @property
     def target(self) -> str:
@@ -36,7 +37,7 @@ class TestCellGlyph(TestSquareGlyph):
         Returns:
             str: The string representation of the CellGlyph instance.
         """
-        return "CellGlyph('Style', Point(100.0, 100.0))"
+        return "CellGlyph('Style', Coord(1, 1))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

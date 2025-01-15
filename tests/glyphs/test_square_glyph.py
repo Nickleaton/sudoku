@@ -3,8 +3,9 @@ import unittest
 from typing import Type
 
 from src.glyphs.glyph import Glyph
-from src.glyphs.rect_glyph import SquareGlyph, RectGlyph
-from src.utils.point import Point
+from src.glyphs.rect_glyph import RectGlyph
+from src.glyphs.square_glyph import SquareGlyph
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -14,37 +15,53 @@ class TestSquareGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for SquareGlyph.
 
-        Initializes the style, position, and size for the SquareGlyph.
+        Initializes the style, coordinates, and size for the SquareGlyph.
         """
         super().setUp()
-        self.glyph = SquareGlyph('Style', position=Point(1000, 1000), size=5000)
+        self.glyph = SquareGlyph('SquareStyle', Coord(2, 3), 4)
 
     @property
     def target(self) -> str:
-        """Get the expected SVG markup for the SquareGlyph.
+        """Expected SVG markup for the SquareGlyph.
 
         Returns:
-            str: The expected SVG markup for the square glyph as start rectangle element.
+            str: The expected SVG markup for the SquareGlyph, including a rectangle
+            element with height, width, and transform attributes.
         """
-        return '<rect class="Style" height="5000.0" transform="translate(1000.0, 1000.0)" width="5000.0" x="0" y="0" />'
+        return '<rect class="SquareStyle" height="400.0" transform="translate(300.0, 200.0)" width="400.0" x="0" y="0" />'
 
     @property
     def representation(self) -> str:
-        """Get the string representation of the SquareGlyph instance.
+        """Expected string representation of the SquareGlyph instance.
 
         Returns:
-            str: The string representation of the SquareGlyph with style, position, and size.
+            str: The string representation of the SquareGlyph with style, coordinates, and size.
         """
-        return "SquareGlyph('Style', Point(1000.0, 1000.0), 5000.0)"
+        return "SquareGlyph('SquareStyle', Coord(2, 3), 4)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
-        """Get the expected set of classes that SquareGlyph should inherit from.
+        """Expected set of classes that SquareGlyph should inherit from.
 
         Returns:
             set[Type[Glyph]]: A set containing the expected classes.
         """
         return {Glyph, RectGlyph, SquareGlyph}
+
+    def test_svg_output(self) -> None:
+        """Test that the SVG output matches the expected markup."""
+        svg_element = self.glyph.draw()
+        self.assertIsNotNone(svg_element, "The draw method should return an SVG element.")
+        self.assertEqual(svg_element.tostring(), self.target)
+
+    def test_representation(self) -> None:
+        """Test the string representation of the SquareGlyph."""
+        self.assertEqual(repr(self.glyph), self.representation)
+
+    def test_inheritance(self) -> None:
+        """Test that SquareGlyph inherits from the expected classes."""
+        actual_classes = {cls for cls in self.glyph.__class__.__mro__ if issubclass(cls, Glyph)}
+        self.assertEqual(actual_classes, self.expected_classes)
 
 
 if __name__ == '__main__':  # pragma: no cover

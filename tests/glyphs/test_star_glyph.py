@@ -6,7 +6,7 @@ from src.glyphs.glyph import Glyph
 from src.glyphs.simple_text_glyph import SimpleTextGlyph
 from src.glyphs.star_glyph import StarGlyph
 from src.glyphs.text_glyph import TextGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -16,24 +16,24 @@ class TestStarGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for StarGlyph.
 
-        Initializes the style and position for the StarGlyph.
+        Initializes the style and location for the StarGlyph.
         """
         super().setUp()
-        self.glyph = StarGlyph('Style', Point(1, 1))
+        self.glyph = StarGlyph('Style', Coord(1, 1))
 
     @property
     def target(self) -> str:
         """Get the expected SVG markup for the StarGlyph.
 
         Returns:
-            str: The expected SVG markup for the star glyph as start group of text elements.
+            str: The expected SVG markup for the star glyph as start_location group of text elements.
         """
         return (
             '<g>'
-            '<text class="StyleBackground" transform="translate(100, 100) ">'
+            '<text class="StyleBackground" transform="translate(100.0, 100.0) ">'
             '<tspan alignment-baseline="central" text-anchor="middle">✧</tspan>'
             '</text>'
-            '<text class="StyleForeground" transform="translate(100, 100) ">'
+            '<text class="StyleForeground" transform="translate(100.0, 100.0) ">'
             '<tspan alignment-baseline="central" text-anchor="middle">✧</tspan>'
             '</text>'
             '</g>'
@@ -44,9 +44,9 @@ class TestStarGlyph(TestGlyph):
         """Get the string representation of the StarGlyph instance.
 
         Returns:
-            str: The string representation of the StarGlyph with style and position.
+            str: The string representation of the StarGlyph with style and location.
         """
-        return "StarGlyph('Style', Point(1, 1))"
+        return "StarGlyph('Style', Coord(1, 1))"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

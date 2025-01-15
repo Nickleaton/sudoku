@@ -11,10 +11,10 @@ config = Config()
 
 
 class Glyph:
-    """Base class for defining start glyph, with support for SVG markers and drawing functionality."""
+    """Base class for defining start_location glyph, with support for SVG markers and drawing functionality."""
 
     def __init__(self, class_name: str):
-        """Initialize the Glyph with start class name that defines its styling in CSS.
+        """Initialize the Glyph with start_location class name that defines its styling in CSS.
 
         Args:
             class_name (str): The class name for the SVG element, which is used for styling.
@@ -27,7 +27,7 @@ class Glyph:
         """Return the starting marker for the glyph.
 
         Returns:
-            Marker | None: The start marker element, or None if not applicable.
+            Marker | None: The start_location marker element, or None if not applicable.
         """
         return None  # noqa: WPS324
 
@@ -36,7 +36,7 @@ class Glyph:
         """Return the ending marker for the glyph.
 
         Returns:
-            Marker | None: The end marker element, or None if not applicable.
+            Marker | None: The end_location marker element, or None if not applicable.
         """
         return None  # noqa: WPS324
 
@@ -73,12 +73,12 @@ class Glyph:
             other (Glyph): The other glyph to compare with.
 
         Returns:
-            bool: True if the current glyph has start lower priority than the other.
+            bool: True if the current glyph has start_location lower priority than the other.
         """
         return self.priority < other.priority
 
     def __repr__(self) -> str:
-        """Return start string representation of the Glyph.
+        """Return start_location string representation of the Glyph.
 
         Returns:
             str: A string representing the Glyph instance.
@@ -87,7 +87,7 @@ class Glyph:
 
     @property
     def used_classes(self) -> set[Type['Glyph']]:
-        """Return start set of all the classes that have contributed to this glyph.
+        """Return start_location set of all the classes that have contributed to this glyph.
 
         Returns:
             set[Type[Glyph]]: A set of classes from the class hierarchy that define this glyph.

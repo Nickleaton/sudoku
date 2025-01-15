@@ -5,7 +5,7 @@ from typing import Type
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
 from src.glyphs.thermometer_glyph import ThermometerGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_poly_line_glyph import TestPolyLineGlyph
 
 
@@ -18,17 +18,17 @@ class TestThermometerGlyph(TestPolyLineGlyph):
         Initializes the style and coordinates for the ThermometerGlyph.
         """
         super().setUp()
-        self.glyph = ThermometerGlyph('Style', [Point(150, 150), Point(250, 150), Point(250, 250)])
+        self.glyph = ThermometerGlyph('Style', [Coord(1, 1), Coord(2, 1), Coord(2, 2)])
 
     @property
     def start_marker(self) -> str:
-        """Get the expected SVG marker for the start of the thermometer.
+        """Get the expected SVG marker for the start_location of the thermometer.
 
         Returns:
-            str: The expected SVG marker element for the thermometer start.
+            str: The expected SVG marker element for the thermometer start_location.
         """
         return (
-            '<marker class="Thermometer ThermometerStart" id="Thermometer-start" refX="50" refY="50" '
+            '<marker class="Thermometer ThermometerStart" id="Thermometer-start_location" refX="50" refY="50" '
             'viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></marker>'
         )
 
@@ -41,8 +41,8 @@ class TestThermometerGlyph(TestPolyLineGlyph):
         """
         return (
             '<polyline class="Style" '
-            'marker-start="url(#Style-start)" '
-            'points="150.0,150.0 250.0,150.0 250.0,250.0" />'
+            'marker-start="url(#Style-start_location)" '
+            'points="150.0,150.0 150.0,250.0 250.0,250.0" />'
         )
 
     @property
@@ -52,7 +52,7 @@ class TestThermometerGlyph(TestPolyLineGlyph):
         Returns:
             str: The string representation of the ThermometerGlyph with style and coordinates.
         """
-        return "ThermometerGlyph('Style', [Point(150.0, 150.0), Point(250.0, 150.0), Point(250.0, 250.0)])"
+        return "ThermometerGlyph('Style', [Coord(1, 1), Coord(2, 1), Coord(2, 2)])"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:

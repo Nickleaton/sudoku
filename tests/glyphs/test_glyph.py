@@ -30,7 +30,7 @@ class TestGlyph(unittest.TestCase):
     def setUp(self) -> None:
         """Set up the test environment for Glyph.
 
-        Initializes the canvas and start Glyph instance for testing.
+        Initializes the canvas and start_location Glyph instance for testing.
         """
         self.canvas: Drawing = Drawing(filename="test.svg", size=("100%", "100%"))
         self.glyph: Glyph = Glyph('Style')
@@ -56,19 +56,19 @@ class TestGlyph(unittest.TestCase):
 
     @property
     def start_marker(self) -> str:
-        """Get the start marker SVG markup for the Glyph.
+        """Get the start_location marker SVG markup for the Glyph.
 
         Returns:
-            str: The expected start marker SVG markup.
+            str: The expected start_location marker SVG markup.
         """
         return ""
 
     @property
     def end_marker(self) -> str:
-        """Get the end marker SVG markup for the Glyph.
+        """Get the end_location marker SVG markup for the Glyph.
 
         Returns:
-            str: The expected end marker SVG markup.
+            str: The expected end_location marker SVG markup.
         """
         return ""
 
@@ -97,7 +97,7 @@ class TestGlyph(unittest.TestCase):
     def test_start_marker(self):
         """Test the start_marker method of the Glyph class.
 
-        Compare the returned start marker to the expected number.
+        Compare the returned start_location marker to the expected number.
         """
         marker = self.glyph.__class__.start_marker()
         if marker is None:
@@ -108,7 +108,7 @@ class TestGlyph(unittest.TestCase):
     def test_end_marker(self):
         """Test the end_marker method of the Glyph class.
 
-        Compare the returned end marker to the expected number.
+        Compare the returned end_location marker to the expected number.
         """
         marker = self.glyph.__class__.end_marker()
         if marker is None:
@@ -130,7 +130,7 @@ class TestGlyph(unittest.TestCase):
     def test_priority(self):
         """Test the comparison (priority) of Glyph instances.
 
-        Verify that start Glyph instance is not considered less than itself.
+        Verify that start_location Glyph instance is not considered less than itself.
         """
         self.assertFalse(self.glyph < self.glyph)
 

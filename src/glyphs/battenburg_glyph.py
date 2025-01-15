@@ -6,6 +6,7 @@ from svgwrite.shapes import Rect
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.moves import Moves
 from src.utils.point import Point
 
@@ -13,28 +14,29 @@ config = Config()
 
 
 class BattenburgGlyph(Glyph):
-    """Represents start Battenburg pattern glyph to be drawn on an SVG canvas.
+    """Represents a Battenburg pattern glyph to be drawn on an SVG canvas.
 
-    This class generates start Battenburg pattern using alternating colors (pink and yellow)
-    for start given position and then draws it as an SVG symbol.
+    This class generates a Battenburg pattern using alternating colors (pink and yellow)
+    for a given location and draws it as an SVG symbol.
     """
 
-    def __init__(self, class_name: str, point: Point):
-        """Initialize start BattenburgGlyph instance.
+    def __init__(self, class_name: str, location: Coord):
+        """Initialize a BattenburgGlyph instance.
 
-        This constructor creates start Battenburg pattern glyph with the specified class name
-        and coordinates.
+        This constructor creates a Battenburg pattern glyph with the specified class name
+        and location.
 
         Args:
-            class_name (str): The class name to be assigned to the SVG element.
-            point (Point): The coordinates of the Battenburg pattern.
+            class_name (str): The CSS class name to assign to the SVG element.
+            location (Coord): The coordinates of the Battenburg pattern.
         """
         super().__init__(class_name)
-        self.point = point
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(self.location)
 
     @classmethod
     def symbol(cls) -> Symbol:
-        """Create and returns the SVG symbol for the Battenburg pattern.
+        """Create and return the SVG symbol for the Battenburg pattern.
 
         This method generates an SVG symbol containing a 2x2 grid of rectangles with alternating
         colors (pink and yellow) to form the Battenburg pattern.
@@ -42,16 +44,17 @@ class BattenburgGlyph(Glyph):
         Returns:
             Symbol: The SVG symbol for the Battenburg pattern.
         """
-        symbol: Symbol = Symbol(
-            viewBox=f'0 0 {int(config.graphics.cell_size)} {int(config.graphics.cell_size)}',
-            id_='Battenburg-symbol',
-            class_='Battenburg',
-        )
-        percentage: float = config.graphics.battenburg.percentage
         cell_size: float = config.graphics.cell_size
+        percentage: float = config.graphics.battenburg.percentage
         size: float = cell_size * percentage
         colour_a: str = config.graphics.battenburg.colour_a
         colour_b: str = config.graphics.battenburg.colour_b
+
+        symbol: Symbol = Symbol(
+            viewBox=f'0 0 {int(cell_size)} {int(cell_size)}',
+            id_='Battenburg-symbol',
+            class_='Battenburg',
+        )
 
         # Add alternating colored rectangles to form the Battenburg pattern.
         for index, direction in enumerate(Moves.orthogonals()):
@@ -77,19 +80,19 @@ class BattenburgGlyph(Glyph):
         """
         return Use(
             href='#Battenburg-symbol',
-            insert=self.point.coordinates,
+            insert=self.position.coordinates,
             class_='Battenburg',
             height=config.graphics.cell_size,
             width=config.graphics.cell_size,
         )
 
     def __repr__(self) -> str:
-        """Return start string representation of the BattenburgGlyph instance.
+        """Return a string representation of the BattenburgGlyph instance.
 
-        This method provides start human-readable representation of the object, showing the class
-        name, class name, and coordinates.
+        Provides a human-readable representation of the object, showing the class name,
+        CSS class name, and location.
 
         Returns:
             str: A string representation of the BattenburgGlyph instance.
         """
-        return f'{self.__class__.__name__}(class_name={self.class_name!r}, point={self.point!r})'
+        return f'{self.__class__.__name__}(class_name={self.class_name!r}, location={self.location!r})'

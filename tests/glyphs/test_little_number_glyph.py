@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.little_number_glyph import LittleNumberGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -14,10 +14,10 @@ class TestLittleNumberGlyph(TestGlyph):
     def setUp(self) -> None:
         """Set up the test environment for LittleNumberGlyph.
 
-        Initializes the style, position, and number for the LittleNumberGlyph.
+        Initializes the style, location, and number for the LittleNumberGlyph.
         """
         super().setUp()
-        self.glyph = LittleNumberGlyph('Style', Point(100, 100), 1)
+        self.glyph = LittleNumberGlyph('Style', Coord(1, 1), 1)
 
     @property
     def target(self) -> str:
@@ -39,7 +39,7 @@ class TestLittleNumberGlyph(TestGlyph):
         Returns:
             str: The string representation of the LittleNumberGlyph.
         """
-        return "LittleNumberGlyph('Style', Point(100.0, 100.0), 1)"
+        return "LittleNumberGlyph('Style', Coord(1, 1), 1)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
