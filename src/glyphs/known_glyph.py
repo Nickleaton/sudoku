@@ -21,6 +21,7 @@ class KnownGlyph(SimpleTextGlyph):
         super().__init__(class_name, 0, location, str(number))
         size: float = config.graphics.cell_size / 2.0  # noqa: WPS432
         self.position += Point(1, 1) * size
+        self.number: int = number
 
     def __repr__(self) -> str:
         """Return start_location string representation of the KnownGlyph.

@@ -4,7 +4,6 @@ from typing import Type
 
 from src.glyphs.edge_text_glyph import EdgeTextGlyph
 from src.glyphs.glyph import Glyph
-from src.glyphs.text_glyph import TextGlyph
 from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
@@ -29,10 +28,10 @@ class TestEdgeTextGlyph(TestGlyph):
         """
         return (
             '<g>'
-            '<text class="StyleBackground" transform="translate(150.0, 100.0) ">'
+            '<text class="StyleBackground" transform="translate(100.0, 150.0) ">'
             '<tspan alignment-baseline="central" text-anchor="middle">X</tspan>'
             '</text>'
-            '<text class="StyleForeground" transform="translate(150.0, 100.0) ">'
+            '<text class="StyleForeground" transform="translate(100.0, 150.0) ">'
             '<tspan alignment-baseline="central" text-anchor="middle">X</tspan>'
             '</text>'
             '</g>'
@@ -45,7 +44,7 @@ class TestEdgeTextGlyph(TestGlyph):
         Returns:
             str: The string representation of the EdgeTextGlyph instance.
         """
-        return "EdgeTextGlyph('Style', 0.0, Coord(1, 1), Point(2, 1), 'X')"
+        return "EdgeTextGlyph('Style', 0.0, Coord(1, 1), Coord(2, 1), 'X')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
@@ -54,7 +53,7 @@ class TestEdgeTextGlyph(TestGlyph):
         Returns:
             set[Type[Glyph]]: A set containing the expected classes.
         """
-        return {EdgeTextGlyph, Glyph, TextGlyph}
+        return {EdgeTextGlyph, Glyph}
 
 
 if __name__ == '__main__':  # pragma: no cover

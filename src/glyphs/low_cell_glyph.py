@@ -5,6 +5,7 @@ from svgwrite.shapes import Circle
 
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
+from src.utils.coord import Coord
 from src.utils.point import Point
 
 config: Config = Config()
@@ -18,15 +19,16 @@ class LowCellGlyph(Glyph):
     coordinate.
     """
 
-    def __init__(self, class_name: str, point: Point):
+    def __init__(self, class_name: str, location: Coord):
         """Initialize start_location LowCellGlyph instance.
 
         Args:
             class_name (str): The class name for the glyph.
-            point (Point): The coordinate of the glyph.
+            location (Coord): The coordinate of the glyph.
         """
         super().__init__(class_name)
-        self.point: Point = point
+        self.location: Coord = location
+        self.position: Point = Point.create_from_coord(location)
 
     @classmethod
     def symbol(cls) -> Symbol | None:
@@ -43,13 +45,11 @@ class LowCellGlyph(Glyph):
             id_='LowCell-symbol',
             class_='LowCell',
         )
+        radius: float = config.graphics.cell_size * config.graphics.low_cell.percentage / 2.0  # noqa: WPS432
         symbol.add(
             Circle(
-                center=(
-                    config.graphics.half_cell_size,
-                    config.graphics.half_cell_size,
-                ),
-                r=config.graphics.cell_size * config.graphics.low_cell_percentage,
+                center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
+                r=radius,
             ),
         )
         return symbol
@@ -63,10 +63,10 @@ class LowCellGlyph(Glyph):
         """
         return Use(
             href='#LowCell-symbol',
-            insert=self.Point.position.coordinates,
+            insert=self.position.coordinates,
             class_='LowCell',
-            height=config.cell_size,
-            width=config.cell_size,
+            height=config.graphics.cell_size,
+            width=config.graphics.cell_size,
         )
 
     def __repr__(self) -> str:
@@ -75,4 +75,4 @@ class LowCellGlyph(Glyph):
         Returns:
             str: The string representation of the LowCellGlyph.
         """
-        return f'{self.__class__.__name__}({self.class_name!r}, {self.Point!r})'
+        return f'{self.__class__.__name__}({self.class_name!r}, {self.location!r})'

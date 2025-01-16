@@ -14,16 +14,12 @@ config = Config()
 
 
 class BattenburgGlyph(Glyph):
-    """Represents a Battenburg pattern glyph to be drawn on an SVG canvas.
-
-    This class generates a Battenburg pattern using alternating colors (pink and yellow)
-    for a given location and draws it as an SVG symbol.
-    """
+    """Represents a BattenburgGlyph to be drawn on an SVG canvas."""
 
     def __init__(self, class_name: str, location: Coord):
         """Initialize a BattenburgGlyph instance.
 
-        This constructor creates a Battenburg pattern glyph with the specified class name
+        This constructor creates a BattenburgGlyph pattern glyph with the specified class name
         and location.
 
         Args:

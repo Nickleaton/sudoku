@@ -28,7 +28,7 @@ class KropkiGlyph(RectangleGlyph):
             second_location,
             config.graphics.kropki_dot_percentage,
             config.graphics.kropki_dot_ratio,
-            first_location.vertical(second_location),
+            first_location.is_vertical(second_location),
         )
 
     def __repr__(self) -> str:

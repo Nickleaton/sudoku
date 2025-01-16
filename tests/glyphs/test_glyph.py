@@ -92,6 +92,10 @@ class TestGlyph(unittest.TestCase):
             if element is not None:
                 actual: str = pretty_print_xml(element.tostring())
                 expected: str = pretty_print_xml(self.target)
+                # print()
+                # print(f"Actual:   {actual}")
+                # print(f"Expected: {expected}")
+                # print()
                 self.assertEqual(expected, actual)
 
     def test_start_marker(self):

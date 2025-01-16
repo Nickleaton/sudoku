@@ -4,8 +4,8 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.little_killer_glyph import LittleKillerGlyph
+from src.utils.coord import Coord
 from src.utils.moves import Moves
-from src.utils.point import Point
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -18,7 +18,7 @@ class TestLittleKillerGlyph(TestGlyph):
         Initializes the style, location, angle, and number for the LittleKillerGlyph.
         """
         super().setUp()
-        self.glyph = LittleKillerGlyph('Style', Point(0, 0), Moves.down_right.angle, 20)
+        self.glyph = LittleKillerGlyph('Style', Coord(0, 0), Moves.down_right.angle, 20)
 
     @property
     def target(self) -> str:
@@ -29,10 +29,10 @@ class TestLittleKillerGlyph(TestGlyph):
         """
         return (
             '<g>'
-            '    <text class="Style" transform="translate(50.0, 50.0)">'
+            '    <text class="Style" transform="translate(25.0, 25.0)">'
             '        <tspan alignment-baseline="central" text-anchor="middle">20</tspan>'
             '    </text>'
-            '    <text class="Style" transform="translate(50.0, 50.0) rotate(315.0)">'
+            '    <text class="Style" transform="translate(25.0, 25.0) rotate(315.0)">'
             '        <tspan alignment-baseline="central" text-anchor="middle">ꜛ</tspan>'
             '    </text>'
             '</g>'

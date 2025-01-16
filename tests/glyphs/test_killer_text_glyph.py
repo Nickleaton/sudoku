@@ -4,7 +4,7 @@ from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.killer_text_glyph import KillerTextGlyph
-from src.utils.point import Point
+from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 
@@ -17,7 +17,7 @@ class TestKillerTextGlyph(TestGlyph):
         Initializes the style, coordinates, and text for the KillerTextGlyph.
         """
         super().setUp()
-        self.glyph = KillerTextGlyph('Style', 0, Point(100, 100), 'abcd')
+        self.glyph = KillerTextGlyph('Style', 0, Coord(1, 1), 'abcd')
 
     @property
     def target(self):
@@ -44,7 +44,7 @@ class TestKillerTextGlyph(TestGlyph):
         Returns:
             str: The string representation of the KillerTextGlyph.
         """
-        return "KillerTextGlyph('Style', 0.0, Point(100.0, 100.0), 'abcd')"
+        return "KillerTextGlyph('Style', 0.0, Coord(1, 1), 'abcd')"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
