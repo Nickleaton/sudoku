@@ -44,26 +44,15 @@ class Board:
     This class represents a Sudoku board with configurable dimensions,
     box sizes, and optional metadata. It supports various validation checks
     and operations to manage the board and its cells.
-
-    Attributes:
-        board_rows (int): Number of rows in the board.
-        board_columns (int): Number of columns in the board.
-        box_rows (int): Number of rows in each box.
-        box_columns (int): Number of columns in each box.
-        reference (str | None): URL reference for the puzzle.
-        video (str | None): Link to a video related to the puzzle.
-        title (str | None): Title of the puzzle.
-        author (str | None): Author of the puzzle.
     """
 
-    # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(
         self,
         board_rows: int,
         board_columns: int,
         box_rows: int = 0,
         box_columns: int = 0,
-        tags: dict | None = None,
+        tags: Tags | None = None,
     ):
         """Initialize the Board with dimensions, box size, and optional metadata.
 
@@ -72,7 +61,7 @@ class Board:
             board_columns (int): Number of columns in the board.
             box_rows (int): Number of rows in each box. Defaults to 0 (no boxes).
             box_columns (int): Number of columns in each box. Defaults to 0 (no boxes).
-            tags (dict | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
+            tags (Tags | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
 
         Raises:
             SudokuException: If the board dimensions are not divisible by the box dimensions.
@@ -182,7 +171,7 @@ class Board:
         return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
-        """Check if start given coordinate is valid within the board.
+        """Check if start_location given coordinate is valid within the board.
 
         Args:
             coord (Coord): Coordinate to check.
@@ -217,7 +206,7 @@ class Board:
             index (int): The index along the side (1-based for rows/columns).
 
         Returns:
-            Coord: The coordinate representing the position on the board's boundary.
+            Coord: The coordinate representing the location on the board's boundary.
 
         Raises:
             ValueError: If the side is invalid or the index is out of range.
@@ -280,7 +269,7 @@ class Board:
 
     @classmethod
     def create(cls, name: str, yaml_data: dict) -> 'Board':
-        """Create start Board instance from start YAML line structure.
+        """Create start_location Board instance from start_location YAML line structure.
 
         Args:
             name (str): Name key for the board in the YAML line.
