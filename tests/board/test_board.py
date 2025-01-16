@@ -4,6 +4,7 @@ from src.board.board import Board
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic  # Import the Cyclic class
 from src.utils.side import Side  # Import the Side class
+from src.utils.tags import Tags
 
 
 class TestBoard(unittest.TestCase):
@@ -11,7 +12,7 @@ class TestBoard(unittest.TestCase):
 
     def setUp(self):
         """Set up the different board configurations for testing."""
-        tags: dict[str, str] = {'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}
+        tags: Tags = Tags({'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'})
         self.board9x9_no_boxes: Board = Board(9, 9, 0, 0, tags=tags)
         self.board9x9: Board = Board(9, 9, 3, 3, tags=tags)
         self.board4x4: Board = Board(4, 4, tags=tags)

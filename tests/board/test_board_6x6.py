@@ -3,6 +3,7 @@ import unittest
 
 from src.board.board import Board
 from src.utils.coord import Coord
+from src.utils.tags import Tags
 
 
 class TestBoard6x6(unittest.TestCase):
@@ -10,7 +11,7 @@ class TestBoard6x6(unittest.TestCase):
 
     def setUp(self):
         """Set up the 6x6 board and coordinate configurations for testing."""
-        tags = {'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'}
+        tags: Tags = Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'})
         self.board = Board(6, 6, 2, 3, tags)
         self.rows = [1, 2, 3, 4, 5, 6]
         self.columns = [1, 2, 3, 4, 5, 6]
