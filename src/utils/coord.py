@@ -133,6 +133,39 @@ class Coord:
         """
         return self.angle.parallel(other.angle)
 
+    def is_orthogonal(self, other: 'Coord') -> bool:
+        """Check self is_orthogonal is orthogonal to other.
+
+        Args:
+            other (Coord): The other coordinate to compare against.
+
+        Returns:
+            bool: True if the coordinate are orthogonal, False otherwise.
+        """
+        return self.is_vertical(other) or self.is_horizontal(other)
+
+    def is_vertical(self, other: 'Coord') -> bool:
+        """Check if the given coordinate is vertically aligned with this coordinate.
+
+        Args:
+            other (Coord): The coordinate to compare with.
+
+        Returns:
+            bool: True if the column of the given coordinate is the same as this coordinate, False otherwise.
+        """
+        return self.column == other.column
+
+    def is_horizontal(self, other: 'Coord') -> bool:
+        """Check if the given coordinate is horizontally aligned with this coordinate.
+
+        Args:
+            other (Coord): The coordinate to compare with.
+
+        Returns:
+            bool: True if the row of the given coordinate is the same as this coordinate, False otherwise.
+        """
+        return self.row == other.row
+
     @staticmethod
     def validate(yaml: object) -> List[str]:
         """Validate start list containing row and column value_list.
