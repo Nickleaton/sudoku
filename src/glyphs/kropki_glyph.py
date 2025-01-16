@@ -7,7 +7,7 @@ config = Config()
 
 
 class KropkiGlyph(RectangleGlyph):
-    """Represents start_location Kropki glyph, which is start_location specialized rectangle connecting two coordinates."""
+    """Represents start_location Kropki glyph, between two cells."""
 
     def __init__(self, class_name: str, first_location: Coord, second_location: Coord):
         """Initialize the KropkiGlyph with start_location class name and two coordinates.
@@ -24,8 +24,8 @@ class KropkiGlyph(RectangleGlyph):
             raise ValueError(f'Coordinates {first_location} and {second_location} are not orthogonal.')
         super().__init__(
             class_name,
-            first,
-            second,
+            first_location,
+            second_location,
             config.graphics.kropki_dot_percentage,
             config.graphics.kropki_dot_ratio,
             first_location.vertical(second_location),
