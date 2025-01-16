@@ -1,10 +1,15 @@
 """EdgeTextGlyph."""
-from src.glyphs.text_glyph import TextGlyph
+from svgwrite.base import BaseElement
+from svgwrite.container import Group
+from svgwrite.text import Text, TSpan
+
+from src.glyphs.glyph import Glyph
+from src.utils.angle import Angle
 from src.utils.coord import Coord
 from src.utils.point import Point
 
 
-class EdgeTextGlyph(TextGlyph):
+class EdgeTextGlyph(Glyph):
     """Represents start_location text glyph positioned along the edge between two coordinates."""
 
     # pylint: disable=too-many-arguments
@@ -18,11 +23,59 @@ class EdgeTextGlyph(TextGlyph):
             second_location (Coord): The second coordinate for the edge.
             text (str): The text content to be displayed.
         """
-        super().__init__(class_name, angle, Point.middle(first, second), text)
+        super().__init__(class_name)
+        self.angle: Angle = Angle(angle)
         self.first_location: Coord = first_location
         self.second_location: Coord = second_location
-        self.first: Point = first
-        self.second: Point = second
+        self.position: Point = Point.middle(
+            Point.create_from_coord(first_location),
+            Point.create_from_coord(second_location),
+        )
+        self.text: str = text
+
+    def draw(self) -> BaseElement | None:
+        """Draw the text glyph element.
+
+        Creates an SVG group containing two text layers: a background and
+        a foreground, both positioned and rotated as specified.
+
+        Returns:
+            BaseElement | None: An `svgwrite.container.Group` element
+            containing the text glyph, or `None` if the element cannot be created.
+        """
+        group: Group = Group()
+        transform = f'{self.position.transform} {self.angle.transform}'
+
+        # Background text
+        background_text = Text(
+            '',
+            transform=transform,
+            class_=f'{self.class_name}Background',
+        )
+        background_text.add(
+            TSpan(
+                self.text,
+                alignment_baseline='central',
+                text_anchor='middle',
+            ),
+        )
+        group.add(background_text)
+
+        # Foreground text
+        foreground_text = Text(
+            '',
+            transform=transform,
+            class_=f'{self.class_name}Foreground',
+        )
+        foreground_text.add(
+            TSpan(
+                self.text,
+                alignment_baseline='central',
+                text_anchor='middle',
+            ),
+        )
+        group.add(foreground_text)
+        return group
 
     @property
     def priority(self) -> int:
