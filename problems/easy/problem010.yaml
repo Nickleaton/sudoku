@@ -1,13 +1,12 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: WPC 2019 7.4 Disjoint Groups Sudoku
     Reference: https://wspc2019.de/downloads/wsc_2019_instructionbooklet_v1.pdf
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   DisjointGroups:
   Known:
     - .........

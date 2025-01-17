@@ -1,15 +1,14 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
-    Title: Is Kropki start good name for start Dalmatian
+    Title: Is Kropki start_location good name for start_location Dalmatian
     Author: AlbinS
     Reference: https://app.crackingthecryptic.com/sudoku/366Pj32HbT
     Video: https://www.youtube.com/watch?v=Pw6-JJEVOgg&ab_channel=CrackingTheCryptic
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   ConsecutivePair:
     - 11-12
     - 11-21

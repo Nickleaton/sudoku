@@ -1,12 +1,11 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Problem 001
 Constraints:
+  Boxes: 3x3
   Columns:
   Rows:
-  Boxes:
   Known:
       - 8..4.6..3
       - ..9....2.

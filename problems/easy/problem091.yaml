@@ -1,12 +1,11 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Author: Philip Newman
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Known:
     - .........
     - .1.......

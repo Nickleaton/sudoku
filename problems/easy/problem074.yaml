@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Berlin Wall
     Author: Agent
@@ -8,7 +7,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   AntiKing:
   GermanWhisperLine:
     - 11,22,33,44,55,66,77,88,99

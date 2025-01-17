@@ -1,13 +1,12 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: MinMaxSum Sudoku
     Reference: https://www.funwithpuzzles.com/2018/04/minmax-sudoku-puzzle.html
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   MinMaxSum:
     - T1=11
     - T2=7

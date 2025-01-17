@@ -1,13 +1,12 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Exocet
     Reference: https://www.sudokuwiki.org/
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Known:
     - ......7..
     - ..71.9...

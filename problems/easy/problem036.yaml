@@ -1,7 +1,6 @@
 Board:
 
   Board: 9x9
-  Box: 3x3
   Tags:
     Video: https://www.youtube.com/watch?v=hAyZ9K2EBF0&ab_channel=CrackingTheCryptic
     Reference: https://cracking-the-cryptic.web.app/sudoku/2QM8JHJ4HB
@@ -10,7 +9,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   TLBR:
   BLTR:
   AntiKnight:

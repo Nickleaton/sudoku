@@ -1,12 +1,11 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Reference: https://rohanrao.blogspot.com/2008/12/rules-of-sum-frame-sudoku.html
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Known:
     - ..3......
     - ...1.....

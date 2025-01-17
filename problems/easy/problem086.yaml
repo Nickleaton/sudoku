@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Odd Even RenbanLine
     Author: Sam Cappleman-Lynes
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Known:
     - 34...7...
     - ........7

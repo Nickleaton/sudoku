@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: 159 Sudoku
     Author: World Sudoku Cup 2
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   ColumnIndexer:
     - 1
     - 5

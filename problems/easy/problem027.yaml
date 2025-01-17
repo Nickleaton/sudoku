@@ -4,7 +4,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Known:
     - 4..21.3.
     - .7...2..

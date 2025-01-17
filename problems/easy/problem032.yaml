@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Supernova - The Best Quad Sudoku Ever
     Author: Nahileon
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Knight: 2,4,6,8
   QuadrupleInclude:
     - 11=23

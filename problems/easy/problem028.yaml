@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Quadruple the Entropy, Quadruple the Fun
     Author: twototenth
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   EntropicLine:
     - 41,31,21,11,12,13,14,15,16,17
     - 44,34,35,36,46

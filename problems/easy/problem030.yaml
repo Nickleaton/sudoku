@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Aug 23 2021 Rossini Sudoku
     Author: Sam Cappleman-Lunes
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Rossini:
     - T1=D
     - T2=I

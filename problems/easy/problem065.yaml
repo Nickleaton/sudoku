@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Boundaries
     Author: Josh Johnson
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   RenbanLine:
     - 31,41,51,52,42,32
     - 16,25,34,44,54,64

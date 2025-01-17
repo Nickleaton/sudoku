@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Title: Slow Thermo
     Author: Kithyane
@@ -8,7 +7,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   FrozenThermometerLine:
     - 11,22,13,24,15,26,17,28,19
     - 51,42,33,44,55,46,37,48,59

@@ -1,6 +1,5 @@
 Board:
   Board: 9x9
-  Box: 3x3
   Tags:
     Video: https://www.youtube.com/watch?v=YVywJmvmEKY&ab_channel=CrackingTheCryptic
     Reference: https://app.crackingthecryptic.com/sudoku/mMPF2P2NqM
@@ -9,7 +8,7 @@ Board:
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 3x3
   Known:
       - .8.......
       - .........

@@ -1,10 +1,9 @@
 Board:
   Board: 6x6
-  Box: 2x3
 Constraints:
   Columns:
   Rows:
-  Boxes:
+  Boxes: 2x3
   Known:
     - .....3
     - .6.45.
