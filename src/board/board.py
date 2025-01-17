@@ -50,8 +50,8 @@ class Board:
         self,
         board_rows: int,
         board_columns: int,
-        box_rows: int = 0,
-        box_columns: int = 0,
+        # box_rows: int = 0,
+        # box_columns: int = 0,
         tags: Tags | None = None,
     ):
         """Initialize the Board with dimensions, box size, and optional metadata.
@@ -59,8 +59,8 @@ class Board:
         Args:
             board_rows (int): Number of rows in the board.
             board_columns (int): Number of columns in the board.
-            box_rows (int): Number of rows in each box. Defaults to 0 (no boxes).
-            box_columns (int): Number of columns in each box. Defaults to 0 (no boxes).
+            # box_rows (int): Number of rows in each box. Defaults to 0 (no boxes).
+            # box_columns (int): Number of columns in each box. Defaults to 0 (no boxes).
             tags (Tags | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
 
         Raises:
@@ -99,22 +99,22 @@ class Board:
             for mod in self.modulos
         }
 
-        # Boxes
-        if box_rows == 0:
-            self.box_rows = 0
-            self.box_columns = 0
-            self.box_count = 0
-            self.box_range = None
-        else:
-            if board_rows % box_rows != 0 or board_columns % box_columns != 0:
-                raise SudokuException(
-                    f'Board dimensions ({board_rows}x{board_columns}) '
-                    f'must be divisible by box dimensions ({box_rows}x{box_columns}).',
-                )
-            self.box_rows = box_rows
-            self.box_columns = box_columns
-            self.box_count = (board_rows // box_rows) * (board_columns // box_columns)
-            self.box_range = list(range(1, self.box_count + 1))
+        # # Boxes
+        # if box_rows == 0:
+        #     self.box_rows = 0
+        #     self.box_columns = 0
+        #     self.box_count = 0
+        #     self.box_range = None
+        # else:
+        #     if board_rows % box_rows != 0 or board_columns % box_columns != 0:
+        #         raise SudokuException(
+        #             f'Board dimensions ({board_rows}x{board_columns}) '
+        #             f'must be divisible by box dimensions ({box_rows}x{box_columns}).',
+        #         )
+        #     self.box_rows = box_rows
+        #     self.box_columns = box_columns
+        #     self.box_count = (board_rows // box_rows) * (board_columns // box_columns)
+        #     self.box_range = list(range(1, self.box_count + 1))
 
         # Metadata
         self.tags: Tags | None = None if tags is None else Tags(tags)
@@ -243,7 +243,7 @@ class Board:
         return Map(
             {
                 'Board': Str(),
-                Optional('Box'): Str(),
+                # Optional('Box'): Str(),
                 Optional('Tags'): tag_schema,
             },
         )
@@ -282,10 +282,10 @@ class Board:
         board_rows: int
         board_columns: int
         board_rows, board_columns = Board.parse_xy(board_data['Board'])
-        box_rows: int = 0
-        box_columns: int = 0
-        if board_data.get('Box') is not None:
-            box_rows, box_columns = Board.parse_xy(board_data['Box'])
+        # box_rows: int = 0
+        # box_columns: int = 0
+        # if board_data.get('Box') is not None:
+        #     box_rows, box_columns = Board.parse_xy(board_data['Box'])
         tags: dict | None = SortedDict(board_data.get('Tags'))
         return Board(board_rows, board_columns, box_rows, box_columns, tags)
 
@@ -313,8 +313,8 @@ class Board:
 
         board['Board'] = f'{self.board_rows}x{self.board_columns}'
 
-        if self.box_rows is not None and self.box_columns is not None:
-            board['Box'] = f'{self.box_rows}x{self.box_columns}'
+        # if self.box_rows is not None and self.box_columns is not None:
+        #     board['Box'] = f'{self.box_rows}x{self.box_columns}'
 
         if self.tags is not None:
             board['Tags'] = dict(self.tags)
@@ -339,24 +339,24 @@ class Board:
             f'('
             f'{self.board_rows!r}, '
             f'{self.board_columns!r}, '
-            f'{self.box_rows!r}, '
-            f'{self.box_columns!r}, '
+            # f'{self.box_rows!r}, '
+            # f'{self.box_columns!r}, '
             f'{self.tags!r}'
             f')'
         )
 
-    def box_index(self, row: int, column: int) -> int:
-        """Determine the box index for a given cell specified by row and column.
-
-        Args:
-            row (int): Row coordinate of the cell.
-            column (int): Column coordinate of the cell.
-
-        Returns:
-            int: Box index number.
-        """
-        return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
-
+    # def box_index(self, row: int, column: int) -> int:
+    #     """Determine the box index for a given cell specified by row and column.
+    #
+    #     Args:
+    #         row (int): Row coordinate of the cell.
+    #         column (int): Column coordinate of the cell.
+    #
+    #     Returns:
+    #         int: Box index number.
+    #     """
+    #     return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
+    #
     @property
     def digit_values(self) -> str:
         """Return a string of valid digits for the board.
