@@ -25,7 +25,13 @@ class CentreCircleGlyph(CircleGlyph):
 
     @property
     def offset(self) -> Point:
-        return Point(config.graphics.cell_size / 2.0, config.graphics.cell_size / 2.0)
+        """Return the offset for the circle glyph.
+
+        Returns:
+            Point: The offset for the circle glyph.
+        """
+        size: float = config.graphics.cell_size / 2.0  # noqa: WPS432
+        return Point(size, size)
 
     def __repr__(self) -> str:
         """Return string representation of the CircleGlyph instance.

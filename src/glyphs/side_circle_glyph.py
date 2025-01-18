@@ -23,7 +23,7 @@ class SideCircleGlyph(CircleGlyph):
         Raises:
             ValueError: If the location1 and location 2 are not orthogonal.
         """
-        if location1.row != location2.row and location1.col != slocation2.col:
+        if location1.row != location2.row and location1.column != location2.column:
             raise ValueError(f'Not orthogonal: {location1} and {location2}')
         super().__init__(class_name, percentage)
         self.location1: Coord = location1
@@ -32,10 +32,15 @@ class SideCircleGlyph(CircleGlyph):
 
     @property
     def offset(self) -> Point:
-        size: float = config.graphics.cell_size
+        """Return the offset for the circle glyph.
+
+        Returns:
+            Point: The offset for the circle glyph.
+        """
+        size: float = config.graphics.cell_size / 2.0  # noqa: WPS432
         if self.location1.is_vertical(self.location2):
-            return Point((self.location2.row - self.location1.row) // 2.0, 0) * size
-        return Point(0, (self.location2.column - self.location1.column) // 2.0) * size
+            return Point((self.location2.row - self.location1.row), 0) * size
+        return Point(0, (self.location2.column - self.location1.column)) * size
 
     def __repr__(self) -> str:
         """Return string representation of the CircleGlyph instance.
@@ -44,10 +49,10 @@ class SideCircleGlyph(CircleGlyph):
             str: A string representation of the CircleGlyph instance.
         """
         return (
-            f"{self.__class__.__name__}("
-            f"'{self.class_name}', "
-            f"{self.location1!r}, "
-            f"{self.location2!r}, "
-            f"{self.percentage!r}"
-            ")"
+            f'{self.__class__.__name__}('
+            f'{self.class_name!r}, '
+            f'{self.location1!r}, '
+            f'{self.location2!r}, '
+            f'{self.percentage!r}'
+            ')'
         )

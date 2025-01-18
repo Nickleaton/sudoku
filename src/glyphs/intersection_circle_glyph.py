@@ -25,6 +25,11 @@ class IntersectionCircleGlyph(CircleGlyph):
 
     @property
     def offset(self) -> Point:
+        """Return the offset for the circle glyph.
+
+        Returns:
+            Point: The offset for the circle glyph.
+        """
         return Point(config.graphics.cell_size, config.graphics.cell_size)
 
     def __repr__(self) -> str:
