@@ -2,16 +2,20 @@
 import unittest
 from typing import Type
 
+import pytest
+
 from src.glyphs.circle_glyph import CircleGlyph
 from src.glyphs.glyph import Glyph
 from src.utils.config import Config
-from src.utils.coord import Coord
 from tests.glyphs.test_glyph import TestGlyph
 
 config = Config()
 
+from abc import ABC
 
-class TestCircleGlyph(TestGlyph):
+
+@pytest.mark.abstract
+class TestCircleGlyph(TestGlyph, ABC):
     """Test suite for the CircleGlyph class."""
 
     def setUp(self) -> None:
@@ -20,7 +24,7 @@ class TestCircleGlyph(TestGlyph):
         Initializes an instance of CircleGlyph with the given style, coordinates, and radius.
         """
         super().setUp()
-        self.glyph = CircleGlyph('Style', Coord(1, 1), 0.5)
+        self.glyph = CircleGlyph('Style', 0.5)
 
     @property
     def target(self) -> str:
@@ -29,7 +33,7 @@ class TestCircleGlyph(TestGlyph):
         Returns:
             str: The SVG markup for the circle representing the CircleGlyph.
         """
-        return '<circle class="Style" cx="0" cy="0" r="50.0" transform="translate(100.0, 100.0)" />'
+        return '<circle class="Style" cx="0" cy="0" r="50.0" transform="translate(0.0, 0.0)" />'
 
     @property
     def representation(self) -> str:
@@ -38,7 +42,7 @@ class TestCircleGlyph(TestGlyph):
         Returns:
             str: The string representation of the CircleGlyph instance.
         """
-        return "CircleGlyph('Style', Coord(1, 1), 0.5)"
+        return "CircleGlyph('Style', 0.5)"
 
     @property
     def expected_classes(self) -> set[Type[Glyph]]:
