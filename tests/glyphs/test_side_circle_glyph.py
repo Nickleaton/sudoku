@@ -32,7 +32,7 @@ class TestSideCircleGlyph(TestCircleGlyph):
         Returns:
             str: The SVG markup for the circle representing the SideCircleGlyph.
         """
-        return '<circle class="Style" cx="0" cy="0" r="50.0" transform="translate(100.0, 100.0)"/>'
+        return '<circle class="Style" cx="0" cy="0" r="50.0" transform="translate(100.0, 150.0)"/>'
 
     @property
     def representation(self) -> str:
