@@ -5,7 +5,7 @@ from src.utils.config import Config
 from src.utils.coord import Coord
 from src.utils.point import Point
 
-config: Configg = Config()
+config: Config = Config()
 
 
 class IntersectionCircleGlyph(CircleGlyph):
