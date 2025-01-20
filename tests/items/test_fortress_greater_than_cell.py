@@ -1,34 +1,33 @@
-"""TestFortressCell."""
-import unittest
 from typing import Type
 
 from postponed.src.items.simple_cell_reference import SimpleCellReference
-from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.fortress_cell import FortressCell
+from src.items.fortress_greater_than_cell import FortressGreaterThanCell
 from src.items.item import Item
+from tests.items.test_fortress_cell import TestFortressCell
 
 
-class TestFortressCell(TestSimpleCellReference):
+class TestFortressGreaterThanCell(TestFortressCell):
     """Test suite for the FortressCell class."""
 
     def setUp(self) -> None:
-        """Set up the test environment by creating start_location board and initializing the FortressCell constraint."""
+        """Set up the test environment by creating a board and initializing the FortressGreaterThanCell constraint."""
         super().setUp()
-        self.item = FortressCell(self.board, 1, 2)
-        self.letter = '.'
+        self.item = FortressGreaterThanCell(self.board, 1, 2)
+        self.letter = 'f'
 
     @property
     def clazz(self):
         """Return the FortressCell class."""
-        return FortressCell
+        return FortressGreaterThanCell
 
     @property
     def representation(self) -> str:
-        """Return start_location string representation of the FortressCell instance."""
+        """Return a string representation of the FortressGreaterThanCell instance."""
         return (
-            "FortressCell("
+            "FortressGreaterThanCell("
             "Board(9, 9, {}), "
             "Cell(Board(9, 9, {}), "
             "1, "
@@ -39,18 +38,18 @@ class TestFortressCell(TestSimpleCellReference):
 
     @property
     def config(self) -> str:
-        """Return the configuration string for the FortressCell."""
-        return "FortressCell: 12"
+        """Return the configuration string for the FortressGreaterThanCell."""
+        return "FortressGreaterThanCell: 12"
 
     @property
     def has_rule(self) -> bool:
-        """Return True to indicate the rule is present for the FortressCell."""
-        return False
+        """Return True to indicate the rule is present for the FortressGreaterThanCell."""
+        return True
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
         """Return the expected classes that the FortressCell should belong to."""
-        return {Cell, CellReference, SimpleCellReference, Item, FortressCell}
+        return {Cell, CellReference, SimpleCellReference, Item, FortressCell, FortressGreaterThanCell}
 
 
 if __name__ == '__main__':  # pragma: no cover
