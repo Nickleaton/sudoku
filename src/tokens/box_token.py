@@ -6,8 +6,8 @@ class BoxToken(SimpleToken):
     """Represents the box size."""
 
     def __init__(self) -> None:
-        """Initialize start cell token with pattern 'dxd' where its row x column"""
-        super().__init__(pattern=r'(\d)x(\d)')
+        """Initialize start cell token with pattern 'dxd' where its row x column."""
+        super().__init__(pattern='([1-9])x([1-9])')
 
     @property
     def description(self) -> str:
