@@ -3,7 +3,6 @@ import re
 from enum import Enum
 
 import oyaml as yaml
-from sortedcontainers import SortedDict
 from strictyaml import Map, Optional, Str, Validator
 
 from src.utils.coord import Coord
@@ -24,6 +23,7 @@ class BoardType(Enum):
     b4x4 = '4x4'
     b6x6 = '6x6'
     b8x8 = '8x8'
+    bFxF = 'FxF'  # noqa: WPS115, N815
 
 
 class BoxType(Enum):
@@ -32,10 +32,11 @@ class BoxType(Enum):
     This enum defines the available box types for Sudoku grids.
     """
 
+    b2x2 = '2x2'
     b3x3 = '3x3'
     b2x3 = '2x3'
     b3x2 = '3x2'
-    b2x2 = '2x2'
+    b4x4 = '4x4'
 
 
 class Board:
@@ -50,37 +51,29 @@ class Board:
         self,
         board_rows: int,
         board_columns: int,
-        # box_rows: int = 0,
-        # box_columns: int = 0,
         tags: Tags | None = None,
     ):
-        """Initialize the Board with dimensions, box size, and optional metadata.
+        """Initialize the Board with dimensions, box size, and optional metadata.little_killer_validator.
 
         Args:
             board_rows (int): Number of rows in the board.
             board_columns (int): Number of columns in the board.
-            # box_rows (int): Number of rows in each box. Defaults to 0 (no boxes).
-            # box_columns (int): Number of columns in each box. Defaults to 0 (no boxes).
             tags (Tags | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
-
-        Raises:
-            SudokuException: If the board dimensions are not divisible by the box dimensions.
         """
-        # Rows and Columns
-        self.board_rows = board_rows
-        self.board_columns = board_columns
-        self.row_range = list(range(1, self.board_rows + 1))
-        self.column_range = list(range(1, self.board_columns + 1))
+        self.size: Coord = Coord(board_rows, board_columns)
+        self.row_range = list(range(1, self.size.row + 1))
+        self.column_range = list(range(1, self.size.column + 1))
         self.side_bounds: dict[Side, tuple[int, int]] = {
-            Side.top: (1, self.board_columns),
-            Side.bottom: (1, self.board_columns),
-            Side.left: (1, self.board_rows),
-            Side.right: (1, self.board_rows),
+            Side.top: (1, self.size.column),
+            Side.bottom: (1, self.size.column),
+            Side.left: (1, board_rows),
+            Side.right: (1, board_rows),
         }
 
+        # TODO needs to change to handle 0-8 on a 9x9 board
         # Digits
         self.minimum_digit = 1
-        self.maximum_digit = max(self.board_rows, self.board_columns)
+        self.maximum_digit = max(board_rows, board_columns)
         self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
         self.digit_sum = sum(self.digit_range)
         self.primes = [prime for prime in PRIMES if prime in self.digit_range]
@@ -98,23 +91,6 @@ class Board:
             mod: [digit for digit in self.digit_range if digit % 3 == mod]
             for mod in self.modulos
         }
-
-        # # Boxes
-        # if box_rows == 0:
-        #     self.box_rows = 0
-        #     self.box_columns = 0
-        #     self.box_count = 0
-        #     self.box_range = None
-        # else:
-        #     if board_rows % box_rows != 0 or board_columns % box_columns != 0:
-        #         raise SudokuException(
-        #             f'Board dimensions ({board_rows}x{board_columns}) '
-        #             f'must be divisible by box dimensions ({box_rows}x{box_columns}).',
-        #         )
-        #     self.box_rows = box_rows
-        #     self.box_columns = box_columns
-        #     self.box_count = (board_rows // box_rows) * (board_columns // box_columns)
-        #     self.box_range = list(range(1, self.box_count + 1))
 
         # Metadata
         self.tags: Tags | None = None if tags is None else Tags(tags)
@@ -139,22 +115,22 @@ class Board:
         scm: dict[tuple[Side, Cyclic, int], Coord] = {}
 
         # Top and bottom row connections (left-right)
-        for row in range(self.board_rows):
+        for row in range(self.size.row):
             # Left side (clockwise and anticlockwise)
             scm[(Side.left, Cyclic.clockwise, row)] = Coord(row - 1, 1)
             scm[(Side.left, Cyclic.anticlockwise, row)] = Coord(row + 1, 1)
             # Right side (clockwise and anticlockwise)
-            scm[(Side.right, Cyclic.clockwise, row)] = Coord(row + 1, self.board_columns)
-            scm[(Side.right, Cyclic.anticlockwise, row)] = Coord(row - 1, self.board_columns)
+            scm[(Side.right, Cyclic.clockwise, row)] = Coord(row + 1, self.size.column)
+            scm[(Side.right, Cyclic.anticlockwise, row)] = Coord(row - 1, self.size.column)
 
         # Top and bottom column connections (top-bottom)
-        for column in range(self.board_columns):
+        for column in range(self.size.column):
             # Top side (clockwise and anticlockwise)
             scm[(Side.top, Cyclic.clockwise, column)] = Coord(1, column + 1)
             scm[(Side.top, Cyclic.anticlockwise, column)] = Coord(1, column - 1)
             # Bottom side (clockwise and anticlockwise)
-            scm[(Side.bottom, Cyclic.clockwise, column)] = Coord(self.board_rows, column - 1)
-            scm[(Side.bottom, Cyclic.anticlockwise, column)] = Coord(self.board_rows, column + 1)
+            scm[(Side.bottom, Cyclic.clockwise, column)] = Coord(self.size.row, column - 1)
+            scm[(Side.bottom, Cyclic.anticlockwise, column)] = Coord(self.size.row, column + 1)
 
         return scm
 
@@ -168,7 +144,7 @@ class Board:
         Returns:
             bool: True if the coordinates are within bounds, False otherwise.
         """
-        return (1 <= row <= self.board_rows) and (1 <= column <= self.board_columns)
+        return (1 <= row <= self.size.row) and (1 <= column <= self.size.column)
 
     def is_valid_coordinate(self, coord: Coord) -> bool:
         """Check if start_location given coordinate is valid within the board.
@@ -190,11 +166,11 @@ class Board:
         Returns:
             bool: True if the coordinate is just outside the boundary, False otherwise.
         """
-        is_outer_row = coord.row in {0, self.board_rows + 1}
-        is_column_in_range = 0 <= coord.column <= self.board_columns + 1
+        is_outer_row = coord.row in {0, self.size.row + 1}
+        is_column_in_range = 0 <= coord.column <= self.size.column + 1
 
-        is_outer_column = coord.column in {0, self.board_columns + 1}
-        is_row_in_range = 0 <= coord.row <= self.board_rows + 1
+        is_outer_column = coord.column in {0, self.size.column + 1}
+        is_row_in_range = 0 <= coord.row <= self.size.row + 1
 
         return (is_outer_row and is_column_in_range) or (is_outer_column and is_row_in_range)
 
@@ -222,11 +198,11 @@ class Board:
         if side == Side.top:
             return Coord(0, index)
         if side == Side.bottom:
-            return Coord(self.board_rows + 1, index)
+            return Coord(self.size.row + 1, index)
         if side == Side.left:
             return Coord(index, 0)
         if side == Side.right:
-            return Coord(index, self.board_columns + 1)
+            return Coord(index, self.size.column + 1)
 
         # Should never reach here due to the initial side validation
         raise ValueError(f'Unhandled side: {side}')
@@ -279,15 +255,9 @@ class Board:
             Board: A new `Board` instance.
         """
         board_data: dict = yaml_data[name]
-        board_rows: int
-        board_columns: int
         board_rows, board_columns = Board.parse_xy(board_data['Board'])
-        # box_rows: int = 0
-        # box_columns: int = 0
-        # if board_data.get('Box') is not None:
-        #     box_rows, box_columns = Board.parse_xy(board_data['Box'])
-        tags: dict | None = SortedDict(board_data.get('Tags'))
-        return Board(board_rows, board_columns, box_rows, box_columns, tags)
+        tags: Tags = Tags(board_data.get('Tags'))
+        return Board(board_rows, board_columns, tags)
 
     @classmethod
     def create2(cls, name: str, yaml_data: dict) -> 'Board':
@@ -310,12 +280,7 @@ class Board:
         """
         board_dict: dict = {'Board': {}}
         board = board_dict['Board']
-
-        board['Board'] = f'{self.board_rows}x{self.board_columns}'
-
-        # if self.box_rows is not None and self.box_columns is not None:
-        #     board['Box'] = f'{self.box_rows}x{self.box_columns}'
-
+        board['Board'] = f'{self.size.row}x{self.size.column}'
         if self.tags is not None:
             board['Tags'] = dict(self.tags)
         return board_dict
@@ -337,26 +302,12 @@ class Board:
         return (
             f'{self.__class__.__name__}'
             f'('
-            f'{self.board_rows!r}, '
-            f'{self.board_columns!r}, '
-            # f'{self.box_rows!r}, '
-            # f'{self.box_columns!r}, '
+            f'{self.size.row!r}, '
+            f'{self.size.column!r}, '
             f'{self.tags!r}'
             f')'
         )
 
-    # def box_index(self, row: int, column: int) -> int:
-    #     """Determine the box index for a given cell specified by row and column.
-    #
-    #     Args:
-    #         row (int): Row coordinate of the cell.
-    #         column (int): Column coordinate of the cell.
-    #
-    #     Returns:
-    #         int: Box index number.
-    #     """
-    #     return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
-    #
     @property
     def digit_values(self) -> str:
         """Return a string of valid digits for the board.
@@ -382,9 +333,9 @@ class Board:
         if side == Side.top:
             return Coord(0, index)
         if side == Side.right:
-            return Coord(index, self.board_rows + 1)
+            return Coord(index, self.size.row + 1)
         if side == Side.bottom:
-            return Coord(self.board_columns + 1, index)
+            return Coord(self.size.column + 1, index)
         if side == Side.left:
             return Coord(index, 0)
         raise ValueError(f'Invalid side: {side}')
@@ -405,9 +356,9 @@ class Board:
         if side == Side.top:
             return Coord(1, index)
         if side == Side.right:
-            return Coord(index, self.board_rows)
+            return Coord(index, self.size.row)
         if side == Side.bottom:
-            return Coord(self.board_columns, index)
+            return Coord(self.size.column, index)
         if side == Side.left:
             return Coord(index, 1)
         raise ValueError(f'Invalid side: {side}')
@@ -428,9 +379,9 @@ class Board:
         if side == Side.top:
             return Coord(0, index)
         if side == Side.right:
-            return Coord(index, self.board_rows + 1)
+            return Coord(index, self.size.row + 1)
         if side == Side.bottom:
-            return Coord(self.board_columns + 1, index)
+            return Coord(self.size.column + 1, index)
         if side == Side.left:
             return Coord(index, 0)
         raise ValueError(f'Invalid side: {side}')
