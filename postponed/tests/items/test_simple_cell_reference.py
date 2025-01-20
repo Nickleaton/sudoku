@@ -3,11 +3,10 @@
 import unittest
 from typing import Type
 
-from src.board.board import Board
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
-from src.items.simple_cell_reference import SimpleCellReference
 from tests.items.test_cell_reference import TestCellReference
 
 
@@ -17,19 +16,17 @@ class TestSimpleCellReference(TestCellReference):
     def setUp(self) -> None:
         """Set up the test environment."""
         super().setUp()
-
-        self.board = Board(9, 9, 3, 3)
         self.item = SimpleCellReference(self.board, 1, 2)
         self.letter = '.'
 
     @property
     def representation(self) -> str:
-        """Return start string representation of the SimpleCellReference constraint."""
+        """Return start_location string representation of the SimpleCellReference constraint."""
         return (
             "SimpleCellReference"
             "("
-            "Board(9, 9, 3, 3, None), "
-            "Cell(Board(9, 9, 3, 3, None), "
+            "Board(9, 9, {}), "
+            "Cell(Board(9, 9, {}), "
             "1, "
             "2"
             ")"
