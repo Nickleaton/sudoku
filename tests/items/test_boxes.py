@@ -11,6 +11,7 @@ from src.items.region import Region
 from src.items.region_set import RegionSet
 from src.items.standard_region import StandardRegion
 from src.items.standard_region_set import StandardRegionSet
+from src.utils.coord import Coord
 from tests.items.test_standard_region_sets import TestStandardRegionSet
 
 
@@ -20,7 +21,7 @@ class TestBoxes(TestStandardRegionSet):
     def setUp(self) -> None:
         """Set up the Board and Boxes instance for testing."""
         super().setUp()
-        self.item = Boxes(self.board)
+        self.item = Boxes(self.board, Coord(3, 3))
         self.size = 9
 
     @property
@@ -31,12 +32,12 @@ class TestBoxes(TestStandardRegionSet):
     @property
     def config(self) -> str:
         """Return the configuration string for the Boxes constraint."""
-        return "Boxes:"
+        return "Boxes: 3x3"
 
     @property
     def representation(self) -> str:
         """Return the string representation for the Boxes constraint."""
-        return "Boxes(Board(9, 9, 3, 3, None))"
+        return "Boxes(Board(9, 9, {}))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -46,7 +47,7 @@ class TestBoxes(TestStandardRegionSet):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Boxes have start rule associated with them."""
+        """Return whether the Boxes have start_location rule associated with them."""
         return True
 
 
