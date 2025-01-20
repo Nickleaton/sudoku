@@ -1,7 +1,7 @@
 """Box."""
 from src.board.board import Board
+from src.glyphs.box_glyph import BoxGlyph
 from src.glyphs.glyph import Glyph
-from src.glyphs.rect_glyph import BoxGlyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
@@ -12,22 +12,26 @@ from src.utils.rule import Rule
 
 
 class Box(StandardRegion):
-    """Represents start box in the puzzle grid, containing cells within start defined region."""
+    """Represents start_location box in the puzzle grid, containing cells within start_location defined region."""
 
-    def __init__(self, board: Board, index: int):
-        """Initialize the Box with start specified board and index.
+    def __init__(self, board: Board, index: int, size: Coord):
+        """Initialize the Box with start_location specified board and index.
 
         Args:
             board (Board): The game board instance.
             index (int): The index of the box within the board.
+            size (Coord): Size of the Box
         """
         super().__init__(board, index)
-        self.position = self.start()
+        row: int = ((self.index - 1) * size.row) % size.row + 1
+        col: int = ((self.index - 1) // size.column) * size.column + 1
+        self.position: Coord = Coord(row, col)
+        self.size: Coord = size
         self.add_components(
             [
-                Cell.make(board, int(self.position.row + ro - 1), int(self.position.column + co - 1))
-                for ro in range(1, board.box_rows + 1)
-                for co in range(1, board.box_columns + 1)
+                Cell.make(board, int(self.position.row + row - 1), int(self.position.column + col - 1))
+                for row in range(1, size.row + 1)
+                for col in range(1, size.column + 1)
             ],
         )
 
@@ -40,28 +44,23 @@ class Box(StandardRegion):
         """
         return DigitParser()
 
-    def start(self) -> Coord:
+    def start(self, box_rows: int, box_columns: int) -> Coord:
         """Calculate the starting coordinate for the box within the board.
+
+        Args:
+            box_rows (int): The number of rows in the box.
+            box_columns (int): The number of columns in the box.
 
         Returns:
             Coord: The starting coordinate of the box.
         """
-        row: int = ((self.index - 1) * self.board.box_rows) % self.board.maximum_digit + 1
-        col: int = ((self.index - 1) // self.board.box_columns) * self.board.box_columns + 1
+        row: int = ((self.index - 1) * box_rows) % self.board.maximum_digit + 1
+        col: int = ((self.index - 1) // box_columns) * self.board.box_columns + 1
         return Coord(row, col)
-
-    @property
-    def size(self) -> Coord:
-        """Define the size of the box in terms of rows and columns.
-
-        Returns:
-            Coord: The dimensions of the box.
-        """
-        return Coord(self.board.box_rows, self.board.box_columns)
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Box instance from YAML configuration.
+        """Create start_location Box instance from YAML configuration.
 
         Args:
             board (Board): The game board instance.
@@ -70,16 +69,34 @@ class Box(StandardRegion):
         Returns:
             Item: An instance of the Box class.
         """
-        index = cls.extract(board, yaml)
-        return cls(board, index)
+        box = yaml['Box']
+        index: int = int(box['index'])
+        size: Coord = Coord(int(box['size']['row']), int(box['size']['column']))
+        return Box(board, index, size)
+
+    def to_dict(self) -> dict:
+        """Convert the box to a dictionary representation.
+
+        Returns:
+            dict: A dictionary representing the box
+        """
+        return {
+            self.__class__.__name__: {
+                'index': self.index,
+                'size': {
+                    'row': self.size.row,
+                    'column': self.size.column
+                }
+            }
+        }
 
     def __repr__(self) -> str:
-        """Provide start string representation of the Box instance.
+        """Provide start_location string representation of the Box instance.
 
         Returns:
             str: A string representation of the Box instance.
         """
-        return f'{self.__class__.__name__}({self.board!r}, {self.index!r})'
+        return f'{self.__class__.__name__}({self.board!r}, {self.index!r}, {self.size!r})'
 
     @property
     def rules(self) -> list[Rule]:
@@ -94,7 +111,7 @@ class Box(StandardRegion):
         """Generate glyphs for visual representation of the box.
 
         Returns:
-            list[Glyph]: A list of glyphs, specifically start BoxGlyph.
+            list[Glyph]: A list of glyphs, specifically start_location BoxGlyph.
         """
         return [BoxGlyph('Box', self.position, self.size)]
 
@@ -113,7 +130,6 @@ class Box(StandardRegion):
         Args:
             solver (PulpSolver): The solver instance for which constraints are being added.
         """
-        self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
     def css(self) -> dict:
@@ -131,7 +147,7 @@ class Box(StandardRegion):
         }
 
     def __str__(self) -> str:
-        """Provide start simplified string representation of the Box.
+        """Provide start_location simplified string representation of the Box.
 
         Returns:
             str: A simplified string representation of the Box instance.

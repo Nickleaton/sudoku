@@ -8,6 +8,7 @@ from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.region import Region
 from src.items.standard_region import StandardRegion
+from src.utils.coord import Coord
 from tests.items.test_standard_region import TestStandardRegion
 
 
@@ -17,7 +18,7 @@ class TestBox(TestStandardRegion):
     def setUp(self) -> None:
         """Set up the Board and Box instance for testing."""
         super().setUp()
-        self.item = Box(self.board, 1)
+        self.item = Box(self.board, 1, Coord(3, 3))
         self.size = 9
 
     @property
@@ -28,16 +29,21 @@ class TestBox(TestStandardRegion):
     @property
     def config(self) -> str:
         """Return the configuration string for the Box constraint."""
-        return "Box: 1"
-
+        return (
+            'Box:\n'
+            '  index: 1\n'
+            '  size:\n'
+            '    row: 3\n'
+            '    column: 3\n'
+        )
     @property
     def representation(self) -> str:
         """Return the string representation for the Box constraint."""
-        return "Box(Board(9, 9, 3, 3, None), 1)"
+        return "Box(Board(9, 9, {}), 1, Coord(3, 3))"
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Box has start rule associated with it."""
+        """Return whether the Box has start_location rule associated with it."""
         return True
 
     @property
