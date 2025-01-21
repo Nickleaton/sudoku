@@ -41,6 +41,7 @@ class Boxes(StandardRegionSet):
         for box_index in range(self.count):
             self.add(Box(board, box_index + 1, self.size))
 
+
     def box_index(self, row: int, column: int) -> int:
         """Determine the box index for a given cell specified by row and column.
 
@@ -50,8 +51,41 @@ class Boxes(StandardRegionSet):
 
         Returns:
             int: Box index number.
+
+        Raises:
+            IndexError: If the row or column is out of bounds.
         """
-        return ((row - 1) // self.box_rows) * self.box_rows + (column - 1) // self.box_columns + 1
+        if row < 1 or row > self.board.size.row:
+            raise IndexError(f"Row {row} is out of bounds. Valid rows are 1 to {self.board.size.row}.")
+        if column < 1 or column > self.board.size.column:
+            raise IndexError(
+                f"Column {column} is out of bounds. Valid columns are 1 to {self.board.size.column}.")
+
+        return ((row - 1) // self.size.row) * self.size.row + (column - 1) // self.size.column + 1
+
+    def first(self, index: int) -> Coord:
+        """Return the first or top left cell in a box given its index.
+
+        Args:
+            index (int): Index of the box.
+
+        Returns:
+            Coord: The coordinate of the first cell.
+
+        Raises:
+            IndexError: If the index is out of bounds.
+        """
+        if index < 1 or index > self.count:
+            raise IndexError(
+                f"Index {index} is out of bounds. Valid indices are 1 to {self.count}.")
+
+        zero_index: int = index - 1
+
+        # Calculate the row and column of the top-left corner
+        top_left_row: int = (zero_index // self.size.row) * self.size.row + 1
+        top_left_col: int = (zero_index % self.size.row) * self.size.column + 1
+
+        return Coord(top_left_row, top_left_col)
 
     @classmethod
     def parser(cls) -> BoxParser:
