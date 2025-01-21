@@ -9,7 +9,7 @@ class SolutionParser(Parser):
     """Parses start solution string containing cell value_list.
 
     Attributes:
-        result (List[str]): A list of one character value_list
+        result (list[str]): A list of one character value_list
     """
 
     def __init__(self) -> None:

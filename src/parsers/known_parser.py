@@ -1,7 +1,8 @@
 """KnownParser."""
 from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
-from src.tokens.digit_token import DigitToken
+from src.tokens.known_token import KnownToken
+from src.tokens.token import OneOrMoreToken
 
 
 class KnownParser(Parser):
@@ -29,7 +30,7 @@ class KnownParser(Parser):
             - 's' for a fortress cell (must be less than its orthogonal neighbors).
         """
         super().__init__(pattern=f'^{Parser.known}+$', example_format='123456789')
-        self.token = DigitToken() * (1, 999)
+        self.token = OneOrMoreToken(KnownToken())
 
     def help(self) -> str:
         """Return the help string for the KnownParser.

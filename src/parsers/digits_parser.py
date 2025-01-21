@@ -3,7 +3,7 @@ from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
 from src.tokens.symbols import CommaToken
-from src.tokens.token import Token
+from src.tokens.token import Token, ZeroOrMoreToken
 
 
 class DigitsParser(Parser):
@@ -16,7 +16,7 @@ class DigitsParser(Parser):
     def __init__(self):
         """Initialize DigitsParser with start regex pattern for comma-separated digits."""
         super().__init__(pattern=r'^\d(?:,\d)*$', example_format='1,2,3,...')
-        self.token: Token = DigitToken() + (CommaToken() + DigitToken()) * (0, 999)
+        self.token: Token = DigitToken() + ZeroOrMoreToken(CommaToken() + DigitToken())
         self.answer: list[int] = []
 
     def parse(self, text: str) -> None:
