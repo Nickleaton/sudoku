@@ -51,4 +51,6 @@
    :target: https://github.com/PyCQA/bandit
    :alt: Bandit
 
-
+.. image:: https://img.shields.io/badge/style-wemake-000000.svg
+   :target: https://github.com/wemake-services/wemake-python-styleguide
+   :alt: wemake
