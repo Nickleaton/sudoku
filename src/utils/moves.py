@@ -87,7 +87,7 @@ class Moves:
         Returns:
             List[Coord]: A list of `Coord` instances representing all directions including center.
         """
-        return Moves.directions() + [Moves.center]
+        return [*Moves.directions(), Moves.center]
 
     @staticmethod
     @cache

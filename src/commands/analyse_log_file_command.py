@@ -62,7 +62,7 @@ class AnalyseLogFileCommand(SimpleCommand):
             problem[self.target] = orloge.get_info_solver(log_path.name, application_name)
         except Exception as exp:
             logging.error(f'Error analyzing the log file: {exp}', exc_info=True)
-            raise CommandException(f'Failed to analyze the log file: {exp}')
+            raise CommandException(f'Failed to analyze the log file: {exp}') from exp
 
     @staticmethod
     def cleanup_temp_log_file(log_path: Path) -> None:

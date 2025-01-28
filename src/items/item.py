@@ -1,6 +1,6 @@
 """Item."""
 
-from typing import Iterator, Type
+from typing import ClassVar, Iterator, Type
 
 import strictyaml
 
@@ -28,8 +28,8 @@ class Item:  # noqa: WPS110
     """
 
     # Class Variables
-    classes: dict[str, Type['Item']] = {}
-    counter: int = 0
+    classes: ClassVar[dict[str, Type['Item']]] = {}
+    counter: ClassVar[int] = 0
 
     # Creation Routines
 

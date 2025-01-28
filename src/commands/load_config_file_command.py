@@ -31,7 +31,7 @@ class LoadConfigFileCommand(SimpleCommand):
         try:
             with problem.problem_file_name.open(mode='r', encoding='utf-8') as file_handle:
                 problem.raw_config = file_handle.read()
-        except CommandException:
-            raise CommandException(f'File not found: {problem.problem_file_name}')
+        except FileNotFoundError as err:
+            raise CommandException(f'File not found: {problem.problem_file_name}') from err
         except Exception as exc:
             raise CommandException(f'Failed to load {problem.problem_file_name}: {exc}') from exc

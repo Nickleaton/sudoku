@@ -1,5 +1,5 @@
 """Digit set for Sudoku."""
-from typing import Iterator
+from typing import ClassVar, Iterator
 
 
 class Digit:
@@ -10,7 +10,7 @@ class Digit:
         maximum (int): The maximum possible digit in the range.
     """
 
-    _instances: dict[tuple[int, int], 'Digit'] = {}
+    classes: ClassVar[dict[tuple[int, int], 'Digit']] = {}
 
     def __new__(cls, minimum: int, maximum: int) -> 'Digit':
         """Create a new instance or returns an existing instance if it already exists.
@@ -23,10 +23,12 @@ class Digit:
             Digit: A new or existing instance of the Digit class.
         """
         key = (minimum, maximum)
-        if key not in cls._instances:
+        if key not in cls.classes:
             instance = super().__new__(cls)
-            cls._instances[key] = instance
-        return cls._instances[key]
+            cls.classes[key] = instance
+            instance.minimum = minimum
+            instance.maximum = maximum
+        return cls.classes[key]
 
     def __init__(self, minimum: int, maximum: int) -> None:
         """Initialize a new instance of the Digit class.

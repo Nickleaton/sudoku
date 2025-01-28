@@ -26,6 +26,6 @@ class SolverStatus(Enum):
         """
         try:
             return cls.__members__[status.lower()]
-        except KeyError:
+        except KeyError as err:
             choices: str = ', '.join(SolverStatus.__members__.keys())
-            raise KeyError(f"Invalid status: '{status}'. Expected one of: {choices}")
+            raise KeyError(f"Invalid status: '{status}'. Expected one of: {choices}") from err
