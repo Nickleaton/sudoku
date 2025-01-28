@@ -1,8 +1,10 @@
-"""Digit set for Sudoku."""
+"""Digits set for Sudoku."""
 from typing import ClassVar, Iterator
 
+from src.utils.functions import PRIMES
 
-class Digit:
+
+class Digits:
     """A class representing a digit range in a Sudoku puzzle.
 
     Attributes:
@@ -10,9 +12,9 @@ class Digit:
         maximum (int): The maximum possible digit in the range.
     """
 
-    classes: ClassVar[dict[tuple[int, int], 'Digit']] = {}
+    classes: ClassVar[dict[tuple[int, int], 'Digits']] = {}
 
-    def __new__(cls, minimum: int, maximum: int) -> 'Digit':
+    def __new__(cls, minimum: int, maximum: int) -> 'Digits':
         """Create a new instance or returns an existing instance if it already exists.
 
         Args:
@@ -20,18 +22,17 @@ class Digit:
             maximum (int): The maximum possible digit for the digit range.
 
         Returns:
-            Digit: A new or existing instance of the Digit class.
+            Digits: A new or existing instance of the Digit class.
         """
         key = (minimum, maximum)
         if key not in cls.classes:
             instance = super().__new__(cls)
             cls.classes[key] = instance
-            instance.minimum = minimum
-            instance.maximum = maximum
+            instance.__init__(minimum, maximum)
         return cls.classes[key]
 
     def __init__(self, minimum: int, maximum: int) -> None:
-        """Initialize a new instance of the Digit class.
+        """Initialize a new instance of the Digits class.
 
         Args:
             minimum (int): The minimum possible digit for the digit range.
@@ -47,6 +48,31 @@ class Digit:
             raise ValueError('Minimum must be less than or equal to maximum.')
         self.minimum: int = minimum
         self.maximum: int = maximum
+        self.count: int = self.maximum - self.minimum + 1
+        self.digit_range: list[int] = list(range(minimum, maximum + 1))
+        self.digit_sum: int = sum(self.digit_range)
+        self.primes: list[int] = [prime for prime in PRIMES if prime in self.digit_range]
+        if self.maximum % 3 == 0:
+            chunk_size: int = self.maximum // 3
+            self.low = self.digit_range[:chunk_size]
+            self.mid = self.digit_range[chunk_size:chunk_size * 2]
+            self.high = self.digit_range[chunk_size * 2:]
+            self.mod0 = [digit for digit in self.digit_range if digit % 3 == 0]
+            self.mod1 = [digit for digit in self.digit_range if digit % 3 == 1]
+            self.mod2 = [digit for digit in self.digit_range if digit % 3 == 2]
+        else:
+            self.low = None
+            self.mid = None
+            self.high = None
+            self.mod0 = None
+            self.mod1 = None
+            self.mod2 = None
+        midpoint = self.count // 2
+        self.lower = self.digit_range[:midpoint]
+        if self.count % 2 == 0:  # Even number of digits
+            self.upper = self.digit_range[midpoint:]
+        else:  # Odd number of digits
+            self.upper = self.digit_range[midpoint + 1:]
 
     def is_valid(self, digit: int) -> bool:
         """Check if a digit is within the digit range.
@@ -90,13 +116,13 @@ class Digit:
         """Return a string representation of the instance.
 
         Returns:
-            str: A string representation of the Digit instance.
+            str: A string representation of the Digits instance.
         """
-        return f'{self.__class__.__name__}(minimum={self.minimum}, maximum={self.maximum})'
+        return f'{self.__class__.__name__}({self.minimum}, {self.maximum})'
 
-
-digit08 = Digit(0, 8)
-digit14 = Digit(1, 4)
-digit16 = Digit(1, 6)
-digit19 = Digit(1, 9)
-digit1F = Digit(0x1, 0xF)  # noqa:N816, WPS432
+# digits08 = Digits(0, 8)
+# digits18 = Digits(1, 8)
+# digits14 = Digits(1, 4)
+# digits16 = Digits(1, 6)
+# digits19 = Digits(1, 9)
+# digits1F = Digits(1, 15)  # noqa:N816, WPS432

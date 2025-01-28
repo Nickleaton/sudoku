@@ -1,5 +1,6 @@
 Board:
-  Board: 9x9
+  Size: 9x9
+  Digits: 1..9
   Tags:
     Reference: https://ctcbook.com/gh001/
 Constraints:

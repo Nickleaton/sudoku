@@ -5,9 +5,9 @@ from enum import Enum
 import oyaml as yaml
 from strictyaml import Map, Optional, Str, Validator
 
+from src.board.digits import Digits
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
-from src.utils.functions import PRIMES
 from src.utils.side import Side
 from src.utils.sudoku_exception import SudokuException
 from src.utils.tags import Tags
@@ -51,6 +51,7 @@ class Board:
         self,
         board_rows: int,
         board_columns: int,
+        digits: Digits,
         tags: Tags | None = None,
     ):
         """Initialize the Board with dimensions, box size, and optional metadata.little_killer_validator.
@@ -70,26 +71,7 @@ class Board:
             Side.right: (1, board_rows),
         }
 
-        # Digits
-        self.minimum_digit = 1
-        self.maximum_digit = max(board_rows, board_columns)
-        self.digit_range = list(range(self.minimum_digit, self.maximum_digit + 1))
-        self.digit_sum = sum(self.digit_range)
-        self.primes = [prime for prime in PRIMES if prime in self.digit_range]
-
-        # Digit Levels
-        chunk_size: int = self.maximum_digit // 3
-        self.levels = ['low', 'mid', 'high']
-        self.low = self.digit_range[:chunk_size]
-        self.mid = self.digit_range[chunk_size:chunk_size * 2]
-        self.high = self.digit_range[chunk_size * 2:]
-
-        # Modulo Buckets
-        self.modulos = [0, 1, 2]
-        self.mod_buckets = {
-            mod: [digit for digit in self.digit_range if digit % 3 == mod]
-            for mod in self.modulos
-        }
+        self.digits: Digits = digits
 
         # Metadata
         self.tags: Tags | None = None if tags is None else Tags(tags)
@@ -228,7 +210,7 @@ class Board:
         """Parse a string of the form 'NxM' into two integers.
 
         Args:
-            text (str): String representing dimensions, e.g., "9x9".
+            text (str): String representing dimensions, exp.g., "9x9".
 
         Returns:
             tuple[int, int]: Parsed (row, column) dimensions.
@@ -278,10 +260,10 @@ class Board:
             dict: A dictionary containing the board configuration.
         """
         board_dict: dict = {'Board': {}}
-        board = board_dict['Board']
-        board['Board'] = f'{self.size.row}x{self.size.column}'
+        board_dict['Board']['Size'] = f'{self.size.row}x{self.size.column}'
+        board_dict['Board']['Digits'] = f'{self.digits.minimum}..{self.digits.maximum}'
         if self.tags is not None:
-            board['Tags'] = dict(self.tags)
+            board_dict['Board']['Tags'] = dict(self.tags)
         return board_dict
 
     def to_yaml(self) -> str:
@@ -303,18 +285,20 @@ class Board:
             f'('
             f'{self.size.row!r}, '
             f'{self.size.column!r}, '
+            f'{self.digits!r}, '
             f'{self.tags!r}'
             f')'
         )
 
-    @property
-    def digit_values(self) -> str:
-        """Return a string of valid digits for the board.
-
-        Returns:
-            str: A string of digits available on the board.
-        """
-        return ''.join([str(digit) for digit in self.digit_range])
+    #
+    # @property
+    # def digit_values(self) -> str:
+    #     """Return a string of valid digits for the board.
+    #
+    #     Returns:
+    #         str: A string of digits available on the board.
+    #     """
+    #     return ''.join([str(digit) for digit in self.digit_range])
 
     def marker(self, side: Side, index: int) -> Coord:
         """Get the marker coordinate for a specified side on the board.
