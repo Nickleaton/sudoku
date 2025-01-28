@@ -1,11 +1,10 @@
 """DisjointGroup."""
 
-from postponed.src.pulp_solver import PulpSolver
-
 from src.board.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
 from src.parsers.digit_parser import DigitParser
+from src.solvers.solver import Solver
 from src.utils.moves import Moves
 from src.utils.rule import Rule
 
@@ -58,11 +57,11 @@ class DisjointGroup(StandardRegion):
         """
         return super().tags.union({'Disjoint Group'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add constraints to the solver for the disjoint group.
 
         Args:
-            solver (PulpSolver): The solver to add constraints to.
+            solver (Solver): The solver to add constraints to.
         """
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)

@@ -2,10 +2,10 @@
 import unittest
 from typing import Type
 
-from postponed.src.items.disjoint_group import DisjointGroup
-from postponed.src.items.disjoint_groups import DisjointGroups
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
+from src.items.disjoint_group import DisjointGroup
+from src.items.disjoint_groups import DisjointGroups
 from src.items.item import Item
 from src.items.region import Region
 from src.items.region_set import RegionSet

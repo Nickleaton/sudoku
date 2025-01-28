@@ -1,6 +1,6 @@
 """DisjointGroups."""
-from postponed.src.items.disjoint_group import DisjointGroup
 from src.board.board import Board
+from src.items.disjoint_group import DisjointGroup
 from src.items.item import Item
 from src.items.standard_region_set import StandardRegionSet
 

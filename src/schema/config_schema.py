@@ -41,6 +41,8 @@ problem_schema = Map(
                 Optional('Column'): DigitParser(),
                 Optional('Columns'): NoneParser(),
                 Optional('Constraints'): NoneParser(),
+                Optional('DisjointGroup'): DigitParser(),
+                Optional('DisjointGroups'): NoneParser(),
                 Optional('SimpleCellReference'): Seq(CellParser()),
                 Optional('EvenCell'): Seq(CellParser()),
                 Optional('FortressCell'): Seq(CellParser()),
