@@ -208,6 +208,10 @@
         <run-flake8 module="src"/>
     </target>
 
+    <target name="flake8.scripts">
+        <run-flake8 module="scripts"/>
+    </target>
+
     <target name="flake8.tests">
         <run-flake8 module="tests"/>
     </target>
