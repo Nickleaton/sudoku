@@ -1,2 +1,9 @@
 repos:
-  - repo: https://github.com/Nickleaton/sudoku
+  - repo: local
+    hooks:
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: python
+        types: [ python ]
+        exclude: ^(tests/|postponed/)
