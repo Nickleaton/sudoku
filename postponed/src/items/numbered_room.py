@@ -177,7 +177,7 @@ class NumberedRoom(Item):
         Args:
             solver (PulpSolver): The solver to which the constraints are added.
         """
-        for digit in self.board.digit_range:
+        for digit in self.board.digits.digit_range:
             first = solver.variables.choices[digit][self.start_cell.row][self.start_cell.column]
             solver.model += first == self.xth(solver, digit), f'{self.name}_{digit}'
 

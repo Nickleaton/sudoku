@@ -15,7 +15,7 @@ class GermanWhisperLine(GEDifferenceLine):
     The difference between connected cells must be at least 5.
 
     Attributes:
-        excluded (list[int]): Digits that are excluded from the line (e.g., 5).
+        excluded (list[int]): Digits that are excluded from the line (exp.g., 5).
     """
 
     def __init__(self, board: Board, cells: Sequence[Cell]):

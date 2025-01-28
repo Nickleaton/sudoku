@@ -20,7 +20,7 @@ class AntiMonkey(Anti):
         Args:
             board (Board): The board on which the AntiMonkey will be placed.
         """
-        super().__init__(board, list(board.digit_range))
+        super().__init__(board, list(board.digits.digit_range))
 
     def offsets(self) -> list[Coord]:
         """Return start_location list of offsets for the Anti constraint.

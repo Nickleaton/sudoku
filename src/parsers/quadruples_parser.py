@@ -62,6 +62,6 @@ class QuadruplesParser(Parser):
         for digit in input_data['value_list']:
             if digit == '?':
                 continue
-            if digit not in board.digit_range:
+            if digit not in board.digits.digit_range:
                 errors.append(f'Quadruple {digit} is not start valid digit')
         return errors

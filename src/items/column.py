@@ -55,7 +55,7 @@ class Column(StandardRegion):
         Args:
             solver (Solver): The solver to which constraints are added.
         """
-        self.add_total_constraint(solver, solver.board.digit_sum)
+        self.add_total_constraint(solver, solver.board.digits.digit_sum)
         self.add_unique_constraint(solver)
 
     def __str__(self) -> str:

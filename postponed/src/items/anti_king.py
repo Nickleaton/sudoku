@@ -21,7 +21,7 @@ class AntiKing(Anti):
         Args:
             board (Board): The board associated with this AntiKing rule.
         """
-        super().__init__(board, list(board.digit_range))
+        super().__init__(board, list(board.digits.digit_range))
 
     def offsets(self) -> list[Coord]:
         """Return the possible move offsets for the Anti-King.

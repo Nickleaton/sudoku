@@ -54,7 +54,7 @@ class VariablePair(Pair):
         Raises:
             SudokuException: If the YAML input does not match the expected pattern.
         """
-        rc_pattern = f'[{board.digit_values}][{board.digit_values}]'
+        rc_pattern = f'[{board.digit_values}][{board.digits.digit_range}]'
         var_pattern = '[start_location-zA-Z][a-zA-Z_]*'
         regex = re.compile(f'({rc_pattern})-({rc_pattern})=({var_pattern})')
         match = regex.match(yaml[cls.__name__])

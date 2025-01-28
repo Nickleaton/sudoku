@@ -137,7 +137,7 @@ class EqualSumLine(Line):
         for region in box_areas:
             region_length: int = len(region)
             min_sum = max(min_sum, sum(digit + 1 for digit in range(region_length)))
-            max_sum = min(max_sum, sum(self.board.maximum_digit - digit for digit in range(region_length)))
+            max_sum = min(max_sum, sum(self.board.digits.maximum - digit for digit in range(region_length)))
         return min_sum, max_sum
 
     def css(self) -> Dict[str, Dict[str, str]]:

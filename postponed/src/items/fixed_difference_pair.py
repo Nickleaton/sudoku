@@ -53,7 +53,7 @@ class FixedDifferencePair(FixedPair):
         """
         v1 = solver.variables.numbers[self.cell1.row][self.cell1.column]
         v2 = solver.variables.numbers[self.cell2.row][self.cell2.column]
-        return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
+        return Formulations.abs(solver.model, v1, v2, self.board.digits.maximum + 1)
 
     def css(self) -> dict:
         """Return the CSS styles for rendering the FixedDifferencePair visually.

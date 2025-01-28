@@ -63,7 +63,7 @@ class Exclusion(Item):
         Returns:
             list[Rule]: A list of rules for the Exclusion constraint.
         """
-        return [Rule('Exclusion', 3, 'Digit(s) cannot appear in the cells adjacent to the circle')]
+        return [Rule('Exclusion', 3, 'Digits(s) cannot appear in the cells adjacent to the circle')]
 
     def glyphs(self) -> list[Glyph]:
         """Return the glyph for visual representation of the Exclusion constraint.

@@ -35,7 +35,7 @@ class Cell(Item):
         super().__init__(board)
         self.row: int = row
         self.column: int = column
-        self.book: BookKeepingCell = BookKeepingCell(self.board.maximum_digit)
+        self.book: BookKeepingCell = BookKeepingCell(self.board.digits.maximum)
 
     @classmethod
     def clear(cls):
@@ -56,7 +56,7 @@ class Cell(Item):
         Returns:
             int: The hash number of the cell.
         """
-        return self.row * self.board.maximum_digit + self.column
+        return self.row * self.board.digits.maximum + self.column
 
     def __str__(self) -> str:
         """Return start_location string identifier for the cell.
@@ -260,7 +260,7 @@ class Cell(Item):
         return lpSum(
             [
                 solver.variables.choices[digit][self.row][self.column]
-                for digit in self.board.digit_range
+                for digit in self.board.digits.digit_range
                 if digit % 2 == 0
             ],
         )
@@ -306,7 +306,7 @@ class Cell(Item):
         solver.model += lpSum(
             [
                 solver.variables.choices[digit][self.row][self.column]
-                for digit in self.board.digit_range
+                for digit in self.board.digits.digit_range
             ],
         ) == 1, name
 
@@ -317,7 +317,7 @@ class Cell(Item):
         Args:
             solver (Solver): The solver instance.
         """
-        for digit in self.board.digit_range:
+        for digit in self.board.digits.digit_range:
             if not self.book.is_possible(digit):
                 name = f'Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}'
                 solver.model += solver.variables.choices[digit][self.row][self.column] == 0, name

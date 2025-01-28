@@ -54,7 +54,7 @@ class RenbanLine(Line):
             set[int]: A set of mandatory digits that must appear on the line.
         """
         left = set(range(1, length + 1))
-        right = set(range(self.board.maximum_digit, self.board.maximum_digit - length, -1))
+        right = set(range(self.board.digits.maximum, self.board.digits.maximum - length, -1))
         return left & right
 
     # pylint: disable=loop-invariant-statement
@@ -71,8 +71,8 @@ class RenbanLine(Line):
         self.add_unique_constraint(solver, optional=True)
 
         # Create lower and upper bounds for the line
-        lower = LpVariable(f'{self.name}_lower', 1, self.board.maximum_digit, LpInteger)
-        upper = LpVariable(f'{self.name}_upper', 1, self.board.maximum_digit, LpInteger)
+        lower = LpVariable(f'{self.name}_lower', 1, self.board.digits.maximum, LpInteger)
+        upper = LpVariable(f'{self.name}_upper', 1, self.board.digits.maximum, LpInteger)
 
         # Use start_location set of cells so the Renban can form closed loops
         cells = set(self.cells)

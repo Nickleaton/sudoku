@@ -75,7 +75,7 @@ class SequenceLine(Line):
             cell, based on the maximum digit and length of the sequence.
         """
         length = len(self.cells)
-        big_m = self.board.maximum_digit
+        big_m = self.board.digits.maximum
 
         possible = []
         for sequence_index in range(1, length + 1):
@@ -129,7 +129,7 @@ class SequenceLine(Line):
             solver (PulpSolver): The solver to which the restrictions are added.
         """
         for index, possible in enumerate(self.possible_digits()):
-            for digit in self.board.digit_range:
+            for digit in self.board.digits.digit_range:
                 if digit in possible:
                     continue
                 cell = self.cells[index]

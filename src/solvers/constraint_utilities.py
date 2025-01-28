@@ -28,7 +28,8 @@ class ConstraintUtilities:
             lpSum: The linear expression representing the log10 integer_value of the cell.
         """
         return lpSum(
-            log10(digit) * solver.variables.choices[digit][cell.row][cell.column] for digit in solver.board.digit_range
+            log10(digit) * solver.variables.choices[digit][cell.row][cell.column]
+            for digit in solver.board.digits.digit_range
         )
 
     @staticmethod
@@ -48,7 +49,7 @@ class ConstraintUtilities:
         if log_value is not None:
             return log_value
         # Define the limit for the variable's integer_value
-        limit = ceil(log10(solver.board.maximum_digit)) + 1
+        limit = ceil(log10(solver.board.digits.maximum)) + 1
         # Create the variable
         log_value: LpVariable = LpVariable(name, 0, limit, LpContinuous)
         # Build the total expression for the variable

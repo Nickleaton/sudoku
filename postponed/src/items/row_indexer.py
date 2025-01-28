@@ -74,7 +74,7 @@ class RowIndexer(Indexer):
             solver (PulpSolver): The solver to which the constraints will be added.
         """
         for cell in self.cells:
-            for digit in solver.board.digit_range:
+            for digit in solver.board.digits.digit_range:
                 indexer = solver.variables.choices[digit][cell.row][cell.column]
                 indexed = solver.variables.choices[cell.row][digit][cell.column]
                 solver.model += indexer == indexed, f'{self.name}_{cell.row}_{cell.column}_{digit}'

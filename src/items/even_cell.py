@@ -25,9 +25,9 @@ class EvenCell(SimpleCellReference):
         """Return the letter representation of the EvenCell.
 
         Returns:
-            str: The letter representation, 'e' for EvenCell.
+            str: The letter representation, 'exp' for EvenCell.
         """
-        return 'e'
+        return 'exp'
 
     def svg(self) -> Glyph | None:
         """Return an SVG representation of the EvenCell.
@@ -80,4 +80,6 @@ class EvenCell(SimpleCellReference):
 
         Sets the impossibility of containing odd digits in the cell's bookkeeping.
         """
-        self.cell.book.set_impossible([digit for digit in self.board.digit_range if not EvenCell.included(digit)])
+        self.cell.book.set_impossible(
+            [digit for digit in self.board.digits.digit_range if not EvenCell.included(digit)],
+        )

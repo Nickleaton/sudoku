@@ -25,7 +25,7 @@ class LEDifferenceLine(Line):
             cells (Sequence[Cell]): The sequence of cells connected by the line.
         """
         super().__init__(board, cells)
-        self.difference = board.maximum_digit
+        self.difference = board.digits.maximum
         for index, cell in enumerate(cells[1:], start=1):
             self.add(LEDifferencePair(self.board, cells[index - 1], cell, [self.difference]))
 

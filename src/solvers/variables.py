@@ -68,7 +68,7 @@ class Variables:
         """Add choice variables to the board."""
         self.choices = LpVariable.dicts(
             name='choices',
-            indices=(self.board.digit_range, self.board.row_range, self.board.column_range),
+            indices=(self.board.digits.digit_range, self.board.row_range, self.board.column_range),
             lowBound=0,
             upBound=1,
             cat=LpInteger,
@@ -80,7 +80,7 @@ class Variables:
             name='numbers',
             indices=(self.board.row_range, self.board.column_range),
             lowBound=1,
-            upBound=self.board.maximum_digit,
+            upBound=self.board.digits.maximum,
             cat=LpInteger,
         )
 

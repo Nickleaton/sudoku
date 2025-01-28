@@ -57,6 +57,6 @@ class DigitsParser(Parser):
         """
         errors: list[str] = []
         for digit in self.answer:
-            if digit not in board.digit_range:
-                errors.append(f'Invalid digit: {digit}. Valid range: {board.digit_range}')
+            if digit not in board.digits.digit_range:
+                errors.append(f'Invalid digit: {digit}. Valid range: {board.digits.digit_range}')
         return errors

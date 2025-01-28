@@ -63,5 +63,5 @@ class DisjointGroup(StandardRegion):
         Args:
             solver (Solver): The solver to add constraints to.
         """
-        self.add_total_constraint(solver, solver.board.digit_sum)
+        self.add_total_constraint(solver, solver.board.digits.digit_sum)
         self.add_unique_constraint(solver)

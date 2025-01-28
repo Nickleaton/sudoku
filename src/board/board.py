@@ -59,6 +59,7 @@ class Board:
         Args:
             board_rows (int): Number of rows in the board.
             board_columns (int): Number of columns in the board.
+            digits (Digits): Collection of digits used in the board.
             tags (Tags | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
         """
         self.size: Coord = Coord(board_rows, board_columns)
@@ -289,16 +290,6 @@ class Board:
             f'{self.tags!r}'
             f')'
         )
-
-    #
-    # @property
-    # def digit_values(self) -> str:
-    #     """Return a string of valid digits for the board.
-    #
-    #     Returns:
-    #         str: A string of digits available on the board.
-    #     """
-    #     return ''.join([str(digit) for digit in self.digit_range])
 
     def marker(self, side: Side, index: int) -> Coord:
         """Get the marker coordinate for a specified side on the board.

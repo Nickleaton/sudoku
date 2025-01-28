@@ -37,7 +37,7 @@ class AntiQueens(Anti):
             list[Coord]: A list of coordinate offsets for the AntiQueen.
         """
         coordinates: list[Coord] = []
-        for distance, offset in product(self.board.digit_range, Moves.directions()):
+        for distance, offset in product(self.board.digits.digit_range, Moves.directions()):
             coordinates.append(offset * distance)
         return coordinates
 

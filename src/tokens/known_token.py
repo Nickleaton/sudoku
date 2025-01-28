@@ -3,7 +3,7 @@ from src.tokens.simple_token import SimpleToken
 
 
 class KnownToken(SimpleToken):
-    """Represents start token for matching start known number (0-9, l, m, h, e, o, f, s)."""
+    """Represents start token for matching start known number (0-9, l, m, h, exp, o, f, s)."""
 
     def __init__(self) -> None:
         """Initialize start known token with pattern '([0-9.lmheof])'."""
@@ -32,7 +32,7 @@ class KnownToken(SimpleToken):
             '0-9 matches a digit. Later it will be extended to cover Hex. '
             '. represents a cell with no known integer_value. '
             'l is a low integer_value, m is a medium integer_value, h is a high integer_value. '
-            'e is an even integer_value, o is an odd integer_value. '
+            'exp is an even integer_value, o is an odd integer_value. '
             'f is a fortress cell. Orthogonal neighbors must be less than the fortress cell. '
             's is a fortress cell. Orthogonal neighbors must be greater than the fortress cell.'
         )

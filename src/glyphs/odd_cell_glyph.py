@@ -19,7 +19,7 @@ class OddCellGlyph(Glyph):
         """Initialize an OddCellGlyph for representing an odd cell.
 
         Args:
-            class_name (str): The CSS class name to style the glyph (e.g., for SVG styling).
+            class_name (str): The CSS class name to style the glyph (exp.g., for SVG styling).
             location (Coord): The coordinates (row and column) for the glyph on the board.
         """
         super().__init__(class_name)

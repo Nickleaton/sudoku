@@ -24,7 +24,7 @@ class KnownParser(Parser):
             - 'l' for low,
             - 'm' for medium,
             - 'h' for high,
-            - 'e' for even,
+            - 'exp' for even,
             - 'o' for odd,
             - 'f' for a fortress cell (must be greater than its orthogonal neighbors).
             - 's' for a fortress cell (must be less than its orthogonal neighbors).
@@ -47,7 +47,7 @@ class KnownParser(Parser):
             'l     low\n'
             'm     medium\n'
             'h     high\n'
-            'e     even\n'
+            'exp     even\n'
             'o     odd\n'
             'f     fortress cell [Must be greater than its orthogonal neighbours]\n'
             's     fortress cell [Must be smaller than its orthogonal neighbours]\n'

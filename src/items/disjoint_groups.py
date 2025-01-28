@@ -14,7 +14,7 @@ class DisjointGroups(StandardRegionSet):
         Args:
             board (Board): The board on which disjoint groups are created.
         """
-        super().__init__(board, [DisjointGroup(board, digit) for digit in board.digit_range])
+        super().__init__(board, [DisjointGroup(board, digit) for digit in board.digits.digit_range])
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:

@@ -47,7 +47,9 @@ class KnownCell(CellReference):
         Raises:
             SudokuException: If the YAML input does not match the expected pattern.
         """
-        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
+        regex = re.compile(
+            f'([{board.digits.digit_range}])([{board.digits.digit_range}])=([{board.digits.digit_range}]+)',
+        )
         match = regex.match(yaml[cls.__name__])
         if match is None:
             raise SudokuException('Match is None, expected start_location valid match.')

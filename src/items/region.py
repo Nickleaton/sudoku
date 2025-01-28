@@ -73,7 +73,7 @@ class Region(ComposedItem):
         Args:
             solver (Solver): The solver to which the constraint is added.
         """
-        for digit in self.board.digit_range:
+        for digit in self.board.digits.digit_range:
             total = lpSum([solver.variables.choices[digit][cell.row][cell.column] for cell in set(self.cells)])
             solver.model += total <= 1, f'{self.name}_Unique_{digit}'
 
@@ -103,7 +103,7 @@ class Region(ComposedItem):
 
         Args:
             solver (Solver): The solver to which the constraint is added.
-            order (Order): The sequence order (e.g., increasing or decreasing).
+            order (Order): The sequence order (exp.g., increasing or decreasing).
         """
         for (cell1, cell2) in zip(self.cells[:-1], self.cells[1:]):
             value1 = solver.variables.numbers[cell1.row][cell1.column]

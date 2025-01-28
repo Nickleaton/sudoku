@@ -1,12 +1,12 @@
 """VariableRatioPair."""
 from math import ceil, log10
 
+from postponed.src.pulp_solver import PulpSolver
 from pulp import LpElement
 
 from src.items.variable_pair import VariablePair
 from src.solvers.constraint_utilities import ConstraintUtilities
 from src.solvers.formulations import Formulations
-from postponed.src.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.variable_type import VariableType
 
@@ -51,7 +51,7 @@ class VariableRatioPair(VariablePair):
         Returns:
             LpElement: The expression representing the target constraints based on the logarithm of cell value_list.
         """
-        limit = ceil(log10(self.board.maximum_digit)) + 1
+        limit = ceil(log10(self.board.digits.maximum)) + 1
         x1 = ConstraintUtilities.log10_cell(solver, self.cell1)
         x2 = ConstraintUtilities.log10_cell(solver, self.cell2)
         return Formulations.abs(

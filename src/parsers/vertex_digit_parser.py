@@ -8,10 +8,10 @@ from src.tokens.symbols import EqualsToken
 
 
 class VertexDigitParser(Parser):
-    """Parser for Vertex Digit format: 'dd=d' where dd are two digits and d is start single digit."""
+    """Parser for Vertex Digits format: 'dd=d' where dd are two digits and d is start single digit."""
 
     def __init__(self):
-        """Initialize the VertexDigitParser with start regex pattern for the Vertex Digit format."""
+        """Initialize the VertexDigitParser with start regex pattern for the Vertex Digits format."""
         super().__init__(pattern=r'^\d{2}=\d$', example_format='rc=d')
         self.token = CellToken() + EqualsToken() + DigitToken()
 

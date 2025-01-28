@@ -30,7 +30,7 @@ class Sandwich(Item):
 
         Args:
             board (Board): The board associated with this sandwich.
-            side (Side): The side of the sandwich (e.g., left, right).
+            side (Side): The side of the sandwich (exp.g., left, right).
             index (int): The index location of the sandwich on the specified side.
             total (int): The total sum of the digits that the sandwich represents.
         """
@@ -211,7 +211,7 @@ class Sandwich(Item):
             position_label,
             board_range,
             0,
-            Functions.triangular(self.board.maximum_digit),
+            Functions.triangular(self.board.digits.maximum),
             LpInteger,
         )
 
@@ -221,10 +221,10 @@ class Sandwich(Item):
 
             if is_row:
                 one = solver.variables.choices[1][index][pos]
-                big = solver.variables.choices[self.board.maximum_digit][index][pos]
+                big = solver.variables.choices[self.board.digits.maximum][index][pos]
             else:
                 one = solver.variables.choices[1][pos][index]
-                big = solver.variables.choices[self.board.maximum_digit][pos][index]
+                big = solver.variables.choices[self.board.digits.maximum][pos][index]
 
             solver.model += bread[pos] == one + big, f'Bread_{label.lower()}_{index}_{pos}'
 

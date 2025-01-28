@@ -92,7 +92,7 @@ def document_parser(output: Path) -> None:
     """
     load_modules('src.parsers')
     if not output.exists():
-        output.makedir(parents=True)
+        output.mkdir(parents=True)
 
 
 def document_tokens(output: Path) -> None:
@@ -115,7 +115,7 @@ def document_constraints(output: Path) -> None:
     """
     load_modules('src.items')
     if not output.exists():
-        output.makedir(parents=True)
+        output.mkdir(parents=True)
 
 
 def main() -> None:

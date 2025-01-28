@@ -19,7 +19,7 @@ class TestEvenCell(TestSimpleCellReference):
         self.item = EvenCell(self.board, 1, 2)
         self.good = [2, 4, 6, 8]
         self.bad = [1, 3, 5, 7, 9]
-        self.letter = 'e'
+        self.letter = 'exp'
 
     @property
     def clazz(self):

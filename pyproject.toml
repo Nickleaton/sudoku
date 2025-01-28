@@ -123,6 +123,7 @@ max-annotation-complexity = 4
 count = true
 max-tuple-unpack-length = 5
 max-access-level = 5
+max-module-members = 10
 
 [tool.coverage.run]
 branch = true

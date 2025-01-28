@@ -67,7 +67,7 @@ class AntiDiagonal(Diagonal):
         box: Boxes = boxes[0]
         print(box)
         print()
-        for cell_index, digit in product(range(self.count - 1), self.board.digit_range):
+        for cell_index, digit in product(range(self.count - 1), self.board.digits.digit_range):
             first = lpSum(
                 solver.variables.choices[digit][self.cells[cell_index_in_box].row][self.cells[cell_index_in_box].column]
                 for cell_index_in_box in range(cell_index * self.size, (cell_index + 1) * self.size)

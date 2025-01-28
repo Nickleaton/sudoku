@@ -100,7 +100,7 @@ class Side(StrEnum):
         """Get a string representation of all side value_list.
 
         Returns:
-            str: A string of all side value_list (e.g., 'TRBL' for top, right, bottom, left).
+            str: A string of all side value_list (exp.g., 'TRBL' for top, right, bottom, left).
         """
         return ''.join(side.value for side in Side)
 
@@ -108,7 +108,7 @@ class Side(StrEnum):
         """Return the string representation of the Side.
 
         Returns:
-            str: The string representation of the side (e.g., 'Side.top').
+            str: The string representation of the side (exp.g., 'Side.top').
         """
         return f'Side.{self.name}'
 

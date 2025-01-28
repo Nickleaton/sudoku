@@ -142,9 +142,9 @@ class MinMaxDifference(FirstN):
             solver (PulpSolver): The solver to add the constraint to.
         """
         xi = [solver.variables.numbers[cell.row][cell.column] for cell in self.cells]
-        mini = Formulations.minimum(solver.model, xi, 1, self.board.maximum_digit)
-        maxi = Formulations.maximum(solver.model, xi, 1, self.board.maximum_digit)
-        solver.model += Formulations.abs(solver.model, mini, maxi, self.board.maximum_digit) == self.total, self.name
+        mini = Formulations.minimum(solver.model, xi, 1, self.board.digits.maximum)
+        maxi = Formulations.maximum(solver.model, xi, 1, self.board.digits.maximum)
+        solver.model += Formulations.abs(solver.model, mini, maxi, self.board.digits.maximum) == self.total, self.name
 
     def to_dict(self) -> dict:
         """Convert the MinMaxDifference frame to start_location dictionary representation.

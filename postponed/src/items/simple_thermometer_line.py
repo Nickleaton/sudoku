@@ -72,7 +72,7 @@ class SimpleThermometerLine(ThermometerLine):
         """
         for index, cell in enumerate(self.cells):
             lower: int = index + 1
-            upper: int = self.board.maximum_digit - len(self) + index + 1
+            upper: int = self.board.digits.maximum - len(self) + index + 1
             self.add_possible_digit_restrictions(solver, cell, lower, upper)
 
     def add_possible_digit_restrictions(self, solver: PulpSolver, cell: Cell, lower: int, upper: int) -> None:
@@ -85,7 +85,7 @@ class SimpleThermometerLine(ThermometerLine):
             upper (int): The upper bound for the possible cell_values.
         """
         possible_digits = set(range(lower, upper + 1))
-        for digit in self.board.digit_range:
+        for digit in self.board.digits.digit_range:
             if digit not in possible_digits:
                 name: str = f'{self.name}_{cell.name}_{digit}'
                 solver.model += solver.variables.choices[digit][cell.row][cell.column] == 0, name

@@ -60,7 +60,7 @@ class KnownValidator(Validator):
         known_rows: list[str] = dict(input_data)['Known']
 
         allowed_characters: set[str] = {'.'}
-        allowed_characters |= {str(digit) for digit in board.digit_range}
+        allowed_characters |= {str(digit) for digit in board.digits.digit_range}
         allowed_characters |= set(CELL_TYPE_MAP.keys())
 
         # Check the number of rows matches the board

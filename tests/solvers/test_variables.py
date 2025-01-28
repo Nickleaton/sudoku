@@ -22,7 +22,7 @@ class TestVariables(unittest.TestCase):
     def test_add_choices(self):
         """Tests that choice variables are added correctly."""
         variables = Variables(self.board, [VariableSet.choice])
-        count: int = self.board.maximum_digit * self.board.size.column * self.board.size.row
+        count: int = self.board.digits.maximum * self.board.size.column * self.board.size.row
         self.assertEqual(count, TestVariables.counter(variables.choices))
 
     def test_add_value(self):

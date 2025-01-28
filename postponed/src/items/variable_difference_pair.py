@@ -1,9 +1,9 @@
 """VariableDifferencePair."""
+from postponed.src.pulp_solver import PulpSolver
 from pulp import LpElement
 
 from src.items.variable_pair import VariablePair
 from src.solvers.formulations import Formulations
-from postponed.src.pulp_solver import PulpSolver
 from src.utils.rule import Rule
 from src.utils.variable_type import VariableType
 
@@ -50,7 +50,7 @@ class VariableDifferencePair(VariablePair):
         """
         v1 = solver.variables.numbers[self.cell1.row][self.cell1.column]
         v2 = solver.variables.numbers[self.cell2.row][self.cell2.column]
-        return Formulations.abs(solver.model, v1, v2, self.board.maximum_digit + 1)
+        return Formulations.abs(solver.model, v1, v2, self.board.digits.maximum + 1)
 
     def css(self) -> dict:
         """Define the CSS styles for rendering VariableDifferencePair glyphs.

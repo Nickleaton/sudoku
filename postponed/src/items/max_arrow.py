@@ -79,5 +79,5 @@ class MaxArrowLine(Line):
             solver.variables.numbers[self.cells[index].row][self.cells[index].column]
             for index in range(1, len(self.cells))
         ]
-        cell_value = Formulations.maximum(solver.model, cell_values, 1, self.board.maximum_digit)
+        cell_value = Formulations.maximum(solver.model, cell_values, 1, self.board.digits.maximum)
         solver.model += bulb == cell_value, self.name

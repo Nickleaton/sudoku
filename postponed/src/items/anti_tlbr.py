@@ -39,6 +39,6 @@ class AntiTLBR(AntiDiagonal):
             LineGlyph(
                 'Diagonal',
                 Coord(1, 1),
-                Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1),
+                Coord(self.board.digits.maximum + 1, self.board.digits.maximum + 1),
             ),
         ]

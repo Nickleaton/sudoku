@@ -30,7 +30,7 @@ class GEDifferencePair(FixedDifferencePair):
         Args:
             solver (PulpSolver): The solver to add the constraints to.
         """
-        big_m = self.board.maximum_digit + 1  # A large number greater than any possible cell number
+        big_m = self.board.digits.maximum + 1  # A large number greater than any possible cell number
         indicator = LpVariable(f'Indicator_{self.name}', 0, 1, LpInteger)  # Binary indicator value_variable
         value1 = solver.variables.numbers[self.cell1.row][self.cell1.column]  # Value of the first cell
         value2 = solver.variables.numbers[self.cell2.row][self.cell2.column]  # Value of the second cell

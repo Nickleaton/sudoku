@@ -25,7 +25,7 @@ CELL_TYPE_MAP: Mapping[str, Type[SimpleCellReference]] = MappingProxyType(
         'l': LowCell,
         'm': MidCell,
         'h': HighCell,
-        'e': EvenCell,
+        'exp': EvenCell,
         'o': OddCell,
     },
 )

@@ -54,7 +54,7 @@ class Box(StandardRegion):
         Returns:
             Coord: The starting coordinate of the box.
         """
-        row: int = ((self.index - 1) * box_rows) % self.board.maximum_digit + 1
+        row: int = ((self.index - 1) * box_rows) % self.board.digits.maximum + 1
         col: int = ((self.index - 1) // box_columns) * self.board.size.column + 1
         return Coord(row, col)
 

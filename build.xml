@@ -68,7 +68,7 @@
             <arg value="--html-report"/>
             <arg value="output/mypy"/>
             <arg value="src"/>
-            <!--            <arg number="tests"/>-->
+            <arg value="scripts"/>
         </exec>
     </target>
 
@@ -173,11 +173,19 @@
     </target>
 
 
-    <target name="ruff" depends="ruff.src,ruff.tests"/>
+    <target name="ruff" depends="ruff.src,ruff.scripts,ruff.tests"/>
 
     <target name="ruff.src">
         <mkdir dir="output/ruff"/>
         <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/src.txt">
+            <arg value="check"/>
+            <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="ruff.scripts">
+        <mkdir dir="output/ruff"/>
+        <exec executable="ruff" failonerror="false" taskname="ruff" output="output/ruff/scripts.txt">
             <arg value="check"/>
             <arg value="src/"/>
         </exec>

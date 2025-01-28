@@ -25,7 +25,7 @@ class Multiplication:
             set[int]: The set of digits that can contribute to the target product.
         """
         used: set[int] = set()
-        for digit1, digit2, digit3, digit4 in product(board.digit_range, repeat=4):
+        for digit1, digit2, digit3, digit4 in product(board.digits.digit_range, repeat=4):
             product_value: int = digit1 * digit2 * digit3 * digit4
             if product_value == target:
                 used.update({digit1, digit2, digit3, digit4})
@@ -48,7 +48,7 @@ class Multiplication:
         log_product = lpSum(
             [
                 log10(digit) * solver.variables.choices[digit][cell.row][cell.column]
-                for digit in board.digit_range
+                for digit in board.digits.digit_range
                 for cell in cells
             ],
         )
@@ -56,7 +56,7 @@ class Multiplication:
 
         # Restrict the possible choices for each cell
         valid_digits = Multiplication.get_set(board, target)
-        for digit, cell in product(board.digit_range, cells):
+        for digit, cell in product(board.digits.digit_range, cells):
             if digit not in valid_digits:
                 choice: LpVariable = solver.variables.choices[digit][cell.row][cell.column]
                 name: str = f'{name}_{cell.name}_{digit}'

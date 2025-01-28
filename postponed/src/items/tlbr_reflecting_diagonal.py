@@ -1,10 +1,11 @@
 """TlbrReflectingDiagonal."""
+from postponed.src.pulp_solver import PulpSolver
+
+from postponed.src.items.diagonals import Diagonal
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
 from src.items.cell import Cell
-from postponed.src.items.diagonals import Diagonal
-from postponed.src.pulp_solver import PulpSolver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -40,7 +41,7 @@ class TLBRReflecting(Diagonal):
             LineGlyph(
                 'TLBRReflecting',
                 Coord(1, 1),
-                Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1),
+                Coord(self.board.digits.maximum + 1, self.board.digits.maximum + 1),
             ),
         ]
 

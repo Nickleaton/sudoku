@@ -22,7 +22,7 @@ class Frame(FirstN):
 
         Args:
             board (Board): The board associated with the frame.
-            side (Side): The side (direction) of the frame (e.g., top, left).
+            side (Side): The side (direction) of the frame (exp.g., top, left).
             index (int): The index of the frame along the specified side.
             total (int): The total sum associated with the frame constraint.
         """

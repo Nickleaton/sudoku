@@ -21,7 +21,7 @@ class AntiKnight(Anti):
         Args:
             board (Board): The board on which the AntiKnight will be placed.
         """
-        super().__init__(board, list(board.digit_range))
+        super().__init__(board, list(board.digits.digit_range))
 
     def offsets(self) -> list[Coord]:
         """Return the movement offsets for the AntiKnight.

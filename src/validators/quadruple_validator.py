@@ -40,6 +40,6 @@ class QuadrupleValidator(Validator):
         for digit in quads:
             if digit == '?':
                 continue
-            if digit not in board.digit_range:
+            if digit not in board.digits.digit_range:
                 errors.append(f'Quadruple {digit} is not a valid digit')
         return errors

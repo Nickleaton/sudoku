@@ -18,15 +18,6 @@ class Token:
 
     classes: dict[str, Type['Token']] = SortedDict()
 
-    @classmethod
-    def token_list(cls) -> list['Token']:
-        """Return a list of all tokens.
-
-        Returns:
-            list[Token]: A list of all tokens.
-        """
-        return [cls() for cls in cls.classes.values()]
-
     def __init_subclass__(cls, **kwargs) -> None:
         """Register the subclass for YAML instantiation.
 
@@ -46,6 +37,15 @@ class Token:
         """
         self.pattern: str = pattern
         self.compiled_pattern: re.Pattern = re.compile(f'^{pattern}$')
+
+    @classmethod
+    def token_list(cls) -> list['Token']:
+        """Return a list of all tokens.
+
+        Returns:
+            list[Token]: A list of all tokens.
+        """
+        return [clz() for clz in cls.classes.values()]
 
     @property
     def name(self) -> str | None:

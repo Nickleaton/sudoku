@@ -95,7 +95,7 @@ class KropkiPair(Pair):
             set: A set of digits that satisfy the rule.
         """
         used = set({})
-        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+        for digit1, digit2 in product(self.board.digits.digit_range, self.board.digits.digit_range):
             if self.valid(digit1, digit2):
                 used.add(digit1)
                 used.add(digit2)
@@ -108,7 +108,7 @@ class KropkiPair(Pair):
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.
         """
-        for digit in set(self.board.digit_range) - self.possible():
+        for digit in set(self.board.digits.digit_range) - self.possible():
             name = f'{self.name}_Impossible_kropki_pair_1_{digit}_{self.cell1.row}_{self.cell1.column}'
             solver.model += solver.variables.choices[digit][self.cell1.row][self.cell1.column] == 0, name
             name = f'{self.name}_Impossible_kropki_pair_2_{digit}_{self.cell2.row}_{self.cell2.column}'
@@ -121,7 +121,7 @@ class KropkiPair(Pair):
         Args:
             solver (PulpSolver): The solver instance to which constraints are added.
         """
-        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+        for digit1, digit2 in product(self.board.digits.digit_range, self.board.digits.digit_range):
             choice1 = solver.variables.choices[digit1][self.cell1.row][self.cell1.column]
             choice2 = solver.variables.choices[digit2][self.cell2.row][self.cell2.column]
             if not self.valid(digit1, digit2):
@@ -135,7 +135,7 @@ class KropkiPair(Pair):
             int: The count of valid digit pairs.
         """
         count = 0
-        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+        for digit1, digit2 in product(self.board.digits.digit_range, self.board.digits.digit_range):
             if self.valid(digit1, digit2):
                 count += 1
         return count
@@ -157,7 +157,7 @@ class KropkiPair(Pair):
             solver (PulpSolver): The solver instance to which constraints are added.
         """
         count = 0
-        for digit1, digit2 in product(self.board.digit_range, self.board.digit_range):
+        for digit1, digit2 in product(self.board.digits.digit_range, self.board.digits.digit_range):
             if not self.valid(digit1, digit2):
                 continue
             choice1 = solver.variables.choices[digit1][self.cell1.row][self.cell1.column]

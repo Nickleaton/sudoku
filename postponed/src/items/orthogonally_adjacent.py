@@ -109,11 +109,11 @@ class OrthogonallyAdjacent(ComposedItem):
             column (int): The current column index.
             offset (Coord): The offset for orthogonal directions.
         """
-        for digit in range(1, self.board.maximum_digit):
+        for digit in range(1, self.board.digits.maximum):
             lhs = solver.variables.choices[digit][row][column]
             prefix = f'{self.name}_{row}_{column}_{row + offset.row}_{column + offset.column}_{digit}'
 
             for adj_digit in (digit - 1, digit + 1):
-                if 1 <= adj_digit <= self.board.maximum_digit:
+                if 1 <= adj_digit <= self.board.digits.maximum:
                     rhs = solver.variables.choices[adj_digit][row + offset.row][column + offset.column]
                     solver.model += lhs + rhs <= 1, f'{prefix}_{adj_digit}'

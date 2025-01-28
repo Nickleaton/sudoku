@@ -81,4 +81,4 @@ class OddCell(SimpleCellReference):
 
         This method updates the bookkeeping system to exclude even digits and allow only odd digits for this cell.
         """
-        self.cell.book.set_impossible([digit for digit in self.board.digit_range if not OddCell.included(digit)])
+        self.cell.book.set_impossible([digit for digit in self.board.digits.digit_range if not OddCell.included(digit)])

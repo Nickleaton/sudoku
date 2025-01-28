@@ -1,9 +1,9 @@
 """Tlbr."""
+from postponed.src.items.standard_diagonal import StandardDiagonal
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.line_glyph import LineGlyph
 from src.items.cell import Cell
-from postponed.src.items.standard_diagonal import StandardDiagonal
 from src.utils.coord import Coord
 
 
@@ -25,4 +25,4 @@ class TLBR(StandardDiagonal):
         Returns:
             list[Glyph]: A list containing the diagonal's glyph.
         """
-        return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.maximum_digit + 1, self.board.maximum_digit + 1))]
+        return [LineGlyph('Diagonal', Coord(1, 1), Coord(self.board.digits.maximum + 1, self.board.digits.maximum + 1))]

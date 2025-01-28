@@ -106,7 +106,7 @@ class SumArrowLine(Line):
         Args:
             solver (PulpSolver): The Pulp solver instance to which the constraints will be added.
         """
-        for digit in self.board.digit_range:
+        for digit in self.board.digits.digit_range:
             cell0: Cell = self.cells[0]
             cell1: Cell = self.cells[1]
             d1 = solver.variables.choices[digit][cell0.row][cell0.column]
@@ -142,7 +142,7 @@ class SumArrowLine(Line):
             solver (PulpSolver): The Pulp solver instance to which the digit target_value constraints will be added.
         """
         total = sum(Functions.triangular(len(cells)) for _, cells in self.get_box_regions().items())  # Calculate total
-        for digit in self.board.digit_range:
+        for digit in self.board.digits.digit_range:
             if digit >= total:
                 continue
             start_cell: Cell = self.cells[0]
@@ -157,8 +157,8 @@ class SumArrowLine(Line):
         """
         total = sum(Functions.triangular(len(cells)) for _, cells in self.get_box_regions().items())  # Calculate total
         for index, cell in enumerate(self.cells[1:], start=1):
-            for digit in self.board.digit_range:
-                if digit <= self.board.maximum_digit - total + 1:
+            for digit in self.board.digits.digit_range:
+                if digit <= self.board.digits.maximum - total + 1:
                     continue
                 choice = solver.variables.choices[digit][cell.row][cell.column]
                 solver.model += choice == 0, f'{self.name}_{index}_{digit}_tail'

@@ -100,10 +100,11 @@ class GEDifferenceLine(DifferenceLine):
             solver (PulpSolver): The solver to add the constraints to.
         """
         for index in range(len(self.cells) - 1):
-            for digit in self.board.digit_range:
+            for digit in self.board.digits.digit_range:
                 constraint_name: str = f'{self.name}_{index}_{digit}'
                 valid_cell_digits: list[int] = [
-                    cell_digit for cell_digit in self.board.digit_range if abs(cell_digit - digit) >= self.difference
+                    cell_digit for cell_digit in self.board.digits.digit_range if
+                    abs(cell_digit - digit) >= self.difference
                 ]
                 total: LpAffineExpression = lpSum(
                     [

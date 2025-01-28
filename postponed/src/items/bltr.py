@@ -18,7 +18,7 @@ class BLTR(StandardDiagonal):
             board (Board): The Sudoku board on which this diagonal operates.
         """
         super().__init__(board)
-        self.add_components([Cell.make(board, board.maximum_digit - index + 1, index) for index in board.row_range])
+        self.add_components([Cell.make(board, board.digits.maximum - index + 1, index) for index in board.row_range])
 
     def glyphs(self) -> list[Glyph]:
         """Generate the visual representation (glyph) for the diagonal.
@@ -26,4 +26,4 @@ class BLTR(StandardDiagonal):
         Returns:
             list[Glyph]: A list containing the diagonal's glyph.
         """
-        return [LineGlyph('Diagonal', Coord(self.board.maximum_digit + 1, 1), Coord(1, self.board.maximum_digit + 1))]
+        return [LineGlyph('Diagonal', Coord(self.board.digits.maximum + 1, 1), Coord(1, self.board.digits.maximum + 1))]

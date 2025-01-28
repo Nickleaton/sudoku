@@ -13,7 +13,7 @@ class CellPairsParser(Parser):
         """Initialize the CellPairsParser.
 
         Calls the parent class (Parser) constructor with a start regex pattern
-        that matches the required format for cell pairs (e.g., '12-34').
+        that matches the required format for cell pairs (exp.g., '12-34').
         """
         super().__init__(pattern=r'^\s*\d\d\s*-\s*\d\d\s*$', example_format='r1c1=r2c2')
         self.token = CellToken() + DashToken() + CellToken()
@@ -30,7 +30,7 @@ class CellPairsParser(Parser):
         # Check if the input text matches the defined regular expression pattern.
         if not self.regular_expression.match(text):
             # Raise an error if the format is incorrect.
-            raise ParserError(f'{self.__class__.__name__} expects cell reference equals cell reference, e.g., 12-34')
+            raise ParserError(f'{self.__class__.__name__} expects cell reference equals cell reference, exp.g., 12-34')
 
         # Strip spaces and extract row and column values.
         stripped_text: str = text.replace(' ', '')

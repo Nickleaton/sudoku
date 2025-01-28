@@ -28,7 +28,7 @@ class Digits:
         if key not in cls.classes:
             instance = super().__new__(cls)
             cls.classes[key] = instance
-            instance.__init__(minimum, maximum)
+            instance.__init__(minimum, maximum)  # noqa: WPS609
         return cls.classes[key]
 
     def __init__(self, minimum: int, maximum: int) -> None:
@@ -52,6 +52,12 @@ class Digits:
         self.digit_range: list[int] = list(range(minimum, maximum + 1))
         self.digit_sum: int = sum(self.digit_range)
         self.primes: list[int] = [prime for prime in PRIMES if prime in self.digit_range]
+        self.low: list[int] | None = None
+        self.mid: list[int] | None = None
+        self.high: list[int] | None = None
+        self.mod0: list[int] | None = None
+        self.mod1: list[int] | None = None
+        self.mod2: list[int] | None = None
         if self.maximum % 3 == 0:
             chunk_size: int = self.maximum // 3
             self.low = self.digit_range[:chunk_size]
@@ -60,15 +66,10 @@ class Digits:
             self.mod0 = [digit for digit in self.digit_range if digit % 3 == 0]
             self.mod1 = [digit for digit in self.digit_range if digit % 3 == 1]
             self.mod2 = [digit for digit in self.digit_range if digit % 3 == 2]
-        else:
-            self.low = None
-            self.mid = None
-            self.high = None
-            self.mod0 = None
-            self.mod1 = None
-            self.mod2 = None
+
         midpoint = self.count // 2
-        self.lower = self.digit_range[:midpoint]
+        self.lower: list[int] = self.digit_range[:midpoint]
+        self.upper: list[int]
         if self.count % 2 == 0:  # Even number of digits
             self.upper = self.digit_range[midpoint:]
         else:  # Odd number of digits
@@ -119,10 +120,3 @@ class Digits:
             str: A string representation of the Digits instance.
         """
         return f'{self.__class__.__name__}({self.minimum}, {self.maximum})'
-
-# digits08 = Digits(0, 8)
-# digits18 = Digits(1, 8)
-# digits14 = Digits(1, 4)
-# digits16 = Digits(1, 6)
-# digits19 = Digits(1, 9)
-# digits1F = Digits(1, 15)  # noqa:N816, WPS432

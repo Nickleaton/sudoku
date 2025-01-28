@@ -55,6 +55,6 @@ class DigitParser(Parser):
             errors.append('Missing key: "digits"')
             return errors
         for digit in input_data['digits']:
-            if digit not in board.digit_range:
-                errors.append(f'Invalid digit: {digit}. Valid range: {board.digit_range}')
+            if digit not in board.digits.digit_range:
+                errors.append(f'Invalid digit: {digit}. Valid range: {board.digits.digit_range}')
         return errors

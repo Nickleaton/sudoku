@@ -23,10 +23,10 @@ class DigitsValidator(Validator):
         digits: list = dict(input_data)['digits']
         for digit in digits:
             if not isinstance(digit, int):
-                error1: str = f'Invalid digit: {digit}. Valid range: {board.digit_range}'
+                error1: str = f'Invalid digit: {digit}. Valid range: {board.digits.digit_range}'
                 errors.append(error1)
-            elif digit not in board.digit_range:
-                error2: str = f'Invalid digit: {digit}. Valid range: {board.digit_range}'
+            elif digit not in board.digits.digit_range:
+                error2: str = f'Invalid digit: {digit}. Valid range: {board.digits.digit_range}'
                 errors.append(error2)
         if errors:
             return errors

@@ -60,7 +60,7 @@ class BetweenLine(Line):
         Args:
             solver (PulpSolver): The solver instance to which the constraints are added.
         """
-        big_m = solver.board.maximum_digit + 1
+        big_m = solver.board.digits.maximum + 1
 
         start_cell = self.cells[0]
         start = solver.variables.numbers[start_cell.row][start_cell.column]
@@ -91,7 +91,7 @@ class BetweenLine(Line):
             solver.model += solver.variables.choices[1][cell.row][cell.column] == 0, name
 
             name = f'{self.name}_e_{1}_{cell.row}_{cell.column}'
-            solver.model += solver.variables.choices[self.board.maximum_digit][cell.row][cell.column] == 0, name
+            solver.model += solver.variables.choices[self.board.digits.maximum][cell.row][cell.column] == 0, name
 
     def css(self) -> dict:
         """Define the CSS style for rendering the BetweenLine.
