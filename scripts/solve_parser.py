@@ -1,8 +1,13 @@
 """Parser for the solve script."""
 import argparse
+import logging
 from pathlib import Path
 
-from solve import logger
+from src.utils.config import Config
+
+config: Config = Config()
+logging.config.dictConfig(config.logging)
+logger = logging.getLogger('solve')
 
 
 def validate_output_directory(output_path: Path) -> None:

@@ -16,7 +16,7 @@ from src.utils.load_modules import load_modules
 from src.utils.names import Name
 
 config: Config = Config()
-logging.config.dictConfig(Config().get_dict('logging'))
+logging.config.dictConfig(config.logging)
 logger = logging.getLogger('generate_schema')
 
 
@@ -24,7 +24,7 @@ def create_config_schema() -> Map:
     """Create the config schema mapping.
 
     A schema is generated for the configuration based on the `Item` classes,
-    including constraints, the board schema, and an optional solution parser.
+    including constraints, the board schema, and an optional solution arg_parser.
 
     Returns:
         Map: The generated configuration schema.
@@ -92,6 +92,7 @@ def format_python_file(file_path: str) -> None:
             capture_output=True,
             text=True,
             check=True,
+            encoding='utf-8',
         )
         logging.info(black_output.stdout)  # Display `black`'s output
     except subprocess.CalledProcessError as exp:
@@ -116,10 +117,10 @@ def replace_quotes_in_file(file_path: str) -> None:
 
 
 def create_arg_parser() -> argparse.ArgumentParser:
-    """Create an argument parser for command-line arguments.
+    """Create an argument arg_parser for command-line arguments.
 
     Returns:
-        argparse.ArgumentParser: The argument parser instance.
+        argparse.ArgumentParser: The argument arg_parser instance.
     """
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description='Generate config schema file.')
     parser.add_argument(
@@ -149,24 +150,14 @@ def get_import_names() -> set[str]:
     return import_names
 
 
-def main() -> None:
-    """Generate the configuration schema.
-
-    The command-line arguments are parsed, the configuration schema is generated,
-    written to a specified file, and formatted using `black`. Double quotes in the
-    output file are then replaced with single quotes.
-    """
+if __name__ == '__main__':
     logging.info('Generating config schema...')
-    parser: argparse.ArgumentParser = create_arg_parser()
-    args: argparse.Namespace = parser.parse_args()
+    arg_parser: argparse.ArgumentParser = create_arg_parser()
+    args: argparse.Namespace = arg_parser.parse_args()
     load_modules('src.items')
     mapping: Map = create_config_schema()
-    import_names: set[str] = get_import_names()
-    write_config_schema(args.output, mapping, import_names)
+    names: set[str] = get_import_names()
+    write_config_schema(args.output, mapping, names)
     format_python_file(args.output)
     replace_quotes_in_file(args.output)
     logging.info('Config schema generation completed.')
-
-
-if __name__ == '__main__':
-    main()

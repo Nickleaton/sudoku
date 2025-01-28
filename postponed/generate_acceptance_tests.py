@@ -3,7 +3,7 @@ from pathlib import Path
 from string import Template
 from typing import List
 
-RAW = """\"\"\" Acceptance test for problem $name \"\"\"
+RAW = """\'\'\' Acceptance test for problem $name \'\'\'
 
 from tests.acceptance.acceptance_test import AcceptanceTest
 
@@ -11,7 +11,7 @@ from tests.acceptance.acceptance_test import AcceptanceTest
 class $classname(AcceptanceTest):
 
     def setUp(self) -> None:
-        self.name = "$name"
+        self.name = '$name'
 """
 
 def get_filenames(directory: str) -> List[str]:
@@ -45,6 +45,6 @@ if __name__ == '__main__':
     template = Template(RAW)
     for filename in get_filenames(args.source):
         name = Path(filename).with_suffix("").name
-        output_filename = Path(args.output) / Path(f"test_{name}.py")
+        output_filename = Path(args.output) / Path(f'test_{name}.py')
         with open(output_filename, 'w', encoding='utf-8') as file:
-            file.write(template.substitute(classname=f"Test{name.capitalize()}", name=name))
+            file.write(template.substitute(classname=f'Test{name.capitalize()}', name=name))

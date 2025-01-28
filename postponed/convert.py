@@ -1,8 +1,6 @@
 import inspect
 import json
 import logging
-import sys
-from argparse import ArgumentParser
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -67,26 +65,26 @@ def rc(s: str) -> Tuple[int, int]:
 
 def cyclic(s: str) -> str:
     if s == 'DL':
-        return "A"
+        return 'A'
     if s == 'DR':
-        return "C"
+        return 'C'
     if s == 'UL':
-        return "A"
+        return 'A'
     if s == 'UR':
-        return "C"
+        return 'C'
     return ""
 
 
 def side(s: str, n: int) -> str:
     r, c = rc(s)
     if r == 0:
-        return "T"
+        return 'T'
     if c == 0:
-        return "L"
+        return 'L'
     if r == n + 1:
-        return "B"
+        return 'B'
     if c == n + 1:
-        return "R"
+        return 'R'
     return ""
 
 
@@ -101,35 +99,35 @@ def antiknight() -> Dict:
 def arrow(data: Dict) -> List:
     result = []
     for item in data:
-        lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0][len(item['cells']):]])
-        result.append({"SumArrowLine": f"{lhs}={rhs}"})
+        lhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['cells']])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0][len(item['cells']):]])
+        result.append({'SumArrowLine': f'{lhs}={rhs}'})
     return result
 
 
 def maxarrow(data: Dict) -> List:
     result = []
     for item in data:
-        lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0][len(item['cells']):]])
-        result.append({"MaxArrowLine": f"{lhs}={rhs}"})
+        lhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['cells']])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0][len(item['cells']):]])
+        result.append({'MaxArrowLine': f'{lhs}={rhs}'})
     return result
 
 
 def productarrow(data: Dict) -> List:
     result = []
     for item in data:
-        lhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0][len(item['cells']):]])
-        result.append({"ProductArrowLine": f"{lhs}={rhs}"})
+        lhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['cells']])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0][len(item['cells']):]])
+        result.append({'ProductArrowLine': f'{lhs}={rhs}'})
     return result
 
 
 def betweenline(data: Dict) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
-        result.append({"Between": rhs})
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
+        result.append({'Between': rhs})
     return result
 
 
@@ -142,9 +140,9 @@ def clone(data: List) -> List:
         for c1, c2 in zip(item['cells'], item['cloneCells']):
             r1.append(c1[1] + c1[3])
             r2.append(c2[1] + c2[3])
-        s1 = ",".join(r1)
-        s2 = ",".join(r2)
-        region['ClonedRegion'] = f"{s1}={s2}"
+        s1 = ','.join(r1)
+        s2 = ','.join(r2)
+        region['ClonedRegion'] = f'{s1}={s2}'
         result.append(region)
     return result
 
@@ -157,7 +155,7 @@ def columnindexer(data: List) -> List:
             r, c = rc(cell)
             columns.add(c)
     for c in columns:
-        result.append({"ColumnIndexer": c})
+        result.append({'ColumnIndexer': c})
     return result
 
 
@@ -176,18 +174,18 @@ def difference(data: List) -> List:
     for item in data:
         r1, c1 = rc(item['cells'][0])
         r2, c2 = rc(item['cells'][1])
-        result.append({'ConsecutivePair': f"{r1}{c1}-{r2}{c2}"})
+        result.append({'ConsecutivePair': f'{r1}{c1}-{r2}{c2}'})
     return result
 
 
 def disjointgroups() -> Dict:
-    return {"DisjointGroups": ""}
+    return {'DisjointGroups': ""}
 
 
 def entropicline(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'EntropicLine': rhs})
     return result
 
@@ -196,14 +194,14 @@ def even(data: List) -> List:
     result = []
     for item in data:
         r, c = rc(item['cell'])
-        result.append({'EvenCell': f"{r}{c}"})
+        result.append({'EvenCell': f'{r}{c}'})
     return result
 
 
 def extraregion(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['cells']])
         result.append({'UniqueRegion': rhs})
     return result
 
@@ -211,10 +209,10 @@ def extraregion(data: List) -> List:
 def killercage(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['cells']])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['cells']])
         if 'number' in item:
             lhs = item['number']
-            result.append({'Killer': f"{lhs}={rhs}"})
+            result.append({'Killer': f'{lhs}={rhs}'})
         else:
             result.append({'UniqueRegion': rhs})
     return result
@@ -231,14 +229,14 @@ def littlekillersum(data: List, n: int) -> List:
         else:
             x = r
         value = int(item['number'])
-        result.append({'LittleKiller': f"{s}{x}{rot}={value}"})
+        result.append({'LittleKiller': f'{s}{x}{rot}={value}'})
     return result
 
 
 def lockout(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'LockOut': rhs})
     return result
 
@@ -247,12 +245,12 @@ def maximum(data: List) -> List:
     result = []
     for item in data:
         r, c = rc(item['cell'])
-        result.append({'FortressCell': f"{r}{c}"})
+        result.append({'FortressCell': f'{r}{c}'})
     return result
 
 
 def negative() -> Dict:
-    return {"NegativeXV": ""}
+    return {'NegativeXV': ""}
 
 
 def nonconsecutive() -> Dict:
@@ -263,14 +261,14 @@ def odd(data: List) -> List:
     result = []
     for item in data:
         r, c = rc(item['cell'])
-        result.append({'OddCell': f"{r}{c}"})
+        result.append({'OddCell': f'{r}{c}'})
     return result
 
 
 def palindrome(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'Palindrome': rhs})
     return result
 
@@ -281,7 +279,7 @@ def quadruple(data: Dict) -> List:
         row = quad['cells'][0][1]
         col = quad['cells'][0][3]
         values = "".join([str(d) for d in quad['value_list']])
-        result.append({'Quadruple': f"{row}{col}={values}"})
+        result.append({'Quadruple': f'{row}{col}={values}'})
     return result
 
 
@@ -292,14 +290,14 @@ def ratio(data: Dict) -> List:
     for item in data:
         r1, c1 = rc(item['cells'][0])
         r2, c2 = rc(item['cells'][1])
-        result.append({'KropkiPair': f"{r1}{c1}-{r2}{c2}"})
+        result.append({'KropkiPair': f'{r1}{c1}-{r2}{c2}'})
     return result
 
 
 def regionsumline(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'EqualSumLine': rhs})
     return result
 
@@ -307,7 +305,7 @@ def regionsumline(data: List) -> List:
 def renban(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'RenbanLine': rhs})
     return result
 
@@ -322,14 +320,14 @@ def sandwichsum(data: List, n: int) -> List:
             x = c
         else:
             x = r
-        result.append({'Sandwich': f"{s}{x}={value}"})
+        result.append({'Sandwich': f'{s}{x}={value}'})
     return result
 
 
 def thermometer(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'SimpleThermometer': rhs})
     return result
 
@@ -337,7 +335,7 @@ def thermometer(data: List) -> List:
 def whispers(data: List) -> List:
     result = []
     for item in data:
-        rhs = ", ".join([f"{rc(cell)[0]}{rc(cell)[1]}" for cell in item['lines'][0]])
+        rhs = ', '.join([f'{rc(cell)[0]}{rc(cell)[1]}' for cell in item['lines'][0]])
         result.append({'GermanWhisperLine': rhs})
     return result
 
@@ -352,7 +350,7 @@ def xsum(data: List, n: int) -> List:
             x = c
         else:
             x = r
-        result.append({'XSum': f"{s}{x}={value}"})
+        result.append({'XSum': f'{s}{x}={value}'})
     return result
 
 
@@ -364,23 +362,23 @@ def xv(data: List) -> List:
         r1, c1 = rc(item['cells'][0])
         r2, c2 = rc(item['cells'][1])
         if item['number'] == 'V':
-            result.append({'VPair': f"{r1}{c1}-{r2}{c2}"})
+            result.append({'VPair': f'{r1}{c1}-{r2}{c2}'})
         elif item['number'] == 'X':
-            result.append({'XPair': f"{r1}{c1}-{r2}{c2}"})
+            result.append({'XPair': f'{r1}{c1}-{r2}{c2}'})
     return result
 
 
 def convert(source_file: Path, destination_file: Path) -> bool:
-    logging.info(f"Convert {source_file} to {destination_file}")
+    logging.info(f'Convert {source_file} to {destination_file}')
     out = {}
     with source_file.open() as s_file:
         data = json.load(s_file)
     raw = data['line']
     n = raw['size']
     if n not in (6, 8, 9):
-        logging.log(logging.ERROR, f"Unknown board size {n} {source_file}")
+        logging.log(logging.ERROR, f'Unknown board size {n} {source_file}')
         return False
-        # raise ConversionException(f"Unknown board size {size}")
+        # raise ConversionException(f'Unknown board size {size}')
 
     good = True
     try:
@@ -472,7 +470,7 @@ def convert(source_file: Path, destination_file: Path) -> bool:
         if 'xv' in raw:
             out['Constraints'].extend(xv(raw['xv']))
     except NotImplementedError as e:
-        logging.log(logging.ERROR, f"{e} {source_file}")
+        logging.log(logging.ERROR, f'{e} {source_file}')
         good = False
 
     if good:
@@ -483,13 +481,13 @@ def convert(source_file: Path, destination_file: Path) -> bool:
                     indent=2,
                     default_style='',
                     default_flow_style=False,
-                ).replace("'", "")
+                ).replace(""", "")
             )
     return good
 
 
 def destination_file_name(source_file: Path, destination_directory: Path) -> Path:
-    return destination_directory / (source_file.stem + ".yaml")
+    return destination_directory / (source_file.stem + '.yaml')
 
 
 def get_parser() -> ArgumentParser:
@@ -504,20 +502,20 @@ def main() -> None:
     count = 0
     total_count = 0
 
-    logging.info("Start")
+    logging.info('Start')
     parser = get_parser()
     args = parser.parse_args()
     source = Path(args.source)
     destination = Path(args.destination)
     if source.is_dir():
         if destination.is_dir():
-            for source_file in source.glob("*.json"):
+            for source_file in source.glob('*.json'):
                 destination_file = destination_file_name(Path(source_file), destination)
                 total_count += 1
                 if convert(source_file, destination_file):
                     count += 1
         else:
-            logging.log(logging.ERROR, "Cannot convert directory to single file_path")
+            logging.log(logging.ERROR, 'Cannot convert directory to single file_path')
             sys.exit(1)
     else:
         if destination.is_dir():
@@ -530,8 +528,8 @@ def main() -> None:
             if convert(source, destination):
                 count += 1
 
-    logging.info(F"Count {count} / {total_count}")
-    logging.info("Finish")
+    logging.info(F'Count {count} / {total_count}')
+    logging.info('Finish')
 
 
 if __name__ == '__main__':

@@ -3,48 +3,49 @@ import logging
 import sys
 
 from commands.solve_command import SolveCommand
-from scripts.parser import parser
 from src.commands.html_command import HTMLCommand
 from src.commands.img_command import ImageCommand
+
+from postponed.parser import parser
 from src.commands.svg_command import SVGCommand
 
 # def produce_jpg(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
 #         return
-#     logging.info(f"{'jpg':20} {config} {filename}")
+#     logging.info(f'{'jpg':20} {config} {filename}')
 #
 #
 # def produce_rst(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
 #         return
-#     logging.info(f"{'rst':20} {config} {filename}")
+#     logging.info(f'{'rst':20} {config} {filename}')
 #
 #
 # def produce_verify(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
 #         return
-#     logging.info(f"{'verify':20} {config} {filename}")
+#     logging.info(f'{'verify':20} {config} {filename}')
 #
 #
 # def produce_solve(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
 #         return
-#     logging.info(f"{'solve':20} {config} {filename}")
+#     logging.info(f'{'solve':20} {config} {filename}')
 #
 #
 # def produce_solution(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
 #         return
-#     logging.info(f"{'solution':20} {config} {filename}")
+#     logging.info(f'{'solution':20} {config} {filename}')
 #
 #
 # def produce_yaml(config: str, filename: Optional[str]) -> None:
 #     if filename is None:
 #         return
-#     logging.info(f"{'yaml':20} {config} {filename}")
+#     logging.info(f'{'yaml':20} {config} {filename}')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     argument_parser = parser()
     args = argument_parser.parse_args()
     if args.logfile:

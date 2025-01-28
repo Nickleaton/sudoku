@@ -11,7 +11,6 @@ from datetime import datetime
 from glob import glob
 
 import pandas as pd
-from pylint.reporters.base_reporter import BaseReporter
 
 # pylint: disable=invalid-name
 
@@ -21,8 +20,8 @@ HTML_HEAD = """<!DOCTYPE HTML>
 <html>
 <head>
 <title>Pylint report</title>
-<meta charset="utf-8">
-<style type="text/css">
+<meta charset='utf-8'>
+<style type='text/css'>
 body {
     font-family: sans-serif;
 }
@@ -48,7 +47,7 @@ tr {
 }
 
 code {
-  font-family: Consolas,"courier new";
+  font-family: Consolas,'courier new';
   color: blue;
   background-color: #f1f1f1;
   padding: 2px;
@@ -106,7 +105,7 @@ def json2html(data):
 
     now = datetime.now()
     out += ('<small>Report generated on {} at {} by '
-            '<start_location href="https://github.com/drdv/pylint-report">pytest-report</start_location>'
+            '<start_location href='https: // github.com / drdv / pylint-report'>pytest-report</start_location>'
             '</small>\n').format(now.strftime('%Y-%d-%m'),
                                  now.strftime('%H:%M:%S'))
 
@@ -114,7 +113,7 @@ def json2html(data):
 
     score = ('<h2>'
              '<span>Score:</span>'
-             '<span class="score"> {:.2f} </span>'
+             '<span class='score'> {:.2f} </span>'
              '<span> / 10 </span>'
              '</h2>')
     out += score.format(s if s is not None else -1)
@@ -128,7 +127,7 @@ def json2html(data):
     out += '<ul>'
     for module in data['stats']['by_module'].keys():
         if module in msg:
-            out += '<li><start_location href="#{0}">{0}</start_location> ({1})</li>\n'.format(module,
+            out += '<li><start_location href='  # {0}'>{0}</start_location> ({1})</li>\n'.format(module,
                                                                     len(msg[module]))
         else:
             out += '<li>{} ({})</li>\n'.format(module, 0)
@@ -137,7 +136,9 @@ def json2html(data):
     # modules
     section = ('<h2>'
                '<span>Module:</span>'
-               '<span id="{module}"> <code>{module} ({count})</code> </span>'
+        '<span id='
+        {module}
+        '> <code>{module} ({count})</code> </span>'
                '</h2>')
     cols2keep = ['line', 'column', 'symbol', 'type', 'obj', 'message']
     for module, value in msg.items():
@@ -151,8 +152,8 @@ def json2html(data):
         s2 = value.groupby('type')['module'].count().to_frame().reset_index(). \
             rename(columns={'module': '# msg'}).to_html(index=False, justify='center')
 
-        out += ''.join(['\n<td valign="top">\n' + s1 + '\n</td>\n',
-                        '\n<td valign="top">\n' + s2 + '\n</td>\n'])
+        out += ''.join(['\n<td valign='top'>\n' + s1 + '\n</td>\n',
+                        '\n<td valign='top'>\n' + s2 + '\n</td>\n'])
         out += '</tr></table>'
 
         out += value[cols2keep].to_html(justify='center').replace('\\number', '<br>')
@@ -187,7 +188,7 @@ class CustomJsonReporter(BaseReporter):
 
     """
 
-    name = "custom goodjson"
+    name = 'custom goodjson'
 
     def __init__(self, output=sys.stdout):
         """Construct object."""
@@ -196,15 +197,15 @@ class CustomJsonReporter(BaseReporter):
 
     def handle_message(self, msg):
         """Manage message of different type and in the context of config_file."""
-        self.messages.append({"type": msg.category,
-                              "module": msg.module,
-                              "obj": msg.obj,
-                              "line": msg.line,
-                              "column": msg.column,
-                              "config_file": msg.path,
-                              "symbol": msg.symbol,
-                              "message": html.escape(msg.msg or "", quote=False),
-                              "message-id": msg.msg_id})
+        self.messages.append({'type': msg.category,
+                              'module': msg.module,
+                              'obj': msg.obj,
+                              'line': msg.line,
+                              'column': msg.column,
+                              'config_file': msg.path,
+                              'symbol': msg.symbol,
+                              'message': html.escape(msg.msg or "", quote=False),
+                              'message-id': msg.msg_id})
 
     def display_messages(self, layout):
         """See ``pylint/reporters/base_reporter.py``."""

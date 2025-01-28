@@ -1,121 +1,125 @@
-import argparse
+"""Document constraints, tokens, and parsers to structured files."""
+
+import logging
+from argparse import ArgumentParser, ArgumentTypeError
 from pathlib import Path
 
-from jinja2 import Template, Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, Template
 
-from src.tokens.cell_token import CellToken
-from src.tokens.cycle_token import CycleToken
-from src.tokens.digit_token import DigitToken
-from src.tokens.known_token import KnownToken
-from src.tokens.quadruple_token import QuadrupleToken
-from src.tokens.side_token import SideToken
-from src.tokens.symbols import CommaToken, DashToken, EqualsToken, QuestionMarkToken
 from src.tokens.token import Token
-from src.tokens.value_token import ValueToken
+from src.utils.config import Config
 from src.utils.load_modules import load_modules
 
-env: Environment = Environment(loader=FileSystemLoader(Path('scripts/documentation/templates')))
+config: Config = Config()
+logging.config.dictConfig(config.logging)
+logger = logging.getLogger('document')
+env: Environment = Environment(loader=FileSystemLoader(Path('scripts/documentation/templates')), autoescape=True)
 
 
-def directory_path(value):
-    """Custom argparse type to validate a directory path."""
-    path = Path(value)
+def directory_path(path_name: str) -> Path:
+    """Validate that the specified path is a directory.
+
+    Args:
+        path_name (str): The directory path to validate.
+
+    Returns:
+        Path: A `Path` object if the path is valid.
+
+    Raises:
+        ArgumentTypeError: If the path does not exist or is not a directory.
+    """
+    path: Path = Path(path_name)
     if not path.is_dir():
-        raise argparse.ArgumentTypeError(f"The specified path '{value}' is not a valid directory.")
+        raise ArgumentTypeError(f'The specified path {path_name!r} is not a valid directory.')
     return path
 
 
-def get_parser():
-    """Creates and returns an argument parser with subcommands.
+def get_parser() -> ArgumentParser:
+    """Create an argument parser with subcommands for documentation.
 
     Returns:
-        argparse.ArgumentParser: The argument parser configured with subcommands for 'parser', 'token', and 'constraint',
-        and an 'output' directory argument.
+        ArgumentParser: An argument parser with subcommands 'parser', 'token', and 'constraint',
+        each requiring an 'output' directory.
     """
-    parser = argparse.ArgumentParser(
-        description='Process some input arguments using subcommands.'
+    parser: ArgumentParser = ArgumentParser(
+        description='Generate documentation for constraints, tokens, and parsers.',
     )
 
     subparsers = parser.add_subparsers(
         title='Commands',
-        dest='command',  # The selected command will be stored here
-        required=True,  # Enforce that a subcommand must be provided
-        help='Available commands'
+        dest='command',
+        required=True,
+        help='Available commands',
     )
-
-    # Subcommand: parser
     parser_parser = subparsers.add_parser(
         'parser',
-        help='Perform parsing operations.'
+        help='Generate documentation for parsers.',
     )
     parser_parser.add_argument(
         '--output',
         type=directory_path,
         required=True,
-        help='The output directory where results will be saved.'
+        help='The output directory for saving the documentation.',
     )
-
-    # Subcommand: token
     parser_token = subparsers.add_parser(
         'token',
-        help='Perform tokenization operations.'
+        help='Generate documentation for tokens.',
     )
     parser_token.add_argument(
         '--output',
         type=directory_path,
         required=True,
-        help='The output directory where results will be saved.'
+        help='The output directory for saving the documentation.',
     )
-
-    # Subcommand: constraint
     parser_constraint = subparsers.add_parser(
         'constraint',
-        help='Apply constraints.'
+        help='Generate documentation for constraints.',
     )
     parser_constraint.add_argument(
         '--output',
         type=directory_path,
         required=True,
-        help='The output directory where results will be saved.'
+        help='The output directory for saving the documentation.',
     )
-
     return parser
 
 
-def document_parser(output: Path):
+def document_parser(output: Path) -> None:
+    """Generate and save documentation for parsers.
+
+    Args:
+        output (Path): The directory where parser documentation will be saved.
+    """
     load_modules('src.parsers')
     if not output.exists():
         output.makedir(parents=True)
 
 
-def document_tokens(output: Path):
-    tokens: List[Token] = [
-        Token(),
-        CellToken(),
-        CycleToken(),
-        DigitToken(),
-        KnownToken(),
-        QuadrupleToken(),
-        SideToken(),
-        EqualsToken(),
-        CommaToken(),
-        DashToken(),
-        QuestionMarkToken(),
-        ValueToken(),
-    ]
+def document_tokens(output: Path) -> None:
+    """Generate and save documentation for tokens.
+
+    Args:
+        output (Path): The directory where token documentation will be saved.
+    """
+    tokens: list[Token] = Token.token_list()
     tokens_template: Template = env.get_template('tokens.md')
     output_path: Path = output / Path('tokens.md')
     tokens_template.stream(tokens=[token.to_dict() for token in tokens]).dump(str(output_path))
 
 
-def document_constraints(output: Path):
+def document_constraints(output: Path) -> None:
+    """Generate and save documentation for constraints.
+
+    Args:
+        output (Path): The directory where constraint documentation will be saved.
+    """
     load_modules('src.items')
     if not output.exists():
         output.makedir(parents=True)
 
 
-def main():
-    """Main method to parse arguments."""
+def main() -> None:
+    """Parse command-line arguments and execute the appropriate command."""
     parser = get_parser()
     args = parser.parse_args()
     match args.command:

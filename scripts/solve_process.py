@@ -1,8 +1,8 @@
 """Process for the solve command."""
 import itertools
+import logging
 from pathlib import Path
 
-from solve import logger
 from src.commands.command import Command  # noqa: I001, I003
 from src.commands.extract_answer_command import ExtractAnswerCommand  # noqa: I001
 from src.commands.file_writer_command import LPFileWriterCommand  # noqa: I001, I003, I005
@@ -10,6 +10,11 @@ from src.commands.file_writer_command import RuleWriterCommand  # noqa: I005
 from src.commands.file_writer_command import SVGProblemWriterCommand  # noqa: I001
 from src.commands.problem import Problem  # noqa: I005
 from src.commands.validate_config_command import ValidateConfigCommand
+from src.utils.config import Config
+
+config: Config = Config()
+logging.config.dictConfig(config.logging)
+logger = logging.getLogger('solve')
 
 
 def process_schema(problem: Problem) -> None:
@@ -94,6 +99,7 @@ def process_command(command: str, input_file: Path, output_path: Path) -> None:
     Logs:
         Logs error if the command is unknown.
     """
+    logging.info(f'Processing command: {command} for file: {input_file}')
     problem: Problem = Problem(input_file, output_path)
     match command:
         case 'schema':

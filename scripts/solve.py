@@ -8,7 +8,7 @@ from src.utils.config import Config  # noqa: I003
 from src.utils.load_modules import load_modules
 
 config: Config = Config()
-logging.config.dictConfig(Config().get_dict('logging'))
+logging.config.dictConfig(config.logging)
 logger = logging.getLogger('solve')
 
 if __name__ == '__main__':

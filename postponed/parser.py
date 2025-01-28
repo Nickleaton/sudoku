@@ -4,23 +4,23 @@ from argparse import ArgumentParser
 
 def parser() -> ArgumentParser:
     """Create the argument parser."""
-    result = ArgumentParser(description="Solve Sudoku Variants.")
+    result = ArgumentParser(description='Solve Sudoku Variants.')
     result.add_argument(
-        "--loglevel",
+        '--loglevel',
         nargs='?',
-        dest="loglevel",
+        dest='loglevel',
         choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
-        help="Set the logging level",
+        help='Set the logging level',
         default='INFO',
         required=False
     )
     result.add_argument(
-        "--logfile",
+        '--logfile',
         nargs='?',
         const="",
         default=None,
-        dest="logfile",
-        help="Where to write the log file_path",
+        dest='logfile',
+        help='Where to write the log file_path',
         required=False
     )
     result.add_argument(
