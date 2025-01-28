@@ -3,7 +3,7 @@ Implementation
 
 Sudokus can be solved with a Integer Linear Programming formulation.
 
-Assumuming a 9x9 sudoku, it is easy to change to other sizes, we can implement in the following way.
+Assuming a 9x9 sudoku, it is easy to change to other sizes, we can implement in the following way.
 
 Add 9 x 9 x 9 = 729 binary decision variables. For a given cell you get 9 decision variables, corresponding to each of the possible digits.
 
@@ -29,35 +29,36 @@ To implement uniqueness in any region, such as a box, row or column, add this re
 Known Digits
 ------------
 
-To constrain a known digit, say d in cell rc
+To constrain a known digit, say D in cell rc
 
 .. math::
 
-    C_{drc} = 1
+    C_{Drc} = 1
 
-optionaly add these as well
+optionally add these as well
 
 .. math::
 
-    C_{d_x rc} = 0, \forall d_x \in Digits \: such \: that \: d_x \ne d
+    C_{drc} = 0, \forall d \in Digits \: such \: that \: d_x \ne D
 
+    C_{Drc} = 1
 
-Value
------
+Number
+------
 
-There are two appoaches to values. One is to just a sum and rely on the expression handling to sort out the
-model construction.  This leads to large expresions in the lp file and makes it difficult to debug.
+There are two approaches to values. One is to just a sum and rely on the expression handling to sort out the
+model construction.  This leads to large expressions in the lp file and makes it difficult to debug.
 
 The second is to create an intermediate variable. In practice the presolve should remove these variables. This
 makes it easier to debug.
 
 .. math::
-    V_{rc} = d * C_{drc} \: \forall d \in Digits
+    V_{rc} = d  C_{drc} \: \forall d \in Digits
 
 This leads to an alternative formulation for known digits
 
 .. math::
 
-    V_{rc} = d
+    V_{rc} = D
 
 

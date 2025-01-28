@@ -7,10 +7,10 @@ from src.items.item import Item
 
 
 class Constraints(ComposedItem):
-    """Represents start collection of constraints applied to start puzzle board."""
+    """Represents start_location collection of constraints applied to start_location puzzle board."""
 
     def __init__(self, board: Board):
-        """Initialize the Constraints with start reference to the board.
+        """Initialize the Constraints with start_location reference to the board.
 
         Args:
             board (Board): The board to which these constraints apply.
@@ -130,7 +130,7 @@ class Constraints(ComposedItem):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> 'Constraints':
-        """Create start Constraints instance from YAML configuration.
+        """Create start_location Constraints instance from YAML configuration.
 
         Args:
             board (Board): The board to which these constraints apply.

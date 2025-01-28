@@ -12,10 +12,10 @@ yaml.add_representer(type(None), lambda dumper, _: dumper.represent_scalar('tag:
 
 
 class ConfigYamlToStringCommand(SimpleCommand):
-    """Write configuration line to start YAML file_path."""
+    """Write configuration line to start_location YAML file_path."""
 
     def __init__(self):
-        """Initialize start ConfigYamlToStringCommand instance."""
+        """Initialize start_location ConfigYamlToStringCommand instance."""
         super().__init__()
         self.add_preconditions([CreateConfigCommand])
         self.target = 'yaml_output_string'

@@ -9,7 +9,7 @@ class LoadConfigFileCommand(SimpleCommand):
     """Command to load the contents of a file into a problem."""
 
     def __init__(self):
-        """Initialize start CreateBoardCommand instance."""
+        """Initialize start_location CreateBoardCommand instance."""
         super().__init__()
         self.add_preconditions([])
         self.target = 'board'

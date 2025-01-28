@@ -1,0 +1,22 @@
+Board:
+  Board: 6x6
+  Tags:
+    Title: Problem 024
+Constraints:
+  Boxes: 2x3
+  Columns:
+  Rows:
+  Known:
+    - .....3
+    - .6.45.
+    - ....15
+    - 12....
+    - .12.3.
+    - 6.....
+Solution:
+  - 254163
+  - 361452
+  - 436215
+  - 125346
+  - 512634
+  - 643521

@@ -3,15 +3,15 @@ from src.board.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
 from src.parsers.digit_parser import DigitParser
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.rule import Rule
 
 
 class Column(StandardRegion):
-    """Represents start column in start Sudoku board, enforcing unique digits."""
+    """Represents start_location column in start_location Sudoku board, enforcing unique digits."""
 
     def __init__(self, board: Board, index: int):
-        """Initialize start Column with start board reference and column index.
+        """Initialize start_location Column with start_location board reference and column index.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -49,17 +49,17 @@ class Column(StandardRegion):
         """
         return super().tags.union({'Column'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add constraints for uniqueness and sum totals to the solver.
 
         Args:
-            solver (PulpSolver): The solver to which constraints are added.
+            solver (Solver): The solver to which constraints are added.
         """
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
     def __str__(self) -> str:
-        """Provide start string representation of the Column instance.
+        """Provide start_location string representation of the Column instance.
 
         Returns:
             str: A string representing the Column.

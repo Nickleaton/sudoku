@@ -1,0 +1,18 @@
+Board:
+  Board: 4x4
+  Tags:
+    Title: Problem 024
+Constraints:
+  Columns:
+  Rows:
+  Boxes: 2x2
+  Known:
+    - 3.4.
+    - .1.2
+    - .4.3
+    - 2.1.
+Solution:
+  - 3241
+  - 4132
+  - 1423
+  - 2314

@@ -9,7 +9,8 @@ from src.board.book_keeping_cell import BookKeepingCell
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.glyph import Glyph
 from src.items.item import Item, SudokuException
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
+from src.solvers.variables import VariableSet
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -19,22 +20,22 @@ class CellException(SudokuException):
 
 
 class Cell(Item):
-    """Represents start cell in start Sudoku board."""
+    """Represents start_location cell in start_location Sudoku board."""
 
     cache: ClassVar[dict[tuple[int, int], 'Cell']] = {}
 
     def __init__(self, board: Board, row: int, column: int):
-        """Initialize start Cell with start board, row, and column.
+        """Initialize start_location Cell with start_location board, row, and column.
 
         Args:
             board (Board): The Sudoku board the cell belongs to.
-            row (int): The row position of the cell.
-            column (int): The column position of the cell.
+            row (int): The row location of the cell.
+            column (int): The column location of the cell.
         """
         super().__init__(board)
-        self.row = row
-        self.column = column
-        self.book = BookKeepingCell(self.board.maximum_digit)
+        self.row: int = row
+        self.column: int = column
+        self.book: BookKeepingCell = BookKeepingCell(self.board.maximum_digit)
 
     @classmethod
     def clear(cls):
@@ -42,7 +43,7 @@ class Cell(Item):
         cls.cache.clear()
 
     def __repr__(self) -> str:
-        """Return start detailed string representation of the cell.
+        """Return start_location detailed string representation of the cell.
 
         Returns:
             str: A string representation including board, row, and column.
@@ -50,7 +51,7 @@ class Cell(Item):
         return f'{self.__class__.__name__}({self.board!r}, {int(self.row)}, {int(self.column)})'
 
     def __hash__(self):
-        """Compute start unique hash for the cell based on row and column.
+        """Compute start_location unique hash for the cell based on row and column.
 
         Returns:
             int: The hash number of the cell.
@@ -58,7 +59,7 @@ class Cell(Item):
         return self.row * self.board.maximum_digit + self.column
 
     def __str__(self) -> str:
-        """Return start string identifier for the cell.
+        """Return start_location string identifier for the cell.
 
         Returns:
             str: A string in the format 'Cell(row, column)'.
@@ -110,12 +111,12 @@ class Cell(Item):
 
     @classmethod
     def make(cls, board: Board, row: int, column: int) -> 'Cell':
-        """Create start new cell or retrieve it from the cache.
+        """Create start_location new cell or retrieve it from the cache.
 
         Args:
             board (Board): The Sudoku board the cell belongs to.
-            row (int): The row position of the cell.
-            column (int): The column position of the cell.
+            row (int): The row location of the cell.
+            column (int): The column location of the cell.
 
         Returns:
             Cell: The created or cached cell.
@@ -130,7 +131,7 @@ class Cell(Item):
 
     @classmethod
     def make_board(cls, board: Board):
-        """Generate all cells for start given board and cache them.
+        """Generate all cells for start_location given board and cache them.
 
         Args:
             board (Board): The board for which cells are created.
@@ -140,7 +141,7 @@ class Cell(Item):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Coord:
-        """Extract coordinates from start YAML representation.
+        """Extract coordinates from start_location YAML representation.
 
         Args:
             _ (Board): The board the coordinates belong to.
@@ -153,7 +154,7 @@ class Cell(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start cell from YAML line.
+        """Create start_location cell from YAML line.
 
         Args:
             board (Board): The board the cell belongs to.
@@ -167,7 +168,7 @@ class Cell(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start cell from YAML line.
+        """Create start_location cell from YAML line.
 
         Args:
             board (Board): The board the cell belongs to.
@@ -240,7 +241,7 @@ class Cell(Item):
 
     @property
     def row_column_string(self) -> str:
-        """Return start string representation of the cell's row and column.
+        """Return start_location string representation of the cell's row and column.
 
         Returns:
             str: A string combining row and column numbers.
@@ -251,7 +252,7 @@ class Cell(Item):
         """Compute the parity constraint for the cell.
 
         Args:
-            solver (PulpSolver): The solver instance.
+            solver (Solver): The solver instance.
 
         Returns:
             lpSum: A linear program sum for even digits in the cell.
@@ -264,11 +265,42 @@ class Cell(Item):
             ],
         )
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        """Add start unique digit constraint for the cell.
+    def variable_sets(self) -> set[VariableSet]:
+        """Return a set of the variables that are needed for this constraint.
+
+        Returns:
+            set[VariableSet]: A set of the variables that are needed for this constraint.
+        """
+        return {VariableSet.choice}
+
+    @classmethod
+    def mathematics(cls) -> str | None:
+        """Return the mathematical representation of the cell.
+
+        Returns:
+            str: The mathematical representation of the cell.
+        """
+        return (
+            '$$ '
+            r'\sum_{d \in \text{Digits}} \text{choice}_{rcd} = 1, '
+            r'\quad \text{where } (r, c) \text{ is the cell\'s coordinate.} '
+            '$$'
+        )
+
+    @classmethod
+    def sample_yaml(cls) -> str:
+        """Return some sample YAML for this constraint.
+
+        Returns:
+            str: Some sample YAML
+        """
+        return ''
+
+    def add_constraint(self, solver: Solver) -> None:
+        """Add start_location unique digit constraint for the cell.
 
         Args:
-            solver (PulpSolver): The solver instance.
+            solver (Solver): The solver instance.
         """
         name: str = f'Unique_digit_{self.row}_{self.column}'
         solver.model += lpSum(
@@ -279,11 +311,11 @@ class Cell(Item):
         ) == 1, name
 
     # pylint: disable=loop-invariant-statement
-    def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
+    def add_bookkeeping_constraint(self, solver: Solver) -> None:
         """Add constraints based on bookkeeping for the cell.
 
         Args:
-            solver (PulpSolver): The solver instance.
+            solver (Solver): The solver instance.
         """
         for digit in self.board.digit_range:
             if not self.book.is_possible(digit):
@@ -291,7 +323,7 @@ class Cell(Item):
                 solver.model += solver.variables.choices[digit][self.row][self.column] == 0, name
 
     def to_dict(self) -> dict:
-        """Convert the cell to start dictionary format.
+        """Convert the cell to a dictionary format.
 
         Returns:
             dict: A dictionary representation of the cell.

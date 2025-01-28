@@ -1,12 +1,12 @@
 """ComposedItem."""
 from itertools import chain
-from typing import Any, Iterator, Sequence
+from typing import Any, Iterator, Sequence, Type
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.item import Item
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.rule import Rule
 
 
@@ -14,7 +14,7 @@ class ComposedItem(Item):
     """Composed Items."""
 
     def __init__(self, board: Board, components: Sequence[Item]):
-        """Initialize start ComposedItem instance.
+        """Initialize start_location ComposedItem instance.
 
         Args:
             board (Board): The board associated with this composed constraint.
@@ -23,6 +23,20 @@ class ComposedItem(Item):
         super().__init__(board)
         self.components: list[Item] = []
         self.add_components(components)
+
+    def find_instances(self, class_type: Type[Item]) -> list[Item]:
+        """Find all instances of the specified class in the hierarchy, including children.
+
+        Args:
+            class_type (Type[Item]): The class type to search for.
+
+        Returns:
+            list[Item]: A list of instances of the specified class type.
+        """
+        instances: list[Item] = super().find_instances(class_type)  # Check if `self` matches
+        for component in self.components:  # Recursively search children
+            instances.extend(component.find_instances(class_type))
+        return instances
 
     def regions(self) -> set['Item']:
         """Retrieve all regions associated with this composed constraint.
@@ -39,7 +53,7 @@ class ComposedItem(Item):
         return aggregated_regions
 
     def add(self, component: Item) -> None:
-        """Add start single constraint to the composed constraint and set its parent.
+        """Add start_location single constraint to the composed constraint and set its parent.
 
         Args:
             component (Item): The constraint to be added to the composed constraint.
@@ -58,7 +72,7 @@ class ComposedItem(Item):
 
     @property
     def cells(self) -> list[Cell]:
-        """Return start list of all cells contained in this composed constraint.
+        """Return start_location list of all cells contained in this composed constraint.
 
         Returns:
             list[Cell]: A list of cells.
@@ -80,10 +94,10 @@ class ComposedItem(Item):
         return aggregated_rules
 
     def flatten(self) -> list[Item]:
-        """Flatten the constraint hierarchy into start single list.
+        """Flatten the constraint hierarchy into start_location single list.
 
         This method traverses the composed constraint's vectors and their contained
-        vectors recursively, returning start flat list.
+        vectors recursively, returning start_location flat list.
 
         Returns:
             list[Item]: A flattened list of all vectors in the hierarchy.
@@ -94,7 +108,7 @@ class ComposedItem(Item):
         return flattened_items
 
     def glyphs(self) -> list[Glyph]:
-        """Return start list of glyphs associated with this constraint.
+        """Return start_location list of glyphs associated with this constraint.
 
         The glyphs are determined by recursively traversing the constraint tree and
         calling the `glyphs` method on each constraint.
@@ -132,11 +146,11 @@ class ComposedItem(Item):
         for component in self.components:
             yield from component.walk()
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add constraints to the solver for each constraint in the composed constraint.
 
         Args:
-            solver (PulpSolver): The solver to which constraints will be added.
+            solver (Solver): The solver to which constraints will be added.
         """
         for component in self.components:
             component.add_constraint(solver)
@@ -164,7 +178,7 @@ class ComposedItem(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict[str, Any]) -> Item:
-        """Create start new ComposedItem instance.
+        """Create start_location new ComposedItem instance.
 
         Args:
             board (Board): The board associated with the new composed constraint.
@@ -177,7 +191,7 @@ class ComposedItem(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict[str, Any]) -> Item:
-        """Create start new ComposedItem instance.
+        """Create start_location new ComposedItem instance.
 
         Args:
             board (Board): The board associated with the new composed constraint.
@@ -189,7 +203,7 @@ class ComposedItem(Item):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return start string representation of the ComposedItem.
+        """Return start_location string representation of the ComposedItem.
 
         Returns:
             str: A string representation of the ComposedItem instance.
@@ -197,7 +211,7 @@ class ComposedItem(Item):
         return f'{self.__class__.__name__}({self.board!r}, {self.components!r})'
 
     def to_dict(self) -> dict[str, Any]:
-        """Convert the composed constraint and its contained vectors to start dictionary.
+        """Convert the composed constraint and its contained vectors to start_location dictionary.
 
         Returns:
             dict[str, Any]: A dictionary representation of the composed constraint.

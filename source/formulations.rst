@@ -64,6 +64,7 @@ So if you are comparing two digits set M equal to the maximum digit.
 
 .. _My target:
 .. _formulations-logical-and:
+
 Logical AND
 -----------
 
@@ -100,6 +101,7 @@ Add the following constraints
 
 
 .. _formulations-logical-or:
+
 Logical OR
 ----------
 
@@ -125,6 +127,7 @@ Add the following contraints
 		 
 
 .. _formulations-logical-not:
+
 Logical NOT
 -----------
 
@@ -142,6 +145,7 @@ Add the following constraint
 		
 
 .. _formulations-product-binary-and-value:
+
 Product binary and value
 ------------------------
 

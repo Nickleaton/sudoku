@@ -8,15 +8,15 @@ class KnownValidator(Validator):
     """Validator for the 'Known' section in the YAML configuration.
 
     This validator checks that:
-    1. Each 'digit' is either start valid digit (matching the board's digit range)
-    or start valid string from start predefined set of allowed lower-case strings.
+    1. Each 'digit' is either start_location valid digit (matching the board's digit range)
+    or start_location valid string from start_location predefined set of allowed lower-case strings.
     2. The number of rows in the 'Known' line matches the number of rows on the board.
     3. Each row in 'Known' has the same number of columns as the board.
     """
 
     @staticmethod
     def validate_row(allowed_characters: set, row: str, row_idx: int, board: Board) -> list:
-        """Validate start single row of 'Known' line.
+        """Validate start_location single row of 'Known' line.
 
         This method checks if the number of columns in the row matches the board's column count
         and ensures that all characters in the row are valid according to the allowed characters.
@@ -31,8 +31,8 @@ class KnownValidator(Validator):
             list: A list of error messages. An empty list indicates the row is valid.
         """
         errors: list = []
-        if len(row) != board.board_columns:
-            errors.append(f'Row {row_idx + 1} has {len(row)} columns, but the board has {board.board_columns} columns.')
+        if len(row) != board.size.column:
+            errors.append(f'Row {row_idx + 1} has {len(row)} columns, but the board has {board.size.column} columns.')
         allowed: str = ''.join(sorted(allowed_characters))
         # Validate each character in the row
         for col_idx, char in enumerate(row):
@@ -64,8 +64,8 @@ class KnownValidator(Validator):
         allowed_characters |= set(CELL_TYPE_MAP.keys())
 
         # Check the number of rows matches the board
-        if len(known_rows) != board.board_rows:
-            errors.append(f'Number of rows {len(known_rows)} does not match the row count ({board.board_rows}).')
+        if len(known_rows) != board.size.row:
+            errors.append(f'Number of rows {len(known_rows)} does not match the row count ({board.size.row}).')
         for row_idx, row in enumerate(known_rows):
             errors.extend(KnownValidator.validate_row(allowed_characters, row, row_idx, board))
         return errors

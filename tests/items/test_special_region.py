@@ -32,11 +32,11 @@ class TestSpecialRegion(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the SpecialRegion."""
-        return "SpecialRegion(Board(9, 9, 3, 3, None))"
+        return "SpecialRegion(Board(9, 9, {}))"
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the SpecialRegion has start rule."""
+        """Return whether the SpecialRegion has start_location rule."""
         return True
 
     @property

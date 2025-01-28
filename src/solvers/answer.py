@@ -1,4 +1,5 @@
 """Answer."""
+
 from src.board.board import Board
 
 
@@ -18,8 +19,8 @@ class Answer:
         self.board: Board = board
         self.digits: list[list[int]] = []
         if input_data is not None:
-            wrong_row_size: bool = len(input_data) != board.board_rows
-            wrong_col_size: bool = any(len(row) != board.board_columns for row in input_data)
+            wrong_row_size: bool = len(input_data) != board.size.row
+            wrong_col_size: bool = any(len(row) != board.size.column for row in input_data)
             if wrong_col_size or wrong_row_size:
                 raise ValueError('Input data dimensions do not match the board size.')
 
@@ -27,37 +28,47 @@ class Answer:
                 row_digits = [int(input_data[row - 1][col - 1]) for col in board.column_range]
                 self.digits.append(row_digits)
 
-    def __getitem__(self, indices: tuple[int, int]) -> int:
-        """Get the digit at a specific position on the board.
+    def __getitem__(self, index: int | tuple[int, int]) -> int:
+        """Get the digit at a specific location on the board.
 
         Args:
-            indices (tuple[int, int]): A tuple containing (row, column) indices.
+            index (int | tuple[int, int]): Row and column as a tuple or a single index.
 
         Returns:
-            int: The digit at the specified position on the board.
+            int: The digit at the specified location on the board.
 
         Raises:
             ValueError: If the row or column index is invalid.
         """
-        row, column = indices
-        if not self.board.is_valid(row, column):
-            raise ValueError(f'Invalid row or column index: {row}, {column}')
-        return self.digits[row - 1][column - 1]
+        if isinstance(index, tuple):
+            row, column = index
+        else:
+            row, column = divmod(index, self.board.size.column)
 
-    def __setitem__(self, indices: tuple[int, int], digit: int) -> None:
-        """Set the digit at a specific position on the board.
+        if not self.board.is_valid(row + 1, column + 1):  # Adjust for 1-based indexing
+            raise ValueError(f'Invalid row or column index: {row + 1}, {column + 1}')
+
+        return self.digits[row][column]
+
+    def __setitem__(self, index: int | tuple[int, int], digit: int) -> None:
+        """Set the digit at a specific location on the board.
 
         Args:
-            indices (tuple[int, int]): A tuple containing (row, column) indices.
-            digit (int): The digit to set at the specified position.
+            index (int | tuple[int, int]): Row and column as a tuple or a single index.
+            digit (int): The digit to set at the specified location.
 
         Raises:
             ValueError: If the row or column index is invalid.
         """
-        row, column = indices
-        if not self.board.is_valid(row, column):
-            raise ValueError(f'Invalid row or column index: {row}, {column}')
-        self.digits[row - 1][column - 1] = digit
+        if isinstance(index, tuple):
+            row, column = index
+        else:
+            row, column = divmod(index, self.board.size.column)
+
+        if not self.board.is_valid(row + 1, column + 1):  # Adjust for 1-based indexing
+            raise ValueError(f'Invalid row or column index: {row + 1}, {column + 1}')
+
+        self.digits[row][column] = digit
 
     def __repr__(self) -> str:
         """Return a string representation of the Answer object, including the board and its line.
@@ -66,8 +77,8 @@ class Answer:
             str: A string representation of the Answer object.
         """
         lines: list[str] = [
-            f"'{''.join([str(digit) for digit in self.digits[row - 1]])}'"
-            for row in self.board.row_range
+            f"'{''.join([str(digit) for digit in self.digits[row]])}'"
+            for row in range(self.board.size.row)
         ]
         string_line: str = ',\n    '.join(lines)
         return f'Answer(\n    {self.board!r},\n    [\n    {string_line}\n    ]\n)'
@@ -76,49 +87,10 @@ class Answer:
         """Return a string representation of the Answer object for display purposes.
 
         Returns:
-            str: A formatted string of the board with its cell values.
+            str: A string representation of the Answer object.
         """
         lines: list[str] = ['Answer:']
-        for row in self.board.row_range:
-            digits: str = ''.join([str(self[row, column]) for column in self.board.column_range])
+        for row in range(self.board.size.row):
+            digits: str = ''.join([str(self[row, column]) for column in range(self.board.size.column)])
             lines.append(f'  - {digits}')
         return '\n'.join(lines)
-
-    def __eq__(self, other: object) -> bool:
-        """Check equality between two Answer objects.
-
-        Args:
-            other (object): The object to compare with this Answer.
-
-        Returns:
-            bool: True if both Answer objects are identical, False otherwise.
-        """
-        if not isinstance(other, Answer):
-            return False
-        return self.digits == other.digits
-
-    @classmethod
-    def extract(cls, _: Board, yaml: dict) -> list[str]:
-        """Extract the line from the YAML dictionary.
-
-        Args:
-            _ (Board): The board object (unused here).
-            yaml (dict): A dictionary containing the board's configuration.
-
-        Returns:
-            list[str]: A list of strings representing the board line.
-        """
-        return [str(line) for line in yaml]
-
-    @classmethod
-    def create(cls, board: Board, yaml: dict) -> 'Answer':
-        """Create an Answer object from the given board and YAML line.
-
-        Args:
-            board (Board): The board associated with this line.
-            yaml (dict): A dictionary containing the board configuration.
-
-        Returns:
-            Answer: A newly created Answer object.
-        """
-        return Answer(board, Answer.extract(board, yaml))

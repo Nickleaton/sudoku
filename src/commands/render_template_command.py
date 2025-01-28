@@ -15,7 +15,7 @@ env = Environment(loader=FileSystemLoader(config.temporary_directory), autoescap
 
 
 class RenderTemplateCommand(SimpleCommand):
-    """Render the problem using start Jinja2 template."""
+    """Render the problem using start_location Jinja2 template."""
 
     def __init__(self):
         """Create the command."""

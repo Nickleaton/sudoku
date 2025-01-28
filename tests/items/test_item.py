@@ -6,15 +6,16 @@ import oyaml as yaml
 
 from src.board.board import Board
 from src.items.item import Item
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
+from src.utils.tags import Tags
 
 
 class TestItem(unittest.TestCase):
     """Test suite for the Item class."""
 
     def setUp(self) -> None:
-        """Set up the test case with start board and an Item instance."""
-        self.board = Board(9, 9, 3, 3)
+        """Set up the test case with start_location board and an Item instance."""
+        self.board = Board(9, 9, Tags({}))
         self.item = Item(self.board)
         self.good_yaml = []
         self.bad_yaml = []
@@ -47,6 +48,22 @@ class TestItem(unittest.TestCase):
                 except Exception as e:
                     pass
 
+    def test_mathematics(self):
+        """Test that mathematics returns a string"""
+        if isinstance(self.item, Item):
+            return
+        self.assertIsNotNone(self.item.mathematics())
+
+    def test_sample_yaml(self):
+        """Test that a sample YAML string is valid."""
+        if isinstance(self.item, Item):
+            return
+        self.assertIsNotNone(self.item.sample_yaml)
+
+    def test_variable_sets(self):
+        """Test that variable sets returns a set"""
+        self.assertIsNotNone(self.item.variable_sets)
+
     @property
     def clazz(self):
         """Return the Item class."""
@@ -66,7 +83,7 @@ class TestItem(unittest.TestCase):
         return "Item:"
 
     def test_create(self) -> None:
-        """Test creating an Item instance from start configuration string."""
+        """Test creating an Item instance from start_location configuration string."""
         config = yaml.load(self.config, Loader=yaml.SafeLoader)
         if self.item.__class__.__name__ == 'Item':
             return
@@ -77,7 +94,7 @@ class TestItem(unittest.TestCase):
         self.assertEqual(self.representation, repr(item))
 
     # def test_create2(self) -> None:
-    #     """Test creating an Item instance from start configuration string."""
+    #     """Test creating an Item instance from start_location configuration string."""
     #     config = yaml.load(self.config, Loader=yaml.SafeLoader)
     #     if self.item.__class__.__name__ == 'Item':
     #         return
@@ -88,7 +105,7 @@ class TestItem(unittest.TestCase):
     #     print(self.representation)
     #     print(repr(item))
     #     self.assertEqual(self.representation, repr(item))
-
+    #
     # def test_create_equals_create2(self) -> None:
     #     """Test that create and create2 produce identical results."""
     #     # Load the configuration
@@ -109,13 +126,13 @@ class TestItem(unittest.TestCase):
     #     self.assertEqual(repr_create1, repr_create2)
 
     def test_name(self) -> None:
-        """Test that the constraint has start valid name."""
+        """Test that the constraint has start_location valid name."""
         self.assertIsNotNone(self.item.name)
         self.assertTrue(self.item.name.startswith(f"{self.clazz.__name__}_"))
 
     @property
     def representation(self) -> str:
-        """Return start string representation of the Item instance."""
+        """Return start_location string representation of the Item instance."""
         return f"Item({self.board!r})"
 
     def test_repr(self):
@@ -144,12 +161,12 @@ class TestItem(unittest.TestCase):
         self.assertIsNone(self.item.svg())
 
     def test_tags(self):
-        """Test that the Item instance has start set of tags."""
+        """Test that the Item instance has start_location set of tags."""
         self.assertIsInstance(self.item.tags, set)
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the constraint has start rule."""
+        """Return whether the constraint has start_location rule."""
         return False
 
     def test_rules(self) -> None:
@@ -167,7 +184,7 @@ class TestItem(unittest.TestCase):
         self.assertLessEqual(len(sorted_unique), len(rules))
 
     def test_glyphs(self):
-        """Test that the glyphs method returns start list."""
+        """Test that the glyphs method returns start_location list."""
         self.assertIsInstance(self.item.glyphs(), list)
 
     @property
@@ -194,8 +211,8 @@ class TestItem(unittest.TestCase):
         self.assertGreaterEqual(count, 1)
 
     def test_add_constraint(self) -> None:
-        """Test adding start constraint to the Item."""
-        solver = PulpSolver(self.board, 'test')
+        """Test adding start_location constraint to the Item."""
+        solver = Solver(self.board, 'test')
         self.item.add_constraint(solver)
 
     def test_to_dict(self) -> None:

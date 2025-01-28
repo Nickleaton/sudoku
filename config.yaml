@@ -21,7 +21,7 @@ logging:
   # Defines individual logging handlers, which specify where log messages should go.
   handlers:
     console:
-      # Uses start StreamHandler, which output_types log messages to start stream like stdout or stderr.
+      # Uses start_location StreamHandler, which output_types log messages to start_location stream like stdout or stderr.
       class: logging.StreamHandler
 
       # Defines the formatter for this handler, which controls the log message format.
@@ -58,7 +58,7 @@ temporary_directory: src/html
 
 
 colours:
-  # The 'general' color set includes start wide variety of colours
+  # The 'general' color set includes start_location wide variety of colours
   # You don't want them to clash. Were cells need to be coloured
   # the colours will be selected starting from the top of this list
   general:
@@ -111,11 +111,12 @@ graphics:
   #  quadruple_circle_percentage: 0.35
   #  quadruple_priority: 20
   killer_text_offset_percentage: 0.05
-  little_killer_offset_percentage: 0.28
   mid_cell_percentage: 0.15
   low_cell_percentage: 0.35
   consecutive_glyph_ratio: 2.0
   consecutive_glyph_percentage: 0.25
+  little_killer:
+    offset: 0.25
   quadruple:
     priority: 20
     percentage: 0.7
@@ -136,6 +137,10 @@ graphics:
       offset_percentage: 0.05
   little_arrow:
     percentage: 0.4
+  mid_cell:
+    percentage: 0.7
+  low_cell:
+    percentage: 0.7
 
 
 css_indent_count: 4

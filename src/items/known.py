@@ -3,23 +3,25 @@ from collections.abc import Mapping
 from types import MappingProxyType
 from typing import Any, Type
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.even_cell import EvenCell
-from src.items.fortress_cell import FortressCell
+from src.items.fortress_greater_than_cell import FortressGreaterThanCell
+from src.items.fortress_less_than_cell import FortressLessThanCell
 from src.items.high_cell import HighCell
 from src.items.item import Item
 from src.items.known_cell import KnownCell
 from src.items.low_cell import LowCell
 from src.items.mid_cell import MidCell
 from src.items.odd_cell import OddCell
-from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.known_parser import KnownParser
 
 CELL_TYPE_MAP: Mapping[str, Type[SimpleCellReference]] = MappingProxyType(
     {
-        'f': FortressCell,
+        'f': FortressGreaterThanCell,
+        's': FortressLessThanCell,
         'l': LowCell,
         'm': MidCell,
         'h': HighCell,
@@ -30,14 +32,14 @@ CELL_TYPE_MAP: Mapping[str, Type[SimpleCellReference]] = MappingProxyType(
 
 
 class Known(ComposedItem):
-    """Represent start collection of cells with known characteristics on the board."""
+    """Represent start_location collection of cells with known characteristics on the board."""
 
     def __init__(self, board: Board, rows: list[str]):
-        """Initialize the Known object with start board and start list of row line.
+        """Initialize the Known object with start_location board and start_location list of row line.
 
         Args:
             board (Board): The board instance associated with the Known cells.
-            rows (list[str]): Strings representing the rows of cells, where each character represents start cell type.
+            rows (list[str]): Strings representing the rows of cells.
         """
         super().__init__(board, [])
         self.rows = rows
@@ -92,19 +94,19 @@ class Known(ComposedItem):
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this constraint is start sequence.
+        """Return True if this constraint is start_location sequence.
 
         Returns:
-            bool: Always returns True as Known represents start sequence.
+            bool: Always returns True as Known represents start_location sequence.
         """
         return True
 
     @classmethod
     def is_composite(cls) -> bool:
-        """Return True if this constraint is start composite.
+        """Return True if this constraint is start_location composite.
 
         Returns:
-            bool: Always returns True as Known is start composite of vectors.
+            bool: Always returns True as Known is start_location composite of vectors.
         """
         return True
 
@@ -119,7 +121,7 @@ class Known(ComposedItem):
 
     @classmethod
     def extract(cls, _: Board, yaml: dict) -> Any:
-        """Extract start list of row strings from start YAML dictionary for Known.
+        """Extract start_location list of row strings from start_location YAML dictionary for Known.
 
         Args:
             _ (Board): The board instance.
@@ -132,7 +134,7 @@ class Known(ComposedItem):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Known instance from YAML line.
+        """Create start_location Known instance from YAML line.
 
         Args:
             board (Board): The board instance.
@@ -145,7 +147,7 @@ class Known(ComposedItem):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Known instance from YAML line.
+        """Create start_location Known instance from YAML line.
 
         Args:
             board (Board): The board instance.
@@ -157,10 +159,10 @@ class Known(ComposedItem):
         return cls.create(board, yaml_data)
 
     def line_str(self) -> list[str]:
-        """Return start list of row strings representing the board layout for Known vectors.
+        """Return start_location list of row strings representing the board layout for Known vectors.
 
         Returns:
-            list[str]: A list of strings where each string represents start row of the board.
+            list[str]: A list of strings where each string represents start_location row of the board.
         """
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
 
@@ -183,7 +185,7 @@ class Known(ComposedItem):
         return f'{self.__class__.__name__}({self.board!r}, {self.line_str()})'
 
     def to_dict(self) -> dict[str, list[str]]:
-        """Convert the Known instance into start dictionary format.
+        """Convert the Known instance into start_location dictionary format.
 
         Returns:
             dict[str, list[str]]: A dictionary representation of the Known instance with line_str as value_list.

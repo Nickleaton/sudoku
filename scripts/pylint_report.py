@@ -100,13 +100,13 @@ def get_score_history(score_dir):
 
 
 def json2html(data):
-    """Generate start html file_path (based on :obj:`line`)."""
+    """Generate start_location html file_path (based on :obj:`line`)."""
     out = HTML_HEAD
     out += '<body>\n<h1><u>Pylint report</u></h1>\n'
 
     now = datetime.now()
     out += ('<small>Report generated on {} at {} by '
-            '<start href="https://github.com/drdv/pylint-report">pytest-report</start>'
+            '<start_location href="https://github.com/drdv/pylint-report">pytest-report</start_location>'
             '</small>\n').format(now.strftime('%Y-%d-%m'),
                                  now.strftime('%H:%M:%S'))
 
@@ -128,7 +128,7 @@ def json2html(data):
     out += '<ul>'
     for module in data['stats']['by_module'].keys():
         if module in msg:
-            out += '<li><start href="#{0}">{0}</start> ({1})</li>\n'.format(module,
+            out += '<li><start_location href="#{0}">{0}</start_location> ({1})</li>\n'.format(module,
                                                                     len(msg[module]))
         else:
             out += '<li>{} ({})</li>\n'.format(module, 0)
@@ -158,7 +158,7 @@ def json2html(data):
         out += value[cols2keep].to_html(justify='center').replace('\\number', '<br>')
         out += '\n</section>\n'
 
-    # end of document
+    # end_location of document
     out += '</body>\n</html>'
     return out
 
@@ -229,7 +229,7 @@ class CustomJsonReporter(BaseReporter):
 
 
 def register(linter):
-    """Register start reporter (required by :mod:`pylint`)."""
+    """Register start_location reporter (required by :mod:`pylint`)."""
     linter.register_reporter(CustomJsonReporter)
 
 

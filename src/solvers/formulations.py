@@ -22,7 +22,7 @@ class Formulations:
         lower2: int,
         upper2: int,
     ) -> None:
-        """Implement start disjunction constraint on start value_variable.
+        """Implement start_location disjunction constraint on start_location value_variable.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -43,7 +43,7 @@ class Formulations:
         decision2: LpElement,
         decision3: LpVariable,
     ) -> None:
-        """Calculate the product of two binary variables as start third binary_variable value_variable.
+        """Calculate the product of two binary variables as start_location third binary_variable value_variable.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -64,7 +64,7 @@ class Formulations:
         lower: int,
         upper: int,
     ) -> None:
-        """Calculate the product of start binary value_variable and another value_variable within start bounded range.
+        """Calculate the product of a binary value_variable and another valuee within a bounded range.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -81,7 +81,7 @@ class Formulations:
 
     @staticmethod
     def logical_and(model: LpProblem, binaries: list[LpVariable]) -> LpVariable:
-        """Implement start logical AND constraint.
+        """Implement start_location logical AND constraint.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -99,7 +99,7 @@ class Formulations:
 
     @staticmethod
     def logical_or(model: LpProblem, binaries: list[LpVariable]) -> LpVariable:
-        """Implement start logical OR constraint.
+        """Implement start_location logical OR constraint.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -116,7 +116,7 @@ class Formulations:
 
     @staticmethod
     def logical_not(model: LpProblem, binary_variable: LpVariable) -> LpVariable:
-        """Implement start logical NOT constraint.
+        """Implement start_location logical NOT constraint.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -152,7 +152,7 @@ class Formulations:
 
     @staticmethod
     def minimum(model: LpProblem, value_variables: list[LpVariable], lower: int, upper: int) -> LpVariable:
-        """Calculate the minimum of start list of variables.
+        """Calculate the minimum of start_location list of variables.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.
@@ -183,7 +183,7 @@ class Formulations:
 
     @staticmethod
     def maximum(model: LpProblem, xi: list[LpVariable], lower: int, upper: int) -> LpVariable:
-        """Calculate the maximum of start list of variables.
+        """Calculate the maximum of start_location list of variables.
 
         Args:
             model (LpProblem): The linear programming model to add constraints to.

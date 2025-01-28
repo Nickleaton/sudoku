@@ -4,7 +4,9 @@ import logging.config
 from pathlib import Path
 
 from src.commands.command import Command
-from src.commands.create_constraints_command import CreateConstraintsCommand
+from src.commands.extract_answer_command import ExtractAnswerCommand
+from src.commands.file_writer_command import LPFileWriterCommand
+from src.commands.file_writer_command import RuleWriterCommand
 from src.commands.file_writer_command import SVGProblemWriterCommand
 from src.commands.problem import Problem
 from src.commands.validate_config_command import ValidateConfigCommand
@@ -36,7 +38,8 @@ def process_solve(problem: Problem) -> None:
     Args:
         problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing solve for file: {problem.problem_file_name} with output: {problem.output_directory}")
+    command: Command = ExtractAnswerCommand()
+    command.execute(problem=problem)
 
 
 def process_validate(problem: Problem) -> None:
@@ -54,10 +57,8 @@ def process_problem(problem: Problem) -> None:
     Args:
         problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing problem for file: {problem.problem_file_name} with output: {problem.output_directory}")
     command: Command = SVGProblemWriterCommand()
     command.execute(problem=problem)
-    logger.info(f"Processing problem complete for file: {problem.problem_file_name}")
 
 
 def process_lp(problem: Problem) -> None:
@@ -66,12 +67,20 @@ def process_lp(problem: Problem) -> None:
     Args:
         problem (Problem): The problem instance to process.
     """
-    logger.info(f"Processing lp for file: {problem.problem_file_name} with output: {problem.output_directory}")
-    # command: Command = CreateLinearProgramCommand()
-
-    command = CreateConstraintsCommand()
+    command = LPFileWriterCommand()
     command.execute(problem=problem)
-    logger.info(f"Processing lp complete for file: {problem.problem_file_name}")
+
+
+def process_rules(problem: Problem) -> None:
+    """Produce rule file
+
+    Args:
+        problem (Problem): The problem instance to process.
+    """
+    logger.info(f"Processing rules for file: {problem.problem_file_name} with output: {problem.output_directory}")
+    command = RuleWriterCommand()
+    command.execute(problem=problem)
+    logger.info(f"Processing rules complete for file: {problem.problem_file_name}")
 
 
 def process_command(command: str, input_file: Path, output_path: Path) -> None:
@@ -94,6 +103,8 @@ def process_command(command: str, input_file: Path, output_path: Path) -> None:
             process_problem(problem)
         case 'lp':
             process_lp(problem)
+        case 'rules':
+            process_rules(problem)
         case _:
             logger.error(f"Unknown command: {command}")
 
@@ -157,7 +168,7 @@ def get_parser() -> argparse.ArgumentParser:
     Returns:
         argparse.ArgumentParser: The configured argument parser.
     """
-    commands = ['schema', 'solve', 'validate', 'problem', 'lp']
+    commands = ['schema', 'solve', 'validate', 'problem', 'lp', 'rules']
 
     argument_parser = argparse.ArgumentParser(description='Process some commands.')
 

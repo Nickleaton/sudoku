@@ -9,10 +9,10 @@ from src.schema.config_schema import problem_schema
 
 
 class ValidateConfigCommand(SimpleCommand):
-    """Command to validate start configuration file_path against start schema."""
+    """Command to validate start_location configuration file_path against start_location schema."""
 
     def __init__(self) -> None:
-        """Initialize start ValidateConfigCommand instance."""
+        """Initialize start_location ValidateConfigCommand instance."""
         super().__init__()
         self.add_preconditions([CreateConfigCommand])
         self.target = 'validation'

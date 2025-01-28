@@ -5,7 +5,7 @@ from strictyaml import load, YAMLParseError
 
 
 def validate_yaml_file(yaml_file: Path):
-    """Validate start YAML file_path against the strictyaml schema."""
+    """Validate start_location YAML file_path against the strictyaml schema."""
     try:
         with yaml_file.open() as f:
             yaml_content = f.read()

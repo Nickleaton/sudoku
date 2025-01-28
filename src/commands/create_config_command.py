@@ -13,7 +13,7 @@ class CreateConfigCommand(SimpleCommand):
     """Load Config into the problem."""
 
     def __init__(self) -> None:
-        """Initialize start CreateConfigCommand instance."""
+        """Initialize start_location CreateConfigCommand instance."""
         super().__init__()
         self.add_preconditions([LoadConfigFileCommand])
         self.target = 'config'

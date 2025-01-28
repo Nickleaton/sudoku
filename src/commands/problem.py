@@ -10,6 +10,7 @@ from src.board.board import Board
 from src.items.constraints import Constraints
 from src.solvers.answer import Answer
 from src.solvers.solver import Solver
+from src.solvers.solver_status import SolverStatus
 from src.utils.rule import Rule
 from src.utils.tags import Tags
 
@@ -41,9 +42,11 @@ class Problem:
         self.config: pydot | None = None
         self.board: Board | None = None
         self.solver: Solver | None = None
+        self.status: SolverStatus | None = None
         self.yaml_output_string: str | None = None
         self.meta: Tags | None = None
         self.rules: list[Rule] | None = None
+        self.rule_text: str | None = None
         self.bookkeeping_unique: str | None = None
         self.linear_program: str | None = None
         self.index_template: Template | None = None

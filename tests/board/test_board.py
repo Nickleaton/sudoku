@@ -72,8 +72,8 @@ class TestBoard(unittest.TestCase):
 
     def test_construction_8x8(self):
         """Test the construction of a 8x8 board."""
-        self.assertEqual(8, self.board8x8.board_columns)
-        self.assertEqual(8, self.board8x8.board_rows)
+        self.assertEqual(8, self.board8x8.size.row)
+        self.assertEqual(8, self.board8x8.size.column)
 
     def test_yaml(self):
         """Test the YAML representation of the board."""

@@ -30,7 +30,7 @@ class EvenCellGlyph(Glyph):
             location (Coord): The location of the glyph in coordinates.
 
         Raises:
-            ValueError: If the scale value is invalid
+            ValueError: If the scale digit is invalid
         """
         super().__init__(class_name)
         self.location: Coord = location
@@ -39,9 +39,9 @@ class EvenCellGlyph(Glyph):
         # Scaling factor for the rectangle size (calculated from config)
         scale: float = config.graphics.parity_cell.even.size * config.graphics.cell_size
 
-        # Ensure that scale is a valid non-zero value
+        # Ensure that scale is a valid non-zero digit
         if scale <= 0:
-            raise ValueError(f'Invalid scale value: {scale}. Check configuration.')
+            raise ValueError(f'Invalid scale digit: {scale}. Check configuration.')
 
         self.size: Point = Point(1, 1) * scale
 
@@ -52,14 +52,14 @@ class EvenCellGlyph(Glyph):
             Rect: An SVG Rect element
 
         Raises:
-            ValueError: If the inset value is invalid
+            ValueError: If the inset digit is invalid
         """
         # Calculate the top-left corner of the rectangle after applying scaling
         inset: float = config.graphics.parity_cell.even.inset * config.graphics.cell_size
 
-        # Ensure the inset value is valid
+        # Ensure the inset digit is valid
         if inset < 0:
-            raise ValueError(f'Invalid inset value: {inset}. Check configuration.')
+            raise ValueError(f'Invalid inset digit: {inset}. Check configuration.')
 
         top_left: Point = self.position + Point(1, 1) * inset
 

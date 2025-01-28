@@ -8,16 +8,16 @@ from src.utils.rule import Rule
 
 
 class CreateRulesCommand(SimpleCommand):
-    """Command for creating start list of rules in the problem instance."""
+    """Command for creating start_location list of rules in the problem instance."""
 
     def __init__(self):
-        """Initialize start CreateRulesCommand instance."""
+        """Initialize start_location CreateRulesCommand instance."""
         super().__init__()
         self.add_preconditions([CreateConstraintsCommand])
         self.target = 'rules'
 
     def work(self, problem: Problem) -> None:
-        """Create start list of rules in the problem instance.
+        """Create start_location list of rules in the problem instance.
 
         This function generates rules by traversing the constraint tree and calling the `rules`
         property on each constraint in the constraints attribute. The rules are then de-duplicated,

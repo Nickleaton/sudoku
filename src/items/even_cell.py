@@ -1,13 +1,13 @@
 """EvenCell."""
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.glyphs.glyph import Glyph
-from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
 class EvenCell(SimpleCellReference):
-    """Represents start cell that must contain an even digit."""
+    """Represents start_location cell that must contain an even digit."""
 
     @staticmethod
     def included(digit: int) -> bool:

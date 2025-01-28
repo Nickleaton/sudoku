@@ -70,7 +70,6 @@ class Board:
             Side.right: (1, board_rows),
         }
 
-        # TODO needs to change to handle 0-8 on a 9x9 board
         # Digits
         self.minimum_digit = 1
         self.maximum_digit = max(board_rows, board_columns)

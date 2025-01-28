@@ -3,7 +3,6 @@
 import unittest
 from typing import Type
 
-from src.board.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
@@ -18,8 +17,6 @@ class TestStandardRegion(TestRegion):
     def setUp(self) -> None:
         """Set up the test environment for StandardRegion."""
         super().setUp()
-
-        self.board = Board(9, 9, 3, 3)
         self.item = StandardRegion(self.board, 1)
         self.size = 0
 
@@ -36,7 +33,7 @@ class TestStandardRegion(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of StandardRegion."""
-        return "StandardRegion(Board(9, 9, 3, 3, None), 1)"
+        return "StandardRegion(Board(9, 9, {}), 1)"
 
     @property
     def str_representation(self) -> str:

@@ -10,10 +10,10 @@ class LoaderError(Exception):
 
 
 class Loader(ABC):
-    """Abstract base class for loading board line from start file_path."""
+    """Abstract base class for loading board line from start_location file_path."""
 
     def __init__(self, file_path: Path) -> None:
-        """Initialize the Loader with start file_path config_file.
+        """Initialize the Loader with start_location file_path config_file.
 
         Args:
             file_path (Path): The config_file to the file_path containing the board line.
@@ -22,7 +22,7 @@ class Loader(ABC):
 
     @abstractmethod
     def process(self) -> Board:
-        """Process the file_path and create start Board instance.
+        """Process the file_path and create start_location Board instance.
 
         This method must be implemented by subclasses to define how the board
         line is loaded from the file_path.
@@ -32,9 +32,9 @@ class Loader(ABC):
         """
 
     def __repr__(self) -> str:
-        """Return start string representation of the Loader instance.
+        """Return start_location string representation of the Loader instance.
 
-        This method provides start concise string that includes the class name
+        This method provides start_location concise string that includes the class name
         and the file_path config_file for easy identification.
 
         Returns:

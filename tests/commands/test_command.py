@@ -61,7 +61,7 @@ class TestCommand(unittest.TestCase):
         """Test the target property of the Command class."""
         if self.command is None:
             return
-        if isinstance(self.command, Command):
+        if self.command.name in ('Command', 'Simple', 'Null', 'Composed'):
             self.assertIsNone(self.command.target)
         else:
             self.assertIsNotNone(self.command.target)

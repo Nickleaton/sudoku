@@ -66,6 +66,7 @@ pytest-cov = "^6.0.0"
 pdoc = "14.5.1"
 poetry = "^1.8.4"
 tox = "^3.25.0"
+pre-commit = "^4.0.1"
 
 # Code Analysis
 
@@ -155,7 +156,7 @@ target-version = "py38"
 
 line-length = 120
 
-select = [
+lint.select = [
     "B", # bugbear
     "D", # pydocstyle
     "E", # pycodestyle
@@ -169,18 +170,18 @@ select = [
     "W", # pycodestyle
 ]
 
-ignore = [
+lint.ignore = [
     "F401", # Unused import (can be useful for certain IDEs or imports in tests)
     "I001", # Ignore missing type annotations (might be intentional for specific cases)
     "D413", # Docstring line too long (depends on project style or linter settings)
     "D203", # One blank line before class (we prefer no blank line before classes)
-    "D213", # Multi-line docstring summary second line (we don't need start blank line after the summary
+    "D213", # Multi-line docstring summary second line (we don't need start_location blank line after the summary
     "RUF100", # Unused noqa
 ]
 
 
-fixable = ["ALL"]
-unfixable = []
+lint.fixable = ["ALL"]
+lint.unfixable = []
 
 [tool.pylint.main]
 

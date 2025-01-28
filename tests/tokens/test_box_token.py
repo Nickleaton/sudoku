@@ -13,7 +13,7 @@ class TestBoxToken(TestSimpleToken):
         super().setUp()
         self.token = BoxToken()
         self.representation = "BoxToken()"
-        self.pattern = r"(\d)x(\d)"
+        self.pattern = r"([1-9])x([1-9])"
         self.name = 'Box'
         self.good = ['9x9', '2x3', '4x4']
         self.bad = ['99', '2*3', '4by4']

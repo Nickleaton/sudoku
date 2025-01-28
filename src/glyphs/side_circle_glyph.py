@@ -11,23 +11,23 @@ config: Config = Config()
 class SideCircleGlyph(CircleGlyph):
     """Represents a circular glyph that can be drawn on an SVG canvas."""
 
-    def __init__(self, class_name: str, location1: Coord, location2: Coord, percentage: float) -> None:
+    def __init__(self, class_name: str, first_location: Coord, second_location: Coord, percentage: float) -> None:
         """Initialize the CircleGlyph instance.
 
         Args:
             class_name (str): CSS class name for styling the circle.
-            location1 (Coord): Coordinate of first cell
-            location2 (Coord): Coordinate of second cell
+            first_location (Coord): Coordinate of first cell
+            second_location (Coord): Coordinate of second cell
             percentage (float): Scale factor for the circle's radius relative to the cell size.
 
         Raises:
             ValueError: If the location1 and location 2 are not orthogonal.
         """
-        if location1.row != location2.row and location1.column != location2.column:
-            raise ValueError(f'Not orthogonal: {location1} and {location2}')
+        if first_location.row != second_location.row and first_location.column != second_location.column:
+            raise ValueError(f'Not orthogonal: {first_location} and {second_location}')
         super().__init__(class_name, percentage)
-        self.location1: Coord = location1
-        self.location2: Coord = location2
+        self.location1: Coord = first_location
+        self.location2: Coord = second_location
         self.position: Point = Point.create_from_coord(self.location1)
 
     @property

@@ -20,7 +20,7 @@ class BoxToken(SimpleToken):
 
     @property
     def example(self) -> str:
-        """Get an example of value matched by the BoxToken.
+        """Get an example of digit matched by the BoxToken.
 
         Returns:
             str: An example string that the BoxToken would match.

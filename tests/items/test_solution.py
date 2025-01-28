@@ -21,8 +21,6 @@ class TestSolution(TestComposed):
     def setUp(self) -> None:
         """Set up the test environment for Solution."""
         super().setUp()
-
-        self.board = Board(9, 9, 3, 3)
         self.size = 81
         lines = [
             "123456789",
@@ -62,7 +60,7 @@ class TestSolution(TestComposed):
     def representation(self) -> str:
         """Return the string representation of the Solution."""
         return (
-            "Solution(Board(9, 9, 3, 3, None), "
+            "Solution(Board(9, 9, {}), "
             "["
             "'123456789', "
             "'123456789', "
@@ -79,7 +77,7 @@ class TestSolution(TestComposed):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the Solution has start rule."""
+        """Return whether the Solution has start_location rule."""
         return False
 
     @property

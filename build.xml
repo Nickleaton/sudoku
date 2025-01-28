@@ -7,7 +7,7 @@
     <property name="schema" value="src/schema/config_schema.py"/>
 
 
-    <target name="build" depends="install,update,pylint,mypy,ruff,flake8">
+    <target name="build" depends="install,update,pylint,mypy,ruff,flake8.src,flake8.tests">
         <echo>Build</echo>
     </target>
     <target name="install">
@@ -204,48 +204,12 @@
         </sequential>
     </macrodef>
 
-    <!-- Define individual targets for each module -->
-    <target name="flake8.src.board">
-        <run-flake8 module="src/board"/>
-    </target>
-
-    <target name="flake8.src.commands">
-        <run-flake8 module="src/commands"/>
-    </target>
-
-    <target name="flake8.src.glyphs">
-        <run-flake8 module="src/glyphs"/>
-    </target>
-
-    <target name="flake8.src.items">
-        <run-flake8 module="src/items"/>
-    </target>
-
-    <target name="flake8.src.parsers">
-        <run-flake8 module="src/parsers"/>
-    </target>
-
-    <target name="flake8.src.solvers">
-        <run-flake8 module="src/solvers"/>
-    </target>
-
-    <target name="flake8.src.tokens">
-        <run-flake8 module="src/tokens"/>
-    </target>
-
-    <target name="flake8.src.utils">
-        <run-flake8 module="src/utils"/>
-    </target>
-
-    <target name="flake8.src.validators">
-        <run-flake8 module="src/validators"/>
-    </target>
-
-    <target name="flake8"
-            depends="flake8.src.board,flake8.src.commands,flake8.src.glyphs,flake8.src.items,flake8.src.parsers,flake8.src.solvers,flake8.src.tokens,flake8.src.utils,flake8.src.validators"/>
-    <!-- Main target depends on all individual targets -->
     <target name="flake8.src">
         <run-flake8 module="src"/>
+    </target>
+
+    <target name="flake8.tests">
+        <run-flake8 module="tests"/>
     </target>
 
     <target name="generate.schema">

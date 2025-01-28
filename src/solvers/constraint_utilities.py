@@ -8,20 +8,20 @@ from pulp import LpVariable  # noqa: I001
 from pulp import lpSum  # noqa: I001
 
 from src.items.cell import Cell
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 
 
 class ConstraintUtilities:
-    """Utility class for managing constraints in the PulpSolver."""
+    """Utility class for managing constraints in the Solver."""
 
     variables: ClassVar[dict[str, LpVariable]] = {}
 
     @staticmethod
-    def total_expression(solver: PulpSolver, cell: Cell) -> lpSum:
+    def total_expression(solver: Solver, cell: Cell) -> lpSum:
         """Build the total expression for the log10 integer_value of a cell.
 
         Args:
-            solver (PulpSolver): The solver instance.
+            solver (Solver): The solver instance.
             cell (Cell): The cell for which the expression is built.
 
         Returns:
@@ -32,11 +32,11 @@ class ConstraintUtilities:
         )
 
     @staticmethod
-    def log10_cell(solver: PulpSolver, cell: Cell) -> LpVariable:
+    def log10_cell(solver: Solver, cell: Cell) -> LpVariable:
         """Create or retrieve the log10 integer_value variable for a given cell in the solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the variable belongs.
+            solver (Solver): The solver instance to which the variable belongs.
             cell (Cell): The cell for which the log10 integer_value variable is created.
 
         Returns:

@@ -10,7 +10,8 @@ from src.glyphs.composed_glyph import ComposedGlyph
 from src.glyphs.glyph import Glyph
 from src.parsers.none_parser import NoneParser
 from src.parsers.parser import Parser
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
+from src.solvers.variables import VariableSet
 from src.utils.config import Config
 from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuException
@@ -43,7 +44,7 @@ class Item:  # noqa: WPS110
         Item.classes['Item'] = Item
 
     def __init__(self, board: Board):
-        """Initialize an Item with start given board.
+        """Initialize an Item with start_location given board.
 
         Args:
             board (Board): The board that this constraint belongs to.
@@ -59,19 +60,19 @@ class Item:  # noqa: WPS110
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Check if the constraint is start sequence.
+        """Check if the constraint is start_location sequence.
 
         Returns:
-            bool: True if this constraint is start sequence, otherwise False.
+            bool: True if this constraint is start_location sequence, otherwise False.
         """
         return False
 
     @classmethod
     def is_composite(cls) -> bool:
-        """Check if the constraint is start composite.
+        """Check if the constraint is start_location composite.
 
         Returns:
-            bool: True if this constraint is start composite, otherwise False.
+            bool: True if this constraint is start_location composite, otherwise False.
         """
         return False
 
@@ -98,7 +99,7 @@ class Item:  # noqa: WPS110
         """Return the schema for this constraint.
 
         Returns:
-            Validator | Optional: The schema for this constraint, which may be start sequence or parser.
+            Validator | Optional: The schema for this constraint, which may be start_location sequence or parser.
         """
         if cls.is_sequence():
             return strictyaml.Seq(cls.parser())
@@ -106,7 +107,7 @@ class Item:  # noqa: WPS110
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> 'Item':
-        """Create an instance of the constraint from start YAML dictionary.
+        """Create an instance of the constraint from start_location YAML dictionary.
 
         Args:
             board (Board): The board this constraint belongs to.
@@ -129,7 +130,7 @@ class Item:  # noqa: WPS110
 
     @classmethod
     def create2(cls, board: Board, yaml: dict) -> 'Item':
-        """Create an instance of the constraint from start YAML dictionary.
+        """Create an instance of the constraint from start_location YAML dictionary.
 
         Args:
             board (Board): The board this constraint belongs to.
@@ -161,6 +162,20 @@ class Item:  # noqa: WPS110
             return self
         return self.parent.top
 
+    def find_instances(self, class_type: Type['Item']) -> list['Item']:
+        """Find all instances of the specified class in the hierarchy.
+
+        Args:
+            class_type (Type[Item): The class type to search for.
+
+        Returns:
+            list: A list of instances of the specified class type.
+        """
+        instances: list[Item] = []
+        if isinstance(self, class_type):
+            instances.append(self)
+        return instances
+
     def regions(self) -> set['Item']:
         """Get the set of vectors used in this constraint.
 
@@ -187,7 +202,7 @@ class Item:  # noqa: WPS110
         return []
 
     def flatten(self) -> list['Item']:
-        """Flatten the constraint hierarchy into start list.
+        """Flatten the constraint hierarchy into start_location list.
 
         Returns:
             list[Item]: A list of vectors in the hierarchy.
@@ -204,7 +219,7 @@ class Item:  # noqa: WPS110
         return list(set(self.rules))
 
     def glyphs(self) -> list[Glyph]:
-        """Return start list of SVG glyphs for this constraint.
+        """Return start_location list of SVG glyphs for this constraint.
 
         Returns:
             list[Glyph]: A list of SVG glyphs.
@@ -212,7 +227,7 @@ class Item:  # noqa: WPS110
         return []
 
     def sorted_glyphs(self) -> Glyph:
-        """Return start composed SVG glyph for this constraint.
+        """Return start_location composed SVG glyph for this constraint.
 
         Returns:
             Glyph: A composed SVG glyph.
@@ -230,7 +245,7 @@ class Item:  # noqa: WPS110
 
     @property
     def tags(self) -> set[str]:
-        """Return start set of tags associated with this constraint.
+        """Return start_location set of tags associated with this constraint.
 
         Returns:
             set[str]: A set of tags.
@@ -270,28 +285,78 @@ class Item:  # noqa: WPS110
         return True
 
     def __repr__(self) -> str:
-        """Return start string representation of this constraint.
+        """Return start_location string representation of this constraint.
 
         Returns:
             str: A string representation of the constraint.
         """
         return f'{self.__class__.__name__}({self.board!r})'
 
-    def add_constraint(self, solver: PulpSolver) -> None:
-        """Add start constraint to the solver.
+    def add_constraint(self, solver: Solver) -> None:
+        """Add start_location constraint to the solver.
 
         Args:
-            solver (PulpSolver): The solver to which the constraint will be added.
+            solver (Solver): The solver to which the constraint will be added.
         """
+
+    def variable_sets(self) -> set[VariableSet]:
+        """Return a set of the variables that are needed for this constraint.
+
+        Returns:
+            set[VariableSet]: A set of the variables that are needed for this constraint.
+        """
+        variables: set[VariableSet] = set()
+        for constraint in self.walk():
+            variables.update(constraint.variable_sets())
+        return variables
+
+    def sample_yaml(self) -> str:
+        """Return some sample YAML for this constraint.
+
+        Returns:
+            str: Some sample YAML
+        """
+        return ''
+
+    @classmethod
+    def mathematics_documentation(cls) -> str:
+        """Return the mathematical representations.
+
+        Returns:
+            str: The mathematical representations that can be used.
+        """
+        docs: dict[str, str] = {}
+        for constraint_class in Item.classes:
+            if constraint_class.name in docs or constraint_class.mathematics() is None or constraint_class == Item:
+                continue
+            docs[constraint_class.__name__] = constraint_class.mathematics()
+
+        # Use a list comprehension to construct documentation lines
+        documentation_lines = [
+            f'{key}:\n{docs[key]}\n' for key in sorted(docs.keys())
+        ]
+
+        # Join lines with an empty newline
+        documentation = '\n'.join(documentation_lines)
+        return documentation if documentation else ''
+
+    @classmethod
+    def mathematics(cls) -> str:
+        """Return the mathematical representation of the constraint.
+
+        Returns:
+            str: The mathematical representation of the constraint
+        """
+        return ''
 
     def bookkeeping(self) -> None:
         """Perform bookkeeping for this constraint."""
 
-    def add_bookkeeping_constraint(self, solver: PulpSolver) -> None:
+    def add_bookkeeping_constraint(self, solver: Solver) -> None:
         """Add bookkeeping constraints for the constraint to the solver.
 
         Args:
-            solver (PulpSolver): The solver to which bookkeeping constraints will be added.
+            solver (Solver): The solver to which bookkeeping constraints will be added.
         """
         for constraint in self.walk():
             if constraint.__class__.__name__ != 'Cell':
@@ -321,7 +386,7 @@ class Item:  # noqa: WPS110
         return all(marked_book.is_unique() for marked_book in marked_books)
 
     def to_dict(self) -> dict:
-        """Convert the constraint to start dictionary for YAML dumping.
+        """Convert the constraint to start_location dictionary for YAML dumping.
 
         Returns:
             dict: A dictionary representing the constraint.

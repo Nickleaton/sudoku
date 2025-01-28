@@ -1,25 +1,23 @@
 """ExtractAnswerCommand."""
+import logging
+from itertools import product
+
 from src.commands.command import CommandException
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.commands.solve_command import SolveCommand
 from src.solvers.answer import Answer
-from src.solvers.pulp_solver import Status
+from src.solvers.solver_status import SolverStatus
+from src.solvers.variables import Variables
 
 
 class ExtractAnswerCommand(SimpleCommand):
     """Command for extracting the line from the solver's results."""
 
-    def __init__(self, solver: str = 'solver', target: str = 'answer'):
-        """Initialize an ExtractAnswerCommand instance.
-
-        Args:
-            solver (str): The attribute in the problem containing the solver.
-            target (str): The attribute name in the problem where the line will be stored.
-        """
+    def __init__(self):
+        """Initialize an ExtractAnswerCommand instance."""
         super().__init__()
         self.add_preconditions([SolveCommand])
-        self.target = 'answer'
 
     def work(self, problem: Problem) -> None:
         """Extract the line from the solver's results and store it in the problem.
@@ -30,20 +28,22 @@ class ExtractAnswerCommand(SimpleCommand):
             problem (Problem): The problem instance from which to extract the line.
 
         Raises:
-            CommandException: If no solver is set.
+            CommandException: If the solver's status is not optimal.
+            CommandException: If the board is not created.
+            CommandException: If the solver is not created.
         """
-        solver = problem.get(self.solver)
-
-        if solver is None:
-            raise CommandException('No solver has been set.')
-
-        if solver.status != Status.OPTIMAL:
+        if problem.status is None:
+            raise CommandException('No solve has been performed.')
+        if problem.board is None:
+            raise CommandException('No board has been created.')
+        if problem.solver is None:
+            raise CommandException('No solver has been created.')
+        if problem.status != SolverStatus.optimal:
+            logging.warning('The solver did not find an optimal solution.')
             return
 
-        board = solver.board
-        problem.answer = Answer(board)
-
-        for row in board.row_range:
-            for column in board.column_range:
-                solver_choice = solver.variables.choices[row][column]
-                problem.answer[row, column] = int(solver_choice.varValue)
+        problem.answer = Answer(problem.board)
+        variables: Variables = problem.solver.variables
+        for row, column in product(problem.board.row_range, problem.board.column_range):
+            number: int = int(variables.numbers[row, column].varValue)
+            problem.answer[row, column] = number

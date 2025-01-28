@@ -41,7 +41,6 @@ class Boxes(StandardRegionSet):
         for box_index in range(self.count):
             self.add(Box(board, box_index + 1, self.size))
 
-
     def box_index(self, row: int, column: int) -> int:
         """Determine the box index for a given cell specified by row and column.
 
@@ -56,10 +55,9 @@ class Boxes(StandardRegionSet):
             IndexError: If the row or column is out of bounds.
         """
         if row < 1 or row > self.board.size.row:
-            raise IndexError(f"Row {row} is out of bounds. Valid rows are 1 to {self.board.size.row}.")
+            raise IndexError(f'Row {row} is out of bounds. Valid rows are 1 to {self.board.size.row}.')
         if column < 1 or column > self.board.size.column:
-            raise IndexError(
-                f"Column {column} is out of bounds. Valid columns are 1 to {self.board.size.column}.")
+            raise IndexError(f'Column {column} is out of bounds. Valid columns are 1 to {self.board.size.column}.')
 
         return ((row - 1) // self.size.row) * self.size.row + (column - 1) // self.size.column + 1
 
@@ -76,8 +74,7 @@ class Boxes(StandardRegionSet):
             IndexError: If the index is out of bounds.
         """
         if index < 1 or index > self.count:
-            raise IndexError(
-                f"Index {index} is out of bounds. Valid indices are 1 to {self.count}.")
+            raise IndexError(f'Index {index} is out of bounds. Valid indices are 1 to {self.count}.')
 
         zero_index: int = index - 1
 

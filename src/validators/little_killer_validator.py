@@ -37,7 +37,7 @@ class LittleKillerValidator(Validator):
         errors.extend(ValueValidator.validate(board, {'Value': parts['Value']}))
         index: int = int(parts['Index'])
         side: str = parts['Side']
-        max_index = board.board_rows + 1 if side in {'T', 'B'} else board.board_columns + 1
+        max_index = board.size.row + 1 if side in {'T', 'B'} else board.size.column + 1
         if index < 0 or index > max_index:
             errors.append(f'Invalid index: {index}. Must be between 0 and {max_index} for side {side!r}.')
         return errors

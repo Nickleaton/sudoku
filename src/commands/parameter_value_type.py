@@ -3,7 +3,7 @@ from typing import Any, Type
 
 
 class ParameterValueType:
-    """Represent a start parameter with a key, associated input_value, and expected type.
+    """Represent a start_location parameter with a key, associated input_value, and expected type.
 
     Attributes:
         key (str): The identifier for the parameter.

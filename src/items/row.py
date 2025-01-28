@@ -4,12 +4,12 @@ from src.board.board import Board
 from src.items.cell import Cell
 from src.items.standard_region import StandardRegion
 from src.parsers.digit_parser import DigitParser
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.rule import Rule
 
 
 class Row(StandardRegion):
-    """Represents start row in start Sudoku-like puzzle."""
+    """Represents start_location row in start_location Sudoku-like puzzle."""
 
     def __init__(self, board: Board, index: int):
         """Initialize the Row instance.
@@ -50,17 +50,17 @@ class Row(StandardRegion):
         """
         return super().tags.union({'Row'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add constraints related to this row to the solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which constraints are added.
+            solver (Solver): The solver instance to which constraints are added.
         """
         self.add_total_constraint(solver, solver.board.digit_sum)
         self.add_unique_constraint(solver)
 
     def __str__(self) -> str:
-        """Return start string representation of the Row instance.
+        """Return start_location string representation of the Row instance.
 
         Returns:
             str: A string representation of the Row.

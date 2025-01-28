@@ -2,12 +2,12 @@
 import unittest
 from typing import Type
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
+from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.mid_cell import MidCell
-from src.items.simple_cell_reference import SimpleCellReference
-from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestMidCell(TestSimpleCellReference):
@@ -30,8 +30,8 @@ class TestMidCell(TestSimpleCellReference):
     def representation(self) -> str:
         """Return the string representation of the MidCell instance."""
         return (
-            "MidCell(Board(9, 9, 3, 3, None), "
-            "Cell(Board(9, 9, 3, 3, None), 1, 2))"
+            "MidCell(Board(9, 9, {}), "
+            "Cell(Board(9, 9, {}), 1, 2))"
         )
 
     @property
@@ -48,7 +48,7 @@ class TestMidCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the MidCell instance has start rule."""
+        """Return whether the MidCell instance has start_location rule."""
         return True
 
     @property

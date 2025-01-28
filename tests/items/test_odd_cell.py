@@ -2,12 +2,12 @@
 import unittest
 from typing import Type
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
+from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.odd_cell import OddCell
-from src.items.simple_cell_reference import SimpleCellReference
-from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestOdd(TestSimpleCellReference):
@@ -16,7 +16,6 @@ class TestOdd(TestSimpleCellReference):
     def setUp(self) -> None:
         """Set up the test environment for OddCell."""
         super().setUp()
-
         self.item = OddCell(self.board, 1, 2)
         self.good = [1, 3, 5, 7, 9]
         self.bad = [2, 4, 6, 8]
@@ -33,8 +32,8 @@ class TestOdd(TestSimpleCellReference):
         return (
             "OddCell"
             "("
-            "Board(9, 9, 3, 3, None), "
-            "Cell(Board(9, 9, 3, 3, None), 1, 2)"
+            "Board(9, 9, {}), "
+            "Cell(Board(9, 9, {}), 1, 2)"
             ")"
         )
 
@@ -52,7 +51,7 @@ class TestOdd(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the OddCell instance has start rule."""
+        """Return whether the OddCell instance has start_location rule."""
         return True
 
     @property

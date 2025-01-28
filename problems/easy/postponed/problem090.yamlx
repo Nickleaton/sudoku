@@ -1,0 +1,42 @@
+Board:
+  Board: 9x9
+  Tags:
+    Title: The Mote in the Quad's Eye
+    Author: Jeremy Dover
+    Video: https://www.youtube.com/watch?v=IykYoO3JCPQ&ab_channel=CrackingTheCryptic
+    Reference: https://sudokupad.app/quadsparade/themoteinquadseye
+Constraints:
+  Boxes: 3x3
+  Columns:
+  Rows:
+  QuadrupleInclude:
+    - 22=13
+    - 27=35
+    - 53=2569
+    - 43=2359
+    - 48=278
+    - 56=57
+    - 26=3589
+    - 64=1348
+    - 72=35
+    - 77=57
+    - 88=69
+  Mote:
+    - 11, 12, 13, 21, 31
+    - 71, 81, 91, 92, 93
+    - 17, 18, 19, 29, 39
+    - 97, 98, 99, 89, 79
+    - 38, 48
+    - 41, 42, 43, 53
+    - 45, 46, 55, 46, 56
+    - 57, 67, 68, 69
+Solution:
+  - 594683127
+  - 263714589
+  - 781952634
+  - 815369472
+  - 649275318
+  - 327148965
+  - 952836741
+  - 138497256
+  - 476521893

@@ -14,7 +14,7 @@ class ComposedCommand(Command):
     """Combine multiple commands."""
 
     def __init__(self, commands: list[Command] | None = None):
-        """Initialize start new instance of the ComposedCommand class.
+        """Initialize start_location new instance of the ComposedCommand class.
 
         Args:
             commands (list[Command], optional): A list of commands to initialize
@@ -24,7 +24,7 @@ class ComposedCommand(Command):
         self.commands: list[Command] = commands if commands is not None else []
 
     def add(self, command: Command) -> None:
-        """Add start command to the composed command.
+        """Add start_location command to the composed command.
 
         Args:
             command (Command): The command to add.
@@ -51,7 +51,7 @@ class ComposedCommand(Command):
             command.execute(problem)
 
     def __or__(self, other: Command) -> 'ComposedCommand':
-        """Combine two commands into start new composed command.
+        """Combine two commands into start_location new composed command.
 
         Args:
             other (Command): The other command to combine with.
@@ -85,7 +85,7 @@ class ComposedCommand(Command):
         return len(self.commands)
 
     def __repr__(self) -> str:
-        """Return start string representation of the composed command.
+        """Return start_location string representation of the composed command.
 
         Returns:
             str: A representation of the composed command with its vectors.

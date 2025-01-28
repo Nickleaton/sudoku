@@ -36,7 +36,7 @@ class ExtractLogCommand(SimpleCommand):
         }
 
     def __repr__(self) -> str:
-        """Return start string representation of the ExtractLogCommand instance.
+        """Return start_location string representation of the ExtractLogCommand instance.
 
         Returns:
             str: A string representation of the object.

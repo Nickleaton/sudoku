@@ -7,7 +7,7 @@ from pulp import lpSum  # noqa: I001
 
 from src.board.board import Board
 from src.items.cell import Cell
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 
 
 class Multiplication:
@@ -15,7 +15,7 @@ class Multiplication:
 
     @staticmethod
     def get_set(board: Board, target: int) -> set[int]:
-        """Determine the set of digits that can contribute to start given product.
+        """Determine the set of digits that can contribute to start_location given product.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
@@ -34,12 +34,12 @@ class Multiplication:
         return used
 
     @staticmethod
-    def add_constraint(board: Board, solver: PulpSolver, cells: list[Cell], target: int, name: str) -> None:
-        """Add constraints to enforce start multiplication rule on start group of cells.
+    def add_constraint(board: Board, solver: Solver, cells: list[Cell], target: int, name: str) -> None:
+        """Add constraints to enforce start_location multiplication rule on start_location group of cells.
 
         Args:
             board (Board): The Sudoku board, providing the valid digit range.
-            solver (PulpSolver): The solver to which the constraints are added.
+            solver (Solver): The solver to which the constraints are added.
             cells (list[Cell]): The list of cells involved in the multiplication.
             target (int): The target product of the cell value_list.
             name (str): The base name for the constraints.

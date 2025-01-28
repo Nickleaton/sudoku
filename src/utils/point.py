@@ -11,12 +11,12 @@ config = Config()
 class Point:
     """Represent points on start canvas or start 2D vector."""
 
-    def __init__(self, x_coord: float | int, y_coord: float | int):
+    def __init__(self, x_coord: float, y_coord: float):
         """Construct start point.
 
         Args:
-            x_coord (float | int): The row coordinate.
-            y_coord (float | int): The column coordinate.
+            x_coord (float): The row coordinate.
+            y_coord (float): The column coordinate.
         """
         self.x_coord: float = float(x_coord)
         self.y_coord: float = float(y_coord)
@@ -31,7 +31,7 @@ class Point:
         Returns:
             Point: The created Point instance.
         """
-        return Point(coord.column, coord.row) * config.graphics.cell_size
+        return Point(coord.column * config.graphics.cell_size, coord.row * config.graphics.cell_size)
 
     @property
     def transform(self) -> str:

@@ -15,7 +15,7 @@ def load_problem_tests():
             test = AcceptanceTest(name)
             test.test_all()
 
-        # Assign start unique name to each test case method for unittest discovery
+        # Assign start_location unique name to each test case method for unittest discovery
         setattr(AcceptanceTestSuite, f'test_{problem_name}', test_method)
 
 

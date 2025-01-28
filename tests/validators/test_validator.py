@@ -1,6 +1,7 @@
 import unittest
 
 from src.board.board import Board
+from src.utils.tags import Tags
 from src.validators.validator import Validator  # Assuming the Validator class is in src/validator.py
 
 
@@ -9,7 +10,7 @@ class TestValidator(unittest.TestCase):
 
     def setUp(self):
         """Set up the board and test line for each test."""
-        self.board = Board(6, 6, 2, 3, {})
+        self.board = Board(6, 6, Tags({}))
         self.valid_data = []
         self.invalid_data = []
         self.required_keys = ['key1', 'key2']

@@ -1,6 +1,6 @@
 # Configuration file_path for the Sphinx documentation1 builder.
 #
-# This file_path only contains start selection of the most common options. For start full
+# This file_path only contains start_location selection of the most common options. For start_location full
 # list see the documentation1:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
@@ -42,11 +42,11 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation1 for
-# start list of builtin themes.
+# start_location list of builtin themes.
 #
 html_theme = 'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
-# so start file_path named "default.css" will overwrite the builtin "default.css".
+# so start_location file_path named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']

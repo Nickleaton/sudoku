@@ -27,8 +27,8 @@ class TestCellReference(TestItem):
         return (
             "CellReference"
             "("
-            "Board(9, 9, 3, 3, None), "
-            "Cell(Board(9, 9, 3, 3, None), "
+            "Board(9, 9, {}), "
+            "Cell(Board(9, 9, {}), "
             "1, "
             "2"
             ")"
@@ -42,7 +42,7 @@ class TestCellReference(TestItem):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the CellReference has start rule."""
+        """Indicates if the CellReference has start_location rule."""
         return False
 
     @property

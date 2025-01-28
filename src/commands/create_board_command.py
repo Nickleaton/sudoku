@@ -8,10 +8,10 @@ from src.commands.simple_command import SimpleCommand
 
 
 class CreateBoardCommand(SimpleCommand):
-    """Command to create start board from configuration line."""
+    """Command to create start_location board from configuration line."""
 
     def __init__(self):
-        """Initialize start CreateBoardCommand instance."""
+        """Initialize start_location CreateBoardCommand instance."""
         super().__init__()
         self.add_preconditions([CreateConfigCommand])
         self.target = 'board'
@@ -19,8 +19,8 @@ class CreateBoardCommand(SimpleCommand):
     def work(self, problem: Problem) -> None:
         """Create the board and store it in the problem.
 
-        Log start message indicating that the command is being processed and
-        create start new board in the problem, storing it in the specified target attribute.
+        Log start_location message indicating that the command is being processed and
+        create start_location new board in the problem, storing it in the specified target attribute.
 
         Args:
             problem (Problem): Problem instance to create the board in.

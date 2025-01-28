@@ -16,7 +16,7 @@ class NoneValidator(Validator):
 
     @staticmethod
     def validate(board: Board, input_data: dict | list) -> list[str]:
-        """Run all validations on start single cell.
+        """Run all validations on start_location single cell.
 
         This method checks if the cell has valid keys and if it is within the board's range.
 

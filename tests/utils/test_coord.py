@@ -12,8 +12,6 @@ class TestCoord(unittest.TestCase):
         self.coord_b = Coord(5, 7)
         self.coord_c = Coord(-3, -4)
 
-
-Te
     def test_addition(self):
         """Test the addition of two Coord objects."""
         result = self.coord_a + self.coord_b
@@ -52,7 +50,6 @@ Te
         """Test less-than comparison of Coord objects."""
         self.assertTrue(self.coord_a < self.coord_b)
         self.assertFalse(self.coord_b < self.coord_a)
-
 
     def test_create_from_int(self):
         """Test creation of Coord from an integer representation."""

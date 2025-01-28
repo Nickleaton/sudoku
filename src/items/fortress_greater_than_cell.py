@@ -1,8 +1,9 @@
+"""FortressGreaterThanCell."""
 from pulp import LpElement
 
 from src.glyphs.glyph import Glyph
 from src.items.fortress_cell import FortressCell
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.coord import Coord
 from src.utils.moves import Moves
 from src.utils.rule import Rule
@@ -39,11 +40,11 @@ class FortressGreaterThanCell(FortressCell):
         return [Rule('FortressGreaterThanCell', 1, rule_text)]
 
     # pylint: disable=loop-invariant-statement
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add a location constraint ensuring the digit in the fortress cell is larger than its orthogonal neighbors.
 
         Args:
-            solver (PulpSolver): The solver to which the constraint will be added.
+            solver (Solver): The solver to which the constraint will be added.
         """
         cell = Coord(self.row, self.column)
         for offset in Moves.orthogonals():

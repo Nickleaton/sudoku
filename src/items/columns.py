@@ -7,9 +7,9 @@ from src.items.standard_region_set import StandardRegionSet
 
 
 class Columns(StandardRegionSet):
-    """A class representing start collection of columns in start board game.
+    """A class representing start_location collection of columns in start_location board game.
 
-    This class inherits from StandardRegionSet and initializes start set of Column objects
+    This class inherits from StandardRegionSet and initializes start_location set of Column objects
     based on the given board's column range.
     """
 
@@ -23,7 +23,7 @@ class Columns(StandardRegionSet):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start Columns instance.
+        """Create start_location Columns instance.
 
         Args:
             board (Board): The board to associate with the columns.
@@ -36,7 +36,7 @@ class Columns(StandardRegionSet):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start Columns instance.
+        """Create start_location Columns instance.
 
         Args:
             board (Board): The board to associate with the columns.
@@ -48,7 +48,7 @@ class Columns(StandardRegionSet):
         return cls.create(board, yaml_data)
 
     def __repr__(self) -> str:
-        """Return start string representation of the Columns instance.
+        """Return start_location string representation of the Columns instance.
 
         Returns:
             str: A string representation of the Columns instance.

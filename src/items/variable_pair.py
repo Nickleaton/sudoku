@@ -3,15 +3,14 @@ import re
 
 from pulp import LpElement, LpVariable
 
+from postponed.src.items.pair import Pair
 from src.board.board import Board
-from src.glyphs.circle_glyph import CircleGlyph
 from src.glyphs.glyph import Glyph
+from src.glyphs.side_circle_glyph import SideCircleGlyph
 from src.items.cell import Cell
 from src.items.item import Item
-from src.items.pair import Pair
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.config import Config
-from src.utils.coord import Coord
 from src.utils.sudoku_exception import SudokuException
 from src.utils.variable_type import VariableType
 
@@ -19,10 +18,10 @@ config = Config()
 
 
 class VariablePair(Pair):
-    """Represents a pair of cells with an associated value_variable for start constraint."""
+    """Represents a pair of cells with an associated value_variable for start_location constraint."""
 
     def __init__(self, board: Board, cell1: Cell, cell2: Cell, var_name: str) -> None:
-        """Initialize start VariablePair instance.
+        """Initialize start_location VariablePair instance.
 
         Args:
             board (Board): The board the pair belongs to.
@@ -34,7 +33,7 @@ class VariablePair(Pair):
         self.var_name = var_name
 
     def __repr__(self) -> str:
-        """Return start string representation of the VariablePair instance.
+        """Return start_location string representation of the VariablePair instance.
 
         Returns:
             str: String representation of the VariablePair instance.
@@ -56,7 +55,7 @@ class VariablePair(Pair):
             SudokuException: If the YAML input does not match the expected pattern.
         """
         rc_pattern = f'[{board.digit_values}][{board.digit_values}]'
-        var_pattern = '[start-zA-Z][a-zA-Z_]*'
+        var_pattern = '[start_location-zA-Z][a-zA-Z_]*'
         regex = re.compile(f'({rc_pattern})-({rc_pattern})=({var_pattern})')
         match = regex.match(yaml[cls.__name__])
         if match is None:
@@ -68,7 +67,7 @@ class VariablePair(Pair):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start VariablePair instance from the YAML line.
+        """Create start_location VariablePair instance from the YAML line.
 
         Args:
             board (Board): The board to create the pair on.
@@ -82,7 +81,7 @@ class VariablePair(Pair):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start VariablePair instance from the YAML line (alternative method).
+        """Create start_location VariablePair instance from the YAML line (alternative method).
 
         Args:
             board (Board): The board to create the pair on.
@@ -118,9 +117,10 @@ class VariablePair(Pair):
             list[Glyph]: A list of Glyph objects generated for the VariablePair instance.
         """
         return [
-            CircleGlyph(
+            SideCircleGlyph(
                 self.__class__.__name__,
-                Coord.middle(self.cell1.coord.center, self.cell2.coord.center),
+                self.cell1.coord,
+                self.cell2.coord,
                 config.graphics.small_circle_percentage,
             ),
         ]
@@ -135,11 +135,11 @@ class VariablePair(Pair):
             self.__class__.__name__: f'{self.cell1.row_column_string}-{self.cell2.row_column_string}={self.var_name}',
         }
 
-    def target(self, solver: PulpSolver) -> LpElement | None:
+    def target(self, solver: Solver) -> LpElement | None:
         """Define the target value_variable for the pair in the solver.
 
         Args:
-            solver (PulpSolver): The solver to add the target for.
+            solver (Solver): The solver to add the target for.
 
         Returns:
             LpElement | None: The target value_variable or None if not defined.
@@ -154,11 +154,11 @@ class VariablePair(Pair):
         """
         return VariableType.integer_number
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add the constraint for the VariablePair to the solver.
 
         Args:
-            solver (PulpSolver): The solver to add the constraint to.
+            solver (Solver): The solver to add the constraint to.
         """
         target = self.target(solver)
         if target is None:

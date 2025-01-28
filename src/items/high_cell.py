@@ -1,12 +1,12 @@
 """HighCell."""
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.glyph import Glyph
-from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.rule import Rule
 
 
 class HighCell(SimpleCellReference):
-    """Represents start cell that must contain start digit from the set {7, 8, 9}."""
+    """Represents start_location cell that must contain start_location digit from the set {7, 8, 9}."""
 
     @staticmethod
     def digits() -> list[int]:

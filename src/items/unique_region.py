@@ -6,7 +6,7 @@ from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.rule import Rule
 
 
@@ -14,7 +14,7 @@ class UniqueRegion(Region):
     """A region within the board where numbers cannot repeat."""
 
     def __init__(self, board: Board, cells: Sequence[Item]):
-        """Initialize start UniqueRegion instance.
+        """Initialize start_location UniqueRegion instance.
 
         Args:
             board (Board): The board associated with this region.
@@ -24,7 +24,7 @@ class UniqueRegion(Region):
         self.add_components(cells)
 
     def __repr__(self) -> str:
-        """Return start string representation of the UniqueRegion instance.
+        """Return start_location string representation of the UniqueRegion instance.
 
         Returns:
             str: A string representation of the UniqueRegion.
@@ -51,7 +51,7 @@ class UniqueRegion(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start UniqueRegion instance from YAML configuration.
+        """Create start_location UniqueRegion instance from YAML configuration.
 
         Args:
             board (Board): The board associated with this region.
@@ -64,7 +64,7 @@ class UniqueRegion(Region):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start UniqueRegion instance from YAML configuration.
+        """Create start_location UniqueRegion instance from YAML configuration.
 
         Args:
             board (Board): The board associated with this region.
@@ -102,16 +102,16 @@ class UniqueRegion(Region):
         """
         return super().tags.union({self.__class__.__name__})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add the unique constraint for this region to the solver.
 
         Args:
-            solver (PulpSolver): The solver to which constraints will be added.
+            solver (Solver): The solver to which constraints will be added.
         """
         self.add_unique_constraint(solver)
 
     def to_dict(self) -> dict:
-        """Convert the UniqueRegion instance to start dictionary representation.
+        """Convert the UniqueRegion instance to start_location dictionary representation.
 
         Returns:
             dict: A dictionary representation of the UniqueRegion.

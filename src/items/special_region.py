@@ -2,20 +2,20 @@
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
-from src.glyphs.rect_glyph import SquareGlyph
+from src.glyphs.square_glyph import SquareGlyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.items.region import Region
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
 class SpecialRegion(Region):
-    """Represents start special region on the Sudoku board where specific rules apply."""
+    """Represents start_location special region on the Sudoku board where specific rules apply."""
 
     def __init__(self, board: Board):
-        """Initialize start SpecialRegion.
+        """Initialize start_location SpecialRegion.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -41,7 +41,7 @@ class SpecialRegion(Region):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start SpecialRegion instance from YAML configuration.
+        """Create start_location SpecialRegion instance from YAML configuration.
 
         Args:
             board (Board): The Sudoku board instance.
@@ -53,7 +53,7 @@ class SpecialRegion(Region):
         return cls(board)
 
     def __repr__(self) -> str:
-        """Return start string representation of the SpecialRegion.
+        """Return start_location string representation of the SpecialRegion.
 
         Returns:
             str: A string representation of the region.
@@ -86,11 +86,11 @@ class SpecialRegion(Region):
         """
         return super().tags.union({self.region_name()})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add constraints for the special region to the solver.
 
         Args:
-            solver (PulpSolver): The solver instance.
+            solver (Solver): The solver instance.
 
         Constraints:
             - The total of the digits in the region equals the board's digit sum.
@@ -100,7 +100,7 @@ class SpecialRegion(Region):
         self.add_unique_constraint(solver)
 
     def to_dict(self) -> dict:
-        """Convert the special region to start dictionary representation.
+        """Convert the special region to start_location dictionary representation.
 
         Returns:
             dict: A dictionary representing the region.

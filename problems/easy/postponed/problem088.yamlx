@@ -1,0 +1,38 @@
+Board:
+  Board: 9x9
+  Tags:
+    Title: Hush
+    Author: Tallcat
+    Video: https://www.youtube.com/watch?v=83Gu7fk5_Io&ab_channel=zetamathdoespuzzles
+Constraints:
+  Columns:
+  Rows:
+  Boxes: 3x3
+  GermanWhisperLine:
+    - 21,11,12
+    - 24,15,26
+    - 18,19,29
+    - 43,54,63
+    - 48,59,68
+    - 81,91,92
+    - 84,95,86
+    - 98,99,89
+  NumberedRoom:
+    - T4=3
+    - T5=4
+    - R1=9
+    - B4=2
+    - B9=6
+    - L1=6
+    - L5=7
+    - L9=4
+Solution:
+  - 386475192
+  - 945182367
+  - 172693854
+  - 598364721
+  - 631257948
+  - 427819635
+  - 853941276
+  - 264738519
+  - 719526483

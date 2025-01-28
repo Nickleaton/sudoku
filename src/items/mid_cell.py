@@ -1,14 +1,14 @@
 """MidCell."""
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.glyph import Glyph
 from src.glyphs.mid_cell_glyph import MidCellGlyph
-from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
 class MidCell(SimpleCellReference):
-    """Represents start mid-range cell, which can contain one of the digits 4, 5, or 6."""
+    """Represents start_location mid-range cell, which can contain one of the digits 4, 5, or 6."""
 
     @staticmethod
     def digits() -> list[int]:
@@ -21,7 +21,7 @@ class MidCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Check if start given digit is included in the list of valid digits for MidCell.
+        """Check if start_location given digit is included in the list of valid digits for MidCell.
 
         Args:
             digit (int): The digit to check.
@@ -32,7 +32,7 @@ class MidCell(SimpleCellReference):
         return digit in MidCell.digits()
 
     def letter(self) -> str:
-        """Return the letter representation of start MidCell.
+        """Return the letter representation of start_location MidCell.
 
         Returns:
             str: The letter 'm' representing MidCell.
@@ -49,7 +49,7 @@ class MidCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Return start set of tags associated with the MidCell.
+        """Return start_location set of tags associated with the MidCell.
 
         Returns:
             set[str]: A set of tags, including 'Trio' for MidCell.
@@ -66,7 +66,7 @@ class MidCell(SimpleCellReference):
         return [Rule('Mid', 1, 'The digits 4, 5, and 6 are marked with blue squares')]
 
     def glyphs(self) -> list[Glyph]:
-        """Return start list of Glyphs associated with MidCell.
+        """Return start_location list of Glyphs associated with MidCell.
 
         Returns:
             list[Glyph]: A list containing the MidCellGlyph for this cell.
@@ -77,7 +77,7 @@ class MidCell(SimpleCellReference):
         """Return the CSS styles associated with MidCell.
 
         Returns:
-            dict: A dictionary containing the CSS styles, with start stroke of blue and start white fill.
+            dict: A dictionary containing the CSS styles.
         """
         return {
             '.MidCell': {

@@ -107,7 +107,6 @@ class Command:
         except CommandException as preconditions_exp:
             logging.error(f'Error in {self.__class__.__name__} - {preconditions_exp}', exc_info=True)
             raise
-        logging.info(f'{self.__class__.__name__} executing command.')
         try:
             self.work(problem)
         except Exception as work_exp:

@@ -1,14 +1,14 @@
 """LowCell."""
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.glyph import Glyph
 from src.glyphs.low_cell_glyph import LowCellGlyph
-from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
 class LowCell(SimpleCellReference):
-    """Represents start low cell, which can contain one of the digits 1, 2, or 3."""
+    """Represents start_location low cell, which can contain one of the digits 1, 2, or 3."""
 
     @staticmethod
     def digits() -> list[int]:
@@ -21,7 +21,7 @@ class LowCell(SimpleCellReference):
 
     @staticmethod
     def included(digit: int) -> bool:
-        """Check if start given digit is included in the list of valid digits for LowCell.
+        """Check if start_location given digit is included in the list of valid digits for LowCell.
 
         Args:
             digit (int): The digit to check.
@@ -32,7 +32,7 @@ class LowCell(SimpleCellReference):
         return digit in LowCell.digits()
 
     def letter(self) -> str:
-        """Return the letter representation of start LowCell.
+        """Return the letter representation of start_location LowCell.
 
         Returns:
             str: The letter 'l' representing LowCell.
@@ -49,7 +49,7 @@ class LowCell(SimpleCellReference):
 
     @property
     def tags(self) -> set[str]:
-        """Return start set of tags associated with the LowCell.
+        """Return start_location set of tags associated with the LowCell.
 
         Returns:
             set[str]: A set of tags, including 'Trio' for LowCell.
@@ -66,7 +66,7 @@ class LowCell(SimpleCellReference):
         return [Rule('Low', 1, 'The digits 1, 2, and 3 are marked with orange circles')]
 
     def glyphs(self) -> list[Glyph]:
-        """Return start list of Glyphs associated with LowCell.
+        """Return start_location list of Glyphs associated with LowCell.
 
         Returns:
             list[Glyph]: A list containing the LowCellGlyph for this cell.
@@ -77,7 +77,7 @@ class LowCell(SimpleCellReference):
         """Return the CSS styles associated with LowCell.
 
         Returns:
-            dict: A dictionary containing the CSS styles, with start stroke of orange and start white fill.
+            dict: A dictionary containing the CSS styles.
         """
         return {
             '.LowCell': {

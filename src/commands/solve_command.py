@@ -2,18 +2,14 @@
 from src.commands.create_linear_program_command import CreateLinearProgramCommand  # noqa: 1001
 from src.commands.problem import Problem  # noqa: 1001
 from src.commands.simple_command import SimpleCommand
+from src.solvers.solver_status import SolverStatus
 
 
 class SolveCommand(SimpleCommand):
-    """Command to solve start problem using start specified solver."""
+    """Command to solve start_location problem using start_location specified solver."""
 
-    def __init__(self, solver: str = 'solver', target: str = 'solution'):
-        """Construct start SolveCommand.
-
-        Args:
-            solver (str): The field containing the solver to use.
-            target (str): The field to store the solution in.
-        """
+    def __init__(self):
+        """Construct a SolveCommand."""
         super().__init__()
         self.add_preconditions([CreateLinearProgramCommand])
         self.target = 'answer'
@@ -27,4 +23,4 @@ class SolveCommand(SimpleCommand):
         super().work(problem)
         if problem.solver is not None:
             problem.solver.solve()
-            problem.answer = problem.solver.answer
+        problem.status = SolverStatus.create(problem.solver.status.value)

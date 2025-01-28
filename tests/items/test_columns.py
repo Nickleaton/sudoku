@@ -36,7 +36,7 @@ class TestColumns(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation for the Columns constraint."""
-        return "Columns(Board(9, 9, 3, 3, None))"
+        return "Columns(Board(9, 9, {}))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -46,7 +46,7 @@ class TestColumns(TestStandardRegionSet):
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Columns constraint has start rule."""
+        """Indicates if the Columns constraint has start_location rule."""
         return True
 
 

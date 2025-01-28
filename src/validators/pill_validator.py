@@ -7,7 +7,7 @@ from src.validators.validator import Validator  # noqa: I001
 
 
 class PillValidator(Validator):
-    """Validates start sequence of cells forming a valid 'pill' shape on the board.
+    """Validates start_location sequence of cells forming a valid 'pill' shape on the board.
 
     A 'pill' is a sequence of cells that:
         - Are located in the same row or column.

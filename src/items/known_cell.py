@@ -12,7 +12,7 @@ from src.utils.sudoku_exception import SudokuException
 
 
 class KnownCell(CellReference):
-    """Represent start given cell in the board with start specified digit.
+    """Represent start_location given cell in the board with start_location specified digit.
 
     Attributes:
         digit (int): The digit assigned to this cell.
@@ -20,7 +20,7 @@ class KnownCell(CellReference):
     """
 
     def __init__(self, board: Board, row: int, column: int, digit: int, prefix=None):
-        """Initialize start KnownCell instance.
+        """Initialize start_location KnownCell instance.
 
         Args:
             board (Board): The board associated with this cell.
@@ -50,13 +50,13 @@ class KnownCell(CellReference):
         regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start valid match.')
+            raise SudokuException('Match is None, expected start_location valid match.')
         row_str, column_string, digit_str = match.groups()
         return int(row_str), int(column_string), int(digit_str)
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create an instance of KnownCell from start YAML dictionary.
+        """Create an instance of KnownCell from start_location YAML dictionary.
 
         Args:
             board (Board): The board associated with this constraint.
@@ -70,7 +70,7 @@ class KnownCell(CellReference):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create an instance of KnownCell from start YAML dictionary.
+        """Create an instance of KnownCell from start_location YAML dictionary.
 
         Args:
             board (Board): The board associated with this constraint.
@@ -82,15 +82,15 @@ class KnownCell(CellReference):
         return cls.create(board, yaml_data)
 
     def glyphs(self) -> list[Glyph]:
-        """Return start list of SVG glyphs for this constraint.
+        """Return start_location list of SVG glyphs for this constraint.
 
         Returns:
-            list[Glyph]: A list containing start KnownGlyph for this cell.
+            list[Glyph]: A list containing start_location KnownGlyph for this cell.
         """
         return [KnownGlyph('Known', Coord(self.row, self.column), self.digit)]
 
     def __repr__(self) -> str:
-        """Return start string representation of this constraint.
+        """Return start_location string representation of this constraint.
 
         Returns:
             str: A string representation of this KnownCell instance.
@@ -98,7 +98,7 @@ class KnownCell(CellReference):
         return f'{self.__class__.__name__}({self.board!r}, {self.cell!r}, {self.digit!r})'
 
     def to_dict(self) -> dict:
-        """Convert the constraint to start dictionary for serialization.
+        """Convert the constraint to start_location dictionary for serialization.
 
         Returns:
             dict: A dictionary with the class name as the key and cell information as the number.

@@ -14,9 +14,9 @@ template_string = """
 digraph {
     rankdir=TB;
     node [shape=box];
-    {% for cls_name, cls in classes.items() %}
-        {% for precondition in cls().preconditions %}
-            "{{ cls().name }}" -> "{{ precondition().name }}";
+    {% for cls_name, class_type in classes.items() %}
+        {% for precondition in class_type().preconditions %}
+            "{{ class_type().name }}" -> "{{ precondition().name }}";
         {% endfor %}
     {% endfor %}
 }
@@ -97,7 +97,7 @@ def render_jpg(dot_content: str, output_dir: Path) -> None:
 
 
 def main() -> None:
-    """Main entry point for the script."""
+    """Main entry location for the script."""
     setup_logging()
     logging.info('Starting DOT file generation.')
 

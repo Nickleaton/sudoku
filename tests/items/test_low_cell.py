@@ -2,12 +2,12 @@
 import unittest
 from typing import Type
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
+from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.low_cell import LowCell
-from src.items.simple_cell_reference import SimpleCellReference
-from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestLowCell(TestSimpleCellReference):
@@ -28,10 +28,10 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def representation(self) -> str:
-        """Return start string representation of the LowCell instance."""
+        """Return start_location string representation of the LowCell instance."""
         return (
-            "LowCell(Board(9, 9, 3, 3, None), "
-            "Cell(Board(9, 9, 3, 3, None), 1, 2))"
+            "LowCell(Board(9, 9, {}), "
+            "Cell(Board(9, 9, {}), 1, 2))"
         )
 
     @property
@@ -48,7 +48,7 @@ class TestLowCell(TestSimpleCellReference):
 
     @property
     def has_rule(self) -> bool:
-        """Return whether the LowCell instance has start rule."""
+        """Return whether the LowCell instance has start_location rule."""
         return True
 
     @property

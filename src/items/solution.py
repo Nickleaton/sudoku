@@ -3,21 +3,21 @@ from itertools import product
 
 import strictyaml
 
+from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.item import SudokuException
 from src.items.known_cell import KnownCell
-from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.solution_parser import SolutionParser
 from src.solvers.answer import Answer
 
 
 class Solution(ComposedItem):
-    """Represents a solution composed of known cells for start given board."""
+    """Represents a solution composed of known cells for start_location given board."""
 
     def __init__(self, board: Board, rows: list[str]):
-        """Initialize the Solution with start board and row line.
+        """Initialize the Solution with start_location board and row line.
 
         Args:
             board (Board): The board associated with this solution.
@@ -115,7 +115,7 @@ class Solution(ComposedItem):
         """Return a list of row strings representing the board layout for known vectors.
 
         Returns:
-            list[str]: A list of strings, each representing start row on the board.
+            list[str]: A list of strings, each representing start_location row on the board.
         """
         # Initialize a list with placeholders for each cell on the board
         lines = [['.' for _ in self.board.column_range] for _ in self.board.row_range]
@@ -129,7 +129,7 @@ class Solution(ComposedItem):
             if isinstance(component, KnownCell):
                 lines[component.row - 1][component.column - 1] = str(component.digit)
 
-        # Join each row's list into start single string
+        # Join each row's list into start_location single string
         return [''.join(line) for line in lines]
 
     def __repr__(self) -> str:
@@ -141,7 +141,7 @@ class Solution(ComposedItem):
         return f'{self.__class__.__name__}({self.board!r}, {self.line_str()})'
 
     def to_dict(self) -> dict:
-        """Convert the Solution instance to start dictionary.
+        """Convert the Solution instance to start_location dictionary.
 
         Returns:
             dict: A dictionary representation of the Solution.
@@ -158,7 +158,7 @@ class Solution(ComposedItem):
             bool: True if the objects are equal, False otherwise.
 
         Raises:
-            SudokuException: If the other object is neither an Answer nor start Solution.
+            SudokuException: If the other object is neither an Answer nor start_location Solution.
         """
         if isinstance(other, (Answer, Solution)):
             for row, column in product(self.board.row_range, self.board.column_range):

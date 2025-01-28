@@ -23,7 +23,7 @@ config = Config()
 class SVGCommand(SimpleCommand):
     """Base class for SVG output commands."""
 
-    def work(self, problem: Problem) -> None:
+    def work(self, problem: Problem) -> None:  # noqa: WPS231
         """Produce the SVG.
 
         Args:
@@ -36,16 +36,16 @@ class SVGCommand(SimpleCommand):
         """
         super().work(problem)
         if problem.board is None:
-            raise CommandException(f'Board must be created.')
+            raise CommandException('Board must be created.')
         if problem.constraints is None:
-            raise CommandException(f'Constraints must be created.')
+            raise CommandException('Constraints must be created.')
         if self.target is None:
-            raise CommandException(f'Target is not set.')
+            raise CommandException('Target is not set.')
 
         # Build the viewBox string first
         cell_size: int = config.graphics.cell_size
-        rows: int = problem.board.board_rows + 2
-        columns: int = problem.board.board_columns + 2
+        rows: int = problem.board.size.row + 2
+        columns: int = problem.board.size.column + 2
         view_box: str = f'0 0 {cell_size * rows} {cell_size * columns}'
 
         # Directly use problem attributes and create canvas
@@ -78,7 +78,7 @@ class SVGCommand(SimpleCommand):
         """Select whether the given constraint is to be drawn.
 
         This method should be overridden in subclasses. The default behavior
-        is to draw start Cell, Boxes, Rows, or Columns.
+        is to draw start_location Cell, Boxes, Rows, or Columns.
 
         Args:
             constraint (Item | None): The constraint to be checked.
@@ -100,7 +100,7 @@ class SVGPencilMarkCommand(SVGCommand):
     def select(self, constraint: Item | None) -> bool:
         """Selector to determine if the constraint should be displayed.
 
-        This method is start placeholder for future implementation.
+        This method is start_location placeholder for future implementation.
 
         Args:
             constraint (Item | None): The constraint to check if it's included in the output.

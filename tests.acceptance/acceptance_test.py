@@ -113,7 +113,7 @@ class AcceptanceTest(unittest.TestCase):
 
 def generate_test_cases():
     """Dynamically create test cases for each YAML file_path in the problems/easy directory."""
-    # Iterate through YAML files and create start corresponding test method for each
+    # Iterate through YAML files and create start_location corresponding test method for each
     for problem_file in Path("problems/easy").glob("*89.yaml"):
         problem_name = problem_file.stem
         test_name = f"test_{problem_name}"

@@ -3,7 +3,6 @@
 import unittest
 from typing import Type
 
-from src.board.board import Board
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
@@ -22,8 +21,6 @@ class TestRows(TestStandardRegionSet):
     def setUp(self) -> None:
         """Set up the test environment for Rows."""
         super().setUp()
-
-        self.board = Board(9, 9, 3, 3)
         self.item = Rows(self.board)
         self.size = 9
 
@@ -40,7 +37,7 @@ class TestRows(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of the Rows instance."""
-        return "Rows(Board(9, 9, 3, 3, None))"
+        return "Rows(Board(9, 9, {}))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

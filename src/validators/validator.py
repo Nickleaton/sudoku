@@ -6,7 +6,7 @@ class Validator:
     """Base class for board validation.
 
     This class provides a base structure for validators that check
-    the validity of the start `Board` against some `line`. It can be extended
+    the validity of the start_location `Board` against some `line`. It can be extended
     by custom validators for specific types of validation.
     """
 

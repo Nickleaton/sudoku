@@ -15,7 +15,7 @@ class TestRegion(TestComposed):
 
     def setUp(self) -> None:
         super().setUp()
-        """Set up start test instance of Region with predefined cells."""
+        """Set up start_location test instance of Region with predefined cells."""
         self.cells = [
             Cell.make(self.board, 1, 1),
             Cell.make(self.board, 1, 2),
@@ -38,7 +38,7 @@ class TestRegion(TestComposed):
     @property
     def representation(self) -> str:
         """Return the string representation of Region."""
-        return "Region(Board(9, 9, 3, 3, None))"
+        return "Region(Board(9, 9, {}))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -47,12 +47,12 @@ class TestRegion(TestComposed):
 
     @property
     def inside(self) -> Cell:
-        """Return start cell that is inside the Region."""
+        """Return start_location cell that is inside the Region."""
         return Cell.make(self.board, 1, 1)
 
     @property
     def outside(self) -> Cell:
-        """Return start cell that is outside the Region."""
+        """Return start_location cell that is outside the Region."""
         return Cell.make(self.board, 9, 9)
 
     def test_in(self):

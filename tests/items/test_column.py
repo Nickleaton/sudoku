@@ -2,7 +2,6 @@
 import unittest
 from typing import Type
 
-from src.board.board import Board
 from src.items.cell import Cell
 from src.items.column import Column
 from src.items.composed_item import ComposedItem
@@ -18,8 +17,6 @@ class TestColumn(TestStandardRegion):
     def setUp(self) -> None:
         """Set up the Board and Column instance for testing."""
         super().setUp()
-
-        self.board = Board(9, 9, 3, 3)
         self.item = Column(self.board, 1)
         self.size = 9
 
@@ -36,11 +33,11 @@ class TestColumn(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return the string representation for the Column constraint."""
-        return "Column(Board(9, 9, 3, 3, None), 1)"
+        return "Column(Board(9, 9, {}), 1)"
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the Column has start rule."""
+        """Indicates if the Column has start_location rule."""
         return True
 
     @property
@@ -49,7 +46,7 @@ class TestColumn(TestStandardRegion):
         return {Item, ComposedItem, Cell, Region, StandardRegion, Column}
 
     def test_in(self):
-        """Test if start Cell is contained within the Column."""
+        """Test if start_location Cell is contained within the Column."""
         self.assertIn(Cell.make(self.board, 2, 1), self.item)
         self.assertNotIn(Cell.make(self.board, 9, 9), self.item)
 

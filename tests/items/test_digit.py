@@ -1,6 +1,6 @@
 import unittest
 
-from src.items.digit import digit_0_8, digit_1_4, digit_1_6, digit_1_9, digit_1_F
+from src.items.digit import digit08, digit14, digit16, digit19, digit1F
 
 
 class TestDigit(unittest.TestCase):
@@ -51,7 +51,7 @@ class TestDigit0To8(TestDigit):
     def setUp(self) -> None:
         self.minimum = 0
         self.maximum = 8
-        self.digit = digit_0_8
+        self.digit = digit08
 
 
 class TestDigit1To4(TestDigit):
@@ -60,7 +60,7 @@ class TestDigit1To4(TestDigit):
     def setUp(self) -> None:
         self.minimum = 1
         self.maximum = 4
-        self.digit = digit_1_4
+        self.digit = digit14
 
 
 class TestDigit1To6(TestDigit):
@@ -69,7 +69,7 @@ class TestDigit1To6(TestDigit):
     def setUp(self) -> None:
         self.minimum = 1
         self.maximum = 6
-        self.digit = digit_1_6
+        self.digit = digit16
 
 
 class TestDigit1To9(TestDigit):
@@ -78,7 +78,7 @@ class TestDigit1To9(TestDigit):
     def setUp(self) -> None:
         self.minimum = 1
         self.maximum = 9
-        self.digit = digit_1_9
+        self.digit = digit19
 
 
 class TestDigit1ToF(TestDigit):
@@ -87,7 +87,7 @@ class TestDigit1ToF(TestDigit):
     def setUp(self) -> None:
         self.minimum = 1
         self.maximum = 0xF  # Hexadecimal for 15
-        self.digit = digit_1_F
+        self.digit = digit1F
 
 
 if __name__ == '__main__':

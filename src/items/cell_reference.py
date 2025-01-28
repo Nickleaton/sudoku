@@ -10,10 +10,10 @@ from src.utils.rule import Rule
 
 
 class CellReference(Item):
-    """Represents start reference to start cell on start board."""
+    """Represents start_location reference to start_location cell on start_location board."""
 
     def __init__(self, board: Board, row: int, column: int):
-        """Initialize the CellReference with start board and cell position.
+        """Initialize the CellReference with start_location board and cell location.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -22,12 +22,25 @@ class CellReference(Item):
         """
         super().__init__(board)
         self.cell = Cell.make(board, row, column)
-        self.row = row
-        self.column = column
+        self.row: int = row
+        self.column: int = column
+
+    def find_instances(self, class_type: Type[Item]) -> list[Item]:
+        """Find all instances of the specified class in the hierarchy.
+
+        Args:
+            class_type (Type[Item]): The class type to search for.
+
+        Returns:
+            list[Item]: A list of instances of the specified class type.
+        """
+        instances: list[Item] = super().find_instances(class_type)  # Check if `self` matches
+        instances.extend(self.cell.find_instances(class_type))  # Check the target
+        return instances
 
     @classmethod
     def is_sequence(cls) -> bool:
-        """Return True if this constraint is start sequence.
+        """Return True if this constraint is start_location sequence.
 
         Returns:
             bool: Always True for CellReference.
@@ -60,7 +73,7 @@ class CellReference(Item):
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
-        """Create start CellReference instance from the given board and YAML line.
+        """Create start_location CellReference instance from the given board and YAML line.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -74,7 +87,7 @@ class CellReference(Item):
 
     @classmethod
     def create2(cls, board: Board, yaml_data: dict) -> Item:
-        """Create start CellReference instance from the given board and YAML line.
+        """Create start_location CellReference instance from the given board and YAML line.
 
         Args:
             board (Board): The board associated with this cell reference.
@@ -102,7 +115,7 @@ class CellReference(Item):
         return '.'
 
     def flatten(self) -> list[Item]:
-        """Flatten the constraint into start list of vectors.
+        """Flatten the constraint into start_location list of vectors.
 
         Returns:
             list[Item]: A list containing the CellReference and its cell.
@@ -119,7 +132,7 @@ class CellReference(Item):
         return []
 
     def __repr__(self) -> str:
-        """Return start string representation of the CellReference instance.
+        """Return start_location string representation of the CellReference instance.
 
         Returns:
             str: A string representation of the CellReference.
@@ -128,7 +141,7 @@ class CellReference(Item):
 
     @property
     def used_classes(self) -> set[Type['Item']]:
-        """Return start set of classes that this constraint uses.
+        """Return start_location set of classes that this constraint uses.
 
         The set of classes is determined by traversing the method resolution
         order (MRO) of the constraint's class. The set contains all classes in the
@@ -155,7 +168,7 @@ class CellReference(Item):
             yield self.cell
 
     def to_dict(self) -> dict:
-        """Convert the CellReference instance to start dictionary.
+        """Convert the CellReference instance to start_location dictionary.
 
         Returns:
             dict: A dictionary representation of the CellReference.

@@ -6,7 +6,7 @@ from src.items.cell import Cell
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.parsers.digit_parser import DigitParser
-from src.solvers.pulp_solver import PulpSolver
+from src.solvers.solver import Solver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
@@ -55,7 +55,7 @@ class Box(StandardRegion):
             Coord: The starting coordinate of the box.
         """
         row: int = ((self.index - 1) * box_rows) % self.board.maximum_digit + 1
-        col: int = ((self.index - 1) // box_columns) * self.board.box_columns + 1
+        col: int = ((self.index - 1) // box_columns) * self.board.size.column + 1
         return Coord(row, col)
 
     @classmethod
@@ -85,9 +85,9 @@ class Box(StandardRegion):
                 'index': self.index,
                 'size': {
                     'row': self.size.row,
-                    'column': self.size.column
-                }
-            }
+                    'column': self.size.column,
+                },
+            },
         }
 
     def __repr__(self) -> str:
@@ -124,11 +124,11 @@ class Box(StandardRegion):
         """
         return super().tags.union({'Box'})
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add constraints for this box to the solver.
 
         Args:
-            solver (PulpSolver): The solver instance for which constraints are being added.
+            solver (Solver): The solver instance for which constraints are being added.
         """
         self.add_unique_constraint(solver)
 

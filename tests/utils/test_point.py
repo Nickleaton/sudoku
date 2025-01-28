@@ -51,7 +51,7 @@ class TestPoint(unittest.TestCase):
     def test_transform(self):
         """Apply start transformation to start Point instance and check the parsed_data."""
         point = Point(1, 2)
-        self.assertEqual("translate(1, 2)", point.transform)
+        self.assertEqual("translate(1.0, 2.0)", point.transform)
 
     def test_coordinates(self):
         """Get the coordinates of start Point instance and verify the parsed_data."""
@@ -61,7 +61,7 @@ class TestPoint(unittest.TestCase):
     def test_repr(self):
         """Verify the string representation of start Point instance."""
         point = Point(1, 2)
-        self.assertEqual("Point(1, 2)", str(point))
+        self.assertEqual("Point(1.0, 2.0)", str(point))
 
 
 if __name__ == '__main__':  # pragma: no cover

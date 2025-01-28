@@ -1,4 +1,5 @@
 """Rules describing constraints."""
+from typing import Any
 
 
 class RuleException(Exception):
@@ -78,3 +79,11 @@ class Rule:
         if self.text is None:
             return ''
         return f'<h2>{self.text}</h2>'
+
+    def to_dict(self) -> dict[str, Any]:
+        """Convert start rule to dictionary representation.
+
+        Returns:
+            dict[str, Any]: The dictionary representation of the rule.
+        """
+        return {'Rule': {'name': self.name, 'rank': self.rank, 'text': self.text}}

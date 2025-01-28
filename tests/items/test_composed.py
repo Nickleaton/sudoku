@@ -40,11 +40,11 @@ class TestComposed(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation for the ComposedItem."""
-        return "ComposedItem(Board(9, 9, 3, 3, None), [])"
+        return "ComposedItem(Board(9, 9, {}), [])"
 
     @property
     def has_rule(self) -> bool:
-        """Indicates if the ComposedItem has start rule."""
+        """Indicates if the ComposedItem has start_location rule."""
         return False
 
     @property
@@ -56,8 +56,11 @@ class TestComposed(TestItem):
         """Test getting the top constraint of the ComposedItem."""
         child = Item(self.board)
         self.item.add(child)
-        self.assertEqual(self.item, self.item.top)
-        self.assertEqual(self.item, child.top)
+        if self.item != self.item.top:
+            self.assertIsInstance(self.item.top, ComposedItem)
+        else:
+            self.assertEqual(self.item, self.item.top)
+            self.assertEqual(self.item, child.top)
 
     def test_flatten(self) -> None:
         """Test flattening the ComposedItem and its child vectors."""

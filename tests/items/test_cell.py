@@ -13,7 +13,7 @@ class TestCell(TestItem):
     """Test case for Cell class."""
 
     def setUp(self) -> None:
-        """Set up the test case by clearing cache and initializing start Board and Cell constraint."""
+        """Set up the test case by clearing cache and initializing start_location Board and Cell constraint."""
         super().setUp()
         Cell.clear()
         self.item = Cell.make(self.board, 1, 2)
@@ -26,7 +26,7 @@ class TestCell(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation of the Cell constraint."""
-        return "Cell(Board(9, 9, 3, 3, None), 1, 2)"
+        return "Cell(Board(9, 9, {}), 1, 2)"
 
     @property
     def str_representation(self) -> str:
