@@ -27,10 +27,8 @@ class Solution(ComposedItem):
         self.rows = rows
         parts: list[CellReference] = []
         for row_index, row_data in enumerate(self.rows):
-            row: int = row_index + 1
             for column_index, digit in enumerate(row_data):
-                column: int = column_index + 1
-                parts.append(KnownCell(board, row, column, int(digit), 'Verify'))
+                parts.append(KnownCell(board, row_index + 1, column_index + 1, int(digit), 'Verify'))
         self.add_components(parts)
 
     @classmethod
