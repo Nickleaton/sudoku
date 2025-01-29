@@ -1,5 +1,4 @@
 """KnownParser."""
-from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
 from src.tokens.known_token import KnownToken
 from src.tokens.token import OneOrMoreToken
@@ -67,7 +66,7 @@ class KnownParser(Parser):
         """
         if not self.regular_expression.match(text):
             raise ParserError(
-                f'{self.__class__.__name__} expects start list of known or restricted cell value_list for one row',
+                f'{self.__class__.__name__} {text} is invalid',
             )
 
         try:
@@ -78,15 +77,3 @@ class KnownParser(Parser):
             self.answer = list(text)
         except ValueError:
             self.raise_error()
-
-    def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the given board and input line.
-
-        Args:
-            board (Board): The board instance to validate against.
-            input_data (dict): The input line to validate.
-
-        Returns:
-            list[str]: A list of validation error messages.
-        """
-        return []

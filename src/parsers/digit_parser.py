@@ -1,5 +1,4 @@
 """DigitParser."""
-from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
 
@@ -35,26 +34,3 @@ class DigitParser(Parser):
         # Convert the first character to an integer and store the parsed_data.
         self.parsed_data = [int(stripped_text[0])]
         self.answer = {'digit': stripped_text[0]}
-
-    def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the provided line against the given board.
-
-        Checks if the required "digits" key exists in the line and if all digits
-        in the line are within the valid range of digits defined by the board.
-
-        Args:
-            board (Board): The board object containing the valid digit range.
-            input_data (dict): A dictionary containing the line to validate.
-
-        Returns:
-            list[str]: A list of error messages, empty if no errors are found.
-                       Contains messages for missing "digits" key or invalid digits.
-        """
-        errors: list[str] = []
-        if 'digits' not in input_data:
-            errors.append('Missing key: "digits"')
-            return errors
-        for digit in input_data['digits']:
-            if digit not in board.digits.digit_range:
-                errors.append(f'Invalid digit: {digit}. Valid range: {board.digits.digit_range}')
-        return errors

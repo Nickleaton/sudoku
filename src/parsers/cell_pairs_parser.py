@@ -1,6 +1,5 @@
 """CellPairsParser."""
 
-from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
 from src.tokens.cell_token import CellToken
 from src.tokens.symbols import DashToken
@@ -52,25 +51,3 @@ class CellPairsParser(Parser):
             'cell1': {'row': int(row1), 'column': int(col1)},
             'cell2': {'row': int(row2), 'column': int(col2)},
         }
-
-    def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the provided line against the given board.
-
-        Args:
-            board (Board): The board object containing the validation rules or constraints.
-            input_data (dict): A dictionary containing the input data to validate.
-
-        Returns:
-            list[str]: A list of error messages. Empty if no errors are found.
-        """
-        errors: list[str] = []
-
-        # Validate both cells in the input data.
-        errors.extend(Parser.validate_cells(board, input_data['cell']))
-        errors.extend(Parser.validate_cells(board, input_data['cell2']))
-
-        # Check if both cells are the same.
-        if repr(input_data['cell']) == repr(input_data['cell2']):
-            errors.append(f'Cells must be different: {input_data["cell"]} and {input_data["cell2"]}')
-
-        return errors

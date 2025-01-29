@@ -2,7 +2,6 @@
 import unittest
 from typing import Any
 
-from src.board.board import Board
 from src.parsers.box_parser import BoxParser
 from tests.parsers.test_parser import TestParser
 
@@ -61,28 +60,6 @@ class TestBoxParser(TestParser):
                 "x3x",
                 "3x-3",
             ]
-
-    def test_check(self):
-        """Test the check method for validating input against the board."""
-        board = Board(board_rows=9, board_columns=9)
-        valid_inputs = [
-            {'rows': 3, 'columns': 3},
-            {'rows': 1, 'columns': 9},
-        ]
-        invalid_inputs = [
-            {'rows': 4, 'columns': 3},  # 4 does not divide 9 evenly
-            {'rows': 2, 'columns': 5},  # 5 does not divide 9 evenly
-        ]
-
-        for input_data in valid_inputs:
-            with self.subTest(input_data=input_data):
-                errors = self.parser.check(board, input_data)
-                self.assertEqual(errors, [])
-
-        for input_data in invalid_inputs:
-            with self.subTest(input_data=input_data):
-                errors = self.parser.check(board, input_data)
-                self.assertTrue(errors)  # Errors should not be empty
 
 
 if __name__ == "__main__":

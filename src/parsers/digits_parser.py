@@ -1,5 +1,4 @@
 """DigitsParser."""
-from src.board.board import Board
 from src.parsers.parser import Parser, ParserError
 from src.tokens.digit_token import DigitToken
 from src.tokens.symbols import CommaToken
@@ -44,19 +43,3 @@ class DigitsParser(Parser):
 
         self.answer = [digit.strip() for digit in text.split(',')]
         self.parsed_data = [digit.strip() for digit in text.split(',')]
-
-    def check(self, board: Board, input_data: dict) -> list[str]:
-        """Validate the given board and input line.
-
-        Args:
-            board (Board): The board instance to validate against.
-            input_data (dict): The input line to validate.
-
-        Returns:
-            list[str]: A list of validation error messages.
-        """
-        errors: list[str] = []
-        for digit in self.answer:
-            if digit not in board.digits.digit_range:
-                errors.append(f'Invalid digit: {digit}. Valid range: {board.digits.digit_range}')
-        return errors

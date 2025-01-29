@@ -96,7 +96,7 @@ class Parser(Regex):
             text (str): The input string to parse.
         """
 
-    def check(self, board: Board, input_data: dict) -> list[str]:
+    def check(self, board: Board | None, input_data: dict) -> list[str]:
         """Validate the provided input line against the given board.
 
         This function currently returns an empty list of errors but can be extended

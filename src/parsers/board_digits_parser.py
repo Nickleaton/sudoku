@@ -1,15 +1,15 @@
-"""BoxParser."""
+"""BoardDigitsParser."""
 from src.parsers.parser import Parser, ParserError
-from src.tokens.box_token import BoxToken
+from src.tokens.box_token import BoardDigitsToken
 
 
-class BoxParser(Parser):
-    """Parser for Box Sizes."""
+class BoardDigitsParser(Parser):
+    """Parser for BoardDigits Sizes."""
 
     def __init__(self):
-        """Initialize the BoxParser with start regex pattern."""
-        super().__init__(pattern='^[1-9]x[1-9]$', example_format='dxd')
-        self.token = BoxToken()
+        """Initialize the BoardDigitsParser with start regex pattern."""
+        super().__init__(pattern=r'^(\d\d{0,1})\.\.(\d\d{0,1})$', example_format='dd..dd')
+        self.token = BoardDigitsToken()
 
     def parse(self, text: str) -> None:
         """Parse the input text to extract rows and column.
