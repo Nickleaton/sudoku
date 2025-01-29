@@ -75,20 +75,25 @@ class TestToken(unittest.TestCase):
         self.assertTrue(is_valid, "Pattern should be start valid regex.")
 
         for text in self.good:
-            self.assertTrue(self.token.match(text))
+            with self.subTest(text=text):
+                self.assertTrue(self.token.match(text))
 
         for text in self.bad:
-            self.assertFalse(self.token.match(text))
+            with self.subTest(text=text):
+                self.assertFalse(self.token.match(text))
 
     def test_good(self):
         """Test the matching of good input_types."""
         for text in self.good:
-            self.assertTrue(self.token.match(text))
+            with self.subTest(text=text):
+                self.assertTrue(self.token.match(text))
 
     def test_bad(self):
-        """Test the matching of bad input_types."""
+        """Test the matching of bad input types."""
         for text in self.bad:
-            self.assertFalse(self.token.match(text))
+            with self.subTest(text=text):
+                self.assertFalse(self.token.match(text), msg=f"Expected '{text}' to be an invalid match.")
+
 
     def test_repr(self):
         """Test the string representation of the Token."""
