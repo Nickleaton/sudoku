@@ -112,6 +112,7 @@ ignore = [
 
 per-file-ignores = """
         src/schema/config_schema.py: C812 WPS204
+        src/solvers/variables.py: WPS231
     """
 max-line-length = 120
 max-arguments = 8
@@ -120,6 +121,7 @@ count = true
 max-tuple-unpack-length = 5
 max-access-level = 5
 max-module-members = 10
+max-local-variables = 8
 
 [tool.coverage.run]
 branch = true
