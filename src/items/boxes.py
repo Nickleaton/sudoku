@@ -4,7 +4,6 @@ from src.board.board import Board
 from src.items.box import Box
 from src.items.item import Item
 from src.items.standard_region_set import StandardRegionSet
-from src.parsers.box_parser import BoxParser
 from src.utils.coord import Coord
 from src.utils.sudoku_exception import SudokuError
 
@@ -85,13 +84,13 @@ class Boxes(StandardRegionSet):
         return Coord(top_left_row, top_left_col)
 
     @classmethod
-    def parser(cls) -> BoxParser:
+    def parser(cls) -> SizeParser:
         """Return start_location BoxParser instance.
 
         Returns:
-            BoxParser: A BoxParser instance.
+            SizeParser: A BoxParser instance.
         """
-        return BoxParser()
+        return SizeParser()
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
