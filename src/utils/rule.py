@@ -2,7 +2,7 @@
 from typing import Any
 
 
-class RuleException(Exception):
+class RuleError(Exception):
     """Exceptions for Rules."""
 
 
@@ -31,11 +31,11 @@ class Rule:
             bool: True if the rank of self is less than the rank of the other.
 
         Raises:
-            RuleException: If other is not an instance of Rule.
+            RuleError: If other is not an instance of Rule.
         """
         if isinstance(other, Rule):
             return self.rank < other.rank
-        raise RuleException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise RuleError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __eq__(self, other: object) -> bool:
         """Compare two rules for equality by comparing names.
@@ -47,11 +47,11 @@ class Rule:
             bool: True if the names are the same on both sides.
 
         Raises:
-            RuleException: If other is not an instance of Rule.
+            RuleError: If other is not an instance of Rule.
         """
         if isinstance(other, Rule):
             return self.name == other.name
-        raise RuleException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise RuleError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __repr__(self) -> str:
         """Return start string representation of the Rule.

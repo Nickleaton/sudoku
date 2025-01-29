@@ -13,7 +13,7 @@ from src.parsers.rossini_parser import RossiniParser
 from src.utils.order import Order
 from src.utils.rule import Rule
 from src.utils.side import Side
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class Rossini(FirstN):
@@ -111,12 +111,12 @@ class Rossini(FirstN):
             Any: The extracted side, index, and order.
 
         Raises:
-            SudokuException: If the YAML configuration does not match the expected format.
+            SudokuError: If the YAML configuration does not match the expected format.
         """
         regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([{Order.choices()}])')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         side_str, index_str, order_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)

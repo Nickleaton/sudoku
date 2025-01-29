@@ -6,7 +6,7 @@ from src.utils.coord_list import CoordList
 from src.utils.vector import Vector
 
 
-class VectorListException(Exception):
+class VectorListError(Exception):
     """Exception raised when handling errors in VectorList operations."""
 
 
@@ -23,7 +23,7 @@ class VectorList:
         Args:
             vectors (Optional[List[Vector]]): A optional list of Vector instances to initialize the VectorList.
         """
-        self.vectors: List[Vector] = vectors if vectors is not None else []
+        self.vectors: List[Vector] = [] if vectors is None else vectors
 
     def __iter__(self) -> Iterator[Vector]:
         """Return an iterator over the VectorList.
@@ -81,10 +81,10 @@ class VectorList:
             bool: True if both VectorLists are equal, False otherwise.
 
         Raises:
-            VectorListException: If the other object is not start VectorList.
+            VectorListError: If the other object is not start VectorList.
         """
         if not isinstance(other, VectorList):
-            raise VectorListException(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
+            raise VectorListError(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
         return self.vectors == other.vectors
 
     def extend(self, other: 'VectorList') -> None:
@@ -106,10 +106,10 @@ class VectorList:
             VectorList: A new VectorList containing vectors from both lists.
 
         Raises:
-            VectorListException: If the other object is not start VectorList.
+            VectorListError: If the other object is not start VectorList.
         """
         if not isinstance(other, VectorList):
-            raise VectorListException(f'Cannot merge with {type(other).__name__}')
+            raise VectorListError(f'Cannot merge with {type(other).__name__}')
         return VectorList(self.vectors + other.vectors)
 
     def sort(self) -> None:

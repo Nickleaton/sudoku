@@ -3,7 +3,7 @@ import unittest
 
 from src.utils.coord import Coord
 from src.utils.moves import Moves
-from src.utils.vector import Vector, VectorException
+from src.utils.vector import Vector, VectorError
 
 
 class TestVector(unittest.TestCase):
@@ -30,7 +30,7 @@ class TestVector(unittest.TestCase):
         self.assertNotEqual(self.line_one, self.line_two)
         self.assertNotEqual(self.line_one, self.line_three)
         self.assertEqual(self.line_four, self.line_four)
-        with self.assertRaises(VectorException):
+        with self.assertRaises(VectorError):
             _ = self.zero == "invalid"
 
     def test_mergeable(self):
@@ -73,7 +73,7 @@ class TestVector(unittest.TestCase):
         """Test merging of vectors."""
         self.assertEqual(self.merged, self.line_one.merge(self.line_two))
         self.assertEqual(self.merged, self.line_two.merge(self.line_one))
-        with self.assertRaises(VectorException):
+        with self.assertRaises(VectorError):
             _ = self.line_one.merge(self.line_four)
 
     def test_add(self):
@@ -83,7 +83,7 @@ class TestVector(unittest.TestCase):
         self.assertEqual(vector1 + vector2, Vector(Coord(3, 3), Coord(5, 3)))
         coord = Coord(1, 1)
         self.assertEqual(vector1 + coord, Vector(Coord(2, 2), Coord(3, 2)))
-        with self.assertRaises(VectorException):
+        with self.assertRaises(VectorError):
             _ = vector1 + "invalid"
 
     def test_comparison(self):

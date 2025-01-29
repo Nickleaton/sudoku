@@ -11,7 +11,7 @@ from src.items.item import Item
 from src.solvers.formulations import Formulations
 from src.utils.rule import Rule
 from src.utils.side import Side
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class MinMaxDifference(FirstN):
@@ -96,12 +96,12 @@ class MinMaxDifference(FirstN):
             tuple: A tuple containing the side, index, and total.
 
         Raises:
-            SudokuException: If no match is found in the YAML.
+            SudokuError: If no match is found in the YAML.
         """
         regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([0-9]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)

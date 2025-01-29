@@ -3,7 +3,7 @@
 import unittest
 
 from src.utils.tag import Tag
-from src.utils.tag_list import TagList, TagListException
+from src.utils.tag_list import TagList, TagListError
 
 
 class TestTagList(unittest.TestCase):
@@ -38,7 +38,7 @@ class TestTagList(unittest.TestCase):
         self.assertEqual(self.tags1, self.tags1)
         self.assertNotEqual(self.tags1, self.tags2)
         self.assertNotEqual(self.tags1, self.tags3)
-        with self.assertRaises(TagListException):
+        with self.assertRaises(TagListError):
             _ = self.tags1 == "xxx"
 
     def test_contains(self):

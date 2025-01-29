@@ -6,7 +6,7 @@ from src.items.item import Item
 from src.items.standard_region_set import StandardRegionSet
 from src.parsers.box_parser import BoxParser
 from src.utils.coord import Coord
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class Boxes(StandardRegionSet):
@@ -24,13 +24,13 @@ class Boxes(StandardRegionSet):
             size (Coord): Size of boxes
 
         Raises:
-            SudokuException: If the board rows or columns are not divisible by the specified row_size or col_size.
+            SudokuError: If the board rows or columns are not divisible by the specified row_size or col_size.
         """
         super().__init__(board, [])
         if board.size.row % size.row != 0:
-            raise SudokuException(f'Board rows ({board.size.row}) must be divisible by {size.row}.')
+            raise SudokuError(f'Board rows ({board.size.row}) must be divisible by {size.row}.')
         if board.size.column % size.column != 0:
-            raise SudokuException(f'Board columns, {board.size.column} must be divisible by {size.column}.')
+            raise SudokuError(f'Board columns, {board.size.column} must be divisible by {size.column}.')
 
         # how many boxes in each row and column
         self.box_counts: Coord = Coord(board.size.row // size.row, board.size.column // size.column)

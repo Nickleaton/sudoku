@@ -1,5 +1,5 @@
 """BookKeepingCell."""
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class BookKeepingCell:  # noqa: WPS214
@@ -25,10 +25,10 @@ class BookKeepingCell:  # noqa: WPS214
             bool: True if the digit is possible; False otherwise.
 
         Raises:
-            SudokuException: If the digit is invalid (less than 1 or greater than the maximum allowed digit).
+            SudokuError: If the digit is invalid (less than 1 or greater than the maximum allowed digit).
         """
         if digit - 1 < 0 or digit > self.maximum_digit:
-            raise SudokuException(f'Invalid digit: {digit}.')
+            raise SudokuError(f'Invalid digit: {digit}.')
         return self.possibles[digit - 1]
 
     def __setitem__(self, digit: int, digit_value: bool) -> None:
@@ -39,10 +39,10 @@ class BookKeepingCell:  # noqa: WPS214
             digit_value (bool): The digit to be assigned, indicating if the digit is possible.
 
         Raises:
-            SudokuException: If the digit is invalid (less than 1 or greater than the maximum allowed digit).
+            SudokuError: If the digit is invalid (less than 1 or greater than the maximum allowed digit).
         """
         if digit - 1 < 0 or digit > self.maximum_digit:
-            raise SudokuException(f'Invalid digit: {digit}.')
+            raise SudokuError(f'Invalid digit: {digit}.')
         self.possibles[digit - 1] = digit_value
 
     def __and__(self, other: 'BookKeepingCell') -> 'BookKeepingCell':
@@ -55,13 +55,13 @@ class BookKeepingCell:  # noqa: WPS214
             BookKeepingCell: A new instance with the combined possibilities from both cells.
 
         Raises:
-            SudokuException: If the other instance is not a BookKeepingCell
+            SudokuError: If the other instance is not a BookKeepingCell
                 or if there is a mismatch in the maximum digit.
         """
         if not isinstance(other, BookKeepingCell):
-            raise SudokuException(f'Expected an instance of BookKeepingCell, got {type(other)}.')
+            raise SudokuError(f'Expected an instance of BookKeepingCell, got {type(other)}.')
         if self.maximum_digit != other.maximum_digit:
-            raise SudokuException(f'Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.')
+            raise SudokuError(f'Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.')
         combined_cell: BookKeepingCell = BookKeepingCell(self.maximum_digit)
         for digit in self.digit_range:
             combined_cell[digit] = self[digit] and other[digit]
@@ -77,13 +77,13 @@ class BookKeepingCell:  # noqa: WPS214
             BookKeepingCell: A new instance with the combined possibilities from both cells.
 
         Raises:
-            SudokuException: If the other instance is not a BookKeepingCell
+            SudokuError: If the other instance is not a BookKeepingCell
                 or if there is a mismatch in the maximum digit.
         """
         if not isinstance(other, BookKeepingCell):
-            raise SudokuException(f'Expected an instance of BookKeepingCell, got {type(other)}.')
+            raise SudokuError(f'Expected an instance of BookKeepingCell, got {type(other)}.')
         if self.maximum_digit != other.maximum_digit:
-            raise SudokuException(f'Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.')
+            raise SudokuError(f'Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.')
         combined_cell: BookKeepingCell = BookKeepingCell(self.maximum_digit)
         for digit in self.digit_range:
             combined_cell[digit] = self[digit] or other[digit]
@@ -110,13 +110,13 @@ class BookKeepingCell:  # noqa: WPS214
             bool: True if both instances have identical possibilities; False otherwise.
 
         Raises:
-            SudokuException: If the other instance is a BookKeepingCell and
+            SudokuError: If the other instance is a BookKeepingCell and
                 there is a mismatch in the maximum digit.
         """
         if not isinstance(other, BookKeepingCell):
             return False
         if self.maximum_digit != other.maximum_digit:
-            raise SudokuException(f'Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.')
+            raise SudokuError(f'Maximum digit mismatch: {self.maximum_digit} != {other.maximum_digit}.')
         for digit in self.digit_range:
             if self[digit] != other[digit]:
                 return False

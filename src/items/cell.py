@@ -8,14 +8,14 @@ from src.board.board import Board
 from src.board.book_keeping_cell import BookKeepingCell
 from src.glyphs.cell_glyph import CellGlyph
 from src.glyphs.glyph import Glyph
-from src.items.item import Item, SudokuException
+from src.items.item import Item, SudokuError
 from src.solvers.solver import Solver
 from src.solvers.variables import VariableSet
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class CellException(SudokuException):
+class CellException(SudokuError):
     """Exception for Cell-specific errors."""
 
 

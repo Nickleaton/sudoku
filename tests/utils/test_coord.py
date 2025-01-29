@@ -1,6 +1,6 @@
 import unittest
 
-from src.utils.coord import Coord, CoordException
+from src.utils.coord import Coord, CoordError
 
 
 class TestCoord(unittest.TestCase):
@@ -30,7 +30,7 @@ class TestCoord(unittest.TestCase):
         coord_result = self.coord_a * self.coord_b
         self.assertEqual(coord_result, Coord(10, 21))
 
-        with self.assertRaises(CoordException):
+        with self.assertRaises(CoordError):
             _ = self.coord_a * "invalid"
 
     def test_negation(self):

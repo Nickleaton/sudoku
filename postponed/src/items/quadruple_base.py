@@ -7,7 +7,7 @@ from src.glyphs.quadruple_glyph import QuadrupleGlyph
 from src.items.item import Item
 from src.parsers.quadruples_parser import QuadruplesParser
 from src.utils.coord import Coord
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class QuadrupleBase(Item):
@@ -68,14 +68,14 @@ class QuadrupleBase(Item):
             tuple: A tuple containing start_location `Coord` object for the location and start_location string of digits.
 
         Raises:
-            SudokuException: If no match is found in the YAML.
+            SudokuError: If no match is found in the YAML.
         """
         regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         # TODO replace with proper handling
         text: str = next(iter(yaml.values()))
         match = regex.match(text)
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         row_str, column_str, digits = match.groups()
         return Coord(int(row_str), int(column_str)), digits
 

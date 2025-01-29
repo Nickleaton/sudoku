@@ -5,7 +5,7 @@ from typing import Type
 
 from sortedcontainers import SortedDict
 
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class Token:
@@ -253,12 +253,12 @@ class RepeatToken(Token):
             upper (int): Maximum repetitions (default sys.maxsize).
 
         Raises:
-            SudokuException: If lower is negative or greater than upper.
+            SudokuError: If lower is negative or greater than upper.
         """
         if lower < 0:
-            raise SudokuException('Lower bound cannot be negative.')
+            raise SudokuError('Lower bound cannot be negative.')
         if lower > upper:
-            raise SudokuException('Lower bound must be less than or equal to upper bound.')
+            raise SudokuError('Lower bound must be less than or equal to upper bound.')
 
         self.lower = lower
         self.upper = upper

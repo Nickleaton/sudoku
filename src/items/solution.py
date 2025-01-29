@@ -7,7 +7,7 @@ from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
-from src.items.item import SudokuException
+from src.items.item import SudokuError
 from src.items.known_cell import KnownCell
 from src.parsers.solution_parser import SolutionParser
 from src.solvers.answer import Answer
@@ -158,13 +158,13 @@ class Solution(ComposedItem):
             bool: True if the objects are equal, False otherwise.
 
         Raises:
-            SudokuException: If the other object is neither an Answer nor start_location Solution.
+            SudokuError: If the other object is neither an Answer nor start_location Solution.
         """
         if isinstance(other, (Answer, Solution)):
             for row, column in product(self.board.row_range, self.board.column_range):
                 if self[row, column] != other[row, column]:
                     return False
             return True
-        raise SudokuException(
+        raise SudokuError(
             f'Cannot compare {self} {other} {other.__class__.__name__} with {self.__class__.__name__}',
         )

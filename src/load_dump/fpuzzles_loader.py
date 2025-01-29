@@ -43,7 +43,7 @@ class FPuzzlesLoader(Loader):
             str | None: URL reference for the puzzle, if available.
         """
         url: Any | None = self.raw.get('line', {}).get('url')
-        return str(url) if url is not None else None
+        return None if url is None else str(url)
 
     @property
     def title(self) -> str | None:
@@ -53,7 +53,7 @@ class FPuzzlesLoader(Loader):
             str | None: Title of the puzzle, if available.
         """
         title: Any | None = self.raw.get('line', {}).get('title')
-        return str(title) if title is not None else None
+        return None if title is None else str(title)
 
     @property
     def author(self) -> str | None:
@@ -63,7 +63,7 @@ class FPuzzlesLoader(Loader):
             str | None: Author of the puzzle, if available.
         """
         author: Any | None = self.raw.get('line', {}).get('author')
-        return str(author) if author is not None else None
+        return None if author is None else str(author)
 
     @property
     def size(self) -> int | None:
@@ -73,4 +73,4 @@ class FPuzzlesLoader(Loader):
             int | None: Size of the puzzle board, if available.
         """
         size: Any | None = self.raw.get('line', {}).get('size')
-        return int(size) if size is not None else None
+        return None if size is None else int(size)

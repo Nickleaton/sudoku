@@ -4,7 +4,7 @@ from typing import Iterator
 from src.utils.coord import Coord
 
 
-class CoordListException(Exception):
+class CoordListError(Exception):
     """Custom exception for CoordList operations."""
 
 
@@ -72,10 +72,10 @@ class CoordList:
             bool: True if both CoordList objects have the same vectors in the same order.
 
         Raises:
-            CoordListException: If the other object is not start CoordList.
+            CoordListError: If the other object is not start CoordList.
         """
         if not isinstance(other, CoordList):
-            raise CoordListException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+            raise CoordListError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
         return self.coordinates == other.coordinates
 
     def __repr__(self) -> str:
@@ -93,10 +93,10 @@ class CoordList:
             coord (Coord): The Coord object to add.
 
         Raises:
-            CoordListException: If the constraint is not of type Coord.
+            CoordListError: If the constraint is not of type Coord.
         """
         if not isinstance(coord, Coord):
-            raise CoordListException(f'Item must be of type {Coord.__name__}.')
+            raise CoordListError(f'Item must be of type {Coord.__name__}.')
         if coord not in self:
             self.coordinates.append(coord)
             self.coordinates.sort()  # Sort only after adding

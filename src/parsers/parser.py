@@ -7,10 +7,10 @@ from strictyaml import Regex
 
 from src.board.board import Board
 from src.tokens.token import Token
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
-class ParserError(SudokuException):
+class ParserError(SudokuError):
     """Exception raised for errors in the Parser.
 
     This exception is used when start parsing error occurs, indicating that

@@ -8,7 +8,7 @@ from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class ClonedRegion(Item):
@@ -23,11 +23,11 @@ class ClonedRegion(Item):
             cells_b (list[Cell]): The second set of cells in the cloned region.
 
         Raises:
-            SudokuException: If the length of `cells_a` does not match the length of `cells_b`.
+            SudokuError: If the length of `cells_a` does not match the length of `cells_b`.
         """
         super().__init__(board)
         if len(cells_a) != len(cells_b):
-            raise SudokuException(
+            raise SudokuError(
                 f'Length mismatch: cells_a has {len(cells_a)} elements, but cells_b has {len(cells_b)} elements.',
             )
         self.region_a: list[Cell] = cells_a

@@ -89,11 +89,9 @@ nitpick = "^0.35.0"
 ignore = [
     # Actual Ignores
 
-    'WPS305', # Found 'f' string
     'WPS237', # Found a too complex `f` string
     'WPS214', # Found too many methods
     'WPS602', # Found using `@staticmethod`
-    'WPS332', # Allow Walrus Operator
 
     # Temporary ignores
 
@@ -106,12 +104,10 @@ ignore = [
     'WPS230', # Found too many public instance attributes
     'WPS226', # Found string literal over-use
     'H601', # class has low cohesion
-    'WPS326', # Found implicit string concatenation
+    "DAR105", # DAR105: Parameter type malformed. See Validator where this is needed.
     'DUO107', # insecure use of XML modules, prefer "defusedxml"
     'S408', # Using Document to parse untrusted XML line
-
     "S318", # Use of insecure XML parser
-    "DAR105", # DAR105: Parameter type malformed. See Validator where this is needed.
 ]
 
 per-file-ignores = """

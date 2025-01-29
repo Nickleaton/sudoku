@@ -6,7 +6,7 @@ from src.glyphs.glyph import Glyph
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class PencilMarkCell(CellReference):
@@ -99,12 +99,12 @@ class PencilMarkCell(CellReference):
             tuple: A tuple containing the row, column, and pencil-marked digits.
 
         Raises:
-            SudokuException: If no match is found in the YAML.
+            SudokuError: If no match is found in the YAML.
         """
         regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         row_str, column_str, digits = match.groups()
         return int(row_str), int(column_str), [int(digit) for digit in digits]
 

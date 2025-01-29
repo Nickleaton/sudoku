@@ -2,7 +2,7 @@
 from src.utils.coord import Coord
 
 
-class VectorException(Exception):
+class VectorError(Exception):
     """Exception raised for errors related to Vector operations."""
 
 
@@ -29,10 +29,10 @@ class Vector:
             bool: True if both vectors are equal, False otherwise.
 
         Raises:
-            VectorException: If the other object is not start Vector.
+            VectorError: If the other object is not start Vector.
         """
         if not isinstance(other, Vector):
-            raise VectorException(f'Cannot compare with non-Vector type: {type(other).__name__}')
+            raise VectorError(f'Cannot compare with non-Vector type: {type(other).__name__}')
 
         same_direction: bool = (self.start, self.end) == (other.start, other.end)
         opposite_direction: bool = (self.start, self.end) == (other.end, other.start)
@@ -49,10 +49,10 @@ class Vector:
             bool: True if this vector is less than the other vector.
 
         Raises:
-            VectorException: If comparison is not supported with the given object.
+            VectorError: If comparison is not supported with the given object.
         """
         if not isinstance(other, Vector):
-            raise VectorException(f'Cannot compare with non-Vector type: {type(other).__name__}')
+            raise VectorError(f'Cannot compare with non-Vector type: {type(other).__name__}')
         start_comparison: bool = self.start < other.start
         end_comparison: bool = self.start == other.start and self.end < other.end
 
@@ -89,13 +89,13 @@ class Vector:
             Vector: A new vector resulting from the addition.
 
         Raises:
-            VectorException: If addition is not supported with the given object.
+            VectorError: If addition is not supported with the given object.
         """
         if isinstance(other, Coord):
             return Vector(self.start + other, self.end + other)
         if isinstance(other, Vector):
             return Vector(self.start + other.start, self.end + other.end)
-        raise VectorException(f'Addition  not supported for Vector and {other.__class__.__name__}')
+        raise VectorError(f'Addition  not supported for Vector and {other.__class__.__name__}')
 
     @property
     def is_horizontal(self) -> bool:
@@ -159,10 +159,10 @@ class Vector:
             Vector: A new merged vector.
 
         Raises:
-            VectorException: If the vectors are not mergeable.
+            VectorError: If the vectors are not mergeable.
         """
         if not self.mergeable(other):
-            raise VectorException('Vectors are not mergeable')
+            raise VectorError('Vectors are not mergeable')
         if self == other:
             return self
         if self.start == other.start:

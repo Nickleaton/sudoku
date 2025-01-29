@@ -3,10 +3,10 @@ import logging
 from typing import ClassVar, Type
 
 from src.commands.problem import Problem
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
-class CommandException(SudokuException):
+class CommandException(SudokuError):
     """Represents an error occurring within a command.
 
     Attributes:

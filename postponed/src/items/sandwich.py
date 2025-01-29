@@ -14,7 +14,7 @@ from src.utils.coord import Coord
 from src.utils.functions import Functions
 from src.utils.rule import Rule
 from src.utils.side import Side
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class Sandwich(Item):
@@ -70,12 +70,12 @@ class Sandwich(Item):
             tuple[Side, int, int]: A tuple containing the side, index, and total cell_values.
 
         Raises:
-            SudokuException: If the YAML does not match the expected format.
+            SudokuError: If the YAML does not match the expected format.
         """
         regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([0-9]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         side_str, offset_str, total_str = match.groups()
         side = Side.create(side_str)
         offset = int(offset_str)

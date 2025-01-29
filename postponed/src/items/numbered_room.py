@@ -6,7 +6,7 @@ from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.item import Item  # noqa: I001
-from src.items.item import SudokuException  # noqa: I001
+from src.items.item import SudokuError  # noqa: I001
 from src.parsers.frame_parser import FrameParser
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
@@ -154,7 +154,7 @@ class NumberedRoom(Item):
             LpVariable: The coordinate in the solver's choices array corresponding to the side and digit.
 
         Raises:
-            SudokuException: If the side of the NumberedRoom is not valid.
+            SudokuError: If the side of the NumberedRoom is not valid.
         """
         match self.side:
             case Side.left:
@@ -166,7 +166,7 @@ class NumberedRoom(Item):
             case Side.bottom:
                 return solver.variables.choices[self.digit][self.board.size.row - digit + 1][self.start_cell.column]
             case _:
-                raise SudokuException(f'Unexpected Side {self.side.name} encountered for NumberedRoom {self.name}')
+                raise SudokuError(f'Unexpected Side {self.side.name} encountered for NumberedRoom {self.name}')
 
     def add_constraint(self, solver: PulpSolver) -> None:
         """Add the constraints for the NumberedRoom to the solver.

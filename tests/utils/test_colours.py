@@ -2,7 +2,7 @@
 import unittest
 from pathlib import Path
 
-from src.utils.colours import ColourSet, ColourException
+from src.utils.colours import ColourSet, ColourError
 from src.utils.config import Config
 
 
@@ -23,12 +23,12 @@ class TestColourSet(unittest.TestCase):
 
     def test_missing_colour_set(self):
         """Test for start missing color set."""
-        with self.assertRaises(ColourException):
+        with self.assertRaises(ColourError):
             ColourSet.colours("non_existent_set")
 
     def test_empty_colour_set(self):
         """Test for an empty color set."""
-        with self.assertRaises(ColourException):
+        with self.assertRaises(ColourError):
             ColourSet.colours("empty")
 
     def test_colour_index_retrieval(self):
@@ -40,7 +40,7 @@ class TestColourSet(unittest.TestCase):
 
     def test_invalid_name(self):
         """Test for an invalid color set name."""
-        with self.assertRaises(ColourException):
+        with self.assertRaises(ColourError):
             _ = ColourSet.colours("xxxx")
 
     def test_invalid_colour_index(self):

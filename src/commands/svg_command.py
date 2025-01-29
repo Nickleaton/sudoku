@@ -60,11 +60,14 @@ class SVGCommand(SimpleCommand):
 
         # Add elements
         for clz in problem.constraints.sorted_glyphs().used_classes:
-            if start_element := clz.start_marker():
+            start_element = clz.start_marker()
+            if start_element:
                 canvas.defs.add(start_element)
-            if end_element := clz.end_marker():
+            end_element = clz.end_marker()
+            if end_element:
                 canvas.defs.add(end_element)
-            if symbol_element := clz.symbol():
+            symbol_element = clz.symbol()
+            if symbol_element:
                 canvas.add(symbol_element)
 
         # Draw glyphs

@@ -8,7 +8,7 @@ from src.glyphs.glyph import Glyph
 from src.items.cell import Cell
 from src.items.item import Item
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class ConsecutivePair(LEDifferencePair):
@@ -45,14 +45,14 @@ class ConsecutivePair(LEDifferencePair):
             tuple[Cell, Cell]: A tuple of two cells representing the consecutive pair.
 
         Raises:
-            SudokuException: If the YAML input does not match the expected pattern.
+            SudokuError: If the YAML input does not match the expected pattern.
         """
         regexp = re.compile(
             f'([{board.digit_values}])([{board.digit_values}])-([{board.digit_values}])([{board.digit_values}])',
         )
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         c1_row, c1_column, c2_row, c2_column = match.groups()
         c1 = Cell.make(board, int(c1_row), int(c1_column))
         c2 = Cell.make(board, int(c2_row), int(c2_column))

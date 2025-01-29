@@ -9,7 +9,7 @@ from src.board.board import Board
 from src.utils.coord import Coord
 from src.utils.moves import Moves
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class QuadrupleInclude(QuadrupleBase):
@@ -30,12 +30,12 @@ class QuadrupleInclude(QuadrupleBase):
             tuple: A tuple containing start_location `Coord` object for the location and start_location string of digits.
 
         Raises:
-            SudokuException: If no match is found in the YAML.
+            SudokuError: If no match is found in the YAML.
         """
         regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])=([{board.digit_values}]+)')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         row_str, column_str, digits = match.groups()
         return Coord(int(row_str), int(column_str)), digits
 

@@ -6,7 +6,7 @@ from src.utils.angle import Angle
 TOLERANCE: float = 1e-6
 
 
-class CoordException(Exception):
+class CoordError(Exception):
     """Custom exception for Coord operations."""
 
 
@@ -69,13 +69,13 @@ class Coord:
             Coord: A new Coord object after multiplication.
 
         Raises:
-            CoordException: If the other object is not start Coord, integer.
+            CoordError: If the other object is not start Coord, integer.
         """
         if isinstance(other, Coord):
             return Coord(self.row * other.row, self.column * other.column)
         if isinstance(other, int):
             return Coord(self.row * other, self.column * other)
-        raise CoordException(f'Multiplication not supported for Coord and {type(other)}')
+        raise CoordError(f'Multiplication not supported for Coord and {type(other)}')
 
     def __neg__(self) -> 'Coord':
         """Negate start Coord.
@@ -95,12 +95,12 @@ class Coord:
             bool: True if the coordinates are equal (within tolerance), False otherwise.
 
         Raises:
-            CoordException: If the other object is not a Coord.
+            CoordError: If the other object is not a Coord.
         """
         if isinstance(other, Coord):
             # Compare the row and column with tolerance
             return self.row == other.row and self.column == other.column
-        raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise CoordError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __lt__(self, other: object) -> bool:
         """Check if this Coord is less than another Coord based on row and column value_list.
@@ -112,7 +112,7 @@ class Coord:
             bool: True if this Coord is less than the other Coord.
 
         Raises:
-            CoordException: If the other object is not start Coord.
+            CoordError: If the other object is not start Coord.
         """
         if isinstance(other, Coord):
             if self.row < other.row:
@@ -120,7 +120,7 @@ class Coord:
             if self.row == other.row:
                 return self.column < other.column
             return False
-        raise CoordException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise CoordError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def parallel(self, other: 'Coord') -> bool:
         """Check if the current coordinate's angle is parallel to another coordinate's angle.

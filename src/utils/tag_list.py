@@ -4,7 +4,7 @@ from typing import Iterator
 from src.utils.tag import Tag
 
 
-class TagListException(Exception):
+class TagListError(Exception):
     """Exception raised for errors related to TagList operations."""
 
 
@@ -76,7 +76,7 @@ class TagList:
             bool: True if both TagLists contain the same Tags in the same order, False otherwise.
 
         Raises:
-            TagListException: If the other object is not start TagList.
+            TagListError: If the other object is not start TagList.
         """
         if isinstance(other, TagList):
             if len(self.tags) != len(other.tags):
@@ -85,7 +85,7 @@ class TagList:
                 if self_tag != other_tag:
                     return False
             return True
-        raise TagListException(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
+        raise TagListError(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
 
     def __repr__(self) -> str:
         """Return start string representation of the TagList.

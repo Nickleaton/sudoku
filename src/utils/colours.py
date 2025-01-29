@@ -7,7 +7,7 @@ from src.utils.config import Config
 config: Config = Config()
 
 
-class ColourException(Exception):
+class ColourError(Exception):
     """An exception raised when an invalid colour is provided."""
 
 
@@ -29,11 +29,11 @@ class ColourSet:
             List[str]: A list of color strings in the specified color set.
 
         Raises:
-            ColourException: If the color set is not found in the configuration.
+            ColourError: If the color set is not found in the configuration.
         """
         colour_set: dict[str, List[str]] = config.colours
         if colour_set is None or set_name not in colour_set:
-            raise ColourException(f"Colour set '{set_name}' not found in {config.config_file_path.name}")
+            raise ColourError(f"Colour set '{set_name}' not found in {config.config_file_path.name}")
         return [str(colour) for colour in colour_set[set_name]]
 
     @staticmethod

@@ -11,7 +11,7 @@ from src.items.item import Item
 from src.parsers.frame_parser import FrameParser
 from src.utils.rule import Rule
 from src.utils.side import Side
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class Frame(FirstN):
@@ -109,12 +109,12 @@ class Frame(FirstN):
             tuple[Side, int, int]: A tuple containing the side, index, and total cell_values extracted from the YAML.
 
         Raises:
-            SudokuException: If the YAML configuration does not match the expected format.
+            SudokuError: If the YAML configuration does not match the expected format.
         """
         regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([1234567890]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         side_str, index_str, total_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)

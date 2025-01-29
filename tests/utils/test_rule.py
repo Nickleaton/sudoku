@@ -1,7 +1,7 @@
 """TestRule."""
 import unittest
 
-from src.utils.rule import Rule, RuleException
+from src.utils.rule import Rule, RuleError
 
 
 class TestRule(unittest.TestCase):
@@ -24,9 +24,9 @@ class TestRule(unittest.TestCase):
         self.assertLess(self.rule1, self.rule2)
         self.assertNotEqual(self.rule1, self.rule2)
         self.assertEqual(self.rule1, self.rule1)
-        with self.assertRaises(RuleException):
+        with self.assertRaises(RuleError):
             _ = self.rule1 == "xxxx"
-        with self.assertRaises(RuleException):
+        with self.assertRaises(RuleError):
             _ = self.rule1 < "xxxx"
 
     @property

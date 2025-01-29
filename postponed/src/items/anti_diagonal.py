@@ -8,7 +8,7 @@ from pulp import lpSum
 from postponed.src.items.diagonals import Diagonal
 from src.items.boxes import Boxes
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class AntiDiagonal(Diagonal):
@@ -24,7 +24,7 @@ class AntiDiagonal(Diagonal):
         """
         result: Item = self.top.find_instances(Boxes)[0]
         if not isinstance(result, Boxes):
-            raise SudokuException("More than one boxes definition found")
+            raise SudokuError("More than one boxes definition found")
         boxes: Boxes = result
         size: int = self.board.size.row % boxes.row_size
         return [
@@ -55,7 +55,7 @@ class AntiDiagonal(Diagonal):
             in one box matches the corresponding sum in another box, maintaining anti-diagonal consistency.
 
         Raises:
-            SudokuException: If there are more than one boxes definition in the board.
+            SudokuError: If there are more than one boxes definition in the board.
         """
         if not self.cells:
             return
@@ -63,7 +63,7 @@ class AntiDiagonal(Diagonal):
         boxes: list[Boxes] = self.top.find_instances(Boxes)
 
         if len(boxes) != 1:
-            raise SudokuException("More than one boxes definition found")
+            raise SudokuError("More than one boxes definition found")
         box: Boxes = boxes[0]
         print(box)
         print()

@@ -11,7 +11,7 @@ from src.items.item import Item
 from src.items.multiplication import Multiplication
 from src.utils.rule import Rule
 from src.utils.side import Side
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class FrameProduct(FirstN):
@@ -93,12 +93,12 @@ class FrameProduct(FirstN):
             tuple[Side, int, int]: The side, index, and product extracted from the YAML.
 
         Raises:
-            SudokuException: If the YAML configuration does not match the expected format.
+            SudokuError: If the YAML configuration does not match the expected format.
         """
         regexp = re.compile(f'([{Side.choices()}])([{board.digit_values}])=([1234567890]+)')
         match = regexp.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         side_str, index_str, product_str = match.groups()
         side = Side.create(side_str)
         index = int(index_str)

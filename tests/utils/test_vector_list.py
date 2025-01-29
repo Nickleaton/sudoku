@@ -4,7 +4,7 @@ import unittest
 from src.utils.coord import Coord
 from src.utils.coord_list import CoordList
 from src.utils.vector import Vector
-from src.utils.vector_list import VectorList, VectorListException
+from src.utils.vector_list import VectorList, VectorListError
 
 
 class TestVectorList(unittest.TestCase):
@@ -62,7 +62,7 @@ class TestVectorList(unittest.TestCase):
         self.assertEqual(self.vectors1, self.vectors1)
         self.assertNotEqual(self.vectors1, self.vectors2)
         self.assertNotEqual(self.vectors1, self.vectors3)
-        with self.assertRaises(VectorListException):
+        with self.assertRaises(VectorListError):
             _ = self.vectors1 == "bad"
 
     def test_find(self):
@@ -149,7 +149,7 @@ class TestVectorList(unittest.TestCase):
                 Vector(Coord(1, 2), Coord(2, 3)),
                 Vector(Coord(4, 4), Coord(1, 2))
             ]), self.vectors1 + self.vectors2)
-        with self.assertRaises(VectorListException):
+        with self.assertRaises(VectorListError):
             _ = self.vectors1 + "xxxx"
 
     def test_sort(self):

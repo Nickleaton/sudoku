@@ -14,7 +14,7 @@ from src.solvers.solver import Solver
 from src.solvers.variables import VariableSet
 from src.utils.config import Config
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 from src.validators.validator import Validator
 
 config = Config()
@@ -117,14 +117,14 @@ class Item:  # noqa: WPS110
             Item: The created instance of the constraint.
 
         Raises:
-            SudokuException: If the YAML line is invalid or the class cannot be found.
+            SudokuError: If the YAML line is invalid or the class cannot be found.
         """
         if isinstance(yaml, str):
             name = yaml
         else:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
-            raise SudokuException(f'Unknown constraint class {name}')
+            raise SudokuError(f'Unknown constraint class {name}')
         clazz = cls.classes[name]
         return clazz.create(board, yaml)
 
@@ -140,14 +140,14 @@ class Item:  # noqa: WPS110
             Item: The created instance of the constraint.
 
         Raises:
-            SudokuException: If the YAML line is invalid or the class cannot be found.
+            SudokuError: If the YAML line is invalid or the class cannot be found.
         """
         if isinstance(yaml, str):
             name = yaml
         else:
             name = next(iter(yaml.keys()))
         if name not in cls.classes:
-            raise SudokuException(f'Unknown constraint class {name}')
+            raise SudokuError(f'Unknown constraint class {name}')
         clazz = cls.classes[name]
         return clazz.create2(board, yaml)
 

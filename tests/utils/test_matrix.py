@@ -3,7 +3,7 @@ import unittest
 
 from src.utils.coord import Coord
 from src.utils.matrix import ROTATE000, ROTATE090, ROTATE180, ROTATE270, FLIP_HORIZONTAL, FLIP_VERTICAL, \
-    MatrixException, Matrix
+    MatrixError, Matrix
 
 
 class TestMatrix(unittest.TestCase):
@@ -106,7 +106,7 @@ class TestMatrix(unittest.TestCase):
         """Test equality comparisons for matrix transformations."""
         self.assertEqual(ROTATE000, ROTATE000)
         self.assertNotEqual(ROTATE000, ROTATE090)
-        with self.assertRaises(MatrixException):
+        with self.assertRaises(MatrixError):
             _ = ROTATE000 == 'xxxx'
 
     def test_repr(self):

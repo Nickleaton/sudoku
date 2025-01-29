@@ -21,7 +21,7 @@ class ComposedCommand(Command):
                 in the composed command. Defaults to an empty list.
         """
         super().__init__()
-        self.commands: list[Command] = commands if commands is not None else []
+        self.commands: list[Command] = [] if commands is None else commands
 
     def add(self, command: Command) -> None:
         """Add start_location command to the composed command.

@@ -1,7 +1,7 @@
 """Tag."""
 
 
-class TagException(Exception):
+class TagError(Exception):
     """Exception raised for errors related to Tag comparisons."""
 
 
@@ -30,11 +30,11 @@ class Tag:
             bool: True if both tags have the same name, False otherwise.
 
         Raises:
-            TagException: If the other object is not start Tag instance.
+            TagError: If the other object is not start Tag instance.
         """
         if isinstance(other, Tag):
             return self.name == other.name
-        raise TagException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise TagError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __lt__(self, other: object) -> bool:
         """Check if this Tag is less than another based on the name.
@@ -46,11 +46,11 @@ class Tag:
             bool: True if this tag's name is less than the other's name.
 
         Raises:
-            TagException: If the other object is not start Tag instance.
+            TagError: If the other object is not start Tag instance.
         """
         if isinstance(other, Tag):
             return self.name < other.name
-        raise TagException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise TagError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __le__(self, other: object) -> bool:
         """Check if this Tag is less than or equal to another based on the name.
@@ -62,11 +62,11 @@ class Tag:
             bool: True if this tag's name is less than or equal to the other's name.
 
         Raises:
-            TagException: If the other object is not start Tag instance.
+            TagError: If the other object is not start Tag instance.
         """
         if isinstance(other, Tag):
             return self.name <= other.name
-        raise TagException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise TagError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     def __repr__(self) -> str:
         """Return start string representation of the Tag.

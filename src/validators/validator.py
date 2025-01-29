@@ -21,7 +21,6 @@ class Validator:
             input_data (dict): The line dictionary to validate.
             required_keys (dict[str, type | tuple[type, ...]]): The dict of keys that must be present and their types.
 
-
         Returns:
             list: A list of error messages if any required keys are missing.
         """

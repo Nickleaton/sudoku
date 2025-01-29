@@ -8,7 +8,7 @@ from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.standard_region import StandardRegion
 from src.utils.coord import Coord
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class KnownCell(CellReference):
@@ -45,14 +45,14 @@ class KnownCell(CellReference):
             tuple[int, int, int]: A tuple containing row, column, and digit value_list.
 
         Raises:
-            SudokuException: If the YAML input does not match the expected pattern.
+            SudokuError: If the YAML input does not match the expected pattern.
         """
         regex = re.compile(
             f'([{board.digits.digit_range}])([{board.digits.digit_range}])=([{board.digits.digit_range}]+)',
         )
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         row_str, column_string, digit_str = match.groups()
         return int(row_str), int(column_string), int(digit_str)
 

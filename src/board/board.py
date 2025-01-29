@@ -9,7 +9,7 @@ from src.board.digits import Digits
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.side import Side
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 from src.utils.tags import Tags
 
 
@@ -217,12 +217,12 @@ class Board:
             tuple[int, int]: Parsed (row, column) dimensions.
 
         Raises:
-            SudokuException: If the string format is invalid.
+            SudokuError: If the string format is invalid.
         """
         regexp = re.compile('([1234567890]+)x([1234567890]+)')
         match = regexp.match(text)
         if match is None:
-            raise SudokuException(f'Invalid format: {text}. Expected "NxM".')
+            raise SudokuError(f'Invalid format: {text}. Expected "NxM".')
         return int(match.group(1)), int(match.group(2))
 
     @classmethod

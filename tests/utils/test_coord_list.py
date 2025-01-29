@@ -2,7 +2,7 @@
 import unittest
 
 from src.utils.coord import Coord
-from src.utils.coord_list import CoordList, CoordListException
+from src.utils.coord_list import CoordList, CoordListError
 
 
 class TestCoordList(unittest.TestCase):
@@ -56,7 +56,7 @@ class TestCoordList(unittest.TestCase):
         self.coords1.add(new_coord)
         self.assertIn(new_coord, self.coords1)
         self.assertEqual(len(self.coords1), 4)  # Ensure length increased
-        with self.assertRaises(CoordListException):
+        with self.assertRaises(CoordListError):
             # noinspection PyTypeChecker
             self.coords1.add('xxxx')
 
@@ -81,7 +81,7 @@ class TestCoordList(unittest.TestCase):
 
     def test_equality_with_different_types(self):
         """Test equality of CoordList with start non-CoordList type."""
-        with self.assertRaises(CoordListException):
+        with self.assertRaises(CoordListError):
             _ = self.coords1 == 123  # Should raise exception
 
     def test_iteration(self):
@@ -103,7 +103,7 @@ class TestCoordList(unittest.TestCase):
         self.assertEqual(self.coords1, self.coords1)
         self.assertNotEqual(self.coords1, self.coords2)
         self.assertNotEqual(self.coords1, self.coords3)
-        with self.assertRaises(CoordListException):
+        with self.assertRaises(CoordListError):
             _ = self.coords1 == "xxx"
 
     def test_len(self):

@@ -10,7 +10,7 @@ from src.items.item import Item
 from src.parsers.cell_list_parser import CellListParser
 from src.utils.coord import Coord
 from src.utils.rule import Rule
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class Battenburg(Item):
@@ -80,12 +80,12 @@ class Battenburg(Item):
             Coord: The coordinate location of the Battenburg pattern.
 
         Raises:
-            SudokuException: If the regex pattern does not match the input YAML.
+            SudokuError: If the regex pattern does not match the input YAML.
         """
         regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])')
         match = regex.match(str(yaml[cls.__name__]))
         if match is None:
-            raise SudokuException('Match is None, expected start_location valid match.')
+            raise SudokuError('Match is None, expected start_location valid match.')
         row_str, column_str = match.groups()
         return Coord(int(row_str), int(column_str))
 

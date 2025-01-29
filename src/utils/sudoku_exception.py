@@ -1,5 +1,5 @@
 """Sudoku Exception Base class."""
 
 
-class SudokuException(Exception):
+class SudokuError(Exception):
     """Base class for exceptions related to Sudoku operations."""

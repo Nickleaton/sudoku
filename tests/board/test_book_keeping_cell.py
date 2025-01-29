@@ -2,7 +2,7 @@
 import unittest
 
 from src.board.book_keeping_cell import BookKeepingCell
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 
 
 class TestBookKeepingCell(unittest.TestCase):
@@ -132,11 +132,11 @@ class TestBookKeepingCell(unittest.TestCase):
     def test_invalid_digit_access(self):
         """Test accessing invalid digits in BookKeepingCell."""
         book = BookKeepingCell(9)
-        with self.assertRaises(SudokuException):
+        with self.assertRaises(SudokuError):
             _ = book[0]
-        with self.assertRaises(SudokuException):
+        with self.assertRaises(SudokuError):
             _ = book[10]
-        with self.assertRaises(SudokuException):
+        with self.assertRaises(SudokuError):
             book[0] = True
 
     def test_unique(self):

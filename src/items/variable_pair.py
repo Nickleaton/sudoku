@@ -11,7 +11,7 @@ from src.items.cell import Cell
 from src.items.item import Item
 from src.solvers.solver import Solver
 from src.utils.config import Config
-from src.utils.sudoku_exception import SudokuException
+from src.utils.sudoku_exception import SudokuError
 from src.utils.variable_type import VariableType
 
 config = Config()
@@ -52,14 +52,14 @@ class VariablePair(Pair):
             Tuple[Cell, Cell, str]: A tuple containing two Cell objects and the value_variable name.
 
         Raises:
-            SudokuException: If the YAML input does not match the expected pattern.
+            SudokuError: If the YAML input does not match the expected pattern.
         """
         rc_pattern = f'[{board.digit_values}][{board.digits.digit_range}]'
         var_pattern = '[start_location-zA-Z][a-zA-Z_]*'
         regex = re.compile(f'({rc_pattern})-({rc_pattern})=({var_pattern})')
         match = regex.match(yaml[cls.__name__])
         if match is None:
-            raise SudokuException('Match is None, expected a valid match.')
+            raise SudokuError('Match is None, expected a valid match.')
         c1_str, c2_str, var_str = match.groups()
         c1 = Cell.make(board, int(c1_str[0]), int(c1_str[1]))
         c2 = Cell.make(board, int(c2_str[0]), int(c2_str[1]))

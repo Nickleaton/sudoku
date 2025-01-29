@@ -2,7 +2,7 @@
 from src.utils.coord import Coord
 
 
-class MatrixException(Exception):
+class MatrixError(Exception):
     """Custom exception for errors related to Matrix operations."""
 
 
@@ -77,11 +77,11 @@ class Matrix:
             bool: True if the matrices are equal, False otherwise.
 
         Raises:
-            MatrixException: If the comparison is attempted with a non-matrix object.
+            MatrixError: If the comparison is attempted with a non-matrix object.
         """
         if isinstance(other, Matrix):
             return self.matrix == other.matrix
-        raise MatrixException(f'Cannot compare {other.__class__.__name__} with {self.__class__.__name__}')
+        raise MatrixError(f'Cannot compare {other.__class__.__name__} with {self.__class__.__name__}')
 
     def __hash__(self) -> int:
         """Return the hash of the matrix based on its elements.

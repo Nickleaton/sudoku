@@ -2,7 +2,7 @@
 
 import unittest
 
-from src.utils.tag import Tag, TagException
+from src.utils.tag import Tag, TagError
 
 
 class TestTag(unittest.TestCase):
@@ -24,16 +24,16 @@ class TestTag(unittest.TestCase):
         """Test equality comparison between Tag instances."""
         self.assertEqual(Tag('one'), Tag('one'))
         self.assertNotEqual(Tag('one'), Tag('two'))
-        with self.assertRaises(TagException):
+        with self.assertRaises(TagError):
             _ = self.tag == "xxx"
 
     def test_comparison(self):
         """Test comparison operators (<, <=) for Tag instances."""
         self.assertLess(Tag('alpha'), Tag('beta'))
         self.assertLessEqual(Tag('alpha'), Tag('beta'))
-        with self.assertRaises(TagException):
+        with self.assertRaises(TagError):
             _ = self.tag < "xxx"
-        with self.assertRaises(TagException):
+        with self.assertRaises(TagError):
             _ = self.tag <= "xxx"
 
 
