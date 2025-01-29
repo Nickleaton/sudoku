@@ -34,3 +34,14 @@ class SimpleToken(Token):
             str: The string representation of the SimpleToken.
         """
         return f'{self.__class__.__name__}()'
+
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return self.__class__ == SimpleToken

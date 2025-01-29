@@ -1,7 +1,7 @@
 """TestSymbols."""
 import unittest
 
-from src.tokens.symbols import CommaToken, DashToken, EqualsToken, SymbolToken, QuestionMarkToken
+from src.tokens.symbols import CommaToken, DashToken, EqualsToken, SymbolToken, QuestionMarkToken, XToken, DotDotToken
 from tests.tokens.test_simple_token import TestSimpleToken
 
 
@@ -12,7 +12,7 @@ class TestSymbolToken(TestSimpleToken):
         """Set up example tokens specific for testing DashToken."""
         super().setUp()
         self.token = SymbolToken('row')
-        self.representation = "SymbolToken('row')"
+        self.representation = "SymbolToken('row', 'row')"
         self.pattern = "row"
         self.name = 'Symbol'
         self.good = ['row']
@@ -78,6 +78,36 @@ class TestQuestionMarkToken(TestSymbolToken):
         self.good = ['?']
         self.bad = ['X', '==']
         self.backus_naur = r'"?"'
+
+
+class TestXToken(TestSymbolToken):
+    """Test cases for the XToken class."""
+
+    def setUp(self):
+        """Set up example tokens specific for testing XToken."""
+        super().setUp()
+        self.token = XToken()
+        self.representation = "XToken()"
+        self.pattern = r"x"
+        self.name = 'X'
+        self.good = ['x']
+        self.bad = ['X', 'xx']
+        self.backus_naur = '"x"'
+
+
+class TestDotDotToken(TestSymbolToken):
+    """Test cases for the DotDotToken class."""
+
+    def setUp(self):
+        """Set up example tokens specific for testing DotDotToken."""
+        super().setUp()
+        self.token = DotDotToken()
+        self.representation = "DotDotToken()"
+        self.pattern = r"\.\."
+        self.name = 'DotDot'
+        self.good = ['..']
+        self.bad = ['.', '...']
+        self.backus_naur = '".."'
 
 
 if __name__ == "__main__":

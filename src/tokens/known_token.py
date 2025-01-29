@@ -10,17 +10,6 @@ class KnownToken(SimpleToken):
         super().__init__(pattern='([0-9.lmheofs])')
 
     @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
-
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False
-
-    @property
     def description(self) -> str:
         """Get the description of the KnownToken.
 

@@ -26,14 +26,3 @@ class BoxToken(SimpleToken):
             str: An example string that the BoxToken would match.
         """
         return '9x9'
-
-    @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
-
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False

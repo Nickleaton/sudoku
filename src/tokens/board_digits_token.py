@@ -31,14 +31,3 @@ class BoardDigitsToken(SimpleToken):
             str: An example string that the BoardDigitsToken would match.
         """
         return '1..9'
-
-    @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
-
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False

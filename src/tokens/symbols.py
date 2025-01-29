@@ -3,37 +3,42 @@ from src.tokens.simple_token import SimpleToken
 
 
 class SymbolToken(SimpleToken):
-    """Represent start symbol token.
+    """Represents a symbol token.
 
-    Inherits from `SimpleToken` and serves as start base class for tokens
+    Inherits from `SimpleToken` and serves as the base class for tokens
     representing specific symbols.
 
     Attributes:
         symbol (str): The symbol represented by this token.
+        pattern (str | None): An optional regex pattern to match the symbol.
     """
 
-    def __init__(self, symbol: str) -> None:
-        """Initialize start SymbolToken with start specific symbol.
+    def __init__(self, symbol: str, pattern: str | None = None) -> None:
+        """Initialize a SymbolToken with a specific symbol.
 
         Args:
             symbol (str): The symbol for this token.
+            pattern (str | None): The pattern if different from the symbol.
         """
-        super().__init__(symbol)
+        super().__init__(symbol if pattern is None else pattern)
         self.symbol: str = symbol
 
     def __repr__(self) -> str:
-        """Return start string representation of the SymbolToken.
+        """Return a string representation of the SymbolToken.
 
         Returns:
-            str: A string representation of the SymbolToken, including the symbol.
+            str: A string representation of the SymbolToken, including the symbol
+                 and pattern if applicable.
         """
-        return f"SymbolToken('{self.symbol}')"
+        if self.__class__ == SymbolToken:
+            return f"{self.__class__.__name__}({self.symbol!r}, {self.pattern!r})"
+        return f"{self.__class__.__name__}()"
 
     def backus_naur_form(self) -> str:
         """Return the Backus-Naur form representation of the symbol.
 
         Returns:
-            str: The symbol in Backus-Naur form.
+            str: The symbol in Backus-Naur form (quoted).
         """
         return f'"{self.symbol}"'
 
@@ -50,7 +55,7 @@ class SymbolToken(SimpleToken):
 
     @property
     def example(self) -> str:
-        """Get an example of a integer_value matched by the SymbolToken.
+        """Get an example of a value matched by the SymbolToken.
 
         Returns:
             str: An example string that the SymbolToken would match.
@@ -59,118 +64,61 @@ class SymbolToken(SimpleToken):
             return self.symbol
         return super().example
 
+    @property
+    def is_abstract(self) -> bool:
+        """Check if the token is abstract.
+
+        This method returns `True` to indicate that the token is abstract.
+
+        Returns:
+            bool: `True` if the token is abstract, otherwise `False`.
+        """
+        return self.__class__ == SymbolToken
+
 
 class EqualsToken(SymbolToken):
-    """Represent an equals sign token."""
+    """Represents an equals sign ('=') token."""
 
     def __init__(self) -> None:
         """Initialize an equals token with the symbol '='."""
         super().__init__(symbol='=')
 
-    def __repr__(self) -> str:
-        """Return start string representation of the EqualsToken.
-
-        Returns:
-            str: The string representation of the EqualsToken.
-        """
-        return 'EqualsToken()'
-
-    @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
-
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False
-
 
 class CommaToken(SymbolToken):
-    """Represent start comma token."""
+    """Represents a comma (',') token."""
 
     def __init__(self) -> None:
-        """Initialize start comma token with the symbol ','."""
+        """Initialize a comma token with the symbol ','."""
         super().__init__(symbol=',')
-
-    def __repr__(self) -> str:
-        """Return start string representation of the CommaToken.
-
-        Returns:
-            str: The string representation of the CommaToken.
-        """
-        return 'CommaToken()'
-
-    @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
-
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False
 
 
 class DashToken(SymbolToken):
-    """Represent start dash token."""
+    """Represents a dash ('-') token."""
 
     def __init__(self) -> None:
-        """Initialize start dash token with the symbol '-'."""
+        """Initialize a dash token with the symbol '-'."""
         super().__init__(symbol='-')
-
-    def __repr__(self) -> str:
-        """Return start string representation of the DashToken.
-
-        Returns:
-            str: The string representation of the DashToken.
-        """
-        return 'DashToken()'
-
-    @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
-
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False
 
 
 class QuestionMarkToken(SymbolToken):
-    """Represent start question mark token."""
+    """Represents a question mark ('?') token."""
 
     def __init__(self) -> None:
-        """Initialize start question mark token with the symbol '?'."""
-        super().__init__(symbol=r'\?')
+        """Initialize a question mark token with the symbol '?'."""
+        super().__init__(symbol='?', pattern=r"\?")
 
-    def backus_naur_form(self) -> str:
-        """Output the Backus-Naur form for start question mark.
 
-        Returns:
-            str: The question mark in Backus-Naur form.
-        """
-        return '"?"'
+class XToken(SymbolToken):
+    """Represents an 'x' token."""
 
-    def __repr__(self) -> str:
-        """Return start string representation of the QuestionMarkToken.
+    def __init__(self) -> None:
+        """Initialize an 'x' token with the symbol 'x'."""
+        super().__init__(symbol='x')
 
-        Returns:
-            str: The string representation of the QuestionMarkToken.
-        """
-        return 'QuestionMarkToken()'
 
-    @property
-    def is_abstract(self) -> bool:
-        """Check if the token is abstract.
+class DotDotToken(SymbolToken):
+    """Represents a dot-dot ('..') token."""
 
-        This method returns `True` to indicate that the token is abstract.
-
-        Returns:
-            bool: `True` if the token is abstract, otherwise `False`.
-        """
-        return False
+    def __init__(self) -> None:
+        """Initialize a dot-dot token with the symbol '..'."""
+        super().__init__(symbol='..', pattern=r"\.\.")
