@@ -5,9 +5,13 @@ from src.tokens.simple_token import SimpleToken
 class CycleToken(SimpleToken):
     """Represents a token for matching a orientation indicator (C, A)."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('cycle', str)
+    ]
+
     def __init__(self) -> None:
         """Initialize token with pattern '([CA])' for clockwise and anticlockwise."""
-        super().__init__(pattern='([CA])')
+        super().__init__(pattern='(?P<cycle>[CA])')
 
     @property
     def description(self) -> str:

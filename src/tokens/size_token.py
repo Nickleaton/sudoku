@@ -5,9 +5,14 @@ from src.tokens.simple_token import SimpleToken
 class SizeToken(SimpleToken):
     """Represents the box size."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('row', int),
+        ('col', int),
+    ]
+
     def __init__(self) -> None:
         """Initialize start cell token with pattern 'ddxdd' where its row x column."""
-        super().__init__(pattern=r'(\d\d{0,1})x(\d\d{0,1})')
+        super().__init__(pattern=r'(?P<row>\d\d{0,1})x(?P<col>\d\d{0,1})')
 
     @property
     def description(self) -> str:

@@ -13,12 +13,12 @@ class TestCycleToken(TestSimpleToken):
         super().setUp()
         self.token = CycleToken()
         self.representation = "CycleToken()"
-        self.pattern = r"([CA])"
+        self.pattern = r"(?P<cycle>[CA])"
         self.name = 'Cycle'
         self.good = ['C', 'A']
         self.bad = ['X', '0', '1']
-        self.group_count = 1
         self.backus_naur = '<Cycle>'
+        self.result = {'cycle': 'C'}
 
 
 if __name__ == "__main__":

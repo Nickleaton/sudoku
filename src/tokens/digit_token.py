@@ -5,9 +5,13 @@ from src.tokens.simple_token import SimpleToken
 class DigitToken(SimpleToken):
     """Represents start single digit token (0-9)."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('digit', int)
+    ]
+
     def __init__(self) -> None:
         """Initialize start digit token with pattern 'd'."""
-        super().__init__(pattern=r'\d')
+        super().__init__(pattern=r'(?P<digit>\d)')
 
     @property
     def description(self) -> str:

@@ -18,10 +18,15 @@ class TestToken(unittest.TestCase):
         self.name = "Token"
         self.good = ['A']
         self.bad = ['B']
-        self.group_count = 0
         self.backus_naur = "<Token>"
         self.representation = "Token('A')"
         self.pattern = "A"
+        self.names = []
+        self.result = {}
+
+    def test_parse(self):
+        """Test the parse method."""
+        self.assertDictEqual(self.result, self.token.parse(self.good[0]))
 
     def test_register(self):
         """Ensure the Token class registers correctly."""
@@ -31,11 +36,6 @@ class TestToken(unittest.TestCase):
     def test_backus_naur_form(self):
         """Verify the Backus-Naur form of the Token."""
         self.assertEqual(self.backus_naur, self.token.backus_naur_form())
-
-    def test_group_count(self):
-        """Test the group count for valid input."""
-        for text in self.good:
-            self.assertEqual(len(self.token.groups(text)), self.group_count, "Incorrect group count")
 
     def test_add_operator_creates_sequence(self):
         """Test that the + operator creates start SequenceToken."""
@@ -94,14 +94,13 @@ class TestToken(unittest.TestCase):
             with self.subTest(text=text):
                 self.assertFalse(self.token.match(text), msg=f"Expected '{text}' to be an invalid match.")
 
-
     def test_repr(self):
         """Test the string representation of the Token."""
         self.assertEqual(repr(self.token), self.representation)
 
     def test_pattern(self):
         """Test that the pattern is correct."""
-        self.assertEqual(self.token.pattern, self.pattern)
+        self.assertEqual(self.pattern, self.token.pattern)
 
     def test_description(self):
         """Test that the description is correct."""

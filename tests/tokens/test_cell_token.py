@@ -13,12 +13,12 @@ class TestCellToken(TestSimpleToken):
         super().setUp()
         self.token = CellToken()
         self.representation = "CellToken()"
-        self.pattern = r"(\d)(\d)"
+        self.pattern = r"(?P<row>\d)(?P<col>\d)"
         self.name = 'Cell'
-        self.good = ['11', '12', '13', '21', '22', '23', '31', '32', '33']
+        self.good = ['12', '11', '13', '21', '22', '23', '31', '32', '33']
         self.bad = ['row', 'XX']
-        self.group_count = 2
         self.backus_naur = '<Cell>'
+        self.result = {'row': 1, 'col': 2}
 
 
 if __name__ == "__main__":

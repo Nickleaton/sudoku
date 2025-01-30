@@ -5,9 +5,14 @@ from src.tokens.simple_token import SimpleToken
 class CellToken(SimpleToken):
     """Represents start cell token with two digits."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('row', int),
+        ('col', int),
+    ]
+
     def __init__(self) -> None:
         """Initialize start cell token with pattern 'dd' where the digits are row column."""
-        super().__init__(pattern=r'(\d)(\d)')
+        super().__init__(pattern=r'(?P<row>\d)(?P<col>\d)')
 
     @property
     def description(self) -> str:

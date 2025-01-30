@@ -5,9 +5,13 @@ from src.tokens.simple_token import SimpleToken
 class QuadrupleToken(SimpleToken):
     """Represents start token for matching one or more digits or question marks."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('quads', list)
+    ]
+
     def __init__(self) -> None:
         """Initialize start quad token with start pattern of digits and question marks."""
-        super().__init__(pattern=r'([\d?]{0,4})')
+        super().__init__(pattern=r'(?P<quads>[\d?]{0,4})')
 
     @property
     def description(self) -> str:

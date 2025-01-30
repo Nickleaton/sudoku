@@ -15,7 +15,6 @@ class TestSimpleToken(TestToken):
         self.representation = "SimpleToken()"
         self.pattern = "A"
         self.name = 'Simple'
-        self.group_count = 0
         self.backus_naur = "<Simple>"
 
 

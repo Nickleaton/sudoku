@@ -5,9 +5,14 @@ from src.tokens.simple_token import SimpleToken
 class BoardDigitsToken(SimpleToken):
     """Represents allowed digits on a board."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('minimum', int),
+        ('maximum', int),
+    ]
+
     def __init__(self) -> None:
         """Initialize digits token with start pattern."""
-        super().__init__(pattern=r'(\d)\.\.(\d\d{0,1})')
+        super().__init__(pattern=r'(?P<minimum>\d)\.\.(?P<maximum>\d\d{0,1})')
 
     @property
     def description(self) -> str:

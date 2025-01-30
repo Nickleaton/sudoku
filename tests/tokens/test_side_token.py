@@ -12,13 +12,13 @@ class TestSideToken(TestSimpleToken):
         """Set up example tokens specific for testing SideToken."""
         super().setUp()
         self.token = SideToken()  # Example SideToken
-        self.representation = "SideToken()"
-        self.pattern = r"([TLBR])"
+        self.representation = 'SideToken()'
+        self.pattern = r'(?P<side>[TLBR])'
         self.name = 'Side'
         self.good = ['T', 'L', 'B', 'R']
         self.bad = ['X']
-        self.group_count = 1
         self.backus_naur = '<Side>'
+        self.result = {'side': 'T'}
 
 
 if __name__ == "__main__":

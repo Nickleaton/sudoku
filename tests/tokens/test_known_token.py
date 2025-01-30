@@ -13,12 +13,12 @@ class TestKnownToken(TestSimpleToken):
         super().setUp()
         self.token = KnownToken()
         self.representation = "KnownToken()"
-        self.pattern = r"([0-9.lmheofs])"
+        self.pattern = r"(?P<cell>[0-9.lmheofs])"
         self.name = 'Known'
-        self.good = ['0', '9', 'l', 'm', 'h', 'e', 'o', 'f', '.', 's']
+        self.good = ['l', '0', '9', 'm', 'h', 'e', 'o', 'f', '.', 's']
         self.bad = ['row', 'X', '?']
-        self.group_count = 1
         self.backus_naur = '<Known>'
+        self.result = {'cell': 'l'}
 
 
 if __name__ == "__main__":

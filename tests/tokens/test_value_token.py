@@ -13,12 +13,12 @@ class TestValueToken(TestSimpleToken):
         super().setUp()
         self.token = ValueToken()
         self.representation = 'ValueToken()'
-        self.pattern = r'(\d+)'
-        self.good = ['1', '99']
+        self.pattern = r'(?P<value>\d+)'
+        self.good = ['11', '99']
         self.bad = ['X']
         self.name = 'Value'
-        self.group_count = 1
         self.backus_naur = '<Value>'
+        self.result = {'value': 11}
 
 
 if __name__ == '__main__':

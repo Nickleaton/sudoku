@@ -5,9 +5,13 @@ from src.tokens.simple_token import SimpleToken
 class ValueToken(SimpleToken):
     """Represents a token for matching cell_values."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('value', int)
+    ]
+
     def __init__(self) -> None:
         """Initialize the token with a regex pattern for one or more digits."""
-        super().__init__(r'(\d+)')
+        super().__init__(r'(?P<value>\d+)')
 
     @property
     def description(self) -> str:

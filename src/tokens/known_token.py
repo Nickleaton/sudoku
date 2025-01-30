@@ -5,9 +5,13 @@ from src.tokens.simple_token import SimpleToken
 class KnownToken(SimpleToken):
     """Represents start token for matching start known number (0-9, l, m, h, exp, o, f, s)."""
 
+    mapper: list[tuple[str, str | int | float | list]] = [
+        ('cell', str)
+    ]
+
     def __init__(self) -> None:
         """Initialize start known token with pattern '([0-9.lmheof])'."""
-        super().__init__(pattern='([0-9.lmheofs])')
+        super().__init__(pattern='(?P<cell>[0-9.lmheofs])')
 
     @property
     def description(self) -> str:

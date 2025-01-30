@@ -12,13 +12,13 @@ class TestBoxToken(TestSimpleToken):
         """Set up example tokens specific for testing BoxToken."""
         super().setUp()
         self.token = BoxToken()
-        self.representation = "BoxToken()"
-        self.pattern = r"([1-9])x([1-9])"
+        self.representation = 'BoxToken()'
+        self.pattern = r'(?P<row>\d)x(?P<col>\d)'
         self.name = 'Box'
-        self.good = ['9x9', '2x3', '4x4']
+        self.good = ['2x3', '3x3', '4x4']
         self.bad = ['99', '2*3', '4by4']
-        self.group_count = 2
         self.backus_naur = '<Box>'
+        self.result = {'row': 2, 'col': 3}
 
 
 if __name__ == "__main__":

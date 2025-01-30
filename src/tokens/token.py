@@ -15,6 +15,7 @@ class Token:
         pattern (str): The regex pattern associated with the token.
         pattern (re.Pattern): The compiled regex pattern.
     """
+    mapper: list[tuple[str, type]] = []
 
     classes: dict[str, Type['Token']] = SortedDict()
 
@@ -37,6 +38,25 @@ class Token:
         """
         self.pattern: str = pattern
         self.compiled_pattern: re.Pattern = re.compile(f'^{pattern}$')
+
+    def parse(self, text: str) -> dict:
+        """Parse the given text against the token's regex pattern.
+
+        Args:
+            text (str): The text to parse.
+
+        Returns:
+            dict: A dictionary containing the parsed data.
+
+        Raises:
+            ParserError: If the text does not match the token's regex pattern.
+        """
+        match = self.compiled_pattern.match(text)
+        data = match.groupdict()
+        for key, data_type in self.__class__.mapper:
+            if key in data:
+                data[key] = data_type(data[key])
+        return data
 
     @classmethod
     def token_list(cls) -> list['Token']:
@@ -68,7 +88,7 @@ class Token:
 
     @property
     def example(self) -> str:
-        """Get an example of a integer_value matched by the ValueToken.
+        """Get an example of an integer_value matched by the ValueToken.
 
         Returns:
             str: An example string that the ValueToken would match.
@@ -85,18 +105,6 @@ class Token:
             bool: True if the text matches the pattern, False otherwise.
         """
         return self.compiled_pattern.match(text) is not None
-
-    def groups(self, text: str) -> list[str]:
-        """Return the matched groups from the text.
-
-        Args:
-            text (str): The text to match.
-
-        Returns:
-            list[str]: A list of matched groups, or an empty list if no match is found.
-        """
-        match = self.compiled_pattern.match(text)
-        return list(match.groups()) if match else []
 
     def backus_naur_form(self) -> str:
         """Return the Backus-Naur Form (BNF) representation of the token.
