@@ -31,8 +31,8 @@ class SymbolToken(SimpleToken):
                  and pattern if applicable.
         """
         if self.__class__ == SymbolToken:
-            return f"{self.__class__.__name__}({self.symbol!r}, {self.pattern!r})"
-        return f"{self.__class__.__name__}()"
+            return f'{self.__class__.__name__}({self.symbol!r}, {self.pattern!r})'
+        return f'{self.__class__.__name__}()'
 
     def backus_naur_form(self) -> str:
         """Return the Backus-Naur form representation of the symbol.
@@ -105,7 +105,7 @@ class QuestionMarkToken(SymbolToken):
 
     def __init__(self) -> None:
         """Initialize a question mark token with the symbol '?'."""
-        super().__init__(symbol='?', pattern=r"\?")
+        super().__init__(symbol='?', pattern=r'\?')
 
 
 class XToken(SymbolToken):
@@ -121,4 +121,20 @@ class DotDotToken(SymbolToken):
 
     def __init__(self) -> None:
         """Initialize a dot-dot token with the symbol '..'."""
-        super().__init__(symbol='..', pattern=r"\.\.")
+        super().__init__(symbol='..', pattern=r'\.\.')
+
+
+class StartToken(SymbolToken):
+    """Represents a start token."""
+
+    def __init__(self) -> None:
+        """Initialize a start token that matches start of the text.."""
+        super().__init__(symbol='^')
+
+
+class EndToken(SymbolToken):
+    """Represents a start token."""
+
+    def __init__(self) -> None:
+        """Initialize a start token that matches end of the text.."""
+        super().__init__(symbol='$')

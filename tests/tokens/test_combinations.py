@@ -3,7 +3,7 @@ import unittest
 
 from src.tokens.cell_token import CellToken
 from src.tokens.symbols import CommaToken
-from src.tokens.token import Token
+from src.tokens.token import Token, ZeroOrMoreToken
 
 
 class TestCombinations(unittest.TestCase):
@@ -21,7 +21,7 @@ class TestCombinations(unittest.TestCase):
 
     def test_long_cell_list(self):
         """Test matching start long list of cell tokens separated by commas."""
-        token: Token = CellToken() + (CommaToken() + CellToken()) * (0, 999)
+        token: Token = CellToken() + ZeroOrMoreToken(CommaToken() + CellToken())
         self.assertTrue(token.match("11,22,33"))
         self.assertTrue(token.match("11,22,33,44"))
 

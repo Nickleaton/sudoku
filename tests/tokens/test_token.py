@@ -2,8 +2,8 @@
 import re
 import unittest
 
-from src.tokens.token import Token, SequenceToken, ChoiceToken, RepeatToken, ZeroOrMoreToken, OneOrMoreToken, \
-    OptionalToken
+from src.tokens.token import ChoiceToken, OneOrMoreToken, OptionalToken, RepeatToken, SequenceToken, Token, \
+    ZeroOrMoreToken
 
 
 class TestToken(unittest.TestCase):
@@ -74,25 +74,18 @@ class TestToken(unittest.TestCase):
             is_valid = False
         self.assertTrue(is_valid, "Pattern should be start valid regex.")
 
-        for text in self.good:
-            with self.subTest(text=text):
-                self.assertTrue(self.token.match(text))
-
-        for text in self.bad:
-            with self.subTest(text=text):
-                self.assertFalse(self.token.match(text))
-
     def test_good(self):
         """Test the matching of good input_types."""
         for text in self.good:
             with self.subTest(text=text):
                 self.assertTrue(self.token.match(text))
+                self.assertEqual(text, self.token.matched_text(text))
 
     def test_bad(self):
         """Test the matching of bad input types."""
         for text in self.bad:
             with self.subTest(text=text):
-                self.assertFalse(self.token.match(text), msg=f"Expected '{text}' to be an invalid match.")
+                self.assertNotEqual(text, self.token.matched_text(text))
 
     def test_repr(self):
         """Test the string representation of the Token."""
@@ -110,14 +103,6 @@ class TestToken(unittest.TestCase):
         else:
             self.assertGreater(len(self.token.description), 0)
 
-    def test_example(self):
-        """Test that the example is correct."""
-        self.assertIsInstance(self.token.example, str)
-        if self.token.is_abstract:
-            self.assertEqual(len(self.token.example), 0)
-        else:
-            self.assertGreater(len(self.token.example), 0)
-
     def test_to_dict(self):
         """Test that the to_dict method returns a dictionary."""
         dct: dict = self.token.to_dict()
@@ -125,7 +110,6 @@ class TestToken(unittest.TestCase):
         self.assertIn('pattern', dct)
         self.assertIn('name', dct)
         self.assertIn('description', dct)
-        self.assertIn('example', dct)
         self.assertIn('backus_naur_form', dct)
 
 

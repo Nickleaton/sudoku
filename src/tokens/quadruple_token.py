@@ -6,7 +6,7 @@ class QuadrupleToken(SimpleToken):
     """Represents start token for matching one or more digits or question marks."""
 
     mapper: list[tuple[str, str | int | float | list]] = [
-        ('quads', list)
+        ('quads', list),
     ]
 
     def __init__(self) -> None:

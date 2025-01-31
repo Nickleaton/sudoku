@@ -9,7 +9,6 @@ class SideToken(SimpleToken):
         ('side', str),
     ]
 
-
     def __init__(self) -> None:
         """Initialize start side token with pattern '([TLBR])'."""
         super().__init__(pattern='(?P<side>[TLBR])')

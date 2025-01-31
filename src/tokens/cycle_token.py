@@ -6,7 +6,7 @@ class CycleToken(SimpleToken):
     """Represents a token for matching a orientation indicator (C, A)."""
 
     mapper: list[tuple[str, str | int | float | list]] = [
-        ('cycle', str)
+        ('cycle', str),
     ]
 
     def __init__(self) -> None:

@@ -5,16 +5,13 @@ from typing import Type
 
 from sortedcontainers import SortedDict
 
+from src.utils.regex_utils import RegexUtils
 from src.utils.sudoku_exception import SudokuError
 
 
 class Token:
-    """Base class for all tokens used to represent regex patterns.
+    """Base class for all tokens used to represent regex patterns."""
 
-    Attributes:
-        pattern (str): The regex pattern associated with the token.
-        pattern (re.Pattern): The compiled regex pattern.
-    """
     mapper: list[tuple[str, type]] = []
 
     classes: dict[str, Type['Token']] = SortedDict()
@@ -37,7 +34,31 @@ class Token:
             pattern (str): The regex pattern representing this token.
         """
         self.pattern: str = pattern
-        self.compiled_pattern: re.Pattern = re.compile(f'^{pattern}$')
+
+    def match(self, text: str) -> bool:
+        """Match the given text against the token's regex pattern.
+
+        Args:
+            text (str): The text to match against the token's regex pattern.
+
+        Returns:
+            bool: True if the text matches the token's regex pattern, False otherwise.
+        """
+        return re.match(self.pattern, text) is not None
+
+    def matched_text(self, text: str) -> str:
+        """Match the given text against the token's regex pattern.
+
+        Args:
+            text (str): The text to match against the token's regex pattern.
+
+        Returns:
+            (str): The matched text
+        """
+        match = re.match(self.pattern, text)
+        if match is None:
+            return ''
+        return match.group()
 
     def parse(self, text: str) -> dict:
         """Parse the given text against the token's regex pattern.
@@ -47,16 +68,14 @@ class Token:
 
         Returns:
             dict: A dictionary containing the parsed data.
-
-        Raises:
-            ParserError: If the text does not match the token's regex pattern.
         """
-        match = self.compiled_pattern.match(text)
-        data = match.groupdict()
+        match = re.match(self.pattern, text)
+        matched_items: dict = match.groupdict()
         for key, data_type in self.__class__.mapper:
-            if key in data:
-                data[key] = data_type(data[key])
-        return data
+            text = matched_items.get(key)
+            if text is not None:
+                matched_items[key] = data_type(text)
+        return matched_items
 
     @classmethod
     def token_list(cls) -> list['Token']:
@@ -86,26 +105,6 @@ class Token:
         """
         return ''
 
-    @property
-    def example(self) -> str:
-        """Get an example of an integer_value matched by the ValueToken.
-
-        Returns:
-            str: An example string that the ValueToken would match.
-        """
-        return ''
-
-    def match(self, text: str) -> bool:
-        """Match the given text against the token's regex pattern.
-
-        Args:
-            text (str): The text to match.
-
-        Returns:
-            bool: True if the text matches the pattern, False otherwise.
-        """
-        return self.compiled_pattern.match(text) is not None
-
     def backus_naur_form(self) -> str:
         """Return the Backus-Naur Form (BNF) representation of the token.
 
@@ -124,7 +123,6 @@ class Token:
             'name': self.name,
             'pattern': self.pattern,
             'description': self.description,
-            'example': self.example,
             'backus_naur_form': self.backus_naur_form,
         }
 
@@ -194,7 +192,7 @@ class SequenceToken(Token):
         Args:
             tokens (list[Token]): A list of tokens to concatenate in sequence.
         """
-        combined_pattern = ''.join(f'({token.pattern})' for token in tokens)
+        combined_pattern = ''.join(f'({RegexUtils.strip_names(token.pattern)})' for token in tokens)
         super().__init__(combined_pattern)
         self.tokens = tokens
 
@@ -226,7 +224,7 @@ class ChoiceToken(Token):
         Args:
             tokens (list[Token]): A list of tokens to alternate between.
         """
-        alternation_pattern = '|'.join([f'({token.pattern})' for token in tokens])
+        alternation_pattern = '|'.join([f'({RegexUtils.strip_names(token.pattern)})' for token in tokens])
         super().__init__(alternation_pattern)
         self.tokens = tokens
 
@@ -268,18 +266,19 @@ class RepeatToken(Token):
         if lower > upper:
             raise SudokuError('Lower bound must be less than or equal to upper bound.')
 
-        self.lower = lower
-        self.upper = upper
+        self.lower: int = lower
+        self.upper: int = upper
 
         # Map of (lower, upper) to the corresponding pattern
+        stripped_pattern: str = RegexUtils.strip_names(token.pattern)
         pattern_map = {
-            (0, 1): f'({token.pattern})?',
-            (0, sys.maxsize): f'({token.pattern})*',
-            (1, sys.maxsize): f'({token.pattern})+',
-            (lower, lower): f'({token.pattern}){{{lower}}}',
+            (0, 1): f'({stripped_pattern})?',
+            (0, sys.maxsize): f'({stripped_pattern})*',
+            (1, sys.maxsize): f'({stripped_pattern})+',
+            (lower, lower): f'({stripped_pattern}){{{lower}}}',
         }
 
-        general_case: str = f'({token.pattern}){{{lower},{upper}}}'
+        general_case: str = f'({stripped_pattern}){{{lower},{upper}}}'
         pattern = pattern_map.get((lower, upper), general_case)
 
         super().__init__(pattern)

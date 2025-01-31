@@ -1,15 +1,16 @@
 """TestSymbols."""
 import unittest
 
-from src.tokens.symbols import CommaToken, DashToken, EqualsToken, SymbolToken, QuestionMarkToken, XToken, DotDotToken
+from src.tokens.symbols import CommaToken, DashToken, DotDotToken, EndToken, EqualsToken, QuestionMarkToken, StartToken, \
+    SymbolToken, XToken
 from tests.tokens.test_simple_token import TestSimpleToken
 
 
 class TestSymbolToken(TestSimpleToken):
-    """Test Symbol Token."""
+    """Base test class for symbol tokens."""
 
     def setUp(self):
-        """Set up example tokens specific for testing DashToken."""
+        """Set up a SymbolToken instance for testing."""
         super().setUp()
         self.token = SymbolToken('row')
         self.representation = "SymbolToken('row', 'row')"
@@ -21,10 +22,10 @@ class TestSymbolToken(TestSimpleToken):
 
 
 class TestCommaToken(TestSymbolToken):
-    """Test cases for the CommaToken class."""
+    """Tests for the CommaToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing CommaToken."""
+        """Set up a CommaToken instance for testing."""
         super().setUp()
         self.token = CommaToken()
         self.representation = "CommaToken()"
@@ -36,10 +37,10 @@ class TestCommaToken(TestSymbolToken):
 
 
 class TestDashToken(TestSymbolToken):
-    """Test cases for the DashToken class."""
+    """Tests for the DashToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing DashToken."""
+        """Set up a DashToken instance for testing."""
         super().setUp()
         self.token = DashToken()
         self.representation = "DashToken()"
@@ -51,10 +52,10 @@ class TestDashToken(TestSymbolToken):
 
 
 class TestEqualsToken(TestSymbolToken):
-    """Test cases for the EqualsToken class."""
+    """Tests for the EqualsToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing EqualsToken."""
+        """Set up an EqualsToken instance for testing."""
         super().setUp()
         self.token = EqualsToken()
         self.representation = "EqualsToken()"
@@ -66,10 +67,10 @@ class TestEqualsToken(TestSymbolToken):
 
 
 class TestQuestionMarkToken(TestSymbolToken):
-    """Test cases for the EqualsToken class."""
+    """Tests for the QuestionMarkToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing EqualsToken."""
+        """Set up a QuestionMarkToken instance for testing."""
         super().setUp()
         self.token = QuestionMarkToken()
         self.representation = "QuestionMarkToken()"
@@ -81,10 +82,10 @@ class TestQuestionMarkToken(TestSymbolToken):
 
 
 class TestXToken(TestSymbolToken):
-    """Test cases for the XToken class."""
+    """Tests for the XToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing XToken."""
+        """Set up an XToken instance for testing."""
         super().setUp()
         self.token = XToken()
         self.representation = "XToken()"
@@ -96,10 +97,10 @@ class TestXToken(TestSymbolToken):
 
 
 class TestDotDotToken(TestSymbolToken):
-    """Test cases for the DotDotToken class."""
+    """Tests for the DotDotToken class."""
 
     def setUp(self):
-        """Set up example tokens specific for testing DotDotToken."""
+        """Set up a DotDotToken instance for testing."""
         super().setUp()
         self.token = DotDotToken()
         self.representation = "DotDotToken()"
@@ -108,6 +109,36 @@ class TestDotDotToken(TestSymbolToken):
         self.good = ['..']
         self.bad = ['.', '...']
         self.backus_naur = '".."'
+
+
+class TestStartToken(TestSymbolToken):
+    """Tests for the StartToken class."""
+
+    def setUp(self):
+        """Set up a StartToken instance for testing."""
+        super().setUp()
+        self.token = StartToken()
+        self.representation = "StartToken()"
+        self.pattern = r"^"
+        self.name = 'Start'
+        self.good = ['']
+        self.bad = ['X', '^^']
+        self.backus_naur = '"^"'
+
+
+class TestEndToken(TestSymbolToken):
+    """Tests for the EndToken class."""
+
+    def setUp(self):
+        """Set up an EndToken instance for testing."""
+        super().setUp()
+        self.token = EndToken()
+        self.representation = "EndToken()"
+        self.pattern = r"$"
+        self.name = 'End'
+        self.good = ['']
+        self.bad = ['X', '$$']
+        self.backus_naur = '"$"'
 
 
 if __name__ == "__main__":

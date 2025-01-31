@@ -6,7 +6,7 @@ class DigitToken(SimpleToken):
     """Represents start single digit token (0-9)."""
 
     mapper: list[tuple[str, str | int | float | list]] = [
-        ('digit', int)
+        ('digit', int),
     ]
 
     def __init__(self) -> None:

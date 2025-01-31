@@ -19,7 +19,7 @@ class TestSizeToken(TestSimpleToken):
         self.bad = ['99', '2*3', '4by4']
         self.group_count = 2
         self.backus_naur = '<Size>'
-        self.result = {'row': '9', 'col': '9'}
+        self.result = {'row': 9, 'col': 9}
 
 
 if __name__ == "__main__":

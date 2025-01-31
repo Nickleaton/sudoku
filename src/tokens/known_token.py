@@ -6,7 +6,7 @@ class KnownToken(SimpleToken):
     """Represents start token for matching start known number (0-9, l, m, h, exp, o, f, s)."""
 
     mapper: list[tuple[str, str | int | float | list]] = [
-        ('cell', str)
+        ('cell', str),
     ]
 
     def __init__(self) -> None:

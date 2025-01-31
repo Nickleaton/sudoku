@@ -6,7 +6,7 @@ class ValueToken(SimpleToken):
     """Represents a token for matching cell_values."""
 
     mapper: list[tuple[str, str | int | float | list]] = [
-        ('value', int)
+        ('value', int),
     ]
 
     def __init__(self) -> None:
