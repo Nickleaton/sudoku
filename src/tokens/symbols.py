@@ -54,17 +54,6 @@ class SymbolToken(SimpleToken):
         return super().description
 
     @property
-    def example(self) -> str:
-        """Get an example of a value matched by the SymbolToken.
-
-        Returns:
-            str: An example string that the SymbolToken would match.
-        """
-        if self.__class__ != SymbolToken:
-            return self.symbol
-        return super().example
-
-    @property
     def is_abstract(self) -> bool:
         """Check if the token is abstract.
 
