@@ -1,11 +1,13 @@
 """KnownToken."""
+from typing import Type
+
 from src.tokens.simple_token import SimpleToken
 
 
 class KnownToken(SimpleToken):
     """Represents start token for matching start known number (0-9, l, m, h, exp, o, f, s)."""
 
-    mapper: list[tuple[str, str | int | float | list]] = [
+    mapper: list[tuple[str, Type]] = [
         ('cell', str),
     ]
 

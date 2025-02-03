@@ -1,7 +1,7 @@
 """Base class for tokens representing regex patterns."""
 import re
 import sys
-from typing import Type
+from typing import Any, Type
 
 from sortedcontainers import SortedDict
 
@@ -12,7 +12,7 @@ from src.utils.sudoku_exception import SudokuError
 class Token:
     """Base class for all tokens used to represent regex patterns."""
 
-    mapper: list[tuple[str, type]] = []
+    mapper: list[tuple[str, Type]] = []
 
     classes: dict[str, Type['Token']] = SortedDict()
 
@@ -60,6 +60,31 @@ class Token:
             return ''
         return match.group()
 
+    @staticmethod
+    def convert_data_type(token_text: str, data_type: type) -> Any:  # noqa: WPS231
+        """Convert the token_text to the appropriate data type.
+
+        Args:
+            token_text (str): The text to be converted.
+            data_type (type): The target data type to convert to.
+
+        Returns:
+            Any: The converted value in the specified data type.
+
+        Raises:
+            SudokuError: If an unknown data type is provided.
+        """
+        if data_type is int:
+            return int(token_text)
+        elif data_type is float:
+            return float(token_text)
+        elif data_type is str:
+            return token_text
+        elif data_type is list:
+            return list(token_text)  # Convert string to list of characters
+        else:
+            raise SudokuError(f'Unknown data type: {data_type}')
+
     def parse(self, text: str) -> dict:
         """Parse the given text against the token's regex pattern.
 
@@ -68,6 +93,9 @@ class Token:
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the text does not match the token's regex pattern.
         """
         match = re.match(self.pattern, text)
         if match is None:
@@ -75,8 +103,10 @@ class Token:
         matched_items: dict = match.groupdict()
         for key, data_type in self.__class__.mapper:
             token_text: str | None = matched_items.get(key)
-            if token_text is not None:
-                matched_items[key] = data_type(token_text)
+            if token_text is None:
+                continue  # No need to update if token_text is None
+
+            matched_items[key] = self.convert_data_type(token_text, data_type)
         return matched_items
 
     @classmethod

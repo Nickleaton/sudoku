@@ -1,11 +1,13 @@
 """CycleToken."""
+from typing import Type
+
 from src.tokens.simple_token import SimpleToken
 
 
 class CycleToken(SimpleToken):
     """Represents a token for matching a orientation indicator (C, A)."""
 
-    mapper: list[tuple[str, str | int | float | list]] = [
+    mapper: list[tuple[str, Type]] = [
         ('cycle', str),
     ]
 
@@ -20,7 +22,7 @@ class CycleToken(SimpleToken):
         Returns:
             str: A description of the CycleToken's purpose and behavior.
         """
-        return 'A direction indicator. C for clockwise, A for anticlockwise.'
+        return 'A clockwise/anticlockwise indicator. C for clockwise, A for anticlockwise.'
 
     @property
     def example(self) -> str:

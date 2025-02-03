@@ -1,11 +1,13 @@
 """DigitToken."""
+from typing import Type
+
 from src.tokens.simple_token import SimpleToken
 
 
 class DigitToken(SimpleToken):
     """Represents start single digit token (0-9)."""
 
-    mapper: list[tuple[str, str | int | float | list]] = [
+    mapper: list[tuple[str, Type]] = [
         ('digit', int),
     ]
 

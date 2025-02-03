@@ -13,12 +13,12 @@ class TestQuadToken(TestSimpleToken):
         super().setUp()
         self.token = QuadrupleToken()
         self.representation = 'QuadrupleToken()'
-        self.pattern = r'(?P<quads>[\d?]{0,4})'
+        self.pattern = r'(?P<quads>[\d]{0,4})'
         self.name = 'Quadruple'
-        self.good = ['123?', '12', '1122', '?', '12?', '????']
+        self.good = ['123', '12', '1122', '12']
         self.bad = ['12345', 'X']
         self.backus_naur = '<Quadruple>'
-        self.result = {'quads': ['1', '2', '3', '?']}
+        self.result = {'quads': ['1', '2', '3']}
 
 
 if __name__ == "__main__":

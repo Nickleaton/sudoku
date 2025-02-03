@@ -1,11 +1,13 @@
 """CellToken."""
+from typing import Type
+
 from src.tokens.simple_token import SimpleToken
 
 
 class SizeToken(SimpleToken):
     """Represents the box size."""
 
-    mapper: list[tuple[str, str | int | float | list]] = [
+    mapper: list[tuple[str, Type]] = [
         ('row', int),
         ('col', int),
     ]

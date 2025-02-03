@@ -1,17 +1,19 @@
 """QuadrupleToken."""
+from typing import Type
+
 from src.tokens.simple_token import SimpleToken
 
 
 class QuadrupleToken(SimpleToken):
     """Represents start token for matching one or more digits or question marks."""
 
-    mapper: list[tuple[str, str | int | float | list]] = [
+    mapper: list[tuple[str, Type]] = [
         ('quads', list),
     ]
 
     def __init__(self) -> None:
-        """Initialize start quad token with start pattern of digits and question marks."""
-        super().__init__(pattern=r'(?P<quads>[\d?]{0,4})')
+        """Initialize start quad token with start pattern of digits."""
+        super().__init__(pattern=r'(?P<quads>[\d]{0,4})')
 
     @property
     def description(self) -> str:
@@ -21,9 +23,8 @@ class QuadrupleToken(SimpleToken):
             str: A description of the QuadrupleToken's purpose and behavior.
         """
         return (
-            'A quadruple token. Matches one or more digits or question marks. '
+            'A quadruple token. Matches one or more digits. '
             'Those digits must appear in the surrounding cells. '
-            'A ? is a joker representing any digit.'
         )
 
     @property
@@ -33,4 +34,4 @@ class QuadrupleToken(SimpleToken):
         Returns:
             str: An example string that the QuadrupleToken would match.
         """
-        return '124?'
+        return '123'

@@ -1,11 +1,13 @@
 """CellToken."""
+from typing import Type
+
 from src.tokens.simple_token import SimpleToken
 
 
 class CellToken(SimpleToken):
     """Represents start cell token with two digits."""
 
-    mapper: list[tuple[str, str | int | float | list]] = [
+    mapper: list[tuple[str, Type]] = [
         ('row', int),
         ('col', int),
     ]
