@@ -1,13 +1,13 @@
-"""BoardDigitsParser."""
+"""SizeParser."""
 from src.parsers.parser import Parser
-from src.tokens.board_digits_token import BoardDigitsToken
+from src.tokens.size_token import SizeToken
 from src.tokens.token import Token
 
 
-class BoardDigitsParser(Parser):
-    """Parser for BoardDigits Sizes."""
+class SizeParser(Parser):
+    """Parser for Size Sizes."""
 
-    token: Token = BoardDigitsToken()
+    token: Token = SizeToken()
 
     def parse(self, text: str) -> dict:
         """Parse the input text to extract rows and column.
@@ -18,4 +18,4 @@ class BoardDigitsParser(Parser):
         Returns:
             dict: A dictionary containing the parsed data.
         """
-        return BoardDigitsParser().parse(text)
+        return SizeToken().parse(text)

@@ -6,6 +6,7 @@ import oyaml as yaml
 from strictyaml import Map, Optional, Str, Validator
 
 from src.board.digits import Digits
+from src.parsers.board_digits_parser import BoardDigitsParser
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.side import Side
@@ -196,12 +197,13 @@ class Board:
         Returns:
             Validator: A `strictyaml` validator for the board configuration.
         """
+        from src.parsers.size_parser import SizeParser
         valid_tags: list[str] = ['Title', 'Reference', 'Video', 'Author']
         tag_schema: Map = Map({Optional(key): Str() for key in valid_tags})
         return Map(
             {
-                'Board': Str(),
-                # Optional('Box'): Str(),
+                'Size': SizeParser(),
+                'Digits': BoardDigitsParser(),
                 Optional('Tags'): tag_schema,
             },
         )

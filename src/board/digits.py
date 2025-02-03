@@ -28,7 +28,7 @@ class Digits:
         if key not in cls.classes:
             instance = super().__new__(cls)
             cls.classes[key] = instance
-            instance.__init__(minimum, maximum)  # noqa: WPS609
+            instance.__init__(minimum, maximum)  # type: ignore[no-untyped-call, misc]
         return cls.classes[key]
 
     def __init__(self, minimum: int, maximum: int) -> None:
