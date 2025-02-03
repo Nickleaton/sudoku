@@ -1,8 +1,10 @@
+"""Direction."""
 from enum import StrEnum
+from types import MappingProxyType
 
 from src.utils.coord import Coord
 
-COORD_MAP: dict[str, Coord] = {
+COORD_MAP: MappingProxyType[str, Coord] = MappingProxyType({
     'UL': Coord(-1, -1),
     'U': Coord(-1, 0),
     'UR': Coord(-1, 1),
@@ -11,20 +13,20 @@ COORD_MAP: dict[str, Coord] = {
     'DL': Coord(1, -1),
     'D': Coord(1, 0),
     'DR': Coord(1, 1),
-}
+})
 
 
 class Direction(StrEnum):
     """Enumeration representing eight possible movement directions."""
 
-    UP_LEFT = 'UL'
-    UP = 'U'
-    UP_RIGHT = 'UR'
-    LEFT = 'L'
-    RIGHT = 'R'
-    DOWN_LEFT = 'DL'
-    DOWN = 'D'
-    DOWN_RIGHT = 'DR'
+    up_left = 'UL'
+    up = 'U'
+    up_right = 'UR'
+    left = 'L'
+    right = 'R'
+    down_left = 'DL'
+    down = 'D'
+    down_right = 'DR'
 
     @staticmethod
     def create(name: str) -> 'Direction':
