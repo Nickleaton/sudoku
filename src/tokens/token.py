@@ -70,11 +70,13 @@ class Token:
             dict: A dictionary containing the parsed data.
         """
         match = re.match(self.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
         matched_items: dict = match.groupdict()
         for key, data_type in self.__class__.mapper:
-            text = matched_items.get(key)
-            if text is not None:
-                matched_items[key] = data_type(text)
+            token_text: str | None = matched_items.get(key)
+            if token_text is not None:
+                matched_items[key] = data_type(token_text)
         return matched_items
 
     @classmethod
