@@ -8,13 +8,13 @@ class BoxToken(SimpleToken):
     """Represents the box size."""
 
     mapper: list[tuple[str, Type]] = [
-        ('row', int),
-        ('col', int),
+        ('rows', int),
+        ('cols', int),
     ]
 
     def __init__(self) -> None:
         """Initialize start cell token with pattern 'dxd' where its row x column."""
-        super().__init__(pattern=r'(?P<row>\d)x(?P<col>\d)')
+        super().__init__(pattern=r'(?P<rows>\d)x(?P<cols>\d)')
 
     @property
     def description(self) -> str:
@@ -33,3 +33,4 @@ class BoxToken(SimpleToken):
             str: An example string that the BoxToken would match.
         """
         return '9x9'
+

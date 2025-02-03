@@ -8,13 +8,13 @@ class SizeToken(SimpleToken):
     """Represents the box size."""
 
     mapper: list[tuple[str, Type]] = [
-        ('row', int),
-        ('col', int),
+        ('rows', int),
+        ('cols', int),
     ]
 
     def __init__(self) -> None:
-        """Initialize start cell token with pattern 'ddxdd' where its row x column."""
-        super().__init__(pattern=r'(?P<row>\d\d{0,1})x(?P<col>\d\d{0,1})')
+        """Initialize start cell token with pattern 'ddxdd' where its rows x columns."""
+        super().__init__(pattern=r'(?P<rows>\d\d{0,1})x(?P<cols>\d\d{0,1})')
 
     @property
     def description(self) -> str:

@@ -13,13 +13,13 @@ class TestSizeToken(TestSimpleToken):
         super().setUp()
         self.token = SizeToken()
         self.representation = 'SizeToken()'
-        self.pattern = r'(?P<row>\d\d{0,1})x(?P<col>\d\d{0,1})'
+        self.pattern = r'(?P<rows>\d\d{0,1})x(?P<cols>\d\d{0,1})'
         self.name = 'Size'
         self.good = ['9x9', '2x3', '4x4', '16x16']
         self.bad = ['99', '2*3', '4by4']
         self.group_count = 2
         self.backus_naur = '<Size>'
-        self.result = {'row': 9, 'col': 9}
+        self.result = {'rows': 9, 'cols': 9}
 
 
 if __name__ == "__main__":
