@@ -21,6 +21,13 @@ jobs:
         pip install oyaml
         pip install pulp
         pip install svgwrite
+        pip install pydotted
+        pip install orloge
+        pip install perflint
+        pip install jinja2
+        pip install strictyaml
+        pip install sortedcontainers
+        pip install defusedxml
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
