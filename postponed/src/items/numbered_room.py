@@ -6,12 +6,13 @@ from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
 from src.items.item import Item  # noqa: I001
-from src.items.item import SudokuError  # noqa: I001
+# noqa: I001
 from src.parsers.frame_parser import FrameParser
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic
 from src.utils.rule import Rule
 from src.utils.side import Side
+from src.utils.sudoku_exception import SudokuError
 
 
 class NumberedRoom(Item):
