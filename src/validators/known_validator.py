@@ -1,6 +1,5 @@
 """KnownValidator."""
 from src.board.board import Board
-from src.items.known import CELL_TYPE_MAP
 from src.validators.validator import Validator
 
 
@@ -33,7 +32,7 @@ class KnownValidator(Validator):
         errors: list = []
         if len(row) != board.size.column:
             errors.append(f'Row {row_idx + 1} has {len(row)} columns, but the board has {board.size.column} columns.')
-        allowed: str = ''.join(sorted(allowed_characters))
+        allowed: str = '.'.join(sorted(allowed_characters))
         # Validate each character in the row
         for col_idx, char in enumerate(row):
             if char not in allowed_characters:
@@ -61,7 +60,6 @@ class KnownValidator(Validator):
 
         allowed_characters: set[str] = {'.'}
         allowed_characters |= {str(digit) for digit in board.digits.digit_range}
-        allowed_characters |= set(CELL_TYPE_MAP.keys())
 
         # Check the number of rows matches the board
         if len(known_rows) != board.size.row:

@@ -15,7 +15,7 @@ class TestKnownValidator(TestValidator):
                 '123456',  # Row 1
                 '234561',  # Row 2
                 '345612',  # Row 3
-                '4oe123',  # Row 4
+                '4..123',  # Row 4
                 '.....4',  # Row 5
                 '612345'  # Row 6
             ]
