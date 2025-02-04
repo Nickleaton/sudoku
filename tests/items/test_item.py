@@ -5,6 +5,7 @@ from typing import Type
 import oyaml as yaml
 
 from src.board.board import Board
+from src.board.digits import Digits
 from src.items.item import Item
 from src.solvers.solver import Solver
 from src.utils.tags import Tags
@@ -15,7 +16,7 @@ class TestItem(unittest.TestCase):
 
     def setUp(self) -> None:
         """Set up the test case with start_location board and an Item instance."""
-        self.board = Board(9, 9, Tags({}))
+        self.board = Board(9, 9, Digits(1, 9), Tags({}))
         self.item = Item(self.board)
         self.good_yaml = []
         self.bad_yaml = []
