@@ -1,6 +1,7 @@
 """Generate Schema."""
 import argparse
 import logging
+import logging.config
 import shutil
 import subprocess  # noqa: S404
 from pathlib import Path
