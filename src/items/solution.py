@@ -7,10 +7,10 @@ from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
-from src.items.item import SudokuError
 from src.items.known_cell import KnownCell
 from src.parsers.solution_parser import SolutionParser
 from src.solvers.answer import Answer
+from src.utils.sudoku_exception import SudokuError
 
 
 class Solution(ComposedItem):

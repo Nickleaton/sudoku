@@ -24,13 +24,6 @@ class KnownParser(Parser):
             'A string containing the known value_list or restricted conditions:\n\n'
             '.     no restriction\n'
             '0-9   start given number\n'
-            'l     low\n'
-            'm     medium\n'
-            'h     high\n'
-            'e     even\n'
-            'o     odd\n'
-            'f     fortress cell [Must be greater than its orthogonal neighbours]\n'
-            's     fortress cell [Must be smaller than its orthogonal neighbours]\n'
         )
 
     def parse(self, text: str) -> dict:
@@ -41,6 +34,9 @@ class KnownParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:

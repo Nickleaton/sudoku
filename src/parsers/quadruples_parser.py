@@ -23,9 +23,10 @@ class QuadruplesParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
-        print(self.token.pattern)
-        print(text)
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
             raise SudokuError(f'Could not parse {text!r}')
@@ -37,5 +38,5 @@ class QuadruplesParser(Parser):
 
                 'Vertex': CellToken().parse(lhs),
                 'Values': [digit if digit == '?' else int(digit) for digit in list(rhs)],
-            }
+            },
         }

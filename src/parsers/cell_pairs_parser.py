@@ -22,6 +22,9 @@ class CellPairsParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
@@ -35,5 +38,5 @@ class CellPairsParser(Parser):
             'CellPair': {
                 'Cell1': CellToken().parse(cell1_text),
                 'Cell2': CellToken().parse(cell2_text),
-            }
+            },
         }

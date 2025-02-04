@@ -24,6 +24,9 @@ class OutsideArrowValueParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
@@ -38,5 +41,5 @@ class OutsideArrowValueParser(Parser):
                 'Index': DigitToken().parse(lhs[1])['digit'],
                 'Direction': DirectionToken().parse(lhs[2:])['direction'],
                 'Value': ValueToken().parse(rhs)['value'],
-            }
+            },
         }

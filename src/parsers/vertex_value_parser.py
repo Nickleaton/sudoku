@@ -23,6 +23,9 @@ class VertexValueParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
@@ -35,5 +38,5 @@ class VertexValueParser(Parser):
                 {
                     'Cell': CellToken().parse(lhs),
                     'Value': ValueToken().parse(rhs)['value'],
-                }
+                },
         }

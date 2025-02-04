@@ -23,6 +23,9 @@ class CellValueParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
@@ -34,7 +37,7 @@ class CellValueParser(Parser):
             'CellValue':
                 {
                     'Cell': CellToken().parse(cell_text),
-                }
+                },
         }
         config['CellValue']['value'] = ValueToken().parse(value_text)['value']
         return config

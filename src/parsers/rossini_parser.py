@@ -22,6 +22,9 @@ class RossiniParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
@@ -36,5 +39,5 @@ class RossiniParser(Parser):
                 'Side': SideToken().parse(lhs[0])['side'],
                 'Index': DigitToken().parse(lhs[1])['digit'],
                 'Order': OrderToken().parse(rhs)['order'],
-            }
+            },
         }

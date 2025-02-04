@@ -24,6 +24,9 @@ class LittleKillerParser(Parser):
 
         Returns:
             dict: A dictionary containing the parsed data.
+
+        Raises:
+            SudokuError: If the input text cannot be parsed.
         """
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
@@ -41,5 +44,5 @@ class LittleKillerParser(Parser):
                 'Index': DigitToken().parse(index_text)['digit'],
                 'Cyclic': CycleToken().parse(cycle_text)['cycle'],
                 'Value': ValueToken().parse(target_text)['value'],
-            }
+            },
         }
