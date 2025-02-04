@@ -4,6 +4,8 @@ import re
 
 
 class RegexUtils:
+    """RegexUtils."""
+
     @staticmethod
     def strip_names(pattern: str) -> str:
         """Remove all named groups from the given regex pattern.
