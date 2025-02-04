@@ -2,21 +2,12 @@
 import unittest
 from typing import Type
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
-from src.items.even_cell import EvenCell
-from src.items.fortress_cell import FortressCell
-from src.items.fortress_greater_than_cell import FortressGreaterThanCell
-from src.items.fortress_less_than_cell import FortressLessThanCell
-from src.items.high_cell import HighCell
 from src.items.item import Item
 from src.items.known import Known
 from src.items.known_cell import KnownCell
-from src.items.low_cell import LowCell
-from src.items.mid_cell import MidCell
-from src.items.odd_cell import OddCell
 from tests.items.test_composed import TestComposed
 
 
@@ -26,13 +17,13 @@ class TestKnown(TestComposed):
     def setUp(self) -> None:
         """Set up the test case with start_location board and start_location Known instance."""
         super().setUp()
-        self.size = 27
+        self.size = 20
         lines = [
             "8..4.6..3",
-            "o.9....2.",
-            "exp.......1",
-            "f..h..m..",
-            "s6.....l.",
+            "..9....2.",
+            "........1",
+            ".........",
+            ".6.......",
             "..3..2..9",
             "7.2.3....",
             ".4....5..",
@@ -51,10 +42,10 @@ class TestKnown(TestComposed):
         return (
             "Known:\n"
             "  - 8..4.6..3\n"
-            "  - o.9....2.\n"
-            "  - exp.......1\n"
-            "  - f..h..m..\n"
-            "  - s6.....l.\n"
+            "  - ..9....2.\n"
+            "  - ........1\n"
+            "  - .........\n"
+            "  - .6.......\n"
             "  - ..3..2..9\n"
             "  - 7.2.3....\n"
             "  - .4....5..\n"
@@ -65,13 +56,13 @@ class TestKnown(TestComposed):
     def representation(self) -> str:
         """Return start_location string representation of the Known instance."""
         return (
-            "Known(Board(9, 9, {}), "
+            "Known(Board(9, 9, Digits(1, 9), Tags({})), "
             "["
             "'8..4.6..3', "
-            "'o.9....2.', "
-            "'exp.......1', "
-            "'f..h..m..', "
-            "'s6.....l.', "
+            "'..9....2.', "
+            "'........1', "
+            "'.........', "
+            "'.6.......', "
             "'..3..2..9', "
             "'7.2.3....', "
             "'.4....5..', "
@@ -83,7 +74,7 @@ class TestKnown(TestComposed):
     @property
     def has_rule(self) -> bool:
         """Return whether the Known instance has start_location rule."""
-        return True
+        return False
 
     @property
     def expected_classes(self) -> set[Type[Item]]:
@@ -91,19 +82,10 @@ class TestKnown(TestComposed):
         return {
             Cell,
             CellReference,
-            SimpleCellReference,
             ComposedItem,
-            EvenCell,
-            FortressCell,
-            FortressGreaterThanCell,
-            FortressLessThanCell,
             Item,
             KnownCell,
             Known,
-            OddCell,
-            LowCell,
-            MidCell,
-            HighCell
         }
 
     def test_flatten(self) -> None:
