@@ -1,42 +1,38 @@
 """VertexDigitParser."""
 
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.cell_token import CellToken
 from src.tokens.digit_token import DigitToken
 from src.tokens.symbols import EqualsToken
+from src.utils.sudoku_exception import SudokuError
 
 
 class VertexDigitParser(Parser):
     """Parser for Vertex Digits format: 'dd=d' where dd are two digits and d is start single digit."""
 
-    def __init__(self):
-        """Initialize the VertexDigitParser with start regex pattern for the Vertex Digits format."""
-        super().__init__(pattern=r'^\d{2}=\d$', example_format='rc=d')
-        self.token = CellToken() + EqualsToken() + DigitToken()
+    token = CellToken() + EqualsToken() + DigitToken()
 
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input text to extract vertex digit components.
 
         Args:
-            text (str): The input text expected to be in the format 'dd=d'.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input text does not match the expected format.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if the input text matches the defined regular expression pattern.
-        if not self.regular_expression.match(text):
-            raise ParserError(f"{self.__class__.__name__} expects format like 'dd=d'")
-
-        # Split the text at the equals sign to extract components.
-        parts: list[str] = text.split('=')
-        row: str = parts[0][0]
-        column: str = parts[0][1]
-        target: str = parts[1]
-
-        # Store results in the parsed_data attribute.
-        self.parsed_data = [int(row), int(column), int(target)]
-        self.answer = {
-            'row': row,
-            'column': column,
-            'digit': target,
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        lhs: str
+        rhs: str
+        lhs, rhs = text.split('=')
+        return {
+            'Vertex':
+                {
+                    'Cell': CellToken().parse(lhs),
+                    'Digit': DigitToken().parse(rhs)['digit'],
+                }
         }

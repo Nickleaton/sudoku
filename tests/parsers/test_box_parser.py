@@ -11,48 +11,19 @@ class TestBoxParser(TestParser):
 
     def setUp(self):
         """Set up the BoxParser instance for testing."""
+        super().setUp()
         self.parser: BoxParser = BoxParser()
         self.representation: str = 'BoxParser()'
-        self.example_format: str = 'dxd'
-        self.valid_input_result: list[tuple[str, Any]] = \
+        self.empty_allowed = False
+
+        self.valid_inputs: List[Tuple[str, Any]] = \
             [
-                (
-                    "3x3",
-                    [3, 3]
-                ),
-                (
-                    "2x3",
-                    [2, 3]
-                ),
-                (
-                    "4x4",
-                    [4, 4]
-                ),
-                (
-                    "2x2",
-                    [2, 2]
-                ),
+                ("3x3", {'Box': {'rows': 3, 'cols': 3}}),
+                ("2x3", {'Box': {'rows': 2, 'cols': 3}}),
+                ("4x4", {'Box': {'rows': 4, 'cols': 4}}),
+                ("2x2", {'Box': {'rows': 2, 'cols': 2}}),
             ]
-        self.valid_input_answer: List[Tuple[str, Any]] = \
-            [
-                (
-                    "3x3",
-                    {'rows': '3', 'columns': '3'}
-                ),
-                (
-                    "2x3",
-                    {'rows': '2', 'columns': '3'}
-                ),
-                (
-                    "4x4",
-                    {'rows': '4', 'columns': '4'}
-                ),
-                (
-                    "2x2",
-                    {'rows': '2', 'columns': '2'}
-                ),
-            ]
-        self.invalid_input: List[str] = \
+        self.invalid_inputs: List[str] = \
             [
                 "abc",
                 "3xx3",

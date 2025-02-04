@@ -1,35 +1,16 @@
 """KnownParser."""
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.known_token import KnownToken
-from src.tokens.token import OneOrMoreToken
+from src.tokens.token import OneOrMoreToken, Token
+from src.utils.sudoku_exception import SudokuError
 
 
 class KnownParser(Parser):
-    """Parse start known string containing known value_list or restricted conditions.
+    """Parse start known string containing known value_list or restricted conditions."""
 
-    This parser handles strings representing known value_list or restrictions on cells, such as
-    specific digits, conditions like 'low', 'medium', 'high', 'even', 'odd', or 'fortress' cells.
-
-    Attributes:
-        result (list[str]): A list of one-character value_list representing the parsed conditions.
-    """
-
-    def __init__(self):
-        """Initialize the KnownParser with start regular expression for validating input strings.
-
-        The input string can represent:
-            - '.' for no restriction,
-            - digits '0-9' for start given number,
-            - 'l' for low,
-            - 'm' for medium,
-            - 'h' for high,
-            - 'exp' for even,
-            - 'o' for odd,
-            - 'f' for a fortress cell (must be greater than its orthogonal neighbors).
-            - 's' for a fortress cell (must be less than its orthogonal neighbors).
-        """
-        super().__init__(pattern=f'^{Parser.known}+$', example_format='123456789')
-        self.token = OneOrMoreToken(KnownToken())
+    token: Token = OneOrMoreToken(KnownToken())
 
     def help(self) -> str:
         """Return the help string for the KnownParser.
@@ -46,34 +27,22 @@ class KnownParser(Parser):
             'l     low\n'
             'm     medium\n'
             'h     high\n'
-            'exp     even\n'
+            'e     even\n'
             'o     odd\n'
             'f     fortress cell [Must be greater than its orthogonal neighbours]\n'
             's     fortress cell [Must be smaller than its orthogonal neighbours]\n'
         )
 
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input string and store the parsed_data in the 'parsed_data' attribute.
 
-        This method input_types if the input string matches the expected format and parses it accordingly.
-        It stores the parsed value_list in the `parsed_data` and `line` attributes.
-
         Args:
-            text (str): The input string to be parsed, expected to follow the known number or restriction format.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input string does not match the expected format or cannot be parsed.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        if not self.regular_expression.match(text):
-            raise ParserError(
-                f'{self.__class__.__name__} {text} is invalid',
-            )
-
-        try:
-            self.parsed_data = list(text)
-        except ValueError:
-            self.raise_error()
-        try:
-            self.answer = list(text)
-        except ValueError:
-            self.raise_error()
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        return {'Known': [KnownToken().parse(part)['cell'] for part in list(text)]}

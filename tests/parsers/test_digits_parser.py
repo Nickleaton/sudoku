@@ -11,32 +11,17 @@ class TestDigitsParser(TestParser):
 
     def setUp(self):
         """Set up the DigitsParser instance for testing."""
+        super().setUp()
         self.parser: DigitsParser = DigitsParser()
         self.representation: str = 'DigitsParser()'
         self.example_format: str = '1,2,3,...'
-        self.valid_input_result: List[Tuple[str, List[str]]] = \
+        self.empty_allowed = False
+        self.valid_inputs: List[Tuple[str, dict[str: list[int]]]] = \
             [
-                (
-                    '1, 2, 3, 4, 6',
-                    ['1', '2', '3', '4', '6']
-                ),
-                (
-                    ' 1,    2,3  , 4,   7   ',
-                    ['1', '2', '3', '4', '7']
-                )
+                ('2', {'Digits': [2]}),
+                ('1,2,3,4,8', {'Digits': [1, 2, 3, 4, 8]}),
             ]
-        self.valid_input_answer: List[Tuple[str, List[str]]] = \
-            [
-                (
-                    '1, 2, 3, 4, 8',
-                    ['1', '2', '3', '4', '8']
-                ),
-                (
-                    ' 1,    2,3  , 4,   9   ',
-                    ['1', '2', '3', '4', '9']
-                )
-            ]
-        self.invalid_input: List[str] = \
+        self.invalid_inputs: List[str] = \
             [
                 '1, 2, start, 4',
                 '1, 2, 3,',

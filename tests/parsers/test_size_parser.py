@@ -11,14 +11,16 @@ class TestSizeParser(TestParser):
 
     def setUp(self):
         """Set up the SizeParser instance for testing."""
+        super().setUp()
         self.parser: SizeParser = SizeParser()
         self.representation: str = 'SizeParser()'
+        self.empty_allowed = False
         self.valid_inputs: List[Tuple[str, Any]] = \
             [
-                ("8x8", {'rows': '8', 'columns': '8'}),
-                ("4x4", {'rows': '4', 'columns': '4'}),
-                ("9x9", {'rows': '9', 'columns': '9'}),
-                ("16x16", {'rows': '16', 'columns': '16'}),
+                ("8x8", {'Size': {'rows': 8, 'cols': 8}}),
+                ("4x4", {'Size': {'rows': 4, 'cols': 4}}),
+                ("9x9", {'Size': {'rows': 9, 'cols': 9}}),
+                ("16x16", {'Size': {'rows': 16, 'cols': 16}}),
             ]
         self.invalid_inputs: List[str] = \
             [

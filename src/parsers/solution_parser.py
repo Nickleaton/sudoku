@@ -1,35 +1,27 @@
 """SolutionParser."""
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.digit_token import DigitToken
 from src.tokens.token import OneOrMoreToken, Token
+from src.utils.sudoku_exception import SudokuError
 
 
 class SolutionParser(Parser):
-    """Parses start solution string containing cell value_list.
+    """Parses start solution string containing cell value_list."""
 
-    Attributes:
-        result (list[str]): A list of one character value_list
-    """
+    token: Token = OneOrMoreToken(DigitToken())
 
-    def __init__(self) -> None:
-        """Initialize the KnownParser with start regular expression for validating input strings."""
-        super().__init__(pattern=r'^\d+$', example_format='123456789')
-        self.token: Token = OneOrMoreToken(DigitToken())
-
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input string and store the parsed_data in the 'parsed_data' attribute.
 
         Args:
-            text (str): The input string to be parsed.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input string does not match the expected format or cannot be converted.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Validate the input format using the regular expression
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects start list of solution value_list for one row')
-
-        # Split the input text by commas and convert each number as needed
-        stripped_text: str = text.replace(' ', '')
-        self.parsed_data: list[str] = list(stripped_text)
-        self.answer: list[str] = list(stripped_text)
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        return {'SolutionLine': [DigitToken().parse(part)['digit'] for part in list(text)]}

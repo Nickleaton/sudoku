@@ -11,66 +11,43 @@ class TestCellListParser(TestParser):
 
     def setUp(self):
         """Set up the CellListParser instance for testing."""
+        super().setUp()
         self.parser: CellListParser = CellListParser()
         self.representation: str = 'CellListParser()'
-        self.example_format: str = 'rc,rc,...'
-        self.valid_input_result: list[tuple[str, Any]] = \
+        self.empty_allowed = False
+        self.valid_inputs: list[Tuple[str, Any]] = \
             [
                 (
                     "12",
-                    [[1, 2]]
+                    {
+                        'CellList': [
+                            {'Cell': {'row': 1, 'col': 2}}
+                        ]
+                    }
                 ),
                 (
                     "12,34,56",
-                    [[1, 2], [3, 4], [5, 6]]
-                ),
-                (
-                    " 12 , 34 , 56 ",
-                    [[1, 2], [3, 4], [5, 6]]
-                ),
-                (
-                    "12,34,56",
-                    [[1, 2], [3, 4], [5, 6]]
-                ),
-                (
-                    "   12  , 34  ,  56   ",
-                    [[1, 2], [3, 4], [5, 6]]
+                    {
+                        'CellList': [
+                            {'Cell': {'row': 1, 'col': 2}},
+                            {'Cell': {'row': 3, 'col': 4}},
+                            {'Cell': {'row': 5, 'col': 6}}
+                        ]
+                    }
                 ),
                 (
                     "01,02,03",
-                    [[0, 1], [0, 2], [0, 3]]
-                ),
+                    {
+                        'CellList': [
+                            {'Cell': {'row': 0, 'col': 1}},
+                            {'Cell': {'row': 0, 'col': 2}},
+                            {'Cell': {'row': 0, 'col': 3}}
+                        ]
+                    }
+                )
             ]
-        self.valid_input_answer: list[Tuple[str, Any]] = \
+        self.invalid_inputs: list[str] = \
             [
-                (
-                    "12",
-                    [{'row': '1', 'column': '2'}]
-                ),
-                (
-                    "12,34,56",
-                    [{'row': '1', 'column': '2'}, {'row': '3', 'column': '4'}, {'row': '5', 'column': '6'}]
-                ),
-                (
-                    " 12 , 34 , 56 ",
-                    [{'row': '1', 'column': '2'}, {'row': '3', 'column': '4'}, {'row': '5', 'column': '6'}]
-                ),
-                (
-                    "12,34,56",
-                    [{'row': '1', 'column': '2'}, {'row': '3', 'column': '4'}, {'row': '5', 'column': '6'}]
-                ),
-                (
-                    "   12  , 34  ,  56   ",
-                    [{'row': '1', 'column': '2'}, {'row': '3', 'column': '4'}, {'row': '5', 'column': '6'}]
-                ),
-                (
-                    "01,02,03",
-                    [{'row': '0', 'column': '1'}, {'row': '0', 'column': '2'}, {'row': '0', 'column': '3'}]
-                ),
-            ]
-        self.invalid_input: list[str] = \
-            [
-                "123x56789",
                 "123,56789",
                 "12,34,5x",  # invalid due to non-digit character
                 "12,34,,56",  # invalid due to empty coordinate

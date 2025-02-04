@@ -1,53 +1,45 @@
 """LittleKillerParser."""
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.cycle_token import CycleToken
 from src.tokens.digit_token import DigitToken
 from src.tokens.side_token import SideToken
 from src.tokens.symbols import EqualsToken
+from src.tokens.token import Token
 from src.tokens.value_token import ValueToken
+from src.utils.sudoku_exception import SudokuError
 
 
 class LittleKillerParser(Parser):
     """Parser for the Little Killers format."""
 
-    def __init__(self):
-        """Initialize the LittleKillerParser with start regex pattern for valid input formats."""
-        super().__init__(pattern=r'^\s*[TLBR]\s*\d\s*[C|A]\s*=\s*\d+\s*$', example_format='[TLBR]i=dd')
-        self.token = SideToken() + DigitToken() + CycleToken() + EqualsToken() + ValueToken()
+    token: Token = SideToken() + DigitToken() + CycleToken() + EqualsToken() + ValueToken()
 
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input text to extract components of the Little Killers format.
 
         Args:
-            text (str): The input text expected to be in the format 'T1C=2' or similar.
+            text (str): The input text to be parsed
 
-            First letter is T, L, B, or R corresponding to the side of the board, Top, Left, Right or Bottom.
-            Second number is the index of the cell. Column or row index
-            Third letter is C or A corresponding to the direction of the cell, Clockwise or Anticlockwise.
-            Last number is the number depending on the constraint
-
-        Raises:
-            ParserError: If the input text does not match the expected format
-                          or if conversion to integers fails.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if the input text matches the defined regular expression pattern.
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects input in the format "T1C=2" or similar')
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
 
-        # Remove whitespace from the input text.
-        stripped_text: str = text.replace(' ', '')
-
-        # Extract the components based on the specified format.
-        side: str = stripped_text[0]  # The first character (T, L, B, R)
-        index: str = stripped_text[1]  # The second character as an integer index
-        cycle: str = stripped_text[2]  # The third character (C or A)
-        target: str = stripped_text.split('=')[1]  # The number after '='
+        side_text: str = text[0]
+        index_text: str = text[1]
+        cycle_text: str = text[2]
+        target_text: str = text.split('=')[1]
 
         # Store the extracted components in the parsed_data attribute.
-        self.parsed_data = [side, int(index), cycle, int(target)]
-        self.answer = {
-            'Side': side,
-            'Index': index,
-            'Cyclic': cycle,
-            'Value': target,
+        return {
+            'LittleKiller': {
+                'Side': SideToken().parse(side_text)['side'],
+                'Index': DigitToken().parse(index_text)['digit'],
+                'Cyclic': CycleToken().parse(cycle_text)['cycle'],
+                'Value': ValueToken().parse(target_text)['value'],
+            }
         }

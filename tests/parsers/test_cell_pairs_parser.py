@@ -1,6 +1,6 @@
 """TestCellPairsParser."""
 import unittest
-from typing import List, Tuple, Any
+from typing import List
 
 from src.parsers.cell_pairs_parser import CellPairsParser
 from tests.parsers.test_parser import TestParser
@@ -11,64 +11,18 @@ class TestCellPairsParser(TestParser):
 
     def setUp(self):
         """Set up the CellPairParser instance for testing."""
+        super().setUp()
         self.parser: CellPairsParser = CellPairsParser()
         self.representation: str = 'CellPairsParser()'
-        self.example_format: str = 'r1c1=r2c2'
-        self.valid_input_result: List[Tuple[str, Any]] = \
-            [
-                (
-                    "51-61",
-                    [5, 1, 6, 1]
-                ),
-                (
-                    "12-34",
-                    [1, 2, 3, 4]
-                ),
-                (
-                    "31-32",
-                    [3, 1, 3, 2]
-                ),
-                (
-                    " 12 - 34 ",
-                    [1, 2, 3, 4]
-                ),  # whitespace around '-'
-                (
-                    "12-34",
-                    [1, 2, 3, 4]
-                ),  # no spaces
-                (
-                    " 12- 34 ",
-                    [1, 2, 3, 4]
-                ),  # mixed spaces
-            ]
-        self.valid_input_answer = \
-            [
-                (
-                    '51-61',
-                    {'cell1': {'row': 5, 'column': 1}, 'cell2': {'row': 6, 'column': 1}}
-                ),
-                (
-                    '12-34',
-                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
-                ),
-                (
-                    '31-32',
-                    {'cell1': {'row': 3, 'column': 1}, 'cell2': {'row': 3, 'column': 2}}
-                ),
-                (
-                    ' 12 - 34 ',
-                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
-                ),  # whitespace around '-'
-                (
-                    '12-34',
-                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
-                ),  # no spaces
-                (
-                    ' 12- 34 ',
-                    {'cell1': {'row': 1, 'column': 2}, 'cell2': {'row': 3, 'column': 4}}
-                ),  # mixed spaces
-            ]
-        self.invalid_input: List[str] = \
+        self.empty_allowed = False
+        self.valid_inputs: list[tuple[str, dict[str, dict[str, dict[str, int] | int]]]] = [
+            ('51-61', {'CellPair': {'Cell1': {'row': 5, 'col': 1}, 'Cell2': {'row': 6, 'col': 1}}}),
+            ('12-34', {'CellPair': {'Cell1': {'row': 1, 'col': 2}, 'Cell2': {'row': 3, 'col': 4}}}),
+            ('31-32', {'CellPair': {'Cell1': {'row': 3, 'col': 1}, 'Cell2': {'row': 3, 'col': 2}}}),
+            ('12-34', {'CellPair': {'Cell1': {'row': 1, 'col': 2}, 'Cell2': {'row': 3, 'col': 4}}}),
+        ]
+
+        self.invalid_inputs: List[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "123x56789",  # invalid due to non-digit character
@@ -79,7 +33,6 @@ class TestCellPairsParser(TestParser):
                 "-34",  # invalid due to missing first coordinate
                 "12-34, ",  # trailing space after valid input should fail
                 "  -34",  # invalid due to missing first coordinate
-
             ]
 
 

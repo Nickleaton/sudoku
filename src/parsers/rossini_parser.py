@@ -1,41 +1,40 @@
 """RossiniParser."""
-from src.parsers.parser import Parser, ParserError
-from src.tokens.cycle_token import CycleToken
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.digit_token import DigitToken
+from src.tokens.order_token import OrderToken
 from src.tokens.side_token import SideToken
 from src.tokens.symbols import EqualsToken
+from src.utils.sudoku_exception import SudokuError
 
 
 class RossiniParser(Parser):
     """Parser for Rossini format: '[TLBR]d=[DIU]'."""
 
-    def __init__(self):
-        """Initialize the RossiniParser with start regex pattern for the Rossini format."""
-        super().__init__(pattern=r'^[TLBR]\d=[DIU]$', example_format='[TLBR]d=[DIU]')
-        self.token = SideToken() + DigitToken() + EqualsToken() + CycleToken()
+    token = SideToken() + DigitToken() + EqualsToken() + OrderToken()
 
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input text to extract components in the Rossini format.
 
         Args:
-            text (str): The input text expected to be in the format '[TLBR]d=[DIU]'.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input text does not match the expected format.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if the input text matches the defined regular expression pattern.
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects format like "[TLBR]d=[DIU]"')
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
 
-        # Extract the components: side, index, and direction.
-        side = text[0]  # 'T', 'L', 'B', or 'R'
-        index = int(text[1])  # digit following the side
-        direction = text[3]  # 'D', 'I', or 'U'
+        lhs: str
+        rhs: str
+        lhs, rhs = text.split('=')
 
-        # Store results in the parsed_data attribute.
-        self.parsed_data = [side, index, direction]
-        self.answer = {
-            'side': side,
-            'index': str(index),
-            'direction': direction,
+        return {
+            'Rossini': {
+                'Side': SideToken().parse(lhs[0])['side'],
+                'Index': DigitToken().parse(lhs[1])['digit'],
+                'Order': OrderToken().parse(rhs)['order'],
+            }
         }

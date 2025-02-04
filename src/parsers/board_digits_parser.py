@@ -1,4 +1,5 @@
 """BoardDigitsParser."""
+
 from src.parsers.parser import Parser
 from src.tokens.board_digits_token import BoardDigitsToken
 from src.tokens.token import Token

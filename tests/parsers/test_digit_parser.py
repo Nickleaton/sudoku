@@ -1,6 +1,6 @@
 """TestDigitParser."""
 import unittest
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
 
 from src.parsers.digit_parser import DigitParser
 from tests.parsers.test_parser import TestParser
@@ -11,45 +11,24 @@ class TestDigitParser(TestParser):
 
     def setUp(self):
         """Set up the DigitsParser instance for testing."""
+        super().setUp()
         self.parser: DigitParser = DigitParser()
         self.representation: str = 'DigitParser()'
-        self.example_format: str = 'd'
-        self.valid_input_result: List[Tuple[str, int]] = \
-            [
-                # Valid single digit input_types
-                ('0', [0]),
-                ('1', [1]),
-                ('2', [2]),
-                ('3', [3]),
-                ('4', [4]),
-                ('5', [5]),
-                ('6', [6]),
-                ('7', [7]),
-                ('8', [8]),
-                ('9', [9]),
-                # Valid input with leading/trailing whitespace
-                (' 5 ', [5]),
-                ('  0  ', [0]),
-            ]
-        self.valid_input_answer: List[Tuple[str, Dict[str, str]]] = \
-            [
-                # Valid single digit input_types
-                ('0', {'digit': '0'}),
-                ('1', {'digit': '1'}),
-                ('2', {'digit': '2'}),
-                ('3', {'digit': '3'}),
-                ('4', {'digit': '4'}),
-                ('5', {'digit': '5'}),
-                ('6', {'digit': '6'}),
-                ('7', {'digit': '7'}),
-                ('8', {'digit': '8'}),
-                ('9', {'digit': '9'}),
-                # Valid input with leading/trailing whitespace
-                (' 5 ', {'digit': '5'}),
-                ('  0  ', {'digit': '0'})
-            ]
+        self.empty_allowed = False
+        self.valid_inputs: List[Tuple[str, Dict[str, int]]] = [
+            ('0', {'Digit': 0}),
+            ('1', {'Digit': 1}),
+            ('2', {'Digit': 2}),
+            ('3', {'Digit': 3}),
+            ('4', {'Digit': 4}),
+            ('5', {'Digit': 5}),
+            ('6', {'Digit': 6}),
+            ('7', {'Digit': 7}),
+            ('8', {'Digit': 8}),
+            ('9', {'Digit': 9}),
+        ]
 
-        self.invalid_input: List[str] = \
+        self.invalid_inputs: List[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "10",  # More than one digit

@@ -1,44 +1,41 @@
 """QuadruplesParser."""
 
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.cell_token import CellToken
 from src.tokens.digit_token import DigitToken
-from src.tokens.symbols import EqualsToken, QuestionMarkToken
+from src.tokens.symbols import EqualsToken
+from src.tokens.token import Token
+from src.utils.sudoku_exception import SudokuError
 
 
 class QuadruplesParser(Parser):
     """Parser for quadruples in the format 'dd=ddd' where d is start digit and '?' is allowed."""
 
-    def __init__(self):
-        """Initialize the QuadruplesParser with start regex pattern for the quadruples format."""
-        super().__init__(pattern=r'^\d{2}=[\d?]+$', example_format='rc=dd??')
-        self.token = CellToken() + EqualsToken() + (DigitToken() + QuestionMarkToken()) * (1, 4)
+    token: Token = CellToken() + EqualsToken() + (DigitToken() * (1, 4))
 
-    def parse(self, text: str) -> None:
-        """Parse the input text to extract quadruple components.
+    def parse(self, text: str) -> dict:
+        """Parse the input text to extract components in the quadruple format.
 
         Args:
-            text (str): The input text expected to be in the format 'dd=ddd'.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input text does not match the expected format
-                          or if conversion to integers fails.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if the input text matches the defined regular expression pattern.
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects start format like "dd=ddd"')
+        print(self.token.pattern)
+        print(text)
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        lhs: str
+        rhs: str
+        lhs, rhs = text.split('=')
+        return {
+            'Quad': {
 
-        # Split the input string into components based on '='
-        stripped_text: str = text.replace(' ', '')
-        lhs: str = stripped_text.split('=')[0]
-        rhs: str = stripped_text.split('=')[1]
-
-        row: str = lhs[0]
-        column: str = lhs[1]
-        choices: list[str] = list(rhs)
-        # Store results: left should be two digits, right can be digits or '?'.
-        self.parsed_data = [int(row), int(column), rhs]
-        self.answer = {
-            'vertex': {'row': row, 'column': column},
-            'value_list': choices,
+                'Vertex': CellToken().parse(lhs),
+                'Values': [digit if digit == '?' else int(digit) for digit in list(rhs)],
+            }
         }

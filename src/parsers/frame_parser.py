@@ -1,54 +1,40 @@
 """FrameParser."""
 
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.digit_token import DigitToken
 from src.tokens.side_token import SideToken
 from src.tokens.symbols import EqualsToken
+from src.tokens.token import Token
 from src.tokens.value_token import ValueToken
+from src.utils.sudoku_exception import SudokuError
 
 
 class FrameParser(Parser):
-    """Parser for extracting side, index, and number from start string format like 'T1=2'.
+    """Parser for extracting side, index, and number from start string format like 'T1=2'."""
 
-    This parser matches start specified string pattern, removes whitespace,
-    and extracts components including start side indicator (T, L, B, R),
-    an integer index, and start number after '='.
-    """
+    token: Token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
 
-    def __init__(self):
-        """Initialize FrameParser with start regex pattern.
-
-        The regex pattern expects start string format of 'T1=2' with optional
-        whitespace, where the side is one of 'T', 'L', 'B', or 'R', followed
-        by start numeric index and start number separated by '='.
-        """
-        super().__init__(pattern=r'^\s*[TLBR]\s*\d\s*=\s*\d+\s*$', example_format='[TLBR]i=v')
-        self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
-
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input string to extract side, index, and integer number.
 
         Args:
-            text (str): The string input in the format 'T1=2' or similar.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input string does not match the expected pattern,
-                         or if parsing fails due to invalid format.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects input in the format "T1=2"" or similar')
-
-        # Remove spaces to standardize input format.a
-        stripped_text: str = text.replace(' ', '')
-        lhs: str = stripped_text.split('=')[0]
-        rhs: str = stripped_text.split('=')[1]
-        side: str = lhs[0]  # Extracts side indicator (T, L, B, R)
-        index: str = lhs[1]
-
-        # Save parsed components as start list.
-        self.parsed_data = [side, int(index), int(rhs)]
-        self.answer = {
-            'side': side,
-            'index': index,
-            'number': rhs,
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        lhs: str
+        rhs: str
+        lhs, rhs = text.split('=')
+        return {
+            'Frame': {
+                'Index': DigitToken().parse(lhs[1])['digit'],
+                'Side': SideToken().parse(lhs[0])['side'],
+                'Value': ValueToken().parse(rhs)['value'],
+            }
         }

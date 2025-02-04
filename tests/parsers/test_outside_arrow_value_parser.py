@@ -1,6 +1,6 @@
 """TestOutsideArrowValueParser."""
 import unittest
-from typing import List, Tuple, Any
+from typing import Any, List, Tuple
 
 from src.parsers.outside_arrow_value_parser import OutsideArrowValueParser
 from tests.parsers.test_parser import TestParser
@@ -11,73 +11,27 @@ class TestOutsideArrowValueParser(TestParser):
 
     def setUp(self):
         """Set up the OutsideArrowValueParser instance for testing."""
+        super().setUp()
         self.parser: OutsideArrowValueParser = OutsideArrowValueParser()
         self.representation: str = 'OutsideArrowValueParser()'
-        self.example_format: str = "[TLBR]d=dd"
-        self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid input_types for the Outside Arrow Value format
-            (
-                "T0=5",
-                ['T', 0, 5]
-            ),
-            (
-                "L1=10",
-                ['L', 1, 10]
-            ),
-            (
-                "B2=20",
-                ['B', 2, 20]
-            ),
-            (
-                "R3=100",
-                ['R', 3, 100]
-            ),
-            (
-                "T4=42",
-                ['T', 4, 42]
-            ),
-            (
-                "B5=1",
-                ['B', 5, 1]
-            ),
-            (
-                "R9=999",
-                ['R', 9, 999]
-            ),
-        ]
-        self.valid_input_answer: List[Tuple[str, Any]] = [
+        self.empty_allowed = False
+        self.valid_inputs: List[Tuple[str, Any]] = [
             # Valid input_types for the Outside Arrow number format
-            (
-                "T0=5",
-                {'side': 'T', 'index': '0', 'number': '5'}
-            ),
-            (
-                "L1=10",
-                {'side': 'L', 'index': '1', 'number': '10'}
-            ),
-            (
-                "B2=20",
-                {'side': 'B', 'index': '2', 'number': '20'}
-            ),
-            (
-                "R3=100",
-                {'side': 'R', 'index': '3', 'number': '100'}
-            ),
-            (
-                "T4=42",
-                {'side': 'T', 'index': '4', 'number': '42'}
-            ),
-            (
-                "B5=1",
-                {'side': 'B', 'index': '5', 'number': '1'}
-            ),
-            (
-                "R9=999",
-                {'side': 'R', 'index': '9', 'number': '999'}
-            ),
+            ("T0D=5", {'Arrow': {'Side': 'T', 'Direction': 'D', 'Index': 0, 'Value': 5}}),
+            ("T5DR=5", {'Arrow': {'Side': 'T', 'Direction': 'DR', 'Index': 5, 'Value': 5}}),
+            ("T5DL=5", {'Arrow': {'Side': 'T', 'Direction': 'DL', 'Index': 5, 'Value': 5}}),
+            ("L1UR=10", {'Arrow': {'Side': 'L', 'Direction': 'UR', 'Index': 1, 'Value': 10}}),
+            ("L1R=10", {'Arrow': {'Side': 'L', 'Direction': 'R', 'Index': 1, 'Value': 10}}),
+            ("L1DR=10", {'Arrow': {'Side': 'L', 'Direction': 'DR', 'Index': 1, 'Value': 10}}),
+            ("B2U=20", {'Arrow': {'Side': 'B', 'Direction': 'U', 'Index': 2, 'Value': 20}}),
+            ("B2UL=20", {'Arrow': {'Side': 'B', 'Direction': 'UL', 'Index': 2, 'Value': 20}}),
+            ("B2UR=20", {'Arrow': {'Side': 'B', 'Direction': 'UR', 'Index': 2, 'Value': 20}}),
+            ("R3UL=100", {'Arrow': {'Side': 'R', 'Direction': 'UL', 'Index': 3, 'Value': 100}}),
+            ("R3L=100", {'Arrow': {'Side': 'R', 'Direction': 'L', 'Index': 3, 'Value': 100}}),
+            ("R3DL=100", {'Arrow': {'Side': 'R', 'Direction': 'DL', 'Index': 3, 'Value': 100}}),
         ]
 
-        self.invalid_input: List[str] = [
+        self.invalid_input2: List[str] = [
             # Invalid input_types that should raise ParserError
             "A0=5",  # Invalid side character
             "L10=10",  # Invalid index (more than one digit)

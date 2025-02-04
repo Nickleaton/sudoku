@@ -1,6 +1,6 @@
 """TestCellValueParser."""
 import unittest
-from typing import List, Tuple, Any
+from typing import Any, List, Tuple
 
 from src.parsers.cell_value_parser import CellValueParser
 from tests.parsers.test_parser import TestParser
@@ -11,56 +11,18 @@ class TestCellValueParser(TestParser):
 
     def setUp(self):
         """Set up the CellValueParser instance for testing."""
+        super().setUp()
         self.parser: CellValueParser = CellValueParser()
         self.representation: str = "CellValueParser()"
-        self.example_format: str = 'rc=dd'
-        self.valid_input_result: List[Tuple[str, Any]] = [
-            # Valid input_types for the Cell Value format
-            (
-                "12=5",
-                [1, 2, 5]
-            ),
-            (
-                "34=10",
-                [3, 4, 10]
-            ),
-            (
-                "56=100",
-                [5, 6, 100]
-            ),
-            (
-                "78=42",
-                [7, 8, 42]
-            ),
-            (
-                "90=1",
-                [9, 0, 1]
-            ),
+        self.empty_allowed = False
+        self.valid_inputs: List[Tuple[str, Any]] = [
+            ("12=5", {'CellValue': {'Cell': {'row': 1, 'col': 2}, 'value': 5}}),
+            ("34=10", {'CellValue': {'Cell': {'row': 3, 'col': 4}, 'value': 10}}),
+            ("56=100", {'CellValue': {'Cell': {'row': 5, 'col': 6}, 'value': 100}}),
+            ("78=42", {'CellValue': {'Cell': {'row': 7, 'col': 8}, 'value': 42}}),
+            ("90=1", {'CellValue': {'Cell': {'row': 9, 'col': 0}, 'value': 1}})
         ]
-        self.valid_input_answer: List[Tuple[str, Any]] = [
-            # Valid input_types for the Cell Value format
-            (
-                "12=5",
-                {'row': '1', 'column': '2', 'number': '5'}
-            ),
-            (
-                "34=10",
-                {'row': '3', 'column': '4', 'number': '10'}
-            ),
-            (
-                "56=100",
-                {'row': '5', 'column': '6', 'number': '100'}
-            ),
-            (
-                "78=42",
-                {'row': '7', 'column': '8', 'number': '42'}
-            ),
-            (
-                "90=1",
-                {'row': '9', 'column': '0', 'number': '1'}
-            )
-        ]
-        self.invalid_input: List[str] = [
+        self.invalid_inputs: List[str] = [
             # Invalid input_types that should raise ParserError
             "1=5",  # One digit on the left side
             "123=10",  # More than two digits on the left side

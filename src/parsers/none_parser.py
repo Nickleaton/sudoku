@@ -1,26 +1,26 @@
 """NoneParser."""
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.token import Token
+from src.utils.sudoku_exception import SudokuError
 
 
 class NoneParser(Parser):
     """Parser for validating empty input text."""
 
-    def __init__(self):
-        """Initialize the NoneParser with an empty pattern to match."""
-        super().__init__(pattern='^$', example_format='')
-        self.token = Token('')
+    token: Token = Token('')
 
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input text, ensuring it is empty.
 
         Args:
-            text (str): The input text, expected to be empty.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input text is not empty.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if text is empty; raise ParserError if not
-        if text != '':
-            raise ParserError(f'{self.__class__.__name__} expects nothing')
-        raise ParserError(f'{self.__class__.__name__} expects nothing')
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        return {}

@@ -1,6 +1,6 @@
 """TestFrameParser."""
 import unittest
-from typing import List, Tuple, Any
+from typing import Any, List, Tuple
 
 from src.parsers.frame_parser import FrameParser
 from tests.parsers.test_parser import TestParser
@@ -11,80 +11,20 @@ class TestFrameParser(TestParser):
 
     def setUp(self):
         """Set up the FrameParser instance for testing."""
+        super().setUp()
         self.parser: FrameParser = FrameParser()
         self.representation: str = 'FrameParser()'
-        self.example_format: str = '[TLBR]i=v'
-        self.valid_input_result: List[Tuple[str, Any]] = \
+        self.empty_allowed = False
+        self.valid_inputs: List[Tuple[str, Any]] = \
             [
                 # Valid FrameParser format input_types
-                (
-                    "T1=2",
-                    ['T', 1, 2]
-                ),
-                (
-                    "L3=10",
-                    ['L', 3, 10]
-                ),
-                (
-
-                    "B0=5",
-                    ['B', 0, 5]
-                ),
-                (
-                    "R9=99",
-                    ['R', 9, 99]
-                ),
-                (
-                    "T2=123",
-                    ['T', 2, 123]
-                ),
-                # Valid input with spaces
-                (
-                    " T 1 = 20 ",
-                    ['T', 1, 20]
-                ),
+                ("T1=2", {'Frame': {'Side': 'T', 'Index': 1, 'Value': 2}}),
+                ("L3=10", {'Frame': {'Side': 'L', 'Index': 3, 'Value': 10}}),
+                ("B0=5", {'Frame': {'Side': 'B', 'Index': 0, 'Value': 5}}),
+                ("R9=99", {'Frame': {'Side': 'R', 'Index': 9, 'Value': 99}}),
+                ("T2=123", {'Frame': {'Side': 'T', 'Index': 2, 'Value': 123}}),
             ]
-        self.valid_input_answer: List[Tuple[str, Any]] = \
-            [
-                # Valid FrameParser format input_types
-                (
-                    "T1=2",
-                    {'side': 'T', 'index': '1', 'number': '2'}
-                ),
-                (
-                    "L3=10",
-                    {'side': 'L', 'index': '3', 'number': '10'}
-                ),
-                (
-                    "B0=5",
-                    {'side': 'B', 'index': '0', 'number': '5'}
-                ),
-                (
-                    "R9=99",
-                    {'side': 'R', 'index': '9', 'number': '99'}
-                ),
-                (
-                    "T2=123",
-                    {'side': 'T', 'index': '2', 'number': '123'}
-                ),
-                # Valid input with spaces
-                (
-                    " T 1 = 20 ",
-                    {'side': 'T', 'index': '1', 'number': '20'}
-                ),
-            ]
-        self.valid_input_result: List[Tuple[str, Any]] = \
-            [
-                # Valid FrameParser format input_types
-                ("T1=2", ['T', 1, 2]),
-                ("L3=10", ['L', 3, 10]),
-                ("B0=5", ['B', 0, 5]),
-                ("R9=99", ['R', 9, 99]),
-                ("T2=123", ['T', 2, 123]),
-                # Valid input with spaces
-                (" T 1 = 20 ", ['T', 1, 20]),
-            ]
-        self.invalid_input: List[str] = \
+        self.invalid_inputs: List[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "X1=5",  # Invalid side (not T, L, B, or R)

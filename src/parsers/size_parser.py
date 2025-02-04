@@ -1,7 +1,10 @@
 """SizeParser."""
+import re
+
 from src.parsers.parser import Parser
 from src.tokens.size_token import SizeToken
 from src.tokens.token import Token
+from src.utils.sudoku_exception import SudokuError
 
 
 class SizeParser(Parser):
@@ -18,4 +21,7 @@ class SizeParser(Parser):
         Returns:
             dict: A dictionary containing the parsed data.
         """
-        return SizeToken().parse(text)
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        return {'Size': SizeToken().parse(text)}

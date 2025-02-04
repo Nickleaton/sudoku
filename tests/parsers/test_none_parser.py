@@ -1,9 +1,9 @@
 """TestNoneParser."""
 import unittest
-from typing import List, Tuple, Any
+from typing import Any, List, Tuple
 
 from src.parsers.none_parser import NoneParser
-from src.parsers.parser import ParserError
+from src.utils.sudoku_exception import SudokuError
 from tests.parsers.test_parser import TestParser
 
 
@@ -12,12 +12,12 @@ class TestNoneParser(TestParser):
 
     def setUp(self):
         """Set up the NoneParser instance for testing."""
+        super().setUp()
         self.parser: NoneParser = NoneParser()
         self.representation: str = 'NoneParser()'
-        self.example_format: str = ''
-        self.valid_input_result: List[Tuple[str, Any]] = []
-        self.valid_input_answer: List[Tuple[str, Any]] = []
-        self.invalid_input: List[str] = [
+        self.valid_inputs: List[Tuple[str, Any]] = []
+        self.empty_allowed = False
+        self.invalid_inputs: List[str] = [
             "not empty",
             " ",
             "123",
@@ -27,11 +27,9 @@ class TestNoneParser(TestParser):
 
     def test_parse_empty_input(self):
         """Tests parsing an empty input string doesn't apply for this parser."""
-        try:
-            self.parser.parse("")
-            self.fail("ParserError was not raised for empty input")
-        except ParserError:
-            pass
+        if self.empty_allowed:
+            with self.assertRaises(SudokuError):
+                self.parser.parse("")
 
 
 if __name__ == "__main__":

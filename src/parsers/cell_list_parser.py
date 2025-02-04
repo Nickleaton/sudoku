@@ -1,37 +1,35 @@
 """CellListParser."""
+
 import re
 
-from src.parsers.parser import Parser, ParserError
+from src.parsers.parser import Parser
 from src.tokens.cell_token import CellToken
 from src.tokens.symbols import CommaToken
-from src.tokens.token import OneOrMoreToken
+from src.tokens.token import Token, ZeroOrMoreToken
+from src.utils.sudoku_exception import SudokuError
 
 
 class CellListParser(Parser):
-    """Parser for start comma-separated list of cell coordinates."""
+    """Parser for a comma-separated list of cell coordinates."""
 
-    def __init__(self):
-        """Initialize the CellListParser with start specific regex pattern."""
-        super().__init__(pattern=f'^({Parser.cell})(?:,({Parser.cell}))*$', example_format='rc,rc,...')
-        self.token = CellToken() + OneOrMoreToken(CommaToken() + CellToken())
+    token: Token = CellToken() + ZeroOrMoreToken(CommaToken() + CellToken())
 
-    def parse(self, text: str) -> None:
-        """Parse the input text into start list of cell coordinates.
+    def parse(self, text: str) -> dict[str, list]:
+        """Parse a comma-separated list of cell coordinates.
 
         Args:
-            text (str): The input string containing comma-separated cell coordinates.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input does not match the expected format or if
-                         any coordinates cannot be converted to integers.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if the input text matches the defined regular expression pattern
-        text = text.replace(' ', '')
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects start comma-separated list of cell coordinates')
-
-        cells: list[str] = re.findall(r'(\d\d)', text)
-        self.parsed_data = [[int(cell[0]), int(cell[1])] for cell in cells]
-        self.answer = [
-            {'row': cell[0], 'column': cell[1]} for cell in cells
-        ]
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        cells = {'CellList': []}
+        for part in text.split(','):
+            try:
+                cells['CellList'].append({'Cell': CellToken().parse(part)})
+            except SudokuError as exp:
+                raise SudokuError(f'Could not parse {part!r}') from exp
+        return cells

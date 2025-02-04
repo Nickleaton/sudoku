@@ -1,42 +1,42 @@
 """OutsideArrowValueParser."""
-from src.parsers.parser import Parser, ParserError
+import re
+
+from src.parsers.parser import Parser
 from src.tokens.digit_token import DigitToken
+from src.tokens.direction_token import DirectionToken
 from src.tokens.side_token import SideToken
 from src.tokens.symbols import EqualsToken
+from src.tokens.token import Token
 from src.tokens.value_token import ValueToken
+from src.utils.sudoku_exception import SudokuError
 
 
 class OutsideArrowValueParser(Parser):
     """Parser for Outside Arrow Value format: '[TLBR]d=d+'."""
 
-    def __init__(self):
-        """Initialize the OutsideArrowValueParser with start regex pattern for the Outside Arrow Value format."""
-        super().__init__(pattern=r'^[TLBR]\d=\d+$', example_format='[TLBR]d=dd')
-        self.token = SideToken() + DigitToken() + EqualsToken() + ValueToken()
+    token: Token = SideToken() + DigitToken() + DirectionToken() + EqualsToken() + ValueToken()
 
-    def parse(self, text: str) -> None:
+    def parse(self, text: str) -> dict:
         """Parse the input text to extract components in the Outside Arrow Value format.
 
         Args:
-            text (str): The input text expected to be in the format '[TLBR]d=d+'.
+            text (str): The input text to be parsed
 
-        Raises:
-            ParserError: If the input text does not match the expected format.
+        Returns:
+            dict: A dictionary containing the parsed data.
         """
-        # Check if the input text matches the defined regular expression pattern.
-        if not self.regular_expression.match(text):
-            raise ParserError(f'{self.__class__.__name__} expects format like "[TLBR]d=d+"')
+        match = re.fullmatch(self.token.pattern, text)
+        if match is None:
+            raise SudokuError(f'Could not parse {text!r}')
+        lhs: str
+        rhs: str
+        lhs, rhs = text.split('=')
 
-        stripped_text: str = text.replace(' ', '')
-        lhs: str = stripped_text.split('=')[0]
-        rhs: str = stripped_text.split('=')[1]
-        side: str = lhs[0]  # 'T', 'L', 'B', or 'R'
-        index: str = lhs[1]  # digit following the side
-
-        # Store results in the parsed_data attribute.
-        self.parsed_data = [side, int(index), int(rhs)]
-        self.answer = {
-            'side': side,
-            'index': index,
-            'number': rhs,
+        return {
+            'Arrow': {
+                'Side': SideToken().parse(lhs[0])['side'],
+                'Index': DigitToken().parse(lhs[1])['digit'],
+                'Direction': DirectionToken().parse(lhs[2:])['direction'],
+                'Value': ValueToken().parse(rhs)['value'],
+            }
         }
