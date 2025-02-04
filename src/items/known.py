@@ -1,34 +1,13 @@
 """Known."""
-from collections.abc import Mapping
-from types import MappingProxyType
-from typing import Any, Type
+from typing import Any
 
 from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
-from src.items.even_cell import EvenCell
-from src.items.fortress_greater_than_cell import FortressGreaterThanCell
-from src.items.fortress_less_than_cell import FortressLessThanCell
-from src.items.high_cell import HighCell
 from src.items.item import Item
 from src.items.known_cell import KnownCell
-from src.items.low_cell import LowCell
-from src.items.mid_cell import MidCell
-from src.items.odd_cell import OddCell
 from src.parsers.known_parser import KnownParser
-
-CELL_TYPE_MAP: Mapping[str, Type[SimpleCellReference]] = MappingProxyType(
-    {
-        'f': FortressGreaterThanCell,
-        's': FortressLessThanCell,
-        'l': LowCell,
-        'm': MidCell,
-        'h': HighCell,
-        'e': EvenCell,
-        'o': OddCell,
-    },
-)
 
 
 class Known(ComposedItem):
@@ -64,9 +43,8 @@ class Known(ComposedItem):
         Raises:
             ValueError: If the cell type is invalid.
         """
-        cell_class = CELL_TYPE_MAP.get(code)
-        if cell_class:
-            return cell_class(board, row, column)
+        if code == '.':
+            return SimpleCellReference(board, row, column)
         if code.isdigit():
             return KnownCell(board, row, column, int(code))
         raise ValueError(f'Invalid cell type: {code}')
