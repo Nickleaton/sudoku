@@ -44,7 +44,7 @@ class Token:
         Returns:
             bool: True if the text matches the token's regex pattern, False otherwise.
         """
-        return re.match(self.pattern, text) is not None
+        return re.fullmatch(self.pattern, text) is not None
 
     def matched_text(self, text: str) -> str:
         """Match the given text against the token's regex pattern.
@@ -97,7 +97,7 @@ class Token:
         Raises:
             SudokuError: If the text does not match the token's regex pattern.
         """
-        match = re.match(self.pattern, text)
+        match = re.fullmatch(self.pattern, text)
         if match is None:
             raise SudokuError(f'Could not parse {text!r}')
         matched_items: dict = match.groupdict()
