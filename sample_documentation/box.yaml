@@ -1,0 +1,60 @@
+Name:
+  Row
+Rule:
+  Each box must be filed with the digits 1..6, without repeating any of those numbers in the box.
+
+Blank:
+  Board:
+    Size: 6x6
+    Digits: 1..6
+  Constraints:
+    Boxes: 2x3
+    Columns:
+    Rows:
+    Known:
+      - ......
+      - ......
+      - ......
+      - ......
+      - ......
+      - ......
+
+Good:
+  Board:
+    Size: 6x6
+    Digits: 1..6
+  Constraints:
+    Boxes: 2x3
+    Columns:
+    Rows:
+    Known:
+      - 123...
+      - 456...
+      - ......
+      - ......
+      - ......
+      - ......
+
+Bad:
+  Example:
+    Reason: Duplicate digits 4 in this case
+    Board:
+      Size: 6x6
+      Digits: 1..6
+    Constraints:
+      Boxes: 2x3
+      Columns:
+      Rows:
+      Known:
+        - 123...
+        - 446...
+        - ......
+        - ......
+        - ......
+        - ......
+      Highlight: 21, 22
+
+Mathematics:
+  Reference: Just use the UniqueNumbers rule on cells in that region.
+
+

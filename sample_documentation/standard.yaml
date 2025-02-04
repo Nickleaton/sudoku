@@ -1,0 +1,39 @@
+Name:
+  Standard
+Rule:
+  Each box, row and column must be filed with the digits 1..6,
+  without repeating any of those numbers in the box, row or column
+
+Blank:
+  Board:
+    Size: 6x6
+    Digits: 1..6
+  Constraints:
+    Boxes: 2x3
+    Columns:
+    Rows:
+    Known:
+      - 12..3.
+      - ...4..
+      - .315.4
+      - .4512.
+      - ..32.6
+      - 462..1
+
+Answer:
+  Board:
+    Size: 6x6
+    Digits: 1..6
+  Constraints:
+    Boxes: 2x3
+    Columns:
+    Rows:
+    Known:
+      - 124635
+      - 356412
+      - 231564
+      - 645123
+      - 513246
+      - 462351
+
+
