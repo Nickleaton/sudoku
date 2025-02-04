@@ -2,20 +2,21 @@
 
 from strictyaml import Map, Optional, Seq, Str
 
-from src.parsers.box_parser import BoxParser
 from src.parsers.cell_pairs_parser import CellPairsParser
 from src.parsers.cell_parser import CellParser
 from src.parsers.cell_value_parser import CellValueParser
 from src.parsers.digit_parser import DigitParser
 from src.parsers.known_parser import KnownParser
 from src.parsers.none_parser import NoneParser
+from src.parsers.size_parser import SizeParser
 from src.parsers.solution_parser import SolutionParser
 
 problem_schema = Map(
     {
         'Board': Map(
             {
-                'Board': Str(),
+                'Size': SizeParser(),
+                'Digits': Str(),
                 Optional('Tags'): Map(
                     {
                         Optional('Title'): Str(),
@@ -36,7 +37,7 @@ problem_schema = Map(
                 Optional('Box'): DigitParser(),
                 Optional('RegionSet'): NoneParser(),
                 Optional('StandardRegionSet'): NoneParser(),
-                Optional('Boxes'): BoxParser(),
+                Optional('Boxes'): SizeParser(),
                 Optional('CellReference'): Seq(CellParser()),
                 Optional('Column'): DigitParser(),
                 Optional('Columns'): NoneParser(),
