@@ -33,4 +33,3 @@ class BoxToken(SimpleToken):
             str: An example string that the BoxToken would match.
         """
         return '9x9'
-
