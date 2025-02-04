@@ -29,3 +29,11 @@ class Tags(pydot):
                              where the keys are the tag names and the values are their corresponding values.
         """
         return {key: self[key] for key in self.keys()}
+
+    def __repr__(self) -> str:
+        """Return a string representation of the Tags object.
+
+        Returns:
+            str: A string representation of the Tags object.
+        """
+        return f'{self.__class__.__name__}({self.to_dict()})'

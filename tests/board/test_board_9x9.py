@@ -44,7 +44,7 @@ class TestBoard9x9(unittest.TestCase):
 
     def test_repr(self):
         """Test the string representation of the 9x9 board."""
-        target: str = "Board(9, 9, Digits(1, 9), {'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'})"
+        target: str = "Board(9, 9, Digits(1, 9), Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'}))"
         self.assertEqual(target, repr(self.board))
 
     def test_is_valid(self):

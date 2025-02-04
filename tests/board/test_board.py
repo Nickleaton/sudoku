@@ -93,7 +93,7 @@ class TestBoard(unittest.TestCase):
     def test_repr(self):
         """Test the string representation of the board."""
         tag_str: str = "{'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}"
-        self.assertEqual(f'Board(8, 8, {self.board8x8.digits!r}, {tag_str})', repr(self.board8x8))
+        self.assertEqual(f'Board(8, 8, {self.board8x8.digits!r}, Tags({tag_str}))', repr(self.board8x8))
 
     def test_is_valid(self):
         """Test the validity of coordinates on the board."""
