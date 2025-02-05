@@ -143,7 +143,7 @@ class Vector:
             self.start == other.start,
             self.start == other.end,
             self.end == other.start,
-            self.end == other.end
+            self.end == other.end,
         ])
         return connected and self.direction.parallel(other.direction)
 

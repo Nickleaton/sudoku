@@ -214,7 +214,7 @@ class Token:
         return RepeatToken(self, times, times)
 
     def example(self) -> str:
-        """ Return an example text that matches the token.
+        """Return an example text that matches the token.
 
         Returns:
             str: An example text that matches the token.

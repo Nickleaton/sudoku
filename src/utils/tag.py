@@ -4,14 +4,6 @@
 class TagError(Exception):
     """Exception raised for errors related to Tag comparisons."""
 
-    def __init__(self, message: str):
-        """Initialize a TagError instance.
-
-        Args:
-            message (str): The error message.
-        """
-        super().__init__(message)
-
 
 class Tag:
     """Class representing a Tag with a name.

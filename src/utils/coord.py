@@ -36,7 +36,6 @@ class Coord:
         """
         return hash((self.row, self.column))
 
-
     def __repr__(self) -> str:
         """Return start string representation of the Coord object.
 
@@ -173,28 +172,6 @@ class Coord:
             bool: True if the row of the given coordinate is the same as this coordinate, False otherwise.
         """
         return self.row == other.row
-
-    # @staticmethod
-    # def validate(yaml: object) -> List[str]:
-    #     """Validate start list containing row and column value_list.
-    #
-    #     Args:
-    #         yaml: The input list to validate.
-    #
-    #     Returns:
-    #         List[str]: A list of error messages if validation fails, otherwise an empty list.
-    #     """
-    #     coord_list: List[str] = []
-    #     if not isinstance(yaml, list):
-    #         coord_list.append(f'Expecting list, got {yaml!r}')
-    #         return coord_list
-    #     if len(yaml) != 2:
-    #         coord_list.append('expecting row, column')
-    #     if not isinstance(yaml[0], int):
-    #         coord_list.append('row not integer')
-    #     if not isinstance(yaml[1], int):
-    #         coord_list.append('column not integer')
-    #     return coord_list
 
     @property
     def top_left(self) -> 'Coord':

@@ -39,7 +39,6 @@ class Digits:
             maximum (int): The maximum possible digit for the digit range.
 
         Raises:
-            TypeError: If minimum or maximum is not an integer.
             ValueError: If minimum is greater than maximum.
         """
         if minimum > maximum:
