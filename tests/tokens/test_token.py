@@ -92,6 +92,10 @@ class TestToken(unittest.TestCase):
         """Test that the pattern is correct."""
         self.assertEqual(self.pattern, self.token.pattern)
 
+    def test_example(self):
+        """Test that the example is correct."""
+        self.assertIsNotNone(self.token.example)
+
     def test_description(self):
         """Test that the description is correct."""
         self.assertIsInstance(self.token.description, str)

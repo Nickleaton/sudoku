@@ -76,14 +76,13 @@ class Token:
         """
         if data_type is int:
             return int(token_text)
-        elif data_type is float:
+        if data_type is float:
             return float(token_text)
-        elif data_type is str:
+        if data_type is str:
             return token_text
-        elif data_type is list:
+        if data_type is list:
             return list(token_text)  # Convert string to list of characters
-        else:
-            raise SudokuError(f'Unknown data type: {data_type}')
+        raise SudokuError(f'Unknown data type: {data_type}')
 
     def parse(self, text: str) -> dict:
         """Parse the given text against the token's regex pattern.
@@ -213,6 +212,14 @@ class Token:
         if isinstance(times, tuple):
             return RepeatToken(self, times[0], times[1])
         return RepeatToken(self, times, times)
+
+    def example(self) -> str:
+        """ Return an example text that matches the token.
+
+        Returns:
+            str: An example text that matches the token.
+        """
+        return ''
 
 
 class SequenceToken(Token):
