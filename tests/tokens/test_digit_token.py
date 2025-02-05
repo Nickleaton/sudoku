@@ -15,7 +15,18 @@ class TestDigitToken(TestSimpleToken):
         self.representation = "DigitToken()"
         self.pattern = r"(?P<digit>\d)"
         self.name = 'Digit'
-        self.good = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        self.good = [
+            ('0', {'digit': 0}),
+            ('1', {'digit': 1}),
+            ('2', {'digit': 2}),
+            ('3', {'digit': 3}),
+            ('4', {'digit': 4}),
+            ('5', {'digit': 5}),
+            ('6', {'digit': 6}),
+            ('7', {'digit': 7}),
+            ('8', {'digit': 8}),
+            ('9', {'digit': 9}),
+        ]
         self.bad = ['A', 'B', 'C', 'D']
         self.group_count = 0
         self.backus_naur = '<Digit>'

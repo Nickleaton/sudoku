@@ -15,7 +15,12 @@ class TestQuadToken(TestSimpleToken):
         self.representation = 'QuadrupleToken()'
         self.pattern = r'(?P<quads>[\d]{0,4})'
         self.name = 'Quadruple'
-        self.good = ['123', '12', '1122', '12']
+        self.good = [
+            ('123', {'quads': ['1', '2', '3']}),
+            ('12', {'quads': ['1', '2']}),
+            ('1122', {'quads': ['1', '1', '2', '2']}),
+            ('12', {'quads': ['1', '2']})
+        ]
         self.bad = ['12345', 'X']
         self.backus_naur = '<Quadruple>'
         self.result = {'quads': ['1', '2', '3']}

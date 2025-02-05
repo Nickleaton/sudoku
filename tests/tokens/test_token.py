@@ -16,17 +16,15 @@ class TestToken(unittest.TestCase):
         self.token_a = Token(r"A")
         self.token_b = Token(r"B")
         self.name = "Token"
-        self.good = ['A']
+        self.good = [
+            ('A', {}),
+        ]
         self.bad = ['B']
         self.backus_naur = "<Token>"
         self.representation = "Token('A')"
         self.pattern = "A"
         self.names = []
         self.result = {}
-
-    def test_parse(self):
-        """Test the parse method."""
-        self.assertDictEqual(self.result, self.token.parse(self.good[0]))
 
     def test_register(self):
         """Ensure the Token class registers correctly."""
@@ -75,11 +73,10 @@ class TestToken(unittest.TestCase):
         self.assertTrue(is_valid, "Pattern should be start valid regex.")
 
     def test_good(self):
-        """Test the matching of good input_types."""
-        for text in self.good:
+        """Test the good examples."""
+        for text, answer in self.good:
             with self.subTest(text=text):
-                self.assertTrue(self.token.match(text))
-                self.assertEqual(text, self.token.matched_text(text))
+                self.assertDictEqual(answer, self.token.parse(text))
 
     def test_bad(self):
         """Test the matching of bad input types."""
@@ -120,7 +117,9 @@ class TestSequenceToken(TestToken):
         """Set up example tokens for testing SequenceToken."""
         super().setUp()
         self.token = SequenceToken([self.token_a, self.token_b])
-        self.good = ['AB']
+        self.good = [
+            ('AB', {})
+        ]
         self.bad = ['XX']
         self.name = "Sequence"
         self.group_count = 2
@@ -136,7 +135,10 @@ class TestRepeatToken(TestToken):
         """Set up example tokens for testing RepeatToken."""
         super().setUp()
         self.token = RepeatToken(Token("A"), 1, 2)
-        self.good = ['AA', "A"]
+        self.good = [
+            ('AA', {}),
+            ('A', {}),
+        ]
         self.bad = ['XX', "AAA"]
         self.group_count = 1
         self.backus_naur = '<Token> {1,2}'
@@ -153,7 +155,10 @@ class TestChoiceToken(TestToken):
         super().setUp()
         self.token = self.token_a | self.token_b
         self.name = "Choice"
-        self.good = ['A', 'B']
+        self.good = [
+            ('A', {}),
+            ('B', {}),
+        ]
         self.bad = ['X']
         self.group_count = 2
         self.backus_naur = '(<Token> | <Token>)'
@@ -168,8 +173,11 @@ class TestOptionalToken(unittest.TestCase):
         """Set up an example OptionalToken."""
         self.token_a = Token("A")
         self.token = OptionalToken(self.token_a)
-        self.name = "Optional"
-        self.good = ["", "A"]
+        self.name = 'Optional'
+        self.good = [
+            ('', {}),
+            ('A', {}),
+        ]
         self.bad = ["AA", "B"]
         self.backus_naur = "xxx1"
         self.pattern = 'abc'
@@ -184,7 +192,11 @@ class TestOneOrMoreToken(unittest.TestCase):
         self.token_a = Token("A")
         self.token = OneOrMoreToken(self.token_a)
         self.name = "OneOrMore"
-        self.good = ["A", "AA", "AAA"]
+        self.good = [
+            ('A', {}),
+            ('AA', {}),
+            ('AAA', {}),
+        ]
         self.bad = ["", "B"]
         self.backus_naur = "xxx1"
         self.pattern = 'abc'
@@ -199,7 +211,12 @@ class TestZeroOrMoreToken(unittest.TestCase):
         self.token_a = Token("A")
         self.token = ZeroOrMoreToken(self.token_a)
         self.name = "ZeroOrMore"
-        self.good = ["", "A", "AA", "AAA"]
+        self.good = [
+            ('', {}),
+            ('A', {}),
+            ('AA', {}),
+            ('AAA', {}),
+        ]
         self.bad = ["B"]
         self.backus_naur = "xxx1"
         self.pattern = 'abc'

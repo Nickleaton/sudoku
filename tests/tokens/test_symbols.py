@@ -16,7 +16,10 @@ class TestSymbolToken(TestSimpleToken):
         self.representation = "SymbolToken('row', 'row')"
         self.pattern = "row"
         self.name = 'Symbol'
-        self.good = ['row']
+        self.good = \
+            [
+                ('row', {}),
+            ]
         self.bad = ['X', '--']
         self.backus_naur = '"row"'
 
@@ -31,7 +34,10 @@ class TestCommaToken(TestSymbolToken):
         self.representation = "CommaToken()"
         self.pattern = r","
         self.name = 'Comma'
-        self.good = [',']
+        self.good = \
+            [
+                (',', {}),
+            ]
         self.bad = ['X', ',,']
         self.backus_naur = '","'
 
@@ -46,7 +52,10 @@ class TestDashToken(TestSymbolToken):
         self.representation = "DashToken()"
         self.pattern = r"-"
         self.name = 'Dash'
-        self.good = ['-']
+        self.good = \
+            [
+                ('-', {}),
+            ]
         self.bad = ['X', '--']
         self.backus_naur = '"-"'
 
@@ -61,7 +70,10 @@ class TestEqualsToken(TestSymbolToken):
         self.representation = "EqualsToken()"
         self.pattern = r"="
         self.name = 'Equals'
-        self.good = ['=']
+        self.good = \
+            [
+                ('=', {}),
+            ]
         self.bad = ['X', '==']
         self.backus_naur = '"="'
 
@@ -76,7 +88,10 @@ class TestQuestionMarkToken(TestSymbolToken):
         self.representation = "QuestionMarkToken()"
         self.pattern = r"\?"
         self.name = 'QuestionMark'
-        self.good = ['?']
+        self.good = \
+            [
+                ('?', {}),
+            ]
         self.bad = ['X', '==']
         self.backus_naur = r'"?"'
 
@@ -91,7 +106,10 @@ class TestXToken(TestSymbolToken):
         self.representation = "XToken()"
         self.pattern = r"x"
         self.name = 'X'
-        self.good = ['x']
+        self.good = \
+            [
+                ('x', {}),
+            ]
         self.bad = ['X', 'xx']
         self.backus_naur = '"x"'
 
@@ -106,8 +124,11 @@ class TestDotDotToken(TestSymbolToken):
         self.representation = "DotDotToken()"
         self.pattern = r"\.\."
         self.name = 'DotDot'
-        self.good = ['..']
-        self.bad = ['.', '...']
+        self.good = \
+            [
+                ('..', {}),
+            ]
+        self.bad = ['.', '...', 'x']
         self.backus_naur = '".."'
 
 
@@ -121,7 +142,10 @@ class TestStartToken(TestSymbolToken):
         self.representation = "StartToken()"
         self.pattern = r"^"
         self.name = 'Start'
-        self.good = ['']
+        self.good = \
+            [
+                ('', {}),
+            ]
         self.bad = ['X', '^^']
         self.backus_naur = '"^"'
 
@@ -136,7 +160,10 @@ class TestEndToken(TestSymbolToken):
         self.representation = "EndToken()"
         self.pattern = r"$"
         self.name = 'End'
-        self.good = ['']
+        self.good = \
+            [
+                ('', {}),
+            ]
         self.bad = ['X', '$$']
         self.backus_naur = '"$"'
 

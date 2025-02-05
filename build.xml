@@ -23,16 +23,16 @@
         </exec>
     </target>
 
-    <target name="perflint">
+    <target name="perflint.src">
+        <mkdir dir="output/perflint"/>
         <exec executable="perflint" failonerror="true">
             <arg value="src"/>
             <arg value="--disable"/>
             <arg value="loop-global-usage,loop-invariant-statement"/>
             <arg value="--output"/>
-            <arg value="output/perflint.html"/>
+            <arg value="output/perflint/src.html"/>
         </exec>
     </target>
-
 
     <target name="pytest">
         <mkdir dir="output/tests"/>
@@ -52,12 +52,14 @@
     <target name="pylint.src">
         <exec executable="pylint">
             <arg value="src"/>
+            <arg value="--disable=C0103,W8201,R0914,R0917,R0913,R0902,R0903,R0902"/>
         </exec>
     </target>
 
     <target name="pylint.tests">
         <exec executable="pylint">
             <arg value="tests"/>
+            <arg value="--disable=C0103,W8201"/>
         </exec>
     </target>
 

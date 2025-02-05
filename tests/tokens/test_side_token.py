@@ -15,7 +15,12 @@ class TestSideToken(TestSimpleToken):
         self.representation = 'SideToken()'
         self.pattern = r'(?P<side>[TLBR])'
         self.name = 'Side'
-        self.good = ['T', 'L', 'B', 'R']
+        self.good = [
+            ('T', {'side': 'T'}),
+            ('L', {'side': 'L'}),
+            ('B', {'side': 'B'}),
+            ('R', {'side': 'R'}),
+        ]
         self.bad = ['X']
         self.backus_naur = '<Side>'
         self.result = {'side': 'T'}

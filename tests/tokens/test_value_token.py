@@ -14,7 +14,10 @@ class TestValueToken(TestSimpleToken):
         self.token = ValueToken()
         self.representation = 'ValueToken()'
         self.pattern = r'(?P<value>\d+)'
-        self.good = ['11', '99']
+        self.good = [
+            ('11', {'value': 11}),
+            ('99', {'value': 99}),
+        ]
         self.bad = ['X']
         self.name = 'Value'
         self.backus_naur = '<Value>'

@@ -15,7 +15,11 @@ class TestOrderToken(TestSimpleToken):
         self.representation = "OrderToken()"
         self.pattern = r'(?P<order>[IDU])'
         self.name = 'Order'
-        self.good = ['I', 'D', 'U']
+        self.good = [
+            ('I', {'order': 'I'}),
+            ('D', {'order': 'D'}),
+            ('U', {'order': 'U'}),
+        ]
         self.bad = ['X', '0', '1']
         self.backus_naur = '<Order>'
         self.result = {'order': 'I'}

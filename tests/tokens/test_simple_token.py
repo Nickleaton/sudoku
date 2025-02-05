@@ -11,12 +11,15 @@ class TestSimpleToken(TestToken):
     def setUp(self):
         """Set up example tokens specific for testing SimpleToken."""
         super().setUp()  #
-        self.token = SimpleToken(r"A")
+        self.token = SimpleToken('A')
         self.representation = "SimpleToken()"
-        self.pattern = "A"
+        self.good = [
+            ('A', {})
+        ]
+        self.pattern = 'A'
         self.name = 'Simple'
-        self.backus_naur = "<Simple>"
+        self.backus_naur = '<Simple>'
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -15,7 +15,10 @@ class TestCycleToken(TestSimpleToken):
         self.representation = "CycleToken()"
         self.pattern = r"(?P<cycle>[CA])"
         self.name = 'Cycle'
-        self.good = ['C', 'A']
+        self.good = [
+            ('C', {'cycle': 'C'}),
+            ('A', {'cycle': 'A'}),
+        ]
         self.bad = ['X', '0', '1']
         self.backus_naur = '<Cycle>'
         self.result = {'cycle': 'C'}

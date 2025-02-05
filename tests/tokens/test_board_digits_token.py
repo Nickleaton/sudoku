@@ -15,7 +15,14 @@ class TestBoardDigitsToken(TestSimpleToken):
         self.representation = 'BoardDigitsToken()'
         self.pattern = r'(?P<minimum>\d)\.\.(?P<maximum>\d\d{0,1})'
         self.name = 'BoardDigits'
-        self.good = ['1..9', '0..8', '1..8', '1..15', '1..4', '1..6']
+        self.good = [
+            ('1..9', {'minimum': 1, 'maximum': 9}),
+            ('0..8', {'minimum': 0, 'maximum': 8}),
+            ('1..8', {'minimum': 1, 'maximum': 8}),
+            ('1..15', {'minimum': 1, 'maximum': 15}),
+            ('1..4', {'minimum': 1, 'maximum': 4}),
+            ('1..6', {'minimum': 1, 'maximum': 6}),
+        ]
         self.bad = ['12', '9.1', '..9', 'a..b']
         self.group_count = 2
         self.backus_naur = '<BoardDigits>'

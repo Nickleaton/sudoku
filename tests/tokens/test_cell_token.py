@@ -15,7 +15,17 @@ class TestCellToken(TestSimpleToken):
         self.representation = "CellToken()"
         self.pattern = r"(?P<row>\d)(?P<col>\d)"
         self.name = 'Cell'
-        self.good = ['12', '11', '13', '21', '22', '23', '31', '32', '33']
+        self.good = [
+            ('12', {'row': 1, 'col': 2}),
+            ('11', {'row': 1, 'col': 1}),
+            ('13', {'row': 1, 'col': 3}),
+            ('21', {'row': 2, 'col': 1}),
+            ('22', {'row': 2, 'col': 2}),
+            ('23', {'row': 2, 'col': 3}),
+            ('31', {'row': 3, 'col': 1}),
+            ('32', {'row': 3, 'col': 2}),
+            ('33', {'row': 3, 'col': 3}),
+        ]
         self.bad = ['row', 'XX']
         self.backus_naur = '<Cell>'
         self.result = {'row': 1, 'col': 2}

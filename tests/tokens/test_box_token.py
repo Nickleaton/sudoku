@@ -15,7 +15,11 @@ class TestBoxToken(TestSimpleToken):
         self.representation = 'BoxToken()'
         self.pattern = r'(?P<rows>\d)x(?P<cols>\d)'
         self.name = 'Box'
-        self.good = ['2x3', '3x3', '4x4']
+        self.good = [
+            ('2x3', {'rows': 2, 'cols': 3}),
+            ('3x3', {'rows': 3, 'cols': 3}),
+            ('4x4', {'rows': 4, 'cols': 4}),
+        ]
         self.bad = ['99', '2*3', '4by4']
         self.backus_naur = '<Box>'
         self.result = {'rows': 2, 'cols': 3}
