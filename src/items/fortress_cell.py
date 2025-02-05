@@ -44,4 +44,3 @@ class FortressCell(SimpleCellReference):
 
         Sets the impossibility of containing digits that cannot be valid for the fortress cell's constraints.
         """
-        # TODO
