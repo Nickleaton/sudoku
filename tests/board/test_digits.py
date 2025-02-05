@@ -107,6 +107,11 @@ class TestDigits(unittest.TestCase):
         """Test the lower and upper halves of the digit range."""
         self.assertEqual(self.upper, self.digit.upper)
 
+    def test_wrong_way(self) -> None:
+        """Test min > max"""
+        with self.assertRaises(ValueError):
+            Digits(2, 1)
+
 
 class TestDigit0To8(TestDigits):
     """Test class for Digits(0, 8)."""
