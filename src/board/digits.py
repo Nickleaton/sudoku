@@ -42,8 +42,6 @@ class Digits:
             TypeError: If minimum or maximum is not an integer.
             ValueError: If minimum is greater than maximum.
         """
-        if not isinstance(minimum, int) or not isinstance(maximum, int):
-            raise TypeError('Minimum and maximum must be integers.')
         if minimum > maximum:
             raise ValueError('Minimum must be less than or equal to maximum.')
         self.minimum: int = minimum
