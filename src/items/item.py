@@ -129,12 +129,12 @@ class Item:  # noqa: WPS110
         return clazz.create(board, yaml)
 
     @classmethod
-    def create2(cls, board: Board, yaml: dict) -> 'Item':
+    def create2(cls, board: Board, yaml_data: dict) -> 'Item':
         """Create an instance of the constraint from start_location YAML dictionary.
 
         Args:
             board (Board): The board this constraint belongs to.
-            yaml (dict): The YAML line to create the constraint.
+            yaml_data (dict): The YAML line to create the constraint.
 
         Returns:
             Item: The created instance of the constraint.
@@ -142,14 +142,14 @@ class Item:  # noqa: WPS110
         Raises:
             SudokuError: If the YAML line is invalid or the class cannot be found.
         """
-        if isinstance(yaml, str):
-            name = yaml
+        if isinstance(yaml_data, str):  # TODO typing is wrong
+            name = yaml_data
         else:
-            name = next(iter(yaml.keys()))
+            name = next(iter(yaml_data.keys()))
         if name not in cls.classes:
             raise SudokuError(f'Unknown constraint class {name}')
         clazz = cls.classes[name]
-        return clazz.create2(board, yaml)
+        return clazz.create2(board, yaml_data)
 
     @property
     def top(self) -> 'Item':
