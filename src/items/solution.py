@@ -23,12 +23,13 @@ class Solution(ComposedItem):
             board (Board): The board associated with this solution.
             rows (list[str]): A list of strings representing rows of digits.
         """
-        super().__init__(board, [])
+        super().__init__(board)
         self.rows = rows
-        parts: list[CellReference] = []
-        for row_index, row_data in enumerate(self.rows):
-            for column_index, digit in enumerate(row_data):
-                parts.append(KnownCell(board, row_index + 1, column_index + 1, int(digit), 'Verify'))
+        parts: list[CellReference] = [
+            KnownCell(board, row_index + 1, column_index + 1, int(digit), 'Verify')
+            for row_index, row_data in enumerate(self.rows)
+            for column_index, digit in enumerate(row_data)
+        ]
         self.add_components(parts)
 
     @classmethod
