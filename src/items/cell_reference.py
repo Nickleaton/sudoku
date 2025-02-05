@@ -7,6 +7,7 @@ from src.items.cell import Cell
 from src.items.item import Item
 from src.parsers.cell_parser import CellParser
 from src.utils.rule import Rule
+from src.utils.sudoku_exception import SudokuError
 
 
 class CellReference(Item):
@@ -66,10 +67,18 @@ class CellReference(Item):
 
         Returns:
             tuple: A tuple containing the row and column as integers.
+
+        Raises:
+            SudokuError: If the row or column is out of range.
         """
         # need str in case yaml treats the string as a number
+        row: int
+        col: int
         yaml_data: str = str(yaml[cls.__name__])
-        return int(yaml_data[0]), int(yaml_data[1])
+        row, col = int(yaml_data[0]), int(yaml_data[1])
+        if not board.is_valid(row, col):
+            raise SudokuError(f'Invalid cell: {row}, {col}.')
+        return row, col
 
     @classmethod
     def create(cls, board: Board, yaml: dict) -> Item:
