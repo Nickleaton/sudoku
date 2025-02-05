@@ -13,16 +13,17 @@ from src.utils.rule import Rule
 class ComposedItem(Item):
     """Composed Items."""
 
-    def __init__(self, board: Board, components: Sequence[Item]):
+    def __init__(self, board: Board, components: Sequence[Item] | None = None):
         """Initialize start_location ComposedItem instance.
 
         Args:
             board (Board): The board associated with this composed constraint.
-            components (Sequence[Item]): A sequence of vectors to be included in this composed constraint.
+            components (Sequence[Item] | None): A sequence of vectors to be included in this composed constraint.
         """
         super().__init__(board)
         self.components: list[Item] = []
-        self.add_components(components)
+        if components is not None:
+            self.add_components(components)
 
     def find_instances(self, class_type: Type[Item]) -> list[Item]:
         """Find all instances of the specified class in the hierarchy, including children.
