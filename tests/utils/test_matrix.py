@@ -2,8 +2,8 @@
 import unittest
 
 from src.utils.coord import Coord
-from src.utils.matrix import ROTATE000, ROTATE090, ROTATE180, ROTATE270, FLIP_HORIZONTAL, FLIP_VERTICAL, \
-    MatrixError, Matrix
+from src.utils.matrix import FLIP_HORIZONTAL, FLIP_VERTICAL, Matrix, MatrixError, ROTATE000, ROTATE090, ROTATE180, \
+    ROTATE270
 
 
 class TestMatrix(unittest.TestCase):
@@ -56,15 +56,35 @@ class TestMatrix(unittest.TestCase):
 
     def test_matrix_hash(self):
         """Test hash functionality for matrices."""
-        matrix1 = Matrix('matrix1', [[1, 2], [3, 4]])
-        matrix2 = Matrix('matrix2', [[1, 2], [3, 4]])
-        matrix3 = Matrix('matrix3', [[4, 3], [2, 1]])
+        matrix1 = Matrix('matrix1', ((1, 2), (3, 4)))
+        matrix2 = Matrix('matrix2', ((1, 2), (3, 4)))
+        matrix3 = Matrix('matrix3', ((4, 3), (2, 1)))
 
         # Test that two identical matrices have the same hash
         self.assertEqual(hash(matrix1), hash(matrix2))
 
         # Test that two different matrices have different hashes
         self.assertNotEqual(hash(matrix1), hash(matrix3))
+
+    def test_valid_matrix(self):
+        """Test that a valid 2x2 matrix is correctly initialized."""
+        matrix = Matrix("ValidMatrix", ((1, 2), (3, 4)))
+        self.assertEqual(matrix.name, "ValidMatrix")
+        self.assertEqual(matrix.matrix, ((1, 2), (3, 4)))
+
+    def test_invalid_matrix_size(self):
+        """Test that invalid matrix sizes raise a ValueError."""
+        with self.assertRaises(ValueError):
+            Matrix("TooSmall", ((1, 2),))  # type: ignore
+
+        with self.assertRaises(ValueError):
+            Matrix("TooLarge", ((1, 2, 3), (4, 5, 6)))  # type: ignore
+
+        with self.assertRaises(ValueError):
+            Matrix("NotSquare", ((1, 2), (3,)))  # type: ignore
+
+        with self.assertRaises(ValueError):
+            Matrix("Empty", ())  # type: ignore
 
     @staticmethod
     def alpha(w: int, x: int, y: int, z: int) -> int:
@@ -111,12 +131,12 @@ class TestMatrix(unittest.TestCase):
 
     def test_repr(self):
         """Test the string representation of matrix transformations."""
-        self.assertEqual("Matrix('ROTATE000', [[1, 0], [0, 1]])", repr(ROTATE000))
-        self.assertEqual("Matrix('ROTATE090', [[0, -1], [1, 0]])", repr(ROTATE090))
-        self.assertEqual("Matrix('ROTATE180', [[-1, 0], [0, -1]])", repr(ROTATE180))
-        self.assertEqual("Matrix('ROTATE270', [[0, 1], [-1, 0]])", repr(ROTATE270))
-        self.assertEqual("Matrix('FLIP_HORIZONTAL', [[-1, 0], [0, 1]])", repr(FLIP_HORIZONTAL))
-        self.assertEqual("Matrix('FLIP_VERTICAL', [[1, 0], [0, -1]])", repr(FLIP_VERTICAL))
+        self.assertEqual("Matrix('ROTATE000', ((1, 0), (0, 1)))", repr(ROTATE000))
+        self.assertEqual("Matrix('ROTATE090', ((0, -1), (1, 0)))", repr(ROTATE090))
+        self.assertEqual("Matrix('ROTATE180', ((-1, 0), (0, -1)))", repr(ROTATE180))
+        self.assertEqual("Matrix('ROTATE270', ((0, 1), (-1, 0)))", repr(ROTATE270))
+        self.assertEqual("Matrix('FLIP_HORIZONTAL', ((-1, 0), (0, 1)))", repr(FLIP_HORIZONTAL))
+        self.assertEqual("Matrix('FLIP_VERTICAL', ((1, 0), (0, -1)))", repr(FLIP_VERTICAL))
 
 
 if __name__ == '__main__':  # pragma: no cover

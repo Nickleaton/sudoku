@@ -14,7 +14,7 @@ class Matrix:
         matrix (list[list[int]]): A 2x2 matrix represented as a list of lists.
     """
 
-    def __init__(self, name: str, matrix: list[list[int]]) -> None:
+    def __init__(self, name: str, matrix: tuple[tuple[int, int], tuple[int, int]]) -> None:
         """Initialize a Matrix with a given name and 2x2 matrix.
 
         Args:
@@ -27,7 +27,7 @@ class Matrix:
         if len(matrix) != 2 or len(matrix[0]) != 2 or len(matrix[1]) != 2:
             raise ValueError('Matrix must be 2x2')
         self.name: str = name
-        self.matrix: list[list[int]] = matrix
+        self.matrix: tuple[tuple[int, int], tuple[int, int]] = matrix
 
     def compose(self, other: 'Matrix') -> 'Matrix':
         """Compose this matrix with another matrix using matrix multiplication.
@@ -38,16 +38,16 @@ class Matrix:
         Returns:
             Matrix: The resulting matrix after composition.
         """
-        result_matrix = [
-            [
+        result_matrix = (
+            (
                 self.matrix[0][0] * other.matrix[0][0] + self.matrix[0][1] * other.matrix[1][0],  # Element [0][0]
                 self.matrix[0][0] * other.matrix[0][1] + self.matrix[0][1] * other.matrix[1][1],  # Element [0][1]
-            ],
-            [
+            ),
+            (
                 self.matrix[1][0] * other.matrix[0][0] + self.matrix[1][1] * other.matrix[1][0],  # Element [1][0]
                 self.matrix[1][0] * other.matrix[0][1] + self.matrix[1][1] * other.matrix[1][1],  # Element [1][1]
-            ],
-        ]
+            ),
+        )
         return Matrix(
             f'{self.name} | {other.name}',
             result_matrix,
@@ -101,12 +101,12 @@ class Matrix:
 
 
 # Predefined matrix transformations
-ROTATE000: Matrix = Matrix('ROTATE000', [[1, 0], [0, 1]])
-ROTATE090: Matrix = Matrix('ROTATE090', [[0, -1], [1, 0]])
-ROTATE180: Matrix = Matrix('ROTATE180', [[-1, 0], [0, -1]])
-ROTATE270: Matrix = Matrix('ROTATE270', [[0, 1], [-1, 0]])
-FLIP_HORIZONTAL: Matrix = Matrix('FLIP_HORIZONTAL', [[-1, 0], [0, 1]])
-FLIP_VERTICAL: Matrix = Matrix('FLIP_VERTICAL', [[1, 0], [0, -1]])
+ROTATE000: Matrix = Matrix('ROTATE000', ((1, 0), (0, 1)))
+ROTATE090: Matrix = Matrix('ROTATE090', ((0, -1), (1, 0)))
+ROTATE180: Matrix = Matrix('ROTATE180', ((-1, 0), (0, -1)))
+ROTATE270: Matrix = Matrix('ROTATE270', ((0, 1), (-1, 0)))
+FLIP_HORIZONTAL: Matrix = Matrix('FLIP_HORIZONTAL', ((-1, 0), (0, 1)))
+FLIP_VERTICAL: Matrix = Matrix('FLIP_VERTICAL', ((1, 0), (0, -1)))
 
 # Rotations, flips, and composed transforms
 ROTATIONS: tuple[Matrix, Matrix, Matrix, Matrix] = (ROTATE000, ROTATE090, ROTATE180, ROTATE270)

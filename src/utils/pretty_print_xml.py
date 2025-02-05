@@ -2,7 +2,7 @@
 
 from xml.dom.minidom import Document, Element, parseString
 
-from defusedxml.ElementTree import fromstring, tostring
+from defusedxml.ElementTree import fromstring, ParseError, tostring
 
 
 def pretty_print_xml(xml_string: str) -> str:
@@ -16,7 +16,7 @@ def pretty_print_xml(xml_string: str) -> str:
     """
     try:
         root: Element = fromstring(xml_string, forbid_dtd=True, forbid_entities=True)
-    except Exception as error:
+    except ParseError as error:
         return f'Error parsing XML: {error}'
 
     raw_xml: str = tostring(root, encoding='unicode')  # Convert to string

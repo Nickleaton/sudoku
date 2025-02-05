@@ -139,15 +139,13 @@ class Vector:
         Returns:
             bool: True if the vectors are mergeable, False otherwise.
         """
-        # Check all combinations of start and ends and if connected
-        is_connected = False
-
-        is_connected = is_connected or self.start == other.start
-        is_connected = is_connected or self.start == other.end
-        is_connected = is_connected or self.end == other.start
-        is_connected = is_connected or self.end == other.end
-
-        return is_connected and self.direction.parallel(other.direction)
+        connected: bool = any([
+            self.start == other.start,
+            self.start == other.end,
+            self.end == other.start,
+            self.end == other.end
+        ])
+        return connected and self.direction.parallel(other.direction)
 
     def merge(self, other: 'Vector') -> 'Vector':
         """Merge this vector with another vector if they are mergeable.

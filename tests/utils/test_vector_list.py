@@ -47,6 +47,46 @@ class TestVectorList(unittest.TestCase):
             ]
         )
 
+    def test_extend(self):
+        """Test extending a VectorList with another VectorList."""
+        # Extend vectors1 with vectors2
+        self.vectors1.extend(self.vectors2)
+        self.assertEqual(
+            len(self.vectors1), 5,
+            "The length of vectors1 should be 5 after extending with vectors2."
+        )
+        self.assertTrue(Vector(Coord(4, 4), Coord(1, 2)) in self.vectors1,
+                        "vectors1 should now contain the vector from vectors2.")
+
+    def test_extend_empty_list(self):
+        """Test extending a VectorList with an empty VectorList."""
+        empty_list = VectorList([])
+        self.vectors1.extend(empty_list)
+        self.assertEqual(
+            len(self.vectors1), 3,
+            "The length of vectors1 should remain 3 after extending with an empty list."
+        )
+
+    def test_extend_invalid_type(self):
+        """Test extending a VectorList with an invalid type (e.g., not a VectorList)."""
+        with self.assertRaises(VectorListError):
+            self.vectors1.extend("invalid type")
+
+    def test_extend_with_non_vector(self):
+        """Test extending a VectorList with a list that contains non-Vector items."""
+        with self.assertRaises(VectorListError):
+            self.vectors1.extend([("non-vector", Coord(1, 2), Coord(2, 3))])
+
+    def test_extend_multiple_times(self):
+        """Test extending a VectorList multiple times."""
+        # Extend the list twice
+        self.vectors1.extend(self.vectors2)
+        self.vectors1.extend(self.vectors3)
+        self.assertEqual(
+            len(self.vectors1), 8,
+            "The length of vectors1 should be 8 after extending with vectors2 and vectors3."
+        )
+
     def test_vector_list_len(self):
         """Check that VectorList has the correct length."""
         self.assertEqual(3, len(self.vectors1))

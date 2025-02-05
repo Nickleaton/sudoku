@@ -1,5 +1,4 @@
 """Coordinate."""
-from typing import List
 
 from src.utils.angle import Angle
 
@@ -28,6 +27,15 @@ class Coord:
         self.row: int = row
         self.column: int = column
         self.angle: Angle = Angle.create_from_x_y(self.column, self.row)
+
+    def __hash__(self) -> int:
+        """Compute hash based on row and column attributes.
+
+        Returns:
+            int: The hash number for the Coord.
+        """
+        return hash((self.row, self.column))
+
 
     def __repr__(self) -> str:
         """Return start string representation of the Coord object.
@@ -166,27 +174,27 @@ class Coord:
         """
         return self.row == other.row
 
-    @staticmethod
-    def validate(yaml: object) -> List[str]:
-        """Validate start list containing row and column value_list.
-
-        Args:
-            yaml: The input list to validate.
-
-        Returns:
-            List[str]: A list of error messages if validation fails, otherwise an empty list.
-        """
-        coord_list: List[str] = []
-        if not isinstance(yaml, list):
-            coord_list.append(f'Expecting list, got {yaml!r}')
-            return coord_list
-        if len(yaml) != 2:
-            coord_list.append('expecting row, column')
-        if not isinstance(yaml[0], int):
-            coord_list.append('row not integer')
-        if not isinstance(yaml[1], int):
-            coord_list.append('column not integer')
-        return coord_list
+    # @staticmethod
+    # def validate(yaml: object) -> List[str]:
+    #     """Validate start list containing row and column value_list.
+    #
+    #     Args:
+    #         yaml: The input list to validate.
+    #
+    #     Returns:
+    #         List[str]: A list of error messages if validation fails, otherwise an empty list.
+    #     """
+    #     coord_list: List[str] = []
+    #     if not isinstance(yaml, list):
+    #         coord_list.append(f'Expecting list, got {yaml!r}')
+    #         return coord_list
+    #     if len(yaml) != 2:
+    #         coord_list.append('expecting row, column')
+    #     if not isinstance(yaml[0], int):
+    #         coord_list.append('row not integer')
+    #     if not isinstance(yaml[1], int):
+    #         coord_list.append('column not integer')
+    #     return coord_list
 
     @property
     def top_left(self) -> 'Coord':
@@ -236,27 +244,3 @@ class Coord:
         """
         row, col = divmod(row_column, 10)
         return Coord(row, col)
-
-    @classmethod
-    def check_line(cls, coord: 'Coord') -> bool:
-        """Check if the given coordinate is in the same line (row or column).
-
-        Args:
-            coord (Coord): The Coord to compare.
-
-        Returns:
-            bool: True if the coordinate is in the same row or column, False otherwise.
-        """
-        return cls.row == coord.row or cls.column == coord.column
-
-    @classmethod
-    def is_inside(cls, coord: 'Coord') -> bool:
-        """Check if the given coordinate is inside a defined area.
-
-        Args:
-            coord (Coord): The Coord to check.
-
-        Returns:
-            bool: True if the coordinate is inside, False otherwise.
-        """
-        return cls.check_line(coord)

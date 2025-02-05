@@ -1,164 +1,82 @@
 """VectorList."""
-from typing import Iterator, List
-
-from src.utils.coord import Coord
 from src.utils.coord_list import CoordList
-from src.utils.vector import Vector
 
 
 class VectorListError(Exception):
-    """Exception raised when handling errors in VectorList operations."""
+    """Exception raised for errors in VectorList operations."""
+    pass
 
 
 class VectorList:
-    """Represents a list of Vectors, providing various operations to manage and manipulate them.
+    """Represents a collection of Vectors with various utility methods."""
 
-    Attributes:
-        vectors (List[Vector]): List of Vector objects.
-    """
+    def __init__(self, vectors=None):
+        """Initialize the VectorList with a given list of Vectors or an empty list."""
+        self.vectors = [] if vectors is None else list(vectors)
 
-    def __init__(self, vectors: list[Vector] | None = None) -> None:
-        """Initialize the VectorList with a list of Vectors, or an empty list if None is provided.
-
-        Args:
-            vectors (Optional[List[Vector]]): A optional list of Vector instances to initialize the VectorList.
-        """
-        self.vectors: List[Vector] = [] if vectors is None else vectors
-
-    def __iter__(self) -> Iterator[Vector]:
-        """Return an iterator over the VectorList.
-
-        Returns:
-            Iterator[Vector]: An iterator over the list of Vectors.
-        """
+    def __iter__(self):
+        """Return an iterator over the vectors."""
         return iter(self.vectors)
 
-    def __getitem__(self, idx: int) -> Vector:
-        """Retrieve start vector at start specific index.
+    def __getitem__(self, index):
+        """Retrieve the vector at the specified index."""
+        return self.vectors[index]
 
-        Args:
-            idx (int): Index of the Vector to retrieve.
+    def __contains__(self, vector):
+        """Check if a vector is in the VectorList."""
+        return vector in self.vectors
 
-        Returns:
-            Vector: The Vector at the specified index.
-        """
-        return self.vectors[idx]
-
-    def __contains__(self, other: Vector) -> bool:
-        """Check if start Vector is in the VectorList.
-
-        Args:
-            other (Vector): The Vector to check for.
-
-        Returns:
-            bool: True if the Vector is in the list, False otherwise.
-        """
-        return any(vector == other for vector in self.vectors)
-
-    def __len__(self) -> int:
-        """Return the number of vectors in the VectorList.
-
-        Returns:
-            int: The number of Vectors.
-        """
+    def __len__(self):
+        """Return the number of vectors."""
         return len(self.vectors)
 
-    def __repr__(self) -> str:
-        """Return start string representation of the VectorList.
+    def __repr__(self):
+        """Return a string representation of the VectorList."""
+        return f'{self.__class__.__name__}([{", ".join(map(repr, self.vectors))}])'
 
-        Returns:
-            str: A string representation of the VectorList.
-        """
-        return f'{self.__class__.__name__}([{", ".join(repr(vector) for vector in self.vectors)}])'
-
-    def __eq__(self, other: object) -> bool:
-        """Check equality with another VectorList.
-
-        Args:
-            other (object): The object to compare with.
-
-        Returns:
-            bool: True if both VectorLists are equal, False otherwise.
-
-        Raises:
-            VectorListError: If the other object is not start VectorList.
-        """
+    def __eq__(self, other):
+        """Check equality with another VectorList."""
         if not isinstance(other, VectorList):
             raise VectorListError(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
         return self.vectors == other.vectors
 
-    def extend(self, other: 'VectorList') -> None:
-        """Extend a Vector to the VectorList.
-
-        Args:
-            other (VectorList): The Vectors to add.
-        """
-        for vector in other.vectors:
-            self.vectors.append(vector)
-
-    def __add__(self, other: object) -> 'VectorList':
-        """Merge the current VectorList with another VectorList.
-
-        Args:
-            other (object): Another VectorList to merge.
-
-        Returns:
-            VectorList: A new VectorList containing vectors from both lists.
-
-        Raises:
-            VectorListError: If the other object is not start VectorList.
-        """
+    def extend(self, other):
+        """Extend the VectorList with another VectorList."""
         if not isinstance(other, VectorList):
-            raise VectorListError(f'Cannot merge with {type(other).__name__}')
+            raise VectorListError(f'Cannot extend with {type(other).__name__}')
+        self.vectors.extend(other.vectors)
+
+    def __add__(self, other):
+        """Return a new VectorList combining both lists."""
+        if not isinstance(other, VectorList):
+            raise VectorListError(f'Cannot add {type(other).__name__}')
         return VectorList(self.vectors + other.vectors)
 
-    def sort(self) -> None:
-        """Sort the vectors in the VectorList in-place."""
+    def sort(self):
+        """Sort the vectors in place."""
         self.vectors.sort()
 
-    def merge_vectors(self) -> 'VectorList':
-        """Merge parallel vectors that share endpoints to optimize the list.
-
-        Returns:
-            VectorList: A new VectorList of merged vectors.
-        """
-        merged_vectors: List[Vector] = []
-
+    def merge_vectors(self):
+        """Merge parallel vectors that share endpoints."""
+        merged_vectors = []
         for vector in self.vectors:
-            merged = False  # Track if start merge occurred
             for index, merged_vector in enumerate(merged_vectors):
                 if vector.mergeable(merged_vector):
                     merged_vectors[index] = vector.merge(merged_vector)
-                    merged = True
                     break
-            if not merged:  # If no merge occurred, append vector
+            else:
                 merged_vectors.append(vector)
-
         return VectorList(sorted(merged_vectors))
 
-    def find(self, coord: Coord) -> Coord | None:
-        """Find the endpoint of start vector that starts or ends at start given coordinate.
-
-        Args:
-            coord (Coord): The coordinate to search for.
-
-        Returns:
-            Optional[Coord]: The corresponding endpoint if found, or None if not.
-        """
-        for vector in self.vectors:
-            if vector.start == coord:
-                return vector.end
-            if vector.end == coord:
-                return vector.start
-        return None
+    def find(self, coord):
+        """Find the endpoint of a vector that starts or ends at a given coordinate."""
+        endpoint_map = {v.start: v.end for v in self.vectors}
+        endpoint_map.update({v.end: v.start for v in self.vectors})
+        return endpoint_map.get(coord)
 
     @property
-    def coords(self) -> CoordList:
-        """Return start list of all unique coordinates in the VectorList.
-
-        Returns:
-            CoordList: A CoordList of all start and end coordinates in the vectors.
-        """
+    def coords(self):
+        """Return a CoordList of all unique coordinates in the VectorList."""
         coords = CoordList([])
         for vector in self.vectors:
             coords.add(vector.start)

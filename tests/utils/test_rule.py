@@ -43,6 +43,15 @@ class TestRule(unittest.TestCase):
         self.assertEqual("<h2>Rule One</h2>", self.rule1.html)
         self.assertEqual("", self.rule3.html)
 
+    def test_to_dict(self):
+        """Test the conversion of Rule to dictionary representation."""
+        expected_dict = {'Rule': {'name': 'one', 'rank': 1, 'text': 'Rule One'}}
+        self.assertEqual(self.rule1.to_dict(), expected_dict)
+
+        # Test the case where the text is None
+        expected_dict_no_text = {'Rule': {'name': 'ThisIsThree', 'rank': 3, 'text': None}}
+        self.assertEqual(self.rule3.to_dict(), expected_dict_no_text)
+
 
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

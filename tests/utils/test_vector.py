@@ -70,11 +70,95 @@ class TestVector(unittest.TestCase):
         self.assertEqual(self.zero.direction, Moves.center)
 
     def test_merge(self):
-        """Test merging of vectors."""
-        self.assertEqual(self.merged, self.line_one.merge(self.line_two))
-        self.assertEqual(self.merged, self.line_two.merge(self.line_one))
-        with self.assertRaises(VectorError):
-            _ = self.line_one.merge(self.line_four)
+        """Test merging of vectors with various conditions."""
+
+        test_data = [
+            # (name, vector1_start, vector1_end, vector2_start, vector2_end, is_parallel, expected_result, should_raise)
+            (
+                "Test Case 1: Same start, parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(0, 0), Coord(3, 3),
+                True,
+                Vector(Coord(2, 2), Coord(3, 3)),
+                False
+            ),
+            (
+                "Test Case 2: Same start, not parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(0, 0), Coord(1, 2),
+                False,
+                None,
+                True
+            ),
+            (
+                "Test Case 3: Start of self == end of other, parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(3, 3), Coord(0, 0),
+                True,
+                Vector(Coord(2, 2), Coord(3, 3)),
+                False
+            ),
+            (
+                "Test Case 4: Start of self == end of other, not parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(2, 2), Coord(3, 1),
+                False,
+                None,
+                True
+            ),
+            (
+                "Test Case 5: End of self == start of other, parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(2, 2), Coord(3, 3),
+                True,
+                Vector(Coord(0, 0), Coord(3, 3)),
+                False
+            ),
+            (
+                "Test Case 6: End of self == start of other, not parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(2, 2), Coord(4, 1),
+                False,
+                None,
+                True
+            ),
+            (
+                "Test Case 7: Same end, parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(1, 1), Coord(2, 2),
+                True,
+                Vector(Coord(0, 0), Coord(1, 1)),
+                False
+            ),
+            (
+                "Test Case 8: Same end, not parallel",
+                Coord(0, 0), Coord(2, 2),
+                Coord(1, 1), Coord(2, 3),
+                False,
+                None,
+                True
+            ),
+        ]
+
+        for name, start1, end1, start2, end2, is_parallel, expected, should_raise in test_data:
+            vector1 = Vector(start1, end1)
+            vector2 = Vector(start2, end2)
+            with self.subTest(name=name):
+                if should_raise:
+                    with self.assertRaises(VectorError):
+                        vector1.merge(vector2)
+                else:
+                    result = vector1.merge(vector2)
+                    self.assertEqual(result, expected)
+
+        # Test that merging a vector with itself doesn't modify it
+        with self.subTest(name="Test merge with same vector"):
+            self.assertEqual(self.line_one, self.line_one.merge(self.line_one))
+
+        # Test for vectors that cannot merge
+        with self.subTest(name="Test merge that raises VectorError"):
+            with self.assertRaises(VectorError):
+                _ = self.line_one.merge(self.line_four)
 
     def test_add(self):
         """Test adding vectors and coordinates."""
@@ -95,6 +179,8 @@ class TestVector(unittest.TestCase):
         self.assertTrue(vector1 <= vector2)
         self.assertTrue(vector1 <= vector1)
         self.assertFalse(vector2 <= vector1)
+        with self.assertRaises(VectorError):
+            _ = self.zero < "invalid"  # type: ignore
 
     def test_vector_direction_center(self):
         """Test direction of vector when start and end points are the same."""

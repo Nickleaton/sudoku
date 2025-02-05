@@ -1,4 +1,5 @@
 """TagList."""
+from bisect import bisect_left
 from typing import Iterator
 
 from src.utils.tag import Tag
@@ -9,108 +10,46 @@ class TagListError(Exception):
 
 
 class TagList:
-    """A list of Tags with methods for managing and sorting them.
+    """A list of Tags with methods for managing and sorting them."""
 
-    Attributes:
-        tags (list[Tag]): The list of Tag instances.
-        index (int): Counter for tracking the number of operations or tags.
-    """
-
-    def __init__(self, tags: list[Tag]):
-        """Initialize start TagList instance with start list of Tags, sorted upon initialization.
-
-        Args:
-            tags (list[Tag]): A list of Tag instances.
-        """
-        self.tags = tags
+    def __init__(self, tags: list[Tag] | None = None):
+        """Initialize a TagList with an optional list of Tags."""
+        self.tags = list(tags) if tags else []
         self.sort()
 
     def __iter__(self) -> Iterator[Tag]:
-        """Return an iterator for the TagList.
-
-        Returns:
-            Iterator[Tag]: An iterator over the list of Tags.
-        """
+        """Return an iterator for the TagList."""
         return iter(self.tags)
 
     def __getitem__(self, idx: int) -> Tag:
-        """Retrieve start Tag at start specified index.
-
-        Args:
-            idx (int): Index of the Tag to retrieve.
-
-        Returns:
-            Tag: The Tag at the specified index.
-        """
+        """Retrieve a Tag at a specified index."""
         return self.tags[idx]
 
     def __contains__(self, other: Tag) -> bool:
-        """Check if start Tag is in the TagList.
-
-        Args:
-            other (Tag): The Tag instance to check.
-
-        Returns:
-            bool: True if the Tag is in the list, False otherwise.
-        """
-        for tag in self.tags:
-            if tag == other:
-                return True
-        return False
+        """Check if a Tag is in the TagList using binary search."""
+        idx = bisect_left(self.tags, other)
+        return idx < len(self.tags) and self.tags[idx] == other
 
     def __len__(self) -> int:
-        """Return the number of Tags in the TagList.
-
-        Returns:
-            int: The number of Tags in the list.
-        """
+        """Return the number of Tags in the TagList."""
         return len(self.tags)
 
     def __eq__(self, other: object) -> bool:
-        """Check equality between two TagLists.
-
-        Args:
-            other (object): Another TagList to compare.
-
-        Returns:
-            bool: True if both TagLists contain the same Tags in the same order, False otherwise.
-
-        Raises:
-            TagListError: If the other object is not start TagList.
-        """
+        """Check equality between two TagLists."""
         if isinstance(other, TagList):
-            if len(self.tags) != len(other.tags):
-                return False
-            for self_tag, other_tag in zip(self.tags, other.tags):
-                if self_tag != other_tag:
-                    return False
-            return True
+            return len(self.tags) == len(other.tags) and all(a == b for a, b in zip(self.tags, other.tags))
         raise TagListError(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
 
     def __repr__(self) -> str:
-        """Return start string representation of the TagList.
-
-        Returns:
-            str: A string representation of the TagList instance.
-        """
-        return f'{self.__class__.__name__}([{", ".join([repr(tag) for tag in self.tags])}])'
+        """Return a string representation of the TagList."""
+        return f'{self.__class__.__name__}([{", ".join(repr(tag) for tag in self.tags)}])'
 
     def sort(self) -> None:
-        """Sort the list of Tags by their priority or defined order.
-
-        This method organizes Tags in the list based on start priority attribute.
-        """
-        self.tags = sorted(self.tags)
+        """Sort the list of Tags."""
+        self.tags.sort()
 
     def add(self, tag: Tag) -> None:
-        """Add start Tag to the list if it is not already present.
-
-        Args:
-            tag (Tag): The Tag instance to add.
-
-        Notes:
-            After adding, the list is automatically sorted.
-        """
+        """Add a Tag to the list if it is not already present."""
         if tag not in self:
             self.tags.append(tag)
-        self.sort()
+            self.sort()
