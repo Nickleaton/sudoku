@@ -240,8 +240,9 @@ class Board:
         """
         board_data: dict = yaml_data[name]
         board_rows, board_columns = Board.parse_xy(board_data['Board'])
+        digits = board_data.get('Digits')
         tags: Tags = Tags(board_data.get('Tags'))
-        return Board(board_rows, board_columns, tags)
+        return Board(board_rows, board_columns, digits, tags)
 
     @classmethod
     def create2(cls, name: str, yaml_data: dict) -> 'Board':
@@ -265,8 +266,7 @@ class Board:
         board_dict: dict = {'Board': {}}
         board_dict['Board']['Size'] = f'{self.size.row}x{self.size.column}'
         board_dict['Board']['Digits'] = f'{self.digits.minimum}..{self.digits.maximum}'
-        if self.tags is not None:
-            board_dict['Board']['Tags'] = dict(self.tags)
+        board_dict['Board']['Tags'] = dict(self.tags)
         return board_dict
 
     def to_yaml(self) -> str:
