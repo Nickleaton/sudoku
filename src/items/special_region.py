@@ -96,7 +96,7 @@ class SpecialRegion(Region):
             - The total of the digits in the region equals the board's digit sum.
             - The digits in the region are unique.
         """
-        self.add_total_constraint(solver, solver.board.digit_sum)
+        self.add_total_constraint(solver, solver.board.digits.digit_sum)
         self.add_unique_constraint(solver)
 
     def to_dict(self) -> dict:

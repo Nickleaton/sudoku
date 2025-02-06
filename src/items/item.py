@@ -319,11 +319,11 @@ class Item:  # noqa: WPS110
         return ''
 
     @classmethod
-    def mathematics_documentation(cls) -> str:
+    def mathematics_documentation(cls) -> str | None:
         """Return the mathematical representations.
 
         Returns:
-            str: The mathematical representations that can be used.
+            str | None: The mathematical representations that can be used.
         """
         docs: dict[str, str] = {}
         for constraint_class in Item.classes:

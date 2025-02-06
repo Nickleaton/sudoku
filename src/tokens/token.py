@@ -213,6 +213,7 @@ class Token:
             return RepeatToken(self, times[0], times[1])
         return RepeatToken(self, times, times)
 
+    @property
     def example(self) -> str:
         """Return an example text that matches the token.
 

@@ -29,7 +29,7 @@ class CellListParser(Parser):
         match = re.fullmatch(self.token.pattern, text)
         if match is None:
             raise SudokuError(f'Could not parse {text!r}')
-        cells = {'CellList': []}
+        cells: dict[str, list] = {'CellList': []}
         for part in text.split(','):
             try:
                 cells['CellList'].append({'Cell': CellToken().parse(part)})

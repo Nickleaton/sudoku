@@ -1,4 +1,5 @@
 """VectorList."""
+from src.utils.coord import Coord
 from src.utils.coord_list import CoordList
 
 
@@ -125,7 +126,7 @@ class VectorList:
         """
         self.vectors.sort()
 
-    def merge_vectors(self):
+    def merge_vectors(self) -> 'VectorList':
         """
         Merge parallel vectors that share endpoints.
 
@@ -134,7 +135,7 @@ class VectorList:
         Returns:
             VectorList: A new VectorList with merged vectors, sorted.
         """
-        merged_vectors = []
+        merged_vectors: list[Coord] = []
         for vector in self.vectors:
             for index, merged_vector in enumerate(merged_vectors):
                 if vector.mergeable(merged_vector):
