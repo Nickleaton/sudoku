@@ -34,7 +34,7 @@ class TestRow(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the Row instance."""
-        return "Row(Board(9, 9, {}), 1)"
+        return "Row(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1)"
 
     @property
     def has_rule(self) -> bool:

@@ -2,6 +2,7 @@ import itertools
 import unittest
 
 from src.board.board import Board
+from src.board.digits import Digits
 from src.items.boxes import Boxes
 from src.utils.coord import Coord
 from src.utils.tags import Tags
@@ -12,9 +13,9 @@ class TestBoardCalculations(unittest.TestCase):
 
     def setUp(self):
         """Set up the board and boxes."""
-        self.board_size = 4  # Default to 4x4 board
-        self.box_rows = 2
-        self.box_columns = 2
+        self.board_size = Coord(4, 4)  # Default to 4x4 board
+        self.digits = Digits(1, 4)
+        self.box_size = Coord(2, 2)
         self.expected_box_indices = None
         self.expected_top_lefts = None
         self.bad_indices = None
@@ -25,8 +26,8 @@ class TestBoardCalculations(unittest.TestCase):
         if self.expected_box_indices is None:
             return
 
-        board = Board(self.board_size, self.board_size, Tags({}))
-        boxes = Boxes(board, Coord(self.box_rows, self.box_columns))
+        board = Board(self.board_size, self.digits, Tags())
+        boxes = Boxes(board, self.box_size)
 
         # Generate all combinations of (row, col) using itertools.product
         for row, col in itertools.product(board.row_range, board.column_range):
@@ -41,8 +42,8 @@ class TestBoardCalculations(unittest.TestCase):
         """Test the `first` method to ensure top-left coordinates are correct."""
         if self.expected_top_lefts is None:
             return
-        board = Board(self.board_size, self.board_size, Tags({}))
-        boxes = Boxes(board, Coord(self.box_rows, self.box_columns))
+        board = Board(self.board_size, self.digits, Tags())
+        boxes = Boxes(board, self.box_size)
         for box_index, expected_coord_str in enumerate(self.expected_top_lefts, start=1):
             row, col = map(int, expected_coord_str)
             expected_coord = Coord(row, col)
@@ -57,8 +58,9 @@ class TestBoardCalculations(unittest.TestCase):
         """Test that `first` raises an IndexError for out-of-bounds box indices."""
         if self.bad_indices is None:
             return
-        board = Board(self.board_size, self.board_size, Tags({}))
-        boxes = Boxes(board, Coord(self.box_rows, self.box_columns))
+        board = Board(self.board_size, self.digits, Tags())
+        boxes = Boxes(board, self.box_size)
+
         for bad_index in self.bad_indices:
             with self.assertRaises(IndexError):
                 boxes.first(bad_index)
@@ -67,8 +69,9 @@ class TestBoardCalculations(unittest.TestCase):
         """Test that `box_index` raises an IndexError for out-of-bounds row/column pairs."""
         if self.bad_row_columns is None:
             return
-        board = Board(self.board_size, self.board_size, Tags({}))
-        boxes = Boxes(board, Coord(self.box_rows, self.box_columns))
+        board = Board(self.board_size, self.digits, Tags())
+        boxes = Boxes(board, self.box_size)
+
         for bad_rc in self.bad_row_columns:
             row, col = map(int, list(bad_rc))  # Convert the string 'xy' to row=x, col=y
             with self.assertRaises(IndexError):
@@ -81,9 +84,8 @@ class Test4x4BoardCalculations(TestBoardCalculations):
     def setUp(self):
         """Set up the 4x4 board with 2x2 boxes and expected values."""
         super().setUp()
-        self.board_size = 4
-        self.box_rows = 2
-        self.box_columns = 2
+        self.board_size = Coord(4, 4)
+        self.box_size = Coord(2, 2)
 
         self.expected_box_indices = [
             '1122',  # Row 1
@@ -112,9 +114,8 @@ class Test6x6BoardCalculations(TestBoardCalculations):
     def setUp(self):
         """Set up the 6x6 board with 2x3 boxes and expected values."""
         super().setUp()
-        self.board_size = 6
-        self.box_rows = 2
-        self.box_columns = 3
+        self.board_size = Coord(6, 6)
+        self.box_size = Coord(2, 3)
 
         self.expected_box_indices = [
             '111222',  # Row 1
@@ -147,9 +148,8 @@ class Test9x9BoardCalculations(TestBoardCalculations):
     def setUp(self):
         """Set up the 9x9 board with 3x3 boxes and expected values."""
         super().setUp()
-        self.board_size = 9
-        self.box_rows = 3
-        self.box_columns = 3
+        self.board_size = Coord(9, 9)
+        self.box_size = Coord(3, 3)
 
         self.expected_box_indices = [
             '111222333',  # Row 1

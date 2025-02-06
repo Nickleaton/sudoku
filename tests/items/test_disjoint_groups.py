@@ -36,7 +36,7 @@ class TestDisjointGroups(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of the DisjointGroups constraint."""
-        return "DisjointGroups(Board(9, 9, {}))"
+        return "DisjointGroups(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

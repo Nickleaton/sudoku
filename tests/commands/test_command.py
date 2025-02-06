@@ -11,7 +11,7 @@ class TestCommand(unittest.TestCase):
 
     def setUp(self) -> None:
         """Set up the test environment."""
-        load_modules('items')
+        load_modules('src.items')
         self.command = Command()
         self.problem = Problem(
             problem_file_name=Path('problems/easy/problem001.yaml'),

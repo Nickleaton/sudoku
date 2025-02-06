@@ -1,8 +1,10 @@
 import unittest
 
 from src.board.board import Board
-from src.board.cell_types import ParityType, ModuloType, PrimeType, EntropicType
+from src.board.cell_types import EntropicType, ModuloType, ParityType, PrimeType
+from src.board.digits import Digits
 from src.solvers.variables import Variables, VariableSet
+from src.utils.coord import Coord
 from src.utils.tags import Tags
 
 
@@ -11,7 +13,7 @@ class TestVariables(unittest.TestCase):
 
     def setUp(self):
         """Sets up a mock board for testing."""
-        self.board: Board = Board(9, 9, Tags({}))
+        self.board: Board = Board(Coord(9, 9), Digits(1, 9), Tags())
 
     @staticmethod
     def counter(variables: dict) -> int:

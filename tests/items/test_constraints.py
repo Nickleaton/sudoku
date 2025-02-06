@@ -52,11 +52,11 @@ class TestConstraints(TestComposed):
     def representation(self) -> str:
         """Return the string representation for the Constraints."""
         return (
-            "Constraints(Board(9, 9, {}), "
+            "Constraints(Board(Coord(9, 9), Digits(1, 9), Tags({})), "
             "["
-            "Columns(Board(9, 9, {})), "
-            "Rows(Board(9, 9, {})), "
-            "Boxes(Board(9, 9, {}))"
+            "Columns(Board(Coord(9, 9), Digits(1, 9), Tags({}))), "
+            "Rows(Board(Coord(9, 9), Digits(1, 9), Tags({}))), "
+            "Boxes(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
             "]"
             ")"
         )

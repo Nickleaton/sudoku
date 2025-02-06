@@ -5,7 +5,6 @@ from typing import Type
 
 import oyaml as yaml
 
-from src.board.board import Board
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
@@ -60,7 +59,7 @@ class TestSolution(TestComposed):
     def representation(self) -> str:
         """Return the string representation of the Solution."""
         return (
-            "Solution(Board(9, 9, {}), "
+            "Solution(Board(Coord(9, 9), Digits(1, 9), Tags({})), "
             "["
             "'123456789', "
             "'123456789', "

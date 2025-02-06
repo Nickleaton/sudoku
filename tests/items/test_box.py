@@ -39,7 +39,7 @@ class TestBox(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return the string representation for the Box constraint."""
-        return "Box(Board(9, 9, {}), 1, Coord(3, 3))"
+        return "Box(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, Coord(3, 3))"
 
     @property
     def has_rule(self) -> bool:

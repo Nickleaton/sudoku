@@ -52,6 +52,6 @@ class FortressGreaterThanCell(FortressCell):
             if not self.board.is_valid_coordinate(other):
                 continue
             name: str = f'Fortress_Greater_Than_{self.row}_{self.column}_{other.row}_{other.column}'
-            lhs: LpElement = solver.variables.numbers[self.row, self.column]
-            rhs: LpElement = solver.variables.numbers[other.row, other.column]
+            lhs: LpElement = solver.variables.numbers[self.row][self.column]  # type: ignore
+            rhs: LpElement = solver.variables.numbers[other.row][other.column]  # type: ignore
             solver.model += lhs >= rhs + 1, name

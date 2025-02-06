@@ -3,11 +3,11 @@
 import unittest
 from typing import Type
 
+from postponed.tests.items.test_region_sets import TestRegionSet
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.region_set import RegionSet
 from src.items.standard_region_set import StandardRegionSet
-from postponed.tests.items.test_region_sets import TestRegionSet
 
 
 class TestStandardRegionSet(TestRegionSet):
@@ -32,7 +32,7 @@ class TestStandardRegionSet(TestRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of StandardRegionSet."""
-        return "StandardRegionSet(Board(9, 9, {}), [])"
+        return "StandardRegionSet(Board(Coord(9, 9), Digits(1, 9), Tags({})), [])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

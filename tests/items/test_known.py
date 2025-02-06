@@ -56,7 +56,7 @@ class TestKnown(TestComposed):
     def representation(self) -> str:
         """Return start_location string representation of the Known instance."""
         return (
-            "Known(Board(9, 9, Digits(1, 9), Tags({})), "
+            "Known(Board(Coord(9, 9), Digits(1, 9), Tags({})), "
             "["
             "'8..4.6..3', "
             "'..9....2.', "

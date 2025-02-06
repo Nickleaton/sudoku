@@ -36,7 +36,7 @@ class TestColumns(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation for the Columns constraint."""
-        return "Columns(Board(9, 9, {}))"
+        return "Columns(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

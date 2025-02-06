@@ -40,15 +40,15 @@ class Answer:
         Raises:
             ValueError: If the row or column index is invalid.
         """
+        row: int
+        col: int
         if isinstance(index, tuple):
-            row, column = index
+            row, col = index
         else:
-            row, column = divmod(index, self.board.size.column)
-
-        if not self.board.is_valid(row + 1, column + 1):  # Adjust for 1-based indexing
-            raise ValueError(f'Invalid row or column index: {row + 1}, {column + 1}')
-
-        return self.digits[row][column]
+            row, col = divmod(index, self.board.size.column)
+        if not self.board.is_valid(row, col):
+            raise ValueError(f'Invalid row or column index: {row}, {col}')
+        return self.digits[row - 1][col - 1]
 
     def __setitem__(self, index: int | tuple[int, int], digit: int) -> None:
         """Set the digit at a specific location on the board.
@@ -60,15 +60,16 @@ class Answer:
         Raises:
             ValueError: If the row or column index is invalid.
         """
+        row: int
+        col: int
         if isinstance(index, tuple):
-            row, column = index
+            row, col = index
         else:
-            row, column = divmod(index, self.board.size.column)
+            row, col = divmod(index, self.board.size.column)
 
-        if not self.board.is_valid(row + 1, column + 1):  # Adjust for 1-based indexing
-            raise ValueError(f'Invalid row or column index: {row + 1}, {column + 1}')
-
-        self.digits[row][column] = digit
+        if not self.board.is_valid(row, col):
+            raise ValueError(f'Invalid row or column index: {row}, {col}')
+        self.digits[row - 1][col - 1] = digit
 
     def __repr__(self) -> str:
         """Return a string representation of the Answer object, including the board and its line.
@@ -90,7 +91,7 @@ class Answer:
             str: A string representation of the Answer object.
         """
         lines: list[str] = ['Answer:']
-        for row in range(self.board.size.row):
-            digits: str = ''.join([str(self[row, column]) for column in range(self.board.size.column)])
+        for row in self.board.row_range:
+            digits: str = ''.join([str(self[row, col]) for col in self.board.column_range])
             lines.append(f'  - {digits}')
         return '\n'.join(lines)

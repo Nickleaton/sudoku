@@ -1,6 +1,6 @@
 """Parser for the solve script."""
 import argparse
-import logging
+import logging.config
 from pathlib import Path
 
 from src.utils.config import Config

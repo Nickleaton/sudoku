@@ -2,7 +2,9 @@
 import unittest
 
 from src.board.board import Board
+from src.board.digits import Digits
 from src.solvers.answer import Answer
+from src.utils.coord import Coord
 from src.utils.tags import Tags
 
 
@@ -12,7 +14,7 @@ class TestAnswer(unittest.TestCase):
     def setUp(self) -> None:
         """Set up the test environment."""
         # Initialize start Board object and Answer object
-        self.board: Board = Board(9, 9, Tags({}))
+        self.board: Board = Board(Coord(9, 9), Digits(1, 9), Tags())
         data = [
             "123456789",
             "123456789",
@@ -43,7 +45,7 @@ class TestAnswer(unittest.TestCase):
         """Return the string representation of the Answer object."""
         return (
             "Answer(\n"
-            "    Board(9, 9, {}),\n"
+            "    Board(Coord(9, 9), Digits(1, 9), Tags({})),\n"
             "    [\n"
             "    '123456789',\n"
             "    '123456789',\n"

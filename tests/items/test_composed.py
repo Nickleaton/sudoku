@@ -40,7 +40,7 @@ class TestComposed(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation for the ComposedItem."""
-        return "ComposedItem(Board(9, 9, Digits(1, 9), Tags({})), [])"
+        return "ComposedItem(Board(Coord(9, 9), Digits(1, 9), Tags({})), [])"
 
     @property
     def has_rule(self) -> bool:

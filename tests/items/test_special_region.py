@@ -32,7 +32,7 @@ class TestSpecialRegion(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the SpecialRegion."""
-        return "SpecialRegion(Board(9, 9, {}))"
+        return "SpecialRegion(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     @property
     def has_rule(self) -> bool:

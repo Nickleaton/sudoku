@@ -1,10 +1,13 @@
 import unittest
 
+import pytest
+import yaml
+
 from src.board.board import Board
 from src.board.digits import Digits
 from src.utils.coord import Coord
-from src.utils.cyclic import Cyclic  # Import the Cyclic class
-from src.utils.side import Side  # Import the Side class
+from src.utils.cyclic import Cyclic
+from src.utils.side import Side
 from src.utils.tags import Tags
 
 
@@ -14,10 +17,10 @@ class TestBoard(unittest.TestCase):
     def setUp(self):
         """Set up the different board configurations for testing."""
         tags: Tags = Tags({'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'})
-        self.board9x9: Board = Board(9, 9, Digits(1, 9), tags=tags)
-        self.board4x4: Board = Board(4, 4, Digits(1, 4), tags=tags)
-        self.board8x8: Board = Board(8, 8, Digits(1, 8), tags=tags)
-        self.board6x6: Board = Board(6, 6, Digits(1, 6), tags=tags)
+        self.board9x9: Board = Board(Coord(9, 9), Digits(1, 9), tags=tags)
+        self.board4x4: Board = Board(Coord(4, 4), Digits(1, 4), tags=tags)
+        self.board8x8: Board = Board(Coord(8, 8), Digits(1, 8), tags=tags)
+        self.board6x6: Board = Board(Coord(6, 6), Digits(1, 6), tags=tags)
         # Define the expected map for a 4x4 board
         self.expected_map = {
             # Top row
@@ -60,6 +63,16 @@ class TestBoard(unittest.TestCase):
             (Side.right, Cyclic.anticlockwise, 2): Coord(1, 4),
             (Side.right, Cyclic.anticlockwise, 3): Coord(2, 4),
         }
+        self.yaml_string = (
+            "Board:\n"
+            "  Size: 8x8\n"
+            "  Digits: 1..8\n"
+            "  Tags:\n"
+            "    Reference: start\n"
+            "    Video: finish\n"
+            "    Title: c\n"
+            "    Author: d\n"
+        )
 
     def test_side_direction(self):
         for key, expected_coord in self.expected_map.items():
@@ -78,22 +91,12 @@ class TestBoard(unittest.TestCase):
 
     def test_yaml(self):
         """Test the YAML representation of the board."""
-        yaml_string = (
-            "Board:\n"
-            "  Size: 8x8\n"
-            "  Digits: 1..8\n"
-            "  Tags:\n"
-            "    Reference: start\n"
-            "    Video: finish\n"
-            "    Title: c\n"
-            "    Author: d\n"
-        )
-        self.assertEqual(yaml_string, self.board8x8.to_yaml())
+        self.assertEqual(self.yaml_string, self.board8x8.to_yaml())
 
     def test_repr(self):
         """Test the string representation of the board."""
         tag_str: str = "{'Reference': 'start', 'Video': 'finish', 'Title': 'c', 'Author': 'd'}"
-        self.assertEqual(f'Board(8, 8, {self.board8x8.digits!r}, Tags({tag_str}))', repr(self.board8x8))
+        self.assertEqual(f'Board(Coord(8, 8), Digits(1, 8), Tags({tag_str}))', repr(self.board8x8))
 
     def test_is_valid(self):
         """Test the validity of coordinates on the board."""
@@ -154,12 +157,20 @@ class TestBoard(unittest.TestCase):
 
     def test_marker_edge_cases(self):
         """Test marker method with edge cases on the board."""
-        board = Board(9, 9, Digits(1, 9))
+        board = Board(Coord(9, 9), Digits(1, 9), Tags())
         self.assertEqual(Coord(0, 0), board.marker(Side.top, 0))
         self.assertEqual(Coord(10, 9), board.marker(Side.bottom, 9))
 
     def test_start_cell_edge_cases(self):
         """Test start_cell method with edge cases on the board."""
-        board = Board(9, 9, Digits(1, 9))
+        board = Board(Coord(9, 9), Digits(1, 9), Tags())
         self.assertEqual(Coord(1, 9), board.start_cell(Side.top, 9))
         self.assertEqual(Coord(9, 1), board.start_cell(Side.bottom, 1))
+
+    @pytest.mark.skip(reason="Skipping this test for now")
+    def test_create_from_yaml(self):
+        yaml_data = yaml.safe_load(self.yaml_string)
+        board = Board.create2(yaml_data)
+        self.assertEqual(8, board.size.column)
+        self.assertEqual(8, board.size.row)
+        self.assertEqual(Digits(1, 9), board.digits)

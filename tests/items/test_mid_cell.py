@@ -30,8 +30,8 @@ class TestMidCell(TestSimpleCellReference):
     def representation(self) -> str:
         """Return the string representation of the MidCell instance."""
         return (
-            "MidCell(Board(9, 9, {}), "
-            "Cell(Board(9, 9, {}), 1, 2))"
+            "MidCell(Board(Coord(9, 9), Digits(1, 9), Tags({})), "
+            "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 2))"
         )
 
     @property

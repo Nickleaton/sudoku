@@ -1,13 +1,12 @@
 """Battenburg."""
 import re
 
-from postponed.src.pulp_solver import PulpSolver
-
 from src.board.board import Board
 from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.glyphs.glyph import Glyph
 from src.items.item import Item
 from src.parsers.cell_list_parser import CellListParser
+from src.solvers.solver import Solver
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 from src.utils.sudoku_exception import SudokuError
@@ -116,11 +115,11 @@ class Battenburg(Item):
         """
         return cls.create(board, yaml_data)
 
-    def add_constraint(self, solver: PulpSolver) -> None:
+    def add_constraint(self, solver: Solver) -> None:
         """Add puzzle constraints for the Battenburg pattern to the solver.
 
         Args:
-            solver (PulpSolver): The solver instance to which the constraints are added.
+            solver (Solver): The solver instance to which the constraints are added.
         """
         # TODO Constraints implementation will go here
 

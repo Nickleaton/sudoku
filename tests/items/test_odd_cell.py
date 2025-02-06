@@ -32,8 +32,8 @@ class TestOdd(TestSimpleCellReference):
         return (
             "OddCell"
             "("
-            "Board(9, 9, {}), "
-            "Cell(Board(9, 9, {}), 1, 2)"
+            "Board(Coord(9, 9), Digits(1, 9), Tags({})), "
+            "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 2)"
             ")"
         )
 

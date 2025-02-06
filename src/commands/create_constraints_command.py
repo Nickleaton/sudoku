@@ -13,6 +13,7 @@ class CreateConstraintsCommand(SimpleCommand):
         """Initialize the command."""
         super().__init__()
         self.add_preconditions([CreateBoardCommand])
+        self.target = 'constraints'
 
     def work(self, problem: Problem) -> None:
         """Execute the command to create constraints.

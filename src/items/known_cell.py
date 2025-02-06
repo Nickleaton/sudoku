@@ -47,8 +47,11 @@ class KnownCell(CellReference):
         Raises:
             SudokuError: If the YAML input does not match the expected pattern.
         """
+        row_range: str = ''.join([str(row) for row in board.row_range])
+        col_range: str = ''.join([str(col) for col in board.column_range])
+        dig_range: str = ''.join([str(dig) for dig in board.digits.digit_range])
         regex = re.compile(
-            f'([{board.digits.digit_range}])([{board.digits.digit_range}])=([{board.digits.digit_range}]+)',
+            f'([{dig_range}])([{row_range}])=([{col_range}])',
         )
         match = regex.match(yaml[cls.__name__])
         if match is None:

@@ -4,8 +4,8 @@ from math import log10  # noqa: I001
 from typing import ClassVar
 
 from pulp import LpContinuous  # noqa: I001
-from pulp import LpVariable  # noqa: I001
 from pulp import lpSum  # noqa: I001
+from pulp import LpVariable  # noqa: I001
 
 from src.items.cell import Cell
 from src.solvers.solver import Solver
@@ -28,7 +28,7 @@ class ConstraintUtilities:
             lpSum: The linear expression representing the log10 integer_value of the cell.
         """
         return lpSum(
-            log10(digit) * solver.variables.choices[digit][cell.row][cell.column]
+            log10(digit) * solver.variables.choices[digit][cell.row][cell.column]  # type: ignore
             for digit in solver.board.digits.digit_range
         )
 
@@ -45,17 +45,17 @@ class ConstraintUtilities:
         """
         name: str = f'log10_{cell.row}_{cell.column}'
         # Return the variable if it already exists
-        log_value: LpVariable = ConstraintUtilities.variables.get(name)
-        if log_value is not None:
-            return log_value
+        existing_log_value: LpVariable = ConstraintUtilities.variables.get(name)
+        if existing_log_value is not None:
+            return existing_log_value
         # Define the limit for the variable's integer_value
         limit = ceil(log10(solver.board.digits.maximum)) + 1
         # Create the variable
-        log_value: LpVariable = LpVariable(name, 0, limit, LpContinuous)
+        new_log_value: LpVariable = LpVariable(name, 0, limit, LpContinuous)
         # Build the total expression for the variable
         total_expression = ConstraintUtilities.total_expression(solver, cell)
         # Add the constraint to the solver's model
-        solver.model += log_value == total_expression, name
+        solver.model += new_log_value == total_expression, name
         # Cache the variable and return it
-        ConstraintUtilities.variables[name] = log_value
-        return log_value
+        ConstraintUtilities.variables[name] = new_log_value
+        return new_log_value

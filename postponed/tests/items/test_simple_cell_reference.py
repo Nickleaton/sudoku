@@ -25,8 +25,8 @@ class TestSimpleCellReference(TestCellReference):
         return (
             "SimpleCellReference"
             "("
-            "Board(9, 9, {}), "
-            "Cell(Board(9, 9, {}), "
+            "Board(Coord(9, 9), Digits(1, 9), Tags({})), "
+            "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), "
             "1, "
             "2"
             ")"

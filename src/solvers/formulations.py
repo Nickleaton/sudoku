@@ -4,8 +4,8 @@ from pulp import LpContinuous  # noqa: I001
 from pulp import LpElement  # noqa: I001
 from pulp import LpInteger  # noqa: I001
 from pulp import LpProblem  # noqa: I001
-from pulp import LpVariable  # noqa: I001
 from pulp import lpSum  # noqa: I001
+from pulp import LpVariable  # noqa: I001
 
 
 class Formulations:
@@ -144,9 +144,10 @@ class Formulations:
         """
         indicator: LpVariable = LpVariable(f'Abs_Indicator_{Formulations.count}', 0, 1, LpInteger)
         difference: LpVariable = LpVariable(f'Abs_Difference_{Formulations.count}', 0, upper, LpContinuous)
-        model += difference >= (value1 - value2), f'Abs_{Formulations.count}_a'
-        model += difference >= (value2 - value1), f'Abs_{Formulations.count}_c'
-        model += (difference - (value2 - value1)) <= 2 * upper * indicator, f'Abs_{Formulations.count}_d'
+        model += difference >= value1 - value2, f'Abs_{Formulations.count}_a'
+        model += difference >= value2 - value1, f'Abs_{Formulations.count}_b'
+        model += difference <= (value1 - value2) + upper * (1 - indicator), f'Abs_{Formulations.count}_c'
+        model += difference <= (value2 - value1) + upper * indicator, f'Abs_{Formulations.count}_d'
         Formulations.count += 1
         return difference
 

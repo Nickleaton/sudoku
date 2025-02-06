@@ -5,16 +5,11 @@ from defusedxml.minidom import parseString
 from svgwrite import Drawing
 from svgwrite.container import Style
 
+from src.commands.add_constraints_command import AddConstraintsCommand
 from src.commands.command import CommandException
-from src.commands.create_constraints_command import CreateConstraintsCommand
-from src.commands.extract_answer_command import ExtractAnswerCommand
-from src.commands.null_command import NullCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.commands.solve_command import SolveCommand
 from src.items.item import Item
-from src.items.solution import Solution
-from src.solvers.answer import Answer
 from src.utils.config import Config
 
 config = Config()
@@ -22,6 +17,12 @@ config = Config()
 
 class SVGCommand(SimpleCommand):
     """Base class for SVG output commands."""
+
+    def __init__(self):
+        """Create the command."""
+        super().__init__()
+        self.add_preconditions([AddConstraintsCommand])
+        self.target = 'svg'
 
     def work(self, problem: Problem) -> None:  # noqa: WPS231
         """Produce the SVG.
@@ -89,89 +90,3 @@ class SVGCommand(SimpleCommand):
         Returns:
             bool: True if the constraint is to be drawn, False otherwise.
         """
-
-
-class SVGPencilMarkCommand(SVGCommand):
-    """Create an SVG drawing of the problem."""
-
-    def __init__(self):
-        """Create the command."""
-        super().__init__()
-        self.add_preconditions([NullCommand])
-        self.target = 'svg_pencil_mark'
-
-    def select(self, constraint: Item | None) -> bool:
-        """Selector to determine if the constraint should be displayed.
-
-        This method is start_location placeholder for future implementation.
-
-        Args:
-            constraint (Item | None): The constraint to check if it's included in the output.
-
-        Returns:
-            bool: True if the constraint is to be displayed, False otherwise.
-        """
-        return not isinstance(constraint, Solution)
-
-
-class SVGProblemCommand(SVGCommand):
-    """Create an SVG drawing of the problem."""
-
-    def __init__(self):
-        """Create the command."""
-        super().__init__()
-        self.add_preconditions([CreateConstraintsCommand])
-        self.target = 'svg_problem'
-
-    def select(self, constraint: Item | None) -> bool:
-        """Selector to determine if the constraint should be displayed.
-
-        Args:
-            constraint (Item | None): The constraint to check if it's included in the output.
-
-        Returns:
-            bool: True if the constraint is to be displayed, False otherwise.
-        """
-        return not isinstance(constraint, Solution) and not isinstance(constraint, Answer)
-
-
-class SVGSolutionCommand(SVGCommand):
-    """Create an SVG drawing of the solution."""
-
-    def __init__(self):
-        """Create the command."""
-        super().__init__()
-        self.add_preconditions([SolveCommand])
-        self.target = 'svg_solution'
-
-    def select(self, constraint: Item | None) -> bool:
-        """Selector to determine if the constraint should be displayed.
-
-        Args:
-            constraint (Item | None): The constraint to check if it's included in the output.
-
-        Returns:
-            bool: True if the constraint is to be displayed, False otherwise.
-        """
-        return isinstance(constraint, Solution)
-
-
-class SVGAnswerCommand(SVGCommand):
-    """Command to create an SVG drawing of the line."""
-
-    def __init__(self):
-        """Create the command."""
-        super().__init__()
-        self.add_preconditions([ExtractAnswerCommand])
-        self.target = 'answer'
-
-    def select(self, constraint: Item | None) -> bool:
-        """Determine if the constraint should be included in the output.
-
-        Args:
-            constraint (Item | None): The constraint to check for inclusion.
-
-        Returns:
-            bool: True if the constraint is to be displayed; otherwise, False.
-        """
-        return isinstance(constraint, Answer)

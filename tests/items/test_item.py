@@ -8,6 +8,7 @@ from src.board.board import Board
 from src.board.digits import Digits
 from src.items.item import Item
 from src.solvers.solver import Solver
+from src.utils.coord import Coord
 from src.utils.tags import Tags
 
 
@@ -16,7 +17,7 @@ class TestItem(unittest.TestCase):
 
     def setUp(self) -> None:
         """Set up the test case with start_location board and an Item instance."""
-        self.board = Board(9, 9, Digits(1, 9), Tags({}))
+        self.board = Board(Coord(9, 9), Digits(1, 9), Tags({}))
         self.item = Item(self.board)
         self.good_yaml = []
         self.bad_yaml = []
@@ -134,7 +135,7 @@ class TestItem(unittest.TestCase):
     @property
     def representation(self) -> str:
         """Return start_location string representation of the Item instance."""
-        return f"Item({self.board!r})"
+        return "Item(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     def test_repr(self):
         """Test the string representation of the Item instance."""
@@ -142,8 +143,8 @@ class TestItem(unittest.TestCase):
             print(f"{self.representation} != {self.item!r}")
             print()
             print()
-            print(self.representation)
-            print(repr(self.item))
+            print(f"E {self.representation}")
+            print(f"A {repr(self.item)}")
             print()
         self.assertEqual(self.representation, repr(self.item))
 

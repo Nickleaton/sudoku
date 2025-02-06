@@ -29,10 +29,10 @@ class TestUniqueRegion(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the UniqueRegion constraint."""
-        return "UniqueRegion(Board(9, 9, {}), " \
-               "[Cell(Board(9, 9, {}), 1, 1), " \
-               "Cell(Board(9, 9, {}), 1, 2), " \
-               "Cell(Board(9, 9, {}), 1, 3)])"
+        return "UniqueRegion(Board(Coord(9, 9), Digits(1, 9), Tags({})), " \
+               "[Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 1), " \
+               "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 2), " \
+               "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 3)])"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

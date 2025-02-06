@@ -37,7 +37,7 @@ class TestRows(TestStandardRegionSet):
     @property
     def representation(self) -> str:
         """Return the string representation of the Rows instance."""
-        return "Rows(Board(9, 9, {}))"
+        return "Rows(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

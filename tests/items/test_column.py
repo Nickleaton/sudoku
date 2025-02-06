@@ -33,7 +33,7 @@ class TestColumn(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return the string representation for the Column constraint."""
-        return "Column(Board(9, 9, {}), 1)"
+        return "Column(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1)"
 
     @property
     def has_rule(self) -> bool:

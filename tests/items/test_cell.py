@@ -4,8 +4,11 @@ import unittest
 from typing import Type
 
 from src.board.board import Board
+from src.board.digits import Digits
 from src.items.cell import Cell, CellException
 from src.items.item import Item
+from src.utils.coord import Coord
+from src.utils.tags import Tags
 from tests.items.test_item import TestItem
 
 
@@ -26,7 +29,7 @@ class TestCell(TestItem):
     @property
     def representation(self) -> str:
         """Return the string representation of the Cell constraint."""
-        return "Cell(Board(9, 9, {}), 1, 2)"
+        return "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 2)"
 
     @property
     def str_representation(self) -> str:
@@ -73,7 +76,7 @@ class TestCell(TestItem):
 
     def test_invalid(self):
         """Test the validity of the Cell with invalid coordinates."""
-        bad = Cell.make(Board(9, 9), -1, -1)
+        bad = Cell.make(Board(Coord(9, 9), Digits(1, 9), Tags({})), -1, -1)
         self.assertFalse(bad.valid)
 
     def test_letter(self):

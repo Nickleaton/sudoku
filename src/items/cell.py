@@ -274,7 +274,7 @@ class Cell(Item):
         return {VariableSet.choice}
 
     @classmethod
-    def mathematics(cls) -> str | None:
+    def mathematics(cls) -> str:
         """Return the mathematical representation of the cell.
 
         Returns:
@@ -305,7 +305,7 @@ class Cell(Item):
         name: str = f'Unique_digit_{self.row}_{self.column}'
         solver.model += lpSum(
             [
-                solver.variables.choices[digit, self.row, self.column]
+                solver.variables.choices[digit][self.row][self.column]  # type: ignore
                 for digit in self.board.digits.digit_range
             ],
         ) == 1, name
@@ -320,7 +320,7 @@ class Cell(Item):
         for digit in self.board.digits.digit_range:
             if not self.book.is_possible(digit):
                 name = f'Impossible_cell_bookkeeping_{digit}_{self.row}_{self.column}'
-                solver.model += solver.variables.choices[digit, self.row, self.column] == 0, name
+                solver.model += solver.variables.choices[digit][self.row][self.column] == 0, name  # type: ignore
 
     def to_dict(self) -> dict:
         """Convert the cell to a dictionary format.

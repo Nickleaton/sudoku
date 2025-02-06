@@ -30,8 +30,8 @@ class TestLowCell(TestSimpleCellReference):
     def representation(self) -> str:
         """Return start_location string representation of the LowCell instance."""
         return (
-            "LowCell(Board(9, 9, {}), "
-            "Cell(Board(9, 9, {}), 1, 2))"
+            "LowCell(Board(Coord(9, 9), Digits(1, 9), Tags({})), "
+            "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 2))"
         )
 
     @property

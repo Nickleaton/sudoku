@@ -33,7 +33,7 @@ class TestStandardRegion(TestRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of StandardRegion."""
-        return "StandardRegion(Board(9, 9, {}), 1)"
+        return "StandardRegion(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1)"
 
     @property
     def str_representation(self) -> str:

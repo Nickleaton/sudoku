@@ -38,7 +38,7 @@ class TestRegion(TestComposed):
     @property
     def representation(self) -> str:
         """Return the string representation of Region."""
-        return "Region(Board(9, 9, {}))"
+        return "Region(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     @property
     def expected_classes(self) -> set[Type[Item]]:

@@ -13,7 +13,7 @@ class TestBoard6x6(unittest.TestCase):
     def setUp(self):
         """Set up the 6x6 board and coordinate configurations for testing."""
         tags: Tags = Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'})
-        self.board = Board(6, 6, Digits(1, 6), tags)
+        self.board = Board(Coord(6, 6), Digits(1, 6), tags)
         self.rows = [1, 2, 3, 4, 5, 6]
         self.columns = [1, 2, 3, 4, 5, 6]
         self.bad_rows = [0, 7]
@@ -45,7 +45,7 @@ class TestBoard6x6(unittest.TestCase):
     def test_repr(self):
         """Test the string representation of the 6x6 board."""
         self.assertEqual(
-            "Board(6, 6, Digits(1, 6), Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'}))",
+            "Board(Coord(6, 6), Digits(1, 6), Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'}))",
             repr(self.board),
         )
 

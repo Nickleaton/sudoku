@@ -33,7 +33,7 @@ class TestDisjointGroup(TestStandardRegion):
     @property
     def representation(self) -> str:
         """Return the string representation of the DisjointGroup constraint."""
-        return "DisjointGroup(Board(9, 9, {}), 1)"
+        return "DisjointGroup(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1)"
 
     @property
     def has_rule(self) -> bool:

@@ -9,10 +9,10 @@ from src.commands.create_linear_program_command import CreateLinearProgramComman
 from src.commands.create_rules_command import CreateRulesCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
-from src.commands.svg_command import SVGAnswerCommand  # noqa: I001
-from src.commands.svg_command import SVGPencilMarkCommand  # noqa: I001
-from src.commands.svg_command import SVGProblemCommand  # noqa: I001
-from src.commands.svg_command import SVGSolutionCommand  # noqa: I001
+from src.commands.svg_answer_command import SVGAnswerCommand
+from src.commands.svg_pencil_mark_command import SVGPencilMarkCommand
+from src.commands.svg_problem_command import SVGProblemCommand
+from src.commands.svg_solution_command import SVGSolutionCommand
 
 
 # flake8: noqa WPS202

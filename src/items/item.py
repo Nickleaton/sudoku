@@ -326,18 +326,19 @@ class Item:  # noqa: WPS110
             str | None: The mathematical representations that can be used.
         """
         docs: dict[str, str] = {}
-        for constraint_class in Item.classes:
-            if constraint_class.name in docs or constraint_class.mathematics() is None or constraint_class == Item:
+        for constraint_class in Item.classes.values():
+            conditions = [
+                constraint_class.__name__ in docs,  # Ensure unique names
+                not hasattr(constraint_class, 'mathematics'),  # Ensure method exists
+                not callable(constraint_class.mathematics),  # Ensure it's callable
+                constraint_class.mathematics() is None,  # Ensure it returns something
+                constraint_class == Item,  # Skip base class
+            ]
+            if any(conditions):
                 continue
             docs[constraint_class.__name__] = constraint_class.mathematics()
-
-        # Use a list comprehension to construct documentation lines
-        documentation_lines = [
-            f'{key}:\n{docs[key]}\n' for key in sorted(docs.keys())
-        ]
-
-        # Join lines with an empty newline
-        documentation = '\n'.join(documentation_lines)
+        documentation_lines: list[str] = [f'{key}:\n{docs[key]}\n' for key in sorted(docs.keys())]
+        documentation: str = '\n'.join(documentation_lines)
         return documentation if documentation else ''
 
     @classmethod

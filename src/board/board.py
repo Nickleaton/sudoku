@@ -50,33 +50,31 @@ class Board:
 
     def __init__(
         self,
-        board_rows: int,
-        board_columns: int,
+        size: Coord,
         digits: Digits,
-        tags: Tags | None = None,
+        tags: Tags,
     ):
         """Initialize the Board with dimensions, box size, and optional metadata.little_killer_validator.
 
         Args:
-            board_rows (int): Number of rows in the board.
-            board_columns (int): Number of columns in the board.
+            size (Coord): Number of rows in the board.
             digits (Digits): Collection of digits used in the board.
-            tags (Tags | None): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
+            tags (Tags): Dictionary containing optional metadata like 'reference', 'video', 'title', 'author'.
         """
-        self.size: Coord = Coord(board_rows, board_columns)
+        self.size: Coord = size
         self.row_range = list(range(1, self.size.row + 1))
         self.column_range = list(range(1, self.size.column + 1))
         self.side_bounds: dict[Side, tuple[int, int]] = {
             Side.top: (1, self.size.column),
             Side.bottom: (1, self.size.column),
-            Side.left: (1, board_rows),
-            Side.right: (1, board_rows),
+            Side.left: (1, self.size.row),
+            Side.right: (1, self.size.row),
         }
 
         self.digits: Digits = digits
 
         # Metadata
-        self.tags: Tags | None = None if tags is None else Tags(tags)
+        self.tags: Tags = tags
 
         # Cyclic Map
 
@@ -209,14 +207,14 @@ class Board:
         )
 
     @staticmethod
-    def parse_xy(text: str) -> tuple[int, int]:
+    def parse_size(text: str) -> Coord:
         """Parse a string of the form 'NxM' into two integers.
 
         Args:
             text (str): String representing dimensions, exp.g., "9x9".
 
         Returns:
-            tuple[int, int]: Parsed (row, column) dimensions.
+            Coord: Parsed (row, column) dimensions as a Coord object.
 
         Raises:
             SudokuError: If the string format is invalid.
@@ -225,7 +223,26 @@ class Board:
         match = regexp.match(text)
         if match is None:
             raise SudokuError(f'Invalid format: {text}. Expected "NxM".')
-        return int(match.group(1)), int(match.group(2))
+        return Coord(int(match.group(1)), int(match.group(2)))
+
+    @staticmethod
+    def parse_digits(text: str) -> Digits:
+        """Parse a string of the form 'a..b' into two integers.
+
+        Args:
+            text (str): String representing digits, exp.g., "1..9".
+
+        Returns:
+            Digits: Parsed (start, end) digits.
+
+        Raises:
+            SudokuError: If the string format is invalid.
+        """
+        regexp = re.compile('([123456789])..([123456789])')
+        match = regexp.match(text)
+        if match is None:
+            raise SudokuError(f'Invalid format: {text}. Expected "a..b".')
+        return Digits(int(match.group(1)), int(match.group(2)))
 
     @classmethod
     def create(cls, name: str, yaml_data: dict) -> 'Board':
@@ -239,23 +256,23 @@ class Board:
             Board: A new `Board` instance.
         """
         board_data: dict = yaml_data[name]
-        board_rows, board_columns = Board.parse_xy(board_data['Board'])
-        digits = board_data.get('Digits')
+        size: Coord = Board.parse_size(board_data['Size'])
+        digits: Digits = Board.parse_digits(board_data['Digits'])
         tags: Tags = Tags(board_data.get('Tags'))
-        return Board(board_rows, board_columns, digits, tags)
+        return Board(size, digits, tags)
 
     @classmethod
-    def create2(cls, name: str, yaml_data: dict) -> 'Board':
+    def create2(cls, yaml_data: dict) -> 'Board':
         """Create a Board instance using the provided name and YAML line.
 
         Args:
-            name (str): The name key for the board in the YAML line.
             yaml_data (dict): The YAML line dictionary containing the board configuration.
 
         Returns:
             Board: A new `Board` instance created based on the provided YAML line.
         """
-        return cls.create(name, yaml_data)
+        # TODO Dummy
+        return Board(Coord(9, 9), Digits(1, 9), Tags())
 
     def to_dict(self) -> dict:
         """Convert the Board attributes to a dictionary format for YAML serialization.
@@ -286,8 +303,7 @@ class Board:
         return (
             f'{self.__class__.__name__}'
             f'('
-            f'{self.size.row!r}, '
-            f'{self.size.column!r}, '
+            f'{self.size!r}, '
             f'{self.digits!r}, '
             f'{self.tags!r}'
             f')'
