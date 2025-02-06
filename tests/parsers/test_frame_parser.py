@@ -1,6 +1,6 @@
 """TestFrameParser."""
 import unittest
-from typing import Any, List, Tuple
+from typing import Any, list, tuple
 
 from src.parsers.frame_parser import FrameParser
 from tests.parsers.test_parser import TestParser
@@ -15,7 +15,7 @@ class TestFrameParser(TestParser):
         self.parser: FrameParser = FrameParser()
         self.representation: str = 'FrameParser()'
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, Any]] = \
+        self.valid_inputs: list[tuple[str, Any]] = \
             [
                 # Valid FrameParser format input_types
                 ("T1=2", {'Frame': {'Side': 'T', 'Index': 1, 'Value': 2}}),
@@ -24,7 +24,7 @@ class TestFrameParser(TestParser):
                 ("R9=99", {'Frame': {'Side': 'R', 'Index': 9, 'Value': 99}}),
                 ("T2=123", {'Frame': {'Side': 'T', 'Index': 2, 'Value': 123}}),
             ]
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "X1=5",  # Invalid side (not T, L, B, or R)

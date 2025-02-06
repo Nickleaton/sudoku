@@ -20,7 +20,7 @@ class TestSolutionParser(TestParser):
             ("987654321", {'SolutionLine': [9, 8, 7, 6, 5, 4, 3, 2, 1]}),
             ("000000000", {'SolutionLine': [0, 0, 0, 0, 0, 0, 0, 0, 0]}),
         ]
-        self.invalid_inputs: List[str] = [
+        self.invalid_inputs: list[str] = [
             "12345678a",  # contains start non-numeric character
             "123 45678",  # contains whitespace
             "12345678#",  # contains start special character

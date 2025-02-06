@@ -22,7 +22,7 @@ class TestVertexValueParser(TestParser):
             ("78=4567", {'Vertex': {'Cell': {'row': 7, 'col': 8}, 'Value': 4567}}),
             ("90=1000", {'Vertex': {'Cell': {'row': 9, 'col': 0}, 'Value': 1000}}),
         ]
-        self.invalid_inputs: List[str] = [
+        self.invalid_inputs: list[str] = [
             # Invalid input_types that should raise ParserError
             "1=3",  # One digit on the left side
             "123=4",  # More than two digits on the left side

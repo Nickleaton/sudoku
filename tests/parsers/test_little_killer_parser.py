@@ -1,6 +1,6 @@
 """TestLittleKillerParser."""
 import unittest
-from typing import List
+from typing import list
 
 from src.parsers.little_killer_parser import LittleKillerParser
 from tests.parsers.test_parser import TestParser
@@ -28,7 +28,7 @@ class TestLittleKillerParser(TestParser):
             ("R9A=999", {'LittleKiller': {'Side': 'R', 'Index': 9, 'Cyclic': 'A', 'Value': 999}}),
             ("B4C=2000", {'LittleKiller': {'Side': 'B', 'Index': 4, 'Cyclic': 'C', 'Value': 2000}}),
         ]
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "X1C=5",  # Invalid side (not T, L, B, or R)

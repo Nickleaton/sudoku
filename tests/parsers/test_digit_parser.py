@@ -1,6 +1,6 @@
 """TestDigitParser."""
 import unittest
-from typing import Dict, List, Tuple
+from typing import Dict, list, tuple
 
 from src.parsers.digit_parser import DigitParser
 from tests.parsers.test_parser import TestParser
@@ -15,7 +15,7 @@ class TestDigitParser(TestParser):
         self.parser: DigitParser = DigitParser()
         self.representation: str = 'DigitParser()'
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, Dict[str, int]]] = [
+        self.valid_inputs: list[tuple[str, Dict[str, int]]] = [
             ('0', {'Digit': 0}),
             ('1', {'Digit': 1}),
             ('2', {'Digit': 2}),
@@ -28,7 +28,7 @@ class TestDigitParser(TestParser):
             ('9', {'Digit': 9}),
         ]
 
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "10",  # More than one digit

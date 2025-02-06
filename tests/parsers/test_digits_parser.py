@@ -1,6 +1,6 @@
 """TestDigitsParser."""
 import unittest
-from typing import List, Tuple
+from typing import list, tuple
 
 from src.parsers.digits_parser import DigitsParser
 from tests.parsers.test_parser import TestParser
@@ -16,12 +16,12 @@ class TestDigitsParser(TestParser):
         self.representation: str = 'DigitsParser()'
         self.example_format: str = '1,2,3,...'
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, dict[str: list[int]]]] = \
+        self.valid_inputs: list[tuple[str, dict[str: list[int]]]] = \
             [
                 ('2', {'Digits': [2]}),
                 ('1,2,3,4,8', {'Digits': [1, 2, 3, 4, 8]}),
             ]
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 '1, 2, start, 4',
                 '1, 2, 3,',

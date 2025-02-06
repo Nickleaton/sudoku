@@ -1,6 +1,6 @@
 """TestCellPairEqualValueParser."""
 import unittest
-from typing import List
+from typing import list
 
 from src.parsers.cell_pair_equal_value_parser import CellPairEqualValueParser
 from tests.parsers.test_parser import TestParser
@@ -58,7 +58,7 @@ class TestCellPairEqualValueParser(TestParser):
             ),
         ]
 
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "123x56789=5",  # invalid due to non-digit character

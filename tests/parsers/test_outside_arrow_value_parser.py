@@ -1,6 +1,6 @@
 """TestOutsideArrowValueParser."""
 import unittest
-from typing import Any, List, Tuple
+from typing import Any, list, tuple
 
 from src.parsers.outside_arrow_value_parser import OutsideArrowValueParser
 from tests.parsers.test_parser import TestParser
@@ -15,7 +15,7 @@ class TestOutsideArrowValueParser(TestParser):
         self.parser: OutsideArrowValueParser = OutsideArrowValueParser()
         self.representation: str = 'OutsideArrowValueParser()'
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, Any]] = [
+        self.valid_inputs: list[tuple[str, Any]] = [
             # Valid input_types for the Outside Arrow number format
             ("T0D=5", {'Arrow': {'Side': 'T', 'Direction': 'D', 'Index': 0, 'Value': 5}}),
             ("T5DR=5", {'Arrow': {'Side': 'T', 'Direction': 'DR', 'Index': 5, 'Value': 5}}),
@@ -31,7 +31,7 @@ class TestOutsideArrowValueParser(TestParser):
             ("R3DL=100", {'Arrow': {'Side': 'R', 'Direction': 'DL', 'Index': 3, 'Value': 100}}),
         ]
 
-        self.invalid_input2: List[str] = [
+        self.invalid_input2: list[str] = [
             # Invalid input_types that should raise ParserError
             "A0=5",  # Invalid side character
             "L10=10",  # Invalid index (more than one digit)

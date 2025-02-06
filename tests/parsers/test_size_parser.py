@@ -15,14 +15,14 @@ class TestSizeParser(TestParser):
         self.parser: SizeParser = SizeParser()
         self.representation: str = 'SizeParser()'
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, Any]] = \
+        self.valid_inputs: list[tuple[str, Any]] = \
             [
                 ("8x8", {'Size': {'rows': 8, 'cols': 8}}),
                 ("4x4", {'Size': {'rows': 4, 'cols': 4}}),
                 ("9x9", {'Size': {'rows': 9, 'cols': 9}}),
                 ("16x16", {'Size': {'rows': 16, 'cols': 16}}),
             ]
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 "abc",
                 "3xx3",

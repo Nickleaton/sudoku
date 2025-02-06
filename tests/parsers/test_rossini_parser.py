@@ -1,6 +1,6 @@
 """TestRossiniParser."""
 import unittest
-from typing import List
+from typing import list
 
 from src.parsers.rossini_parser import RossiniParser
 from tests.parsers.test_parser import TestParser
@@ -26,7 +26,7 @@ class TestRossiniParser(TestParser):
             ("R9=D", {'Rossini': {'Side': 'R', 'Index': 9, 'Order': 'D'}}),
         ]
 
-        self.invalid_inputs: List[str] = [
+        self.invalid_inputs: list[str] = [
             # Invalid input_types that should raise ParserError
             "A0=D",  # Invalid side character
             "L10=I",  # Invalid digit (more than one)

@@ -1,6 +1,6 @@
 """TestQuadruplesParser."""
 import unittest
-from typing import Any, List, Tuple
+from typing import Any, list, tuple
 
 from src.parsers.quadruples_parser import QuadruplesParser
 from tests.parsers.test_parser import TestParser
@@ -15,7 +15,7 @@ class TestQuadruplesParser(TestParser):
         self.parser: QuadruplesParser = QuadruplesParser()
         self.representation: str = "QuadruplesParser()"
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, Any]] = [
+        self.valid_inputs: list[tuple[str, Any]] = [
             # Valid quadruples format input_types
             ("12=123", {'Quad': {'Vertex': {'row': 1, 'col': 2}, 'Values': [1, 2, 3]}}),
             ("01=456", {'Quad': {'Vertex': {'row': 0, 'col': 1}, 'Values': [4, 5, 6]}}),
@@ -24,7 +24,7 @@ class TestQuadruplesParser(TestParser):
             ("88=0", {'Quad': {'Vertex': {'row': 8, 'col': 8}, 'Values': [0]}}),
         ]
 
-        self.invalid_inputs: List[str] = [
+        self.invalid_inputs: list[str] = [
             # Invalid input_types that should raise ParserError
             "123=456",  # More than two digits on the left
             "12=4a",  # Non-digit character on the right

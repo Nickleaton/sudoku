@@ -1,6 +1,6 @@
 """TestCellParser."""
 import unittest
-from typing import Any, List, Tuple
+from typing import Any, list, tuple
 
 from src.parsers.cell_parser import CellParser
 from tests.parsers.test_parser import TestParser
@@ -15,13 +15,13 @@ class TestCellParser(TestParser):
         self.parser: CellParser = CellParser()
         self.representation: str = "CellParser()"
         self.empty_allowed = False
-        self.valid_inputs: List[Tuple[str, Any]] = \
+        self.valid_inputs: list[tuple[str, Any]] = \
             [
                 ("12", {'Cell': {"row": 1, "col": 2}}),
                 ("01", {'Cell': {"row": 0, "col": 1}}),
                 ("99", {'Cell': {"row": 9, "col": 9}}),
             ]
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "1",  # Only one digit

@@ -1,6 +1,6 @@
 """TestCellPairsParser."""
 import unittest
-from typing import List
+from typing import list
 
 from src.parsers.cell_pairs_parser import CellPairsParser
 from tests.parsers.test_parser import TestParser
@@ -22,7 +22,7 @@ class TestCellPairsParser(TestParser):
             ('12-34', {'CellPair': {'Cell1': {'row': 1, 'col': 2}, 'Cell2': {'row': 3, 'col': 4}}}),
         ]
 
-        self.invalid_inputs: List[str] = \
+        self.invalid_inputs: list[str] = \
             [
                 # Invalid input_types that should raise ParserError
                 "123x56789",  # invalid due to non-digit character
