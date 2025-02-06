@@ -1,6 +1,5 @@
 """TestDigitsParser."""
 import unittest
-from typing import list, tuple
 
 from src.parsers.digits_parser import DigitsParser
 from tests.parsers.test_parser import TestParser

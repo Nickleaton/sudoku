@@ -1,6 +1,6 @@
 """TestCellParser."""
 import unittest
-from typing import Any, list, tuple
+from typing import Any
 
 from src.parsers.cell_parser import CellParser
 from tests.parsers.test_parser import TestParser

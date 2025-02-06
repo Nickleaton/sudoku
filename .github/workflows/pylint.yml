@@ -29,6 +29,7 @@ jobs:
         pip install sortedcontainers
         pip install defusedxml
         pip install graphviz
+        pip install pytest
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py') --disable=C0103,W8201,R0914,R0917,R0913,R0902,R0903,R0902

@@ -1,6 +1,6 @@
 """TestNoneParser."""
 import unittest
-from typing import Any, list, tuple
+from typing import Any
 
 from src.parsers.none_parser import NoneParser
 from src.utils.sudoku_exception import SudokuError

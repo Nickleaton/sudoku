@@ -1,6 +1,6 @@
 """TestFrameParser."""
 import unittest
-from typing import Any, list, tuple
+from typing import Any
 
 from src.parsers.frame_parser import FrameParser
 from tests.parsers.test_parser import TestParser

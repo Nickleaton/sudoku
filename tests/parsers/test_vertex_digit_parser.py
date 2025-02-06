@@ -1,6 +1,5 @@
 """TestVertexDigitParser."""
 import unittest
-from typing import list, tuple
 
 from src.parsers.vertex_digit_parser import VertexDigitParser
 from tests.parsers.test_parser import TestParser

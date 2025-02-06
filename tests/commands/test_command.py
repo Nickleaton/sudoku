@@ -23,7 +23,7 @@ class TestCommand(unittest.TestCase):
         self.readable_file: Path = Path(r'output\tests\output.txt')
         self.writable_file: Path = Path(r'output\tests\output.txt')
         self.readable_file.parent.mkdir(parents=True, exist_ok=True)
-        with self.readable_file.open('w') as f:
+        with self.readable_file.open('w', encoding='utf-8') as f:
             f.write('Hello World')
         if self.writable_file.exists():
             self.writable_file.unlink()

@@ -1,6 +1,6 @@
 """TestDigitParser."""
 import unittest
-from typing import Dict, list, tuple
+from typing import Dict
 
 from src.parsers.digit_parser import DigitParser
 from tests.parsers.test_parser import TestParser

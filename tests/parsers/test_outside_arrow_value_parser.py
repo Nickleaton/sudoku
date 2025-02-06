@@ -1,6 +1,6 @@
 """TestOutsideArrowValueParser."""
 import unittest
-from typing import Any, list, tuple
+from typing import Any
 
 from src.parsers.outside_arrow_value_parser import OutsideArrowValueParser
 from tests.parsers.test_parser import TestParser

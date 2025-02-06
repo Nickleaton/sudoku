@@ -1,6 +1,5 @@
 """TestCellPairEqualValueParser."""
 import unittest
-from typing import list
 
 from src.parsers.cell_pair_equal_value_parser import CellPairEqualValueParser
 from tests.parsers.test_parser import TestParser

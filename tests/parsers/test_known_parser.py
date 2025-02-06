@@ -1,6 +1,6 @@
 """TestKnownParser."""
 import unittest
-from typing import Any, list, tuple
+from typing import Any
 
 from src.parsers.known_parser import KnownParser
 from tests.parsers.test_parser import TestParser

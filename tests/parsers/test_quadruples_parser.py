@@ -1,6 +1,6 @@
 """TestQuadruplesParser."""
 import unittest
-from typing import Any, list, tuple
+from typing import Any
 
 from src.parsers.quadruples_parser import QuadruplesParser
 from tests.parsers.test_parser import TestParser

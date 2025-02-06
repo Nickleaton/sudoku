@@ -4,7 +4,7 @@ from src.board.board import Board
 from src.board.digits import Digits
 from src.utils.coord import Coord
 from src.utils.tags import Tags
-from src.validators.validator import Validator  # Assuming the Validator class is in src/validator.py
+from src.validators.validator import Validator
 
 
 class TestValidator(unittest.TestCase):
@@ -24,19 +24,13 @@ class TestValidator(unittest.TestCase):
         self.assertEqual(self.representation, repr(self.validator))
 
     def test_good(self):
-        print()
         for input_data in self.valid_data:
-            print(f'Good {input_data!r}')
             errors = self.validator.validate(self.board, input_data)
             self.assertEqual(errors, [], f"Expected no validation errors for {input_data!r}.")
 
     def test_bad(self):
-        print()
         for input_data in self.invalid_data:
             errors = self.validator.validate(self.board, input_data)
-            print(f'Bad   {input_data!r}')
-            for error in errors:
-                print(f'    {error}')
             self.assertNotEqual(errors, [], f"Expected validation errors for{input_data!r}.")
 
 

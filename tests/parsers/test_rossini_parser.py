@@ -1,6 +1,5 @@
 """TestRossiniParser."""
 import unittest
-from typing import list
 
 from src.parsers.rossini_parser import RossiniParser
 from tests.parsers.test_parser import TestParser
