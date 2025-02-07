@@ -29,6 +29,7 @@ class StandardRegion(Region):
         Returns:
             int: The index of the region.
         """
+        # pylint: disable=unused-argument
         return int(yaml[cls.__name__])
 
     @classmethod
