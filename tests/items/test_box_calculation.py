@@ -16,14 +16,14 @@ class TestBoardCalculations(unittest.TestCase):
         self.board_size = Coord(4, 4)  # Default to 4x4 board
         self.digits = Digits(1, 4)
         self.box_size = Coord(2, 2)
-        self.expected_box_indices = None
-        self.expected_top_lefts = None
-        self.bad_indices = None
-        self.bad_row_columns = None
+        self.expected_box_indices = []  # Initialize as empty list
+        self.expected_top_lefts = []  # Initialize as empty list
+        self.bad_indices = []  # Initialize as empty list
+        self.bad_row_columns = []  # Initialize as empty list
 
     def test_expected_box_indices(self):
         """Test that all cells are covered, and box indices are correctly calculated."""
-        if self.expected_box_indices is None:
+        if not self.expected_box_indices:  # Check if it's empty
             return
 
         board = Board(self.board_size, self.digits, Tags())
@@ -40,7 +40,7 @@ class TestBoardCalculations(unittest.TestCase):
 
     def test_boxes_first(self):
         """Test the `first` method to ensure top-left coordinates are correct."""
-        if self.expected_top_lefts is None:
+        if not self.expected_top_lefts:  # Check if it's empty
             return
         board = Board(self.board_size, self.digits, Tags())
         boxes = Boxes(board, self.box_size)
@@ -56,7 +56,7 @@ class TestBoardCalculations(unittest.TestCase):
 
     def test_bad_indices(self):
         """Test that `first` raises an IndexError for out-of-bounds box indices."""
-        if self.bad_indices is None:
+        if not self.bad_indices:  # Check if it's empty
             return
         board = Board(self.board_size, self.digits, Tags())
         boxes = Boxes(board, self.box_size)
@@ -67,7 +67,7 @@ class TestBoardCalculations(unittest.TestCase):
 
     def test_bad_row_columns(self):
         """Test that `box_index` raises an IndexError for out-of-bounds row/column pairs."""
-        if self.bad_row_columns is None:
+        if not self.bad_row_columns:  # Check if it's empty
             return
         board = Board(self.board_size, self.digits, Tags())
         boxes = Boxes(board, self.box_size)
@@ -178,3 +178,7 @@ class Test9x9BoardCalculations(TestBoardCalculations):
             '03',
             '30',
         ]
+
+
+if __name__ == '__main__':  # pragma: no cover
+    unittest.main()

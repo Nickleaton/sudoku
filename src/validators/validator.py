@@ -73,6 +73,7 @@ class Validator:
             list: A list of error messages. If no validation errors
             are found, an empty list is returned.
         """
+        # pylint: disable=unused-argument
         return []
 
     def __repr__(self) -> str:
