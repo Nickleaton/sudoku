@@ -1,6 +1,6 @@
 """Variables module."""
+from collections.abc import Iterable
 from enum import IntEnum
-from typing import Iterable
 
 from pulp import LpInteger  # noqa: I001
 from pulp import LpVariable  # noqa: I001

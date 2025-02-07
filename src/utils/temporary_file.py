@@ -2,7 +2,6 @@
 import logging
 from pathlib import Path
 from types import TracebackType
-from typing import Type
 from uuid import uuid4
 
 from src.utils.config import Config
@@ -58,7 +57,7 @@ class TemporaryFile:
 
     def __exit__(
         self,
-        _exc_type: Type[BaseException] | None,
+        _exc_type: type[BaseException] | None,
         _exc_val: BaseException | None,
         _exc_tb: TracebackType | None,
     ) -> None:

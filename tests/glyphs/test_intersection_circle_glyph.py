@@ -1,6 +1,5 @@
 """TestIntersectionCircleGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.circle_glyph import CircleGlyph
 from src.glyphs.glyph import Glyph
@@ -42,11 +41,11 @@ class TestIntersectionCircleGlyph(TestCircleGlyph):
         return "IntersectionCircleGlyph('Style', 0.5)"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that IntersectionCircleGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {IntersectionCircleGlyph, CircleGlyph, Glyph}
 

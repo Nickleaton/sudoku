@@ -1,5 +1,4 @@
 """Constraints."""
-from typing import Type
 
 from src.board.board import Board
 from src.items.composed_item import ComposedItem
@@ -66,7 +65,7 @@ class Constraints(ComposedItem):
         """
         for key, constraint_data in parts.items():
             sub_yaml: dict = {} if constraint_data is None else constraint_data
-            sub_class: Type[Item] = Item.classes.get(key)
+            sub_class: type[Item] = Item.classes.get(key)
             if sub_class.is_composite():
                 constraints.add(sub_class.create(board, {key: sub_yaml}))
             elif isinstance(sub_yaml, list):
@@ -104,7 +103,7 @@ class Constraints(ComposedItem):
         cls,
         board: Board,
         sub_yaml: list,
-        sub_class: Type[Item],
+        sub_class: type[Item],
         key: str,
         constraints: 'Constraints',
     ) -> 'Constraints':
@@ -117,7 +116,7 @@ class Constraints(ComposedItem):
         Args:
             board (Board): The board to which the constraints apply.
             sub_yaml (list): A list of sub-constraints to process.
-            sub_class (Type[Item]): The subclass of `Item` representing the type of constraint.
+            sub_class (type[Item]): The subclass of `Item` representing the type of constraint.
             key (str): The key used to identify the constraint type in the YAML configuration.
             constraints (Constraints): The Constraints instance to populate.
 

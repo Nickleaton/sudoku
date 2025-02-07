@@ -1,6 +1,5 @@
 """TestMidCell."""
 import unittest
-from typing import Type
 
 from postponed.src.items.simple_cell_reference import SimpleCellReference
 from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
@@ -52,7 +51,7 @@ class TestMidCell(TestSimpleCellReference):
         return True
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the MidCell instance should belong to."""
         return {Cell, CellReference, SimpleCellReference, Item, MidCell}
 

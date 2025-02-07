@@ -1,6 +1,5 @@
 """TestDisjointGroup."""
 import unittest
-from typing import Type
 
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -41,7 +40,7 @@ class TestDisjointGroup(TestStandardRegion):
         return True
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the DisjointGroup should belong to."""
         return {Item, ComposedItem, Cell, Region, StandardRegion, DisjointGroup}
 

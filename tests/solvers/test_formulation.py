@@ -2,9 +2,9 @@
 import inspect
 import unittest
 from pathlib import Path
-from typing import List, Dict, ClassVar
+from typing import ClassVar, Dict, List
 
-from pulp import LpVariable, LpInteger, LpProblem, LpMinimize, getSolver, LpContinuous, LpSolver
+from pulp import getSolver, LpContinuous, LpInteger, LpMinimize, LpProblem, LpSolver, LpVariable
 
 from src.solvers.formulations import Formulations
 

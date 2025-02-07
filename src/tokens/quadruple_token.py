@@ -1,5 +1,6 @@
 """QuadrupleToken."""
-from typing import Type
+
+from typing import ClassVar
 
 from src.tokens.simple_token import SimpleToken
 
@@ -7,7 +8,7 @@ from src.tokens.simple_token import SimpleToken
 class QuadrupleToken(SimpleToken):
     """Represents start token for matching one or more digits or question marks."""
 
-    mapper: list[tuple[str, Type]] = [
+    mapper: ClassVar[list[tuple[str, type]]] = [
         ('quads', list),
     ]
 

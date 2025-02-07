@@ -69,5 +69,6 @@ class TestKnownValidator(TestValidator):
         self.representation = 'KnownValidator()'
         self.validator = KnownValidator()
 
+
 if __name__ == '__main__':
     unittest.main()

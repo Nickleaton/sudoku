@@ -11,8 +11,7 @@ class VectorList:
     """Represents a collection of Vectors with various utility methods."""
 
     def __init__(self, vectors=None):
-        """
-        Initialize the VectorList with a given list of Vectors or an empty list.
+        """Initialize the VectorList with a given list of Vectors or an empty list.
 
         Args:
             vectors (list, optional): A list of vectors for the VectorList with. Defaults to an empty list if None.
@@ -20,8 +19,7 @@ class VectorList:
         self.vectors = [] if vectors is None else list(vectors)
 
     def __iter__(self):
-        """
-        Return an iterator over the vectors.
+        """Return an iterator over the vectors.
 
         Returns:
             Vector: The next vector in the list.
@@ -29,8 +27,7 @@ class VectorList:
         return iter(self.vectors)
 
     def __getitem__(self, index):
-        """
-        Retrieve the vector at the specified index.
+        """Retrieve the vector at the specified index.
 
         Args:
             index (int): The index of the vector to retrieve.
@@ -41,8 +38,7 @@ class VectorList:
         return self.vectors[index]
 
     def __contains__(self, vector):
-        """
-        Check if a vector is in the VectorList.
+        """Check if a vector is in the VectorList.
 
         Args:
             vector (Vector): The vector to check for presence.
@@ -53,8 +49,7 @@ class VectorList:
         return vector in self.vectors
 
     def __len__(self):
-        """
-        Return the number of vectors.
+        """Return the number of vectors.
 
         Returns:
             int: The number of vectors in the VectorList.
@@ -62,8 +57,7 @@ class VectorList:
         return len(self.vectors)
 
     def __repr__(self):
-        """
-        Return a string representation of the VectorList.
+        """Return a string representation of the VectorList.
 
         Returns:
             str: A string representation of the VectorList.
@@ -71,8 +65,7 @@ class VectorList:
         return f'{self.__class__.__name__}([{", ".join(map(repr, self.vectors))}])'
 
     def __eq__(self, other):
-        """
-        Check equality with another VectorList.
+        """Check equality with another VectorList.
 
         Args:
             other (object): The object to compare with.
@@ -88,8 +81,7 @@ class VectorList:
         return self.vectors == other.vectors
 
     def extend(self, other):
-        """
-        Extend the VectorList with another VectorList.
+        """Extend the VectorList with another VectorList.
 
         Args:
             other (VectorList): The VectorList to extend with.
@@ -102,8 +94,7 @@ class VectorList:
         self.vectors.extend(other.vectors)
 
     def __add__(self, other):
-        """
-        Return a new VectorList combining both lists.
+        """Return a new VectorList combining both lists.
 
         Args:
             other (VectorList): The VectorList to add.
@@ -119,16 +110,14 @@ class VectorList:
         return VectorList(self.vectors + other.vectors)
 
     def sort(self):
-        """
-        Sort the vectors in place.
+        """Sort the vectors in place.
 
         This method sorts the vectors in the VectorList according to their natural order.
         """
         self.vectors.sort()
 
     def merge_vectors(self) -> 'VectorList':
-        """
-        Merge parallel vectors that share endpoints.
+        """Merge parallel vectors that share endpoints.
 
         This method combines vectors that are parallel and share the same endpoints.
 
@@ -146,8 +135,7 @@ class VectorList:
         return VectorList(sorted(merged_vectors))
 
     def find(self, coord):
-        """
-        Find the endpoint of a vector that starts or ends at a given coordinate.
+        """Find the endpoint of a vector that starts or ends at a given coordinate.
 
         Args:
             coord (Coord): The coordinate to search for.
@@ -161,8 +149,7 @@ class VectorList:
 
     @property
     def coords(self):
-        """
-        Return a CoordList of all unique coordinates in the VectorList.
+        """Return a CoordList of all unique coordinates in the VectorList.
 
         Returns:
             CoordList: A CoordList containing all unique coordinates from the vectors in the VectorList.

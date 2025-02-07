@@ -1,6 +1,5 @@
 """TestBattenburgGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.battenburg_glyph import BattenburgGlyph
 from src.glyphs.glyph import Glyph
@@ -58,11 +57,11 @@ class TestBattenburgGlyph(TestGlyph):
         return "BattenburgGlyph(class_name='Style', location=Coord(3, 3))"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that BattenburgGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {BattenburgGlyph, Glyph}
 

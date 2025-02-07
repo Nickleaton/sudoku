@@ -1,7 +1,6 @@
 """TestStandardRegion module."""
 
 import unittest
-from typing import Type
 
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -41,7 +40,7 @@ class TestStandardRegion(TestRegion):
         return f"{self.item.__class__.__name__}(1)"
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected set of classes for StandardRegion."""
         return {Item, ComposedItem, Region, StandardRegion}
 

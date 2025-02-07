@@ -1,5 +1,5 @@
 """CellReference."""
-from typing import Iterator, Type
+from collections.abc import Iterator
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -26,11 +26,11 @@ class CellReference(Item):
         self.row: int = row
         self.column: int = column
 
-    def find_instances(self, class_type: Type[Item]) -> list[Item]:
+    def find_instances(self, class_type: type[Item]) -> list[Item]:
         """Find all instances of the specified class in the hierarchy.
 
         Args:
-            class_type (Type[Item]): The class type to search for.
+            class_type (type[Item]): The class type to search for.
 
         Returns:
             list[Item]: A list of instances of the specified class type.
@@ -149,7 +149,7 @@ class CellReference(Item):
         return f'{self.__class__.__name__}({self.board!r}, {self.cell!r})'
 
     @property
-    def used_classes(self) -> set[Type['Item']]:
+    def used_classes(self) -> set[type['Item']]:
         """Return start_location set of classes that this constraint uses.
 
         The set of classes is determined by traversing the method resolution
@@ -158,7 +158,7 @@ class CellReference(Item):
         class.
 
         Returns:
-            set[Type[Self]]: A set of classes that this constraint uses.
+            set[type[Self]]: A set of classes that this constraint uses.
         """
         return super().used_classes | self.cell.used_classes
 

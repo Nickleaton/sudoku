@@ -1,7 +1,5 @@
 """KeyType module."""
 
-from typing import Type
-
 
 class KeyType:
     """Represents a key with an associated line type.
@@ -11,15 +9,15 @@ class KeyType:
         type (Type): The expected line type associated with the key.
     """
 
-    def __init__(self, key: str, typ: Type):
+    def __init__(self, key: str, typ: type):
         """Initialize a KeyType instance.
 
         Args:
             key (str): The name or identifier for the key.
-            typ (Type): The expected line type associated with the key.
+            typ (type): The expected line type associated with the key.
         """
         self.key: str = key
-        self.type: Type = typ
+        self.type: type = typ
 
     def __repr__(self):
         """Generate a string representation of the KeyType instance.

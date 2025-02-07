@@ -1,9 +1,6 @@
 """TestCircleGlyph."""
 import unittest
 from abc import ABC
-from typing import Type
-
-import pytest
 
 from src.glyphs.circle_glyph import CircleGlyph
 from src.glyphs.glyph import Glyph
@@ -13,7 +10,6 @@ from tests.glyphs.test_glyph import TestGlyph
 config = Config()
 
 
-@pytest.mark.abstract
 class TestCircleGlyph(TestGlyph, ABC):
     """Test suite for the CircleGlyph class."""
 
@@ -44,11 +40,11 @@ class TestCircleGlyph(TestGlyph, ABC):
         return "CircleGlyph('Style', 0.5)"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that CircleGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {CircleGlyph, Glyph}
 

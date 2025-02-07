@@ -1,6 +1,4 @@
 """ColourSet."""
-from typing import List
-
 from src.utils.config import Config
 
 # Initialize the configuration object to access color settings
@@ -15,7 +13,7 @@ class ColourSet:
     """A utility class for managing and retrieving color sets."""
 
     @staticmethod
-    def colours(set_name: str) -> List[str]:
+    def colours(set_name: str) -> list[str]:
         """Retrieve start list of colors associated with start specific set name.
 
         This method fetches start list of color strings from the configuration based on
@@ -31,7 +29,7 @@ class ColourSet:
         Raises:
             ColourError: If the color set is not found in the configuration.
         """
-        colour_set: dict[str, List[str]] = config.colours
+        colour_set: dict[str, list[str]] = config.colours
         if colour_set is None or set_name not in colour_set:
             raise ColourError(f"Colour set '{set_name}' not found in {config.config_file_path.name}")
         return [str(colour) for colour in colour_set[set_name]]

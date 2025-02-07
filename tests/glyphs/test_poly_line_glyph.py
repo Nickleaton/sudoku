@@ -1,6 +1,5 @@
 """TestPolyLineGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.poly_line_glyph import PolyLineGlyph
@@ -43,11 +42,11 @@ class TestPolyLineGlyph(TestGlyph):
         return "PolyLineGlyph('Style', [Coord(0, 0), Coord(2, 1), Coord(3, 2)], False, False)"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that PolyLineGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {Glyph, PolyLineGlyph}
 

@@ -1,7 +1,8 @@
 """Base class for tokens representing regex patterns."""
 import re
 import sys
-from typing import Any, Type
+from typing import Any, type
+from typing import ClassVar
 
 from sortedcontainers import SortedDict
 
@@ -12,9 +13,9 @@ from src.utils.sudoku_exception import SudokuError
 class Token:
     """Base class for all tokens used to represent regex patterns."""
 
-    mapper: list[tuple[str, Type]] = []
+    mapper: ClassVar[list[tuple[str, type]]] = []
 
-    classes: dict[str, Type['Token']] = SortedDict()
+    classes: dict[str, type['Token']] = SortedDict()
 
     def __init_subclass__(cls, **kwargs) -> None:
         """Register the subclass for YAML instantiation.

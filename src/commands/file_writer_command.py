@@ -5,9 +5,9 @@ from xml.dom.minidom import Document
 import oyaml as yaml
 
 from src.commands.command import CommandException
-from src.commands.create_linear_program_command import CreateLinearProgramCommand
-from src.commands.create_rules_command import CreateRulesCommand
-from src.commands.problem import Problem
+from src.commands.create_linear_program_command import CreateLinearProgramCommand  # noqa: 1005
+from src.commands.create_rules_command import CreateRulesCommand  # noqa: 1005
+from src.commands.problem import Problem  # noqa: 1005
 from src.commands.simple_command import SimpleCommand
 from src.commands.svg_answer_command import SVGAnswerCommand
 from src.commands.svg_pencil_mark_command import SVGPencilMarkCommand
@@ -104,8 +104,8 @@ class PythonToYamlCommand(SimpleCommand):
             raise CommandException(f'Source is not set {self.name}.')
         if not isinstance(getattr(problem, self.source), dict):
             raise CommandException(f'Cannot convert {self.source} to dictionary.')
-        data: dict = getattr(problem, self.source)
-        return data
+        data_value: dict = getattr(problem, self.source)
+        return data_value
 
 
 class RulesToYamlCommand(PythonToYamlCommand):

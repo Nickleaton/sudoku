@@ -1,6 +1,6 @@
 """Command."""
 import logging
-from typing import ClassVar, Type
+from typing import ClassVar
 
 from src.commands.problem import Problem
 from src.utils.sudoku_exception import SudokuError
@@ -31,7 +31,7 @@ class Command:
     """
 
     # Class Variables
-    classes: ClassVar[dict[str, Type['Command']]] = {}
+    classes: ClassVar[dict[str, type['Command']]] = {}
 
     def __init_subclass__(cls, **kwargs):
         """Register the subclass to the `Item` class hierarchy.
@@ -45,14 +45,14 @@ class Command:
 
     def __init__(self) -> None:
         """Initialize a Command instance."""
-        self.preconditions: list[Type[Command]] = []  # Forward reference without quotes
+        self.preconditions: list[type[Command]] = []  # Forward reference without quotes
         self.target: str | None = None
 
-    def add_preconditions(self, preconditions: list[Type['Command']]) -> None:
+    def add_preconditions(self, preconditions: list[type['Command']]) -> None:
         """Add a list of precondition classes to this command.
 
         Args:
-            preconditions (list[Type[Command]]): The precondition classes to add.
+            preconditions (list[type[Command]]): The precondition classes to add.
         """
         self.preconditions.extend(preconditions)
 

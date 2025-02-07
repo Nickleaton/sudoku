@@ -1,6 +1,5 @@
 """TestColumns."""
 import unittest
-from typing import Type
 
 from src.items.cell import Cell
 from src.items.column import Column
@@ -39,7 +38,7 @@ class TestColumns(TestStandardRegionSet):
         return "Columns(Board(Coord(9, 9), Digits(1, 9), Tags({})))"
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the Columns constraint should belong to."""
         return {Item, ComposedItem, Cell, StandardRegion, Region, Column, Columns, StandardRegion, RegionSet,
                 StandardRegionSet}

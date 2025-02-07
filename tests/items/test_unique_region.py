@@ -1,7 +1,6 @@
 """TestUniqueRegion module."""
 
 import unittest
-from typing import Type
 
 from src.items.cell import Cell
 from src.items.composed_item import ComposedItem
@@ -35,7 +34,7 @@ class TestUniqueRegion(TestRegion):
                "Cell(Board(Coord(9, 9), Digits(1, 9), Tags({})), 1, 3)])"
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected set of classes for UniqueRegion."""
         return {Cell, ComposedItem, Item, UniqueRegion, Region}
 

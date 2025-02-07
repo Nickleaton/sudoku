@@ -30,5 +30,6 @@ class TestTags(unittest.TestCase):
         self.assertEqual(self.tags1.Key1, 'value1')
         self.assertEqual(self.tags3.Key3, 'value3')
 
+
 if __name__ == '__main__':
     unittest.main()

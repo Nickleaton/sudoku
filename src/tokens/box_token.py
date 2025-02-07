@@ -1,5 +1,6 @@
 """CellToken."""
-from typing import Type
+
+from typing import ClassVar
 
 from src.tokens.simple_token import SimpleToken
 
@@ -7,7 +8,7 @@ from src.tokens.simple_token import SimpleToken
 class BoxToken(SimpleToken):
     """Represents the box size."""
 
-    mapper: list[tuple[str, Type]] = [
+    mapper: ClassVar[list[tuple[str, type]]] = [
         ('rows', int),
         ('cols', int),
     ]

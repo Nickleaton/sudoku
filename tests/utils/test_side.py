@@ -41,7 +41,6 @@ class TestSide(unittest.TestCase):
         """Check that all possible Side value_list are returned."""
         self.assertEqual("TRBL", Side.choices())
 
-
     def test_direction(self):
         """Test direction calculation based on Cyclic value_list."""
         self.assertEqual(Moves.down_right, Side.top.direction(Cyclic.clockwise))

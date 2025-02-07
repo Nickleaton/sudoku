@@ -1,6 +1,5 @@
 """TestBattenburg."""
 import unittest
-from typing import Type
 
 from src.items.battenburg import Battenburg
 from src.items.item import Item
@@ -20,11 +19,11 @@ class TestBattenburg(TestItem):
         self.item = Battenburg(self.board, Coord(2, 2))
 
     @property
-    def clazz(self) -> Type[Battenburg]:
+    def clazz(self) -> type[Battenburg]:
         """Get the class being tested.
 
         Returns:
-            Type[Battenburg]: The Battenburg class.
+            type[Battenburg]: The Battenburg class.
         """
         return Battenburg
 
@@ -35,7 +34,7 @@ class TestBattenburg(TestItem):
         Returns:
             str: The string representation of the Battenburg object.
         """
-        return "Battenburg(Board(9, 9, {}), Coord(2, 2))"
+        return "Battenburg(Board(Coord(9, 9), Digits(1, 9), Tags({})), Coord(2, 2))"
 
     @property
     def config(self) -> str:
@@ -56,11 +55,11 @@ class TestBattenburg(TestItem):
         return True
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Get the expected set of classes that Battenburg should inherit from.
 
         Returns:
-            set[Type[Item]]: A set containing the expected classes.
+            set[type[Item]]: A set containing the expected classes.
         """
         return {Item, Battenburg}
 

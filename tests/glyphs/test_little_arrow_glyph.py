@@ -1,6 +1,5 @@
 """TestLittleArrowGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.little_arrow_glyph import LittleArrowGlyph
@@ -42,11 +41,11 @@ class TestLittleArrowGlyph(TestGlyph):
         return "LittleArrowGlyph('Style', Coord(1, 1), 5)"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that LittleArrowGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {Glyph, LittleArrowGlyph}
 

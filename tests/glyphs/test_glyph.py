@@ -1,6 +1,5 @@
 """TestGlyph."""
 import unittest
-from typing import Type
 
 from svgwrite import Drawing
 
@@ -142,11 +141,11 @@ class TestGlyph(unittest.TestCase):
         self.assertEqual(self.representation, repr(self.glyph))
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that Glyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {Glyph}
 

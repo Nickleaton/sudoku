@@ -1,6 +1,7 @@
 """ComposedItem."""
+from collections.abc import Iterator, Sequence
 from itertools import chain
-from typing import Any, Iterator, Sequence, Type
+from typing import Any
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
@@ -25,11 +26,11 @@ class ComposedItem(Item):
         if components is not None:
             self.add_components(components)
 
-    def find_instances(self, class_type: Type[Item]) -> list[Item]:
+    def find_instances(self, class_type: type[Item]) -> list[Item]:
         """Find all instances of the specified class in the hierarchy, including children.
 
         Args:
-            class_type (Type[Item]): The class type to search for.
+            class_type (type[Item]): The class type to search for.
 
         Returns:
             list[Item]: A list of instances of the specified class type.

@@ -14,5 +14,6 @@ class TestSimpleCommand(TestCommand):
         self.command = SimpleCommand()
         self.representation = "SimpleCommand()"
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()

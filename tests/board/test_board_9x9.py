@@ -46,7 +46,7 @@ class TestBoard9x9(unittest.TestCase):
         """Test the string representation of the 9x9 board."""
         target = (
             "Board("
-            "Coord(9, ), "
+            "Coord(9, 9), "
             "Digits(1, 9), "
             "Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'})"
             ")"

@@ -1,5 +1,5 @@
 """UniqueRegion."""
-from typing import Sequence
+from collections.abc import Sequence
 
 from src.board.board import Board
 from src.glyphs.glyph import Glyph

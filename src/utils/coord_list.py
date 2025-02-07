@@ -1,5 +1,5 @@
 """CoordinateList."""
-from typing import Iterator
+from collections.abc import Iterator
 
 from src.utils.coord import Coord
 

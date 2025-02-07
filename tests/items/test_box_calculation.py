@@ -1,3 +1,4 @@
+"""TestBoardCalculations."""
 import itertools
 import unittest
 

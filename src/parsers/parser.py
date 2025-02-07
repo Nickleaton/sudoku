@@ -1,6 +1,4 @@
 """Parser."""
-from typing import Type
-
 from sortedcontainers import SortedDict
 from strictyaml import Regex
 
@@ -22,7 +20,7 @@ class Parser(Regex):
 
     token: Token = Token()
 
-    classes: dict[str, Type['Parser']] = SortedDict({})
+    classes: dict[str, type['Parser']] = SortedDict({})
 
     # Creation Routines
 

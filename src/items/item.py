@@ -1,6 +1,7 @@
 """Item."""
 
-from typing import ClassVar, Iterator, Type
+from collections.abc import Iterator
+from typing import ClassVar
 
 import strictyaml
 
@@ -26,10 +27,11 @@ class Item:  # noqa: WPS110
     Items generate the constraints, manage bookkeeping, and generate SVG for viewing problems and solutions.
     They are created via the create method.
     """
+
     # pylint: disable=too-many-public-methods
 
     # Class Variables
-    classes: ClassVar[dict[str, Type['Item']]] = {}
+    classes: ClassVar[dict[str, type['Item']]] = {}
     counter: ClassVar[int] = 0
 
     # Creation Routines
@@ -163,11 +165,11 @@ class Item:  # noqa: WPS110
             return self
         return self.parent.top
 
-    def find_instances(self, class_type: Type['Item']) -> list['Item']:
+    def find_instances(self, class_type: type['Item']) -> list['Item']:
         """Find all instances of the specified class in the hierarchy.
 
         Args:
-            class_type (Type[Item): The class type to search for.
+            class_type (type[Item): The class type to search for.
 
         Returns:
             list: A list of instances of the specified class type.

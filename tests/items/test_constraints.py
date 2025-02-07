@@ -1,6 +1,5 @@
 """TestConstraints."""
 import unittest
-from typing import Type
 
 from src.items.box import Box
 from src.items.boxes import Boxes
@@ -77,7 +76,7 @@ class TestConstraints(TestComposed):
         return True
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the Constraints should belong to."""
         return {Box, Boxes, Cell, Column, Columns, ComposedItem, Constraints, Item, Region,
                 RegionSet, Row, Rows, StandardRegion, StandardRegionSet}

@@ -1,8 +1,8 @@
 """Side."""
 
+from collections.abc import Mapping
 from enum import StrEnum
 from types import MappingProxyType
-from typing import Mapping
 
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic

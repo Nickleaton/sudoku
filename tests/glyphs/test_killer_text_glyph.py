@@ -1,6 +1,5 @@
 """TestKillerTextGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.glyph import Glyph
 from src.glyphs.killer_text_glyph import KillerTextGlyph
@@ -47,11 +46,11 @@ class TestKillerTextGlyph(TestGlyph):
         return "KillerTextGlyph('Style', 0.0, Coord(1, 1), 'abcd')"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that KillerTextGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {Glyph, KillerTextGlyph}
 

@@ -1,6 +1,5 @@
 """TestEvenCellGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.glyphs.glyph import Glyph
@@ -38,11 +37,11 @@ class TestEvenCellGlyph(TestSquareGlyph):
         return "EvenCellGlyph('Style', Coord(1, 1))"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         """Get the expected set of classes that EvenCellGlyph should inherit from.
 
         Returns:
-            set[Type[Glyph]]: A set containing the expected classes.
+            set[type[Glyph]]: A set containing the expected classes.
         """
         return {EvenCellGlyph, Glyph}
 

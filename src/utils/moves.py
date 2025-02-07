@@ -1,7 +1,6 @@
 """Moves."""
 from functools import cache
 from itertools import product
-from typing import List
 
 from src.utils.coord import Coord
 
@@ -22,41 +21,41 @@ class Moves:
 
     @staticmethod
     @cache
-    def orthogonals() -> List[Coord]:
+    def orthogonals() -> list[Coord]:
         """Get coordinates for orthogonal directions (up, right, down, left).
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing orthogonal directions.
+            list[Coord]: A list of `Coord` instances representing orthogonal directions.
         """
         return [Moves.left, Moves.right, Moves.up, Moves.down]
 
     @staticmethod
     @cache
-    def diagonals() -> List[Coord]:
+    def diagonals() -> list[Coord]:
         """Get coordinates for diagonal directions (up-left, up-right, down-right, down-left).
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing diagonal directions.
+            list[Coord]: A list of `Coord` instances representing diagonal directions.
         """
         return [Moves.up_left, Moves.up_right, Moves.down_right, Moves.down_left]
 
     @staticmethod
     @cache
-    def kings() -> List[Coord]:
+    def kings() -> list[Coord]:
         """Get coordinates for all directions except center, simulating a king's movement in chess.
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing all directions except center.
+            list[Coord]: A list of `Coord` instances representing all directions except center.
         """
         return Moves.orthogonals() + Moves.diagonals()
 
     @staticmethod
     @cache
-    def knights() -> List[Coord]:
+    def knights() -> list[Coord]:
         """Get coordinates for knight's movement in chess.
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing knight's movement.
+            list[Coord]: A list of `Coord` instances representing knight's movement.
         """
         return [
             Coord(-1, -2),
@@ -71,41 +70,41 @@ class Moves:
 
     @staticmethod
     @cache
-    def directions() -> List[Coord]:
+    def directions() -> list[Coord]:
         """Get a list of all `Coord` instances representing directions.
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing all orthogonal and diagonal directions.
+            list[Coord]: A list of `Coord` instances representing all orthogonal and diagonal directions.
         """
         return Moves.orthogonals() + Moves.diagonals()
 
     @staticmethod
     @cache
-    def all_moves() -> List[Coord]:
+    def all_moves() -> list[Coord]:
         """Get all 8 directions plus the center.
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing all directions including center.
+            list[Coord]: A list of `Coord` instances representing all directions including center.
         """
         return [*Moves.directions(), Moves.center]
 
     @staticmethod
     @cache
-    def square() -> List[Coord]:
+    def square() -> list[Coord]:
         """Get square offsets.
 
         Returns:
-            List[Coord]: A list of `Coord` instances representing the current 'square'
+            list[Coord]: A list of `Coord` instances representing the current 'square'
         """
         return [Moves.center, Moves.right, Moves.down, Moves.down_right]
 
     @staticmethod
     @cache
-    def monkeys() -> List[Coord]:
+    def monkeys() -> list[Coord]:
         """Get monkey offsets.
 
         Returns:
-            List[Coord]: Monkey moves.
+            list[Coord]: Monkey moves.
         """
         return [
             Coord(-1, -3),
@@ -120,11 +119,11 @@ class Moves:
 
     @staticmethod
     @cache
-    def girandola() -> List[Coord]:
+    def girandola() -> list[Coord]:
         """Get girandola offsets.
 
         Returns:
-            List[Coord]: Girandola moves.
+            list[Coord]: Girandola moves.
         """
         return [
             Coord(1, 1),
@@ -140,11 +139,11 @@ class Moves:
 
     @staticmethod
     @cache
-    def asterix() -> List[Coord]:
+    def asterix() -> list[Coord]:
         """Get asterix offsets.
 
         Returns:
-            List[Coord]: Asterix moves.
+            list[Coord]: Asterix moves.
         """
         return [
             Coord(2, 5),
@@ -160,10 +159,10 @@ class Moves:
 
     @staticmethod
     @cache
-    def disjoint9x9() -> List[Coord]:
+    def disjoint9x9() -> list[Coord]:
         """Get disjoint offsets for a 9x9 board.
 
         Returns:
-            List[Coord]: Disjoint moves.
+            list[Coord]: Disjoint moves.
         """
         return [Coord(box_row * 3, box_col * 3) for box_row, box_col in product(range(3), range(3))]

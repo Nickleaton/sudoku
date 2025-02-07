@@ -1,5 +1,6 @@
 """Digits set for Sudoku."""
-from typing import ClassVar, Iterator
+from collections.abc import Iterator
+from typing import ClassVar
 
 from src.utils.functions import PRIMES
 
@@ -47,6 +48,7 @@ class Digits:
         self.maximum: int = maximum
         self.count: int = self.maximum - self.minimum + 1
         self.digit_range: list[int] = list(range(minimum, maximum + 1))
+        self.digit_string: str = ''.join(map(str, self.digit_range))
         self.digit_sum: int = sum(self.digit_range)
         self.primes: list[int] = [prime for prime in PRIMES if prime in self.digit_range]
         self.low: list[int] | None = None

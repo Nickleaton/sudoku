@@ -1,5 +1,6 @@
 """BoardDigitsToken."""
-from typing import Type
+
+from typing import ClassVar
 
 from src.tokens.simple_token import SimpleToken
 
@@ -7,7 +8,7 @@ from src.tokens.simple_token import SimpleToken
 class BoardDigitsToken(SimpleToken):
     """Represents allowed digits on a board."""
 
-    mapper: list[tuple[str, Type]] = [
+    mapper: ClassVar[list[tuple[str, type]]] = [
         ('minimum', int),
         ('maximum', int),
     ]

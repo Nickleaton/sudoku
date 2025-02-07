@@ -1,5 +1,6 @@
 """SideToken."""
-from typing import Type
+
+from typing import ClassVar
 
 from src.tokens.simple_token import SimpleToken
 
@@ -7,7 +8,7 @@ from src.tokens.simple_token import SimpleToken
 class SideToken(SimpleToken):
     """Represents start token for matching start side indicator (T, L, B, R)."""
 
-    mapper: list[tuple[str, Type]] = [
+    mapper: ClassVar[list[tuple[str, type]]] = [
         ('side', str),
     ]
 

@@ -1,7 +1,6 @@
 """TestSolution module."""
 
 import unittest
-from typing import Type
 
 import oyaml as yaml
 
@@ -80,7 +79,7 @@ class TestSolution(TestComposed):
         return False
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected set of classes for the Solution."""
         return {Cell, CellReference, ComposedItem, Item, KnownCell, Solution}
 

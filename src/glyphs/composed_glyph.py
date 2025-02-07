@@ -1,5 +1,4 @@
 """ComposedGlyph."""
-from typing import Type
 
 from svgwrite.base import BaseElement
 from svgwrite.container import Group
@@ -75,17 +74,17 @@ class ComposedGlyph(Glyph):
         return group
 
     @property
-    def used_classes(self) -> set[Type[Glyph]]:
+    def used_classes(self) -> set[type[Glyph]]:
         """Return all classes used by the composed glyph and its vectors.
 
         Collect and return start_location set of all the `Glyph` classes used by the composed
         glyph, including those used by its constituent vectors.
 
         Returns:
-            set[Type[Glyph]]: Return start_location set of all `Glyph` classes used in the
+            set[type[Glyph]]: Return start_location set of all `Glyph` classes used in the
             composition.
         """
-        classes: set[Type[Glyph]] = super().used_classes  # Include the used classes from the parent class
+        classes: set[type[Glyph]] = super().used_classes  # Include the used classes from the parent class
         classes = classes.union({ComposedGlyph})  # Add the current class
         for glyph in self.glyphs:
             classes = classes.union(glyph.used_classes)  # Add the used classes from each constraint

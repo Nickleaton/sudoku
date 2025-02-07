@@ -196,7 +196,6 @@ class Board:
         Returns:
             Validator: A `strictyaml` validator for the board configuration.
         """
-
         valid_tags: list[str] = ['Title', 'Reference', 'Video', 'Author']
         tag_schema: Map = Map({Optional(key): Str() for key in valid_tags})
         return Map(

@@ -1,6 +1,6 @@
 """TagList."""
 from bisect import bisect_left
-from typing import Iterator
+from collections.abc import Iterator
 
 from src.utils.tag import Tag
 
@@ -13,8 +13,7 @@ class TagList:
     """A list of Tags with methods for managing and sorting them."""
 
     def __init__(self, tags: list[Tag] | None = None):
-        """
-        Initialize a TagList with an optional list of Tags.
+        """Initialize a TagList with an optional list of Tags.
 
         Args:
             tags (list[Tag], optional): A list of Tags to for the TagList. Defaults to an empty list if None.
@@ -23,8 +22,7 @@ class TagList:
         self.sort()
 
     def __iter__(self) -> Iterator[Tag]:
-        """
-        Return an iterator for the TagList.
+        """Return an iterator for the TagList.
 
         Returns:
             Iterator[Tag]: Iterator over the Tags in the TagList.
@@ -32,8 +30,7 @@ class TagList:
         return iter(self.tags)
 
     def __getitem__(self, idx: int) -> Tag:
-        """
-        Retrieve a Tag at a specified index.
+        """Retrieve a Tag at a specified index.
 
         Args:
             idx (int): The index of the Tag to retrieve.
@@ -44,8 +41,7 @@ class TagList:
         return self.tags[idx]
 
     def __contains__(self, other: Tag) -> bool:
-        """
-        Check if a Tag is in the TagList using binary search.
+        """Check if a Tag is in the TagList using binary search.
 
         Args:
             other (Tag): The Tag to check for presence in the list.
@@ -57,8 +53,7 @@ class TagList:
         return idx < len(self.tags) and self.tags[idx] == other
 
     def __len__(self) -> int:
-        """
-        Return the number of Tags in the TagList.
+        """Return the number of Tags in the TagList.
 
         Returns:
             int: The number of Tags in the TagList.
@@ -66,8 +61,7 @@ class TagList:
         return len(self.tags)
 
     def __eq__(self, other: object) -> bool:
-        """
-        Check equality between two TagLists.
+        """Check equality between two TagLists.
 
         Args:
             other (object): The object to compare with.
@@ -85,8 +79,7 @@ class TagList:
         raise TagListError(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
 
     def __repr__(self) -> str:
-        """
-        Return a string representation of the TagList.
+        """Return a string representation of the TagList.
 
         Returns:
             str: A string representation of the TagList.
@@ -94,16 +87,14 @@ class TagList:
         return f'{self.__class__.__name__}([{", ".join(repr(tag) for tag in self.tags)}])'
 
     def sort(self) -> None:
-        """
-        Sort the list of Tags.
+        """Sort the list of Tags.
 
         This method sorts the Tags in the list in ascending order.
         """
         self.tags.sort()
 
     def add(self, tag: Tag) -> None:
-        """
-        Add a Tag to the list if it is not already present.
+        """Add a Tag to the list if it is not already present.
 
         Args:
             tag (Tag): The Tag to add to the list.

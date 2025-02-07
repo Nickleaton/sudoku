@@ -4,7 +4,11 @@ from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
 
-from pulp import getSolver, LpMinimize, LpProblem, LpSolver, LpStatus
+from pulp import getSolver  # noqa: I001
+from pulp import LpMinimize  # noqa: I001
+from pulp import LpProblem  # noqa: I001
+from pulp import LpSolver  # noqa: I001
+from pulp import LpStatus  # noqa: I001
 
 from src.board.board import Board
 from src.solvers.answer import Answer

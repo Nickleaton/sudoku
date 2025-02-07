@@ -31,7 +31,7 @@ class Battenburg(Item):
             position (Coord): The coordinate location of the Battenburg pattern.
         """
         super().__init__(board)
-        self.position = position
+        self.position: Coord = position
 
     def __repr__(self) -> str:
         """Represent the Battenburg object as start_location string for debugging.
@@ -56,7 +56,7 @@ class Battenburg(Item):
         Returns:
             list[Glyph]: A list containing start_location BattenburgGlyph for graphical representation.
         """
-        return [BattenburgGlyph(class_name='Battenburg', point=self.position)]
+        return [BattenburgGlyph(class_name='Battenburg', location=self.position)]
 
     @classmethod
     def parser(cls) -> CellListParser:
@@ -81,7 +81,7 @@ class Battenburg(Item):
         Raises:
             SudokuError: If the regex pattern does not match the input YAML.
         """
-        regex = re.compile(f'([{board.digit_values}])([{board.digit_values}])')
+        regex = re.compile(f'([{board.digits.digit_string}])([{board.digits.digit_string}])')
         match = regex.match(str(yaml[cls.__name__]))
         if match is None:
             raise SudokuError('Match is None, expected start_location valid match.')

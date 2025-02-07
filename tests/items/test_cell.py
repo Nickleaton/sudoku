@@ -1,7 +1,6 @@
 """TestCell module."""
 
 import unittest
-from typing import Type
 
 from src.board.board import Board
 from src.board.digits import Digits
@@ -37,7 +36,7 @@ class TestCell(TestItem):
         return "Cell(1, 2)"
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected set of classes for Cell."""
         return {Item, Cell}
 

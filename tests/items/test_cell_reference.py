@@ -1,6 +1,5 @@
 """TestCellReference."""
 import unittest
-from typing import Type
 
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
@@ -46,7 +45,7 @@ class TestCellReference(TestItem):
         return False
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the CellReference constraint should belong to."""
         return {Cell, CellReference, Item}
 

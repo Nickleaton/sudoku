@@ -1,6 +1,5 @@
 """TestBoxItem."""
 import unittest
-from typing import Type
 
 from src.items.box import Box
 from src.items.cell import Cell
@@ -36,6 +35,7 @@ class TestBox(TestStandardRegion):
             '    row: 3\n'
             '    column: 3\n'
         )
+
     @property
     def representation(self) -> str:
         """Return the string representation for the Box constraint."""
@@ -47,7 +47,7 @@ class TestBox(TestStandardRegion):
         return True
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the Box constraint should belong to."""
         return {Item, ComposedItem, Cell, Region, StandardRegion, Box}
 

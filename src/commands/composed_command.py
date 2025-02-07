@@ -4,7 +4,7 @@ For more information, see:
 - https://en.wikipedia.org/wiki/Command_pattern
 - https://en.wikipedia.org/wiki/Composite_pattern
 """
-from typing import Sequence
+from collections.abc import Sequence
 
 from src.commands.command import Command
 from src.commands.problem import Problem

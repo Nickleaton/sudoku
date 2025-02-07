@@ -1,6 +1,5 @@
 """TestItem."""
 import unittest
-from typing import Type
 
 import oyaml as yaml
 
@@ -56,7 +55,7 @@ class TestItem(unittest.TestCase):
                     pass
 
     def test_mathematics(self):
-        """Test that mathematics returns a string"""
+        """Test that mathematics returns a string."""
         if isinstance(self.item, Item):
             return
         self.assertIsNotNone(self.item.mathematics())
@@ -68,7 +67,7 @@ class TestItem(unittest.TestCase):
         self.assertIsNotNone(self.item.sample_yaml())
 
     def test_variable_sets(self):
-        """Test that variable sets returns a set"""
+        """Test that variable sets returns a set."""
         self.assertIsNotNone(self.item.variable_sets)
 
     @property
@@ -149,7 +148,7 @@ class TestItem(unittest.TestCase):
             print()
             print()
             print(f"E {self.representation}")
-            print(f"A {repr(self.item)}")
+            print(f"A {self.item!r}")
             print()
         self.assertEqual(self.representation, repr(self.item))
 
@@ -195,7 +194,7 @@ class TestItem(unittest.TestCase):
         self.assertIsInstance(self.item.glyphs(), list)
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the Item should belong to."""
         return {Item}
 

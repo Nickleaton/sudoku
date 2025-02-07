@@ -1,7 +1,6 @@
 """TestStandardRegionSet module."""
 
 import unittest
-from typing import Type
 
 from postponed.tests.items.test_region_sets import TestRegionSet
 from src.items.composed_item import ComposedItem
@@ -35,7 +34,7 @@ class TestStandardRegionSet(TestRegionSet):
         return "StandardRegionSet(Board(Coord(9, 9), Digits(1, 9), Tags({})), [])"
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected set of classes for StandardRegionSet."""
         return {Item, ComposedItem, RegionSet, StandardRegionSet}
 

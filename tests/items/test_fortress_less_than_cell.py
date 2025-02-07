@@ -1,5 +1,5 @@
+"""TestFortressLessThanCell."""
 import unittest
-from typing import Type
 
 from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.items.cell import Cell
@@ -48,7 +48,7 @@ class TestFortressLessThanCell(TestFortressCell):
         return True
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the FortressLessThanCell should belong to."""
         return {Cell, CellReference, SimpleCellReference, Item, FortressCell, FortressLessThanCell}
 

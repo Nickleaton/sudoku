@@ -10,7 +10,8 @@ class TestCellValidator(TestValidator):
     def setUp(self):
         super().setUp()
         self.valid_data = (
-            {'Row': 2, 'Column': 3}
+            {'Row': 2, 'Column': 3},
+            {'Row': 4, 'Column': 3},
         )
         self.invalid_data = (
             {'Column': 3},

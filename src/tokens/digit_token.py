@@ -1,5 +1,6 @@
 """DigitToken."""
-from typing import Type
+
+from typing import ClassVar
 
 from src.tokens.simple_token import SimpleToken
 
@@ -7,7 +8,7 @@ from src.tokens.simple_token import SimpleToken
 class DigitToken(SimpleToken):
     """Represents start single digit token (0-9)."""
 
-    mapper: list[tuple[str, Type]] = [
+    mapper: ClassVar[list[tuple[str, type]]] = [
         ('digit', int),
     ]
 

@@ -1,6 +1,5 @@
 """TestArrowGlyph."""
 import unittest
-from typing import Type
 
 from src.glyphs.arrow_glyph import ArrowGlyph
 from src.glyphs.glyph import Glyph
@@ -38,7 +37,7 @@ class TestArrowGlyph(TestGlyph):
         return "ArrowGlyph('Style', 90.0, Coord(0, 0))"
 
     @property
-    def expected_classes(self) -> set[Type[Glyph]]:
+    def expected_classes(self) -> set[type[Glyph]]:
         return {ArrowGlyph, Glyph}
 
 

@@ -1,5 +1,4 @@
 """Region."""
-from typing import Type
 
 from pulp import lpSum
 
@@ -137,13 +136,13 @@ class Region(ComposedItem):
         return {self.__class__.__name__: None}
 
     @property
-    def used_classes(self) -> set[Type[Item]]:
+    def used_classes(self) -> set[type[Item]]:
         """Return start_location set of classes used by this region and its cells.
 
         Returns:
-            Set[Type[Item]]: Set of classes utilized within the region.
+            Set[type[Item]]: Set of classes utilized within the region.
         """
-        class_set: set[Type[Item]] = super().used_classes
+        class_set: set[type[Item]] = super().used_classes
         for cell in self.cells:
             class_set |= cell.used_classes
         return class_set

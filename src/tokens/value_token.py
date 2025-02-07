@@ -1,5 +1,6 @@
 """ValueToken."""
-from typing import Type
+
+from typing import ClassVar
 
 from src.tokens.simple_token import SimpleToken
 
@@ -7,7 +8,7 @@ from src.tokens.simple_token import SimpleToken
 class ValueToken(SimpleToken):
     """Represents a token for matching cell_values."""
 
-    mapper: list[tuple[str, Type]] = [
+    mapper: ClassVar[list[tuple[str, type]]] = [
 
         ('value', int),
     ]
