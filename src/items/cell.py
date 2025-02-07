@@ -19,7 +19,7 @@ class CellException(SudokuError):
     """Exception for Cell-specific errors."""
 
 
-class Cell(Item):
+class Cell(Item):  # noqa: R0904
     """Represents start_location cell in start_location Sudoku board."""
 
     cache: ClassVar[dict[tuple[int, int], 'Cell']] = {}

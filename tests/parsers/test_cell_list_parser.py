@@ -12,7 +12,7 @@ class TestCellListParserParser(TestParser):
     def setUp(self):
         """Set up the CellListParser instance for testing."""
         super().setUp()
-        self.parser: CelllistParser = CellListParser()
+        self.parser: CellListParser = CellListParser()
         self.representation: str = 'CellListParser()'
         self.empty_allowed: bool = False
         self.valid_inputs: list[tuple[str, Any]] = \

@@ -9,6 +9,7 @@ from src.commands.command import CommandException
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
+from src.utils.sudoku_exception import SudokuError
 
 
 class AnalyseLogFileCommand(SimpleCommand):
@@ -60,7 +61,7 @@ class AnalyseLogFileCommand(SimpleCommand):
         """
         try:
             problem[self.target] = orloge.get_info_solver(log_path.name, application_name)
-        except Exception as exp:
+        except SudokuError as exp:
             logging.error(f'Error analyzing the log file: {exp}', exc_info=True)
             raise CommandException(f'Failed to analyze the log file: {exp}') from exp
 
