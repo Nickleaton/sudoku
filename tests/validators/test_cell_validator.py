@@ -9,23 +9,23 @@ class TestCellValidator(TestValidator):
 
     def setUp(self):
         super().setUp()
-        self.valid_data = [
+        self.valid_data = (
             {'Row': 2, 'Column': 3}
-        ]
-        self.invalid_data = [
+        )
+        self.invalid_data = (
             {'Column': 3},
             {'Row': 2},
             {'Row': 'a', 'Column': 3},
             {'Row': 2, 'Column': 'b'},
             {'Row': 100, 'Column': 200}
-        ]
+        )
         self.required_keys = ['Row', 'Column']
         self.representation = 'CellValidator()'
         self.validator = CellValidator()
 
     def test_validate_horizontal_connectivity(self):
         """Test validate_horizontal_connectivity method."""
-        cases = [
+        cases = (
             # Valid case: horizontally connected
             {
                 'cell1': {'Row': 1, 'Column': 1},
@@ -44,7 +44,7 @@ class TestCellValidator(TestValidator):
                 'cell2': {'Row': 1, 'Column': 3},
                 'expected': ["Cells {'Row': 1, 'Column': 1} and {'Row': 1, 'Column': 3} are not horizontally adjacent."]
             },
-        ]
+        )
 
         for case in cases:
             with self.subTest(cell1=case['cell1'], cell2=case['cell2']):

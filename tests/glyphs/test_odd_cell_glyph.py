@@ -38,7 +38,11 @@ class TestOddCellGlyph(TestCircleGlyph):
         Returns:
             str: The expected target SVG markup for the OddCellGlyph.
         """
-        return '<use class="OddCell" height="100" width="100.0" row="100.0" xlink:href="#OddCell-symbol" column="100.0" />'
+        return (
+            '<use class="OddCell" height="100" width="100.0" '
+            'row="100.0" column="100.0" '
+            'xlink:href="#OddCell-symbol" />'
+        )
 
     @property
     def representation(self) -> str:

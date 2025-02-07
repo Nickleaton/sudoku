@@ -1,8 +1,8 @@
 """TestSymbols."""
 import unittest
 
-from src.tokens.symbols import CommaToken, DashToken, DotDotToken, EndToken, EqualsToken, QuestionMarkToken, StartToken, \
-    SymbolToken, XToken
+from src.tokens.symbols import CommaToken, DashToken, DotDotToken, EndToken, EqualsToken, \
+    QuestionMarkToken, StartToken, SymbolToken, XToken
 from tests.tokens.test_simple_token import TestSimpleToken
 
 

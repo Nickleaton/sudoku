@@ -51,7 +51,7 @@ class TestBoardCalculations(unittest.TestCase):
             self.assertEqual(
                 actual_coord,
                 expected_coord,
-                f"Box {box_index} returned incorrect top-left coordinate: expected {expected_coord}, got {boxes.first(box_index)}",
+                f"Box {box_index} returned incorrect top-left {expected_coord}, got {boxes.first(box_index)}",
             )
 
     def test_bad_indices(self):

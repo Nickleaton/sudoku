@@ -8,7 +8,7 @@ from src.glyphs.glyph import Glyph
 from src.utils.angle import Angle
 from src.utils.pretty_print_xml import pretty_print_xml
 
-COLOURS = [
+COLOURS = (
     "Red",
     "Orange",
     'Yellow',
@@ -19,7 +19,7 @@ COLOURS = [
     'Purple',
     'Magenta',
     'Grey'
-]
+)
 
 a = Angle(0)  # Force imports for eval to work
 

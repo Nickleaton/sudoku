@@ -17,7 +17,7 @@ class TestKillerGlyph(TestGlyph):
         Initializes the cells and start_location KillerGlyph instance for testing.
         """
         super().setUp()
-        cells = [
+        cells = (
             Coord(1, 3),
             Coord(2, 3),
             Coord(3, 1),
@@ -27,8 +27,8 @@ class TestKillerGlyph(TestGlyph):
             Coord(4, 3),
             Coord(4, 4),
             Coord(5, 4)
-        ]
-        self.glyph = KillerGlyph('Style', cells)
+        )
+        self.glyph = KillerGlyph('Style', list(cells))
 
     @property
     def target(self):

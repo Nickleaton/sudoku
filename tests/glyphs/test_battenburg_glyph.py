@@ -42,7 +42,11 @@ class TestBattenburgGlyph(TestGlyph):
         Returns:
             str: The SVG markup for the target element using the Battenburg symbol.
         """
-        return '<use class="Battenburg" height="100" width="100" row="300" xlink:href="#Battenburg-symbol" column="300" />'
+        return (
+            '<use class="Battenburg" height="100" width="100" '
+            'row="300" column="300" '
+            'xlink:href="#Battenburg-symbol" />'
+        )
 
     @property
     def representation(self) -> str:

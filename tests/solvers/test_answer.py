@@ -15,7 +15,7 @@ class TestAnswer(unittest.TestCase):
         """Set up the test environment."""
         # Initialize start Board object and Answer object
         self.board: Board = Board(Coord(9, 9), Digits(1, 9), Tags())
-        data = [
+        data = (
             "123456789",
             "123456789",
             "123456789",
@@ -25,9 +25,9 @@ class TestAnswer(unittest.TestCase):
             "123456789",
             "123456789",
             "123456789"
-        ]
+        )
         self.item = Answer(self.board, data)
-        data = [
+        data = (
             "123456789",
             "123456789",
             "123456789",
@@ -37,7 +37,7 @@ class TestAnswer(unittest.TestCase):
             "123456789",
             "123456789",
             "123456781"
-        ]
+        )
         self.other = Answer(self.board, data)
 
     @property

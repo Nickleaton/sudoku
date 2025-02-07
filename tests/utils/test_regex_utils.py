@@ -5,7 +5,7 @@ from src.utils.regex_utils import RegexUtils  # Adjust import if needed
 
 class TestRegexUtils(unittest.TestCase):
     def test_strip_names(self):
-        cases = [
+        cases = (
             (r'(?P<word>\w+)-(?P<digit>\d+)', r'(\w+)-(\d+)'),
             (r'(?P<name>[A-Za-z]+) (?P<age>\d+)', r'([A-Za-z]+) (\d+)'),
             (r'(\d+)-(?P<year>\d{4})', r'(\d+)-(\d{4})'),
@@ -23,7 +23,7 @@ class TestRegexUtils(unittest.TestCase):
             (r'(?P<side>[TLBR])', r'([TLBR])'),
             (r'(?P<row>\d\d{0,1})x(?P<col>\d\d{0,1})', r'(\d\d{0,1})x(\d\d{0,1})'),
             (r'(?P<value>\d+)', r'(\d+)'),
-        ]
+        )
 
         for pattern, expected in cases:
             with self.subTest(pattern=pattern):

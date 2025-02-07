@@ -8,8 +8,8 @@ class TestKnownValidator(TestValidator):
     """Test case for the KnownValidator class."""
 
     def setUp(self):
-        super().setUp()
         """Set up the board and test line for each test."""
+        super().setUp()
         self.valid_data = [
             {'Known': [
                 '123456',  # Row 1

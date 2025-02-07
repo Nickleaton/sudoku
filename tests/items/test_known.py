@@ -18,7 +18,7 @@ class TestKnown(TestComposed):
         """Set up the test case with start_location board and start_location Known instance."""
         super().setUp()
         self.size = 20
-        lines = [
+        lines = (
             "8..4.6..3",
             "..9....2.",
             "........1",
@@ -28,8 +28,8 @@ class TestKnown(TestComposed):
             "7.2.3....",
             ".4....5..",
             "5..7.9..8"
-        ]
-        self.item = Known(self.board, lines)
+        )
+        self.item = Known(self.board, list(lines))
 
     @property
     def clazz(self):
@@ -91,10 +91,13 @@ class TestKnown(TestComposed):
     def test_flatten(self) -> None:
         """Test the flatten method of the Known instance."""
         expected = [self.item]
-        for component in self.item.components:
-            if isinstance(component, CellReference):
-                expected.append(component)
-                expected.append(component.cell)
+        expected.extend(
+            [
+                item for component in self.item.components
+                for item in (component, component.cell)
+                if isinstance(component, CellReference)
+            ]
+        )
         self.assertListEqual(expected, self.item.flatten())
 
 

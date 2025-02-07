@@ -54,7 +54,11 @@ class TestParameterValueType(unittest.TestCase):
         """Test the string representation (__repr__) of the ParameterValueType instance."""
         param = ParameterValueType(self.valid_key, self.valid_value, self.valid_type)
         repr_str = repr(param)
-        expected_repr = f"ParameterValueType(key={self.valid_key!r}, number={self.valid_value!r}, type={self.valid_type!r})"
+        expected_repr = (
+            f"ParameterValueType(key={self.valid_key!r}, "
+            f"number={self.valid_value!r}, "
+            f"type={self.valid_type!r})"
+        )
         self.assertEqual(repr_str, expected_repr)
 
 

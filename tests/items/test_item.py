@@ -47,7 +47,7 @@ class TestItem(unittest.TestCase):
                     config = yaml.safe_load(yaml_str)
                     Item.create2(self.board, config)
                     self.fail("Bad YAML did not raise an exception")
-                except Exception as e:
+                except SudokuError as exp:
                     pass
 
     def test_mathematics(self):

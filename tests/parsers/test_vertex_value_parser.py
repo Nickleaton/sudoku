@@ -14,7 +14,7 @@ class TestVertexValueParser(TestParser):
         self.parser: VertexValueParser = VertexValueParser()
         self.representation: str = 'VertexValueParser()'
         self.empty_allowed = False
-        self.valid_inputs: list[tuple[str, Dict[str, dict[str, int] | int]]] = [
+        self.valid_inputs: list[tuple[str, dict[str, dict[str, int] | int]]] = [
             # Valid input_types for the Vertex Value format
             ("12=123", {'Vertex': {'Cell': {'row': 1, 'col': 2}, 'Value': 123}}),
             ("34=0", {'Vertex': {'Cell': {'row': 3, 'col': 4}, 'Value': 0}}),

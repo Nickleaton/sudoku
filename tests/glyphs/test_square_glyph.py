@@ -28,7 +28,11 @@ class TestSquareGlyph(TestGlyph):
             str: The expected SVG markup for the SquareGlyph, including a rectangle
             element with height, width, and transform attributes.
         """
-        return '<rect class="SquareStyle" height="400.0" transform="translate(300.0, 200.0)" width="400.0" x="0" y="0" />'
+        return (
+            '<rect class="SquareStyle" height="400.0" '
+            'transform="translate(300.0, 200.0)" width="400.0" '
+            'x="0" y="0" />'
+        )
 
     @property
     def representation(self) -> str:

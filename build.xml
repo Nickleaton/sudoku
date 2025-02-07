@@ -49,9 +49,8 @@
 
 
     <target name="pylint">
-        <mkdir dir="output/pylint"/>
-        <exec executable="pylint" output="output/pylint/pylint.html" error="output/pylint/pylint.html">
-            <arg line="src tests}"/>
+        <exec executable="pylint">
+            <arg line="src tests"/>
             <arg value="--disable=C0103,W8201,R0914,R0917,R0913,R0902,R0903,R0902"/>
         </exec>
     </target>

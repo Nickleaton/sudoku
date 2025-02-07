@@ -2,7 +2,7 @@
 import unittest
 from pathlib import Path
 
-from src.utils.colours import ColourSet, ColourError
+from src.utils.colours import ColourError, ColourSet
 from src.utils.config import Config
 
 
@@ -85,7 +85,7 @@ class TestColourSet(unittest.TestCase):
 
     def test_svg_generation(self):
         """Test generating SVG grids of various sizes."""
-        sizes = [4, 6, 9, 16]
+        sizes = (4, 6, 9, 16)
         for size in sizes:
             self.config.reload()
             filename: Path = Path(f"sudoku_grid_{size}x{size}.svg")

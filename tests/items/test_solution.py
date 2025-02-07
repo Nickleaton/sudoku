@@ -21,7 +21,7 @@ class TestSolution(TestComposed):
         """Set up the test environment for Solution."""
         super().setUp()
         self.size = 81
-        lines = [
+        lines = (
             "123456789",
             "123456789",
             "123456789",
@@ -31,8 +31,8 @@ class TestSolution(TestComposed):
             "123456789",
             "123456789",
             "123456789"
-        ]
-        self.item = Solution(self.board, lines)
+        )
+        self.item = Solution(self.board, list(lines))
 
     @property
     def clazz(self):

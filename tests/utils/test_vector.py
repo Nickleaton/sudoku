@@ -72,13 +72,12 @@ class TestVector(unittest.TestCase):
     def test_merge(self):
         """Test merging of vectors with various conditions."""
 
-        test_data = [
-            # (name, vector1_start, vector1_end, vector2_start, vector2_end, is_parallel, expected_result, should_raise)
+        test_data = (
+            # (name, vector1_start, vector1_end, vector2_start, vector2_end, expected_result, should_raise)
             (
                 "Test Case 1: Same start, parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(0, 0), Coord(3, 3),
-                True,
                 Vector(Coord(2, 2), Coord(3, 3)),
                 False
             ),
@@ -86,7 +85,6 @@ class TestVector(unittest.TestCase):
                 "Test Case 2: Same start, not parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(0, 0), Coord(1, 2),
-                False,
                 None,
                 True
             ),
@@ -94,7 +92,6 @@ class TestVector(unittest.TestCase):
                 "Test Case 3: Start of self == end of other, parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(3, 3), Coord(0, 0),
-                True,
                 Vector(Coord(2, 2), Coord(3, 3)),
                 False
             ),
@@ -102,7 +99,6 @@ class TestVector(unittest.TestCase):
                 "Test Case 4: Start of self == end of other, not parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(2, 2), Coord(3, 1),
-                False,
                 None,
                 True
             ),
@@ -110,7 +106,6 @@ class TestVector(unittest.TestCase):
                 "Test Case 5: End of self == start of other, parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(2, 2), Coord(3, 3),
-                True,
                 Vector(Coord(0, 0), Coord(3, 3)),
                 False
             ),
@@ -118,7 +113,6 @@ class TestVector(unittest.TestCase):
                 "Test Case 6: End of self == start of other, not parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(2, 2), Coord(4, 1),
-                False,
                 None,
                 True
             ),
@@ -126,7 +120,6 @@ class TestVector(unittest.TestCase):
                 "Test Case 7: Same end, parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(1, 1), Coord(2, 2),
-                True,
                 Vector(Coord(0, 0), Coord(1, 1)),
                 False
             ),
@@ -134,13 +127,12 @@ class TestVector(unittest.TestCase):
                 "Test Case 8: Same end, not parallel",
                 Coord(0, 0), Coord(2, 2),
                 Coord(1, 1), Coord(2, 3),
-                False,
                 None,
                 True
             ),
-        ]
+        )
 
-        for name, start1, end1, start2, end2, is_parallel, expected, should_raise in test_data:
+        for name, start1, end1, start2, end2, expected, should_raise in test_data:
             vector1 = Vector(start1, end1)
             vector2 = Vector(start2, end2)
             with self.subTest(name=name):

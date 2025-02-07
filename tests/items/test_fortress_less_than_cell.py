@@ -1,3 +1,4 @@
+import unittest
 from typing import Type
 
 from postponed.src.items.simple_cell_reference import SimpleCellReference

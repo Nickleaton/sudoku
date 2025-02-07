@@ -44,10 +44,14 @@ class TestBoard6x6(unittest.TestCase):
 
     def test_repr(self):
         """Test the string representation of the 6x6 board."""
-        self.assertEqual(
-            "Board(Coord(6, 6), Digits(1, 6), Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'}))",
-            repr(self.board),
+        target = (
+            "Board("
+            "Coord(6, 6), "
+            "Digits(1, 6), "
+            "Tags({'Title': 'c', 'Reference': 'start', 'Video': 'finish', 'Author': 'd'})"
+            ")"
         )
+        self.assertEqual(target, repr(self.board))
 
     def test_is_valid(self):
         """Test the validity of coordinates on the 6x6 board."""
