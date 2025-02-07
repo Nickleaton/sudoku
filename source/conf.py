@@ -13,6 +13,8 @@
 import os
 import sys
 
+# pylint: disable=redefined-builtin, use-tuple-over-list
+
 sys.path.insert(0, os.path.abspath('../src'))
 
 # -- Project information -----------------------------------------------------

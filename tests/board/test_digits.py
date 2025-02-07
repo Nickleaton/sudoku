@@ -6,9 +6,12 @@ from src.board.digits import Digits
 class TestDigits(unittest.TestCase):
     """Base test class for Digits."""
 
+    minimum = None
+    maximum = None
+
     def setUp(self) -> None:
         """Set up test case with instance-specific minimum and maximum."""
-        if not hasattr(self, 'minimum') or not hasattr(self, 'maximum'):
+        if self.minimum is None or self.maximum is None:
             self.skipTest('Base test class skipped because minimum and maximum are not defined.')
 
         self.digits = Digits(self.minimum, self.maximum)
@@ -105,7 +108,6 @@ class TestDigits(unittest.TestCase):
         """Test min > max"""
         with self.assertRaises(ValueError):
             Digits(2, 1)
-
 
 
 class TestDigit0To8(TestDigits):

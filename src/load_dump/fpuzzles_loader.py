@@ -4,7 +4,9 @@ from pathlib import Path
 from typing import Any
 
 from src.board.board import Board
+from src.board.digits import Digits
 from src.load_dump.loader import Loader, LoaderError
+from src.utils.tags import Tags
 
 
 class FPuzzlesLoader(Loader):
@@ -30,9 +32,9 @@ class FPuzzlesLoader(Loader):
             LoaderError: If the board size is not supported.
         """
         if self.size == 9:
-            return Board(board_rows=9, board_columns=9)
+            return Board(Coord(9, 9), Digits(1, 9), Tags())
         if self.size == 6:
-            return Board(board_rows=6, board_columns=6)
+            return Board(Coord(6, 6), Digits(1, 6), Tags())
         raise LoaderError(f'{self.size}x{self.size} board not handled')
 
     @property

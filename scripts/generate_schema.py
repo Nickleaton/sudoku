@@ -45,12 +45,12 @@ def create_config_schema() -> Map:
     )
 
 
-def write_config_schema(file_path: str, mapping: Map, import_names: set[str]) -> None:
+def write_config_schema(file_path: str, schema: Map, import_names: set[str]) -> None:
     """Write the generated configuration schema to a Python file.
 
     Args:
         file_path (str): The path where the generated schema is saved.
-        mapping (Map): The configuration schema to be written to the file.
+        schema (Map): The configuration schema to be written to the file.
         import_names (set[str]): The set of import names included in the file.
     """
     with open(file_path, 'w', encoding='utf-8') as schema_file:
@@ -62,7 +62,7 @@ def write_config_schema(file_path: str, mapping: Map, import_names: set[str]) ->
             schema_file.write(f'from src.parsers.{Name.camel_to_snake(name)} import {name}\n')
 
         # Convert the schema to string and write it
-        map_string: str = repr(mapping).replace('"', "'")
+        map_string: str = repr(schema).replace('"', "'")
         schema_file.write(f'problem_schema = {map_string}\n')
 
 

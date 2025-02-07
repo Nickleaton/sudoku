@@ -111,7 +111,7 @@ def get_parser() -> argparse.ArgumentParser:
     Returns:
         argparse.ArgumentParser: The configured argument parser.
     """
-    commands = ['schema', 'solve', 'validate', 'problem', 'lp', 'rules']
+    commands = ('schema', 'solve', 'validate', 'problem', 'lp', 'rules')
 
     argument_parser = argparse.ArgumentParser(description='Process some commands.')
 

@@ -1,5 +1,6 @@
 """TestCircleGlyph."""
 import unittest
+from abc import ABC
 from typing import Type
 
 import pytest
@@ -10,8 +11,6 @@ from src.utils.config import Config
 from tests.glyphs.test_glyph import TestGlyph
 
 config = Config()
-
-from abc import ABC
 
 
 @pytest.mark.abstract
