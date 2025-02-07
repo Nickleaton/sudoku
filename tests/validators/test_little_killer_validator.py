@@ -1,3 +1,5 @@
+import unittest
+
 from src.validators.little_killer_validator import LittleKillerValidator  # Assuming the validator is in this module
 from tests.validators.test_validator import TestValidator
 
@@ -110,3 +112,7 @@ class TestLittleKillerValidator(TestValidator):
         ]
         self.representation = 'LittleKillerValidator()'
         self.validator = LittleKillerValidator()
+
+
+if __name__ == '__main__':
+    unittest.main()

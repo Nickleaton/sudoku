@@ -1,3 +1,5 @@
+import unittest
+
 from src.validators.cyclic_validator import CyclicValidator
 from tests.validators.test_validator import TestValidator
 

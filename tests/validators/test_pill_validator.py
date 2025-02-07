@@ -1,3 +1,5 @@
+import unittest
+
 from src.validators.pill_validator import PillValidator
 from tests.validators.test_validator import TestValidator
 

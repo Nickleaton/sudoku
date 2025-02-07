@@ -1,3 +1,5 @@
+import unittest
+
 from src.validators.quadruple_validator import QuadrupleValidator
 from tests.validators.test_validator import TestValidator
 
