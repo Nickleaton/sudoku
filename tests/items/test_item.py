@@ -13,8 +13,10 @@ from src.utils.sudoku_exception import SudokuError
 from src.utils.tags import Tags
 
 
-class TestItem(unittest.TestCase):  # pylint: disable=too-many-public-methods
+class TestItem(unittest.TestCase):
     """Test suite for the Item class."""
+
+    # pylint: disable=too-many-public-methods
 
     def setUp(self) -> None:
         """Set up the test case with start_location board and an Item instance."""
