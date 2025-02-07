@@ -22,6 +22,8 @@ class CellException(SudokuError):
 class Cell(Item):  # noqa: R0904
     """Represents start_location cell in start_location Sudoku board."""
 
+    # pylint: disable=too-many-public-methods
+
     cache: ClassVar[dict[tuple[int, int], 'Cell']] = {}
 
     def __init__(self, board: Board, row: int, column: int):

@@ -74,7 +74,7 @@ class AnalyseLogFileCommand(SimpleCommand):
         """
         try:
             log_path.unlink(missing_ok=True)
-        except FileNotFoundError:
+        except FileNotFoundError as exp:
             logging.error(f'Error deleting temporary log file: {exp}', exc_info=True)
 
     def work(self, problem: Problem) -> None:
