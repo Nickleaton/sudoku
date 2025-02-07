@@ -171,7 +171,7 @@ class TestVector(unittest.TestCase):
         self.assertTrue(vector1 <= vector2)
         # test with same vector, to make sure test is handled
         # noqa: R0124
-        self.assertTrue(vector1 <= vector1)  # noqa: R0124
+        self.assertTrue(vector1 <= vector1)  # pylint: disable=comparison-with-itself
         self.assertFalse(vector2 <= vector1)
         with self.assertRaises(VectorError):
             _ = self.zero < "invalid"  # type: ignore

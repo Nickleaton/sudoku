@@ -16,10 +16,10 @@ class TestProblem(unittest.TestCase):
         # Create a valid problem file in a temporary directory
         self.temp_dir = TemporaryDirectory()  # noqa: R1732
         self.valid_problem_file = Path(self.temp_dir.name) / 'valid_problem_file.txt'
-        self.valid_problem_file.touch()  # Create the file
+        self.valid_problem_file.touch()
 
         self.output_directory = Path(self.temp_dir.name) / 'output'
-        self.output_directory.mkdir()  # Create output directory
+        self.output_directory.mkdir()
 
     def tearDown(self) -> None:
         """Clean up temporary files and directories."""

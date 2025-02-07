@@ -13,7 +13,7 @@ from src.utils.sudoku_exception import SudokuError
 from src.utils.tags import Tags
 
 
-class TestItem(unittest.TestCase):  # noqa: R0904
+class TestItem(unittest.TestCase):  # pylint: disable=too-many-public-methods
     """Test suite for the Item class."""
 
     def setUp(self) -> None:
@@ -52,9 +52,6 @@ class TestItem(unittest.TestCase):  # noqa: R0904
                 except SudokuError as _:
                     # Ensure that the exception is expected; you can add more checks if necessary
                     pass
-                except Exception as exp:
-                    # Catch any unexpected exceptions and fail the test
-                    self.fail(f"Unexpected exception raised: {exp}")
 
     def test_mathematics(self):
         """Test that mathematics returns a string"""
