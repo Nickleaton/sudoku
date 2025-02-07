@@ -169,7 +169,8 @@ class TestVector(unittest.TestCase):
         self.assertTrue(vector1 < vector2)
         self.assertFalse(vector2 < vector1)
         self.assertTrue(vector1 <= vector2)
-        self.assertTrue(vector1 <= vector1)
+        # test with same vector, to make sure test is handled
+        self.assertTrue(vector1 <= vector1)  # noqa: R0124
         self.assertFalse(vector2 <= vector1)
         with self.assertRaises(VectorError):
             _ = self.zero < "invalid"  # type: ignore

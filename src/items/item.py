@@ -26,6 +26,7 @@ class Item:  # noqa: WPS110
     Items generate the constraints, manage bookkeeping, and generate SVG for viewing problems and solutions.
     They are created via the create method.
     """
+    # pylint: disable=too-many-public-methods
 
     # Class Variables
     classes: ClassVar[dict[str, Type['Item']]] = {}
@@ -327,13 +328,13 @@ class Item:  # noqa: WPS110
         """
         docs: dict[str, str] = {}
         for constraint_class in Item.classes.values():
-            conditions = [
+            conditions = (
                 constraint_class.__name__ in docs,  # Ensure unique names
                 not hasattr(constraint_class, 'mathematics'),  # Ensure method exists
                 not callable(constraint_class.mathematics),  # Ensure it's callable
                 constraint_class.mathematics() is None,  # Ensure it returns something
                 constraint_class == Item,  # Skip base class
-            ]
+            )
             if any(conditions):
                 continue
             docs[constraint_class.__name__] = constraint_class.mathematics()

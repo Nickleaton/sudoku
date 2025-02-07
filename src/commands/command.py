@@ -80,7 +80,7 @@ class Command:
         Args:
             problem (Problem): The problem instance to operate on.
         """
-        logging.info(f'Running {self.name}')
+        logging.info(f'Running {self.name} {problem.problem_file_name}')
 
     def execute(self, problem: Problem) -> None:
         """Execute the command, performing validation and the main action.

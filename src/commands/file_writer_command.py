@@ -15,9 +15,6 @@ from src.commands.svg_problem_command import SVGProblemCommand
 from src.commands.svg_solution_command import SVGSolutionCommand
 
 
-# flake8: noqa WPS202
-# TODO Remove above
-
 class FileWriterCommand(SimpleCommand):
     """Write output into start_location file_path."""
 

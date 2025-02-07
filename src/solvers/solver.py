@@ -4,13 +4,13 @@ from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
 
-from pulp import LpMinimize, LpProblem, LpSolver, LpStatus, getSolver
+from pulp import getSolver, LpMinimize, LpProblem, LpSolver, LpStatus
 
 from src.board.board import Board
 from src.solvers.answer import Answer
 from src.solvers.solver_status import SolverStatus
-from src.solvers.variables import VariableSet  # noqa: I001
 from src.solvers.variables import Variables  # noqa: I001
+from src.solvers.variables import VariableSet  # noqa: I001
 from src.utils.config import Config
 
 config = Config()
@@ -77,6 +77,5 @@ class Solver:
             self.status = SolverStatus(LpStatus.INFEASIBLE)  # or another status
             self.log = f'Error occurred: {exp!s}'
             return  # Exit early if there's an error
-        else:
-            self.status = SolverStatus(LpStatus[self.model.status])
-            self.log = log_output.getvalue()
+        self.status = SolverStatus(LpStatus[self.model.status])
+        self.log = log_output.getvalue()

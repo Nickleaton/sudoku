@@ -6,6 +6,7 @@ from typing import Any
 from src.board.board import Board
 from src.board.digits import Digits
 from src.load_dump.loader import Loader, LoaderError
+from src.utils.coord import Coord
 from src.utils.tags import Tags
 
 

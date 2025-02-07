@@ -259,7 +259,7 @@ class Cell(Item):
         """
         return lpSum(
             [
-                solver.variables.choices[digit][self.row][self.column]
+                solver.variables.choices[digit][self.row][self.column]  # type: ignore
                 for digit in self.board.digits.digit_range
                 if digit % 2 == 0
             ],
@@ -287,8 +287,7 @@ class Cell(Item):
             '$$'
         )
 
-    @classmethod
-    def sample_yaml(cls) -> str:
+    def sample_yaml(self) -> str:
         """Return some sample YAML for this constraint.
 
         Returns:

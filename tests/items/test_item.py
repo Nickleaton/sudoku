@@ -9,6 +9,7 @@ from src.board.digits import Digits
 from src.items.item import Item
 from src.solvers.solver import Solver
 from src.utils.coord import Coord
+from src.utils.sudoku_exception import SudokuError
 from src.utils.tags import Tags
 
 
@@ -60,7 +61,7 @@ class TestItem(unittest.TestCase):
         """Test that a sample YAML string is valid."""
         if isinstance(self.item, Item):
             return
-        self.assertIsNotNone(self.item.sample_yaml)
+        self.assertIsNotNone(self.item.sample_yaml())
 
     def test_variable_sets(self):
         """Test that variable sets returns a set"""

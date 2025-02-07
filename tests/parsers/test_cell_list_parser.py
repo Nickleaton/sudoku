@@ -1,26 +1,26 @@
-"""TestCelllistParser."""
+"""TestCellListParser."""
 import unittest
 from typing import Any
 
-from src.parsers.cell_list_parser import CelllistParser
+from src.parsers.cell_list_parser import CellListParser
 from tests.parsers.test_parser import TestParser
 
 
-class TestCelllistParser(TestParser):
-    """Test case for the CelllistParser class."""
+class TestCellListParserParser(TestParser):
+    """Test case for the CellListParser class."""
 
     def setUp(self):
-        """Set up the CelllistParser instance for testing."""
+        """Set up the CellListParser instance for testing."""
         super().setUp()
-        self.parser: CelllistParser = CelllistParser()
-        self.representation: str = 'CelllistParser()'
+        self.parser: CelllistParser = CellListParser()
+        self.representation: str = 'CellListParser()'
         self.empty_allowed: bool = False
         self.valid_inputs: list[tuple[str, Any]] = \
             [
                 (
                     "12",
                     {
-                        'Celllist': [
+                        'CellList': [
                             {'Cell': {'row': 1, 'col': 2}}
                         ]
                     }
@@ -28,7 +28,7 @@ class TestCelllistParser(TestParser):
                 (
                     "12,34,56",
                     {
-                        'Celllist': [
+                        'CellList': [
                             {'Cell': {'row': 1, 'col': 2}},
                             {'Cell': {'row': 3, 'col': 4}},
                             {'Cell': {'row': 5, 'col': 6}}
@@ -38,7 +38,7 @@ class TestCelllistParser(TestParser):
                 (
                     "01,02,03",
                     {
-                        'Celllist': [
+                        'CellList': [
                             {'Cell': {'row': 0, 'col': 1}},
                             {'Cell': {'row': 0, 'col': 2}},
                             {'Cell': {'row': 0, 'col': 3}}
