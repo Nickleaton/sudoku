@@ -1,7 +1,7 @@
 """Base class for tokens representing regex patterns."""
 import re
 import sys
-from typing import Any, type
+from typing import Any
 from typing import ClassVar
 
 from sortedcontainers import SortedDict
