@@ -2,6 +2,7 @@
 import argparse
 import logging
 import logging.config
+import shlex
 import shutil
 import subprocess
 from pathlib import Path
@@ -76,12 +77,19 @@ def format_python_file(file_path: Path) -> None:
     """
     if not file_path.is_file():
         raise ValueError(f'The file does not exist: {file_path}')
+
+    # Check for the presence of the 'black' executable
     black_path: str | None = shutil.which('black')
     if black_path is None:
         raise FileNotFoundError('The "black" executable was not found in the PATH.')
+
+    # Escape the file path to prevent injection issues
+    safe_file_path = shlex.quote(str(file_path.resolve()))
+
     try:
+        # Run the Black command safely
         black_output: subprocess.CompletedProcess = subprocess.run(
-            [black_path, str(file_path.resolve())],
+            [black_path, safe_file_path],
             capture_output=True,
             text=True,
             check=True,
