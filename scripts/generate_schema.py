@@ -3,6 +3,7 @@ import argparse
 import logging
 import logging.config
 from pathlib import Path
+from typing import Type
 
 import black
 from strictyaml import Map, Optional, Seq, Validator
@@ -31,7 +32,7 @@ def create_config_schema() -> Map:
         Map: A strictyaml Map object representing the schema.
     """
     class_name: str
-    constraint: Item
+    constraint: Type[Item]
     constraints: dict[Optional, Validator | Optional] = {}
     for class_name, constraint in Item.classes.items():
         if class_name == 'Solution':
@@ -123,7 +124,7 @@ def get_import_names() -> set[str]:
     import_names.add(SizeParser.__name__)
     import_names.add(BoardDigitsParser.__name__)
     class_name: str
-    constraint: Item
+    constraint: Type[Item]
     for class_name, constraint in Item.classes.items():
         if class_name == 'Solution':
             continue
