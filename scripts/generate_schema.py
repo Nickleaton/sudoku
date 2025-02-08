@@ -2,11 +2,9 @@
 import argparse
 import logging
 import logging.config
-import shlex
-import shutil
-import subprocess
 from pathlib import Path
 
+import black
 from strictyaml import Map, Optional, Seq, Validator
 
 from src.board.board import Board
@@ -21,7 +19,9 @@ from src.utils.names import Name
 
 config: Config = Config()
 logging.config.dictConfig(config.logging)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('generate_schema')
+logging.getLogger('blib2to3').setLevel(logging.WARNING)
 
 
 def create_config_schema() -> Map:
@@ -77,27 +77,17 @@ def format_python_file(file_path: Path) -> None:
     """
     if not file_path.is_file():
         raise ValueError(f'The file does not exist: {file_path}')
-
-    # Check for the presence of the 'black' executable
-    black_path: str | None = shutil.which('black')
-    if black_path is None:
-        raise FileNotFoundError('The "black" executable was not found in the PATH.')
-
-    # Escape the file path to prevent injection issues
-    safe_file_path = shlex.quote(str(file_path.resolve()))
-
     try:
-        # Run the Black command safely
-        black_output: subprocess.CompletedProcess = subprocess.run(
-            [black_path, safe_file_path],
-            capture_output=True,
-            text=True,
-            check=True,
-            encoding='utf-8',
+        # Format the file using the black module
+        black.format_file_in_place(
+            file_path.resolve(),
+            fast=False,
+            mode=black.FileMode(),
+            write_back=black.WriteBack.YES,
         )
-        logging.info(black_output.stdout)
-    except subprocess.CalledProcessError as exp:
-        logging.error(f'Error formatting the file: {exp.stderr}')
+        logging.info(f'File {file_path} formatted successfully.')
+    except Exception as exp:
+        logging.error(f'Error formatting the file: {exp}')
 
 
 def replace_quotes_in_file(file_path: Path) -> None:
