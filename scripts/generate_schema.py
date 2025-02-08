@@ -24,7 +24,7 @@ logger = logging.getLogger('generate_schema')
 
 
 def create_config_schema() -> Map:
-    """Creates a configuration schema for the problem.
+    """Create a configuration schema for the problem.
 
     Returns:
         Map: A strictyaml Map object representing the schema.
@@ -47,7 +47,7 @@ def create_config_schema() -> Map:
 
 
 def write_config_schema(file_path: Path, schema: Map, import_names: set[str]) -> None:
-    """Writes the generated configuration schema to a file.
+    """Write the generated configuration schema to a file.
 
     Args:
         file_path (Path): The path to the output file.
@@ -65,7 +65,7 @@ def write_config_schema(file_path: Path, schema: Map, import_names: set[str]) ->
 
 
 def format_python_file(file_path: Path) -> None:
-    """Formats a Python file using Black.
+    """Format a Python file using Black.
 
     Args:
         file_path (Path): The path to the Python file to be formatted.
@@ -93,7 +93,7 @@ def format_python_file(file_path: Path) -> None:
 
 
 def replace_quotes_in_file(file_path: Path) -> None:
-    """Replaces double quotes with single quotes in a Python file.
+    """Replace double quotes with single quotes in a Python file.
 
     Args:
         file_path (Path): The path to the Python file.
@@ -105,7 +105,7 @@ def replace_quotes_in_file(file_path: Path) -> None:
 
 
 def create_arg_parser() -> argparse.ArgumentParser:
-    """Creates an argument parser for the script.
+    """Create an argument parser for the script.
 
     Returns:
         argparse.ArgumentParser: The argument parser object.
@@ -116,7 +116,7 @@ def create_arg_parser() -> argparse.ArgumentParser:
 
 
 def get_import_names() -> set[str]:
-    """Retrieves the set of parser import names required for the schema.
+    """Retrieve the set of parser import names required for the schema.
 
     Returns:
         set[str]: A set of parser class names.
