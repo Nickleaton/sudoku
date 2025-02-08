@@ -2,14 +2,14 @@
 from collections.abc import Iterable
 from enum import IntEnum
 
-from pulp import LpInteger  # noqa: I001
-from pulp import LpVariable  # noqa: I001
+from pulp import LpInteger
+from pulp import LpVariable
 
 from src.board.board import Board
-from src.board.cell_types import EntropicType  # noqa: I001
-from src.board.cell_types import ModuloType  # noqa: I001
-from src.board.cell_types import ParityType  # noqa: I001
-from src.board.cell_types import PrimeType  # noqa: I001
+from src.board.cell_types import EntropicType
+from src.board.cell_types import ModuloType
+from src.board.cell_types import ParityType
+from src.board.cell_types import PrimeType
 from src.utils.variable_type import VariableType
 
 

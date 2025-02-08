@@ -2,7 +2,7 @@
 
 import oyaml as yaml
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.create_config_command import CreateConfigCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -27,9 +27,9 @@ class ConfigYamlToStringCommand(SimpleCommand):
             problem (Problem): The problem instance containing the configuration line.
 
         Raises:
-            CommandException: If the configuration line is not available.
+            CommandError: If the configuration line is not available.
         """
         super().work(problem)
         if problem.config is None:
-            raise CommandException(f'Constraints must be set before {self.name}.')
+            raise CommandError(f'Constraints must be set before {self.name}.')
         problem.yaml_output_string = yaml.dump(problem.config, default_style=None)

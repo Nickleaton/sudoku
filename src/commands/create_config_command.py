@@ -3,7 +3,7 @@
 import oyaml as yaml
 from pydotted import pydot
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.load_config_file_command import LoadConfigFileCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -25,10 +25,10 @@ class CreateConfigCommand(SimpleCommand):
             problem (Problem): The problem to load the config into.
 
         Raises:
-            CommandException: If an error occurs while loading the config.
+            CommandError: If an error occurs while loading the config.
         """
         super().work(problem)
         try:
             problem.config = pydot(yaml.safe_load(problem.raw_config))
         except Exception as exc:
-            raise CommandException(f'Failed to create config: {exc}') from exc
+            raise CommandError(f'Failed to create config: {exc}') from exc

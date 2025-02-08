@@ -43,16 +43,16 @@ class OddCellGlyph(Glyph):
         symbol.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
-                r=int(config.graphics.cell_size * config.graphics.parity_cell.odd.size / 2.0),  # noqa: WPS432
+                r=int(config.graphics.cell_size * config.graphics.parity_cell.odd.size / 2.0),
             ),
         )
         return symbol
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the odd cell glyph on the board using the pre-defined symbol.
 
         Returns:
-            BaseElement | None: An SVG Use element that references the OddCell symbol at the specified position.
+            BaseElement: An SVG Use element that references the OddCell symbol at the specified position.
         """
         return Use(
             href='#OddCell-symbol',

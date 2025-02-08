@@ -1,7 +1,7 @@
 """CreateBoardCommand."""
 
 from src.board.board import Board
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.create_config_command import CreateConfigCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -26,9 +26,9 @@ class CreateBoardCommand(SimpleCommand):
             problem (Problem): Problem instance to create the board in.
 
         Raises:
-            CommandException: If the config is not created before creating the board.
+            CommandError: If the config is not created before creating the board.
         """
         super().work(problem)
         if problem.config is None:
-            raise CommandException(f'Config must be set before {self.name}.')
+            raise CommandError(f'Config must be set before {self.name}.')
         problem.board = Board.create('Board', problem.config)

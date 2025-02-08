@@ -1,11 +1,11 @@
 """Constraint Utilities."""
-from math import ceil  # noqa: I001
-from math import log10  # noqa: I001
+from math import ceil
+from math import log10
 from typing import ClassVar
 
-from pulp import LpContinuous  # noqa: I001
-from pulp import lpSum  # noqa: I001
-from pulp import LpVariable  # noqa: I001
+from pulp import LpContinuous
+from pulp import lpSum
+from pulp import LpVariable
 
 from src.items.cell import Cell
 from src.solvers.solver import Solver

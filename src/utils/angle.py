@@ -6,7 +6,7 @@ HALF_CIRCLE_DEGREES = 180.0
 TOLERANCE = 1e-6  # Tolerance for comparing angles
 
 
-class Angle:  # noqa: WPS214
+class Angle:
     """Represents an angle with properties to manage angle_degree and angle_radian."""
 
     def __init__(self, angle: float) -> None:

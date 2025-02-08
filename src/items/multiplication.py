@@ -2,8 +2,8 @@
 from itertools import product
 from math import log10
 
-from pulp import lpSum  # noqa: I001
-from pulp import LpVariable  # noqa: I001
+from pulp import lpSum
+from pulp import LpVariable
 
 from src.board.board import Board
 from src.items.cell import Cell

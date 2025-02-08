@@ -29,16 +29,16 @@ class PolyLineGlyph(Glyph):
         self.start = start
         self.end = end
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the polyline with optional start_location and end_location markers.
 
         Returns:
-            BaseElement | None: A Polyline element representing the polyline with its markers.
+            BaseElement: A Polyline element representing the polyline with its markers.
         """
         markers: dict = {
             'class_': self.class_name,
         }
-        offset: Point = Point(1, 1) * config.graphics.cell_size / 2.0  # noqa: WPS432
+        offset: Point = Point(1, 1) * config.graphics.cell_size / 2.0
         if self.start:
             markers['marker_start'] = f'url(#{self.class_name}-start_location)'
         if self.end:

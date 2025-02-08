@@ -25,7 +25,7 @@ class BoardType(Enum):
     b4x4 = '4x4'
     b6x6 = '6x6'
     b8x8 = '8x8'
-    bFxF = 'FxF'  # noqa: WPS115, N815
+    bFxF = 'FxF'  # noqa: N815
 
 
 class BoxType(Enum):
@@ -271,7 +271,7 @@ class Board:
         Returns:
             Board: A new `Board` instance created based on the provided YAML line.
         """
-        return Board(Coord(9, 9), Digits(1, 9), Tags())
+        return Board(Coord(9, 9), Digits(1, 9), Tags({'len': len(yaml_data)}))
 
     def to_dict(self) -> dict:
         """Convert the Board attributes to a dictionary format for YAML serialization.

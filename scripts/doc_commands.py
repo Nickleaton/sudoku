@@ -3,14 +3,14 @@ import logging
 import sys
 from pathlib import Path
 
-from graphviz import Source  # noqa: I005
+from graphviz import Source
 from jinja2 import Template
 
-from doc_commands_parser import create_arg_parser  # noqa: I001
-from doc_commands_parser import validate_commands  # noqa: I001
-from doc_commands_parser import validate_output_directory  # noqa: I001
-from src.commands.command import Command  # noqa: I001
-from src.utils.load_modules import load_modules  # noqa: I005
+from doc_commands_parser import create_arg_parser
+from doc_commands_parser import validate_commands
+from doc_commands_parser import validate_output_directory
+from src.commands.command import Command
+from src.utils.load_modules import load_modules
 
 
 class DirectoryValidationError(Exception):
@@ -43,7 +43,7 @@ def setup_logging() -> None:
     """
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',  # noqa: WPS323
+        format='%(asctime)s - %(levelname)s - %(message)s',
     )
 
 

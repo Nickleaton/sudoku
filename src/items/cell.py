@@ -15,11 +15,11 @@ from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class CellException(SudokuError):
+class CellError(SudokuError):
     """Exception for Cell-specific errors."""
 
 
-class Cell(Item):  # noqa: R0904
+class Cell(Item):
     """Represents start_location cell in start_location Sudoku board."""
 
     # pylint: disable=too-many-public-methods
@@ -222,7 +222,7 @@ class Cell(Item):  # noqa: R0904
             bool: True if this cell is less than the other cell.
 
         Raises:
-            CellException: If the other object is not a Cell.
+            CellError: If the other object is not a Cell.
         """
         if isinstance(other, Cell):
             if self.row < other.row:
@@ -230,7 +230,7 @@ class Cell(Item):  # noqa: R0904
             if self.row == other.row:
                 return self.column < other.column
             return False
-        raise CellException(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
+        raise CellError(f'Cannot compare {object.__class__.__name__} with {self.__class__.__name__}')
 
     @property
     def coord(self) -> Coord:

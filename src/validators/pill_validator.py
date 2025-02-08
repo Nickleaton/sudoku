@@ -1,9 +1,9 @@
 """PillValidator."""
 
 from src.board.board import Board
-from src.validators.cell_validator import ROW, COL  # noqa: I001
-from src.validators.line_validator import LineValidator  # noqa: I005
-from src.validators.validator import Validator  # noqa: I001
+from src.validators.cell_validator import COL, ROW
+from src.validators.line_validator import LineValidator
+from src.validators.validator import Validator
 
 
 class PillValidator(Validator):

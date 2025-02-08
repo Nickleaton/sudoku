@@ -5,7 +5,7 @@ from tempfile import NamedTemporaryFile
 
 import orloge
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.key_type import KeyType
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -57,13 +57,13 @@ class AnalyseLogFileCommand(SimpleCommand):
             application_name (str): The application name from the log line.
 
         Raises:
-            CommandException: If an error occurs while analyzing the log file.
+            CommandError: If an error occurs while analyzing the log file.
         """
         try:
             problem[self.target] = orloge.get_info_solver(log_path.name, application_name)
         except SudokuError as exp:
             logging.error(f'Error analyzing the log file: {exp}', exc_info=True)
-            raise CommandException(f'Failed to analyze the log file: {exp}') from exp
+            raise CommandError(f'Failed to analyze the log file: {exp}') from exp
 
     @staticmethod
     def cleanup_temp_log_file(log_path: Path) -> None:

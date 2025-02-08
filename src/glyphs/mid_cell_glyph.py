@@ -27,11 +27,11 @@ class MidCellGlyph(Glyph):
         self.percentage: float = config.graphics.mid_cell.percentage * config.graphics.cell_size
         self.size: Point = Point(self.percentage, self.percentage)
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Create an SVG rectangle element representing the mid-cell glyph.
 
         Returns:
-            BaseElement | None: The SVG rectangle element or None.
+            BaseElement: The SVG rectangle element or None.
         """
         return Rect(transform=self.position.transform, size=self.size.coordinates, class_=self.class_name)
 

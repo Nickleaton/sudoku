@@ -1,6 +1,6 @@
 """Base for different solvers."""
-from src.commands.create_linear_program_command import CreateLinearProgramCommand  # noqa: 1001
-from src.commands.problem import Problem  # noqa: 1001
+from src.commands.create_linear_program_command import CreateLinearProgramCommand
+from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.solvers.solver_status import SolverStatus
 
@@ -21,6 +21,9 @@ class SolveCommand(SimpleCommand):
             problem (Problem): The problem to solve.
         """
         super().work(problem)
-        if problem.solver is not None:
-            problem.solver.solve()
-        problem.status = SolverStatus.create(problem.solver.status.value)
+        solver = problem.solver  # Assign to a local variable
+        if solver is not None:
+            solver.solve()
+            problem.status = SolverStatus.create(solver.status.value)
+        else:
+            problem.status = SolverStatus.undefined

@@ -6,7 +6,7 @@ from src.commands.problem import Problem
 from src.utils.sudoku_exception import SudokuError
 
 
-class CommandException(SudokuError):
+class CommandError(SudokuError):
     """Represents an error occurring within a command.
 
     Attributes:
@@ -14,7 +14,7 @@ class CommandException(SudokuError):
     """
 
     def __init__(self, attribute: str) -> None:
-        """Initialize a CommandException.
+        """Initialize a CommandError.
 
         Args:
             attribute (str): The attribute of the problem that caused the error.
@@ -63,14 +63,14 @@ class Command:
             problem (Problem): The problem instance to check the preconditions on.
 
         Raises:
-            CommandException: If any precondition is not met.
+            CommandError: If any precondition is not met.
         """
         for precondition_class in self.preconditions:
             precondition: Command = precondition_class()
             if precondition.target is None:
                 continue
             if precondition.target not in problem.__dict__:
-                raise CommandException(f'{precondition.target} not found in problem for {self.name}')
+                raise CommandError(f'{precondition.target} not found in problem for {self.name}')
 
     def work(self, problem: Problem) -> None:
         """Perform the work of the command.
@@ -92,13 +92,13 @@ class Command:
             problem (Problem): The problem instance to execute the command on.
 
         Raises:
-            CommandException: If any validation step or the execution itself fails.
+            CommandError: If any validation step or the execution itself fails.
         """
         for precondition in self.preconditions:
             precondition().execute(problem)
         try:
             self.check_preconditions(problem)
-        except CommandException as preconditions_exp:
+        except CommandError as preconditions_exp:
             logging.error(f'Error in {self.__class__.__name__} - {preconditions_exp}', exc_info=True)
             raise
         try:
@@ -109,7 +109,7 @@ class Command:
                 f'{type(work_exp).__name__} - {work_exp}',
                 exc_info=True,
             )
-            raise CommandException(f'Error in {self.__class__.__name__}.work') from work_exp
+            raise CommandError(f'Error in {self.__class__.__name__}.work') from work_exp
 
     @property
     def name(self) -> str:

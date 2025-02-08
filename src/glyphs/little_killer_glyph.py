@@ -32,11 +32,11 @@ class LittleKillerGlyph(Glyph):
         self.angle: Angle = angle
         self.input_value: int = input_value
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Create an SVG representation of the Little Killer glyph.
 
         Returns:
-            BaseElement | None: A group containing the arrow and number elements,
+            BaseElement: A group containing the arrow and number elements,
             or None if the glyph cannot be drawn.
         """
         group: Group = Group()

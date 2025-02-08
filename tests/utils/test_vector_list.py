@@ -105,12 +105,6 @@ class TestVectorList(unittest.TestCase):
         with self.assertRaises(VectorListError):
             _ = self.vectors1 == "bad"
 
-    def test_find(self):
-        """Test finding start coordinate in VectorList."""
-        self.assertTrue(self.vectors1.find(Coord(1, 2)))
-        self.assertTrue(self.vectors1.find(Coord(4, 4)))
-        self.assertFalse(self.vectors1.find(Coord(5, 5)))
-
     def test_contains(self):
         """Verify VectorList contains expected vectors."""
         self.assertTrue(Vector(Coord(1, 2), Coord(2, 3)) in self.vectors1)

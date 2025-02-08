@@ -1,7 +1,7 @@
 """Base class for all image producing classes."""
 from enum import Enum
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -69,7 +69,7 @@ class ImageCommand(SimpleCommand):
             problem (Problem): The problem to write the image of.
 
         Raises:
-            CommandException: If the image cannot be written for any reason.
+            CommandError: If the image cannot be written for any reason.
         """
         super().work(problem)
         try:
@@ -77,6 +77,6 @@ class ImageCommand(SimpleCommand):
                 # Handle SVG which is just pretty print out as XML
                 problem[self.target] = str(problem[self.source].toprettyxml(indent='  '))
             else:
-                raise CommandException(f'Unsupported image format: {self.image_format}')
+                raise CommandError(f'Unsupported image format: {self.image_format}')
         except OSError as exc:
-            raise CommandException(f'Failed to write to {self.target}: {exc}') from exc
+            raise CommandError(f'Failed to write to {self.target}: {exc}') from exc

@@ -4,7 +4,7 @@ import sys
 
 from solve_parser import get_parser, validate_args
 from solve_process import process
-from src.utils.config import Config  # noqa: I003
+from src.utils.config import Config
 from src.utils.load_modules import load_modules
 
 config: Config = Config()

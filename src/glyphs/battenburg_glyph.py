@@ -64,7 +64,7 @@ class BattenburgGlyph(Glyph):
 
         return symbol
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the Battenburg pattern on an SVG canvas.
 
         This method creates an SVG `Use` element that references the Battenburg symbol

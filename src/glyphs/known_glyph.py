@@ -19,7 +19,7 @@ class KnownGlyph(SimpleTextGlyph):
             number (int): The number to be displayed by the glyph.
         """
         super().__init__(class_name, 0, location, str(number))
-        size: float = config.graphics.cell_size / 2.0  # noqa: WPS432
+        size: float = config.graphics.cell_size / 2.0
         self.position += Point(1, 1) * size
         self.number: int = number
 

@@ -1,6 +1,6 @@
 """CreateRulesCommand."""
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.create_constraints_command import CreateConstraintsCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -27,11 +27,11 @@ class CreateRulesCommand(SimpleCommand):
             problem (Problem): The problem instance where the rules will be created.
 
         Raises:
-            CommandException: If the board is not created.
+            CommandError: If the board is not created.
         """
         super().work(problem)
         if problem.constraints is None:
-            raise CommandException(f'Constrains must be created before {self.name}.')
+            raise CommandError(f'Constrains must be created before {self.name}.')
 
         problem.rules = [
             Rule(name=rule.name, text=rule.text, rank=rule.rank)

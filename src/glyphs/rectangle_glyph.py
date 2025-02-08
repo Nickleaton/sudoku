@@ -41,11 +41,11 @@ class RectangleGlyph(Glyph):
         self.ratio: float = ratio
         self.vertical: bool = vertical
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the rectangle based on the given location, size, and orientation.
 
         Returns:
-            BaseElement | None: An SVG `Rect` element representing the rectangle.
+            BaseElement: An SVG `Rect` element representing the rectangle.
         """
         cell_size = config.graphics.cell_size
 

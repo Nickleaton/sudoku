@@ -1,11 +1,11 @@
 """Formulations for LP functions."""
 
-from pulp import LpContinuous  # noqa: I001
-from pulp import LpElement  # noqa: I001
-from pulp import LpInteger  # noqa: I001
-from pulp import LpProblem  # noqa: I001
-from pulp import lpSum  # noqa: I001
-from pulp import LpVariable  # noqa: I001
+from pulp import LpContinuous
+from pulp import LpElement
+from pulp import LpInteger
+from pulp import LpProblem
+from pulp import lpSum
+from pulp import LpVariable
 
 
 class Formulations:
@@ -92,7 +92,7 @@ class Formulations:
         """
         logical_and = LpVariable(f'l_and_{Formulations.count}', 0, 1, LpInteger)
         count = len(binaries)
-        for binary_variable in binaries:  # noqa: WPS519
+        for binary_variable in binaries:
             model += logical_and <= binary_variable, f'Logical_And_{logical_and.name}_{binary_variable.name}_a'
         model += logical_and >= lpSum(binaries) - (count - 1), f'Logical_And_{logical_and.name}_b'
         return logical_and
@@ -109,7 +109,7 @@ class Formulations:
             LpVariable: A binary value_variable that is 1 if at least one value_variable in binaries is 1, else 0.
         """
         logical_or = LpVariable(f'l_or_{Formulations.count}', 0, 1, LpInteger)
-        for binary_variable in binaries:  # noqa: WPS519
+        for binary_variable in binaries:
             model += logical_or >= binary_variable, f'Logical_or_{logical_or.name}_{binary_variable.name}_a'
         model += logical_or <= 1, f'Logical_or_{logical_or.name}_b'
         return logical_or

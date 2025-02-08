@@ -1,5 +1,5 @@
 """CreateConstraintsCommand."""
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.create_board_command import CreateBoardCommand
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
@@ -22,14 +22,14 @@ class CreateConstraintsCommand(SimpleCommand):
             problem (Problem): The problem instance where constraints will be created and added.
 
         Raises:
-            CommandException: If the board is not created.
-            CommandException: If the config is not set.
+            CommandError: If the board is not created.
+            CommandError: If the config is not set.
         """
         super().work(problem)
         if problem.board is None:
-            raise CommandException('Board must be created.')
+            raise CommandError('Board must be created.')
         if problem.config is None:
-            raise CommandException('Config must be set.')
+            raise CommandError('Config must be set.')
         problem.constraints = Constraints.create(
             problem.board,
             {'Constraints': problem.config['Constraints']},

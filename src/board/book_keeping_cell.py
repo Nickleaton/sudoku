@@ -2,7 +2,7 @@
 from src.utils.sudoku_exception import SudokuError
 
 
-class BookKeepingCell:  # noqa: WPS214
+class BookKeepingCell:
     """Handles bookkeeping for possible cell_values of digits in a puzzle."""
 
     def __init__(self, maximum_digit: int) -> None:

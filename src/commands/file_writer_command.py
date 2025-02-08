@@ -4,10 +4,10 @@ from xml.dom.minidom import Document
 
 import oyaml as yaml
 
-from src.commands.command import CommandException
-from src.commands.create_linear_program_command import CreateLinearProgramCommand  # noqa: 1005
-from src.commands.create_rules_command import CreateRulesCommand  # noqa: 1005
-from src.commands.problem import Problem  # noqa: 1005
+from src.commands.command import CommandError
+from src.commands.create_linear_program_command import CreateLinearProgramCommand
+from src.commands.create_rules_command import CreateRulesCommand
+from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.commands.svg_answer_command import SVGAnswerCommand
 from src.commands.svg_pencil_mark_command import SVGPencilMarkCommand
@@ -31,16 +31,16 @@ class FileWriterCommand(SimpleCommand):
             problem (Problem): The problem to load the file_path and file_path name into.
 
         Raises:
-            CommandException: If an error occurs while writing the file_path.
-            CommandException: If the target file_path is not set.
-            CommandException: If the source is not set.
+            CommandError: If an error occurs while writing the file_path.
+            CommandError: If the target file_path is not set.
+            CommandError: If the source is not set.
         """
         super().work(problem)
         if self.target_file_path is None:
-            raise CommandException(f'Target file_path is not set {self.name}.')
+            raise CommandError(f'Target file_path is not set {self.name}.')
         target_file_path: Path = problem.output_directory / self.target_file_path
         if self.source is None:
-            raise CommandException(f'Source is not set {self.name}.')
+            raise CommandError(f'Source is not set {self.name}.')
         data_to_write = getattr(problem, self.source)
         try:
             with target_file_path.open(mode='w', encoding='utf-8') as file_handler:
@@ -49,7 +49,7 @@ class FileWriterCommand(SimpleCommand):
                 if isinstance(data_to_write, Document):
                     file_handler.write(data_to_write.toprettyxml(indent='  '))
         except Exception as exc:
-            raise CommandException(f'Failed to write {target_file_path!s}: {exc}') from exc
+            raise CommandError(f'Failed to write {target_file_path!s}: {exc}') from exc
 
     def __repr__(self) -> str:
         """Return a string representation of the command.
@@ -76,14 +76,14 @@ class PythonToYamlCommand(SimpleCommand):
             problem (Problem): The problem to load the file_path and file_path name into.
 
         Raises:
-            CommandException: If an error occurs while writing the file_path.
-            CommandException: If the target file_path is not set.
+            CommandError: If an error occurs while writing the file_path.
+            CommandError: If the target file_path is not set.
         """
         super().work(problem)
         if self.target is None:
-            raise CommandException(f'Target is not set {self.name}.')
+            raise CommandError(f'Target is not set {self.name}.')
         if self.source is None:
-            raise CommandException(f'Source is not set {self.name}.')
+            raise CommandError(f'Source is not set {self.name}.')
         text: str = yaml.dump(self.convert(problem), sort_keys=False, indent=2, encoding=None)
         setattr(problem, self.target, text)
 
@@ -97,13 +97,13 @@ class PythonToYamlCommand(SimpleCommand):
             dict: A dictionary representation of the data.
 
         Raises:
-            CommandException: If the source is not set.
-            CommandException: If the source is not set.
+            CommandError: If the source is not set.
+            CommandError: If the source is not set.
         """
         if self.source is None:
-            raise CommandException(f'Source is not set {self.name}.')
+            raise CommandError(f'Source is not set {self.name}.')
         if not isinstance(getattr(problem, self.source), dict):
-            raise CommandException(f'Cannot convert {self.source} to dictionary.')
+            raise CommandError(f'Cannot convert {self.source} to dictionary.')
         data_value: dict = getattr(problem, self.source)
         return data_value
 

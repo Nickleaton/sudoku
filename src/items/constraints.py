@@ -3,6 +3,7 @@
 from src.board.board import Board
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
+from src.utils.sudoku_exception import SudokuError
 
 
 class Constraints(ComposedItem):
@@ -62,10 +63,15 @@ class Constraints(ComposedItem):
 
         Returns:
             Constraints: The updated Constraints instance with the added constraints.
+
+        Raises:
+            SudokuError: If an unknown constraint type is encountered.
         """
         for key, constraint_data in parts.items():
             sub_yaml: dict = {} if constraint_data is None else constraint_data
-            sub_class: type[Item] = Item.classes.get(key)
+            sub_class: type[Item] | None = Item.classes.get(key)
+            if sub_class is None:
+                raise SudokuError(f'Unknown constraint type: {key}')
             if sub_class.is_composite():
                 constraints.add(sub_class.create(board, {key: sub_yaml}))
             elif isinstance(sub_yaml, list):

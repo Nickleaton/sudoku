@@ -1,6 +1,8 @@
 """VectorList."""
-from src.utils.coord import Coord
+from collections.abc import Iterator
+
 from src.utils.coord_list import CoordList
+from src.utils.vector import Vector
 
 
 class VectorListError(Exception):
@@ -10,23 +12,23 @@ class VectorListError(Exception):
 class VectorList:
     """Represents a collection of Vectors with various utility methods."""
 
-    def __init__(self, vectors=None):
+    def __init__(self, vectors: list[Vector] | None = None):
         """Initialize the VectorList with a given list of Vectors or an empty list.
 
         Args:
-            vectors (list, optional): A list of vectors for the VectorList with. Defaults to an empty list if None.
+            vectors (list[Vectors] | None): A list of vectors. Defaults to an empty list if None.
         """
-        self.vectors = [] if vectors is None else list(vectors)
+        self.vectors: list[Vector] = [] if vectors is None else vectors
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Vector]:
         """Return an iterator over the vectors.
 
         Returns:
-            Vector: The next vector in the list.
+            Iterator[Vector]: The next vector in the list.
         """
         return iter(self.vectors)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> Vector:
         """Retrieve the vector at the specified index.
 
         Args:
@@ -37,7 +39,7 @@ class VectorList:
         """
         return self.vectors[index]
 
-    def __contains__(self, vector):
+    def __contains__(self, vector) -> bool:
         """Check if a vector is in the VectorList.
 
         Args:
@@ -48,7 +50,7 @@ class VectorList:
         """
         return vector in self.vectors
 
-    def __len__(self):
+    def __len__(self) -> int:
         """Return the number of vectors.
 
         Returns:
@@ -56,7 +58,7 @@ class VectorList:
         """
         return len(self.vectors)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Return a string representation of the VectorList.
 
         Returns:
@@ -64,7 +66,7 @@ class VectorList:
         """
         return f'{self.__class__.__name__}([{", ".join(map(repr, self.vectors))}])'
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         """Check equality with another VectorList.
 
         Args:
@@ -80,7 +82,7 @@ class VectorList:
             raise VectorListError(f'Cannot compare {type(other).__name__} with {self.__class__.__name__}')
         return self.vectors == other.vectors
 
-    def extend(self, other):
+    def extend(self, other) -> None:
         """Extend the VectorList with another VectorList.
 
         Args:
@@ -93,7 +95,7 @@ class VectorList:
             raise VectorListError(f'Cannot extend with {type(other).__name__}')
         self.vectors.extend(other.vectors)
 
-    def __add__(self, other):
+    def __add__(self, other) -> 'VectorList':
         """Return a new VectorList combining both lists.
 
         Args:
@@ -109,7 +111,7 @@ class VectorList:
             raise VectorListError(f'Cannot add {type(other).__name__}')
         return VectorList(self.vectors + other.vectors)
 
-    def sort(self):
+    def sort(self) -> None:
         """Sort the vectors in place.
 
         This method sorts the vectors in the VectorList according to their natural order.
@@ -124,7 +126,7 @@ class VectorList:
         Returns:
             VectorList: A new VectorList with merged vectors, sorted.
         """
-        merged_vectors: list[Coord] = []
+        merged_vectors: list[Vector] = []
         for vector in self.vectors:
             for index, merged_vector in enumerate(merged_vectors):
                 if vector.mergeable(merged_vector):
@@ -134,19 +136,6 @@ class VectorList:
                 merged_vectors.append(vector)
         return VectorList(sorted(merged_vectors))
 
-    def find(self, coord):
-        """Find the endpoint of a vector that starts or ends at a given coordinate.
-
-        Args:
-            coord (Coord): The coordinate to search for.
-
-        Returns:
-            Coord: The corresponding endpoint of the vector, or None if not found.
-        """
-        endpoint_map = {vector.start: vector.end for vector in self.vectors}
-        endpoint_map.update({vector.end: vector.start for vector in self.vectors})
-        return endpoint_map.get(coord)
-
     @property
     def coords(self):
         """Return a CoordList of all unique coordinates in the VectorList.
@@ -154,7 +143,7 @@ class VectorList:
         Returns:
             CoordList: A CoordList containing all unique coordinates from the vectors in the VectorList.
         """
-        coords = CoordList([])
+        coords: CoordList = CoordList([])
         for vector in self.vectors:
             coords.add(vector.start)
             coords.add(vector.end)

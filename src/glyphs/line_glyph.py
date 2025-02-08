@@ -25,11 +25,11 @@ class LineGlyph(Glyph):
         self.start: Point = Point.create_from_coord(self.start_location)
         self.end: Point = Point.create_from_coord(self.end_location)
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the line as an SVG element.
 
         Returns:
-            BaseElement | None: An SVG Line element, or None if the line cannot be drawn.
+            BaseElement: An SVG Line element, or None if the line cannot be drawn.
 
         Raises:
             ValueError: If the start or end coordinates are missing.

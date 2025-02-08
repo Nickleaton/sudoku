@@ -2,7 +2,7 @@
 import logging
 from itertools import product
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.commands.solve_command import SolveCommand
@@ -28,16 +28,16 @@ class ExtractAnswerCommand(SimpleCommand):
             problem (Problem): The problem instance from which to extract the line.
 
         Raises:
-            CommandException: If the solver's status is not optimal.
-            CommandException: If the board is not created.
-            CommandException: If the solver is not created.
+            CommandError: If the solver's status is not optimal.
+            CommandError: If the board is not created.
+            CommandError: If the solver is not created.
         """
         if problem.status is None:
-            raise CommandException('No solve has been performed.')
+            raise CommandError('No solve has been performed.')
         if problem.board is None:
-            raise CommandException('No board has been created.')
+            raise CommandError('No board has been created.')
         if problem.solver is None:
-            raise CommandException('No solver has been created.')
+            raise CommandError('No solver has been created.')
         if problem.status != SolverStatus.optimal:
             logging.warning('The solver did not find an optimal solution.')
             return

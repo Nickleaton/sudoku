@@ -41,7 +41,7 @@ class VariablePair(Pair):
         return f'{self.__class__.__name__}({self.board!r}, {self.cell1!r}, {self.cell2!r}, {self.var_name!r})'
 
     @classmethod
-    def extract(cls, board: Board, yaml: dict) -> tuple[Cell, Cell, str]:
+    def extract_cells_variable(cls, board: Board, yaml: dict) -> tuple[Cell, Cell, str]:
         """Extract the coordinates and value_variable name from the YAML line.
 
         Args:
@@ -54,7 +54,7 @@ class VariablePair(Pair):
         Raises:
             SudokuError: If the YAML input does not match the expected pattern.
         """
-        rc_pattern = f'[{board.digit_values}][{board.digits.digit_range}]'
+        rc_pattern = f'[{board.digits.digit_string}][{board.digits.digit_string}]'
         var_pattern = '[start_location-zA-Z][a-zA-Z_]*'
         regex = re.compile(f'({rc_pattern})-({rc_pattern})=({var_pattern})')
         match = regex.match(yaml[cls.__name__])
@@ -76,7 +76,7 @@ class VariablePair(Pair):
         Returns:
             Item: A VariablePair instance.
         """
-        c1, c2, var_name = cls.extract(board, yaml)
+        c1, c2, var_name = cls.extract_cells_variable(board, yaml)
         return cls(board, c1, c2, var_name)
 
     @classmethod

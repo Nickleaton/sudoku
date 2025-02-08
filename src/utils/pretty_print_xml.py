@@ -1,12 +1,12 @@
 """PrettyPrintXML function."""
 
-from xml.dom.minidom import Document  # noqa: I001
-from xml.dom.minidom import Element  # noqa: I001
-from xml.dom.minidom import parseString  # noqa: I001
+from xml.dom.minidom import Document
+from xml.dom.minidom import Element
+from xml.dom.minidom import parseString
 
-from defusedxml.ElementTree import fromstring  # noqa: I001
-from defusedxml.ElementTree import ParseError  # noqa: I001
-from defusedxml.ElementTree import tostring  # noqa: I001
+from defusedxml.ElementTree import fromstring
+from defusedxml.ElementTree import ParseError
+from defusedxml.ElementTree import tostring
 
 
 def pretty_print_xml(xml_string: str) -> str:

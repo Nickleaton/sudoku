@@ -30,7 +30,7 @@ class CentreCircleGlyph(CircleGlyph):
         Returns:
             Point: The offset for the circle glyph.
         """
-        size: float = config.graphics.cell_size / 2.0  # noqa: WPS432
+        size: float = config.graphics.cell_size / 2.0
         return Point(size, size)
 
     def __repr__(self) -> str:

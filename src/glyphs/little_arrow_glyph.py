@@ -30,11 +30,11 @@ class LittleArrowGlyph(Glyph):
         self.position: Point = Point.create_from_coord(location)  # Converts Coord to Point
         self.direction: int = direction
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the arrow glyph as an SVG text element.
 
         Returns:
-            BaseElement | None: An SVG Text element containing the arrow symbol, or None if not drawn.
+            BaseElement: An SVG Text element containing the arrow symbol, or None if not drawn.
         """
         direction: Coord = Moves.directions()[self.direction - 1]
         size: float = config.graphics.little_arrow.percentage * config.graphics.cell_size

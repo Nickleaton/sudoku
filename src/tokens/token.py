@@ -1,8 +1,7 @@
 """Base class for tokens representing regex patterns."""
 import re
 import sys
-from typing import Any
-from typing import ClassVar
+from typing import Any, ClassVar
 
 from sortedcontainers import SortedDict
 
@@ -62,7 +61,7 @@ class Token:
         return match.group()
 
     @staticmethod
-    def convert_data_type(token_text: str, data_type: type) -> Any:  # noqa: WPS231
+    def convert_data_type(token_text: str, data_type: type) -> Any:
         """Convert the token_text to the appropriate data type.
 
         Args:

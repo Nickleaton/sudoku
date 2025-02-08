@@ -3,9 +3,9 @@ import argparse
 import logging
 from pathlib import Path
 
-from doc_commands import CommandValidationError  # noqa: I001
+from doc_commands import CommandValidationError
 from doc_commands import DirectoryValidationError
-from src.commands.command import Command  # noqa: I003
+from src.commands.command import Command
 
 
 def validate_output_directory(output_dir: Path) -> None:

@@ -27,14 +27,14 @@ class LittleNumberGlyph(Glyph):
         self.position: Point = Point.create_from_coord(location)
         self.number: int = number
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Create an SVG representation of the Little Number glyph.
 
         Returns:
-            BaseElement | None: An SVG `Text` element displaying the number,
+            BaseElement: An SVG `Text` element displaying the number,
             or None if the glyph cannot be drawn.
         """
-        size: float = config.graphics.cell_size * config.graphics.little_number.percentage / 2.0  # noqa: WPS432
+        size: float = config.graphics.cell_size * config.graphics.little_number.percentage / 2.0
         position: Point = self.position + Point(size, size)
         text: Text = Text(
             '',

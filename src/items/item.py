@@ -21,7 +21,7 @@ from src.validators.validator import Validator
 config = Config()
 
 
-class Item:  # noqa: WPS110
+class Item:
     """Top-level class for the Item hierarchy.
 
     Items generate the constraints, manage bookkeeping, and generate SVG for viewing problems and solutions.

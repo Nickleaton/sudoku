@@ -45,7 +45,7 @@ class LowCellGlyph(Glyph):
             id_='LowCell-symbol',
             class_='LowCell',
         )
-        radius: float = config.graphics.cell_size * config.graphics.low_cell.percentage / 2.0  # noqa: WPS432
+        radius: float = config.graphics.cell_size * config.graphics.low_cell.percentage / 2.0
         symbol.add(
             Circle(
                 center=(config.graphics.half_cell_size, config.graphics.half_cell_size),
@@ -54,11 +54,11 @@ class LowCellGlyph(Glyph):
         )
         return symbol
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the low cell glyph by using the defined symbol and coordinates.
 
         Returns:
-            BaseElement | None: The SVG use element that references the
+            BaseElement: The SVG use element that references the
             low cell symbol and positions it based on the coordinate.
         """
         return Use(

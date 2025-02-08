@@ -58,14 +58,14 @@ class ComposedGlyph(Glyph):
         """
         self.glyphs.append(glyph)
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the composed glyph on an SVG canvas.
 
         Create an SVG `Group` element containing all the glyphs in the composition.
         Draw each glyph in sorted order.
 
         Returns:
-            BaseElement | None: Return an SVG `Group` element containing the
+            BaseElement: Return an SVG `Group` element containing the
             glyphs, or `None` if no valid glyphs exist.
         """
         group = Group()

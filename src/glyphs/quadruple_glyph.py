@@ -26,7 +26,7 @@ class QuadrupleGlyph(Glyph):
         self.position: Point = position  # The location of the glyph
         self.numbers: str = numbers  # The numbers to be displayed inside the circle
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the circle and the associated text for the quadruple glyph.
 
         This method creates an SVG `Group` containing a `Circle` and a `Text` element.
@@ -34,14 +34,14 @@ class QuadrupleGlyph(Glyph):
         rendered inside the circle.
 
         Returns:
-            BaseElement | None: An SVG `Group` containing the circle and text elements, or None if unable to draw.
+            BaseElement: An SVG `Group` containing the circle and text elements, or None if unable to draw.
         """
         group: Group = Group()
         bottom_right: Point = Point(1, 1) * config.graphics.cell_size + self.position
         circle: Circle = Circle(
             class_=f'{self.class_name}Circle',
             center=bottom_right.coordinates,
-            r=config.graphics.cell_size * config.graphics.quadruple.percentage / 2.0,  # noqa: WPS432
+            r=config.graphics.cell_size * config.graphics.quadruple.percentage / 2.0,
         )
         group.add(circle)
 

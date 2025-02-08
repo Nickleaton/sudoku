@@ -4,7 +4,7 @@ import unittest
 
 from src.board.board import Board
 from src.board.digits import Digits
-from src.items.cell import Cell, CellException
+from src.items.cell import Cell, CellError
 from src.items.item import Item
 from src.utils.coord import Coord
 from src.utils.tags import Tags
@@ -66,7 +66,7 @@ class TestCell(TestItem):
         self.assertLess(one, two)
         self.assertLess(two, three)
         self.assertFalse(four < three)
-        with self.assertRaises(CellException):
+        with self.assertRaises(CellError):
             _ = one < "xxx"
 
     def test_name(self):

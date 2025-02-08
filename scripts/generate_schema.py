@@ -3,10 +3,10 @@ import argparse
 import logging
 import logging.config
 import shutil
-import subprocess  # noqa: S404
+import subprocess
 from pathlib import Path
 
-from strictyaml import Map, Optional, Seq, Validator  # noqa: WPS458
+from strictyaml import Map, Optional, Seq, Validator
 
 from src.board.board import Board
 from src.items.item import Item
@@ -87,8 +87,8 @@ def format_python_file(file_path: str) -> None:
     black_path: str | None = shutil.which('black')
     if black_path is None:
         raise FileNotFoundError('The "black" executable was not found in the PATH.')
-    try:  # noqa: WPS229
-        black_output: subprocess.CompletedProcess = subprocess.run(  # noqa: S404, S603
+    try:
+        black_output: subprocess.CompletedProcess = subprocess.run(  # noqa: S603
             [black_path, str(schema_file.resolve())],
             capture_output=True,
             text=True,
@@ -109,7 +109,7 @@ def replace_quotes_in_file(file_path: str) -> None:
     Args:
         file_path (str): The path to the Python file to modify.
     """
-    with open(file_path, 'r', encoding='utf-8') as input_file:
+    with open(file_path, encoding='utf-8') as input_file:
         python_code: str = input_file.read()
     python_code = python_code.replace('"', "'")
     python_code = python_code.replace("'''", '"""')

@@ -30,15 +30,15 @@ class ArrowGlyph(Glyph):
         self.location: Coord = location
         self.position: Point = Point.create_from_coord(location) * config.graphics.cell_size
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the arrow glyph as an SVG text element.
 
         Returns:
-            BaseElement | None: An SVG Text element with the arrow symbol, or None if the
+            BaseElement: An SVG Text element with the arrow symbol, or None if the
             location is invalid.
         """
         if not self.location:  # Validate the location
-            return None
+            return BaseElement()
 
         # Apply location and rotation transformations
         transform: str = f'{self.position.transform} {self.angle.transform}'

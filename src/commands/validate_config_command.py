@@ -1,6 +1,6 @@
 """Validate Config File."""
 
-from strictyaml import YAMLValidationError, dirty_load
+from strictyaml import dirty_load, YAMLValidationError
 
 from src.commands.create_config_command import CreateConfigCommand
 from src.commands.problem import Problem

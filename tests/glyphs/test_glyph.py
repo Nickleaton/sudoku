@@ -87,8 +87,10 @@ class TestGlyph(unittest.TestCase):
         to the pretty-printed target target_value.
         """
         if isinstance(self.glyph, Glyph):
-            element = self.glyph.draw()  # noqa: E1128
-            if element is not None:
+            if self.glyph is Glyph:
+                return
+            element = self.glyph.draw()
+            if element is not None:  # Safe check
                 actual: str = pretty_print_xml(element.tostring())
                 expected: str = pretty_print_xml(self.target)
                 self.assertEqual(expected, actual)

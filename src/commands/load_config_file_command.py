@@ -1,6 +1,6 @@
 """LoadConfigFileCommand."""
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 
@@ -21,17 +21,17 @@ class LoadConfigFileCommand(SimpleCommand):
             problem (Problem): The problem instance to load the file name and contents into.
 
         Raises:
-            CommandException: If an error occurs while reading the file.
-            CommandException: If the file does not exist.
-            CommandException: If the file cannot be loaded.
+            CommandError: If an error occurs while reading the file.
+            CommandError: If the file does not exist.
+            CommandError: If the file cannot be loaded.
         """
         super().work(problem)
         if problem.problem_file_name is None:
-            raise CommandException(f'Problem file name is not set {self.name}.')
+            raise CommandError(f'Problem file name is not set {self.name}.')
         try:
             with problem.problem_file_name.open(mode='r', encoding='utf-8') as file_handle:
                 problem.raw_config = file_handle.read()
         except FileNotFoundError as err:
-            raise CommandException(f'File not found: {problem.problem_file_name}') from err
+            raise CommandError(f'File not found: {problem.problem_file_name}') from err
         except Exception as exc:
-            raise CommandException(f'Failed to load {problem.problem_file_name}: {exc}') from exc
+            raise CommandError(f'Failed to load {problem.problem_file_name}: {exc}') from exc

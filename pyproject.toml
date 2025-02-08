@@ -131,11 +131,21 @@ directory = "output/coverage"
 
 [tool.mypy]
 
+# Checked
 python_version = 3.13
-warn_return_any = true
-warn_unused_configs = true
 ignore_missing_imports = true
+disallow_subclassing_any = false # Checked
+
 check_untyped_defs = true
+
+# Disallow dynamic typing
+
+disallow_any_unimported = false
+disallow_any_expr = false
+disallow_any_decorated = false
+disallow_any_explicit = false
+disallow_any_generics = false
+
 exclude = [
     "pulp"
 ]
@@ -156,26 +166,46 @@ target-version = "py38"
 line-length = 120
 
 lint.select = [
+    #    "ANN", # flake8-annotations
+    #    "ARG", # flake8-unused-arguments
     "B", # bugbear
     "D", # pydocstyle
     "E", # pycodestyle
+    #    "ERA", # eradicate
     "F", # pyflakes
-    "I", # isort
+    "FIX", # flake8-fixme
+    "FURB", # flake8-unused-arguments
+    "LOG", # flake8-logging-format
+    "N", # pep8-naming
+    "PERF", # perflint
     "PIE", # flake8-pie
+    "PL", # pylint
+    #    "PT",  # flake8-pytest
     "PTH", # flake8-pathlib
     "PYI", # flake8-pyi
-    "UP", # pyupgrade
     "RUF", # ruff
+    "S", # flake8-bandit
+    "TD", # flake8-todo
+    #    "TRY", # tryceratops
+    "UP", # pyupgrade
     "W", # pycodestyle
+    "YTT", # Sysrelated
+
 ]
 
 lint.ignore = [
-    "F401", # Unused import (can be useful for certain IDEs or imports in tests)
-    "I001", # Ignore missing type annotations (might be intentional for specific cases)
     "D413", # Docstring line too long (depends on project style or linter settings)
     "D203", # One blank line before class (we prefer no blank line before classes)
     "D213", # Multi-line docstring summary second line (we don't need start_location blank line after the summary
-    "RUF100", # Unused noqa
+    #    "RUF100", # Unused noqa
+    "PLR2004", # Magic value used in comparison
+    "TD002", # TODO in docstring
+    "TD003", # TODO in docstring
+    "TD004", # TODO in docstring
+    "FIX002", # TODO in docstring
+    "PLR0913", # Too many arguments
+    "PERF203", # `try`-`except` within a loop
+    "S318", # Use of insecure XML parser
 ]
 
 

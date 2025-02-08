@@ -1,7 +1,7 @@
 """RenderTemplateCommands."""
 from jinja2 import Environment, FileSystemLoader, Template
 
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.create_meta_command import CreateMetaCommand
 from src.commands.create_rules_command import CreateRulesCommand
 from src.commands.file_writer_command import SVGProblemWriterCommand
@@ -32,14 +32,14 @@ class RenderTemplateCommand(SimpleCommand):
             problem (Problem): The problem to render.
 
         Raises:
-            CommandException: If the template is not set.
-            CommandException: If the target is not set.
+            CommandError: If the template is not set.
+            CommandError: If the target is not set.
         """
         super().work(problem)
         if self.template is None:
-            raise CommandException('Template is not set.')
+            raise CommandError('Template is not set.')
         if self.target is None:
-            raise CommandException('Target is not set.')
+            raise CommandError('Target is not set.')
         setattr(problem, self.target, self.template.render(problem))
 
 

@@ -3,12 +3,12 @@ import itertools
 import logging
 from pathlib import Path
 
-from src.commands.command import Command  # noqa: I001, I003
-from src.commands.extract_answer_command import ExtractAnswerCommand  # noqa: I001
-from src.commands.file_writer_command import LPFileWriterCommand  # noqa: I001, I003, I005
-from src.commands.file_writer_command import RuleWriterCommand  # noqa: I005
-from src.commands.file_writer_command import SVGProblemWriterCommand  # noqa: I001
-from src.commands.problem import Problem  # noqa: I005
+from src.commands.command import Command
+from src.commands.extract_answer_command import ExtractAnswerCommand
+from src.commands.file_writer_command import LPFileWriterCommand
+from src.commands.file_writer_command import RuleWriterCommand
+from src.commands.file_writer_command import SVGProblemWriterCommand
+from src.commands.problem import Problem
 from src.commands.validate_config_command import ValidateConfigCommand
 from src.utils.config import Config
 
@@ -119,8 +119,7 @@ def process_command(command: str, input_file: Path, output_path: Path) -> None:
 
 
 def get_yaml_files(files_path: Path) -> list[Path]:
-    """
-    Retrieve a sorted list of YAML files from the given path.
+    """Retrieve a sorted list of YAML files from the given path.
 
     If the given `files_path` is a file, it returns a list containing that file.
     If the given `files_path` is a directory, it returns a list of all `.yaml` files in the directory, sorted.

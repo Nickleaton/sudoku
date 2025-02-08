@@ -33,14 +33,14 @@ class EdgeTextGlyph(Glyph):
         )
         self.text: str = text
 
-    def draw(self) -> BaseElement | None:
+    def draw(self) -> BaseElement:
         """Draw the text glyph element.
 
         Creates an SVG group containing two text layers: a background and
         a foreground, both positioned and rotated as specified.
 
         Returns:
-            BaseElement | None: An `svgwrite.container.Group` element
+            BaseElement: An `svgwrite.container.Group` element
             containing the text glyph, or `None` if the element cannot be created.
         """
         group: Group = Group()

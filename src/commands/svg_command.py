@@ -6,7 +6,7 @@ from svgwrite import Drawing
 from svgwrite.container import Style
 
 from src.commands.add_constraints_command import AddConstraintsCommand
-from src.commands.command import CommandException
+from src.commands.command import CommandError
 from src.commands.problem import Problem
 from src.commands.simple_command import SimpleCommand
 from src.items.item import Item
@@ -24,24 +24,24 @@ class SVGCommand(SimpleCommand):
         self.add_preconditions([AddConstraintsCommand])
         self.target = 'svg'
 
-    def work(self, problem: Problem) -> None:  # noqa: WPS231
+    def work(self, problem: Problem) -> None:
         """Produce the SVG.
 
         Args:
             problem (Problem): The problem to produce the SVG for.
 
         Raises:
-            CommandException: If the board is not created.
-            CommandException: If the constraints are not created.
-            CommandException: If the target is not set.
+            CommandError: If the board is not created.
+            CommandError: If the constraints are not created.
+            CommandError: If the target is not set.
         """
         super().work(problem)
         if problem.board is None:
-            raise CommandException('Board must be created.')
+            raise CommandError('Board must be created.')
         if problem.constraints is None:
-            raise CommandException('Constraints must be created.')
+            raise CommandError('Constraints must be created.')
         if self.target is None:
-            raise CommandException('Target is not set.')
+            raise CommandError('Target is not set.')
 
         # Build the viewBox string first
         cell_size: int = config.graphics.cell_size
