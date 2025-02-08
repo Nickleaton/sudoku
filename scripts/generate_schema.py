@@ -9,7 +9,9 @@ from strictyaml import Map, Optional, Seq, Validator
 
 from src.board.board import Board
 from src.items.item import Item
+from src.parsers.board_digits_parser import BoardDigitsParser
 from src.parsers.parser import Parser
+from src.parsers.size_parser import SizeParser
 from src.parsers.solution_parser import SolutionParser
 from src.utils.config import Config
 from src.utils.load_modules import load_modules
@@ -77,6 +79,8 @@ def create_arg_parser() -> argparse.ArgumentParser:
 
 def get_import_names() -> set[str]:
     import_names: set[str] = {'SolutionParser'}
+    import_names.add(SizeParser.__name__)
+    import_names.add(BoardDigitsParser.__name__)
     for class_name, constraint in Item.classes.items():
         if class_name == 'Solution':
             continue

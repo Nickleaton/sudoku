@@ -2,6 +2,7 @@
 
 from strictyaml import Map, Optional, Seq, Str
 
+from src.parsers.board_digits_parser import BoardDigitsParser
 from src.parsers.box_parser import BoxParser
 from src.parsers.cell_list_parser import CellListParser
 from src.parsers.cell_pairs_parser import CellPairsParser
@@ -10,6 +11,7 @@ from src.parsers.cell_value_parser import CellValueParser
 from src.parsers.digit_parser import DigitParser
 from src.parsers.known_parser import KnownParser
 from src.parsers.none_parser import NoneParser
+from src.parsers.size_parser import SizeParser
 from src.parsers.solution_parser import SolutionParser
 
 problem_schema = Map(
