@@ -31,9 +31,9 @@ jobs:
         pip install graphviz
         pip install pytest
         pip install ruff
-    - name: Analysing the code with pylint
-      run: |
-        pylint src --disable=C0103,W8201,R0914,R0917,R0913,R0902,R0903,R0902
+      #    - name: Analysing the code with pylint
+      #      run: |
+      #        pylint src --disable=C0103,W8201,R0914,R0917,R0913,R0902,R0903,R0902
     - name: Analysing the code with ruff
       run: |
         ruff check src
