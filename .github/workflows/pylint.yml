@@ -31,12 +31,14 @@ jobs:
         pip install graphviz
         pip install pytest
         pip install ruff
-      #    - name: Analysing the code with pylint
-      #      run: |
-      #        pylint src --disable=C0103,W8201,R0914,R0917,R0913,R0902,R0903,R0902
+        pip install mypy
     - name: Analysing the code with ruff
       run: |
         ruff check src
         ruff check scripts
         ruff check tests
+    - name: Analysing src with mypy
+      run: |
+        mypy src
+        mypy scripts
         
