@@ -1,5 +1,6 @@
 """load_modules."""
 import importlib
+import logging
 import pkgutil
 
 
@@ -23,4 +24,5 @@ def load_modules(package_name: str, subpackage: str | None = None) -> None:
     # Find all modules in the package or subpackage
     for _, module_name, _ in pkgutil.iter_modules(package.__path__):
         # Import each module dynamically
+        logging.info(f'Loading module: {full_package_name}.{module_name}')
         importlib.import_module(f'{full_package_name}.{module_name}')
