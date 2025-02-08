@@ -1,3 +1,4 @@
+"""TestSideValidator."""
 import unittest
 
 from src.validators.side_validator import SideValidator

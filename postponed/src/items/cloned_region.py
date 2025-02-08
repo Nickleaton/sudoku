@@ -1,5 +1,6 @@
 """ClonedRegion."""
-from typing import Iterator, Type
+from collections.abc import Iterator
+from typing import Type
 
 from postponed.src.pulp_solver import PulpSolver
 

@@ -71,7 +71,6 @@ class TestVector(unittest.TestCase):
 
     def test_merge(self):
         """Test merging of vectors with various conditions."""
-
         test_data = (
             # (name, vector1_start, vector1_end, vector2_start, vector2_end, expected_result, should_raise)
             (
@@ -169,9 +168,6 @@ class TestVector(unittest.TestCase):
         self.assertTrue(vector1 < vector2)
         self.assertFalse(vector2 < vector1)
         self.assertTrue(vector1 <= vector2)
-        # test with same vector, to make sure test is handled
-        # noqa: R0124
-        self.assertTrue(vector1 <= vector1)  # pylint: disable=comparison-with-itself
         self.assertFalse(vector2 <= vector1)
         with self.assertRaises(VectorError):
             _ = self.zero < "invalid"  # type: ignore

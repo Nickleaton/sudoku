@@ -1,10 +1,14 @@
+"""TestRegexUtils."""
 import unittest
 
 from src.utils.regex_utils import RegexUtils  # Adjust import if needed
 
 
 class TestRegexUtils(unittest.TestCase):
+    """Test the RegexUtils class."""
+
     def test_strip_names(self):
+        """Strip named groups from the regular expression pattern."""
         cases = (
             (r'(?P<word>\w+)-(?P<digit>\d+)', r'(\w+)-(\d+)'),
             (r'(?P<name>[A-Za-z]+) (?P<age>\d+)', r'([A-Za-z]+) (\d+)'),
@@ -27,6 +31,7 @@ class TestRegexUtils(unittest.TestCase):
 
         for pattern, expected in cases:
             with self.subTest(pattern=pattern):
+                """Ensure that the named groups are stripped from the pattern."""
                 self.assertEqual(RegexUtils.strip_names(pattern), expected)
 
 

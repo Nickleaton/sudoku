@@ -1,3 +1,4 @@
+"""TestBoard."""
 import unittest
 
 import pytest
@@ -75,6 +76,7 @@ class TestBoard(unittest.TestCase):
         )
 
     def test_side_direction(self):
+        """Test Side Direction."""
         for key, expected_coord in self.expected_map.items():
             print(key, expected_coord)
             self.assertEqual(
@@ -169,6 +171,7 @@ class TestBoard(unittest.TestCase):
 
     @pytest.mark.skip(reason="Skipping this test for now")
     def test_create_from_yaml(self):
+        """Test the creation of a board from YAML data."""
         yaml_data = yaml.safe_load(self.yaml_string)
         board = Board.create2(yaml_data)
         self.assertEqual(8, board.size.column)

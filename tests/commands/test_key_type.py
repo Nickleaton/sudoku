@@ -1,3 +1,4 @@
+"""TestKeyType."""
 import unittest
 from typing import Any
 

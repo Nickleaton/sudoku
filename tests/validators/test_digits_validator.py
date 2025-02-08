@@ -1,10 +1,11 @@
+"""TestDigitsValidator."""
 import unittest
 
 from src.validators.digits_validator import DigitsValidator
 from tests.validators.test_validator import TestValidator
 
 
-class TestValidatorModule(TestValidator):
+class TestDigitsValidator(TestValidator):
     """Test case for the Validator class."""
 
     def setUp(self):

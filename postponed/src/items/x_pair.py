@@ -1,7 +1,8 @@
 """XPair."""
 
-from postponed.src.items.sum_pair import SumPair
 from postponed.src.pulp_solver import PulpSolver
+
+from postponed.src.items.sum_pair import SumPair
 
 
 class XPair(SumPair):
@@ -14,7 +15,7 @@ class XPair(SumPair):
         Returns:
             int: The total number for 'X' pairs, which is 10.
         """
-        return 10  # noqa: WPS432
+        return 10
 
     @property
     def tags(self) -> set[str]:

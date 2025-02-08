@@ -1,6 +1,5 @@
 """TestDigitParser."""
 import unittest
-from typing import Dict
 
 from src.parsers.digit_parser import DigitParser
 from tests.parsers.test_parser import TestParser
@@ -15,7 +14,7 @@ class TestDigitParser(TestParser):
         self.parser: DigitParser = DigitParser()
         self.representation: str = 'DigitParser()'
         self.empty_allowed = False
-        self.valid_inputs: list[tuple[str, Dict[str, int]]] = [
+        self.valid_inputs: list[tuple[str, dict[str, int]]] = [
             ('0', {'Digit': 0}),
             ('1', {'Digit': 1}),
             ('2', {'Digit': 2}),

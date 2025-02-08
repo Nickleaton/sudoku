@@ -1,5 +1,5 @@
 """DutchWhisperLine."""
-from typing import Sequence
+from collections.abc import Sequence
 
 from postponed.src.items.ge_difference_line import GEDifferenceLine
 from src.board.board import Board

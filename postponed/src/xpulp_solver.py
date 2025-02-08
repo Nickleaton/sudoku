@@ -3,16 +3,16 @@ import sys
 from io import StringIO
 from pathlib import Path
 
-from pulp import LpMinimize  # noqa: I001
-from pulp import LpProblem  # noqa: I001
-from pulp import LpSolver  # noqa: I001
-from pulp import LpStatus  # noqa: I001
-from pulp import getSolver  # noqa: I001
+from pulp import getSolver
+from pulp import LpMinimize
+from pulp import LpProblem
+from pulp import LpSolver
+from pulp import LpStatus
+from src.variables import Variables, VariableSet
 
 from src.board.board import Board
 from src.solvers.solver import Solver
 from src.solvers.solver_status import SolverStatus
-from src.variables import Variables, VariableSet
 from src.utils.config import Config
 
 config = Config()
@@ -73,7 +73,7 @@ class PulpSolver(Solver):  # pylint: disable=too-many-instance-attributes
         """Solve the puzzle using the specified solver and update the solution status."""
         super().solve()
         application: LpSolver = getSolver(self.solver_name, msg=1)
-        try:  # noqa: WPS229, WPS501
+        try:
             log_output: StringIO = StringIO()
             sys.stdout = log_output
             self.model.solve(application)

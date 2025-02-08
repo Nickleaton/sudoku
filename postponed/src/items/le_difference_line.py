@@ -1,5 +1,5 @@
 """LEDifferenceLine."""
-from typing import Sequence
+from collections.abc import Sequence
 
 from postponed.src.items.le_difference_pair import LEDifferencePair
 from postponed.src.items.line import Line

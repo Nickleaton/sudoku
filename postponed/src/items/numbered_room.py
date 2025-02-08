@@ -5,8 +5,7 @@ from pulp import LpVariable
 from src.board.board import Board
 from src.glyphs.glyph import Glyph
 from src.glyphs.text_glyph import TextGlyph
-from src.items.item import Item  # noqa: I001
-# noqa: I001
+from src.items.item import Item
 from src.parsers.frame_parser import FrameParser
 from src.utils.coord import Coord
 from src.utils.cyclic import Cyclic

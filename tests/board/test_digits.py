@@ -1,3 +1,4 @@
+"""TestDigits."""
 import unittest
 
 from src.board.digits import Digits
@@ -28,7 +29,7 @@ class TestDigits(unittest.TestCase):
 
     @staticmethod
     def is_prime(num):
-        """Helper method to check if a number is prime."""
+        """Check if a number is prime."""
         if num < 2:
             return False
         for i in range(2, int(num ** 0.5) + 1):
@@ -37,7 +38,7 @@ class TestDigits(unittest.TestCase):
         return True
 
     def get_primes(self, start, end):
-        """Helper method to calculate prime numbers within a given range."""
+        """Calculate prime numbers within a given range."""
         return [num for num in range(start, end + 1) if self.is_prime(num)]
 
     def test_count(self):
@@ -105,7 +106,7 @@ class TestDigits(unittest.TestCase):
         self.assertEqual(self.upper, self.digits.upper)
 
     def test_wrong_way(self) -> None:
-        """Test min > max"""
+        """Test min > max."""
         with self.assertRaises(ValueError):
             Digits(2, 1)
 

@@ -1,3 +1,4 @@
+"""TestKnownValidator."""
 import unittest
 
 from src.validators.known_validator import KnownValidator

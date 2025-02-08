@@ -13,7 +13,7 @@ class VIPair(SumPair):
         Returns:
             int: The total number for 'VI' pairs, which is 6.
         """
-        return 6  # noqa: WPS432
+        return 6
 
     @property
     def tags(self) -> set[str]:

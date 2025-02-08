@@ -13,7 +13,7 @@ class XIPair(SumPair):
         Returns:
             int: The total number for 'XI' pairs, which is 11.
         """
-        return 11  # noqa: WPS432
+        return 11
 
     @property
     def tags(self) -> set[str]:

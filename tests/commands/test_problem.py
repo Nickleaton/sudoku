@@ -1,3 +1,4 @@
+"""TestProblem."""
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -59,8 +60,8 @@ class TestProblem(unittest.TestCase):
         problem = Problem(self.valid_problem_file, self.output_directory)
         expected_repr = (
             f'Problem('
-            f'problem_file_name={repr(self.valid_problem_file)}, '
-            f'output_directory={repr(self.output_directory)}, '
+            f'problem_file_name={self.valid_problem_file!r}, '
+            f'output_directory={self.output_directory!r}, '
             f'solver=None)'
         )
         self.assertEqual(repr(problem), expected_repr)

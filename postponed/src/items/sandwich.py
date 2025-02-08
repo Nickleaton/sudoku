@@ -183,7 +183,7 @@ class Sandwich(Item):
     # TODO sort out the complexity later
     # Move the variables out as well to be lazily created in
 
-    def add_constraint_rc(  # noqa: WPS231
+    def add_constraint_rc(
         self,
         solver: PulpSolver,
         is_row: bool,

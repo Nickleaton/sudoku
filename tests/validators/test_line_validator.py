@@ -1,3 +1,4 @@
+"""TestLineValidator."""
 import unittest
 
 from src.validators.line_validator import LineValidator  # Assuming LineValidator is in src/validators/line_validator.py

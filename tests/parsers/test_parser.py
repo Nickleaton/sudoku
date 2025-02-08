@@ -26,7 +26,6 @@ class TestParser(unittest.TestCase):
 
     def test_representation(self) -> None:
         """Test the string representation of the parser."""
-
         self.assertEqual(repr(self.parser), self.representation)
 
     def test_parse_empty_input(self):

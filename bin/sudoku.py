@@ -1,5 +1,4 @@
-"""
-Script to solve sudokus
+"""Script to solve sudokus
 """
 
 from argparse import ArgumentParser

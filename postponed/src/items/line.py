@@ -1,5 +1,5 @@
 """Line."""
-from typing import Sequence
+from collections.abc import Sequence
 
 from src.board.board import Board
 from src.items.cell import Cell

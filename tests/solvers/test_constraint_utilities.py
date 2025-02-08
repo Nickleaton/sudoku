@@ -1,3 +1,4 @@
+"""TestConstraintUtilities."""
 import unittest
 
 from src.board.board import Board

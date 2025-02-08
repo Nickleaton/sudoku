@@ -1,3 +1,4 @@
+"""TestPillValidator."""
 import unittest
 
 from src.validators.pill_validator import PillValidator

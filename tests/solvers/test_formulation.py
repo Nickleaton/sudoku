@@ -2,7 +2,7 @@
 import inspect
 import unittest
 from pathlib import Path
-from typing import ClassVar, Dict, List
+from typing import ClassVar
 
 from pulp import getSolver, LpContinuous, LpInteger, LpMinimize, LpProblem, LpSolver, LpVariable
 
@@ -12,8 +12,8 @@ from src.solvers.formulations import Formulations
 class TestFormulation(unittest.TestCase):
     """Test various formulations in linear programming problems."""
 
-    logs: ClassVar[Dict[str, int]] = {}
-    lp_files: ClassVar[Dict[str, int]] = {}
+    logs: ClassVar[dict[str, int]] = {}
+    lp_files: ClassVar[dict[str, int]] = {}
 
     def setUp(self) -> None:
         """Initialize test environment by creating necessary directories."""
@@ -124,18 +124,18 @@ class TestFormulation(unittest.TestCase):
         self.absolute_float(1.5, 2.8, 1.3)
         self.absolute_float(4.5, 2.8, 1.7)
 
-    def minimum(self, values: List[int], expected: int) -> None:
+    def minimum(self, values: list[int], expected: int) -> None:
         """Test the minimum number of start list using linear programming.
 
         Args:
-            values (List[int]): A list of integer value_list to find the minimum of.
+            values (list[int]): A list of integer value_list to find the minimum of.
             expected (int): The expected minimum number.
 
         Returns:
             None
         """
         model = LpProblem("minimum", LpMinimize)
-        variables: List[LpVariable] = []
+        variables: list[LpVariable] = []
         for i, value in enumerate(values):
             x = LpVariable(f"row{i}", 1, 9, LpInteger)
             model += x == value
@@ -156,18 +156,18 @@ class TestFormulation(unittest.TestCase):
         self.minimum([1, 2, 3], 1)
         self.minimum([3, 2, 1], 1)
 
-    def maximum(self, values: List[int], expected: int) -> None:
+    def maximum(self, values: list[int], expected: int) -> None:
         """Test the maximum number of start list using linear programming.
 
         Args:
-            values (List[int]): A list of integer value_list to find the maximum of.
+            values (list[int]): A list of integer value_list to find the maximum of.
             expected (int): The expected maximum number.
 
         Returns:
             None
         """
         model = LpProblem("maximum", LpMinimize)
-        variables: List[LpVariable] = []
+        variables: list[LpVariable] = []
         for i, value in enumerate(values):
             x = LpVariable(f"row{i}", 1, 9, LpInteger)
             model += x == value

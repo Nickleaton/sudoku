@@ -1,4 +1,4 @@
-# """TestCreateTemplateCommand."""
+"""TestCreateTemplateCommand."""
 # import unittest
 #
 # import pytest

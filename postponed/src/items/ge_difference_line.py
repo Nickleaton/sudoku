@@ -1,6 +1,7 @@
 """GEDifferenceLine."""
 
-from typing import Sequence, Set
+from collections.abc import Sequence
+from typing import Set
 
 from postponed.src.pulp_solver import PulpSolver
 from pulp import LpAffineExpression, lpSum

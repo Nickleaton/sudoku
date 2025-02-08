@@ -1,3 +1,4 @@
+"""TestArrowValidator."""
 import unittest
 
 from src.validators.arrow_validator import ArrowValidator

@@ -10,13 +10,13 @@ class TestSVGCommand(TestSimpleCommand):
     """Test suite for the SVGCommand class."""
 
     def setUp(self) -> None:
-        """Sets up the test environment for SVGCommand."""
+        """Set up the test environment for SVGCommand."""
         super().setUp()
         self.command = SVGCommand()
         self.representation = "SVGCommand()"
 
     def test_in_select(self):
-        """Tests the `select` method for the `in_select` constraint.
+        """Test the `select` method for the `in_select` constraint.
 
         If the `in_select` property is not `None`, verifies that the
         `select` method of the command returns `True` for the constraint.
@@ -25,7 +25,7 @@ class TestSVGCommand(TestSimpleCommand):
             self.assertTrue(self.command.select(select))
 
     def test_out_select(self):
-        """Tests the `select` method for the `out_select` constraint.
+        """Test the `select` method for the `out_select` constraint.
 
         If the `out_select` property is not `None`, verifies that the
         `select` method of the command returns `False` for the constraint.
@@ -35,7 +35,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def in_select(self) -> Item | None:
-        """Gets a constraint that should be included in the output of the command.
+        """Get a constraint that should be included in the output of the command.
 
         Returns:
             Item | None: An constraint that should be included in the output, or `None`.
@@ -44,7 +44,7 @@ class TestSVGCommand(TestSimpleCommand):
 
     @property
     def out_select(self) -> Item | None:
-        """Gets a constraint that should not be included in the output of the command.
+        """Get a constraint that should not be included in the output of the command.
 
         Returns:
             Item | None: An constraint that should not be included in the output, or `None`.

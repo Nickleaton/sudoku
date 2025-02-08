@@ -1,7 +1,8 @@
 """VPair."""
 
-from postponed.src.items.sum_pair import SumPair
 from postponed.src.pulp_solver import PulpSolver
+
+from postponed.src.items.sum_pair import SumPair
 
 
 class VPair(SumPair):
@@ -14,7 +15,7 @@ class VPair(SumPair):
         Returns:
             int: The total number for 'V' pairs, which is 5.
         """
-        return 5  # noqa: WPS432
+        return 5
 
     @property
     def tags(self) -> set[str]:

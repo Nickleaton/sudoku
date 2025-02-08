@@ -1,3 +1,4 @@
+"""TestCoord."""
 import unittest
 
 from src.utils.coord import Coord, CoordError
@@ -7,6 +8,7 @@ class TestCoord(unittest.TestCase):
     """Test cases for the Coord class."""
 
     def test_coord_hash(self):
+        """Test Hash."""
         # Create two Coord instances with the same values
         coord1 = Coord(1, 2)
         coord2 = Coord(1, 2)
@@ -19,9 +21,6 @@ class TestCoord(unittest.TestCase):
 
         # Assert that the hash values for different coordinates are not the same
         self.assertNotEqual(hash(coord1), hash(coord3), "Hashes should be different for different coordinates")
-
-    if __name__ == '__main__':
-        unittest.main()
 
     def test_addition(self):
         """Test the addition of two Coord objects."""
@@ -135,9 +134,6 @@ class TestCoord(unittest.TestCase):
         self.assertTrue(Coord(2, 3).is_horizontal(Coord(2, 4)))  # Same row
         self.assertFalse(Coord(2, 3).is_horizontal(Coord(3, 3)))  # Different row
 
-
-if __name__ == "__main__":
-    unittest.main()
 
 if __name__ == "__main__":
     unittest.main()

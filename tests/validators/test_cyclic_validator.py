@@ -1,3 +1,4 @@
+"""TestCyclicValidator."""
 import unittest
 
 from src.validators.cyclic_validator import CyclicValidator

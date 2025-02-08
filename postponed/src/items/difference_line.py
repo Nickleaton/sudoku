@@ -1,5 +1,5 @@
 """DifferenceLine."""
-from typing import Sequence
+from collections.abc import Sequence
 
 from postponed.src.items.line import Line
 from src.board.board import Board

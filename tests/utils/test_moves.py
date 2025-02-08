@@ -1,3 +1,4 @@
+"""TestMoves."""
 import unittest
 
 from src.utils.angle import Angle
@@ -6,9 +7,10 @@ from src.utils.moves import Moves
 
 
 class TestMoves(unittest.TestCase):
+    """Test Moves class."""
 
     def test_angle(self):
-        """Test that the angle property is calculated correctly."""
+        """Test the angle property calculation."""
         # Test the angle for right direction
         self.assertEqual(Moves.right.angle, Angle(0.0), 'right')
         self.assertEqual(Moves.up.angle, Angle(90.0), 'up')
@@ -23,7 +25,6 @@ class TestMoves(unittest.TestCase):
 
     def test_parallel(self):
         """Test the parallel method for checking direction parallelism."""
-
         self.assertTrue(Moves.right.parallel(Moves.left))
         self.assertTrue(Moves.right.parallel(Moves.right))
         self.assertTrue(Moves.up.parallel(Moves.down))
@@ -33,12 +34,13 @@ class TestMoves(unittest.TestCase):
         self.assertFalse(Moves.up.parallel(Moves.left))
 
     def test_directions(self):
-        # Test directions that are almost parallel but slightly off (within tolerance)
+        """Test directions that are almost parallel but slightly off (within tolerance)."""
         direction_a = Coord(1, 1)  # Close to 45 angle_degree (diagonal)
         direction_b = Coord(1000000000, 1000000001)  # Slightly off, but still parallel
         self.assertTrue(direction_a.parallel(direction_b))
 
     def test_orthogonals(self):
+        """Test the orthogonals method for standard orthogonal directions."""
         expected = (
             Coord(0, -1),  # left
             Coord(0, 1),  # right
@@ -48,6 +50,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.orthogonals(), list(expected))
 
     def test_diagonals(self):
+        """Test the diagonals method for standard diagonal directions."""
         expected = (
             Coord(-1, -1),  # up_left
             Coord(-1, 1),  # up_right
@@ -57,6 +60,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.diagonals(), list(expected))
 
     def test_kings(self):
+        """Test the kings method for king movement directions."""
         expected = (
             Coord(0, -1),  # left
             Coord(0, 1),  # right
@@ -70,6 +74,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.kings(), list(expected))
 
     def test_knights(self):
+        """Test the knights method for knight movement directions."""
         expected = (
             Coord(-1, -2),
             Coord(1, -2),
@@ -83,6 +88,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.knights(), list(expected))
 
     def test_all_directions(self):
+        """Test the all_directions method for all movement directions."""
         expected = (
             Coord(0, -1),  # left
             Coord(0, 1),  # right
@@ -96,6 +102,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.directions(), list(expected))
 
     def test_all_moves(self):
+        """Test the all_moves method for all possible moves."""
         expected = (
             Coord(0, -1),  # left
             Coord(0, 1),  # right
@@ -110,6 +117,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.all_moves(), list(expected))
 
     def test_square(self):
+        """Test the square method for generating a 2x2 square of coordinates."""
         expected = (
             Coord(0, 0),
             Coord(0, 1),
@@ -119,7 +127,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.square(), list(expected))
 
     def test_monkeys(self):
-        """Test the monkeys method to return the correct list of coordinates."""
+        """Test the monkeys method for returning a specific set of coordinates."""
         expected = (
             Coord(-1, -3),
             Coord(1, -3),
@@ -133,7 +141,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.monkeys(), list(expected))
 
     def test_girandola(self):
-        """Test the girandola method to return the correct list of coordinates."""
+        """Test the girandola method for returning the correct list of coordinates."""
         expected = (
             Coord(1, 1),
             Coord(1, 9),
@@ -148,7 +156,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.girandola(), list(expected))
 
     def test_asterix(self):
-        """Test the asterix method to return the correct list of coordinates."""
+        """Test the asterix method for returning the correct list of coordinates."""
         expected = (
             Coord(2, 5),
             Coord(3, 3),
@@ -163,7 +171,7 @@ class TestMoves(unittest.TestCase):
         self.assertEqual(Moves.asterix(), list(expected))
 
     def test_disjoint_9x9(self):
-        """Test the disjoint_9x9 method."""
+        """Test the disjoint_9x9 method for returning disjoint 3x3 grid coordinates."""
         expected = (
             Coord(0, 0), Coord(0, 3), Coord(0, 6),
             Coord(3, 0), Coord(3, 3), Coord(3, 6),

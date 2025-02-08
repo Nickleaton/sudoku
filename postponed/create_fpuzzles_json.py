@@ -2,7 +2,7 @@ import json
 import logging
 from argparse import ArgumentParser
 from pathlib import Path
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import parse_qs, urlparse
 
 import lzstring
 from selenium import webdriver
@@ -48,7 +48,7 @@ def main() -> None:
     args = parser.parse_args()
     source = Path(args.source)
     destination = Path(args.destination)
-    with open(source, 'r') as f:
+    with open(source) as f:
         urls = f.readlines()
     for i, u in enumerate(urls):
         logging.info(f'{i:04d} {len(urls):04d} {u.strip()}')

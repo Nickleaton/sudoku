@@ -1,3 +1,4 @@
+"""TestBetweenLineGlyph."""
 import unittest
 
 from src.glyphs.between_line_glyph import BetweenLineGlyph

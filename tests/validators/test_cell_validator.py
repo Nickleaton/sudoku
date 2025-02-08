@@ -1,3 +1,4 @@
+"""TestCellValidator."""
 import unittest
 
 from src.validators.cell_validator import CellValidator
@@ -8,6 +9,10 @@ class TestCellValidator(TestValidator):
     """Test case for the CellValidator class."""
 
     def setUp(self):
+        """Set up the test data for each test.
+
+        Initializes valid and invalid data, required keys, and the CellValidator instance.
+        """
         super().setUp()
         self.valid_data = (
             {'Row': 2, 'Column': 3},
@@ -25,7 +30,10 @@ class TestCellValidator(TestValidator):
         self.validator = CellValidator()
 
     def test_validate_horizontal_connectivity(self):
-        """Test validate_horizontal_connectivity method."""
+        """Test the validate_horizontal_connectivity method.
+
+        Ensure that the method correctly validates if two cells are horizontally connected.
+        """
         cases = (
             # Valid case: horizontally connected
             {

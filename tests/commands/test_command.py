@@ -1,3 +1,4 @@
+"""TestCommand."""
 import unittest
 from pathlib import Path
 

@@ -1,3 +1,4 @@
+"""TestDirection."""
 import unittest
 
 from src.utils.coord import Coord

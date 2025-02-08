@@ -1,3 +1,4 @@
+"""TestLittleKillerValidator."""
 import unittest
 
 from src.validators.little_killer_validator import LittleKillerValidator  # Assuming the validator is in this module

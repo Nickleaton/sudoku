@@ -1,3 +1,4 @@
+"""TestSVGSolutionCommand."""
 import unittest
 
 from src.commands.svg_solution_command import SVGSolutionCommand

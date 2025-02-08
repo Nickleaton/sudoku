@@ -1,3 +1,4 @@
+"""TestNoneValidator."""
 import unittest
 
 from src.validators.none_validator import NoneValidator

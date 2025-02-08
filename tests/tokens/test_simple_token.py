@@ -10,7 +10,7 @@ class TestSimpleToken(TestToken):
 
     def setUp(self):
         """Set up example tokens specific for testing SimpleToken."""
-        super().setUp()  #
+        super().setUp()
         self.token = SimpleToken('A')
         self.representation = "SimpleToken()"
         self.good = [

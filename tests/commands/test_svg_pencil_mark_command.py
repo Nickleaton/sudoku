@@ -1,3 +1,4 @@
+"""TestSVGPencilMarkCommand."""
 import unittest
 
 from src.commands.svg_pencil_mark_command import SVGPencilMarkCommand

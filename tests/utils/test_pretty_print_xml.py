@@ -1,9 +1,12 @@
+"""TestPrettyPrintXML."""
 import unittest
 
 from src.utils.pretty_print_xml import pretty_print_xml
 
 
 class TestPrettyPrintXML(unittest.TestCase):
+    """Test XML pretty printer."""
+
     def setUp(self):
         """Set up valid and invalid XML strings for testing."""
         self.valid_xml = '<root><child1>value1</child1><child2>value2</child2></root>'

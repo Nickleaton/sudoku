@@ -1,5 +1,5 @@
 """Anti."""
-from typing import Sequence
+from collections.abc import Sequence
 
 from postponed.src.items.difference_pair import DifferencePair
 from src.board.board import Board
