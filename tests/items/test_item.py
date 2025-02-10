@@ -24,6 +24,14 @@ class TestItem(unittest.TestCase):
         self.good_yaml = []
         self.bad_yaml = []
 
+    def test_get_info(self):
+        """Test that get_info returns a string."""
+        info: dict[str, Any] = self.item.get_info()
+        self.assertIsNotNone(info)
+        self.assertIn('name', info)
+        self.assertIn('description', info)
+        self.assertEqual(2, len(info))
+
     def test_register(self):
         """Test that the constraint is properly registered in the Item classes' registry."""
         self.assertIn(self.item.__class__.__name__, Item.classes)

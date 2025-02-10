@@ -9,7 +9,7 @@ Base constraint
 ## YAML
 
 ```yaml
-    
+    { { info.yaml } }
 ```
 
 ## Notes

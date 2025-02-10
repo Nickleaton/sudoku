@@ -1,7 +1,7 @@
 """Item."""
 
 from collections.abc import Iterator
-from typing import ClassVar
+from typing import Any, ClassVar
 
 import strictyaml
 
@@ -187,6 +187,35 @@ class Item:
         """
         return {self}
 
+    @classmethod
+    def get_info(cls) -> dict[str, Any]:
+        """Return start_location dictionary of information about this constraint.
+
+        Returns:
+            dict[str, Any]: A dictionary of information about this constraint.
+        """
+        return {
+            'name': cls.__name__,
+            'description': cls.description(),
+            # 'backus_naur_form': cls.backus_naur_form,
+            # 'mathematics': cls.mathematics(),
+            # 'tags': cls.tags,
+            # 'rules': cls.sorted_unique_rules,
+            # 'used_classes': cls.used_classes,
+            # 'sample_yaml': self.sample_yaml,
+            # 'css': self.css,
+            # 'notes': self.__class__.notes()
+        }
+
+    @classmethod
+    def description(cls) -> str:
+        """Return the description of the constraint.
+
+        Returns:
+            str: The description of the constraint.
+        """
+        return 'Base constraint'
+
     def svg(self) -> Glyph | None:
         """Return an SVG glyph to represent this constraint.
 
@@ -350,6 +379,15 @@ class Item:
 
         Returns:
             str: The mathematical representation of the constraint
+        """
+        return ''
+
+    @classmethod
+    def notes(cls) -> str:
+        """Return the notes about the constraint.
+
+        Returns:
+            str: The notes about the constraint
         """
         return ''
 

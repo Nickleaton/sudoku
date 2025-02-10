@@ -21,7 +21,7 @@ YAML
 Notes
 -----
 
-The oragin of the word Girandola comes from Italian, meaning a round candlestick. It's also
+The origin of the word Girandola comes from Italian, meaning a round candlestick. It's also
 used as the name of a particular spinning firework.
 
 The Thais take this to extremes. See this video.  `Girandola <https://www.youtube.com/watch?v=JvHqZzrBMDw>`_
