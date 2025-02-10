@@ -48,13 +48,13 @@ class Glyph:
         """
         return None
 
-    def draw(self) -> BaseElement:
+    def draw(self) -> BaseElement | None:
         """Draw the glyph and return an SVG element.
 
         Returns:
-            BaseElement : The drawn SVG element, or None if not drawn.
+            BaseElement | None : The drawn SVG element, or None if not drawn.
         """
-        return BaseElement()
+        return None
 
     @property
     def priority(self) -> int:

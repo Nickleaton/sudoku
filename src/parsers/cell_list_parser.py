@@ -30,9 +30,9 @@ class CellListParser(Parser):
         if match is None:
             raise SudokuError(f'Could not parse {text!r}')
         cells: dict[str, list] = {'CellList': []}
-        for part in text.split(','):
-            try:
+        try:
+            for part in text.split(','):
                 cells['CellList'].append({'Cell': CellToken().parse(part)})
-            except SudokuError as exp:
-                raise SudokuError(f'Could not parse {part!r}') from exp
+        except SudokuError as exp:
+            raise SudokuError(f'Could not parse {text!r}') from exp
         return cells

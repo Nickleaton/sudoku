@@ -53,9 +53,7 @@ templates:
   html: src/html/problem.html
 
 
-temporary_directory: src/html
-
-
+temporary_directory: temp
 
 colours:
   # The 'general' color set includes start_location wide variety of colours

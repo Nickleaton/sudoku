@@ -15,6 +15,8 @@ class QuadrupleValidator(Validator):
         Validator: The base class for creating custom validators.
     """
 
+    unknown_quad: str = '?'
+
     @staticmethod
     def validate(board: Board, input_data: dict | list) -> list[str]:
         """Validate that the quadruples in the line are valid digit.
@@ -38,7 +40,7 @@ class QuadrupleValidator(Validator):
             errors.append('Needs 1 to 4 items"')
             return errors
         for digit in quads:
-            if digit == '?':
+            if digit == QuadrupleValidator.unknown_quad:
                 continue
             if digit not in board.digits.digit_range:
                 errors.append(f'Quadruple {digit} is not a valid digit')
