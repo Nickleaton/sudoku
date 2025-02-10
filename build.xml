@@ -80,7 +80,6 @@
         </exec>
     </target>
 
-
     <target name="convert-json-to-yaml">
         <mkdir dir="problems/fpuzzles/yaml"/>
         <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
@@ -96,6 +95,7 @@
             </fileset>
         </copy>
     </target>
+
     <target name="convert-test">
         <mkdir dir="problems/fpuzzles/test"/>
         <exec executable="python.exe" failonerror="true" taskname="convert-json-to-yaml">
@@ -234,6 +234,16 @@
             <env key="PYTHONPATH" value="${basedir}"/>
             <arg value="${generate.command.pydot}"/>
             <arg value="${basedir}/output/commands"/>
+        </exec>
+    </target>
+
+
+    <target name="generate-documentation">
+        <exec executable="python" failonerror="true">
+            <env key="PYTHONPATH" value="${basedir}"/>
+            <arg value="scripts/generate_documentation.py"/>
+            <arg value="--target"/>
+            <arg value="gendocs"/>
         </exec>
     </target>
 
