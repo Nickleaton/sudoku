@@ -260,6 +260,7 @@
             <arg value="${uml.dir}"/>
             <arg value="--project"/>
             <arg value="Constraints"/>
+            <arg value="--only-classnames"/>
             <arg value="src/items/item.py"/>
             <arg value="src/items/composed_item.py"/>
             <arg value="src/items/constraints.py"/>
