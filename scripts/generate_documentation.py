@@ -71,7 +71,7 @@ def create_arg_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
-    """Main function to generate documentation.
+    """Generate documentation.
 
     Returns:
         None
