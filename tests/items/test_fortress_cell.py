@@ -1,12 +1,12 @@
 """TestFortressCell."""
 import unittest
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
-from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.fortress_cell import FortressCell
 from src.items.item import Item
+from src.items.simple_cell_reference import SimpleCellReference
+from tests.items.test_simple_cell_reference import TestSimpleCellReference
 
 
 class TestFortressCell(TestSimpleCellReference):

@@ -24,6 +24,7 @@ def process_file(clazz: type[Item], file_path: Path, template_name: str) -> None
     Args:
         clazz (Type[Item]): The class to generate documentation for.
         file_path (Path): The file path to write the documentation to.
+        template_name (str): The name of the template to use.
 
     Returns:
         None

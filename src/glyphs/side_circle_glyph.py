@@ -37,7 +37,7 @@ class SideCircleGlyph(CircleGlyph):
         Returns:
             Point: The offset for the circle glyph.
         """
-        size: float = config.graphics.cell_size / 2.0
+        size: float = config.graphics.cell_size / 2
         if self.location1.is_vertical(self.location2):
             return Point((self.location2.row - self.location1.row), 0) * size
         return Point(0, (self.location2.column - self.location1.column)) * size

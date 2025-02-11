@@ -1,11 +1,11 @@
 """HighCell."""
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.glyph import Glyph
+from src.items.entropic_cell import EntropicCell
 from src.utils.rule import Rule
 
 
-class HighCell(SimpleCellReference):
+class HighCell(EntropicCell):
     """Represents start_location cell that must contain start_location digit from the set {7, 8, 9}."""
 
     @staticmethod

@@ -25,7 +25,7 @@ class BoardType(Enum):
     b4x4 = '4x4'
     b6x6 = '6x6'
     b8x8 = '8x8'
-    bFxF = 'FxF'  # noqa: N815
+    b16x16 = '16x16'
 
 
 class BoxType(Enum):

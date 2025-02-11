@@ -1,13 +1,14 @@
 """OddCell."""
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
+from src.items.partity_cell import ParityCell
+
 from src.glyphs.glyph import Glyph
 from src.glyphs.odd_cell_glyph import OddCellGlyph
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class OddCell(SimpleCellReference):
+class OddCell(ParityCell):
     """Represents an odd-numbered cell, which must contain an odd digit."""
 
     @staticmethod

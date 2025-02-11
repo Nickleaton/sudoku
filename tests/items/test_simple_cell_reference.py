@@ -1,12 +1,11 @@
 """TestSimpleCellReference module."""
 
 import unittest
-from typing import Type
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
+from src.items.simple_cell_reference import SimpleCellReference
 from tests.items.test_cell_reference import TestCellReference
 
 
@@ -48,7 +47,7 @@ class TestSimpleCellReference(TestCellReference):
         self.assertEqual(self.letter, self.item.letter())
 
     @property
-    def expected_classes(self) -> set[Type[Item]]:
+    def expected_classes(self) -> set[type[Item]]:
         """Return the expected set of classes for the SimpleCellReference."""
         return {Cell, CellReference, SimpleCellReference, Item}
 

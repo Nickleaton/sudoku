@@ -1,13 +1,13 @@
 """MidCell."""
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.glyph import Glyph
 from src.glyphs.mid_cell_glyph import MidCellGlyph
+from src.items.entropic_cell import EntropicCell
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class MidCell(SimpleCellReference):
+class MidCell(EntropicCell):
     """Represents start_location mid-range cell, which can contain one of the digits 4, 5, or 6."""
 
     @staticmethod

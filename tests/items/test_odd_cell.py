@@ -1,15 +1,17 @@
 """TestOddCell."""
 import unittest
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
-from postponed.tests.items.test_simple_cell_reference import TestSimpleCellReference
+from src.items.partity_cell import ParityCell
+
 from src.items.cell import Cell
 from src.items.cell_reference import CellReference
 from src.items.item import Item
 from src.items.odd_cell import OddCell
+from src.items.simple_cell_reference import SimpleCellReference
+from tests.items.test_parity_cell import TestParityCell
 
 
-class TestOdd(TestSimpleCellReference):
+class TestOdd(TestParityCell):
     """Test suite for the OddCell class."""
 
     def setUp(self) -> None:
@@ -56,7 +58,7 @@ class TestOdd(TestSimpleCellReference):
     @property
     def expected_classes(self) -> set[type[Item]]:
         """Return the expected classes that the OddCell instance should belong to."""
-        return {Cell, CellReference, SimpleCellReference, Item, OddCell}
+        return {Cell, CellReference, SimpleCellReference, Item, ParityCell, OddCell}
 
 
 if __name__ == '__main__':  # pragma: no cover

@@ -1,12 +1,13 @@
 """EvenCell."""
-from postponed.src.items.simple_cell_reference import SimpleCellReference
+from src.items.partity_cell import ParityCell
+
 from src.glyphs.even_cell_glyph import EvenCellGlyph
 from src.glyphs.glyph import Glyph
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class EvenCell(SimpleCellReference):
+class EvenCell(ParityCell):
     """Represents start_location cell that must contain an even digit."""
 
     @staticmethod
@@ -27,7 +28,7 @@ class EvenCell(SimpleCellReference):
         Returns:
             str: The letter representation, 'exp' for EvenCell.
         """
-        return 'exp'
+        return 'e'
 
     def svg(self) -> Glyph | None:
         """Return an SVG representation of the EvenCell.

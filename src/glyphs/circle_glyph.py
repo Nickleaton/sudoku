@@ -23,7 +23,7 @@ class CircleGlyph(Glyph, ABC):
         """
         super().__init__(class_name)
         self.percentage: float = percentage
-        self.position: Point = Point(0.0, 0.0)
+        self.position: Point = Point(0, 0)
 
     @property
     def offset(self) -> Point:
@@ -32,7 +32,7 @@ class CircleGlyph(Glyph, ABC):
         Returns:
             Point: The offset for the circle glyph.
         """
-        return Point(0.0, 0.0)
+        return Point(0, 0)
 
     @property
     def priority(self) -> int:

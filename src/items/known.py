@@ -1,12 +1,12 @@
 """Known."""
 from typing import Any
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.board.board import Board
 from src.items.cell_reference import CellReference
 from src.items.composed_item import ComposedItem
 from src.items.item import Item
 from src.items.known_cell import KnownCell
+from src.items.simple_cell_reference import SimpleCellReference
 from src.parsers.known_parser import KnownParser
 
 

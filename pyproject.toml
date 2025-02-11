@@ -89,12 +89,16 @@ nitpick = "^0.35.0"
 ignore = [
     # Actual Ignores
 
+    'I001', # Ruff and reformat code in pycharm instead
+    'I004', # Ruff and reformat code in pycharm instead
+    'I005', # Ruff and reformat code in pycharm instead
     'WPS237', # Found a too complex `f` string
     'WPS214', # Found too many methods
     'WPS602', # Found using `@staticmethod`
 
     # Temporary ignores
 
+    'WPS432', # Magic numbers like 2
     'WPS324', # Found inconsistent `return` statement
     'WPS210', # Found too many local variables
     'WPS201', # Found module with too many imports

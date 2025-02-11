@@ -22,8 +22,8 @@ class SolveCommand(SimpleCommand):
         """
         super().work(problem)
         solver = problem.solver  # Assign to a local variable
-        if solver is not None:
+        if solver is None:
+            problem.status = SolverStatus.undefined
+        else:
             solver.solve()
             problem.status = SolverStatus.create(solver.status.value)
-        else:
-            problem.status = SolverStatus.undefined

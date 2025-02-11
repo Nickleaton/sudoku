@@ -1,8 +1,8 @@
 """FortressCell."""
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.fortress_cell_glyph import FortressCellGlyph
 from src.glyphs.glyph import Glyph
+from src.items.simple_cell_reference import SimpleCellReference
 from src.utils.coord import Coord
 
 

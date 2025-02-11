@@ -197,14 +197,6 @@ class Item:
         return {
             'name': cls.__name__,
             'description': cls.description(),
-            # 'backus_naur_form': cls.backus_naur_form,
-            # 'mathematics': cls.mathematics(),
-            # 'tags': cls.tags,
-            # 'rules': cls.sorted_unique_rules,
-            # 'used_classes': cls.used_classes,
-            # 'sample_yaml': self.sample_yaml,
-            # 'css': self.css,
-            # 'notes': self.__class__.notes()
         }
 
     @classmethod

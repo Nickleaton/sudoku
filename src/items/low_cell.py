@@ -1,13 +1,13 @@
 """LowCell."""
 
-from postponed.src.items.simple_cell_reference import SimpleCellReference
 from src.glyphs.glyph import Glyph
 from src.glyphs.low_cell_glyph import LowCellGlyph
+from src.items.entropic_cell import EntropicCell
 from src.utils.coord import Coord
 from src.utils.rule import Rule
 
 
-class LowCell(SimpleCellReference):
+class LowCell(EntropicCell):
     """Represents start_location low cell, which can contain one of the digits 1, 2, or 3."""
 
     @staticmethod

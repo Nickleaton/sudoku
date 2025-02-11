@@ -5,6 +5,7 @@
     <property name="generate.schema" location="scripts/generate_config_schema.py"/>
     <property name="generate.command.pydot" location="scripts/generate_command_pydot.py"/>
     <property name="schema" value="src/schema/config_schema.py"/>
+    <property name="uml.dir" value="documentation/uml"/>
 
 
     <target name="build" depends="install,update,pylint,mypy,ruff,flake8.src,flake8.tests">
@@ -244,6 +245,69 @@
             <arg value="scripts/generate_documentation.py"/>
             <arg value="--target"/>
             <arg value="gendocs"/>
+        </exec>
+    </target>
+
+
+    <target name="uml" depends="uml-constraints, uml-cell"/>
+
+    <target name="uml-constraints">
+        <mkdir dir="${uml.dir}"/>
+        <exec executable="pyreverse" failonerror="true">
+            <arg value="--output"/>
+            <arg value="png"/>
+            <arg value="--output-directory"/>
+            <arg value="${uml.dir}"/>
+            <arg value="--project"/>
+            <arg value="Constraints"/>
+            <arg value="src/items/item.py"/>
+            <arg value="src/items/composed_item.py"/>
+            <arg value="src/items/constraints.py"/>
+            <arg value="src/items/disjoint_groups.py"/>
+            <arg value="src/items/columns.py"/>
+            <arg value="src/items/boxes.py"/>
+            <arg value="src/items/rows.py"/>
+            <arg value="src/items/disjoint_group.py"/>
+            <arg value="src/items/column.py"/>
+            <arg value="src/items/box.py"/>
+            <arg value="src/items/row.py"/>
+            <arg value="src/items/known.py"/>
+            <arg value="src/items/region.py"/>
+            <arg value="src/items/region_set.py"/>
+            <arg value="src/items/special_region.py"/>
+            <arg value="src/items/standard_region.py"/>
+            <arg value="src/items/standard_region_set.py"/>
+            <arg value="src/items/unique_region.py"/>
+            <arg value="src/items/solution.py"/>
+            <arg value="src/items/solution.py"/>
+            <arg value="src/items/known.py"/>
+        </exec>
+    </target>
+
+    <target name="uml-cell">
+        <mkdir dir="${uml.dir}"/>
+        <exec executable="pyreverse" failonerror="true">
+            <arg value="--output"/>
+            <arg value="png"/>
+            <arg value="--output-directory"/>
+            <arg value="${uml.dir}"/>
+            <arg value="--project"/>
+            <arg value="Cell"/>
+            <arg value="--only-classnames"/>
+            <arg value="src/items/item.py"/>
+            <arg value="src/items/cell_reference.py"/>
+            <arg value="src/items/simple_cell_reference.py"/>
+            <arg value="src/items/fortress_cell.py"/>
+            <arg value="src/items/fortress_greater_than_cell.py"/>
+            <arg value="src/items/fortress_less_than_cell.py"/>
+            <arg value="src/items/parity_cell.py"/>
+            <arg value="src/items/even_cell.py"/>
+            <arg value="src/items/odd_cell.py"/>
+            <arg value="src/items/entropic_cell.py"/>
+            <arg value="src/items/low_cell.py"/>
+            <arg value="src/items/mid_cell.py"/>
+            <arg value="src/items/high_cell.py"/>
+            <arg value="src/items/known_cell.py"/>
         </exec>
     </target>
 
