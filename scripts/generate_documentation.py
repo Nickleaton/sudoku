@@ -19,10 +19,10 @@ env = Environment(loader=FileSystemLoader(Path('src/templates')), autoescape=Tru
 
 
 def process_file(clazz: type[Item], file_path: Path, template_name: str) -> None:
-    """Create Documentation
+    """Create Documentation.
 
     Args:
-        clazz (Type[Item]): The class to generate documentation for.
+        clazz (type[Item]): The class to generate documentation for.
         file_path (Path): The file path to write the documentation to.
         template_name (str): The name of the template to use.
 
@@ -39,7 +39,7 @@ def process_file(clazz: type[Item], file_path: Path, template_name: str) -> None
 
 
 def document(target_directory: Path) -> None:
-    """Create Documentation
+    """Create Documentation.
 
     Args:
         target_directory (Path): The directory to write the documentation to.
@@ -59,7 +59,7 @@ def document(target_directory: Path) -> None:
 
 
 def create_arg_parser() -> argparse.ArgumentParser:
-    """Creates the argument parser.
+    """Create the argument parser.
 
     Returns:
         argparse.ArgumentParser
