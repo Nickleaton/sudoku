@@ -48,7 +48,7 @@ def document(target_directory: Path) -> None:
         None
     """
     name: str
-    clazz: Type[Item]
+    clazz: type[Item]
     for name, clazz in Item.classes.items():
         if name == 'Solution':
             continue
@@ -71,7 +71,7 @@ def create_arg_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
-    """Main function to generate and format the config schema.
+    """Main function to generate documentation.
 
     Returns:
         None
